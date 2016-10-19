@@ -1,9 +1,6 @@
 module.exports = {
     themes: [
-        'simple',
         'default',
-        'flat',
-        'bootstrap'
     ],
     components: {
         /**

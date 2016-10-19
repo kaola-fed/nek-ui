@@ -33,7 +33,6 @@ markextend.setOptions({
 // var sitemap = require('./sitemap.json');
 var premark = require('./premark.js');
 var jsdoc = require('./jsdoc.js');
-var cssdoc = require('./cssdoc.js');
 
 /**
  * @function build 通过`path`生成单个文档

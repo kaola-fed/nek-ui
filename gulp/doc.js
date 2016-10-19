@@ -75,25 +75,3 @@ gulp.task('doc-build', function(done) {
 gulp.task('doc', function(done) {
     sequence('doc-clean', 'doc-copy', ['doc-js', 'doc-css', 'doc-build'], done);
 });
-
-/**
- * ------------------------------------------------------------
- * Sync to GitHub Page
- * If start `page` task, `doc` task will be running in advance.
- * ------------------------------------------------------------
- */
-
-gulp.task('page-clean', function() {
-    return gulp.src([
-        '../regular-ui.github.io/*',
-        '!../regular-ui.github.io/README.md'
-    ], {read: false}).pipe(rm({force: true}));
-});
-
-gulp.task('page-copy', function() {
-    return gulp.src('./doc/**').pipe(gulp.dest('../regular-ui.github.io'));
-});
-
-gulp.task('page', function(done) {
-    sequence(['doc', 'page-clean'], ['page-copy'], done);
-});

@@ -9,7 +9,6 @@ var minifycss = require('gulp-minify-css');
 var sequence = require('run-sequence');
 var all = require('gulp-all');
 var mcss = require('gulp_mcss');
-var mcss2scss = require('mcss2scss/src/gulp');
 
 var structure = require('../structure.js');
 
@@ -21,8 +20,7 @@ var structure = require('../structure.js');
 
 gulp.task('dist-clean', function() {
     return all(
-        gulp.src('./dist', {read: false}).pipe(rm()),
-        gulp.src('./src/scss', {read: false}).pipe(rm())
+        gulp.src('./dist', {read: false}).pipe(rm())
     )
 });
 
@@ -62,38 +60,6 @@ gulp.task('dist-css', function() {
     return all(structure.themes.map(gulpCSS));
 });
 
-gulp.task('dist-mcss2scss', function() {
-    return gulp.src('./src/mcss/**')
-        .pipe(mcss2scss({mass: true}))
-        .pipe(gulp.dest('./dist/scss'));
-});
-
 gulp.task('dist', function(done) {
-    sequence('dist-clean', ['dist-copy', 'dist-js', 'dist-css', 'dist-mcss2scss'], done);
-});
-
-/**
- * ------------------------------------------------------------
- * Sync to Bower Repo
- * If start `bower` task, `dist` task will be running in advance.
- * ------------------------------------------------------------
- */
-
-gulp.task('bower-clean', function() {
-    return gulp.src([
-        '../regular-ui-bower/*',
-        '!../regular-ui-bower/bower.json',
-        '!../regular-ui-bower/README.md'
-    ], {read: false}).pipe(rm({force: true}));
-});
-
-gulp.task('bower-copy', function() {
-    return all(
-        gulp.src('./dist/**').pipe(gulp.dest('../regular-ui-bower')),
-        gulp.src('./src/mcss/**').pipe(gulp.dest('../regular-ui-bower/mcss'))
-    );
-});
-
-gulp.task('bower', function(done) {
-    sequence(['dist', 'bower-clean'], ['bower-copy'], done);
+    sequence(['dist-copy', 'dist-js', 'dist-css'], done);
 });
