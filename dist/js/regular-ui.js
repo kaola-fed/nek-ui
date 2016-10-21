@@ -2452,6 +2452,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return result;
 	}
 
+	// Patch for validator, ref: https://302.at/0wy3Z
+	Object.keys(validator).forEach(function(d) {
+	  if (/^is/.test(d)) {
+	    validator['_' + d] = function(str, isRequired) {
+	      if (!isRequired && !str) {
+	        return function() { return true; }
+	      }
+	      return validator[d].bind(null, str);
+	    }
+	  }
+	});
+	Validation.validator = validator;
+
 	module.exports = Validation;
 
 
