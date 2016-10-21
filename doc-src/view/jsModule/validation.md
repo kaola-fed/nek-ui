@@ -13,6 +13,12 @@
         </span>
     </div>
     <div class="u-formitem">
+        <label class="formitem_tt">邮箱：</label>
+        <span class="formitem_ct">
+            <input2 rules={emailRules} tip="可选，但需要校验格式" />
+        </span>
+    </div>
+    <div class="u-formitem">
         <label class="formitem_tt">设置密码<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
             <input2 type="password" rules={passwordRules} value={password} maxlength=18 tip="6~18个字符，包括字母、数字、下划线" />
@@ -41,12 +47,18 @@
 ```
 
 ```javascript
+var validator = RGUI.Validation.validator;
 var component = new RGUI.Component({
     template: template,
     data: {
         nameRules: [
             {type: 'isFilled', message: '请输入用户名！'},
             {type: 'isLength', min: 4, max: 12, message: '请输入4~12个字符！'}
+        ],
+        emailRules: [
+            {message: '留空，或者输入正确邮箱', method: function(value) {
+                return validator._isEmail(value)();
+            }}
         ],
         passwordRules: [
             {type: 'isFilled', message: '请设置密码！'},
