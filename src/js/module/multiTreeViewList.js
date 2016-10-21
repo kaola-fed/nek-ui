@@ -9,7 +9,7 @@
 
 var TreeViewList = require('./treeViewList.js');
 var template = require('./multiTreeViewList.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class MultiTreeView

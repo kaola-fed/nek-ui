@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var formidable = require('formidable');
 var express = require('express');
 var app = express();
 

@@ -5,9 +5,9 @@
  * ------------------------------------------------------------
  */
 
-var Component = require('regular-ui-base/src/component');
+var Component = require('../ui-base/component.js');
 var template = require('./timePicker.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 var NumberInput = require('./numberInput.js');
 
 /**

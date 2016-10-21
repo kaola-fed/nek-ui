@@ -7,9 +7,9 @@
 
 'use strict';
 
-var SourceComponent = require('regular-ui-base/src/sourceComponent');
+var SourceComponent = require('../ui-base/sourceComponent.js');
 var template = require('./treeView.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 var TreeViewList = require('./treeViewList.js');
 

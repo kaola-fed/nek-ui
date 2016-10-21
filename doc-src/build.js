@@ -95,9 +95,6 @@ function build(path, sitemap, template) {
         // @TODO
         if(level[1] === 'validation')
             jsFile = __dirname + '/../src/js/util/validation.js';
-        else if(level[1] === 'draggable' || level[1] === 'droppable')
-            jsFile = __dirname + '/../node_modules/regular-ui-dragdrop/src/' + level[1] + '.js';
-
         if(fs.existsSync(jsFile))
             data.api = jsdoc.render(jsFile, template.jsApi);
     }

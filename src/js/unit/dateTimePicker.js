@@ -8,13 +8,13 @@
 var Dropdown = require('./dropdown.js');
 var DatePicker = require('./datePicker.js');
 var template = require('./dateTimePicker.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
-var filter = require('regular-ui-base').filter;
+var filter = require('../ui-base/filter.js');
 var Calendar = require('../module/calendar.js');
 var TimePicker = require('./timePicker.js');
 var bowser = require('bowser');
-var polyfill = require('regular-ui-base/src/polyfill');
+var polyfill = require('../ui-base/polyfill.js');
 
 /**
  * @class DateTimePicker

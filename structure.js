@@ -86,7 +86,6 @@ module.exports = {
         'Modal': {type: 'css+js', category: 'module', lowerName: 'modal'},
         /* 数据类 */
         'ListView': {type: 'css+js', category: 'module', lowerName: 'listView'},
-        'UltiListView': {type: 'css+js', category: 'module', lowerName: 'ultiListView', requires: ['ListView', 'Draggable', 'Droppable']},
         // @undone 'GridView': {type: 'css+js', category: 'module', lowerName: 'gridView'},
         'TreeView': {type: 'css+js', category: 'module', lowerName: 'treeView'},
         'MultiTreeView': {type: 'css+js', category: 'module', lowerName: 'multiTreeView', requires: ['TreeView', 'Check2']},
@@ -99,7 +98,5 @@ module.exports = {
         'MarkEditor': {type: 'js', category: 'module', lowerName: 'markEditor'},
         /* 其他 */
         'Validation': {type: 'js', category: 'util', lowerName: 'validation'},
-        'Draggable': {type: 'js', category: 'util', lowerName: 'draggable', path: 'regular-ui-dragdrop/src/draggable'},
-        'Droppable': {type: 'js', category: 'util', lowerName: 'droppable', path: 'regular-ui-dragdrop/src/droppable'}
     }
 }

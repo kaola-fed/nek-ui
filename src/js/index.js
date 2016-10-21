@@ -8,10 +8,10 @@
 'use strict';
 
 exports.Regular = require('regularjs');
-exports.Component = require('regular-ui-base/src/component');
-exports.SourceComponent = require('regular-ui-base/src/sourceComponent');
-exports._ = require('regular-ui-base/src/_');
-exports.ajax = require("regular-ui-base/src/ajax");
+exports.Component = require('./ui-base/component.js');
+exports.SourceComponent = require('./ui-base/sourceComponent.js');
+exports._ = require('./ui-base/_.js');
+exports.ajax = require("./ui-base/ajax.js");
 exports.Dropdown = require("./unit/dropdown.js");
 exports.Menu = require("./unit/menu.js");
 exports.Input2 = require("./unit/input2.js");
@@ -48,5 +48,3 @@ exports.Calendar = require("./module/calendar.js");
 exports.HTMLEditor = require("./module/htmlEditor.js");
 exports.MarkEditor = require("./module/markEditor.js");
 exports.Validation = require("./util/validation.js");
-exports.Draggable = require("regular-ui-dragdrop/src/draggable");
-exports.Droppable = require("regular-ui-dragdrop/src/droppable");

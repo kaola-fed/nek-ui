@@ -7,11 +7,9 @@
 
 'use strict';
 
-var Component = require('regular-ui-base/src/component');
+var Component = require('../ui-base/component.js');
 var template = require('./modal.html');
-var _ = require('regular-ui-base/src/_');
-
-var Draggable = require('regular-ui-dragdrop/src/draggable');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class Modal
@@ -22,7 +20,6 @@ var Draggable = require('regular-ui-dragdrop/src/draggable');
  * @param {string=''}               options.data.contentTemplate     => 对话框内容模板，用于支持复杂内容的自定义。
  * @param {string|boolean=true}     options.data.okButton            => 是否显示确定按钮。值为`string`时显示该段文字。
  * @param {string|boolean=false}    options.data.cancelButton        => 是否显示取消按钮。值为`string`时显示该段文字。
- * @param {boolean=false}           options.data.draggable           => 是否可以拖拽对话框
  * @param {string=''}               options.data.class               => 补充class
  */
 var Modal = Component.extend({
@@ -36,8 +33,7 @@ var Modal = Component.extend({
             title: '提示',
             content: '',
             okButton: true,
-            cancelButton: false,
-            draggable: false
+            cancelButton: false
         });
         this.supr();
     },

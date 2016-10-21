@@ -9,7 +9,7 @@
 
 var Dropdown = require('./dropdown.js');
 var template = require('./select2.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class Select2

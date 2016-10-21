@@ -7,12 +7,12 @@
 
 'use strict';
 
-var Component = require('regular-ui-base/src/component');
+var Component = require('../ui-base/component.js');
 var template = require('./calendar.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 var bowser = require('bowser');
-var polyfill = require('regular-ui-base/src/polyfill');
+var polyfill = require('../ui-base/polyfill.js');
 var MS_OF_DAY = 24*3600*1000;
 
 /**

@@ -86,26 +86,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Suggest = __webpack_require__(114);
 	exports.Uploader = __webpack_require__(116);
 	exports.DatePicker = __webpack_require__(118);
-	exports.TimePicker = __webpack_require__(123);
-	exports.DateTimePicker = __webpack_require__(125);
-	exports.Progress = __webpack_require__(127);
-	exports.Loading = __webpack_require__(129);
-	exports.Gotop = __webpack_require__(131);
-	exports.Tabs = __webpack_require__(133);
-	exports.Collapse = __webpack_require__(135);
-	exports.Pager = __webpack_require__(139);
-	exports.Notify = __webpack_require__(141);
-	exports.Modal = __webpack_require__(143);
-	exports.ListView = __webpack_require__(147);
-	exports.UltiListView = __webpack_require__(149);
+	exports.TimePicker = __webpack_require__(122);
+	exports.DateTimePicker = __webpack_require__(124);
+	exports.Progress = __webpack_require__(126);
+	exports.Loading = __webpack_require__(128);
+	exports.Gotop = __webpack_require__(130);
+	exports.Tabs = __webpack_require__(132);
+	exports.Collapse = __webpack_require__(134);
+	exports.Pager = __webpack_require__(138);
+	exports.Notify = __webpack_require__(140);
+	exports.Modal = __webpack_require__(142);
+	exports.ListView = __webpack_require__(144);
+	exports.UltiListView = __webpack_require__(146);
 	exports.TreeView = __webpack_require__(110);
-	exports.MultiTreeView = __webpack_require__(152);
-	exports.Calendar = __webpack_require__(121);
-	exports.HTMLEditor = __webpack_require__(156);
-	exports.MarkEditor = __webpack_require__(158);
+	exports.MultiTreeView = __webpack_require__(148);
+	exports.Calendar = __webpack_require__(120);
+	exports.HTMLEditor = __webpack_require__(152);
+	exports.MarkEditor = __webpack_require__(154);
 	exports.Validation = __webpack_require__(21);
-	exports.Draggable = __webpack_require__(145);
-	exports.Droppable = __webpack_require__(151);
 
 /***/ },
 /* 1 */
@@ -6805,8 +6803,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var template = __webpack_require__(119);
 	var _ = __webpack_require__(6);
 
-	var filter = __webpack_require__(120).filter;
-	var Calendar = __webpack_require__(121);
+	var filter = __webpack_require__(7);
+	var Calendar = __webpack_require__(120);
 	var bowser = __webpack_require__(4);
 	var polyfill = __webpack_require__(3);
 	var MS_OF_DAY = 24*3600*1000;
@@ -6993,20 +6991,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	    _: __webpack_require__(6),
-	    ajax: __webpack_require__(10),
-	    Component: __webpack_require__(2),
-	    SourceComponent: __webpack_require__(9),
-	    // directive: require('./src/directive.js'),
-	    filter: __webpack_require__(7),
-	    polyfill: __webpack_require__(3)
-	}
-
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/**
 	 * ------------------------------------------------------------
 	 * Calendar  日历
@@ -7017,7 +7001,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(122);
+	var template = __webpack_require__(121);
 	var _ = __webpack_require__(6);
 
 	var bowser = __webpack_require__(4);
@@ -7265,13 +7249,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 122 */
+/* 121 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">日</span><span class=\"calendar_item\">一</span><span class=\"calendar_item\">二</span><span class=\"calendar_item\">三</span><span class=\"calendar_item\">四</span><span class=\"calendar_item\">五</span><span class=\"calendar_item\">六</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ },
-/* 123 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7282,7 +7266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(124);
+	var template = __webpack_require__(123);
 	var _ = __webpack_require__(6);
 	var NumberInput = __webpack_require__(88);
 
@@ -7387,13 +7371,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TimePicker;
 
 /***/ },
-/* 124 */
+/* 123 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\n\t<numberInput min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled} autofocus={autofocus} />\n\t<span>:</span>\n\t<numberInput min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled} />\n</span>"
 
 /***/ },
-/* 125 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7405,12 +7389,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Dropdown = __webpack_require__(13);
 	var DatePicker = __webpack_require__(118);
-	var template = __webpack_require__(126);
+	var template = __webpack_require__(125);
 	var _ = __webpack_require__(6);
 
-	var filter = __webpack_require__(120).filter;
-	var Calendar = __webpack_require__(121);
-	var TimePicker = __webpack_require__(123);
+	var filter = __webpack_require__(7);
+	var Calendar = __webpack_require__(120);
+	var TimePicker = __webpack_require__(122);
 	var bowser = __webpack_require__(4);
 	var polyfill = __webpack_require__(3);
 
@@ -7590,13 +7574,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 126 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-datetimepicker {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <input class=\"u-input u-input-full\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\" autofocus={autofocus} readonly={readonly} disabled={disabled}\n            on-focus={this.toggle(true)} on-change={this._onInput($event)}>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <calendar minDate={minDate} maxDate={maxDate} date={_date} on-select={this._onDateTimeChange($event.date, _time)}>\n            <timePicker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        </calendar>\n    </div>\n</div>"
 
 /***/ },
-/* 127 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7609,7 +7593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(128);
+	var template = __webpack_require__(127);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7647,13 +7631,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Progress;
 
 /***/ },
-/* 128 */
+/* 127 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ },
-/* 129 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7666,7 +7650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(130);
+	var template = __webpack_require__(129);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7755,13 +7739,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ },
-/* 130 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ },
-/* 131 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7774,7 +7758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(132);
+	var template = __webpack_require__(131);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7813,13 +7797,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Gotop;
 
 /***/ },
-/* 132 */
+/* 131 */
 /***/ function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-arrow-up\"></i>\n    {/if}\n</a>"
 
 /***/ },
-/* 133 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7832,7 +7816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(134);
+	var template = __webpack_require__(133);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7918,13 +7902,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Tabs;
 
 /***/ },
-/* 134 */
+/* 133 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ },
-/* 135 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7937,10 +7921,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(136);
+	var template = __webpack_require__(135);
 	var _ = __webpack_require__(6);
 
-	var Panel = __webpack_require__(137);
+	var Panel = __webpack_require__(136);
 
 	/**
 	 * @class Collapse
@@ -7969,13 +7953,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Collapse;
 
 /***/ },
-/* 136 */
+/* 135 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\n    {#inc this.$body}\n</div>"
 
 /***/ },
-/* 137 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7988,7 +7972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(138);
+	var template = __webpack_require__(137);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8041,13 +8025,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Panel;
 
 /***/ },
-/* 138 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\n    <div class=\"panel_hd\" on-click={this.toggle()}>{title}</div>\n    <div r-hide={!open} style=\"overflow: hidden\" r-animation=\"on: enter; class: animated slideInY; on: leave; class: animated slideOutY;\">\n        <div class=\"panel_bd\">\n            {#inc this.$body}\n        </div>\n    </div>\n</div>"
 
 /***/ },
-/* 139 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8058,7 +8042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(140);
+	var template = __webpack_require__(139);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8146,13 +8130,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Pager;
 
 /***/ },
-/* 140 */
+/* 139 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <li class=\"pager_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}><a>上一页</a></li>\n    {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _start > side + 1}<li><span>...</span></li>{/if}\n        {#list _start.._end as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _end < total - side}<li><span>...</span></li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {#else}\n        {#list 1..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {/if}\n    <li class=\"pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><a>下一页</a></li>\n</ul>"
 
 /***/ },
-/* 141 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8165,7 +8149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(142);
+	var template = __webpack_require__(141);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8342,13 +8326,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ },
-/* 142 */
+/* 141 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-close\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state}-circle\" r-hide={!message.state}></i>\n        {message.text}\n    </div>\n    {/list}\n</div>"
 
 /***/ },
-/* 143 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8361,10 +8345,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(144);
+	var template = __webpack_require__(143);
 	var _ = __webpack_require__(6);
-
-	var Draggable = __webpack_require__(145);
 
 	/**
 	 * @class Modal
@@ -8375,7 +8357,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string=''}               options.data.contentTemplate     => 对话框内容模板，用于支持复杂内容的自定义。
 	 * @param {string|boolean=true}     options.data.okButton            => 是否显示确定按钮。值为`string`时显示该段文字。
 	 * @param {string|boolean=false}    options.data.cancelButton        => 是否显示取消按钮。值为`string`时显示该段文字。
-	 * @param {boolean=false}           options.data.draggable           => 是否可以拖拽对话框
 	 * @param {string=''}               options.data.class               => 补充class
 	 */
 	var Modal = Component.extend({
@@ -8389,8 +8370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            title: '提示',
 	            content: '',
 	            okButton: true,
-	            cancelButton: false,
-	            draggable: false
+	            cancelButton: false
 	        });
 	        this.supr();
 	    },
@@ -8508,371 +8488,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 144 */
+/* 143 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-hide={!visible}>\n    <div class=\"modal_dialog\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            <a class=\"modal_close\" on-click={this.close(!cancelButton)}><i class=\"u-icon u-icon-close\"></i></a>\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\">\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        <div class=\"modal_ft\">\n            {#if okButton}\n            <button class=\"u-btn u-btn-primary\" on-click={this.close(true)} r-autofocus>{okButton === true ? '确定' : okButton}</button>\n            {/if}\n            {#if cancelButton}\n            <button class=\"u-btn\" on-click={this.close(false)}>{cancelButton === true ? '取消' : cancelButton}</button>\n            {/if}\n        </div>\n    </div>\n</div>"
 
 /***/ },
-/* 145 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Draggable  拖拽
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(2);
-	var _ = __webpack_require__(6);
-	var dragdrop = __webpack_require__(146);
-
-	/**
-	 * @class Draggable
-	 * @extend Component
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object}                  options.data.data                => 拖拽时需要传递的数据
-	 * @param {string|Dragable.Proxy|Element|function='clone'}  options.data.proxy  @=> 拖拽代理，即拖拽时显示的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。
-	 * @param {string='all'}            options.data.direction           => 拖拽代理可以移动的方向，`all`为任意方向，`horizontal`为水平方向，`vertical`为垂直方向
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {string='z-draggable'}    options.data.class               => 可拖拽时（即disabled=false）给元素附加此class
-	 * @param {string='z-drag'}         options.data.dragClass           => 拖拽该元素时给元素附加此class
-	 */
-	var Draggable = Component.extend({
-	    name: 'draggable',
-	    template: '{#inc this.$body}',
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            data: null,
-	            proxy: 'clone',
-	            direction: 'all',
-	            'class': 'z-draggable',
-	            dragClass: 'z-drag'
-	        });
-	        this.supr();
-
-	        this._onMouseDown = this._onMouseDown.bind(this);
-	        this._onBodyMouseMove = this._onBodyMouseMove.bind(this);
-	        this._onBodyMouseUp = this._onBodyMouseUp.bind(this);
-	        this.cancel = this.cancel.bind(this);
-	    },
-	    /**
-	     * @protected
-	     */
-	    init: function() {
-	        var inner = _.dom.element(this);
-	        _.dom.on(inner, 'mousedown', this._onMouseDown);
-	        this.supr();
-
-	        this.$watch('disabled', function(newValue) {
-	            if(newValue)
-	                _.dom.delClass(inner, this.data['class']);
-	            else
-	                _.dom.addClass(inner, this.data['class']);
-	        });
-	    },
-	    /**
-	     * @method _getProxy() 获取拖拽代理
-	     * @private
-	     * @return {Element} 拖拽代理元素
-	     */
-	    _getProxy: function() {
-	        if(typeof this.data.proxy === 'function')
-	            return this.data.proxy();
-	        else if(this.data.proxy instanceof Element)
-	            return this.data.proxy;
-	        else if(this.data.proxy instanceof Draggable.Proxy) {
-	            var proxy = _.dom.element(this.data.proxy);
-	            var dimension = _.dom.getDimension(_.dom.element(this));
-	            this._initProxy(proxy, dimension);
-	            document.body.appendChild(proxy);
-	            return proxy;
-	        } else if(this.data.proxy === 'clone') {
-	            var self = _.dom.element(this);
-	            var dimension = _.dom.getDimension(self);
-	            proxy = self.cloneNode(true);
-	            this._initProxy(proxy, dimension);
-	            self.parentElement.appendChild(proxy);
-	            return proxy;
-	        } else if(this.data.proxy === 'self') {
-	            var proxy = _.dom.element(this);
-	            var dimension = _.dom.getDimension(proxy);
-	            this._initProxy(proxy, dimension);
-	            return proxy;
-	        }
-	    },
-	    /**
-	     * @method _initProxy() 初始化拖拽代理
-	     * @private
-	     * @return {void}
-	     */
-	    _initProxy: function(proxy, dimension) {
-	        proxy.style.left = dimension.left + 'px';
-	        proxy.style.top = dimension.top + 'px';
-	        proxy.style.zIndex = '2000';
-	        proxy.style.position = 'fixed';
-	        proxy.style.display = '';
-	    },
-	    /**
-	     * @private
-	     */
-	    _onMouseDown: function($event) {
-	        if(this.data.disabled)
-	            return;
-	        $event.preventDefault();
-
-	        _.dom.on(document, 'mousemove', this._onBodyMouseMove);
-	        _.dom.on(document, 'mouseup', this._onBodyMouseUp);
-	    },
-	    /**
-	     * @private
-	     */
-	    _onBodyMouseMove: function($event) {
-	        var e = $event.event;
-	        $event.preventDefault();
-
-	        if(dragdrop.dragging === false) {
-	            _.extend(dragdrop, {
-	                dragging: true,
-	                data: this.data.data,
-	                proxy: this._getProxy(),
-	                screenX: e.screenX,
-	                screenY: e.screenY,
-	                clientX: e.clientX,
-	                clientY: e.clientY,
-	                pageX: e.pageX,
-	                pageY: e.pageY,
-	                movementX: 0,
-	                movementY: 0,
-	                droppable: undefined
-	            }, true);
-
-	            this._dragStart();
-	        } else {
-	            _.extend(dragdrop, {
-	                screenX: e.screenX,
-	                screenY: e.screenY,
-	                clientX: e.clientX,
-	                clientY: e.clientY,
-	                pageX: e.pageX,
-	                pageY: e.pageY,
-	                movementX: e.screenX - dragdrop.screenX,
-	                movementY: e.screenY - dragdrop.screenY
-	            }, true);
-
-	            if(dragdrop.proxy) {
-	                if(this.data.direction === 'all' || this.data.direction === 'horizontal')
-	                    dragdrop.proxy.style.left = dragdrop.proxy.offsetLeft + dragdrop.movementX + 'px';
-	                if(this.data.direction === 'all' || this.data.direction === 'vertical')
-	                    dragdrop.proxy.style.top = dragdrop.proxy.offsetTop + dragdrop.movementY + 'px';
-	            }
-
-	            this._drag();
-	            if(!dragdrop.dragging)
-	                return;
-
-	            // Drop
-	            var pointElement = null;
-	            if(dragdrop.proxy) {
-	                dragdrop.proxy.style.display = 'none';
-	                pointElement = document.elementFromPoint(e.clientX, e.clientY);
-	                dragdrop.proxy.style.display = '';
-	            } else
-	                pointElement = document.elementFromPoint(e.clientX, e.clientY);
-
-	            var pointDroppable = dragdrop.droppables.find(function(droppable) {
-	                var element = pointElement;
-	                var target = _.dom.element(droppable);
-	                while(element) {
-	                    if(element === target)
-	                        return true;
-	                    element = element.parentElement;
-	                }
-	            });
-
-	            if(dragdrop.droppable !== pointDroppable) {
-	                dragdrop.droppable && dragdrop.droppable._dragLeave(this);
-	                if(!dragdrop.dragging)
-	                    return;
-	                pointDroppable && pointDroppable._dragEnter(this);
-	                if(!dragdrop.dragging)
-	                    return;
-	                dragdrop.droppable = pointDroppable;
-	            } else
-	                pointDroppable && pointDroppable._dragOver(this);
-	        }
-	    },
-	    /**
-	     * @private
-	     */
-	    _onBodyMouseUp: function($event) {
-	        var e = $event.event;
-	        $event.preventDefault();
-
-	        dragdrop.droppable && dragdrop.droppable._drop(this);
-	        this.cancel();
-	    },
-	    /**
-	     * @method cancel() 取消拖拽操作
-	     * @public
-	     * @return {void}
-	     */
-	    cancel: function() {
-	        this._dragEnd();
-
-	        _.extend(dragdrop, {
-	            dragging: false,
-	            data: null,
-	            proxy: null,
-	            screenX: 0,
-	            screenY: 0,
-	            clientX: 0,
-	            clientY: 0,
-	            pageX: 0,
-	            pageY: 0,
-	            movementX: 0,
-	            movementY: 0,
-	            droppable: undefined
-	        }, true);
-
-	        _.dom.off(document, 'mousemove', this._onBodyMouseMove);
-	        _.dom.off(document, 'mouseup', this._onBodyMouseUp);
-	    },
-	    /**
-	     * @private
-	     */
-	    _dragStart: function(e) {
-	        if(dragdrop.proxy)
-	            _.dom.addClass(dragdrop.proxy, this.data.dragClass);
-
-	        /**
-	         * @event dragstart 拖拽开始时触发
-	         * @property {object} sender 事件发送对象，为当前draggable
-	         * @property {object} origin 拖拽源，为当前draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} data 拖拽时需要传递的数据
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         * @property {function} cancel 取消拖拽操作
-	         */
-	        this.$emit('dragstart', _.extend({
-	            sender: this,
-	            origin: this,
-	            source: _.dom.element(this),
-	            proxy: dragdrop.proxy,
-	            cancel: this.cancel
-	        }, dragdrop));
-	    },
-	    /**
-	     * @private
-	     */
-	    _drag: function() {
-	        /**
-	         * @event drag 正在拖拽时触发
-	         * @property {object} sender 事件发送对象，为当前draggable
-	         * @property {object} origin 拖拽源，为当前draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} data 拖拽时需要传递的数据
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         * @property {function} cancel 取消拖拽操作
-	         */
-	        this.$emit('drag', _.extend({
-	            sender: this,
-	            origin: this,
-	            source: _.dom.element(this),
-	            proxy: dragdrop.proxy,
-	            cancel: this.cancel
-	         }, dragdrop));
-	    },
-	    /**
-	     * @private
-	     */
-	    _dragEnd: function() {
-	        /**
-	         * @event dragend 拖拽结束时触发
-	         * @property {object} sender 事件发送对象，为当前draggable
-	         * @property {object} origin 拖拽源，为当前draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         */
-	        this.$emit('dragend', {
-	            sender: this,
-	            origin: this,
-	            source: _.dom.element(this),
-	            proxy: dragdrop.proxy
-	        });
-
-	        if(dragdrop.proxy) {
-	            if(this.data.proxy instanceof Draggable.Proxy || this.data.proxy === 'clone')
-	                dragdrop.proxy.parentElement.removeChild(dragdrop.proxy);
-
-	            _.dom.delClass(dragdrop.proxy, this.data.dragClass);
-	        }
-	    }
-	});
-
-	Draggable.Proxy = Component.extend({
-	    name: 'draggable.proxy',
-	    template: '{#inc this.$body}',
-	    /**
-	     * @protected
-	     */
-	    init: function() {
-	        if(this.$outer instanceof Draggable) {
-	            _.dom.element(this).style.display = 'none';
-	            this.$outer.data.proxy = this;
-	        }
-	    }
-	    // node: _.noop
-	});
-
-	module.exports = Draggable;
-
-/***/ },
-/* 146 */
-/***/ function(module, exports) {
-
-	var dragdrop = {
-	    dragging: false,
-	    data: null,
-	    proxy: null,
-	    screenX: 0,
-	    screenY: 0,
-	    clientX: 0,
-	    clientY: 0,
-	    pageX: 0,
-	    pageY: 0,
-	    movementX: 0,
-	    movementY: 0,
-	    droppable: null,
-	    droppables: []
-	}
-
-	module.exports = dragdrop;
-
-/***/ },
-/* 147 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8885,7 +8507,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(148);
+	var template = __webpack_require__(145);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8950,13 +8572,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ListView;
 
 /***/ },
-/* 148 */
+/* 145 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"m-listview {class}\" z-dis={disabled} r-hide={!visible}>\n    {#list source as item}\n    <li z-sel={multiple ? item.selected : selected === item} z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>\n        {#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ },
-/* 149 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8968,12 +8590,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ListView = __webpack_require__(147);
-	var template = __webpack_require__(150);
+	var ListView = __webpack_require__(144);
+	var template = __webpack_require__(147);
 	var _ = __webpack_require__(6);
-
-	var Draggable = __webpack_require__(145);
-	var Droppable = __webpack_require__(151);
 
 	/**
 	 * @class UltiListView
@@ -8987,7 +8606,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object=null}             options.data.selected           <=> 当前选择项。多选时无效。
 	 * @param {boolean=false}           options.data.multiple            => 是否可以多选
 	 * @param {string=null}             options.data.itemTemplate       @=> 单项模板
-	 * @param {boolean=false}           options.data.dragdrop            => 是否开启拖放功能
 	 * @param {boolean=false}           options.data.readonly            => 是否只读
 	 * @param {boolean=false}           options.data.disabled            => 是否禁用
 	 * @param {boolean=true}            options.data.visible             => 是否显示
@@ -9005,7 +8623,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // @inherited source: [],
 	            // @inherited selected: null,
 	            // @inherited itemTemplate: null,
-	            dragdrop: false
 	        });
 	        this.supr();
 	    },
@@ -9069,221 +8686,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = UltiListView;
 
 /***/ },
-/* 150 */
+/* 147 */
 /***/ function(module, exports) {
 
 	module.exports = "<droppable disabled={!dragdrop} on-dragover={this._onDragOver($event)} on-dragleave={this._onDragLeave($event)} on-drop={this._onDrop($event, item)}>\n<ul class=\"m-listview m-ultilistview {class}\" z-dis={disabled} r-hide={!visible}>\n    {#list source as item}\n    <droppable disabled={!dragdrop} on-dragover={this._onItemDragOver($event)} on-drop={this._onItemDrop($event, item)}>\n    <draggable disabled={!dragdrop} data={ @({root: source, item: item, index: item_index}) }>\n    <li z-sel={multiple ? item.selected : selected === item} z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>\n        {#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}\n    </li>\n    </draggable>\n    </droppable>\n    {/list}\n</ul>\n</droppable>"
 
 /***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Droppable  放置
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(2);
-	var _ = __webpack_require__(6);
-	var dragdrop = __webpack_require__(146);
-
-	/**
-	 * @class Droppable
-	 * @extend Component
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object}                  options.data.data               <=  拖放后传递过来的数据
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {string='z-droppable'}    options.data.class               => 可放置时（即disabled=false）给元素附加此class
-	 * @param {string='z-dragover'}     options.data.dragOverClass       => 拖拽该元素上方时给元素附加此class
-	 */
-	var Droppable = Component.extend({
-	    name: 'droppable',
-	    template: '{#inc this.$body}',
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            data: null,
-	            'class': 'z-droppable',
-	            dragOverClass: 'z-dragover'
-	        });
-	        this.supr();
-
-	        dragdrop.droppables.push(this);
-	    },
-	    /**
-	     * @protected
-	     */
-	    init: function() {
-	        var inner = _.dom.element(this);
-	        this.$watch('disabled', function(newValue) {
-	            if(newValue)
-	                _.dom.delClass(inner, this.data['class']);
-	            else
-	                _.dom.addClass(inner, this.data['class']);
-	        });
-	        this.supr();
-	    },
-	    /**
-	     * @protected
-	     */
-	    destroy: function() {
-	        dragdrop.droppables.splice(dragdrop.droppables.indexOf(this), 1);
-	        this.supr();
-	    },
-	    /**
-	     * @private
-	     */
-	    _dragEnter: function(origin) {
-	        var element = _.dom.element(this);
-	        _.dom.addClass(element, this.data.dragOverClass);
-	        
-	        /**
-	         * @event dragenter 拖拽进入该元素时触发
-	         * @property {object} sender 事件发送对象，为当前droppable
-	         * @property {object} origin 拖拽源，为拖拽的draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} target 拖拽目标元素
-	         * @property {object} data 拖拽时接收到的数据
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         * @property {function} cancel 取消拖拽操作
-	         */
-	        this.$emit('dragenter', _.extend({
-	            sender: this,
-	            origin: origin,
-	            source: _.dom.element(origin),
-	            target: element,
-	            cancel: origin.cancel
-	        }, dragdrop));
-	    },
-	    /**
-	     * @private
-	     */
-	    _dragLeave: function(origin) {
-	        var element = _.dom.element(this);
-	        _.dom.delClass(element, this.data.dragOverClass);
-	        
-	        /**
-	         * @event dragleave 拖拽离开该元素时触发
-	         * @property {object} sender 事件发送对象，为当前droppable
-	         * @property {object} origin 拖拽源，为拖拽的draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} target 拖拽目标元素
-	         * @property {object} data 拖拽时接收到的数据
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         * @property {function} cancel 取消拖拽操作
-	         */
-	        this.$emit('dragleave', _.extend({
-	            sender: this,
-	            origin: origin,
-	            source: _.dom.element(origin),
-	            target: element,
-	            cancel: origin.cancel
-	        }, dragdrop));
-	    },
-	    /**
-	     * @private
-	     */
-	    _dragOver: function(origin) {
-	        var element = _.dom.element(this);
-	        var dimension = _.dom.getDimension(element);
-
-	        /**
-	         * @event dragover 拖拽在该元素上方时触发
-	         * @property {object} sender 事件发送对象，为当前droppable
-	         * @property {object} origin 拖拽源，为拖拽的draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} target 拖拽目标元素
-	         * @property {object} data 拖拽时接收到的数据
-	         * @property {number} ratioX 鼠标指针相对于接收元素所占的长度比
-	         * @property {number} ratioY 鼠标指针相对于接收元素所占的高度比
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         * @property {function} cancel 取消拖拽操作
-	         */
-	        this.$emit('dragover', _.extend({
-	            sender: this,
-	            origin: origin,
-	            source: _.dom.element(origin),
-	            target: element,
-	            ratioX: (dragdrop.clientX - dimension.left)/dimension.width,
-	            ratioY: (dragdrop.clientY - dimension.top)/dimension.height,
-	            cancel: origin.cancel
-	        }, dragdrop));
-	    },
-	    /**
-	     * @private
-	     */
-	    _drop: function(origin) {
-	        var element = _.dom.element(this);
-	        _.dom.delClass(element, this.data.dragOverClass);
-	        var dimension = _.dom.getDimension(element);
-
-	        this.data.data = origin.data.data;
-	        this.$update();
-
-	        /**
-	         * @event drop 拖拽放置时触发
-	         * @property {object} sender 事件发送对象，为当前droppable
-	         * @property {object} origin 拖拽源，为拖拽的draggable
-	         * @property {object} source 拖拽起始元素
-	         * @property {object} proxy 拖拽代理元素
-	         * @property {object} target 拖拽目标元素
-	         * @property {object} data 拖拽时接收到的数据
-	         * @property {number} ratioX 鼠标指针相对于接收元素所占的长度比
-	         * @property {number} ratioY 鼠标指针相对于接收元素所占的高度比
-	         * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	         * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	         * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	         * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	         * @property {number} pageX 鼠标指针相对于页面的水平位置
-	         * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	         * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	         * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	         */
-	        this.$emit('drop', _.extend({
-	            sender: this,
-	            origin: origin,
-	            source: _.dom.element(origin),
-	            target: element,
-	            ratioX: (dragdrop.clientX - dimension.left)/dimension.width,
-	            ratioY: (dragdrop.clientY - dimension.top)/dimension.height
-	        }, dragdrop));
-	    }
-	});
-
-	module.exports = Droppable;
-
-/***/ },
-/* 152 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9296,10 +8705,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var TreeView = __webpack_require__(110);
-	var template = __webpack_require__(153);
+	var template = __webpack_require__(149);
 	var _ = __webpack_require__(6);
 
-	var MultiTreeViewList = __webpack_require__(154);
+	var MultiTreeViewList = __webpack_require__(150);
 
 	/**
 	 * @class MultiTreeView
@@ -9326,13 +8735,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 153 */
+/* 149 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-treeview m-multitreeview {class}\" z-dis={disabled} r-hide={!visible}>\n    <multiTreeViewList source={source} visible />\n</div>"
 
 /***/ },
-/* 154 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9345,7 +8754,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var TreeViewList = __webpack_require__(112);
-	var template = __webpack_require__(155);
+	var template = __webpack_require__(151);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -9403,13 +8812,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TreeViewList;
 
 /***/ },
-/* 155 */
+/* 151 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n    {#list source as item}\n    <li>\n        <div class=\"treeview_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n            {/if}\n            {#if !item.divider}\n            <check2 checked={item.checked} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n            {/if}\n            <div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<multiTreeViewList source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ },
-/* 156 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9422,9 +8831,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(157);
+	var template = __webpack_require__(153);
 	var _ = __webpack_require__(6);
-	var Notify = __webpack_require__(141);
+	var Notify = __webpack_require__(140);
 
 	/**
 	 * @class HTMLEditor
@@ -9657,13 +9066,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 157 */
+/* 153 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-editor {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"editor_preview\" r-html={html}></div>\n    <ul class=\"m-toolbar editor_toolbar\" z-dis={disabled}>\n        <li><a title=\"加粗\" on-click={this.bold()}><i class=\"u-icon u-icon-bold\"></i></a></li>\n        <li><a title=\"斜体\" on-click={this.italic()}><i class=\"u-icon u-icon-italic\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"引用\" on-click={this.quote()}><i class=\"u-icon u-icon-quote\"></i></a></li>\n        <li><a title=\"无序列表\" on-click={this.ul()}><i class=\"u-icon u-icon-list-ul\"></i></a></li>\n        <li><a title=\"有序列表\" on-click={this.ol()}><i class=\"u-icon u-icon-list-ol\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"链接\" on-click={this.link()}><i class=\"u-icon u-icon-link\"></i></a></li>\n        <li><a title=\"图片\" on-click={this.image()}><i class=\"u-icon u-icon-image\"></i></a></li>\n    </ul>\n    <textarea class=\"editor_textarea\" r-model={content} ref=\"textarea\" maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}></textarea>\n</div>\n<uploader visible={false} url={imageUrl} extensions={extensions} ref=\"uploader\" on-success={this._onUploaderSuccess($event)} on-error={this._onUploaderError($event)} />"
 
 /***/ },
-/* 158 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9676,9 +9085,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(159);
+	var template = __webpack_require__(155);
 	var _ = __webpack_require__(6);
-	var Notify = __webpack_require__(141);
+	var Notify = __webpack_require__(140);
 	// var marked = require('marked');
 
 	/**
@@ -9924,7 +9333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 159 */
+/* 155 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-editor {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"editor_preview\" r-html={html}></div>\n    <ul class=\"m-toolbar editor_toolbar\" z-dis={disabled}>\n        <li><a title=\"加粗\" on-click={this.bold()}><i class=\"u-icon u-icon-bold\"></i></a></li>\n        <li><a title=\"斜体\" on-click={this.italic()}><i class=\"u-icon u-icon-italic\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"引用\" on-click={this.quote()}><i class=\"u-icon u-icon-quote\"></i></a></li>\n        <li><a title=\"无序列表\" on-click={this.ul()}><i class=\"u-icon u-icon-list-ul\"></i></a></li>\n        <li><a title=\"有序列表\" on-click={this.ol()}><i class=\"u-icon u-icon-list-ol\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"链接\" on-click={this.link()}><i class=\"u-icon u-icon-link\"></i></a></li>\n        <li><a title=\"图片\" on-click={this.image()}><i class=\"u-icon u-icon-image\"></i></a></li>\n        <li class=\"f-fr\"><a title=\"帮助\" href=\"http://www.jianshu.com/p/7bd23251da0a\" target=\"_blank\"><i class=\"u-icon u-icon-info\"></i></a></li>\n    </ul>\n    <textarea class=\"editor_textarea\" r-model={content} ref=\"textarea\" maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}></textarea>\n</div>\n<uploader visible={false} url={imageUrl} extensions={extensions} ref=\"uploader\" on-success={this._onUploaderSuccess($event)} on-error={this._onUploaderError($event)} />"

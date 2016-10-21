@@ -9,10 +9,7 @@
 
 var ListView = require('./listView.js');
 var template = require('./ultiListView.html');
-var _ = require('regular-ui-base/src/_');
-
-var Draggable = require('regular-ui-dragdrop/src/draggable');
-var Droppable = require('regular-ui-dragdrop/src/droppable');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class UltiListView
@@ -26,7 +23,6 @@ var Droppable = require('regular-ui-dragdrop/src/droppable');
  * @param {object=null}             options.data.selected           <=> 当前选择项。多选时无效。
  * @param {boolean=false}           options.data.multiple            => 是否可以多选
  * @param {string=null}             options.data.itemTemplate       @=> 单项模板
- * @param {boolean=false}           options.data.dragdrop            => 是否开启拖放功能
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
@@ -44,7 +40,6 @@ var UltiListView = ListView.extend({
             // @inherited source: [],
             // @inherited selected: null,
             // @inherited itemTemplate: null,
-            dragdrop: false
         });
         this.supr();
     },

@@ -9,7 +9,7 @@
 
 var RadioGroup = require('./radioGroup.js');
 var template = require('./radio2Group.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class Radio2Group

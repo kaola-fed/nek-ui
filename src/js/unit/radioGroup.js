@@ -7,9 +7,9 @@
 
 'use strict';
 
-var SourceComponent = require('regular-ui-base/src/sourceComponent');
+var SourceComponent = require('../ui-base/sourceComponent.js');
 var template = require('./radioGroup.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 
 /**
  * @class RadioGroup

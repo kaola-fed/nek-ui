@@ -7,9 +7,9 @@
 
 'use strict';
 
-var SourceComponent = require('regular-ui-base/src/sourceComponent');
+var SourceComponent = require('../ui-base/sourceComponent.js');
 var template = require('./menubar.html');
-var _ = require('regular-ui-base/src/_');
+var _ = require('../ui-base/_.js');
 var Menu = require('../unit/menu.js');
 
 /**
