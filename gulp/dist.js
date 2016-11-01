@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 var webpack = require('gulp-webpack');
 var webpackConfig = require('../webpack.config.js');
-var rm = require('gulp-rimraf');
+var rimraf = require('rimraf');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var minifycss = require('gulp-minify-css');
@@ -18,10 +18,8 @@ var structure = require('../structure.js');
  * ------------------------------------------------------------
  */
 
-gulp.task('dist-clean', function() {
-    return all(
-        gulp.src('./dist', {read: false}).pipe(rm())
-    )
+gulp.task('dist-clean', function(cb) {
+    rimraf('./dist', cb)
 });
 
 gulp.task('dist-copy', function() {
