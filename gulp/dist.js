@@ -59,5 +59,5 @@ gulp.task('dist-css', function() {
 });
 
 gulp.task('dist', function(done) {
-    sequence(['dist-copy', 'dist-js', 'dist-css'], done);
+    sequence('dist-clean', ['dist-copy', 'dist-js', 'dist-css'], done);
 });

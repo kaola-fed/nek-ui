@@ -38,6 +38,12 @@ var Component = Regular.extend({
     /**
      * @protected
      */
+    defaults: function(data) {
+      _.extend(this.data, data, true);
+    },
+    /**
+     * @protected
+     */
     reset: function() {
         this.data = {};
         this.config();
