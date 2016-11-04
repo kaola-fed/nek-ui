@@ -49,6 +49,8 @@ var Validation = Component.extend({
         };
 
         this.controls.forEach(function(control) {
+            if (!control) { return; }
+
             var result = control.validate();
             conclusion.results.push(result);
             if(!result.success) {
