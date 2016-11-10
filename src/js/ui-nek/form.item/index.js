@@ -7,8 +7,8 @@ var template = require('./index.html');
 
 /**
  * FormItem继承于Validation
- * 1. form.base具有和validation一样的校验功能
- * 2. form.base内实现统一的获取选择form.select数据的接口；
+ * 1. form.item具有和validation一样的校验功能
+ * 2. form.item提供结构化的表单结构
  *
  * @example
  * <form.item>
@@ -23,6 +23,7 @@ var FormItem = Validation.extend({
   template: template,
   config: function (data) {
     _.extend(data, {});
+    this.supr(data);
 
     this.$watch('this.controls.length', function(len) {
       if (len <= 1) { return; }
@@ -34,8 +35,24 @@ var FormItem = Validation.extend({
     if ($outer && $outer instanceof Validation) {
       $outer.controls.push(this);
     }
+  },
+  init: function() {
+    this.initValidateRule();
+  },
+  initValidateRule: function() {
+    if (!this.controls.length) { return; }
 
-    this.supr(data);
+    var $component = this.controls[0],
+        rules = $component.data.rules,
+        isFilled = { type: 'isFilled' };
+
+    if (this.data.required) {
+      if (!rules) {
+        $component.data.rules = [].concat(isFilled);
+      } else {
+        rules.push(isFilled);
+      }
+    }
   }
 });
 

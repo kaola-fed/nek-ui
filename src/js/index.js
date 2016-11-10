@@ -48,3 +48,6 @@ exports.Calendar = require("./module/calendar.js");
 exports.HTMLEditor = require("./module/htmlEditor.js");
 exports.MarkEditor = require("./module/markEditor.js");
 exports.Validation = require("./util/validation.js");
+
+exports.FormGroup = require("./ui-nek/form.group/index.js");
+exports.FormItem = require("./ui-nek/form.item/index.js");
