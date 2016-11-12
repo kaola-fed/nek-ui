@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('../../ui-base/_.js');
+var ajax = require('../../ui-base/ajax.js');
 var Validation = require('../../util/validation.js');
 
 var template = require('./index.html');
@@ -42,13 +43,26 @@ var FormGroup = Validation.extend({
     });
 
     if (!this.data.service || !this.selectors.length) { return; }
-    var keys = this.__getSourceKeys();
-    console.log(keys);
+
+    this.__reqSource();
   },
   __getSourceKeys: function() {
     return this.selectors.map(function($formitem) {
       return $formitem.data.sourceKey;
     })
+  },
+  __reqSource: function() {
+    var keys = this.__getSourceKeys();
+
+    ajax.request({
+      url: this.data.service,
+      method: 'get',
+      data: keys.join(','),
+      success: this.__cbReqSource.bind(this)
+    })
+  },
+  __cbReqSource: function() {
+
   }
 });
 
