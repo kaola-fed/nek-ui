@@ -51,3 +51,5 @@ exports.Validation = require("./util/validation.js");
 
 exports.FormGroup = require("./ui-nek/form.group/index.js");
 exports.FormItem = require("./ui-nek/form.item/index.js");
+
+exports.UIButton = require("./ui-nek/ui.button/index.js");
