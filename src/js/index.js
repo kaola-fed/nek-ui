@@ -34,6 +34,7 @@ exports.UI  = {
     Progress: require("./unit/progress.js"),
     Loading: require("./unit/loading.js"),
     Gotop: require("./unit/gotop.js"),
+
     Tabs: require("./module/tabs.js"),
     Collapse: require("./module/collapse.js"),
     Pager: require("./module/pager.js"),
@@ -46,6 +47,8 @@ exports.UI  = {
     Calendar: require("./module/calendar.js"),
     HTMLEditor: require("./module/htmlEditor.js"),
     MarkEditor: require("./module/markEditor.js"),
+
     Form: require("./ui-nek/form/index.js"),
-    Field: require("./ui-nek/field/index.js")
+    Field: require("./ui-nek/field/index.js"),
+    Button: require("./ui-nek/button/index.js")
 };
