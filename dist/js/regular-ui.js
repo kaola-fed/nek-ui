@@ -9713,10 +9713,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // default/primary/info/success/warning/error
 	            type: 'default',
 	        });
+	        this.$watch('NEK', function(val) {
+	            if (!val || !val.conf) return;
+	            this.data.title = val.conf
+	            val.conf.forEach(function(d) {
+	                if (this.data.hasOwnProperty(d.key)) {
+	                    this.data[d.key] = d.value;
+	                }
+	            }.bind(this))
+	        });
 	        this.supr();
 	    },
 	    $$NEK: function() {
-	        this.data.$$NEK = {
+	        return {
 	            id: 100,
 	            name: this.name,
 	            desc: '按钮',
@@ -9744,7 +9753,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                selects: ['default', 'primary', 'info', 'success', 'warning', 'error'],
 	            }]
 	        };
-	        return this.data.$$NEK;
 	    }
 	});
 
