@@ -105,6 +105,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.MarkEditor = __webpack_require__(155);
 	exports.Validation = __webpack_require__(21);
 
+	exports.FormGroup = __webpack_require__(157);
+	exports.FormItem = __webpack_require__(159);
+
+	exports.UIButton = __webpack_require__(161);
+
 /***/ },
 /* 1 */
 /***/ function(module, exports) {
@@ -2397,6 +2402,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 
 	        this.controls.forEach(function(control) {
+	            if (!control) { return; }
+
 	            var result = control.validate();
 	            conclusion.results.push(result);
 	            if(!result.success) {
@@ -9520,6 +9527,243 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-editor {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"editor_preview\" r-html={html}></div>\n    <ul class=\"m-toolbar editor_toolbar\" z-dis={disabled}>\n        <li><a title=\"加粗\" on-click={this.bold()}><i class=\"u-icon u-icon-bold\"></i></a></li>\n        <li><a title=\"斜体\" on-click={this.italic()}><i class=\"u-icon u-icon-italic\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"引用\" on-click={this.quote()}><i class=\"u-icon u-icon-quote\"></i></a></li>\n        <li><a title=\"无序列表\" on-click={this.ul()}><i class=\"u-icon u-icon-list-ul\"></i></a></li>\n        <li><a title=\"有序列表\" on-click={this.ol()}><i class=\"u-icon u-icon-list-ol\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"链接\" on-click={this.link()}><i class=\"u-icon u-icon-link\"></i></a></li>\n        <li><a title=\"图片\" on-click={this.image()}><i class=\"u-icon u-icon-image\"></i></a></li>\n        <li class=\"f-fr\"><a title=\"帮助\" href=\"http://www.jianshu.com/p/7bd23251da0a\" target=\"_blank\"><i class=\"u-icon u-icon-info\"></i></a></li>\n    </ul>\n    <textarea class=\"editor_textarea\" r-model={content} ref=\"textarea\" maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}></textarea>\n</div>\n<uploader visible={false} url={imageUrl} extensions={extensions} ref=\"uploader\" on-success={this._onUploaderSuccess($event)} on-error={this._onUploaderError($event)} />"
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(6);
+	var ajax = __webpack_require__(10);
+	var Validation = __webpack_require__(21);
+
+	var template = __webpack_require__(158);
+
+	/**
+	 * FormExt继承于Validation
+	 * 1. form.group具有和validation一样的校验功能, this.$refs.formgroup.validate().success
+	 * 2. form.group内实现统一的获取选择数据的接口；
+	 *
+	 * @example
+	 * <form.group service="{service.selector}" ref="formgroup">
+	 *   <form.item title="标题1" cols=3 sourceKey={key}>
+	 *     <select />
+	 *   </form.item>
+	 *   <form.item title="标题2" cols=3>
+	 *     <input />
+	 *   </form.item>
+	 * </form.ext>
+	 */
+	var FormGroup = Validation.extend({
+	  name: 'form.group',
+	  template: template,
+	  config: function (data) {
+	    this.selectors = [];
+
+	    _.extend(data, {
+	      service: null
+	    });
+	    this.supr(data);
+	  },
+
+	  init: function() {
+	    this.__initSelectorSource();
+	  },
+	  __initSelectorSource: function() {
+	    var controls = this.controls;
+	    this.selectors = controls.filter(function($formitem) {
+	      return !!$formitem.data.sourceKey;
+	    });
+
+	    if (!this.data.service || !this.selectors.length) { return; }
+
+	    this.__reqSource();
+	  },
+	  __getSourceKeys: function() {
+	    return this.selectors.map(function($formitem) {
+	      return $formitem.data.sourceKey;
+	    })
+	  },
+	  __reqSource: function() {
+	    var keys = this.__getSourceKeys();
+
+	    ajax.request({
+	      url: this.data.service,
+	      method: 'get',
+	      data: keys.join(','),
+	      success: this.__cbReqSource.bind(this)
+	    })
+	  },
+	  __cbReqSource: function() {
+
+	  }
+	});
+
+	module.exports = FormGroup;
+
+
+/***/ },
+/* 158 */
+/***/ function(module, exports) {
+
+	module.exports = "<form class=\"m-form f-row\">\n\t{#inc this.$body}\n</form>"
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(6);
+	var Validation = __webpack_require__(21);
+
+	var template = __webpack_require__(160);
+
+	/**
+	 * FormItem继承于Validation
+	 * 1. form.item具有和validation一样的校验功能
+	 * 2. form.item提供结构化的表单结构
+	 *
+	 * @example
+	 * <form.item>
+	 *    <form.component />
+	 * </form.item>
+	 *
+	 * 使用说明:
+	 * form.item内最多包含一个验证组件,如果多余一个,console提示,并且只会验证第一个;其余丢弃;请将form.item中的内容封装为一个组件;
+	 */
+	var FormItem = Validation.extend({
+	  name: 'form.item',
+	  template: template,
+	  config: function (data) {
+	    _.extend(data, {});
+	    this.supr(data);
+
+	    this.$watch('this.controls.length', function(len) {
+	      if (len <= 1) { return; }
+	      console.error('[Error]FormItem内仅允许包含一个校验组件, 请将多个组件封装为一个 ');
+	      this.controls.pop();
+	    });
+
+	    var $outer = this.$outer;
+	    if ($outer && $outer instanceof Validation) {
+	      $outer.controls.push(this);
+	    }
+	  },
+	  init: function() {
+	    this.initValidateRule();
+	  },
+	  initValidateRule: function() {
+	    if (!this.controls.length) { return; }
+
+	    var $component = this.controls[0],
+	        rules = $component.data.rules,
+	        isFilled = { type: 'isFilled' };
+
+	    if (this.data.required) {
+	      if (!rules) {
+	        $component.data.rules = [].concat(isFilled);
+	      } else {
+	        rules.push(isFilled);
+	      }
+	    }
+	  }
+	});
+
+	FormItem.directive('cols', function(ele, cols) {
+	  cols = this.$get(cols);
+	  if (!cols) { return; }
+
+	  ele.classList.add('g-col', 'g-col-' + cols);
+	});
+
+	module.exports = FormItem;
+
+
+/***/ },
+/* 160 */
+/***/ function(module, exports) {
+
+	module.exports = "{#if title}\n<div class=\"u-formitem {clazz}\" cols=\"{cols}\">\n\t<label class=\"formitem_tt\">\n\t\t{title}\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>：\n\t</label>\n\t<span class=\"formitem_ct\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n{#else}\n\t<div class=\"{clazz}\" cols=\"{cols}\">\n\t{#inc this.$body}\n\t</div>\n{/if}\n"
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * ui.button  按钮
+	 * @author   Cody Chan<int64ago@gmail.com>
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(2);
+	var template = __webpack_require__(162);
+	var _ = __webpack_require__(6);
+
+	var UIButton = Component.extend({
+	    name: 'ui.button',
+	    template: template,
+	    config: function() {
+	        _.extend(this.data, {
+	            title: '按钮',
+	            // default/primary/info/success/warning/error
+	            type: 'default',
+	        });
+	        this.$watch('NEK', function(val) {
+	            if (!val || !val.conf) return;
+	            this.data.title = val.conf
+	            val.conf.forEach(function(d) {
+	                if (this.data.hasOwnProperty(d.key)) {
+	                    this.data[d.key] = d.value;
+	                }
+	            }.bind(this))
+	        });
+	        this.supr();
+	    },
+	    $$NEK: function() {
+	        return {
+	            id: 100,
+	            name: this.name,
+	            desc: '按钮',
+	            layout: { cols: 1 },
+	            conf: [{
+	                key: 'title',
+	                value: this.data.title,
+	                // 配置描述
+	                desc: '标题',
+	                // none: radio
+	                // string: input-text
+	                // number: input-number
+	                // boolean: radio
+	                // select: select
+	                // array: checkbox
+	                // expresion: input-text -> key={exp}
+	                type: 'string',
+	                // 只有在 type 是 select/array 的时候才有意义
+	                selects: [],
+	            }, {
+	                key: 'type',
+	                value: this.data.type,
+	                desc: '类型',
+	                type: 'select',
+	                selects: ['default', 'primary', 'info', 'success', 'warning', 'error'],
+	            }]
+	        };
+	    }
+	});
+
+	module.exports = UIButton;
+
+
+/***/ },
+/* 162 */
+/***/ function(module, exports) {
+
+	module.exports = "<a class=\"u-btn u-btn-{type}\">{title}</a>"
 
 /***/ }
 /******/ ])
