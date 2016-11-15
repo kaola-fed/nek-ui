@@ -1,19 +1,19 @@
 /**
  * ------------------------------------------------------------
- * Input2   输入扩展
+ * Input   输入扩展
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
 var Component = require('../ui-base/component.js');
-var template = require('./input2.html');
+var template = require('./input.html');
 var _ = require('../ui-base/_.js');
 var Validation = require('../util/validation.js');
 
 var bowser = require('bowser');
 
 /**
- * @class Input2
+ * @class Input
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
@@ -29,8 +29,8 @@ var bowser = require('bowser');
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  */
-var Input2 = Component.extend({
-    name: 'input2',
+var Input = Component.extend({
+    name: 'ui.input',
     template: template,
     /**
      * @protected
@@ -113,4 +113,4 @@ var Input2 = Component.extend({
     }
 });
 
-module.exports = Input2;
+module.exports = Input;

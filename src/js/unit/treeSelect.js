@@ -7,14 +7,14 @@
 
 'use strict';
 
-var Select2 = require('./select2.js');
+var Select = require('./select.js');
 var template = require('./treeSelect.html');
 var _ = require('../ui-base/_.js');
 var Treeview = require('../module/treeView.js');
 
 /**
  * @class TreeSelect
- * @extend Select2
+ * @extend Select
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
  * @param {string}                  options.data.source[].name       => 每项的内容
@@ -29,7 +29,7 @@ var Treeview = require('../module/treeView.js');
  * @param {string=''}               options.data.class               => 补充class
  * @param {object}                  options.service                 @=> 数据服务
  */
-var TreeSelect = Select2.extend({
+var TreeSelect = Select.extend({
     name: 'treeSelect',
     template: template,
     config: function() {

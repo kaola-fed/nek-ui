@@ -1,19 +1,20 @@
 /**
  * ------------------------------------------------------------
- * CheckGroup 多选组
+ * Check2Group 输入扩展
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
 'use strict';
 
-var SourceComponent = require('../ui-base/sourceComponent.js');
+var SourceComponent = require('regular-ui-base/src/sourceComponent');
 var template = require('./checkGroup.html');
 var _ = require('../ui-base/_.js');
+var Check = require('./check.js');
 
 /**
  * @class CheckGroup
- * @extend SourceComponent
+ * @extend CheckGroup
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
  * @param {string}                  options.data.source[].name       => 每项的内容

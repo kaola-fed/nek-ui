@@ -5,13 +5,13 @@
  * ------------------------------------------------------------
  */
 
-var Input2 = require('./input2.js');
+var Input = require('./input.js');
 var template = require('./numberInput.html');
 var _ = require('../ui-base/_.js');
 
 /**
  * @class NumberInput
- * @extend Input2
+ * @extend Input
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=0}                options.data.value              <=> 文本框的值
  * @param {string=''}               options.data.state              <=> 文本框的状态
@@ -23,7 +23,7 @@ var _ = require('../ui-base/_.js');
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  */
-var NumberInput = Input2.extend({
+var NumberInput = Input.extend({
     name: 'numberInput',
     template: template,
     /**

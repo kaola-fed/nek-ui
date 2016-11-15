@@ -6,14 +6,14 @@
  */
 
 var Component = require('../ui-base/component.js');
-var template = require('./textarea2.html');
+var template = require('./textarea.html');
 var _ = require('../ui-base/_.js');
 var Validation = require('../util/validation.js');
 
 var bowser = require('bowser');
 
 /**
- * @class TextArea2
+ * @class TextArea
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
@@ -27,8 +27,8 @@ var bowser = require('bowser');
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  */
-var TextArea2 = Component.extend({
-    name: 'textarea2',
+var TextArea = Component.extend({
+    name: 'ui.textarea',
     template: template,
     /**
      * @protected
@@ -109,4 +109,4 @@ var TextArea2 = Component.extend({
     }
 });
 
-module.exports = TextArea2;
+module.exports = TextArea;
