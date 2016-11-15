@@ -33,6 +33,17 @@ var Component = Regular.extend({
             'class': '',
             console: typeof console === 'undefined' ? undefined : console
         });
+        this.$on('update', function(conf) {
+          if (!conf) return;
+          conf.forEach(function(d) {
+              if (this.data.hasOwnProperty(d.key)) {
+                  this.$update(d.key, d.value);
+              }
+          }.bind(this));
+        })
+        this.$watch('NEK', function(val) {
+            this.$emit('update', val.conf);
+        });
         this.supr();
     },
     /**
