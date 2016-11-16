@@ -8,11 +8,11 @@
 'use strict';
 
 var Component = require('../ui-base/component.js');
-var template = require('./check2.html');
+var template = require('./check.html');
 var _ = require('../ui-base/_.js');
 
 /**
- * @class Check2
+ * @class Check
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.name                => 多选按钮的文字
@@ -23,8 +23,8 @@ var _ = require('../ui-base/_.js');
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  */
-var Check2 = Component.extend({
-    name: 'check2',
+var Check = Component.extend({
+    name: 'check',
     template: template,
     /**
      * @protected
@@ -78,4 +78,4 @@ var Check2 = Component.extend({
     }
 });
 
-module.exports = Check2;
+module.exports = Check;

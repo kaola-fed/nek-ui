@@ -6,20 +6,20 @@ var Validation = require('../../util/validation.js');
 var template = require('./index.html');
 
 /**
- * FormItem继承于Validation
- * 1. form.item具有和validation一样的校验功能
- * 2. form.item提供结构化的表单结构
+ * Field继承于Validation
+ * 1. 具有和validation一样的校验功能
+ * 2. 提供结构化的表单结构
  *
  * @example
- * <form.item>
+ * <ui.field>
  *    <form.component />
- * </form.item>
+ * </ui.field>
  *
  * 使用说明:
  * form.item内最多包含一个验证组件,如果多余一个,console提示,并且只会验证第一个;其余丢弃;请将form.item中的内容封装为一个组件;
  */
-var FormItem = Validation.extend({
-  name: 'form.item',
+var UIField = Validation.extend({
+  name: 'ui.field',
   template: template,
   config: function (data) {
     _.extend(data, {});
@@ -56,11 +56,11 @@ var FormItem = Validation.extend({
   }
 });
 
-FormItem.directive('cols', function(ele, cols) {
+UIField.directive('cols', function(ele, cols) {
   cols = this.$get(cols);
   if (!cols) { return; }
 
   ele.classList.add('g-col', 'g-col-' + cols);
 });
 
-module.exports = FormItem;
+module.exports = UIField;

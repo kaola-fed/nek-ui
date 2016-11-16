@@ -7,22 +7,22 @@ var Validation = require('../../util/validation.js');
 var template = require('./index.html');
 
 /**
- * FormExt继承于Validation
- * 1. form.group具有和validation一样的校验功能, this.$refs.formgroup.validate().success
- * 2. form.group内实现统一的获取选择数据的接口；
+ * Form继承于Validation
+ * 1. 具有和validation一样的校验功能, this.$refs.formgroup.validate().success
+ * 2. 实现统一的获取选择数据的接口；
  *
  * @example
- * <form.group service="{service.selector}" ref="formgroup">
- *   <form.item title="标题1" cols=3 sourceKey={key}>
+ * <ui.form service="{service.selector}" ref="formgroup">
+ *   <ui.field title="标题1" cols=3 sourceKey={key}>
  *     <select />
- *   </form.item>
- *   <form.item title="标题2" cols=3>
+ *   </ui.field>
+ *   <ui.field title="标题2" cols=3>
  *     <input />
- *   </form.item>
- * </form.ext>
+ *   </ui.field>
+ * </ui.form>
  */
-var FormGroup = Validation.extend({
-  name: 'form.group',
+var UIForm = Validation.extend({
+  name: 'ui.form',
   template: template,
   config: function (data) {
     this.selectors = [];
@@ -66,4 +66,4 @@ var FormGroup = Validation.extend({
   }
 });
 
-module.exports = FormGroup;
+module.exports = UIForm;

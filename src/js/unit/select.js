@@ -8,11 +8,11 @@
 'use strict';
 
 var Dropdown = require('./dropdown.js');
-var template = require('./select2.html');
+var template = require('./select.html');
 var _ = require('../ui-base/_.js');
 
 /**
- * @class Select2
+ * @class Select
  * @extend Dropdown
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
@@ -29,8 +29,8 @@ var _ = require('../ui-base/_.js');
  * @param {string=''}               options.data.class               => 补充class
  * @param {object}                  options.service                 @=> 数据服务
  */
-var Select2 = Dropdown.extend({
-    name: 'select2',
+var Select = Dropdown.extend({
+    name: 'ui.select',
     template: template,
     /**
      * @protected
@@ -127,4 +127,4 @@ var Select2 = Dropdown.extend({
     }
 });
 
-module.exports = Select2;
+module.exports = Select;
