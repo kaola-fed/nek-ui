@@ -9,9 +9,9 @@
 // ========================================================================
 
 .u-tip {
-	display: inline-block;
+    position:absolute;
+	margin-top:5px;
 }
-
 
 
 // Color Extends:

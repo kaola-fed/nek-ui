@@ -11,6 +11,7 @@
 .u-input2 {
     display: inline-block;
     position: relative;
+    width:100%;
 
     .input2_unit {
         position: relative;

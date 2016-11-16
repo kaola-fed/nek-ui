@@ -56,3 +56,5 @@ $reset-normalize();
 @import "./core/module/multiTreeView.mcss";
 @import "./default/module/calendar.mcss";
 @import "./default/module/editor.mcss";
+
+@import "./default/ui-nek/hint.mcss";

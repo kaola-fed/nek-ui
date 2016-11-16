@@ -84,7 +84,7 @@ $u-formctrl_height = $height-base;
 $u-formctrl-sm_height = $height-sm;
 $u-formctrl-lg_height = $height-lg;
 
-$u-formctrl_width = 160px;
+$u-formctrl_width = 100%;
 
 $u-formctrl-sm_font-size = $font-size-sm;
 $u-formctrl-lg_font-size = $font-size-lg;

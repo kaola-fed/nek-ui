@@ -11,6 +11,7 @@
 .u-textarea2 {
     display: inline-block;
     position: relative;
+    width:100%;
 
     .textarea2_placeholder {
         position: absolute;

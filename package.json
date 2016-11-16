@@ -18,6 +18,7 @@
     "start": "node ./server.js",
     "dist": "gulp dist",
     "doc": "gulp doc",
+    "watch": "gulp watch",
     "all": "run-s dist doc"
   },
   "dependencies": {

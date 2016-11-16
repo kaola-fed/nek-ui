@@ -2,6 +2,7 @@
 
 var _ = require('../../ui-base/_.js');
 var Validation = require('../../util/validation.js');
+var Hint = require('../hint/index.js');
 
 var template = require('./index.html');
 
@@ -11,7 +12,7 @@ var template = require('./index.html');
  * 2. 提供结构化的表单结构
  *
  * @example
- * <ui.field>
+ * <ui.field title="密码" cols=3 hint="这个密码的用途">
  *    <form.component />
  * </ui.field>
  *

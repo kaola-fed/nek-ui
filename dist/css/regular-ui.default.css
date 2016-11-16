@@ -3341,7 +3341,8 @@ a.u-badge{
 	background:#dd4b39;
 }
 .u-tip{
-	display:inline-block;
+	position:absolute;
+	margin-top:5px;
 }
 .u-tip{
 	font-size:12px;
@@ -3529,11 +3530,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	border:1px solid #d2d6de;
 }
 .u-input,.u-select{
-	width:160px;
+	width:100%;
 	height:34px;
 }
 .u-textarea{
-	width:320px;
+	width:100%;
 	height:120px;
 }
 .u-input-sm,.u-select-sm{
@@ -3575,6 +3576,9 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-formitem{
 	display:inline-block;
 }
+.u-formitem .formitem_tt{
+	position:relative;
+}
 .u-formitem-block,.m-form >.u-formitem,.m-form fieldset>.u-formitem{
 	display:block;
 	*zoom:1;
@@ -3598,12 +3602,8 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-formitem .formitem_rqr{
 	color:#dd4b39;
 }
-.u-formitem-block .formitem_tt,.m-form >.u-formitem .formitem_tt,.m-form fieldset>.u-formitem .formitem_tt{
-	line-height:34px;
-	width:100px;
-}
-.u-formitem-block .formitem_ct,.m-form >.u-formitem .formitem_ct,.m-form fieldset>.u-formitem .formitem_ct{
-	margin-left:108px;
+.u-formitem .formitem_tt{
+	text-align:right;
 }
 .u-formitem-block .formitem_text,.m-form >.u-formitem .formitem_text,.m-form fieldset>.u-formitem .formitem_text{
 	line-height:34px;
@@ -3901,6 +3901,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-input2{
 	display:inline-block;
 	position:relative;
+	width:100%;
 }
 .u-input2 .input2_unit{
 	position:relative;
@@ -3923,6 +3924,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-textarea2{
 	display:inline-block;
 	position:relative;
+	width:100%;
 }
 .u-textarea2 .textarea2_placeholder{
 	position:absolute;
@@ -3939,6 +3941,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-numberinput{
 	display:inline-block;
 	position:relative;
+	width:100%;
 	-webkit-user-select:none;
 	-moz-user-select:none;
 	-ms-user-select:none;
@@ -4952,4 +4955,34 @@ html.z-modal,html.z-modal body{
 .m-editor.z-dis .editor_textarea{
 	background:#eee;
 	color:#999;
+}
+.u-hint{
+	position:relative;
+	text-align:left;
+}
+.u-hint:hover{
+	text-decoration:none;
+}
+.u-hint:hover:before{
+	position:absolute;
+	left:50%;
+	bottom:20px;
+	border:solid;
+	border-color:#333 transparent;
+	border-width:6px 6px 0 6px;
+	content:"";
+	z-index:99;
+}
+.u-hint:hover:after{
+	position:absolute;
+	width:220px;
+	left:20%;
+	bottom:26px;
+	padding:5px 15px;
+	background:#333;
+	background:rgba(0,0,0,0.8);
+	border-radius:5px;
+	color:#fff;
+	content:attr(title);
+	z-index:98;
 }

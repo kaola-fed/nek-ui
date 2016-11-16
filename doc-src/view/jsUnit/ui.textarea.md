@@ -7,7 +7,21 @@
 <div class="m-example"></div>
 
 ```xml
-<label>备注：<textarea2 placeholder="请输入备注" /></label>
+<label>备注：<ui.textarea placeholder="请输入备注" /></label>
+```
+
+#### 表单项
+
+在表单中使用
+
+<div class="m-example"></div>
+
+```xml
+<ui.form>
+    <ui.field cols="12" title="备注" hint="写点备注吧">
+        <ui.textarea placeholder="请输入备注" />
+    </ui.field>
+</ui.form>
 ```
 
 #### 验证
@@ -15,7 +29,7 @@
 <div class="m-example"></div>
 
 ```xml
-<label>邮箱：<textarea2 rules={rules} maxlength=20 /></label>
+<label>邮箱：<ui.textarea rules={rules} maxlength=20 /></label>
 ```
 
 ```javascript

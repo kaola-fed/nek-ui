@@ -1,13 +1,13 @@
 /**
  * ------------------------------------------------------------
- * Check2Group 输入扩展
+ * CheckGroup 输入扩展
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
 'use strict';
 
-var SourceComponent = require('regular-ui-base/src/sourceComponent');
+var SourceComponent = require('../ui-base/sourceComponent');
 var template = require('./checkGroup.html');
 var _ = require('../ui-base/_.js');
 var Check = require('./check.js');

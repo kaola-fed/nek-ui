@@ -68,47 +68,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.SourceComponent = __webpack_require__(9);
 	exports._ = __webpack_require__(6);
 	exports.ajax = __webpack_require__(10);
-	exports.Dropdown = __webpack_require__(13);
-	exports.Menu = __webpack_require__(15);
-	exports.Input2 = __webpack_require__(19);
-	exports.TextArea2 = __webpack_require__(87);
-	exports.NumberInput = __webpack_require__(89);
-	exports.Check2 = __webpack_require__(91);
-	exports.CheckGroup = __webpack_require__(93);
-	exports.Check2Group = __webpack_require__(95);
-	exports.RadioGroup = __webpack_require__(97);
-	exports.Radio2Group = __webpack_require__(99);
-	exports.Select1 = __webpack_require__(101);
-	exports.Select2 = __webpack_require__(103);
-	exports.SelectGroup = __webpack_require__(105);
-	exports.Select2Group = __webpack_require__(107);
-	exports.TreeSelect = __webpack_require__(109);
-	exports.Suggest = __webpack_require__(115);
-	exports.Uploader = __webpack_require__(117);
-	exports.DatePicker = __webpack_require__(119);
-	exports.TimePicker = __webpack_require__(123);
-	exports.DateTimePicker = __webpack_require__(125);
-	exports.Progress = __webpack_require__(127);
-	exports.Loading = __webpack_require__(129);
-	exports.Gotop = __webpack_require__(131);
-	exports.Tabs = __webpack_require__(133);
-	exports.Collapse = __webpack_require__(135);
-	exports.Pager = __webpack_require__(139);
-	exports.Notify = __webpack_require__(141);
-	exports.Modal = __webpack_require__(143);
-	exports.ListView = __webpack_require__(145);
-	exports.UltiListView = __webpack_require__(147);
-	exports.TreeView = __webpack_require__(111);
-	exports.MultiTreeView = __webpack_require__(149);
-	exports.Calendar = __webpack_require__(121);
-	exports.HTMLEditor = __webpack_require__(153);
-	exports.MarkEditor = __webpack_require__(155);
-	exports.Validation = __webpack_require__(21);
+	exports.Validation = __webpack_require__(13);
 
-	exports.FormGroup = __webpack_require__(157);
-	exports.FormItem = __webpack_require__(159);
+	exports.UI  = {
+	    Dropdown: __webpack_require__(79),
+	    Menu: __webpack_require__(81),
+	    Input: __webpack_require__(85),
+	    TextArea: __webpack_require__(87),
+	    NumberInput: __webpack_require__(89),
+	    Check: __webpack_require__(91),
+	    CheckGroup: __webpack_require__(93),
+	    RadioGroup: __webpack_require__(95),
+	    Select: __webpack_require__(97),
+	    SelectGroup: __webpack_require__(99),
+	    TreeSelect: __webpack_require__(101),
+	    Suggest: __webpack_require__(107),
+	    Uploader: __webpack_require__(109),
+	    DatePicker: __webpack_require__(111),
+	    TimePicker: __webpack_require__(115),
+	    DateTimePicker: __webpack_require__(117),
+	    Progress: __webpack_require__(119),
+	    Loading: __webpack_require__(121),
+	    Gotop: __webpack_require__(123),
 
-	exports.UIButton = __webpack_require__(161);
+	    Tabs: __webpack_require__(125),
+	    Collapse: __webpack_require__(127),
+	    Pager: __webpack_require__(131),
+	    Notify: __webpack_require__(133),
+	    Modal: __webpack_require__(135),
+	    ListView: __webpack_require__(137),
+	    UltiListView: __webpack_require__(139),
+	    TreeView: __webpack_require__(103),
+	    MultiTreeView: __webpack_require__(141),
+	    Calendar: __webpack_require__(113),
+	    HTMLEditor: __webpack_require__(145),
+	    MarkEditor: __webpack_require__(147),
+
+	    Form: __webpack_require__(149),
+	    Field: __webpack_require__(151),
+	    Button: __webpack_require__(155),
+	    Hint: __webpack_require__(152)
+	};
 
 /***/ },
 /* 1 */
@@ -1974,383 +1974,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * ------------------------------------------------------------
-	 * Dropdown  下拉菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(14);
-	var _ = __webpack_require__(6);
-
-	/**
-	 * @class Dropdown
-	 * @extend SourceComponent
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {string=''}               options.data.title               => 按钮文字
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
-	 * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
-	 * @param {string=null}             options.data.itemTemplate       @=> 单项模板
-	 * @param {boolean=false}           options.data.open               <=> 当前为展开/收起状态
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var Dropdown = SourceComponent.extend({
-	    name: 'dropdown',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            itemTemplate: null,
-	            open: false
-	        });
-	        this.supr();
-	    },
-	    /**
-	     * @method toggle(open) 展开/收起
-	     * @public
-	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
-	     * @return {void}
-	     */
-	    toggle: function(open) {
-	        if(this.data.disabled)
-	            return;
-	        
-	        if(open === undefined)
-	            open = !this.data.open;
-	        this.data.open = open;
-
-	        // 根据状态在Dropdown.opens列表中添加/删除管理项
-	        var index = Dropdown.opens.indexOf(this);
-	        if(open && index < 0)
-	            Dropdown.opens.push(this);
-	        else if(!open && index >= 0)
-	            Dropdown.opens.splice(index, 1);
-
-	        /**
-	         * @event toggle  展开/收起时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} open 展开/收起状态
-	         */
-	        this.$emit('toggle', {
-	            sender: this,
-	            open: open
-	        });
-	    },
-	    /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
-	    select: function(item) {
-	        if(this.data.disabled || item.disabled || item.divider)
-	            return;
-
-	        /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择项
-	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item
-	        });
-
-	        this.toggle(false);
-	    },
-	    destroy: function() {
-	        var index = Dropdown.opens.indexOf(this);
-	        index >= 0 && Dropdown.opens.splice(index, 1);
-	        this.supr();
-	    }
-	});
-
-	// 处理点击dropdown之外的地方后的收起事件。
-	Dropdown.opens = [];
-
-	_.dom.on(document, 'click', function(e) {
-	    Dropdown.opens.forEach(function(dropdown, index) {
-	        // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
-	        var element = dropdown.$refs.element;
-	        var element2 = e.target;
-	        while(element2) {
-	            if(element == element2)
-	                return;
-	            element2 = element2.parentElement;
-	        }
-	        dropdown.toggle(false);
-	        dropdown.$update();
-	    });
-	});
-
-	module.exports = Dropdown;
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"u-dropdown {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || '下拉菜单'}>{title || '下拉菜单'} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/list}\n        </ul>\n    </div>\n</div>"
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Menu      多级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Dropdown = __webpack_require__(13);
-	var template = __webpack_require__(16);
-	var _ = __webpack_require__(6);
-
-	var MenuList = __webpack_require__(17)
-
-	/**
-	 * @class Menu
-	 * @extend Dropdown
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {string=''}               options.data.title               => 按钮文字
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
-	 * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
-	 * @param {string=null}             options.data.itemTemplate       @=> 单项模板
-	 * @param {boolean=false}           options.data.open               <=> 当前为展开/收起状态
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var Menu = Dropdown.extend({
-	    name: 'menu',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            open: false
-	        });
-	        this.supr();
-
-	        this.$ancestor = this;
-	    }
-	});
-
-	module.exports = Menu;
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"u-dropdown u-menu {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || '下拉菜单'}>{title || '多级菜单'} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <menuList source={source} visible />\n    </div>\n</div>"
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * MenuList  多级菜单列表
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(18);
-	var _ = __webpack_require__(6);
-
-	/**
-	 * @class MenuList
-	 * @extend SourceComponent
-	 * @private
-	 */
-	var MenuList = SourceComponent.extend({
-	    name: 'menuList',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            itemTemplate: null,
-	            // visible: false
-	        });
-	        this.supr();
-
-	        this.$ancestor = this.$parent.$ancestor;
-	        this.service = this.$ancestor.service;
-	        this.data.itemTemplate = this.$ancestor.data.itemTemplate;
-	    },
-	    /**
-	     * @note 移交$ancestor处理
-	     */
-	    select: function() {
-	        this.$ancestor.select.apply(this.$ancestor, arguments);
-	    }
-	});
-
-	module.exports = MenuList;
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	module.exports = "<ul class=\"m-listview menu_list\" r-hide={!visible}>\n    {#list source as item}\n    <li z-dis={item.disabled} z-divider={item.divider}>\n        <div class=\"menu_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon u-icon-caret-right\"></i>\n            {/if}\n            <div class=\"menu_itemname\" title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<menuList source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
-
-/***/ },
-/* 19 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Input2   输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(2);
-	var template = __webpack_require__(20);
-	var _ = __webpack_require__(6);
-	var Validation = __webpack_require__(21);
-
-	var bowser = __webpack_require__(4);
-
-	/**
-	 * @class Input2
-	 * @extend Component
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {string=''}               options.data.value              <=> 文本框的值
-	 * @param {string=''}               options.data.type                => 文本框的类型
-	 * @param {string=''}               options.data.placeholder         => 占位符
-	 * @param {string=''}               options.data.state              <=> 文本框的状态
-	 * @param {number}                  options.data.maxlength           => 文本框的最大长度
-	 * @param {string=''}               options.data.unit                => 单位
-	 * @param {object[]=[]}             options.data.rules               => 验证规则
-	 * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
-	 * @param {boolean=false}           options.data.readonly            => 是否只读
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 */
-	var Input2 = Component.extend({
-	    name: 'input2',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            value: '',
-	            type: '',
-	            placeholder: '',
-	            state: '',
-	            maxlength: undefined,
-	            unit: '',
-	            rules: [],
-	            autofocus: false,
-	            _eltIE9: bowser.msie && bowser.version <= 9
-	        });
-	        this.supr();
-
-	        var $outer = this.$outer;
-	        if($outer && $outer instanceof Validation) {
-	            $outer.controls.push(this);
-
-	            this.$on('destroy', function() {
-	                var index = $outer.controls.indexOf(this);
-	                $outer.controls.splice(index, 1);
-	            });
-	        }
-	    },
-	    /**
-	     * @method validate() 根据`rules`验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
-	    validate: function(on) {
-	        var value = this.data.value;
-	        var rules = this.data.rules;
-
-	        var PRIORITY = {
-	            'keyup': 2,
-	            'blur': 1,
-	            'submit': 0,
-	            '': 0
-	        }
-
-	        on = on || '';
-	        rules = rules.filter(function(rule) {
-	            return (rule.on || '').indexOf(on) >= 0;
-	        });
-
-	        var result = Validation.validate(value, rules);
-	        if(result.firstRule
-	            && !(result.firstRule.silentOn === true || (typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)))
-	                this.data.tip = result.firstRule.message;
-	        else
-	            this.data.tip = '';
-
-	        // @TODO
-	        if(!result.success)
-	            this.data.state = 'error';
-	        // else if(PRIORITY[on] <= PRIORITY['blur'])
-	        //     this.data.state = 'success';
-	        else
-	            this.data.state = '';
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
-	    },
-	    _onKeyUp: function($event) {
-	        this.validate('keyup');
-	        this.$emit('keyup', $event);
-	    },
-	    _onBlur: function($event) {
-	        this.validate('blur');
-	        this.$emit('blur', $event);
-	    }
-	});
-
-	module.exports = Input2;
-
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	module.exports = "<label class=\"u-input2 {class}\" r-hide={!visible}>\n    <input class=\"u-input u-input-{state} u-input-{size} u-input-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\">\n    {#if unit}<span class=\"input2_unit\">{unit}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"input2_placeholder\">{placeholder}</span>{/if}\n    {#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</label>\n"
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
 	
 	/**
 	 * ------------------------------------------------------------
@@ -2363,7 +1986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(2);
 	var _ = __webpack_require__(6);
-	var validator = __webpack_require__(22);
+	var validator = __webpack_require__(14);
 
 	/**
 	 * @class Validation
@@ -2486,7 +2109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 22 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2495,247 +2118,247 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _toDate = __webpack_require__(23);
+	var _toDate = __webpack_require__(15);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
-	var _toFloat = __webpack_require__(25);
+	var _toFloat = __webpack_require__(17);
 
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 
-	var _toInt = __webpack_require__(26);
+	var _toInt = __webpack_require__(18);
 
 	var _toInt2 = _interopRequireDefault(_toInt);
 
-	var _toBoolean = __webpack_require__(27);
+	var _toBoolean = __webpack_require__(19);
 
 	var _toBoolean2 = _interopRequireDefault(_toBoolean);
 
-	var _equals = __webpack_require__(28);
+	var _equals = __webpack_require__(20);
 
 	var _equals2 = _interopRequireDefault(_equals);
 
-	var _contains = __webpack_require__(29);
+	var _contains = __webpack_require__(21);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
-	var _matches = __webpack_require__(31);
+	var _matches = __webpack_require__(23);
 
 	var _matches2 = _interopRequireDefault(_matches);
 
-	var _isEmail = __webpack_require__(32);
+	var _isEmail = __webpack_require__(24);
 
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 
-	var _isURL = __webpack_require__(36);
+	var _isURL = __webpack_require__(28);
 
 	var _isURL2 = _interopRequireDefault(_isURL);
 
-	var _isMACAddress = __webpack_require__(38);
+	var _isMACAddress = __webpack_require__(30);
 
 	var _isMACAddress2 = _interopRequireDefault(_isMACAddress);
 
-	var _isIP = __webpack_require__(37);
+	var _isIP = __webpack_require__(29);
 
 	var _isIP2 = _interopRequireDefault(_isIP);
 
-	var _isFQDN = __webpack_require__(35);
+	var _isFQDN = __webpack_require__(27);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
-	var _isBoolean = __webpack_require__(39);
+	var _isBoolean = __webpack_require__(31);
 
 	var _isBoolean2 = _interopRequireDefault(_isBoolean);
 
-	var _isAlpha = __webpack_require__(40);
+	var _isAlpha = __webpack_require__(32);
 
 	var _isAlpha2 = _interopRequireDefault(_isAlpha);
 
-	var _isAlphanumeric = __webpack_require__(42);
+	var _isAlphanumeric = __webpack_require__(34);
 
 	var _isAlphanumeric2 = _interopRequireDefault(_isAlphanumeric);
 
-	var _isNumeric = __webpack_require__(43);
+	var _isNumeric = __webpack_require__(35);
 
 	var _isNumeric2 = _interopRequireDefault(_isNumeric);
 
-	var _isLowercase = __webpack_require__(44);
+	var _isLowercase = __webpack_require__(36);
 
 	var _isLowercase2 = _interopRequireDefault(_isLowercase);
 
-	var _isUppercase = __webpack_require__(45);
+	var _isUppercase = __webpack_require__(37);
 
 	var _isUppercase2 = _interopRequireDefault(_isUppercase);
 
-	var _isAscii = __webpack_require__(46);
+	var _isAscii = __webpack_require__(38);
 
 	var _isAscii2 = _interopRequireDefault(_isAscii);
 
-	var _isFullWidth = __webpack_require__(47);
+	var _isFullWidth = __webpack_require__(39);
 
 	var _isFullWidth2 = _interopRequireDefault(_isFullWidth);
 
-	var _isHalfWidth = __webpack_require__(48);
+	var _isHalfWidth = __webpack_require__(40);
 
 	var _isHalfWidth2 = _interopRequireDefault(_isHalfWidth);
 
-	var _isVariableWidth = __webpack_require__(49);
+	var _isVariableWidth = __webpack_require__(41);
 
 	var _isVariableWidth2 = _interopRequireDefault(_isVariableWidth);
 
-	var _isMultibyte = __webpack_require__(50);
+	var _isMultibyte = __webpack_require__(42);
 
 	var _isMultibyte2 = _interopRequireDefault(_isMultibyte);
 
-	var _isSurrogatePair = __webpack_require__(51);
+	var _isSurrogatePair = __webpack_require__(43);
 
 	var _isSurrogatePair2 = _interopRequireDefault(_isSurrogatePair);
 
-	var _isInt = __webpack_require__(52);
+	var _isInt = __webpack_require__(44);
 
 	var _isInt2 = _interopRequireDefault(_isInt);
 
-	var _isFloat = __webpack_require__(53);
+	var _isFloat = __webpack_require__(45);
 
 	var _isFloat2 = _interopRequireDefault(_isFloat);
 
-	var _isDecimal = __webpack_require__(54);
+	var _isDecimal = __webpack_require__(46);
 
 	var _isDecimal2 = _interopRequireDefault(_isDecimal);
 
-	var _isHexadecimal = __webpack_require__(55);
+	var _isHexadecimal = __webpack_require__(47);
 
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 
-	var _isDivisibleBy = __webpack_require__(56);
+	var _isDivisibleBy = __webpack_require__(48);
 
 	var _isDivisibleBy2 = _interopRequireDefault(_isDivisibleBy);
 
-	var _isHexColor = __webpack_require__(57);
+	var _isHexColor = __webpack_require__(49);
 
 	var _isHexColor2 = _interopRequireDefault(_isHexColor);
 
-	var _isMD = __webpack_require__(58);
+	var _isMD = __webpack_require__(50);
 
 	var _isMD2 = _interopRequireDefault(_isMD);
 
-	var _isJSON = __webpack_require__(59);
+	var _isJSON = __webpack_require__(51);
 
 	var _isJSON2 = _interopRequireDefault(_isJSON);
 
-	var _isEmpty = __webpack_require__(60);
+	var _isEmpty = __webpack_require__(52);
 
 	var _isEmpty2 = _interopRequireDefault(_isEmpty);
 
-	var _isLength = __webpack_require__(61);
+	var _isLength = __webpack_require__(53);
 
 	var _isLength2 = _interopRequireDefault(_isLength);
 
-	var _isByteLength = __webpack_require__(34);
+	var _isByteLength = __webpack_require__(26);
 
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 
-	var _isUUID = __webpack_require__(62);
+	var _isUUID = __webpack_require__(54);
 
 	var _isUUID2 = _interopRequireDefault(_isUUID);
 
-	var _isMongoId = __webpack_require__(63);
+	var _isMongoId = __webpack_require__(55);
 
 	var _isMongoId2 = _interopRequireDefault(_isMongoId);
 
-	var _isDate = __webpack_require__(64);
+	var _isDate = __webpack_require__(56);
 
 	var _isDate2 = _interopRequireDefault(_isDate);
 
-	var _isAfter = __webpack_require__(66);
+	var _isAfter = __webpack_require__(58);
 
 	var _isAfter2 = _interopRequireDefault(_isAfter);
 
-	var _isBefore = __webpack_require__(67);
+	var _isBefore = __webpack_require__(59);
 
 	var _isBefore2 = _interopRequireDefault(_isBefore);
 
-	var _isIn = __webpack_require__(68);
+	var _isIn = __webpack_require__(60);
 
 	var _isIn2 = _interopRequireDefault(_isIn);
 
-	var _isCreditCard = __webpack_require__(69);
+	var _isCreditCard = __webpack_require__(61);
 
 	var _isCreditCard2 = _interopRequireDefault(_isCreditCard);
 
-	var _isISIN = __webpack_require__(70);
+	var _isISIN = __webpack_require__(62);
 
 	var _isISIN2 = _interopRequireDefault(_isISIN);
 
-	var _isISBN = __webpack_require__(71);
+	var _isISBN = __webpack_require__(63);
 
 	var _isISBN2 = _interopRequireDefault(_isISBN);
 
-	var _isISSN = __webpack_require__(72);
+	var _isISSN = __webpack_require__(64);
 
 	var _isISSN2 = _interopRequireDefault(_isISSN);
 
-	var _isMobilePhone = __webpack_require__(73);
+	var _isMobilePhone = __webpack_require__(65);
 
 	var _isMobilePhone2 = _interopRequireDefault(_isMobilePhone);
 
-	var _isCurrency = __webpack_require__(74);
+	var _isCurrency = __webpack_require__(66);
 
 	var _isCurrency2 = _interopRequireDefault(_isCurrency);
 
-	var _isISO = __webpack_require__(65);
+	var _isISO = __webpack_require__(57);
 
 	var _isISO2 = _interopRequireDefault(_isISO);
 
-	var _isBase = __webpack_require__(75);
+	var _isBase = __webpack_require__(67);
 
 	var _isBase2 = _interopRequireDefault(_isBase);
 
-	var _isDataURI = __webpack_require__(76);
+	var _isDataURI = __webpack_require__(68);
 
 	var _isDataURI2 = _interopRequireDefault(_isDataURI);
 
-	var _ltrim = __webpack_require__(77);
+	var _ltrim = __webpack_require__(69);
 
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 
-	var _rtrim = __webpack_require__(78);
+	var _rtrim = __webpack_require__(70);
 
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 
-	var _trim = __webpack_require__(79);
+	var _trim = __webpack_require__(71);
 
 	var _trim2 = _interopRequireDefault(_trim);
 
-	var _escape = __webpack_require__(80);
+	var _escape = __webpack_require__(72);
 
 	var _escape2 = _interopRequireDefault(_escape);
 
-	var _unescape = __webpack_require__(81);
+	var _unescape = __webpack_require__(73);
 
 	var _unescape2 = _interopRequireDefault(_unescape);
 
-	var _stripLow = __webpack_require__(82);
+	var _stripLow = __webpack_require__(74);
 
 	var _stripLow2 = _interopRequireDefault(_stripLow);
 
-	var _whitelist = __webpack_require__(84);
+	var _whitelist = __webpack_require__(76);
 
 	var _whitelist2 = _interopRequireDefault(_whitelist);
 
-	var _blacklist = __webpack_require__(83);
+	var _blacklist = __webpack_require__(75);
 
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 
-	var _isWhitelisted = __webpack_require__(85);
+	var _isWhitelisted = __webpack_require__(77);
 
 	var _isWhitelisted2 = _interopRequireDefault(_isWhitelisted);
 
-	var _normalizeEmail = __webpack_require__(86);
+	var _normalizeEmail = __webpack_require__(78);
 
 	var _normalizeEmail2 = _interopRequireDefault(_normalizeEmail);
 
-	var _toString = __webpack_require__(30);
+	var _toString = __webpack_require__(22);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -2781,7 +2404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 23 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2791,7 +2414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toDate;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2805,7 +2428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 24 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2822,7 +2445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 25 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2832,7 +2455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toFloat;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2845,7 +2468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 26 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2855,7 +2478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toInt;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2868,7 +2491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 27 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2878,7 +2501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toBoolean;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2894,7 +2517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 28 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2904,7 +2527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = equals;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2917,7 +2540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 29 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2927,11 +2550,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = contains;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toString = __webpack_require__(30);
+	var _toString = __webpack_require__(22);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -2944,7 +2567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 30 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2971,7 +2594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 31 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2981,7 +2604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = matches;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -2997,7 +2620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 32 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3007,19 +2630,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isEmail;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _merge = __webpack_require__(33);
+	var _merge = __webpack_require__(25);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
-	var _isByteLength = __webpack_require__(34);
+	var _isByteLength = __webpack_require__(26);
 
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 
-	var _isFQDN = __webpack_require__(35);
+	var _isFQDN = __webpack_require__(27);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
@@ -3088,7 +2711,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 33 */
+/* 25 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3111,7 +2734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 34 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3124,7 +2747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isByteLength;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3149,7 +2772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 35 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3159,11 +2782,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isFDQN;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _merge = __webpack_require__(33);
+	var _merge = __webpack_require__(25);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -3211,7 +2834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 36 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3221,19 +2844,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isURL;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isFQDN = __webpack_require__(35);
+	var _isFQDN = __webpack_require__(27);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
-	var _isIP = __webpack_require__(37);
+	var _isIP = __webpack_require__(29);
 
 	var _isIP2 = _interopRequireDefault(_isIP);
 
-	var _merge = __webpack_require__(33);
+	var _merge = __webpack_require__(25);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -3358,7 +2981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 37 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3368,7 +2991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isIP;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3444,7 +3067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 38 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3454,7 +3077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMACAddress;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3469,7 +3092,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 39 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3479,7 +3102,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBoolean;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3492,7 +3115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 40 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3502,11 +3125,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAlpha;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _alpha = __webpack_require__(41);
+	var _alpha = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3522,7 +3145,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 41 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -3587,7 +3210,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 42 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3597,11 +3220,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAlphanumeric;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _alpha = __webpack_require__(41);
+	var _alpha = __webpack_require__(33);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3617,7 +3240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 43 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3627,7 +3250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isNumeric;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3642,7 +3265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 44 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3652,7 +3275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isLowercase;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3665,7 +3288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 45 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3675,7 +3298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isUppercase;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3688,7 +3311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 46 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3698,7 +3321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAscii;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3715,7 +3338,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 47 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3726,7 +3349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.fullWidth = undefined;
 	exports.default = isFullWidth;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3740,7 +3363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 48 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3751,7 +3374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.halfWidth = undefined;
 	exports.default = isHalfWidth;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3765,7 +3388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 49 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3775,13 +3398,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isVariableWidth;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isFullWidth = __webpack_require__(47);
+	var _isFullWidth = __webpack_require__(39);
 
-	var _isHalfWidth = __webpack_require__(48);
+	var _isHalfWidth = __webpack_require__(40);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3792,7 +3415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 50 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3802,7 +3425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMultibyte;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3819,7 +3442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 51 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3829,7 +3452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isSurrogatePair;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3844,7 +3467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 52 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3854,7 +3477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isInt;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3880,7 +3503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 53 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3890,7 +3513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isFloat;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3909,7 +3532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 54 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3919,7 +3542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDecimal;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3934,7 +3557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 55 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3944,7 +3567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isHexadecimal;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -3959,7 +3582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 56 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3969,11 +3592,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDivisibleBy;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toFloat = __webpack_require__(25);
+	var _toFloat = __webpack_require__(17);
 
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 
@@ -3986,7 +3609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 57 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3996,7 +3619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isHexColor;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4011,7 +3634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 58 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4021,7 +3644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMD5;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4036,7 +3659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 59 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4049,7 +3672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isJSON;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4066,7 +3689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 60 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4076,7 +3699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isEmpty;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4089,7 +3712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 61 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4102,7 +3725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isLength;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4128,7 +3751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 62 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4138,7 +3761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isUUID;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4161,7 +3784,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 63 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4171,11 +3794,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMongoId;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isHexadecimal = __webpack_require__(55);
+	var _isHexadecimal = __webpack_require__(47);
 
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 
@@ -4188,7 +3811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 64 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4198,11 +3821,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDate;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isISO = __webpack_require__(65);
+	var _isISO = __webpack_require__(57);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4293,7 +3916,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 65 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4308,7 +3931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return iso8601.test(str);
 	};
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4320,7 +3943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* eslint-enable max-len */
 
 /***/ },
-/* 66 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4330,11 +3953,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAfter;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toDate = __webpack_require__(23);
+	var _toDate = __webpack_require__(15);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
@@ -4351,7 +3974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 67 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4361,11 +3984,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBefore;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toDate = __webpack_require__(23);
+	var _toDate = __webpack_require__(15);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
@@ -4382,7 +4005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 68 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4395,11 +4018,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isIn;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toString = __webpack_require__(30);
+	var _toString = __webpack_require__(22);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -4426,7 +4049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 69 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4436,7 +4059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isCreditCard;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4476,7 +4099,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 70 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4486,7 +4109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISIN;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4529,7 +4152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 71 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4539,7 +4162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISBN;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4591,7 +4214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 72 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4601,7 +4224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISSN;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4654,7 +4277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 73 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4664,7 +4287,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMobilePhone;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4723,7 +4346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 74 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4733,11 +4356,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isCurrency;
 
-	var _merge = __webpack_require__(33);
+	var _merge = __webpack_require__(25);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4816,7 +4439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 75 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4826,7 +4449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBase64;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4846,7 +4469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 76 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4856,7 +4479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDataURI;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4871,7 +4494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 77 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4881,7 +4504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = ltrim;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4895,7 +4518,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 78 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4905,7 +4528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = rtrim;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4925,7 +4548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 79 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4935,11 +4558,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = trim;
 
-	var _rtrim = __webpack_require__(78);
+	var _rtrim = __webpack_require__(70);
 
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 
-	var _ltrim = __webpack_require__(77);
+	var _ltrim = __webpack_require__(69);
 
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 
@@ -4951,7 +4574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 80 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4961,7 +4584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = escape;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4974,7 +4597,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 81 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4984,7 +4607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = unescape;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4997,7 +4620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 82 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5007,11 +4630,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = stripLow;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _blacklist = __webpack_require__(83);
+	var _blacklist = __webpack_require__(75);
 
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 
@@ -5025,7 +4648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 83 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5035,7 +4658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = blacklist;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5048,7 +4671,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 84 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5058,7 +4681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = whitelist;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5071,7 +4694,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 85 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5081,7 +4704,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isWhitelisted;
 
-	var _assertString = __webpack_require__(24);
+	var _assertString = __webpack_require__(16);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5099,7 +4722,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 86 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5109,11 +4732,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = normalizeEmail;
 
-	var _isEmail = __webpack_require__(32);
+	var _isEmail = __webpack_require__(24);
 
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 
-	var _merge = __webpack_require__(33);
+	var _merge = __webpack_require__(25);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -5243,6 +4866,383 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Dropdown  下拉菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var SourceComponent = __webpack_require__(9);
+	var template = __webpack_require__(80);
+	var _ = __webpack_require__(6);
+
+	/**
+	 * @class Dropdown
+	 * @extend SourceComponent
+	 * @param {object}                  options.data                     =  绑定属性
+	 * @param {string=''}               options.data.title               => 按钮文字
+	 * @param {object[]=[]}             options.data.source             <=> 数据源
+	 * @param {string}                  options.data.source[].name       => 每项的内容
+	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
+	 * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
+	 * @param {string=null}             options.data.itemTemplate       @=> 单项模板
+	 * @param {boolean=false}           options.data.open               <=> 当前为展开/收起状态
+	 * @param {boolean=false}           options.data.disabled            => 是否禁用
+	 * @param {boolean=true}            options.data.visible             => 是否显示
+	 * @param {string=''}               options.data.class               => 补充class
+	 * @param {object}                  options.service                 @=> 数据服务
+	 */
+	var Dropdown = SourceComponent.extend({
+	    name: 'dropdown',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function() {
+	        _.extend(this.data, {
+	            // @inherited source: [],
+	            itemTemplate: null,
+	            open: false
+	        });
+	        this.supr();
+	    },
+	    /**
+	     * @method toggle(open) 展开/收起
+	     * @public
+	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
+	     * @return {void}
+	     */
+	    toggle: function(open) {
+	        if(this.data.disabled)
+	            return;
+	        
+	        if(open === undefined)
+	            open = !this.data.open;
+	        this.data.open = open;
+
+	        // 根据状态在Dropdown.opens列表中添加/删除管理项
+	        var index = Dropdown.opens.indexOf(this);
+	        if(open && index < 0)
+	            Dropdown.opens.push(this);
+	        else if(!open && index >= 0)
+	            Dropdown.opens.splice(index, 1);
+
+	        /**
+	         * @event toggle  展开/收起时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} open 展开/收起状态
+	         */
+	        this.$emit('toggle', {
+	            sender: this,
+	            open: open
+	        });
+	    },
+	    /**
+	     * @method select(item) 选择某一项
+	     * @public
+	     * @param  {object} item 选择项
+	     * @return {void}
+	     */
+	    select: function(item) {
+	        if(this.data.disabled || item.disabled || item.divider)
+	            return;
+
+	        /**
+	         * @event select 选择某一项时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} selected 当前选择项
+	         */
+	        this.$emit('select', {
+	            sender: this,
+	            selected: item
+	        });
+
+	        this.toggle(false);
+	    },
+	    destroy: function() {
+	        var index = Dropdown.opens.indexOf(this);
+	        index >= 0 && Dropdown.opens.splice(index, 1);
+	        this.supr();
+	    }
+	});
+
+	// 处理点击dropdown之外的地方后的收起事件。
+	Dropdown.opens = [];
+
+	_.dom.on(document, 'click', function(e) {
+	    Dropdown.opens.forEach(function(dropdown, index) {
+	        // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
+	        var element = dropdown.$refs.element;
+	        var element2 = e.target;
+	        while(element2) {
+	            if(element == element2)
+	                return;
+	            element2 = element2.parentElement;
+	        }
+	        dropdown.toggle(false);
+	        dropdown.$update();
+	    });
+	});
+
+	module.exports = Dropdown;
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"u-dropdown {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || '下拉菜单'}>{title || '下拉菜单'} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/list}\n        </ul>\n    </div>\n</div>"
+
+/***/ },
+/* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      多级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Dropdown = __webpack_require__(79);
+	var template = __webpack_require__(82);
+	var _ = __webpack_require__(6);
+
+	var MenuList = __webpack_require__(83)
+
+	/**
+	 * @class Menu
+	 * @extend Dropdown
+	 * @param {object}                  options.data                     =  绑定属性
+	 * @param {string=''}               options.data.title               => 按钮文字
+	 * @param {object[]=[]}             options.data.source             <=> 数据源
+	 * @param {string}                  options.data.source[].name       => 每项的内容
+	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
+	 * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
+	 * @param {string=null}             options.data.itemTemplate       @=> 单项模板
+	 * @param {boolean=false}           options.data.open               <=> 当前为展开/收起状态
+	 * @param {boolean=false}           options.data.disabled            => 是否禁用
+	 * @param {boolean=true}            options.data.visible             => 是否显示
+	 * @param {string=''}               options.data.class               => 补充class
+	 * @param {object}                  options.service                 @=> 数据服务
+	 */
+	var Menu = Dropdown.extend({
+	    name: 'menu',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function() {
+	        _.extend(this.data, {
+	            // @inherited source: [],
+	            open: false
+	        });
+	        this.supr();
+
+	        this.$ancestor = this;
+	    }
+	});
+
+	module.exports = Menu;
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"u-dropdown u-menu {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || '下拉菜单'}>{title || '多级菜单'} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <menuList source={source} visible />\n    </div>\n</div>"
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * MenuList  多级菜单列表
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var SourceComponent = __webpack_require__(9);
+	var template = __webpack_require__(84);
+	var _ = __webpack_require__(6);
+
+	/**
+	 * @class MenuList
+	 * @extend SourceComponent
+	 * @private
+	 */
+	var MenuList = SourceComponent.extend({
+	    name: 'menuList',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function() {
+	        _.extend(this.data, {
+	            // @inherited source: [],
+	            itemTemplate: null,
+	            // visible: false
+	        });
+	        this.supr();
+
+	        this.$ancestor = this.$parent.$ancestor;
+	        this.service = this.$ancestor.service;
+	        this.data.itemTemplate = this.$ancestor.data.itemTemplate;
+	    },
+	    /**
+	     * @note 移交$ancestor处理
+	     */
+	    select: function() {
+	        this.$ancestor.select.apply(this.$ancestor, arguments);
+	    }
+	});
+
+	module.exports = MenuList;
+
+/***/ },
+/* 84 */
+/***/ function(module, exports) {
+
+	module.exports = "<ul class=\"m-listview menu_list\" r-hide={!visible}>\n    {#list source as item}\n    <li z-dis={item.disabled} z-divider={item.divider}>\n        <div class=\"menu_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon u-icon-caret-right\"></i>\n            {/if}\n            <div class=\"menu_itemname\" title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<menuList source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
+
+/***/ },
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Input   输入扩展
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(2);
+	var template = __webpack_require__(86);
+	var _ = __webpack_require__(6);
+	var Validation = __webpack_require__(13);
+
+	var bowser = __webpack_require__(4);
+
+	/**
+	 * @class Input
+	 * @extend Component
+	 * @param {object}                  options.data                     =  绑定属性
+	 * @param {string=''}               options.data.value              <=> 文本框的值
+	 * @param {string=''}               options.data.type                => 文本框的类型
+	 * @param {string=''}               options.data.placeholder         => 占位符
+	 * @param {string=''}               options.data.state              <=> 文本框的状态
+	 * @param {number}                  options.data.maxlength           => 文本框的最大长度
+	 * @param {string=''}               options.data.unit                => 单位
+	 * @param {object[]=[]}             options.data.rules               => 验证规则
+	 * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
+	 * @param {boolean=false}           options.data.readonly            => 是否只读
+	 * @param {boolean=false}           options.data.disabled            => 是否禁用
+	 * @param {boolean=true}            options.data.visible             => 是否显示
+	 * @param {string=''}               options.data.class               => 补充class
+	 */
+	var Input = Component.extend({
+	    name: 'ui.input',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function() {
+	        _.extend(this.data, {
+	            value: '',
+	            type: '',
+	            placeholder: '',
+	            state: '',
+	            maxlength: undefined,
+	            unit: '',
+	            rules: [],
+	            autofocus: false,
+	            _eltIE9: bowser.msie && bowser.version <= 9
+	        });
+	        this.supr();
+
+	        var $outer = this.$outer;
+	        if($outer && $outer instanceof Validation) {
+	            $outer.controls.push(this);
+
+	            this.$on('destroy', function() {
+	                var index = $outer.controls.indexOf(this);
+	                $outer.controls.splice(index, 1);
+	            });
+	        }
+	    },
+	    /**
+	     * @method validate() 根据`rules`验证组件的值是否正确
+	     * @public
+	     * @return {object} result 结果
+	     */
+	    validate: function(on) {
+	        var value = this.data.value;
+	        var rules = this.data.rules;
+
+	        var PRIORITY = {
+	            'keyup': 2,
+	            'blur': 1,
+	            'submit': 0,
+	            '': 0
+	        }
+
+	        on = on || '';
+	        rules = rules.filter(function(rule) {
+	            return (rule.on || '').indexOf(on) >= 0;
+	        });
+
+	        var result = Validation.validate(value, rules);
+	        if(result.firstRule
+	            && !(result.firstRule.silentOn === true || (typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)))
+	                this.data.tip = result.firstRule.message;
+	        else
+	            this.data.tip = '';
+
+	        // @TODO
+	        if(!result.success)
+	            this.data.state = 'error';
+	        // else if(PRIORITY[on] <= PRIORITY['blur'])
+	        //     this.data.state = 'success';
+	        else
+	            this.data.state = '';
+
+	        this.$emit('validate', {
+	            sender: this,
+	            on: on,
+	            result: result
+	        });
+
+	        return result;
+	    },
+	    _onKeyUp: function($event) {
+	        this.validate('keyup');
+	        this.$emit('keyup', $event);
+	    },
+	    _onBlur: function($event) {
+	        this.validate('blur');
+	        this.$emit('blur', $event);
+	    }
+	});
+
+	module.exports = Input;
+
+
+/***/ },
+/* 86 */
+/***/ function(module, exports) {
+
+	module.exports = "<label class=\"u-input2 {class}\" r-hide={!visible}>\n    <input class=\"u-input u-input-{state} u-input-{size} u-input-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\">\n    {#if unit}<span class=\"input2_unit\">{unit}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"input2_placeholder\">{placeholder}</span>{/if}\n    {#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</label>"
+
+/***/ },
 /* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -5256,12 +5256,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Component = __webpack_require__(2);
 	var template = __webpack_require__(88);
 	var _ = __webpack_require__(6);
-	var Validation = __webpack_require__(21);
+	var Validation = __webpack_require__(13);
 
 	var bowser = __webpack_require__(4);
 
 	/**
-	 * @class TextArea2
+	 * @class TextArea
 	 * @extend Component
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {string=''}               options.data.value              <=> 文本框的值
@@ -5275,8 +5275,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean=true}            options.data.visible             => 是否显示
 	 * @param {string=''}               options.data.class               => 补充class
 	 */
-	var TextArea2 = Component.extend({
-	    name: 'textarea2',
+	var TextArea = Component.extend({
+	    name: 'ui.textarea',
 	    template: template,
 	    /**
 	     * @protected
@@ -5357,7 +5357,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	});
 
-	module.exports = TextArea2;
+	module.exports = TextArea;
 
 
 /***/ },
@@ -5377,13 +5377,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var Input2 = __webpack_require__(19);
+	var Input = __webpack_require__(85);
 	var template = __webpack_require__(90);
 	var _ = __webpack_require__(6);
 
 	/**
 	 * @class NumberInput
-	 * @extend Input2
+	 * @extend Input
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {string=0}                options.data.value              <=> 文本框的值
 	 * @param {string=''}               options.data.state              <=> 文本框的状态
@@ -5395,7 +5395,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean=true}            options.data.visible             => 是否显示
 	 * @param {string=''}               options.data.class               => 补充class
 	 */
-	var NumberInput = Input2.extend({
+	var NumberInput = Input.extend({
 	    name: 'numberInput',
 	    template: template,
 	    /**
@@ -5525,7 +5525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(6);
 
 	/**
-	 * @class Check2
+	 * @class Check
 	 * @extend Component
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {string=''}               options.data.name                => 多选按钮的文字
@@ -5536,8 +5536,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean=true}            options.data.visible             => 是否显示
 	 * @param {string=''}               options.data.class               => 补充class
 	 */
-	var Check2 = Component.extend({
-	    name: 'check2',
+	var Check = Component.extend({
+	    name: 'check',
 	    template: template,
 	    /**
 	     * @protected
@@ -5591,7 +5591,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	});
 
-	module.exports = Check2;
+	module.exports = Check;
 
 /***/ },
 /* 92 */
@@ -5605,7 +5605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
-	 * CheckGroup 多选组
+	 * CheckGroup 输入扩展
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
@@ -5615,10 +5615,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SourceComponent = __webpack_require__(9);
 	var template = __webpack_require__(94);
 	var _ = __webpack_require__(6);
+	var Check = __webpack_require__(91);
 
 	/**
 	 * @class CheckGroup
-	 * @extend SourceComponent
+	 * @extend CheckGroup
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {object[]=[]}             options.data.source             <=> 数据源
 	 * @param {string}                  options.data.source[].name       => 每项的内容
@@ -5650,7 +5651,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 94 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible}>\n    {#list source as item}\n    <label class=\"u-check2\" title={item.name} z-dis={disabled} r-class={ {'u-check2-block': block} }><input type=\"checkbox\" class=\"u-check\" r-model={item.checked} disabled={disabled}> {item.name}</label>\n    {/list}\n</div>"
+	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible}>\n    {#list source as item}\n    <check name={item.name} checked={item.checked} disabled={disabled} block={block} />\n    {/list}\n</div>"
 
 /***/ },
 /* 95 */
@@ -5658,51 +5659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
-	 * Check2Group 输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var CheckGroup = __webpack_require__(93);
-	var template = __webpack_require__(96);
-	var _ = __webpack_require__(6);
-	var Check2 = __webpack_require__(91);
-
-	/**
-	 * @class Check2Group
-	 * @extend CheckGroup
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {boolean=false}           options.data.block               => 多行显示
-	 * @param {boolean=false}           options.data.readonly            => 是否只读
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var Check2Group = CheckGroup.extend({
-	    name: 'check2Group',
-	    template: template
-	});
-
-	module.exports = Check2Group;
-
-/***/ },
-/* 96 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible}>\n    {#list source as item}\n    <check2 name={item.name} checked={item.checked} disabled={disabled} block={block} />\n    {/list}\n</div>"
-
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * RadioGroup 单选组
+	 * RadioGroup 输入扩展
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
@@ -5710,7 +5667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(98);
+	var template = __webpack_require__(96);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -5719,11 +5676,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {object[]=[]}             options.data.source             <=> 数据源
 	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {object=null}             options.data.selected           <=> 当前选择项
-	 * @param {boolean=false}           options.data.block               => 多行显示
+	 * @param {object=null}             options.data.selected           <=> 当前选择
+	 * @param {boolean=false}           options.data.block               => 多行显
 	 * @param {boolean=false}           options.data.readonly            => 是否只读
 	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
+	 * @param {boolean=true}            options.data.visible             => 是否显
 	 * @param {string=''}               options.data.class               => 补充class
 	 * @param {object}                  options.service                 @=> 数据服务
 	 */
@@ -5742,9 +5699,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.supr();
 	    },
 	    /**
-	     * @method select(item) 选择某一项
+	     * @method select(item) 选择某一
 	     * @public
-	     * @param  {object} item 选择项
+	     * @param  {object} item 选择
 	     * @return {void}
 	     */
 	    select: function(item) {
@@ -5755,7 +5712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择项
+	         * @property {object} selected 当前选择
 	         */
 	        this.$emit('select', {
 	            sender: this,
@@ -5766,160 +5723,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = RadioGroup;
 
-
 /***/ },
-/* 98 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible}>\n    {#list source as item}\n    <label class=\"u-radio2\" title={item.name} z-dis={disabled} r-class={ {'u-radio2-block': block} } on-click={this.select(item)}><input type=\"radio\" class=\"u-radio\" name={_radioGroupId} disabled={disabled}> {item.name}</label>\n    {/list}\n</div>"
-
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Radio2Group 输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var RadioGroup = __webpack_require__(97);
-	var template = __webpack_require__(100);
-	var _ = __webpack_require__(6);
-
-	/**
-	 * @class Radio2Group
-	 * @extend RadioGroup
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {object=null}             options.data.seleced            <=> 当前选择项
-	 * @param {boolean=false}           options.data.block               => 多行显示
-	 * @param {boolean=false}           options.data.readonly            => 是否只读
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var Radio2Group = RadioGroup.extend({
-	    name: 'radio2Group',
-	    template: template
-	});
-
-	module.exports = Radio2Group;
-
-/***/ },
-/* 100 */
+/* 96 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible}>\n    {#list source as item}\n    <label class=\"u-radio2\" title={item.name} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio2-block': block} } on-click={this.select(item)}><div class=\"radio2_box\"><i class=\"u-icon u-icon-radio\"></i></div> {item.name}</label>\n    {/list}\n</div>"
 
 /***/ },
-/* 101 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Select1  选择扩展1
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(102);
-	var _ = __webpack_require__(6);
-
-	/**
-	 * @class Select1
-	 * @extend SourceComponent
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
-	 * @param {string|number}           options.data.value              <=> 当前选择值
-	 * @param {string='请选择'}         options.data.placeholder         => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
-	 * @param {boolean=false}           options.data.readonly            => 是否只读
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var Select1 = SourceComponent.extend({
-	    name: 'select1',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            selected: undefined,
-	            value: '',
-	            placeholder: '请选择'
-	        });
-	        this.supr();
-
-	        this.$watch('selected', function(newValue, oldValue) {
-	            // this.data.value = newValue ? newValue[this.data.key] : newValue;
-
-	            /**
-	             * @event change 选择项改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 改变后的选择项
-	             * @property {string|number} value 改变后的选择值
-	             */
-	            this.$emit('change', {
-	                sender: this,
-	                selected: newValue,
-	                value: this.data.value
-	            });
-	        });
-
-	        this.$watch('value', function(newValue, oldValue) {
-	            if(newValue === '' || newValue === undefined)
-	                return this.data.selected = undefined;
-
-	            if(this.data.source)
-	                this.data.selected = this.data.source[newValue];
-	        });
-
-	        this.$watch('source', function(newValue, oldValue) {
-	            if(newValue === undefined)
-	                return this.data.value = '';
-
-	            if(!(newValue instanceof Array))
-	                throw new TypeError('`source` is not an Array!');
-
-	            if(newValue.length && (typeof newValue[0] === 'string' || typeof newValue[0] === 'number'))
-	                return this.data.source = newValue.map(function(name, index) {
-	                    return {id: index, name: name};
-	                });
-
-	            // 当placeholder为空时，自动选择第一项
-	            if(!this.data.placeholder) {
-	                this.data.value = 0;
-	                this.data.selected = this.data.source[0];    // 手动更新
-	            } else
-	                this.data.value = '';
-	        });
-	    }
-	});
-
-	module.exports = Select1;
-
-/***/ },
-/* 102 */
-/***/ function(module, exports) {
-
-	module.exports = "<select class=\"u-select {class}\" r-model={value} readonly={readonly} disabled={disabled}>\n    {#if placeholder}<option value=\"\">{placeholder}</option>{/if}\n    {#list source as item}\n    <option value={item_index} disabled={item.disabled}>{item.name}</option>\n    {/list}\n</select>"
-
-/***/ },
-/* 103 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5931,12 +5742,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(13);
-	var template = __webpack_require__(104);
+	var Dropdown = __webpack_require__(79);
+	var template = __webpack_require__(98);
 	var _ = __webpack_require__(6);
 
 	/**
-	 * @class Select2
+	 * @class Select
 	 * @extend Dropdown
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {object[]=[]}             options.data.source             <=> 数据源
@@ -5953,8 +5764,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string=''}               options.data.class               => 补充class
 	 * @param {object}                  options.service                 @=> 数据服务
 	 */
-	var Select2 = Dropdown.extend({
-	    name: 'select2',
+	var Select = Dropdown.extend({
+	    name: 'ui.select',
 	    template: template,
 	    /**
 	     * @protected
@@ -6051,124 +5862,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	});
 
-	module.exports = Select2;
+	module.exports = Select;
 
 /***/ },
-/* 104 */
+/* 98 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select2 {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" title={selected ? selected.name : placeholder} on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{selected ? selected.name : placeholder}</span>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#if placeholder}<li z-sel={!selected} on-click={this.select(undefined)}>{placeholder}</li>{/if}\n            {#list source as item}\n            <li z-sel={selected === item} z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/list}\n        </ul>\n    </div>\n</div>"
 
 /***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * SelectGroup 多级选择
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(2);
-	var template = __webpack_require__(106);
-	var _ = __webpack_require__(6);
-
-	/**
-	 * @class SelectGroup
-	 * @extend Component
-	 * @param {object}                  options.data                     =  绑定属性
-	 * @param {object[]=[]}             options.data.source             <=> 数据源
-	 * @param {string}                  options.data.source[].name       => 每项的内容
-	 * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
-	 * @param {number=1}                options.data.depth               => 层级数
-	 * @param {object}                  options.data.selected           <=  最后的选择项
-	 * @param {object[]=[]}             options.data.values    <=> 所有的选择项
-	 * @param {string[]=[]}             options.data.placeholders        => 默认项的文字
-	 * @param {boolean=false}           options.data.readonly            => 是否只读
-	 * @param {boolean=false}           options.data.disabled            => 是否禁用
-	 * @param {boolean=true}            options.data.visible             => 是否显示
-	 * @param {string=''}               options.data.class               => 补充class
-	 * @param {object}                  options.service                 @=> 数据服务
-	 */
-	var SelectGroup = Component.extend({
-	    name: 'selectGroup',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            depth: 1,
-	            sources: [],
-	            selected: undefined,
-	            values: [],
-	            placeholders: []
-	        });
-	        this.supr();
-
-	        this.$watch('selected', function(newValue, oldValue) {
-	            /**
-	             * @event change 最后的选择项改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 最后的选择项
-	             * @property {object} values 所有的选择项
-	             */
-	            this.$emit('change', {
-	                sender: this,
-	                selected: newValue,
-	                values: this.data.values
-	            });
-	        });
-
-	        this.data.sources[0] = this.data.source;
-	    },
-	    /**
-	     * @private
-	     */
-	    _onChange: function($event, level) {
-	        var sources = this.data.sources;
-	        var item = sources[level] && sources[level][$event.value];
-
-	        // 由内部<select>控制
-	        // if(this.data.readonly || this.data.disabled || (item && (item.disabled || item.divider)))
-	        //     return;
-
-	        sources[level + 1] = item ? item.children : undefined;
-	        for(var i = level + 2; i < this.data.depth; i++)
-	            sources[i] = undefined;
-
-	        if(level === this.data.depth - 1)
-	            this.data.selected = item;
-
-	        /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择项
-	         * @property {object} level 当前选择的层级
-	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item,
-	            values: this.data.values,
-	            level: level
-	        });
-	    }
-	});
-
-	module.exports = SelectGroup;
-
-/***/ },
-/* 106 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"u-selectgroup {class}\" r-hide={!visible}>\n    {#list 0..(depth - 1) as i}\n    <select1 source={sources[i]} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event, i)} />\n    {/list}\n</div>"
-
-/***/ },
-/* 107 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6181,11 +5884,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(108);
+	var template = __webpack_require__(100);
 	var _ = __webpack_require__(6);
 
 	/**
-	 * @class Select2Group
+	 * @class SelectGroup
 	 * @extend Component
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {object[]=[]}             options.data.source             <=> 数据源
@@ -6204,8 +5907,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string=''}               options.data.class               => 补充class
 	 * @param {object}                  options.service                 @=> 数据服务
 	 */
-	var Select2Group = Component.extend({
-	    name: 'select2Group',
+	var SelectGroup = Component.extend({
+	    name: 'selectGroup',
 	    template: template,
 	    /**
 	     * @protected
@@ -6273,16 +5976,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	});
 
-	module.exports = Select2Group;
+	module.exports = SelectGroup;
 
 /***/ },
-/* 108 */
+/* 100 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-select2group {class}\" r-hide={!visible}>\n    {#list 0..(depth - 1) as i}\n    <select2 source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>"
+	module.exports = "<div class=\"u-select2group {class}\" r-hide={!visible}>\n    {#list 0..(depth - 1) as i}\n    <ui.select source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>"
 
 /***/ },
-/* 109 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6294,14 +5997,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Select2 = __webpack_require__(103);
-	var template = __webpack_require__(110);
+	var Select = __webpack_require__(97);
+	var template = __webpack_require__(102);
 	var _ = __webpack_require__(6);
-	var Treeview = __webpack_require__(111);
+	var Treeview = __webpack_require__(103);
 
 	/**
 	 * @class TreeSelect
-	 * @extend Select2
+	 * @extend Select
 	 * @param {object}                  options.data                     =  绑定属性
 	 * @param {object[]=[]}             options.data.source             <=> 数据源
 	 * @param {string}                  options.data.source[].name       => 每项的内容
@@ -6316,7 +6019,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string=''}               options.data.class               => 补充class
 	 * @param {object}                  options.service                 @=> 数据服务
 	 */
-	var TreeSelect = Select2.extend({
+	var TreeSelect = Select.extend({
 	    name: 'treeSelect',
 	    template: template,
 	    config: function() {
@@ -6335,13 +6038,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TreeSelect;
 
 /***/ },
-/* 110 */
+/* 102 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select2 {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" title={selected ? selected.name : placeholder} on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{selected ? selected.name : placeholder}</span>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <treeView source={source} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n</div>"
 
 /***/ },
-/* 111 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6354,10 +6057,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(112);
+	var template = __webpack_require__(104);
 	var _ = __webpack_require__(6);
 
-	var TreeViewList = __webpack_require__(113);
+	var TreeViewList = __webpack_require__(105);
 
 	/**
 	 * @class TreeView
@@ -6450,13 +6153,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TreeView;
 
 /***/ },
-/* 112 */
+/* 104 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-treeview {class}\" z-dis={disabled} r-hide={!visible}>\n    <treeViewList source={source} visible />\n</div>"
 
 /***/ },
-/* 113 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6469,7 +6172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(114);
+	var template = __webpack_require__(106);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -6554,13 +6257,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TreeViewList;
 
 /***/ },
-/* 114 */
+/* 106 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n    {#list source as item}\n    <li>\n        <div class=\"treeview_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n            {/if}\n            <div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<treeViewList source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ },
-/* 115 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6572,8 +6275,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(13);
-	var template = __webpack_require__(116);
+	var Dropdown = __webpack_require__(79);
+	var template = __webpack_require__(108);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -6725,13 +6428,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Suggest;
 
 /***/ },
-/* 116 */
+/* 108 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <input class=\"u-input u-input-full\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n</div>"
 
 /***/ },
-/* 117 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6744,7 +6447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(118);
+	var template = __webpack_require__(110);
 	var _ = __webpack_require__(6);
 
 	var SIZE_UNITS = {
@@ -6973,13 +6676,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Uploader;
 
 /***/ },
-/* 118 */
+/* 110 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-uploader {class}\" r-hide={!visible}>\n    <div on-click={this.upload()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\">{title || '上传'}</a>\n        {/if}\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        {#if !_sending}\n        <!-- IE需要重置input[type=file] -->\n        <input type=\"file\" name={name} ref=\"file\" on-change={this._submit()}>\n        {/if}\n        {#list Object.keys(data) as key}\n        <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <iframe name=\"iframe{_id}\" on-load={this._onLoad()} ref=\"iframe\" />\n</div>"
 
 /***/ },
-/* 119 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6989,12 +6692,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var Dropdown = __webpack_require__(13);
-	var template = __webpack_require__(120);
+	var Dropdown = __webpack_require__(79);
+	var template = __webpack_require__(112);
 	var _ = __webpack_require__(6);
 
 	var filter = __webpack_require__(7);
-	var Calendar = __webpack_require__(121);
+	var Calendar = __webpack_require__(113);
 	var bowser = __webpack_require__(4);
 	var polyfill = __webpack_require__(3);
 	var MS_OF_DAY = 24*3600*1000;
@@ -7172,13 +6875,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 120 */
+/* 112 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-datepicker {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\" on-blur={this.toggle(false)}>\n    <div class=\"dropdown_hd\">\n        <input class=\"u-input u-input-full\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\" autofocus={autofocus} readonly={readonly} disabled={disabled}\n            on-focus={this.toggle(true)} on-change={this._onInput($event)}>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <calendar date={_date} minDate={minDate} maxDate={maxDate} on-select={this.select($event.date)} />\n    </div>\n</div>"
 
 /***/ },
-/* 121 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7191,7 +6894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(122);
+	var template = __webpack_require__(114);
 	var _ = __webpack_require__(6);
 
 	var bowser = __webpack_require__(4);
@@ -7439,13 +7142,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 122 */
+/* 114 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">日</span><span class=\"calendar_item\">一</span><span class=\"calendar_item\">二</span><span class=\"calendar_item\">三</span><span class=\"calendar_item\">四</span><span class=\"calendar_item\">五</span><span class=\"calendar_item\">六</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ },
-/* 123 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7456,7 +7159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(124);
+	var template = __webpack_require__(116);
 	var _ = __webpack_require__(6);
 	var NumberInput = __webpack_require__(89);
 
@@ -7561,13 +7264,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TimePicker;
 
 /***/ },
-/* 124 */
+/* 116 */
 /***/ function(module, exports) {
 
 	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\n\t<numberInput min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled} autofocus={autofocus} />\n\t<span>:</span>\n\t<numberInput min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled} />\n</span>"
 
 /***/ },
-/* 125 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7577,14 +7280,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var Dropdown = __webpack_require__(13);
-	var DatePicker = __webpack_require__(119);
-	var template = __webpack_require__(126);
+	var Dropdown = __webpack_require__(79);
+	var DatePicker = __webpack_require__(111);
+	var template = __webpack_require__(118);
 	var _ = __webpack_require__(6);
 
 	var filter = __webpack_require__(7);
-	var Calendar = __webpack_require__(121);
-	var TimePicker = __webpack_require__(123);
+	var Calendar = __webpack_require__(113);
+	var TimePicker = __webpack_require__(115);
 	var bowser = __webpack_require__(4);
 	var polyfill = __webpack_require__(3);
 
@@ -7764,13 +7467,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 126 */
+/* 118 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-datetimepicker {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <input class=\"u-input u-input-full\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\" autofocus={autofocus} readonly={readonly} disabled={disabled}\n            on-focus={this.toggle(true)} on-change={this._onInput($event)}>\n    </div>\n    <div class=\"dropdown_bd\" r-show={open} r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <calendar minDate={minDate} maxDate={maxDate} date={_date} on-select={this._onDateTimeChange($event.date, _time)}>\n            <timePicker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        </calendar>\n    </div>\n</div>"
 
 /***/ },
-/* 127 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7783,7 +7486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(128);
+	var template = __webpack_require__(120);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7821,13 +7524,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Progress;
 
 /***/ },
-/* 128 */
+/* 120 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ },
-/* 129 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7840,7 +7543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(130);
+	var template = __webpack_require__(122);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7929,13 +7632,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ },
-/* 130 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ },
-/* 131 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7948,7 +7651,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(132);
+	var template = __webpack_require__(124);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -7987,13 +7690,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Gotop;
 
 /***/ },
-/* 132 */
+/* 124 */
 /***/ function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-arrow-up\"></i>\n    {/if}\n</a>"
 
 /***/ },
-/* 133 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8006,7 +7709,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(134);
+	var template = __webpack_require__(126);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8092,13 +7795,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Tabs;
 
 /***/ },
-/* 134 */
+/* 126 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ },
-/* 135 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8111,10 +7814,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(136);
+	var template = __webpack_require__(128);
 	var _ = __webpack_require__(6);
 
-	var Panel = __webpack_require__(137);
+	var Panel = __webpack_require__(129);
 
 	/**
 	 * @class Collapse
@@ -8143,13 +7846,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Collapse;
 
 /***/ },
-/* 136 */
+/* 128 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\n    {#inc this.$body}\n</div>"
 
 /***/ },
-/* 137 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8162,7 +7865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(138);
+	var template = __webpack_require__(130);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8215,13 +7918,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Panel;
 
 /***/ },
-/* 138 */
+/* 130 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\n    <div class=\"panel_hd\" on-click={this.toggle()}>{title}</div>\n    <div r-hide={!open} style=\"overflow: hidden\" r-animation=\"on: enter; class: animated slideInY; on: leave; class: animated slideOutY;\">\n        <div class=\"panel_bd\">\n            {#inc this.$body}\n        </div>\n    </div>\n</div>"
 
 /***/ },
-/* 139 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8232,7 +7935,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(140);
+	var template = __webpack_require__(132);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8320,13 +8023,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Pager;
 
 /***/ },
-/* 140 */
+/* 132 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <li class=\"pager_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}><a>上一页</a></li>\n    {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _start > side + 1}<li><span>...</span></li>{/if}\n        {#list _start.._end as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _end < total - side}<li><span>...</span></li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {#else}\n        {#list 1..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {/if}\n    <li class=\"pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><a>下一页</a></li>\n</ul>"
 
 /***/ },
-/* 141 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8339,7 +8042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(142);
+	var template = __webpack_require__(134);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8516,13 +8219,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ },
-/* 142 */
+/* 134 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-close\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state}-circle\" r-hide={!message.state}></i>\n        {message.text}\n    </div>\n    {/list}\n</div>"
 
 /***/ },
-/* 143 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8535,7 +8238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(144);
+	var template = __webpack_require__(136);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8678,13 +8381,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 144 */
+/* 136 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-hide={!visible}>\n    <div class=\"modal_dialog\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            <a class=\"modal_close\" on-click={this.close(!cancelButton)}><i class=\"u-icon u-icon-close\"></i></a>\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\">\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        <div class=\"modal_ft\">\n            {#if okButton}\n            <button class=\"u-btn u-btn-primary\" on-click={this.close(true)} r-autofocus>{okButton === true ? '确定' : okButton}</button>\n            {/if}\n            {#if cancelButton}\n            <button class=\"u-btn\" on-click={this.close(false)}>{cancelButton === true ? '取消' : cancelButton}</button>\n            {/if}\n        </div>\n    </div>\n</div>"
 
 /***/ },
-/* 145 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8697,7 +8400,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(9);
-	var template = __webpack_require__(146);
+	var template = __webpack_require__(138);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8762,13 +8465,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ListView;
 
 /***/ },
-/* 146 */
+/* 138 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"m-listview {class}\" z-dis={disabled} r-hide={!visible}>\n    {#list source as item}\n    <li z-sel={multiple ? item.selected : selected === item} z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>\n        {#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ },
-/* 147 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8780,8 +8483,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ListView = __webpack_require__(145);
-	var template = __webpack_require__(148);
+	var ListView = __webpack_require__(137);
+	var template = __webpack_require__(140);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -8876,13 +8579,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = UltiListView;
 
 /***/ },
-/* 148 */
+/* 140 */
 /***/ function(module, exports) {
 
 	module.exports = "<droppable disabled={!dragdrop} on-dragover={this._onDragOver($event)} on-dragleave={this._onDragLeave($event)} on-drop={this._onDrop($event, item)}>\n<ul class=\"m-listview m-ultilistview {class}\" z-dis={disabled} r-hide={!visible}>\n    {#list source as item}\n    <droppable disabled={!dragdrop} on-dragover={this._onItemDragOver($event)} on-drop={this._onItemDrop($event, item)}>\n    <draggable disabled={!dragdrop} data={ @({root: source, item: item, index: item_index}) }>\n    <li z-sel={multiple ? item.selected : selected === item} z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>\n        {#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}\n    </li>\n    </draggable>\n    </droppable>\n    {/list}\n</ul>\n</droppable>"
 
 /***/ },
-/* 149 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8894,11 +8597,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var TreeView = __webpack_require__(111);
-	var template = __webpack_require__(150);
+	var TreeView = __webpack_require__(103);
+	var template = __webpack_require__(142);
 	var _ = __webpack_require__(6);
 
-	var MultiTreeViewList = __webpack_require__(151);
+	var MultiTreeViewList = __webpack_require__(143);
 
 	/**
 	 * @class MultiTreeView
@@ -8925,13 +8628,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 150 */
+/* 142 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-treeview m-multitreeview {class}\" z-dis={disabled} r-hide={!visible}>\n    <multiTreeViewList source={source} visible />\n</div>"
 
 /***/ },
-/* 151 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8943,8 +8646,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var TreeViewList = __webpack_require__(113);
-	var template = __webpack_require__(152);
+	var TreeViewList = __webpack_require__(105);
+	var template = __webpack_require__(144);
 	var _ = __webpack_require__(6);
 
 	/**
@@ -9002,13 +8705,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TreeViewList;
 
 /***/ },
-/* 152 */
+/* 144 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n    {#list source as item}\n    <li>\n        <div class=\"treeview_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n            {/if}\n            {#if !item.divider}\n            <check2 checked={item.checked} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n            {/if}\n            <div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<multiTreeViewList source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ },
-/* 153 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9021,9 +8724,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(154);
+	var template = __webpack_require__(146);
 	var _ = __webpack_require__(6);
-	var Notify = __webpack_require__(141);
+	var Notify = __webpack_require__(133);
 
 	/**
 	 * @class HTMLEditor
@@ -9256,13 +8959,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 154 */
+/* 146 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-editor {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"editor_preview\" r-html={html}></div>\n    <ul class=\"m-toolbar editor_toolbar\" z-dis={disabled}>\n        <li><a title=\"加粗\" on-click={this.bold()}><i class=\"u-icon u-icon-bold\"></i></a></li>\n        <li><a title=\"斜体\" on-click={this.italic()}><i class=\"u-icon u-icon-italic\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"引用\" on-click={this.quote()}><i class=\"u-icon u-icon-quote\"></i></a></li>\n        <li><a title=\"无序列表\" on-click={this.ul()}><i class=\"u-icon u-icon-list-ul\"></i></a></li>\n        <li><a title=\"有序列表\" on-click={this.ol()}><i class=\"u-icon u-icon-list-ol\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"链接\" on-click={this.link()}><i class=\"u-icon u-icon-link\"></i></a></li>\n        <li><a title=\"图片\" on-click={this.image()}><i class=\"u-icon u-icon-image\"></i></a></li>\n    </ul>\n    <textarea class=\"editor_textarea\" r-model={content} ref=\"textarea\" maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}></textarea>\n</div>\n<uploader visible={false} url={imageUrl} extensions={extensions} ref=\"uploader\" on-success={this._onUploaderSuccess($event)} on-error={this._onUploaderError($event)} />"
 
 /***/ },
-/* 155 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9275,9 +8978,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(156);
+	var template = __webpack_require__(148);
 	var _ = __webpack_require__(6);
-	var Notify = __webpack_require__(141);
+	var Notify = __webpack_require__(133);
 	// var marked = require('marked');
 
 	/**
@@ -9523,40 +9226,40 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 156 */
+/* 148 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-editor {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"editor_preview\" r-html={html}></div>\n    <ul class=\"m-toolbar editor_toolbar\" z-dis={disabled}>\n        <li><a title=\"加粗\" on-click={this.bold()}><i class=\"u-icon u-icon-bold\"></i></a></li>\n        <li><a title=\"斜体\" on-click={this.italic()}><i class=\"u-icon u-icon-italic\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"引用\" on-click={this.quote()}><i class=\"u-icon u-icon-quote\"></i></a></li>\n        <li><a title=\"无序列表\" on-click={this.ul()}><i class=\"u-icon u-icon-list-ul\"></i></a></li>\n        <li><a title=\"有序列表\" on-click={this.ol()}><i class=\"u-icon u-icon-list-ol\"></i></a></li>\n        <li class=\"toolbar_divider\">|</li>\n        <li><a title=\"链接\" on-click={this.link()}><i class=\"u-icon u-icon-link\"></i></a></li>\n        <li><a title=\"图片\" on-click={this.image()}><i class=\"u-icon u-icon-image\"></i></a></li>\n        <li class=\"f-fr\"><a title=\"帮助\" href=\"http://www.jianshu.com/p/7bd23251da0a\" target=\"_blank\"><i class=\"u-icon u-icon-info\"></i></a></li>\n    </ul>\n    <textarea class=\"editor_textarea\" r-model={content} ref=\"textarea\" maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}></textarea>\n</div>\n<uploader visible={false} url={imageUrl} extensions={extensions} ref=\"uploader\" on-success={this._onUploaderSuccess($event)} on-error={this._onUploaderError($event)} />"
 
 /***/ },
-/* 157 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _ = __webpack_require__(6);
 	var ajax = __webpack_require__(10);
-	var Validation = __webpack_require__(21);
+	var Validation = __webpack_require__(13);
 
-	var template = __webpack_require__(158);
+	var template = __webpack_require__(150);
 
 	/**
-	 * FormExt继承于Validation
-	 * 1. form.group具有和validation一样的校验功能, this.$refs.formgroup.validate().success
-	 * 2. form.group内实现统一的获取选择数据的接口；
+	 * Form继承于Validation
+	 * 1. 具有和validation一样的校验功能, this.$refs.formgroup.validate().success
+	 * 2. 实现统一的获取选择数据的接口；
 	 *
 	 * @example
-	 * <form.group service="{service.selector}" ref="formgroup">
-	 *   <form.item title="标题1" cols=3 sourceKey={key}>
+	 * <ui.form service="{service.selector}" ref="formgroup">
+	 *   <ui.field title="标题1" cols=3 sourceKey={key}>
 	 *     <select />
-	 *   </form.item>
-	 *   <form.item title="标题2" cols=3>
+	 *   </ui.field>
+	 *   <ui.field title="标题2" cols=3>
 	 *     <input />
-	 *   </form.item>
-	 * </form.ext>
+	 *   </ui.field>
+	 * </ui.form>
 	 */
-	var FormGroup = Validation.extend({
-	  name: 'form.group',
+	var UIForm = Validation.extend({
+	  name: 'ui.form',
 	  template: template,
 	  config: function (data) {
 	    this.selectors = [];
@@ -9600,41 +9303,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	module.exports = FormGroup;
+	module.exports = UIForm;
 
 
 /***/ },
-/* 158 */
+/* 150 */
 /***/ function(module, exports) {
 
-	module.exports = "<form class=\"m-form f-row\">\n\t{#inc this.$body}\n</form>"
+	module.exports = "<form class=\"m-form f-row f-cb\">\n\t{#inc this.$body}\n</form>"
 
 /***/ },
-/* 159 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _ = __webpack_require__(6);
-	var Validation = __webpack_require__(21);
+	var Validation = __webpack_require__(13);
+	var Hint = __webpack_require__(152);
 
-	var template = __webpack_require__(160);
+	var template = __webpack_require__(154);
 
 	/**
-	 * FormItem继承于Validation
-	 * 1. form.item具有和validation一样的校验功能
-	 * 2. form.item提供结构化的表单结构
+	 * Field继承于Validation
+	 * 1. 具有和validation一样的校验功能
+	 * 2. 提供结构化的表单结构
 	 *
 	 * @example
-	 * <form.item>
+	 * <ui.field title="密码" cols=3 hint="这个密码的用途">
 	 *    <form.component />
-	 * </form.item>
+	 * </ui.field>
 	 *
 	 * 使用说明:
 	 * form.item内最多包含一个验证组件,如果多余一个,console提示,并且只会验证第一个;其余丢弃;请将form.item中的内容封装为一个组件;
 	 */
-	var FormItem = Validation.extend({
-	  name: 'form.item',
+	var UIField = Validation.extend({
+	  name: 'ui.field',
 	  template: template,
 	  config: function (data) {
 	    _.extend(data, {});
@@ -9671,24 +9375,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	FormItem.directive('cols', function(ele, cols) {
+	UIField.directive('cols', function(ele, cols) {
 	  cols = this.$get(cols);
 	  if (!cols) { return; }
 
 	  ele.classList.add('g-col', 'g-col-' + cols);
 	});
 
-	module.exports = FormItem;
+	module.exports = UIField;
 
 
 /***/ },
-/* 160 */
+/* 152 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(2);
+	var template = __webpack_require__(153);
+
+	/**
+	 * Form继承于Validation
+	 * 1. 具有和validation一样的校验功能, this.$refs.formgroup.validate().success
+	 * 2. 实现统一的获取选择数据的接口；
+	 *
+	 * @example
+	 * <hint message="123" />
+	 */
+	var Hint = Component.extend({
+	    name: 'hint',
+	    template: template,
+	    config: function (data) {
+	        this.supr(data);
+	    }
+	});
+
+	module.exports = Hint;
+
+
+/***/ },
+/* 153 */
 /***/ function(module, exports) {
 
-	module.exports = "{#if title}\n<div class=\"u-formitem {clazz}\" cols=\"{cols}\">\n\t<label class=\"formitem_tt\">\n\t\t{title}\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>：\n\t</label>\n\t<span class=\"formitem_ct\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n{#else}\n\t<div class=\"{clazz}\" cols=\"{cols}\">\n\t{#inc this.$body}\n\t</div>\n{/if}\n"
+	module.exports = "<a href=\"javascript:;\" title=\"{message}\" class=\"u-hint\">\n\t<span class=\" u-icon u-icon-info-circle\"></span>\n</a>"
 
 /***/ },
-/* 161 */
+/* 154 */
+/***/ function(module, exports) {
+
+	module.exports = "{#if title}\n<div class=\"u-formitem\" cols=\"{cols}\">\n\t<label class=\"formitem_tt g-col g-col-4\">\n\t\t{#if hint}\n\t\t<hint message=\"{hint}\"/>\n\t\t{/if}\n\t\t{title}\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t</label>\n\t<span class=\"formitem_ct g-col g-col-8\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n{#else}\n\t<div cols=\"{cols}\">\n\t{#inc this.$body}\n\t</div>\n{/if}\n"
+
+/***/ },
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9701,7 +9439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(2);
-	var template = __webpack_require__(162);
+	var template = __webpack_require__(156);
 	var _ = __webpack_require__(6);
 
 	var UIButton = Component.extend({
@@ -9760,7 +9498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 162 */
+/* 156 */
 /***/ function(module, exports) {
 
 	module.exports = "<a class=\"u-btn u-btn-{type}\">{title}</a>"

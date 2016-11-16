@@ -11,7 +11,7 @@
 .u-formitem {
     display: inline-block;
     
-    .formitem_tt {}
+    .formitem_tt { position:relative; }
 }
 
 .u-formitem-block {

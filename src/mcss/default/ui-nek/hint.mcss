@@ -1,0 +1,29 @@
+.u-hint {
+    position:relative;
+    text-align:left;
+    &:hover { text-decoration:none; }
+    &:hover:before {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        border: solid;
+        border-color: #333 transparent;
+        border-width: 6px 6px 0 6px;
+        content: "";
+        z-index: 99;
+    }
+    &:hover:after {
+        position: absolute;
+        width: 220px;
+        left: 20%;
+        bottom: 26px;
+        padding: 5px 15px;
+        background: #333;
+        background: rgba(0,0,0,.8);
+        border-radius: 5px;
+        color: #fff;
+        content: attr(title);
+        z-index: 98;
+    }
+}
+

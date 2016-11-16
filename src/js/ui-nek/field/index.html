@@ -1,15 +1,18 @@
 {#if title}
-<div class="u-formitem {clazz}" cols="{cols}">
-	<label class="formitem_tt">
+<div class="u-formitem" cols="{cols}">
+	<label class="formitem_tt g-col g-col-4">
+		{#if hint}
+		<hint message="{hint}"/>
+		{/if}
 		{title}
-		<span class="formitem_rqr" r-hide="{!required}">&#42;</span>：
+		<span class="formitem_rqr" r-hide="{!required}">&#42;</span>
 	</label>
-	<span class="formitem_ct">
+	<span class="formitem_ct g-col g-col-8">
 		{#inc this.$body}
 	</span>
 </div>
 {#else}
-	<div class="{clazz}" cols="{cols}">
+	<div cols="{cols}">
 	{#inc this.$body}
 	</div>
 {/if}

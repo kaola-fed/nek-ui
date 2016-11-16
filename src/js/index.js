@@ -50,5 +50,6 @@ exports.UI  = {
 
     Form: require("./ui-nek/form/index.js"),
     Field: require("./ui-nek/field/index.js"),
-    Button: require("./ui-nek/button/index.js")
+    Button: require("./ui-nek/button/index.js"),
+    Hint: require("./ui-nek/hint/index.js")
 };
