@@ -155,6 +155,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'class': '',
 	            console: typeof console === 'undefined' ? undefined : console
 	        });
+	        this.$on('update', function(conf) {
+	          if (!conf) return;
+	          conf.forEach(function(d) {
+	              if (this.data.hasOwnProperty(d.key)) {
+	                  this.$update(d.key, d.value);
+	              }
+	          }.bind(this));
+	        })
+	        this.$watch('NEK', function(val) {
+	            this.$emit('update', val.conf);
+	        });
 	        this.supr();
 	    },
 	    /**
@@ -9451,15 +9462,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // default/primary/info/success/warning/error
 	            type: 'default',
 	        });
-	        this.$watch('NEK', function(val) {
-	            if (!val || !val.conf) return;
-	            this.data.title = val.conf
-	            val.conf.forEach(function(d) {
-	                if (this.data.hasOwnProperty(d.key)) {
-	                    this.data[d.key] = d.value;
-	                }
-	            }.bind(this))
-	        });
 	        this.supr();
 	    },
 	    $$NEK: function() {
@@ -9473,13 +9475,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                value: this.data.title,
 	                // 配置描述
 	                desc: '标题',
-	                // none: radio
-	                // string: input-text
-	                // number: input-number
-	                // boolean: radio
-	                // select: select
-	                // array: checkbox
-	                // expresion: input-text -> key={exp}
+	                // none: 配置页(checkbox) 生成页(attr)
+	                // string: 配置页(input-text) 生成页(attr="xx")
+	                // number: 配置页(input-number) 生成页(attr=3)
+	                // boolean: 配置页(checkbox) 生成页(attr=true)
+	                // select: 配置页(select) 生成页(attr="selected")
+	                // array: 配置页(checkbox-group) 生成页(attr={arr})
+	                // expresion: 配置页(input-text) 生成页(attr={exp})
 	                type: 'string',
 	                // 只有在 type 是 select/array 的时候才有意义
 	                selects: [],
