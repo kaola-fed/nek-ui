@@ -11,15 +11,6 @@ var template = require('./ui.form.html');
  * 1. 具有和validation一样的校验功能, this.$refs.formgroup.validate().success
  * 2. 实现统一的获取选择数据的接口；
  *
- * @example
- * <ui.form service="{service.selector}" ref="formgroup">
- *   <ui.field title="标题1" cols=3 sourceKey={key}>
- *     <select />
- *   </ui.field>
- *   <ui.field title="标题2" cols=3>
- *     <input />
- *   </ui.field>
- * </ui.form>
  */
 var UIForm = Validation.extend({
     name: 'ui.form',
