@@ -27,8 +27,10 @@
 <div class="m-example"></div>
 
 ```xml
-<dateTimePicker minDate={minDate} maxDate={maxDate} />
-<dateTimePicker minDate="2008-08-08 12:00" maxDate="2008-08-12 14:45" />
+<div class="f-cb">
+    <dateTimePicker minDate={minDate} maxDate={maxDate} class="g-col g-col-6" />
+    <dateTimePicker minDate="2008-08-08 12:00" maxDate="2008-08-12 14:45" class="g-col g-col-6" />
+</div>
 ```
 
 ```javascript
@@ -46,8 +48,10 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<dateTimePicker date={date} />
-<dateTimePicker date={date} />
+<div class="f-cb">
+    <dateTimePicker date={date} class="g-col g-col-6" />
+    <dateTimePicker date={date} class="g-col g-col-6" />
+</div>
 <p>当前选择的日期为：{date | format: 'yyyy-MM-dd HH:mm'}</p>
 ```
 

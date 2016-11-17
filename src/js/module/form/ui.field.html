@@ -1,0 +1,18 @@
+{#if title}
+<div class="u-formitem" cols="{cols}">
+	<label class="formitem_tt">
+		{#if hint}
+		<hint message="{hint}"/>
+		{/if}
+		{title}
+		<span class="formitem_rqr" r-hide="{!required}">&#42;</span>
+	</label>
+	<span class="formitem_ct">
+		{#inc this.$body}
+	</span>
+</div>
+{#else}
+<div cols="{cols}">
+	{#inc this.$body}
+</div>
+{/if}

@@ -26,7 +26,7 @@
     "font-awesome": "^4.6.3",
     "mass": "^0.1.0",
     "mcss": "^0.5.1",
-    "regularjs": "0.5.2",
+    "regularjs": "0.4.3",
     "reqwest": "^2.0.5",
     "validator": "^6.1.0",
     "xhr2": "^0.1.3"

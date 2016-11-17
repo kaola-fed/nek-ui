@@ -115,7 +115,9 @@
                 {"name": "AudioPlayer", "lowerName": "audioPlayer", "cnName": "音频播放器", "group": "播放器类", "hidden": true, "new": true},
                 {"name": "VideoPlayer", "lowerName": "videoPlayer", "cnName": "视频播放器", "group": "播放器类", "hidden": true, "new": true},
 
-                {"name": "Validation", "lowerName": "validation", "cnName": "表单验证", "group": "其他", "beta": true}
+                {"name": "UIForm", "lowerName": "ui.form", "cnName": "表单", "group": "表单类", "beta": true},
+                {"name": "UIField", "lowerName": "ui.field", "cnName": "表单字段", "group": "表单类", "beta": true},
+                {"name": "Validation", "lowerName": "validation", "cnName": "表单验证", "group": "表单类", "beta": true}
             ]
         }, {
             "name": "Demo",

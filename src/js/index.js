@@ -14,42 +14,47 @@ exports._ = require('./ui-base/_.js');
 exports.ajax = require("./ui-base/ajax.js");
 exports.Validation = require("./util/validation.js");
 
-exports.UI  = {
-    Dropdown: require("./unit/dropdown.js"),
-    Menu: require("./unit/menu.js"),
-    Input: require("./unit/input.js"),
-    TextArea: require("./unit/textarea.js"),
-    NumberInput: require("./unit/numberInput.js"),
-    Check: require("./unit/check.js"),
-    CheckGroup: require("./unit/checkGroup.js"),
-    RadioGroup: require("./unit/radioGroup.js"),
-    Select: require("./unit/select.js"),
-    SelectGroup: require("./unit/selectGroup.js"),
-    TreeSelect: require("./unit/treeSelect.js"),
-    Suggest: require("./unit/suggest.js"),
-    Uploader: require("./unit/uploader.js"),
-    DatePicker: require("./unit/datePicker.js"),
-    TimePicker: require("./unit/timePicker.js"),
-    DateTimePicker: require("./unit/dateTimePicker.js"),
-    Progress: require("./unit/progress.js"),
-    Loading: require("./unit/loading.js"),
-    Gotop: require("./unit/gotop.js"),
+exports.Dropdown = require("./unit/navigation/dropdown.js");
+exports.Menu = require("./unit/navigation/menu.js");
 
-    Tabs: require("./module/tabs.js"),
-    Collapse: require("./module/collapse.js"),
-    Pager: require("./module/pager.js"),
-    Notify: require("./module/notify.js"),
-    Modal: require("./module/modal.js"),
-    ListView: require("./module/listView.js"),
-    UltiListView: require("./module/ultiListView.js"),
-    TreeView: require("./module/treeView.js"),
-    MultiTreeView: require("./module/multiTreeView.js"),
-    Calendar: require("./module/calendar.js"),
-    HTMLEditor: require("./module/htmlEditor.js"),
-    MarkEditor: require("./module/markEditor.js"),
+exports.UIInput = require("./unit/form/ui.input.js");
+exports.UITextArea = require("./unit/form/ui.textarea.js");
+exports.NumberInput = require("./unit/form/numberInput.js");
+exports.Check = require("./unit/form/check.js");
+exports.CheckGroup = require("./unit/form/checkGroup.js");
+exports.RadioGroup = require("./unit/form/radioGroup.js");
+exports.UISelect = require("./unit/form/ui.select.js");
+exports.SelectGroup = require("./unit/form/selectGroup.js");
+exports.TreeSelect = require("./unit/form/treeSelect.js");
+exports.Suggest = require("./unit/form/suggest.js");
+exports.Uploader = require("./unit/form/uploader.js");
+exports.UIButton = require("./unit/form/ui.button.js");
 
-    Form: require("./ui-nek/form/index.js"),
-    Field: require("./ui-nek/field/index.js"),
-    Button: require("./ui-nek/button/index.js"),
-    Hint: require("./ui-nek/hint/index.js")
-};
+exports.DatePicker = require("./unit/calendar/datePicker.js");
+exports.TimePicker = require("./unit/calendar/timePicker.js");
+exports.DateTimePicker = require("./unit/calendar/dateTimePicker.js");
+
+exports.Progress = require("./unit/widget/progress.js");
+exports.Loading = require("./unit/widget/loading.js");
+exports.Gotop = require("./unit/widget/gotop.js");
+exports.Hint = require("./unit/widget/hint.js");
+
+exports.Tabs = require("./module/navigation/tabs.js");
+exports.Collapse = require("./module/navigation/collapse.js");
+exports.Pager = require("./module/navigation/pager.js");
+
+exports.Notify = require("./module/frame/notify.js");
+exports.Modal = require("./module/frame/modal.js");
+
+exports.ListView = require("./module/data.view/listView.js");
+exports.UltiListView = require("./module/data.view/ultiListView.js");
+exports.TreeView = require("./module/data.view/treeView.js");
+exports.MultiTreeView = require("./module/data.view/multiTreeView.js");
+
+exports.Calendar = require("./module/calendar/calendar.js");
+
+exports.HTMLEditor = require("./module/editor/htmlEditor.js");
+exports.MarkEditor = require("./module/editor/markEditor.js");
+
+exports.UIForm = require("./module/form/ui.form.js");
+exports.UIField = require("./module/form/ui.field.js");
