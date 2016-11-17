@@ -10,4 +10,7 @@
 
 .u-timepicker {
 	display: inline-block;
+	.u-numberinput, .u-input {
+	    width:auto;
+	}
 }

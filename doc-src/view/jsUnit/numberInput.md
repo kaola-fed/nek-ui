@@ -4,7 +4,6 @@
 <div class="m-example"></div>
 
 ```xml
-<numberInput />
 <numberInput value=6 />
 ```
 

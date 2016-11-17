@@ -148,7 +148,7 @@
         
         
         
-        <li><a href="../jsunit/select2.html" >选择扩展<small> Select2</small>
+        <li><a href="../jsunit/ui.select.html" >选择扩展<small> UISelect</small>
         
             <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
@@ -159,14 +159,6 @@
         <li><a href="../jsunit/selectgroup.html" >多级选择<small> SelectGroup</small>
         
             <span class="u-badge2 u-badge2-new" title="该组件最近刚添加到库中"></span>
-        
-        </a></li>
-        
-        
-        
-        <li><a href="../jsunit/select2group.html" >多级选择2<small> Select2Group</small>
-        
-            <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
         </a></li>
         
@@ -282,8 +274,8 @@
 <h4 id="-">禁用某一项，禁用组件</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">disabled</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">disabled</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-6&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -350,9 +342,17 @@
 <h4 id="-">匹配方式</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;匹配全局&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;all&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;只匹配开头&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;start&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;只匹配结尾&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;end&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.field</span> <span class="cm-attribute">cols</span>=<span class="cm-attribute">4</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;匹配全局&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;all&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.field</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.field</span> <span class="cm-attribute">cols</span>=<span class="cm-attribute">4</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;只匹配开头&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;start&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.field</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.field</span> <span class="cm-attribute">cols</span>=<span class="cm-attribute">4</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;只匹配结尾&quot;</span> <span class="cm-attribute">matchType</span>=<span class="cm-string">&quot;end&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.field</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -770,8 +770,8 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<suggest source={source} />
-<suggest source={source} disabled />
+<suggest source={source} class="g-col g-col-6" />
+<suggest source={source} disabled class="g-col g-col-6" />
     */})
 var component = new RGUI.Component({
     template: template,
@@ -837,9 +837,17 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<suggest source={source} placeholder="匹配全局" matchType="all" />
-<suggest source={source} placeholder="只匹配开头" matchType="start" />
-<suggest source={source} placeholder="只匹配结尾" matchType="end" />
+<ui.form>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="匹配全局" matchType="all" />
+    </ui.field>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="只匹配开头" matchType="start" />
+    </ui.field>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="只匹配结尾" matchType="end" />
+    </ui.field>
+</ui.form>
     */})
 var component = new RGUI.Component({
     template: template,

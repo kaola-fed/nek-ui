@@ -23,6 +23,36 @@ var component = new RGUI.Component({
 });
 ```
 
+#### 表单项
+
+在表单中使用
+
+<div class="m-example"></div>
+
+```xml
+<ui.form>
+    <ui.field cols="12" title="用户名" hint="用户名的用途">
+        <checkGroup source={source} />
+    </ui.field>
+</ui.form>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '选项1'},
+            {name: '选项2'},
+            {name: '选项3'},
+            {name: '选项4'},
+            {name: '选项5'},
+            {name: '选项6'}
+        ]
+    }
+});
+```
+
 #### 禁用组件
 
 <div class="m-example"></div>
@@ -92,30 +122,6 @@ var component = new RGUI.Component({
                 success: success
             });
         }
-    }
-});
-```
-
-#### 使用Check2
-
-<div class="m-example"></div>
-
-```xml
-<check2Group source={source} />
-```
-
-```javascript
-var component = new RGUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
     }
 });
 ```

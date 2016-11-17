@@ -4,8 +4,14 @@
 <div class="m-example"></div>
 
 ```xml
-<dateTimePicker />
-<dateTimePicker date="2012-12-21 12:21" />
+<ui.form>
+    <ui.field cols=6>
+        <dateTimePicker />
+    </ui.field>
+    <ui.field cols=6>
+        <dateTimePicker date="2012-12-21 12:21" />
+    </ui.field>
+</ui.form>
 ```
 
 #### 禁用组件

@@ -4,7 +4,9 @@
 <div class="m-example"></div>
 
 ```xml
-<menu source={source} />
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-4" />
+</div>
 ```
 
 ```javascript
@@ -36,7 +38,9 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<menu source={source} title="修改标题" />
+<div class="f-cb">
+    <menu source={source} title="修改标题" class="g-col g-col-4" />
+</div>
 ```
 
 ```javascript
@@ -68,8 +72,10 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<menu source={source} />
-<menu source={source} disabled />
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-4" />
+    <menu source={source} class="g-col g-col-4" disabled />
+</div>
 ```
 
 ```javascript
@@ -135,21 +141,20 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<menu source={source}>
-    <a class="u-btn u-btn-primary">Primary</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-success">Success</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-warning">Warning</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-error">Error</a>
-</menu>
-<menu source={source}>
-    <a>Link</a>
-</menu>
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-primary">Primary</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-success">Success</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-warning">Warning</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-error">Error</a>
+    </menu>
+</div>
 ```
 
 ```javascript

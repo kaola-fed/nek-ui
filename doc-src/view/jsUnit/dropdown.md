@@ -4,7 +4,9 @@
 <div class="m-example"></div>
 
 ```xml
-<dropdown source={source} />
+<div class="f-cb">
+    <dropdown source={source} class="g-col g-col-3"/>
+</div>
 ```
 
 ```javascript
@@ -46,8 +48,10 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<dropdown source={source} />
-<dropdown source={source} disabled />
+<div class="f-cb">
+    <dropdown source={source} class="g-col g-col-6" />
+    <dropdown source={source} class="g-col g-col-6" disabled />
+</div>
 ```
 
 ```javascript
@@ -90,21 +94,20 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<dropdown source={source}>
-    <a class="u-btn u-btn-primary">Primary</a>
-</dropdown>
-<dropdown source={source}>
-    <a class="u-btn u-btn-success">Success</a>
-</dropdown>
-<dropdown source={source}>
-    <a class="u-btn u-btn-warning">Warning</a>
-</dropdown>
-<dropdown source={source}>
-    <a class="u-btn u-btn-error">Error</a>
-</dropdown>
-<dropdown source={source}>
-    <a>Link</a>
-</dropdown>
+<div class="f-cb">
+    <dropdown source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-primary">Primary</a>
+    </dropdown>
+    <dropdown source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-success">Success</a>
+    </dropdown>
+    <dropdown source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-warning">Warning</a>
+    </dropdown>
+    <dropdown source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-error">Error</a>
+    </dropdown>
+</div>
 ```
 
 ```javascript

@@ -9,22 +9,24 @@
 // ========================================================================
 
 .u-formitem {
-    display: inline-block;
+    display: flex;
     
     .formitem_tt { position:relative; }
 }
 
 .u-formitem-block {
-    display: block;
+    display:flex;
     $clearfix();
 
     .formitem_tt {
         display: block;
-        float: left;
+        width: 150px;
+        padding-right:10px;
         text-align: right;
     }
 
     .formitem_ct {
+        flex: 1;
         display: block; 
     }
 }

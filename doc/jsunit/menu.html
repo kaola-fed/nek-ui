@@ -148,7 +148,7 @@
         
         
         
-        <li><a href="../jsunit/select2.html" >选择扩展<small> Select2</small>
+        <li><a href="../jsunit/ui.select.html" >选择扩展<small> UISelect</small>
         
             <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
@@ -159,14 +159,6 @@
         <li><a href="../jsunit/selectgroup.html" >多级选择<small> SelectGroup</small>
         
             <span class="u-badge2 u-badge2-new" title="该组件最近刚添加到库中"></span>
-        
-        </a></li>
-        
-        
-        
-        <li><a href="../jsunit/select2group.html" >多级选择2<small> Select2Group</small>
-        
-            <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
         </a></li>
         
@@ -260,7 +252,9 @@
 <h4 id="-">基本形式</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -287,7 +281,9 @@
 <h4 id="-">修改标题</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;修改标题&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;修改标题&quot;</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -314,8 +310,10 @@
 <h4 id="-">禁用某一项，禁用组件</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">disabled</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span> <span class="cm-attribute">disabled</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -371,21 +369,20 @@
 <h4 id="-">按钮自定义</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Primary<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-success&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Success<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-warning&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Warning<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-error&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Error<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>Link<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-3&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-primary&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Primary<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-3&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-success&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Success<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-3&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-warning&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Warning<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">menu</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-3&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn u-btn-error&quot;</span><span class="cm-tagcm-bracket">&gt;</span>Error<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">menu</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -702,7 +699,9 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
 var index = 0;
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<menu source={source} />
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-4" />
+</div>
     */})
 var component = new RGUI.Component({
     template: template,
@@ -729,7 +728,9 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<menu source={source} title="修改标题" />
+<div class="f-cb">
+    <menu source={source} title="修改标题" class="g-col g-col-4" />
+</div>
     */})
 var component = new RGUI.Component({
     template: template,
@@ -756,8 +757,10 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<menu source={source} />
-<menu source={source} disabled />
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-4" />
+    <menu source={source} class="g-col g-col-4" disabled />
+</div>
     */})
 var component = new RGUI.Component({
     template: template,
@@ -813,21 +816,20 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<menu source={source}>
-    <a class="u-btn u-btn-primary">Primary</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-success">Success</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-warning">Warning</a>
-</menu>
-<menu source={source}>
-    <a class="u-btn u-btn-error">Error</a>
-</menu>
-<menu source={source}>
-    <a>Link</a>
-</menu>
+<div class="f-cb">
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-primary">Primary</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-success">Success</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-warning">Warning</a>
+    </menu>
+    <menu source={source} class="g-col g-col-3">
+        <a class="u-btn u-btn-error">Error</a>
+    </menu>
+</div>
     */})
 var component = new RGUI.Component({
     template: template,

@@ -148,7 +148,7 @@
         
         
         
-        <li><a href="../jsunit/select2.html" >选择扩展<small> Select2</small>
+        <li><a href="../jsunit/ui.select.html" >选择扩展<small> UISelect</small>
         
             <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
@@ -159,14 +159,6 @@
         <li><a href="../jsunit/selectgroup.html" >多级选择<small> SelectGroup</small>
         
             <span class="u-badge2 u-badge2-new" title="该组件最近刚添加到库中"></span>
-        
-        </a></li>
-        
-        
-        
-        <li><a href="../jsunit/select2group.html" >多级选择2<small> Select2Group</small>
-        
-            <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
         </a></li>
         
@@ -276,6 +268,30 @@
     }
 });
 </code></pre>
+<h4 id="-">表单项</h4>
+<p>在表单中使用</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.field</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;用户名&quot;</span> <span class="cm-attribute">hint</span>=<span class="cm-string">&quot;用户名的用途&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">checkGroup</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.field</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">source</span>: [
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项1&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项2&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项3&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项4&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项5&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项6&#39;</span>}
+        ]
+    }
+});
+</code></pre>
 <h4 id="-">禁用组件</h4>
 <div class="m-example"></div>
 
@@ -331,25 +347,6 @@
                 <span class="cm-property">success</span>: <span class="cm-variable-2">success</span>
             });
         }
-    }
-});
-</code></pre>
-<h4 id="-check2">使用Check2</h4>
-<div class="m-example"></div>
-
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">check2Group</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-</code></pre>
-<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
-    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
-    <span class="cm-property">data</span>: {
-        <span class="cm-property">source</span>: [
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项1&#39;</span>},
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项2&#39;</span>},
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项3&#39;</span>},
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项4&#39;</span>},
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项5&#39;</span>},
-            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项6&#39;</span>}
-        ]
     }
 });
 </code></pre>
@@ -545,6 +542,29 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
+<ui.form>
+    <ui.field cols="12" title="用户名" hint="用户名的用途">
+        <checkGroup source={source} />
+    </ui.field>
+</ui.form>
+    */})
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '选项1'},
+            {name: '选项2'},
+            {name: '选项3'},
+            {name: '选项4'},
+            {name: '选项5'},
+            {name: '选项6'}
+        ]
+    }
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = RGUI._.multiline(function(){/*
 <checkGroup source={source} disabled />
     */})
 var component = new RGUI.Component({
@@ -597,25 +617,6 @@ var component = new RGUI.Component({
                 success: success
             });
         }
-    }
-});
-    component.$inject($$(".m-example")[index]);
-})(index++);
-(function(index) {
-    var template = RGUI._.multiline(function(){/*
-<check2Group source={source} />
-    */})
-var component = new RGUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
     }
 });
     component.$inject($$(".m-example")[index]);

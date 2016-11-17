@@ -9,7 +9,7 @@
 // ========================================================================
 
 .u-select2 {
-    width: 160px;
+    width: 100%;
 
     .dropdown_hd {
         height: $u-formctrl_height;
@@ -34,5 +34,14 @@
         background: $u-formctrl-disabled_background;
         $border: $u-formctrl-disabled_border;
         color: $u-formctrl-disabled_color;
+    }
+}
+
+.u-select2group {
+    .u-select2 {
+        width:160px;
+    }
+    .u-dropdown {
+        display:inline-block;
     }
 }

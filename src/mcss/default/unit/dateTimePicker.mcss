@@ -9,9 +9,6 @@
 // ========================================================================
 
 .u-datetimepicker {
-    > .dropdown_hd > .u-input {
-        width: 154px;
-    }
 
     .u-timepicker {
         margin: 4px 0;

@@ -9434,7 +9434,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 154 */
 /***/ function(module, exports) {
 
-	module.exports = "{#if title}\n<div class=\"u-formitem\" cols=\"{cols}\">\n\t<label class=\"formitem_tt g-col g-col-4\">\n\t\t{#if hint}\n\t\t<hint message=\"{hint}\"/>\n\t\t{/if}\n\t\t{title}\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t</label>\n\t<span class=\"formitem_ct g-col g-col-8\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n{#else}\n\t<div cols=\"{cols}\">\n\t{#inc this.$body}\n\t</div>\n{/if}\n"
+	module.exports = "{#if title}\n<div class=\"u-formitem\" cols=\"{cols}\">\n\t<label class=\"formitem_tt\">\n\t\t{#if hint}\n\t\t<hint message=\"{hint}\"/>\n\t\t{/if}\n\t\t{title}\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t</label>\n\t<span class=\"formitem_ct\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n{#else}\n\t<div cols=\"{cols}\">\n\t{#inc this.$body}\n\t</div>\n{/if}\n"
 
 /***/ },
 /* 155 */

@@ -148,7 +148,7 @@
         
         
         
-        <li><a href="../jsunit/select2.html" >选择扩展<small> Select2</small>
+        <li><a href="../jsunit/ui.select.html" >选择扩展<small> UISelect</small>
         
             <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
@@ -159,14 +159,6 @@
         <li class="z-crt"><a href="../jsunit/selectgroup.html" >多级选择<small> SelectGroup</small>
         
             <span class="u-badge2 u-badge2-new" title="该组件最近刚添加到库中"></span>
-        
-        </a></li>
-        
-        
-        
-        <li><a href="../jsunit/select2group.html" >多级选择2<small> Select2Group</small>
-        
-            <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
         </a></li>
         
@@ -261,6 +253,51 @@
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">selectGroup</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">depth</span>=<span class="cm-attribute">3</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">source</span>: [
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;理学&#39;</span>, <span class="cm-property">children</span>: [
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;物理学&#39;</span>, <span class="cm-property">children</span>: [
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;理论物理&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;凝聚态物理&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;材料物理&#39;</span>}
+                ]},
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;数学&#39;</span>, <span class="cm-property">children</span>: [
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;基础数学&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;计算数学&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;应用数学&#39;</span>}
+                ]},
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;化学&#39;</span>}
+            ]},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;工学&#39;</span>, <span class="cm-property">children</span>: [
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;计算机科学与技术&#39;</span>, <span class="cm-property">children</span>: [
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;计算机系统结构&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;计算机软件与理论&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;计算机应用技术&#39;</span>}
+                ]},
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;软件工程&#39;</span>},
+                {<span class="cm-property">name</span>: <span class="cm-string">&#39;机械工程&#39;</span>, <span class="cm-property">children</span>: [
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;机械制造及其自动化&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;机械电子工程&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;机械设计及理论&#39;</span>},
+                    {<span class="cm-property">name</span>: <span class="cm-string">&#39;车辆工程&#39;</span>}
+                ]}
+            ]}
+        ]
+    }
+});
+</code></pre>
+<h4 id="-">表单项</h4>
+<p>在表单中使用</p>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.field</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;12&quot;</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;用户名&quot;</span> <span class="cm-attribute">hint</span>=<span class="cm-string">&quot;用户名的用途&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">selectGroup</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">depth</span>=<span class="cm-attribute">3</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.field</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -741,6 +778,50 @@ var index = 0;
 (function(index) {
     var template = RGUI._.multiline(function(){/*
 <selectGroup source={source} depth=3 />
+    */})
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ]
+    }
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = RGUI._.multiline(function(){/*
+<ui.form>
+    <ui.field cols="12" title="用户名" hint="用户名的用途">
+        <selectGroup source={source} depth=3 />
+    </ui.field>
+</ui.form>
     */})
 var component = new RGUI.Component({
     template: template,

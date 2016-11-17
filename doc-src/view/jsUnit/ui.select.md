@@ -5,8 +5,7 @@
 <div class="m-example"></div>
 
 ```xml
-<select2 source={['简单选项1', '简单选项2', '简单选项3']} />
-<select2 source={source} />
+<ui.select source={source} />
 ```
 
 ```javascript
@@ -22,6 +21,20 @@ var component = new RGUI.Component({
 });
 ```
 
+#### 表单项
+
+在表单中使用
+
+<div class="m-example"></div>
+
+```xml
+<ui.form>
+    <ui.field cols="12" title="用户名" hint="用户名的用途">
+        <ui.select source={['简单选项1', '简单选项2', '简单选项3']} />
+    </ui.field>
+</ui.form>
+```
+
 #### selected, value和key
 
 `selected`表示当前选择项，`value`表示当前选择值。`key`表示数据项的键，默认为`'id'`。
@@ -31,9 +44,17 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source} selected={selected} />
-<select2 source={source} value=2 />
-<select2 source={source} key="name" value="选项3" />
+<ui.form>
+    <ui.field cols=4>
+        <ui.select source={source} selected={selected} />
+    </ui.field>
+    <ui.field cols=4>
+        <ui.select source={source} value=2 />
+    </ui.field>
+    <ui.field cols=4>
+        <ui.select source={source} key="name" value="选项3" />
+    </ui.field>
+</ui.form>
 ```
 
 ```javascript
@@ -57,8 +78,14 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source} />
-<select2 source={source} disabled />
+<ui.form>
+    <ui.field cols=6>
+        <ui.select source={source} />
+    </ui.field>
+    <ui.field cols=6>
+        <ui.select source={source} disabled />
+    </ui.field>
+</ui.form>
 ```
 
 ```javascript
@@ -79,7 +106,11 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source} />
+<ui.form>
+    <ui.field cols=12>
+        <ui.select source={source} />
+    </ui.field>
+</ui.form>
 ```
 
 ```javascript
@@ -103,8 +134,14 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source} placeholder="全部" />
-<select2 source={source} placeholder="" />
+<ui.form>
+    <ui.field cols=6>
+        <ui.select source={source} placeholder="全部" />
+    </ui.field>
+    <ui.field cols=6>
+        <ui.select source={source} placeholder="" />
+    </ui.field>
+</ui.form>
 ```
 
 ```javascript
@@ -125,7 +162,7 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 service={@(this.service)} value="2" />
+<ui.select service={@(this.service)} value="2" />
 ```
 
 ```javascript
@@ -150,7 +187,7 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source} selected={selected} value={value} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
+<ui.select source={source} selected={selected} value={value} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
 ```
 
 ```javascript
@@ -173,7 +210,7 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<select2 source={source}
+<ui.select source={source}
     on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
     on-select={console.log('on-select:', '$event.selected:', $event.selected)}
     on-change={console.log('on-change:', '$event:', $event)} />
@@ -191,12 +228,3 @@ var component = new RGUI.Component({
     }
 });
 ```
-
-
-<!-- #### Test
-
-<!- div class="m-example"></div>
-
-```! xml
-<select2 source={['很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项', '很长很高很长很高很长很高的选择项']} />
-``` -->

@@ -9,29 +9,29 @@
     <div class="u-formitem">
         <label class="formitem_tt">用户名<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <input2 rules={nameRules} maxlength=12 tip="4~12个字符，包括字母、数字、下划线" />
+            <ui.input rules={nameRules} maxlength=12 placeholder="4~12个字符，包括字母、数字、下划线" />
         </span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">邮箱：</label>
         <span class="formitem_ct">
-            <input2 rules={emailRules} tip="可选，但需要校验格式" />
+            <ui.input rules={emailRules} placeholder="可选，但需要校验格式" />
         </span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">设置密码<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <input2 type="password" rules={passwordRules} value={password} maxlength=18 tip="6~18个字符，包括字母、数字、下划线" />
+            <ui.input type="password" rules={passwordRules} value={password} maxlength=18 placeholder="6~18个字符，包括字母、数字、下划线" />
         </span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">确认密码<span class="formitem_rqr">*</span>：</label>
-        <span class="formitem_ct"><input2 type="password" rules={confirmRules} maxlength=18 /></span>
+        <span class="formitem_ct"><ui.input type="password" rules={confirmRules} maxlength=18 /></span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">验证码<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <input2 rules={vcodeRules} maxlength=5 />
+            <ui.input rules={vcodeRules} maxlength=5 />
             <img src="../img/verifyCode.jpg">
             <a>换一张</a>
         </span>

@@ -148,7 +148,7 @@
         
         
         
-        <li><a href="../jsunit/select2.html" >选择扩展<small> Select2</small>
+        <li><a href="../jsunit/ui.select.html" >选择扩展<small> UISelect</small>
         
             <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
@@ -159,14 +159,6 @@
         <li><a href="../jsunit/selectgroup.html" >多级选择<small> SelectGroup</small>
         
             <span class="u-badge2 u-badge2-new" title="该组件最近刚添加到库中"></span>
-        
-        </a></li>
-        
-        
-        
-        <li><a href="../jsunit/select2group.html" >多级选择2<small> Select2Group</small>
-        
-            <span class="u-badge2 u-badge2-stable" title="该组件目前已比较稳定"></span>
         
         </a></li>
         
@@ -260,8 +252,7 @@
 <h4 id="-">基本形式</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-tagcm-bracket">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">date</span>=<span class="cm-string">&quot;2008-08-08&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">date</span>=<span class="cm-string">&quot;2008-08-08&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
 </code></pre>
 <h4 id="-">禁用组件</h4>
 <div class="m-example"></div>
@@ -272,7 +263,6 @@
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">minDate</span>=<span class="cm-attribute">{minDate}</span> <span class="cm-attribute">maxDate</span>=<span class="cm-attribute">{maxDate}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">minDate</span>=<span class="cm-string">&quot;2008-08-08&quot;</span> <span class="cm-attribute">maxDate</span>=<span class="cm-string">&quot;2008-08-16&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
@@ -286,7 +276,6 @@
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">date</span>=<span class="cm-attribute">{date}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">date</span>=<span class="cm-attribute">{date}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
 <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span>当前选择的日期为：{date | format: &#39;yyyy-MM-dd&#39;}<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <h4 id="-">事件</h4>
@@ -614,7 +603,6 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
 var index = 0;
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<datePicker />
 <datePicker date="2008-08-08" />
     */})
 var component = new RGUI.Component({
@@ -634,7 +622,6 @@ var component = new RGUI.Component({
 (function(index) {
     var template = RGUI._.multiline(function(){/*
 <datePicker minDate={minDate} maxDate={maxDate} />
-<datePicker minDate="2008-08-08" maxDate="2008-08-16" />
     */})
 var component = new RGUI.Component({
     template: template,
@@ -647,7 +634,6 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = RGUI._.multiline(function(){/*
-<datePicker date={date} />
 <datePicker date={date} />
 <p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
     */})

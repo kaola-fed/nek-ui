@@ -9,7 +9,6 @@
 // ========================================================================
 
 .u-dropdown {
-    display: inline-block;
     position: relative;
     
     .dropdown_bd {

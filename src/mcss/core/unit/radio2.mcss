@@ -9,8 +9,11 @@
 // ========================================================================
 
 .u-radio2 {
+    display:inline-block;
     cursor: pointer;
     $user-select: none;
+    white-space:nowrap;
+    margin-bottom:8px;
 
     .radio2_box {
         display: inline-block;

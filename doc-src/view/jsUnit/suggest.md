@@ -31,8 +31,8 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<suggest source={source} />
-<suggest source={source} disabled />
+<suggest source={source} class="g-col g-col-6" />
+<suggest source={source} disabled class="g-col g-col-6" />
 ```
 
 ```javascript
@@ -115,9 +115,17 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<suggest source={source} placeholder="匹配全局" matchType="all" />
-<suggest source={source} placeholder="只匹配开头" matchType="start" />
-<suggest source={source} placeholder="只匹配结尾" matchType="end" />
+<ui.form>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="匹配全局" matchType="all" />
+    </ui.field>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="只匹配开头" matchType="start" />
+    </ui.field>
+    <ui.field cols=4>
+        <suggest source={source} placeholder="只匹配结尾" matchType="end" />
+    </ui.field>
+</ui.form>
 ```
 
 ```javascript
