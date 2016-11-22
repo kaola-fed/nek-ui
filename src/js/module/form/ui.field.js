@@ -64,4 +64,11 @@ UIField.directive('cols', function(ele, cols) {
     ele.classList.add('g-col', 'g-col-' + cols);
 });
 
+UIField.directive('offset', function(ele, offset) {
+    cols = this.$get(offset);
+    if (!offset) { return; }
+
+    ele.classList.add('g-offset-' + offset);
+});
+
 module.exports = UIField;

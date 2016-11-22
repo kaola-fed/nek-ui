@@ -21,6 +21,7 @@
     .formitem_tt {
         display: block;
         width: 150px;
+        padding-top:7px;
         padding-right:10px;
         text-align: right;
     }
