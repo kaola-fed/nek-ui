@@ -140,7 +140,7 @@
     }
 
     .u-btn-primary {
-        color: #449ECC;
+        color: #1E9476;
     }
 
     .u-btn-primary:hover {

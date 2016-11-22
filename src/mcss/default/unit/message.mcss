@@ -13,7 +13,6 @@
     background: $background-base;
     color: #777;
     $border: $border-base;
-    $border-radius: $border-radius-base;
 
     .message_close {
         color: black;

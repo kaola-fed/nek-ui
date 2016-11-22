@@ -14,7 +14,7 @@
 .cm-qualifier {color: #0e7bc9;}
 .cm-builtin {color: #df9516;}
 .cm-bracket {color: #292e33;}
-.cm-tag {color: #0e7bc9;}
+.cm-tag {color: #31995E;}
 .cm-tag.cm-bracket {color: #094f81;}
 .cm-attribute {color: #ef2540;}
 .cm-header {color: #ef2540;}

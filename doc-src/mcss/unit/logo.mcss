@@ -2,13 +2,13 @@
     display: block;
     float: left;
     margin-left: 12px;
-    background: #4c9dcc url('../img/logo-v2.0-text.png') center center no-repeat;
-    width: 72px;
-    height: 72px;
+    background: #238759;
+    padding:0 30px;
+    color:#fefefe;
+    height: 60px;
+    line-height:60px;
 
-    > h1 {
-        display: none;
-    }
+    h1 { display:inline-block; margin:0; font-size: 16px; font-weight:lighter; }
 }
 
 .u-logo-index {

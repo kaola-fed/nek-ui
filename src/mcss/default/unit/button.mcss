@@ -20,13 +20,11 @@
     background: $background-base;
     color: $color-base;
     $border: $border-base;
-    $border-radius: $border-radius-base;
 }
 
 /* Hover */
 .u-btn:hover,
 .u-btn:focus {
-    background: $brand-default-dark;
     $border: $brand-default-darker;
 }
 

@@ -8,7 +8,7 @@
 // Varibles:
 // ========================================================================
 
-$m-navbar_height = 68px;
+$m-navbar_height = 60px;
 $m-navbar_background = $brand-secondary;
 
 // Component:       `m-navbar`

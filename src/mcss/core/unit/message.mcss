@@ -31,10 +31,9 @@
 // Description:     颜色扩展
 // ========================================================================
 
-$u-message-extend_color = ($name, $background, $color = null, $border_ = null) {
+$u-message-extend_color = ($name, $color) {
     .u-message-#{$name} {
-        background: $background;
-        @if($color) {color: $color;}
-        @if($border_) {$border: $border_;}
+        color: $color;
+        border-color: $color;
     }
 }

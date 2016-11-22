@@ -27,7 +27,7 @@
         border-top: 1px solid #f4f4f4;
         padding-top: 30px;
         padding-left: 60px;
-        color: #3c8dbc;
+        color: #1E9476;
 
         // &:before {
         //     //display: inline-block;

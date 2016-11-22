@@ -12,7 +12,10 @@ $g-mn_padding = 60px;
     top: 0;
     z-index: 5;
     height: $m-navbar_height;
-    background: $m-navbar_background;
+    background: #303947;
+    .m-navbar {
+        background:none;
+    }
 }
 
 .g-top-fixed {
@@ -28,8 +31,7 @@ $g-mn_padding = 60px;
     $box-sizing: border-box;
     padding-top: $m-navbar_height;
     height: 100%;
-    $linear-gradient: top, #3c8dbc 10%, #449ecc;
-    background-position: 0 $m-navbar_height;
+    background-color:#1E9476;
 }
 
 .g-hdc {

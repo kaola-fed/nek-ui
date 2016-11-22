@@ -42,21 +42,21 @@ $border-radius-xl = 6px;
 // ========================================================================
 
 /* Brand Colors */
-$brand-default =                        #f4f4f4;
+$brand-default =                        #fff;
 $brand-default-dark =                   #e5e5e5;
 $brand-default-darker =                 #adadad;
-$brand-primary =                        #3c8dbc;
-$brand-primary-darker =                 #367fa9;
-$brand-info =                           #00c0ef;
+$brand-primary =                        #31995E;
+$brand-primary-darker =                 #3B7F61;
+$brand-info =                           #479CA2;
 $brand-info-lighter =                   mix($brand-info, white, 10%);
 $brand-info-darker =                    #00acd6;
-$brand-success =                        #00a65a;
+$brand-success =                        #6794D1;
 $brand-success-lighter =                mix($brand-success, white, 10%);
-$brand-success-darker =                 #008d4c;
-$brand-warning =                        #f39c12;
+$brand-success-darker =                 #367fa9;
+$brand-warning =                        #FCD800;
 $brand-warning-lighter =                mix($brand-warning, white, 10%);
 $brand-warning-darker =                 #e08e0b;
-$brand-error =                          #dd4b39;
+$brand-error =                          #D30030;
 $brand-error-lighter =                  mix($brand-error, white, 10%);
 $brand-error-darker =                   #d73925;
 $brand-secondary =                      $brand-primary;
