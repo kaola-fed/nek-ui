@@ -33,16 +33,26 @@ var Component = Regular.extend({
             'class': '',
             console: typeof console === 'undefined' ? undefined : console
         });
-        this.$on('update', function(conf) {
-          if (!conf) return;
-          conf.forEach(function(d) {
-              if (this.data.hasOwnProperty(d.key)) {
-                  this.$update(d.key, d.value);
-              }
-          }.bind(this));
+        this.$on('update_nek', function(conf) {
+            if (!conf) return;
+            var typeTrans = function(value, type) {
+                // 'none', 'string', 'number', 'boolean', 'array', 'select', 'expression'
+                if (type === 'none' || type === 'boolean') {
+                    return value === 'true';
+                }
+                if (type === 'number') {
+                    return value / 1;
+                }
+                return value;
+            };
+            conf.forEach(function(d) {
+                if (this.data.hasOwnProperty(d.key)) {
+                    this.$update(d.key, typeTrans(d.value, d.type));
+                }
+            }.bind(this));
         })
         this.$watch('NEK', function(val) {
-            this.$emit('update', val.conf);
+            this.$emit('update_nek', val.conf);
         });
         this.supr();
     },
