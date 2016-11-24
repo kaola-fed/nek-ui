@@ -35,24 +35,39 @@ var Component = Regular.extend({
         });
         this.$on('update_nek', function(conf) {
             if (!conf) return;
-            var typeTrans = function(value, type) {
-                // 'none', 'string', 'number', 'boolean', 'array', 'select', 'expression'
+            var typeTrans = function(value, type, selectType) {
+                // type: 'none', 'string', 'number', 'boolean', 'array', 'select', 'expression'
+                // selectType: string/number
+                // arrayType: string/number/boolean
                 if (type === 'none' || type === 'boolean') {
                     return value === 'true';
                 }
-                if (type === 'number') {
+                if (type === 'number'
+                  || (type === 'select' && selectType === 'number')) {
                     return value / 1;
+                }
+                if (type === 'array') {
+                    return JSON.parse(value || '[]').map(function(d) {
+                        if (arrayType === 'number') {
+                            return d / 1;
+                        }
+                        if (arrayType === 'boolean') {
+                            return d === 'true';
+                        }
+                        return d;
+                    });
+                }
+                if (type === 'expression') {
+                    return 'NEK_EXP';
                 }
                 return value;
             };
             conf.forEach(function(d) {
-                if (this.data.hasOwnProperty(d.key)) {
-                    this.$update(d.key, typeTrans(d.value, d.type));
+                var val = typeTrans(d.value, d.type);
+                if (this.data.hasOwnProperty(d.key) && val !== 'NEK_EXP') {
+                    this.$update(d.key, val);
                 }
             }.bind(this));
-        })
-        this.$watch('NEK', function(val) {
-            this.$emit('update_nek', val.conf);
         });
         this.supr();
     },
