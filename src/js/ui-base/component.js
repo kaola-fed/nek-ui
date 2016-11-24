@@ -35,35 +35,35 @@ var Component = Regular.extend({
         });
         this.$on('update_nek', function(conf) {
             if (!conf) return;
-            var typeTrans = function(value, type, selectType) {
+            var typeTrans = function(value, type, extraType) {
                 // type: 'none', 'string', 'number', 'boolean', 'array', 'select', 'expression'
-                // selectType: string/number
-                // arrayType: string/number/boolean
+                // extraType: string/number/boolean
                 if (type === 'none' || type === 'boolean') {
                     return value === 'true';
                 }
                 if (type === 'number'
-                  || (type === 'select' && selectType === 'number')) {
+                  || (type === 'select' && extraType === 'number')) {
                     return value / 1;
                 }
                 if (type === 'array') {
                     return JSON.parse(value || '[]').map(function(d) {
-                        if (arrayType === 'number') {
+                        if (extraType === 'number') {
                             return d / 1;
                         }
-                        if (arrayType === 'boolean') {
+                        if (extraType === 'boolean') {
                             return d === 'true';
                         }
                         return d;
                     });
                 }
+                // 表达式类型只是为了 NEK CLI 预填数据，不做设置
                 if (type === 'expression') {
                     return 'NEK_EXP';
                 }
                 return value;
             };
             conf.forEach(function(d) {
-                var val = typeTrans(d.value, d.type);
+                var val = typeTrans(d.value, d.type, d.extraType);
                 if (this.data.hasOwnProperty(d.key) && val !== 'NEK_EXP') {
                     this.$update(d.key, val);
                 }
