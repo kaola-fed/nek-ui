@@ -33,16 +33,41 @@ var Component = Regular.extend({
             'class': '',
             console: typeof console === 'undefined' ? undefined : console
         });
-        this.$on('update', function(conf) {
-          if (!conf) return;
-          conf.forEach(function(d) {
-              if (this.data.hasOwnProperty(d.key)) {
-                  this.$update(d.key, d.value);
-              }
-          }.bind(this));
-        })
-        this.$watch('NEK', function(val) {
-            this.$emit('update', val.conf);
+        this.$on('update_nek', function(conf) {
+            if (!conf) return;
+            var typeTrans = function(value, type, extraType) {
+                // type: 'none', 'string', 'number', 'boolean', 'array', 'select', 'expression'
+                // extraType: string/number/boolean
+                if (type === 'none' || type === 'boolean') {
+                    return value === 'true';
+                }
+                if (type === 'number'
+                  || (type === 'select' && extraType === 'number')) {
+                    return value / 1;
+                }
+                if (type === 'array') {
+                    return JSON.parse(value || '[]').map(function(d) {
+                        if (extraType === 'number') {
+                            return d / 1;
+                        }
+                        if (extraType === 'boolean') {
+                            return d === 'true';
+                        }
+                        return d;
+                    });
+                }
+                // 表达式类型只是为了 NEK CLI 预填数据，不做设置
+                if (type === 'expression') {
+                    return 'NEK_EXP';
+                }
+                return value;
+            };
+            conf.forEach(function(d) {
+                var val = typeTrans(d.value, d.type, d.extraType);
+                if (this.data.hasOwnProperty(d.key) && val !== 'NEK_EXP') {
+                    this.$update(d.key, val);
+                }
+            }.bind(this));
         });
         this.supr();
     },

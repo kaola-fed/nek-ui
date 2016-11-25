@@ -1,7 +1,7 @@
 {
   "name": "nek-ui",
   "description": "Extension of Regular UI",
-  "version": "0.1.21",
+  "version": "0.1.27",
   "main": "./dist/js/regular-ui.js",
   "homepage": "https://kaola-fed.github.io/regular-ui/doc/",
   "license": "MIT",

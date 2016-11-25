@@ -65,7 +65,7 @@ UIField.directive('cols', function(ele, cols) {
 });
 
 UIField.directive('offset', function(ele, offset) {
-    cols = this.$get(offset);
+    offset = this.$get(offset);
     if (!offset) { return; }
 
     ele.classList.add('g-offset-' + offset);
