@@ -25,6 +25,11 @@
         padding-right:10px;
         text-align: right;
     }
+    @media only screen and (max-width: 1600px) {
+      .formitem_tt {
+        width: 80px;
+      }
+    }
 
     .formitem_ct {
         flex: 1;
