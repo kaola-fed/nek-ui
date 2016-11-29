@@ -17,6 +17,8 @@ var _ = require('../../ui-base/_.js');
  * @param {object}                  options.data                     =  绑定属性
  * @param {string='点我'}            options.data.title               => 按钮标题
  * @param {string='default'}        options.data.type                => 按钮样式
+ * @param {string=''}               options.data.size                => 按钮大小
+ * @param {string=''}               options.data.action              => 按钮操作类型
  */
 var UIButton = Component.extend({
     name: 'ui.button',
