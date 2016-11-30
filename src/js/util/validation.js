@@ -96,8 +96,6 @@ Validation.validate = function(value, rules) {
             rule.success = !!validator.toString(value).trim();
         else if(rule.type === 'isNumber')
             rule.success = validator.isInt(value + '', rule.options);
-        else if(rule.type === 'isLength')
-            rule.success = validator.isLength(value + '', rule.options || {min: rule.min, max: rule.max});
         else if(rule.type === 'method' || rule.method)
             rule.success = (rule.options || rule.method)(value, rule);
         else

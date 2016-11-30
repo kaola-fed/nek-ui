@@ -237,13 +237,12 @@ var component = new RGUI.Component({
         selecteds: []
     },
     _onSelect: function($event) {
-        this.data.selectedTexts = $event.values.map(function(index, level) {
-            var source = $event.sender.data.sources[level];
-            var item = source && source[index];
-            return item && item.name;
-        }).join(' > ');
-
-        this.data.selectedValues = $event.values.join(', ');
+        setTimeout(function() {
+            this.data.selectedTexts = $event.selecteds.map(function(item) {
+                return item && item.name;
+            }).join(' > ');
+            this.$update();
+        }.bind(this), 0);
     }
 });
 ```

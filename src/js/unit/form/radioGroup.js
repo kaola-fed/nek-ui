@@ -10,6 +10,7 @@
 var SourceComponent = require('../../ui-base/sourceComponent.js');
 var template = require('./radioGroup.html');
 var _ = require('../../ui-base/_.js');
+var Validation = require('../../util/validation.js');
 
 /**
  * @class RadioGroup
@@ -19,6 +20,8 @@ var _ = require('../../ui-base/_.js');
  * @param {string}                  options.data.source[].name       => 每项的内容
  * @param {object=null}             options.data.selected           <=> 当前选择
  * @param {boolean=false}           options.data.block               => 多行显
+ * @param {boolean=false}           options.data.required            => 是否必选 
+ * @param {string}                  options.data.message             => 验证错误提示
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显
@@ -35,9 +38,20 @@ var RadioGroup = SourceComponent.extend({
         _.extend(this.data, {
             // @inherited source: [],
             selected: null,
-            _radioGroupId: new Date()
+            _radioGroupId: new Date(),
+            required:false
         });
         this.supr();
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @method select(item) 选择某一
@@ -59,7 +73,37 @@ var RadioGroup = SourceComponent.extend({
             sender: this,
             selected: item
         });
-    }
+    },
+    /**
+     * @method validate() 根据验证组件的值是否正确
+     * @public
+     * @return {object} result 结果
+     */
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            selected = this.data.selected;
+
+        if (!selected) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
+    },
 });
 
 module.exports = RadioGroup;

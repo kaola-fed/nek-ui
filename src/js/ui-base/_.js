@@ -26,7 +26,6 @@ _.extend = function(o1, o2, override, hasOwnProperty) {
     return o1;
 }
 
-
 _.dom.emit = function(elem, eventName, data) {
     if(elem.dispatchEvent) {
         var event = new CustomEvent(eventName, {detail: data});

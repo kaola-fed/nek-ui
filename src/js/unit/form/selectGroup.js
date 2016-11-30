@@ -10,6 +10,7 @@
 var Component = require('../../ui-base/component.js');
 var template = require('./selectGroup.html');
 var _ = require('../../ui-base/_.js');
+var Validation = require('../../util/validation.js');
 
 /**
  * @class SelectGroup
@@ -20,6 +21,7 @@ var _ = require('../../ui-base/_.js');
  * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
  * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
  * @param {number=1}                options.data.depth               => 层级数
+ * @param {boolean}                 options.data.required            => 是否必填 
  * @param {object}                  options.data.selected           <=  最后的选择项
  * @param {object[]=[]}             options.data.selecteds          <=> 所有的选择项
  * @param {string[]|number[]=[]}    options.data.values             <=> 所有的选择值
@@ -46,7 +48,8 @@ var SelectGroup = Component.extend({
             selecteds: [],
             key: 'id',
             values: [],
-            placeholders: []
+            placeholders: [],
+            required:false
         });
         this.supr();
 
@@ -69,6 +72,16 @@ var SelectGroup = Component.extend({
         });
 
         this.data.sources[0] = this.data.source;
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @private
@@ -97,6 +110,38 @@ var SelectGroup = Component.extend({
             selecteds: this.data.selecteds,
             level: level
         });
+    },
+    /**
+     * @method validate() 根据验证组件的值是否正确
+     * @public
+     * @return {object} result 结果
+     */
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            values = this.data.values,
+            depth  = this.data.depth;
+        console.log(values);
+
+        if (values.length < depth) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     },
 });
 

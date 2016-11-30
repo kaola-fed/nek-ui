@@ -2,4 +2,7 @@
     {#list 0..(depth - 1) as i}
     <ui.select source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />
     {/list}
+    {#if tip}
+        <p class="u-tip u-tip-{state}">{tip}</p>
+    {/if}
 </div>

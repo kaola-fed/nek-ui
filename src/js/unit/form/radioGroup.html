@@ -2,4 +2,8 @@
     {#list source as item}
     <label class="u-radio2" title={item.name} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio2-block': block} } on-click={this.select(item)}><div class="radio2_box"><i class="u-icon u-icon-radio"></i></div> {item.name}</label>
     {/list}
+
+    {#if tip}
+        <p class="u-tip u-tip-{state}">{tip}</p>
+    {/if}
 </div>
