@@ -29,6 +29,7 @@ exports.TreeSelect = require("./unit/form/treeSelect.js");
 exports.Suggest = require("./unit/form/suggest.js");
 exports.Uploader = require("./unit/form/uploader.js");
 exports.UIButton = require("./unit/form/ui.button.js");
+exports.UIText = require("./unit/form/ui.text.js");
 
 exports.DatePicker = require("./unit/calendar/datePicker.js");
 exports.TimePicker = require("./unit/calendar/timePicker.js");
