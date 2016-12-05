@@ -91,15 +91,14 @@ Validation.validate = function(value, rules) {
         else if(rule.type === 'isNot')
             rule.success = !(rule.options || rule.reg).test(value);
         else if(rule.type === 'isRequired')
-            rule.success = !!validator.toString(value);
-        else if(rule.type === 'isFilled')
             rule.success = !!validator.toString(value).trim();
-        else if(rule.type === 'isNumber')
-            rule.success = validator.isInt(value + '', rule.options);
         else if(rule.type === 'method' || rule.method)
             rule.success = (rule.options || rule.method)(value, rule);
-        else
-            rule.success = validator[rule.type](value + '', rule.options);
+        else {
+            console.log(rule.type, value, rule.options);
+            rule.success = !value || validator[rule.type](value + '', rule.options);
+        }
+            
 
         rule.callback && rule.callback(value, rule);
 

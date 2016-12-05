@@ -12,7 +12,6 @@ var polyfill = require('./polyfill.js');
 var _ = require('./_.js');
 var filter = require('./filter.js');
 var directive = require('./directive.js');
-var rules = require('./rules.js');
 
 /**
  * @class Component
@@ -32,8 +31,7 @@ var Component = Regular.extend({
             disabled: false,
             visible: true,
             'class': '',
-            console: typeof console === 'undefined' ? undefined : console,
-            rules: rules
+            console: typeof console === 'undefined' ? undefined : console
         });
         this.$on('update_nek', function(conf) {
             if (!conf) return;
@@ -77,14 +75,13 @@ var Component = Regular.extend({
      * @protected
      */
     defaults: function(data) {
-      if (data.rules) { console.warn('use this.rules([Object]) instead of this.defaults to set validate rules'); }
       this.data = Object.assign(data, this.data);
     },
     /**
      * @protected
      */
-    rules: function(rules) {
-      this.data.rules = Object.assign(this.data.rules, rules);
+    rules: function(attris) {
+      this.data = Object.assign(attris, this.data);
     },
     /**
      * @protected

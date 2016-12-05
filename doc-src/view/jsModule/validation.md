@@ -9,7 +9,7 @@
     <div class="u-formitem">
         <label class="formitem_tt">用户名<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <ui.input rules={nameRules} maxlength=12 placeholder="4~12个字符，包括字母、数字、下划线" />
+            <ui.input type="int" max=10 message="必须小于10" placeholder="4~12个字符，包括字母、数字、下划线" />
         </span>
     </div>
     <div class="u-formitem">

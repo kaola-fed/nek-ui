@@ -56,7 +56,7 @@
 
                 {"name": "UIInput", "lowerName": "ui.input", "cnName": "输入扩展", "group": "表单类", "beta": true},
                 {"name": "UITextArea", "lowerName": "ui.textarea", "cnName": "多行输入扩展", "group": "表单类", "beta": true},
-                {"name": "NumberInput", "lowerName": "numberInput", "cnName": "数字输入", "group": "表单类"},
+                {"name": "NumberInput", "lowerName": "numberInput", "cnName": "数字输入", "group": "表单类", "hidden": true},
                 {"name": "TelInput", "lowerName": "telInput", "cnName": "电话输入", "group": "表单类", "hidden": true},
                 {"name": "Check", "lowerName": "check", "cnName": "多选按钮", "group": "表单类", "stable": true},
                 {"name": "CheckGroup", "lowerName": "checkGroup", "cnName": "多选组", "group": "表单类", "stable": true},

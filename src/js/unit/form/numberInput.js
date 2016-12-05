@@ -4,7 +4,6 @@
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
-
 var Input = require('./ui.input.js');
 var template = require('./numberInput.html');
 var _ = require('../../ui-base/_.js');
