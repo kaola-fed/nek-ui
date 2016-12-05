@@ -221,7 +221,19 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>邮箱：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">rules</span>=<span class="cm-attribute">{emailRules}</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;可选，但需要校验格式&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;email&quot;</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;可选，但需要校验格式&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>suggest：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>select：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.select</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{[</span><span class="cm-stringcm-error">&#39;简单选项1&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;简单选项2&#39;</span><span class="cm-attribute">,</span> <span class="cm-stringcm-error">&#39;简单选项3&#39;</span><span class="cm-attribute">]}</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -258,6 +270,24 @@
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>数据选择<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_rqr&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
             <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">selectGroup</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{selectGroupSource}</span> <span class="cm-attribute">depth</span>=<span class="cm-attribute">3</span> <span class="cm-attribute">required</span>=<span class="cm-attribute">true</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>备注<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_rqr&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.textarea</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入备注&quot;</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>日期选择<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_rqr&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">datePicker</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_tt&quot;</span><span class="cm-tagcm-bracket">&gt;</span>日期时间选择<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_rqr&quot;</span><span class="cm-tagcm-bracket">&gt;</span>*<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>：<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formitem_ct&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">dateTimePicker</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-formitem&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -503,7 +533,19 @@ var index = 0;
     <div class="u-formitem">
         <label class="formitem_tt">邮箱：</label>
         <span class="formitem_ct">
-            <ui.input rules={emailRules} placeholder="可选，但需要校验格式" />
+            <ui.input type="email" placeholder="可选，但需要校验格式" />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">suggest：</label>
+        <span class="formitem_ct">
+            <suggest source={source} required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">select：</label>
+        <span class="formitem_ct">
+            <ui.select source={['简单选项1', '简单选项2', '简单选项3']} required />
         </span>
     </div>
     <div class="u-formitem">
@@ -540,6 +582,24 @@ var index = 0;
         <label class="formitem_tt">数据选择<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
             <selectGroup source={selectGroupSource} depth=3 required=true />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">备注<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <ui.textarea placeholder="请输入备注" required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">日期选择<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <datePicker required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">日期时间选择<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <dateTimePicker required />
         </span>
     </div>
     <div class="u-formitem">

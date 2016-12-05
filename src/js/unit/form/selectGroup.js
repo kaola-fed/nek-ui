@@ -112,7 +112,7 @@ var SelectGroup = Component.extend({
         });
     },
     /**
-     * @method validate() 根据验证组件的值是否正确
+     * @method validate() 根据required验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
@@ -122,7 +122,6 @@ var SelectGroup = Component.extend({
         var result = { success: true, message: '' },
             values = this.data.values,
             depth  = this.data.depth;
-        console.log(values);
 
         if (values.length < depth) {
             result.success = false;

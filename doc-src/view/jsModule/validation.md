@@ -15,7 +15,19 @@
     <div class="u-formitem">
         <label class="formitem_tt">邮箱：</label>
         <span class="formitem_ct">
-            <ui.input rules={emailRules} placeholder="可选，但需要校验格式" />
+            <ui.input type="email" placeholder="可选，但需要校验格式" />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">suggest：</label>
+        <span class="formitem_ct">
+            <suggest source={source} required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">select：</label>
+        <span class="formitem_ct">
+            <ui.select source={['简单选项1', '简单选项2', '简单选项3']} required />
         </span>
     </div>
     <div class="u-formitem">
@@ -52,6 +64,24 @@
         <label class="formitem_tt">数据选择<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
             <selectGroup source={selectGroupSource} depth=3 required=true />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">备注<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <ui.textarea placeholder="请输入备注" required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">日期选择<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <datePicker required />
+        </span>
+    </div>
+    <div class="u-formitem">
+        <label class="formitem_tt">日期时间选择<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <dateTimePicker required />
         </span>
     </div>
     <div class="u-formitem">

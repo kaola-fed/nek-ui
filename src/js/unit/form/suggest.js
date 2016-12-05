@@ -10,6 +10,7 @@
 var Dropdown = require('../navigation/dropdown.js');
 var template = require('./suggest.html');
 var _ = require('../../ui-base/_.js');
+var Validation = require('../../util/validation.js');
 
 /**
  * @class Suggest
@@ -52,9 +53,20 @@ var Suggest = Dropdown.extend({
             delay: 300,
             matchType: 'all',
             strict: false,
-            autofocus: false
+            autofocus: false,
+            required: false
         });
         this.supr();
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @method select(item) 选择某一项
@@ -154,6 +166,37 @@ var Suggest = Dropdown.extend({
             return item.name.slice(0, value.length) === value;
         else if(this.data.matchType === 'end')
             return item.name.slice(-value.length) === value;
+    },
+    /**
+     * @method validate() 根据验证组件的值是否正确
+     * @public
+     * @return {object} result 结果
+     */
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            value = this.data.value,
+            value = (typeof value == 'undefined') ? '' : value + '';
+
+        if (!value.length) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
 });
 
