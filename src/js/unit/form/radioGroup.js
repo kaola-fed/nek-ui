@@ -75,7 +75,7 @@ var RadioGroup = SourceComponent.extend({
         });
     },
     /**
-     * @method validate() 根据验证组件的值是否正确
+     * @method validate() 根据required验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */

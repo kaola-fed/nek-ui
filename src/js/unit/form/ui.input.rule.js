@@ -12,7 +12,7 @@ function stringBytes(c){
 }
 
 module.exports = {
-  required: {type:'isRequired', message:'必填项'},
+  required: {type:'isRequired', message:'请填写'},
   isEmail: {type:'isEmail', message:'格式错误'},
   isURL: {type:'isURL', message:'格式错误'},
   isInt: function(min, max, message) {

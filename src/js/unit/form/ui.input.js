@@ -32,7 +32,6 @@ var bowser = require('bowser');
  * @param {boolean}                 options.data.required            => 【验证规则】是否必填
  * @param {number}                  options.data.min                 => 【验证规则】type=int/float时的最小值, type=byte时，最小长度
  * @param {number}                  options.data.max                 => 【验证规则】type=int/float时的最大值, type=byte时，最大长度
- * @param {number}                  options.data.maxByteLen          => 【验证规则】最大输入的字节数  
  * @oaram {string=''}               options.data.message             => 【验证规则】验证失败时，提示的消息
  */
 var Input = Component.extend({

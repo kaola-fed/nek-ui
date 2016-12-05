@@ -10,6 +10,7 @@
 var Dropdown = require('../navigation/dropdown.js');
 var template = require('./ui.select.html');
 var _ = require('../../ui-base/_.js');
+var Validation = require('../../util/validation.js');
 
 /**
  * @class Select
@@ -23,6 +24,7 @@ var _ = require('../../ui-base/_.js');
  * @param {string|number}           options.data.value              <=> 当前选择值
  * @param {string='id'}             options.data.key                 => 数据项的键
  * @param {string='请选择'}         options.data.placeholder         => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
+ * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
@@ -42,7 +44,8 @@ var Select = Dropdown.extend({
             selected: undefined,
             key: 'id',
             value: undefined,
-            placeholder: '请选择'
+            placeholder: '请选择',
+            required: false
         });
         this.supr();
 
@@ -100,6 +103,16 @@ var Select = Dropdown.extend({
             if(!this.data.placeholder && !this.data.selected)
                 this.data.selected = newValue[0];
         });
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @method select(item) 选择某一项
@@ -124,6 +137,31 @@ var Select = Dropdown.extend({
         });
 
         this.toggle(false);
+    },
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            value = this.data.value;
+        value = ( typeof value == 'undefined' ) ? '' : value + '';
+        if (!value.length) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
 });
 

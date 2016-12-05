@@ -22,6 +22,7 @@ var bowser = require('bowser');
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {object[]=[]}             options.data.rules               => 验证规则
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
+ * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
@@ -41,8 +42,13 @@ var TextArea = Component.extend({
             maxlength: undefined,
             rules: [],
             autofocus: false,
-            _eltIE9: bowser.msie && bowser.version <= 9
+            _eltIE9: bowser.msie && bowser.version <= 9,
+            required: false
         });
+        if (this.data.required) {
+            this.data.rules.push({type:'isRequired', message: '请填写'});
+        }
+
         this.supr();
 
         var $outer = this.$outer;
@@ -73,7 +79,7 @@ var TextArea = Component.extend({
 
         on = on || '';
         rules = rules.filter(function(rule) {
-            return rule.on.indexOf(on) >= 0;
+            return (rule.on || '').indexOf(on) >= 0;
         });
 
         var result = Validation.validate(value, rules);

@@ -16,6 +16,8 @@ var TimePicker = require('./timePicker.js');
 var bowser = require('bowser');
 var polyfill = require('../../ui-base/polyfill.js');
 
+var Validation = require('../../util/validation.js');
+
 /**
  * @class DateTimePicker
  * @extend Dropdown
@@ -25,6 +27,7 @@ var polyfill = require('../../ui-base/polyfill.js');
  * @param {Date|string=null}        options.data.minDate             => 最小日期时间，如果为空则不限制
  * @param {Date|string=null}        options.data.maxDate             => 最大日期时间，如果为空则不限制
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
+ * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
@@ -46,7 +49,8 @@ var DateTimePicker = Dropdown.extend({
             date: null,
             _date: undefined,
             _time: undefined,
-            autofocus: false
+            autofocus: false,
+            required: false
         });
         this.supr();
 
@@ -130,6 +134,16 @@ var DateTimePicker = Dropdown.extend({
                     return this.data.date = isOutOfRange;
             }
         });
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
@@ -185,6 +199,32 @@ var DateTimePicker = Dropdown.extend({
 
         // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
         return (minDate && date < minDate && minDate) || (maxDate && date > maxDate && maxDate);
+    },
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            date = this.data.date;
+
+        var result = date ? Validation.validate(date, [{type:'isDate', message:'请填写'}]) : { success:false };
+        if (!result.success) {
+            result.success = false;
+            result.message = this.data.message || '请填写';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
 });
 

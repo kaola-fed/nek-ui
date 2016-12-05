@@ -94,12 +94,9 @@ Validation.validate = function(value, rules) {
             rule.success = !!validator.toString(value).trim();
         else if(rule.type === 'method' || rule.method)
             rule.success = (rule.options || rule.method)(value, rule);
-        else {
-            console.log(rule.type, value, rule.options);
+        else
             rule.success = !value || validator[rule.type](value + '', rule.options);
-        }
             
-
         rule.callback && rule.callback(value, rule);
 
         if(!rule.success && result.success) {

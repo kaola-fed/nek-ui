@@ -15,15 +15,18 @@ var bowser = require('bowser');
 var polyfill = require('../../ui-base/polyfill.js');
 var MS_OF_DAY = 24*3600*1000;
 
+var Validation = require('../../util/validation.js');
+
 /**
  * @class DatePicker
  * @extend Dropdown
  * @param {object}                  options.data                     =  绑定属性
  * @param {object=null}             options.data.date               <=> 当前选择的日期
- * @param {string='请输入'}         options.data.placeholder         => 文本框的占位文字
+ * @param {string='请输入'}          options.data.placeholder         => 文本框的占位文字
  * @param {Date|string=null}        options.data.minDate             => 最小日期，如果为空则不限制
  * @param {Date|string=null}        options.data.maxDate             => 最大日期，如果为空则不限制
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
+ * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
@@ -44,7 +47,8 @@ var DatePicker = Dropdown.extend({
             placeholder: '请输入',
             date: null,
             _date: undefined,
-            autofocus: false
+            autofocus: false,
+            required: false
         });
         this.supr();
 
@@ -125,6 +129,16 @@ var DatePicker = Dropdown.extend({
                     return this.data.date = isOutOfRange;
             }
         });
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     },
     /**
      * @method select(date) 选择一个日期
@@ -181,6 +195,32 @@ var DatePicker = Dropdown.extend({
 
         // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期。
         return (minDate && date < minDate && minDate) || (maxDate && date > maxDate && maxDate);
+    }, 
+    validate: function(on) {
+        if (!this.data.required) { return {success:true}; }
+
+        var result = { success: true, message: '' },
+            date = this.data.date;
+
+        var result = date ? Validation.validate(date, [{type:'isDate', message:'请填写'}]) : { success:false };
+        if (!result.success) {
+            result.success = false;
+            result.message = this.data.message || '请填写';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
 });
 
