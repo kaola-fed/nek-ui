@@ -1,7 +1,7 @@
 module.exports = {
     output: {
-        filename: 'regular-ui.js',
-        library: 'RGUI',
+        filename: 'nek-ui.js',
+        library: 'NEKUI',
         libraryTarget: 'umd'
     },
     externals: {
