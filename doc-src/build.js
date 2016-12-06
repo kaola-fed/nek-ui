@@ -5,6 +5,7 @@ var pathlib = require('path');
 var ejs = require('ejs');
 var markextend = require('markextend');
 var codemirror = require('codemirror-highlight');
+var mkdirp = require('mkdirp');
 
 markextend.setOptions({
     // 代码高亮
@@ -51,7 +52,7 @@ function build(path, sitemap, template) {
         sitemap: sitemap,
         mainnavs: [],
         sidenavs: [],
-        relativePath: '../',
+        relativePath: '/',
         isIndex: false,
         mainnav: level[0],
         sidenav: level[1],
@@ -70,7 +71,7 @@ function build(path, sitemap, template) {
 
     // 组织主导航数据
     sitemap.children.forEach(function(level1) {
-        level1.path = (level1.lowerName + '/' + level1.children[0].lowerName + '.html').toLowerCase();
+        level1.path = (level1.lowerName + '/' + ( level1.children[0].source || level1.children[0].lowerName ) + '.html').toLowerCase();
         // level1.path = level1.path || (level1.lowerName + '/index.html').toLowerCase();
         data.mainnavs.push(level1);
     });
@@ -82,7 +83,7 @@ function build(path, sitemap, template) {
             data.sidenavs.forEach(function(item) {
                 if(item.lowerName === level[1])
                     data.current = item;
-                item.path = item.path || (data.relativePath + level[0] + '/' + item.lowerName + '.html').toLowerCase();
+                item.path = item.path || (data.relativePath + level[0] + '/' + ( item.source || item.lowerName ) + '.html').toLowerCase();
                 item.blank = /^http/.test(item.path);
             });
             break;
@@ -90,8 +91,13 @@ function build(path, sitemap, template) {
 
     // 如果是JS组件，使用jsdoc解析../src目录下的js代码生成API
     if(level[0].slice(0, 2) === 'js') {
-        var jsFile = __dirname + '/../src/js/' + level[0].slice(2, 20).toLowerCase() + '/' + level[1] + '.js';
-
+        var jsFile = __dirname + '/../src/js/' + level[0].slice(2, 20).toLowerCase() + '/';
+        if (level[1] && !level[2]) {
+            jsFile += level[1] + '.js';
+        }
+        if (level[2]) {
+            jsFile += level[1] + '/' + level[2] + '.js'
+        }
         // @TODO
         if(level[1] === 'validation')
             jsFile = __dirname + '/../src/js/util/validation.js';
@@ -104,7 +110,7 @@ function build(path, sitemap, template) {
     var htmlPath = __dirname + '/view/' + path + '.html';
     var ejsPath = __dirname + '/view/' + path + '.ejs';
     var mdPath = __dirname + '/view/' + path + '.md';
-    
+
     if(fs.existsSync(htmlPath))
         tpl = template.head + fs.readFileSync(htmlPath) + template.foot;
     else if(fs.existsSync(ejsPath))
@@ -130,7 +136,7 @@ function build(path, sitemap, template) {
     var filepath = __dirname + '/../doc/' + path.toLowerCase() + '.html';
     var filedir = pathlib.dirname(filepath);
     if(!fs.existsSync(filedir))
-        fs.mkdirSync(filedir);
+        mkdirp.sync(filedir);
     fs.writeFileSync(filepath, html, {encoding: 'utf8', mode: 0644});
     // console.log('[SUCCESS] build: ' + path);
 }

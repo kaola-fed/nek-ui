@@ -18,7 +18,7 @@ var bowser = require('bowser');
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
- * @param {string=''}               options.data.type                => 文本框的类型, 5种类型：int, float, email, url，byte
+ * @param {string=''}               options.data.type                => 文本框的类型, 6种类型：int, float, email, url，byte，password
  * @param {string=''}               options.data.placeholder         => 占位符
  * @param {string=''}               options.data.state              <=> 文本框的状态
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
@@ -157,6 +157,8 @@ var Input = Component.extend({
 Input.filter('type', function(val) {
     if (['int', 'float'].indexOf(val) != -1) {
         return 'number';
+    } else if (val == 'password') {
+        return 'password';
     } else {
         return 'text';
     }

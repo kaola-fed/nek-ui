@@ -27,7 +27,7 @@ function buildAll(callback) {
     level0.children.forEach(function(level1) {
         build(level1.lowerName + '/index', sitemap, template);
         level1.children.forEach(function(level2) {
-            build(level1.lowerName + '/' + level2.lowerName, sitemap, template);
+            build(level1.lowerName + '/' + ( level2.source || level2.lowerName ), sitemap, template);
         });        
     });
 
