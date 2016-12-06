@@ -12,7 +12,8 @@
 }
 
 .u-logo-index {
-    background: white url('../img/logo-v2.0-inverse-text.png') center -5px no-repeat;
+    background: white url('../img/nek-logo.png') center center no-repeat;
+    background-size:90px;
     width: 92px;
     height: 192px;
     margin-left: 72px;
