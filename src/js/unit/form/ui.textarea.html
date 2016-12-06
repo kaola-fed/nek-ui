@@ -1,5 +1,5 @@
 <label class="u-textarea2 {class}" r-hide={!visible}>
-    <textarea class="u-textarea u-textarea-{state} u-textarea-{size} u-textarea-{width}"
+    <textarea spellcheck="false" class="u-textarea u-textarea-{state} u-textarea-{size} u-textarea-{width}"
         name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
         r-model={value}
         on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change"></textarea>
