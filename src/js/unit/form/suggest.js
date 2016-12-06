@@ -21,7 +21,8 @@ var Validation = require('../../util/validation.js');
  * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
  * @param {object=null}             options.data.selected           <=> 当前选择项
  * @param {string=''}               options.data.value              <=> 文本框中的值
- * @param {string='请输入'}         options.data.placeholder         => 文本框的占位文字
+ * @param {string=''}               options.data.id                 <=> 选项的id值;
+ * @param {string='请输入'}          options.data.placeholder         => 文本框的占位文字
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {number=0}                options.data.startLength         => 开始提示长度。当输入长度>=该值后开始提示
  * @param {string='all'}            options.data.matchType           => 匹配方式，`all`表示匹配全局，`start`表示只匹配开头，`end`表示只匹配结尾
@@ -47,6 +48,7 @@ var Suggest = Dropdown.extend({
             // @inherited open: false,
             selected: null,
             value: '',
+            id: '',
             placeholder: '请输入',
             maxlength: undefined,
             startLength: 0,
@@ -69,6 +71,23 @@ var Suggest = Dropdown.extend({
         }
     },
     /**
+     * @protected
+     */
+    init: function() {
+        var id = this.data.id,
+            source = this.data.source;
+
+        if (id && source) {
+            var selected = source.filter(function(item) {
+                return item.id == id;
+            })[0];
+            if (selected) {
+                this.data.selected = selected;
+                this.data.value = selected.name;
+            }
+        }
+    },
+    /**
      * @method select(item) 选择某一项
      * @public
      * @param  {object} item 选择项
@@ -80,6 +99,7 @@ var Suggest = Dropdown.extend({
 
         this.data.selected = item;
         this.data.value = item.name;
+        this.data.id = item.id;
 
         /**
          * @event select 选择某一项时触发

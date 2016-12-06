@@ -264,6 +264,28 @@
     }
 });
 </code></pre>
+<h4 id="-id">获取选项的id</h4>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">suggest</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">id</span>=<span class="cm-attribute">{id}</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-col g-col-4&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>{id}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">source</span>: [
+            {<span class="cm-property">id</span>:<span class="cm-number">1</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;abandon&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">2</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;about&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">3</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;absent&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">4</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;bread&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">5</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;brief&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">6</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;calendar&#39;</span>},
+            {<span class="cm-property">id</span>:<span class="cm-number">7</span>, <span class="cm-property">name</span>: <span class="cm-string">&#39;column&#39;</span>}
+        ]
+    }
+});
+</code></pre>
 <h4 id="-">禁用某一项，禁用组件</h4>
 <div class="m-example"></div>
 
@@ -472,6 +494,8 @@ var component = new RGUI.Component({
             <tr><td class="f-wsn"><code>data.selected</code></td><td class="f-wsn">object</td><td class="f-wsn"><code>null</code></td><td class="f-tac">outer &lt;=&gt; inner</td><td>当前选择项</td></tr>
             
             <tr><td class="f-wsn"><code>data.value</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer &lt;=&gt; inner</td><td>文本框中的值</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.id</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer &lt;=&gt; inner</td><td>选项的id值;</td></tr>
             
             <tr><td class="f-wsn"><code>data.placeholder</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;请输入&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>文本框的占位文字</td></tr>
             
@@ -684,7 +708,7 @@ var component = new RGUI.Component({
 </div></div></div>
 <script src="../../vendor/regular.min.js"></script>
 <!-- script src="../../vendor/marked.min.js"></script -->
-<script src="../../js/regular-ui.min.js"></script>
+<script src="../../js/nek-ui.min.js"></script>
 <script>
 if(!('remove' in Element.prototype))
     Element.prototype.remove = function() {
@@ -778,6 +802,28 @@ var component = new RGUI.Component({
             {name: 'calendar'},
             {name: 'cancel'},
             {name: 'column'}
+        ]
+    }
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = RGUI._.multiline(function(){/*
+<div class="f-cb">
+    <suggest source={source} id={id} class="g-col g-col-4" />{id}
+</div>
+    */})
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {id:1, name: 'abandon'},
+            {id:2, name: 'about'},
+            {id:3, name: 'absent'},
+            {id:4, name: 'bread'},
+            {id:5, name: 'brief'},
+            {id:6, name: 'calendar'},
+            {id:7, name: 'column'}
         ]
     }
 });

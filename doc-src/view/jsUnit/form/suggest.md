@@ -26,6 +26,33 @@ var component = new RGUI.Component({
 });
 ```
 
+#### 获取选项的id
+
+<div class="m-example"></div>
+
+```xml
+<div class="f-cb">
+    <suggest source={source} id={id} class="g-col g-col-4" />{id}
+</div>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {id:1, name: 'abandon'},
+            {id:2, name: 'about'},
+            {id:3, name: 'absent'},
+            {id:4, name: 'bread'},
+            {id:5, name: 'brief'},
+            {id:6, name: 'calendar'},
+            {id:7, name: 'column'}
+        ]
+    }
+});
+```
+
 #### 禁用某一项，禁用组件
 
 <div class="m-example"></div>
