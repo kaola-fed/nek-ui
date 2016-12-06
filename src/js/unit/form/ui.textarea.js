@@ -22,6 +22,7 @@ var bowser = require('bowser');
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
  * @param {object[]=[]}             options.data.rules               => 验证规则
  * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
+ * @param {number=120}              options.data.height              => 高度
  * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
@@ -40,6 +41,7 @@ var TextArea = Component.extend({
             placeholder: '',
             state: '',
             maxlength: undefined,
+            height: 120,
             rules: [],
             autofocus: false,
             _eltIE9: bowser.msie && bowser.version <= 9,
