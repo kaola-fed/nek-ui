@@ -52,7 +52,7 @@ function build(path, sitemap, template) {
         sitemap: sitemap,
         mainnavs: [],
         sidenavs: [],
-        relativePath: '/',
+        relativePath: level[2] ? '../../' : '../',
         isIndex: false,
         mainnav: level[0],
         sidenav: level[1],
