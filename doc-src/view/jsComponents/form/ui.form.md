@@ -5,12 +5,12 @@
 
 ```xml
 <ui.form service="{service.selector}" ref="formgroup">
-    <ui.field title="标题1" cols=12 sourceKey="warehouse">
+    <form.item title="标题1" cols=12 sourceKey="warehouse">
         <ui.select />
-    </ui.field>
-    <ui.field title="标题2" cols=12>
+    </form.item>
+    <form.item title="标题2" cols=12>
         <ui.input />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 

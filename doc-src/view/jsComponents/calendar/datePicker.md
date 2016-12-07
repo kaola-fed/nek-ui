@@ -5,12 +5,12 @@
 
 ```xml
 <ui.form>
-    <ui.field cols=6>
+    <form.item cols=6>
         <datePicker />
-    </ui.field>
-    <ui.field cols=6>
+    </form.item>
+    <form.item cols=6>
         <datePicker date="2008-08-08" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 

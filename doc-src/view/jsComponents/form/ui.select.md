@@ -29,9 +29,9 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols="12" title="用户名" hint="用户名的用途">
+    <form.item cols="12" title="用户名" hint="用户名的用途">
         <ui.select source={['简单选项1', '简单选项2', '简单选项3']} />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
@@ -45,15 +45,15 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols=4>
+    <form.item cols=4>
         <ui.select source={source} selected={selected} />
-    </ui.field>
-    <ui.field cols=4>
+    </form.item>
+    <form.item cols=4>
         <ui.select source={source} value=2 />
-    </ui.field>
-    <ui.field cols=4>
+    </form.item>
+    <form.item cols=4>
         <ui.select source={source} key="name" value="选项3" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
@@ -79,12 +79,12 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols=6>
+    <form.item cols=6>
         <ui.select source={source} />
-    </ui.field>
-    <ui.field cols=6>
+    </form.item>
+    <form.item cols=6>
         <ui.select source={source} disabled />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
@@ -107,9 +107,9 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols=12>
+    <form.item cols=12>
         <ui.select source={source} />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
@@ -135,12 +135,12 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols=6>
+    <form.item cols=6>
         <ui.select source={source} placeholder="全部" />
-    </ui.field>
-    <ui.field cols=6>
+    </form.item>
+    <form.item cols=6>
         <ui.select source={source} placeholder="" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 

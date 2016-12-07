@@ -53,9 +53,9 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols="12" title="用户名" hint="用户名的用途">
+    <form.item cols="12" title="用户名" hint="用户名的用途">
         <selectGroup source={source} depth=3 />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 

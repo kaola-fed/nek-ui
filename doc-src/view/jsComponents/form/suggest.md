@@ -143,15 +143,15 @@ var component = new RGUI.Component({
 
 ```xml
 <ui.form>
-    <ui.field cols=4>
+    <form.item cols=4>
         <suggest source={source} placeholder="匹配全局" matchType="all" />
-    </ui.field>
-    <ui.field cols=4>
+    </form.item>
+    <form.item cols=4>
         <suggest source={source} placeholder="只匹配开头" matchType="start" />
-    </ui.field>
-    <ui.field cols=4>
+    </form.item>
+    <form.item cols=4>
         <suggest source={source} placeholder="只匹配结尾" matchType="end" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
