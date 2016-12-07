@@ -92,9 +92,8 @@
 ```javascript
 var component = new RGUI.Component({
     template: template,
-    titleTemplate: RGUI._.multiline(function(){/*
-{item.data.title} {#if item.data.mark}<span class="u-text u-text-success"><i class="u-icon u-icon-check-circle"></i></span>{/if}
-    */})
+    titleTemplate: `
+{item.data.title} {#if item.data.mark}<span class="u-text u-text-success"><i class="u-icon u-icon-check-circle"></i></span>{/if}`
 });
 ```
 

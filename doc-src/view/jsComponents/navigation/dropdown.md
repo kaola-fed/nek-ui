@@ -134,9 +134,8 @@ var component = new RGUI.Component({
 ```javascript
 var component = new RGUI.Component({
     template: template,
-    itemTemplate: RGUI._.multiline(function(){/*
-<a href={item.url}>{item.name}</a>
-    */}),
+    itemTemplate: `
+<a href={item.url}>{item.name}</a>`,
     data: {
         source: [
             {name: 'Dropdown', url: 'dropdown.html'},

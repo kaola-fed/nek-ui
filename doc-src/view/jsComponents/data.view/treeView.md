@@ -166,9 +166,8 @@ var component = new RGUI.Component({
 ```javascript
 var component = new RGUI.Component({
     template: template,
-    itemTemplate: RGUI._.multiline(function(){/*
-<i class="u-icon {item.type === 'directory' ? (item.open ? 'u-icon-folder-open' : 'u-icon-folder') : 'u-icon-file-text'}"></i> {item.name}
-    */}),
+    itemTemplate: `
+<i class="u-icon {item.type === 'directory' ? (item.open ? 'u-icon-folder-open' : 'u-icon-folder') : 'u-icon-file-text'}"></i> {item.name}`,
     service: {
         getList: function(params, success) {
             RGUI.ajax.request({
