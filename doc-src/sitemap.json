@@ -24,8 +24,7 @@
                 {"name": "Message", "lowerName": "message", "cnName": "消息条", "stable": true},
                 {"name": "Image", "lowerName": "image", "cnName": "图片", "stable": true},
                 {"name": "Thumbnail", "lowerName": "thumbnail", "cnName": "缩略图", "completed": false, "hidden": true},
-                {"name": "FormControl", "lowerName": "formCtrl", "cnName": "表单元素", "stable": true},
-                {"name": "FormItem", "lowerName": "formItem", "cnName": "表单项", "hidden": true, "stable": true}
+                {"name": "FormControl", "lowerName": "formCtrl", "cnName": "表单元素", "stable": true}
             ]
         }, {
             "name": "CSSModule",
@@ -75,7 +74,7 @@
                 {"name": "Suggest", "lowerName": "suggest","source":"form/suggest", "cnName": "自动提示", "group": "表单类", "stable": true},
                 {"name": "Uploader", "lowerName": "uploader","source":"form/uploader", "cnName": "上传", "group": "表单类", "beta": true},
                 {"name": "UIForm", "lowerName": "ui.form","source":"form/ui.form", "cnName": "表单", "group": "表单类", "beta": true},
-                {"name": "UIField", "lowerName": "ui.field","source":"form/ui.field", "cnName": "表单字段", "group": "表单类", "beta": true},
+                {"name": "FormItem", "lowerName": "form.item","source":"form/form.item", "cnName": "表单字段", "group": "表单类", "beta": true},
                 {"name": "Validation", "lowerName": "validation", "cnName": "表单验证", "group": "表单类", "beta": true},
 
                 {"name": "DatePicker", "lowerName": "datePicker","source":"calendar/datePicker", "cnName": "日期选择", "group": "日期类", "stable": true},
