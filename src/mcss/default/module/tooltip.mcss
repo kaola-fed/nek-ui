@@ -1,4 +1,4 @@
-.u-hint {
+.u-tooltip {
     position:relative;
     text-align:left;
     &:hover { text-decoration:none; }
@@ -14,7 +14,7 @@
     }
     &:hover:after {
         position: absolute;
-        width: 220px;
+        white-space: nowrap;
         left: 20%;
         bottom: 26px;
         padding: 5px 15px;

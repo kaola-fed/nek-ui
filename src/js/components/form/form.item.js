@@ -2,22 +2,19 @@
 
 var _ = require('../../ui-base/_.js');
 var Validation = require('../../util/validation.js');
-var Hint = require('../widget/hint.js');
+var Tooltip = require('../widget/tooltip.js');
 
 var template = require('./form.item.html');
 
 /**
- * Field继承于Validation
- * 1. 具有和validation一样的校验功能
- * 2. 提供结构化的表单结构
- *
- * @example
- * <form.item title="密码" cols=3 hint="这个密码的用途">
- *    <form.component />
- * </form.item>
- *
- * 使用说明:
- * form.item内最多包含一个验证组件,如果多余一个,console提示,并且只会验证第一个;其余丢弃;请将form.item中的内容封装为一个组件;
+ * @class FormItem
+ * @extend Validation
+ * @param {object}                  options.data                     =  绑定属性
+ * @param {string=''}               options.data.title               => label显示的文字
+ * @param {number}                  options.data.cols                => 布局列数
+ * @param {number}                  options.data.offset              => 布局offset
+ * @param {boolean=false}           options.data.required            => 是否必选项
+ * @param {string=''}               options.data.tip                 => 字段说明
  */
 var FormItem = Validation.extend({
     name: 'form.item',

@@ -88,7 +88,8 @@
 
                 {"name": "Progress", "lowerName": "progress","source":"widget/progress", "cnName": "进度条", "group": "其他", "stable": true},
                 {"name": "Loading", "lowerName": "loading","source":"widget/loading", "cnName": "加载中", "group": "其他", "stable": true},
-                {"name": "Gotop", "lowerName": "gotop","source":"widget/gotop", "cnName": "回到顶部", "group": "其他", "beta": true}
+                {"name": "Gotop", "lowerName": "gotop","source":"widget/gotop", "cnName": "回到顶部", "group": "其他", "beta": true},
+                {"name": "Tooltip", "lowerName": "tooltip","source":"widget/tooltip", "cnName": "文字提示", "group": "其他", "beta":true}
             ]
         }, {
             "name": "JSHaitao",
