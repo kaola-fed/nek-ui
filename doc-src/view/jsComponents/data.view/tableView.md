@@ -25,7 +25,7 @@ var component = new RGUI.Component({
         {key: 'hits', name: '点击率'}
     ];
 
-    this.data.itemTemplate = _.multiline(function(){/*
+    this.data.itemTemplate = `
 <div class="u-courceitem">
     <div><img src="{item.img}" alt="{item.name}" title="{item.name}"></div>
     <div><a href="#">{item.name}</a></div>
@@ -33,8 +33,7 @@ var component = new RGUI.Component({
         <span class="org">{item.org}</span>
         <span class="hits f-fr"><i class="u-icon u-icon-user"></i> {item.hits}</span>
     </div>
-</div>
-    */})
+</div>`
     }
 });
 ```
@@ -73,7 +72,7 @@ var component = new RGUI.Component({
         {key: 'hits', name: '点击率'}
     ];
 
-    this.data.itemTemplate = _.multiline(function(){/*
+    this.data.itemTemplate = `
 <div class="u-courceitem">
     <div><img src="{item.img}" alt="{item.name}" title="{item.name}"></div>
     <div><a href="#">{item.name}</a></div>
@@ -81,8 +80,7 @@ var component = new RGUI.Component({
         <span class="org">{item.org}</span>
         <span class="hits f-fr"><i class="u-icon u-icon-user"></i> {item.hits}</span>
     </div>
-</div>
-    */})
+</div>`
     }
 });
 ```

@@ -130,13 +130,12 @@ var component = new RGUI.Component({
 ```javascript
 var component = new RGUI.Component({
     template: template,
-    itemTemplate: RGUI._.multiline(function(){/*
+    itemTemplate: `
 <div>
     <span class="number">{item_index + 1}.</span>
     <span class="title">{item.name}</span>
     <span class="hits f-fr">{item.hits}</span>
-</div>
-    */}),
+</div>`,
     data: {
         source: [
             {name: '精通Javascript开发', org: '前端Funs', hits: 42371},

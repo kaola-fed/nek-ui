@@ -1,30 +1,10 @@
 
 <script src="<%= relativePath %>vendor/regular.min.js"></script>
-<!-- script src="<%= relativePath %>vendor/marked.min.js"></script -->
 <script src="<%= relativePath %>js/nek-ui.min.js"></script>
 <script>
-if(!('remove' in Element.prototype))
-    Element.prototype.remove = function() {
-        if(this.parentNode) {
-            this.parentNode.removeChild(this);
-        }
-    };
 
 var _ = RGUI._;
 var $$ = function(selector){return document.querySelectorAll(selector)};
-
-// var themeSelect = new RGUI.Select2({
-//     data: {
-//         source: themes,
-//         selected: selectedTheme,
-//         placeholder: null,
-//         'class': 'u-select2-theme'
-//     }
-// }).$inject('#j-themeSelect')
-//   .$on('select', function($event) {
-//     themeCSS.href = window.relativePath + 'css/doc.' + $event.selected.name + '.min.css';
-//     localStorage['selectedTheme'] = $event.selected.name;
-// });
 
 // 生成tabs
 (function() {
@@ -62,13 +42,13 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
             continue;
 
         new RGUI.Component({
-            template: RGUI._.multiline(function(){/*
+            template: `
 <tabs>
     {#list source as item}
     <tab title={item.title}><div r-html={item.content}></div></tab>
     {/list}
 </tabs>
-            */}),
+            `,
             data: {
                 source: source
             }

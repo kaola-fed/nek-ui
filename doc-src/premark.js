@@ -29,9 +29,9 @@ function buildScript(content) {
             return;
 
         strings.push('(function(index) {');
-        strings.push('    var template = RGUI._.multiline(function(){/*');
+        strings.push('    var template = `');
         strings.push(         example.xml);
-        strings.push('    */})');
+        strings.push('    `');
         if(example.javascript)
             strings.push(example.javascript);
         else {
