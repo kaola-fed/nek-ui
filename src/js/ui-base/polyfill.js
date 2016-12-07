@@ -187,6 +187,7 @@ if(bowser.msie && bowser.version <= 8) {
 }
 
 exports.StringDate = function(value) {
+    if (!value) return new Date();
     value = value.split(' ');
     var date = value[0].split('-');
     var time = value[1] ? value[1].split(':') : [];

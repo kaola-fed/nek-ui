@@ -59,7 +59,7 @@ var DateTimePicker = Dropdown.extend({
             if(typeof newValue === 'string') {
                 if(bowser.msie && bowser.version <= 9)
                     return this.data.date = polyfill.StringDate(newValue);
-                return this.data.date = new Date(newValue);
+                return this.data.date = newValue ? new Date(newValue) : new Date();
             } else if(typeof newValue === 'number') {
                 return this.data.date = new Date(newValue);
             }
