@@ -55,4 +55,4 @@ exports.MultiTreeView = require("./components/data.view/multiTreeView.js");
 exports.Calendar = require("./components/calendar/calendar.js");
 
 exports.UIForm = require("./components/form/ui.form.js");
-exports.UIField = require("./components/form/ui.field.js");
+exports.FormItem = require("./components/form/form.item.js");
