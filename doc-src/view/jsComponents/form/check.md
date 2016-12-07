@@ -15,10 +15,10 @@
 
 ```xml
 <ui.form>
-    <ui.field cols="12" title="用户名" hint="用户名的用途">
+    <form.item cols="12" title="用户名" hint="用户名的用途">
         <check name="多选按钮1" />
         <check name="多选按钮2" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 

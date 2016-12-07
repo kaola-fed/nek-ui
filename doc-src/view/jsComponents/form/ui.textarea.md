@@ -18,9 +18,9 @@
 
 ```xml
 <ui.form>
-    <ui.field cols="12" title="备注" hint="写点备注吧">
+    <form.item cols="12" title="备注" hint="写点备注吧">
         <ui.textarea placeholder="请输入备注" />
-    </ui.field>
+    </form.item>
 </ui.form>
 ```
 
