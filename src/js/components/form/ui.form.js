@@ -7,10 +7,11 @@ var Validation = require('../../util/validation.js');
 var template = require('./ui.form.html');
 
 /**
- * Form继承于Validation
- * 1. 具有和validation一样的校验功能, this.$refs.formgroup.validate().success
- * 2. 实现统一的获取选择数据的接口；
- *
+ * @class UIForm
+ * @extend Validation
+ * @param {object}                  options.data                     =  绑定属性
+ * @param {string=''}               options.data.service             => 全站异步获取source的接口地址
+ * @param {string='data'}           options.data.sourcePath          => 获取到select数据后,读取json数据的路径
  */
 var UIForm = Validation.extend({
     name: 'ui.form',
@@ -19,7 +20,8 @@ var UIForm = Validation.extend({
         this.selectors = [];
 
         _.extend(data, {
-            service: null
+            service: null,
+            sourcePath: 'data'
         });
         this.supr(data);
     },
@@ -45,15 +47,33 @@ var UIForm = Validation.extend({
     __reqSource: function() {
         var keys = this.__getSourceKeys();
 
+        window.NEKSelects = window.NEKSelects || {};
+        keys = keys.filter(function(key) { return !window.NEKSelects[key]; });
+
+        this.selectors.forEach(function($formitem) {
+            $formitem.data.source = window.NEKSelects[$formitem.data.sourceKey] || [];
+        });
+
+
+        if (!keys.length) { return; }
         ajax.request({
             url: this.data.service,
             method: 'get',
             data: keys.join(','),
-            success: this.__cbReqSource.bind(this)
+            success: this.__cbReqSource.bind(keys, this)
         })
     },
-    __cbReqSource: function() {
+    __cbReqSource: function(keys, json) {
+        var path = this.data.sourcePath;
+        var result = path === '' ? json : json[path];
+        result = result || {};
 
+        this.selectors.forEach(function($formitem) {
+            var key = $formitem.data.sourceKey;
+            if (keys.indexOf(key) != -1 ) {
+                $formitem.data.source = result[key] || [];
+            }
+        });
     }
 });
 
