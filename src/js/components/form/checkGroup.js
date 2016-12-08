@@ -19,6 +19,7 @@ var Validation = require('../../util/validation.js');
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
  * @param {string}                  options.data.source[].name       => 每项的内容
+ * @param {string='name'}           options.data.nameKey             => 数据项的name键
  * @param {number}                  options.data.min                 => 最少选几项
  * @param {number}                  options.data.max                 => 最多选几项
  * @param {string}                  options.data.message             => 校验错误提示信息
@@ -41,7 +42,8 @@ var CheckGroup = SourceComponent.extend({
             block: false,
             source: [],
             min:0,
-            max:1000
+            max: 1000,
+            nameKey: 'name'
         });
         this.supr();
 

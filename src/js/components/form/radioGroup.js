@@ -17,10 +17,11 @@ var Validation = require('../../util/validation.js');
  * @extend SourceComponent
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
+ * @param {string='name'}           options.data.nameKey             => 数据项的name键
  * @param {string}                  options.data.source[].name       => 每项的内容
  * @param {object=null}             options.data.selected           <=> 当前选择
  * @param {boolean=false}           options.data.block               => 多行显
- * @param {boolean=false}           options.data.required            => 是否必选 
+ * @param {boolean=false}           options.data.required            => 是否必选
  * @param {string}                  options.data.message             => 验证错误提示
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
@@ -39,7 +40,8 @@ var RadioGroup = SourceComponent.extend({
             // @inherited source: [],
             selected: null,
             _radioGroupId: new Date(),
-            required:false
+            required: false,
+            nameKey: 'name'
         });
         this.supr();
 

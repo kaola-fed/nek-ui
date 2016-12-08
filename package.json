@@ -19,7 +19,8 @@
     "dist": "gulp dist",
     "doc": "gulp doc",
     "watch": "gulp watch",
-    "all": "run-s dist doc"
+    "all": "run-s dist doc",
+    "server": "gulp server"
   },
   "dependencies": {
     "bowser": "^1.5.0",
@@ -52,6 +53,7 @@
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.1",
     "text-loader": "0.0.1",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.1",
+    "browser-sync": "^2.18.2"
   }
 }

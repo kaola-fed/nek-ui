@@ -41,6 +41,7 @@ $reset-normalize();
 @import "./default/unit/suggest.mcss";
 @import "./core/unit/uploader.mcss";
 @import "./default/unit/timePicker.mcss";
+@import "./default/unit/datePicker.mcss";
 @import "./default/unit/dateTimePicker.mcss";
 @import "./default/unit/progress.mcss";
 @import "./core/unit/loading.mcss";

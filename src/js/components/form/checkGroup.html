@@ -1,7 +1,7 @@
 <div class="u-unitgroup {class}" r-hide={!visible}>
     {#list source as item}
-    <check name={item.name} checked={item.checked} disabled={disabled} block={block} />
-    {/list}   
+    <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} />
+    {/list}
     {#if tip}
         <p class="u-tip u-tip-{state}">{tip}</p>
     {/if}

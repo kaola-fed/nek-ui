@@ -18,6 +18,8 @@ var Validation = require('../../util/validation.js');
  * @param {object}                  options.data                     =  绑定属性
  * @param {object[]=[]}             options.data.source             <=> 数据源
  * @param {string}                  options.data.source[].name       => 每项的内容
+ * @param {string='id'}             options.data.key                 => 数据项的键
+ * @param {string='name'}           options.data.nameKey             => 数据项的name键
  * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
  * @param {object=null}             options.data.selected           <=> 当前选择项
  * @param {string=''}               options.data.value              <=> 文本框中的值
@@ -49,6 +51,8 @@ var Suggest = Dropdown.extend({
             selected: null,
             value: '',
             id: '',
+            key: 'id',
+            nameKey: 'name',
             placeholder: '请输入',
             maxlength: undefined,
             startLength: 0,
@@ -79,11 +83,11 @@ var Suggest = Dropdown.extend({
 
         if (id && source) {
             var selected = source.filter(function(item) {
-                return item.id == id;
+                return item[this.data.key] == id;
             })[0];
             if (selected) {
                 this.data.selected = selected;
-                this.data.value = selected.name;
+                this.data.value = selected[this.data.nameKey];
             }
         }
     },
@@ -98,8 +102,8 @@ var Suggest = Dropdown.extend({
             return;
 
         this.data.selected = item;
-        this.data.value = item.name;
-        this.data.id = item.id;
+        this.data.value = item[this.data.nameKey];
+        this.data.id = item[this.data.key];
 
         /**
          * @event select 选择某一项时触发
@@ -133,7 +137,7 @@ var Suggest = Dropdown.extend({
             Dropdown.opens.splice(index, 1);
 
             if(!_isInput && this.data.strict)
-               this.data.value = this.data.selected ? this.data.selected.name : '';
+               this.data.value = this.data.selected ? this.data.selected[this.data.nameKey] : '';
         }
 
         /**
@@ -181,11 +185,11 @@ var Suggest = Dropdown.extend({
             return false;
 
         if(this.data.matchType === 'all')
-            return item.name.indexOf(value) >= 0;
+            return item[this.data.nameKey].indexOf(value) >= 0;
         else if(this.data.matchType === 'startLength')
-            return item.name.slice(0, value.length) === value;
+            return item[this.data.nameKey].slice(0, value.length) === value;
         else if(this.data.matchType === 'end')
-            return item.name.slice(-value.length) === value;
+            return item[this.data.nameKey].slice(-value.length) === value;
     },
     /**
      * @method validate() 根据验证组件的值是否正确

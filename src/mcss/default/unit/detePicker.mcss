@@ -1,0 +1,10 @@
+.u-datepicker {
+
+  .u-timepicker {
+    margin: 4px 0;
+  }
+
+  .dropdown_bd{
+    width: auto;
+  }
+}

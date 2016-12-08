@@ -23,7 +23,8 @@ var Validation = require('../../util/validation.js');
  * @param {object}                  options.data.selected           <=> 当前选择项
  * @param {string|number}           options.data.value              <=> 当前选择值
  * @param {string='id'}             options.data.key                 => 数据项的键
- * @param {string='请选择'}         options.data.placeholder         => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
+ * @param {string='name'}           options.data.nameKey             => 数据项的name键
+ * @param {string='请选择'}          options.data.placeholder         => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
  * @param {boolean=false}           options.data.required            => 是否必填
  * @param {boolean=false}           options.data.readonly            => 是否只读
  * @param {boolean=false}           options.data.disabled            => 是否禁用
@@ -43,6 +44,7 @@ var Select = Dropdown.extend({
             // @inherited open: false
             selected: undefined,
             key: 'id',
+            nameKey: 'name',
             value: undefined,
             placeholder: '请选择',
             required: false
@@ -70,7 +72,7 @@ var Select = Dropdown.extend({
         this.$watch('value', function(newValue, oldValue) {
             if(newValue === undefined || newValue === null)
                 return this.data.selected = newValue;
-            
+
             if(this.data.source) {
                 if(!this.data.selected || this.data.selected[this.data.key] !== newValue)
                     this.data.selected = this.data.source.find(function(item) {
@@ -125,7 +127,7 @@ var Select = Dropdown.extend({
             return;
 
         this.data.selected = item;
-        
+
         /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象

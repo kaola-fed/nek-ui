@@ -16,5 +16,6 @@
 
     .u-btn {
         position: absolute;
+        border: none;
     }
 }
