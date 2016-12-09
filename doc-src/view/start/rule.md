@@ -7,18 +7,15 @@
 
 | 组件名和类名       | 对象名             | 标签名               | CSS class             |　JS文件名             |  CSS文件名              |
 | ------------------ | ------------------ | -------------------- | --------------------- | --------------------- | ----------------------- |
-| 大驼峰             | 小驼峰             | 小驼峰               | 全小写                | 与标签名一致          | 与标签名一致            |
+| 大驼峰             | 小驼峰             | 点间隔(两个单词内)        | 全小写                | 与标签名一致          | 与标签名一致            |
 | -                  | -                  | `<button>`            | `u-btn`                | -                     | `btn.mcss`               |
 | `Modal`             | `modal`             | `<modal>`             | `m-modal`              | `modal.js`             | `modal.mcss`             |
-| `DetailModal`       | `detailModal`       | `<detailModal>`       | `m-detailmodal`        | `detailModal.js`       | `detailModal.mcss`       |
-| `ListView`          | `listView`          | `<listView>`          | `m-listview`           | `listView.js`          | `listView.mcss`          |
-| `MusicListView`     | `musicListView`     | `<musicListView>`     | `m-musiclistview`      | `musicListView.js`     | `musicListView.mcss`     |
-| `TreeView`          | `treeView`          | `<treeView>`          | `m-treeview`           | `treeView.js`          | `treeView.mcss`          |
-| `KnowledgeTreeView` | `knowledgeTreeView` | `<knowledgeTreeView>` | `m-knowledgetreeview`  | `knowledgeTreeView.js` | `knowledgeTreeView.mcss` |
-| `TreeViewList`      | `treeViewList`      | `<treeViewList>`      | `treeview_list`        | -                     | -                       |
+| `DetailModal`       | `detailModal`       | `<detail.modal>`       | `m-detailmodal`        | `detail.modal.js`       | `detail.modal.mcss`       |
+| `ListView`          | `listView`          | `<list.view>`          | `m-listview`           | `list.view.js`          | `list.view.mcss`          |
+| `MusicListView`     | `musicListView`     | `<music.view>`     | `m-musiclistview`      | `music.view.js`     | `music.view.mcss`     |
+| `TreeView`          | `treeView`          | `<tree.view>`          | `m-treeview`           | `tree.view.js`          | `tree.view.mcss`          |
 | `Calendar`          | `calendar`          | `<calendar>`          | `m-calendar`           | `calendar.js`          | `calendar.mcss`          |
-| `DatePicker`        | `datePicker`        | `<datePicker>`        | `u-datepicker`         | `datePicker.js`        | `datePicker.mcss`        |
-| `DateTimePicker`    | `dateTimePicker`    | `<dateTimePicker>`    | `u-datetimepicker`     | `dateTimePicker.js`    | `dateTimePicker.mcss`    |
+| `DatePicker`        | `datePicker`        | `<date.picker>`        | `u-datepicker`         | `date.picker.js`        | `date.picker.mcss`        |
 
 #### CSS规范
 

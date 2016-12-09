@@ -55,7 +55,7 @@ function build(path, sitemap, template) {
         relativePath: level[2] ? '../../' : '../',
         isIndex: false,
         mainnav: level[0],
-        sidenav: level[1],
+        sidenav: level[2] ? level[2] : level[1],
         article: '',
         script: '',
         api: '',

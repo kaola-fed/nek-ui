@@ -1,53 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-<!-- 该文档由doc-src自动生成 -->
 <meta charset="utf-8">
-<title>Regular UI</title>
-<meta name="author" content="森森">
-<meta name="keywords" content="Regular,UI,JavaScript,Framework,MVC,MVVM">
+<title>NEK UI</title>
+<meta name="keywords" content="NEK,Regular,UI,JavaScript,Framework,MVC,MVVM">
 <meta name="description" content="Regular UI">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="../../css/doc.default.min.css">
-<!--[if lt IE9]>
-<script>
-(function() {
-    if (!
-    /*@cc_on!@*/
-    0) return;
-    var e = 'abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video'.split(', ');
-    var i= e.length;
-    while (i--)
-        document.createElement(e[i]);
-})();
-</script>
-<![endif]-->
-<script>
-// 该段代码是选择主题用的，与渲染有关，所以必须放前面。
-// var relativePath = '../../';
-// var themes = [
-//     {name: 'simple'},
-//     {name: 'default'},
-//     {name: 'flat'},
-//     {name: 'bootstrap'}
-// ];
-
-// var selectedTheme;
-// if(localStorage['selectedTheme']) {
-//     for(var i = 0; i < themes.length; i++)
-//         if(themes[i].name === localStorage['selectedTheme']) {
-//             selectedTheme = themes[i];
-//             break;
-//         }
-// } else {
-//     selectedTheme = themes[1];
-// }
-
-// var themeCSS = document.getElementById('j-themeCSS');
-// themeCSS.href = window.relativePath + 'css/doc.' + selectedTheme.name + '.min.css';
-</script>
 </head>
 <body>
 <div class="g-top g-top-fixed">
@@ -134,12 +95,12 @@
         
         
         
-        <li><a href="../../jscomponents/form/checkgroup.html" >多选组<small> CheckGroup</small>
+        <li><a href="../../jscomponents/form/check.group.html" >多选组<small> CheckGroup</small>
         </a></li>
         
         
         
-        <li><a href="../../jscomponents/form/radiogroup.html" >单选组<small> RadioGroup</small>
+        <li><a href="../../jscomponents/form/radio.group.html" >单选组<small> RadioGroup</small>
         </a></li>
         
         
@@ -149,12 +110,12 @@
         
         
         
-        <li><a href="../../jscomponents/form/selectgroup.html" >多级选择<small> SelectGroup</small>
+        <li><a href="../../jscomponents/form/select.group.html" >多级选择<small> SelectGroup</small>
         </a></li>
         
         
         
-        <li><a href="../../jscomponents/form/treeselect.html" >树型选择<small> TreeSelect</small>
+        <li><a href="../../jscomponents/form/tree.select.html" >树型选择<small> TreeSelect</small>
         </a></li>
         
         
@@ -186,17 +147,12 @@
         
         <li class="sidebar_group"><span>日期类</span></li>
         
-        <li><a href="../../jscomponents/calendar/datepicker.html" >日期选择<small> DatePicker</small>
+        <li><a href="../../jscomponents/calendar/date.picker.html" >日期选择<small> DatePicker</small>
         </a></li>
         
         
         
-        <li><a href="../../jscomponents/calendar/timepicker.html" >时间选择<small> TimePicker</small>
-        </a></li>
-        
-        
-        
-        <li><a href="../../jscomponents/calendar/datetimepicker.html" >日期时间选择<small> DateTimePicker</small>
+        <li><a href="../../jscomponents/calendar/time.picker.html" >时间选择<small> TimePicker</small>
         </a></li>
         
         
@@ -208,17 +164,12 @@
         
         <li class="sidebar_group"><span>数据类</span></li>
         
-        <li><a href="../../jscomponents/data.view/listview.html" >列表视图<small> ListView</small>
+        <li><a href="../../jscomponents/data.view/list.view.html" >列表视图<small> ListView</small>
         </a></li>
         
         
         
-        <li><a href="../../jscomponents/data.view/treeview.html" >树型视图<small> TreeView</small>
-        </a></li>
-        
-        
-        
-        <li><a href="../../jscomponents/data.view/multitreeview.html" >多选树型视图<small> MultiTreeView</small>
+        <li><a href="../../jscomponents/data.view/tree.view.html" >树型视图<small> TreeView</small>
         </a></li>
         
         
@@ -240,7 +191,7 @@
         
         
         
-        <li><a href="../../jscomponents/widget/tooltip.html" >文字提示<small> Tooltip</small>
+        <li class="z-crt"><a href="../../jscomponents/widget/tooltip.html" >文字提示<small> Tooltip</small>
         </a></li>
         
     </ul>
@@ -312,31 +263,11 @@
     </article>
 </div></div></div>
 <script src="../../vendor/regular.min.js"></script>
-<!-- script src="../../vendor/marked.min.js"></script -->
 <script src="../../js/nek-ui.min.js"></script>
 <script>
-if(!('remove' in Element.prototype))
-    Element.prototype.remove = function() {
-        if(this.parentNode) {
-            this.parentNode.removeChild(this);
-        }
-    };
 
 var _ = RGUI._;
 var $$ = function(selector){return document.querySelectorAll(selector)};
-
-// var themeSelect = new RGUI.Select2({
-//     data: {
-//         source: themes,
-//         selected: selectedTheme,
-//         placeholder: null,
-//         'class': 'u-select2-theme'
-//     }
-// }).$inject('#j-themeSelect')
-//   .$on('select', function($event) {
-//     themeCSS.href = window.relativePath + 'css/doc.' + $event.selected.name + '.min.css';
-//     localStorage['selectedTheme'] = $event.selected.name;
-// });
 
 // 生成tabs
 (function() {
@@ -374,13 +305,13 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
             continue;
 
         new RGUI.Component({
-            template: RGUI._.multiline(function(){/*
+            template: `
 <tabs>
     {#list source as item}
     <tab title={item.title}><div r-html={item.content}></div></tab>
     {/list}
 </tabs>
-            */}),
+            `,
             data: {
                 source: source
             }
@@ -391,20 +322,20 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
 <script>
 var index = 0;
 (function(index) {
-    var template = RGUI._.multiline(function(){/*
+    var template = `
 <tooltip tip=123 />鼠标放上去,可以看到提示
-    */})
+    `
 var component = new RGUI.Component({
     template: template
 });
     component.$inject($$(".m-example")[index]);
 })(index++);
 (function(index) {
-    var template = RGUI._.multiline(function(){/*
+    var template = `
 <tooltip tip=123>
     <button class="u-btn">保存提交</button>
 </tooltip>
-    */})
+    `
 var component = new RGUI.Component({
     template: template
 });

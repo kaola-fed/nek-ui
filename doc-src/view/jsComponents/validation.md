@@ -33,7 +33,7 @@
     <div class="u-formitem">
         <label class="formitem_tt">性别<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <radioGroup source={source} required=true message="请选择" />
+            <radio.group source={source} required=true message="请选择" />
         </span>
     </div>
     <div class="u-formitem">
@@ -57,13 +57,13 @@
     <div class="u-formitem">
         <label class="formitem_tt">爱好<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <checkGroup source={source} min=1 max=3 message="请选择1-3个" />
+            <check.group source={source} min=1 max=3 message="请选择1-3个" />
         </span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">数据选择<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <selectGroup source={selectGroupSource} depth=3 required=true />
+            <select.group source={selectGroupSource} depth=3 required=true />
         </span>
     </div>
     <div class="u-formitem">
@@ -75,13 +75,13 @@
     <div class="u-formitem">
         <label class="formitem_tt">日期选择<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <datePicker required />
+            <date.picker required />
         </span>
     </div>
     <div class="u-formitem">
         <label class="formitem_tt">日期时间选择<span class="formitem_rqr">*</span>：</label>
         <span class="formitem_ct">
-            <dateTimePicker required />
+            <date.picker showTime=true required />
         </span>
     </div>
     <div class="u-formitem">

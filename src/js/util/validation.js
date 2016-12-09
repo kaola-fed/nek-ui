@@ -72,31 +72,18 @@ Validation.validate = function(value, rules) {
     rules.forEach(function(rule) {
         rule.success = true;
 
-        // if(rule.type === 'is')
-        //     rule.success = rule.options.test(value);
-        // else if(rule.type === 'isNot')
-        //     rule.success = !rule.optionss.test(value);
-        // else if(rule.type === 'isRequired')
-        //     rule.success = !!validator.toString(value);
-        // else if(rule.type === 'isFilled')
-        //     rule.success = !!validator.toString(value).trim();
-        // else if(rule.type === 'method')
-        //     rule.success = rule.method(value, rule);
-        // else
-        //     rule.success = validator[rule.type](value, rule.options);
-
         // 为了兼容
         if(rule.type === 'is')
             rule.success = (rule.options || rule.reg).test(value);
         else if(rule.type === 'isNot')
             rule.success = !(rule.options || rule.reg).test(value);
-        else if(rule.type === 'isRequired')
+        else if(rule.type === 'isRequired' || rule.type === 'isFilled')
             rule.success = !!validator.toString(value).trim();
         else if(rule.type === 'method' || rule.method)
             rule.success = (rule.options || rule.method)(value, rule);
         else
-            rule.success = !value || validator[rule.type](value + '', rule.options);
-            
+            rule.success = !value || validator[rule.type](value, rule.options);
+         
         rule.callback && rule.callback(value, rule);
 
         if(!rule.success && result.success) {

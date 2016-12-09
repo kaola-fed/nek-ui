@@ -21,7 +21,7 @@
     }
     
     > li.z-crt > a {
-        background: $background-base;
+        background: $brand-default-dark;
     }
     
     > li.sidebar_group {

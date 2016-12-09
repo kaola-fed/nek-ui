@@ -58,8 +58,10 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<suggest source={source} class="g-col g-col-6" />
-<suggest source={source} disabled class="g-col g-col-6" />
+<div class="f-cb">
+    <suggest source={source} class="g-col g-col-6" />
+    <suggest source={source} disabled class="g-col g-col-6" />
+</div>
 ```
 
 ```javascript
