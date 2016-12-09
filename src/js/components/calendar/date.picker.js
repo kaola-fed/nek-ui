@@ -51,11 +51,13 @@ var DatePicker = Dropdown.extend({
             _time: undefined,
             autofocus: false,
             required: false,
-            showTime: false
+            showTime: false,
+            open: false
         });
         this.supr();
 
         this.$watch('date', function(newValue, oldValue) {
+
             // 字符类型自动转为日期类型
             if(typeof newValue === 'string') {
                 if(bowser.msie && bowser.version <= 9)
@@ -75,7 +77,7 @@ var DatePicker = Dropdown.extend({
                     return this.data.date = isOutOfRange;
             }
 
-            if(newValue && newValue - oldValue !== 0) {
+            if(newValue) {
                 this.data.date.setSeconds(0);
                 this.data.date.setMilliseconds(0);
                 this.data._date = new Date(newValue);
@@ -147,32 +149,43 @@ var DatePicker = Dropdown.extend({
         }
     },
     /**
+     * @method select(date) 选择一个日期
+     * @public
+     * @param  {Date=null} date 选择的日期
+     * @return {void}
+     */
+    select: function(date, time) {
+        if(this.data.readonly || this.data.disabled || this.isOutOfRange(date))
+            return;
+
+        this._onDateTimeChange(date, time);
+
+        /**
+         * @event select 选择某一项时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} date 当前选择项
+         */
+        this.$emit('select', {
+            sender: this,
+            date: date
+        });
+
+        this.toggle(false);
+    },
+    /**
      * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
      * @private
      * @return {void}
      */
     _onDateTimeChange: function(date, time) {
-        if(!time)
-            return this.data._time = '00:00';
+        this.data.time = time || '00:00';
 
         date = new Date(date);
-        time = time.split(':');
+        time = this.data.time.split(':');
         date.setHours(time[0]);
         date.setMinutes(time[1]);
         this.data.date = date;
     },
-    /**
-     * @method select()
-     * @public
-     * @ignore
-     */
-    // select: function() {
-        /**
-         * @event select
-         * @public
-         * @ignore
-         */
-    // },
     /**
      * @method _onInput($event) 输入日期
      * @private

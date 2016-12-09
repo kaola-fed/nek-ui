@@ -14,6 +14,33 @@
 </ui.form>
 ```
 
+#### 日期时间选择
+
+<div class="m-example"></div>
+
+```xml
+<div class="f-cb">
+<ui.form>
+    <form.item cols=4>
+        <date.picker showTime date={date1} />
+    </form.item>
+    <form.item cols=4>
+        <date.picker showTime date={date2} />
+    </form.item>
+</ui.form>
+</div>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        date1: 1481287269287,
+        date2: '2016-12-09 09:03'
+    }
+});
+```
+
 #### 禁用组件
 
 <div class="m-example"></div>
