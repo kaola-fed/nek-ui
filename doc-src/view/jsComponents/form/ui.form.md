@@ -41,7 +41,7 @@ var component = new RGUI.Component({
     template: template,
     data: {
         api: {
-            selector: '/data/selector.json'
+            selector: '../../data/selector.json'
         }
     }
 });
