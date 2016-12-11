@@ -3,7 +3,7 @@
 var express = require('express');
 var app = express();
 
-app.use(express.static('doc'));
+app.use(express.static('docs'));
 
 var server = app.listen(8000, function() {
     var host = server.address().address;

@@ -20,17 +20,17 @@ var buildAll = require('../doc-src/buildAll.js');
  */
 
 gulp.task('doc-clean', function() {
-    return gulp.src('./doc', {read: false}).pipe(rm());
+    return gulp.src('./docs', {read: false}).pipe(rm());
 });
 
 gulp.task('doc-copy', function() {
     return all(
-        gulp.src('./doc-src/assets/**').pipe(gulp.dest('./doc')),
-        gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./doc/fonts')),
+        gulp.src('./doc-src/assets/**').pipe(gulp.dest('./docs')),
+        gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./docs/fonts')),
         gulp.src([
             './node_modules/regularjs/dist/regular.min.js',
             './node_modules/marked/marked.min.js'
-        ]).pipe(gulp.dest('./doc/vendor'))
+        ]).pipe(gulp.dest('./docs/vendor'))
     );
 });
 
@@ -38,7 +38,7 @@ gulp.task('doc-js', function() {
     return gulp.src('./src/js/index.js')
         .pipe(webpack(webpackConfig))
         .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./doc/js'));
+        .pipe(gulp.dest('./docs/js'));
 });
 
 gulp.task('doc-css', function() {
@@ -52,7 +52,7 @@ gulp.task('doc-css', function() {
                 .pipe(rename('regular-ui.' + theme + '.css'))
                 .pipe(rename({suffix: '.min'}))
                 .pipe(minifycss())
-                .pipe(gulp.dest('./doc/css')),
+                .pipe(gulp.dest('./docs/css')),
             gulp.src('./doc-src/mcss/' + theme + '.mcss')
                 .pipe(mcss({
                     pathes: ['./node_modules'],
@@ -60,7 +60,7 @@ gulp.task('doc-css', function() {
                 }))
                 .pipe(rename('doc.' + theme + '.min.css'))
                 .pipe(minifycss())
-                .pipe(gulp.dest('./doc/css'))
+                .pipe(gulp.dest('./docs/css'))
         ];
     }
     
