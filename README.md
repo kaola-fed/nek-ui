@@ -1,6 +1,6 @@
 # UI for NEK
 
-[组件文档](https://kaola-fed.github.io/nek-ui/doc/)
+[组件文档](http://nek-ui.kaolafed.com/)
 
 用于扩展和自定义组件，做了精简，有需要了解背景的可以看[原项目](https://github.com/regular-ui/regular-ui)
 

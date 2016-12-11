@@ -3,7 +3,7 @@
   "description": "Extension of Regular UI",
   "version": "0.1.40",
   "main": "./dist/js/nek-ui.js",
-  "homepage": "https://kaola-fed.github.io/nek-ui/doc/",
+  "homepage": "http://nek-ui.kaolafed.com/",
   "license": "MIT",
   "files": [
     "dist"
