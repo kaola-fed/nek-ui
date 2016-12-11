@@ -1,18 +1,3 @@
-<div class="m-treeview {class}" z-dis={disabled} r-hide={!visible}>
-	<ul class="treeview_list" r-hide={!visible}>
-		{#list source as item}
-		<li>
-			<div class="treeview_item">
-				{#if item.childrenCount || (item.children && item.children.length)}
-				<i class="u-icon" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>
-				{/if}
-				{#if !item.divider}
-				<check checked={item.checked} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />
-				{/if}
-				<div class="treeview_itemname" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>
-			</div>
-			{#if item.childrenCount || (item.children && item.children.length)}<tree.view source={item.children} visible={item.open} parent={item} />{/if}
-		</li>
-		{/list}
-	</ul>
+<div class="m-treeview {class}" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>
+	<tree.view.list source={source} visible multiple={multiple} />
 </div>

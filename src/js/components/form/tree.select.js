@@ -24,6 +24,7 @@ var Treeview = require('../data.view/tree.view.js');
  * @param {string='请选择'}         options.data.placeholder         => 默认项的文字
  * @param {boolean=false}           options.data.hierarchical       @=> 是否分级动态加载，需要service
  * @param {boolean=false}           options.data.readonly            => 是否只读
+ * @param {boolean=false}           options.data.multiple            => 是否多选
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class

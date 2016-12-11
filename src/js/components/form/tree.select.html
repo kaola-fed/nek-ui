@@ -5,7 +5,7 @@
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <tree.view source={source} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />
+        <tree.view source={source} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />
     </div>
     {/if}
 </div>
