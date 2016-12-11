@@ -56,22 +56,29 @@ var UIForm = Validation.extend({
 
 
         if (!keys.length) { return; }
+        this.keys = keys;
         ajax.request({
             url: this.data.service,
             method: 'get',
-            data: keys.join(','),
-            success: this.__cbReqSource.bind(keys, this)
+            type: 'json',
+            data: {
+                keys:keys.join(',')
+            },
+            success: this.__cbReqSource.bind(this)
         })
     },
-    __cbReqSource: function(keys, json) {
-        var path = this.data.sourcePath;
-        var result = path === '' ? json : json[path];
+    __cbReqSource: function(json) {
+        var keys = this.keys,
+            path = this.data.sourcePath,
+            result = path === '' ? json : json[path];
+
         result = result || {};
 
         this.selectors.forEach(function($formitem) {
-            var key = $formitem.data.sourceKey;
-            if (keys.indexOf(key) != -1 ) {
-                $formitem.data.source = result[key] || [];
+            var key = $formitem.data.sourceKey,
+                $selectItem = $formitem.controls[0];
+            if (keys.indexOf(key) != -1 && $selectItem) {
+                $selectItem.data.source = result[key] || [];
             }
         });
     }

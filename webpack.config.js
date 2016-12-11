@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     output: {
         filename: 'nek-ui.js',
@@ -22,5 +24,11 @@ module.exports = {
             'regular-ui-base': __dirname + '/node_modules/regular-ui-base',
             'bowser': __dirname + '/node_modules/bowser'
         }
-    }
+    },
+    plugins: [
+        new webpack.SourceMapDevToolPlugin({
+            filename: "nek-ui.js.map",
+            columns: false
+        })
+    ]
 }

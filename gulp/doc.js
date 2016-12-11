@@ -38,7 +38,6 @@ gulp.task('doc-js', function() {
     return gulp.src('./src/js/index.js')
         .pipe(webpack(webpackConfig))
         .pipe(rename({suffix: '.min'}))
-        .pipe(uglify())
         .pipe(gulp.dest('./doc/js'));
 });
 

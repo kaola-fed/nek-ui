@@ -35,7 +35,7 @@ ajax.request = function(opt) {
                 else
                     ;// Notify.error(data.message);
             } else
-                oldSuccess && oldSuccess(data.result, data.message, data.code);
+                oldSuccess && oldSuccess(data, data.message, data.code);
         } else
             oldSuccess && oldSuccess(data);
     }

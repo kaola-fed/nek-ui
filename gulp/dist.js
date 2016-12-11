@@ -5,6 +5,7 @@ var webpackConfig = require('../webpack.config.js');
 var rimraf = require('rimraf');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
+var ignore = require('gulp-ignore');
 var minifycss = require('gulp-minify-css');
 var sequence = require('run-sequence');
 var all = require('gulp-all');
@@ -36,6 +37,7 @@ gulp.task('dist-js', function() {
     return gulp.src('./src/js/index.js')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./dist/js'))
+        .pipe(ignore.exclude('*.js.map'))
         .pipe(rename({suffix: '.min'}))
         .pipe(uglify())
         .pipe(gulp.dest('./dist/js'));
