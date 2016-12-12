@@ -25,6 +25,7 @@ gulp.task('doc-clean', function() {
 
 gulp.task('doc-copy', function() {
     return all(
+        gulp.src('./CNAME').pipe(gulp.dest('./docs')),
         gulp.src('./doc-src/assets/**').pipe(gulp.dest('./docs')),
         gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./docs/fonts')),
         gulp.src([
