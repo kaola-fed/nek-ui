@@ -133,7 +133,7 @@ function build(path, sitemap, template) {
     // 渲染HTML文件
     var html = ejs.render(tpl, data);
 
-    var filepath = __dirname + '/../doc/' + path.toLowerCase() + '.html';
+    var filepath = __dirname + '/../docs/' + path.toLowerCase() + '.html';
     var filedir = pathlib.dirname(filepath);
     if(!fs.existsSync(filedir))
         mkdirp.sync(filedir);

@@ -12,6 +12,7 @@ var template = require('./form.item.html');
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.title               => label显示的文字
  * @param {number}                  options.data.cols                => 布局列数
+ * @param {number}                  options.data.labelCols           => 如果有title, label占的列数
  * @param {number}                  options.data.offset              => 布局offset
  * @param {boolean=false}           options.data.required            => 是否必选项
  * @param {string=''}               options.data.tip                 => 字段说明
