@@ -210,10 +210,10 @@
 <div class="m-example"></div>
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">form.item</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;6&quot;</span> <span class="cm-attribute">labelCols</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;用户名&quot;</span> <span class="cm-attribute">tip</span>=<span class="cm-string">&quot;用户名的用途&quot;</span> <span class="cm-attribute">required</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">form.item</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;6&quot;</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;用户名&quot;</span> <span class="cm-attribute">tip</span>=<span class="cm-string">&quot;用户名的用途&quot;</span> <span class="cm-attribute">required</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;password&quot;</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入密码&quot;</span> <span class="cm-attribute">autofocus</span> <span class="cm-attribute">required</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form.item</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">form.item</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;6&quot;</span> <span class="cm-attribute">labelCols</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;密码&quot;</span> <span class="cm-attribute">tip</span>=<span class="cm-string">&quot;密码的用途&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">form.item</span> <span class="cm-attribute">cols</span>=<span class="cm-string">&quot;6&quot;</span> <span class="cm-attribute">labelCols</span>=<span class="cm-attribute">4</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;密码&quot;</span> <span class="cm-attribute">tip</span>=<span class="cm-string">&quot;密码的用途&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;password&quot;</span> <span class="cm-attribute">maxlength</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">placeholder</span>=<span class="cm-string">&quot;请输入密码&quot;</span> <span class="cm-attribute">autofocus</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">form.item</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -405,10 +405,10 @@ var component = new RGUI.Component({
 (function(index) {
     var template = `
 <ui.form>
-    <form.item cols="6" labelCols=6 title="用户名" tip="用户名的用途" required>
+    <form.item cols="6" title="用户名" tip="用户名的用途" required>
         <ui.input type="password" maxlength=6 placeholder="请输入密码" autofocus required />
     </form.item>
-    <form.item cols="6" labelCols=6 title="密码" tip="密码的用途">
+    <form.item cols="6" labelCols=4 title="密码" tip="密码的用途">
         <ui.input type="password" maxlength=6 placeholder="请输入密码" autofocus />
     </form.item>
 </ui.form>

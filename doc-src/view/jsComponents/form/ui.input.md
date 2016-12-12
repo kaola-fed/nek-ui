@@ -18,10 +18,10 @@
 
 ```xml
 <ui.form>
-    <form.item cols="6" labelCols=6 title="用户名" tip="用户名的用途" required>
+    <form.item cols="6" title="用户名" tip="用户名的用途" required>
         <ui.input type="password" maxlength=6 placeholder="请输入密码" autofocus required />
     </form.item>
-    <form.item cols="6" labelCols=6 title="密码" tip="密码的用途">
+    <form.item cols="6" labelCols=4 title="密码" tip="密码的用途">
         <ui.input type="password" maxlength=6 placeholder="请输入密码" autofocus />
     </form.item>
 </ui.form>

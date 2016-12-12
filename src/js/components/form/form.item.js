@@ -58,17 +58,23 @@ var FormItem = Validation.extend({
 });
 
 FormItem.directive('cols', function(ele, cols) {
-    cols = this.$get(cols);
-    if (!cols) { return; }
+    this.$watch(cols, function(ncols) {
+        ele.className = ele.className.replace(/(\s)g-col(-\d)?/gim, '');
 
-    ele.classList.add('g-col', 'g-col-' + cols);
+        if (ncols) {
+            ele.classList.add('g-col', 'g-col-' + ncols);
+        }
+    });
 });
 
 FormItem.directive('offset', function(ele, offset) {
-    offset = this.$get(offset);
-    if (!offset) { return; }
+    this.$watch(offset, function(noffset) {
+        ele.className = ele.className.replace(/(\s)g-offset(-\d)?/gim, '');
 
-    ele.classList.add('g-offset-' + offset);
+        if (noffset) {
+            ele.classList.add('g-offset-' + ncols);
+        }
+    });
 });
 
 module.exports = FormItem;
