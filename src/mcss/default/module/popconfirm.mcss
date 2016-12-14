@@ -1,0 +1,115 @@
+.m-popconfirm{
+    display: inline-block;
+}
+.m-popconfirmMd{
+    display: inline-block;
+    position: absolute;
+    max-width: 250px;
+    word-wrap: break-word;
+    padding: 8px 16px;
+    color: #666;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align:left;
+    z-index: 98;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+    .popconfirm_bd{
+        padding: 8px 0 16px;
+        font-size: 12px;
+        color: #666;
+    }
+    .popconfirm_ft{
+        text-align: right;
+        margin-bottom: 8px;
+        .u-btn{
+            border-radius: 2px;
+        }
+        .u-btn-primary{
+            margin-left: 5px;
+        }
+    }
+    .arrow-br-border{
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -5px;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: rgba(217, 217, 217, 0.7);
+    }
+    .arrow-br{
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -4px;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: #fff;
+    }
+    .arrow-bl-border{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        top: -5px;
+        right: 5px;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: rgba(217, 217, 217, 0.7);
+    }
+    .arrow-bl{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        top: -4px;
+        right: 5px;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: #fff;
+    }
+    .arrow-tl-border{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -5px;
+        right: 5px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(217, 217, 217, 0.7);
+    }
+    .arrow-tl{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -4px;
+        right: 5px;
+        border-width: 5px 5px 0;
+        border-top-color: #fff;
+    }
+    .arrow-tr-border{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -5px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(217, 217, 217, 0.7);
+    }
+    .arrow-tr{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -4px;
+        border-width: 5px 5px 0;
+        border-top-color: #fff;
+    }
+}

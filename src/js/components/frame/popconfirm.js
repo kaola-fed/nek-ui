@@ -1,34 +1,35 @@
 /**
  * ------------------------------------------------------------
- * Tooltip     提示
+ * PopConfirm     气泡确认框
  * @author   ziane(zianecui@gmail.com)
  * ------------------------------------------------------------
  */
 
 'use strict';
 
-var TipContent = require('./tip.content.js');
+var confirmContent = require('./confirm.content.js');
 var Component = require("../../ui-base/component.js");
-var template = require('./tooltip.html');
+var template = require('./popconfirm.html');
 var dom = require('regularjs').dom;
 var _ = require('../../ui-base/_.js');
 
 /**
- * @class Tooltip
+ * @class PopConfirm
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.tip                 => 文字提示
+* @param {string=''}                options.data.content             => 弹出框展示的文字
  * @param {string='tr'}             options.data.placement           => tips展示出的位置：四个值，tr,tl,br,bl
  */
-var Tooltip = Component.extend({
-    name: 'tooltip',
+var PopConfirm = Component.extend({
+    name: 'popconfirm',
     template: template,
     config: function (data) {
         _.extend(data, {
             placement: 'tr',
-            isHide: false,
-            domAttr: {},
-            offSetStyle: ''
+            content: '',
+            cancelButton: true,
+            okButton: true,
+            contentTemplate: ''
         });
         this.supr(data);
     },
@@ -37,6 +38,7 @@ var Tooltip = Component.extend({
         var placement = this.data.placement;
         var innerHeight = window.innerHeight;
         var innerWidth = window.innerWidth;
+        var offSetStyle;
         var newValue = {}
 
         newValue.offsetTop = elem.offsetTop;
@@ -45,19 +47,19 @@ var Tooltip = Component.extend({
         newValue.clientHeight = elem.clientHeight;
 
         if (placement == 'tr') {
-            this.data.offSetStyle = 'left:' + newValue.offsetLeft + 'px' + ';bottom:' + (innerHeight - newValue.offsetTop + 10) + 'px;';
+            offSetStyle = 'left:' + newValue.offsetLeft + 'px' + ';bottom:' + (innerHeight - newValue.offsetTop + 10) + 'px;';
         }
 
         if (placement == 'tl') {
-            this.data.offSetStyle = 'right:' + (innerWidth - newValue.offsetLeft - newValue.clientWidth) + 'px' + ';bottom:' + (innerHeight - newValue.offsetTop + 10) + 'px;';
+            offSetStyle = 'right:' + (innerWidth - newValue.offsetLeft - newValue.clientWidth) + 'px' + ';bottom:' + (innerHeight - newValue.offsetTop + 10) + 'px;';
         }
 
         if (placement == 'bl') {
-            this.data.offSetStyle = 'right:' + (innerWidth - newValue.offsetLeft - newValue.clientWidth) + 'px' + ';top:' + (newValue.offsetTop + newValue.clientHeight + 10) + 'px;';
+            offSetStyle = 'right:' + (innerWidth - newValue.offsetLeft - newValue.clientWidth) + 'px' + ';top:' + (newValue.offsetTop + newValue.clientHeight + 10) + 'px;';
         }
 
         if (placement == 'br') {
-            this.data.offSetStyle = 'left:' + newValue.offsetLeft + 'px' + ';top:' + (newValue.offsetTop + newValue.clientHeight + 10) + 'px;';
+            offSetStyle = 'left:' + newValue.offsetLeft + 'px' + ';top:' + (newValue.offsetTop + newValue.clientHeight + 10) + 'px;';
         }
 
 
@@ -67,11 +69,14 @@ var Tooltip = Component.extend({
             bl: 'arrow-bl',
             br: 'arrow-br'
         };
-        this._content = new TipContent({
+        this._content = new confirmContent({
             data:{
-                tip: this.data.tip,
-                isHide: this.data.isHide,
-                offSetStyle: this.data.offSetStyle,
+                parent: this,
+                content: this.data.content,
+                cancelButton: this.data.cancelButton,
+                okButton: this.data.okButton,
+                contentTemplate: this.data.contentTemplate,
+                offSetStyle: offSetStyle,
                 arrow: placement[this.data.placement]
             }
         });
@@ -81,4 +86,4 @@ var Tooltip = Component.extend({
     }
 });
 
-module.exports = Tooltip;
+module.exports = PopConfirm;

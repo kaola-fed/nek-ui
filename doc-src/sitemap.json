@@ -61,6 +61,7 @@
 
                 {"name": "Notify", "lowerName": "notify","source":"frame/notify", "cnName": "通知", "group": "窗口类", "beta": true},
                 {"name": "Modal", "lowerName": "modal","source":"frame/modal", "cnName": "模态对话框", "group": "窗口类", "stable": true},
+                                {"name": "PopConfirm", "lowerName": "popconfirm","source":"frame/popconfirm", "cnName": "气泡确认框", "group": "其他", "beta":true},
 
                 {"name": "UIInput", "lowerName": "ui.input", "source":"form/ui.input", "cnName": "输入扩展", "group": "表单类", "beta": true},
                 {"name": "UITextArea", "lowerName": "ui.textarea","source":"form/ui.textarea", "cnName": "多行输入扩展", "group": "表单类", "beta": true},

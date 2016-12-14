@@ -1,7 +1,8 @@
-{#if this.$body}
-	{#inc this.$body}
-{#else}
-	<a href="javascript:;" title="{tip}" class="u-tooltip">
-		<span class="u-icon u-icon-info-circle"></span>
-	</a>
-{/if}
+<div class="u-tooltip"
+	on-mouseenter={this.enter($event)} on-mouseleave={this.leave()}>
+	{#if this.$body}
+		{#inc this.$body}
+	{#else}
+	<span class="u-icon u-icon-info-circle"></span>
+	{/if}
+</div>
