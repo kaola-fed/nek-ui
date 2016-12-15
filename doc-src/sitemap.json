@@ -48,6 +48,13 @@
                 {"name": "Grid", "lowerName": "grid", "cnName": "栅格", "group": "布局类", "new": true}
             ]
         }, {
+        "name": "Scenario",
+        "lowerName": "scenario",
+        "cnName": "场景",
+        "children": [
+          {"name": "Navbar", "lowerName": "navbar", "cnName": "导航栏", "group": "导航类", "stable": true}
+        ]
+      }, {
             "name": "JSComponents",
             "lowerName": "jsComponents",
             "cnName": "基础组件",
