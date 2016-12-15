@@ -1,29 +1,151 @@
 .u-tooltip {
-    position:relative;
+    display: inline-block;
+}
+
+.u-tipContent{
+    position: absolute;
+    max-width: 250px;
+    padding: 5px 15px;
+    word-wrap: break-word; 
+    color: #fff;
+    background-color: rgba(64, 64, 64, 0.85);
+    border-radius: 5px;
     text-align:left;
-    &:hover { text-decoration:none; }
-    &:hover:before {
+    z-index: 98;
+    .arrow-br{
         position: absolute;
-        left: 50%;
-        bottom: 20px;
-        border: solid;
-        border-color: #333 transparent;
-        border-width: 6px 6px 0 6px;
-        content: "";
-        z-index: 99;
+        width: 0;
+        height: 0;
+        top: -5px;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: rgba(64,64,64,0.85);
     }
-    &:hover:after {
+    .arrow-bl{
         position: absolute;
-        white-space: nowrap;
-        left: 20%;
-        bottom: 26px;
-        padding: 5px 15px;
-        background: #333;
-        background: rgba(0,0,0,.8);
-        border-radius: 5px;
-        color: #fff;
-        content: attr(title);
-        z-index: 98;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        top: -5px;
+        right: 5px;
+        border-width: 0 5px 5px 5px;
+        border-bottom-color: rgba(64,64,64,0.85);
+    }
+    .arrow-tl{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -5px;
+        right: 5px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(64, 64, 64, 0.85);
+    }
+    .arrow-tr{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -5px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(64, 64, 64, 0.85);
     }
 }
 
+.u-tooltip-tr {
+    position: absolute;
+    left: 20%;
+    //bottom: 26px;
+    max-width: 250px;
+    padding: 5px 15px;
+    white-space: nowrap;
+    color: #fff;
+    background-color: rgba(64, 64, 64, 0.85);
+    border-radius: 5px;
+    text-decoration:none;
+    text-align:left;
+    z-index: 98;
+    .arrow{
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        bottom: -5px;
+        border-width: 5px 5px 0;
+        border-top-color: rgba(64, 64, 64, 0.85);
+    }
+
+    //.arrow:after{
+    //    content: " ";
+    //    bottom: 1px;
+    //    margin-left: -4px;
+    //    border-bottom-width: 0;
+    //    border-top-color: #fff;
+    //    border-width: 4px;
+    //
+    //}
+    
+    //&:before {
+    //    border: solid;
+    //    border-color: #333 transparent;
+    //    content: "";
+    //    z-index: 99;
+    //    //left: 50%;
+    //    //bottom: 20px;
+    //    border-width: 6px 6px 0 6px;
+    //}
+}
+
+//.u-tooltip-tr {
+//    &:hover:before {
+//        left: 50%;
+//        bottom: 20px;
+//        border-width: 6px 6px 0 6px;
+//    }
+//    &:hover:after {
+//        left: 20%;
+//        bottom: 26px;
+//    }
+//}
+
+//.u-tooltip-tl {
+//    &:hover { text-decoration:none; }
+//    &:hover:before {
+//        right: 50%;
+//        bottom: 20px;
+//        border-width: 6px 6px 0 6px;
+//    }
+//    &:hover:after {
+//        right: 20%;
+//        bottom: 26px;
+//    }
+//}
+//
+//.u-tooltip-br {
+//    &:hover:before {
+//        left: 50%;
+//        top: 20px;
+//        border-width: 0px 6px 6px 6px;
+//    }
+//    &:hover:after {
+//        left: 20%;
+//        top: 26px;
+//    }
+//}
+//
+//.u-tooltip-bl {
+//    &:hover:before {
+//        right: 50%;
+//        top: 20px;
+//        border-width: 0px 6px 6px 6px;
+//    }
+//    &:hover:after {
+//        right: 20%;
+//        top: 26px;
+//    }
+//}

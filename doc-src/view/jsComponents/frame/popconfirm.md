@@ -4,7 +4,7 @@
 <div class="m-example"></div>
 
 ```xml
-<tooltip tip=123 />鼠标放上去,可以看到提示
+<popconfirm content="Are you sure delete this task?">删除<popconfirm>
 ```
 
 ```javascript
@@ -18,9 +18,9 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<tooltip tip=123>
+<popconfirm content="Are you sure delete this task?">
     <button class="u-btn">保存提交</button>
-</tooltip>
+<popconfirm>
 ```
 
 ```javascript
@@ -34,7 +34,7 @@ var component = new RGUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<tooltip tip=123 placement="br" />鼠标放上去,可以看到提示
+<popconfirm placement="br" content="Are you sure delete this task?">删除<popconfirm>
 ```
 
 ```javascript

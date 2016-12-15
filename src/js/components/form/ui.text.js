@@ -16,6 +16,10 @@ var _ = require('../../ui-base/_.js');
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string='文本'}            options.data.text               <=> 内容
+ * @param {string=''}               options.data.size                => 大小
+ * @param {boolean=false}           options.data.isBold              => 是否加粗
+ * @param {string=''}               options.data.align               => 左右对齐方式
+ * @param {string=''}               options.data.vertical            => 上下对齐方式
  * @param {string='default'}        options.data.type                => 文本样式
  */
 var UIText = Component.extend({
@@ -26,6 +30,13 @@ var UIText = Component.extend({
             text: '文本',
             // default/primary/info/success/warning/error
             type: 'default',
+            // xs/sm/lg/xl
+            size: '',
+            isBold: false,
+            // tal/tac/tar/taj
+            align: '',
+            // vat/vam/vab
+            vertical: '',
         });
         this.supr();
     }
