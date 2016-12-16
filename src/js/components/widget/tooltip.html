@@ -1,8 +1,4 @@
-<div class="u-tooltip"
-	on-mouseenter={this.enter($event)} on-mouseleave={this.leave()}>
-	{#if this.$body}
-		{#inc this.$body}
-	{#else}
-	<span class="u-icon u-icon-info-circle"></span>
-	{/if}
+<div class="u-tooltip {placement}" r-hide="{!isShow}">
+	<div class="arrow"></div>
+	<p class="inner">{tip}</p>
 </div>

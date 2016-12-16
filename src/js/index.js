@@ -38,7 +38,6 @@ exports.Progress = require("./components/widget/progress.js");
 exports.Loading = require("./components/widget/loading.js");
 exports.Gotop = require("./components/widget/gotop.js");
 exports.Tooltip = require("./components/widget/tooltip.js");
-exports.TipContent = require("./components/widget/tip.content.js");
 
 exports.Tabs = require("./components/navigation/tabs.js");
 exports.Collapse = require("./components/navigation/collapse.js");

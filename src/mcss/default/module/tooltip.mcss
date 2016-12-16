@@ -1,5 +1,63 @@
 .u-tooltip {
-    display: inline-block;
+    position:absolute; z-index:100; left:-9999px; top:-9999px; font-size:12px; line-height:1.5;
+    .arrow {
+        position:absolute; width:0; height:0;
+        border-color:transparent; border-style:solid;
+    }
+    .inner {
+        max-width:250px; padding:8px 10px; margin:0;
+        color:#fff; text-align:left; text-decoration:none;
+        background-color:rgba(64, 64, 64, 0.85); border-radius:4px; box-shadow:0 1px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    // 写个函数优化
+    &.top, &.topLeft, &.topRight {
+        padding:5px 0 8px 0;
+        .arrow {
+            bottom:3px;
+            border-width:5px 5px 0;
+            border-top-color:rgba(64, 64, 64, 0.85);
+        }
+    }
+    &.topLeft { .arrow {left:16px; } }
+    &.top { .arrow { left:50%; margin-left:-5px; } }
+    &.topRight { .arrow { right:16px; } }
+
+    &.left, &.leftTop, &.leftBottom {
+        padding: 0 8px 0 5px;
+        .arrow {
+            right:3px;
+            border-width:5px 0 5px 5px;
+            border-left-color:rgba(64, 64, 64, 0.85);
+        }
+    }
+    &.leftTop { .arrow { top:8px; } }
+    &.left { .arrow { top:50%; margin-top:-5px; } }
+    &.leftBottom { .arrow { bottom:8px; } }
+
+    &.right, &.rightTop, &.rightBottom {
+        padding: 0 5px 0 8px;
+        .arrow {
+            left:3px;
+            border-width:5px 5px 5px 0;
+            border-right-color:rgba(64, 64, 64, 0.85);
+        }
+    }
+    &.rightTop { .arrow { top:8px; } }
+    &.right { .arrow { top:50%; margin-top:-5px; }}
+    &.rightBottom { .arrow { bottom:8px; }}
+
+    &.bottom, &.bottomLeft, &.bottomRight {
+        padding:8px 0 5px 0;
+        .arrow {
+            top:3px;
+            border-width:0 5px 5px;
+            border-bottom-color:rgba(64, 64, 64, 0.85);
+        }
+    }
+    &.bottomLeft { .arrow { left:16px; } }
+    &.bottom { .arrow { left:50%; margin-left:-5px; } }
+    &.bottomRight { .arrow { right:16px; } }
 }
 
 .u-tipContent{

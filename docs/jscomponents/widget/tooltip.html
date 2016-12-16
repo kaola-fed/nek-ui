@@ -22,6 +22,9 @@
             
             
             
+            <li><a href="../../scenario/navbar.html">场景</a></li>
+            
+            
             <li class="z-crt"><a href="../../jscomponents/navigation/dropdown.html">基础组件</a></li>
             
             
@@ -73,6 +76,13 @@
         
         
         <li><a href="../../jscomponents/frame/modal.html" >模态对话框<small> Modal</small>
+        </a></li>
+        
+        
+        
+        <li class="sidebar_group"><span>其他</span></li>
+        
+        <li><a href="../../jscomponents/frame/popconfirm.html" >气泡确认框<small> PopConfirm</small>
         </a></li>
         
         
@@ -202,18 +212,35 @@
 <h4 id="-">基本形式</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>鼠标放上去,可以看到提示
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span><span class="cm-tagcm-bracketcm-error">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;鼠标放上去,可以看到提示&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>
 });
 </code></pre>
-<h4 id="-">包裹元素</h4>
+<h4 id="-">位置</h4>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">button</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-btn&quot;</span><span class="cm-tagcm-bracket">&gt;</span>保存提交<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">button</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;top&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;top&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;topLeft&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;topLeft&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;topRight&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;topRight&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;left&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;left&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;leftTop&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;leftTop&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;leftBottom&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;leftBottom&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;right&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;right&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;rightTop&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;rightTop&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;rightBottom&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;rightBottom&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;bottom&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;bottom&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;bottomLeft&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;bottomLeft&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tooltip</span> <span class="cm-attribute">tip</span>=<span class="cm-attribute">123</span> <span class="cm-attribute">placement</span>=<span class="cm-string">&quot;bottomRight&quot;</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;bottomRight&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tooltip</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>
@@ -240,6 +267,8 @@
             <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
             
             <tr><td class="f-wsn"><code>data.tip</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>文字提示</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.placement</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;top&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom</td></tr>
             
         
     </tbody>
@@ -323,7 +352,7 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
 var index = 0;
 (function(index) {
     var template = `
-<tooltip tip=123 />鼠标放上去,可以看到提示
+<tooltip tip=123><ui.button title="鼠标放上去,可以看到提示" /></tooltip>
     `
 var component = new RGUI.Component({
     template: template
@@ -332,9 +361,26 @@ var component = new RGUI.Component({
 })(index++);
 (function(index) {
     var template = `
-<tooltip tip=123>
-    <button class="u-btn">保存提交</button>
-</tooltip>
+<div class="g-row">
+    <tooltip tip=123 placement="top"><ui.button title="top" /></tooltip>
+    <tooltip tip=123 placement="topLeft"><ui.button title="topLeft" /></tooltip>
+    <tooltip tip=123 placement="topRight"><ui.button title="topRight" /></tooltip>
+</div>
+<div class="g-row">
+    <tooltip tip=123 placement="left"><ui.button title="left" /></tooltip>
+    <tooltip tip=123 placement="leftTop"><ui.button title="leftTop" /></tooltip>
+    <tooltip tip=123 placement="leftBottom"><ui.button title="leftBottom" /></tooltip>
+</div>
+<div class="g-row">
+    <tooltip tip=123 placement="right"><ui.button title="right" /></tooltip>
+    <tooltip tip=123 placement="rightTop"><ui.button title="rightTop" /></tooltip>
+    <tooltip tip=123 placement="rightBottom"><ui.button title="rightBottom" /></tooltip>
+</div>
+<div class="g-row">
+    <tooltip tip=123 placement="bottom"><ui.button title="bottom" /></tooltip>
+    <tooltip tip=123 placement="bottomLeft"><ui.button title="bottomLeft" /></tooltip>
+    <tooltip tip=123 placement="bottomRight"><ui.button title="bottomRight" /></tooltip>
+</div>
     `
 var component = new RGUI.Component({
     template: template
