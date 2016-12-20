@@ -1,115 +1,105 @@
-.m-popconfirm{
-    display: inline-block;
-}
-.m-popconfirmMd{
-    display: inline-block;
-    position: absolute;
-    max-width: 250px;
-    word-wrap: break-word;
-    padding: 8px 16px;
-    color: #666;
-    background-color: #fff;
-    border-radius: 5px;
-    text-align:left;
-    z-index: 98;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-    .popconfirm_bd{
-        padding: 8px 0 16px;
-        font-size: 12px;
-        color: #666;
-    }
-    .popconfirm_ft{
-        text-align: right;
-        margin-bottom: 8px;
-        .u-btn{
-            border-radius: 2px;
+// Name:            PopConfirm
+// Description:     气泡确认框
+// ========================================================================
+
+@import "../../core/module/popover.mcss";
+
+$arrowColor = rgba(217, 217, 217, 0.7);
+$topPadding = 0 0 4px 0;
+$rightPadding = 0 0 0 4px;
+$bottomPadding = 4px 0 0 0;
+$leftPadding = 0 4px 0 0;
+
+.m-popconfirm {
+    @extend .u-popover;
+
+    .inner {
+        padding:8px 16px; background:#fff; background-clip:padding-box; border-radius:4px;
+        box-shadow:0 1px 6px rgba(0, 0, 0, 0.2);
+
+        .body {
+            padding: 8px 0 16px;
+            font-size: 12px;
+            color: #666;
         }
-        .u-btn-primary{
-            margin-left: 5px;
+        .foot {
+            text-align: right;
+            margin-bottom: 8px;
+            .u-btn{
+                border-radius: 2px;
+            }
+            .u-btn-primary{
+                margin-left: 5px;
+            }
         }
     }
-    .arrow-br-border{
-        position: absolute;
-        width: 0;
-        height: 0;
-        top: -5px;
-        border-color: transparent;
-        border-style: solid;
-        border-width: 0 5px 5px 5px;
-        border-bottom-color: rgba(217, 217, 217, 0.7);
+    .arrow:after {
+        content: '';
+        border-width: 4px;
     }
-    .arrow-br{
-        position: absolute;
-        width: 0;
-        height: 0;
-        top: -4px;
-        border-color: transparent;
-        border-style: solid;
-        border-width: 0 5px 5px 5px;
-        border-bottom-color: #fff;
+
+    &.top, &.topLeft, &.topRight {
+       padding: $topPadding;
+       .arrow {
+           bottom: -1px;
+           border-bottom-width: 0;
+           border-top-color:$arrowColor;
+       }
+       .arrow:after {
+          bottom: 1px;
+          margin-left: -4px;
+          border-bottom-width: 0;
+          border-top-color: #fff;
+       }
     }
-    .arrow-bl-border{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        top: -5px;
-        right: 5px;
-        border-width: 0 5px 5px 5px;
-        border-bottom-color: rgba(217, 217, 217, 0.7);
+
+    &.left, &.leftTop, &.leftBottom {
+       padding: $leftPadding;
+       .arrow {
+           right:-1px;
+           border-right-width: 0;
+           border-left-color:$arrowColor;
+       }
+       .arrow:after {
+           right: 1px;
+           bottom: -4px;
+           border-right-width: 0;
+           border-left-color: #fff;
+       }
     }
-    .arrow-bl{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        top: -4px;
-        right: 5px;
-        border-width: 0 5px 5px 5px;
-        border-bottom-color: #fff;
+
+    &.bottom, &.bottomLeft, &.bottomRight {
+       padding:$bottomPadding;
+       .arrow {
+           top: -1px;
+           border-top-width: 0;
+           border-bottom-color:$arrowColor;
+       }
+       .arrow:after {
+           top: 1px;
+           margin-left: -4px;
+           border-top-width: 0;
+           border-bottom-color: #fff;
+       }
     }
-    .arrow-tl-border{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        bottom: -5px;
-        right: 5px;
-        border-width: 5px 5px 0;
-        border-top-color: rgba(217, 217, 217, 0.7);
+
+    &.right, &.rightTop, &.rightBottom {
+       padding: $rightPadding;
+       .arrow {
+           left: -1px;
+           border-left-width: 0;
+           border-right-color:$arrowColor;
+       }
+       .arrow:after {
+           left: 1px;
+           bottom: -4px;
+           border-left-width: 0;
+           border-right-color: #fff;
+       }
     }
-    .arrow-tl{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        bottom: -4px;
-        right: 5px;
-        border-width: 5px 5px 0;
-        border-top-color: #fff;
-    }
-    .arrow-tr-border{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        bottom: -5px;
-        border-width: 5px 5px 0;
-        border-top-color: rgba(217, 217, 217, 0.7);
-    }
-    .arrow-tr{
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-color: transparent;
-        border-style: solid;
-        bottom: -4px;
-        border-width: 5px 5px 0;
-        border-top-color: #fff;
-    }
+
+    $topArrow();
+    $leftArrow();
+    $bottomArrow();
+    $rightArrow();
 }

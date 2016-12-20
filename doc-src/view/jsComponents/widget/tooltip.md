@@ -4,7 +4,7 @@
 <div class="m-example"></div>
 
 ```xml
-<tooltip tip=123><ui.button title="鼠标放上去,可以看到提示" /></tooltip>
+<tooltip tip="基本的tooltip"><ui.button title="鼠标放上去,可以看到提示" /></tooltip>
 ```
 
 ```javascript
@@ -19,24 +19,24 @@ var component = new RGUI.Component({
 
 ```xml
 <div class="g-row">
-    <tooltip tip=123 placement="top"><ui.button title="top" /></tooltip>
-    <tooltip tip=123 placement="topLeft"><ui.button title="topLeft" /></tooltip>
-    <tooltip tip=123 placement="topRight"><ui.button title="topRight" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在中间" placement="top"><ui.button title="top" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在左边" placement="topLeft"><ui.button title="topLeft" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在右边" placement="topRight"><ui.button title="topRight" /></tooltip>
 </div>
 <div class="g-row">
-    <tooltip tip=123 placement="left"><ui.button title="left" /></tooltip>
-    <tooltip tip=123 placement="leftTop"><ui.button title="leftTop" /></tooltip>
-    <tooltip tip=123 placement="leftBottom"><ui.button title="leftBottom" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在中间" placement="left"><ui.button title="left" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在上边" placement="leftTop"><ui.button title="leftTop" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在下边" placement="leftBottom"><ui.button title="leftBottom" /></tooltip>
 </div>
 <div class="g-row">
-    <tooltip tip=123 placement="right"><ui.button title="right" /></tooltip>
-    <tooltip tip=123 placement="rightTop"><ui.button title="rightTop" /></tooltip>
-    <tooltip tip=123 placement="rightBottom"><ui.button title="rightBottom" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在中间" placement="right"><ui.button title="right" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在上边" placement="rightTop"><ui.button title="rightTop" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在下边" placement="rightBottom"><ui.button title="rightBottom" /></tooltip>
 </div>
 <div class="g-row">
-    <tooltip tip=123 placement="bottom"><ui.button title="bottom" /></tooltip>
-    <tooltip tip=123 placement="bottomLeft"><ui.button title="bottomLeft" /></tooltip>
-    <tooltip tip=123 placement="bottomRight"><ui.button title="bottomRight" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在中间" placement="bottom"><ui.button title="bottom" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在左边" placement="bottomLeft"><ui.button title="bottomLeft" /></tooltip>
+    <tooltip tip="tooltip箭头的位置在右边" placement="bottomRight"><ui.button title="bottomRight" /></tooltip>
 </div>
 ```
 

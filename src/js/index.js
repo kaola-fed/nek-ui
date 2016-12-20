@@ -45,8 +45,7 @@ exports.Pager = require("./components/navigation/pager.js");
 
 exports.Notify = require("./components/frame/notify.js");
 exports.Modal = require("./components/frame/modal.js");
-exports.PopConfirm = require("./components/frame/popconfirm.js");
-exports.ConfirmContent = require("./components/frame/confirm.content.js");
+exports.PopConfirm = require("./components/frame/pop.confirm.js");
 
 exports.ListView = require("./components/data.view/list.view.js");
 exports.TreeView = require("./components/data.view/tree.view.js");

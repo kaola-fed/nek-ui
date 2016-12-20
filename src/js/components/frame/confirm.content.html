@@ -9,10 +9,10 @@
     </div>
     <div class="popconfirm_ft">
         {#if cancelButton}
-        <button class="u-btn u-btn-xs" on-click={this.close()}>{cancelButton === true ? '取消' : cancelButton}</button>
+        <button class="u-btn u-btn-xs" on-click={this.cancel()}>{cancelButton === true ? '取消' : cancelButton}</button>
         {/if}
         {#if okButton}
-        <button class="u-btn u-btn-xs u-btn-primary" on-click={this.confirm()} r-autofocus>{okButton === true ? '确定' : okButton}</button>
+        <button class="u-btn u-btn-xs u-btn-primary" on-click={this.ok()} r-autofocus>{okButton === true ? '确定' : okButton}</button>
         {/if}
     </div>
     <div class="{arrow}-border"></div>
