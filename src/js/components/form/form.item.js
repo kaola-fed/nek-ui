@@ -14,6 +14,7 @@ var template = require('./form.item.html');
  * @param {number}                  options.data.cols                => 布局列数
  * @param {number=4}                options.data.labelCols           => 如果有title, label占的列数
  * @param {number}                  options.data.offset              => 布局offset
+ * @param {string=''}               options.data.column              => 垂直布局column
  * @param {boolean=false}           options.data.required            => 是否必选项
  * @param {string=''}               options.data.tip                 => 字段说明
  */
@@ -72,7 +73,16 @@ FormItem.directive('offset', function(ele, offset) {
         ele.className = ele.className.replace(/(\s)g-offset(-\d)?/gim, '');
 
         if (noffset) {
-            ele.classList.add('g-offset-' + ncols);
+            ele.classList.add('g-offset-' + noffset);
+        }
+    });
+});
+
+FormItem.directive('column', function(ele, column) {
+    this.$watch(column, function(newValue) {
+
+        if (newValue) {
+            ele.classList.add('u-formitem-column');
         }
     });
 });

@@ -3,7 +3,6 @@ $g_num = 12;
 
 .g-row {
     $clearfix();
-    margin-right: -$g_gap;
 }
 
 .g-row + .g-row {
@@ -14,7 +13,7 @@ $g_num = 12;
     $box-sizing: border-box;
     float: left;
     min-height: 1px;
-    padding-right: $g_gap;
+    padding: 0 $g_gap;
 }
 
 @for $index of 1...$g_num {

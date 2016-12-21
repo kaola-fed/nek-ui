@@ -46,3 +46,32 @@ var component = new RGUI.Component({
     }
 });
 ```
+
+#### 表单项
+在表单中使用时label垂直放置
+
+<div class="m-example"></div>
+
+```xml
+<ui.form>
+    <form.item cols=12 title="用户名" hint="用户名的用途"  column="column">
+        <ui.input placeholder="请输入" />
+    </form.item>
+</ui.form>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '选项1'},
+            {name: '选项2'},
+            {name: '选项3'},
+            {name: '选项4'},
+            {name: '选项5'},
+            {name: '选项6'}
+        ]
+    }
+});
+```
