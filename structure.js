@@ -1,6 +1,7 @@
 module.exports = {
     themes: [
         'default',
+        'kaola'
     ],
     components: {
         /**

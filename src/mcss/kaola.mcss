@@ -2,8 +2,8 @@
 $brand-default =                        #fff;
 $brand-default-dark =                   #e5e5e5;
 $brand-default-darker =                 #adadad;
-$brand-primary =                        #31995E;
-$brand-primary-darker =                 #3B7F61;
+$brand-primary =                        #cb0000;
+$brand-primary-darker =                 #C5183F;
 $brand-info =                           #479CA2;
 $brand-info-lighter =                   mix($brand-info, white, 10%);
 $brand-info-darker =                    #00acd6;

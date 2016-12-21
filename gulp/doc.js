@@ -50,7 +50,7 @@ gulp.task('doc-css', function() {
                     pathes: ['./node_modules'],
                     importCSS: true
                 }))
-                .pipe(rename('regular-ui.' + theme + '.css'))
+                .pipe(rename('nek-ui.' + theme + '.css'))
                 .pipe(rename({suffix: '.min'}))
                 .pipe(minifycss())
                 .pipe(gulp.dest('./docs/css')),
