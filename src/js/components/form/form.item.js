@@ -14,7 +14,7 @@ var template = require('./form.item.html');
  * @param {number}                  options.data.cols                => 布局列数
  * @param {number=4}                options.data.labelCols           => 如果有title, label占的列数
  * @param {number}                  options.data.offset              => 布局offset
- * @param {string=''}               options.data.column              => 垂直布局column
+ * @param {string=''}               options.data.transverse          => 垂直布局transverse
  * @param {boolean=false}           options.data.required            => 是否必选项
  * @param {string=''}               options.data.tip                 => 字段说明
  */
@@ -23,7 +23,7 @@ var FormItem = Validation.extend({
     template: template,
     config: function (data) {
         _.extend(data, {
-            labelCols:4
+            labelCols:12
         });
         this.supr(data);
 
@@ -78,11 +78,12 @@ FormItem.directive('offset', function(ele, offset) {
     });
 });
 
-FormItem.directive('column', function(ele, column) {
-    this.$watch(column, function(newValue) {
+FormItem.directive('transverse', function(ele, transverse) {
+    this.$watch(transverse, function(newValue) {
 
         if (newValue) {
-            ele.classList.add('u-formitem-column');
+            ele.classList.add('u-formitem-transverse');
+            this.data.labelCols = 4;
         }
     });
 });

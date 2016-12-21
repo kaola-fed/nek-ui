@@ -10,7 +10,7 @@
 
 .u-formitem {
     display: flex;
-    
+    flex-direction: column;
     .formitem_tt { position:relative; }
 }
 
@@ -21,9 +21,9 @@
     .formitem_tt {
         display: block;
         min-width: 150px;
-        padding-right:10px;
-        padding-top:5px;
-        text-align: right;
+        text-align: left;
+        padding: 0;
+        font-size: 12px;
     }
     @media only screen and (max-width: 1600px) {
       .formitem_tt {
@@ -43,5 +43,34 @@
         text-align: left !important;
         padding: 0;
         font-size: 12px;
+    }
+}
+
+.u-formitem-transverse{
+    flex-direction: initial;
+    .formitem_tt {
+        font-size: 14px;
+        padding-top: 5px;
+        padding-right: 10px;
+        text-align: right;
+    }
+}
+.u-formitem-transverse{
+    flex-direction: initial;
+    .formitem_tt2 {
+        font-size: 14px;
+        padding-top: 5px;
+        padding-right: 10px;
+        text-align: right;
+    }
+}
+
+.m-form .u-formitem-transverse {
+    flex-direction: initial;
+    .formitem_tt {
+        font-size: 14px;
+        padding-top: 5px;
+        padding-right: 10px;
+        text-align: right;
     }
 }

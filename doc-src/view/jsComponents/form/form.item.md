@@ -48,13 +48,13 @@ var component = new RGUI.Component({
 ```
 
 #### 表单项
-在表单中使用时label垂直放置
+在表单中使用时label横向放置
 
 <div class="m-example"></div>
 
 ```xml
 <ui.form>
-    <form.item cols=12 title="用户名" hint="用户名的用途"  column="column">
+    <form.item cols=12 title="用户名" hint="用户名的用途"  transverse>
         <ui.input placeholder="请输入" />
     </form.item>
 </ui.form>
