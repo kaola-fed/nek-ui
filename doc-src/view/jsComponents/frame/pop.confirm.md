@@ -13,19 +13,22 @@ var component = new RGUI.Component({
 });
 ```
 
-#### 包裹元素
+#### 事件(打开console, 查看输出)
 
 <div class="m-example"></div>
 
 ```xml
-<pop.confirm content="Are you sure delete this task?">
+<pop.confirm content="Are you sure delete this task?" on-ok={this.onok()}>
     <button class="u-btn">保存提交</button>
 </pop.confirm>
 ```
 
 ```javascript
 var component = new RGUI.Component({
-    template: template
+    template: template,
+    onok: function() {
+        console.log(123);
+    }
 });
 ```
 

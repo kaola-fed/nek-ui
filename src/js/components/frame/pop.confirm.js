@@ -1,6 +1,6 @@
 /**
  * ------------------------------------------------------------
- * PopConfirm 轻量级的confirm弹框
+ * PopConfirm 气泡弹框
  * @author   ziane(zianecui@gmail.com)
  * ------------------------------------------------------------
  */
@@ -26,7 +26,7 @@ var trigger = require('../layout/alignment/trigger.js');
  */
 var PopConfirm = Component.extend({
   name: 'pop.confirm',
-  template: '<trigger action="click" placement={placement} getInstance={@(this.getInstance.bind(this))}>{#inc this.$body}</trigger>',
+  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true>{#inc this.$body}</trigger>',
   config: function (data) {
     this.defaults({
       placement: 'top'
@@ -36,9 +36,31 @@ var PopConfirm = Component.extend({
   },
   getInstance: function() {
     if (!this.data.instance) {
-      this.data.instance = new PopUp({
-        data: this.data
-      });
+      var instance = new PopUp({ data: this.data });
+
+      instance.$on('ok', function(data) {
+        if (this.events && this.events.ok) {
+          this.$emit('ok', data);
+        } else {
+          this.data.instance.destroy();
+        }
+
+      }.bind(this));
+
+      instance.$on('cancel', function(data) {
+        if (this.events && this.events.cancel) {
+          this.$emit('cancel', data);
+        } else {
+          this.data.instance.destroy();
+        }
+      }.bind(this));
+
+      instance.$on('destroy', function() {
+        this.$refs.trigger.data.isShow = false;
+        this.data.instance = null;
+      }.bind(this));
+
+      this.data.instance = instance;
     }
     return this.data.instance;
   }
@@ -59,19 +81,21 @@ var PopUp = Component.extend({
       this.$inject(document.body);
     }
     this.data.element = dom.element(this);
+    dom.on(this.data.element, 'click', function(e) { e.stopPropagation(); });
   },
   getElement: function () {
     return this.data.element;
   },
-  toggle: function (isShow) {
-    this.$update('isShow', !!isShow);
-  },
   ok: function () {
     /**
      * @event ok 确定时触发
+     * @property {object} sender 事件发送对象
      * @property {object} data popConfirm组件的数据
      */
-    this.$emit('ok', this.data);
+    this.$emit('ok', {
+      sender: this,
+      data: this.data
+    });
   },
   cancel: function () {
     /**
@@ -79,7 +103,10 @@ var PopUp = Component.extend({
      * @property {object} sender 事件发送对象
      * @property {object} data popConfirm组件的数据
      */
-    this.$emit('cancel', this.data);
+    this.$emit('cancel', {
+      sender: this,
+      data: this.data
+    });
   },
 });
 

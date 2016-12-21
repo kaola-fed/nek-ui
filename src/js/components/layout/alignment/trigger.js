@@ -40,7 +40,8 @@ var Trigger = Component.extend({
         action  = this.data.action;
 
     if (action == 'click') {
-      dom.on(element, 'click', this.toggle.bind(this));
+      dom.on(element, 'click', function(e) { e.stopPropagation(); this.toggle(); }.bind(this));
+      dom.on(document.body, 'click', function() { this.toggle(false); }.bind(this));
     }
     if (action == 'mouseEnter') {
       dom.on(element, 'mouseenter', function() { this.toggle(true); }.bind(this));
@@ -50,10 +51,6 @@ var Trigger = Component.extend({
       dom.on(element, 'focus', function() { this.toggle(true); }.bind(this));
       dom.on(element, 'blur', function() { this.toggle(false); }.bind(this));
     }
-
-    this.$watch('isShow', function(isShow) {
-      this.updateInstance(isShow);
-    });
   },
   updateInstance: function(isShow) {
 
@@ -69,11 +66,12 @@ var Trigger = Component.extend({
     if (!isShow && destroyOnHide) {
       instance.destroy();
     } else {
-      instance.toggle(isShow);
+      instance.toggle && instance.toggle(isShow);
     }
   },
-  toggle: function(e, isShow) {
+  toggle: function(isShow) {
     this.data.isShow = typeof isShow == 'undefined' ? !this.data.isShow : isShow;
+    this.updateInstance(this.data.isShow);
     this.$update();
   }
 });
