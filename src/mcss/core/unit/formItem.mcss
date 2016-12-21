@@ -36,3 +36,12 @@
         display: block; 
     }
 }
+
+.u-formitem-column{
+    flex-direction: column;
+    .formitem_tt{
+        text-align: left !important;
+        padding: 0;
+        font-size: 12px;
+    }
+}
