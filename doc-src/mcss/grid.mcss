@@ -10,7 +10,7 @@ $g-mn_padding = 60px;
     left: 0;
     right: 0;
     top: 0;
-    z-index: 5;
+    z-index: 500;
     height: $m-navbar_height;
     background: rgba(36,54,67,.45);
     .m-navbar {
