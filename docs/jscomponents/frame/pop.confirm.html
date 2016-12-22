@@ -94,6 +94,11 @@
         
         
         
+        <li><a href="../../jscomponents/form/ui.button.html" >按钮<small> UIButton</small>
+        </a></li>
+        
+        
+        
         <li><a href="../../jscomponents/form/ui.textarea.html" >多行输入扩展<small> UITextArea</small>
         </a></li>
         
@@ -242,7 +247,7 @@
 <pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
     <span class="cm-property">config</span>: <span class="cm-keyword">function</span>() {
-        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">testTemplate</span> <span class="cm-operator">=</span> <span class="cm-string">&#39;&lt;form.item title=&quot;备注&quot; required row&gt;&lt;ui.textarea value={remark} height=50 /&gt;&lt;/form.item&gt;&#39;</span>;
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">testTemplate</span> <span class="cm-operator">=</span> <span class="cm-string">&#39;&lt;form.item ref=&quot;validation&quot; title=&quot;备注&quot; required row&gt;&lt;ui.textarea required showTip=false value={remark} height=50 /&gt;&lt;/form.item&gt;&#39;</span>;
     },
     <span class="cm-property">onok</span>: <span class="cm-keyword">function</span>(<span class="cm-def">json</span>) {
         <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">json</span>.<span class="cm-property">data</span>.<span class="cm-property">remark</span>);
@@ -307,6 +312,8 @@
             <tr><td class="f-wsn"><code>data.okText</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;确定&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>ok按钮文案</td></tr>
             
             <tr><td class="f-wsn"><code>data.cancelText</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;取消&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>取消按钮文案</td></tr>
+            
+            <tr><td class="f-wsn"><code>data.hideWhenScroll</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>&#39;false&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>window滚动时,是否影藏popover</td></tr>
             
         
     </tbody>
@@ -459,7 +466,7 @@ var component = new RGUI.Component({
 var component = new RGUI.Component({
     template: template,
     config: function() {
-        this.data.testTemplate = '<form.item title="备注" required row><ui.textarea value={remark} height=50 /></form.item>';
+        this.data.testTemplate = '<form.item ref="validation" title="备注" required row><ui.textarea required showTip=false value={remark} height=50 /></form.item>';
     },
     onok: function(json) {
         console.log(json.data.remark);

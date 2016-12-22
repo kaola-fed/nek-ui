@@ -1,5 +1,15 @@
-<a href="javascript:;" class="u-btn u-btn-{type} u-btn-{size}" on-click={this.$emit('click')}>
-    {#if icon}<i class="u-icon u-icon-{icon}"></i>{/if}
-    {#if action}<i class="u-btn u-btn-{action}"></i>{/if}
-    {title}
+{#if link}
+<a href={link || 'javascript:;'} class="u-btn u-btn-{type} u-btn-{size} u-btn-{shape}" on-click={this.onClick($event)}>
+	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
+	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
+	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
+	{#if shape != 'circle'}{title}{/if}
 </a>
+{#else}
+<button class="u-btn u-btn-{type} u-btn-{size} u-btn-{shape}" on-click={this.onClick($event)} {#if loading}disabled{/if}>
+	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
+	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
+	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
+	{#if shape != 'circle'}{title}{/if}
+</button>
+{/if}

@@ -21,6 +21,7 @@ var alignment = require('./alignment.js');
  * @param {function}                options.data.getInstance         => 获取浮层组件的方法
  * @param {string=''}               options.data.placement           => top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  * @param {boolean=false}           options.data.destroyOnHide       => hide时是否destroy浮层
+ * @param {boolean=false}           options.data.hideWhenScroll      => 页面滚动时, 是否去除popover;
  */
 var Trigger = Component.extend({
   name: 'trigger',
@@ -30,7 +31,8 @@ var Trigger = Component.extend({
       action: 'mouseEnter',
       getInstance: function() {},
       placement: 'top',
-      destroyOnHide: false
+      destroyOnHide: false,
+      hideWhenScroll: false
     });
 
     this.supr(data);
@@ -56,6 +58,13 @@ var Trigger = Component.extend({
       dom.on(element, 'focus', function() { this.toggle(true); }.bind(this));
       dom.on(element, 'blur', function() { this.toggle(false); }.bind(this));
     }
+
+    window.addEventListener('scroll', function() {
+      var isShow = this.data.isShow;
+      if (isShow && this.data.hideWhenScroll) {
+        this.toggle(false);
+      }
+    }.bind(this), true);
   },
   updateInstance: function(isShow) {
 

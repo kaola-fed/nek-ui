@@ -34,15 +34,14 @@ var Alignment = Component.extend({
 
     dom.on(window, 'resize', _.throttle(function() {
       this.reAlign();
-    }.bind(this), 100));
+    }.bind(this), 300));
   },
   reAlign: function(src) {
     var target = this.data.target,
         src = src || this.data.src,
         align = placement[this.data.placement];
 
-    if (!src || !target) { return console.error('alignment参数错误'); }
-
+    if (!src || !target) { return; }
     this.data.src = src;
     domAlign(src, target, {
       points: align.points,

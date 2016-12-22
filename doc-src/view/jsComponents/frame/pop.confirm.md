@@ -46,7 +46,7 @@ var component = new RGUI.Component({
 var component = new RGUI.Component({
     template: template,
     config: function() {
-        this.data.testTemplate = '<form.item title="备注" required row><ui.textarea value={remark} height=50 /></form.item>';
+        this.data.testTemplate = '<form.item ref="validation" title="备注" required row><ui.textarea required showTip=false value={remark} height=50 /></form.item>';
     },
     onok: function(json) {
         console.log(json.data.remark);

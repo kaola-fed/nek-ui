@@ -23,10 +23,11 @@ var trigger = require('../layout/alignment/trigger.js');
  * @param {string='top'}            options.data.placement           => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  * @param {string='确定'}            options.data.okText              => ok按钮文案
  * @param {string='取消'}            options.data.cancelText          => 取消按钮文案
+ * @param {boolean='false'}         options.data.hideWhenScroll      => window滚动时,是否影藏popover
  */
 var PopConfirm = Component.extend({
   name: 'pop.confirm',
-  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true>{#inc this.$body}</trigger>',
+  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
   config: function (data) {
     this.defaults({
       placement: 'top'
@@ -87,15 +88,18 @@ var PopUp = Component.extend({
     return this.data.element;
   },
   ok: function () {
-    /**
-     * @event ok 确定时触发
-     * @property {object} sender 事件发送对象
-     * @property {object} data popConfirm组件的数据
-     */
-    this.$emit('ok', {
-      sender: this,
-      data: this.data
-    });
+    var $validation = this.$refs.validation;
+    if (!$validation || $validation.validate().success) {
+      /**
+       * @event ok 确定时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} data popConfirm组件的数据
+       */
+      this.$emit('ok', {
+        sender: this,
+        data: this.data
+      });
+    }
   },
   cancel: function () {
     /**

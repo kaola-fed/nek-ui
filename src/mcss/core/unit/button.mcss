@@ -68,7 +68,17 @@ $u-btn-extend_size = ($name, $padding-horizontal, $height, $font-size = null, $b
     }
 }
 
+// Shape Extends:
+// ========================================================================
 
+$u-btn-extend_shape = ($name, $size, $height,$line-height, $font-size = null, $border-radius_ = null) {
+    .u-btn-#{$name}.u-btn-#{$size} {
+        padding:0;
+        width:$height; height:$height; line-height:$line-height;
+        @if($font-size) {font-size: $font-size;}
+        @if($border-radius_) {$border-radius: $border-radius_;}
+    }
+}
 
 // Color Extends:
 // ========================================================================
@@ -77,6 +87,11 @@ $u-btn-extend_color = ($name, $color, $hover_color, $active_color) {
     .u-btn-#{$name} {
         color: $color;
         border-color:$color;
+
+        @if($name == 'primary')  {
+            background: $color;
+            color: #fff;
+        }
     }
 
     /* Hover */
@@ -84,6 +99,11 @@ $u-btn-extend_color = ($name, $color, $hover_color, $active_color) {
     .u-btn-#{$name}:focus {
         color: $hover_color;
         border-color:$hover_color;
+
+        @if($name == 'primary')  {
+            background: $hover_color;
+            color: #fff;
+        }
     }
 
     /* Active */
@@ -91,6 +111,11 @@ $u-btn-extend_color = ($name, $color, $hover_color, $active_color) {
     .u-btn-#{$name}.z-act {
         color: $active_color;
         border-color:$active_color;
+
+        @if($name == 'primary')  {
+            background: $active_color;
+            color: #fff;
+        }
     }
 
     /* Disabled */
