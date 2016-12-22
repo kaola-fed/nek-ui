@@ -13,7 +13,9 @@
         color: $brand-error;
     }
     .formitem_tt {
-        text-align: right;
+        padding: 0;
+        text-align: left;
+        font-size: 12px;
     }
 }
 

@@ -1,0 +1,26 @@
+.m-operate{
+  padding: 20px;
+  .otherOperate{
+    float: left;
+    a{
+      margin-right: 10px;
+    }
+  }
+  .mainOperate{
+    float: right;
+    a{
+      margin-left: 10px;
+    }
+  }
+}
+.m-module{
+  border:1px solid #8499B3;
+}
+.m-module h2{
+  margin:0 0 20px 0;
+  padding: 5px 10px;
+  border: 1px solid #8499B3;
+  background: #8499B3;
+  font-size: 16px;
+  color: #fff;
+}

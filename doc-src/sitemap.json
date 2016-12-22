@@ -48,13 +48,14 @@
                 {"name": "Grid", "lowerName": "grid", "cnName": "栅格", "group": "布局类", "new": true}
             ]
         }, {
-        "name": "Scenario",
-        "lowerName": "scenario",
-        "cnName": "场景",
-        "children": [
-          {"name": "Navbar", "lowerName": "navbar", "cnName": "导航栏", "group": "导航类", "stable": true}
-        ]
-      }, {
+            "name": "JSScenario",
+            "lowerName": "jsScenario",
+            "cnName": "场景",
+            "children": [
+                {"name": "List", "lowerName": "list", "source":"list", "cnName": "列表页", "group": "列表类", "stable": true},
+                {"name": "Detail", "lowerName": "detail", "source":"detail", "cnName": "详情页", "group": "表单类", "stable": true}
+            ]
+        }, {
             "name": "JSComponents",
             "lowerName": "jsComponents",
             "cnName": "基础组件",
@@ -71,7 +72,6 @@
                 {"name": "PopConfirm", "lowerName": "pop.confirm","source":"frame/pop.confirm", "cnName": "气泡确认框", "group": "其他", "beta":true},
 
                 {"name": "UIInput", "lowerName": "ui.input", "source":"form/ui.input", "cnName": "输入扩展", "group": "表单类", "beta": true},
-                {"name": "UIButton", "lowerName": "ui.button", "source":"form/ui.button", "cnName": "按钮", "group": "表单类", "beta": true},
                 {"name": "UITextArea", "lowerName": "ui.textarea","source":"form/ui.textarea", "cnName": "多行输入扩展", "group": "表单类", "beta": true},
                 {"name": "NumberInput", "lowerName": "number.Input","source":"form/number.input", "cnName": "数字输入", "group": "表单类", "hidden": true},
                 {"name": "Check", "lowerName": "check","source":"form/check", "cnName": "多选按钮", "group": "表单类", "stable": true},

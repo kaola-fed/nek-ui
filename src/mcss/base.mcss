@@ -59,3 +59,4 @@ $reset-normalize();
 @import "./default/module/calendar.mcss";
 @import "./default/module/editor.mcss";
 @import "./default/module/tooltip.mcss";
+@import "./core/base/scenario.mcss";
