@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>test</title>
-    <link rel="stylesheet" href="../dist/css/regular-ui.default.css">
+    <link rel="stylesheet" href="../dist/css/nek-ui.default.css">
   </head>
   <body>
     <div id="app"></div>
@@ -11,7 +11,25 @@
   <script src="../dist/vendor/regular.min.js"></script>
   <script src="../dist/js/nek-ui.js"></script>
   <script>
-    var App = RGUI.UIButton;
-    new App().$inject('#app');
+//    var App = RGUI.UIButton;
+//    new App().$inject('#app');
+    var a = `<ui.form>
+                <form.item cols=12 title="用户名" hint="用户名的用途" row>
+                    <ui.input placeholder="请输入" />
+                </form.item>
+            </ui.form>`;
+    new RGUI.Component({
+        template: a,
+        data: {
+            source: [
+                {name: '选项1'},
+                {name: '选项2'},
+                {name: '选项3'},
+                {name: '选项4'},
+                {name: '选项5'},
+                {name: '选项6'}
+            ]
+        }
+    }).$inject('#app');
   </script>
 </html>

@@ -46,7 +46,7 @@
     }
 }
 
-.u-formitem-transverse{
+.u-formitem-row{
     flex-direction: initial;
     .formitem_tt {
         font-size: 14px;
@@ -55,7 +55,7 @@
         text-align: right;
     }
 }
-.u-formitem-transverse{
+.u-formitem-row{
     flex-direction: initial;
     .formitem_tt2 {
         font-size: 14px;
@@ -65,7 +65,7 @@
     }
 }
 
-.m-form .u-formitem-transverse {
+.m-form .u-formitem-row {
     flex-direction: initial;
     .formitem_tt {
         font-size: 14px;
