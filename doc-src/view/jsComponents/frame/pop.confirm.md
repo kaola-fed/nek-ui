@@ -32,6 +32,29 @@ var component = new RGUI.Component({
 });
 ```
 
+#### 自定义模板(打开console, 查看输出)
+
+<div class="m-example"></div>
+
+```xml
+<pop.confirm contentTemplate={testTemplate} on-ok={this.onok($event)}>
+    <button class="u-btn">保存提交</button>
+</pop.confirm>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    config: function() {
+        this.data.testTemplate = '<form.item title="备注" required row><ui.textarea value={remark} height=50 /></form.item>';
+    },
+    onok: function(json) {
+        console.log(json.data.remark);
+        console.log(json.sender);
+    }
+});
+```
+
 #### 位置
 
 <div class="m-example"></div>
