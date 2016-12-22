@@ -19,6 +19,17 @@ var _ = {
     },
 }
 
+_.throttle = function(fn, delay) {
+  var timer = null;
+
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      fn();
+    }, delay);
+  }
+}
+
 _.extend = function(o1, o2, override, hasOwnProperty) {
     for(var i in o2)
         if((!hasOwnProperty || o2.hasOwnProperty(i)) && (override || o1[i] === undefined))

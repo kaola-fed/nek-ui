@@ -31,13 +31,19 @@ var Alignment = Component.extend({
   },
   init:function() {
     this.data.target = dom.element(this);
+
+    dom.on(window, 'resize', _.throttle(function() {
+      this.reAlign();
+    }.bind(this), 100));
   },
   reAlign: function(src) {
     var target = this.data.target,
+        src = src || this.data.src,
         align = placement[this.data.placement];
 
     if (!src || !target) { return console.error('alignment参数错误'); }
 
+    this.data.src = src;
     domAlign(src, target, {
       points: align.points,
       offset: align.offset,
