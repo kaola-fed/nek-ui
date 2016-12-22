@@ -68,3 +68,16 @@
     <ui.button action="update" loading />
 </div>
 ```
+
+#### buttonGroup
+
+<div class="m-example"></div>
+
+```xml
+<div class=g-row>
+    <div class="u-btngroup u-btngroup-horizontal">
+       <ui.button action="view" />
+       <ui.button action="edit" />
+    </div>
+</div>
+```
