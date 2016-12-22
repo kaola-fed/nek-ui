@@ -27,12 +27,6 @@ var FormItem = Validation.extend({
         });
         this.supr(data);
 
-        this.$watch('this.controls.length', function(len) {
-            if (len <= 1) { return; }
-            console.error('[Error]FormItem内仅允许包含一个校验组件, 请将多个组件封装为一个 ');
-            this.controls.pop();
-        });
-
         var $outer = this.$outer;
         if ($outer && $outer instanceof Validation) {
             $outer.controls.push(this);
@@ -44,17 +38,19 @@ var FormItem = Validation.extend({
     initValidateRule: function() {
         if (!this.controls.length) { return; }
 
-        var $component = this.controls[0],
-            rules = $component.data.rules,
-            isFilled = { type: 'isFilled' };
+        var controls = this.controls || [];
+        controls.forEach(function($component) {
+          var rules = $component.data.rules,
+              isFilled = { type: 'isFilled' };
 
-        if (this.data.required) {
+          if (this.data.required) {
             if (!rules) {
-                $component.data.rules = [].concat(isFilled);
+              $component.data.rules = [].concat(isFilled);
             } else {
-                rules.push(isFilled);
+              rules.push(isFilled);
             }
-        }
+          }
+        }.bind(this));
     }
 });
 
@@ -64,7 +60,6 @@ FormItem.directive('cols', function(ele, cols) {
 
         if (ncols) {
             ele.classList.add('g-col', 'g-col-' + ncols);
-            console.log(ele.classList)
         }
     });
 });
@@ -84,7 +79,7 @@ FormItem.directive('row', function(ele, row) {
 
         if (newValue) {
             ele.classList.add('u-formitem-row');
-            this.data.labelCols = 4;
+            this.data.labelCols = this.data.labelCols == 12 ?  4 : this.data.labelCols;
         }
     });
 });
