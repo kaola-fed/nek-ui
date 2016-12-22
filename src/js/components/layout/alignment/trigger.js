@@ -40,8 +40,13 @@ var Trigger = Component.extend({
         action  = this.data.action;
 
     if (action == 'click') {
-      dom.on(element, 'click', function(e) { e.stopPropagation(); this.toggle(); }.bind(this));
-      dom.on(document.body, 'click', function() { this.toggle(false); }.bind(this));
+      dom.on(element, 'click', function(e) { this.toggle(); }.bind(this));
+      dom.on(document.body, 'click', function(e) {
+        var target = e.target;
+        if (!_.dom.contains(element, target)) {
+          this.toggle(false);
+        }
+      }.bind(this));
     }
     if (action == 'mouseEnter') {
       dom.on(element, 'mouseenter', function() { this.toggle(true); }.bind(this));

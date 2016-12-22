@@ -80,4 +80,16 @@ _.dom.once = function(elem, ev, handle) {
     _.dom.on(elem, ev, real);
 }
 
+_.dom.contains = function(root, n) {
+  var node = n;
+  while (node) {
+    if (node === root) {
+      return true;
+    }
+    node = node.parentNode;
+  }
+
+  return false;
+}
+
 module.exports = _;
