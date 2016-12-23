@@ -72,6 +72,7 @@
                 {"name": "PopConfirm", "lowerName": "pop.confirm","source":"frame/pop.confirm", "cnName": "气泡确认框", "group": "其他", "beta":true},
 
                 {"name": "UIInput", "lowerName": "ui.input", "source":"form/ui.input", "cnName": "输入扩展", "group": "表单类", "beta": true},
+                {"name": "UIButton", "lowerName": "ui.button", "source":"form/ui.button", "cnName": "按钮", "group": "表单类", "beta": true},
                 {"name": "UITextArea", "lowerName": "ui.textarea","source":"form/ui.textarea", "cnName": "多行输入扩展", "group": "表单类", "beta": true},
                 {"name": "NumberInput", "lowerName": "number.Input","source":"form/number.input", "cnName": "数字输入", "group": "表单类", "hidden": true},
                 {"name": "Check", "lowerName": "check","source":"form/check", "cnName": "多选按钮", "group": "表单类", "stable": true},

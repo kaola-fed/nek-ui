@@ -123,11 +123,12 @@ var component = new RGUI.Component({
     {/if}
     <div class="m-operate f-cb">
         <div class="otherOperate">
-            <ui.button title="导出" on-click={this.export(condition)} />
+            <ui.button title="导出" action="download" shape="circle" on-click={this.export(condition)} />
         </div>
         <div class="mainOperate">
             <ui.button title="搜索" on-click={this.refresh(condition)} />
             <a on-click={this.toggle()}>折叠</a>
+            
         </div>
     </div>
 </ui.form>
