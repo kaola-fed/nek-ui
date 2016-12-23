@@ -38,15 +38,18 @@ var Alignment = Component.extend({
   },
   reAlign: function(src) {
     var target = this.data.target,
-        src = src || this.data.src,
-        align = placement[this.data.placement];
+      src = src || this.data.src,
+      align = placement[this.data.placement];
 
+    if (src) { this.data.src = src; }
     if (!src || !target) { return; }
-    this.data.src = src;
+
     domAlign(src, target, {
       points: align.points,
       offset: align.offset,
-      targetOffset: align.targetOffset
+      targetOffset: align.targetOffset,
+      overflow: align.overflow,
+      useCssTransform: true
     });
   }
 });
