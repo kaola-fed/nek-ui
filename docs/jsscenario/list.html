@@ -176,13 +176,10 @@
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     {/if}
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-operate f-cb&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;otherOperate&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;导出&quot;</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;download&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;circle&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.export(condition)}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
         <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;mainOperate&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;重置&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.reset()}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
             <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;搜索&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.refresh(condition)}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
             <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">a</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggle()}</span><span class="cm-tagcm-bracketcm-error">&gt;</span>折叠<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">a</span><span class="cm-tagcm-bracket">&gt;</span>
-
         <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
     <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">ui.form</span><span class="cm-tagcm-bracket">&gt;</span>
@@ -199,27 +196,43 @@
     },
     <span class="cm-property">toggle</span>: <span class="cm-keyword">function</span>(){
         <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">isToggle</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">isToggle</span>
+    },
+    <span class="cm-property">reset</span>: <span class="cm-keyword">function</span>() {
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">condition</span> <span class="cm-operator">=</span> {}
     }
 });
 </code></pre>
 <h4 id="-">第三部分 表格部分</h4>
-<p><strong> 注意事项 </strong></p>
+<p><strong><em> 注意事项 </em></strong> </p>
 <ul>
-<li>待定</li>
+<li>全部居中，只有横线；</li>
+<li>表格右上方导出按钮；</li>
+<li>过长的文字左对齐；</li>
+<li>数字格式化方式三个逗号分隔，右对齐</li>
 </ul>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">table</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-table&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">thead</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">thead</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tbody</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
-        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
-    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tbody</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">table</span><span class="cm-tagcm-bracket">&gt;</span>
-<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">pager</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">total</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">position</span>=<span class="cm-string">&quot;right&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;g-row m-module&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;u-title&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        基础信息
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">span</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formTable&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">table</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;m-table&quot;</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">thead</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>数量<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>价格<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">th</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">thead</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tbody</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tal&quot;</span><span class="cm-tagcm-bracket">&gt;</span>表格内容表格内容表格内容表格<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>12,123,123<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>123.00<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tal&quot;</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>123,123<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>98.23<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
+                <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tal&quot;</span><span class="cm-tagcm-bracket">&gt;</span>表格内容<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>2,234<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;f-tar&quot;</span><span class="cm-tagcm-bracket">&gt;</span>12.99<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span>表格标题<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">td</span><span class="cm-tagcm-bracket">&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tr</span><span class="cm-tagcm-bracket">&gt;</span>
+            <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">tbody</span><span class="cm-tagcm-bracket">&gt;</span>
+        <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">table</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">&quot;formPager&quot;</span><span class="cm-tagcm-bracket">&gt;</span>  
+        <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">pager</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">6</span> <span class="cm-attribute">total</span>=<span class="cm-attribute">11</span> <span class="cm-attribute">position</span>=<span class="cm-string">&quot;right&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
 <h4 id="-">完整示例</h4>
 <div class="m-example"></div>
@@ -455,13 +468,10 @@ var component = new RGUI.Component({
     </div>
     {/if}
     <div class="m-operate f-cb">
-        <div class="otherOperate">
-            <ui.button title="导出" action="download" shape="circle" on-click={this.export(condition)} />
-        </div>
         <div class="mainOperate">
+            <ui.button title="重置" on-click={this.reset()} />
             <ui.button title="搜索" on-click={this.refresh(condition)} />
             <a on-click={this.toggle()}>折叠</a>
-            
         </div>
     </div>
 </ui.form>
@@ -478,23 +488,36 @@ var component = new RGUI.Component({
     },
     toggle: function(){
         this.data.isToggle = !this.data.isToggle
+    },
+    reset: function() {
+        this.data.condition = {}
     }
 });
     component.$inject($$(".m-example")[index]);
 })(index++);
 (function(index) {
     var template = `
-<table class="m-table">
-    <thead>
-        <tr><th>表格标题</th><th>表格标题</th><th>表格标题</th><th>表格标题</th><th>表格标题</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td><th>表格标题</th><th>表格标题</th></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td><th>表格标题</th><th>表格标题</th></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td><th>表格标题</th><th>表格标题</th></tr>
-    </tbody>
-</table>
-<pager current=6 total=11 position="right" />
+<div class="g-row m-module">
+    <div class="u-title">
+        基础信息
+        <span></span>
+    </div>
+    <div class="formTable">
+        <table class="m-table">
+            <thead>
+                <tr><th>表格标题</th><th>数量</th><th>价格</th><th>表格标题</th><th>表格标题</th></tr>
+            </thead>
+            <tbody>
+                <tr><td class="f-tal">表格内容表格内容表格内容表格</td><td class="f-tar">12,123,123</td><td class="f-tar">123.00</td><td>表格标题</td><td>表格标题</td></tr>
+                <tr><td class="f-tal">表格内容</td><td class="f-tar">123,123</td><td class="f-tar">98.23</td><td>表格标题</td><td>表格标题</td></tr>
+                <tr><td class="f-tal">表格内容</td><td class="f-tar">2,234</td><td class="f-tar">12.99</td><td>表格标题</td><td>表格标题</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="formPager">  
+        <pager current=6 total=11 position="right" />
+    </div>
+</div>
     `
 var component = new RGUI.Component({
     template: template
