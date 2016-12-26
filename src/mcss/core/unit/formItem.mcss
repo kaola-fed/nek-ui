@@ -39,22 +39,26 @@
 
 .u-formitem-row{
     flex-direction: initial;
-    flex: 1;
     .formitem_tt {
         font-size: 14px;
         padding-top: 5px;
         padding-right: 10px;
         text-align: right;
     }
+    .formitem_ct{
+        flex: 1;
+    }
 }
 .u-formitem-row{
     flex-direction: initial;
-    flex: 1;
     .formitem_tt2 {
         font-size: 14px;
         padding-top: 5px;
         padding-right: 10px;
         text-align: right;
+    }
+    .formitem_ct{
+        flex: 1;
     }
 }
 
@@ -64,11 +68,13 @@
 
 .m-form .u-formitem-row {
     flex-direction: initial;
-    flex: 1;
     .formitem_tt {
         font-size: 14px;
         padding-top: 5px;
         padding-right: 10px;
         text-align: right;
+    }
+    .formitem_ct{
+        flex: 1;
     }
 }
