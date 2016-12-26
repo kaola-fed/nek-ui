@@ -217,10 +217,9 @@ var DatePicker = Dropdown.extend({
     validate: function(on) {
         if (!this.data.required) { return {success:true}; }
 
-        var result = { success: true, message: '' },
-            date = this.data.date;
+        var date = this.data.date || '';
 
-        var result = date ? Validation.validate(date, [{type:'isDate', message:'请填写'}]) : { success:false };
+        var result = date ? Validation.validate(date.toString(), [{type:'isDate', message:'请填写'}]) : { success:false };
         if (!result.success) {
             result.success = false;
             result.message = this.data.message || '请填写';
