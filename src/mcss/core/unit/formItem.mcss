@@ -37,17 +37,9 @@
     }
 }
 
-.u-formitem-column{
-    flex-direction: column;
-    .formitem_tt{
-        text-align: left !important;
-        padding: 0;
-        font-size: 12px;
-    }
-}
-
 .u-formitem-row{
     flex-direction: initial;
+    flex: 1;
     .formitem_tt {
         font-size: 14px;
         padding-top: 5px;
@@ -57,6 +49,7 @@
 }
 .u-formitem-row{
     flex-direction: initial;
+    flex: 1;
     .formitem_tt2 {
         font-size: 14px;
         padding-top: 5px;
@@ -65,8 +58,13 @@
     }
 }
 
+.m-form .u-formitem {
+    .formitem_tt { text-align: left; }
+}
+
 .m-form .u-formitem-row {
     flex-direction: initial;
+    flex: 1;
     .formitem_tt {
         font-size: 14px;
         padding-top: 5px;
