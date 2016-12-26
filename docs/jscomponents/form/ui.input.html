@@ -238,6 +238,18 @@
 
 <pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>速度：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">width</span>=<span class="cm-string">&quot;smw&quot;</span> <span class="cm-attribute">value</span>=<span class="cm-string">&quot;340&quot;</span> <span class="cm-attribute">unit</span>=<span class="cm-string">&quot;m/s&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
+<h4 id="-console-">搜索(打开console,查看输出)</h4>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>速度：<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">width</span>=<span class="cm-string">&quot;smw&quot;</span> <span class="cm-attribute">on-search</span>=<span class="cm-attribute">{this.onSearch($event)}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span><span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">label</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">onSearch</span>: <span class="cm-keyword">function</span>(<span class="cm-def">json</span>) {
+        <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-variable-2">json</span>);
+    }
+});
+</code></pre>
 <h4 id="-">验证</h4>
 <div class="m-example"></div>
 
@@ -439,6 +451,18 @@ var component = new RGUI.Component({
     `
 var component = new RGUI.Component({
     template: template
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = `
+<label>速度：<ui.input width="smw" on-search={this.onSearch($event)} /></label>
+    `
+var component = new RGUI.Component({
+    template: template,
+    onSearch: function(json) {
+        console.log(json);
+    }
 });
     component.$inject($$(".m-example")[index]);
 })(index++);

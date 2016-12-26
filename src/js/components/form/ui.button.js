@@ -22,6 +22,7 @@ var _ = require('../../ui-base/_.js');
  * @param {string=''}               options.data.action              => 按钮操作类型, 每种类型有对应的icon;
  * @param {string=''}               options.data.shape               => circle或者默认
  * @param {boolean='false'}         options.data.loading             => 是否正在加载
+ * @param {boolean='false'}         options.data.class               => 样式扩展
  */
 var actionIcons= {
   /* 查看 */

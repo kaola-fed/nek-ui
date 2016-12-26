@@ -13,10 +13,13 @@
     position: relative;
     width:100%;
 
-    .input2_unit {
-        position: relative;
-        right: 40px;
+    .input2_unit,.input2_icon {
+        position: absolute; height:24px;
+        right: 10px; top:0; bottom:0; margin:auto;
+        color:#666;
     }
+    .input2_icon { font-size:14px; }
+    .input2_icon:hover, .input2_icon:active { color:$brand-primary; cursor:pointer; }
 
     .input2_placeholder {
         position: absolute;

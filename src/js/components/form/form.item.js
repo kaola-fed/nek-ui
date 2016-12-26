@@ -17,6 +17,7 @@ var template = require('./form.item.html');
  * @param {string=''}               options.data.row                 => 垂直布局row
  * @param {boolean=false}           options.data.required            => 是否必选项
  * @param {string=''}               options.data.tip                 => 字段说明
+ * @param {string=''}               options.data.class               => 样式扩展
  */
 var FormItem = Validation.extend({
     name: 'form.item',

@@ -35,6 +35,23 @@
 <label>速度：<ui.input width="smw" value="340" unit="m/s" /></label>
 ```
 
+#### 搜索(打开console,查看输出)
+
+<div class="m-example"></div>
+
+```xml
+<label>速度：<ui.input width="smw" on-search={this.onSearch($event)} /></label>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    onSearch: function(json) {
+        console.log(json);
+    }
+});
+```
+
 #### 验证
 
 <div class="m-example"></div>
