@@ -81,6 +81,7 @@ var UIButton = Component.extend({
       if (!loading) {
         this.$emit('click', e);
       }
+      return false;
     }
 });
 
