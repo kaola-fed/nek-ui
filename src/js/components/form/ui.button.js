@@ -20,6 +20,8 @@ var _ = require('../../ui-base/_.js');
  * @param {string='normal'}         options.data.size                => 按钮大小, xs, sm, lg, xl
  * @param {string=''}               options.data.icon                => 按钮图标,action不能满足需求时使用;
  * @param {string=''}               options.data.action              => 按钮操作类型, 每种类型有对应的icon;
+ * @param {string=''}               options.data.link                => 按钮的链接
+ * @param {string='_self'}          options.data.target              => 按钮链接的打开方式
  * @param {string=''}               options.data.shape               => circle或者默认
  * @param {boolean='false'}         options.data.loading             => 是否正在加载
  * @param {boolean='false'}         options.data.class               => 样式扩展
@@ -72,7 +74,8 @@ var UIButton = Component.extend({
             size: 'normal',
             icon: '',
             loading: false,
-            actionIcons: actionIcons
+            actionIcons: actionIcons,
+            target: '_self'
         });
         this.supr();
     },
@@ -81,7 +84,7 @@ var UIButton = Component.extend({
       if (!loading) {
         this.$emit('click', e);
       }
-      return false;
+      return !!this.data.link;
     }
 });
 

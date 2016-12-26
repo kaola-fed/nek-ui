@@ -16,6 +16,9 @@ $g_num = 12;
     padding: 0 $g_gap;
 }
 
+.g-col .g-col:first-child { padding-left:0; }
+.g-col .g-col:last-child { padding-right:0; }
+
 @for $index of 1...$g_num {
     .g-col-#{$index} {
         width: 100% * $index / $g_num;

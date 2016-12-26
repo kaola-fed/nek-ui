@@ -45,7 +45,7 @@ var Trigger = Component.extend({
       dom.on(element, 'click', function(e) { this.toggle(); }.bind(this));
       dom.on(document.body, 'click', function(e) {
         var target = e.target;
-        if (!_.dom.contains(element, target)) {
+        if (!_.dom.contains(element, target) && this.data.isShow) {
           this.toggle(false);
         }
       }.bind(this));
