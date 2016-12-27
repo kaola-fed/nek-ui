@@ -29,6 +29,8 @@ var _ = require('../../ui-base/_.js');
 var actionIcons= {
   /* 查看 */
   view: 'eye',
+  /* 发送 */
+  send: 'send-o',
   /* 撤销 */
   undo: 'reply-all',
   /* 取消 */

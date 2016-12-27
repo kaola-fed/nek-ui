@@ -33,9 +33,9 @@ var Alignment = Component.extend({
   init:function() {
     this.data.target = dom.element(this);
 
-    dom.on(window, 'resize', _.throttle(function() {
+    dom.on(window, 'resize', _.debounce(function() {
       this.reAlign();
-    }.bind(this), 300));
+    }.bind(this), 50));
   },
   reAlign: function(src) {
     var target = this.data.target,
@@ -45,12 +45,12 @@ var Alignment = Component.extend({
     if (src) { this.data.src = src; }
     if (!src || !target) { return; }
 
+    if (src.style.display == 'none') { return; }
+    
     domAlign(src, target, {
       points: align.points,
       offset: align.offset,
-      targetOffset: align.targetOffset,
-      overflow: align.overflow,
-      useCssTransform: true
+      targetOffset: align.targetOffset
     });
   }
 });
