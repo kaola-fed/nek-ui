@@ -74,13 +74,15 @@ var Trigger = Component.extend({
 
     if (instance != this.data.instance) {
       this.data.instance = instance;
-      $align.reAlign(instance.getElement());
     }
 
     if (!isShow && destroyOnHide) {
       instance.destroy();
     } else {
       instance.toggle && instance.toggle(isShow);
+      if (isShow) {
+        $align.reAlign(instance.getElement());
+      }
     }
   },
   toggle: function(isShow) {

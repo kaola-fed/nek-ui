@@ -1,6 +1,6 @@
 var autoAdjustOverflow = {
-  adjustX: 1,
-  adjustY: 1
+  adjustX: 0,
+  adjustY: 0
 };
 
 module.exports = {

@@ -50,7 +50,8 @@ var Alignment = Component.extend({
     domAlign(src, target, {
       points: align.points,
       offset: align.offset,
-      targetOffset: align.targetOffset
+      targetOffset: align.targetOffset,
+      overflow: align.overflow
     });
   }
 });
