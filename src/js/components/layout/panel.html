@@ -1,8 +1,17 @@
 <div class="m-panel {class}" r-hide={!visible} z-dis={disabled}>
-    <div class="panel_hd" on-click={this.toggle()}>{title}</div>
-    <div r-hide={!open} style="overflow: hidden" r-animation="on: enter; class: animated slideInY; on: leave; class: animated slideOutY;">
-        <div class="panel_bd">
-            {#inc this.$body}
-        </div>
+
+    <div class="panel_hd f-cb" on-click={this.toggle()}>
+	    <span class="panel_tt">{title}</span>
+        {#if this.$tools}<div class="f-fr">{#inc this.$tools.$body}</div>{/if}
     </div>
+
+	<div class="panel_bd" r-hide={!open} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">
+		{#inc this.$body}
+	</div>
+
+	{#if this.$foot}
+	<div class="panel_ft">
+		{#inc this.$foot.$body}
+	</div>
+	{/if}
 </div>

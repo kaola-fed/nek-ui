@@ -10,44 +10,20 @@
 
 .m-panel {
     background: white;
-    border-top: 3px solid #d2d6de;
-    $border-radius: $border-radius-base;
-    $box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
 
-    .panel_hd {
-        padding: 10px;
-        border-bottom: 1px solid $brand-default;
-        // - For Collapse
-        margin-bottom: 1px;
+    .panel_hd, .panel_ft {
+        background: #FAFAFA;
+        color: #1B1B1B;
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
     }
+    .panel_tt { font-size:14px; font-weight:bold; }
 
     .panel_bd {
-        padding: 10px;
-    }
-
-    .panel_ft {
-        padding: 10px;
-        border-top: 1px solid $brand-default;
+        border: 1px solid rgb(239, 239, 239);
+        border-top:0;
     }
 
     .panel_img {
 
     }
 }
-
-
-
-// Color Extends:
-// ========================================================================
-
-$m-panel-extend_color = ($name, $border_) {
-    .m-panel-#{$name} {
-        border-color: $border_;
-    }
-}
-
-$m-panel-extend_color(primary, $brand-primary);
-$m-panel-extend_color(info, $brand-info);
-$m-panel-extend_color(success, $brand-success);
-$m-panel-extend_color(warning, $brand-warning);
-$m-panel-extend_color(error, $brand-error);

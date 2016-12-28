@@ -22,13 +22,15 @@ var _ = require('../../ui-base/_.js');
 var Panel = Component.extend({
     name: 'panel',
     template: template,
+    $tools: null,
+    $foot: null,
     /**
      * @protected
      */
     config: function() {
         _.extend(this.data, {
             title: '',
-            open: false
+            open: true
         });
         this.supr();
 

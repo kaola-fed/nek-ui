@@ -5,19 +5,36 @@
     <title>test</title>
     <link rel="stylesheet" href="../dist/css/nek-ui.default.css">
   </head>
+  <style>
+	  #app {
+		  margin: 20px;
+	  }
+  </style>
   <body>
     <div id="app"></div>
   </body>
   <script src="../dist/vendor/regular.min.js"></script>
   <script src="../dist/js/nek-ui.js"></script>
   <script>
-//    var App = RGUI.UIButton;
+//    var App = RGUI.Panel;
 //    new App().$inject('#app');
-    var a = `<ui.form>
-                <form.item cols=12 title="用户名" hint="用户名的用途" row>
-                    <ui.input placeholder="请输入" />
-                </form.item>
-            </ui.form>`;
+    var a = `<div class="g-row"><div class="g-col g-col-6"><panel title="自定义模块">
+				<panel.tool>
+					<ui.button shape="circle" action="submit" size="xs" on-click="{this.test()}" />
+				</panel.tool>
+				<div class="g-row">
+	                <form.item cols=6 title="用户名" tip="用户名的用途">
+	                    <ui.input placeholder="请输入" />
+	                </form.item>
+	                <form.item cols=6 title="密码" tip="用户名的用途">
+	                    <ui.input placeholder="请输入" />
+	                </form.item>
+                </div>
+
+                <panel.tool foot>
+					<ui.button shape="circle" action="submit" size="xs" on-click="{this.test()}" />
+				</panel.tool>
+            </panel></div></div>`;
     new RGUI.Component({
         template: a,
         data: {
@@ -29,7 +46,10 @@
                 {name: '选项5'},
                 {name: '选项6'}
             ]
-        }
+        },
+	    test: function() {
+		    alert(123);
+	    }
     }).$inject('#app');
   </script>
 </html>

@@ -47,6 +47,9 @@ exports.Notify = require("./components/frame/notify.js");
 exports.Modal = require("./components/frame/modal.js");
 exports.PopConfirm = require("./components/frame/pop.confirm.js");
 
+exports.Panel = require("./components/layout/panel.js");
+exports.PanelTools = require("./components/layout/panel.tool.js");
+
 exports.ListView = require("./components/data.view/list.view.js");
 exports.TreeView = require("./components/data.view/tree.view.js");
 

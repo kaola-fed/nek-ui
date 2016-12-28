@@ -13,6 +13,12 @@
         </span>
     </div>
     <div class="u-formitem">
+        <label class="formitem_tt">密码提示<span class="formitem_rqr">*</span>：</label>
+        <span class="formitem_ct">
+            <ui.input type="byte" max=10 message="长度必须小于10" placeholder="小于10个字符" />
+        </span>
+    </div>
+    <div class="u-formitem">
         <label class="formitem_tt">邮箱：</label>
         <span class="formitem_ct">
             <ui.input type="email" placeholder="可选，但需要校验格式" />

@@ -1,0 +1,316 @@
+@import 'helper.mcss';
+
+
+
+/**
+ * base css3 vendor prefixr
+ * http://peter.sh/experiments/vendor-prefixed-css-property-overview/
+ * ⓘ
+ */
+
+$prefix-properties =
+    // transition 部分
+
+    // 有些需要提取单独处理，不过参数一致
+    // transition (webkit moz),
+    transition-delay (webkit moz),
+    // transition-property (webkit moz),
+    transition-duration (webkit moz),
+    transition-timing-function (webkit moz),
+
+
+    //animation
+    animation (webkit moz),
+    animation-delay (webkit moz),
+    animation-name (webkit moz),
+    animation-direction (webkit moz),
+    animation-duration (webkit moz),
+    animation-fill-mode (webkit moz),
+    animation-iteration-count (webkit moz),
+    animation-timing-function (webkit moz),
+    //column
+    columns (webkit moz),
+    column-count (webkit moz),
+    column-gap (webkit moz),
+    column-fill (webkit moz),
+    column-rule (webkit moz),
+    column-rule-color (webkit moz),
+    column-rule-style (webkit moz),
+    column-rule-width (webkit moz),
+    column-span (webkit moz),
+    column-width (webkit moz),
+
+    // display-box (mannul create)
+    box-orient (webkit moz),
+    box-sizing (webkit moz),
+    box-pack (webkit moz),
+    box-align (webkit moz),
+    box-direction (webkit moz),
+    box-lines (webkit moz),
+    box-ordinal-group (webkit moz),
+    box-flex (webkit moz),
+    box-flex-group (webkit moz),
+    box-shadow (webkit moz),
+
+
+    // transform
+    transform null,
+    transform-origin null,
+    transform-style null,
+    perspective (webkit moz),
+    perspective-origin (webkit moz),
+
+    //other
+    appearance (webkit moz ms o),
+    backface-visibility (webkit moz),
+    background-clip webkit,
+    background-origin webkit,
+    background-size webkit,
+    border-box (webkit moz),
+    box-shadow webkit,
+    user-select (webkit moz ms),
+    hyphens (epub moz ms),
+
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+    filter (moz webkit);
+
+
+@for $vendors, $property in $prefix-properties {
+    define('$'+$property, $prefixr($property, null, $vendors));
+}
+// __example__ :content-box;
+// body{
+//     $border-box: content-box;
+// }
+
+
+//
+$border-radius = ($radius, $direction){
+  @if $direction{
+      // top
+      @if typeof($direction) == 'text'{
+        $direction = $side2corner($direction);
+      }@else{ // top left
+        $direction = join($direction);
+      }
+      @for $direct of $direction{
+        $prefixr(border-#{$direct}-radius, $radius, moz)
+      }
+  }@else{
+    $prefixr(border-radius, $radius ,moz);
+  }
+
+}
+// __example__ :
+// ```
+// .radius{
+//   $border-radius: 3px;
+// }
+// .radius-corner{
+//   $border-radius: 3px, top left;
+// }
+// .radius-side{
+//   $border-radius: 3px, top;
+// }
+// ```
+
+$transition = (){
+  -webkit-transition: $transition-prop-prefix($arguments, -webkit-);
+  -moz-transition: $transition-prop-prefix($arguments, -moz-);
+  transition: $arguments;
+}
+
+$transition-property = (){
+  -webkit-transition-property: $transition-prop-prefix($arguments, -webkit-);
+  -moz-transition-property: $transition-prop-prefix($arguments, -moz-);
+  transition-property: $arguments;
+}
+
+// __example__ :
+// ```
+// body{
+//     $transition: transform .1s;
+//     $transition-property: transform, pespective, all;
+// }
+
+
+
+
+//warning: the block 's context ,if passed a func
+$hidpi = ($block, $ratio = 1.5) {
+    @media only screen and (-webkit-min-device-pixel-ratio: $ratio),
+        only screen and (min--moz-device-pixel-ratio: $ratio),
+        only screen and (-o-min-device-pixel-ratio: ($ratio/1)),
+        only screen and (min-resolution: round($ratio*96) + dpi),
+        only screen and (min-resolution: $ratio + dppx) {
+            $block();
+    }
+}
+
+// __example__:
+// ```css
+// $hidpi({
+//     body{
+//         left: 10px;
+//     }
+//     p{
+//         right: 20px;
+//     }
+// }, 2.0)
+// ```
+
+
+
+// https://github.com/thoughtbot/bourbon/blob/master/app/assets/stylesheets/css3/_image-rendering.scss
+$image-rendering = ($mode = optimizeQuality){
+    @if $mode != optimize-contrast{
+        image-rendering: $mode;
+    }@else{
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+    }
+}
+
+
+
+
+
+$keyframes = ($name, $block){
+    @-webkit-keyframes $name{
+        $block(-webkit-);
+    }
+    @-moz-keyframes $name{
+        $block(-moz-);
+    }
+    @-o-keyframes $name{
+        $block(-o-);
+    }
+    @keyframes $name{
+        $block('');
+    }
+}
+// __examlpe__
+// $keyframes(hello, {
+//     20%{
+//         left: 20px;
+//     }
+//     to{
+//         left: 40px;
+//     }
+// });
+
+
+
+// placeholder
+$placeholder = ($block){
+    &::#{-webkit-input-placeholder, -moz-placeholder} {
+       $block()
+    }
+    &:#{-moz-placeholder, -ms-placeholder} {
+       $block()
+    }
+}
+// __Example__
+// #input1{
+//   $placeholder({
+//     color:#090;
+//     background:#fff;
+//     text-transform:uppercase;
+//   });
+// }
+
+
+$linear-gradient = ($pos, $color-stops...){
+  $type-pos = typeof($pos);
+  $deg = null;
+  // @debug index($pos, 0);
+  @if $type-pos == 'color' || ($type-pos == 'values' && typeof(index($pos, 0)) == 'color' ){
+    push($color-stops, $pos);
+    $pos = null;
+  }
+  @if $type-pos == 'dimension' {
+      $deg = $pos;
+  }@else {
+      $pos = $linear-pos($pos);
+  }
+  $start = $get-stop-color(index($color-stops, 0));
+  $end = $get-stop-color(index($color-stops, len($color-stops) - 1));
+  $fallback = mix($start, $end);
+
+  $specs = $color-stops;
+  $other = slice($color-stops);
+  $gradient-type = null;
+  $revert = false;
+  @if $deg != null {
+     unshift($specs, $deg);
+     unshift($other, $deg);
+  }@elseif($pos != null){
+     unshift($specs, to $opposite($pos));
+     unshift($other, $pos);
+     @if $pos == right || $pos == bottom{
+      $revert = true;
+     }
+     @if $pos == left || $pos == right {
+        $gradient-type = 1;
+
+     }@elseif $pos == top || $pos == bottom{
+        $gradient-type = 0;
+     }
+  }@else{ // default top -> bottom
+     $gradient-type = 0;
+     $revert = true;
+  }
+  background-color: $fallback; //fallback
+  background-image: -webkit-linear-gradient($other); // chrome 2+ safari 4+
+  background-image: -moz-linear-gradient($other); // ff
+  background-image: -ms-linear-gradient($other); //ie10
+  background-image: -o-linear-gradient($other); //opeator
+  background-image: linear-gradient($specs); //spec
+  // @REMOVE hack for lt ie9
+  @if $gradient-type != null{
+    @if $revert {
+      $-start = argb($end);
+      $-end = argb($start);
+    }@else{
+      $-end = argb($end);
+      $-start = argb($start);
+    }
+    filter: t("progid:DXImageTransform.Microsoft.gradient(startColorstr='%s', endColorstr='%s', GradientType=%s)" % ($-start, $-end, $gradient-type)) \9;
+  }
+}
+
+// __Example__:
+// body{
+//   $linear-gradient: top , #ccc, #ddd 50%;
+//   $linear-gradient: bottom , #ccc, #ddd 50%;
+//   $linear-gradient: left , #ccc, #ddd 50%;
+//   $linear-gradient: right , #ccc, #ddd 50%;
+//   $linear-gradient: #ccc, #ddd 50%;
+//   $linear-gradient: 30deg ,#ccc, #ddd 50%;
+// }
+
+
+
+$radial-gradient = ($color-stops...) {
+    $start = $get-stop-color(index($color-stops, 0));
+    $end = $get-stop-color(index($color-stops, len($color-stops) - 1));
+    $fallback = mix($start, $end);
+    unshift($color-stops, ellipse);
+    background-color: $fallback;
+    background-image: -webkit-radial-gradient($color-stops);
+    background-image: -moz-radial-gradient($color-stops);
+    background-image: -ms-radial-gradient($color-stops);
+    background-image: -o-radial-gradient($color-stops);
+    background-image: radial-gradient($color-stops);
+    background-repeat: no-repeat;
+}
+
+// close ie hack support
+$ie-reset-gradient = {
+  filter: t("progid:DXImageTransform.Microsoft.gradient(enabled = false)");
+}
+
+
+

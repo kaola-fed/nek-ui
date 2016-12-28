@@ -9,13 +9,17 @@
 // ========================================================================
 
 .m-panel {
-    $clearfix();
+    .panel_hd, .panel_ft {
+        padding: 5px 10px;
+    }
 
-    .panel_hd {}
+    .panel_bd {
+        padding: 20px;
+    }
 
-    .panel_bd {}
+    .panel_img {
 
-    .panel_ft {}
+    }
 }
 
 // Color Extends:

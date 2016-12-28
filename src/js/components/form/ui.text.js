@@ -27,7 +27,7 @@ var UIText = Component.extend({
     template: template,
     config: function() {
         _.extend(this.data, {
-            text: '文本',
+            text: '--',
             // default/primary/info/success/warning/error
             type: 'default',
             // xs/sm/lg/xl
