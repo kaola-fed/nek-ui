@@ -12,9 +12,13 @@
     background: white;
 
     .panel_hd, .panel_ft {
-        background: #FAFAFA;
-        color: #1B1B1B;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        .tools{
+            margin-left: auto;
+        }
     }
     .panel_tt { font-size:14px; font-weight:bold; }
 

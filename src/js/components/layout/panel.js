@@ -57,6 +57,9 @@ var Panel = Component.extend({
         }
 
         this.data.open = open;
+    },
+    stopPropagation: function(e) {
+        e.stopPropagation();
     }
 });
 

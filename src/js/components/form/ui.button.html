@@ -3,13 +3,13 @@
 	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
 	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
 	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
-	{#if shape != 'circle'}{title}{/if}
+	{#if !shape}{title}{/if}
 </a>
 {#else}
 <button class="u-btn u-btn-{type} u-btn-{size} u-btn-{shape} {class}" on-click={this.onClick($event)} {#if loading}disabled{/if}>
 	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
 	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
 	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
-	{#if shape != 'circle'}{title}{/if}
+	{#if !shape}{title}{/if}
 </button>
 {/if}
