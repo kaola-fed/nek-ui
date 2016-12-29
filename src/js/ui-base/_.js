@@ -17,6 +17,9 @@ var _ = {
         var reg = /^function\s*\(\)\s*\{\s*\/\*+\s*([\s\S]*)\s*\*+\/\s*\}$/;
         return reg.exec(func)[1];
     },
+    clone: function(obj) {
+        return JSON.parse(JSON.stringify(obj));
+    }
 }
 
 _.throttle = function(fn, delay) {

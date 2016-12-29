@@ -60,6 +60,7 @@
             "lowerName": "jsComponents",
             "cnName": "基础组件",
             "children": [
+                {"name": "Panel", "lowerName": "panel", "source": "layout/panel", "cnName": "面板", "group":"布局类", "stable": true},
                 {"name": "Dropdown", "lowerName": "dropdown","source":"navigation/dropdown", "cnName": "下拉菜单", "group": "导航类", "stable": true},
                 {"name": "Menu", "lowerName": "menu","source":"navigation/menu", "cnName": "多级菜单", "group": "导航类", "stable": true},
                 {"name": "Tabs", "lowerName": "tabs","source":"navigation/tabs", "cnName": "选项卡", "group": "导航类", "stable": true},

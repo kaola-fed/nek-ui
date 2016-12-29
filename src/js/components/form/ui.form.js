@@ -53,7 +53,8 @@ var UIForm = Validation.extend({
         keys = keys.filter(function(key) { return !window.NEKSelects[key]; });
 
         this.selectors.forEach(function($formitem) {
-            $formitem.data.source = window.NEKSelects[$formitem.data.sourceKey] || [];
+            var source = window.NEKSelects[$formitem.data.sourceKey] || [];
+            $formitem.data.source =  _.clone(source);
         });
 
 
@@ -80,7 +81,9 @@ var UIForm = Validation.extend({
             var key = $formitem.data.sourceKey,
                 $selectItem = $formitem.controls[0];
             if (keys.indexOf(key) != -1 && $selectItem) {
-                $selectItem.data.source = result[key] || [];
+                var source = result[key] || [];
+                $selectItem.data.source = _.clone(source);
+                window.NEKSelects[key] = _.clone(source);
             }
         });
     }
