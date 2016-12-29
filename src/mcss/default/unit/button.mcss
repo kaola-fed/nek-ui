@@ -65,6 +65,11 @@ $u-btn-extend_shape(circle, normal, 34px, 30px, 12px, 100%);
 $u-btn-extend_shape(circle, lg, $height-lg, $height-lg - 2, $font-size-lg, 100%);
 $u-btn-extend_shape(circle, xl, $height-xl, $height-xl - 2, $font-size-xl, 100%);
 
+$u-btn-extend_shape(icon, xs, $height-xs, $height-xs - 2, $font-size-xs, 100%);
+$u-btn-extend_shape(icon, sm, $height-sm, $height-sm - 2, $font-size-sm, 100%);
+$u-btn-extend_shape(icon, normal, 34px, 30px, 12px, 100%);
+$u-btn-extend_shape(icon, lg, $height-lg, $height-lg - 2, $font-size-lg, 100%);
+$u-btn-extend_shape(icon, xl, $height-xl, $height-xl - 2, $font-size-xl, 100%);
 
 // Color Extends:
 // ========================================================================

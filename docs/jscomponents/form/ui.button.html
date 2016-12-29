@@ -264,6 +264,17 @@
     <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;circle&quot;</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;xl&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
 <span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
 </code></pre>
+<h4 id="-">图标按钮</h4>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;primary&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;icon&quot;</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;xs&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;info&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;icon&quot;</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;sm&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">type</span>=<span class="cm-string">&quot;error&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;icon&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;icon&quot;</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;lg&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">action</span>=<span class="cm-string">&quot;update&quot;</span> <span class="cm-attribute">shape</span>=<span class="cm-string">&quot;icon&quot;</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;xl&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
 <h4 id="-">加载中的按钮</h4>
 <div class="m-example"></div>
 
@@ -315,7 +326,7 @@
             
             <tr><td class="f-wsn"><code>data.target</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;_self&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>按钮链接的打开方式</td></tr>
             
-            <tr><td class="f-wsn"><code>data.shape</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>circle或者默认</td></tr>
+            <tr><td class="f-wsn"><code>data.shape</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>circle, icon或者默认</td></tr>
             
             <tr><td class="f-wsn"><code>data.loading</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>&#39;false&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>是否正在加载</td></tr>
             
@@ -456,6 +467,21 @@ var component = new RGUI.Component({
     <ui.button action="update" shape="circle" />
     <ui.button action="update" shape="circle" size="lg" />
     <ui.button action="update" shape="circle" size="xl" />
+</div>
+    `
+var component = new RGUI.Component({
+    template: template
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = `
+<div class=g-row>
+    <ui.button action="update" type="primary" shape="icon" size="xs" />
+    <ui.button action="update" type="info" shape="icon" size="sm" />
+    <ui.button action="update" type="error" shape="icon" />
+    <ui.button action="update" shape="icon" size="lg" />
+    <ui.button action="update" shape="icon" size="xl" />
 </div>
     `
 var component = new RGUI.Component({

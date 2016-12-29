@@ -60,8 +60,7 @@ $m-tabs-vertical_hd_li_width = 120px;
     .tabs_bd {
         background: white;
         border-top: $border-width-base solid $m-tabs_hd_border;
-        padding: 20px;
-        $box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+        padding: 20px 0;
     }
 }
 

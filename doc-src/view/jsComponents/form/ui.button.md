@@ -58,6 +58,19 @@
     <ui.button action="update" shape="circle" size="xl" />
 </div>
 ```
+#### 图标按钮
+
+<div class="m-example"></div>
+
+```xml
+<div class=g-row>
+    <ui.button action="update" type="primary" shape="icon" size="xs" />
+    <ui.button action="update" type="info" shape="icon" size="sm" />
+    <ui.button action="update" type="error" shape="icon" />
+    <ui.button action="update" shape="icon" size="lg" />
+    <ui.button action="update" shape="icon" size="xl" />
+</div>
+```
 
 #### 加载中的按钮
 

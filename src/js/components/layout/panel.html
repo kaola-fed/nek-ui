@@ -1,8 +1,15 @@
 <div class="m-panel {class}" r-hide={!visible} z-dis={disabled}>
 
     <div class="panel_hd f-cb" on-click={this.toggle()}>
-	    <span class="panel_tt">{title}</span>
-        {#if this.$tools}<div class="f-fr">{#inc this.$tools.$body}</div>{/if}
+	    <span class="panel_tt">
+			<i class="u-icon" r-class="{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}"></i>
+			 {title}
+		</span>
+        {#if this.$tools}
+		<div class="tools" on-click={this.stopPropagation($event)}>
+			{#inc this.$tools.$body}
+		</div>
+		{/if}
     </div>
 
 	<div class="panel_bd" r-hide={!open} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">

@@ -22,7 +22,7 @@ var _ = require('../../ui-base/_.js');
  * @param {string=''}               options.data.action              => 按钮操作类型, 每种类型有对应的icon;
  * @param {string=''}               options.data.link                => 按钮的链接
  * @param {string='_self'}          options.data.target              => 按钮链接的打开方式
- * @param {string=''}               options.data.shape               => circle或者默认
+ * @param {string=''}               options.data.shape               => circle, icon或者默认
  * @param {boolean='false'}         options.data.loading             => 是否正在加载
  * @param {boolean='false'}         options.data.class               => 样式扩展
  */
@@ -82,11 +82,11 @@ var UIButton = Component.extend({
         this.supr();
     },
     onClick: function(e) {
-      var loading = this.data.loading;
-      if (!loading) {
+        var loading = this.data.loading;
+        if (!loading) {
         this.$emit('click', e);
-      }
-      return !!this.data.link;
+        }
+        return !!this.data.link;
     }
 });
 
