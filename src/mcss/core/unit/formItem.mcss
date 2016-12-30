@@ -11,7 +11,10 @@
 .u-formitem {
     display: flex;
     flex-direction: column;
-    .formitem_tt { position:relative; }
+    .formitem_tt { position:relative; font-weight:bold; margin-bottom:3px; }
+
+    .g-col:first-child { padding-left:0; }
+    .g-col:last-child { padding-right:0; }
 }
 
 .u-formitem-block {
@@ -44,6 +47,7 @@
         padding-top: 5px;
         padding-right: 10px;
         text-align: right;
+        margin:0;
     }
     .formitem_ct{
         flex: 1;
@@ -56,6 +60,7 @@
         padding-top: 5px;
         padding-right: 10px;
         text-align: right;
+        margin:0;
     }
     .formitem_ct{
         flex: 1;

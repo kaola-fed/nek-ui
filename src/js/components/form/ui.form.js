@@ -54,7 +54,8 @@ var UIForm = Validation.extend({
 
         this.selectors.forEach(function($formitem) {
             var source = window.NEKSelects[$formitem.data.sourceKey] || [];
-            $formitem.data.source =  _.clone(source);
+            var $selectItem = $formitem.controls[0];
+            $selectItem.data.source =  _.clone(source);
         });
 
 

@@ -12,13 +12,9 @@
     .panel_hd, .panel_ft {
         background: $panel-header;
         padding: 8px 10px;
-        color: $brand-default;
-        .u-btn{
-            font-size: 14px;
-            .u-icon{
-                color: $brand-default;
-            }
-        }
+    }
+    .panel_ft {
+        padding:5px 10px;
     }
 
     .panel_bd {

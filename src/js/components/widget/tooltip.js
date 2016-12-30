@@ -23,7 +23,7 @@ var trigger = require('../layout/alignment/trigger.js');
  */
 var Tooltip = Component.extend({
     name: 'tooltip',
-    template: '<trigger placement={placement} getInstance={@(this.getInstance.bind(this))}>{#inc this.$body}</trigger>',
+    template: '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
     config: function (data) {
         this.defaults({
           tip: '',
@@ -36,9 +36,16 @@ var Tooltip = Component.extend({
       var tip = this.data.tip,
           placement = this.data.placement;
       if (!this.data.instance) {
-        this.data.instance = new TipPopUp({
+        var instance = new TipPopUp({
           data: {tip: tip, placement: placement}
         });
+
+        instance.$on('destroy', function() {
+          this.$refs.trigger.data.isShow = false;
+          this.data.instance = null;
+        }.bind(this));
+
+        this.data.instance = instance;
       }
       return this.data.instance;
     }
@@ -58,8 +65,7 @@ var TipPopUp = Component.extend({
     }
     this.data.element = dom.element(this);
   },
-  getElement: function() { return this.data.element; },
-  toggle: function(isShow) { this.$update('isShow', !!isShow); }
+  getElement: function() { return this.data.element; }
 });
 
 module.exports = Tooltip;

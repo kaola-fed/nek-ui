@@ -11,15 +11,25 @@
 .m-panel {
     background: white;
 
-    .panel_hd, .panel_ft {
+    .panel_hd, .panel_ft { box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+
+    .panel_hd {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        color: $panel-header-color;
         box-shadow: 0 1px 3px rgba(0,0,0,.3);
         .tools{
             margin-left: auto;
         }
+        .u-btn{
+            font-size: 14px;
+            .u-icon{
+                color: $panel-header-icon-color;
+            }
+        }
     }
+
     .panel_tt { font-size:14px; font-weight:bold; }
 
     .panel_bd {

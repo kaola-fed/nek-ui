@@ -11,7 +11,7 @@
 /* Height */
 $height-base = 34px;
 $height-xs = 22px;
-$height-sm = 30px;
+$height-sm = 28px;
 $height-lg = 38px;
 $height-xl = 46px;
 
