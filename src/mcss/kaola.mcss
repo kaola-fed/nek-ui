@@ -1,5 +1,5 @@
 /* Brand Colors */
-$brand-default =                        #fff;
+$brand-default =                        #f4f4f4;
 $brand-default-dark =                   #e5e5e5;
 $brand-default-darker =                 #adadad;
 $brand-primary =                        #cb0000;
@@ -17,7 +17,7 @@ $brand-error =                          #D30030;
 $brand-error-lighter =                  mix($brand-error, white, 10%);
 $brand-error-darker =                   #d73925;
 $brand-secondary =                      $brand-primary;
-$panel-header =                         #8499B3;
+$panel-header =                         #6F8CB0;
 $panel-header-color =                   $brand-default;
 $panel-header-icon-color =              $brand-default;
 
