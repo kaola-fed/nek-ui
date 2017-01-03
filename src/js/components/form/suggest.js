@@ -73,6 +73,15 @@ var Suggest = Dropdown.extend({
                 $outer.controls.splice(index, 1);
             });
         }
+
+        this.$watch('id', function(id) {
+            var source = this.data.source || [],
+                key = this.data.key,
+                nameKey = this.data.nameKey;
+
+            var crt = source.find(function(item) { return item[key] == id; });
+            this.$update('value', crt ? crt[nameKey] : '');
+        });
     },
     /**
      * @protected
@@ -98,8 +107,14 @@ var Suggest = Dropdown.extend({
      * @return {void}
      */
     select: function(item) {
-        if(this.data.readonly || this.data.disabled || item.disabled || item.divider)
+        if(this.data.readonly || this.data.disabled || item.disabled || item.divider) {
+            this.$emit('select', {
+              sender: this,
+              selected: item,
+              disabled: true
+            });
             return;
+        }
 
         this.data.selected = item;
         this.data.value = item[this.data.nameKey];
@@ -154,7 +169,7 @@ var Suggest = Dropdown.extend({
      * @private
      */
     _onInput: function($event) {
-        var value = this.data.value;
+        var value = this.data.value || '';
 
         if(value.length >= this.data.startLength) {
             this.toggle(true);
