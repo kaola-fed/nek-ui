@@ -18,6 +18,7 @@ var template = require('./form.item.html');
  * @param {boolean=false}           options.data.required            => 是否必选项
  * @param {string=''}               options.data.tip                 => 字段说明
  * @param {string=''}               options.data.class               => 样式扩展
+ * @param {string=''}               options.data.sourceKey           => 异步获取下拉列表接口的索引值
  */
 var FormItem = Validation.extend({
     name: 'form.item',
