@@ -16,7 +16,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.html$/, loader: 'text-loader'}
+            {test: /\.html$/, loader: 'text-loader'},
+            {test: /\.mcss$/, loader: 'style!css!mcss'}
         ]
     },
     resolve: {

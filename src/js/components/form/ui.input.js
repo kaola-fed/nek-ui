@@ -18,7 +18,7 @@ var bowser = require('bowser');
  * @extend Component
  * @param {object}                  options.data                     =  绑定属性
  * @param {string=''}               options.data.value              <=> 文本框的值
- * @param {string=''}               options.data.type                => 文本框的类型, 6种类型：int, float, email, url，byte，password
+ * @param {string=''}               options.data.type                => 文本框的类型, 6种类型：int, float, email, url，char，password
  * @param {string=''}               options.data.placeholder         => 占位符
  * @param {string=''}               options.data.state              <=> 文本框的状态
  * @param {number}                  options.data.maxlength           => 文本框的最大长度
@@ -30,8 +30,8 @@ var bowser = require('bowser');
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
  * @param {boolean}                 options.data.required            => 【验证规则】是否必填
- * @param {number}                  options.data.min                 => 【验证规则】type=int/float时的最小值, type=byte时，最小长度
- * @param {number}                  options.data.max                 => 【验证规则】type=int/float时的最大值, type=byte时，最大长度
+ * @param {number}                  options.data.min                 => 【验证规则】type=int/float时的最小值, type=char时，最小长度
+ * @param {number}                  options.data.max                 => 【验证规则】type=int/float时的最大值, type=char时，最大长度
  * @oaram {string=''}               options.data.message             => 【验证规则】验证失败时，提示的消息
  */
 var Input = Component.extend({
@@ -54,7 +54,7 @@ var Input = Component.extend({
         });
         this.rules({
             required: false,
-            byteLen: this.data.type === 'byte',
+            byteLen: this.data.type === 'char',
             isEmail: this.data.type === 'email',
             isURL: this.data.type === 'url',
             isInt: this.data.type === 'int',

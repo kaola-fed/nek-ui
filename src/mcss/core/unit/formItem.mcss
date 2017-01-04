@@ -42,22 +42,8 @@
 
 .u-formitem-row{
     flex-direction: initial;
-    .formitem_tt {
+    .formitem_tt, .formitem_tt2 {
         font-size: 14px;
-        padding-top: 5px;
-        padding-right: 10px;
-        text-align: right;
-        margin:0;
-    }
-    .formitem_ct{
-        flex: 1;
-    }
-}
-.u-formitem-row{
-    flex-direction: initial;
-    .formitem_tt2 {
-        font-size: 14px;
-        padding-top: 5px;
         padding-right: 10px;
         text-align: right;
         margin:0;

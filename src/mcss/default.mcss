@@ -22,3 +22,98 @@ $panel-header-color =                   #444;
 $panel-header-icon-color =              #444;
 
 @import "./base.mcss";
+
+.u-calendar2 {
+    position: relative;
+    padding: 4px;
+    width: 238px; /* (32 + 2) * 7 px */
+    min-height: 242px;
+    background: white;
+    color: #555;
+    text-align: center;
+    -webkit-user-select : none;
+    -moz-user-select : none;
+    -ms-user-select : none;
+    user-select : none;
+    z-index: 999;
+
+    .calendar_item {
+        display : inline-block;
+        cursor  : pointer;
+        width: 32px;
+        line-height: 30px;
+    }
+
+    .calendar_item.z-muted {
+        color: #999 !important;
+        background: #fff;
+    }
+
+    .calendar_item.z-hov {
+        background: #bde0f7;
+        color: #444;
+    }
+
+    .calendar_item.z-dis {
+        cursor: not-allowed;
+        background: none;
+        color: #999;
+    }
+
+    .calendar_item.z-sel {
+        background: #78c0ef;
+        color: #fff;
+        &.z-hov {
+          background: #bde0f7;
+          color: #444;
+        }
+        &.z-bdry {
+          background: #34a0e7;
+          color: #fff;
+        }
+    }
+
+
+    .calendar_hd {
+        line-height: 32px;
+        clear: both;
+        .calendar_prev {
+            float: left;
+        }
+        .calendar_date {
+            font-weight: bold;
+        }
+        .calendar_next {
+            float: right;
+        }
+    }
+
+    .calendar_bd {
+        clear: both;
+    }
+
+    /* disabled */
+    &.z-dis {
+      .calendar_item {
+          background: white;
+          color: #999;
+          cursor: not-allowed;
+      }
+
+      .calendar_item.z-sel {
+          background: #eee;
+          color: #999;
+      }
+    }
+    &.prev {
+      position: absolute;
+      top: -1px;
+      left: -248px;
+      cursor: default;
+      border: 1px solid #d2d6de;
+      z-index: 999;
+      .calendar_item {
+        cursor: default;
+      }
+    }
+}
