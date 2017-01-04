@@ -52,7 +52,7 @@ var component = new RGUI.Component({
 });
 ```
 
-#### type=int/float
+#### type=int/float, 固定输入小数位
 
 <div class="m-example"></div>
 
