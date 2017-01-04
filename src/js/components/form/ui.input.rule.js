@@ -20,7 +20,7 @@ module.exports = {
     max = max/1 || Infinity;
     return {type:'isInt', message:message || '错误的值', options:{min:min, max:max}};
   },
-  isFloat: function(min, max) {
+  isFloat: function(min, max, message) {
     min = min/1 || -Infinity;
     max = max/1 || Infinity;
     return {type:'isFloat', message:message || '错误的值', options:{min:min, max:max}};

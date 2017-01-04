@@ -52,6 +52,23 @@ var component = new RGUI.Component({
 });
 ```
 
+#### type=int/float
+
+<div class="m-example"></div>
+
+```xml
+<div class="g-row">
+    <div class="g-col g-col-6">
+        <ui.input type="int" placeholder="请输入整数" value={value1} />
+        {value1}
+    </div>
+    <div class="g-col g-col-6">
+        <ui.input type="float" placeholder="保留三位小数" decimalDigits=3 value={value2} />
+        {value2}
+    </div>
+</div>
+```
+
 #### 验证
 
 <div class="m-example"></div>

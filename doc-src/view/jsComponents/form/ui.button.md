@@ -9,7 +9,7 @@
  <ui.button type="default" title="default" />
  <ui.button type="info" title="info" />
  <ui.button type="success" title="success" />
- <ui.button type="warn" title="warn" />
+ <ui.button type="warning" title="warn" />
  <ui.button type="error" title="error" />
 ```
 

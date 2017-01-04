@@ -10,6 +10,7 @@ var template = require('./ui.input.html');
 var _ = require('../../ui-base/_.js');
 var Validation = require('../../util/validation.js');
 var inputRules = require('./ui.input.rule.js');
+var inputFilters = require('./ui.input.filter.js');
 
 var bowser = require('bowser');
 
@@ -29,6 +30,9 @@ var bowser = require('bowser');
  * @param {boolean=false}           options.data.disabled            => 是否禁用
  * @param {boolean=true}            options.data.visible             => 是否显示
  * @param {string=''}               options.data.class               => 补充class
+ * @param {number}                  options.data.decimalDigits       => type=float时,最多输入几位小数的filter
+ * @param {boolean}                 options.data.positive            => type=int/float时,只能输入正数的filter
+ * @param {boolean}                 options.data.negative            => type=int/float时,只能输入负数的filter
  * @param {boolean}                 options.data.required            => 【验证规则】是否必填
  * @param {number}                  options.data.min                 => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}                  options.data.max                 => 【验证规则】type=int/float时的最大值, type=char时，最大长度
@@ -144,6 +148,18 @@ var Input = Component.extend({
 
         return result;
     },
+
+    /**
+     * 1. 所有类型的input,都去除前后的空格;
+     * 2. type=int/float时, 只能输入对应类型的数字;
+     **/
+    __valueFilter: function(value) {
+        var type = this.data.type;
+
+        value = (value + '').trim();
+        value = (inputFilters[type] || inputFilters['default'])(value, this.data.decimalDigits);
+        return value;
+    },
     _onKeyUp: function($event) {
         this.validate('keyup');
         this.$emit('keyup', $event);
@@ -154,16 +170,28 @@ var Input = Component.extend({
     },
     _onSearch: function($event) {
         this.$emit('search', $event);
-    }
+    },
 });
 
 Input.filter('type', function(val) {
     if (['int', 'float'].indexOf(val) != -1) {
-        return 'number';
+        /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
+        return 'text';
     } else if (val == 'password') {
         return 'password';
     } else {
         return 'text';
+    }
+});
+
+Input.filter({
+    'valueFilter': {
+        get: function(val) {
+            return this.__valueFilter(val);
+        },
+        set: function(val) {
+            return this.__valueFilter(val);
+        }
     }
 });
 
