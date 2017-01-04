@@ -27,11 +27,10 @@ var UIForm = Validation.extend({
         });
         this.supr(data);
     },
-
     init: function() {
-        this.__initSelectorSource();
+        this.initSelectorSource();
     },
-    __initSelectorSource: function() {
+    initSelectorSource: function() {
         var controls = this.controls;
         this.selectors = controls.filter(function($formitem) {
             return !!$formitem.data.sourceKey;
@@ -53,10 +52,10 @@ var UIForm = Validation.extend({
         keys = keys.filter(function(key) { return !window.NEKSelects[key]; });
 
         this.selectors.forEach(function($formitem) {
-            var source = window.NEKSelects[$formitem.data.sourceKey] || [];
-            var $selectItem = $formitem.controls[0];
-            $selectItem.data.source =  _.clone(source);
-        });
+            var key = $formitem.data.sourceKey;
+            var source = window.NEKSelects[key] || [];
+            this.__updateSource($formitem, key, source);
+        }.bind(this));
 
 
         if (!keys.length) { return; }
@@ -79,14 +78,18 @@ var UIForm = Validation.extend({
         result = result || {};
 
         this.selectors.forEach(function($formitem) {
-            var key = $formitem.data.sourceKey,
-                $selectItem = $formitem.controls[0];
-            if (keys.indexOf(key) != -1 && $selectItem) {
-                var source = result[key] || [];
-                $selectItem.data.source = _.clone(source);
-                window.NEKSelects[key] = _.clone(source);
-            }
-        });
+            var key = $formitem.data.sourceKey;
+            var source = result[key] || [];
+            this.__updateSource($formitem, key, source);
+        }.bind(this));
+    },
+    __updateSource: function($formitem, key, source) {
+        var $selectItem = $formitem.controls[0];
+        window.NEKSelects[key] = _.clone(source);
+
+        /* 三种情况不给组件赋值:1. form.item下面没有选项组件; 2. source为空 3. 选项组件的source属性已经有值 */
+        if (!$selectItem || !source.length || $selectItem.data.source.length) return;
+        $selectItem.data.source =  _.clone(source);
     }
 });
 

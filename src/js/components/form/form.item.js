@@ -2,6 +2,7 @@
 
 var _ = require('../../ui-base/_.js');
 var Validation = require('../../util/validation.js');
+var UIForm = require('./ui.form.js');
 var Tooltip = require('../widget/tooltip.js');
 
 var template = require('./form.item.html');
@@ -30,11 +31,19 @@ var FormItem = Validation.extend({
         this.supr(data);
 
         var $outer = this.$outer;
-        if ($outer && $outer instanceof Validation) {
+        if ($outer && $outer instanceof UIForm) {
             $outer.controls.push(this);
         }
     },
     init: function() {
+        var $outer = this.$outer;
+        this.$watch('this.controls.length', function(len) {
+            if (!len) { return; }
+            if ($outer && $outer.initSelectorSource) {
+                $outer.initSelectorSource();
+            }
+        });
+
         this.initValidateRule();
     },
     initValidateRule: function() {
