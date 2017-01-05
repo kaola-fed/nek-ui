@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('./_.js');
+var _ = require('./_');
 
 var rClassGenerator = function(rClass) {
     exports[rClass] = function(elem, value) {

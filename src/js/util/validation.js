@@ -8,8 +8,8 @@
 
 'use strict';
 
-var Component = require('../ui-base/component.js');
-var _ = require('../ui-base/_.js');
+var Component = require('../ui-base/component');
+var _ = require('../ui-base/_');
 var validator = require('validator');
 
 /**

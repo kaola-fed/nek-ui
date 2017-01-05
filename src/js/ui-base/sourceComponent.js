@@ -7,8 +7,8 @@
 
 'use strict';
 
-var Component = require('./component.js');
-var _ = require('./_.js');
+var Component = require('./component');
+var _ = require('./_');
 
 /**
  * @class SourceComponent

@@ -9,9 +9,9 @@
 
 var dom = require('regularjs').dom;
 
-var Component = require('../../../ui-base/component.js');
-var _ = require('../../../ui-base/_.js');
-var alignment = require('./alignment.js');
+var Component = require('../../../ui-base/component');
+var _ = require('../../../ui-base/_');
+var alignment = require('./alignment');
 
 /**
  * @class Trigger

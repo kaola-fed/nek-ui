@@ -162,11 +162,6 @@
         
         
         
-        <li><a href="../../jscomponents/validation.html" >表单验证<small> Validation</small>
-        </a></li>
-        
-        
-        
         <li class="sidebar_group"><span>日期类</span></li>
         
         <li><a href="../../jscomponents/calendar/date.picker.html" >日期选择<small> DatePicker</small>
@@ -175,23 +170,6 @@
         
         
         <li><a href="../../jscomponents/calendar/time.picker.html" >时间选择<small> TimePicker</small>
-        </a></li>
-        
-        
-        
-        <li><a href="../../jscomponents/calendar/calendar.html" >日历<small> Calendar</small>
-        </a></li>
-        
-        
-        
-        <li class="sidebar_group"><span>数据类</span></li>
-        
-        <li><a href="../../jscomponents/data.view/list.view.html" >列表视图<small> ListView</small>
-        </a></li>
-        
-        
-        
-        <li><a href="../../jscomponents/data.view/tree.view.html" >树型视图<small> TreeView</small>
         </a></li>
         
         
@@ -291,95 +269,7 @@
 });
 </code></pre>
 
-        <h3>API</h3>
-
-<h4>Class</h4>
-<h5>PopConfirm</h5>
-<p>继承自<strong>Component</strong>。</p>
-<p></p>
-<div id="j-class"></div>
-
-<h4>Options</h4>
-<h5>new PopConfirm()</h5>
-<table>
-    <thead>
-        <tr><th width="24%">参数</th><th width="16%">类型</th><th width="16%">默认值</th><th width="18%">数据流向</th><th width="26%">描述</th></tr>
-    </thead>
-    <tbody>
         
-            
-            <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn"></td><td class="f-tac"></td><td>绑定属性</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.content</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>弹窗中的文本内容</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.contentTemplate</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>弹窗中的模板内容,回调中会将PopConfirm的data返回;</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.placement</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;top&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.okText</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;确定&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>ok按钮文案</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.cancelText</code></td><td class="f-wsn">string</td><td class="f-wsn"><code>&#39;取消&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>取消按钮文案</td></tr>
-            
-            <tr><td class="f-wsn"><code>data.hideWhenScroll</code></td><td class="f-wsn">boolean</td><td class="f-wsn"><code>&#39;false&#39;</code></td><td class="f-tac">outer  =&gt; inner</td><td>window滚动时,是否影藏popover</td></tr>
-            
-        
-    </tbody>
-</table>
-<div id="j-options"></div>
-
-
-<div id="j-methods"></div>
-
-
-<div id="j-staticMethods"></div>
-
-
-<div id="j-inheritedMethods"></div>
-
-
-    <h4>Events</h4>
-    
-    
-    <h5>popConfirm.$on('ok')</h5>
-    <p>确定时触发</p>
-    <table>
-        <thead>
-            <tr><th width="33%">属性</th><th width="33%">类型</th><th width="33%">描述</th></tr>
-        </thead>
-        <tbody>
-            
-                
-                <tr><td class="f-wsn"><code>sender</code></td><td class="f-wsn">object</td><td class="f-wsn">事件发送对象</td></tr>
-                
-                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn">popConfirm组件的数据</td></tr>
-                
-            
-        </tbody>
-    </table>
-    
-    
-    <h5>popConfirm.$on('cancel')</h5>
-    <p>取消时触发</p>
-    <table>
-        <thead>
-            <tr><th width="33%">属性</th><th width="33%">类型</th><th width="33%">描述</th></tr>
-        </thead>
-        <tbody>
-            
-                
-                <tr><td class="f-wsn"><code>sender</code></td><td class="f-wsn">object</td><td class="f-wsn">事件发送对象</td></tr>
-                
-                <tr><td class="f-wsn"><code>data</code></td><td class="f-wsn">object</td><td class="f-wsn">popConfirm组件的数据</td></tr>
-                
-            
-        </tbody>
-    </table>
-    
-
-<div id="j-events"></div>
-
-
-<div id="j-inheritedEvents"></div>
     </article>
 </div></div></div>
 <script src="../../vendor/regular.min.js"></script>

@@ -86,14 +86,9 @@
                 {"name": "Uploader", "lowerName": "uploader","source":"form/uploader", "cnName": "上传", "group": "表单类", "beta": true},
                 {"name": "UIForm", "lowerName": "ui.form","source":"form/ui.form", "cnName": "表单", "group": "表单类", "beta": true},
                 {"name": "FormItem", "lowerName": "form.item","source":"form/form.item", "cnName": "表单字段", "group": "表单类", "beta": true},
-                {"name": "Validation", "lowerName": "validation", "cnName": "表单验证", "group": "表单类", "beta": true},
 
                 {"name": "DatePicker", "lowerName": "date.picker","source":"calendar/date.picker", "cnName": "日期选择", "group": "日期类", "stable": true},
                 {"name": "TimePicker", "lowerName": "time.picker","source":"calendar/time.picker", "cnName": "时间选择", "group": "日期类", "stable": true},
-                {"name": "Calendar", "lowerName": "calendar","source":"calendar/calendar", "cnName": "日历", "group": "日期类", "stable": true},
-
-                {"name": "ListView", "lowerName": "list.view","source":"data.view/list.view", "cnName": "列表视图", "group": "数据类", "stable": true},
-                {"name": "TreeView", "lowerName": "tree.view","source":"data.view/tree.view", "cnName": "树型视图", "group": "数据类", "beta": true},
 
                 {"name": "Progress", "lowerName": "progress","source":"widget/progress", "cnName": "进度条", "group": "其他", "stable": true},
                 {"name": "Loading", "lowerName": "loading","source":"widget/loading", "cnName": "加载中", "group": "其他", "stable": true},

@@ -8,10 +8,10 @@
 'use strict';
 
 var Regular = require('regularjs');
-var polyfill = require('./polyfill.js');
-var _ = require('./_.js');
-var filter = require('./filter.js');
-var directive = require('./directive.js');
+var polyfill = require('./polyfill');
+var _ = require('./_');
+var filter = require('./filter');
+var directive = require('./directive');
 
 /**
  * @class Component

@@ -10,9 +10,9 @@
 var dom = require('regularjs').dom;
 var domAlign = require('dom-align');
 
-var Component = require('../../../ui-base/component.js');
-var _ = require('../../../ui-base/_.js');
-var placement = require('./placement.js');
+var Component = require('../../../ui-base/component');
+var _ = require('../../../ui-base/_');
+var placement = require('./placement');
 
 /**
  * @class Alignment

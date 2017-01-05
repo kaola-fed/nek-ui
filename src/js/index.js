@@ -7,53 +7,51 @@
 
 'use strict';
 
+// Base
 exports.Regular = require('regularjs');
-exports.Component = require('./ui-base/component.js');
-exports.SourceComponent = require('./ui-base/sourceComponent.js');
-exports._ = require('./ui-base/_.js');
-exports.ajax = require("./ui-base/ajax.js");
-exports.Validation = require("./util/validation.js");
+exports.Component = require('./ui-base/component');
+exports.SourceComponent = require('./ui-base/sourceComponent');
+exports._ = require('./ui-base/_');
+exports.ajax = require('./ui-base/ajax');
+exports.Validation = require('./util/validation');
 
-exports.Dropdown = require("./components/navigation/dropdown.js");
-exports.Menu = require("./components/navigation/menu.js");
+// Form
+exports.Check = require("./components/form/check");
+exports.CheckGroup = require("./components/form/check.group");
+exports.DatePicker = require("./components/form/date.picker");
+exports.FormItem = require("./components/form/form.item");
+exports.NumberInput = require("./components/form/number.input");
+exports.RadioGroup = require("./components/form/radio.group");
+exports.SelectGroup = require("./components/form/select.group");
+exports.Suggest = require("./components/form/suggest");
+exports.TimePicker = require("./components/form/time.picker");
+exports.TreeSelect = require("./components/form/tree.select");
+exports.UIButton = require("./components/form/ui.button");
+exports.UIForm = require("./components/form/ui.form");
+exports.UIInput = require("./components/form/ui.input");
+exports.UISelect = require("./components/form/ui.select");
+exports.UIText = require("./components/form/ui.text");
+exports.UITextArea = require("./components/form/ui.textarea");
+exports.Uploader = require("./components/form/uploader");
 
-exports.UIInput = require("./components/form/ui.input.js");
-exports.UITextArea = require("./components/form/ui.textarea.js");
-exports.NumberInput = require("./components/form/number.input.js");
-exports.Check = require("./components/form/check.js");
-exports.CheckGroup = require("./components/form/check.group.js");
-exports.RadioGroup = require("./components/form/radio.group.js");
-exports.UISelect = require("./components/form/ui.select.js");
-exports.SelectGroup = require("./components/form/select.group.js");
-exports.TreeSelect = require("./components/form/tree.select.js");
-exports.Suggest = require("./components/form/suggest.js");
-exports.Uploader = require("./components/form/uploader.js");
-exports.UIButton = require("./components/form/ui.button.js");
-exports.UIText = require("./components/form/ui.text.js");
+// Navigation
+exports.Collapse = require("./components/navigation/collapse");
+exports.Dropdown = require("./components/navigation/dropdown");
+exports.Menu = require("./components/navigation/menu");
+exports.Pager = require("./components/navigation/pager");
+exports.Tabs = require("./components/navigation/tabs");
 
-exports.DatePicker = require("./components/calendar/date.picker.js");
-exports.TimePicker = require("./components/calendar/time.picker.js");
+// Notice
+exports.Modal = require("./components/notice/modal");
+exports.Notify = require("./components/notice/notify");
+exports.PopConfirm = require("./components/notice/pop.confirm");
 
-exports.Progress = require("./components/widget/progress.js");
-exports.Loading = require("./components/widget/loading.js");
-exports.Gotop = require("./components/widget/gotop.js");
-exports.Tooltip = require("./components/widget/tooltip.js");
+// Widget
+exports.Gotop = require("./components/widget/gotop");
+exports.Loading = require("./components/widget/loading");
+exports.Progress = require("./components/widget/progress");
+exports.Tooltip = require("./components/widget/tooltip");
 
-exports.Tabs = require("./components/navigation/tabs.js");
-exports.Collapse = require("./components/navigation/collapse.js");
-exports.Pager = require("./components/navigation/pager.js");
+// Layout
+exports.Panel = require("./components/layout/panel");
 
-exports.Notify = require("./components/frame/notify.js");
-exports.Modal = require("./components/frame/modal.js");
-exports.PopConfirm = require("./components/frame/pop.confirm.js");
-
-exports.Panel = require("./components/layout/panel.js");
-exports.PanelTools = require("./components/layout/panel.tool.js");
-
-exports.ListView = require("./components/data.view/list.view.js");
-exports.TreeView = require("./components/data.view/tree.view.js");
-
-exports.Calendar = require("./components/calendar/calendar.js");
-
-exports.UIForm = require("./components/form/ui.form.js");
-exports.FormItem = require("./components/form/form.item.js");
