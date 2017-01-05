@@ -1,0 +1,26 @@
+<div class="u-calendar {class}" z-dis={disabled} r-hide={!visible}>
+    <div class="calendar_hd">
+        <span class="calendar_prev">
+            <span class="calendar_item" on-click={this.addYear(-1)}><i class="u-icon u-icon-angle-double-left"></i></span>
+            <span class="calendar_item" on-click={this.addMonth(-1)}><i class="u-icon u-icon-angle-left"></i></span>
+        </span>
+        <span class="calendar_date">{date4Disp | format: 'yyyy'}年&nbsp;&nbsp;{date4Disp | format: 'MM'}月</span>
+        <span class="calendar_next">
+            <span class="calendar_item" on-click={this.addMonth(1)}><i class="u-icon u-icon-angle-right"></i></span>
+            <span class="calendar_item" on-click={this.addYear(1)}><i class="u-icon u-icon-angle-double-right"></i></span>
+        </span>
+    </div>
+    <div class="calendar_bd">
+        <div class="calendar_week"><span class="calendar_item">日</span><span class="calendar_item">一</span><span class="calendar_item">二</span><span class="calendar_item">三</span><span class="calendar_item">四</span><span class="calendar_item">五</span><span class="calendar_item">六</span></div>
+        <div class="calendar_day">{#list _days as day}<span class="calendar_item"
+                    r-class={{"z-dis": this.isDisable(day.date)}}
+                    r-class={{'z-muted': day.muted == true}}
+                    r-class={{'z-bdry': this.isBoundary(day.date)}}
+                    r-class={{'z-hov': this.isHover(day.date)}}
+                    r-class={{'z-sel': this.isSelected(day.date)}}
+                    on-click={this.select(day.date)}
+                    on-mouseover={this.onHover(day.date)}
+                    on-mouseout={this.onBlur(day.date)}
+                    >{day.date | format: 'dd'}</span>{/list}</div>
+    </div>
+</div>

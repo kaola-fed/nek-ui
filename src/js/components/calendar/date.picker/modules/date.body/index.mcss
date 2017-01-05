@@ -1,0 +1,103 @@
+.u-dateBody {
+    display: inline-block;
+    position : relative;
+    width:290px;
+    padding: 5px;
+    margin-top: -1px;
+    z-index: 999;
+    border: 1px solid #d2d6de;
+    background: #edeef2;
+    width: 290px;
+    word-spacing: -2px;
+    font-size:12px;
+    &.right{
+        right: 0;
+    }
+    &.range{
+        width: 532px;
+        .u-left{
+            width: 480px;
+        }
+    }
+    // 右侧选择项
+    .datepicker_right {
+        display: inline-block;
+        width: 50px;
+        margin-left: -2px;
+        vertical-align: top;
+        .datepicker_list {
+            list-style:none;
+            margin:0; padding:0;
+            .datepicker_list_item {
+                position: relative;
+                box-sizing: border-box;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                background: #edeef2;
+                text-align: center;
+                &.z-act,
+                &:hover{
+                    background: #fff;
+                }
+                &.z-act{
+                    font-weight: 800;
+                    color: #3da3e6;
+                    border-right:2px solid #3da3e6;
+                }
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    right: 20px;
+                    margin-top: 5px;
+                    width: 8px;
+                    height: 10px;
+                    background-image: url("/resource/images/datepicker_arrow.svg");
+                    background-size: 7px 10px;
+                }
+            }
+        }
+    }
+    // 时间选择窗口
+    .datepicker_left {
+        display: inline-block;
+    }
+    // 底部操作
+    .datepicker_bottom {
+        width: 100%;
+        margin-top:5px;
+        .datepicker_shortcut {
+            padding:10px 10px 0;
+            margin-top: -10px;
+            >a{
+                color:#3da3e6;
+                margin-right: 10px;
+                cursor: pointer;
+                vertical-align: top;
+                &:active{
+                    border-bottom: 1px dashed #3da3e6;
+                    font-weight:800;
+                }
+            }
+        }
+        .datepicker_ctrl {
+            display: inline-block;
+            float: right;
+            padding: 0 5px 5px;
+            text-align: right;
+            >button{
+                margin-left: 10px;
+            }
+        }
+    }
+    .u-calendar {
+        word-spacing: 0;
+        display: inline-block;
+        padding: 0;
+        & + .u-calendar {
+            margin-left:5px;
+        }
+    }
+
+}

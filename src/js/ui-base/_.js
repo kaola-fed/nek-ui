@@ -77,6 +77,40 @@ _.debounce = function(func, wait, immediate) {
   };
 };
 
+/**
+ * 压缩regular模版
+ * @param htmlstr
+ * @returns {XML|string}
+ * add by xuejimiao 2016/02/25
+ */
+_.compressHtml = function(htmlstr){
+    //防止nej打包模版后报错
+    if(typeof htmlstr !== "string"){
+        return htmlstr;
+    }
+    var htmlStrArrs,
+        onHTML = false,
+        onRegularExpression = false;
+    htmlStrArrs = htmlstr.split('');
+    return htmlStrArrs.map(function(item){
+        if(item == '<'){
+            onHTML = true;
+        }else if(item == '>'){
+            onHTML = false;
+            return item;
+        }else if(item == '{'){
+            onRegularExpression = true;
+        }else if(item == '}'){
+            onRegularExpression = false;
+            return item;
+        }
+
+        if(onHTML || onRegularExpression || !/[\n\s]/g.test(item)){
+            return item;
+        }
+    }).join('');
+};
+
 _.extend = function(o1, o2, override, hasOwnProperty) {
     for(var i in o2)
         if((!hasOwnProperty || o2.hasOwnProperty(i)) && (override || o1[i] === undefined))

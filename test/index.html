@@ -38,10 +38,26 @@
 
 	var c = `<ui.input type="float" />`;
 
+	var d = `<div style="margin-top:500px;" class="g-row"><date.picker class="g-col g-col-4" mode={1}
+	            config={timepicker.config}
+		        /></div>`;
+
             
     new RGUI.Component({
-        template: c,
-        data: {}
+        template: d,
+        config: function() {
+	        var today = new Date();
+	        var yesterday = new Date(today.setDate(today.getDate() - 1));
+	        this.data.timepicker = {
+		        config: [
+			        { type: 'day', maxPeriod: 60, max: yesterday},
+			        { type: 'month', maxPeriod: 12, max: today},
+			        { type: 'season', maxPeriod: 5,  max: today},
+			        { type: 'year', maxPeriod: 3,max: today.getFullYear()},
+		        ],
+	        };
+
+        }
     }).$inject('#app');
   </script>
 </html>
