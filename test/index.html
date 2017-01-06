@@ -47,10 +47,21 @@
 					<ui.button title="Click Me" />
 				</pop.confirm>
 			</div>`;
+	var f = `<div>
+				{#if test}
+					<tooltip tip="11111" placement="bottom">
+						<ui.button title="111" on-click="{test = false}" />
+					</tooltip>
+				{#else}
+					<tooltip tip="22222" placement="bottom">
+						<ui.button title="222" on-click="{test = true}" />
+					</tooltip>
+				{/if}
+			</div>`
 
             
     new RGUI.Component({
-        template: e,
+        template: f,
         config: function() {
 	        var today = new Date();
 	        var yesterday = new Date(today.setDate(today.getDate() - 1));

@@ -76,6 +76,13 @@ var TimePicker = Component.extend({
         this.supr();
     },
 
+    destroy: function() {
+        if (this.data.instance) {
+            this.data.instance.destroy();
+        }
+        this.supr();
+    },
+
     getInstance: function() {
         if (!this.data.instance) {
             var instance = new DateBody({ data: this.data });

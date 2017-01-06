@@ -32,6 +32,12 @@ var Tooltip = Component.extend({
 
         this.supr(data);
     },
+    destroy: function() {
+        if (this.data.instance) {
+            this.data.instance.destroy();
+        }
+        this.supr();
+    },
     getInstance: function() {
       var tip = this.data.tip,
           placement = this.data.placement;

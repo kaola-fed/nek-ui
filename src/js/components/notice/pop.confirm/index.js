@@ -35,6 +35,12 @@ var PopConfirm = Component.extend({
 
     this.supr(data);
   },
+  destroy: function() {
+    if (this.data.instance) {
+      this.data.instance.destroy();
+    }
+    this.supr();
+  },
   getInstance: function() {
     if (!this.data.instance) {
       var instance = new PopUp({ data: this.data });
