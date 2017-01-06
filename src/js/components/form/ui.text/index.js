@@ -37,8 +37,13 @@ var UIText = Component.extend({
             align: '',
             // vat/vam/vab
             vertical: '',
+            url: 'javascript:;',
+            target: ''
         });
         this.supr();
+    },
+    onClick: function(e) {
+        this.$emit('click', e);
     }
 });
 

@@ -1,1 +1,6 @@
-<span class="u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}" r-class={{'f-fwb': isBold}}>{text}</span>
+<a href="{url}" class="u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}"
+   target="{target}"
+   on-click={this.onClick($event)}
+   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>
+    {text}
+</a>
