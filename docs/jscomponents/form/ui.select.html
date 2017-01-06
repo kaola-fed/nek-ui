@@ -333,12 +333,14 @@
     <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
     <span class="cm-property">service</span>: {
         <span class="cm-property">getList</span>: <span class="cm-keyword">function</span>(<span class="cm-def">params</span>, <span class="cm-def">success</span>) {
-            <span class="cm-variable">RGUI</span>.<span class="cm-property">ajax</span>.<span class="cm-property">request</span>({
-                <span class="cm-property">url</span>: <span class="cm-string">&#39;../data/list.json&#39;</span>,
+            <span class="cm-keyword">this</span>.<span class="cm-property">request</span>({
+                <span class="cm-property">url</span>: <span class="cm-string">&#39;../../data/list.json&#39;</span>,
                 <span class="cm-property">method</span>: <span class="cm-string">&#39;get&#39;</span>,
                 <span class="cm-property">type</span>: <span class="cm-string">&#39;json&#39;</span>,
                 <span class="cm-property">data</span>: <span class="cm-variable-2">params</span>,
-                <span class="cm-property">success</span>: <span class="cm-variable-2">success</span>
+                <span class="cm-property">success</span>: <span class="cm-keyword">function</span>(<span class="cm-def">json</span>) {
+                     <span class="cm-keyword">this</span>.<span class="cm-property">$update</span>(<span class="cm-string">&#39;source&#39;</span>, <span class="cm-variable-2">json</span>.<span class="cm-property">result</span>);
+                 }.<span class="cm-property">bind</span>(<span class="cm-keyword">this</span>)
             });
         }
     }
@@ -377,6 +379,81 @@
             {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项2&#39;</span>},
             {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项3&#39;</span>}
         ]
+    }
+});
+</code></pre>
+<h4 id="-">综合示例</h4>
+<div class="m-example"></div>
+
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;是否多选&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggleMultiple(multiple)}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    {multiple?&#39;true:可多选&#39;:&#39;false:不可多选&#39;}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;是否有全选&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggleCanSelectAll(canSelectAll)}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    {canSelectAll?&#39;true:有&#39;:&#39;false:无&#39;}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;是否选中关闭&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggleSelectedClose(selectedClose)}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    {canSelectAll?&#39;true:有&#39;:&#39;false:无&#39;}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    展示字段分隔符：
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{showSeparator}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    value分隔符：
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.input</span> <span class="cm-attribute">value</span>=<span class="cm-attribute">{separator}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;是否可搜索&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggleCanSearch(canSearch)}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    {canSearch?&#39;true:可搜索&#39;:&#39;false:不可搜索&#39;}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    <span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.button</span> <span class="cm-attribute">title</span>=<span class="cm-string">&quot;区分大小写&quot;</span> <span class="cm-attribute">on-click</span>=<span class="cm-attribute">{this.toggleSensitive(isCaseSensitive)}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+    {isCaseSensitive?&#39;true:区分大小写&#39;:&#39;false:不区分大小写&#39;}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">ui.select</span> <span class="cm-attribute">source</span>=<span class="cm-attribute">{source}</span> <span class="cm-attribute">multiple</span>=<span class="cm-attribute">{multiple}</span> <span class="cm-attribute">canSearch</span>=<span class="cm-attribute">{canSearch}</span> 
+            <span class="cm-attribute">showSeparator</span>=<span class="cm-attribute">{showSeparator}</span> <span class="cm-attribute">separator</span>=<span class="cm-attribute">{separator}</span> 
+            <span class="cm-attribute">selectedClose</span>=<span class="cm-attribute">{selectedClose}</span> <span class="cm-attribute">canSelectAll</span>=<span class="cm-attribute">{canSelectAll}</span>
+            <span class="cm-attribute">isCaseSensitive</span>=<span class="cm-attribute">{isCaseSensitive}</span> <span class="cm-attribute">searchInputPlaceholder</span>=<span class="cm-string">&quot;请输入&quot;</span> 
+            <span class="cm-attribute">value</span>=<span class="cm-attribute">{value}</span><span class="cm-tagcm-bracketcm-error">/&gt;</span>
+<span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-attribute">g-row</span><span class="cm-tagcm-bracketcm-error">&gt;</span>
+    选中值：{value}
+<span class="cm-tagcm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tagcm-bracket">&gt;</span>
+</code></pre>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">multiple</span>: <span class="cm-atom">true</span>,
+        <span class="cm-property">separator</span>: <span class="cm-string">&#39;,&#39;</span>,
+        <span class="cm-property">showSeparator</span>: <span class="cm-string">&#39;、&#39;</span>,
+        <span class="cm-property">selectedClose</span>: <span class="cm-atom">false</span>,
+        <span class="cm-property">canSelectAll</span>: <span class="cm-atom">true</span>,
+        <span class="cm-property">canSearch</span>: <span class="cm-atom">true</span>,
+        <span class="cm-property">isCaseSensitive</span>: <span class="cm-atom">false</span>,
+        <span class="cm-property">value</span>: <span class="cm-string">&#39;&#39;</span>,
+        <span class="cm-property">source</span>: [
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项A&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项a&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项B&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项b&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项C&#39;</span>},
+            {<span class="cm-property">name</span>: <span class="cm-string">&#39;选项c&#39;</span>}
+        ]
+    },
+    <span class="cm-property">toggleSelectedClose</span>: <span class="cm-keyword">function</span>(<span class="cm-def">selectedClose</span>){
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">selectedClose</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">selectedClose</span>;
+    },
+    <span class="cm-property">toggleCanSelectAll</span>: <span class="cm-keyword">function</span>(<span class="cm-def">canSelectAll</span>){
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">canSelectAll</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">canSelectAll</span>;
+    },
+    <span class="cm-property">toggleMultiple</span>: <span class="cm-keyword">function</span>(<span class="cm-def">multiple</span>){
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">multiple</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">multiple</span>;
+    },
+    <span class="cm-property">toggleCanSearch</span>: <span class="cm-keyword">function</span>(<span class="cm-def">CanSearch</span>){
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">canSearch</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">CanSearch</span>;
+    },
+    <span class="cm-property">toggleSensitive</span>: <span class="cm-keyword">function</span>(<span class="cm-def">isCaseSensitive</span>){
+        <span class="cm-keyword">this</span>.<span class="cm-property">data</span>.<span class="cm-property">isCaseSensitive</span> <span class="cm-operator">=</span> <span class="cm-operator">!</span><span class="cm-variable-2">isCaseSensitive</span>;
     }
 });
 </code></pre>
@@ -576,12 +653,14 @@ var component = new RGUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            RGUI.ajax.request({
-                url: '../data/list.json',
+            this.request({
+                url: '../../data/list.json',
                 method: 'get',
                 type: 'json',
                 data: params,
-                success: success
+                success: function(json) {
+                     this.$update('source', json.result);
+                 }.bind(this)
             });
         }
     }
@@ -619,6 +698,81 @@ var component = new RGUI.Component({
             {name: '选项2'},
             {name: '选项3'}
         ]
+    }
+});
+    component.$inject($$(".m-example")[index]);
+})(index++);
+(function(index) {
+    var template = `
+<div class=g-row>
+    <ui.button title="是否多选" on-click={this.toggleMultiple(multiple)}/>
+    {multiple?'true:可多选':'false:不可多选'}
+</div>
+<div class=g-row>
+    <ui.button title="是否有全选" on-click={this.toggleCanSelectAll(canSelectAll)}/>
+    {canSelectAll?'true:有':'false:无'}
+</div>
+<div class=g-row>
+    <ui.button title="是否选中关闭" on-click={this.toggleSelectedClose(selectedClose)}/>
+    {canSelectAll?'true:有':'false:无'}
+</div>
+<div class=g-row>
+    展示字段分隔符：
+    <ui.input value={showSeparator}/>
+    value分隔符：
+    <ui.input value={separator}/>
+</div>
+<div class=g-row>
+    <ui.button title="是否可搜索" on-click={this.toggleCanSearch(canSearch)}/>
+    {canSearch?'true:可搜索':'false:不可搜索'}
+</div>
+<div class=g-row>
+    <ui.button title="区分大小写" on-click={this.toggleSensitive(isCaseSensitive)}/>
+    {isCaseSensitive?'true:区分大小写':'false:不区分大小写'}
+</div>
+<ui.select source={source} multiple={multiple} canSearch={canSearch} 
+            showSeparator={showSeparator} separator={separator} 
+            selectedClose={selectedClose} canSelectAll={canSelectAll}
+            isCaseSensitive={isCaseSensitive} searchInputPlaceholder="请输入" 
+            value={value}/>
+<div class=g-row>
+    选中值：{value}
+</div>
+    `
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        multiple: true,
+        separator: ',',
+        showSeparator: '、',
+        selectedClose: false,
+        canSelectAll: true,
+        canSearch: true,
+        isCaseSensitive: false,
+        value: '',
+        source: [
+            {name: '选项A'},
+            {name: '选项a'},
+            {name: '选项B'},
+            {name: '选项b'},
+            {name: '选项C'},
+            {name: '选项c'}
+        ]
+    },
+    toggleSelectedClose: function(selectedClose){
+        this.data.selectedClose = !selectedClose;
+    },
+    toggleCanSelectAll: function(canSelectAll){
+        this.data.canSelectAll = !canSelectAll;
+    },
+    toggleMultiple: function(multiple){
+        this.data.multiple = !multiple;
+    },
+    toggleCanSearch: function(CanSearch){
+        this.data.canSearch = !CanSearch;
+    },
+    toggleSensitive: function(isCaseSensitive){
+        this.data.isCaseSensitive = !isCaseSensitive;
     }
 });
     component.$inject($$(".m-example")[index]);
