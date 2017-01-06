@@ -8,12 +8,12 @@
 'use strict';
 
 var Dropdown = require('../../navigation/dropdown');
-var template = require('./ui.select.html');
+var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
 var Ajax = require("../../../ui-base/ajax");
 
-require('../check');
+require('../check/index');
 
 /**
  * @class Select
