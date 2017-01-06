@@ -170,12 +170,14 @@ var component = new RGUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            RGUI.ajax.request({
-                url: '../data/list.json',
+            this.request({
+                url: '../../data/list.json',
                 method: 'get',
                 type: 'json',
                 data: params,
-                success: success
+                success: function(json) {
+                     this.$update('source', json.result);
+                 }.bind(this)
             });
         }
     }
@@ -225,6 +227,86 @@ var component = new RGUI.Component({
             {name: '选项2'},
             {name: '选项3'}
         ]
+    }
+});
+```
+
+#### 综合示例
+
+<div class="m-example"></div>
+
+```xml
+<div class=g-row>
+    <ui.button title="是否多选" on-click={this.toggleMultiple(multiple)}/>
+    {multiple?'true:可多选':'false:不可多选'}
+</div>
+<div class=g-row>
+    <ui.button title="是否有全选" on-click={this.toggleCanSelectAll(canSelectAll)}/>
+    {canSelectAll?'true:有':'false:无'}
+</div>
+<div class=g-row>
+    <ui.button title="是否选中关闭" on-click={this.toggleSelectedClose(selectedClose)}/>
+    {canSelectAll?'true:有':'false:无'}
+</div>
+<div class=g-row>
+    展示字段分隔符：
+    <ui.input value={showSeparator}/>
+    value分隔符：
+    <ui.input value={separator}/>
+</div>
+<div class=g-row>
+    <ui.button title="是否可搜索" on-click={this.toggleCanSearch(canSearch)}/>
+    {canSearch?'true:可搜索':'false:不可搜索'}
+</div>
+<div class=g-row>
+    <ui.button title="区分大小写" on-click={this.toggleSensitive(isCaseSensitive)}/>
+    {isCaseSensitive?'true:区分大小写':'false:不区分大小写'}
+</div>
+<ui.select source={source} multiple={multiple} canSearch={canSearch} 
+            showSeparator={showSeparator} separator={separator} 
+            selectedClose={selectedClose} canSelectAll={canSelectAll}
+            isCaseSensitive={isCaseSensitive} searchInputPlaceholder="请输入" 
+            value={value}/>
+<div class=g-row>
+    选中值：{value}
+</div>
+```
+
+```javascript
+var component = new RGUI.Component({
+    template: template,
+    data: {
+        multiple: true,
+        separator: ',',
+        showSeparator: '、',
+        selectedClose: false,
+        canSelectAll: true,
+        canSearch: true,
+        isCaseSensitive: false,
+        value: '',
+        source: [
+            {name: '选项A'},
+            {name: '选项a'},
+            {name: '选项B'},
+            {name: '选项b'},
+            {name: '选项C'},
+            {name: '选项c'}
+        ]
+    },
+    toggleSelectedClose: function(selectedClose){
+        this.data.selectedClose = !selectedClose;
+    },
+    toggleCanSelectAll: function(canSelectAll){
+        this.data.canSelectAll = !canSelectAll;
+    },
+    toggleMultiple: function(multiple){
+        this.data.multiple = !multiple;
+    },
+    toggleCanSearch: function(CanSearch){
+        this.data.canSearch = !CanSearch;
+    },
+    toggleSensitive: function(isCaseSensitive){
+        this.data.isCaseSensitive = !isCaseSensitive;
     }
 });
 ```
