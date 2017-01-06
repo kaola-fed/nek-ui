@@ -16,6 +16,7 @@
         z-index: 1;
         width: 100%;
         top: 100%;
+        background: #fff;
         &.canSearch{
             .m-listview{
                 border-top-left-radius: 0;
