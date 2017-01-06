@@ -1,15 +1,15 @@
 <div class="u-dropdown u-select2 {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" title={this.showName()} on-click={this.toggle(!open)}>
+    <div class="dropdown_hd" title={this.getShowText()} on-click={this.toggle(!open)}>
         <i class="u-icon u-icon-caret-down"></i>
-        <span>{this.showName()}</span>
+        <span>{this.getShowText()}</span>
     </div>
     {#if open}
     <div class="dropdown_bd" r-class={ {'canSearch': canSearch} }
          r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         {#if canSearch}
         <div class="m-searchRow">
-            <input disabled={disabled} type="text" class="u-input" focus
-                   placeholder={searchInputText} r-model={searchValue}/>
+            <input disabled={disabled} type="text" class="u-input" r-autofocus
+                   placeholder={searchInputPlaceholder} r-model={searchValue}/>
         </div>
         {/if}
         <ul class="m-listview">
