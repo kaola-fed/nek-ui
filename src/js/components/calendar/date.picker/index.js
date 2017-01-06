@@ -71,7 +71,7 @@ var TimePicker = Component.extend({
                 type: null,
                 param: {},
             },
-            placement: 'top'
+            placement: 'bottom'
         });
         this.supr();
     },

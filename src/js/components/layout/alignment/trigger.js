@@ -69,11 +69,16 @@ var Trigger = Component.extend({
   updateInstance: function(isShow) {
 
     var instance = this.data.getInstance(),
+        element = instance.getElement(),
         $align = this.$refs.alignment,
         destroyOnHide = this.data.destroyOnHide;
 
     if (instance != this.data.instance) {
       this.data.instance = instance;
+
+      dom.on(element, 'DOMSubtreeModified', function() {
+          $align.reAlign(element);
+      });
     }
 
     if (!isShow && destroyOnHide) {
@@ -81,7 +86,7 @@ var Trigger = Component.extend({
     } else {
       instance.toggle && instance.toggle(isShow);
       if (isShow) {
-        $align.reAlign(instance.getElement());
+        $align.reAlign(element);
       }
     }
   },

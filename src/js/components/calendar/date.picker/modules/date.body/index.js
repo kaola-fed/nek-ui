@@ -1,5 +1,6 @@
 'use strict';
 var dom = require('regularjs').dom;
+var moment = require('moment');
 
 var Component = require('../../../../../ui-base/component.js');
 var _ = require('../../../../../ui-base/_.js');
@@ -24,6 +25,7 @@ var DateBody = Component.extend({
             _quater: {},
             _season: {},
             _year: {},
+            isShow: false
         });
 
         this.$watch('fixPeriod', this.onFixPeriodChange);
@@ -55,7 +57,9 @@ var DateBody = Component.extend({
             this.$inject(document.body);
         }
         this.data.element = dom.element(this);
-        dom.on(this.data.element, 'click', function(e) { e.stopPropagation(); });
+        dom.on(this.data.element, 'click', function(e) {
+            e.stopPropagation();
+        });
     },
 
     getElement: function () {
@@ -265,6 +269,9 @@ var DateBody = Component.extend({
         this.$refs.daypicker.setPeriod(date0, date1);
     },
 
+    onPeriodChange: function(e){
+    },
+
     /**
      * 按月选快捷选择
      * @param  {number} n 快捷选择时间
@@ -290,6 +297,10 @@ var DateBody = Component.extend({
     onCancel: function(){
         this.toggle();
     },
+
+    toggle: function(isShow) {
+        this.$update('isShow', isShow);
+    }
 })
 .filter('selectDisp', function(text){
     var labels = {

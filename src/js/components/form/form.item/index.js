@@ -52,7 +52,7 @@ var FormItem = Validation.extend({
         var controls = this.controls || [];
         controls.forEach(function($component) {
           var rules = $component.data.rules,
-              isFilled = { type: 'isFilled' };
+              isFilled = { type: 'isFilled', message: '请填写' };
 
           if (this.data.required) {
             if (!rules) {

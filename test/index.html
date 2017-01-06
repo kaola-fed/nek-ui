@@ -38,13 +38,19 @@
 
 	var c = `<ui.input type="float" />`;
 
-	var d = `<div style="margin-top:500px;" class="g-row"><date.picker class="g-col g-col-4" mode={1}
-	            config={timepicker.config}
+	var d = `<div style="position:absolute; top:300px; width:100%;" class="g-row"><date.picker class="g-col g-col-4 g-offset-3" mode={1}
+	            config={timepicker.config} placement="bottomLeft"
 		        /></div>`;
+
+	var e = `<div style="margin-top:200px; margin-left:100px;">
+				<pop.confirm contentTemplate={contentTemplate} placement="top">
+					<ui.button title="Click Me" />
+				</pop.confirm>
+			</div>`;
 
             
     new RGUI.Component({
-        template: d,
+        template: e,
         config: function() {
 	        var today = new Date();
 	        var yesterday = new Date(today.setDate(today.getDate() - 1));
@@ -56,6 +62,12 @@
 			        { type: 'year', maxPeriod: 3,max: today.getFullYear()},
 		        ],
 	        };
+
+	        this.data.contentTemplate = `<ui.form ref="validation">
+					<form.item required>
+						<ui.input value={test} />
+					</form.item>
+				</ui.form>`;
 
         }
     }).$inject('#app');
