@@ -1,14 +1,48 @@
 <div class="u-dropdown u-select2 {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" title={selected ? selected[nameKey] : placeholder} on-click={this.toggle(!open)}>
+    <div class="dropdown_hd" title={this.showName()} on-click={this.toggle(!open)}>
         <i class="u-icon u-icon-caret-down"></i>
-        <span>{selected ? selected[nameKey] : placeholder}</span>
+        <span>{this.showName()}</span>
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+    <div class="dropdown_bd" r-class={ {'canSearch': canSearch} }
+         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        {#if canSearch}
+        <div class="m-searchRow">
+            <input disabled={disabled} type="text" class="u-input" focus
+                   placeholder={searchInputText} r-model={searchValue}/>
+        </div>
+        {/if}
         <ul class="m-listview">
-            {#if placeholder}<li z-sel={!selected} on-click={this.select(undefined)}>{placeholder}</li>{/if}
-            {#list source as item}
-            <li z-sel={selected === item} z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>
+            {#if placeholder}
+                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+                    {placeholder}
+                </li>
+            {/if}
+
+            {#list this.filterArray(source) as item by item_index}
+                {#if canSelectAll && multiple && item_index == 0}
+                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+                        全部
+                    </li>
+                {/if}
+                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+                    title={item[nameKey]} on-click={this.select(item)}>
+                    {#if multiple && !item.divider}
+                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+                    {/if}
+                    {#if @(itemTemplate)}
+                        {#inc @(itemTemplate)}
+                    {#else}
+                        {item[nameKey]}
+                    {/if}
+                </li>
+            {#else}
+                {#if searchValue}
+                <li>
+                    {searchZeroText||'无匹配项'}
+                </li>
+                {/if}
             {/list}
         </ul>
     </div>

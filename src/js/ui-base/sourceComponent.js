@@ -57,7 +57,7 @@ var SourceComponent = Component.extend({
      * @return {SourceComponent} this
      */
     $updateSource: function() {
-        this.service.getList(this.getParams(), function(result) {
+        this.service.getList.call(this, this.getParams(), function(result) {
             this.$update('source', result);
         }.bind(this));
         return this;
