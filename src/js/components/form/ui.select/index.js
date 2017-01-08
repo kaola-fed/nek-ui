@@ -12,10 +12,10 @@ var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
 var Ajax = require("../../../ui-base/ajax");
-var privateMethod = require('./privateMethod');
-var selectUtil = require('./selectUtil');
+var privateMethod = require('./common/privateMethod');
+var selectUtil = require('./common/selectUtil');
 
-require('../check/index');
+require('../check');
 
 /**
  * @class Select

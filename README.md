@@ -2,7 +2,6 @@
 
 [组件文档](http://nek-ui.kaolafed.com/)
 
-用于扩展和自定义组件，做了精简，有需要了解背景的可以看[原项目](https://github.com/regular-ui/regular-ui)
 
 可能常用的命令有：
 

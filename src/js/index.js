@@ -18,7 +18,7 @@ exports.Validation = require('./util/validation');
 // Form
 exports.Check = require('./components/form/check');
 exports.CheckGroup = require('./components/form/check.group');
-exports.DatePicker = require('./components/calendar/date.picker/index.js');
+exports.DatePicker = require('./components/calendar/date.picker');
 exports.FormItem = require('./components/form/form.item');
 exports.NumberInput = require('./components/form/number.input');
 exports.RadioGroup = require('./components/form/radio.group');

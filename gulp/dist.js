@@ -10,6 +10,9 @@ var minifycss = require('gulp-minify-css');
 var sequence = require('run-sequence');
 var all = require('gulp-all');
 var mcss = require('gulp_mcss');
+var glob = require('glob');
+var path = require('path');
+var fs = require('fs');
 
 var structure = require('../structure.js');
 
@@ -60,6 +63,17 @@ gulp.task('dist-css', function() {
     return all(structure.themes.map(gulpCSS));
 });
 
+gulp.task('gen-mcss', function(cb) {
+  glob(path.join(__dirname, '../src/js/components/**/**/*.mcss'), function (er, files) {
+    var out = '';
+    files.forEach(function(d) {
+      out += '@import "' + d + '";\n';
+    });
+    fs.writeFileSync(path.join(__dirname, '../src/mcss/components.mcss'), out);
+    cb();
+  })
+});
+
 gulp.task('dist', function(done) {
-    sequence('dist-clean', ['dist-copy', 'dist-js', 'dist-css'], done);
+    sequence('dist-clean', 'gen-mcss', ['dist-copy', 'dist-js', 'dist-css'], done);
 });
