@@ -1,0 +1,143 @@
+// Name:            Pager
+// Description:     分页
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `m-pager`
+// ========================================================================
+
+.m-pager {
+    // - Center pager by default
+    text-align: center;
+    // - Remove default list style
+    @extend .f-lsn;
+    @extend .f-lsi;
+    $user-select: none;
+
+    @extend .f-wsn;
+
+    > li {
+        display: inline-block;
+        text-align: center;
+
+        > a, > span {
+            display: inline-block;
+            // $box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        > a:hover, > a:focus {}
+
+        > a:active {}
+    }
+
+    >li.z-crt > a {}
+
+    >li.z-dis > a {
+        cursor: not-allowed;
+    }
+
+    > li + li {}
+}
+
+/* Disabled */
+.m-pager.z-dis {
+    > li {
+        > a {
+            cursor: not-allowed;
+        }
+    }
+}
+
+
+
+// Position Extend:
+// Description:     位置扩展
+// ========================================================================
+
+.m-pager-left {
+    text-align: left;
+}
+
+.m-pager-right {
+    text-align: right;
+}
+
+
+////////////////////
+
+// Variables:
+// ========================================================================
+
+$m-pager_li_a_size = 32px;
+
+
+
+// Component:       `m-pager`
+// ========================================================================
+
+.m-pager {
+    font-size: 12px;
+
+    > li {
+        > a, > span {
+            padding: 0 12px;
+            min-width: $m-pager_li_a_size - 12px*2;
+            $line-height: $m-pager_li_a_size;
+            color: $color-base;
+        }
+
+        > a {
+            background: #fafafa;
+            $border: $border-base;
+        }
+
+        > a:hover, > a:focus {
+            background: #eee;
+            color: $brand-primary;
+        }
+
+        > a:active {
+            background: $brand-primary;
+            color: white;
+            border-color: $brand-primary;
+        }
+    }
+
+    >li.z-crt > a {
+        background: $brand-primary;
+        color: white;
+        border-color: $brand-primary;
+    }
+
+    >li.z-dis > a {
+        background: white;
+        color: $u-formctrl-disabled_color;
+        border-color: $border-base;
+    }
+
+    > li + li {
+        margin-left: -1px;
+    }
+
+    > li:first-child > a {
+        $border-radius: $border-radius-base 0 0 $border-radius-base;
+    }
+
+    > li:last-child > a {
+        $border-radius: 0 $border-radius-base $border-radius-base 0;
+    }
+}
+
+/* Disabled */
+.m-pager.z-dis {
+    > li {
+        > a {
+            background: white;
+            color: $u-formctrl-disabled_color;
+            border-color: $border-base;
+        }
+    }
+}

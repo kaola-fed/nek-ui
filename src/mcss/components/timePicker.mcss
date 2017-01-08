@@ -1,0 +1,25 @@
+// Name:            TimePicker
+// Description:     时间选择
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Extends:
+// ========================================================================
+
+.u-timepicker {
+	display: inline-block;
+	.u-numberinput, .u-input {
+	    width:auto;
+	}
+}
+
+////////////////////
+
+.u-timepicker {
+    .u-input {
+        width: 56px;
+        padding: 6px;
+    }
+}

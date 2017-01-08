@@ -1,0 +1,62 @@
+// Name:            DropDown
+// Description:     下拉菜单
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `u-dropdown`
+// ========================================================================
+
+.u-dropdown {
+    position: relative;
+
+    .dropdown_bd {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        top: 100%;
+        background: #fff;
+        &.canSearch{
+            .m-listview{
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+        }
+        .m-listview {
+            > li > a {
+                display: block;
+            }
+        }
+
+        .m-searchRow{
+            border-radius: 4px 4px 0 0;
+            border: 1px solid #d2d6de;
+            border-bottom: none;
+            padding: 6px;
+            &:hover{
+                background-color: transparent;
+            }
+        }
+
+        .u-check2,
+        .check2_box{
+            margin-bottom: 0;
+        }
+    }
+}
+
+.u-dropdown.z-dis {
+    .dropdown_hd > .u-btn {
+        @extend .u-btn.z-dis;
+    }
+}
+
+
+//////////////////////
+.u-dropdown {
+    .dropdown_bd {
+        min-width: $u-formctrl_min-width;
+        margin-top: 2px;
+    }
+}

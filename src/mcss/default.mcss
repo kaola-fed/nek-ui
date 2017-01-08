@@ -21,7 +21,7 @@ $panel-header =                         #fafafa;
 $panel-header-color =                   #444;
 $panel-header-icon-color =              #444;
 
-@import "./base.mcss";
+@import "./index.mcss";
 
 .u-calendar2 {
     position: relative;

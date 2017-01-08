@@ -1,0 +1,72 @@
+// Name:            Thumbnail
+// Description:     缩略图
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `u-thumbnail`
+// ========================================================================
+
+.u-thumbnail {
+    // - Container width fits its content
+    display: inline-block;
+    // - Responsive behavior
+    max-width: 100%;
+    $box-sizing: border-box;
+    // margin: 0;
+
+    .thumbnail_caption {
+        text-align: center;
+    }
+}
+
+/* Hover */
+a.u-thumbnail:hover,
+a.u-thumbnail:focus {
+    // - Required for `a` elements
+    text-decoration: none;
+}
+
+
+
+// Size Extends:
+// ========================================================================
+
+$u-thumbnail-extend_size = ($name, $width) {
+    .u-thumbnail-#{$name} {
+        width: $width;
+    }
+}
+
+
+///////////////////////
+
+.u-thumbnail {
+    padding: 4px;
+    $border: #ddd;
+    background: #fff;
+
+
+    .thumbnail_caption {
+        margin-top: 4px;
+        color: #444;
+    }
+}
+
+/* Hover */
+a.u-thumbnail:hover,
+a.u-thumbnail:focus {
+    border-color: #aaa;
+    background: #fff;
+}
+
+
+
+// Size Extends:
+// ========================================================================
+
+$u-thumbnail-extend_size(xs, 150px);
+$u-thumbnail-extend_size(sm, 200px);
+$u-thumbnail-extend_size(lg, 300px);
+$u-thumbnail-extend_size(xl, 400px);
