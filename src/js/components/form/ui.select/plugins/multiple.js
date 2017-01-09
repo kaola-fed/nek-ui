@@ -4,6 +4,7 @@
  * ------------------------------------------------------------
  */
 
+var util = require('../common/util');
 'use strict';
 module.exports = function Multiple(Component) {
     Component.implement({
@@ -20,12 +21,20 @@ module.exports = function Multiple(Component) {
             event && event.stopPropagation();
             selected.splice(index, 1);
             this.toggle(true);
+            this.searchInputFocus();
         },
         backSearchValue: function(event, selected, searchValue){
             var isBackSpaceKeyCode = 8;
             if(event.which == isBackSpaceKeyCode && !searchValue.trim()){
                 this.removeSelected(selected, selected.length -1, event);
             }
+        },
+        searchInputFocus: function(){
+            this.$refs.input && this.$refs.input.focus();
+        },
+        clearSearchValue: function(){
+            var data = this.data;
+            util.clearDataToNUll(data, 'searchValue', '');
         }
     }).directive({
         computedTextWidth: function (element, value) {

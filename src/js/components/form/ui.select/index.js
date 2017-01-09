@@ -271,8 +271,9 @@ var Select = Dropdown.extend({
             selected: item
         });
         if (multiple) {
-            this.$refs.input.focus();
+            this.searchInputFocus();
             if (!data.selectedClose && item) {
+                data.canSearch && this.clearSearchValue();
                 return
             }
         }
@@ -280,7 +281,7 @@ var Select = Dropdown.extend({
     },
     toggle: function (open) {
         var data = this.data;
-        data.canSearch && util.clearDataToNUll(data, 'searchValue', '');
+        data.canSearch && this.clearSearchValue();
         this.supr(open);
     },
     validate: function (on) {

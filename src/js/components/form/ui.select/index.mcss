@@ -46,7 +46,7 @@
         padding: 0;
         border: none;
         font-family: inherit;
-        line-height: inherit;
+        line-height: 20px;
         width: calc(100% - 8px);
         background-color: transparent;
         &:focus{
