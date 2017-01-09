@@ -9,6 +9,7 @@
 
 var Component = require('./component');
 var _ = require('./_');
+var Ajax = require('./ajax');
 
 /**
  * @class SourceComponent
@@ -40,6 +41,28 @@ var SourceComponent = Component.extend({
             this.$updateSource();
 
         this.supr();
+    },
+    request: function (options) {
+        var data = this.data;
+        var oldError = options.error,
+            oldSuccess = options.success,
+            oldComplete = options.complete;
+        data.loading = true;
+
+        options.success = function (data) {
+            oldSuccess && oldSuccess(data);
+            this.$update('loading', false);
+        }.bind(this);
+        options.error = function (data) {
+            oldError && oldError(data);
+            this.$update('loading', false);
+        }.bind(this);
+
+        options.complete = function (data) {
+            oldComplete && oldComplete(data);
+            this.$update('loading', false);
+        }.bind(this);
+        Ajax.request(options)
     },
     /**
      * @method getParams 返回请求时需要的参数

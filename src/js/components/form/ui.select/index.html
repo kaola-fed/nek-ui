@@ -1,17 +1,37 @@
-<div class="u-dropdown u-select2 {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" title={this.getShowText()} on-click={this.toggle(!open)}>
-        <i class="u-icon u-icon-caret-down"></i>
-        <span>{this.getShowText()}</span>
-    </div>
-    {#if open}
-    <div class="dropdown_bd" r-class={ {'canSearch': canSearch} }
-         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        {#if canSearch}
-        <div class="m-searchRow">
-            <input disabled={disabled} type="text" class="u-input" r-autofocus
-                   placeholder={searchInputPlaceholder} r-model={searchValue}/>
+<div class="u-dropdown u-select2 {class}" r-class={{isMultiple:multiple}}
+     z-dis={disabled} r-hide={!visible} ref="element">
+    {#if !multiple}
+        <div class="dropdown_hd"
+             title={selected?selected[nameKey]:placeholder}
+             on-click={this.toggle(!open)}>
+            <i class="u-icon u-icon-caret-down"></i>
+            {#if open && canSearch}
+                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
+                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
+            {#else}
+                <span>{selected?selected[nameKey]:placeholder}</span>
+            {/if}
         </div>
-        {/if}
+    {#else}
+        <div class="dropdown_hd"
+             on-click={this.toggle(!open)}>
+            {#list selected as item}
+                <span class="selected-tag">
+                    {item[nameKey]}
+                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
+                </span>
+            {/list}
+            {#if open && canSearch}
+            <input disabled={disabled} type="text" class="u-search-input" ref="input"
+                   on-keydown={this.backSearchValue($event,selected,searchValue)}
+                   computedTextWidth={searchValue} r-autofocus
+                   placeholder={searchInputPlaceholder} r-model={searchValue}/>
+            {/if}
+        </div>
+    {/if}
+    {#if open}
+    <div class="dropdown_bd"
+         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         <ul class="m-listview">
             {#if placeholder}
                 <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
@@ -40,7 +60,7 @@
             {#else}
                 {#if searchValue}
                 <li>
-                    {searchZeroText||'无匹配项'}
+                    {noMatchText||'无匹配项'}
                 </li>
                 {/if}
             {/list}
