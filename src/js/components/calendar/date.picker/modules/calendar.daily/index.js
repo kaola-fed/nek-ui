@@ -10,7 +10,6 @@
 var moment = require('moment');
 
 var RangeSelector = require('../range.selector/index.js');
-var style    = require('./index.mcss');
 var template = require('./index.html');
 
 

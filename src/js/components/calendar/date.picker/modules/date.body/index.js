@@ -4,13 +4,15 @@ var moment = require('moment');
 
 var Component = require('../../../../../ui-base/component.js');
 var _ = require('../../../../../ui-base/_.js');
-var style = require('./index.mcss');
 var template = require('./index.html');
 
-var DailyCalendar = require('../calendar.daily/index.js');
-var MonthlyCalendar = require('../calendar.monthly/index.js');
-var SeasonlyCalendar = require('../calendar.seasonly/index.js');
-var YearlyCalendar = require('../calendar.yearly/index.js');
+require('../calendar.daily/index.js');
+require('../calendar.monthly/index.js');
+require('../calendar.seasonly/index.js');
+require('../calendar.yearly/index.js');
+
+var MS_OF_DAY = 24*3600*1000;
+var now = new Date();
 
 var DateBody = Component.extend({
     name: 'date.picker',
@@ -25,7 +27,11 @@ var DateBody = Component.extend({
             _quater: {},
             _season: {},
             _year: {},
-            isShow: false
+            isShow: false,
+            current: {
+                type: null,
+                param: {},
+            },
         });
 
         this.$watch('fixPeriod', this.onFixPeriodChange);
@@ -97,22 +103,23 @@ var DateBody = Component.extend({
         }
     },
 
-    _$setDefault: function(type, start, end){
+    _$setDefault: function(start, end, type){
         var data = this.data;
-        if(type) {
-            this.onModuleSelect(type);
-            this.setDefault(type, start, end);
-            setTimeout(function(){
-                this.updateData();
 
-                this.$emit('change', {
-                    sender: this,
-                    module: data.module,
-                    value: data.value,
-                    period: data.period,
-                })
-            }.bind(this), 100);
-        }
+        if (!type) type = data.module;
+
+        this.onModuleSelect(type);
+        this.setDefault(type, start, end);
+        setTimeout(function(){
+            this.updateData();
+
+            this.$emit('change', {
+                sender: this,
+                module: data.module,
+                value: data.value,
+                period: data.period,
+            })
+        }.bind(this), 100);
     },
 
     onOK: function(){
@@ -161,7 +168,6 @@ var DateBody = Component.extend({
             default:
         }
         this.data.value = val;
-        // console.log(val);
     },
 
     updatePeriod: function(type, start, end) {

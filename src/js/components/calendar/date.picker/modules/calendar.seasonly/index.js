@@ -11,8 +11,6 @@ var moment = require('moment');
 
 var RangeSelector = require('../range.selector/index.js');
 var template = require('./index.html');
-var style = require('./index.mcss');
-
 
 module.exports = RangeSelector.extend({
     name: 'seasonly.calendar',
