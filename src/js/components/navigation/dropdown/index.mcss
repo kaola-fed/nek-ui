@@ -17,25 +17,9 @@
         width: 100%;
         top: 100%;
         background: #fff;
-        &.canSearch{
-            .m-listview{
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-            }
-        }
         .m-listview {
             > li > a {
                 display: block;
-            }
-        }
-
-        .m-searchRow{
-            border-radius: 4px 4px 0 0;
-            border: 1px solid #d2d6de;
-            border-bottom: none;
-            padding: 6px;
-            &:hover{
-                background-color: transparent;
             }
         }
 

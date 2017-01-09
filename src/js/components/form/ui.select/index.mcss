@@ -24,9 +24,46 @@
         }
     }
 
+    .selected-tag {
+        position: relative;
+        padding: 0 20px 0 10px;
+        margin: 6px 5px 0 0;
+        background-color: #f3f3f3;
+        $border-radius: $border-radius-base;
+        height: 20px;
+        line-height: 20px;
+        float: left;
+        cursor: default;
+        .u-icon-remove{
+            position: absolute;
+            right: 5px;
+        }
+        &:last-child{
+            margin-bottom: 6px;
+        }
+    }
+    .u-search-input{
+        padding: 0;
+        border: none;
+        font-family: inherit;
+        line-height: inherit;
+        width: calc(100% - 8px);
+        background-color: transparent;
+        &:focus{
+            outline: none;
+            border: none;
+        }
+    }
+    &.isMultiple{
+        .u-search-input{
+            float: left;
+            margin-top: 7px;
+            width: 1em;
+        }
+    }
+
     .dropdown_bd {
         clear: both;
-
     }
 
     .m-listview {
@@ -52,7 +89,7 @@
     width: 100%;
 
     .dropdown_hd {
-        height: $u-formctrl_height;
+        min-height: $u-formctrl_height;
         line-height: $u-formctrl_height - 2;
         padding: 0 index($u-formctrl_padding, 1);
         background: $u-formctrl_background;
