@@ -31,6 +31,7 @@ gulp.task('dist-copy', function() {
         gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./dist/fonts')),
         gulp.src([
             './node_modules/regularjs/dist/regular.min.js',
+            './node_modules/regularjs/dist/regular.js',
             './node_modules/marked/marked.min.js'
         ]).pipe(gulp.dest('./dist/vendor'))
     );

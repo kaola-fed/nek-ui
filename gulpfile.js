@@ -18,7 +18,7 @@ gulp.task('server', function(){
 		port:8089
     });
 
-    gulp.watch(['./src/**/*'], ['dist']);
+    gulp.watch(['./doc-src/**/*', './src/**/*'], ['dist', 'doc']);
 
 });
 

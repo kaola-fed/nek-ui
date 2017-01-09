@@ -7,13 +7,21 @@
   </head>
   <style>
 	  #app {
+        width: 300px;
 		  margin: 20px;
 	  }
+      .select-tag{
+        float: left;
+        cursor: default;
+      }
+      .u-icon-remove{
+        cursor: pointer;
+      }
   </style>
   <body>
     <div id="app"></div>
   </body>
-  <script src="../dist/vendor/regular.min.js"></script>
+  <script src="../dist/vendor/regular.js"></script>
   <script src="../dist/js/nek-ui.js"></script>
   <script>
 //    var App = RGUI.Panel;
@@ -27,60 +35,48 @@
 				</form.item>
 			</ui.form>`;
 
-	var b = `<ui.form service="./test.json">
-				<a href="javascript:;" on-click={test=!test}>Click Me2</a>
-				{#if test}
-				<form.item sourceKey="arrayA">
-				<ui.select />
-				</form.item>
-				{/if}
-			</ui.form>`
 
-	var c = `<ui.input type="float" />`;
-
-	var d = `<div style="position:absolute; top:300px; width:100%;" class="g-row"><date.picker class="g-col g-col-4 g-offset-3" mode={1}
-	            config={timepicker.config} placement="bottomLeft"
-		        /></div>`;
-
-	var e = `<div style="margin-top:200px; margin-left:100px;">
-				<pop.confirm contentTemplate={contentTemplate} placement="top">
-					<ui.button title="Click Me" />
-				</pop.confirm>
-			</div>`;
-	var f = `<div>
-				{#if test}
-					<tooltip tip="11111" placement="bottom">
-						<ui.button title="111" on-click="{test = false}" />
-					</tooltip>
-				{#else}
-					<tooltip tip="22222" placement="bottom">
-						<ui.button title="222" on-click="{test = true}" />
-					</tooltip>
-				{/if}
-			</div>`
-
-            
-    new RGUI.Component({
-        template: f,
-        config: function() {
-	        var today = new Date();
-	        var yesterday = new Date(today.setDate(today.getDate() - 1));
-	        this.data.timepicker = {
-		        config: [
-			        { type: 'day', maxPeriod: 60, max: yesterday},
-			        { type: 'month', maxPeriod: 12, max: today},
-			        { type: 'season', maxPeriod: 5,  max: today},
-			        { type: 'year', maxPeriod: 3,max: today.getFullYear()},
-		        ],
-	        };
-
-	        this.data.contentTemplate = `<ui.form ref="validation">
-					<form.item required>
-						<ui.input value={test} />
-					</form.item>
-				</ui.form>`;
-
+    (function(){
+      var component = new RGUI.Component({
+        template: `<ui.select source={source} mulip canSearch={true} value={value}/>{value}`,
+        data: {
+            value: 1,
+            source: [
+                {
+                    id: 1,
+                    name: '选项1'
+                },
+                {
+                    id: 2,name: '选项2'},
+                {
+                    id: 3,name: '选项3'}
+            ]
+        },
+        service: {
+          getList: function(params, success) {
+            this.request({
+              url: './list.json',
+              method: 'get',
+              type: 'json',
+              data: params,
+              success: success
+            });
+          }
         }
-    }).$inject('#app');
+      });
+//      setTimeout(function(){
+//        this.$update('source', [
+//          {
+//            id: 1,
+//            name: '选项1'
+//          },
+//          {
+//            id: 2,name: '选项2'},
+//          {
+//            id: 3,name: '选项3'}
+//        ]);
+//      }.bind(component), 1000);
+      component.$inject('#app');
+    })();
   </script>
 </html>
