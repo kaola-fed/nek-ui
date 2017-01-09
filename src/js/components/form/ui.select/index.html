@@ -20,7 +20,7 @@
             {/if}
 
             {#list this.filterArray(source) as item by item_index}
-                {#if canSelectAll && multiple && item_index == 0}
+                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
                     <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
                         <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
                         全部
