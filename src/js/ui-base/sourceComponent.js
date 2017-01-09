@@ -9,6 +9,7 @@
 
 var Component = require('./component');
 var _ = require('./_');
+var Ajax = require('./ajax');
 
 /**
  * @class SourceComponent
