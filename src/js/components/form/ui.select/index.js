@@ -93,6 +93,9 @@ var Select = Dropdown.extend(
             this.supr();
 
             this.$watch('selected', function (newValue, oldValue) {
+                if (oldValue === undefined){
+                    return;
+                }
                 data.value = this.getValue();
                 if (!newValue && data.multiple) {
                     data.selected = [];
@@ -121,7 +124,7 @@ var Select = Dropdown.extend(
 
                 if (source) {
                     if (data.multiple) {
-                        var newValueArr = newValue.split(data.separator);
+                        var newValueArr = (newValue + '').split(data.separator);
                         data.selected = newValue ? source.filter(function (item) {
                             return newValueArr.indexOf(item[key] + '') !== -1;
                         }, this) : [];
@@ -170,17 +173,17 @@ var Select = Dropdown.extend(
                             return value
                         }
                     }
-                    return data.source = newValue.map(function (value) {
+                    newValue = data.source = newValue.map(function (value) {
                         return itemHandleFn(value);
                     });
                 }
 
                 if (data.multiple) {
                     if (value !== undefined && value !== null) {
-                        var newValueArr = value.split(data.separator);
-                        data.selected = value ? source.find(function (item) {
-                            return newValueArr.indexOf(item[key]);
-                        }, this) : [];
+                        var valueArr = (value + '').split(data.separator);
+                        data.selected = [].concat(value ? newValue.filter(function (item) {
+                            return valueArr.indexOf(item[key] + '') !== -1;
+                        }, this) || [] : []);
                     } else if (data.selected) {
                         data.selected = data.selected.filter(function (item) {
                             return newValue.indexOf(item) !== -1
@@ -203,6 +206,9 @@ var Select = Dropdown.extend(
             });
 
             this.$watch('multiple', function (newValue, oldValue){
+                if(oldValue === undefined){
+                    return;
+                }
                 if(newValue){
                     if(!Array.isArray(data.selected)){
                         data.selected = data.selected?[data.selected]:data.selected;
