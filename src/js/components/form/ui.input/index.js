@@ -9,8 +9,8 @@ var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
-var inputRules = require('./common/ui.input.rule');
-var inputFilters = require('./common/ui.input.filter');
+var inputRules = require('./common/rule.js');
+var inputFilters = require('./common/filter.js');
 
 var bowser = require('bowser');
 

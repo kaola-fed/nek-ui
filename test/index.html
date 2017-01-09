@@ -38,9 +38,10 @@
 
 	var c = `<ui.input type="float" />`;
 
-	var d = `<div style="position:absolute; top:300px; width:100%;" class="g-row"><date.picker class="g-col g-col-4 g-offset-3" mode={1}
-	            config={timepicker.config} placement="bottomLeft"
-		        /></div>`;
+	var d = `<div style="position:absolute; top:300px; width:100%;" class="g-row"><div class="g-col g-col-3 g-offset-3"><date.picker mode={0}
+	            config={timepicker.config} value="{testDate}" placement="bottomLeft"
+		        /></div>{testDate}</div>`;
+
 
 	var e = `<div style="margin-top:200px; margin-left:100px;">
 				<pop.confirm contentTemplate={contentTemplate} placement="top">
@@ -48,6 +49,7 @@
 				</pop.confirm>
 			</div>`;
 	var f = `<div>
+				<a href="www.baidu.com" class="u-text">12321</a>
 				{#if test}
 					<tooltip tip="11111" placement="bottom">
 						<ui.button title="111" on-click="{test = false}" />
@@ -57,11 +59,11 @@
 						<ui.button title="222" on-click="{test = true}" />
 					</tooltip>
 				{/if}
-			</div>`
+			</div>`;
 
             
     new RGUI.Component({
-        template: f,
+        template: d,
         config: function() {
 	        var today = new Date();
 	        var yesterday = new Date(today.setDate(today.getDate() - 1));
@@ -80,6 +82,7 @@
 					</form.item>
 				</ui.form>`;
 
+	        this.data.testDate = 1483968133587;
         }
     }).$inject('#app');
   </script>

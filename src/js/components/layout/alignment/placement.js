@@ -75,5 +75,5 @@ module.exports = {
     overflow: autoAdjustOverflow,
     offset: [-4, 0],
     targetOffset: [0, 0]
-  },
+  }
 };
