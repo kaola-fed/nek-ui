@@ -6,4 +6,5 @@ tmp
 npm-debug.log
 dist
 
-*customized*
+# Auto generate
+src/mcss/components.mcss

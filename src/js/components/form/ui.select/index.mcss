@@ -1,0 +1,87 @@
+// Name:            Select2
+// Description:     选择扩展
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Extends:
+// ========================================================================
+
+.u-select2 {
+    $user-select: none;
+    // - 防止select2在文字为空时飘起来
+    vertical-align: bottom;
+    
+    .dropdown_hd {
+        $box-sizing: border-box;
+        cursor: pointer;
+        @extend .f-toe;
+
+        .u-icon {
+            float: right;
+            width: auto;
+        }
+    }
+
+    .dropdown_bd {
+        clear: both;
+
+    }
+
+    .m-listview {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .m-treeview {
+        overflow: auto;
+    }
+}
+
+/* Disabled */
+.u-select2.z-dis {
+    .dropdown_hd {
+        cursor: not-allowed;
+    }
+}
+
+
+//////////////////////////
+.u-select2 {
+    width: 100%;
+
+    .dropdown_hd {
+        height: $u-formctrl_height;
+        line-height: $u-formctrl_height - 2;
+        padding: 0 index($u-formctrl_padding, 1);
+        background: $u-formctrl_background;
+        color: $u-formctrl_color;
+        $border: $u-formctrl_border;
+        $border-radius: $border-radius-base;
+    }
+
+    .dropdown_hd:hover {}
+
+    .m-listview, .m-treeview {
+        max-height: 200px;
+    }
+}
+
+/* Disabled */
+.u-select2.z-dis {
+    .dropdown_hd {
+        background: $u-formctrl-disabled_background;
+        $border: $u-formctrl-disabled_border;
+        color: $u-formctrl-disabled_color;
+    }
+}
+
+.u-select2group {
+    .u-select2 {
+        width:160px;
+    }
+    .u-dropdown {
+        display:inline-block;
+    }
+}

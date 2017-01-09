@@ -1,0 +1,128 @@
+// Name:            TreeView
+// Description:     树型视图
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Component:       `m-treeview`
+// ========================================================================
+
+.m-treeview {
+    $box-sizing: border-box;
+    $user-select: none;
+    overflow-x: auto;
+    overflow-y: visible;
+
+    .treeview_list {
+        @extend .f-lsn;
+        margin-left: 1.6em;
+    }
+
+    .treeview_item {
+        position: relative;
+
+        > .u-icon {
+            position: absolute;
+            left: -1.2em;
+            line-height: inherit;
+            margin: 0;
+            cursor: pointer;
+        }
+    }
+
+    .treeview_itemname {
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .treeview_itemname:hover {}
+
+    .treeview_itemname.z-sel {}
+
+    .treeview_itemname.z-dis {
+        cursor: not-allowed;
+        background: none;
+    }
+}
+
+.m-treeview.z-dis {
+    .treeview_itemname {
+        cursor: not-allowed;
+    }
+
+    .treeview_item .u-icon {
+        cursor: not-allowed;
+    }
+}
+
+
+//////////////////////
+.m-treeview {
+    padding: 5px 0;
+    background: $u-formctrl_background;
+    color: $u-formctrl_color;
+    $border-radius: $border-radius-lg;
+    $border: $u-formctrl_border;
+
+    .treeview_item {
+        > .u-icon {
+            padding: index($u-formctrl_item_padding, 0) 0;
+        }
+    }
+
+    .treeview_itemname {
+        padding: index($u-formctrl_item_padding, 0) 10px;
+        color: #777;
+    }
+
+    .treeview_itemname:hover {
+        background: $u-formctrl_item-hover_background;
+        color: $u-formctrl_item-hover_color;
+    }
+
+    .treeview_itemname.z-sel {
+        background: $u-formctrl_item-selected_background;
+        color: $u-formctrl_item-selected_color;
+    }
+
+    .treeview_itemname.z-dis {
+        background: none;
+        color: $u-formctrl-disabled_color;
+    }
+
+    .treeview_itemname.z-divider {
+        margin: 9px 0;
+        padding: 0;
+        height: 1px;
+        background: #e5e5e5;
+        overflow: hidden;
+    }
+}
+
+.m-treeview.z-dis {
+    background: $u-formctrl-disabled_background;
+    
+    .treeview_itemname {
+        background: none;
+        color: $u-formctrl-disabled_color;
+    }
+}
+
+.m-multitreeview {
+    .treeview_list {
+        margin-left: 3.4em;
+    }
+
+    .treeview_item {
+        > .u-icon {
+            left: -3em;
+        }
+
+        > .u-check2 {
+            position: absolute;
+            left: -1.8em;
+            padding: 3px 0;
+        }
+    }
+}

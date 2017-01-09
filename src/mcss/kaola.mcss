@@ -21,4 +21,4 @@ $panel-header =                         #6F8CB0;
 $panel-header-color =                   $brand-default;
 $panel-header-icon-color =              $brand-default;
 
-@import "./base.mcss";
+@import "./index.mcss";
