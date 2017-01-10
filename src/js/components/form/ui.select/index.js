@@ -38,7 +38,6 @@ require('../check');
  * @param {object}                  options.service                 @=> 数据服务
  *
  * @param {boolean=false}           options.data.canSearch              => 是否可搜索
- * @param {string=""}               options.data.searchInputPlaceholder => 搜索输入框placeholder
  * @param {boolean=false}           options.data.isCaseSensitive        => 是否区分大小写
  * @param {boolean="无匹配项"}       options.data.noMatchText            => 搜索无结果文案
  * @param {Number=300}              options.data.delaySearch            => 异步搜索的延迟
@@ -64,7 +63,6 @@ var Select = Dropdown.extend({
             nameKey: 'name',
             value: undefined,
 
-            searchInputPlaceholder: '',
             // 搜索的文案
             searchValue: '',
             canSearch: false,

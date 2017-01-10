@@ -24,8 +24,7 @@
             {#if open && canSearch}
             <input disabled={disabled} type="text" class="u-search-input" ref="input"
                    on-keydown={this.backSearchValue($event,selected,searchValue)}
-                   computedTextWidth={searchValue} r-autofocus
-                   placeholder={searchInputPlaceholder} r-model={searchValue}/>
+                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>
             {/if}
         </div>
     {/if}
