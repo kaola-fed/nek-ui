@@ -33,6 +33,7 @@ var Modal = Component.extend({
             title: '提示',
             content: '',
             okButton: true,
+            with: 400,
             cancelButton: false
         });
         this.supr();
