@@ -13,7 +13,7 @@ var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
 var util = require('./common/util');
 var Multiple = require('./plugins/multiple');
-var privateMethod = require('./plugins/privateMethod');
+var PrivateMethod = require('./plugins/private.method');
 
 require('../check');
 
@@ -313,6 +313,6 @@ var Select = Dropdown.extend({
 
         return result;
     }
-}).use(Multiple).use(privateMethod);
+}).use(Multiple).use(PrivateMethod);
 
 module.exports = Select;

@@ -6,7 +6,7 @@
 
 'use strict';
 var util = require('../common/util');
-module.exports = function privateMethod(Component) {
+module.exports = function PrivateMethod(Component) {
     Component.implement({
         /**
          * 过滤可选的数据项
