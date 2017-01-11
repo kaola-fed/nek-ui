@@ -70,7 +70,7 @@ $u-calendar_item_height = 30px;
 // Component:       `u-calendar`
 // ========================================================================
 
-.u-calendar2 {
+.u-calendar {
     width: $u-calendar_item_width * 7 + 2 * 7;
     padding: 4px;
     background: $u-formctrl_background;
@@ -116,7 +116,7 @@ $u-calendar_item_height = 30px;
 }
 
 /* Disabled */
-.u-calendar2.z-dis {
+.u-calendar.z-dis {
     .calendar_item {
         background: $u-formctrl_background;
         color: $u-formctrl-disabled_color;

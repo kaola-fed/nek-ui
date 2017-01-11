@@ -41,6 +41,8 @@ var TimePicker = Component.extend({
         this.supr();
 
         this.$watch('time', function(newValue, oldValue) {
+            if(oldValue === undefined) { return; }
+
             if(!newValue)
                 throw new TypeError('Invalid Time');
 
