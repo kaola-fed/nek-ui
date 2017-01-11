@@ -90,6 +90,7 @@ var UIForm = Validation.extend({
         /* 三种情况不给组件赋值:1. form.item下面没有选项组件; 2. source为空 3. 选项组件的source属性已经有值 */
         if (!$selectItem || !source.length || $selectItem.data.source.length) return;
         $selectItem.data.source =  _.clone(source);
+        $selectItem.$update();
     }
 });
 
