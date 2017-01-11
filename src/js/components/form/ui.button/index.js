@@ -46,9 +46,9 @@ var actionIcons= {
   /* 复制 */
   copy: 'copy',
   /* 通过 */
-  pass: 'thumbs-up',
+  pass: 'check',
   /* 驳回 */
-  reject: 'thumbs-down',
+  reject: 'ban',
   /* 返回 */
   backward: 'angle-double-left',
   /* 下载 */

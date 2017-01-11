@@ -277,7 +277,8 @@ var Select = Dropdown.extend({
         }
         this.toggle(false);
     },
-    toggle: function (open) {
+    toggle: function (open, e) {
+        e && e.stopPropagation();
         var data = this.data;
         data.canSearch && this.clearSearchValue();
         this.supr(open);
