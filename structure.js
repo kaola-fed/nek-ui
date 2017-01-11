@@ -1,7 +1,8 @@
 module.exports = {
     themes: [
         'default',
-        'kaola'
+        'red',
+        'blue'
     ],
     components: {
         /**

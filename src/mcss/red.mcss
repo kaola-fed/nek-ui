@@ -1,0 +1,25 @@
+/* Brand Colors */
+$brand-default =                        #f4f4f4;
+$brand-default-dark =                   #e5e5e5;
+$brand-default-darker =                 #adadad;
+$brand-primary =                        #c8123b;
+$brand-primary-darker =                 #a00e2f;
+$brand-info =                           #333333;
+$brand-info-lighter =                   #5c5c5c;
+$brand-info-darker =                    #292929;
+$brand-success =                        #31995e;
+$brand-success-lighter =                #5aad7e;
+$brand-success-darker =                 #277a4b;
+$brand-warning =                        #e08e0b;
+$brand-warning-lighter =                #e6a53c;
+$brand-warning-darker =                 #b37209;
+$brand-error =                          #d73925;
+$brand-error-lighter =                  #df6151;
+$brand-error-darker =                   #ac2e1e;
+$brand-secondary =                      #e17d93;
+$brand-secondary-darker =               #58b5e4;
+$panel-header =                         #6F8CB0;
+$panel-header-color =                   $brand-default;
+$panel-header-icon-color =              $brand-default;
+
+@import "./index.mcss";

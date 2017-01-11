@@ -74,7 +74,6 @@ $u-btn-extend_size = ($name, $padding-horizontal, $height, $font-size = null, $b
 $u-btn-extend_shape = ($name, $size, $height,$line-height, $font-size = null, $border-radius_ = null) {
     .u-btn-#{$name}.u-btn-#{$size} {
         padding:0;
-        background: none;
         width:$height; height:$height; line-height:$line-height;
         @if($name == 'icon') {border: none;}
         @if($font-size) {font-size: $font-size;}
@@ -108,20 +107,13 @@ $u-btn-extend_color = ($name, $color, $hover_color, $active_color) {
     /* Active */
     .u-btn-#{$name}:active,
     .u-btn-#{$name}.z-act {
-        color: $active_color;
+        background: $active_color;
         border-color:$active_color;
 
         @if($name == 'primary')  {
             background: $active_color;
             color: #fff;
         }
-    }
-
-    /* Disabled */
-    .u-btn-#{$name}:disabled,
-    .u-btn-#{$name}.z-dis {
-        color: $color;
-        border-color:$color;
     }
 }
 
