@@ -85,8 +85,10 @@ var Select = Dropdown.extend({
         }
         this.supr();
 
-        this.$watch('selected', function (newValue, oldValue, noInitWatch) {
-            if (!noInitWatch) {
+        this.$watch('selected', function (newValue, oldValue) {
+
+            //因为存在source异步获取的情况 如果source长度为0表示source还未获取
+            if (oldValue === undefined && !(Array.isArray(data.source) && data.source.length)) {
                 return;
             }
             data.value = this.getValue();
