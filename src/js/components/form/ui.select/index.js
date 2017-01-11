@@ -85,8 +85,8 @@ var Select = Dropdown.extend({
         }
         this.supr();
 
-        this.$watch('selected', function (newValue, oldValue) {
-            if (oldValue === undefined && !newValue) {
+        this.$watch('selected', function (newValue, oldValue, noInitWatch) {
+            if (!noInitWatch) {
                 return;
             }
             data.value = this.getValue();
