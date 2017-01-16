@@ -65,7 +65,7 @@ var Select = Dropdown.extend({
 
             // 搜索的文案
             searchValue: '',
-            canSearch: false,
+            canSearch: undefined,
             // 默认不区分大小写
             isCaseSensitive: true,
             noMatchText: '无匹配项',
@@ -198,6 +198,19 @@ var Select = Dropdown.extend({
                     data.selected = newValue[0];
                 }
             }
+
+
+            /**
+             * 1.明确指定isCanSearch为true直接开始搜索项功能
+             * 2.当选这项多余20个，没有指定可搜索时 自动开启
+             */
+            var canSearch;
+            if(this.hasOwnProperty('__canSearch')){
+                canSearch = this.__canSearch;
+            }else{
+                canSearch = this.__canSearch = data.canSearch;
+            }
+            data.canSearch = (canSearch === true) || (Array.isArray(newValue) && newValue.length > 20 && canSearch !== false);
         });
 
         this.$watch('multiple', function (newValue, oldValue) {
