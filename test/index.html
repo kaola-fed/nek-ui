@@ -26,57 +26,44 @@
   <script>
 //    var App = RGUI.Panel;
 //    new App().$inject('#app');
-    var a = `<ui.form service="./test.json">
-				<a href="javascript:;" on-click={test=!test}>Click Me1</a>
-				<form.item sourceKey="arrayA">
-					{#if test}
-					<ui.select />
-					{/if}
-				</form.item>
-			</ui.form>`;
+    var a = `<ui.form class="2">
+                  <a href="javascript:;" on-click={test=!test}>Click Me1</a>
+                  <ui.form class="1">
+                  <form.item>
+                      <ui.select />
+                  </form.item>
+                  </ui.form>
+                  </ui.form>`;
 
 
     (function(){
-      var component = new RGUI.Component({
-        template: `<ui.select source={source} mulip canSearch={true} value={value}/>{value}`,
-        data: {
-            value: 1,
-            source: [
-                {
-                    id: 1,
-                    name: '选项1'
-                },
-                {
-                    id: 2,name: '选项2'},
-                {
-                    id: 3,name: '选项3'}
-            ]
-        },
-        service: {
-          getList: function(params, success) {
-            this.request({
-              url: './list.json',
-              method: 'get',
-              type: 'json',
-              data: params,
-              success: success
-            });
+      var ComponentA = RGUI.Component.extend({
+          name: 'test',
+          template: a,
+          config: function(data) {
+              data.test = 123;
+//              console.log(this);
+//              console.log(this.$outer.$parent == this.$parent);
+              this.supr(data);
+
           }
-        }
       });
-//      setTimeout(function(){
-//        this.$update('source', [
-//          {
-//            id: 1,
-//            name: '选项1'
-//          },
-//          {
-//            id: 2,name: '选项2'},
-//          {
-//            id: 3,name: '选项3'}
-//        ]);
-//      }.bind(component), 1000);
-      component.$inject('#app');
+
+      var ComponentB = RGUI.Component.extend({
+          template: '<validation><validation a=1><ui.form ref="validation" class="3"><test/><ui.input /></ui.form></validation></validation>',
+          config: function() {
+              this.data.abc= 123;
+              setTimeout(function() {
+//                  console.log('12312321',this.$refs.validation.controls);
+              }.bind(this), 1000);
+          },
+          init: function () {
+//              console.log(2,this);
+              console.log(this.$parent == this)
+              this.supr();
+          }
+      });
+        new ComponentB().$inject('#app');
     })();
   </script>
 </html>
