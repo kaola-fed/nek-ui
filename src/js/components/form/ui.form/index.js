@@ -25,9 +25,23 @@ var UIForm = Validation.extend({
             sourcePath: 'data',
             class: ''
         });
+
         this.supr(data);
     },
     init: function() {
+        this.supr();
+
+        var $outer = this;
+        do {
+            if ($outer.$outer) {
+                $outer = $outer.$outer;
+            } else if ($outer.$parent) {
+                $outer = $outer.$parent;
+        }} while(!($outer instanceof Validation) && ($outer.$outer || $outer.$parent));
+
+        if ($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+        }
         this.initSelectorSource();
     },
     initSelectorSource: function() {

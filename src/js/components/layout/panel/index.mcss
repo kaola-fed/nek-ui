@@ -57,10 +57,17 @@ $m-panel-extend_color = ($name, $background, $color = null, $border_ = null) {
             margin-left: auto;
         }
         .u-btn{
-            font-size: 14px;
+            font-size: 16px;
+            background: $panel-header;
+            border: 1px solid $panel-header;
             .u-icon{
                 color: $panel-header-icon-color;
+                background: $panel-header;
+                border: 1px solid $panel-header;
             }
+        }
+        .u-btn:hover{
+            border: 1px solid $panel-header;
         }
     }
 

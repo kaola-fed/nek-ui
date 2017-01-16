@@ -3,7 +3,7 @@
     {#if !multiple}
         <div class="dropdown_hd"
              title={selected?selected[nameKey]:placeholder}
-             on-click={this.toggle(!open)}>
+             on-click={this.toggle(!open, $event)}>
             <i class="u-icon u-icon-caret-down"></i>
             {#if open && canSearch}
                 <input disabled={disabled} type="text" class="u-search-input" r-autofocus
@@ -14,7 +14,7 @@
         </div>
     {#else}
         <div class="dropdown_hd"
-             on-click={this.toggle(!open)}>
+             on-click={this.toggle(!open, $event)}>
             {#list selected as item}
                 <span class="selected-tag">
                     {item[nameKey]}
