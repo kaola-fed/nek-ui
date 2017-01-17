@@ -1,0 +1,43 @@
+<ul class="m-steps m-steps-{size} f-cb">
+    {#list steps as item by item_index}
+        {#if item_index != steps.length-1}
+        <li class="stepsItem" style="width: {100/(steps.length-1)}%;margin-right: -52px;"
+            r-class={{'finishedItem': item_index/1 < currentIndex/1}}>
+            <div class="stepsLine">
+                <i></i>
+            </div>
+            <div class="step" r-class={{'currentStep': current == item.status}}>
+                <div class="itemHead">
+                    {#if item_index < currentIndex}
+                    <div class="icon">
+                        <span class="stepIcon u-icon u-icon-check"></span>
+                    </div>
+                    {#else}
+                    <div class="icon">
+                        <span class="stepIcon">{item_index + 1}</span>
+                    </div>
+                    {/if}
+                </div>
+                <div class="itemMain">
+                    <div class="mainTitle">{item.title}</div>
+                    <div class="mainDescription">{item.description}</div>
+                </div>
+            </div>
+        </li>
+        {#else}
+        <li class="item">
+            <div class="step" r-class={{'currentStep': current == item.status}}>
+                <div class="itemHead">
+                    <div class="icon">
+                        <span class="stepIcon">{item_index + 1}</span>
+                    </div>
+                </div>
+                <div class="itemMain">
+                    <div class="mainTitle">{item.title}</div>
+                    <div class="mainDescription">{item.description}</div>
+                </div>
+            </div>
+        </li>
+        {/if}
+    {/list}
+</ul>

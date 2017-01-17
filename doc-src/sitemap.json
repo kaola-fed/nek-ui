@@ -67,6 +67,7 @@
                 {"name": "Collapse", "lowerName": "collapse","source":"navigation/collapse", "cnName": "折叠面板", "group": "导航类", "beta": true},
                 {"name": "Pager", "lowerName": "pager","source":"navigation/pager", "cnName": "分页器", "group": "导航类", "stable": true},
                 {"name": "Menubar", "lowerName": "menubar","source":"navigation/menubar", "cnName": "菜单", "group": "导航类", "hidden": true},
+                {"name": "Steps", "lowerName": "steps","source":"navigation/steps", "cnName": "步骤条", "group": "导航类", "stable": true},
 
                 {"name": "Notify", "lowerName": "notify","source":"frame/notify", "cnName": "通知", "group": "窗口类", "beta": true},
                 {"name": "Modal", "lowerName": "modal","source":"frame/modal", "cnName": "模态对话框", "group": "窗口类", "stable": true},

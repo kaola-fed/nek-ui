@@ -75,7 +75,7 @@
         
         
         
-        <li><a href="../../jscomponents/navigation/steps.html" >步骤条<small> Steps</small>
+        <li class="z-crt"><a href="../../jscomponents/navigation/steps.html" >步骤条<small> Steps</small>
         </a></li>
         
         
@@ -191,7 +191,7 @@
         
         
         
-        <li class="z-crt"><a href="../../jscomponents/widget/gotop.html" >回到顶部<small> Gotop</small>
+        <li><a href="../../jscomponents/widget/gotop.html" >回到顶部<small> Gotop</small>
         </a></li>
         
         
@@ -205,24 +205,62 @@
         
         <h3 id="-">示例</h3>
 <h4 id="-">基本形式</h4>
-<p>请看屏幕右下角的例子。</p>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">gotop</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">steps</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">2</span> <span class="cm-attribute">steps</span>=<span class="cm-attribute">{steps}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
 </code></pre>
-<h4 id="-">位置扩展</h4>
-<p>请看屏幕左下角的例子。</p>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">steps</span>: [{
+            <span class="cm-property">status</span>: <span class="cm-number">0</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;编辑&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">1</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;保存&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">2</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;提交&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">3</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;审核&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }]
+    }
+});
+</code></pre>
+<h4 id="-">迷你版</h4>
+<p>在表单中使用</p>
 <div class="m-example"></div>
 
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">gotop</span> <span class="cm-attribute">position</span>=<span class="cm-string">&quot;bottomleft&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">steps</span> <span class="cm-attribute">size</span>=<span class="cm-string">&quot;sm&quot;</span> <span class="cm-attribute">current</span>=<span class="cm-attribute">2</span> <span class="cm-attribute">steps</span>=<span class="cm-attribute">{steps}</span> <span class="cm-tagcm-bracketcm-error">/&gt;</span>
 </code></pre>
-<h4 id="-">嵌入文档流</h4>
-<div class="m-example"></div>
-
-<pre class="lang-xml"><code><span class="cm-tagcm-bracket">&lt;</span><span class="cm-tag">gotop</span> <span class="cm-attribute">position</span>=<span class="cm-string">&quot;static&quot;</span> <span class="cm-tagcm-bracket">/&gt;</span>
+<pre class="lang-javascript"><code><span class="cm-keyword">var</span> <span class="cm-variable">component</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">RGUI</span>.<span class="cm-property">Component</span>({
+    <span class="cm-property">template</span>: <span class="cm-variable">template</span>,
+    <span class="cm-property">data</span>: {
+        <span class="cm-property">steps</span>: [{
+            <span class="cm-property">status</span>: <span class="cm-number">0</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;编辑&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">1</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;保存&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">2</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;提交&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }, {
+            <span class="cm-property">status</span>: <span class="cm-number">3</span>,
+            <span class="cm-property">title</span>: <span class="cm-string">&#39;审核&#39;</span>,
+            <span class="cm-property">description</span>: <span class="cm-string">&#39;这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶&#39;</span>,
+        }]
+    }
+});
 </code></pre>
-<h4 id="-">自定义</h4>
-<p><em>待完成……</em></p>
 
         
     </article>
@@ -288,28 +326,57 @@ var $$ = function(selector){return document.querySelectorAll(selector)};
 var index = 0;
 (function(index) {
     var template = `
-<gotop />
+<steps current=2 steps={steps} />
     `
 var component = new RGUI.Component({
-    template: template
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
 });
     component.$inject($$(".m-example")[index]);
 })(index++);
 (function(index) {
     var template = `
-<gotop position="bottomleft" />
+<steps size="sm" current=2 steps={steps} />
     `
 var component = new RGUI.Component({
-    template: template
-});
-    component.$inject($$(".m-example")[index]);
-})(index++);
-(function(index) {
-    var template = `
-<gotop position="static" />
-    `
-var component = new RGUI.Component({
-    template: template
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
 });
     component.$inject($$(".m-example")[index]);
 })(index++);

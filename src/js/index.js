@@ -40,6 +40,7 @@ exports.Dropdown = require('./components/navigation/dropdown');
 exports.Menu = require('./components/navigation/menu');
 exports.Pager = require('./components/navigation/pager');
 exports.Tabs = require('./components/navigation/tabs');
+exports.Steps = require('./components/navigation/steps');
 
 // Notice
 exports.Modal = require('./components/notice/modal');
