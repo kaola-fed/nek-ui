@@ -45,7 +45,7 @@ var Input = Component.extend({
     config: function() {
         _.extend(this.data, {
             value: '',
-            type: '',
+            type: 'char',
             placeholder: '',
             state: '',
             maxlength: undefined,
@@ -148,13 +148,13 @@ var Input = Component.extend({
     },
 
     /**
-     * 1. 所有类型的input,都去除前后的空格;
+     * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
      **/
     __valueFilter: function(value) {
         var type = this.data.type;
 
-        value = (value + '').trim();
+        if (type != 'char') value = (value + '').trim();
         value = (inputFilters[type] || inputFilters['default'])(value, this.data.decimalDigits);
         return value;
     },
