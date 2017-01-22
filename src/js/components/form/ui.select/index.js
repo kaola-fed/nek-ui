@@ -14,6 +14,7 @@ var Validation = require('../../../util/validation');
 var util = require('./common/util');
 var Multiple = require('./plugins/multiple');
 var PrivateMethod = require('./plugins/private.method');
+var tip = require('../../widget/tooltip');
 
 require('../check');
 
@@ -24,6 +25,8 @@ require('../check');
  * @param {object[]=[]}             options.data.source             <=> 数据源
  * @param {string}                  options.data.source[].name       => 每项的内容
  * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
+ * @param {string}                  options.data.source[].tip        => 禁用此项显示的提示，如果没有则不显示
+ * @param {string}                  options.data.source[].placement  => 禁用此项显示提示的方向，默认下方
  * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
  * @param {object}                  options.data.selected           <=> 当前选择项
  * @param {string|number}           options.data.value              <=> 当前选择值

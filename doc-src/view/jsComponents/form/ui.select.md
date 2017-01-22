@@ -74,6 +74,7 @@ var component = new RGUI.Component({
 ```
 
 #### 禁用某一项，禁用组件
+`tip`表示禁用某一项时给出的提示，不给则无提示，`placement`表示给出提示的方向，具体参考文字提示组件Tooltip
 
 <div class="m-example"></div>
 
@@ -95,7 +96,9 @@ var component = new RGUI.Component({
         source: [
             {name: '选项1'},
             {name: '选项2'},
-            {name: '选项3（禁用）', disabled: true}
+            {name: '选项3（禁用）', disabled: true},
+            {name: '选项4（禁用）', disabled: true, tip: 'tip'},
+            {name: '选项5（禁用）', disabled: true, tip: 'tip', placement: 'bottom'}
         ]
     }
 });
@@ -262,10 +265,10 @@ var component = new RGUI.Component({
     <ui.button title="区分大小写" on-click={this.toggleSensitive(isCaseSensitive)}/>
     {isCaseSensitive?'true:区分大小写':'false:不区分大小写'}
 </div>
-<ui.select source={source} multiple={multiple} canSearch={canSearch} 
-            showSeparator={showSeparator} separator={separator} 
+<ui.select source={source} multiple={multiple} canSearch={canSearch}
+            showSeparator={showSeparator} separator={separator}
             selectedClose={selectedClose} canSelectAll={canSelectAll}
-            isCaseSensitive={isCaseSensitive} searchInputPlaceholder="请输入" 
+            isCaseSensitive={isCaseSensitive} searchInputPlaceholder="请输入"
             value={value}/>
 <div class=g-row>
     选中值：{value}

@@ -45,6 +45,21 @@
                         全部
                     </li>
                 {/if}
+                {#if item.disabled && item.tip}
+                <tooltip tip={item.tip} placement={item.placement||'top'}>
+                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+                        title={item[nameKey]} on-click={this.select(item)}>
+                        {#if multiple && !item.divider}
+                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+                        {/if}
+                        {#if @(itemTemplate)}
+                            {#inc @(itemTemplate)}
+                        {#else}
+                            {item[nameKey]}
+                        {/if}
+                    </li>
+                </tooltip>
+                {#else}
                 <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
                     title={item[nameKey]} on-click={this.select(item)}>
                     {#if multiple && !item.divider}
@@ -56,6 +71,7 @@
                         {item[nameKey]}
                     {/if}
                 </li>
+                {/if}
             {#else}
                 {#if searchValue}
                 <li>
