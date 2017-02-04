@@ -3,7 +3,7 @@
   "description": "Extension of Regular UI",
   "version": "0.1.48",
   "main": "./dist/js/nek-ui.js",
-  "homepage": "http://nek-ui.kaolafed.com/",
+  "homepage": "https://nek-ui.kaolafed.com/",
   "license": "MIT",
   "files": [
     "dist"
@@ -18,12 +18,8 @@
     "ui"
   ],
   "scripts": {
-    "start": "node ./server.js",
-    "dist": "gulp dist",
-    "doc": "gulp doc",
-    "watch": "gulp watch",
-    "all": "run-s dist doc",
-    "server": "gulp server"
+    "build": "gulp dist",
+    "dev": "gulp server"
   },
   "dependencies": {
     "bowser": "^1.5.0",
