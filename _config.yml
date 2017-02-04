@@ -1,0 +1,33 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: nek-ui
+description: "Nice Easy Components of Kaola"
+author: Cody Chan
+
+# Writing
+highlight:
+  enable: true
+  line_number: false
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: https://nek-ui.kaolafed.com
+root: /
+
+# Directory
+source_dir: doc
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: nekui
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repository: git@github.com:kaola-fed/nek-ui.git
+  branch: gh-pages

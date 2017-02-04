@@ -1,0 +1,55 @@
+<div class="sidebar">
+  <ul class="main-menu">
+    <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+  </ul>
+</div>
+
+<div id="hero">
+  <div class="inner">
+    <div class="left">
+      <img class="hero-logo" src="/images/logo.png">
+    </div><div class="right">
+      <h1>
+        RegularJS<br>后台 UI 组件库
+      </h1>
+      <p>
+        <a class="button" href="/rule/">快速开始</a>
+        <a class="button white" href="https://github.com/kaola-fed/nek-ui" target="_blank">GITHUB</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="highlights">
+  <div class="inner">
+
+
+    <div class="point">
+      <h2>丰富</h2>
+      <p>作为后台组件库，包括了各种场景的组件，避免无意义地造轮子。</p>
+    </div>
+
+    <div class="point">
+      <h2>规范</h2>
+      <p>统一了规范，规避了开发人员个人喜好带来的代码不统一问题。</p>
+    </div>    
+
+    <div class="point">
+      <h2>可定制</h2>
+      <p>主题色可以根据项目实际情况进行个性化定制。</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>

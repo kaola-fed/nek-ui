@@ -1,0 +1,32 @@
+language: node_js
+
+node_js:
+- 6
+
+branches:
+  only:
+  - master
+
+before_install:
+- npm install -g hexo-cli
+
+install:
+- npm install
+
+before_script:
+- git config --global user.name 'Cody Chan'
+- git config --global user.email 'int64ago@gmail.com'
+
+script:
+- hexo generate
+
+after_success:
+- mkdir .deploy
+- cd .deploy
+- git clone --depth 1 --branch gh-pages --single-branch $DEPLOY_REPO . || (git init && git remote add -t gh-pages origin $DEPLOY_REPO)
+- rm -rf ./*
+- cp -r ../public/* .
+- git add -A .
+- git commit -m 'Auto updated'
+- git branch -m gh-pages
+- git push -q -u origin gh-pages

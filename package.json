@@ -8,6 +8,9 @@
   "files": [
     "dist"
   ],
+  "hexo": {
+    "version": "3.2.2"
+  },
   "keywords": [
     "regular",
     "nek",
@@ -34,7 +37,14 @@
     "reqwest": "^2.0.5",
     "style-loader": "^0.13.1",
     "validator": "^6.1.0",
-    "xhr2": "^0.1.3"
+    "xhr2": "^0.1.3",
+    "hexo": "^3.2.2",
+    "hexo-deployer-git": "0.1.0",
+    "hexo-generator-index": "^0.2.0",
+    "hexo-renderer-ejs": "^0.2.0",
+    "hexo-renderer-marked": "^0.2.10",
+    "hexo-renderer-stylus": "^0.3.1",
+    "hexo-server": "^0.2.0"
   },
   "devDependencies": {
     "browser-sync": "^2.18.2",
