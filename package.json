@@ -1,6 +1,6 @@
 {
   "name": "nek-ui",
-  "description": "Extension of Regular UI",
+  "description": "UI components for NEK based on RegularJS",
   "version": "0.1.48",
   "main": "./dist/js/nek-ui.js",
   "homepage": "https://nek-ui.kaolafed.com/",

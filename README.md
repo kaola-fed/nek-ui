@@ -1,7 +1,18 @@
-# nek-ui
+# nek-ui <sup>[WIP]</sup>
 UI components for [NEK][nek] based on [RegularJS][regularjs]
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+
+### Development
+
+ - `npm i`
+ - `npm run dev`
+
+## Publish
+
+ - `npm run build`
+ - update version
+ - `npm publish`
 
  [nek]: https://github.com/kaola-fed/NEK
  [regularjs]: https://github.com/regularjs/regular
