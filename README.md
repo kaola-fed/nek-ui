@@ -1,10 +1,16 @@
-# UI for NEK
+# nek-ui
+UI components for [NEK][nek] based on [RegularJS][regularjs]
 
-[组件文档](http://nek-ui.kaolafed.com/)
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
+ [nek]: https://github.com/kaola-fed/NEK
+ [regularjs]: https://github.com/regularjs/regular
 
-可能常用的命令有：
+ [npm-url]: https://npmjs.org/package/nek-ui
+ [npm-image]: https://img.shields.io/npm/v/nek-ui.svg
 
- - `npm run dist`: 打包 JS 和 CSS
- - `npm run doc`: 生成文档
- - `npm start`: 启动文档静态服务 http://127.0.0.1:8000
+ [travis-url]: https://travis-ci.org/kaola-fed/nek-ui
+ [travis-image]: https://img.shields.io/travis/kaola-fed/nek-ui.svg
+
+ [license-url]: https://github.com/kaola-fed/nek-ui/blob/master/LICENSE
+ [license-image]: https://img.shields.io/github/license/kaola-fed/nek-ui.svg
