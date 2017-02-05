@@ -8,7 +8,7 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
  - `npm i`
  - `npm run dev`
 
-## Publish
+### Publish
 
  - `npm run build`
  - update version
