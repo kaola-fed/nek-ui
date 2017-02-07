@@ -1,6 +1,7 @@
 ---
 title: 按钮
 type: components
+is_beta: true
 order: 2.1
 ---
 
