@@ -478,7 +478,22 @@ body.docs #nav {
   font-size: 10px;
   font-weight: 600;
   color: #fff;
-  background-color: #31995e;
+  background-color: #2973b7;
+  line-height: 14px;
+  padding: 0 4px;
+  border-radius: 3px;
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+.sidebar .sidebar-link.beta:after {
+  content: "BETA";
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #f66;
   line-height: 14px;
   padding: 0 4px;
   border-radius: 3px;
