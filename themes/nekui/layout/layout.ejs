@@ -31,11 +31,7 @@
         <%- partial('partials/header') %>
         <% if (!isIndex) { %>
             <div id="main" class="fix-sidebar">
-                <% if (page.blog_index) { %>
-                    <%- partial('partials/blog') %>
-                <% } else { %>
-                    <%- body %>
-                <% } %>
+                <%- body %>
             </div>
             <script src="/js/smooth-scroll.min.js"></script>
         <% } else { %>

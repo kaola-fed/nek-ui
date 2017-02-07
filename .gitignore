@@ -16,3 +16,4 @@ db.json
 public/
 .deploy*/
 source/_drafts
+autogen_*

@@ -4,24 +4,10 @@
     </ul>
     <div class="list">
         <ul class="menu-root">
-            <% type !== 'api' && type !== 'router' && site.pages.find({type: type}).sort('order').each(function (p) { %>
-                <% var fileName = p.path.replace(/^.+?\/([\w-]+)\.html/, '$1') %>
-
-                <% if (type === 'components') { %>
-                    <% if (fileName === 'panel') { %>
-                      <li><h3>布局</h3></li>
-                    <% } %>
-                    <% if (fileName === 'ui-button') { %>
-                      <li><h3>表单</h3></li>
-                    <% } %>
-                    <% if (fileName === 'collapse') { %>
-                      <li><h3>导航</h3></li>
-                    <% } %>
-                    <% if (fileName === 'modal') { %>
-                      <li><h3>通知</h3></li>
-                    <% } %>
-                    <% if (fileName === 'gotop') { %>
-                      <li><h3>其它</h3></li>
+            <% site.pages.find({type: type}).sort('order').each(function (p) { %>
+                <% if (type === 'components' && p.cate) { %>
+                    <% if (p.order % 100 === 0) { %>
+                      <li><h3><%- p.cate %></h3></li>
                     <% } %>
                 <% } %>
                 <li>
