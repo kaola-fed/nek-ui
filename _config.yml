@@ -24,10 +24,3 @@ source_dir: doc
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: nekui
-
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repository: git@github.com:kaola-fed/nek-ui.git
-  branch: gh-pages
