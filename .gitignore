@@ -15,5 +15,5 @@ db.json
 *.log
 public/
 .deploy*/
-source/_drafts
+_drafts
 autogen_*
