@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "gulp dist",
-    "dev": "gulp server"
+    "dev": "gulp watch"
   },
   "dependencies": {
     "bowser": "^1.5.0",

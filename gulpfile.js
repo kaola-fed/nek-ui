@@ -12,7 +12,11 @@ var all = require('gulp-all');
 var mcss = require('gulp_mcss');
 var glob = require('glob');
 var path = require('path');
+var Hexo = require('hexo');
 var fs = require('fs');
+
+var hexo = new Hexo(process.cwd(), {});
+hexo.init();
 
 var themes = [
     'default',
@@ -31,7 +35,7 @@ gulp.THEMES = ['default'];
  */
 
 gulp.task('dist-clean', function(cb) {
-    rimraf('./dist', cb)
+    rimraf('{dist,public}', cb)
 });
 
 gulp.task('dist-copy', function() {
@@ -78,27 +82,25 @@ gulp.task('gen-mcss', function(cb) {
   })
 });
 
-gulp.task('dist', function(done) {
-    sequence('dist-clean', 'gen-mcss', ['dist-copy', 'dist-js', 'dist-css'], done);
+gulp.task('gen-doc', function(cb) {
+  hexo.call('generate', {}, cb);
 });
 
-gulp.task('default', ['dist']);
+gulp.task('default', function(done) {
+    sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], 'gen-doc', done);
+});
 
-gulp.task('server', function(){
+gulp.task('server', ['default'], function(){
     browserSync.init({
 		server: {
-		baseDir: './'
+		baseDir: './public'
 		},
-		files: 'src/, test',
 		browser: 'default',
 		reloadDelay: 1000,
 		port:8089
     });
-
-    gulp.watch(['./src/**/*'], ['dist']);
-
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['server'], function () {
     gulp.watch(['./src/**/*'], ['default']);
 });
