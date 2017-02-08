@@ -16,4 +16,5 @@ db.json
 public/
 .deploy*/
 _drafts
-autogen_*
+doc/components/*
+!doc/components/index.md

@@ -14,6 +14,7 @@ var glob = require('glob');
 var path = require('path');
 var Hexo = require('hexo');
 var fs = require('fs');
+var doc = require('./src/js/components/doc');
 
 var hexo = new Hexo(process.cwd(), {});
 hexo.init();
@@ -35,7 +36,9 @@ gulp.THEMES = ['default'];
  */
 
 gulp.task('dist-clean', function(cb) {
-    rimraf('{dist,public}', cb)
+    rimraf('{dist,public}', function() {
+      rimraf('doc/components/_*', cb)
+    })
 });
 
 gulp.task('dist-copy', function() {
@@ -83,7 +86,9 @@ gulp.task('gen-mcss', function(cb) {
 });
 
 gulp.task('gen-doc', function(cb) {
-  hexo.call('generate', {}, cb);
+  doc(function() {
+    hexo.call('generate', {}, cb);
+  })
 });
 
 gulp.task('default', function(done) {

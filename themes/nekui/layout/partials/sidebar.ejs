@@ -4,14 +4,15 @@
     </ul>
     <div class="list">
         <ul class="menu-root">
-            <% site.pages.find({type: type}).sort('order').each(function (p) { %>
+            <% var pages = site.pages.find({type: type}).sort('order') %>
+            <% pages.forEach(function (p, i) { %>
                 <% if (type === 'components' && p.cate) { %>
-                    <% if (p.order % 100 === 0) { %>
-                      <li><h3><%- p.cate %></h3></li>
+                    <% if (i === 0 || pages.data[i-1].cate !== p.cate) { %>
+                        <li><h3><%- p.cate %></h3></li>
                     <% } %>
                 <% } %>
                 <li>
-                    <a href="/<%- p.path %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_beta ? ' beta' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %></a>
+                    <a href="/<%- p.path %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_beta ? ' beta' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %> <%- p.name %></a>
                 </li>
             <% }) %>
         </ul>
