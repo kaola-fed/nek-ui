@@ -27,7 +27,7 @@ const getComponents = cate => {
   })
 }
 
-module.exports = function(callback) {
+const doc = callback => {
   CATES.forEach(c => {
     const components = getComponents(c.cate).filter(comp => {
       const mdPath = path.join(__dirname, c.cate, comp, 'index.md');
@@ -45,5 +45,9 @@ module.exports = function(callback) {
       fs.writeFileSync(path.join(DEST, `${c.cate}_${comp}_.md`), output);
     })
   })
-  callback();
+  callback && callback();
 }
+
+doc()
+
+module.exports = doc;
