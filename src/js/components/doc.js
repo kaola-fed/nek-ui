@@ -1,4 +1,3 @@
-
 /**
  * 把组件 MD 文档转为 hexo 最终渲染 MD，主要干两件事：
  * 1、增加头部信息，用于渲染左侧多级菜单
@@ -43,7 +42,7 @@ module.exports = function(callback) {
       const appendContent = `type: components\nname: ${comp}\ncate: ${c.name}\norder: ${c.startOrder + i}\n`;
       const md = fs.readFileSync(mdPath, 'utf8');
       const output = md.replace(/(---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
-      fs.writeFileSync(path.join(DEST, `_${c.cate}_${comp}.md`), output);
+      fs.writeFileSync(path.join(DEST, `${c.cate}_${comp}_.md`), output);
     })
   })
   callback();

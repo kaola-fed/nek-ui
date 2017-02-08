@@ -24,7 +24,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('dist-clean', function(cb) {
   rimraf('{dist,public}', function() {
-    rimraf('doc/components/_*', cb)
+    rimraf('doc/components/*_.md', cb)
   })
 });
 
