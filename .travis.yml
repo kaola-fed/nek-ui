@@ -18,7 +18,7 @@ before_script:
 - git config --global user.email 'int64ago@gmail.com'
 
 script:
-- hexo generate
+- gulp gen-doc
 
 after_success:
 - mkdir .deploy
