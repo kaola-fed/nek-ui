@@ -14,10 +14,11 @@ var glob = require('glob');
 var path = require('path');
 var Hexo = require('hexo');
 var fs = require('fs');
+var argv = require('yargs').argv;
 var doc = require('./src/js/components/doc');
 var themes = require('./src/mcss/themes');
 
-var hexo = new Hexo(process.cwd(), {});
+var hexo = new Hexo(process.cwd(), {debug: argv.debug});
 hexo.init();
 
 var browserSync = require('browser-sync').create();
@@ -89,7 +90,7 @@ gulp.task('default', function(done) {
 gulp.task('server', ['default'], function() {
   browserSync.init({
     server: {
-      baseDir: './public'
+      baseDir: ['./public', './dist']
     },
     browser: 'default',
     reloadDelay: 1000,

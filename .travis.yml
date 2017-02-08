@@ -8,7 +8,7 @@ branches:
   - master
 
 before_install:
-- npm install -g hexo-cli
+- npm install -g gulp
 
 install:
 - npm install
@@ -18,8 +18,7 @@ before_script:
 - git config --global user.email 'int64ago@gmail.com'
 
 script:
-- node src/js/components/doc.js
-- hexo generate
+- gulp gen-doc
 
 after_success:
 - mkdir .deploy

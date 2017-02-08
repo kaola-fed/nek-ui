@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "gulp dist",
-    "dev": "gulp watch"
+    "dev": "gulp watch --debug"
   },
   "dependencies": {
     "bowser": "^1.5.0",
@@ -68,6 +68,7 @@
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.1",
     "text-loader": "0.0.1",
-    "webpack": "^1.14.0"
+    "webpack": "^1.14.0",
+    "yargs": "^6.6.0"
   }
 }
