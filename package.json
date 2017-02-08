@@ -1,7 +1,7 @@
 {
   "name": "nek-ui",
   "description": "UI components for NEK based on RegularJS",
-  "version": "0.1.48",
+  "version": "0.1.49",
   "main": "./dist/js/nek-ui.js",
   "homepage": "https://nek-ui.kaolafed.com/",
   "license": "MIT",
@@ -18,7 +18,7 @@
     "ui"
   ],
   "scripts": {
-    "build": "gulp dist",
+    "build": "gulp",
     "dev": "gulp watch --debug"
   },
   "dependencies": {

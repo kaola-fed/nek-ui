@@ -18,9 +18,6 @@ var argv = require('yargs').argv;
 var doc = require('./src/js/components/doc');
 var themes = require('./src/mcss/themes');
 
-var hexo = new Hexo(process.cwd(), {debug: argv.debug});
-hexo.init();
-
 var browserSync = require('browser-sync').create();
 
 gulp.task('dist-clean', function(cb) {
@@ -31,7 +28,11 @@ gulp.task('dist-clean', function(cb) {
 
 gulp.task('dist-copy', function() {
   return all(
-    gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./dist/fonts'))
+    gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./dist/fonts')),
+    gulp.src([
+      './node_modules/regularjs/dist/regular.min.js',
+      './node_modules/regularjs/dist/regular.js'
+    ]).pipe(gulp.dest('./dist/vendor'))
   );
 });
 
@@ -78,8 +79,13 @@ gulp.task('gen-mcss', function(cb) {
 });
 
 gulp.task('gen-doc', function(cb) {
+  var hexo = new Hexo(process.cwd(), {
+    debug: argv.debug
+  });
   doc(function() {
-    hexo.call('generate', {}, cb);
+    hexo.init().then(function() {
+      hexo.call('generate', {}, cb);
+    });
   })
 });
 
