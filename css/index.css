@@ -117,6 +117,9 @@ a {
   text-decoration: none;
   color: #34495e;
 }
+a:hover {
+  text-decoration: none;
+}
 img {
   border: none;
 }
@@ -221,41 +224,6 @@ a.button.white {
   position: relative;
   padding: 0 60px 30px;
   overflow-x: hidden;
-}
-#ad {
-  width: 125px;
-  position: fixed;
-  z-index: 99;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 3px;
-  font-size: 13px;
-}
-#ad a {
-  display: inline-block;
-  color: #7f8c8d;
-  font-weight: normal;
-}
-#ad span {
-  color: #7f8c8d;
-  display: inline-block;
-  margin-bottom: 5px;
-}
-#ad img {
-  width: 125px;
-}
-#ad .carbon-img,
-#ad .carbon-text {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: normal;
-  color: #34495e;
-}
-#ad .carbon-poweredby {
-  color: #aaa;
-  font-weight: normal;
 }
 #nav .nav-link {
   cursor: pointer;
@@ -665,52 +633,6 @@ body.docs #nav {
 }
 #highlights .point p {
   color: #7f8c8d;
-}
-#sponsors {
-  text-align: center;
-  padding: 35px 40px 45px;
-  background-color: #f6f6f6;
-}
-#sponsors .inner {
-  max-width: 700px;
-  margin: 0px auto;
-}
-#sponsors h3 {
-  color: #999;
-  font-size: 0.9em;
-  margin: 0 0 10px;
-}
-#sponsors a {
-  margin: 20px 15px 0;
-  position: relative;
-}
-#sponsors a,
-#sponsors img {
-  width: 100px;
-  display: inline-block;
-  vertical-align: middle;
-}
-#sponsors img {
-  transition: all 0.3s ease;
-  filter: contrast(0%);
-}
-#sponsors img:hover {
-  filter: none;
-}
-#sponsors a.vip {
-  display: block;
-  margin: 30px auto 15px;
-  width: 200px;
-}
-#sponsors a.vip img {
-  width: 200px;
-}
-#sponsors .become-sponsor {
-  margin-top: 40px;
-  font-size: 0.9em;
-  font-weight: 700;
-  width: auto;
-  background-color: transparent;
 }
 #footer {
   padding: 50px 0;

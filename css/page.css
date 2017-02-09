@@ -117,6 +117,9 @@ a {
   text-decoration: none;
   color: #34495e;
 }
+a:hover {
+  text-decoration: none;
+}
 img {
   border: none;
 }
@@ -221,41 +224,6 @@ a.button.white {
   position: relative;
   padding: 0 60px 30px;
   overflow-x: hidden;
-}
-#ad {
-  width: 125px;
-  position: fixed;
-  z-index: 99;
-  bottom: 10px;
-  right: 10px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 3px;
-  font-size: 13px;
-}
-#ad a {
-  display: inline-block;
-  color: #7f8c8d;
-  font-weight: normal;
-}
-#ad span {
-  color: #7f8c8d;
-  display: inline-block;
-  margin-bottom: 5px;
-}
-#ad img {
-  width: 125px;
-}
-#ad .carbon-img,
-#ad .carbon-text {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: normal;
-  color: #34495e;
-}
-#ad .carbon-poweredby {
-  color: #aaa;
-  font-weight: normal;
 }
 #nav .nav-link {
   cursor: pointer;
