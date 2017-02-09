@@ -11,7 +11,7 @@ title: 文字提示
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template
 });
 ```
@@ -44,7 +44,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template
 });
 ```

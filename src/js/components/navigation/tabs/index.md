@@ -93,7 +93,7 @@ title: 选项卡
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     titleTemplate: `
 {item.data.title} {#if item.data.mark}<span class="u-text u-text-success"><i class="u-icon u-icon-check-circle"></i></span>{/if}`
@@ -117,7 +117,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [

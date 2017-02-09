@@ -11,12 +11,12 @@ title: 加载中
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     load: function() {
-        RGUI.Loading.show();
+        NEKUI.Loading.show();
         setTimeout(function() {
-            RGUI.Loading.hide();
+            NEKUI.Loading.hide();
         }, 2000);
     }
 });
@@ -33,7 +33,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     load: function() {
         this.$refs.loading.show();
@@ -56,7 +56,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     load: function() {
         this.$refs.loading.show();

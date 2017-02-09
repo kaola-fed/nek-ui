@@ -46,7 +46,7 @@ title: 输入框
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     onSearch: function(json) {
         console.log(json);
@@ -80,7 +80,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         rules: [

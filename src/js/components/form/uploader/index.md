@@ -13,13 +13,13 @@ title: 上传
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     _onSuccess: function($event) {
-        RGUI.Notify.success($event.data);
+        NEKUI.Notify.success($event.data);
     },
     _onError: function($event) {
-        RGUI.Notify.error($event.message);
+        NEKUI.Notify.error($event.message);
     }
 });
 ```
@@ -39,13 +39,13 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     _onSuccess: function($event) {
-        RGUI.Notify.success($event.data);
+        NEKUI.Notify.success($event.data);
     },
     _onError: function($event) {
-        RGUI.Notify.error($event.message);
+        NEKUI.Notify.error($event.message);
     }
 });
 ```
@@ -61,13 +61,13 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     _onSuccess: function($event) {
-        RGUI.Notify.success($event.data);
+        NEKUI.Notify.success($event.data);
     },
     _onError: function($event) {
-        RGUI.Notify.error($event.message);
+        NEKUI.Notify.error($event.message);
     }
 });
 ```
@@ -91,13 +91,13 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     _onSuccess: function($event) {
-        RGUI.Notify.success($event.data);
+        NEKUI.Notify.success($event.data);
     },
     _onError: function($event) {
-        RGUI.Notify.error($event.message);
+        NEKUI.Notify.error($event.message);
     }
 });
 ```
@@ -113,13 +113,13 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     _onSuccess: function($event) {
-        RGUI.Notify.success($event.data);
+        NEKUI.Notify.success($event.data);
     },
     _onError: function($event) {
-        RGUI.Notify.error($event.message);
+        NEKUI.Notify.error($event.message);
     }
 });
 ```

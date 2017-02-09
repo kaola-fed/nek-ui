@@ -11,7 +11,7 @@ title: 提示选择
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -40,7 +40,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -68,7 +68,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -95,7 +95,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -124,7 +124,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -161,7 +161,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -191,7 +191,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -220,11 +220,11 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            RGUI.ajax.request({
+            NEKUI.ajax.request({
                 url: '../data/suggest.json',
                 method: 'get',
                 type: 'json',

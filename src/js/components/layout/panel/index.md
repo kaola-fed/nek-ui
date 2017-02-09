@@ -47,7 +47,7 @@ title: 面板
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     test: function() {
         console.log(123);

@@ -11,7 +11,7 @@ title: 步骤
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         steps: [{
@@ -46,7 +46,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         steps: [{

@@ -3,6 +3,8 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
+[使用文档](https://nek-ui.kaolafed.com)
+
 ### Development
 
  - `npm i`

@@ -11,7 +11,7 @@ title: 树形选择
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -43,7 +43,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
@@ -75,11 +75,11 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            RGUI.ajax.request({
+            NEKUI.ajax.request({
                 url: '../data/tree.json',
                 method: 'get',
                 type: 'json',
@@ -100,11 +100,11 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            RGUI.ajax.request({
+            NEKUI.ajax.request({
                 url: '../data/tree2.json',
                 method: 'get',
                 type: 'json',

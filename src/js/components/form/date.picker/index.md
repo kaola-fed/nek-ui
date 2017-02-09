@@ -35,7 +35,7 @@ title: 日期选择
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         date1: 1481287269287,
@@ -64,7 +64,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         minDate: new Date(+new Date + 2*24*3600*1000),

@@ -15,10 +15,10 @@ title: 模态框
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function() {
-        var modal = new RGUI.Modal({
+        var modal = new NEKUI.Modal({
             data: {
                 title: 'Modal标题',
                 content: 'Modal内容'
@@ -37,10 +37,10 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function() {
-        RGUI.Modal.alert('Alert内容');
+        NEKUI.Modal.alert('Alert内容');
     }
 });
 ```
@@ -54,10 +54,10 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function() {
-        RGUI.Modal.confirm('Confirm内容');
+        NEKUI.Modal.confirm('Confirm内容');
     }
 });
 ```

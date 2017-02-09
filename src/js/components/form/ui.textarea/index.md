@@ -35,7 +35,7 @@ title: 文本输入
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         rules: [

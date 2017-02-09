@@ -13,10 +13,10 @@ title: 通知
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function() {
-        RGUI.Notify.show('This is a message.');
+        NEKUI.Notify.show('This is a message.');
     }
 });
 ```
@@ -33,10 +33,10 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function(state) {
-        RGUI.Notify[state](state + ' message.', state);
+        NEKUI.Notify[state](state + ' message.', state);
     }
 });
 ```
@@ -55,16 +55,16 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     config: function() {
         this.notifies = [
-            new RGUI.Notify({data: {position: 'topcenter'} }),
-            new RGUI.Notify({data: {position: 'topleft'} }),
-            new RGUI.Notify({data: {position: 'topright'} }),
-            new RGUI.Notify({data: {position: 'bottomcenter'} }),
-            new RGUI.Notify({data: {position: 'bottomleft'} }),
-            new RGUI.Notify({data: {position: 'bottomright'} })
+            new NEKUI.Notify({data: {position: 'topcenter'} }),
+            new NEKUI.Notify({data: {position: 'topleft'} }),
+            new NEKUI.Notify({data: {position: 'topright'} }),
+            new NEKUI.Notify({data: {position: 'bottomcenter'} }),
+            new NEKUI.Notify({data: {position: 'bottomleft'} }),
+            new NEKUI.Notify({data: {position: 'bottomright'} })
         ];
     },
     show: function(index) {
@@ -86,7 +86,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function() {
         this.$refs.notify.show('Static notify.');
@@ -108,10 +108,10 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     show: function(duration) {
-        RGUI.Notify.show('Duration: ' + duration + ' ms.', null, duration);
+        NEKUI.Notify.show('Duration: ' + duration + ' ms.', null, duration);
     }
 });
 ```
@@ -130,10 +130,10 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     config: function() {
-        this.notify = new RGUI.Notify({data: {single: true} });
+        this.notify = new NEKUI.Notify({data: {single: true} });
     },
     number: 1,
     show: function(state) {

@@ -11,7 +11,7 @@ title: 确认提示
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template
 });
 ```
@@ -27,7 +27,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     onok: function() {
         console.log(123);
@@ -46,7 +46,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     config: function() {
         this.data.testTemplate = '<form.item ref="validation" title="备注" required row><ui.textarea required showTip=false value={remark} height=50 /></form.item>';
@@ -86,7 +86,7 @@ var component = new RGUI.Component({
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template
 });
 ```

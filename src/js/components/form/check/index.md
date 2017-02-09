@@ -34,7 +34,7 @@ title: 复选框
 ```
 
 ```javascript
-var component = new RGUI.Component({
+var component = new NEKUI.Component({
     template: template,
     data: {
         test: null
