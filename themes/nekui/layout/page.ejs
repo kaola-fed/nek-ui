@@ -7,7 +7,7 @@
     </ul>
   </div>
 <% } %>
-<div class="content">
+<div class="content <%- page.type ? page.type + ' with-sidebar' : '' %>">
     <%- page.content %>
     <div class="guide-links">
       <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>

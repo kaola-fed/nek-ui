@@ -342,7 +342,6 @@ pre {
     font-size: 12px;
     background: #fafafa;
     color: #333;
-    border: 1px solid #eee;
     $border-radius: $border-radius-base;
 
     code {}
