@@ -80,7 +80,7 @@ gulp.task('gen-mcss', function(cb) {
 
 gulp.task('gen-doc', function(cb) {
   var hexo = new Hexo(process.cwd(), {
-    debug: argv.debug
+    dev: argv.dev
   });
   doc(function() {
     hexo.init().then(function() {

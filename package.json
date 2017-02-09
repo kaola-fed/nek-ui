@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "build": "gulp",
-    "dev": "gulp watch --debug"
+    "dev": "gulp watch --dev"
   },
   "dependencies": {
     "bowser": "^1.5.0",
