@@ -4,6 +4,7 @@ title: 选项卡
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -14,9 +15,11 @@ title: 选项卡
     <tab title="Tab4">Content4</tab>
 </tabs>
 ```
+<!-- demo_end -->
 
 ## 禁用某一项，禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -39,9 +42,11 @@ title: 选项卡
     </div>
 </div>
 ```
+<!-- demo_end -->
 
 ## 居中
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -52,9 +57,11 @@ title: 选项卡
     <tab title="Tab4">Content4</tab>
 </tabs>
 ```
+<!-- demo_end -->
 
 ## 垂直居左
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -65,9 +72,11 @@ title: 选项卡
     <tab title="Tab4">Content4</tab>
 </tabs>
 ```
+<!-- demo_end -->
 
 ## 垂直居右
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -78,9 +87,11 @@ title: 选项卡
     <tab title="Tab4">Content4</tab>
 </tabs>
 ```
+<!-- demo_end -->
 
 ## 标题模板自定义
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -99,11 +110,13 @@ var component = new NEKUI.Component({
 {item.data.title} {#if item.data.mark}<span class="u-text u-text-success"><i class="u-icon u-icon-check-circle"></i></span>{/if}`
 });
 ```
+<!-- demo_end -->
 
 ## 事件
 
 请打开浏览器的控制台查看结果。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -128,3 +141,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

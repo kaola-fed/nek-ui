@@ -6,16 +6,19 @@ title: 文本输入
 
 大部分属性的用法与`<textarea>`一致。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <label>备注：<ui.textarea placeholder="请输入备注" /></label>
 ```
+<!-- demo_end -->
 
 ## 表单项
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -25,9 +28,11 @@ title: 文本输入
     </form.item>
 </ui.form>
 ```
+<!-- demo_end -->
 
 ## 验证
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -45,3 +50,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

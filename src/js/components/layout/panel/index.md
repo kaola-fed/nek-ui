@@ -4,6 +4,7 @@ title: 面板
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -20,9 +21,11 @@ title: 面板
     </panel>
 </div>
 ```
+<!-- demo_end -->
 
 ## 带操作的完整panel
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -54,3 +57,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

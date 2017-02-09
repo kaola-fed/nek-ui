@@ -6,16 +6,19 @@ title: 输入框
 
 大部分属性的用法与`<input>`一致。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
  <ui.input type="password" maxlength=6 placeholder="请输入密码" autofocus />
 ```
+<!-- demo_end -->
 
 ## 表单项
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -28,17 +31,21 @@ title: 输入框
     </form.item>
 </ui.form>
 ```
+<!-- demo_end -->
 
 ## 单位
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <label>速度：<ui.input width="smw" value="340" unit="m/s" /></label>
 ```
+<!-- demo_end -->
 
 ## 搜索(打开console,查看输出)
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -53,9 +60,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## type=int/float, 固定输入小数位
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -70,9 +79,11 @@ var component = new NEKUI.Component({
     </div>
 </div>
 ```
+<!-- demo_end -->
 
 ## 验证
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -90,3 +101,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

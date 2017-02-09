@@ -4,6 +4,7 @@ title: 折叠面板
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -14,9 +15,11 @@ title: 折叠面板
     <panel title="Panel4">Content4</panel>
 </collapse>
 ```
+<!-- demo_end -->
 
 ## 每次只展开一个
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -27,6 +30,7 @@ title: 折叠面板
     <panel title="Panel4">Content4</panel>
 </collapse>
 ```
+<!-- demo_end -->
 
 ## 禁用
 

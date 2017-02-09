@@ -702,6 +702,7 @@ is_beta: true
 
 ## 旋转和翻转
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```html
@@ -714,9 +715,11 @@ is_beta: true
 <i class="u-icon u-icon-shield u-icon-flip-vertical"></i>
 </p>
 ```
+<!-- demo_end -->
 
 ## 重叠
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```html
@@ -739,3 +742,4 @@ is_beta: true
 </span>
 </p>
 ```
+<!-- demo_end -->

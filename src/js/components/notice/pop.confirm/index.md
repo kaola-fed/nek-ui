@@ -4,6 +4,7 @@ title: 确认提示
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -15,9 +16,11 @@ var component = new NEKUI.Component({
     template: template
 });
 ```
+<!-- demo_end -->
 
 ## 事件(打开console, 查看输出)
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -34,9 +37,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 自定义模板(打开console, 查看输出)
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -57,9 +62,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 位置
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -90,3 +97,4 @@ var component = new NEKUI.Component({
     template: template
 });
 ```
+<!-- demo_end -->

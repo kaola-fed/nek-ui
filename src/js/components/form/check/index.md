@@ -4,16 +4,19 @@ title: 复选框
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <check name="多选按钮" />
 ```
+<!-- demo_end -->
 
 ## 表单项
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -24,9 +27,11 @@ title: 复选框
     </form.item>
 </ui.form>
 ```
+<!-- demo_end -->
 
 ## 半选状态
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -41,11 +46,14 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <check name="多选按钮" disabled />
 ```
+<!-- demo_end -->

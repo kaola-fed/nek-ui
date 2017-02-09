@@ -4,6 +4,7 @@ title: 多级选择
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -46,11 +47,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 表单项
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -97,9 +100,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 禁用某一项，禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -143,9 +148,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 设置默认项
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -188,6 +195,7 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 远程数据
 
@@ -195,6 +203,7 @@ var component = new NEKUI.Component({
 
 ## 数据绑定
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -248,11 +257,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 事件
 
 请打开浏览器的控制台查看结果。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -297,11 +308,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 行政区（部分）示例
 
 该示例可以进行省市区三级的选择，并且处理了直辖市少一级的问题。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -369,3 +382,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

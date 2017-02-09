@@ -8,6 +8,7 @@ title: 模态框
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -27,9 +28,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## Alert
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -44,9 +47,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## Confirm
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -61,3 +66,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

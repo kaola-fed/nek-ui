@@ -4,6 +4,7 @@ title: 按钮
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -14,9 +15,11 @@ title: 按钮
  <ui.button type="warning" title="warn" />
  <ui.button type="error" title="error" />
 ```
+<!-- demo_end -->
 
 ## 常用的button类型
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -46,9 +49,11 @@ title: 按钮
     <ui.button action="link" title="链接" link="http://www.baidu.com" />
 </div>
 ```
+<!-- demo_end -->
 
 ## 圆角的图标按钮
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -60,8 +65,11 @@ title: 按钮
     <ui.button action="update" shape="circle" size="xl" />
 </div>
 ```
+<!-- demo_end -->
+
 ## 图标按钮
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -73,9 +81,11 @@ title: 按钮
     <ui.button action="update" shape="icon" size="xl" />
 </div>
 ```
+<!-- demo_end -->
 
 ## 加载中的按钮
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -83,9 +93,11 @@ title: 按钮
     <ui.button action="update" loading />
 </div>
 ```
+<!-- demo_end -->
 
 ## buttonGroup
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -96,3 +108,4 @@ title: 按钮
     </div>
 </div>
 ```
+<!-- demo_end -->

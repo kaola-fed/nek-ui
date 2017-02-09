@@ -4,6 +4,7 @@ title: 文字提示
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -15,9 +16,11 @@ var component = new NEKUI.Component({
     template: template
 });
 ```
+<!-- demo_end -->
 
 ## 位置
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -48,3 +51,4 @@ var component = new NEKUI.Component({
     template: template
 });
 ```
+<!-- demo_end -->

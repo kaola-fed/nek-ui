@@ -4,6 +4,7 @@ title: 步骤
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -34,11 +35,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 迷你版
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -69,3 +72,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

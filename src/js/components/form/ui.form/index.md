@@ -4,6 +4,7 @@ title: 表单
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -23,9 +24,11 @@ var component = new NEKUI.Component({
     data: {}
 });
 ```
+<!-- demo_end -->
 
 ## 基本形式 垂直布局
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -44,10 +47,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {}
 });
-``` 
+```
+<!-- demo_end --> 
 
 ## 获取select数据接口
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -71,3 +76,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

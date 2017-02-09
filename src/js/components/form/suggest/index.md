@@ -4,6 +4,7 @@ title: 提示选择
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -28,9 +29,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 获取选项的id
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -55,9 +58,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 禁用某一项，禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -85,9 +90,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## Placeholder
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -112,11 +119,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 开始提示长度
 
 当输入长度>=`startLength`属性后开始提示。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -141,9 +150,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 匹配方式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -178,11 +189,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 严格模式
 
 当为严格模式时，`value`属性必须在source中选择，否则为空。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -208,11 +221,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 远程数据
 
 支持远程过滤。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -235,3 +250,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

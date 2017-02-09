@@ -6,6 +6,7 @@ title: 通知
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -20,9 +21,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 状态扩展
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -40,9 +43,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 位置扩展
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -73,11 +78,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 嵌入文档流
 
 上面的模式通知都是以`fixed`的形式固定在浏览器中，如果要将通知嵌入到文档流，先将`notify`注入到需要的位置，同时设置`notify`的`position="static"`。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -93,11 +100,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 消息停留时间
 
 可以通过设置`notify`的`duration`参数设置所有消息的停留时间，也可以在`show`的时候单独设置该条消息的停留时间，单位为毫秒。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -115,11 +124,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 始终显示一条
 
 将`single`设置为`true`，可以让`notify`始终只显示一条消息。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -142,3 +153,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

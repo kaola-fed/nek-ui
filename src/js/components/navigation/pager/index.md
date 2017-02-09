@@ -4,14 +4,17 @@ title: 分页
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <pager current=6 total=11 />
 ```
+<!-- demo_end -->
 
 ## 位置
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -19,19 +22,24 @@ title: 分页
 <pager current=6 total=11 position="center" />
 <pager current=6 total=11 position="right" />
 ```
+<!-- demo_end -->
 
 ## 显示数目
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <pager current=6 total=11 middle=3 side=1 />
 ```
+<!-- demo_end -->
 
 ## 禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <pager current=6 total=11 disabled />
 ```
+<!-- demo_end -->

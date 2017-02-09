@@ -4,6 +4,7 @@ title: 单选组
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -25,11 +26,13 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 表单项
 
 在表单中使用
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -55,9 +58,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -79,9 +84,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 远程数据
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -104,9 +111,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 多行
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -128,3 +137,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

@@ -4,6 +4,7 @@ title: 加载中
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -21,9 +22,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 嵌入文档流
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -43,9 +46,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 自定义
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -66,3 +71,4 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->

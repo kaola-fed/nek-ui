@@ -4,6 +4,7 @@ title: 日期选择
 
 ## 基本形式
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -16,9 +17,11 @@ title: 日期选择
     </form.item>
 </ui.form>
 ```
+<!-- demo_end -->
 
 ## 日期时间选择
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -43,17 +46,21 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 禁用组件
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <date.picker disabled />
 ```
+<!-- demo_end -->
 
 ## 日期范围
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -72,9 +79,11 @@ var component = new NEKUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ## 数据绑定
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -84,11 +93,13 @@ var component = new NEKUI.Component({
 </div>
 <p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
 ```
+<!-- demo_end -->
 
 ## 事件
 
 请打开浏览器的控制台查看结果。
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -97,3 +108,4 @@ var component = new NEKUI.Component({
     on-select={console.log('on-select:', '$event.date:', $event.date)}
     on-change={console.log('on-change:', '$event.date:', $event.date)} />
 ```
+<!-- demo_end -->
