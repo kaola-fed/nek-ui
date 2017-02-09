@@ -19,6 +19,7 @@ var doc = require('./src/js/components/doc');
 var themes = require('./src/mcss/themes');
 
 var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
 
 gulp.task('dist-clean', function(cb) {
   rimraf('{dist,public}', function() {
@@ -102,6 +103,7 @@ gulp.task('server', ['default'], function() {
     reloadDelay: 1000,
     port: 8089
   });
+  gulp.watch("public/*").on('change', reload);
 });
 
 gulp.task('watch', ['server'], function() {
