@@ -33,6 +33,12 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
  - update version
  - `npm publish`
 
+### Reference
+
+ - [Regular UI](https://regular-ui.github.io/) - forked from
+ - [Vue](https://cn.vuejs.org/) - docs style
+ - [Ant Design](https://ant.design/) - ideas
+
 ### LICENSE
 MIT
 
