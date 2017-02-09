@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,24 +352,150 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"primary"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">title</span>=<span class="string">"default"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">title</span>=<span class="string">"info"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">title</span>=<span class="string">"success"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">title</span>=<span class="string">"warn"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">title</span>=<span class="string">"error"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="常用的button类型"><a href="#常用的button类型" class="headerlink" title="常用的button类型"></a>常用的button类型</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="常用的button类型"><a href="#常用的button类型" class="headerlink" title="常用的button类型"></a>常用的button类型</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"view"</span> <span class="attr">title</span>=<span class="string">"查看"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"undo"</span> <span class="attr">title</span>=<span class="string">"撤销"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"cancel"</span> <span class="attr">title</span>=<span class="string">"取消"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"remove"</span> <span class="attr">title</span>=<span class="string">"删除"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">title</span>=<span class="string">"更新"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"submit"</span> <span class="attr">title</span>=<span class="string">"提交"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"save"</span> <span class="attr">title</span>=<span class="string">"保存"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"copy"</span> <span class="attr">title</span>=<span class="string">"复制"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"pass"</span> <span class="attr">title</span>=<span class="string">"通过"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"reject"</span> <span class="attr">title</span>=<span class="string">"驳回"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"backward"</span> <span class="attr">title</span>=<span class="string">"返回"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"download"</span> <span class="attr">title</span>=<span class="string">"下载"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"upload"</span> <span class="attr">title</span>=<span class="string">"上传"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"search"</span> <span class="attr">title</span>=<span class="string">"查询"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"edit"</span> <span class="attr">title</span>=<span class="string">"编辑"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"add"</span> <span class="attr">title</span>=<span class="string">"添加"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"link"</span> <span class="attr">title</span>=<span class="string">"链接"</span> <span class="attr">link</span>=<span class="string">"http://www.baidu.com"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="圆角的图标按钮"><a href="#圆角的图标按钮" class="headerlink" title="圆角的图标按钮"></a>圆角的图标按钮</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="圆角的图标按钮"><a href="#圆角的图标按钮" class="headerlink" title="圆角的图标按钮"></a>圆角的图标按钮</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">size</span>=<span class="string">"xs"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">size</span>=<span class="string">"sm"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"circle"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">size</span>=<span class="string">"lg"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">size</span>=<span class="string">"xl"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="图标按钮"><a href="#图标按钮" class="headerlink" title="图标按钮"></a>图标按钮</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="图标按钮"><a href="#图标按钮" class="headerlink" title="图标按钮"></a>图标按钮</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">shape</span>=<span class="string">"icon"</span> <span class="attr">size</span>=<span class="string">"xs"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">shape</span>=<span class="string">"icon"</span> <span class="attr">size</span>=<span class="string">"sm"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">shape</span>=<span class="string">"icon"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"icon"</span> <span class="attr">size</span>=<span class="string">"lg"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">shape</span>=<span class="string">"icon"</span> <span class="attr">size</span>=<span class="string">"xl"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="加载中的按钮"><a href="#加载中的按钮" class="headerlink" title="加载中的按钮"></a>加载中的按钮</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="加载中的按钮"><a href="#加载中的按钮" class="headerlink" title="加载中的按钮"></a>加载中的按钮</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"update"</span> <span class="attr">loading</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="buttonGroup"><a href="#buttonGroup" class="headerlink" title="buttonGroup"></a>buttonGroup</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="buttonGroup"><a href="#buttonGroup" class="headerlink" title="buttonGroup"></a>buttonGroup</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">g-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-btngroup u-btngroup-horizontal"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"view"</span> /&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">action</span>=<span class="string">"edit"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+ <ui.button type="primary" title="primary" />
+ <ui.button type="default" title="default" />
+ <ui.button type="info" title="info" />
+ <ui.button type="success" title="success" />
+ <ui.button type="warning" title="warn" />
+ <ui.button type="error" title="error" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class=g-row>
+    <ui.button action="view" title="查看" />
+    <ui.button action="undo" title="撤销" />
+    <ui.button action="cancel" title="取消" />
+    <ui.button action="remove" title="删除" />
+    <ui.button action="update" title="更新" />
+</div>
+<div class=g-row>
+    <ui.button action="submit" title="提交" />
+    <ui.button action="save" title="保存" />
+    <ui.button action="copy" title="复制" />
+    <ui.button action="pass" title="通过" />
+    <ui.button action="reject" title="驳回" />
+</div>
+<div class=g-row>
+    <ui.button action="backward" title="返回" />
+    <ui.button action="download" title="下载" />
+    <ui.button action="upload" title="上传" />
+    <ui.button action="search" title="查询" />
+    <ui.button action="edit" title="编辑" />
+</div>
+<div class=g-row>
+    <ui.button action="add" title="添加" />
+    <ui.button action="link" title="链接" link="http://www.baidu.com" />
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class=g-row>
+    <ui.button action="update" shape="circle" size="xs" />
+    <ui.button action="update" shape="circle" size="sm" />
+    <ui.button action="update" shape="circle" />
+    <ui.button action="update" shape="circle" size="lg" />
+    <ui.button action="update" shape="circle" size="xl" />
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class=g-row>
+    <ui.button action="update" type="primary" shape="icon" size="xs" />
+    <ui.button action="update" type="info" shape="icon" size="sm" />
+    <ui.button action="update" type="error" shape="icon" />
+    <ui.button action="update" shape="icon" size="lg" />
+    <ui.button action="update" shape="icon" size="xl" />
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class=g-row>
+    <ui.button action="update" loading />
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class=g-row>
+    <div class="u-btngroup u-btngroup-horizontal">
+       <ui.button action="view" />
+       <ui.button action="edit" />
+    </div>
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
     <div class="guide-links">
       
         <span>← <a href="/components/form_tree.select_.html">树形选择</a></span>
@@ -390,11 +518,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

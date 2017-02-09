@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,31 +352,168 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <div class="u-message u-message-warning"><br>    <i class="message_icon u-icon u-icon-warning-circle"></i> 注意：在IE中实现上传功能时，需要将响应头的<code>Content-Type</code>设置为<code>text/plain</code>或<code>text/html</code>，而不能是<code>application/json</code>，否则IE会提示用户下载返回的数据。<br></div>
 
-<h2 id="修改标题"><a href="#修改标题" class="headerlink" title="修改标题"></a>修改标题</h2><div class="m-example"></div>
+<h2 id="修改标题"><a href="#修改标题" class="headerlink" title="修改标题"></a>修改标题</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">title</span>=<span class="string">"上传文件"</span> <span class="attr">url</span>=<span class="string">"/upload"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="按钮自定义"><a href="#按钮自定义" class="headerlink" title="按钮自定义"></a>按钮自定义</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="按钮自定义"><a href="#按钮自定义" class="headerlink" title="按钮自定义"></a>按钮自定义</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span> <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span>&gt;</span>上传 <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"u-icon u-icon-upload"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">uploader</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">extensions</span>=<span class="string">"jpg,gif,png"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">maxSize</span>=<span class="string">"10kB"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader url="/upload"
+    on-success={this._onSuccess($event)}
+    on-error={this._onError($event)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    _onSuccess: function($event) {
+        NEKUI.Notify.success($event.data);
+    },
+    _onError: function($event) {
+        NEKUI.Notify.error($event.message);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader title="上传文件" url="/upload"
+    on-success={this._onSuccess($event)}
+    on-error={this._onError($event)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    _onSuccess: function($event) {
+        NEKUI.Notify.success($event.data);
+    },
+    _onError: function($event) {
+        NEKUI.Notify.error($event.message);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader url="/upload" on-success={this._onSuccess($event)} on-error={this._onError($event)}>
+    <a class="u-btn u-btn-primary">上传 <i class="u-icon u-icon-upload"></i></a>
+</uploader>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    _onSuccess: function($event) {
+        NEKUI.Notify.success($event.data);
+    },
+    _onError: function($event) {
+        NEKUI.Notify.error($event.message);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader url="/upload" disabled />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader url="/upload" extensions="jpg,gif,png"
+    on-success={this._onSuccess($event)}
+    on-error={this._onError($event)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    _onSuccess: function($event) {
+        NEKUI.Notify.success($event.data);
+    },
+    _onError: function($event) {
+        NEKUI.Notify.error($event.message);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<uploader url="/upload" maxSize="10kB"
+    on-success={this._onSuccess($event)}
+    on-error={this._onError($event)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    _onSuccess: function($event) {
+        NEKUI.Notify.success($event.data);
+    },
+    _onError: function($event) {
+        NEKUI.Notify.error($event.message);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -396,11 +535,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

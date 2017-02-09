@@ -298,6 +298,11 @@ a.button.white {
   border-right: 4px solid transparent;
   border-top: 5px solid #ccc;
 }
+.m-example {
+  border: 1px dashed #eee;
+  margin: 5px;
+  padding: 5px;
+}
 #header {
   background-color: #fff;
   height: $heading-inner-height;

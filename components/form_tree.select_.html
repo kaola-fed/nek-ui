@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,22 +352,149 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tree.select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tree.select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tree.select</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/tree.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="分级加载"><a href="#分级加载" class="headerlink" title="分级加载"></a>分级加载</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="分级加载"><a href="#分级加载" class="headerlink" title="分级加载"></a>分级加载</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tree.select</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> <span class="attr">hierarchical</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/tree2.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<tree.select source={source} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '节点1', children: [
+                {name: '节点1.1'},
+                {name: '节点1.2', children: [
+                    {name: '节点1.2.1'},
+                    {name: '节点1.2.2'}
+                ]},
+                {name: '节点1.3'},
+                {name: '节点1.4'},
+            ]},
+            {name: '节点2'},
+            {name: '节点3', children: [
+                {name: '节点3.1'},
+                {name: '节点3.2'}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<tree.select source={source} disabled />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '节点1', children: [
+                {name: '节点1.1'},
+                {name: '节点1.2', children: [
+                    {name: '节点1.2.1'},
+                    {name: '节点1.2.2'}
+                ]},
+                {name: '节点1.3'},
+                {name: '节点1.4'},
+            ]},
+            {name: '节点2'},
+            {name: '节点3', children: [
+                {name: '节点3.1'},
+                {name: '节点3.2'}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<tree.select service={@(this.service)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    service: {
+        getList: function(params, success) {
+            NEKUI.ajax.request({
+                url: '../data/tree.json',
+                method: 'get',
+                type: 'json',
+                data: params,
+                success: success
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<tree.select service={@(this.service)} hierarchical />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    service: {
+        getList: function(params, success) {
+            NEKUI.ajax.request({
+                url: '../data/tree2.json',
+                method: 'get',
+                type: 'json',
+                data: params,
+                success: success
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -389,11 +518,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,18 +352,73 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"left"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"center"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"right"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">middle</span>=<span class="string">3</span> <span class="attr">side</span>=<span class="string">1</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=6 total=11 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=6 total=11 position="left" />
+<pager current=6 total=11 position="center" />
+<pager current=6 total=11 position="right" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=6 total=11 middle=3 side=1 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=6 total=11 disabled />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -385,11 +442,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

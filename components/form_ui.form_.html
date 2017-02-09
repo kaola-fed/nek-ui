@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,15 +352,99 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="基本形式-垂直布局"><a href="#基本形式-垂直布局" class="headerlink" title="基本形式 垂直布局"></a>基本形式 垂直布局</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="基本形式-垂直布局"><a href="#基本形式-垂直布局" class="headerlink" title="基本形式 垂直布局"></a>基本形式 垂直布局</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"></div><div class="line">## 获取select数据接口</div><div class="line"></div><div class="line">&lt;div class="m-example"&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">`<span class="string">``</span>xml</div><div class="line">&lt;ui.form service=&#123;api.selector&#125; ref=<span class="string">"formgroup"</span>&gt;</div><div class="line">    &lt;form.item title="标题1" cols=12 sourceKey="importTypeList"&gt;</div><div class="line">        &lt;ui.select /&gt;</div><div class="line">    &lt;/form.item&gt;</div><div class="line">    &lt;form.item title="标题2" cols=12&gt;</div><div class="line">        &lt;ui.input /&gt;</div><div class="line">    &lt;/form.item&gt;</div><div class="line">&lt;/ui.form&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end --> 
+<h2 id="获取select数据接口"><a href="#获取select数据接口" class="headerlink" title="获取select数据接口"></a>获取select数据接口</h2><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">service</span>=<span class="string">&#123;api.selector&#125;</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">sourceKey</span>=<span class="string">"importTypeList"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">api</span>: &#123;</div><div class="line">            <span class="attr">selector</span>: <span class="string">'../../data/selector.json'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form ref="formgroup">
+    <form.item title="标题1" cols=12>
+        <ui.select />
+    </form.item>
+    <form.item title="标题2" cols=12>
+        <ui.input />
+    </form.item>
+</ui.form>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {}
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form ref="formgroup">
+    <form.item title="标题1" cols=12 column="column">
+        <ui.select />
+    </form.item>
+    <form.item title="标题2" cols=12 column="column">
+        <ui.input />
+    </form.item>
+</ui.form>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {}
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form service={api.selector} ref="formgroup">
+    <form.item title="标题1" cols=12 sourceKey="importTypeList">
+        <ui.select />
+    </form.item>
+    <form.item title="标题2" cols=12>
+        <ui.input />
+    </form.item>
+</ui.form>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        api: {
+            selector: '../../data/selector.json'
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -382,11 +468,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

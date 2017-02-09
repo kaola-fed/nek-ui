@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,21 +352,93 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"36"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="颜色扩展"><a href="#颜色扩展" class="headerlink" title="颜色扩展"></a>颜色扩展</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="颜色扩展"><a href="#颜色扩展" class="headerlink" title="颜色扩展"></a>颜色扩展</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"25"</span> <span class="attr">state</span>=<span class="string">"info"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"50"</span> <span class="attr">state</span>=<span class="string">"success"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"75"</span> <span class="attr">state</span>=<span class="string">"warning"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"100"</span> <span class="attr">state</span>=<span class="string">"error"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="尺寸扩展"><a href="#尺寸扩展" class="headerlink" title="尺寸扩展"></a>尺寸扩展</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="尺寸扩展"><a href="#尺寸扩展" class="headerlink" title="尺寸扩展"></a>尺寸扩展</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"20"</span> <span class="attr">size</span>=<span class="string">"xs"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"40"</span> <span class="attr">size</span>=<span class="string">"sm"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"60"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"80"</span> <span class="attr">size</span>=<span class="string">"lg"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"100"</span> <span class="attr">size</span>=<span class="string">"xl"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="条纹"><a href="#条纹" class="headerlink" title="条纹"></a>条纹</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="条纹"><a href="#条纹" class="headerlink" title="条纹"></a>条纹</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"36"</span> <span class="attr">striped</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="条纹动画"><a href="#条纹动画" class="headerlink" title="条纹动画"></a>条纹动画</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="条纹动画"><a href="#条纹动画" class="headerlink" title="条纹动画"></a>条纹动画</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">progress</span> <span class="attr">percent</span>=<span class="string">"72"</span> <span class="attr">state</span>=<span class="string">"error"</span> <span class="attr">striped</span> <span class="attr">active</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<progress percent="36" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<progress percent="25" state="info" />
+<progress percent="50" state="success" />
+<progress percent="75" state="warning" />
+<progress percent="100" state="error" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<progress percent="20" size="xs" />
+<progress percent="40" size="sm" />
+<progress percent="60" />
+<progress percent="80" size="lg" />
+<progress percent="100" size="xl" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<progress percent="36" striped />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<progress percent="72" state="error" striped active />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -388,11 +462,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

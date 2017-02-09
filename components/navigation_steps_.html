@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,15 +352,91 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="迷你版"><a href="#迷你版" class="headerlink" title="迷你版"></a>迷你版</h2><p>在表单中使用</p>
+<!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">size</span>=<span class="string">"sm"</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<steps current=2 steps={steps} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<steps size="sm" current=2 steps={steps} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
     <div class="guide-links">
       
         <span>← <a href="/components/navigation_pager_.html">分页</a></span>
@@ -381,11 +459,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

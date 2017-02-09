@@ -22,6 +22,8 @@
         <script>window.PAGE_TYPE = "components"</script>
     </head>
     <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -350,22 +352,90 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><div class="m-example"></div>
+    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">"15:45"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">minTime</span>=<span class="string">"12:00"</span> <span class="attr">maxTime</span>=<span class="string">"14:45"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><div class="m-example"></div>
+<!-- demo_end -->
+<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><!-- demo_start -->
+<div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">&#123;time&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">&#123;time&#125;</span> <span class="attr">minTime</span>=<span class="string">"18:00"</span> <span class="attr">maxTime</span>=<span class="string">"19:30"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的时间为：&#123;time&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>请打开浏览器的控制台查看结果。</p>
+<!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.time:</span>', $<span class="attr">event.time</span>)&#125; /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<time.picker />
+<time.picker time="15:45" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<time.picker disabled />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<time.picker minTime="12:00" maxTime="14:45" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<time.picker time={time} />
+<time.picker time={time} minTime="18:00" maxTime="19:30" />
+<p>当前选择的时间为：{time}</p>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<time.picker on-change={console.log('on-change:', '$event.time:', $event.time)} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
@@ -389,11 +459,6 @@
 
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-
-        <!--  nek-ui -->
-        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
-        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
-
         <!-- ga -->
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
