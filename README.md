@@ -3,18 +3,39 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-[使用文档](https://nek-ui.kaolafed.com)
+[=> Documents <=](https://nek-ui.kaolafed.com)
+
+### Usage
+
+ - For browser:
+ ```
+ //unpkg.com/nek-ui/dist/css/nek-ui.default.min.css
+ //unpkg.com/nek-ui/dist/vendor/regular.min.js
+ //unpkg.com/nek-ui/dist/js/nek-ui.min.js
+ ```
+ 
+ - For Node:
+ ```
+ npm i nek-ui -S
+ 
+ const NEKUI = require('nek-ui');
+ 
+ ```
 
 ### Development
 
  - `npm i`
  - `npm run dev`
 
-### Publish
+### Publish (Permission needed)
 
  - `npm run build`
  - update version
  - `npm publish`
+
+### LICENSE
+MIT
+
 
  [nek]: https://github.com/kaola-fed/NEK
  [regularjs]: https://github.com/regularjs/regular
