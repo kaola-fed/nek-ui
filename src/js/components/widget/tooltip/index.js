@@ -17,9 +17,9 @@ var trigger = require('../../layout/alignment/trigger');
 /**
  * @class Tooltip
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.tip                 => 文字提示
- * @param {string='top'}            options.data.placement           => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+ * @param {object}          [options.data]                  = 绑定属性
+ * @param {string}          [options.data.tip]              => 文字提示
+ * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  */
 var Tooltip = Component.extend({
     name: 'tooltip',

@@ -13,11 +13,11 @@ var _ = require('../../../ui-base/_');
 
 /**
  * @class Loading
- * @param {object}                  options.data                     =  绑定属性
- * @param {boolean=false}           options.data.static              => 是否嵌入文档流
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                    = 绑定属性
+ * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
+ * @param {boolean}       [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}       [options.data.visible=true]       => 是否显示
+ * @param {string}        [options.data.class]              => 补充class
  */
 var Loading = Component.extend({
     name: 'loading',

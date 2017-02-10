@@ -14,10 +14,10 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Tabs
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {object=null}             options.data.steps              <=> 类似于ui.select的source
- * @param {string=null}             options.data.current            <=> 当前状态
- * @param {boolean=false}           options.data.size               =>  当前尺寸
+ * @param {object}      [options.data]                = 绑定属性
+ * @param {object}      [options.data.steps=null]     <=> 类似于ui.select的source
+ * @param {string}      [options.data.current=null]   <=> 当前状态
+ * @param {boolean}     [options.data.size=false]     =>  当前尺寸
  */
 var Steps = Component.extend({
     name: 'steps',

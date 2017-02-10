@@ -14,15 +14,15 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Progress
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {number=36}               options.data.percent             => 百分比
- * @param {string|boolean=true}     options.data.text                => 在进度条中是否显示百分比。值为`string`时显示该段文字。
- * @param {string=null}             options.data.size                => 进度条的尺寸
- * @param {string=null}             options.data.state               => 进度条的状态
- * @param {boolean=false}           options.data.striped             => 是否显示条纹
- * @param {boolean=false}           options.data.active              => 进度条是否为激活状态，当`striped`为`true`时，进度条显示动画
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}              [options.data]                    = 绑定属性
+ * @param {number}              [options.data.percent=36]         => 百分比
+ * @param {string|boolean}      [options.data.text=true]          => 在进度条中是否显示百分比。值为`string`时显示该段文字。
+ * @param {string}              [options.data.size=null]          => 进度条的尺寸
+ * @param {string}              [options.data.state=null]         => 进度条的状态
+ * @param {boolean}             [options.data.striped=false]      => 是否显示条纹
+ * @param {boolean}             [options.data.active=false]       => 进度条是否为激活状态，当`striped`为`true`时，进度条显示动画
+ * @param {boolean}             [options.data.visible=true]       => 是否显示
+ * @param {string}              [options.data.class]              => 补充class
  */
 var Progress = Component.extend({
     name: 'progress',

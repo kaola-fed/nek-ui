@@ -9,10 +9,10 @@ var template = require('./index.html');
 /**
  * @class UIForm
  * @extend Validation
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.service             => 全站异步获取source的接口地址
- * @param {string=''}               options.data.class               => 扩展样式
- * @param {string='data'}           options.data.sourcePath          => 获取到select数据后,读取json数据的路径
+ * @param {object}      [options.data]                    = 绑定属性
+ * @param {string}      [options.data.service]            => 全站异步获取source的接口地址
+ * @param {string}      [options.data.class]              => 扩展样式
+ * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
  */
 var UIForm = Validation.extend({
     name: 'ui.form',

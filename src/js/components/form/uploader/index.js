@@ -20,17 +20,17 @@ var SIZE_UNITS = {
 /**
  * @class Uploader
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.title               => 按钮文字
- * @param {string=''}               options.data.url                 => 上传路径
- * @param {string='json'}           options.data.dataType            => 数据类型。可以是：`text`、`xml`、`json`、`script`。
- * @param {object}                  options.data.data                => 附加数据
- * @param {string='file'}           options.data.name                => 上传文件的name
- * @param {string|string[]=''}      options.data.extensions          => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
- * @param {string|number=''}        options.data.maxSize             => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}            [options.data]                    = 绑定属性
+ * @param {string}            [options.data.title]              => 按钮文字
+ * @param {string}            [options.data.url]                => 上传路径
+ * @param {string}            [options.data.dataType=json]      => 数据类型。可以是：`text`、`xml`、`json`、`script`。
+ * @param {object}            [options.data.data]               => 附加数据
+ * @param {string}            [options.data.name=file]          => 上传文件的name
+ * @param {string|string[]}   [options.data.extensions]         => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
+ * @param {string|number}     [options.data.maxSize]            => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
+ * @param {boolean}           [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}           [options.data.visible=true]       => 是否显示
+ * @param {string}            [options.data.class]              => 补充class
  */
 var Uploader = Component.extend({
     name: 'uploader',

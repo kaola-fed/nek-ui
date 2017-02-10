@@ -14,8 +14,8 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Panel
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {boolean=false}           options.data.foot                => true: 放在panel_ft的位置; false: 放在头部位置;
+ * @param {object}            [options.data]                = 绑定属性
+ * @param {boolean}           [options.data.foot=false]     => true: 放在panel_ft的位置; false: 放在头部位置;
  */
 var PanelTool = Component.extend({
   name: 'panel.tool',

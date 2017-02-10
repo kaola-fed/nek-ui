@@ -17,8 +17,8 @@ var placement = require('./placement');
 /**
  * @class Alignment
  * @extend Component
- * @param {object}                  options.data                     =  绑
- * @param {string='top'}            options.data.placement           => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+ * @param {object}            [options.data]                        = 绑定属性
+ * @param {string}            [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  */
 var Alignment = Component.extend({
   name: 'alignment',

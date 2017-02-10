@@ -9,6 +9,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const jsdoc2md = require('jsdoc-to-markdown');
 
 // 分类的顺序跟下面保持一致，每个分类下的组件顺序不作保证
 const CATES = [
@@ -19,10 +20,11 @@ const CATES = [
   { cate: 'widget', name: '其它', startOrder: 500 },
 ];
 
-const DEST = path.join(__dirname, '../../../doc/components');
+const COMPONENTS_SOURCE = path.join(__dirname, '../src/js/components');
+const COMPONENTS_DEST = path.join(__dirname, './components');
 
 const getComponents = cate => {
-  const fullPath = path.join(__dirname, cate);
+  const fullPath = path.join(COMPONENTS_SOURCE, cate);
   return fs.readdirSync(fullPath).filter(f => {
     return fs.statSync(path.join(fullPath, f)).isDirectory()
   })
@@ -61,26 +63,38 @@ const injectComponents = md => {
   return md + demosScript;
 }
 
+const injectAPI = (md, source) => {
+  const docs = jsdoc2md.renderSync({ source, 'no-cache': true })
+  return md + '\n## API\n' + docs;
+}
+
 const doc = callback => {
+  // 组件文档
   CATES.forEach(c => {
     const components = getComponents(c.cate).filter(comp => {
-      const mdPath = path.join(__dirname, c.cate, comp, 'index.md');
+      const mdPath = path.join(COMPONENTS_SOURCE, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
     });
     components.forEach((comp, i) => {
-      const compPath = path.join(__dirname, c.cate, comp);
+      const compPath = path.join(COMPONENTS_SOURCE, c.cate, comp);
       const mdPath = path.join(compPath, 'index.md');
       const jsPath = path.join(compPath, 'index.js');
 
       const appendContent = `type: components\nname: ${comp}\ncate: ${c.name}\norder: ${c.startOrder + i}\n`;
       let md = fs.readFileSync(mdPath, 'utf8');
+      // 插入文档头部信息
       md = md.replace(/(^---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
-
+      // 插入 API 文档
+      if (fs.existsSync(jsPath)) {
+        md = injectAPI(md, fs.readFileSync(jsPath, 'utf8'));
+      }
+      // 插入实例化组件的脚本
       md = injectComponents(md)
-      fs.writeFileSync(path.join(DEST, `${c.cate}_${comp}_.md`), md);
+      fs.writeFileSync(path.join(COMPONENTS_DEST, `${c.cate}_${comp}_.md`), md);
     })
-  })
+  });
+  // 其它文档
   callback && callback();
 }
 

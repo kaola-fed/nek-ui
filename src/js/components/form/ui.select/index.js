@@ -21,35 +21,33 @@ require('../check');
 /**
  * @class Select
  * @extend Dropdown
- * @param {object}                  options.data                     =  绑定属性
- * @param {object[]=[]}             options.data.source             <=> 数据源
- * @param {string}                  options.data.source[].name       => 每项的内容
- * @param {boolean=false}           options.data.source[].disabled   => 禁用此项
- * @param {string}                  options.data.source[].tip        => 禁用此项显示的提示，如果没有则不显示
- * @param {string}                  options.data.source[].placement  => 禁用此项显示提示的方向，默认下方
- * @param {boolean=false}           options.data.source[].divider    => 设置此项为分隔线
- * @param {object}                  options.data.selected           <=> 当前选择项
- * @param {string|number}           options.data.value              <=> 当前选择值
- * @param {string='id'}             options.data.key                 => 数据项的键
- * @param {string='name'}           options.data.nameKey             => 数据项的name键
- * @param {string='请选择'}          options.data.placeholder         => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
- * @param {boolean=false}           options.data.required            => 是否必填
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
- * @param {object}                  options.service                 @=> 数据服务
- *
- * @param {boolean=false}           options.data.canSearch              => 是否可搜索
- * @param {boolean=false}           options.data.isCaseSensitive        => 是否区分大小写
- * @param {boolean="无匹配项"}       options.data.noMatchText            => 搜索无结果文案
- * @param {Number=300}              options.data.delaySearch            => 异步搜索的延迟
- * @param {Number=1000}             options.data.maxShowCount           => 最大展示条数
- *
- * @param {boolean=false}           options.data.multiple               => 是否多选
- * @param {string=","}              options.data.separator              => 多选value分隔符
- * @param {boolean=true}            options.data.selectedClose          => 多选时选中非全部和请选择项时 是否关闭
- * @param {boolean=false}           options.data.canSelectAll           => 是否有全选
+ * @param {object}            [options.data]                          = 绑定属性
+ * @param {object[]}          [options.data.source=[]]                <=> 数据源
+ * @param {string}            [options.data.source[].name]            => 每项的内容
+ * @param {boolean}           [options.data.source[].disabled=false]  => 禁用此项
+ * @param {string}            [options.data.source[].tip]             => 禁用此项显示的提示，如果没有则不显示
+ * @param {string}            [options.data.source[].placement]       => 禁用此项显示提示的方向，默认下方
+ * @param {boolean}           [options.data.source[].divider=false]   => 设置此项为分隔线
+ * @param {object}            [options.data.selected]                 <=> 当前选择项
+ * @param {string|number}     [options.data.value]                    <=> 当前选择值
+ * @param {string}            [options.data.key=id]                   => 数据项的键
+ * @param {string}            [options.data.nameKey=name]             => 数据项的name键
+ * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
+ * @param {boolean}           [options.data.required=false]           => 是否必填
+ * @param {boolean}           [options.data.readonly=false]           => 是否只读
+ * @param {boolean}           [options.data.disabled=false]           => 是否禁用
+ * @param {boolean}           [options.data.visible=true]             => 是否显示
+ * @param {string}            [options.data.class]                    => 补充class
+ * @param {object}            [options.service]                       @=> 数据服务
+ * @param {boolean}           [options.data.canSearch=false]          => 是否可搜索
+ * @param {boolean}           [options.data.isCaseSensitive=false]    => 是否区分大小写
+ * @param {boolean}           [options.data.noMatchText=无匹配项]       => 搜索无结果文案
+ * @param {Number}            [options.data.delaySearch=300]          => 异步搜索的延迟
+ * @param {Number}            [options.data.maxShowCount=1000]        => 最大展示条数
+ * @param {boolean}           [options.data.multiple=false]           => 是否多选
+ * @param {string}            [options.data.separator=,]              => 多选value分隔符
+ * @param {boolean}           [options.data.selectedClose=true]       => 多选时选中非全部和请选择项时 是否关闭
+ * @param {boolean}           [options.data.canSelectAll=false]       => 是否有全选
  */
 
 var Select = Dropdown.extend({

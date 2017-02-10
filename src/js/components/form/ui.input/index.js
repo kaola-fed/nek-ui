@@ -17,24 +17,24 @@ var bowser = require('bowser');
 /**
  * @class Input
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.value              <=> 文本框的值
- * @param {string=''}               options.data.type                => 文本框的类型, 6种类型：int, float, email, url，char，password
- * @param {string=''}               options.data.placeholder         => 占位符
- * @param {string=''}               options.data.state              <=> 文本框的状态
- * @param {number}                  options.data.maxlength           => 文本框的最大长度
- * @param {string=''}               options.data.unit                => 单位
- * @param {object[]=[]}             options.data.rules               => 验证规则
- * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
- * @param {number}                  options.data.decimalDigits       => type=float时,最多输入几位小数的filter
- * @param {boolean}                 options.data.required            => 【验证规则】是否必填
- * @param {number}                  options.data.min                 => 【验证规则】type=int/float时的最小值, type=char时，最小长度
- * @param {number}                  options.data.max                 => 【验证规则】type=int/float时的最大值, type=char时，最大长度
- * @oaram {string=''}               options.data.message             => 【验证规则】验证失败时，提示的消息
+ * @param {object}          [options.data]                    = 绑定属性
+ * @param {string}          [options.data.value]              <=> 文本框的值
+ * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, email, url，char，password
+ * @param {string}          [options.data.placeholder]        => 占位符
+ * @param {string}          [options.data.state]              <=> 文本框的状态
+ * @param {number}          [options.data.maxlength]          => 文本框的最大长度
+ * @param {string}          [options.data.unit]               => 单位
+ * @param {object[]}        [options.data.rules=[]]           => 验证规则
+ * @param {boolean}         [options.data.autofocus=false]    => 是否自动获得焦点
+ * @param {boolean}         [options.data.readonly=false]     => 是否只读
+ * @param {boolean}         [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}         [options.data.visible=true]       => 是否显示
+ * @param {string}          [options.data.class]              => 补充class
+ * @param {number}          [options.data.decimalDigits]      => type=float时,最多输入几位小数的filter
+ * @param {boolean}         [options.data.required]           => 【验证规则】是否必填
+ * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
+ * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
+ * @oaram {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
  */
 var Input = Component.extend({
     name: 'ui.input',

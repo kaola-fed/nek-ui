@@ -15,7 +15,7 @@ var path = require('path');
 var Hexo = require('hexo');
 var fs = require('fs');
 var argv = require('yargs').argv;
-var doc = require('./src/js/components/doc');
+var doc = require('./doc/doc');
 var themes = require('./src/mcss/themes');
 
 var browserSync = require('browser-sync').create();

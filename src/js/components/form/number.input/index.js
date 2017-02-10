@@ -11,16 +11,16 @@ var _ = require('../../../ui-base/_');
 /**
  * @class NumberInput
  * @extend Input
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=0}                options.data.value              <=> 文本框的值
- * @param {string=''}               options.data.state              <=> 文本框的状态
- * @param {number}                  options.data.min                 => 最小值
- * @param {number}                  options.data.max                 => 最大值
- * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                  = 绑定属性
+ * @param {string}        [options.data.value=0]          <=> 文本框的值
+ * @param {string}        [options.data.state]            <=> 文本框的状态
+ * @param {number}        [options.data.min]              => 最小值
+ * @param {number}        [options.data.max]              => 最大值
+ * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
+ * @param {boolean}       [options.data.readonly=false]   => 是否只读
+ * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+ * @param {boolean}       [options.data.visible=true]     => 是否显示
+ * @param {string}        [options.data.class]            => 补充class
  */
 var NumberInput = Input.extend({
     name: 'number.input',
@@ -73,7 +73,7 @@ var NumberInput = Input.extend({
     /**
      * @method add(value) 调整数值
      * @public
-     * @param  {number=0} value 加/减的值
+     * @param  {number} [value=0] 加/减的值
      * @return {number} value 计算后的值
      */
     add: function(value) {

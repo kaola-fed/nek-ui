@@ -20,18 +20,18 @@ var Validation = require('../../../util/validation');
 /**
  * @class DatePicker
  * @extend Dropdown
- * @param {object}                  options.data                     =  绑定属性
- * @param {object=null}             options.data.date               <=> 当前选择的日期时间
- * @param {boolean=false}           options.data.showTime            => 是否显示时间选择
- * @param {string='请输入'}          options.data.placeholder         => 文本框的占位文字
- * @param {Date|string=null}        options.data.minDate             => 最小日期时间，如果为空则不限制
- * @param {Date|string=null}        options.data.maxDate             => 最大日期时间，如果为空则不限制
- * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
- * @param {boolean=false}           options.data.required            => 是否必填
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data] = 绑定属性
+ * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
+ * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
+ * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
+ * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
+ * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
+ * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
+ * @param {boolean}       [options.data.required=false]   => 是否必填
+ * @param {boolean}       [options.data.readonly=false]   => 是否只读
+ * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+ * @param {boolean}       [options.data.visible=true]     => 是否显示
+ * @param {string}        [options.data.class]            => 补充class
  */
 var DatePicker = Dropdown.extend({
     name: 'date.picker',
@@ -151,7 +151,7 @@ var DatePicker = Dropdown.extend({
     /**
      * @method select(date) 选择一个日期
      * @public
-     * @param  {Date=null} date 选择的日期
+     * @param  {Date} date 选择的日期
      * @return {void}
      */
     select: function(date, time) {

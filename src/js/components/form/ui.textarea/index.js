@@ -15,19 +15,19 @@ var bowser = require('bowser');
 /**
  * @class TextArea
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.value              <=> 文本框的值
- * @param {string=''}               options.data.placeholder         => 占位符
- * @param {string=''}               options.data.state              <=> 文本框的状态
- * @param {number}                  options.data.maxlength           => 文本框的最大长度
- * @param {object[]=[]}             options.data.rules               => 验证规则
- * @param {boolean=false}           options.data.autofocus           => 是否自动获得焦点
- * @param {number=120}              options.data.height              => 高度
- * @param {boolean=false}           options.data.required            => 是否必填
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                    = 绑定属性
+ * @param {string}        [options.data.value]              <=> 文本框的值
+ * @param {string}        [options.data.placeholder]         => 占位符
+ * @param {string}        [options.data.state]              <=> 文本框的状态
+ * @param {number}        [options.data.maxlength]          => 文本框的最大长度
+ * @param {object[]}      [options.data.rules=[]]           => 验证规则
+ * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
+ * @param {number}        [options.data.height=120]         => 高度
+ * @param {boolean}       [options.data.required=false]     => 是否必填
+ * @param {boolean}       [options.data.readonly=false]     => 是否只读
+ * @param {boolean}       [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}       [options.data.visible=true]       => 是否显示
+ * @param {string}        [options.data.class]              => 补充class
  */
 var TextArea = Component.extend({
     name: 'ui.textarea',

@@ -18,14 +18,14 @@ var MS_OF_DAY = 24*3600*1000;
 /**
  * @class Calendar
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {Date|string=TODAY}       options.data.date               <=> 当前选择的日期
- * @param {Date|string=null}        options.data.minDate             => 最小日期，如果为空则不限制
- * @param {Date|string=null}        options.data.maxDate             => 最大日期，如果为空则不限制
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                  = 绑定属性
+ * @param {Date|string}   [options.data.date]             <=> 当前选择的日期，默认当前日期
+ * @param {Date|string}   [options.data.minDate=null]     => 最小日期，如果为空则不限制
+ * @param {Date|string}   [options.data.maxDate=null]     => 最大日期，如果为空则不限制
+ * @param {boolean}       [options.data.readonly=false]   => 是否只读
+ * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+ * @param {boolean}       [options.data.visible=true]     => 是否显示
+ * @param {string}        [options.data.class]            => 补充class
  */
 var Calendar = Component.extend({
     name: 'calendar',
@@ -153,7 +153,7 @@ var Calendar = Component.extend({
     /**
      * @method addYear(year) 调整年份
      * @public
-     * @param  {number=0} year 加/减的年份
+     * @param  {number} [year=0] 加/减的年份
      * @return {Date} date 计算后的日期
      */
     addYear: function(year) {
@@ -174,7 +174,7 @@ var Calendar = Component.extend({
     /**
      * @method addMonth(month) 调整月份
      * @public
-     * @param  {number=0} month 加/减的月份
+     * @param  {number} [month=0] 加/减的月份
      * @return {Date} date 计算后的日期
      */
     addMonth: function(month) {
@@ -196,7 +196,7 @@ var Calendar = Component.extend({
     /**
      * @method select(date) 选择一个日期
      * @public
-     * @param  {Date=null} date 选择的日期
+     * @param  {Date} date 选择的日期
      * @return {void}
      */
     select: function(date) {

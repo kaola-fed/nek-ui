@@ -12,16 +12,16 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Pager
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {number=1}                options.data.current            <=> 当前页
- * @param {total=11}                options.data.total               => 总页数
- * @param {string='center'}         options.data.position            => 分页的位置，可选参数：`center`、`left`、`right`
- * @param {middle=5}                options.data.middle              => 当页数较多时，中间显示的页数
- * @param {side=2}                  options.data.side                => 当页数较多时，两端显示的页数
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                  = 绑定属性
+ * @param {number}        [options.data.current=1]        <=> 当前页
+ * @param {total}         [options.data.total=11]         => 总页数
+ * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
+ * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+ * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+ * @param {boolean}       [options.data.readonly=false]   => 是否只读
+ * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+ * @param {boolean}       [options.data.visible=true]     => 是否显示
+ * @param {string}        [options.data.class]            => 补充class
  */
 var Pager = Component.extend({
     name: 'pager',

@@ -16,12 +16,12 @@ var alignment = require('./alignment');
 /**
  * @class Trigger
  * @extend Component
- * @param {object}                  options.data                     => 绑定数据
- * @param {string='click'}          options.data.action              => [click, focus, mouseEnter]中的一个
- * @param {function}                options.data.getInstance         => 获取浮层组件的方法
- * @param {string=''}               options.data.placement           => top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
- * @param {boolean=false}           options.data.destroyOnHide       => hide时是否destroy浮层
- * @param {boolean=false}           options.data.hideWhenScroll      => 页面滚动时, 是否去除popover;
+ * @param {object}          [options.data]                        => 绑定数据
+ * @param {string}          [options.data.action=click]           => [click, focus, mouseEnter]中的一个
+ * @param {function}        [options.data.getInstance]            => 获取浮层组件的方法
+ * @param {string}          [options.data.placement]              => top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+ * @param {boolean}         [options.data.destroyOnHide=false]    => hide时是否destroy浮层
+ * @param {boolean}         [options.data.hideWhenScroll=false]   => 页面滚动时, 是否去除popover;
  */
 var Trigger = Component.extend({
   name: 'trigger',

@@ -14,10 +14,10 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Input
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {string='--'}             options.data.text               <=> 内容
- * @param {boolean=false}           options.data.circle              => 是否圆角
- * @param {string='default'}        options.data.type                => 文本样式
+ * @param {object}      [options.data]                = 绑定属性
+ * @param {string}      [options.data.text=--]        <=> 内容
+ * @param {boolean}     [options.data.circle=false]   => 是否圆角
+ * @param {string}      [options.data.type=default]   => 文本样式
  */
 var Badge = Component.extend({
     name: 'badge',

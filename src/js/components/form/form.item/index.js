@@ -10,16 +10,16 @@ var template = require('./index.html');
 /**
  * @class FormItem
  * @extend Validation
- * @param {object}                  options.data                     =  绑定属性
- * @param {string=''}               options.data.title               => label显示的文字
- * @param {number}                  options.data.cols                => 布局列数
- * @param {number=4}                options.data.labelCols           => 如果有title, label占的列数
- * @param {number}                  options.data.offset              => 布局offset
- * @param {string=''}               options.data.row                 => 垂直布局row
- * @param {boolean=false}           options.data.required            => 是否必选项
- * @param {string=''}               options.data.tip                 => 字段说明
- * @param {string=''}               options.data.class               => 样式扩展
- * @param {string=''}               options.data.sourceKey           => 异步获取下拉列表接口的索引值
+ * @param {object}        [options.data]              = 绑定属性
+ * @param {string}        [options.data.title]        => label显示的文字
+ * @param {number}        [options.data.cols]         => 布局列数
+ * @param {number}        [options.data.labelCols=4]  => 如果有title, label占的列数
+ * @param {number}        [options.data.offset]       => 布局offset
+ * @param {string}        [options.data.row]          => 垂直布局row
+ * @param {boolean}       [options.data.required=false] => 是否必选项
+ * @param {string}        [options.data.tip]          => 字段说明
+ * @param {string}        [options.data.class]        => 样式扩展
+ * @param {string}        [options.data.sourceKey]    => 异步获取下拉列表接口的索引值
  */
 var FormItem = Validation.extend({
     name: 'form.item',

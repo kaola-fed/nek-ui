@@ -14,13 +14,13 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Tabs
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {object=null}             options.data.selected           <=> 当前选择卡
- * @param {string=null}             options.data.titleTemplate      @=> 标题模板
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {object}        [options.data]                      = 绑定属性
+ * @param {object}        [options.data.selected=null]        <=> 当前选择卡
+ * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
+ * @param {boolean}       [options.data.readonly=false]       => 是否只读
+ * @param {boolean}       [options.data.disabled=false]       => 是否禁用
+ * @param {boolean}       [options.data.visible=true]         => 是否显示
+ * @param {string}        [options.data.class]                => 补充class
  */
 var Tabs = Component.extend({
     name: 'tabs',
