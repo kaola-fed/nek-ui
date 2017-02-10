@@ -83,7 +83,7 @@ gulp.task('gen-doc', function(cb) {
   var hexo = new Hexo(process.cwd(), {
     dev: argv.dev
   });
-  doc(function() {
+  doc(argv.dev, function() {
     hexo.init().then(function() {
       hexo.call('generate', {}, cb);
     });

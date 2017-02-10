@@ -9,6 +9,7 @@
 
 const fs = require('fs-extra');
 const path = require('path');
+const glob = require('glob');
 const jsdoc2md = require('jsdoc-to-markdown');
 
 // 分类的顺序跟下面保持一致，每个分类下的组件顺序不作保证
@@ -20,11 +21,12 @@ const CATES = [
   { cate: 'widget', name: '其它', startOrder: 500 },
 ];
 
-const COMPONENTS_SOURCE = path.join(__dirname, '../src/js/components');
-const COMPONENTS_DEST = path.join(__dirname, './components');
+const DOC_PATH = __dirname;
+const COMPONENTS_PATH = path.join(__dirname, '../src/js/components');
+const COMPONENTS_DEST = path.join(DOC_PATH, 'components');
 
 const getComponents = cate => {
-  const fullPath = path.join(COMPONENTS_SOURCE, cate);
+  const fullPath = path.join(COMPONENTS_PATH, cate);
   return fs.readdirSync(fullPath).filter(f => {
     return fs.statSync(path.join(fullPath, f)).isDirectory()
   })
@@ -47,6 +49,7 @@ const injectComponents = md => {
     demos.push(getDemoCode(match[2]))
     match = reg.exec(md);
   }
+  if (demos.length === 0) return md;
   let demosScript = '\n{% raw %}\n<script>\nvar index = 0;\n';
   demos.forEach(demo => {
     demosScript += `
@@ -68,16 +71,24 @@ const injectAPI = (md, source) => {
   return md + '\n## API\n' + docs;
 }
 
-const doc = callback => {
+const doc = (isDev, callback) => {
+  // 其它文档
+  if (!isDev) {
+    const mds = glob.sync(path.join(DOC_PATH, '**/*.md'));
+    mds.forEach(md => {
+      fs.writeFileSync(md, injectComponents(fs.readFileSync(md, 'utf8')))
+    })
+  }
+  return;
   // 组件文档
   CATES.forEach(c => {
     const components = getComponents(c.cate).filter(comp => {
-      const mdPath = path.join(COMPONENTS_SOURCE, c.cate, comp, 'index.md');
+      const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
     });
     components.forEach((comp, i) => {
-      const compPath = path.join(COMPONENTS_SOURCE, c.cate, comp);
+      const compPath = path.join(COMPONENTS_PATH, c.cate, comp);
       const mdPath = path.join(compPath, 'index.md');
       const jsPath = path.join(compPath, 'index.js');
 
@@ -94,10 +105,7 @@ const doc = callback => {
       fs.writeFileSync(path.join(COMPONENTS_DEST, `${c.cate}_${comp}_.md`), md);
     })
   });
-  // 其它文档
   callback && callback();
 }
-
-doc()
 
 module.exports = doc;
