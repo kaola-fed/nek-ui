@@ -8,6 +8,7 @@ order: 1
 
 每个模块最外层包上`<div class="g-row m-module"></div>`
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -38,7 +39,6 @@ order: 1
 	    </div>
 	</ui.form>
 </div>
-
 ```
 
 ```javascript
@@ -53,3 +53,4 @@ var component = new RGUI.Component({
     }
 });
 ```
+<!-- demo_end -->

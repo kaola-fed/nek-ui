@@ -12,6 +12,7 @@ order: 2
 * 选项一行固定排列四个
 * 超过三行使用折叠面板
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -59,12 +60,14 @@ var component = new RGUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ### 第二部分 页面上按钮操作部分 
 
 ** 注意事项 **
 * 操作按钮居右排列
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -156,6 +159,7 @@ var component = new RGUI.Component({
     }
 });
 ```
+<!-- demo_end -->
 
 ### 第三部分 表格部分
 
@@ -165,6 +169,7 @@ var component = new RGUI.Component({
 * 过长的文字左对齐；
 * 数字格式化方式三个逗号分隔，右对齐
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -190,9 +195,11 @@ var component = new RGUI.Component({
     </div>
 </div>
 ```
+<!-- demo_end -->
 
 ### 完整示例
 
+<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -259,3 +266,4 @@ var component = new RGUI.Component({
     }
 });
 ```
+<!-- demo_end -->
