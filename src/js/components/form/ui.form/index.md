@@ -2,7 +2,9 @@
 title: 表单
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -26,7 +28,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 基本形式 垂直布局
+## 代码演示
+
+### 基本形式 垂直布局
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -50,7 +54,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end --> 
 
-## 获取select数据接口
+### 获取select数据接口
 
 <!-- demo_start -->
 <div class="m-example"></div>

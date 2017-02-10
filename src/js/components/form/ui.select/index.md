@@ -2,7 +2,9 @@
 title: 下拉选择
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -25,7 +27,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 表单项
+### 表单项
 
 在表单中使用
 
@@ -41,7 +43,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## selected, value和key
+### selected, value和key
 
 `selected`表示当前选择项，`value`表示当前选择值。`key`表示数据项的键，默认为`'id'`。
 
@@ -81,7 +83,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 禁用某一项，禁用组件
+### 禁用某一项，禁用组件
 `tip`表示禁用某一项时给出的提示，不给则无提示，`placement`表示给出提示的方向，具体参考文字提示组件Tooltip
 
 <!-- demo_start -->
@@ -114,7 +116,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 分隔线
+### 分隔线
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -142,7 +144,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 设置或取消默认项
+### 设置或取消默认项
 
 如果`placeholder`为空，刚开始将会自动选中第一项。
 
@@ -174,7 +176,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 远程数据
+### 远程数据
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -203,7 +205,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 数据绑定
+### 数据绑定
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -226,7 +228,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 事件
+### 事件
 
 请打开浏览器的控制台查看结果。
 
@@ -254,7 +256,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 综合示例
+### 综合示例
 
 <!-- demo_start -->
 <div class="m-example"></div>

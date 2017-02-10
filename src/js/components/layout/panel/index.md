@@ -2,7 +2,9 @@
 title: 面板
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -23,7 +25,7 @@ title: 面板
 ```
 <!-- demo_end -->
 
-## 带操作的完整panel
+### 带操作的完整panel
 
 <!-- demo_start -->
 <div class="m-example"></div>

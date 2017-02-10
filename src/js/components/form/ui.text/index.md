@@ -2,7 +2,7 @@
 title: 展示文本
 ---
 
-## 大小扩展
+### 大小扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -16,7 +16,7 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-## 颜色扩展
+### 颜色扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -32,7 +32,7 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-## 加粗
+### 加粗
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -42,7 +42,7 @@ title: 展示文本
 ```
 <!-- demo_start -->
 
-## 文本对齐
+### 文本对齐
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -55,7 +55,7 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-## 垂直对齐
+### 垂直对齐
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -69,7 +69,7 @@ title: 展示文本
 
 *待完成……*
 
-## 文本省略和换行
+### 文本省略和换行
 
 <!-- demo_start -->
 <div class="m-example"></div>

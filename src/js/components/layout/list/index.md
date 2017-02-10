@@ -3,7 +3,9 @@ title: 列表
 is_beta: true
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 对`ul`或`ol`标签添加`.m-list`，将不显示默认的列表样式。
 
@@ -21,7 +23,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 分割线
+### 分割线
 <!-- demo_start -->
 <div class="m-example"></div>
 
@@ -35,7 +37,7 @@ is_beta: true
 </ul>
 ```
 <!-- demo_end -->
-## Hover
+### Hover
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -51,7 +53,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 条纹
+### 条纹
 
 <!-- demo_start -->
 <div class="m-example"></div>

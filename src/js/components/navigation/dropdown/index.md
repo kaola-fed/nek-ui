@@ -2,7 +2,9 @@
 title: 下拉菜单
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -27,7 +29,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 修改标题
+### 修改标题
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -50,7 +52,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 禁用某一项，禁用组件
+### 禁用某一项，禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -76,7 +78,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 分隔线
+### 分隔线
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -100,7 +102,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 按钮自定义
+### 按钮自定义
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -136,7 +138,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 单项模板自定义
+### 单项模板自定义
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -161,7 +163,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 数据绑定
+### 数据绑定
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -184,7 +186,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 事件
+### 事件
 
 请打开浏览器的控制台查看结果。
 

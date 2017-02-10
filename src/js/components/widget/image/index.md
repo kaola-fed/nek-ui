@@ -3,7 +3,9 @@ title: 图片
 is_beta: true
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 在Base中，已经将`<img>`标签默认设置为响应式的了。使用`.u-img`及其扩展类可以实现更多的图片样式。
 
@@ -15,7 +17,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 圆形
+### 圆形
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -25,7 +27,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 边框
+### 边框
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -36,7 +38,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 尺寸扩展
+### 尺寸扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>

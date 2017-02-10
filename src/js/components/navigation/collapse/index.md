@@ -2,7 +2,9 @@
 title: 折叠面板
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -17,7 +19,7 @@ title: 折叠面板
 ```
 <!-- demo_end -->
 
-## 每次只展开一个
+### 每次只展开一个
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -32,6 +34,6 @@ title: 折叠面板
 ```
 <!-- demo_end -->
 
-## 禁用
+### 禁用
 
 待完成。。。

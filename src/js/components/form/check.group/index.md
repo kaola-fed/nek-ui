@@ -2,7 +2,9 @@
 title: 复选组
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -28,7 +30,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 表单项
+### 表单项
 
 在表单中使用
 
@@ -60,7 +62,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 禁用组件
+### 禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -86,7 +88,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 多行
+### 多行
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -112,7 +114,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 远程数据
+### 远程数据
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -139,7 +141,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 全选
+### 全选
 
 <!-- demo_start -->
 <div class="m-example"></div>

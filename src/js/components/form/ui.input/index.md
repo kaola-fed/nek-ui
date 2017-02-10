@@ -2,7 +2,9 @@
 title: 输入框
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 大部分属性的用法与`<input>`一致。
 
@@ -14,7 +16,7 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-## 表单项
+### 表单项
 
 在表单中使用
 
@@ -33,7 +35,7 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-## 单位
+### 单位
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -43,7 +45,7 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-## 搜索(打开console,查看输出)
+### 搜索(打开console,查看输出)
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -62,7 +64,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## type=int/float, 固定输入小数位
+### type=int/float, 固定输入小数位
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -81,7 +83,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 验证
+### 验证
 
 <!-- demo_start -->
 <div class="m-example"></div>

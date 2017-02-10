@@ -6,7 +6,9 @@ title: 模态框
 
 模态对话框通过遮罩层来阻止用户的其他行为。
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -30,7 +32,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## Alert
+### Alert
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -49,7 +51,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## Confirm
+### Confirm
 
 <!-- demo_start -->
 <div class="m-example"></div>

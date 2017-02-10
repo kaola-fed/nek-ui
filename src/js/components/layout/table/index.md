@@ -3,7 +3,9 @@ title: 表格
 is_beta: true
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -22,7 +24,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## Hover
+### Hover
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -41,7 +43,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 条纹
+### 条纹
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -60,6 +62,6 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 颜色扩展
+### 颜色扩展
 
 颜色扩展，*待完成……*

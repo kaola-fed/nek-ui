@@ -75,7 +75,7 @@ const doc = callback => {
 
       const appendContent = `type: components\nname: ${comp}\ncate: ${c.name}\norder: ${c.startOrder + i}\n`;
       let md = fs.readFileSync(mdPath, 'utf8');
-      md = md.replace(/(---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
+      md = md.replace(/(^---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
 
       md = injectComponents(md)
       fs.writeFileSync(path.join(DEST, `${c.cate}_${comp}_.md`), md);

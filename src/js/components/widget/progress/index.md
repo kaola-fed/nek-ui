@@ -2,7 +2,9 @@
 title: 进度条
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -12,7 +14,7 @@ title: 进度条
 ```
 <!-- demo_end -->
 
-## 颜色扩展
+### 颜色扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -25,7 +27,7 @@ title: 进度条
 ```
 <!-- demo_end -->
 
-## 尺寸扩展
+### 尺寸扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -39,7 +41,7 @@ title: 进度条
 ```
 <!-- demo_end -->
 
-## 条纹
+### 条纹
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -49,7 +51,7 @@ title: 进度条
 ```
 <!-- demo_end -->
 
-## 条纹动画
+### 条纹动画
 
 <!-- demo_start -->
 <div class="m-example"></div>

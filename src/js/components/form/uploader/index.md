@@ -2,7 +2,9 @@
 title: 上传
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -30,7 +32,7 @@ var component = new NEKUI.Component({
     <i class="message_icon u-icon u-icon-warning-circle"></i> 注意：在IE中实现上传功能时，需要将响应头的`Content-Type`设置为`text/plain`或`text/html`，而不能是`application/json`，否则IE会提示用户下载返回的数据。
 </div>
 
-## 修改标题
+### 修改标题
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -54,7 +56,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 按钮自定义
+### 按钮自定义
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -78,7 +80,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 禁用组件
+### 禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -88,7 +90,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 文件类型限制
+### 文件类型限制
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -112,7 +114,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 文件大小限制
+### 文件大小限制
 
 <!-- demo_start -->
 <div class="m-example"></div>

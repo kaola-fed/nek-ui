@@ -2,7 +2,9 @@
 title: 选项卡
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -17,7 +19,7 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-## 禁用某一项，禁用组件
+### 禁用某一项，禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -44,7 +46,7 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-## 居中
+### 居中
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -59,7 +61,7 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-## 垂直居左
+### 垂直居左
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -74,7 +76,7 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-## 垂直居右
+### 垂直居右
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -89,7 +91,7 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-## 标题模板自定义
+### 标题模板自定义
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -112,7 +114,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 事件
+### 事件
 
 请打开浏览器的控制台查看结果。
 

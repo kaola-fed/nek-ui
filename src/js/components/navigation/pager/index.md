@@ -2,7 +2,9 @@
 title: 分页
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -12,7 +14,7 @@ title: 分页
 ```
 <!-- demo_end -->
 
-## 位置
+### 位置
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -24,7 +26,7 @@ title: 分页
 ```
 <!-- demo_end -->
 
-## 显示数目
+### 显示数目
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -34,7 +36,7 @@ title: 分页
 ```
 <!-- demo_end -->
 
-## 禁用组件
+### 禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>

@@ -5,7 +5,9 @@ is_beta: true
 
 使用字体图标，可以很方便地在任何位置放置矢量图形。本主题的字体图标由[Font Awesome](http://fortawesome.github.com/Font-Awesome)提供。
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 鼠标悬浮到图标上有提示。
 
@@ -686,7 +688,7 @@ is_beta: true
 <i class="u-icon u-icon-fonticons" title="u-icon u-icon-fonticons"></i>
 </p>
 
-## 动画
+### 动画
 
 <div class="m-example"></div>
 
@@ -700,7 +702,7 @@ is_beta: true
 </p>
 ```
 
-## 旋转和翻转
+### 旋转和翻转
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -717,7 +719,7 @@ is_beta: true
 ```
 <!-- demo_end -->
 
-## 重叠
+### 重叠
 
 <!-- demo_start -->
 <div class="m-example"></div>

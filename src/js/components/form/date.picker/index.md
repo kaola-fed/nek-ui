@@ -2,7 +2,9 @@
 title: 日期选择
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -19,7 +21,7 @@ title: 日期选择
 ```
 <!-- demo_end -->
 
-## 日期时间选择
+### 日期时间选择
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -48,7 +50,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 禁用组件
+### 禁用组件
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -58,7 +60,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 日期范围
+### 日期范围
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -81,7 +83,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 数据绑定
+### 数据绑定
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -95,7 +97,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 事件
+### 事件
 
 请打开浏览器的控制台查看结果。
 

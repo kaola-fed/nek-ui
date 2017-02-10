@@ -2,7 +2,9 @@
 title: 按钮
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -17,7 +19,7 @@ title: 按钮
 ```
 <!-- demo_end -->
 
-## 常用的button类型
+### 常用的button类型
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -51,7 +53,7 @@ title: 按钮
 ```
 <!-- demo_end -->
 
-## 圆角的图标按钮
+### 圆角的图标按钮
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -67,7 +69,7 @@ title: 按钮
 ```
 <!-- demo_end -->
 
-## 图标按钮
+### 图标按钮
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -83,7 +85,7 @@ title: 按钮
 ```
 <!-- demo_end -->
 
-## 加载中的按钮
+### 加载中的按钮
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -95,7 +97,7 @@ title: 按钮
 ```
 <!-- demo_end -->
 
-## buttonGroup
+### buttonGroup
 
 <!-- demo_start -->
 <div class="m-example"></div>

@@ -2,7 +2,9 @@
 title: 徽标
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 在`<span>`或`<a>`标签上使用`.u-badge`即可。
 
@@ -15,7 +17,7 @@ title: 徽标
 ```
 <!-- demo_end -->
 
-## 颜色扩展
+### 颜色扩展
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -29,7 +31,7 @@ title: 徽标
 ```
 <!-- demo_end -->
 
-## 数字
+### 数字
 
 <!-- demo_start -->
 <div class="m-example"></div>

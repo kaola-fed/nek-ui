@@ -2,7 +2,9 @@
 title: 文字提示
 ---
 
-## 基本形式
+## 代码演示
+
+### 基本形式
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -18,7 +20,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 位置
+### 位置
 
 <!-- demo_start -->
 <div class="m-example"></div>
