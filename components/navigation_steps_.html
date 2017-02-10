@@ -352,19 +352,69 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="迷你版"><a href="#迷你版" class="headerlink" title="迷你版"></a>迷你版</h2><p>在表单中使用</p>
+<h3 id="迷你版"><a href="#迷你版" class="headerlink" title="迷你版"></a>迷你版</h3><p>在表单中使用</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">size</span>=<span class="string">"sm"</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Tabs">Tabs</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Tabs"></a></p>
+<h2 id="Tabs"><a href="#Tabs" class="headerlink" title="Tabs"></a>Tabs</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Tabs_new"></a></p>
+<h3 id="new-Tabs"><a href="#new-Tabs" class="headerlink" title="new Tabs()"></a>new Tabs()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.steps]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 类似于ui.select的source</td>
+</tr>
+<tr>
+<td>[options.data.current]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>&lt;=&gt; 当前状态</td>
+</tr>
+<tr>
+<td>[options.data.size]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt;  当前尺寸</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
 var index = 0;

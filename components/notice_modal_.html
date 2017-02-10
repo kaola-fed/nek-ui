@@ -354,24 +354,156 @@
 <div class="content components with-sidebar">
     <p>含有遮罩层的对话框，用于模拟浏览器的<code>alert</code>、<code>confirm</code>和<code>prompt</code>。</p>
 <p>模态对话框通过遮罩层来阻止用户的其他行为。</p>
-<h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.Modal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'Modal标题'</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h2><!-- demo_start -->
+<h3 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-error"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Alert<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        NEKUI.Modal.alert(<span class="string">'Alert内容'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="Confirm"><a href="#Confirm" class="headerlink" title="Confirm"></a>Confirm</h2><!-- demo_start -->
+<h3 id="Confirm"><a href="#Confirm" class="headerlink" title="Confirm"></a>Confirm</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-success"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Confirm<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        NEKUI.Modal.confirm(<span class="string">'Confirm内容'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Modal">Modal</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#init">init()</a></dt>
+<dd></dd>
+<dt><a href="#close(result) 关闭对话框">close(result) 关闭对话框(result)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#ok_new 确定对话框">ok() 确定对话框()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#cancel_new 取消对话框">cancel() 取消对话框()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。">title]) 弹出一个alert对话框。关闭时始终触发确定事件。([content], [title])</a> ⇒ <code><a href="#Modal">Modal</a></code></dt>
+<dd></dd>
+<dt><a href="#confirm(content[,title]) 弹出一个confirm对话框">title]) 弹出一个confirm对话框([content], [title])</a> ⇒ <code><a href="#Modal">Modal</a></code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_close 关闭对话框时触发">“close 关闭对话框时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_ok 确定对话框时触发">“ok 确定对话框时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_cancel 取消对话框时触发">“cancel 取消对话框时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Modal"></a></p>
+<h2 id="Modal"><a href="#Modal" class="headerlink" title="Modal"></a>Modal</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Modal_new"></a></p>
+<h3 id="new-Modal"><a href="#new-Modal" class="headerlink" title="new Modal()"></a>new Modal()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+<td>Binding Properties</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>string</code></td>
+<td><code>&quot;提示&quot;</code></td>
+<td>=&gt; 对话框标题</td>
+<td>Title of Dialog</td>
+</tr>
+<tr>
+<td>[options.data.content]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 对话框内容</td>
+</tr>
+<tr>
+<td>[options.data.contentTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 对话框内容模板，用于支持复杂内容的自定义。</td>
+</tr>
+<tr>
+<td>[options.data.okButton]</td>
+<td><code>string</code> &#124; <code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示确定按钮。值为<code>string</code>时显示该段文字。</td>
+</tr>
+<tr>
+<td>[options.data.cancelButton]</td>
+<td><code>string</code> &#124; <code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示取消按钮。值为<code>string</code>时显示该段文字。</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="close(result) 关闭对话框"></a></p>
+<h2 id="close-result-关闭对话框-result-⇒-void"><a href="#close-result-关闭对话框-result-⇒-void" class="headerlink" title="close(result) 关闭对话框(result) ⇒ void"></a>close(result) 关闭对话框(result) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><code>boolean</code></td>
+<td>点击确定还是取消</td>
+</tr>
+</tbody>
+</table>
+<p><a name="ok_new 确定对话框"></a></p>
+<h2 id="ok-确定对话框-⇒-void"><a href="#ok-确定对话框-⇒-void" class="headerlink" title="ok() 确定对话框() ⇒ void"></a>ok() 确定对话框() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="cancel_new 取消对话框"></a></p>
+<h2 id="cancel-取消对话框-⇒-void"><a href="#cancel-取消对话框-⇒-void" class="headerlink" title="cancel() 取消对话框() ⇒ void"></a>cancel() 取消对话框() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="event_close 关闭对话框时触发"></a></p>
+<h2 id="“close-关闭对话框时触发”"><a href="#“close-关闭对话框时触发”" class="headerlink" title="“close 关闭对话框时触发”"></a>“close 关闭对话框时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><code>boolean</code></td>
+<td>点击了确定还是取消</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_ok 确定对话框时触发"></a></p>
+<h2 id="“ok-确定对话框时触发”"><a href="#“ok-确定对话框时触发”" class="headerlink" title="“ok 确定对话框时触发”"></a>“ok 确定对话框时触发”</h2><p><strong>Kind</strong>: event emitted<br><a name="event_cancel 取消对话框时触发"></a></p>
+<h2 id="“cancel-取消对话框时触发”"><a href="#“cancel-取消对话框时触发”" class="headerlink" title="“cancel 取消对话框时触发”"></a>“cancel 取消对话框时触发”</h2><p><strong>Kind</strong>: event emitted  </p>
 
 <script>
 var index = 0;

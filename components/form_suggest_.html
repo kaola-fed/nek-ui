@@ -352,57 +352,313 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="获取选项的id"><a href="#获取选项的id" class="headerlink" title="获取选项的id"></a>获取选项的id</h2><!-- demo_start -->
+<h3 id="获取选项的id"><a href="#获取选项的id" class="headerlink" title="获取选项的id"></a>获取选项的id</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">id</span>=<span class="string">&#123;id&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-4"</span> /&gt;</span>&#123;id&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">1</span>, <span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">2</span>, <span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">3</span>, <span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">4</span>, <span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">5</span>, <span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">6</span>, <span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>:<span class="number">7</span>, <span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h2><!-- demo_start -->
+<h3 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent（禁用）'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break（禁用）'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel（禁用）'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="Placeholder"><a href="#Placeholder" class="headerlink" title="Placeholder"></a>Placeholder</h2><!-- demo_start -->
+<h3 id="Placeholder"><a href="#Placeholder" class="headerlink" title="Placeholder"></a>Placeholder</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"输入时会自动提示"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="开始提示长度"><a href="#开始提示长度" class="headerlink" title="开始提示长度"></a>开始提示长度</h2><p>当输入长度&gt;=<code>startLength</code>属性后开始提示。</p>
+<h3 id="开始提示长度"><a href="#开始提示长度" class="headerlink" title="开始提示长度"></a>开始提示长度</h3><p>当输入长度&gt;=<code>startLength</code>属性后开始提示。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"输入2个字符后开始提示"</span> <span class="attr">startLength</span>=<span class="string">"2"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="匹配方式"><a href="#匹配方式" class="headerlink" title="匹配方式"></a>匹配方式</h2><!-- demo_start -->
+<h3 id="匹配方式"><a href="#匹配方式" class="headerlink" title="匹配方式"></a>匹配方式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"匹配全局"</span> <span class="attr">matchType</span>=<span class="string">"all"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"只匹配开头"</span> <span class="attr">matchType</span>=<span class="string">"start"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"只匹配结尾"</span> <span class="attr">matchType</span>=<span class="string">"end"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>当为严格模式时，<code>value</code>属性必须在source中选择，否则为空。</p>
+<h3 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h3><p>当为严格模式时，<code>value</code>属性必须在source中选择，否则为空。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"非严格模式"</span> <span class="attr">value</span>=<span class="string">&#123;value1&#125;</span> /&gt;</span> &#123;value1&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"严格模式"</span> <span class="attr">strict</span> <span class="attr">value</span>=<span class="string">&#123;value2&#125;</span> /&gt;</span> &#123;value2&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'abandon'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'about'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'absent'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'bread'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'break'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'brief'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'calendar'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'cancel'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'column'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h2><p>支持远程过滤。</p>
+<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><p>支持远程过滤。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">suggest</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/suggest.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Suggest">Suggest</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#init">init()</a></dt>
+<dd></dd>
+<dt><a href="#select(item) 选择某一项">select(item) 选择某一项(item)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#toggle(open) 展开/收起">toggle(open) 展开/收起(open)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#validate_new 根据验证组件的值是否正确">validate() 根据验证组件的值是否正确()</a> ⇒ <code>object</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_toggle  展开/收起时触发">“toggle  展开/收起时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Suggest"></a></p>
+<h2 id="Suggest"><a href="#Suggest" class="headerlink" title="Suggest"></a>Suggest</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Dropdown<br><a name="new_Suggest_new"></a></p>
+<h3 id="new-Suggest"><a href="#new-Suggest" class="headerlink" title="new Suggest()"></a>new Suggest()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.source]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 数据源</td>
+</tr>
+<tr>
+<td>[options.data.source[].name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 每项的内容</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的键</td>
+</tr>
+<tr>
+<td>[options.data.nameKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;name&quot;</code></td>
+<td>=&gt; 数据项的name键</td>
+</tr>
+<tr>
+<td>[options.data.source[].disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 禁用此项</td>
+</tr>
+<tr>
+<td>[options.data.selected]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择项</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 文本框中的值</td>
+</tr>
+<tr>
+<td>[options.data.id]</td>
+<td><code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 选项的id值;</td>
+</tr>
+<tr>
+<td>[options.data.placeholder]</td>
+<td><code>string</code></td>
+<td><code>&quot;请输入&quot;</code></td>
+<td>=&gt; 文本框的占位文字</td>
+</tr>
+<tr>
+<td>[options.data.maxlength]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 文本框的最大长度</td>
+</tr>
+<tr>
+<td>[options.data.startLength]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 开始提示长度。当输入长度&gt;=该值后开始提示</td>
+</tr>
+<tr>
+<td>[options.data.matchType]</td>
+<td><code>string</code></td>
+<td><code>&quot;all&quot;</code></td>
+<td>=&gt; 匹配方式，<code>all</code>表示匹配全局，<code>start</code>表示只匹配开头，<code>end</code>表示只匹配结尾</td>
+</tr>
+<tr>
+<td>[options.data.strict]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 是否为严格模式。当为严格模式时，<code>value</code>属性必须在source中选择，否则为空。</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.itemTemplate]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>@=&gt; 单项模板</td>
+</tr>
+<tr>
+<td>[options.data.open]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>&lt;=&gt; 当前为展开/收起状态</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+<tr>
+<td>[options.service]</td>
+<td><code>object</code></td>
+<td></td>
+<td>@=&gt; 数据服务</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(item) 选择某一项"></a></p>
+<h2 id="select-item-选择某一项-item-⇒-void"><a href="#select-item-选择某一项-item-⇒-void" class="headerlink" title="select(item) 选择某一项(item) ⇒ void"></a>select(item) 选择某一项(item) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item</td>
+<td><code>object</code></td>
+<td>选择项</td>
+</tr>
+</tbody>
+</table>
+<p><a name="toggle(open) 展开/收起"></a></p>
+<h2 id="toggle-open-展开-收起-open-⇒-void"><a href="#toggle-open-展开-收起-open-⇒-void" class="headerlink" title="toggle(open) 展开/收起(open) ⇒ void"></a>toggle(open) 展开/收起(open) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td><code>boolean</code></td>
+<td>展开/收起状态。如果无此参数，则在两种状态之间切换。</td>
+</tr>
+</tbody>
+</table>
+<p><a name="validate_new 根据验证组件的值是否正确"></a></p>
+<h2 id="validate-根据验证组件的值是否正确-⇒-object"><a href="#validate-根据验证组件的值是否正确-⇒-object" class="headerlink" title="validate() 根据验证组件的值是否正确() ⇒ object"></a>validate() 根据验证组件的值是否正确() ⇒ <code>object</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>object</code> - result 结果<br><strong>Access:</strong> public<br><a name="event_select 选择某一项时触发"></a></p>
+<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>selected</td>
+<td><code>object</code></td>
+<td>当前选择项</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_toggle  展开/收起时触发"></a></p>
+<h2 id="“toggle-展开-收起时触发”"><a href="#“toggle-展开-收起时触发”" class="headerlink" title="“toggle  展开/收起时触发”"></a>“toggle  展开/收起时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>open</td>
+<td><code>object</code></td>
+<td>展开/收起状态</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

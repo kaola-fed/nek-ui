@@ -352,32 +352,170 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">"15:45"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h2><!-- demo_start -->
+<h3 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">minTime</span>=<span class="string">"12:00"</span> <span class="attr">maxTime</span>=<span class="string">"14:45"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><!-- demo_start -->
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">&#123;time&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">time</span>=<span class="string">&#123;time&#125;</span> <span class="attr">minTime</span>=<span class="string">"18:00"</span> <span class="attr">maxTime</span>=<span class="string">"19:30"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的时间为：&#123;time&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>请打开浏览器的控制台查看结果。</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">time.picker</span> <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.time:</span>', $<span class="attr">event.time</span>)&#125; /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#TimePicker">TimePicker</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>TimePicker 时间选择</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#isOutOfRange(time) 是否超出规定的时间范围">isOutOfRange(time) 是否超出规定的时间范围(time)</a> ⇒ <code>boolean</code> | <code>Time</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 时间改变时触发">“change 时间改变时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="TimePicker"></a></p>
+<h2 id="TimePicker"><a href="#TimePicker" class="headerlink" title="TimePicker"></a>TimePicker</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_TimePicker_new"></a></p>
+<h3 id="new-TimePicker"><a href="#new-TimePicker" class="headerlink" title="new TimePicker()"></a>new TimePicker()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.time]</td>
+<td><code>string</code></td>
+<td><code>&quot;00:00&quot;</code></td>
+<td>&lt;=&gt; 当前的时间值</td>
+</tr>
+<tr>
+<td>[options.data.minTime]</td>
+<td><code>string</code></td>
+<td><code>&quot;00:00&quot;</code></td>
+<td>=&gt; 最小时间</td>
+</tr>
+<tr>
+<td>[options.data.maxTime]</td>
+<td><code>string</code></td>
+<td><code>&quot;23:59&quot;</code></td>
+<td>=&gt; 最大时间</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>TimePicker 时间选择</p>
+<p><strong>Kind</strong>: global variable  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="isOutOfRange(time) 是否超出规定的时间范围"></a></p>
+<h2 id="isOutOfRange-time-是否超出规定的时间范围-time-⇒-boolean-124-Time"><a href="#isOutOfRange-time-是否超出规定的时间范围-time-⇒-boolean-124-Time" class="headerlink" title="isOutOfRange(time) 是否超出规定的时间范围(time) ⇒ boolean &#124; Time"></a>isOutOfRange(time) 是否超出规定的时间范围(time) ⇒ <code>boolean</code> &#124; <code>Time</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>Time</code> - time 如果没有超出时间范围，则返回false；如果超出时间范围，则返回范围边界的时间<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time</td>
+<td><code>Time</code></td>
+<td>待测的时间</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_change 时间改变时触发"></a></p>
+<h2 id="“change-时间改变时触发”"><a href="#“change-时间改变时触发”" class="headerlink" title="“change 时间改变时触发”"></a>“change 时间改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>time</td>
+<td><code>object</code></td>
+<td>改变后的时间</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

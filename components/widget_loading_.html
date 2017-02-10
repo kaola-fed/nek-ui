@@ -352,24 +352,99 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.load()&#125;</span>&gt;</span>Loading<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">load</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        NEKUI.Loading.show();</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            NEKUI.Loading.hide();</div><div class="line">        &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h2><!-- demo_start -->
+<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-success"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.load()&#125;</span>&gt;</span></div><div class="line">    Loading <span class="tag">&lt;<span class="name">loading</span> <span class="attr">ref</span>=<span class="string">"loading"</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">load</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$refs.loading.show();</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.$refs.loading.hide();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><!-- demo_start -->
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-error"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.load()&#125;</span>&gt;</span>Loading<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">loading</span> <span class="attr">ref</span>=<span class="string">"loading"</span> <span class="attr">static</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../img/loading.gif"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">loading</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">load</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$refs.loading.show();</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.$refs.loading.hide();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">6000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Loading">Loading</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#loading">loading</a> : <code><a href="#Loading">Loading</a></code></dt>
+<dd><p>直接初始化一个实例</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#init">init()</a></dt>
+<dd></dd>
+<dt><a href="#show_new 显示组件">show() 显示组件()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#show_new 隐藏组件">show() 隐藏组件()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Loading"></a></p>
+<h2 id="Loading"><a href="#Loading" class="headerlink" title="Loading"></a>Loading</h2><p><strong>Kind</strong>: global class<br><a name="new_Loading_new"></a></p>
+<h3 id="new-Loading"><a href="#new-Loading" class="headerlink" title="new Loading()"></a>new Loading()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.static]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否嵌入文档流</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="loading"></a></p>
+<h2 id="loading-Loading"><a href="#loading-Loading" class="headerlink" title="loading : Loading"></a>loading : <code><a href="#Loading">Loading</a></code></h2><p>直接初始化一个实例</p>
+<p><strong>Kind</strong>: global variable<br><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="show_new 显示组件"></a></p>
+<h2 id="show-显示组件-⇒-void"><a href="#show-显示组件-⇒-void" class="headerlink" title="show() 显示组件() ⇒ void"></a>show() 显示组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 隐藏组件"></a></p>
+<h2 id="show-隐藏组件-⇒-void"><a href="#show-隐藏组件-⇒-void" class="headerlink" title="show() 隐藏组件() ⇒ void"></a>show() 隐藏组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 显示加载中"></a></p>
+<h2 id="show-显示加载中-⇒-void"><a href="#show-显示加载中-⇒-void" class="headerlink" title=".show() 显示加载中() ⇒ void"></a>.show() 显示加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public<br><a name="hide_new 隐藏加载中"></a></p>
+<h2 id="hide-隐藏加载中-⇒-void"><a href="#hide-隐藏加载中-⇒-void" class="headerlink" title=".hide() 隐藏加载中() ⇒ void"></a>.hide() 隐藏加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public  </p>
 
 <script>
 var index = 0;

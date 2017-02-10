@@ -352,17 +352,86 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"自定义模块"</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">placeholder</span>=<span class="string">"请输入"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">tip</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">placeholder</span>=<span class="string">"请输入"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="带操作的完整panel"><a href="#带操作的完整panel" class="headerlink" title="带操作的完整panel"></a>带操作的完整panel</h2><!-- demo_start -->
+<h3 id="带操作的完整panel"><a href="#带操作的完整panel" class="headerlink" title="带操作的完整panel"></a>带操作的完整panel</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"自定义模块"</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">panel.tool</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">action</span>=<span class="string">"submit"</span> <span class="attr">size</span>=<span class="string">"xs"</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.test()&#125;"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">panel.tool</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">placeholder</span>=<span class="string">"请输入"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">tip</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">placeholder</span>=<span class="string">"请输入"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">panel.tool</span> <span class="attr">foot</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">shape</span>=<span class="string">"circle"</span> <span class="attr">action</span>=<span class="string">"submit"</span> <span class="attr">size</span>=<span class="string">"xs"</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.test()&#125;"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">panel.tool</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">test</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="number">123</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Panel">Panel</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#toggle(open) 展开/收起">toggle(open) 展开/收起(open)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Panel"></a></p>
+<h2 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Panel_new"></a></p>
+<h3 id="new-Panel"><a href="#new-Panel" class="headerlink" title="new Panel()"></a>new Panel()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="toggle(open) 展开/收起"></a></p>
+<h2 id="toggle-open-展开-收起-open-⇒-void"><a href="#toggle-open-展开-收起-open-⇒-void" class="headerlink" title="toggle(open) 展开/收起(open) ⇒ void"></a>toggle(open) 展开/收起(open) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open</td>
+<td><code>boolean</code></td>
+<td>展开/收起状态。如果无此参数，则在两种状态之间切换。</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

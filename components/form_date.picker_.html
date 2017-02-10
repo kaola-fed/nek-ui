@@ -352,39 +352,240 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">"2008-08-08"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h2><!-- demo_start -->
+<h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h2><!-- demo_start -->
+<h3 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">minDate</span>=<span class="string">&#123;minDate&#125;</span> <span class="attr">maxDate</span>=<span class="string">&#123;maxDate&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">minDate</span>=<span class="string">"2008-08-08"</span> <span class="attr">maxDate</span>=<span class="string">"2008-08-16"</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">minDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">2</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>),</div><div class="line">        <span class="attr">maxDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">7</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h2><!-- demo_start -->
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为：&#123;date | format: 'yyyy-MM-dd'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>请打开浏览器的控制台查看结果。</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">date.picker</span></span></div><div class="line">    <span class="attr">on-toggle</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-toggle:</span>', '$<span class="attr">event.open:</span>', $<span class="attr">event.open</span>)&#125;</div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125;</div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125; /&gt;</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#DatePicker">DatePicker</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#Dropdown">Dropdown</a></dt>
+<dd><hr>
+<p>DatePicker 日期选择</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#select(date) 选择一个日期">select(date) 选择一个日期(date)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#isOutOfRange(date) 是否超出规定的日期时间范围">isOutOfRange(date) 是否超出规定的日期时间范围(date)</a> ⇒ <code>boolean</code> | <code>Date</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 日期时间改变时触发">“change 日期时间改变时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="DatePicker"></a></p>
+<h2 id="DatePicker"><a href="#DatePicker" class="headerlink" title="DatePicker"></a>DatePicker</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Dropdown<br><a name="new_DatePicker_new"></a></p>
+<h3 id="new-DatePicker"><a href="#new-DatePicker" class="headerlink" title="new DatePicker()"></a>new DatePicker()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.date]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择的日期时间</td>
+</tr>
+<tr>
+<td>[options.data.showTime]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示时间选择</td>
+</tr>
+<tr>
+<td>[options.data.placeholder]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;请输入&#x27;&quot;</code></td>
+<td>=&gt; 文本框的占位文字</td>
+</tr>
+<tr>
+<td>[options.data.minDate]</td>
+<td><code>Date</code> &#124; <code>string</code></td>
+<td><code></code></td>
+<td>=&gt; 最小日期时间，如果为空则不限制</td>
+</tr>
+<tr>
+<td>[options.data.maxDate]</td>
+<td><code>Date</code> &#124; <code>string</code></td>
+<td><code></code></td>
+<td>=&gt; 最大日期时间，如果为空则不限制</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必填</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Dropdown"></a></p>
+<h2 id="Dropdown"><a href="#Dropdown" class="headerlink" title="Dropdown"></a>Dropdown</h2><hr>
+<p>DatePicker 日期选择</p>
+<p><strong>Kind</strong>: global variable  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(date) 选择一个日期"></a></p>
+<h2 id="select-date-选择一个日期-date-⇒-void"><a href="#select-date-选择一个日期-date-⇒-void" class="headerlink" title="select(date) 选择一个日期(date) ⇒ void"></a>select(date) 选择一个日期(date) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td>选择的日期</td>
+</tr>
+</tbody>
+</table>
+<p><a name="isOutOfRange(date) 是否超出规定的日期时间范围"></a></p>
+<h2 id="isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date"><a href="#isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date" class="headerlink" title="isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ boolean &#124; Date"></a>isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ <code>boolean</code> &#124; <code>Date</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>Date</code> - date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td>待测的日期时间</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_change 日期时间改变时触发"></a></p>
+<h2 id="“change-日期时间改变时触发”"><a href="#“change-日期时间改变时触发”" class="headerlink" title="“change 日期时间改变时触发”"></a>“change 日期时间改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>object</code></td>
+<td>改变后的日期时间</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_select 选择某一项时触发"></a></p>
+<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>object</code></td>
+<td>当前选择项</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

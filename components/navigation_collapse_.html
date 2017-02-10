@@ -352,17 +352,74 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">collapse</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel2"</span> <span class="attr">open</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">collapse</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="每次只展开一个"><a href="#每次只展开一个" class="headerlink" title="每次只展开一个"></a>每次只展开一个</h2><!-- demo_start -->
+<h3 id="每次只展开一个"><a href="#每次只展开一个" class="headerlink" title="每次只展开一个"></a>每次只展开一个</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">collapse</span> <span class="attr">accordion</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">panel</span> <span class="attr">title</span>=<span class="string">"Panel4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">panel</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">collapse</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用"><a href="#禁用" class="headerlink" title="禁用"></a>禁用</h2><p>待完成。。。<br>
+<h3 id="禁用"><a href="#禁用" class="headerlink" title="禁用"></a>禁用</h3><p>待完成。。。</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Collapse">Collapse</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Collapse"></a></p>
+<h2 id="Collapse"><a href="#Collapse" class="headerlink" title="Collapse"></a>Collapse</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Collapse_new"></a></p>
+<h3 id="new-Collapse"><a href="#new-Collapse" class="headerlink" title="new Collapse()"></a>new Collapse()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.accordion]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否每次只展开一个</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+
 <script>
 var index = 0;
 
@@ -397,7 +454,6 @@ var index = 0;
     })(index++);
     
 </script>
-</p>
 
     <div class="guide-links">
       

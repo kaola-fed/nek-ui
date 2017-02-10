@@ -629,8 +629,6 @@ body.docs #nav {
 }
 .content > table {
   border: 2px solid $white;
-  margin: 1.2em auto;
-  padding: 1em;
 }
 .content > table td,
 .content > table th {

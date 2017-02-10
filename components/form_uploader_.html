@@ -352,43 +352,322 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<div class="u-message u-message-warning"><br>    <i class="message_icon u-icon u-icon-warning-circle"></i> 注意：在IE中实现上传功能时，需要将响应头的<code>Content-Type</code>设置为<code>text/plain</code>或<code>text/html</code>，而不能是<code>application/json</code>，否则IE会提示用户下载返回的数据。<br></div>
+<div class="u-message u-message-warning">
+    <i class="message_icon u-icon u-icon-warning-circle"></i> 注意：在IE中实现上传功能时，需要将响应头的<code>Content-Type</code>设置为<code>text/plain</code>或<code>text/html</code>，而不能是<code>application/json</code>，否则IE会提示用户下载返回的数据。
+</div>
 
-<h2 id="修改标题"><a href="#修改标题" class="headerlink" title="修改标题"></a>修改标题</h2><!-- demo_start -->
+<h3 id="修改标题"><a href="#修改标题" class="headerlink" title="修改标题"></a>修改标题</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">title</span>=<span class="string">"上传文件"</span> <span class="attr">url</span>=<span class="string">"/upload"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="按钮自定义"><a href="#按钮自定义" class="headerlink" title="按钮自定义"></a>按钮自定义</h2><!-- demo_start -->
+<h3 id="按钮自定义"><a href="#按钮自定义" class="headerlink" title="按钮自定义"></a>按钮自定义</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span> <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span>&gt;</span>上传 <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"u-icon u-icon-upload"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">uploader</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h2><!-- demo_start -->
+<h3 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">extensions</span>=<span class="string">"jpg,gif,png"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h2><!-- demo_start -->
+<h3 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">uploader</span> <span class="attr">url</span>=<span class="string">"/upload"</span> <span class="attr">maxSize</span>=<span class="string">"10kB"</span></span></div><div class="line">    <span class="attr">on-success</span>=<span class="string">&#123;this._onSuccess($event)&#125;</span></div><div class="line">    <span class="attr">on-error</span>=<span class="string">&#123;this._onError($event)&#125;</span> /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">_onSuccess</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.success($event.data);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_onError</span>: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        NEKUI.Notify.error($event.message);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Uploader">Uploader</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#upload_new 弹出文件对话框并且上传文件">upload() 弹出文件对话框并且上传文件()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_error 上传错误时触发">“error 上传错误时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_error 上传错误时触发">“error 上传错误时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_sending 发送前触发">“sending 发送前触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_error 上传错误时触发">“error 上传错误时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_complete 上传完成时触发">“complete 上传完成时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_success 上传成功时触发">“success 上传成功时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Uploader"></a></p>
+<h2 id="Uploader"><a href="#Uploader" class="headerlink" title="Uploader"></a>Uploader</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Uploader_new"></a></p>
+<h3 id="new-Uploader"><a href="#new-Uploader" class="headerlink" title="new Uploader()"></a>new Uploader()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 按钮文字</td>
+</tr>
+<tr>
+<td>[options.data.url]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 上传路径</td>
+</tr>
+<tr>
+<td>[options.data.dataType]</td>
+<td><code>string</code></td>
+<td><code>&quot;json&quot;</code></td>
+<td>=&gt; 数据类型。可以是：<code>text</code>、<code>xml</code>、<code>json</code>、<code>script</code>。</td>
+</tr>
+<tr>
+<td>[options.data.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 附加数据</td>
+</tr>
+<tr>
+<td>[options.data.name]</td>
+<td><code>string</code></td>
+<td><code>&quot;file&quot;</code></td>
+<td>=&gt; 上传文件的name</td>
+</tr>
+<tr>
+<td>[options.data.extensions]</td>
+<td><code>string</code> &#124; <code>Array.&lt;string&gt;</code></td>
+<td></td>
+<td>=&gt; 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用<code>,</code>隔开，如：’png,jpg,gif’；也可以为数组，如：[‘png’, ‘jpg’, ‘gif’]。</td>
+</tr>
+<tr>
+<td>[options.data.maxSize]</td>
+<td><code>string</code> &#124; <code>number</code></td>
+<td></td>
+<td>=&gt; 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：<code>kB</code>、<code>MB</code>、<code>GB</code>。</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="upload_new 弹出文件对话框并且上传文件"></a></p>
+<h2 id="upload-弹出文件对话框并且上传文件-⇒-void"><a href="#upload-弹出文件对话框并且上传文件-⇒-void" class="headerlink" title="upload() 弹出文件对话框并且上传文件() ⇒ void"></a>upload() 弹出文件对话框并且上传文件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="event_error 上传错误时触发"></a></p>
+<h2 id="“error-上传错误时触发”"><a href="#“error-上传错误时触发”" class="headerlink" title="“error 上传错误时触发”"></a>“error 上传错误时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>object</code></td>
+<td>ExtensionError</td>
+</tr>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>extensions</td>
+<td><code>object</code></td>
+<td>可上传的扩展名</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_error 上传错误时触发"></a></p>
+<h2 id="“error-上传错误时触发”-1"><a href="#“error-上传错误时触发”-1" class="headerlink" title="“error 上传错误时触发”"></a>“error 上传错误时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>object</code></td>
+<td>SizeError</td>
+</tr>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>错误信息</td>
+</tr>
+<tr>
+<td>maxSize</td>
+<td><code>object</code></td>
+<td>可上传的最大文件大小</td>
+</tr>
+<tr>
+<td>size</td>
+<td><code>object</code></td>
+<td>当前文件大小</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_sending 发送前触发"></a></p>
+<h2 id="“sending-发送前触发”"><a href="#“sending-发送前触发”" class="headerlink" title="“sending 发送前触发”"></a>“sending 发送前触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>待发送的数据</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_error 上传错误时触发"></a></p>
+<h2 id="“error-上传错误时触发”-2"><a href="#“error-上传错误时触发”-2" class="headerlink" title="“error 上传错误时触发”"></a>“error 上传错误时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>name</td>
+<td><code>object</code></td>
+<td>ResponseError</td>
+</tr>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>错误信息</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_complete 上传完成时触发"></a></p>
+<h2 id="“complete-上传完成时触发”"><a href="#“complete-上传完成时触发”" class="headerlink" title="“complete 上传完成时触发”"></a>“complete 上传完成时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>xml</td>
+<td><code>object</code></td>
+<td>返回的xml</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_success 上传成功时触发"></a></p>
+<h2 id="“success-上传成功时触发”"><a href="#“success-上传成功时触发”" class="headerlink" title="“success 上传成功时触发”"></a>“success 上传成功时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>返回的数据</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

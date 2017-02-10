@@ -352,26 +352,170 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><!-- demo_start -->
+<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"left"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"center"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"right"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h2><!-- demo_start -->
+<h3 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">middle</span>=<span class="string">3</span> <span class="attr">side</span>=<span class="string">1</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h2><!-- demo_start -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Pager">Pager</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>Pager     分页</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#select(page) 选择某一页">select(page) 选择某一页(page)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_select 选择某一页时触发">“select 选择某一页时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Pager"></a></p>
+<h2 id="Pager"><a href="#Pager" class="headerlink" title="Pager"></a>Pager</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Pager_new"></a></p>
+<h3 id="new-Pager"><a href="#new-Pager" class="headerlink" title="new Pager()"></a>new Pager()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.current]</td>
+<td><code>number</code></td>
+<td><code>1</code></td>
+<td>&lt;=&gt; 当前页</td>
+</tr>
+<tr>
+<td>[options.data.total]</td>
+<td><code>total</code></td>
+<td><code>11</code></td>
+<td>=&gt; 总页数</td>
+</tr>
+<tr>
+<td>[options.data.position]</td>
+<td><code>string</code></td>
+<td><code>&quot;center&quot;</code></td>
+<td>=&gt; 分页的位置，可选参数：<code>center</code>、<code>left</code>、<code>right</code></td>
+</tr>
+<tr>
+<td>[options.data.middle]</td>
+<td><code>middle</code></td>
+<td><code>5</code></td>
+<td>=&gt; 当页数较多时，中间显示的页数</td>
+</tr>
+<tr>
+<td>[options.data.side]</td>
+<td><code>side</code></td>
+<td><code>2</code></td>
+<td>=&gt; 当页数较多时，两端显示的页数</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>Pager     分页</p>
+<p><strong>Kind</strong>: global variable  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(page) 选择某一页"></a></p>
+<h2 id="select-page-选择某一页-page-⇒-void"><a href="#select-page-选择某一页-page-⇒-void" class="headerlink" title="select(page) 选择某一页(page) ⇒ void"></a>select(page) 选择某一页(page) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page</td>
+<td><code>object</code></td>
+<td>选择页</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_select 选择某一页时触发"></a></p>
+<h2 id="“select-选择某一页时触发”"><a href="#“select-选择某一页时触发”" class="headerlink" title="“select 选择某一页时触发”"></a>“select 选择某一页时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>current</td>
+<td><code>object</code></td>
+<td>当前选择页</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

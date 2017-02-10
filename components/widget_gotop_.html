@@ -352,24 +352,83 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h2><p>请看屏幕右下角的例子。</p>
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>请看屏幕右下角的例子。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">gotop</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="位置扩展"><a href="#位置扩展" class="headerlink" title="位置扩展"></a>位置扩展</h2><p>请看屏幕左下角的例子。</p>
+<h3 id="位置扩展"><a href="#位置扩展" class="headerlink" title="位置扩展"></a>位置扩展</h3><p>请看屏幕左下角的例子。</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">gotop</span> <span class="attr">position</span>=<span class="string">"bottomleft"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h2><!-- demo_start -->
+<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">gotop</span> <span class="attr">position</span>=<span class="string">"static"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h2><p><em>待完成……</em></p>
+<h3 id="自定义"><a href="#自定义" class="headerlink" title="自定义"></a>自定义</h3><p><em>待完成……</em></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Gotop">Gotop</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#gotop_new 回到顶部">gotop() 回到顶部()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<p><a name="Gotop"></a></p>
+<h2 id="Gotop"><a href="#Gotop" class="headerlink" title="Gotop"></a>Gotop</h2><p><strong>Kind</strong>: global class<br><a name="new_Gotop_new"></a></p>
+<h3 id="new-Gotop"><a href="#new-Gotop" class="headerlink" title="new Gotop()"></a>new Gotop()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.position]</td>
+<td><code>string</code></td>
+<td><code>&quot;bottomright&quot;</code></td>
+<td>=&gt; 组件的位置，可选参数：<code>topcenter</code>、<code>topleft</code>、<code>topright</code>、<code>bottomcenter</code>、<code>bottomleft</code>、<code>bottomright</code>、<code>static</code></td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="gotop_new 回到顶部"></a></p>
+<h2 id="gotop-回到顶部-⇒-void"><a href="#gotop-回到顶部-⇒-void" class="headerlink" title="gotop() 回到顶部() ⇒ void"></a>gotop() 回到顶部() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
 
 <script>
 var index = 0;
