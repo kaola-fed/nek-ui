@@ -79,7 +79,6 @@ const doc = (isDev, callback) => {
       fs.writeFileSync(md, injectComponents(fs.readFileSync(md, 'utf8')))
     })
   }
-  return;
   // 组件文档
   CATES.forEach(c => {
     const components = getComponents(c.cate).filter(comp => {
