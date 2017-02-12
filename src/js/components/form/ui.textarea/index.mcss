@@ -20,6 +20,11 @@
         top: 0;
         bottom: 0;
     }
+
+    .textarea2_len {
+        font-size:12px;
+        color:#999;
+    }
 }
 
 
