@@ -73,9 +73,11 @@ var Modal = Component.extend({
         /**
          * @event ok 确定对话框时触发
          */
-        this.$emit('ok');
-
-        this.destroy();
+        if (this.events.ok) {
+            this.$emit('ok', this.data);
+        } else {
+            this.destroy();
+        }
     },
     /**
      * @method cancel() 取消对话框
@@ -86,9 +88,11 @@ var Modal = Component.extend({
         /**
          * @event cancel 取消对话框时触发
          */
-        this.$emit('cancel');
-
-        this.destroy();
+        if (this.events.cancel) {
+            this.$emit('cancel', this.data);
+        } else {
+            this.destroy();
+        }
     },
     _onDragStart: function($event) {
         var dialog = $event.proxy;
