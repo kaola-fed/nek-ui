@@ -73,9 +73,10 @@ var Modal = Component.extend({
         /**
          * @event ok 确定对话框时触发
          */
-        if (this.events.ok) {
-            this.$emit('ok', this.data);
+        if (this.data.onok) {
+            this.data.onok(this.data);
         } else {
+            this.$emit('ok', this.data);
             this.destroy();
         }
     },
@@ -88,9 +89,10 @@ var Modal = Component.extend({
         /**
          * @event cancel 取消对话框时触发
          */
-        if (this.events.cancel) {
-            this.$emit('cancel', this.data);
+        if (this.data.oncancel) {
+            this.data.oncancel(this.data);
         } else {
+            this.$emit('cancel', this.data);
             this.destroy();
         }
     },
