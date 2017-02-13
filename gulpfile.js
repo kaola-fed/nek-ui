@@ -90,8 +90,12 @@ gulp.task('gen-doc', function(cb) {
   })
 });
 
+gulp.task('dist', function(done) {
+  sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
+});
+
 gulp.task('default', function(done) {
-  sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], 'gen-doc', done);
+  sequence('dist', 'gen-doc', done);
 });
 
 gulp.task('server', ['default'], function() {

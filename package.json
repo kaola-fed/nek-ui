@@ -18,7 +18,7 @@
     "ui"
   ],
   "scripts": {
-    "build": "gulp",
+    "build": "gulp dist",
     "dev": "gulp watch --dev"
   },
   "dependencies": {
