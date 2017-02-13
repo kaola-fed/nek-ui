@@ -22,7 +22,7 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
  
  ```
 
-### Development
+### Development ([GUIDE](https://github.com/kaola-fed/nek-ui/issues/2))
 
  - `npm i`
  - `npm run dev`
