@@ -14,8 +14,8 @@ install:
 - npm install
 
 before_script:
-- git config --global user.name 'Cody Chan'
-- git config --global user.email 'int64ago@gmail.com'
+- git config --global user.name 'Kaola Bot'
+- git config --global user.email 'kaolabot@163.com'
 
 script:
 - gulp gen-doc
