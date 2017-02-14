@@ -27,28 +27,14 @@
 .u-formitem-row {
     flex-direction: initial;
     .formitem_tt {
-        font-size: 14px;
         padding-right: 10px;
+        margin: 0;
         text-align: right;
-        margin:0;
 
         &-sm { width: 70px; }
         &-md { width: 150px; }
         &-lg { width: 180px; }
         &-xlg { width: 220px; }
-    }
-    .formitem_ct {
-        flex: 1;
-    }
-}
-
-.u-formitem-row {
-    flex-direction: initial;
-    .formitem_tt {
-        font-size: 14px;
-        padding-top: 5px;
-        padding-right: 10px;
-        text-align: right;
     }
     .formitem_ct{
         flex: 1;

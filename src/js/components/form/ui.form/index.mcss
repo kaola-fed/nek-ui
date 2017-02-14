@@ -37,8 +37,6 @@
     }
 
     > .u-formitem, fieldset > .u-formitem {
-        @extend .u-formitem-block;
-        min-height: $height-base;
         margin-bottom: 1em;
     }
 }
