@@ -59,3 +59,14 @@ exports['r-attr'] = function(elem, value) {
         });
     }, true);
 }
+
+exports['r-size'] = function(elem, value) {
+    this.$watch(value, function(newValue, oldValue) {
+        if (parseInt(newValue)) {
+            elem.style.width = parseInt(newValue) + 'px';
+        } else {
+            elem.classList.remove(oldValue);
+            elem.classList.add(newValue);
+        }
+    });
+}
