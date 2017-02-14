@@ -15,8 +15,8 @@ var validator = require('validator');
 /**
  * @class Validation
  * @extend Component
- * @param {object}                  options.data                     =  绑定属性
- * @param {boolean=false}           options.data.disabled            => 是否禁用。当禁用时验证始终通过。
+ * @param {object}            [options.data]                      = 绑定属性
+ * @param {boolean}           [options.data.disabled=false]       => 是否禁用。当禁用时验证始终通过。
  */
 var Validation = Component.extend({
     name: 'validation',
