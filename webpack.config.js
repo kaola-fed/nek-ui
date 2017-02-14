@@ -34,11 +34,6 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      'bowser': __dirname + '/node_modules/bowser'
-    }
-  },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: "nek-ui.js.map",

@@ -16,10 +16,10 @@ var directive = require('./directive');
 /**
  * @class Component
  * @extend Regular
- * @param {boolean=false}           options.data.readonly            => 是否只读
- * @param {boolean=false}           options.data.disabled            => 是否禁用
- * @param {boolean=true}            options.data.visible             => 是否显示
- * @param {string=''}               options.data.class               => 补充class
+ * @param {boolean}       [options.data.readonly=false]     => 是否只读
+ * @param {boolean}       [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}       [options.data.visible=true]       => 是否显示
+ * @param {string}        [options.data.class]              => 补充class
  */
 var Component = Regular.extend({
     /**
