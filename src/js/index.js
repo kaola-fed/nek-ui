@@ -26,6 +26,7 @@ exports.UISelect = require('./components/form/ui.select');
 exports.UIText = require('./components/form/ui.text');
 exports.UITextArea = require('./components/form/ui.textarea');
 exports.Uploader = require('./components/form/uploader');
+exports.UIGroup = require('./components/form/ui.group');
 
 // Navigation
 exports.Collapse = require('./components/navigation/collapse');

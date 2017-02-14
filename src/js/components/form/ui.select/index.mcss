@@ -86,7 +86,6 @@
 
 //////////////////////////
 .u-select2 {
-    width: 100%;
 
     .dropdown_hd {
         min-height: $u-formctrl_height;

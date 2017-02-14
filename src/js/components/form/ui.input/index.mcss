@@ -9,9 +9,8 @@
 // ========================================================================
 
 .u-input2 {
-    display: inline-block;
+    display: block;
     position: relative;
-    width:100%;
 
     .input2_unit,.input2_icon {
         position: absolute; height:24px;
