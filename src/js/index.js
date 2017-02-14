@@ -49,3 +49,6 @@ exports.Tooltip = require('./components/widget/tooltip');
 // Layout
 exports.Panel = require('./components/layout/panel');
 exports.PanelTool = require('./components/layout/panel.tool');
+
+//i18n
+exports.LocaleProvider = require('./components/i18n/locale.provider');
