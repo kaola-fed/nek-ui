@@ -31,7 +31,8 @@ var Validation = require('../../../util/validation');
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
  * @param {boolean}       [options.data.visible=true]     => 是否显示
- * @param {number|string} [options.data.size]             => 组件大小, 数字表示组件宽度,xs/sm/md/lg/xlg表示大小
+ * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
+ * @param {number}        [options.data.width]            => 组件宽度
  * @param {string}        [options.data.class]            => 补充class
  */
 var DatePicker = Dropdown.extend({

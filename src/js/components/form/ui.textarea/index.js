@@ -28,6 +28,8 @@ var bowser = require('bowser');
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]              => 补充class
+ * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
+ * @param {number}        [options.data.width]              => 组件宽度
  */
 var TextArea = Component.extend({
     name: 'ui.textarea',

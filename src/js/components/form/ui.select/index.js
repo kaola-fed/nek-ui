@@ -48,6 +48,8 @@ require('../check');
  * @param {string}            [options.data.separator=,]              => 多选value分隔符
  * @param {boolean}           [options.data.selectedClose=true]       => 多选时选中非全部和请选择项时 是否关闭
  * @param {boolean}           [options.data.canSelectAll=false]       => 是否有全选
+ * @param {string}            [options.data.size]                     => 组件大小, sm/md/lg
+ * @param {number}            [options.data.width]                    => 组件宽度
  */
 
 var Select = Dropdown.extend({
