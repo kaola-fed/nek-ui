@@ -196,8 +196,8 @@ $u-formctrl-extend_size(sm, $u-formctrl-sm_padding, $u-formctrl-sm_height, $u-fo
 $u-formctrl-extend_size(lg, $u-formctrl-lg_padding, $u-formctrl-lg_height, $u-formctrl-lg_font-size);
 
 $u-formctrl-extend_width(sm, 80px);
-$u-formctrl-extend_width(md, 150px);
-$u-formctrl-extend_width(lg, 200px);
+$u-formctrl-extend_width(md, 160px);
+$u-formctrl-extend_width(lg, 300px);
 
 
 

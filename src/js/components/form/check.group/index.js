@@ -18,7 +18,9 @@ var Validation = require('../../../util/validation');
  * @extend CheckGroup
  * @param {object}    [options.data]                    = 绑定属性
  * @param {object[]}  [options.data.source=[]]          <=> 数据源
+ * @param {string}    [options.data.value='']           <=> 选择的值,逗号间隔的id值
  * @param {string}    [options.data.source[].name=[]]   => 每项的内容
+ * @param {string}    [options.data.key=id]             => 数据项的键
  * @param {string}    [options.data.nameKey=name]       => 数据项的name键
  * @param {number}    [options.data.min]                => 最少选几项
  * @param {number}    [options.data.max]                => 最多选几项
@@ -37,13 +39,15 @@ var CheckGroup = SourceComponent.extend({
      * @protected
      */
     config: function() {
-        _.extend(this.data, {
+        this.defaults({
             // @inherited source: [],
             block: false,
             source: [],
             min:0,
             max: 1000,
-            nameKey: 'name'
+            nameKey: 'name',
+            key: 'id',
+            value: ''
         });
         this.supr();
 
@@ -56,6 +60,20 @@ var CheckGroup = SourceComponent.extend({
                 $outer.controls.splice(index, 1);
             });
         }
+    },
+    init: function() {
+        this.$watch('source', function(source) {
+            if (!source || !(source instanceof Array)) { return console.error('source of check.group is not an array'); }
+            var key = this.data.key,
+                value = this.data.value,
+                values = value.split(',');
+
+            source.forEach(function(item) {
+                if (values.indexOf(item[key] + '') != -1) {
+                    item.checked = true;
+                }
+            });
+        });
     },
     /**
      * @method validate() 根据min, max验证组件的值是否正确
@@ -89,6 +107,20 @@ var CheckGroup = SourceComponent.extend({
 
         return result;
     },
+    /**
+     * method _onCheck() 点击check时,改变对应的value值
+     * @private
+     */
+    _onCheck: function(item) {
+        item.checked = !item.checked;
+
+        var key = this.data.key,
+            source = this.data.source,
+            checkedList = source.filter(function(item) { return item.checked; }),
+            ids = checkedList.map(function(item) { return item[key]; });
+
+        this.$update('value', ids.join(','));
+    }
 });
 
 module.exports = CheckGroup;
