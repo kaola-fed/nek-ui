@@ -5,6 +5,8 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
 
 [=> Documents <=](https://nek-ui.kaolafed.com)
 
+[=> CodePen <=](http://codepen.io/int64ago/pen/WRmzPV)
+
 ### Usage
 
  - For browser:
