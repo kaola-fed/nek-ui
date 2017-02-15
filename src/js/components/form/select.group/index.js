@@ -69,6 +69,8 @@ var SelectGroup = Component.extend({
                 key: this.data.key,
                 values: this.data.values
             });
+
+            this.data.tip && this.validate();
         });
 
         this.data.sources[0] = this.data.source;

@@ -103,6 +103,7 @@
         max-height: 200px;
     }
 }
+.u-select2-error .dropdown_hd { border-color: #d73925; }
 
 /* Disabled */
 .u-select2.z-dis {

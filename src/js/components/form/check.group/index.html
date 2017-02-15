@@ -2,7 +2,7 @@
     {#list source as item}
         <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />
     {/list}
-    {#if tip}
-        <p class="u-tip u-tip-{state}">{tip}</p>
-    {/if}
 </div>
+{#if tip}
+<p class="u-tip u-tip-{state}">{tip}</p>
+{/if}

@@ -7,7 +7,6 @@
 	    <input class="u-input u-input-full u-input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input" autofocus={autofocus} readonly={readonly} disabled={disabled}
 	        on-focus={this.toggle(true)} on-change={this._onInput($event)}>
 	    {/if}
-	    {#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
     </div>
     <div class="dropdown_bd" r-hide={!open} r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         <calendar minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
@@ -17,3 +16,4 @@
         </calendar>
     </div>
 </div>
+{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}

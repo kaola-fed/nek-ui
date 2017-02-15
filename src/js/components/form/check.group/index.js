@@ -24,6 +24,7 @@ var Validation = require('../../../util/validation');
  * @param {string}    [options.data.nameKey=name]       => 数据项的name键
  * @param {number}    [options.data.min]                => 最少选几项
  * @param {number}    [options.data.max]                => 最多选几项
+ * @param {boolean}   [options.data.required]           => 是否必选
  * @param {string}    [options.data.message]            => 校验错误提示信息
  * @param {boolean}   [options.data.block=false]        => 多行显示
  * @param {boolean}   [options.data.readonly=false]     => 是否只读
@@ -43,7 +44,7 @@ var CheckGroup = SourceComponent.extend({
             // @inherited source: [],
             block: false,
             source: [],
-            min:0,
+            min: 0,
             max: 1000,
             nameKey: 'name',
             key: 'id',
@@ -81,10 +82,11 @@ var CheckGroup = SourceComponent.extend({
      * @public
      * @return {object} result 结果
      */
-    validate: function(on) {
+    validate: function() {
         var source = this.data.source,
             result = { success: true, message: ''},
-            min = this.data.min,
+            required = this.data.required,
+            min = this.data.min ? this.data.min : required/1,
             max = this.data.max,
             checked = source.filter(function(item) { return !!item.checked; }),
             len = checked.length;
@@ -102,7 +104,6 @@ var CheckGroup = SourceComponent.extend({
 
         this.$emit('validate', {
             sender: this,
-            on: on,
             result: result
         });
 
@@ -121,6 +122,8 @@ var CheckGroup = SourceComponent.extend({
             ids = checkedList.map(function(item) { return item[key]; });
 
         this.$update('value', ids.join(','));
+
+        this.data.tip && this.validate();
     }
 });
 

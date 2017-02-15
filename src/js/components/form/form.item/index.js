@@ -50,10 +50,11 @@ var FormItem = Validation.extend({
     initValidateRule: function() {
         if (!this.controls.length) { return; }
 
-        var controls = this.controls || [];
+        var controls = this.controls || [],
+            message = this.data.message || '请选择';
         controls.forEach(function($component) {
           var rules = $component.data.rules,
-              isFilled = { type: 'isFilled', message: '请填写' };
+              isFilled = { type: 'isFilled', message: message};
 
           if (this.data.required) {
             if (!rules) {
@@ -61,6 +62,10 @@ var FormItem = Validation.extend({
             } else {
               rules.push(isFilled);
             }
+            // rules针对input等较复杂的验证规则, required属性针对ui.select, check.group等;
+            $component.data.required = true;
+            $component.data.message = message;
+            $component.$update();
           }
         }.bind(this));
     }

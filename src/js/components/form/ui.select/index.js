@@ -129,6 +129,8 @@ var Select = Dropdown.extend({
                         return item[key] == newValue;
                     }, this);
                 }
+
+                this.data.tip && this.validate();
             }
         });
 

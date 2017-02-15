@@ -75,6 +75,8 @@ var RadioGroup = SourceComponent.extend({
             sender: this,
             selected: item
         });
+
+        this.data.tip && this.validate();
     },
     /**
      * @method validate() 根据required验证组件的值是否正确

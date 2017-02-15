@@ -94,6 +94,8 @@ var DatePicker = Dropdown.extend({
                 sender: this,
                 date: newValue
             });
+
+            this.data.tip && this.validate();
         });
 
         this.$watch('minDate', function(newValue, oldValue) {

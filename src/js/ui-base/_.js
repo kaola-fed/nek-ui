@@ -13,6 +13,20 @@ Regular.prototype.$once = function(event, fn) {
 var _ = {
     noop: Regular.util.noop,
     dom: Regular.dom,
+    isNil: function(val) {
+        return val == null || val == undefined;
+    },
+    /**
+     * Check whether the object has the property.
+     *
+     * @param {Object} obj
+     * @param {String} key
+     * @return {Boolean}
+     */
+    hasOwn: function(obj, key) {
+        var hasOwnProperty = Object.prototype.hasOwnProperty;
+        return hasOwnProperty.call(obj, key);
+    },
     multiline: function(func) {
         var reg = /^function\s*\(\)\s*\{\s*\/\*+\s*([\s\S]*)\s*\*+\/\s*\}$/;
         return reg.exec(func)[1];

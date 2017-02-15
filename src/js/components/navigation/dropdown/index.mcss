@@ -17,6 +17,7 @@
         width: 100%;
         top: 100%;
         background: #fff;
+        line-height:normal;
         .m-listview {
             > li > a {
                 display: block;

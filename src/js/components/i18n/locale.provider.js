@@ -2,6 +2,7 @@
 
 var Component = require('../../ui-base/component');
 var ajax = require('../../ui-base/ajax');
+var _ = require('../../ui-base/_');
 
 var LocaleProvider = Component.extend({
     name: 'locale.provider',
@@ -28,16 +29,43 @@ var LocaleProvider = Component.extend({
 LocaleProvider.lang = 'cn';
 LocaleProvider.locale = {};
 
+const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
+LocaleProvider._format = (str, ...args) => {
+    if (args.length === 1 && typeof args[0] === 'object') {
+        args = args[0]
+    } else {
+        args = {}
+    }
+
+    if (!args || !args.hasOwnProperty) {
+        args = {}
+    }
+
+    return str.replace(RE_NARGS, (match, prefix, i, index) => {
+        let result;
+
+        if (str[index - 1] === '{'
+            && str[index + match.length] === '}') {
+            return i;
+        } else {
+            result = _.hasOwn(args, i) ? args[i] : match;
+            if (_.isNil(result)) {
+                return '';
+            }
+
+            return result;
+        }
+    })
+};
+
 /**
  * @private
  */
-LocaleProvider._interpolate = (key) => {
+LocaleProvider._interpolate = (key, args) => {
     var lang = LocaleProvider.lang,
         map = LocaleProvider.locale[lang] || {};
 
-    var val = map[key];
-    if (!val) { return key; }
-    if (typeof val !== 'string') { return console.warn('value of key' + key + 'is not a string'); }
+    var val = map[key] || key;
 
     // Check for the existance of links within the translated string
     if (val.indexOf('@:') >= 0) {
@@ -50,17 +78,16 @@ LocaleProvider._interpolate = (key) => {
             // Remove the leading @:
             const linkPlaceholder = link.substr(2);
             // Translate the link
-            const translatedstring = LocaleProvider._interpolate(linkPlaceholder);
+            const translatedstring = LocaleProvider._interpolate(linkPlaceholder, args);
             // Replace the link with the translated string
             val = val.replace(link, translatedstring)
         }
-        return val;
     }
-    return val;
+    return !args ? val : LocaleProvider._format(val, args);
 };
 
-LocaleProvider.translate = (key) => {
-    return LocaleProvider._interpolate(key);
+LocaleProvider.translate = (key, params) => {
+    return LocaleProvider._interpolate(key, params);
 };
 
 module.exports = LocaleProvider;
