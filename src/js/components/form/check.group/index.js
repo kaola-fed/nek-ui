@@ -64,8 +64,9 @@ var CheckGroup = SourceComponent.extend({
     init: function() {
         this.$watch('source', function(source) {
             if (!source || !(source instanceof Array)) { return console.error('source of check.group is not an array'); }
+
             var key = this.data.key,
-                value = this.data.value,
+                value = this.data.value || '',
                 values = value.split(',');
 
             source.forEach(function(item) {
