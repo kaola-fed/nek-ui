@@ -29,6 +29,10 @@
         .u-formitem {
             display:inline-block;
             vertical-align:middle;
+
+            .formitem_ct {
+                display:inline-block;
+            }
         }
     }
 }
