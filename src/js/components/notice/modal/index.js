@@ -18,9 +18,11 @@ var _ = require('../../../ui-base/_');
  * @param {string}            [options.data.title=提示]             => 对话框标题 | Title of Dialog
  * @param {string}            [options.data.content]              => 对话框内容
  * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
+ * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
  * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
  * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
  * @param {string}            [options.data.class]                => 补充class
+ * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
  */
 var Modal = Component.extend({
     name: 'modal',
@@ -34,7 +36,8 @@ var Modal = Component.extend({
             content: '',
             okButton: true,
             with: 400,
-            cancelButton: false
+            cancelButton: false,
+            noClose: false
         });
         this.supr();
     },
@@ -73,15 +76,8 @@ var Modal = Component.extend({
         /**
          * @event ok 确定对话框时触发
          */
-        if (this.data.onok) {
-            this.data.onok({
-                ctx: this,
-                data: this.data
-            });
-        } else {
-            this.$emit('ok', this.data);
-            this.destroy();
-        }
+        this.$emit('ok');
+        !this.data.noClose && this.destroy();
     },
     /**
      * @method cancel() 取消对话框
@@ -92,15 +88,8 @@ var Modal = Component.extend({
         /**
          * @event cancel 取消对话框时触发
          */
-        if (this.data.oncancel) {
-            this.data.oncancel({
-                ctx: this,
-                data: this.data
-            });
-        } else {
-            this.$emit('cancel', this.data);
-            this.destroy();
-        }
+        this.$emit('cancel');
+        this.destroy();
     },
     _onDragStart: function($event) {
         var dialog = $event.proxy;

@@ -131,6 +131,8 @@ html.z-modal body {
     .modal_bd {
         padding: 15px;
         min-height: 10px;
+        max-height:550px;
+        overflow:auto;
     }
 
     .modal_ft {

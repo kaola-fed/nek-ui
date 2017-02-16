@@ -10,12 +10,16 @@
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
         </div>
         <div class="modal_ft">
-            {#if okButton}
-            <button class="u-btn u-btn-primary" on-click={this.close(true)} r-autofocus>{okButton === true ? '确定' : okButton}</button>
-            {/if}
-            {#if cancelButton}
-            <button class="u-btn" on-click={this.close(false)}>{cancelButton === true ? '取消' : cancelButton}</button>
-            {/if}
+	        {#if footerTemplate}
+	            {#inc @(footerTemplate)}
+	        {#else}
+		        {#if okButton}
+		            <button class="u-btn u-btn-primary" on-click={this.close(true)} r-autofocus>{okButton === true ? '确定' : okButton}</button>
+		        {/if}
+		        {#if cancelButton}
+		            <button class="u-btn" on-click={this.close(false)}>{cancelButton === true ? '取消' : cancelButton}</button>
+		        {/if}
+	        {/if}
         </div>
     </div>
 </div>
