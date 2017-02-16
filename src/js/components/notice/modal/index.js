@@ -23,6 +23,7 @@ var _ = require('../../../ui-base/_');
  * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
  * @param {string}            [options.data.class]                => 补充class
  * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
+ * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
  */
 var Modal = Component.extend({
     name: 'modal',
