@@ -1,9 +1,11 @@
 # nek-ui <sup>[WIP]</sup>
-UI components for [NEK][nek] based on [RegularJS][regularjs]
+UI components based on [RegularJS][regularjs]
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
 [=> Documents <=](https://nek-ui.kaolafed.com)
+
+[=> CodePen <=](http://codepen.io/int64ago/pen/WRmzPV)
 
 ### Usage
 
@@ -27,11 +29,6 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
  - `npm i`
  - `npm run dev`
 
-### Publish (Permission needed)
-
- - `npm run build`
- - update version
- - `npm publish`
 
 ### Reference
 
@@ -43,7 +40,6 @@ UI components for [NEK][nek] based on [RegularJS][regularjs]
 MIT
 
 
- [nek]: https://github.com/kaola-fed/NEK
  [regularjs]: https://github.com/regularjs/regular
 
  [npm-url]: https://npmjs.org/package/nek-ui
