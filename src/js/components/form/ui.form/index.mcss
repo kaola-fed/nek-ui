@@ -24,6 +24,13 @@
         // - Correct `color` not being inherited in IE 8/9/10/11.
         border: none;
     }
+
+    &.inline {
+        .u-formitem {
+            display:inline-block;
+            vertical-align:middle;
+        }
+    }
 }
 
 //////////////////////
