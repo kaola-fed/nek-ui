@@ -24,6 +24,7 @@ var _ = require('../../../ui-base/_');
  * @param {string}      [options.data.target=_self]   => 按钮链接的打开方式
  * @param {string}      [options.data.shape]          => circle, icon或者默认
  * @param {boolean}     [options.data.loading=false]  => 是否正在加载
+ * @param {boolean}     [options.data.disabled=false] => 禁止按钮
  * @param {boolean}     [options.data.class=false]    => 样式扩展
  */
 var actionIcons= {
@@ -76,6 +77,7 @@ var UIButton = Component.extend({
             size: 'normal',
             icon: '',
             loading: false,
+            disabled: false,
             actionIcons: actionIcons,
             target: '_self'
         });

@@ -10,12 +10,23 @@ title: 按钮
 <div class="m-example"></div>
 
 ```xml
- <ui.button type="primary" title="primary" />
- <ui.button type="default" title="default" />
+ <ui.button on-click={this.click1()} type="primary" title="primary" disabled />
+ <ui.button on-click={this.click2()} type="default" title="default" />
  <ui.button type="info" title="info" />
  <ui.button type="success" title="success" />
  <ui.button type="warning" title="warn" />
  <ui.button type="error" title="error" />
+```
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    click1: function() {
+      console.log('click1');
+    },
+    click2: function() {
+      console.log('click2');
+    }
+});
 ```
 <!-- demo_end -->
 
