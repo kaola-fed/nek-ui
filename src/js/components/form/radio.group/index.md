@@ -30,6 +30,31 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+### 数据绑定
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<radio.group source={source} value={value} selected={selected} />
+<div>value: {value}</div>
+<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {id: 11, name: '选项1'},
+            {id: 22, name: '选项2'},
+            {id: 33, name: '选项3'},
+        ]
+    }
+});
+```
+<!-- demo_end -->
+
 ### 表单项
 
 在表单中使用
