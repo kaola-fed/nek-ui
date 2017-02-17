@@ -22,6 +22,8 @@ var LocaleProvider = Component.extend({
         ajax.get(`${api}?lang=${lang}`, function(json) {
             LocaleProvider.locale[lang] = json;
             this.$update('ready', true);
+            
+            this.$emit('ready');
         }.bind(this))
     }
 });
