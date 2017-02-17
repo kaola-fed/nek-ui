@@ -358,6 +358,12 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">radio.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">radio.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>value: &#123;value&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>selected: &#123;selected ? JSON.stringify(selected) : ''&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">11</span>, <span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">22</span>, <span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">33</span>, <span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -433,6 +439,12 @@
 <td>=&gt; 数据项的name键</td>
 </tr>
 <tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的key键</td>
+</tr>
+<tr>
 <td>[options.data.source[].name]</td>
 <td><code>string</code></td>
 <td></td>
@@ -442,7 +454,13 @@
 <td>[options.data.selected]</td>
 <td><code>object</code></td>
 <td></td>
-<td>&lt;=&gt; 当前选择</td>
+<td>&lt;=&gt; 当前选择的对象</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>number</code> &#124; <code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 当前选择的值</td>
 </tr>
 <tr>
 <td>[options.data.block]</td>
@@ -558,6 +576,29 @@ var component = new NEKUI.Component({
             {name: '选项4'},
             {name: '选项5'},
             {name: '选项6'}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<radio.group source={source} value={value} selected={selected} />
+<div>value: {value}</div>
+<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {id: 11, name: '选项1'},
+            {id: 22, name: '选项2'},
+            {id: 33, name: '选项3'},
         ]
     }
 });
