@@ -18,6 +18,8 @@ ajax.request = function(opt) {
 
     opt.data = opt.data || {};
 
+    opt.type = opt.type || 'json';
+
     if(!opt.contentType && opt.method && opt.method.toLowerCase() !== 'get')
         opt.contentType = 'application/json';
 
