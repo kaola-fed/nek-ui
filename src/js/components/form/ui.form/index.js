@@ -54,7 +54,7 @@ var UIForm = Validation.extend({
             var controls = this.controls;
             controls.forEach(function($component) {
                 if ($component.data.labelCols) {
-                    $component.data.labelCols = 0;
+                    $component.$update('labelCols', 0);
                 }
             });
         });

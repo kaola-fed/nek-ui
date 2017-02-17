@@ -28,12 +28,11 @@
     &.inline {
         .u-formitem {
             display:inline-block;
-            vertical-align:middle;
+            vertical-align:top;
             margin-bottom:0;
 
             .formitem_ct {
                 display:inline-block;
-                vertical-align:middle;
             }
         }
     }

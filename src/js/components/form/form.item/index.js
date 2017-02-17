@@ -13,7 +13,7 @@ var template = require('./index.html');
  * @param {object}        [options.data]              = 绑定属性
  * @param {string}        [options.data.title]        => label显示的文字
  * @param {number}        [options.data.cols]         => 布局列数
- * @param {number}        [options.data.labelCols=4]  => 如果有title, label占的列数
+ * @param {number}        [options.data.labelCols=12]  => 如果有title, label占的列数
  * @param {string|number} [options.data.labelSize=200]=> 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
  * @param {number}        [options.data.offset]       => 布局offset
  * @param {string}        [options.data.row]          => 垂直布局row
@@ -76,6 +76,8 @@ FormItem.directive('cols', function(ele, cols) {
         ele.className = ele.className.replace(/(\s)g-col(-\d*)?/gim, '');
         if (ncols) {
             ele.classList.add('g-col', 'g-col-' + ncols);
+        } else {
+            ele.classList.remove('g-col');
         }
     });
 });

@@ -1,86 +1,88 @@
-<div class="u-dropdown u-select2 u-select2-{state} {size} {class}" r-class={{isMultiple:multiple}}
-     z-dis={disabled} r-hide={!visible} r-width="{width}" ref="element">
-    {#if !multiple}
-        <div class="dropdown_hd"
-             title={selected?selected[nameKey]:placeholder}
-             on-click={this.toggle(!open, $event)}>
-            <i class="u-icon u-icon-caret-down"></i>
-            {#if open && canSearch}
-                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
-                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
-            {#else}
-                <span>{selected?selected[nameKey]:placeholder}</span>
-            {/if}
-        </div>
-    {#else}
-        <div class="dropdown_hd"
-             on-click={this.toggle(!open, $event)}>
-            {#list selected as item}
-                <span class="selected-tag">
-                    {item[nameKey]}
-                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
-                </span>
-            {/list}
-            {#if open && canSearch}
-            <input disabled={disabled} type="text" class="u-search-input" ref="input"
-                   on-keydown={this.backSearchValue($event,selected,searchValue)}
-                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>
-            {/if}
-        </div>
-    {/if}
-    {#if open}
-    <div class="dropdown_bd"
-         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <ul class="m-listview">
-            {#if placeholder}
-                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
-                    {placeholder}
-                </li>
-            {/if}
+<label class="u-select2 u-select2-{state} {size} {class}">
+	<div class="u-dropdown" r-class={{isMultiple:multiple}}
+	     z-dis={disabled} r-hide={!visible} r-width="{width}" ref="element">
+	    {#if !multiple}
+	        <div class="dropdown_hd"
+	             title={selected?selected[nameKey]:placeholder}
+	             on-click={this.toggle(!open, $event)}>
+	            <i class="u-icon u-icon-caret-down"></i>
+	            {#if open && canSearch}
+	                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
+	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
+	            {#else}
+	                <span>{selected?selected[nameKey]:placeholder}</span>
+	            {/if}
+	        </div>
+	    {#else}
+	        <div class="dropdown_hd"
+	             on-click={this.toggle(!open, $event)}>
+	            {#list selected as item}
+	                <span class="selected-tag">
+	                    {item[nameKey]}
+	                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
+	                </span>
+	            {/list}
+	            {#if open && canSearch}
+	            <input disabled={disabled} type="text" class="u-search-input" ref="input"
+	                   on-keydown={this.backSearchValue($event,selected,searchValue)}
+	                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>
+	            {/if}
+	        </div>
+	    {/if}
+	    {#if open}
+	    <div class="dropdown_bd"
+	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+	        <ul class="m-listview">
+	            {#if placeholder}
+	                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+	                    {placeholder}
+	                </li>
+	            {/if}
 
-            {#list this.filterArray(source) as item by item_index}
-                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
-                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
-                        全部
-                    </li>
-                {/if}
-                {#if item.disabled && item.tip}
-                <tooltip tip={item.tip} placement={item.placement||'top'}>
-                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
-                        title={item[nameKey]} on-click={this.select(item)}>
-                        {#if multiple && !item.divider}
-                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-                        {/if}
-                        {#if @(itemTemplate)}
-                            {#inc @(itemTemplate)}
-                        {#else}
-                            {item[nameKey]}
-                        {/if}
-                    </li>
-                </tooltip>
-                {#else}
-                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
-                    title={item[nameKey]} on-click={this.select(item)}>
-                    {#if multiple && !item.divider}
-                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-                    {/if}
-                    {#if @(itemTemplate)}
-                        {#inc @(itemTemplate)}
-                    {#else}
-                        {item[nameKey]}
-                    {/if}
-                </li>
-                {/if}
-            {#else}
-                {#if searchValue}
-                <li>
-                    {noMatchText||'无匹配项'}
-                </li>
-                {/if}
-            {/list}
-        </ul>
-    </div>
-    {/if}
-</div>
-{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+	            {#list this.filterArray(source) as item by item_index}
+	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
+	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+	                        全部
+	                    </li>
+	                {/if}
+	                {#if item.disabled && item.tip}
+	                <tooltip tip={item.tip} placement={item.placement||'top'}>
+	                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+	                        title={item[nameKey]} on-click={this.select(item)}>
+	                        {#if multiple && !item.divider}
+	                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+	                        {/if}
+	                        {#if @(itemTemplate)}
+	                            {#inc @(itemTemplate)}
+	                        {#else}
+	                            {item[nameKey]}
+	                        {/if}
+	                    </li>
+	                </tooltip>
+	                {#else}
+	                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+	                    title={item[nameKey]} on-click={this.select(item)}>
+	                    {#if multiple && !item.divider}
+	                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+	                    {/if}
+	                    {#if @(itemTemplate)}
+	                        {#inc @(itemTemplate)}
+	                    {#else}
+	                        {item[nameKey]}
+	                    {/if}
+	                </li>
+	                {/if}
+	            {#else}
+	                {#if searchValue}
+	                <li>
+	                    {noMatchText||'无匹配项'}
+	                </li>
+	                {/if}
+	            {/list}
+	        </ul>
+	    </div>
+	    {/if}
+	</div>
+	{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+</label>

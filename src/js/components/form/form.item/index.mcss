@@ -30,7 +30,8 @@
         padding-right: 10px;
         margin: 0;
         text-align: right;
-        align-self:center;
+        line-height: 32px;
+        float:left;
 
         &-sm { width: 70px; }
         &-md { width: 150px; }
@@ -39,5 +40,6 @@
     }
     .formitem_ct{
         flex: 1;
+        line-height: 32px;
     }
 }
