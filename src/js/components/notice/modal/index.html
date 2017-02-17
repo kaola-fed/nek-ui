@@ -6,7 +6,7 @@
             <h3 class="modal_title">{title}</h3>
         </div>
         </draggable>
-        <div class="modal_bd">
+        <div class="modal_bd" {#if maxHeight} style="max-height: {maxHeight}px; overflow: auto;" {/if}>
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
         </div>
         <div class="modal_ft">

@@ -163,10 +163,9 @@ $u-btn-extend_color = ($name, $color, $hover_color, $active_color) {
 /* Disabled */
 .u-btn:disabled,
 .u-btn.z-dis {
-    background: #fff;
     $border: #ccc;
 
-    $opacity: .65;
+    $opacity: .5;
     $box-shadow: none;
 }
 
