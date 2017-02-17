@@ -13,7 +13,6 @@
     cursor: pointer;
     $user-select: none;
     white-space:nowrap;
-    margin-bottom: 8px;
 
     .check2_box {
         display: inline-block;

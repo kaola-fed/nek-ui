@@ -29,6 +29,7 @@
         .u-formitem {
             display:inline-block;
             vertical-align:middle;
+            margin-bottom:0;
 
             .formitem_ct {
                 display:inline-block;
