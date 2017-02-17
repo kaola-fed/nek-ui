@@ -18,8 +18,10 @@ var Validation = require('../../../util/validation');
  * @param {object}        [options.data]                  = 绑定属性
  * @param {object[]}      [options.data.source=[]]        <=> 数据源
  * @param {string}        [options.data.nameKey=name]     => 数据项的name键
+ * @param {string}        [options.data.key=id]           => 数据项的key键
  * @param {string}        [options.data.source[].name]    => 每项的内容
- * @param {object}        [options.data.selected]         <=> 当前选择
+ * @param {object}        [options.data.selected]         <=> 当前选择的对象
+ * @param {number|string} [options.data.value]            <=> 当前选择的值
  * @param {boolean}       [options.data.block=false]      => 多行显
  * @param {boolean}       [options.data.required=false]   => 是否必选
  * @param {string}        [options.data.message]          => 验证错误提示
@@ -43,17 +45,9 @@ var RadioGroup = SourceComponent.extend({
             required: false,
             nameKey: 'name',
             key: 'id',
-            value: ''
+            value: '',
         });
         this.supr();
-
-        // this.$on('select', function(event){
-        //     var data = this.data;
-        //     var key = data.key;
-        //     var selected = event.selected;
-        //     var value = selected[key];
-        //     data.value = value === undefined? selected['name'] : value;
-        // })
 
         var $outer = this.$outer;
         if($outer && $outer instanceof Validation) {
