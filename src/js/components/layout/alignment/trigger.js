@@ -76,9 +76,10 @@ var Trigger = Component.extend({
     if (instance != this.data.instance) {
       this.data.instance = instance;
 
-      dom.on(element, 'DOMSubtreeModified', function() {
-          $align.reAlign(element);
-      });
+      // firefox浏览器会造成死循环, 本来这里加事件的原因是为了处理:pop.confirm中验证之后,高度变化造成对不齐的情况 ;
+      // dom.on(element, 'DOMSubtreeModified', function() {
+      //     $align.reAlign(element);
+      // });
     }
 
     if (!isShow && destroyOnHide) {
