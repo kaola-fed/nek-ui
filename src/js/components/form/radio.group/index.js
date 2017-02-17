@@ -41,9 +41,19 @@ var RadioGroup = SourceComponent.extend({
             selected: null,
             _radioGroupId: new Date(),
             required: false,
-            nameKey: 'name'
+            nameKey: 'name',
+            key: 'id',
+            value: ''
         });
         this.supr();
+
+        // this.$on('select', function(event){
+        //     var data = this.data;
+        //     var key = data.key;
+        //     var selected = event.selected;
+        //     var value = selected[key];
+        //     data.value = value === undefined? selected['name'] : value;
+        // })
 
         var $outer = this.$outer;
         if($outer && $outer instanceof Validation) {
@@ -65,7 +75,12 @@ var RadioGroup = SourceComponent.extend({
         if(this.data.readonly || this.data.disabled)
             return;
 
-        this.data.selected = item;
+        var data = this.data;
+        var key = data.key;
+        var value = item[key];
+        data.value = value === undefined ? item[nameKey] : value;
+
+        data.selected = item;
         /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
