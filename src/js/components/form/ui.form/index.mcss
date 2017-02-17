@@ -32,7 +32,7 @@
 
             .formitem_ct {
                 display:inline-block;
-                vertical-align:top;
+                vertical-align:middle;
             }
         }
     }

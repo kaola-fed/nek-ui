@@ -30,6 +30,7 @@
         padding-right: 10px;
         margin: 0;
         text-align: right;
+        align-self:center;
 
         &-sm { width: 70px; }
         &-md { width: 150px; }
