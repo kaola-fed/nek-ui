@@ -92,46 +92,10 @@ var TreeViewList = SourceComponent.extend({
         this.$ancestor.toggle.apply(this.$ancestor, arguments);
     },
     /**
-     * @private
+     * @note 移给$ancestor处理
      */
-    _onItemCheckedChange: function($event, item) {
-        item.checked = $event.checked;
-
-        if($event.checked !== null && item.children) {
-            item.children.forEach(function(child) {
-                child.checked = $event.checked;
-            });
-        }
-
-        var parent = this.data.parent;
-        if(parent && parent.checked !== item.checked) {    // 剪枝
-            var checkedCount = 0;
-            parent.children.forEach(function(child) {
-                if(child.checked)
-                    checkedCount++;
-                else if(child.checked === null)
-                    checkedCount += 0.5;
-            });
-
-            if(checkedCount === 0)
-                parent.checked = false;
-            else if(checkedCount === parent.children.length)
-                parent.checked = true;
-            else
-                parent.checked = null;
-        }
-
-        /**
-         * @event check 改变选中状态时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} item 处理项
-         * @property {boolean} checked 选中状态
-         */
-        this.$ancestor.$emit('check', {
-            sender: this,
-            item: item,
-            checked: item.checked
-        });
+    _onItemCheckedChange: function() {
+        this.$ancestor._onItemCheckedChange.apply(this.$ancestor, arguments);
     }
 });
 

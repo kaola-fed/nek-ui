@@ -23,7 +23,9 @@ var TreeViewList = require('./tree.view.list');
  * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
  * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
  * @param {boolean}   [options.data.source[].divider=false]   => 设置此项为分隔线
- * @param {object}    [options.data.selected=null]            <=> 当前选择项。多选时无效。
+ * @param {string}    [options.data.value=null]               <=> 当前选择值
+ * @param {object}    [options.data.selected=null]            <=> 当前选择项
+ * @param {string}    [options.data.separator=,]              => 多选时value分隔符
  * @param {string}    [options.data.itemTemplate=null]        @=> 单项模板
  * @param {boolean}   [options.data.multiple=false]           => 是否多选
  * @param {boolean}   [options.data.hierarchical=false]       @=> 是否分级动态加载，需要service
@@ -40,17 +42,25 @@ var TreeView = SourceComponent.extend({
      * @protected
      */
     config: function() {
-        console.log('hale multiple', this.data.multiple);
-
         _.extend(this.data, {
             // @inherited source: [],
+            key: 'id',
+            nameKey: 'name',
+            value: null,
             selected: null,
             multiple: false,
             hierarchical: false
         });
         this.supr();
-
         this.$ancestor = this;
+        this.$watch('selected', function(newVal) {
+          var key = this.data.key, nameKey = this.data.nameKey, separator = this.data.separator;
+          if (!newVal) return this.data.value = '';
+          if (Array.isArray(newVal)) return this.data.value = newVal.map(function(d) {
+              return d[key] || d[nameKey];
+          }).join(separator);
+          this.data.value = newVal[key] || newVal[nameKey];
+        });
     },
     /**
      * @method select(item) 选择某一项
@@ -102,5 +112,42 @@ var TreeView = SourceComponent.extend({
             item: item,
             open: open
         });
+    },
+    /**
+     * @private
+     */
+    removeItem: function(array, item) {
+        var key = this.data.key, nameKey = this.data.nameKey;
+        for(var i in array) {
+            if(array[i][key] === item[key] || array[i][nameKey] === item[nameKey]) {
+                array.splice(i,1);
+                break;
+            }
+        }
+    },
+    /**
+     * @private
+     */
+    _setSelected: function(checked, item) {
+        if (!this.data.selected) this.data.selected = [];
+        if (checked) {
+            this.data.selected.push(item);
+        } else {
+            this.removeItem(this.data.selected, item);
+        }
+    },
+    /**
+     * @private
+     */
+    _onItemCheckedChange: function($event, item) {
+        var checked = $event.checked;
+        item.checked = checked;
+        this._setSelected(checked, item);
+        if(checked !== null && item[this.data.childKey]) {
+            item[this.data.childKey].forEach(function(child) {
+                child.checked = checked;
+                this._setSelected(checked, child);
+            }.bind(this));
+        }
     }
 });
