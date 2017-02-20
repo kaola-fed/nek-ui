@@ -116,38 +116,20 @@ var TreeView = SourceComponent.extend({
     /**
      * @private
      */
-    removeItem: function(array, item) {
-        var key = this.data.key, nameKey = this.data.nameKey;
-        for(var i in array) {
-            if(array[i][key] === item[key] || array[i][nameKey] === item[nameKey]) {
-                array.splice(i,1);
-                break;
+    _getSelected: function(source) {
+        var self = this;
+        if (!source) return [];
+        var arr = [];
+        source.forEach(function(d) {
+            if (d[self.data.childKey]) {
+              arr = arr.concat(self._getSelected(d[self.data.childKey]));
+            } else if (d.checked) {
+              arr = arr.concat(d);
             }
-        }
+        });
+        return arr;
     },
-    /**
-     * @private
-     */
-    _setSelected: function(checked, item) {
-        if (!this.data.selected) this.data.selected = [];
-        if (checked) {
-            this.data.selected.push(item);
-        } else {
-            this.removeItem(this.data.selected, item);
-        }
-    },
-    /**
-     * @private
-     */
-    _onItemCheckedChange: function($event, item) {
-        var checked = $event.checked;
-        item.checked = checked;
-        this._setSelected(checked, item);
-        if(checked !== null && item[this.data.childKey]) {
-            item[this.data.childKey].forEach(function(child) {
-                child.checked = checked;
-                this._setSelected(checked, child);
-            }.bind(this));
-        }
+    setSelected: function(event) {
+        this.data.selected = this._getSelected(this.data.source);
     }
 });

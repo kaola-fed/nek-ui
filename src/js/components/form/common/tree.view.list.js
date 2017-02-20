@@ -91,11 +91,44 @@ var TreeViewList = SourceComponent.extend({
     toggle: function() {
         this.$ancestor.toggle.apply(this.$ancestor, arguments);
     },
+    check: function() {
+        this._setSelected({});
+    },
+    _setSelected: function(event) {
+        var self = this;
+        setTimeout(function() {
+            self.$emit('setselected', event);
+        }, 0);
+    },
     /**
-     * @note 移给$ancestor处理
+     * @private
      */
-    _onItemCheckedChange: function() {
-        this.$ancestor._onItemCheckedChange.apply(this.$ancestor, arguments);
+    _onItemCheckedChange: function($event, item) {
+        var checked = $event.checked;
+        item.checked = checked;
+        if(checked !== null && item[this.data.childKey]) {
+            item[this.data.childKey].forEach(function(child) {
+                child.checked = checked;
+            }.bind(this));
+        }
+
+        var parent = this.data.parent;
+        if(parent && parent.checked !== item.checked) {
+            var checkedCount = 0;
+            parent[this.data.childKey].forEach(function(child) {
+                if(child.checked)
+                    checkedCount++;
+                else if(child.checked === null)
+                    checkedCount += 0.5;
+            });
+
+            if(checkedCount === 0)
+                parent.checked = false;
+            else if(checkedCount === parent[this.data.childKey].length)
+                parent.checked = true;
+            else
+                parent.checked = null;
+        }
     }
 });
 

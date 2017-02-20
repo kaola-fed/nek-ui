@@ -8,6 +8,7 @@
 'use strict';
 
 var Dropdown = require('../../navigation/dropdown');
+var Validation = require('../../../util/validation');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Treeview = require('../common/tree.view');
@@ -55,9 +56,16 @@ var TreeSelect = Dropdown.extend({
             updateAuto: false
         });
         this.supr();
-        this.$watch('value', function(val) {
-          console.log(val)
-        })
+
+        var $outer = this.$outer;
+        if($outer && $outer instanceof Validation) {
+            $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
+        }
     }
 });
 
