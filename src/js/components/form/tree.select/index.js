@@ -48,6 +48,7 @@ var TreeSelect = Dropdown.extend({
             multiple: false,
             value: null,
             selected: null,
+            separator: ',',
             placeholder: '请选择',
             key: 'id',
             nameKey: 'name',
@@ -65,6 +66,15 @@ var TreeSelect = Dropdown.extend({
                 var index = $outer.controls.indexOf(this);
                 $outer.controls.splice(index, 1);
             });
+        }
+    },
+    computed: {
+        phShow: function(data) {
+            if (!data.selected) return data.placeholder;
+            if (Array.isArray(data.selected)) return data.selected.map(function(d) {
+                return d[data.nameKey];
+            }).join(data.separator);
+            return data.selected[data.nameKey];
         }
     }
 });
