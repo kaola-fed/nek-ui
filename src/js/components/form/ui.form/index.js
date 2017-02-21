@@ -18,8 +18,8 @@ var template = require('./index.html');
 var UIForm = Validation.extend({
     name: 'ui.form',
     template: template,
+    selectors: [],
     config: function (data) {
-        this.selectors = [];
 
         _.extend(data, {
             service: null,
