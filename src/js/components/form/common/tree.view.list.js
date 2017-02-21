@@ -91,22 +91,31 @@ var TreeViewList = SourceComponent.extend({
     toggle: function() {
         this.$ancestor.toggle.apply(this.$ancestor, arguments);
     },
+    check: function() {
+        this._setSelected({});
+    },
+    _setSelected: function(event) {
+        var self = this;
+        setTimeout(function() {
+            self.$emit('setselected', event);
+        }, 0);
+    },
     /**
      * @private
      */
     _onItemCheckedChange: function($event, item) {
-        item.checked = $event.checked;
-
-        if($event.checked !== null && item.children) {
-            item.children.forEach(function(child) {
-                child.checked = $event.checked;
-            });
+        var checked = $event.checked;
+        item.checked = checked;
+        if(checked !== null && item[this.data.childKey]) {
+            item[this.data.childKey].forEach(function(child) {
+                child.checked = checked;
+            }.bind(this));
         }
 
         var parent = this.data.parent;
-        if(parent && parent.checked !== item.checked) {    // 剪枝
+        if(parent && parent.checked !== item.checked) {
             var checkedCount = 0;
-            parent.children.forEach(function(child) {
+            parent[this.data.childKey].forEach(function(child) {
                 if(child.checked)
                     checkedCount++;
                 else if(child.checked === null)
@@ -115,23 +124,11 @@ var TreeViewList = SourceComponent.extend({
 
             if(checkedCount === 0)
                 parent.checked = false;
-            else if(checkedCount === parent.children.length)
+            else if(checkedCount === parent[this.data.childKey].length)
                 parent.checked = true;
             else
                 parent.checked = null;
         }
-
-        /**
-         * @event check 改变选中状态时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} item 处理项
-         * @property {boolean} checked 选中状态
-         */
-        this.$ancestor.$emit('check', {
-            sender: this,
-            item: item,
-            checked: item.checked
-        });
     }
 });
 
