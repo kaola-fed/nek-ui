@@ -128,7 +128,7 @@ var Select = Dropdown.extend({
                         }, this) : [];
                 } else {
                     data.selected = source.find(function (item) {
-                        return item[key] == newValue;
+                        return item[key] + '' === newValue + '';
                     }, this);
                 }
 
