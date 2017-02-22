@@ -23,7 +23,7 @@ $font-family-kai = Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, Bi
 
 /////////////////////////////////////////////////////////
 /* Height */
-$height-base = 34px;
+$height-base = 36px;
 $height-xs = 22px;
 $height-sm = 28px;
 $height-lg = 38px;

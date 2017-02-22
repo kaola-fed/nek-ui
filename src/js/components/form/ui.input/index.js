@@ -101,6 +101,7 @@ var Input = Component.extend({
         if (typeof rule === 'function') {
             rules.push(rule(min, max, message));
         } else {
+            message && (rule.message = message);
             rules.push(rule);
         }
     },
