@@ -38,8 +38,9 @@ var FormItem = Validation.extend({
     },
     init: function() {
         var $outer = this.$outer;
-        this.$watch('this.controls.length', function(len) {
-            if (!len) { return; }
+        this.$watch('this.controls.length', function(newValue, oldValue) {
+            /* 处理form.item下面ui.select数量变化的情况,当从没有变为有时,需要赋值 */
+            if (oldValue === undefined) { return; }
             if ($outer && $outer.initSelectorSource) {
                 $outer.initSelectorSource();
             }
