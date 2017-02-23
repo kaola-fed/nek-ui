@@ -43,7 +43,10 @@ var UIForm = Validation.extend({
         if ($outer && $outer instanceof Validation) {
             $outer.controls.push(this);
         }
-        this.initSelectorSource();
+
+        this.$watch('this.controls.length', function() {
+          this.initSelectorSource();
+        });
 
         this.adjustInline();
     },
