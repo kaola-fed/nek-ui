@@ -58,6 +58,18 @@ var RadioGroup = SourceComponent.extend({
                 $outer.controls.splice(index, 1);
             });
         }
+
+        this.$watch('value', function(newValue) {
+            var data = this.data;
+            var source = data.source;
+            if (newValue === undefined || newValue === null) return;
+            if (source) {
+                var key = data.key;
+                source.forEach(function(item) {
+                    if (newValue == item[key]) { data.selected = item; }
+                });
+            }
+        });
     },
     /**
      * @method select(item) 选择某一
@@ -71,6 +83,7 @@ var RadioGroup = SourceComponent.extend({
 
         var data = this.data;
         var key = data.key;
+        var nameKey = data.nameKey;
         var value = item[key];
         data.value = value === undefined ? item[nameKey] : value;
 

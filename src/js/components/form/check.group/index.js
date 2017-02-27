@@ -76,6 +76,22 @@ var CheckGroup = SourceComponent.extend({
                 }
             });
         });
+        this.$watch('value', function(newValue) {
+            var source = this.data.source;
+            if (newValue === undefined || newValue === null) return;
+
+            if (source) {
+                var key = this.data.key,
+                    value = newValue || '',
+                    values = value.split(',');
+                source.forEach(function(item) {
+                    if (newValue.indexOf(item[key] + '') != -1) {
+                        item.checked = true;
+                    }
+                });
+            }
+
+        });
     },
     /**
      * @method validate() 根据min, max验证组件的值是否正确
