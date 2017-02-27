@@ -16,40 +16,40 @@ var Clipboard = require('clipboard');
 
 
 var PathTool = function(Comp) {
-	Comp.implement({
-		events: {
-			$init: function() {
-				console.log('init');
-				var jCopy = new Clipboard('#j-copy');
-				var jsLink = location.href.replace(/([A-Z])/g, '.$1').toLowerCase();
-				jsLink = jsLink.replace('/backend', '');
-				jsLink = jsLink.substring(jsLink.indexOf('/')).replace('/' , 'page/') + '/index';
-				var ftlLink = jsLink.replace('page/', 'pages/');
-				jsLink = jsLink + '/entry';
-				document.addEventListener('keydown', function(event) {
-					if(event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 67) {
-						var para = document.createElement('button');
-						para.setAttribute('data-clipboard-text',jsLink);
-						para.id = 'j-copy'
-						document.body.appendChild(para);
-						para.click();
-					} else if(event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 68) {
-						var para = document.createElement('button');
-						para.setAttribute('data-clipboard-text',ftlLink);
-						para.id = 'j-copy'
-						document.body.appendChild(para);
-						para.click();
-					}
-				})
-				jCopy.on('success', function(e) {
-					var copy = document.getElementById('j-copy');
-					if(copy) {
-						document.body.removeChild(copy);
-					}
-				})
-			}
-		}
-	});
+    Comp.implement({
+        events: {
+            $init: function() {
+                console.log('init');
+                var jCopy = new Clipboard('#j-copy');
+                var jsLink = location.href.replace(/([A-Z])/g, '.$1').toLowerCase();
+                jsLink = jsLink.replace('/backend', '');
+                jsLink = jsLink.substring(jsLink.indexOf('/')).replace('/' , 'page/') + '/index';
+                var ftlLink = jsLink.replace('page/', 'pages/');
+                jsLink = jsLink + '/entry';
+                document.addEventListener('keydown', function(event) {
+                    if(event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 67) {
+                        var para = document.createElement('button');
+                        para.setAttribute('data-clipboard-text',jsLink);
+                        para.id = 'j-copy'
+                        document.body.appendChild(para);
+                        para.click();
+                    } else if(event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 68) {
+                        var para = document.createElement('button');
+                        para.setAttribute('data-clipboard-text',ftlLink);
+                        para.id = 'j-copy'
+                        document.body.appendChild(para);
+                        para.click();
+                    }
+                })
+                jCopy.on('success', function(e) {
+                    var copy = document.getElementById('j-copy');
+                    if(copy) {
+                        document.body.removeChild(copy);
+                    }
+                })
+            }
+        }
+    });
 };
 
 module.exports = PathTool;
