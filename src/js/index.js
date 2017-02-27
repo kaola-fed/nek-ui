@@ -46,7 +46,7 @@ exports.Gotop = require('./components/widget/gotop');
 exports.Loading = require('./components/widget/loading');
 exports.Progress = require('./components/widget/progress');
 exports.Tooltip = require('./components/widget/tooltip');
-exports.PathTool = require('./components/widget/path.tool');
+exports.PathTool = require('./tools/path.tool');
 
 // Layout
 exports.Panel = require('./components/layout/panel');
