@@ -18,13 +18,14 @@
     "ui"
   ],
   "scripts": {
-    "peta": "peta",
+    "peta": "npm run build && peta",
     "build": "gulp dist",
     "dev": "gulp watch --dev"
   },
   "dependencies": {
     "babel-runtime": "^6.22.0",
     "bowser": "^1.5.0",
+    "clipboard": "^1.6.0",
     "dom-align": "^1.5.2",
     "hexo": "^3.2.2",
     "hexo-deployer-git": "0.1.0",
@@ -70,7 +71,7 @@
     "mcss-loader": "^0.2.0",
     "mkdirp": "^0.5.1",
     "npm-run-all": "^3.1.1",
-    "peta": "^1.0.0",
+    "peta": "^1.0.2",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.1",
     "style-loader": "^0.13.1",
