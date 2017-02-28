@@ -86,7 +86,10 @@ var UIButton = Component.extend({
     onClick: function(e) {
         var loading = this.data.loading;
         if (!loading) {
-        this.$emit('click', e);
+            this.$emit('click', {
+                sender: this,
+                e: e
+            });
         }
         return !!this.data.link;
     }
