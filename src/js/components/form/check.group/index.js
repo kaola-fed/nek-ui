@@ -85,8 +85,10 @@ var CheckGroup = SourceComponent.extend({
                     value = newValue || '',
                     values = value.split(',');
                 source.forEach(function(item) {
-                    if (newValue.indexOf(item[key] + '') != -1) {
+                    if (values.indexOf(item[key] + '') != -1) {
                         item.checked = true;
+                    } else {
+                        item.checked = false;
                     }
                 });
             }
