@@ -11,10 +11,10 @@ title: 表单
 
 ```xml
 <ui.form ref="formgroup">
-    <form.item title="标题1" cols=12>
+    <form.item title="标题1" cols=6 textAlign="left" row>
         <ui.select />
     </form.item>
-    <form.item title="标题2" cols=12>
+    <form.item title="标题2" cols=6 row>
         <ui.input />
     </form.item>
 </ui.form>
@@ -37,7 +37,7 @@ var component = new NEKUI.Component({
 
 ```xml
 <ui.form ref="formgroup">
-    <form.item title="标题1" cols=12 column="column">
+    <form.item title="标题1" cols=12 column="column" textAlign="right">
         <ui.select />
     </form.item>
     <form.item title="标题2" cols=12 column="column">
