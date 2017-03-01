@@ -29,6 +29,7 @@ module.exports = {
     min = min || 0;
     max = max || Infinity;
     return {message:message || '长度错误', method: function(value) {
+      value = value || '';
       var len = stringBytes(value);
       return len >= min && len <= max;
     }};
