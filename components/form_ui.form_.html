@@ -357,13 +357,13 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">textAlign</span>=<span class="string">"left"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式-垂直布局"><a href="#基本形式-垂直布局" class="headerlink" title="基本形式 垂直布局"></a>基本形式 垂直布局</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span> <span class="attr">textAlign</span>=<span class="string">"right"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end --> 
 <h3 id="获取select数据接口"><a href="#获取select数据接口" class="headerlink" title="获取select数据接口"></a>获取select数据接口</h3><!-- demo_start -->
@@ -424,10 +424,10 @@ var index = 0;
       var template = NEKUI._.multiline(function(){/*
       
 <ui.form ref="formgroup">
-    <form.item title="标题1" cols=12>
+    <form.item title="标题1" cols=6 textAlign="left" row>
         <ui.select />
     </form.item>
-    <form.item title="标题2" cols=12>
+    <form.item title="标题2" cols=6 row>
         <ui.input />
     </form.item>
 </ui.form>
@@ -446,7 +446,7 @@ var component = new NEKUI.Component({
       var template = NEKUI._.multiline(function(){/*
       
 <ui.form ref="formgroup">
-    <form.item title="标题1" cols=12 column="column">
+    <form.item title="标题1" cols=12 column="column" textAlign="right">
         <ui.select />
     </form.item>
     <form.item title="标题2" cols=12 column="column">
