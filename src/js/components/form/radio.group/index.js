@@ -45,7 +45,6 @@ var RadioGroup = SourceComponent.extend({
             required: false,
             nameKey: 'name',
             key: 'id',
-            value: '',
         });
         this.supr();
 
@@ -66,7 +65,28 @@ var RadioGroup = SourceComponent.extend({
             if (source) {
                 var key = data.key;
                 source.forEach(function(item) {
-                    if (newValue == item[key]) { data.selected = item; }
+                    if (item[key] === 0 && newValue === "") {
+                        return false;
+                    } else if (newValue == item[key]) {
+                        data.selected = item;
+                    }
+                });
+            }
+        });
+
+        this.$watch('source', function(source) {
+            if (!source || !(source instanceof Array)) { return console.error('source of radio.group is not an array'); }
+
+            if (source) {
+                var data = this.data,
+                    key = data.key,
+                    value = data.value;
+                source.forEach(function(item) {
+                    if (item[key] === 0 && value === "") {
+                        return false;
+                    } else if (value == item[key]) {
+                        data.selected = item;
+                    }
                 });
             }
         });

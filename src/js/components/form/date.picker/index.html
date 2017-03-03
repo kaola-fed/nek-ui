@@ -9,7 +9,7 @@
 		        on-focus={this.toggle(true)} on-change={this._onInput($event)}>
 		    {/if}
 	    </div>
-	    <div class="dropdown_bd" r-hide={!open} r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+	    <div class="dropdown_bd" r-hide={!open}>
 	        <calendar minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
 	            {#if showTime}
 		        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />
