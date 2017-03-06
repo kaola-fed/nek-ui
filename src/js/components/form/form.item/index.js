@@ -16,7 +16,7 @@ var template = require('./index.html');
  * @param {number}        [options.data.labelCols=12]       => 如果有title, label占的列数
  * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
  * @param {number}        [options.data.offset]             => 布局offset
- * @param {string}        [options.data.row]                => 垂直布局row
+ * @param {string}        [options.data.row]                => 水平布局row
  * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
  * @param {boolean}       [options.data.required=false]     => 是否必选项
  * @param {string}        [options.data.tip]                => 字段说明
@@ -36,6 +36,11 @@ var FormItem = Validation.extend({
         var $outer = this.$outer;
         if ($outer && $outer instanceof UIForm) {
             $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
         }
     },
     init: function() {
@@ -67,7 +72,7 @@ var FormItem = Validation.extend({
             }
             // rules针对input等较复杂的验证规则, required属性针对ui.select, check.group等;
             $component.data.required = true;
-            $component.data.message = message;
+            $component.data.message = $component.data.message || message;
             $component.$update();
           }
         }.bind(this));

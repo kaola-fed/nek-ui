@@ -42,6 +42,11 @@ var UIForm = Validation.extend({
 
         if ($outer && $outer instanceof Validation) {
             $outer.controls.push(this);
+
+            this.$on('destroy', function() {
+                var index = $outer.controls.indexOf(this);
+                $outer.controls.splice(index, 1);
+            });
         }
 
         this.$watch('this.controls.length', function() {
