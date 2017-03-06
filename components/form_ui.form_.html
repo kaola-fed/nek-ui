@@ -136,6 +136,13 @@
                     
                 
                 <li>
+                    <a href="/components/form_form.item_.html" class="sidebar-link">表单项 form.item</a>
+                </li>
+            
+                
+                    
+                
+                <li>
                     <a href="/components/form_number.input_.html" class="sidebar-link">数字输入 number.input</a>
                 </li>
             
@@ -354,16 +361,17 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>required写在form.item上和写在表单元素上验证效果是一样的, 但是如果label要显示红色星号,form.item上必须要有required属性</p>
+<!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">textAlign</span>=<span class="string">"left"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请选择用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请输入密码"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">title</span>=<span class="string">"验证"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.validate()&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">        <span class="keyword">return</span> $form.validate().success;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式-垂直布局"><a href="#基本形式-垂直布局" class="headerlink" title="基本形式 垂直布局"></a>基本形式 垂直布局</h3><!-- demo_start -->
+<h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="inline排列"><a href="#inline排列" class="headerlink" title="inline排列"></a>inline排列</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span> <span class="attr">textAlign</span>=<span class="string">"right"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">column</span>=<span class="string">"column"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span> <span class="attr">inline</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.select</span> <span class="attr">size</span>=<span class="string">"mdw"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">size</span>=<span class="string">"mdw"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end --> 
 <h3 id="获取select数据接口"><a href="#获取select数据接口" class="headerlink" title="获取select数据接口"></a>获取select数据接口</h3><!-- demo_start -->
@@ -423,20 +431,24 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<ui.form ref="formgroup">
-    <form.item title="标题1" cols=6 textAlign="left" row>
-        <ui.select />
+<ui.form ref="form">
+    <form.item title="用户名" cols=6 row required>
+        <ui.select required message="请选择用户名" />
     </form.item>
-    <form.item title="标题2" cols=6 row>
-        <ui.input />
+    <form.item title="密码" cols=6 row required message="请输入密码">
+        <ui.input type="password" />
     </form.item>
+    <ui.button title="验证" on-click={this.validate()} />
 </ui.form>
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    data: {}
+    validate: function() {
+        var $form = this.$refs.form;
+        return $form.validate().success;
+    }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -445,12 +457,12 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<ui.form ref="formgroup">
-    <form.item title="标题1" cols=12 column="column" textAlign="right">
-        <ui.select />
+<ui.form inline>
+    <form.item title="用户名" row>
+        <ui.select size="mdw" />
     </form.item>
-    <form.item title="标题2" cols=12 column="column">
-        <ui.input />
+    <form.item title="密码" row>
+        <ui.input size="mdw" />
     </form.item>
 </ui.form>
 

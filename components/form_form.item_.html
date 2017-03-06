@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>表格 - nek-ui</title>
+        <title>表单项 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="表格 - nek-ui">
+        <meta property="og:title" content="表单项 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -106,7 +106,7 @@
                     
                 
                 <li>
-                    <a href="/components/layout_table_.html" class="sidebar-link current beta">表格 table</a>
+                    <a href="/components/layout_table_.html" class="sidebar-link beta">表格 table</a>
                 </li>
             
                 
@@ -136,7 +136,7 @@
                     
                 
                 <li>
-                    <a href="/components/form_form.item_.html" class="sidebar-link">表单项 form.item</a>
+                    <a href="/components/form_form.item_.html" class="sidebar-link current">表单项 form.item</a>
                 </li>
             
                 
@@ -361,22 +361,119 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>与表单组件一起使用; 建议一个form.item内部只放一个表单组件;</p>
+<!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"m-table"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form.item</span> <span class="attr">title</span>=<span class="string">"用户名"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> <span class="attr">autofocus</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="Hover"><a href="#Hover" class="headerlink" title="Hover"></a>Hover</h3><!-- demo_start -->
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
+<!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"m-table m-table-hover"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"优先输入国内邮箱"</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"密码"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="条纹"><a href="#条纹" class="headerlink" title="条纹"></a>条纹</h3><!-- demo_start -->
+<h3 id="横向排列"><a href="#横向排列" class="headerlink" title="横向排列"></a>横向排列</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"m-table m-table-striped m-table-hover"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;<span class="name">th</span>&gt;</span>表格标题<span class="tag">&lt;/<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>表格内容<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"优先输入国内邮箱"</span> <span class="attr">required</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">tip</span>=<span class="string">"推荐人的全名"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="颜色扩展"><a href="#颜色扩展" class="headerlink" title="颜色扩展"></a>颜色扩展</h3><p>颜色扩展，<em>待完成……</em>
+<h3 id="label固定宽度"><a href="#label固定宽度" class="headerlink" title="label固定宽度"></a>label固定宽度</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"优先输入国内邮箱"</span> <span class="attr">required</span> <span class="attr">row</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">tip</span>=<span class="string">"推荐人的全名"</span> <span class="attr">row</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="label对齐方式"><a href="#label对齐方式" class="headerlink" title="label对齐方式"></a>label对齐方式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"优先输入国内邮箱"</span> <span class="attr">required</span> <span class="attr">row</span> <span class="attr">textAlign</span>=<span class="string">"left"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">tip</span>=<span class="string">"推荐人的全名"</span> <span class="attr">row</span> <span class="attr">textAlign</span>=<span class="string">"left"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a name="FormItem"></a></p>
+<h2 id="FormItem"><a href="#FormItem" class="headerlink" title="FormItem"></a>FormItem</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Validation<br><a name="new_FormItem_new"></a></p>
+<h3 id="new-FormItem"><a href="#new-FormItem" class="headerlink" title="new FormItem()"></a>new FormItem()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; label显示的文字</td>
+</tr>
+<tr>
+<td>[options.data.cols]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 布局列数</td>
+</tr>
+<tr>
+<td>[options.data.labelCols]</td>
+<td><code>number</code></td>
+<td><code>12</code></td>
+<td>=&gt; 如果有title, label占的列数</td>
+</tr>
+<tr>
+<td>[options.data.labelSize]</td>
+<td><code>string</code> &#124; <code>number</code></td>
+<td><code>200</code></td>
+<td>=&gt; 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg</td>
+</tr>
+<tr>
+<td>[options.data.offset]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 布局offset</td>
+</tr>
+<tr>
+<td>[options.data.row]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 水平布局row</td>
+</tr>
+<tr>
+<td>[options.data.textAlign]</td>
+<td><code>string</code></td>
+<td><code>&quot;none&quot;</code></td>
+<td>=&gt; label text-align 属性：none/left/right</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必选项</td>
+</tr>
+<tr>
+<td>[options.data.tip]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 字段说明</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 样式扩展</td>
+</tr>
+<tr>
+<td>[options.data.sourceKey]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 异步获取下拉列表接口的索引值</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;
@@ -384,16 +481,9 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<table class="m-table">
-    <thead>
-        <tr><th>表格标题</th><th>表格标题</th><th>表格标题</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-    </tbody>
-</table>
+<form.item title="用户名">
+    <ui.input type="text" placeholder="请输入用户名" autofocus />
+</form.item>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -403,16 +493,14 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<table class="m-table m-table-hover">
-    <thead>
-        <tr><th>表格标题</th><th>表格标题</th><th>表格标题</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-    </tbody>
-</table>
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required>
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码">
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -422,16 +510,48 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<table class="m-table m-table-striped m-table-hover">
-    <thead>
-        <tr><th>表格标题</th><th>表格标题</th><th>表格标题</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-        <tr><td>表格内容</td><td>表格内容</td><td>表格内容</td></tr>
-    </tbody>
-</table>
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required row>
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码" tip="推荐人的全名" row>
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required row labelSize="80px">
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码" tip="推荐人的全名" row labelSize="80px">
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required row textAlign="left">
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码" tip="推荐人的全名" row textAlign="left">
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -439,12 +559,13 @@ var index = 0;
     })(index++);
     
 </script>
-</p>
 
     <div class="guide-links">
       
-        <span>← <a href="/components/layout_panel_.html">面板</a></span>
+        <span>← <a href="/components/form_date.picker_.html">日期选择</a></span>
       
+      
+        <span style="float:right"><a href="/components/form_number.input_.html">数字输入</a> →</span>
       
     </div>
     <div class="footer">
