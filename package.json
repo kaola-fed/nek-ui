@@ -1,7 +1,7 @@
 {
   "name": "nek-ui",
   "description": "UI components based on RegularJS",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "./dist/js/nek-ui.js",
   "homepage": "https://nek-ui.kaolafed.com/",
   "license": "MIT",

@@ -22,4 +22,7 @@
         width: 56px;
         padding: 6px;
     }
+    .u-input2 {
+        display: inline-block;
+    }
 }

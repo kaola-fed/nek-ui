@@ -51,7 +51,7 @@ var TimePicker = Component.extend({
             if(isOutOfRange)
                 return this.data.time = isOutOfRange;
 
-            time = newValue.split(':');
+            var time = newValue.split(':');
             this.data.hour = +time[0];
             this.data.minute = +time[1];
 
