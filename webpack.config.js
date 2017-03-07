@@ -10,7 +10,8 @@ module.exports = {
     'regularjs': {
       root: "Regular",
       amd: "Regular",
-      commonjs: "regularjs"
+      commonjs: "regularjs",
+      commonjs2: "regularjs"
     }
   },
   module: {
