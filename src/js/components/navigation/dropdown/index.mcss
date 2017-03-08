@@ -45,3 +45,10 @@
         margin-top: 2px;
     }
 }
+
+.dropdown_hd.z-dis {
+    background: #eee;
+    color: #999;
+    border: 1px solid #d2d6de;
+    cursor: not-allowed;
+}

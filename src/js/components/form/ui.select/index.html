@@ -3,6 +3,7 @@
 	     z-dis={disabled} r-hide={!visible} r-width="{width}" ref="element">
 	    {#if !multiple}
 	        <div class="dropdown_hd"
+				 z-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
 	            <i class="u-icon u-icon-caret-down"></i>
