@@ -1,0 +1,667 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>数字输入 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="数字输入 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="//unpkg.com/nek-ui/dist/css/nek-ui.default.min.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/rule/" class="nav-link">规范</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/scene/" class="nav-link">场景</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/rule/" class="nav-link">规范</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/scene/" class="nav-link">场景</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+            
+                
+                <li>
+                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+                </li>
+            
+                
+                    
+                        <li><h3>布局</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/layout_list_.html" class="sidebar-link beta">列表 list</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_panel_.html" class="sidebar-link">面板 panel</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_table_.html" class="sidebar-link beta">表格 table</a>
+                </li>
+            
+                
+                    
+                        <li><h3>表单</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/form_check_.html" class="sidebar-link">复选框 check</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_check.group_.html" class="sidebar-link">复选组 check.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_date.picker_.html" class="sidebar-link">日期选择 date.picker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_form.item_.html" class="sidebar-link">表单项 form.item</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_number.input_.html" class="sidebar-link current">数字输入 number.input</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_radio.group_.html" class="sidebar-link">单选组 radio.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_select.group_.html" class="sidebar-link">多级选择 select.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_suggest_.html" class="sidebar-link">提示选择 suggest</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_time.picker_.html" class="sidebar-link">时间选择 time.picker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_tree.select_.html" class="sidebar-link">树形选择 tree.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.button_.html" class="sidebar-link">按钮 ui.button</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.form_.html" class="sidebar-link">表单 ui.form</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.input_.html" class="sidebar-link">输入框 ui.input</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.select_.html" class="sidebar-link">下拉选择 ui.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.text_.html" class="sidebar-link">展示文本 ui.text</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.textarea_.html" class="sidebar-link">文本输入 ui.textarea</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_uploader_.html" class="sidebar-link">上传 uploader</a>
+                </li>
+            
+                
+                    
+                        <li><h3>通知</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/notice_message_.html" class="sidebar-link beta">消息 message</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_modal_.html" class="sidebar-link">模态框 modal</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_notify_.html" class="sidebar-link">通知 notify</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_pop.confirm_.html" class="sidebar-link">确认提示 pop.confirm</a>
+                </li>
+            
+                
+                    
+                        <li><h3>导航</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/navigation_collapse_.html" class="sidebar-link">折叠面板 collapse</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_dropdown_.html" class="sidebar-link">下拉菜单 dropdown</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_menu_.html" class="sidebar-link">多级菜单 menu</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_pager_.html" class="sidebar-link">分页 pager</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_steps_.html" class="sidebar-link">步骤 steps</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_tabs_.html" class="sidebar-link">选项卡 tabs</a>
+                </li>
+            
+                
+                    
+                        <li><h3>其它</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/widget_badge_.html" class="sidebar-link">徽标 badge</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_gotop_.html" class="sidebar-link">回到顶部 gotop</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_icon_.html" class="sidebar-link beta">图标 icon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_image_.html" class="sidebar-link beta">图片 image</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_loading_.html" class="sidebar-link">加载中 loading</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_progress_.html" class="sidebar-link">进度条 progress</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_tooltip_.html" class="sidebar-link">文字提示 tooltip</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar">
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">value</span>=<span class="string">6</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="最大值和最小值"><a href="#最大值和最小值" class="headerlink" title="最大值和最小值"></a>最大值和最小值</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">min</span>=<span class="string">5</span> <span class="attr">max</span>=<span class="string">8</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">value</span>=<span class="string">&#123;number&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">value</span>=<span class="string">&#123;number&#125;</span> <span class="attr">min</span>=<span class="string">5</span> <span class="attr">max</span>=<span class="string">12</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">numberInput</span> <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.value:</span>', $<span class="attr">event.value</span>)&#125; /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#NumberInput">NumberInput</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#Input">Input</a></dt>
+<dd><hr>
+<p>NumberInput 输入扩展</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#add(value) 调整数值">add(value) 调整数值([value])</a> ⇒ <code>number</code></dt>
+<dd></dd>
+<dt><a href="#isOutOfRange(value) 是否超出规定的数值范围">isOutOfRange(value) 是否超出规定的数值范围(value)</a> ⇒ <code>boolean</code> | <code>number</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 数值改变时触发">“change 数值改变时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="NumberInput"></a></p>
+<h2 id="NumberInput"><a href="#NumberInput" class="headerlink" title="NumberInput"></a>NumberInput</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Input<br><a name="new_NumberInput_new"></a></p>
+<h3 id="new-NumberInput"><a href="#new-NumberInput" class="headerlink" title="new NumberInput()"></a>new NumberInput()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>string</code></td>
+<td><code>0</code></td>
+<td>&lt;=&gt; 文本框的值</td>
+</tr>
+<tr>
+<td>[options.data.state]</td>
+<td><code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 文本框的状态</td>
+</tr>
+<tr>
+<td>[options.data.min]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 最小值</td>
+</tr>
+<tr>
+<td>[options.data.max]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 最大值</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Input"></a></p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><hr>
+<p>NumberInput 输入扩展</p>
+<p><strong>Kind</strong>: global variable  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="add(value) 调整数值"></a></p>
+<h2 id="add-value-调整数值-value-⇒-number"><a href="#add-value-调整数值-value-⇒-number" class="headerlink" title="add(value) 调整数值([value]) ⇒ number"></a>add(value) 调整数值([value]) ⇒ <code>number</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>number</code> - value 计算后的值<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[value]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>加/减的值</td>
+</tr>
+</tbody>
+</table>
+<p><a name="isOutOfRange(value) 是否超出规定的数值范围"></a></p>
+<h2 id="isOutOfRange-value-是否超出规定的数值范围-value-⇒-boolean-124-number"><a href="#isOutOfRange-value-是否超出规定的数值范围-value-⇒-boolean-124-number" class="headerlink" title="isOutOfRange(value) 是否超出规定的数值范围(value) ⇒ boolean &#124; number"></a>isOutOfRange(value) 是否超出规定的数值范围(value) ⇒ <code>boolean</code> &#124; <code>number</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>number</code> - number 如果没有超出数值范围，则返回false；如果超出数值范围，则返回范围边界的数值<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td><code>number</code></td>
+<td>待测的值</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_change 数值改变时触发"></a></p>
+<h2 id="“change-数值改变时触发”"><a href="#“change-数值改变时触发”" class="headerlink" title="“change 数值改变时触发”"></a>“change 数值改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>value</td>
+<td><code>number</code></td>
+<td>改变后的数值</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<numberInput value=6 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<numberInput disabled />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<numberInput min=5 max=8 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<numberInput value={number} />
+<numberInput value={number} min=5 max=12 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<numberInput on-change={console.log('on-change:', '$event.value:', $event.value)} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+    <div class="guide-links">
+      
+        <span>← <a href="/components/form_form.item_.html">表单项</a></span>
+      
+      
+        <span style="float:right"><a href="/components/form_radio.group_.html">单选组</a> →</span>
+      
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+</div>
+
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

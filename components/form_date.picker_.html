@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>日期选择 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="日期选择 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="//unpkg.com/nek-ui/dist/css/nek-ui.default.min.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs">
+        <script src="//unpkg.com/nek-ui/dist/vendor/regular.min.js"></script>
+        <script src="//unpkg.com/nek-ui/dist/js/nek-ui.min.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/rule/" class="nav-link">规范</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/scene/" class="nav-link">场景</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/rule/" class="nav-link">规范</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/scene/" class="nav-link">场景</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+            
+                
+                <li>
+                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+                </li>
+            
+                
+                    
+                        <li><h3>布局</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/layout_list_.html" class="sidebar-link beta">列表 list</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_panel_.html" class="sidebar-link">面板 panel</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_table_.html" class="sidebar-link beta">表格 table</a>
+                </li>
+            
+                
+                    
+                        <li><h3>表单</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/form_check_.html" class="sidebar-link">复选框 check</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_check.group_.html" class="sidebar-link">复选组 check.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_date.picker_.html" class="sidebar-link current">日期选择 date.picker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_form.item_.html" class="sidebar-link">表单项 form.item</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_number.input_.html" class="sidebar-link">数字输入 number.input</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_radio.group_.html" class="sidebar-link">单选组 radio.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_select.group_.html" class="sidebar-link">多级选择 select.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_suggest_.html" class="sidebar-link">提示选择 suggest</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_time.picker_.html" class="sidebar-link">时间选择 time.picker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_tree.select_.html" class="sidebar-link">树形选择 tree.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.button_.html" class="sidebar-link">按钮 ui.button</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.form_.html" class="sidebar-link">表单 ui.form</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.input_.html" class="sidebar-link">输入框 ui.input</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.select_.html" class="sidebar-link">下拉选择 ui.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.text_.html" class="sidebar-link">展示文本 ui.text</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_ui.textarea_.html" class="sidebar-link">文本输入 ui.textarea</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_uploader_.html" class="sidebar-link">上传 uploader</a>
+                </li>
+            
+                
+                    
+                        <li><h3>通知</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/notice_message_.html" class="sidebar-link beta">消息 message</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_modal_.html" class="sidebar-link">模态框 modal</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_notify_.html" class="sidebar-link">通知 notify</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_pop.confirm_.html" class="sidebar-link">确认提示 pop.confirm</a>
+                </li>
+            
+                
+                    
+                        <li><h3>导航</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/navigation_collapse_.html" class="sidebar-link">折叠面板 collapse</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_dropdown_.html" class="sidebar-link">下拉菜单 dropdown</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_menu_.html" class="sidebar-link">多级菜单 menu</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_pager_.html" class="sidebar-link">分页 pager</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_steps_.html" class="sidebar-link">步骤 steps</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_tabs_.html" class="sidebar-link">选项卡 tabs</a>
+                </li>
+            
+                
+                    
+                        <li><h3>其它</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/widget_badge_.html" class="sidebar-link">徽标 badge</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_gotop_.html" class="sidebar-link">回到顶部 gotop</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_icon_.html" class="sidebar-link beta">图标 icon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_image_.html" class="sidebar-link beta">图片 image</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_loading_.html" class="sidebar-link">加载中 loading</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_progress_.html" class="sidebar-link">进度条 progress</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_tooltip_.html" class="sidebar-link">文字提示 tooltip</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar">
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">"2008-08-08"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">minDate</span>=<span class="string">&#123;minDate&#125;</span> <span class="attr">maxDate</span>=<span class="string">&#123;maxDate&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">minDate</span>=<span class="string">"2008-08-08"</span> <span class="attr">maxDate</span>=<span class="string">"2008-08-16"</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">minDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">2</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>),</div><div class="line">        <span class="attr">maxDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">7</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">date.picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为：&#123;date | format: 'yyyy-MM-dd'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">date.picker</span></span></div><div class="line">    <span class="attr">on-toggle</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-toggle:</span>', '$<span class="attr">event.open:</span>', $<span class="attr">event.open</span>)&#125;</div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125;</div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125; /&gt;</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#DatePicker">DatePicker</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#Dropdown">Dropdown</a></dt>
+<dd><hr>
+<p>DatePicker 日期选择</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#select(date) 选择一个日期">select(date) 选择一个日期(date)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#isOutOfRange(date) 是否超出规定的日期时间范围">isOutOfRange(date) 是否超出规定的日期时间范围(date)</a> ⇒ <code>boolean</code> | <code>Date</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 日期时间改变时触发">“change 日期时间改变时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="DatePicker"></a></p>
+<h2 id="DatePicker"><a href="#DatePicker" class="headerlink" title="DatePicker"></a>DatePicker</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Dropdown<br><a name="new_DatePicker_new"></a></p>
+<h3 id="new-DatePicker"><a href="#new-DatePicker" class="headerlink" title="new DatePicker()"></a>new DatePicker()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.date]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择的日期时间</td>
+</tr>
+<tr>
+<td>[options.data.showTime]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示时间选择</td>
+</tr>
+<tr>
+<td>[options.data.placeholder]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;请输入&#x27;&quot;</code></td>
+<td>=&gt; 文本框的占位文字</td>
+</tr>
+<tr>
+<td>[options.data.minDate]</td>
+<td><code>Date</code> &#124; <code>string</code></td>
+<td><code></code></td>
+<td>=&gt; 最小日期时间，如果为空则不限制</td>
+</tr>
+<tr>
+<td>[options.data.maxDate]</td>
+<td><code>Date</code> &#124; <code>string</code></td>
+<td><code></code></td>
+<td>=&gt; 最大日期时间，如果为空则不限制</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必填</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.size]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 组件大小, sm/md/lg</td>
+</tr>
+<tr>
+<td>[options.data.width]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 组件宽度</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Dropdown"></a></p>
+<h2 id="Dropdown"><a href="#Dropdown" class="headerlink" title="Dropdown"></a>Dropdown</h2><hr>
+<p>DatePicker 日期选择</p>
+<p><strong>Kind</strong>: global variable  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(date) 选择一个日期"></a></p>
+<h2 id="select-date-选择一个日期-date-⇒-void"><a href="#select-date-选择一个日期-date-⇒-void" class="headerlink" title="select(date) 选择一个日期(date) ⇒ void"></a>select(date) 选择一个日期(date) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td>选择的日期</td>
+</tr>
+</tbody>
+</table>
+<p><a name="isOutOfRange(date) 是否超出规定的日期时间范围"></a></p>
+<h2 id="isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date"><a href="#isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date" class="headerlink" title="isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ boolean &#124; Date"></a>isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ <code>boolean</code> &#124; <code>Date</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>Date</code> - date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td><code>Date</code></td>
+<td>待测的日期时间</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_change 日期时间改变时触发"></a></p>
+<h2 id="“change-日期时间改变时触发”"><a href="#“change-日期时间改变时触发”" class="headerlink" title="“change 日期时间改变时触发”"></a>“change 日期时间改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>object</code></td>
+<td>改变后的日期时间</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_select 选择某一项时触发"></a></p>
+<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>object</code></td>
+<td>当前选择项</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols=6>
+        <date.picker />
+    </form.item>
+    <form.item cols=6>
+        <date.picker date="2008-08-08" />
+    </form.item>
+</ui.form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class="f-cb">
+<ui.form>
+    <form.item cols=4>
+        <date.picker showTime date={date1} />
+    </form.item>
+    <form.item cols=4>
+        <date.picker showTime date={date2} />
+    </form.item>
+</ui.form>
+</div>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        date1: 1481287269287,
+        date2: '2016-12-09 09:03'
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<date.picker disabled />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class="f-cb">
+    <date.picker minDate={minDate} maxDate={maxDate} class="g-col g-col-6" />
+    <date.picker minDate="2008-08-08" maxDate="2008-08-16" class="g-col g-col-6" />
+</div>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        minDate: new Date(+new Date + 2*24*3600*1000),
+        maxDate: new Date(+new Date + 7*24*3600*1000)
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div class="f-cb">
+    <date.picker date={date} class="g-col g-col-6" />
+    <date.picker date={date} class="g-col g-col-6" />
+</div>
+<p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<date.picker
+    on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
+    on-select={console.log('on-select:', '$event.date:', $event.date)}
+    on-change={console.log('on-change:', '$event.date:', $event.date)} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+    <div class="guide-links">
+      
+        <span>← <a href="/components/form_check.group_.html">复选组</a></span>
+      
+      
+        <span style="float:right"><a href="/components/form_form.item_.html">表单项</a> →</span>
+      
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+</div>
+
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
