@@ -41,6 +41,5 @@
     .formitem_ct{
         flex: 1;
         line-height: 32px;
-        overflow-x: auto;
     }
 }

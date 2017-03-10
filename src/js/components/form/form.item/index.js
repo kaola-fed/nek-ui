@@ -81,18 +81,25 @@ var FormItem = Validation.extend({
 
 FormItem.directive('cols', function(ele, cols) {
     this.$watch(cols, function(ncols) {
-        ele.className = ele.className.replace(/(\s)g-col(-\d*)?/gim, '');
+        ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
         if (ncols) {
             ele.classList.add('g-col', 'g-col-' + ncols);
-        } else {
-            ele.classList.remove('g-col');
+        }
+    });
+});
+
+FormItem.directive('remainCols', function(ele, cols) {
+    this.$watch(cols, function(ncols) {
+        ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
+        if (this.data.row && ncols) {
+            ele.classList.add('g-col', 'g-col-' + (12 - ncols));
         }
     });
 });
 
 FormItem.directive('offset', function(ele, offset) {
     this.$watch(offset, function(noffset) {
-        ele.className = ele.className.replace(/(\s)g-offset(-\d)?/gim, '');
+        ele.className = ele.className.replace(/(\s)?g-offset(-\d)?/gim, '');
 
         if (noffset) {
             ele.classList.add('g-offset-' + noffset);
