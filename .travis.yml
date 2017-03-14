@@ -11,7 +11,8 @@ before_install:
 - npm install -g gulp
 
 install:
-- npm install
+- cd doc && npm install
+- cd .. && npm install
 
 before_script:
 - git config --global user.name 'Kaola Bot'
