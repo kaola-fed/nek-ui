@@ -26,7 +26,8 @@ UI components based on [RegularJS][regularjs]
 
 ### Development ([GUIDE](https://github.com/kaola-fed/nek-ui/issues/2))
 
- - `npm i`
+ - `cd doc && npm i`
+ - `cd .. && npm i`
  - `npm run dev`
 
 

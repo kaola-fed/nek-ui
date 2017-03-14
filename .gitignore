@@ -16,5 +16,5 @@ db.json
 public/
 .deploy*/
 _drafts
-doc/components/*
-!doc/components/index.md
+doc/source/components/*
+!doc/source/components/index.md

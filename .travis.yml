@@ -25,7 +25,7 @@ after_success:
 - cd .deploy
 - git clone --depth 1 --branch gh-pages --single-branch $DEPLOY_REPO . || (git init && git remote add -t gh-pages origin $DEPLOY_REPO)
 - rm -rf ./*
-- cp -r ../public/* .
+- cp -r ../doc/public/* .
 - git add -A .
 - git commit -m 'Auto updated'
 - git branch -m gh-pages
