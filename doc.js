@@ -22,7 +22,7 @@ const CATES = [
 ];
 
 const DOC_PATH = __dirname;
-const COMPONENTS_PATH = path.join(__dirname, '../src/js/components');
+const COMPONENTS_PATH = path.join(__dirname, '../../src/js/components');
 const COMPONENTS_DEST = path.join(DOC_PATH, 'components');
 
 const getComponents = cate => {
