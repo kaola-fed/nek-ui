@@ -17,9 +17,6 @@ highlight:
 url: https://nek-ui.kaolafed.com
 root: /
 
-# Directory
-source_dir: doc
-
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/

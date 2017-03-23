@@ -15,15 +15,15 @@ var path = require('path');
 var Hexo = require('hexo');
 var fs = require('fs');
 var argv = require('yargs').argv;
-var doc = require('./doc/doc');
+var doc = require('./doc/source/doc');
 var themes = require('./src/mcss/themes');
 
 var browserSync = require('browser-sync').create();
 var reload = browserSync.reload;
 
 gulp.task('dist-clean', function(cb) {
-  rimraf('{dist,public}', function() {
-    rimraf('doc/components/*_.md', cb)
+  rimraf('{dist,doc/public}', function() {
+    rimraf('doc/source/components/*_.md', cb)
   })
 });
 
@@ -80,7 +80,7 @@ gulp.task('gen-mcss', function(cb) {
 });
 
 gulp.task('gen-doc', function(cb) {
-  var hexo = new Hexo(process.cwd(), {
+  var hexo = new Hexo(path.join(__dirname, 'doc'), {
     dev: argv.dev
   });
   doc(argv.dev, function() {
@@ -101,13 +101,13 @@ gulp.task('default', function(done) {
 gulp.task('server', ['default'], function() {
   browserSync.init({
     server: {
-      baseDir: ['./public', './dist']
+      baseDir: ['./doc/public', './dist']
     },
     browser: 'default',
     reloadDelay: 1000,
     port: 8089
   });
-  gulp.watch("public/*").on('change', reload);
+  gulp.watch("doc/public/*").on('change', reload);
 });
 
 gulp.task('watch', ['server'], function() {

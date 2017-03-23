@@ -11,7 +11,8 @@ before_install:
 - npm install -g gulp
 
 install:
-- npm install
+- cd doc && npm install
+- cd .. && npm install
 
 before_script:
 - git config --global user.name 'Kaola Bot'
@@ -25,7 +26,7 @@ after_success:
 - cd .deploy
 - git clone --depth 1 --branch gh-pages --single-branch $DEPLOY_REPO . || (git init && git remote add -t gh-pages origin $DEPLOY_REPO)
 - rm -rf ./*
-- cp -r ../public/* .
+- cp -r ../doc/public/* .
 - git add -A .
 - git commit -m 'Auto updated'
 - git branch -m gh-pages

@@ -59,7 +59,7 @@ var Modal = Component.extend({
      * @param  {boolean} result 点击确定还是取消
      * @return {void}
      */
-    close: function(result) {
+    close: function(result, event) {
         /**
          * @event close 关闭对话框时触发
          * @property {boolean} result 点击了确定还是取消
@@ -67,18 +67,18 @@ var Modal = Component.extend({
         this.$emit('close', {
             result: result
         });
-        result ? this.ok() : this.cancel();
+        result ? this.ok(event) : this.cancel();
     },
     /**
      * @method ok() 确定对话框
      * @public
      * @return {void}
      */
-    ok: function() {
+    ok: function(event) {
         /**
          * @event ok 确定对话框时触发
          */
-        this.$emit('ok');
+        this.$emit('ok', event);
         !this.data.noClose && this.destroy();
     },
     /**

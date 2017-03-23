@@ -1,16 +1,13 @@
 {
   "name": "nek-ui",
   "description": "UI components based on RegularJS",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "./dist/js/nek-ui.js",
   "homepage": "https://nek-ui.kaolafed.com/",
   "license": "MIT",
   "files": [
     "dist"
   ],
-  "hexo": {
-    "version": "3.2.2"
-  },
   "keywords": [
     "regular",
     "nek",
@@ -27,13 +24,6 @@
     "bowser": "^1.5.0",
     "clipboard": "^1.6.0",
     "dom-align": "^1.5.2",
-    "hexo": "^3.2.2",
-    "hexo-deployer-git": "0.1.0",
-    "hexo-generator-index": "^0.2.0",
-    "hexo-renderer-ejs": "^0.2.0",
-    "hexo-renderer-marked": "^0.2.10",
-    "hexo-renderer-stylus": "^0.3.1",
-    "hexo-server": "^0.2.0",
     "mass": "^0.1.0",
     "mcss": "^0.5.1",
     "moment": "^2.17.1",
@@ -66,6 +56,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp-webpack": "^1.5.0",
     "gulp_mcss": "^0.2.0",
+    "hexo": "^3.2.2",
     "jsdoc-to-markdown": "^2.0.1",
     "markextend": "0.0.2",
     "mcss-loader": "^0.2.0",
