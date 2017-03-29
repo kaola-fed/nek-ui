@@ -353,7 +353,7 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">on-click</span>=<span class="string">&#123;this.click1()&#125;</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"primary"</span> <span class="attr">disabled</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">on-click</span>=<span class="string">&#123;this.click2()&#125;</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">title</span>=<span class="string">"default"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">title</span>=<span class="string">"info"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">title</span>=<span class="string">"success"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">title</span>=<span class="string">"warn"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">title</span>=<span class="string">"error"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">on-click</span>=<span class="string">&#123;this.click1()&#125;</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"primary"</span> <span class="attr">disabled</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">on-click</span>=<span class="string">&#123;this.click2()&#125;</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">title</span>=<span class="string">"default"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">title</span>=<span class="string">"info"</span> <span class="attr">download</span>=<span class="string">"http://haitao.nos.netease.com/7f9272e9-4acc-4702-98cf-50ae274027d9.xlsx"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">title</span>=<span class="string">"success"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">title</span>=<span class="string">"warn"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ui.button</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">title</span>=<span class="string">"error"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">click1</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'click1'</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">click2</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'click2'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="常用的button类型"><a href="#常用的button类型" class="headerlink" title="常用的button类型"></a>常用的button类型</h3><!-- demo_start -->
@@ -448,6 +448,12 @@
 <td>=&gt; circle, icon或者默认</td>
 </tr>
 <tr>
+<td>[options.data.download]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 下载链接</td>
+</tr>
+<tr>
 <td>[options.data.loading]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -476,7 +482,7 @@ var index = 0;
       
  <ui.button on-click={this.click1()} type="primary" title="primary" disabled />
  <ui.button on-click={this.click2()} type="default" title="default" />
- <ui.button type="info" title="info" />
+ <ui.button type="info" title="info" download="http://haitao.nos.netease.com/7f9272e9-4acc-4702-98cf-50ae274027d9.xlsx" />
  <ui.button type="success" title="success" />
  <ui.button type="warning" title="warn" />
  <ui.button type="error" title="error" />
