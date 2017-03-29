@@ -13,6 +13,7 @@ var filter = require('../../../ui-base/filter');
 var Calendar = require('../common/calendar');
 var TimePicker = require('../time.picker');
 var bowser = require('bowser');
+var moment = require('moment');
 var polyfill = require('../../../ui-base/polyfill');
 
 var Validation = require('../../../util/validation');
@@ -216,7 +217,8 @@ var DatePicker = Dropdown.extend({
         var maxDate = this.data.maxDate;
 
         // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
-        return (minDate && date < minDate && minDate) || (maxDate && date > maxDate && maxDate);
+        return (minDate && moment(date).isBefore(minDate, 'day') && minDate)
+            || (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate);
     },
     validate: function(on) {
         if (!this.data.required) { return {success:true}; }
