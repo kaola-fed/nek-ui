@@ -7,6 +7,8 @@
 
 'use strict';
 
+var validator = require('validator');
+var bowser = require('bowser');
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
@@ -23,6 +25,7 @@ var _ = require('../../../ui-base/_');
  * @param {string}      [options.data.link]           => 按钮的链接
  * @param {string}      [options.data.target=_self]   => 按钮链接的打开方式
  * @param {string}      [options.data.shape]          => circle, icon或者默认
+ * @param {string}      [options.data.download]       => 下载链接
  * @param {boolean}     [options.data.loading=false]  => 是否正在加载
  * @param {boolean}     [options.data.disabled=false] => 禁止按钮
  * @param {boolean}     [options.data.class=false]    => 样式扩展
@@ -83,6 +86,23 @@ var UIButton = Component.extend({
         });
         this.supr();
     },
+
+    init: function() {
+        this.supr();
+        this.$watch('download', function(url) {
+            if (validator.isURL(url)) {
+                if (bowser.chrome) {
+                    this.$refs.download.setAttribute('href', url);
+                    _.dom.fireEvent(this.$refs.download, 'click');
+                    this.$refs.download.setAttribute('href', '');
+                } else {
+                    location.href = url;
+                }
+                this.data.download = '';
+            }
+        });
+    },
+
     onClick: function(e) {
         var loading = this.data.loading;
         if (!loading) {

@@ -12,7 +12,7 @@ title: 按钮
 ```xml
  <ui.button on-click={this.click1()} type="primary" title="primary" disabled />
  <ui.button on-click={this.click2()} type="default" title="default" />
- <ui.button type="info" title="info" />
+ <ui.button type="info" title="info" download="http://haitao.nos.netease.com/7f9272e9-4acc-4702-98cf-50ae274027d9.xlsx" />
  <ui.button type="success" title="success" />
  <ui.button type="warning" title="warn" />
  <ui.button type="error" title="error" />
