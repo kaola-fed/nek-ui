@@ -350,7 +350,66 @@
 
 
 <div class="content components with-sidebar">
-    <p>快速上手</p>
+    <h3 id="nek-ui"><a href="#nek-ui" class="headerlink" title="nek-ui"></a>nek-ui</h3><p>nek-ui 是一个基于 Regularjs 的组件库  </p>
+<h4 id="引入-nek-ui"><a href="#引入-nek-ui" class="headerlink" title="引入 nek-ui"></a>引入 nek-ui</h4><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i nek-ui -S</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import NEKUI from &apos;nek-ui&apos;</div><div class="line">import &apos;node_modules/nek-ui/dist/css/nek-ui.min.css&apos;</div></pre></td></tr></table></figure>
+<p>或者直接在需要引入的页面上 
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//unpkg-kl.com/nek-ui/dist/css/nek-ui.default.min.css&quot;&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;//unpkg-kl.com/nek-ui/dist/vendor/regular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;//unpkg-kl.com/nek-ui/dist/js/nek-ui.min.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>以这种内嵌 script 方式引入的时候 NEKUI 会自动挂在 window 上</p>
+<h4 id="使用-nek-ui"><a href="#使用-nek-ui" class="headerlink" title="使用 nek-ui"></a>使用 nek-ui</h4><p>由于使用 NEIUI 的组件需要先注册，我们可以在工程里面的 BaseComponent 里面使用 NKEIUI 暴露出来的一个 install 方法来将组件注册到 BaseComponent 上，这样继承自 BaseComponent 的组件就可以直接在模板里面使用组件了。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">import &#123; install &#125; from &apos;nek-ui&apos;;</div><div class="line">import Regular from &apos;regularjs&apos;;</div><div class="line"></div><div class="line">const BaseComponent = Regular.extend(&#123;</div><div class="line">    install(Regular);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>如果不想将 NEKUI 的组件全部注册到全局上，或者是自己已有的组件和 NEKUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 regular 实例上<br><code>var Component = BaseComponent.extend({}).component(&#39;tooltip&#39;, NEKUI.Tooltip)</code>  </p>
+<h4 id="如何使用-nek-ui"><a href="#如何使用-nek-ui" class="headerlink" title="如何使用 nek-ui"></a>如何使用 nek-ui</h4><p>表单部分用 <code>&lt;ui.form&gt;  &lt;ui.form/&gt;</code> 将表单控件包裹起来<br>组件的默认宽度一般都是100%，所以可以用<code>&lt;form.item cols=x&gt;&lt;/form.item&gt;</code>将表单项（文字加组件）包裹起来，<code>cols</code>的值是类似<code>bootstrap</code>的栅格，一共分成了12格<br><!-- demo_start --></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">tip</span>=<span class="string">"优先输入国内邮箱"</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"请输入用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"6"</span> <span class="attr">title</span>=<span class="string">"密码"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->  
+<p>详情见<a href="/components/form_form.item_.html">表单项</a>  </p>
+<h3 id="NEK-Server"><a href="#NEK-Server" class="headerlink" title="NEK Server"></a>NEK Server</h3><p><a href="https://github.com/kaola-fed/NEK/blob/master/README.md" target="_blank" rel="external">github</a>  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required>
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码">
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols="6" title="用户名" tip="优先输入国内邮箱" required>
+        <ui.input type="email" placeholder="请输入用户名" />
+    </form.item>
+    <form.item cols="6" title="密码">
+        <ui.input type="password" placeholder="请输入密码" />
+    </form.item>
+</ui.form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
