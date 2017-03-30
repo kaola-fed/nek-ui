@@ -12,6 +12,7 @@ var template = require('./calendar.html');
 var _ = require('../../../ui-base/_');
 
 var bowser = require('bowser');
+var moment = require('moment');
 var polyfill = require('../../../ui-base/polyfill');
 var MS_OF_DAY = 24*3600*1000;
 
@@ -236,12 +237,9 @@ var Calendar = Component.extend({
         var minDate = this.data.minDate;
         var maxDate = this.data.maxDate;
 
-        // 不要直接在$watch中改变`minDate`和`maxDate`的值，因为有时向外绑定时可能不希望改变它们。
-        var minDate = minDate && new Date((minDate/MS_OF_DAY>>0)*MS_OF_DAY);
-        var maxDate = maxDate && new Date((maxDate/MS_OF_DAY>>0)*MS_OF_DAY);
-
         // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
-        return (minDate && date < minDate && minDate) || (maxDate && date > maxDate && maxDate);
+        return (minDate && moment(date).isBefore(minDate, 'day') && minDate)
+            || (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate);
     }
 });
 

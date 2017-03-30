@@ -43,7 +43,6 @@
         clear: both;
         
         .calendar_week .calendar_item {
-            font-weight: bold;
             cursor: default;
         }
     }
