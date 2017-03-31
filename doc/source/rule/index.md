@@ -28,8 +28,6 @@ Regular UI中所有组件的CSS样式都遵循[NEC规范][NEC]。
   如用：`.m-tabs .tabs_hd`, `.m-calendar .calendar_hd`，而不用：`.m-tabs .hd`, `.m-calendar .hd`
 - 为了防止组件内部语义化标签选择器的污染，使用`>`来进行限制选择。  
   如用：`.m-list>li`，而不用：`.m-list li`
-- 对于简单的HTML结构尽量使用标签选择器而不使用class选择器。  
-  如用：`.m-list>li`, `.m-crumb>li>a`，而不用：`.m-list .list_item`, `.m-crumb .crumb_a`
 
 ### MCSS/SCSS规范
 
