@@ -163,7 +163,6 @@
 <h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><ul>
 <li>为了防止组件内部class选择器的污染，并且为了好识别，使用<code>_</code>来做连字符。<br>后代选择器的class定义为组件名+<code>_</code>+后代选择器的含义。<br>如用：<code>.m-tabs .tabs_hd</code>, <code>.m-calendar .calendar_hd</code>，而不用：<code>.m-tabs .hd</code>, <code>.m-calendar .hd</code></li>
 <li>为了防止组件内部语义化标签选择器的污染，使用<code>&gt;</code>来进行限制选择。<br>如用：<code>.m-list&gt;li</code>，而不用：<code>.m-list li</code></li>
-<li>对于简单的HTML结构尽量使用标签选择器而不使用class选择器。<br>如用：<code>.m-list&gt;li</code>, <code>.m-crumb&gt;li&gt;a</code>，而不用：<code>.m-list .list_item</code>, <code>.m-crumb .crumb_a</code></li>
 </ul>
 <h3 id="MCSS-SCSS规范"><a href="#MCSS-SCSS规范" class="headerlink" title="MCSS/SCSS规范"></a>MCSS/SCSS规范</h3><h4 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h4><ul>
 <li>变量的命名必须有意义，能够使人直接读懂变量的含义，如<code>$brand-primary</code>, <code>$font-size-base</code>, <code>$u-radio_size</code>等。</li>
