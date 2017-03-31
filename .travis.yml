@@ -19,7 +19,7 @@ before_script:
 - git config --global user.email 'kaolabot@163.com'
 
 script:
-- gulp gen-doc
+- hexo generate
 
 after_success:
 - mkdir .deploy
