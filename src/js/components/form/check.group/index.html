@@ -1,4 +1,4 @@
-<div class="u-unitgroup {class}" r-hide={!visible}>
+<div class="u-unitgroup {class}" r-hide={!visible} r-width="{width}">
 	<div>
 	    {#list source as item}
 	        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />

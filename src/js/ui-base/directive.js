@@ -60,10 +60,17 @@ exports['r-attr'] = function(elem, value) {
     }, true);
 }
 
+/**
+ * r-width form.item下表单元素固定宽度时使用;
+ * @param elem
+ * @param value
+ */
 exports['r-width'] = function(elem, value) {
     this.$watch(value, function(newValue, oldValue) {
         if (parseInt(newValue)) {
             elem.style.width = parseInt(newValue) + 'px';
+            elem.style.display = 'inline-block';
+            elem.style.verticalAlign = 'top';
         }
     });
 }
