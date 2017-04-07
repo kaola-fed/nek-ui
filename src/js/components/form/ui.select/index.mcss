@@ -10,6 +10,7 @@
 
 .u-select2 {
     $user-select: none;
+    vertical-align:middle;
     
     .dropdown_hd {
         $box-sizing: border-box;

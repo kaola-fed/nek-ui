@@ -12,6 +12,7 @@
     display: inline-block;
     position: relative;
     width:100%;
+    vertical-align:top;
 
     .textarea2_placeholder {
         position: absolute;

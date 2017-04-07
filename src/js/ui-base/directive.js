@@ -70,7 +70,6 @@ exports['r-width'] = function(elem, value) {
         if (parseInt(newValue)) {
             elem.style.width = parseInt(newValue) + 'px';
             elem.style.display = 'inline-block';
-            elem.style.verticalAlign = 'top';
         }
     });
 }
