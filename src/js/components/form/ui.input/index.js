@@ -170,6 +170,14 @@ var Input = Component.extend({
         this.validate('blur');
         this.$emit('blur', $event);
     },
+    _onChange: function($event) {
+        this.validate('change');
+        this.$emit('change', $event);
+    },
+    _onInput: function($event) {
+        this.validate('input');
+        this.$emit('input', $event);
+    },
     _onSearch: function($event) {
         this.$emit('search', $event);
     },

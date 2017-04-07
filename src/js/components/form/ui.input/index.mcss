@@ -12,8 +12,13 @@
     display: block;
     position: relative;
 
+    .input_wrap {
+        position:relative;
+        display:block;
+    }
+
     .input2_unit,.input2_icon {
-        position: absolute; height:24px; line-height:24px;
+        position: absolute; height:24px;
         right: 10px; top:0; bottom:0; margin:auto;
         color:#666;
     }

@@ -93,7 +93,6 @@ $u-formctrl-extend_width = ($name, $width) {
     .u-input2.#{$name}w, .u-dropdown.#{$name}w, .u-select2.#{$name}w, .u-textarea2.#{$name}w {
         display:inline-block;
         width: $width;
-        vertical-align:top;
     }
 }
 
