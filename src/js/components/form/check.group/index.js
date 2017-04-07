@@ -19,7 +19,7 @@ var Validation = require('../../../util/validation');
  * @param {object}    [options.data]                    = 绑定属性
  * @param {object[]}  [options.data.source=[]]          <=> 数据源
  * @param {string}    [options.data.value='']           <=> 选择的值,逗号间隔的id值
- * @param {string}    [options.data.source[].name=[]]   => 每项的内容
+ * @param {string}    [options.data.source[].name]      => 每项的内容
  * @param {string}    [options.data.key=id]             => 数据项的键
  * @param {string}    [options.data.nameKey=name]       => 数据项的name键
  * @param {number}    [options.data.min]                => 最少选几项
