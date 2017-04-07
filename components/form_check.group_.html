@@ -354,26 +354,26 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -384,8 +384,8 @@
 <h3 id="全选"><a href="#全选" class="headerlink" title="全选"></a>全选</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">class</span>=<span class="string">"u-check"</span> <span class="attr">r-model</span>=<span class="string">&#123;checkedAll&#125;</span>&gt;</span> 全选<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">computed</span>: &#123;</div><div class="line">        <span class="attr">checkedAll</span>: &#123;</div><div class="line">            <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> source = <span class="keyword">this</span>.data.source;</div><div class="line">                <span class="keyword">return</span> source.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">                    <span class="keyword">return</span> item.checked;</div><div class="line">                &#125;).length === source.length;</div><div class="line">            &#125;,</div><div class="line">            <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">                <span class="keyword">this</span>.data.source.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">                    item.checked = !!value;</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">check</span> <span class="attr">name</span>=<span class="string">"全选"</span> <span class="attr">checked</span>=<span class="string">&#123;checkedAll&#125;</span> <span class="attr">on-check</span>=<span class="string">&#123;this._checkAll($event)&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">check.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">computed</span>: &#123;</div><div class="line">        <span class="attr">checkedAll</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> source = <span class="keyword">this</span>.data.source;</div><div class="line">            <span class="keyword">return</span> source.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> item.checked;</div><div class="line">            &#125;).length === source.length;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_checkAll</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.data.source.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">        d.checked = !!event.checked;</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#CheckGroup">CheckGroup</a></dt>
@@ -432,7 +432,7 @@
 <tr>
 <td>[options.data.source[].name]</td>
 <td><code>string</code></td>
-<td><code>&quot;[]&quot;</code></td>
+<td></td>
 <td>=&gt; 每项的内容</td>
 </tr>
 <tr>
@@ -526,12 +526,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -554,12 +554,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -578,12 +578,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -602,12 +602,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -643,7 +643,7 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<label><input type="checkbox" class="u-check" r-model={checkedAll}> 全选</label>
+<check name="全选" checked={checkedAll} on-check={this._checkAll($event)} />
 <check.group source={source} />
 
       */});
@@ -652,29 +652,27 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     },
     computed: {
-        checkedAll: {
-            get: function() {
-                var source = this.data.source;
-                return source.filter(function(item) {
-                    return item.checked;
-                }).length === source.length;
-            },
-            set: function(value) {
-                this.data.source.forEach(function(item) {
-                    item.checked = !!value;
-                })
-            }
+        checkedAll: function() {
+            var source = this.data.source;
+            return source.filter(function(item) {
+                return item.checked;
+            }).length === source.length;
         }
-    }
+    },
+    _checkAll: function(event) {
+      this.data.source.forEach(function(d) {
+        d.checked = !!event.checked;
+      })
+    },
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
