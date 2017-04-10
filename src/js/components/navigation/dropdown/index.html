@@ -3,7 +3,7 @@
         {#if this.$body}
             {#inc this.$body}
         {#else}
-            <a class="u-btn" title={title || '下拉菜单'}>{title || '下拉菜单'} <i class="u-icon u-icon-caret-down"></i></a>
+            <a class="u-btn" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class="u-icon u-icon-caret-down"></i></a>
         {/if}
     </div>
     {#if open}

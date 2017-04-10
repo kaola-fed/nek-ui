@@ -10,7 +10,7 @@ title: 下拉选择
 <div class="m-example"></div>
 
 ```xml
-<ui.select source={source} />
+<ui.select source={source} lang="en-US" />
 ```
 
 ```javascript

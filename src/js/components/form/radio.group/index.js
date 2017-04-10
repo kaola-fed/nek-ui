@@ -133,7 +133,7 @@ var RadioGroup = SourceComponent.extend({
 
         if (!selected) {
             result.success = false;
-            result.message = this.data.message || '请选择';
+            result.message = this.data.message || this.$trans('PLEASE_SELECT');
             this.data.state = 'error';
         } else {
             result.success = true;

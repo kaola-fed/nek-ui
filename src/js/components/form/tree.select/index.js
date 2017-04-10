@@ -49,7 +49,7 @@ var TreeSelect = Dropdown.extend({
             value: null,
             selected: null,
             separator: ',',
-            placeholder: '请选择',
+            placeholder: this.$trans('PLEASE_SELECT'),
             key: 'id',
             nameKey: 'name',
             childKey: 'children',

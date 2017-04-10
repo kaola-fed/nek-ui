@@ -48,7 +48,7 @@ var DatePicker = Dropdown.extend({
             // @inherited open: false,
             minDate: null,
             maxDate: null,
-            placeholder: '请输入',
+            placeholder: this.$trans('PLEASE_SELECT'),
             date: null,
             _date: undefined,
             _time: undefined,

@@ -12,6 +12,7 @@ var polyfill = require('./polyfill');
 var _ = require('./_');
 var filter = require('./filter');
 var directive = require('./directive');
+var language = require('../language');
 
 /**
  * @class Component
@@ -30,6 +31,8 @@ var Component = Regular.extend({
             readonly: false,
             disabled: false,
             visible: true,
+            // zh-CN, en-US
+            lang: 'zh-CN',
             'class': '',
             console: typeof console === 'undefined' ? undefined : console
         });
@@ -89,7 +92,10 @@ var Component = Regular.extend({
     reset: function() {
         this.data = {};
         this.config();
-    }
+    },
+    $trans: function(key) {
+        return language[this.data.lang || 'zh-CN'][key] || '';
+    },
 })
 .filter(filter)
 .directive(directive);
