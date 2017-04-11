@@ -18,9 +18,10 @@ var Validation = require('../../../util/validation');
  * @extend CheckGroup
  * @param {object}    [options.data]                    = 绑定属性
  * @param {object[]}  [options.data.source=[]]          <=> 数据源
- * @param {string}    [options.data.value='']           <=> 选择的值,逗号间隔的id值
+ * @param {string}    [options.data.value='']           <=> 选择的值,separator间隔的id值
  * @param {string}    [options.data.source[].name=[]]   => 每项的内容
  * @param {string}    [options.data.key=id]             => 数据项的键
+ * @param {string}    [options.data.separator=',']      => value的分割符号
  * @param {string}    [options.data.nameKey=name]       => 数据项的name键
  * @param {number}    [options.data.min]                => 最少选几项
  * @param {number}    [options.data.max]                => 最多选几项
@@ -48,7 +49,8 @@ var CheckGroup = SourceComponent.extend({
             max: 1000,
             nameKey: 'name',
             key: 'id',
-            value: ''
+            value: '',
+            separator: ','
         });
         this.supr();
 
@@ -67,8 +69,9 @@ var CheckGroup = SourceComponent.extend({
             if (!source || !(source instanceof Array)) { return console.error('source of check.group is not an array'); }
 
             var key = this.data.key,
+                separator = this.data.separator,
                 value = this.data.value || '',
-                values = value.split(',');
+                values = value.split(separator);
 
             source.forEach(function(item) {
                 if (values.indexOf(item[key] + '') != -1) {
@@ -82,8 +85,9 @@ var CheckGroup = SourceComponent.extend({
 
             if (source) {
                 var key = this.data.key,
+                    separator = this.data.separator,
                     value = newValue || '',
-                    values = value.split(',');
+                    values = value.split(separator);
                 source.forEach(function(item) {
                     if (values.indexOf(item[key] + '') != -1) {
                         item.checked = true;
@@ -135,11 +139,12 @@ var CheckGroup = SourceComponent.extend({
         item.checked = !item.checked;
 
         var key = this.data.key,
+            separator = this.data.separator,
             source = this.data.source,
             checkedList = source.filter(function(item) { return item.checked; }),
             ids = checkedList.map(function(item) { return item[key]; });
 
-        this.$update('value', ids.join(','));
+        this.$update('value', ids.join(separator));
 
         this.data.tip && this.validate();
     }
