@@ -94,7 +94,8 @@ var Component = Regular.extend({
         this.config();
     },
     $trans: function(key) {
-        return language[this.data.lang || 'zh-CN'][key] || '';
+        const $NEKUI = window.$NEKUI || {};
+        return language[$NEKUI.lang || this.data.lang || 'zh-CN'][key] || '';
     },
 })
 .filter(filter)
