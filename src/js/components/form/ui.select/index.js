@@ -71,7 +71,7 @@ var Select = Dropdown.extend({
             canSearch: undefined,
             // 默认不区分大小写
             isCaseSensitive: true,
-            noMatchText: '无匹配项',
+            noMatchText: this.$trans('NO_MATCH'),
             delaySearch: 300,
             maxShowCount: 1000,
 
@@ -80,7 +80,7 @@ var Select = Dropdown.extend({
             selectedClose: false,
             canSelectAll: true,
 
-            placeholder: '请选择',
+            placeholder: this.$trans('PLEASE_SELECT'),
             required: false
         });
         if (data.multiple && !Array.isArray(data.selected)) {
@@ -315,7 +315,7 @@ var Select = Dropdown.extend({
         value = ( typeof value == 'undefined' ) ? '' : value + '';
         if (!value.length) {
             result.success = false;
-            result.message = data.message || '请选择';
+            result.message = data.message || this.$trans('PLEASE_SELECT');
             data.state = 'error';
         } else {
             result.success = true;

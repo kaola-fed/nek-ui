@@ -17,7 +17,7 @@ var _ = require('../../../ui-base/_');
  * @class Input
  * @extend Component
  * @param {object}      [options.data]                = 绑定属性
- * @param {string}      [options.data.title=点我]      => 按钮标题
+ * @param {string}      [options.data.title=确定]      => 按钮标题
  * @param {string}      [options.data.type=default]   => 按钮样式, primary, default, info, success, warn, error
  * @param {string}      [options.data.size=normal]    => 按钮大小, xs, sm, lg, xl
  * @param {string}      [options.data.icon]           => 按钮图标,action不能满足需求时使用;
@@ -75,7 +75,7 @@ var UIButton = Component.extend({
     template: template,
     config: function() {
         _.extend(this.data, {
-            title: '点我',
+            title: this.$trans('CONFIRM'),
             type: 'default',
             size: 'normal',
             icon: '',

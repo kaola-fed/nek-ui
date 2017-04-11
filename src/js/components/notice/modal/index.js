@@ -34,7 +34,7 @@ var Modal = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
-            title: '提示',
+            title: this.$trans('NOTICE'),
             content: '',
             okButton: true,
             with: 400,

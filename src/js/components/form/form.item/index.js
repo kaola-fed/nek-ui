@@ -59,7 +59,7 @@ var FormItem = Validation.extend({
         if (!this.controls.length) { return; }
 
         var controls = this.controls || [],
-            message = this.data.message || '请选择';
+            message = this.data.message || this.$trans('PLEASE_SELECT');
         controls.forEach(function($component) {
           var rules = $component.data.rules,
               isFilled = { type: 'isFilled', message: message};

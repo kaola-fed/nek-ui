@@ -53,7 +53,7 @@ var Suggest = Dropdown.extend({
             id: '',
             key: 'id',
             nameKey: 'name',
-            placeholder: '请输入',
+            placeholder: this.$trans('PLEASE_SELECT'),
             maxlength: undefined,
             startLength: 0,
             delay: 300,
@@ -220,7 +220,7 @@ var Suggest = Dropdown.extend({
 
         if (!value.length) {
             result.success = false;
-            result.message = this.data.message || '请选择';
+            result.message = this.data.message || this.$trans('PLEASE_SELECT');
             this.data.state = 'error';
         } else {
             result.success = true;
