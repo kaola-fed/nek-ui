@@ -14,10 +14,10 @@
 	            {#inc @(footerTemplate)}
 	        {#else}
 		        {#if okButton}
-                    <ui.button type="primary" title={okButton === true ? '确定' : okButton} on-click={this.close(true, $event)} />
+                    <ui.button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} />
 		        {/if}
 		        {#if cancelButton}
-		            <button class="u-btn" on-click={this.close(false)}>{cancelButton === true ? '取消' : cancelButton}</button>
+		            <button class="u-btn" on-click={this.close(false)}>{cancelButton === true ? this.$trans('CANCEL') : cancelButton}</button>
 		        {/if}
 	        {/if}
         </div>

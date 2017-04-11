@@ -10,8 +10,8 @@
 			{/if}
 		</div>
 		<div class="foot">
-			<button class="u-btn u-btn-xs" on-click={this.cancel()}>{cancelText ? cancelText : '取消'}</button>
-			<button class="u-btn u-btn-xs u-btn-primary" on-click={this.ok()} r-autofocus>{okText ? okText : '确定'}</button>
+			<button class="u-btn u-btn-xs" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>
+			<button class="u-btn u-btn-xs u-btn-primary" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>
 		</div>
 	</div>
 </div>

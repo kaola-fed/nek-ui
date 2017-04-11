@@ -18,12 +18,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -50,12 +50,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -76,12 +76,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -102,12 +102,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     }
 });
@@ -147,7 +147,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<label><input type="checkbox" class="u-check" r-model={checkedAll}> 全选</label>
+<check name="全选" checked={checkedAll} on-check={this._checkAll($event)} />
 <check.group source={source} />
 ```
 
@@ -156,29 +156,27 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '选项1', id: 1},
+            {name: '选项2', id: 2},
+            {name: '选项3', id: 3},
+            {name: '选项4', id: 4},
+            {name: '选项5', id: 5},
+            {name: '选项6', id: 6}
         ]
     },
     computed: {
-        checkedAll: {
-            get: function() {
-                var source = this.data.source;
-                return source.filter(function(item) {
-                    return item.checked;
-                }).length === source.length;
-            },
-            set: function(value) {
-                this.data.source.forEach(function(item) {
-                    item.checked = !!value;
-                })
-            }
+        checkedAll: function() {
+            var source = this.data.source;
+            return source.filter(function(item) {
+                return item.checked;
+            }).length === source.length;
         }
-    }
+    },
+    _checkAll: function(event) {
+      this.data.source.forEach(function(d) {
+        d.checked = !!event.checked;
+      })
+    },
 });
 ```
 <!-- demo_end -->

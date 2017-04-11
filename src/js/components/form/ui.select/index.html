@@ -44,7 +44,7 @@
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
 	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
-	                        全部
+	                        {this.$trans('ALL')}
 	                    </li>
 	                {/if}
 	                {#if item.disabled && item.tip}
@@ -77,7 +77,7 @@
 	            {#else}
 	                {#if searchValue}
 	                <li>
-	                    {noMatchText||'无匹配项'}
+	                    {noMatchText}
 	                </li>
 	                {/if}
 	            {/list}

@@ -50,7 +50,7 @@ var TextArea = Component.extend({
             required: false
         });
         if (this.data.required) {
-            this.data.rules.push({type:'isRequired', message: '请填写'});
+            this.data.rules.push({type:'isRequired', message: ''});
         }
 
         this.supr();

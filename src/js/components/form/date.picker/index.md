@@ -12,7 +12,7 @@ title: 日期选择
 ```xml
 <ui.form>
     <form.item cols=6>
-        <date.picker />
+        <date.picker lang="en-US" />
     </form.item>
     <form.item cols=6>
         <date.picker date="2008-08-08" />

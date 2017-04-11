@@ -1,5 +1,5 @@
 <ul class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
-    <li class="pager_prev" z-dis={current <= 1} on-click={this.select(current - 1)}><a>上一页</a></li>
+    <li class="pager_prev" z-dis={current <= 1} on-click={this.select(current - 1)}><a>{this.$trans('PAGE_PREV')}</a></li>
     {#if total - middle > side * 2 + 1}
         {#list 1..side as i}
         <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
@@ -17,5 +17,5 @@
         <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
         {/list}
     {/if}
-    <li class="pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><a>下一页</a></li>
+    <li class="pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><a>{this.$trans('PAGE_NEXT')}</a></li>
 </ul>

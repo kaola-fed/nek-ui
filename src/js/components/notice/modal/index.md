@@ -23,7 +23,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.Modal({
             data: {
-                title: 'Modal标题',
+                lang: 'en-US',
                 content: 'Modal内容'
             }
         });
