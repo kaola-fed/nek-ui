@@ -20,8 +20,8 @@ title: 分页
 <div class="m-example"></div>
 
 ```xml
-<pager current=6 total=11 position="left" lang="en-US" />
-<pager current=6 total=11 position="center" />
+<pager pageSize=20 current=6 total=11 position="left" lang="en-US" />
+<pager pageSize=20 current=6 total=11 position="center" />
 <pager current=6 total=11 position="right" />
 ```
 <!-- demo_end -->

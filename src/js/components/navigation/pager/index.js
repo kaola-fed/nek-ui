@@ -18,6 +18,8 @@ var _ = require('../../../ui-base/_');
  * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
  * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
  * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+ * @param {number}        [options.data.step=5]           => 每页条数选择步长
+ * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
  * @param {boolean}       [options.data.visible=true]     => 是否显示
@@ -38,20 +40,13 @@ var Pager = Component.extend({
             side: 2,
             _start: 1,
             _end: 5,
-            pageSizeList: [
-                {id : 5, name: '5条/页' },
-                {id : 10, name: '10条/页' },
-                {id : 15, name: '15条/页' },
-                {id : 20, name: '20条/页' },
-                {id : 25, name: '25条/页' },
-                {id : 30, name: '30条/页' },
-                {id : 35, name: '35条/页' },
-                {id : 40, name: '40条/页' },
-                {id : 45, name: '45条/页' },
-                {id : 50, name: '50条/页' }
-            ]
+            step: 5,
+            maxPageSize: 50,
+            pageSizeList: []
         });
         this.supr();
+
+        this._setPageSizeList();
 
         this.$watch(['current', 'total'], function(current, total) {
             this.data.current = current = +current;
@@ -76,6 +71,16 @@ var Pager = Component.extend({
             this.data.side = +side;
         });
     },
+
+    _setPageSizeList: function() {
+        const { step, maxPageSize } = this.data;
+        for (let i = 1; i * step <= maxPageSize; ++i)
+        this.data.pageSizeList.push({
+            id: i * step,
+            name: i * step,
+        })
+    },
+
     /**
      * @method select(page) 选择某一页
      * @public

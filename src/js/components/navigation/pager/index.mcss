@@ -96,6 +96,7 @@ $m-pager_li_a_size = 24px;
     }
 
     .page_confirm{
+        display: inline-block;
         margin-left: 27px;
     }
 
