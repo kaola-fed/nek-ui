@@ -119,13 +119,13 @@ var SelectGroup = Component.extend({
      * @return {object} result 结果
      */
     validate: function(on) {
-        if (!this.data.required) { return {success:true}; }
 
-        var result = { success: true, message: '' },
+        var data = this.data,
+            result = { success: true, message: '' },
             values = this.data.values,
             depth  = this.data.depth;
 
-        if (values.length < depth) {
+        if (data.required && (values.length < depth)) {
             result.success = false;
             result.message = this.data.message || this.$trans('PLEASE_SELECT');
             this.data.state = 'error';

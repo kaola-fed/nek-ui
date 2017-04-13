@@ -78,6 +78,17 @@ var Input = Component.extend({
             });
         }
     },
+    init: function() {
+        this.$watch('required', function(value) {
+            if (value) {
+                this.addRule('required');
+            } else {
+                this.data.rules = this.data.rules.filter(function(rule) {
+                    return rule.type !== 'isRequired';
+                });
+            }
+        });
+    },
     /**
      * @override 
      */
@@ -112,6 +123,7 @@ var Input = Component.extend({
      * @return {object} result 结果
      */
     validate: function(on) {
+
         var value = this.data.value ? (this.data.value + '') : '';
         var rules = this.data.rules;
 

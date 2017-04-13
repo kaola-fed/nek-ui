@@ -126,12 +126,11 @@ var RadioGroup = SourceComponent.extend({
      * @return {object} result 结果
      */
     validate: function(on) {
-        if (!this.data.required) { return {success:true}; }
+        var data = this.data,
+            result = { success: true, message: '' },
+            selected = data.selected;
 
-        var result = { success: true, message: '' },
-            selected = this.data.selected;
-
-        if (!selected) {
+        if (data.required && !selected) {
             result.success = false;
             result.message = this.data.message || this.$trans('PLEASE_SELECT');
             this.data.state = 'error';

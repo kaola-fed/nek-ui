@@ -305,15 +305,12 @@ var Select = Dropdown.extend({
     },
     validate: function (on) {
         var data = this.data;
-        if (!data.required) {
-            return {success: true};
-        }
 
         var result = {success: true, message: ''},
             value = this.data.value;
 
         value = ( typeof value == 'undefined' ) ? '' : value + '';
-        if (!value.length) {
+        if (data.required && !value.length) {
             result.success = false;
             result.message = data.message || this.$trans('PLEASE_SELECT');
             data.state = 'error';

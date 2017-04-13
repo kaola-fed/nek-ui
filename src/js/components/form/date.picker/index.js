@@ -221,12 +221,11 @@ var DatePicker = Dropdown.extend({
             || (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate);
     },
     validate: function(on) {
-        if (!this.data.required) { return {success:true}; }
-
-        var date = this.data.date || '';
+        var data = this.data,
+            date = data.date || '';
 
         var result = date ? Validation.validate(date.toString(), [{type:'isDate', message:'请填写'}]) : { success:false };
-        if (!result.success) {
+        if (data.required && !result.success) {
             result.success = false;
             result.message = this.data.message || '请填写';
             this.data.state = 'error';

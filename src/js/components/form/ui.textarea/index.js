@@ -24,6 +24,7 @@ var bowser = require('bowser');
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
  * @param {number}        [options.data.height=120]         => 高度
  * @param {boolean}       [options.data.required=false]     => 是否必填
+ * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
@@ -49,9 +50,6 @@ var TextArea = Component.extend({
             _eltIE9: bowser.msie && bowser.version <= 9,
             required: false
         });
-        if (this.data.required) {
-            this.data.rules.push({type:'isRequired', message: ''});
-        }
 
         this.supr();
 
@@ -64,6 +62,20 @@ var TextArea = Component.extend({
                 $outer.controls.splice(index, 1);
             });
         }
+    },
+    init: function() {
+        this.$watch('required', function(value) {
+            var rules = this.data.rules,
+                message = this.data.message;
+
+            if (value) {
+                rules.push({type:'isRequired', message: message});
+            } else {
+                this.data.rules = rules.filter(function(rule) {
+                    return rule.type != 'isRequired';
+                });
+            }
+        });
     },
     /**
      * @method validate() 根据`rules`验证组件的值是否正确

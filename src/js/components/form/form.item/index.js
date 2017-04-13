@@ -52,8 +52,10 @@ var FormItem = Validation.extend({
                 $outer.initSelectorSource();
             }
         });
-
-        this.initValidateRule();
+        
+        this.$watch('required', function() {
+            this.initValidateRule();
+        });
     },
     initValidateRule: function() {
         if (!this.controls.length) { return; }
@@ -61,19 +63,12 @@ var FormItem = Validation.extend({
         var controls = this.controls || [],
             message = this.data.message || this.$trans('PLEASE_SELECT');
         controls.forEach(function($component) {
-          var rules = $component.data.rules,
-              isFilled = { type: 'isFilled', message: message};
-
           if (this.data.required) {
-            if (!rules) {
-              $component.data.rules = [].concat(isFilled);
-            } else {
-              rules.push(isFilled);
-            }
-            // rules针对input等较复杂的验证规则, required属性针对ui.select, check.group等;
             $component.data.required = true;
             $component.data.message = $component.data.message || message;
             $component.$update();
+          } else {
+            $component.$update('required', false);
           }
         }.bind(this));
     }
