@@ -12,9 +12,9 @@ $prefix-properties =
     // transition 部分
 
     // 有些需要提取单独处理，不过参数一致
-    // transition (webkit moz),
+    transition (webkit moz),
     transition-delay (webkit moz),
-    // transition-property (webkit moz),
+    transition-property (webkit moz),
     transition-duration (webkit moz),
     transition-timing-function (webkit moz),
 

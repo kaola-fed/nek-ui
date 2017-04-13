@@ -1,12 +1,9 @@
+// ========================================================================
 // Name:            Base
 // Description:     基础
 // Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
-
-
-// Base:
-// ========================================================================
 
 html {
     // - Prevents iOS text size adjust after orientation change, without disabling user zoom
@@ -345,6 +342,24 @@ pre {
     $border-radius: $border-radius-base;
 
     code {}
+}
+
+input, textarea{
+    // - Default is `content-box` with following exceptions set to `border-box`.
+    $box-sizing: border-box;
+    // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+    margin: 0;
+    border: 0;
+    padding: 0;
+    // - Remove `border-radius` in iOS.
+    border-radius: 0;
+    // - Correct `font` properties and `color` not being inherited.
+    font: inherit;
+    color: inherit;
+    // - Remove default style in iOS.
+    -webkit-appearance: none;
+    // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+    max-width: 100%;
 }
 
 *::selection, *::-moz-selection, *::-webkit-selection {

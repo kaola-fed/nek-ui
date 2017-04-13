@@ -9,7 +9,6 @@
 // ========================================================================
 
 .u-tip {
-    display:inline-block;
 	margin-top:5px;
 }
 
@@ -19,7 +18,6 @@
 
 $u-tip-extend_color = ($name, $background, $color) {
     .u-tip-#{$name} {
-        background: $background;
         color: $color;
     }
 }
@@ -29,10 +27,15 @@ $u-tip-extend_color = ($name, $background, $color) {
 
 .u-tip {
 	font-size: 12px;
-    padding: 0 6px;
+    padding: 0;
     background: $background-base;
     line-height:1.5;
     $border-radius: $border-radius-sm;
+    .u-icon {
+        font-size: 15px;
+        vertical-align: text-bottom;
+        margin-right: 6px;
+    }
 }
 
 

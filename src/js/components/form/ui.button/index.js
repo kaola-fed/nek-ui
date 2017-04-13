@@ -50,9 +50,9 @@ var actionIcons= {
   /* 复制 */
   copy: 'copy',
   /* 通过 */
-  pass: 'check',
+  pass: 'success',
   /* 驳回 */
-  reject: 'ban',
+  reject: 'error',
   /* 返回 */
   backward: 'angle-double-left',
   /* 下载 */
@@ -64,7 +64,7 @@ var actionIcons= {
   /* 编辑 */
   edit: 'edit',
   /* 添加 */
-  add: 'plus-square',
+  add: 'add',
   /* 链接 */
   link: 'link'
 };
@@ -92,9 +92,10 @@ var UIButton = Component.extend({
         this.$watch('download', function(url) {
             if (validator.isURL(url)) {
                 if (bowser.chrome) {
-                    this.$refs.download.setAttribute('href', url);
-                    _.dom.fireEvent(this.$refs.download, 'click');
-                    this.$refs.download.setAttribute('href', '');
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = url;
+                    a.click();
                 } else {
                     location.href = url;
                 }
@@ -112,6 +113,10 @@ var UIButton = Component.extend({
             });
         }
         return !!this.data.link;
+    },
+
+    onMouseUp: function (e) {
+        e.target.blur();
     }
 });
 

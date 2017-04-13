@@ -1,36 +1,38 @@
+// ========================================================================
+// Component:       `u-numberinput`
 // Name:            NumberInput
 // Description:     数字输入
 // Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
 
-
-// Component:       `u-numberinput`
-// ========================================================================
-
 .u-numberinput {
     display: inline-block;
     position: relative;
-    width:100%;
+    width: 100%;
     $user-select: none;
+
+    .u-input {
+        display: inline-block;
+    }
 
     .u-btn {
         position: absolute;
         border: none;
-    }
-}
-
-///////////////////
-.u-numberinput {
-    .u-btn {
-        right: 2px;
-        top: 2px;
+        right: 7px;
+        top: 8px;
+        min-width: 0;
         $line-height: $height-base / 2 - $border-width-base * 2 - 1px;
         padding: 0 4px;
     }
 
     .u-btn + .u-btn {
         top: auto;
-        bottom: 2px;
+        bottom: 8px;
+    }
+
+    .u-btn:focus, .u-btn:hover {
+        outline: 0;
+        border: 1px solid #adadad;
     }
 }

@@ -1,11 +1,12 @@
-<label class="u-input2 {size} {class}" r-hide={!visible} r-width="{width}">
-    <input class="u-input u-input-{state}" type={type | type}
+<label class="u-input u-input-{size} {class}" r-hide={!visible} r-width="{width}">
+    <input class="input input-{state}" type={type | type}
         name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
         r-model={value | valueFilter}
+        on-focus={this._onFocus($event)}
         on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change">
-    {#if this.events.search}<i class="input2_icon u-icon u-icon-search" on-click={this._onSearch($event)}></i>{/if}
-    {#if unit}<span class="input2_unit">{unit}</span>{/if}
-    {#if _eltIE9 && !value}<span class="input2_placeholder">{placeholder}</span>{/if}
-    {#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+    {#if this.events.search}<i class="input_icon u-icon u-icon-search" on-click={this._onSearch($event)}></i>{/if}
+    {#if unit}<span class="input_unit">{unit}</span>{/if}
+    {#if _eltIE9 && !value}<span class="input_placeholder">{placeholder}</span>{/if}
+    {#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i>{tip}</span>{/if}
 </label>
 

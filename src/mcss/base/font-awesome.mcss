@@ -5,15 +5,18 @@
 /* FONT PATH
  * -------------------------- */
 @font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.4.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?h16as7');
+  src:  url('../fonts/icomoon.eot?h16as7#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?h16as7') format('truetype'),
+  url('../fonts/icomoon.woff?h16as7') format('woff'),
+  url('../fonts/icomoon.svg?h16as7#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 .u-icon {
   display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 icomoon;
   font-size: inherit;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -2017,4 +2020,46 @@
 }
 .u-icon-fonticons:before {
   content: "\f280";
+}
+
+//新增ICON
+
+.u-icon-warning:before {
+  content: "\e900";
+}
+.u-icon-edit:before {
+  content: "\e901";
+}
+.u-icon-info:before {
+  content: "\e902";
+}
+.u-icon-error:before {
+  content: "\e903";
+}
+.u-icon-success:before {
+  content: "\e904";
+}
+.u-icon-chevron_left:before {
+  content: "\e905";
+}
+.u-icon-chevron_right:before {
+  content: "\e906";
+}
+.u-icon-search:before {
+  content: "\e907";
+}
+.u-icon-remove:before {
+  content: "\e908";
+}
+.u-icon-ok:before {
+  content: "\e909";
+}
+.u-icon-check_empty:before {
+  content: "\e90a";
+}
+.u-icon-angle_down:before {
+  content: "\e90b";
+}
+.u-icon-add:before {
+  content: "\e90c";
 }

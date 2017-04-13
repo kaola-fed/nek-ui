@@ -1,21 +1,44 @@
 <ul class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
-    <li class="pager_prev" z-dis={current <= 1} on-click={this.select(current - 1)}><a>上一页</a></li>
+
+    {#if !!pageSize || pageSize === 0}
+    <li class="page_size"><ui.select value={pageSize} source={pageSizeList} size="sm"></ui.select></li>
+    {/if}
+
+    {#if !!total || total === 0}
+    <li class="page_total">共{total}条</li>
+    {/if}
+
+    <li class="page_item page_prev" z-dis={current <= 1} on-click={this.select(current - 1)}>
+        <i class="u-icon u-icon-chevron_left"></i>
+    </li>
+
     {#if total - middle > side * 2 + 1}
         {#list 1..side as i}
-        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
+        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
-        {#if _start > side + 1}<li><span>...</span></li>{/if}
+        {#if _start > side + 1}<li class="page_item">...</li>{/if}
         {#list _start.._end as i}
-        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
+        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
-        {#if _end < total - side}<li><span>...</span></li>{/if}
+        {#if _end < total - side}<li class="page_item">...</li>{/if}
         {#list (total - side + 1)..total as i}
-        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
+        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
     {#else}
         {#list 1..total as i}
-        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>
+        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
     {/if}
-    <li class="pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><a>下一页</a></li>
+
+    <li class="page_item pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><i class="u-icon u-icon-chevron_right"></i></li>
+
+    <li class="page_goto">
+        <span>跳至</span>
+        <ui.input type="int" on-keyup={this.enter($event)} size="sm" value={pageNo} />
+    </li>
+
+    <li class="page_confirm">
+        <ui.button on-click={this.goto()} type="tertiary" title="确认" size="sm" />
+    </li>
+
 </ul>

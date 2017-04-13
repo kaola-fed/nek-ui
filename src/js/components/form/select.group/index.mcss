@@ -1,5 +1,5 @@
-.u-select2group-error {
-    .u-select2 {
+.u-selectgroup-error {
+    .u-select {
         .dropdown_hd  {
             border-color: #d73925;
         }
