@@ -8,10 +8,11 @@
 // Extends:
 // ========================================================================
 
-.u-select2 {
+.u-select {
     $user-select: none;
-    vertical-align:middle;
-    
+    // - 防止select在文字为空时飘起来
+    vertical-align: middle;
+
     .dropdown_hd {
         $box-sizing: border-box;
         cursor: pointer;
@@ -20,6 +21,7 @@
         .u-icon {
             float: right;
             width: auto;
+            line-height: inherit;
         }
     }
 
@@ -68,6 +70,7 @@
     .m-listview {
         overflow-x: hidden;
         overflow-y: auto;
+        padding: 0;
     }
 
     .m-treeview {
@@ -76,7 +79,7 @@
 }
 
 /* Disabled */
-.u-select2.z-dis {
+.u-select.z-dis {
     .dropdown_hd {
         cursor: not-allowed;
     }
@@ -84,7 +87,7 @@
 
 
 //////////////////////////
-.u-select2 {
+.u-select {
 
     .dropdown_hd {
         min-height: $u-formctrl_height;
@@ -94,6 +97,7 @@
         color: $u-formctrl_color;
         $border: $u-formctrl_border;
         $border-radius: $border-radius-base;
+        font-size: 12px;
     }
 
     .dropdown_hd:hover {}
@@ -102,10 +106,10 @@
         max-height: 200px;
     }
 }
-.u-select2-error .dropdown_hd { border-color: #d73925; }
+.u-select-error .dropdown_hd { border-color: #d73925; }
 
 /* Disabled */
-.u-select2.z-dis {
+.u-select.z-dis {
     .dropdown_hd {
         background: $u-formctrl-disabled_background;
         $border: $u-formctrl-disabled_border;
@@ -113,11 +117,24 @@
     }
 }
 
-.u-select2group {
-    .u-select2 {
+.u-selectgroup {
+    .u-select {
         width:160px;
     }
     .u-dropdown {
         display:inline-block;
+    }
+}
+
+.u-select-sm {
+    height: 24px;
+    padding: 0;
+    .dropdown_hd{
+        min-height: 26px;
+        line-height: 24px;
+    }
+
+    .m-listview >li{
+        line-height: 12px;
     }
 }

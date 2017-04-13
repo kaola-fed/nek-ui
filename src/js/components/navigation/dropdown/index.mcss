@@ -41,8 +41,8 @@
 //////////////////////
 .u-dropdown {
     .dropdown_bd {
-        min-width: $u-formctrl_min-width;
-        margin-top: 2px;
+        //min-width: $u-formctrl_min-width;
+        //margin-top: 2px;
     }
 }
 

@@ -2,11 +2,15 @@
 	<div class="u-dropdown " z-dis={disabled} r-hide={!visible} ref="element">
 	    <div class="dropdown_hd">
 		    {#if showTime}
-		    <input class="u-input u-input-full u-input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref="input" autofocus={autofocus} readonly={readonly} disabled={disabled}
-	            on-focus={this.toggle(true)} on-change={this._onInput($event)}>
+			<label class="u-input">
+		    	<input class="input input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref="input"
+					autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
+			</label>
 			{#else}
-		    <input class="u-input u-input-full u-input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input" autofocus={autofocus} readonly={readonly} disabled={disabled}
-		        on-focus={this.toggle(true)} on-change={this._onInput($event)}>
+			<label class="u-input">
+		    	<input class="input input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input"
+					autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
+			</label>
 		    {/if}
 	    </div>
 	    <div class="dropdown_bd" r-hide={!open}>
@@ -17,5 +21,5 @@
 	        </calendar>
 	    </div>
 	</div>
-	{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+	{#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i>{tip}</span>{/if}
 </div>

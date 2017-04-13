@@ -13,14 +13,17 @@
 
     .message_close {
         float: right;
-
+        margin-top: 7px;
+        font-size: 12px;
+        color: #999;
         &:hover {}
     }
 
     .message_icon {
-        font-size: 20px;
+        font-size: 23px;
         vertical-align: middle;
         margin-top: -2px;
+        margin-right: 10px;
         line-height: 1;
     }
 }
@@ -31,10 +34,15 @@
 // Description:     颜色扩展
 // ========================================================================
 
-$u-message-extend_color = ($name, $color) {
+$u-message-extend_color = ($name, $color, $bg_color, $bd_color, $icon_color) {
     .u-message-#{$name} {
         color: $color;
-        border-color: $color;
+        background: $bg_color;
+        $border: $bd_color;
+
+        .message_icon {
+            color: $icon_color;
+        }
     }
 }
 
@@ -43,18 +51,25 @@ $u-message-extend_color = ($name, $color) {
 // ========================================================================
 
 .u-message {
-    padding: 15px;
+    padding: 16px 20px 17px 20px;
     background: $background-base;
     color: #777;
     $border: $border-base;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    $border-radius: 2px;
 
     .message_close {
-        color: black;
-        $opacity: .2;
+        color: #999;
+        margin-left: 16px;
     }
 
     .message_close:hover {
         $opacity: .5;
+    }
+
+    .message_ct {
+        display: inline-block;
+        max-width: 90%;
     }
 }
 
@@ -63,7 +78,7 @@ $u-message-extend_color = ($name, $color) {
 // Color Extends:
 // ========================================================================
 
-$u-message-extend_color(info, $brand-info, white, $brand-info-darker);
-$u-message-extend_color(success, $brand-success, white, $brand-success-darker);
-$u-message-extend_color(warning, $brand-warning, white, $brand-warning-darker);
-$u-message-extend_color(error, $brand-error, white, $brand-error-darker);
+$u-message-extend_color(info, $brand-info, #F8FCFF, #80BCF4, #7DBBF2);
+$u-message-extend_color(success, $brand-success, #F5FDF0, #A3E37E, #9FE385);
+$u-message-extend_color(warning, $brand-warning, #FFFBF3, #F7C674, #FFC56D);
+$u-message-extend_color(error, $brand-error, #FEF5F5, #F48080, #F78081);

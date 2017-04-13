@@ -29,7 +29,7 @@ gulp.task('dist-clean', function(cb) {
 
 gulp.task('dist-copy', function() {
   return all(
-    gulp.src('./node_modules/font-awesome/fonts/**').pipe(gulp.dest('./dist/fonts')),
+    gulp.src('./src/fonts/**').pipe(gulp.dest('./dist/fonts')),
     gulp.src([
       './node_modules/regularjs/dist/regular.min.js',
       './node_modules/regularjs/dist/regular.js'

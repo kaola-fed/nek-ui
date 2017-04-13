@@ -10,22 +10,28 @@ title: 按钮
 <div class="m-example"></div>
 
 ```xml
- <ui.button on-click={this.click1()} type="primary" title="primary" disabled />
- <ui.button on-click={this.click2()} type="default" title="default" />
- <ui.button type="info" title="info" />
- <ui.button type="success" title="success" />
- <ui.button type="warning" title="warn" />
- <ui.button type="error" title="error" />
+<div class=g-row>
+     <ui.button type="primary" title="primary" />
+     <ui.button type="secondary" title="secondary" />
+     <ui.button type="tertiary" title="tertiary" />
+     <ui.button type="info" title="info" />
+     <ui.button type="success" title="success" />
+     <ui.button type="warning" title="warn" />
+     <ui.button type="error" title="error" />
+</div>
+<div class=g-row>
+     <ui.button type="primary" title="primary" size="sm" />
+     <ui.button type="secondary" title="secondary" size="sm" />
+     <ui.button type="tertiary" title="tertiary" size="sm" />
+     <ui.button type="info" title="info" size="sm" />
+     <ui.button type="success" title="success" size="sm" />
+     <ui.button type="warning" title="warn" size="sm" />
+     <ui.button type="error" title="error" size="sm" />
+ </div>
 ```
 ```javascript
 var component = new NEKUI.Component({
-    template: template,
-    click1: function() {
-      console.log('click1');
-    },
-    click2: function() {
-      console.log('click2');
-    }
+    template: template
 });
 ```
 <!-- demo_end -->

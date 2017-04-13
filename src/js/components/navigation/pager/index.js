@@ -37,7 +37,19 @@ var Pager = Component.extend({
             middle: 5,
             side: 2,
             _start: 1,
-            _end: 5
+            _end: 5,
+            pageSizeList: [
+                {id : 5, name: '5条/页' },
+                {id : 10, name: '10条/页' },
+                {id : 15, name: '15条/页' },
+                {id : 20, name: '20条/页' },
+                {id : 25, name: '25条/页' },
+                {id : 30, name: '30条/页' },
+                {id : 35, name: '35条/页' },
+                {id : 40, name: '40条/页' },
+                {id : 45, name: '45条/页' },
+                {id : 50, name: '50条/页' }
+            ]
         });
         this.supr();
 
@@ -88,6 +100,21 @@ var Pager = Component.extend({
             sender: this,
             current: this.data.current
         });
+    },
+    enter: function (ev) {
+        var data = this.data;
+        if(ev.which == 13){ // ENTER key
+            ev.preventDefault();
+            this.goto();
+        }
+    },
+    goto: function () {
+        if (data.pageNo > data.total) {
+            data.pageNo = data.total;
+        } else if (data.pageNo < 1) {
+            data.pageNo = 1;
+        }
+        this.select(this.data.pageNo);
     }
 });
 

@@ -1,48 +1,86 @@
-// Name:            Input2
+// ========================================================================
+// Name:            Input
 // Description:     输入扩展
-// Author:          sensen(rainforest92@126.com)
+// Author:          sensen(rainforest92@126.com) ziane(zianecui@gmail.com)
+// Component:       `u-input`
 // ========================================================================
 
 
-
-// Component:       `u-input2`
-// ========================================================================
-
-.u-input2 {
+.u-input {
     display: block;
     position: relative;
+    width: $u-formctrl_width;
+    height: $u-formctrl_height;
 
-    .input_wrap {
-        position:relative;
-        display:block;
+    .input{
+        padding: $u-formctrl_padding;
+        color: $u-formctrl_color;
+        background: $u-formctrl_background;
+        $border-radius: $border-radius-base;
+        border: 1px solid #EEEEEE;
+        height: $height-base;
+        line-height: $height-base;
+        font-size: $font-size-sm;
+        width: 100%;
+        $placeholder({
+            color: #999;
+            font-size: $font-size-sm;
+            // - Removes placeholder transparency in Firefox.
+            $opacity: 1;
+        });
+
+        &:focus {
+            outline: 0;
+            background: $u-formctrl-focus_background;
+            color: $u-formctrl-focus_color;
+            $border: $u-formctrl-focus_border;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background: $u-formctrl-disabled_background;
+            color: $u-formctrl-disabled_color;
+            $border: $u-formctrl-disabled_border;
+        }
     }
 
-    .input2_unit,.input2_icon {
-        position: absolute; height:24px; line-height:24px;
+    .input_wrap {
+      position:relative;
+      display:block;
+    }
+
+    .input_unit,.input_icon {
+      position: absolute; height:24px; line-height:24px;
         right: 10px; top:0; bottom:0; margin:auto;
         color:#666;
     }
-    .input2_icon { font-size:14px; }
-    .input2_icon:hover, .input2_icon:active { color:$brand-primary; cursor:pointer; }
+    .input_icon { font-size:14px; }
+    .input_icon:hover, .input2_icon:active { color:$brand-primary; cursor:pointer; }
 
-    .input2_placeholder {
+    .input_placeholder {
         position: absolute;
         left: 0;
         top: 0;
         bottom: 0;
-    }
-}
-
-
-////////////////////////
-.u-input2 {
-    .input2_placeholder {   
         color: $u-formctrl_placeholder_color;
         padding: $u-formctrl_padding;
         border-left: 1px solid transparent;
     }
 }
 
-.u-input2 + .u-tip {
+.u-input-sm {
+    height: 26px;
+    .input{
+        height: 26px;
+        line-height: 26px;
+    }
+}
+
+.u-input-block {
+    display: block;
+    width: 100%;
+}
+
+.u-input + .u-tip {
     margin-left: 5px;
 }
