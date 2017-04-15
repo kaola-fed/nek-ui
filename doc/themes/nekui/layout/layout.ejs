@@ -16,14 +16,14 @@
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=<%- theme.title %>" rel='stylesheet' type='text/css'>
         <!--  nek-ui -->
-        <link href="<%- env.args.dev ? '/css/nek-ui.default.css' : '//unpkg.com/nek-ui/dist/css/nek-ui.default.min.css' %>" rel='stylesheet' type='text/css'>
+        <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
         <!-- main page styles -->
         <%- css(isIndex ? 'css/index' : 'css/page') %>
         <script>window.PAGE_TYPE = "<%- page.type %>"</script>
     </head>
     <body class="<%- isIndex ? '' : 'docs' -%>">
-        <script src="<%- env.args.dev ? '/vendor/regular.js' : '//unpkg.com/nek-ui/dist/vendor/regular.min.js' %>"></script>
-        <script src="<%- env.args.dev ? '/js/nek-ui.js' : '//unpkg.com/nek-ui/dist/js/nek-ui.min.js' %>"></script>
+        <script src="/vendor/regular.js"></script>
+        <script src="/js/nek-ui.js"></script>
         <div id="mobile-bar" <%- isIndex ? 'class="top"' : '' %>>
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
