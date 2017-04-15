@@ -48,7 +48,7 @@ const Mask = Component.extend({
         }
     },
     /**
-     * @method close(result) 关闭遮罩
+     * @method close(data) 关闭遮罩
      * @public
      * @param  {object} data 额外数据
      * @return {void}
