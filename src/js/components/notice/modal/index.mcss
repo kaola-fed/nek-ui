@@ -46,6 +46,7 @@
         background: white;
         $box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
         border-radius: 4px;
+        max-width: 910px;
         // - Set style
         // - Slide-in transition
         // $opacity: 0;
@@ -92,7 +93,6 @@
         padding: 20px 15px 17px 15px;
         min-height: 10px;
         max-height:404px;
-        max-width: 910px;
         overflow:auto;
         font-size: 12px;
     }

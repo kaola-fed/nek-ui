@@ -56,11 +56,6 @@
 }
 
 .u-select {
-    width: $u-formctrl_width;
-    height: $u-formctrl_height;
-}
-
-.u-select {
     // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox
     text-transform: none;
 
