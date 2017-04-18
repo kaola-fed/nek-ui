@@ -31,12 +31,12 @@
     height: $height-base;
     min-width: $size-base*10;
     padding: 0 $size-base*2;
-    background: $brand-primary;
-    border: 1px solid $brand-primary;
+    background: #fff;
+    border: 1px solid #ddd;
     $border-radius: 2px;
     line-height: $height-base - 2;
     font-size: 12px;
-    color: #fff;
+    color: #333;
     $transition-duration: 0.1s;
     $transition-property: transform;
     $transition-timing-function: ease;
@@ -49,14 +49,14 @@
     outline: none;
     // - Required for `a` elements
     text-decoration: none;
-    background: $brand-primary-darker;
-    border-color: $brand-primary-darker;
+    background: #fff;
+    border-color: #bbb;
 }
 
 /* Active */
 .u-btn:active,
 .u-btn.z-act {
-    background: $brand-primary-darker;
+    background: #fff;
 }
 
 /* Disabled */

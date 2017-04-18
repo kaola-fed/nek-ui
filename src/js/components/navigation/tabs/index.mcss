@@ -84,10 +84,11 @@ $m-tabs-vertical_hd_li_width = 120px;
             border-radius: 2px 2px 0 0;
             height: 30px;
             line-height: 30px;
-            min-width: 72px;
+            min-width: 104px;
             text-align: center;
             font-size: 12px;
             border-bottom: none;
+            box-sizing: border-box;
         }
 
         > li + li {
@@ -106,8 +107,8 @@ $m-tabs-vertical_hd_li_width = 120px;
             //$box-shadow: 0 -3px $brand-primary;
             //padding-bottom: $border-width-base;
             border-top: 3px solid #D9244E;
-            height: 29px;
-            line-height: 26px;
+            height: 32px;
+            line-height: 29px;
         }
 
         > li.z-dis {

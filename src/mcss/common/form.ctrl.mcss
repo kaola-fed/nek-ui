@@ -114,7 +114,7 @@ input.u-radio:disabled {
 // ========================================================================
 
 $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-radius_ = null) {
-    .u-input2.#{$name}, .u-dropdown.#{$name}, .u-textarea2.#{$name} {
+    .u-input.#{$name}, .u-dropdown.#{$name}, .u-textarea.#{$name} {
         padding: $padding;
         height: $height;
         @if($font-size) {font-size: $font-size;}
@@ -123,7 +123,7 @@ $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-
 }
 
 $u-formctrl-extend_width = ($name, $width) {
-    .u-input2.#{$name}w, .u-dropdown.#{$name}w, .u-select2.#{$name}w, .u-textarea2.#{$name}w {
+    .u-dropdown-#{$name}w, .u-select-#{$name}w, .u-textarea-#{$name}w {
         display:inline-block;
         width: $width;
     }

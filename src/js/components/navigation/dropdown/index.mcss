@@ -24,8 +24,8 @@
             }
         }
 
-        .u-check2,
-        .check2_box{
+        .u-check,
+        .check_box{
             margin-bottom: 0;
         }
     }

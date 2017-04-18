@@ -55,7 +55,7 @@
         color:#666;
     }
     .input_icon { font-size:14px; }
-    .input_icon:hover, .input2_icon:active { color:$brand-primary; cursor:pointer; }
+    .input_icon:hover, .input_icon:active { color:$brand-primary; cursor:pointer; }
 
     .input_placeholder {
         position: absolute;
@@ -84,3 +84,16 @@
 .u-input + .u-tip {
     margin-left: 5px;
 }
+
+
+$u-formctrl-extend_width = ($name, $width) {
+    .u-input-#{$name}w {
+        display:inline-block;
+        width: $width;
+        vertical-align: middle;
+    }
+}
+
+$u-formctrl-extend_width(sm, 80px);
+$u-formctrl-extend_width(md, 160px);
+$u-formctrl-extend_width(lg, 300px);
