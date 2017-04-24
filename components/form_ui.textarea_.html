@@ -375,6 +375,12 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">ui.textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">maxlength</span>=<span class="string">20</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isFilled'</span>, <span class="attr">on</span>: <span class="string">'blur'</span>, <span class="attr">message</span>: <span class="string">'请输入邮箱！'</span>&#125;,</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isEmail'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'请输入正确的邮箱！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="字数实时统计"><a href="#字数实时统计" class="headerlink" title="字数实时统计"></a>字数实时统计</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">最大长度&#123;maxLength&#125;字，已经输入了&#123;(value || '').length&#125;字</div><div class="line"><span class="tag">&lt;<span class="name">ui.textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">maxLength</span>: <span class="number">10</span>,</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> (text || <span class="string">''</span>).length &lt;= component.data.maxLength;</div><div class="line">            &#125;, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'字数超出限制！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#TextArea">TextArea</a></dt>
 <dd></dd>
@@ -552,6 +558,32 @@ var component = new NEKUI.Component({
         rules: [
             {type: 'isFilled', on: 'blur', message: '请输入邮箱！'},
             {type: 'isEmail', on: 'keyup+blur', message: '请输入正确的邮箱！'}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<label>
+最大长度{maxLength}字，已经输入了{(value || '').length}字
+<ui.textarea rules={rules} value={value} />
+</label>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        maxLength: 10,
+        value: '',
+        rules: [
+            {method: function(text) {
+                return (text || '').length <= component.data.maxLength;
+            }, on: 'keyup+blur', message: '字数超出限制！'}
         ]
     }
 });
