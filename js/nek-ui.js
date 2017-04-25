@@ -26856,7 +26856,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (!source) return [];
 	        var arr = [];
 	        source.forEach(function (d) {
-	            if (d[self.data.childKey]) {
+	            var child = d[self.data.childKey];
+	            if (child && child.length) {
 	                arr = arr.concat(self._getSelected(d[self.data.childKey]));
 	            } else if (d.checked) {
 	                arr = arr.concat(d);
