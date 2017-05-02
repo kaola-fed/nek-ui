@@ -25,6 +25,10 @@ $m-pager_li_a_size = 24px;
     -moz-align-items: center;
     -webkit-align-items: center;
     align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
 
     font-size: 12px;
 
