@@ -22,6 +22,7 @@
         line-height: $height-base;
         font-size: $font-size-sm;
         width: 100%;
+
         $placeholder({
             color: #999;
             font-size: $font-size-sm;

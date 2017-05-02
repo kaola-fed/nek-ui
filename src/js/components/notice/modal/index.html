@@ -17,7 +17,7 @@
                     <ui.button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} />
 		        {/if}
 		        {#if cancelButton}
-		            <button class="u-btn" on-click={this.close(false)}>{cancelButton === true ? this.$trans('CANCEL') : cancelButton}</button>
+		            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton} on-click={this.close(false)}></ui.button>
 		        {/if}
 	        {/if}
         </div>

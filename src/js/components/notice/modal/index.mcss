@@ -46,7 +46,7 @@
         background: white;
         $box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
         border-radius: 4px;
-        max-width: 910px;
+        max-width: 1050px;
         // - Set style
         // - Slide-in transition
         // $opacity: 0;
@@ -71,8 +71,9 @@
 
     .modal_close {
         float: right;
-        margin: 5px 0 0 0;
-        color: #bbb;
+        margin: 2px 0;
+        color: #666;
+        font-size: 12px;
 
         &:hover {
             color: #888;
@@ -92,7 +93,7 @@
     .modal_bd {
         padding: 20px 15px 17px 15px;
         min-height: 10px;
-        max-height:404px;
+        max-height:491px;
         overflow:auto;
         font-size: 12px;
     }

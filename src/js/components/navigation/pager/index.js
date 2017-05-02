@@ -77,7 +77,7 @@ var Pager = Component.extend({
         for (let i = 1; i * step <= maxPageSize; ++i)
         this.data.pageSizeList.push({
             id: i * step,
-            name: i * step,
+            name: i * step + this.$trans('ITEM_PAGE'),
         })
     },
 

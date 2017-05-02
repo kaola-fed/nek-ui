@@ -79,6 +79,20 @@
     width: 100%;
 }
 
+.u-btn {
+    .u-icon {
+        vertical-align: bottom;
+        color: #999;
+        margin-right: 4px;
+    }
+    .u-icon-upload {
+        margin-right: 8px;
+    }
+    .u-icon-download {
+        margin-right: 8px;
+    }
+}
+
 // btn with icon Extends:
 // ========================================================================
 $u-btn-extend_icon = ($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color)  {
@@ -188,11 +202,10 @@ $u-btn-extend_color(secondary, $brand-secondary, $brand-secondary-darker, white,
 $u-btn-extend_color(tertiary, #ddd, #bbb, white, white, #333, #333);
 $u-btn-extend_color(info, $brand-info, $brand-info-darker, $brand-info, $brand-info-darker, white, white);
 $u-btn-extend_color(success, $brand-success, $brand-success-darker, $brand-success, $brand-success-darker, white, white);
-$u-btn-extend_color(warning, $brand-warning, $brand-warning-darker, $brand-warning, $brand-warning-darker, white, white);
-$u-btn-extend_color(error, $brand-error, $brand-error-darker, $brand-error, $brand-error-darker, white, white);
+$u-btn-extend_color(warning, $brand-error, $brand-error-darker, $brand-error, $brand-error-darker, white, white);
 
 // btn with icon Extends: $u-btn-extend_icon = ($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color)
 // ========================================================================
 $u-btn-extend_icon(success, #ffffff, $brand-success, #A3E37E, #9FE385, $brand-success-darker, #fff, #a9e691);
-$u-btn-extend_icon(error, #ffffff, #F86B6B, $brand-error, #F78081, #f97a7a, #fff, #f88d8e);
+$u-btn-extend_icon(warning, #ffffff, #F86B6B, $brand-error, #F78081, #f97a7a, #fff, #f88d8e);
 $u-btn-extend_icon(add, #ffffff, $brand-primary, $brand-primary, $brand-primary, $brand-primary-darker, #fff, $brand-primary-darker);

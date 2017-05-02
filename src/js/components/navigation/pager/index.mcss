@@ -68,7 +68,6 @@ $m-pager_li_a_size = 24px;
 
     .page_total {
         display: inline-block;
-        margin-right: 168px;
     }
 
     .page_prev {

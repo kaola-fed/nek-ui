@@ -2063,3 +2063,30 @@
 .u-icon-add:before {
   content: "\e90c";
 }
+.u-icon-success2:before {
+  content: "\e90d";
+}
+.u-icon-error2:before {
+  content: "\e90e";
+}
+.u-icon-warning2:before {
+  content: "\e90f";
+}
+.u-icon-info2:before {
+  content: "\e910";
+}
+.u-icon-calendar:before {
+  content: "\e911";
+}
+.u-icon-download:before {
+  content: "\e913";
+}
+.u-icon-trash:before {
+  content: "\e914";
+}
+.u-icon-upload:before {
+  content: "\e915";
+}
+.u-icon-plus:before {
+  content: "\e912";
+}

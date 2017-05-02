@@ -40,7 +40,7 @@ var actionIcons= {
   /* 取消 */
   cancel: 'arrow-circle-left',
   /* 删除 */
-  remove: 'trash-o',
+  remove: 'trash',
   /* 更新 */
   update: 'refresh',
   /* 提交 */
@@ -52,7 +52,7 @@ var actionIcons= {
   /* 通过 */
   pass: 'success',
   /* 驳回 */
-  reject: 'error',
+  reject: 'warning',
   /* 返回 */
   backward: 'angle-double-left',
   /* 下载 */
@@ -66,7 +66,9 @@ var actionIcons= {
   /* 添加 */
   add: 'add',
   /* 链接 */
-  link: 'link'
+  link: 'link',
+  /* 单行添加 */
+  plus: 'plus'
 };
 
 

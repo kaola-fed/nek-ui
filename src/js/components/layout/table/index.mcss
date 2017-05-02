@@ -31,14 +31,10 @@
         color: #999;
         font-size: 12px;
     }
-    th {
-        text-align: left;
-    }
 
     th, td {
-        $border: $brand-default;
         padding: 6px 8px;
-        height: 40px;
+        height: 32px;
         line-height: 16px;
     }
 
@@ -48,6 +44,10 @@
         color: #333333;
         th {
             text-align: center;
+            border-right: 1px solid #d8dee4;
+        }
+        th:last-child {
+            border-right: none;
         }
     }
 
@@ -55,6 +55,7 @@
         font-size: 12px;
         td {
             text-align: center;
+            border-bottom: 1px solid #ECF2F9;
         }
     }
 }
@@ -64,7 +65,7 @@
 // Extends:         `m-table-striped`, `m-table-hover`
 // Description:     尺寸和颜色扩展函数
 // ========================================================================
-// 
+//
 .m-table-striped {
     tbody tr:nth-of-type(2n+0) {background: #f6f9fc;}
 }

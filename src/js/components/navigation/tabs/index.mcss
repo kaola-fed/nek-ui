@@ -82,8 +82,8 @@ $m-tabs-vertical_hd_li_width = 120px;
             background: #FFFFFF;
             border: 1px solid #DEEAF2;
             border-radius: 2px 2px 0 0;
-            height: 30px;
-            line-height: 30px;
+            height: 31px;
+            line-height: 31px;
             min-width: 104px;
             text-align: center;
             font-size: 12px;
@@ -94,7 +94,7 @@ $m-tabs-vertical_hd_li_width = 120px;
         > li + li {
             margin-left: $m-tabs_hd_li_margin;
         }
-        
+
         > li:hover,    // - Apply hover style also to focus state
         > li:focus {
             color: l-adjust($color-base, 20%);
@@ -108,7 +108,7 @@ $m-tabs-vertical_hd_li_width = 120px;
             //padding-bottom: $border-width-base;
             border-top: 3px solid #D9244E;
             height: 32px;
-            line-height: 29px;
+            line-height: 28px;
         }
 
         > li.z-dis {
@@ -220,7 +220,7 @@ $m-tabs-vertical_hd_li_width = 120px;
             //padding-left: $m-tabs_hd_li_padding-horizontal + 1px;
             //$box-shadow: 3px 0 $brand-primary;
             border-right: 3px solid #d9244e;
-            height: 29px;
+            height: 28px;
             line-height: 26px;
             border-top: 1px solid #deeaf2;
             border-bottom: 1px solid #deeaf2;

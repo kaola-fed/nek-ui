@@ -1,11 +1,11 @@
 <ul class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
 
     {#if !!pageSize || pageSize === 0}
-    <li class="page_size">{this.$trans('ITEMS_PER_PAGE')}: <ui.select placeholder="" value={pageSize} source={pageSizeList} size="sm"></ui.select></li>
+    <li class="page_size"><ui.select placeholder="" value={pageSize} source={pageSizeList} size="sm"></ui.select></li>
     {/if}
 
-    {#if !!total || total === 0}
-    <li class="page_total">{this.$trans('TOTAL_ITEMS')}: {total}</li>
+    {#if !!sumTotal || sumTotal === 0}
+    <li class="page_total">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</li>
     {/if}
 
     <li class="page_item page_prev" z-dis={current <= 1} on-click={this.select(current - 1)}>
@@ -35,6 +35,7 @@
     <li class="page_goto">
         <span>{this.$trans('GOTO')}</span>
         <ui.input type="int" on-keyup={this.enter($event)} size="sm" value={pageNo} />
+        <span>{this.$trans('PAGE')}</span>
     </li>
 
     <li class="page_confirm">
