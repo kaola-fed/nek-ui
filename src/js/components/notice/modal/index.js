@@ -21,6 +21,8 @@ var _ = require('../../../ui-base/_');
  * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
  * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
  * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
+ * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
+ * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
  * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
  * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
  * @param {string}            [options.data.class]                => 补充class
@@ -44,6 +46,8 @@ var Modal = Component.extend({
             noClose: false,
             okDisabled: false,
             cancelDisabled: false,
+            hasFooter: true,
+            isCanClose: true,
         });
         this.supr();
     },

@@ -2,13 +2,16 @@
     <div class="modal_dialog" style="width: {width}px" ref="modalDialog">
         <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>
         <div class="modal_hd">
+            {#if isCanClose}
             <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-close"></i></a>
+            {/if}
             <h3 class="modal_title">{title}</h3>
         </div>
         </draggable>
         <div class="modal_bd" {#if maxHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
         </div>
+        {#if hasFooter}
         <div class="modal_ft">
 	        {#if footerTemplate}
 	            {#inc @(footerTemplate)}
@@ -16,11 +19,12 @@
 		        {#if okButton}
                     <ui.button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
 		        {/if}
-		        {#if cancelButton}
+		        {#if cancelButton && isCanClose}
 		            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
                     on-click={this.close(false)} disabled={cancelDisabled} />
 		        {/if}
 	        {/if}
         </div>
+        {/if}
     </div>
 </div>
