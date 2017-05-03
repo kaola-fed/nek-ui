@@ -32,6 +32,33 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+### Disable
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.Modal({
+            data: {
+                lang: 'en-US',
+                okDisabled: true,
+                cancelDisabled: true,
+                cancelButton: true,
+                content: 'Modal内容'
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
 ### Alert
 
 <!-- demo_start -->

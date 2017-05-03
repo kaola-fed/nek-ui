@@ -15,10 +15,12 @@ var _ = require('../../../ui-base/_');
  * @class Modal
  * @extend Component
  * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
- * @param {string}            [options.data.title=提示]             => 对话框标题 | Title of Dialog
+ * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
  * @param {string}            [options.data.content]              => 对话框内容
  * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
  * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
+ * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
+ * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
  * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
  * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
  * @param {string}            [options.data.class]                => 补充class
@@ -39,7 +41,9 @@ var Modal = Component.extend({
             okButton: true,
             with: 400,
             cancelButton: false,
-            noClose: false
+            noClose: false,
+            okDisabled: false,
+            cancelDisabled: false,
         });
         this.supr();
     },
