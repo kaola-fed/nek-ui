@@ -371,6 +371,18 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.Modal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">okDisabled</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">cancelDisabled</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="不显示-footer"><a href="#不显示-footer" class="headerlink" title="不显示 footer"></a>不显示 footer</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.Modal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">hasFooter</span>: <span class="literal">false</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="禁止关闭"><a href="#禁止关闭" class="headerlink" title="禁止关闭"></a>禁止关闭</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.Modal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">isCanClose</span>: <span class="literal">false</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h3 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h3><!-- demo_start -->
 <div class="m-example"></div>
 
@@ -469,6 +481,18 @@
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>=&gt; Disale 取消按钮</td>
+</tr>
+<tr>
+<td>[options.data.hasFooter]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示 footer</td>
+</tr>
+<tr>
+<td>[options.data.isCanClose]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否允许取消关闭</td>
 </tr>
 <tr>
 <td>[options.data.okButton]</td>
@@ -593,6 +617,52 @@ var component = new NEKUI.Component({
                 okDisabled: true,
                 cancelDisabled: true,
                 cancelButton: true,
+                content: 'Modal内容'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.Modal({
+            data: {
+                lang: 'en-US',
+                hasFooter: false,
+                content: 'Modal内容'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.Modal({
+            data: {
+                lang: 'en-US',
+                isCanClose: false,
                 content: 'Modal内容'
             }
         });
