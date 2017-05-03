@@ -53,3 +53,31 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 字数实时统计
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<label>
+最大长度{maxLength}字，已经输入了{(value || '').length}字
+<ui.textarea rules={rules} value={value} />
+</label>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        maxLength: 10,
+        value: '',
+        rules: [
+            {method: function(text) {
+                return (text || '').length <= component.data.maxLength;
+            }, on: 'keyup+blur', message: '字数超出限制！'}
+        ]
+    }
+});
+```
+<!-- demo_end -->

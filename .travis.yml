@@ -19,6 +19,7 @@ before_script:
 - git config --global user.email 'kaolabot@163.com'
 
 script:
+- gulp dist
 - gulp gen-doc
 
 after_success:
@@ -27,6 +28,7 @@ after_success:
 - git clone --depth 1 --branch gh-pages --single-branch $DEPLOY_REPO . || (git init && git remote add -t gh-pages origin $DEPLOY_REPO)
 - rm -rf ./*
 - cp -r ../doc/public/* .
+- cp -r ../dist/* .
 - git add -A .
 - git commit -m 'Auto updated'
 - git branch -m gh-pages
