@@ -10,13 +10,16 @@
 
 .u-message {
     $clearfix();
+    padding: 14px 55px;
+    background: $background-base;
+    color: #777;
+    $border: $border-base;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    $border-radius: 4px;
 
-    .message_close {
-        float: right;
-        margin-top: 2px;
-        font-size: 12px;
-        color: #999;
-        &:hover {}
+    .message_ct {
+        display: inline-block;
+        max-width: 90%;
     }
 
     .message_icon {
@@ -43,33 +46,6 @@ $u-message-extend_color = ($name, $color) {
         .message_icon {
             color: #fff;
         }
-    }
-}
-
-///////////////////////
-// Component:       `u-message`
-// ========================================================================
-
-.u-message {
-    padding: 14px 20px 14px 20px;
-    background: $background-base;
-    color: #777;
-    $border: $border-base;
-    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
-    $border-radius: 4px;
-
-    .message_close {
-        color: #fff;
-        margin-left: 16px;
-    }
-
-    .message_close:hover {
-        $opacity: .5;
-    }
-
-    .message_ct {
-        display: inline-block;
-        max-width: 90%;
     }
 }
 
