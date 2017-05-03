@@ -102,9 +102,10 @@
         padding: 15px 15px 30px 15px;
         text-align: center;
         border-top: 1px solid $brand-default;
+        font-size: 0;
 
         .u-btn {
-            margin: 0 10px;
+            margin: 0 8px;
         }
     }
 

@@ -83,7 +83,7 @@ $m-tabs-vertical_hd_li_width = 120px;
             border: 1px solid #DEEAF2;
             border-radius: 2px 2px 0 0;
             height: 31px;
-            line-height: 31px;
+            line-height: 32px;
             min-width: 104px;
             text-align: center;
             font-size: 12px;

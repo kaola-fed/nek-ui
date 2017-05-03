@@ -6,26 +6,42 @@
 // ========================================================================
 
 
+//////////////////////////////
+$u-radio_box_size = 13px;
+$u-radio_u-icon_font-size = 7px;
+
 .u-radio {
     display:inline-block;
     cursor: pointer;
     $user-select: none;
     white-space:nowrap;
     font-size: 12px;
+    line-height: 15px;
     .radio_box {
         display: inline-block;
+        vertical-align: top;
         position: relative;
         overflow: hidden;
         text-align: center;
-        vertical-align: middle;
-        margin-bottom: 2px;
         margin-right: 6px;
+        $size: $u-radio_box_size;
+        line-height: $u-radio_box_size;
+        background: white;
+        color: $brand-primary;
+        $border: #DFE3E9;
+        border-radius: $u-radio_box_size;
         .u-icon {
             content: '';
             display: none;
             position: absolute;
             top: 50%;
             left: 50%;
+            margin-top: - $u-radio_u-icon_font-size / 2;
+            margin-left: - $u-radio_u-icon_font-size / 2;
+            width: $u-radio_u-icon_font-size;
+            height: $u-radio_u-icon_font-size;
+            border-radius: $u-radio_u-icon_font-size;
+            background: #E61438;
         }
     }
 }
@@ -33,6 +49,7 @@
 /* Selected */
 .u-radio.z-sel {
     .radio_box {
+        $border: #E61438;
         .u-icon {
             display: inline-block;
         }
@@ -43,7 +60,10 @@
 .u-radio.z-dis {
     cursor: not-allowed;
 
-    .radio_box {}
+    .radio_box {
+        color: $u-formctrl-disabled_background;
+        $border: $u-formctrl-disabled_background;
+    }
 }
 
 
@@ -57,39 +77,3 @@
 }
 
 
-//////////////////////////////
-$u-radio_box_size = 13px;
-$u-radio_u-icon_font-size = 7px;
-
-
-
-// Component:       `u-radio`
-// ========================================================================
-
-.u-radio {
-    .radio_box {
-        $size: $u-radio_box_size;
-        line-height: $u-radio_box_size;
-        background: white;
-        color: $brand-primary;
-        $border: #DFE3E9;
-        border-radius: $u-radio_box_size;
-
-        .u-icon {
-            margin-top: - $u-radio_u-icon_font-size / 2;
-            margin-left: - $u-radio_u-icon_font-size / 2;
-            width: $u-radio_u-icon_font-size;
-            height: $u-radio_u-icon_font-size;
-            border-radius: $u-radio_u-icon_font-size;
-            background: #666;
-        }
-    }
-}
-
-/* Disabled */
-.u-radio.z-dis {
-    .radio_box {
-        color: $u-formctrl-disabled_background;
-        $border: $u-formctrl-disabled_background;
-    }
-}

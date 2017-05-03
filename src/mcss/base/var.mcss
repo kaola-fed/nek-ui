@@ -14,9 +14,7 @@ $media-md-max-width =                   960px - 1;
 $media-lg-max-width =                   1220px - 1;
 
 /* Fonts */
-$font-family-sans-serif = -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica,
-"PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-SimSun, sans-serif;
+$font-family-sans-serif = "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
 $font-family-serif = Georgia, "Times New Roman", Times, SimSun, "FontAwesome", serif;
 $font-family-monospace = Monaco, Menlo, Consolas, "Courier New", "FontAwesome", monospace;
 $font-family-kai = Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif;

@@ -14,22 +14,23 @@ $u-check_box_size = 13px;
     $user-select: none;
     white-space:nowrap;
     font-size: 12px;
+    line-height: 15px;
     .check_box {
         display: inline-block;
+        vertical-align: top;
         position: relative;
         overflow: hidden;
         text-align: center;
-        vertical-align: middle;
-        margin-bottom: 2px;
         margin-right: 8px;
         $size: $u-check_box_size;
         line-height: $u-check_box_size - 1;
         background: white;
-        color: #666;
+        color: #E61438;
         $border: $u-formctrl_border;
         .u-icon {
             display: none;
             font-size: 13px;
+            line-height: 13px;
         }
     }
 }
@@ -38,6 +39,7 @@ $u-check_box_size = 13px;
 /* Checked */
 .u-check.z-chk {
     .check_box {
+        $border: #E61438;
         .u-icon {
             display: inline-block;
         }

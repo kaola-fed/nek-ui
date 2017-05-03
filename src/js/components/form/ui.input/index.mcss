@@ -70,10 +70,10 @@
 }
 
 .u-input-sm {
-    height: 26px;
+    height: 24px;
     .input{
-        height: 26px;
-        line-height: 26px;
+        height: 24px;
+        line-height: 24px;
     }
 }
 
