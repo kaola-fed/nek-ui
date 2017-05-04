@@ -40,6 +40,7 @@
     $transition-duration: 0.1s;
     $transition-property: transform;
     $transition-timing-function: ease;
+    white-space: nowrap;
 }
 
 /* Hover */
@@ -84,12 +85,7 @@
         vertical-align: bottom;
         color: #999;
         margin-right: 4px;
-    }
-    .u-icon-upload {
-        margin-right: 8px;
-    }
-    .u-icon-download {
-        margin-right: 8px;
+        font-size: 15px;
     }
 }
 
@@ -123,6 +119,9 @@ $u-btn-extend_size = ($name, $padding-horizontal, $height, $font-size = null, $b
     .u-btn-#{$name} {
         padding: 0 $padding-horizontal;
         line-height: $height-base - 2;
+        .u-icon {
+            @if($font-size) {font-size: $font-size;}
+        }
         @if($name == sm) { min-width: $size-base*7; height: $size-base*3; line-height: $size-base*3 - 2;}
         @if($font-size) {font-size: $font-size;}
         @if($border-radius_) {$border-radius: $border-radius_;}
@@ -140,6 +139,11 @@ $u-btn-extend_shape = ($name, $size, $height,$line-height, $font-size = null, $b
         @if($name == 'icon') {border: none;}
         @if($font-size) {font-size: $font-size;}
         @if($border-radius_) {$border-radius: $border-radius_;}
+
+        .u-icon {
+            margin-right: 0;
+            margin-left: 2px;
+        }
     }
 }
 
@@ -151,6 +155,9 @@ $u-btn-extend_color = ($name, $bd_color, $bd_hover_color, $bg_color, $hover_bg_c
         color: $font_color;
         background: $bg_color;
         border: 1px solid $bd_color;
+        .u-icon {
+            color: $font_color;
+        }
     }
 
     /* Hover */
@@ -203,6 +210,7 @@ $u-btn-extend_color(tertiary, #ddd, #bbb, white, white, #333, #333);
 $u-btn-extend_color(info, $brand-info, $brand-info-darker, $brand-info, $brand-info-darker, white, white);
 $u-btn-extend_color(success, $brand-success, $brand-success-darker, $brand-success, $brand-success-darker, white, white);
 $u-btn-extend_color(warning, $brand-error, $brand-error-darker, $brand-error, $brand-error-darker, white, white);
+$u-btn-extend_color(error, $brand-error, $brand-error-darker, $brand-error, $brand-error-darker, white, white);
 
 // btn with icon Extends: $u-btn-extend_icon = ($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color)
 // ========================================================================

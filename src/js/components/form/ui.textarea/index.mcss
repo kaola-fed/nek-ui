@@ -5,36 +5,51 @@
 
 
 
-// Component:       `u-textarea2`
+// Component:       `u-textarea`
 // ========================================================================
 
-.u-textarea2 {
+.u-textarea {
     display: inline-block;
     position: relative;
     width:100%;
     vertical-align:top;
+    .textarea {
+        padding: $u-formctrl_padding;
+        color: $u-formctrl_color;
+        background: $u-formctrl_background;
+        $border-radius: $border-radius-base;
+        border: 1px solid #EEEEEE;
+        line-height: $height-base;
+        font-size: $font-size-sm;
+        width: 100%;
+        &:focus {
+            outline: 0;
+            background: $u-formctrl-focus_background;
+            color: $u-formctrl-focus_color;
+            $border: $u-formctrl-focus_border;
+        }
 
-    .textarea2_placeholder {
+        &:disabled {
+            cursor: not-allowed;
+            background: $u-formctrl-disabled_background;
+            color: $u-formctrl-disabled_color;
+            $border: $u-formctrl-disabled_border;
+        }
+    }
+    .textarea_placeholder {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
+        color: $u-formctrl_placeholder_color;
+        padding: $u-formctrl_padding;
+        border-left: 1px solid transparent;
     }
 
-    .textarea2_len {
+    .textarea_len {
         font-size:12px;
         color:#999;
     }
 }
 
-
-//////////////////////////////
-
-.u-textarea2 {
-    .textarea2_placeholder {
-        color: $u-formctrl_placeholder_color;
-        padding: $u-formctrl_padding;
-        border-left: 1px solid transparent;
-    }
-}

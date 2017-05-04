@@ -74,8 +74,11 @@
         margin: 2px 0;
         color: #666;
         font-size: 12px;
+        .u-icon {
+            color: #666;
+        }
 
-        &:hover {
+        &:hover .u-icon{
             color: #888;
         }
     }

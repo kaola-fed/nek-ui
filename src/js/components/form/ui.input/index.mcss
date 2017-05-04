@@ -10,7 +10,6 @@
     display: block;
     position: relative;
     width: $u-formctrl_width;
-    height: $u-formctrl_height;
 
     .input{
         padding: $u-formctrl_padding;

@@ -36,6 +36,7 @@
         padding: 6px 8px;
         height: 32px;
         line-height: 16px;
+        word-wrap: break-word;
     }
 
     thead {

@@ -20,7 +20,7 @@
         position: absolute;
         border: none;
         right: 7px;
-        top: 8px;
+        top: 2px;
         min-width: 0;
         $line-height: $height-base / 2 - $border-width-base * 2 - 1px;
         padding: 0 4px;
@@ -28,7 +28,7 @@
 
     .u-btn + .u-btn {
         top: auto;
-        bottom: 8px;
+        bottom: 2px;
     }
 
     .u-btn:focus, .u-btn:hover {

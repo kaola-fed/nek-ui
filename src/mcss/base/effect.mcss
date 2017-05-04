@@ -2,7 +2,7 @@
 @import 'css3';
 
 /**
-mass effect.mcss almost all effect refactoring form 
+mass effect.mcss almost all effect refactoring form
 
 http://nec.netease.com/library/category/#animation
 Licensed under the MIT license
@@ -90,7 +90,7 @@ $effect-func = ($name, $block, $with-class){
 // $flash()
 // ----------------
 $-generate(flash,($prefix){
-  0%, 50%, 100% {opacity: 1;} 
+  0%, 50%, 100% {opacity: 1;}
   25%, 75% {opacity: 0;}
 });
 
@@ -108,7 +108,7 @@ $-generate(shake, ($prefix, $offset = 15px){
 // tada
 $-generate(tada, ($prefix, $scale-offset = 0.2, $degree = 3deg){
 
-  0% {#{$prefix}transform: scale(1);} 
+  0% {#{$prefix}transform: scale(1);}
   10%, 20% {#{$prefix}transform: scale(1 - $scale-offset) rotate(-$degree);}
   30%, 50%, 70%, 90% {#{$prefix}transform: scale(1 + $scale-offset) rotate($degree);}
   40%, 60%, 80% {#{$prefix}transform: scale(1 + $scale-offset) rotate(-$degree);}
@@ -120,10 +120,10 @@ $-generate(swing, ($prefix, $degree = 12deg){
   @if($prefix == -webkit-){
     20%, 40%, 60%, 80%, 100% { -webkit-transform-origin: top center; } }
 
-  20% { #{$prefix}transform: rotate($degree); } 
+  20% { #{$prefix}transform: rotate($degree); }
   40% { #{$prefix}transform: rotate(-$degree / 3 * 2); }
-  60% { #{$prefix}transform: rotate($degree / 3); }  
-  80% { #{$prefix}transform: rotate(-$degree / 3); } 
+  60% { #{$prefix}transform: rotate($degree / 3); }
+  80% { #{$prefix}transform: rotate(-$degree / 3); }
   100% { #{$prefix}transform: rotate(0deg); }
 }, {
   $transform-origin: top center;
@@ -157,7 +157,7 @@ $-generate(wiggle, ($prefix, $degree = 12deg){
 // pulse
 // --------------------------
 $-generate(pulse, ($prefix, $scale-offset=0.1){
-  0% { #{$prefix}transform: scale(1); }  
+  0% { #{$prefix}transform: scale(1); }
   50% { #{$prefix}transform: scale(1 + $scale-offset); }
   100% { #{$prefix}transform: scale(1); }
 });
@@ -350,6 +350,9 @@ $pulse();
 .animated {
     $animation-duration: 0.2s;
 }
+.modal_animated {
+  $animation-duration: 0.3s;
+}
 
 @keyframes zoomOut {
   from {  opacity: 1;  }
@@ -357,6 +360,7 @@ $pulse();
   to {  opacity: 0;  }
 }
 .zoomOut {  animation-name: zoomOut;  }
+.modal_zoomOut .modal_dialog {  animation-name: zoomOut;  }
 
 @keyframes zoomIn {
   from {  opacity: 0;  transform: scale3d(.3, .3, .3);  }

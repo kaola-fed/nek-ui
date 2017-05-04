@@ -2078,15 +2078,18 @@
 .u-icon-calendar:before {
   content: "\e911";
 }
-.u-icon-download:before {
-  content: "\e913";
+.u-icon-line:before {
+  content: "\e912";
 }
-.u-icon-trash:before {
+.u-icon-download:before {
   content: "\e914";
 }
-.u-icon-upload:before {
+.u-icon-trash:before {
   content: "\e915";
 }
+.u-icon-upload:before {
+  content: "\e913";
+}
 .u-icon-plus:before {
-  content: "\e912";
+  content: "\e916";
 }

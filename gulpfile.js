@@ -105,6 +105,7 @@ gulp.task('server', ['default'], function() {
     },
     browser: 'default',
     reloadDelay: 1000,
+    cors: true,
     port: 8089
   });
   gulp.watch("doc/public/*").on('change', reload);

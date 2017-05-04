@@ -4,7 +4,5 @@
 	        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />
 	    {/list}
 	</div>
-	{#if tip}
-	<p class="u-tip u-tip-{state}">{tip}</p>
-	{/if}
+	{#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

@@ -5,7 +5,7 @@
 
 
 
-// Component:       `u-select`, `u-textarea`
+// Component:       `u-select`, `textarea`
 // ========================================================================
 
 // 一般认为input和textarea的样式是差不多的。
@@ -68,7 +68,7 @@
     }
 }
 
-.u-textarea {
+.textarea {
     // - (It has been realized in normalize.css) Remove default vertical scrollbar in IE 8/9/10/11.
     // overflow: auto;
     // - Improve readability and alignment in all browsers.
@@ -98,7 +98,7 @@ input.u-radio:disabled {
 // ========================================================================
 
 .u-select-block,
-.u-textarea-block {
+.textarea-block {
     display: block;
     width: 100%;
 }
@@ -109,7 +109,7 @@ input.u-radio:disabled {
 // ========================================================================
 
 $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-radius_ = null) {
-    .u-input.#{$name}, .u-dropdown.#{$name}, .u-textarea.#{$name} {
+    .u-input.#{$name}, .u-dropdown.#{$name}, .textarea.#{$name} {
         padding: $padding;
         height: $height;
         @if($font-size) {font-size: $font-size;}
@@ -118,7 +118,7 @@ $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-
 }
 
 $u-formctrl-extend_width = ($name, $width) {
-    .u-dropdown-#{$name}w, .u-select-#{$name}w, .u-textarea-#{$name}w {
+    .u-dropdown-#{$name}w, .u-select-#{$name}w, .textarea-#{$name}w {
         display:inline-block;
         width: $width;
     }
@@ -132,7 +132,7 @@ $u-formctrl-extend_width = ($name, $width) {
 $u-formctrl-extend_color = ($name, $background, $color, $border_) {
     .u-input.u-input-#{$name},
     .u-select.u-select-#{$name},
-    .u-textarea.u-textarea-#{$name} {
+    .textarea.textarea-#{$name} {
         @if($background) {background: $background;}
         color: $color;
         border-color: $border_;
@@ -144,7 +144,7 @@ $u-formctrl-extend_color = ($name, $background, $color, $border_) {
 $u-formctrl-blank = ($border-color) {
     .u-input.u-input-blank,
     .u-select.u-select-blank,
-    .u-textarea.u-textarea-blank {
+    .textarea.textarea-blank {
         border-color: transparent;
         border-style: dashed;
         background: none;

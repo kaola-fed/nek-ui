@@ -1,5 +1,5 @@
-<div class="m-modal {class}">
-    <div class="modal_dialog animated zoomIn fast" style="width: {width}px" ref="modalDialog">
+<div class="m-modal {class}" r-animation='on:leave;class: modal_animated modal_zoomOut'>
+    <div class="modal_dialog modal_animated zoomIn fast" style="width: {width}px" ref="modalDialog">
         <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>
         <div class="modal_hd">
             <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-remove"></i></a>

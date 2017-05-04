@@ -49,10 +49,11 @@ $u-check_box_size = 13px;
 /* Indetermined */
 .u-check.z-part {
     .check_box {
+        $border: #E61438;
         .u-icon {
             display: inline-block;
             &:before {
-                content: "\f0c8";
+                content: "\e912";
             }
         }
     }

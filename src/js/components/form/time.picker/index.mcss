@@ -25,4 +25,13 @@
     .u-input {
         display: inline-block;
     }
+    .u-numberinput {
+        .u-btn  {
+          top: 8px;
+        }
+        .u-btn + .u-btn {
+          top: auto;
+          bottom: 8px;
+        }
+    }
 }

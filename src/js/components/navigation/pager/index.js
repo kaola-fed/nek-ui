@@ -114,6 +114,8 @@ var Pager = Component.extend({
         }
     },
     goto: function () {
+        var data = this.data;
+        if (!data.pageNo && data.pageNo != 0) return;
         if (data.pageNo > data.total) {
             data.pageNo = data.total;
         } else if (data.pageNo < 1) {

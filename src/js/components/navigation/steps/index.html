@@ -1,7 +1,7 @@
 <ul class="m-steps m-steps-{size} f-cb">
     {#list steps as item by item_index}
         <li class="stepsItem"
-            style="{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -160/(steps.length-1) ) + 'px;' : ''}"
+            style="{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}"
             r-class={{'finishedItem': item_index/1 < currentIndex/1}} >
             {#if item_index != steps.length-1}
             <div class="stepsLine" style="{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }">
