@@ -1,16 +1,15 @@
 {#if link}
-<a href={link || 'javascript:;'} target={target} class="u-btn u-btn-{type} u-btn-{size} u-btn-{shape} {class}" on-click={this.onClick($event)}>
+<a href={link || 'javascript:;'} target={target} class="u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}" r-animation="on: click; class: u-btn-clicked;" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>
 	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
 	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
 	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
 	{#if !shape}{title}{/if}
 </a>
 {#else}
-<button class="u-btn u-btn-{type} u-btn-{size} u-btn-{shape} {class}" on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type="button">
+<button class="u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}" r-animation="on: click; class: u-btn-clicked;" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type="button">
 	{#if icon && !loading}<i class="u-icon u-icon-{icon}"></i>{/if}
 	{#if action && actionIcons[action] && !loading}<i class="u-icon u-icon-{actionIcons[action]}"></i>{/if}
 	{#if loading}<i class="u-icon u-icon-spinner u-icon-pulse"></i>{/if}
 	{#if !shape}{title}{/if}
 </button>
 {/if}
-<a class="f-dn" ref="download" href={download} target="_blank" download>download</a>

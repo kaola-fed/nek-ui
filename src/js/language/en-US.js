@@ -13,8 +13,13 @@ module.exports = {
     UPLOAD: 'Upload',
     DROPDOWN_LIST: 'Dropdown List',
     MULTILEVEL_MENU: 'Multi-level Menu',
+    GOTO: 'Goto',
     PAGE_NEXT: 'Next',
     PAGE_PREV: 'Prev',
     CANCEL: 'Cancel',
     NOTICE: 'Notice',
+    ITEM_PAGE: '/page',
+    TOTAL: 'total',
+    ITEMS: 'items',
+    PAGE: '',
 }

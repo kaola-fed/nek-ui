@@ -10,7 +10,7 @@
 
 $m-notify_z-index = 1040;
 $m-notify_position = 10px;
-$m-notify_width = 320px;
+$m-notify_width = 260px;
 
 
 
@@ -24,10 +24,23 @@ $m-notify_width = 320px;
     z-index: $m-notify_z-index;
     top: $m-notify_position;
     left: $m-notify_position;
-    width: $m-notify_width;
+    min-width: $m-notify_width;
+    max-width: 1000px;
 
     .u-message {
         margin-bottom: 10px;
+        text-align: center;
+        &:hover .message_close {
+            display: block;
+        }
+        .message_close {
+            display: none;
+            position: absolute;
+            right: 16px;
+            margin-top: 2px;
+            font-size: 12px;
+            color: #fff;
+        }
     }
 }
 

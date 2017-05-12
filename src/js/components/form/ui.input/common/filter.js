@@ -1,7 +1,7 @@
 module.exports = {
     /**
      *  测试数据:
-     *  1, +1, -1, ++1, ++++, 1++, 1+1
+     *  1, +1, -1, ++1, ++++, 1++, 1+1, 001, 01
      * */
     "int": function(value) {
         value = value.replace(/[^\d+-]/g, '');
@@ -9,11 +9,13 @@ module.exports = {
         var regexp = /[+-]?\d*/;
         var match = regexp.exec(value);
         if (match) value = match[0];
+
+        value = parseInt(value);
         return value;
     },
     /**
      *  测试数据:
-     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12
+     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12, 00001.23
      * */
     "float": function(value, decimalDigits) {
         value = value.replace(/[^\d+-\.]/g, '');
@@ -27,6 +29,8 @@ module.exports = {
         if (digits[1] && decimalDigits) {
             value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
         }
+
+        value = parseFloat(value);
         return value;
     },
     "default": function(value) { return value; }

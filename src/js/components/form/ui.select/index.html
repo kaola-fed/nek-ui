@@ -1,4 +1,4 @@
-<div class="u-select2 u-select2-{state} {size} {class}" r-width="{width}" >
+<div class="u-select u-select-{state} u-select-{size} {class}" r-width="{width}">
 	<div class="u-dropdown" r-class={{isMultiple:multiple}}
 	     z-dis={disabled} r-hide={!visible} ref="element">
 	    {#if !multiple}
@@ -6,7 +6,7 @@
 				 z-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
-	            <i class="u-icon u-icon-caret-down"></i>
+	            <i class="u-icon u-icon-angle_down"></i>
 	            {#if open && canSearch}
 	                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
@@ -85,5 +85,5 @@
 	    </div>
 	    {/if}
 	</div>
-	{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+	{#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

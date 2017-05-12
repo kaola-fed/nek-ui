@@ -1,17 +1,43 @@
+// ========================================================================
 // Name:            UnitGroup
 // Description:     单元组
-// Author:          sensen(rainforest92@126.com)
+// Author:          sensen(rainforest92@126.com) ziane(zianecui@gmail.com)
 // ========================================================================
 
 
-
-// Component:       `u-unitgroup`
-// ========================================================================
-
+//m-table 部分有修改.u-unitgroup的样式
 .u-unitgroup {
-    // display: inline-block;
+    font-size: 0;   //解决display: inline-block的元素之前产生的间距
+    line-height: initial;
 
-    > .u-check, > .u-radio, > .u-check2, > .u-radio2, > label {
-        margin-right: 2em;
+    .u-btn{
+        margin-right: 16px;
+    }
+    .u-btn:last-child{
+        margin-right: 0;
+    }
+
+    .u-check, .u-radio{
+        margin-right: 40px;
+    }
+    .u-check:last-child, .u-radio:last-child{
+        margin-right: 0;
+    }
+}
+
+.u-unitgroup-sm {
+    font-size: 0;   //解决display: inline-block的元素之前产生的间距
+    .u-btn{
+        margin-right: 8px;
+    }
+    .u-btn:last-child{
+        margin-right: 0;
+    }
+
+    .u-check, .u-radio{
+        margin-right: 16px;
+    }
+    .u-check:last-child, .u-radio:last-child{
+        margin-right: 0;
     }
 }

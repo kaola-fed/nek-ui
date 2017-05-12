@@ -32,13 +32,33 @@
         font-size: 12px;
     }
 
-    th {
-        text-align: left;
-    }
-
     th, td {
         padding: 6px 8px;
-        $border: $brand-default;
+        height: 32px;
+        line-height: 16px;
+        word-wrap: break-word;
+    }
+
+    thead {
+        background: #EEF1F4;
+        font-size: 12px;
+        color: #333333;
+        th {
+            text-align: center;
+            border-right: 1px solid #d8dee4;
+            border-bottom: 1px solid #E3E7EB;
+        }
+        th:last-child {
+            border-right: none;
+        }
+    }
+
+    tbody {
+        font-size: 12px;
+        td {
+            text-align: center;
+            border-bottom: 1px solid #ECF2F9;
+        }
     }
 }
 
@@ -47,11 +67,11 @@
 // Extends:         `m-table-striped`, `m-table-hover`
 // Description:     尺寸和颜色扩展函数
 // ========================================================================
-// 
+//
 .m-table-striped {
-    tbody tr:nth-of-type(odd) {background: #f9f9f9;}
+    tbody tr:nth-of-type(2n+0) {background: #f6f9fc;}
 }
 
 .m-table-hover {
-    tbody tr:hover {background: #f5f5f5;}
+    tbody tr:hover {background: #ECF2F9;}
 }

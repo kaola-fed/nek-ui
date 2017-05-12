@@ -1,12 +1,11 @@
+// ========================================================================
 // Name:            Variables
 // Description:     变量
 // Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
 
-
-// Variables:
-// ========================================================================
+$size-base = 8px;
 
 /* Dimensions */
 $media-xs-max-width =                   480px - 1;
@@ -15,17 +14,17 @@ $media-md-max-width =                   960px - 1;
 $media-lg-max-width =                   1220px - 1;
 
 /* Fonts */
-$font-family-sans-serif = "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
-$font-family-serif = Georgia, "Times New Roman", Times, SimSun, "FontAwesome", serif; //FangSong, STFangSong
+$font-family-sans-serif = "Helvetica Neue", "Helvetica", "Arial", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+$font-family-serif = Georgia, "Times New Roman", Times, SimSun, "FontAwesome", serif;
 $font-family-monospace = Monaco, Menlo, Consolas, "Courier New", "FontAwesome", monospace;
 $font-family-kai = Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif;
 
 
 /////////////////////////////////////////////////////////
 /* Height */
-$height-base = 36px;
+$height-base = 32px;
 $height-xs = 22px;
-$height-sm = 28px;
+$height-sm = 24px;
 $height-lg = 38px;
 $height-xl = 46px;
 
@@ -37,14 +36,14 @@ $font-size-lg = 16px;
 $font-size-xl = 18px;
 
 /* Padding */
-$padding-base = 6px 12px;
+$padding-base = 6px 10px 6px 8px;
 $padding-xs = 1px 5px;
 $padding-sm = 5px 10px;
 $padding-lg = 10px 16px;
 $padding-xl = 16px 24px;
 
 /* Border Radius */
-$border-radius-base = 3px;
+$border-radius-base = 2px;
 $border-radius-xs = 1px;
 $border-radius-sm = 2px;
 $border-radius-lg = 4px;
@@ -87,24 +86,24 @@ $u-formctrl_min-width = 160px;
 
 /* Colors */
 $u-formctrl_background = white;
-$u-formctrl_color = #555;
-$u-formctrl_border = #d2d6de;
+$u-formctrl_color = #999;
+$u-formctrl_border = #eee;
 
 $u-formctrl-focus_background = $u-formctrl_background;
 $u-formctrl-focus_color = $u-formctrl_color;
-$u-formctrl-focus_border = $brand-primary;
+$u-formctrl-focus_border = $brand-error;
 
 $u-formctrl-disabled_background = #eee;
 $u-formctrl-disabled_color = #999;
 $u-formctrl-disabled_border = $u-formctrl_border;
 
-$u-formctrl_placeholder_color = #bbb;
+$u-formctrl_placeholder_color = #999;
 
 
 
 /* Form Control Item */
 $u-formctrl_item_padding = 3px 20px;
-$u-formctrl_item-hover_background = #f4f4f4;
+$u-formctrl_item-hover_background = #F1F1F1;
 $u-formctrl_item-hover_color = #444;
 $u-formctrl_item-hover_border = null;
 

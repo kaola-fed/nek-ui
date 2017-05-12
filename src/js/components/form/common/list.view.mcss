@@ -43,12 +43,14 @@
     padding: 5px 0;
     background: $u-formctrl_background;
     color: $u-formctrl_color;
-    $border-radius: $border-radius-lg;
-    $border: $u-formctrl_border;
-
+    $border: #eee;
+    border-top: none;
     > li {
-        padding: $u-formctrl_item_padding;
-        color: #777;
+        font-size: 12px;
+        color: #333333;
+        padding: 7px 9px 7px 9px;
+        margin: 6px 0;
+        line-height: 18px;
     }
 
     > li:hover {
@@ -57,7 +59,7 @@
     }
 
     > li.z-sel {
-        background: $u-formctrl_item-selected_background;
+        background: $brand-primary;
         color: $u-formctrl_item-selected_color;
     }
 

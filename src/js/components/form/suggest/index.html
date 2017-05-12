@@ -1,6 +1,8 @@
 <div class="u-dropdown u-suggest {class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd">
-        <input class="u-input u-input-full" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref="input" readonly={readonly} disabled={disabled}>
+        <label class="u-input">
+            <input class="input" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref="input" readonly={readonly} disabled={disabled}>
+        </label>
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
@@ -14,4 +16,4 @@
     </div>
     {/if}
 </div>
-{#if tip}<span class="u-tip u-tip-{state}">{tip}</span>{/if}
+{#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}

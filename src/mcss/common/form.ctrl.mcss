@@ -5,15 +5,13 @@
 
 
 
-// Component:       `u-input`, `u-select`, `u-textarea`
+// Component:       `u-select`, `textarea`
 // ========================================================================
 
 // 一般认为input和textarea的样式是差不多的。
 // u-input用于input:not([type="radio"]), input:not([type="checkbox"])
 
-.u-input,
-.u-select,
-.u-textarea {
+.u-select {
     // - Default is `content-box` with following exceptions set to `border-box`.
     $box-sizing: border-box;
     // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
@@ -26,18 +24,36 @@
     font: inherit;
     color: inherit;
     // - Remove default style in iOS.
-    //-webkit-appearance: none;
+    -webkit-appearance: none;
+    // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+     max-width: 100%;
+
+    color: $u-formctrl_color;
+    background: $u-formctrl_background;
+    $border-radius: $border-radius-base;
+
+    // -webkit-transition: all linear 0.2s;
+    // transition: all linear 0.2s;
+    $placeholder({
+        color: $u-formctrl_placeholder_color;
+        // - Removes placeholder transparency in Firefox.
+        $opacity: 1;
+    });
 
     &:focus {
         outline: 0;
+        background: $u-formctrl-focus_background;
+        color: $u-formctrl-focus_color;
+        $border: $u-formctrl-focus_border;
     }
 
     &:disabled {
         cursor: not-allowed;
+        background: $u-formctrl-disabled_background;
+        color: $u-formctrl-disabled_color;
+        $border: $u-formctrl-disabled_border;
     }
 }
-
-.u-input {}
 
 .u-select {
     // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox
@@ -52,11 +68,13 @@
     }
 }
 
-.u-textarea {
+.textarea {
     // - (It has been realized in normalize.css) Remove default vertical scrollbar in IE 8/9/10/11.
     // overflow: auto;
     // - Improve readability and alignment in all browsers.
     vertical-align: top;
+    width: 100%;
+    height: 120px;
 }
 
 input.u-check,
@@ -76,12 +94,22 @@ input.u-radio:disabled {
 }
 
 
+// Block Extends:
+// ========================================================================
+
+.u-select-block,
+.textarea-block {
+    display: block;
+    width: 100%;
+}
+
+
 
 // Size Extends:
 // ========================================================================
 
 $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-radius_ = null) {
-    .u-input2.#{$name}, .u-dropdown.#{$name}, .u-textarea2.#{$name} {
+    .u-input.#{$name}, .u-dropdown.#{$name}, .textarea.#{$name} {
         padding: $padding;
         height: $height;
         @if($font-size) {font-size: $font-size;}
@@ -90,7 +118,7 @@ $u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-
 }
 
 $u-formctrl-extend_width = ($name, $width) {
-    .u-input2.#{$name}w, .u-dropdown.#{$name}w, .u-select2.#{$name}w, .u-textarea2.#{$name}w {
+    .u-dropdown-#{$name}w, .u-select-#{$name}w, .textarea-#{$name}w {
         display:inline-block;
         width: $width;
     }
@@ -104,7 +132,7 @@ $u-formctrl-extend_width = ($name, $width) {
 $u-formctrl-extend_color = ($name, $background, $color, $border_) {
     .u-input.u-input-#{$name},
     .u-select.u-select-#{$name},
-    .u-textarea.u-textarea-#{$name} {
+    .textarea.textarea-#{$name} {
         @if($background) {background: $background;}
         color: $color;
         border-color: $border_;
@@ -113,20 +141,10 @@ $u-formctrl-extend_color = ($name, $background, $color, $border_) {
 
 
 
-// Block Extends:
-// ========================================================================
-
-.u-input-block,
-.u-select-block,
-.u-textarea-block {
-    display: block;
-    width: 100%;
-}
-
 $u-formctrl-blank = ($border-color) {
     .u-input.u-input-blank,
     .u-select.u-select-blank,
-    .u-textarea.u-textarea-blank {
+    .textarea.textarea-blank {
         border-color: transparent;
         border-style: dashed;
         background: none;
@@ -138,58 +156,7 @@ $u-formctrl-blank = ($border-color) {
 }
 
 
-///////////////////////////////
-// Component:       `u-input`, `u-select`, `u-textarea`
-// ========================================================================
-
-// 一般认为input和textarea的样式是差不多的。
-// u-input用于input:not([type="radio"]), input:not([type="checkbox"])
-
-.u-input,
-.u-select,
-.u-textarea {
-    // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
-    // max-width: 100%;
-    padding: $u-formctrl_padding;
-    $border: $u-formctrl_border;
-    color: $u-formctrl_color;
-    background: $u-formctrl_background;
-    $border-radius: $border-radius-base;
-    
-    // -webkit-transition: all linear 0.2s;
-    // transition: all linear 0.2s;
-    $placeholder({
-        color: $u-formctrl_placeholder_color;
-        // - Removes placeholder transparency in Firefox.
-        $opacity: 1;
-    });
-
-    &:focus {
-        background: $u-formctrl-focus_background;
-        color: $u-formctrl-focus_color;
-        $border: $u-formctrl-focus_border;
-    }
-
-    &:disabled {
-        background: $u-formctrl-disabled_background;
-        color: $u-formctrl-disabled_color;
-        $border: $u-formctrl-disabled_border;
-    }
-}
-
-.u-input, .u-select {
-    width: $u-formctrl_width;
-    height: $u-formctrl_height;
-}
-
-.u-textarea {
-    width: 100%;
-    height: 120px;
-}
-
-
-
-// Size Extends:
+// Size Extends:$u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-radius_ = null)
 // ========================================================================
 
 $u-formctrl-extend_size(sm, $u-formctrl-sm_padding, $u-formctrl-sm_height, $u-formctrl-sm_font-size);
@@ -200,8 +167,7 @@ $u-formctrl-extend_width(md, 160px);
 $u-formctrl-extend_width(lg, 300px);
 
 
-
-// Color Extends:
+// Color Extends:$u-formctrl-extend_color = ($name, $background, $color, $border_)
 // ========================================================================
 
 $u-formctrl-extend_color(success, null, $brand-success, $brand-success);
@@ -209,8 +175,6 @@ $u-formctrl-extend_color(warning, null, $brand-warning, $brand-warning);
 $u-formctrl-extend_color(error, null, $brand-error, $brand-error);
 
 
-
 // Other Extends:
 // ========================================================================
-
 $u-formctrl-blank($border-base);

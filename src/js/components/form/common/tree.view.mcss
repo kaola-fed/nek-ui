@@ -119,7 +119,7 @@
             left: -3em;
         }
 
-        > .u-check2 {
+        > .u-check {
             position: absolute;
             left: -1.8em;
             padding: 3px 0;

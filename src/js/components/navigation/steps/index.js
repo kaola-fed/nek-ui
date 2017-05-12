@@ -36,7 +36,9 @@ var Steps = Component.extend({
     },
     init: function () {
         this.supr();
-        this.juedgeFinishedItem();
+        this.$watch('current', function(newValue, oldValue) {
+            this.juedgeFinishedItem();
+        });
     },
     juedgeFinishedItem: function () {
         var data = this.data;

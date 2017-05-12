@@ -18,6 +18,8 @@ var _ = require('../../../ui-base/_');
  * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
  * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
  * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+ * @param {number}        [options.data.step=5]           => 每页条数选择步长
+ * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
  * @param {boolean}       [options.data.visible=true]     => 是否显示
@@ -37,9 +39,14 @@ var Pager = Component.extend({
             middle: 5,
             side: 2,
             _start: 1,
-            _end: 5
+            _end: 5,
+            step: 5,
+            maxPageSize: 50,
+            pageSizeList: []
         });
         this.supr();
+
+        this._setPageSizeList();
 
         this.$watch(['current', 'total'], function(current, total) {
             this.data.current = current = +current;
@@ -64,6 +71,16 @@ var Pager = Component.extend({
             this.data.side = +side;
         });
     },
+
+    _setPageSizeList: function() {
+        const { step, maxPageSize } = this.data;
+        for (let i = 1; i * step <= maxPageSize; ++i)
+        this.data.pageSizeList.push({
+            id: i * step,
+            name: i * step + this.$trans('ITEM_PAGE'),
+        })
+    },
+
     /**
      * @method select(page) 选择某一页
      * @public
@@ -88,6 +105,23 @@ var Pager = Component.extend({
             sender: this,
             current: this.data.current
         });
+    },
+    enter: function (ev) {
+        var data = this.data;
+        if(ev.which == 13){ // ENTER key
+            ev.preventDefault();
+            this.goto();
+        }
+    },
+    goto: function () {
+        var data = this.data;
+        if (!data.pageNo && data.pageNo != 0) return;
+        if (data.pageNo > data.total) {
+            data.pageNo = data.total;
+        } else if (data.pageNo < 1) {
+            data.pageNo = 1;
+        }
+        this.select(this.data.pageNo);
     }
 });
 
