@@ -3145,10 +3145,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    UPLOAD: '上传',
 	    DROPDOWN_LIST: '下拉菜单',
 	    MULTILEVEL_MENU: '多级菜单',
+	    GOTO: '跳至',
 	    PAGE_NEXT: '下一页',
 	    PAGE_PREV: '上一页',
 	    CANCEL: '取消',
-	    NOTICE: '提示'
+	    NOTICE: '提示',
+	    ITEM_PAGE: '条/页',
+	    TOTAL: '共',
+	    ITEMS: '条',
+	    PAGE: '页'
 		};
 
 /***/ }),
@@ -3172,10 +3177,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    UPLOAD: 'Upload',
 	    DROPDOWN_LIST: 'Dropdown List',
 	    MULTILEVEL_MENU: 'Multi-level Menu',
+	    GOTO: 'Goto',
 	    PAGE_NEXT: 'Next',
 	    PAGE_PREV: 'Prev',
 	    CANCEL: 'Cancel',
-	    NOTICE: 'Notice'
+	    NOTICE: 'Notice',
+	    ITEM_PAGE: '/page',
+	    TOTAL: 'total',
+	    ITEMS: 'items',
+	    PAGE: ''
 		};
 
 /***/ }),
@@ -6998,7 +7008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 177 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-check2 {class}\" z-chk={checked} z-dis={disabled} r-class={ {'z-part': checked === null, 'u-check2-block': block} } r-hide={!visible} title={name} on-click={this.check()}><div class=\"check2_box\"><i class=\"u-icon u-icon-check\"></i></div> {name}</label>"
+	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n<div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}</label>"
 
 /***/ }),
 /* 178 */
@@ -7169,7 +7179,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 179 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip}\n\t<p class=\"u-tip u-tip-{state}\">{tip}</p>\n\t{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 180 */
@@ -7543,7 +7553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 183 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker {size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t    <input class=\"u-input u-input-full u-input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\" autofocus={autofocus} readonly={readonly} disabled={disabled}\n\t            on-focus={this.toggle(true)} on-change={this._onInput($event)}>\n\t\t\t{#else}\n\t\t    <input class=\"u-input u-input-full u-input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\" autofocus={autofocus} readonly={readonly} disabled={disabled}\n\t\t        on-focus={this.toggle(true)} on-change={this._onInput($event)}>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t\t{#else}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 184 */
@@ -23997,7 +24007,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return {object} result 结果
 	     */
 	    validate: function validate(on) {
-
 	        var value = this.data.value ? this.data.value + '' : '';
 	        var rules = this.data.rules;
 
@@ -24050,6 +24059,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.validate('blur');
 	        this.$emit('blur', $event);
 	    },
+	    _onFocus: function _onFocus($event) {
+	        this.$emit('focus', $event);
+	    },
 	    _onChange: function _onChange($event) {
 	        this.validate('change');
 	        this.$emit('change', $event);
@@ -24091,7 +24103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 308 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-input2 {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"u-input u-input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input2_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input2_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input2_placeholder\">{placeholder}</span>{/if}\n    </span>\n    {#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</label>\n\n"
+	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n\n"
 
 /***/ }),
 /* 309 */
@@ -24147,7 +24159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	    /**
 	     *  测试数据:
-	     *  1, +1, -1, ++1, ++++, 1++, 1+1
+	     *  1, +1, -1, ++1, ++++, 1++, 1+1, 001, 01
 	     * */
 	    "int": function int(value) {
 	        value = value.replace(/[^\d+-]/g, '');
@@ -24155,11 +24167,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var regexp = /[+-]?\d*/;
 	        var match = regexp.exec(value);
 	        if (match) value = match[0];
+
+	        value = parseInt(value);
 	        return value;
 	    },
 	    /**
 	     *  测试数据:
-	     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12
+	     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12, 00001.23
 	     * */
 	    "float": function float(value, decimalDigits) {
 	        value = value.replace(/[^\d+-\.]/g, '');
@@ -24173,6 +24187,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (digits[1] && decimalDigits) {
 	            value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
 	        }
+
+	        value = parseFloat(value);
 	        return value;
 	    },
 	    "default": function _default(value) {
@@ -24184,7 +24200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 311 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-input2 u-numberinput {class}\" r-hide={!visible}>\n    <input class=\"u-input u-input-{state}\" r-model={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled}>\n    <a class=\"u-btn\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label>\n{#if tip}<span class=\"u-tip u-tip-{type}\">{tip}</span>{/if}"
+	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\n    <ui.input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label>\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 312 */
@@ -26236,7 +26252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 331 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t    <label class=\"u-radio2\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio2-block': block} } on-click={this.select(item)}><div class=\"radio2_box\"><i class=\"u-icon u-icon-radio\"></i></div> {item[nameKey]}</label>\n\t    {/list}\n\t</div>\n\t{#if tip}\n\t<p class=\"u-tip u-tip-{state}\">{tip}</p>\n\t{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 332 */
@@ -26394,7 +26410,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 333 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select2group u-select2group-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip}\n<p class=\"u-tip u-tip-{state}\">{tip}</p>\n{/if}"
+	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip}\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n{/if}"
 
 /***/ }),
 /* 334 */
@@ -26636,7 +26652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 335 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <input class=\"u-input u-input-full\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>\n{#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}"
+	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <label class=\"u-input\">\n            <input class=\"input\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n        </label>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 336 */
@@ -26729,7 +26745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 337 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select2 {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <tree.view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <tree.view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 338 */
@@ -27057,7 +27073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /* 取消 */
 	    cancel: 'arrow-circle-left',
 	    /* 删除 */
-	    remove: 'trash-o',
+	    remove: 'trash',
 	    /* 更新 */
 	    update: 'refresh',
 	    /* 提交 */
@@ -27067,9 +27083,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /* 复制 */
 	    copy: 'copy',
 	    /* 通过 */
-	    pass: 'check',
+	    pass: 'success',
 	    /* 驳回 */
-	    reject: 'ban',
+	    reject: 'warning',
 	    /* 返回 */
 	    backward: 'angle-double-left',
 	    /* 下载 */
@@ -27081,9 +27097,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /* 编辑 */
 	    edit: 'edit',
 	    /* 添加 */
-	    add: 'plus-square',
+	    add: 'add',
 	    /* 链接 */
-	    link: 'link'
+	    link: 'link',
+	    /* 单行添加 */
+	    plus: 'plus'
 	};
 
 	var UIButton = Component.extend({
@@ -27108,9 +27126,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$watch('download', function (url) {
 	            if (validator.isURL(url)) {
 	                if (bowser.chrome) {
-	                    this.$refs.download.setAttribute('href', url);
-	                    _.dom.fireEvent(this.$refs.download, 'click');
-	                    this.$refs.download.setAttribute('href', '');
+	                    var a = document.createElement('a');
+	                    a.href = url;
+	                    a.download = url;
+	                    a.click();
 	                } else {
 	                    location.href = url;
 	                }
@@ -27128,6 +27147,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 	        return !!this.data.link;
+	    },
+
+	    onMouseUp: function onMouseUp(e) {
+	        e.target.blur();
 	    }
 	});
 
@@ -27137,7 +27160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 343 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{shape} {class}\" on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{shape} {class}\" on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}\n<a class=\"f-dn\" ref=\"download\" href={download} target=\"_blank\" download>download</a>\n"
+	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}"
 
 /***/ }),
 /* 344 */
@@ -27480,7 +27503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 345 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select2 u-select2-{state} {size} {class}\" r-width=\"{width}\" >\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-caret-down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 346 */
@@ -27904,7 +27927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 352 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea2 {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"u-textarea u-textarea-{state} u-textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n\t{#if maxlength && value}<span class=\"textarea2_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea2_placeholder\">{placeholder}</span>{/if}\n    {#if tip}<span class=\"u-tip u-tip-{state}\">{tip}</span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n\t{#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 353 */
@@ -28438,6 +28461,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
 	 * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
 	 * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
+	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]     => 是否显示
@@ -28457,9 +28482,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            middle: 5,
 	            side: 2,
 	            _start: 1,
-	            _end: 5
+	            _end: 5,
+	            step: 5,
+	            maxPageSize: 50,
+	            pageSizeList: []
 	        });
 	        this.supr();
+
+	        this._setPageSizeList();
 
 	        this.$watch(['current', 'total'], function (current, total) {
 	            this.data.current = current = +current;
@@ -28480,6 +28510,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.data.side = +side;
 	        });
 	    },
+
+	    _setPageSizeList: function _setPageSizeList() {
+	        var _data = this.data,
+	            step = _data.step,
+	            maxPageSize = _data.maxPageSize;
+
+	        for (var i = 1; i * step <= maxPageSize; ++i) {
+	            this.data.pageSizeList.push({
+	                id: i * step,
+	                name: i * step + this.$trans('ITEM_PAGE')
+	            });
+	        }
+	    },
+
 	    /**
 	     * @method select(page) 选择某一页
 	     * @public
@@ -28503,6 +28547,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            sender: this,
 	            current: this.data.current
 	        });
+	    },
+	    enter: function enter(ev) {
+	        var data = this.data;
+	        if (ev.which == 13) {
+	            // ENTER key
+	            ev.preventDefault();
+	            this.goto();
+	        }
+	    },
+	    goto: function goto() {
+	        var data = this.data;
+	        if (!data.pageNo && data.pageNo != 0) return;
+	        if (data.pageNo > data.total) {
+	            data.pageNo = data.total;
+	        } else if (data.pageNo < 1) {
+	            data.pageNo = 1;
+	        }
+	        this.select(this.data.pageNo);
 	    }
 	});
 
@@ -28512,7 +28574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 365 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <li class=\"pager_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}><a>{this.$trans('PAGE_PREV')}</a></li>\n    {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _start > side + 1}<li><span>...</span></li>{/if}\n        {#list _start.._end as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n        {#if _end < total - side}<li><span>...</span></li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {#else}\n        {#list 1..total as i}\n        <li z-crt={current == i} on-click={this.select(i)}><a>{i}</a></li>\n        {/list}\n    {/if}\n    <li class=\"pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><a>{this.$trans('PAGE_NEXT')}</a></li>\n</ul>"
+	module.exports = "<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>"
 
 /***/ }),
 /* 366 */
@@ -28658,7 +28720,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    init: function init() {
 	        this.supr();
-	        this.juedgeFinishedItem();
+	        this.$watch('current', function (newValue, oldValue) {
+	            this.juedgeFinishedItem();
+	        });
 	    },
 	    juedgeFinishedItem: function juedgeFinishedItem() {
 	        var data = this.data;
@@ -28679,7 +28743,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 369 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right: -52px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-check\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
+	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
 /* 370 */
@@ -28851,7 +28915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 371 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-modal {class}\" r-hide={!visible}>\n    <div class=\"modal_dialog\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-close\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 372 */
@@ -29123,7 +29187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 375 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-close\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state}-circle\" r-hide={!message.state}></i>\n        {message.text}\n    </div>\n    {/list}\n</div>"
+	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
 /* 376 */
@@ -29258,7 +29322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 377 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-xs\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-xs u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
+	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 /* 378 */
