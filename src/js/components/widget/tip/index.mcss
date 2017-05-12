@@ -9,8 +9,22 @@
 // ========================================================================
 
 .u-tip {
-    display:inline-block;
+    display: inline-block;
 	margin-top:5px;
+    font-size: 12px;
+    padding: 0;
+    $border-radius: $border-radius-sm;
+    .u-icon {
+        vertical-align: top;
+        margin-right: 6px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    .tip {
+        vertical-align: top;
+        display: inline-block;
+        line-height: 18px;
+    }
 }
 
 
@@ -19,21 +33,10 @@
 
 $u-tip-extend_color = ($name, $background, $color) {
     .u-tip-#{$name} {
-        background: $background;
         color: $color;
     }
 }
 
-
-//////////////////////////////////
-
-.u-tip {
-	font-size: 12px;
-    padding: 0 6px;
-    background: $background-base;
-    line-height:1.5;
-    $border-radius: $border-radius-sm;
-}
 
 
 

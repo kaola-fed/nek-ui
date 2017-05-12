@@ -1,36 +1,45 @@
-// Name:            Check2
+// ========================================================================
+// Name:            Check
+// Component:       `u-check`
 // Description:     多选按钮
 // Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
 
+$u-check_box_size = 13px;
 
-// Component:       `u-check2`
-// ========================================================================
-
-.u-check2 {
+.u-check {
     display:inline-block;
     cursor: pointer;
     $user-select: none;
     white-space:nowrap;
-
-    .check2_box {
+    font-size: 12px;
+    line-height: 15px;
+    .check_box {
         display: inline-block;
+        vertical-align: top;
         position: relative;
         overflow: hidden;
         text-align: center;
-        vertical-align: middle;
-        margin-bottom: 2px;
-
+        margin-right: 8px;
+        $size: $u-check_box_size;
+        line-height: $u-check_box_size - 1;
+        background: white;
+        color: #E61438;
+        $border: $u-formctrl_border;
         .u-icon {
             display: none;
+            font-size: 13px;
+            line-height: 13px;
         }
     }
 }
 
+
 /* Checked */
-.u-check2.z-chk {
-    .check2_box {
+.u-check.z-chk {
+    .check_box {
+        $border: #E61438;
         .u-icon {
             display: inline-block;
         }
@@ -38,63 +47,61 @@
 }
 
 /* Indetermined */
-.u-check2.z-part {
-    .check2_box {
+.u-check.z-part {
+    .check_box {
+        $border: #E61438;
         .u-icon {
             display: inline-block;
             &:before {
-                content: "\f0c8";
+                content: "\e912";
             }
         }
     }
 }
 
 /* Disabled */
-.u-check2.z-dis {
+.u-check.z-dis {
     cursor: not-allowed;
-
-    .check2_box {}
-}
-
-
-
-// Extends:         `u-check2-block`
-// ========================================================================
-
-.u-check2-block {
-    display: block;
-}
-
-
-//////////////////////
-// Variables:
-// ========================================================================
-
-$u-check2_box_size = 18px;
-
-
-
-// Component:       `u-check2`
-// ========================================================================
-
-.u-check2 {
-    .check2_box {
-        $size: $u-check2_box_size;
-        line-height: $u-check2_box_size - 1;
-        background: white;
-        color: $brand-primary;
-        $border: $u-formctrl_border;
-
-        .u-icon {
-            font-size: 16px;
-        }
-    }
-}
-
-/* Disabled */
-.u-check2.z-dis {
-    .check2_box {
+    .check_box {
         color: $u-formctrl-disabled_background;
         $border: $u-formctrl-disabled_background;
     }
 }
+
+
+
+// Extends:         `u-check-block`
+// ========================================================================
+
+.u-check-block {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+// Size Extends:
+// ========================================================================
+
+$u-formctrl-extend_size = ($name, $padding, $height, $font-size = null, $border-radius_ = null) {
+    .u-input.#{$name} {
+        padding: $padding;
+        height: $height;
+        @if($font-size) {font-size: $font-size;}
+        @if($border-radius_) {$border-radius: $border-radius_;}
+    }
+}
+
+$u-formctrl-extend_width = ($name, $width) {
+    .u-input.#{$name}w {
+        display:inline-block;
+        width: $width;
+        vertical-align:top;
+    }
+}
+
+$u-formctrl-extend_size(sm, $u-formctrl-sm_padding, $u-formctrl-sm_height, $u-formctrl-sm_font-size);
+$u-formctrl-extend_size(lg, $u-formctrl-lg_padding, $u-formctrl-lg_height, $u-formctrl-lg_font-size);
+
+$u-formctrl-extend_width(sm, 80px);
+$u-formctrl-extend_width(md, 160px);
+$u-formctrl-extend_width(lg, 300px);

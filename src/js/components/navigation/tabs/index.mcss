@@ -20,7 +20,7 @@
         > li + li {}
 
         > li.z-crt {
-            position: relative;
+            //position: relative;
         }
 
         > li.z-dis {
@@ -57,9 +57,9 @@
 
 
 ////////////////////////
-$m-tabs_hd_li_margin = 5px;
+$m-tabs_hd_li_margin = 2px;
 $m-tabs_hd_li_padding-horizontal = 15px;
-$m-tabs_hd_border = #f4f4f4;
+$m-tabs_hd_border = #DEEAF2;
 $m-tabs-vertical_hd_li_width = 120px;
 
 
@@ -78,25 +78,37 @@ $m-tabs-vertical_hd_li_width = 120px;
             $line-height: 40px;
             color: $color-base;
             border: $border-width-base solid transparent;
-            border-bottom-width: 0;
             margin-bottom: -$border-width-base;
+            background: #FFFFFF;
+            border: 1px solid #DEEAF2;
+            border-radius: 2px 2px 0 0;
+            height: 31px;
+            line-height: 32px;
+            min-width: 104px;
+            text-align: center;
+            font-size: 12px;
+            border-bottom: none;
+            box-sizing: border-box;
         }
 
         > li + li {
             margin-left: $m-tabs_hd_li_margin;
         }
-        
+
         > li:hover,    // - Apply hover style also to focus state
         > li:focus {
             color: l-adjust($color-base, 20%);
         }
 
         > li.z-crt {
-            background: white;
-            color: #444;
-            border-color: $m-tabs_hd_border;
-            $box-shadow: 0 -3px $brand-primary;
-            padding-bottom: $border-width-base;
+            //background: white;
+            //color: #444;
+            //border-color: $m-tabs_hd_border;
+            //$box-shadow: 0 -3px $brand-primary;
+            //padding-bottom: $border-width-base;
+            border-top: 3px solid #D9244E;
+            height: 32px;
+            line-height: 28px;
         }
 
         > li.z-dis {
@@ -117,9 +129,9 @@ $m-tabs-vertical_hd_li_width = 120px;
 .m-tabs.z-dis {
     .tabs_hd {
         > li:not(.z-crt) {
-            background: none;
-            color: #999;
-            border-color: transparent;
+            //background: none;
+            //color: #999;
+            //border-color: transparent;
         }
     }
 }
@@ -165,9 +177,14 @@ $m-tabs-vertical_hd_li_width = 120px;
         }
 
         > li.z-crt {
-            padding-bottom: 0;
-            margin-right: -$border-width-base;
-            $box-shadow: -3px 0 $brand-primary;
+            //padding-bottom: 0;
+            //margin-right: -$border-width-base;
+            //$box-shadow: -3px 0 $brand-primary;
+            border-left: 3px solid #d9244e;
+            height: 29px;
+            line-height: 26px;
+            border-top: 1px solid #deeaf2;
+            border-bottom: 1px solid #deeaf2;
         }
     }
 
@@ -199,9 +216,14 @@ $m-tabs-vertical_hd_li_width = 120px;
         }
 
         > li.z-crt {
-            padding-bottom: 0;
-            padding-left: $m-tabs_hd_li_padding-horizontal + 1px;
-            $box-shadow: 3px 0 $brand-primary;
+            //padding-bottom: 0;
+            //padding-left: $m-tabs_hd_li_padding-horizontal + 1px;
+            //$box-shadow: 3px 0 $brand-primary;
+            border-right: 3px solid #d9244e;
+            height: 28px;
+            line-height: 26px;
+            border-top: 1px solid #deeaf2;
+            border-bottom: 1px solid #deeaf2;
         }
     }
 

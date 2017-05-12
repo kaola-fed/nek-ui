@@ -39,6 +39,7 @@ const Components = {
 
     // Notice
     Modal : require('./components/notice/modal'),
+    Mask : require('./components/notice/mask'),
     Notify : require('./components/notice/notify'),
     PopConfirm : require('./components/notice/pop.confirm'),
 

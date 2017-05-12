@@ -10,17 +10,23 @@
 
 .u-message {
     $clearfix();
+    padding: 14px 55px;
+    background: $background-base;
+    color: #777;
+    $border: $border-base;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    $border-radius: 4px;
 
-    .message_close {
-        float: right;
-
-        &:hover {}
+    .message_ct {
+        display: inline-block;
+        max-width: 90%;
     }
 
     .message_icon {
-        font-size: 20px;
+        font-size: 23px;
         vertical-align: middle;
         margin-top: -2px;
+        margin-right: 10px;
         line-height: 1;
     }
 }
@@ -33,37 +39,22 @@
 
 $u-message-extend_color = ($name, $color) {
     .u-message-#{$name} {
-        color: $color;
-        border-color: $color;
-    }
-}
+        color: #fff;
+        background: $color;
+        $border: $color;
 
-///////////////////////
-// Component:       `u-message`
-// ========================================================================
-
-.u-message {
-    padding: 15px;
-    background: $background-base;
-    color: #777;
-    $border: $border-base;
-
-    .message_close {
-        color: black;
-        $opacity: .2;
-    }
-
-    .message_close:hover {
-        $opacity: .5;
+        .message_icon {
+            color: #fff;
+        }
     }
 }
 
 
 
-// Color Extends:
+// Color Extends:$u-message-extend_color = ($name, $color)
 // ========================================================================
 
-$u-message-extend_color(info, $brand-info, white, $brand-info-darker);
-$u-message-extend_color(success, $brand-success, white, $brand-success-darker);
-$u-message-extend_color(warning, $brand-warning, white, $brand-warning-darker);
-$u-message-extend_color(error, $brand-error, white, $brand-error-darker);
+$u-message-extend_color(info, $brand-info);
+$u-message-extend_color(success, $brand-success);
+$u-message-extend_color(warning, $brand-warning);
+$u-message-extend_color(error, $brand-error);

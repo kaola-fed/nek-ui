@@ -1,12 +1,10 @@
+// ========================================================================
+// Component:       `m-modal`
 // Name:            Modal
 // Description:     模态对话框
 // Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
-
-
-// Component:       `m-modal`
-// ========================================================================
 
 .m-modal {
     // - Hide by default
@@ -30,6 +28,8 @@
     touch-action: cross-slide-y pinch-zoom double-tap-zoom;
     text-align: center;
     overflow: hidden;
+    // - Mask the background page
+    background: rgba(0, 0, 0, 0.6);
 
     &:before {
         content: '';
@@ -42,19 +42,45 @@
         display: inline-block;
         vertical-align: middle;
         text-align: left;
+        width: 400px;
+        background: white;
+        $box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
+        border-radius: 4px;
+        max-width: 1050px;
+        // - Set style
+        // - Slide-in transition
+        // $opacity: 0;
+        // -webkit-transform: translateY(-100px);
+        // transform: translateY(-100px);
+        // -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-out;
+        // transition: opacity 0.3s linear, transform 0.3s ease-out;
     }
 
-    .modal_hd {}
+    .modal_hd {
+        margin: 0 15px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
 
     .modal_title {
         margin: 0;
+        font-size: 12px;
+        color: #333333;
+        // line-height: $line-height-base;
     }
 
     .modal_close {
         float: right;
-        margin: -6px -4px 0 0;
+        margin: 2px 0;
+        color: #666;
+        font-size: 12px;
+        .u-icon {
+            color: #666;
+        }
 
-        &:hover {}
+        &:hover .u-icon{
+            color: #888;
+        }
     }
 
     .modal_hd.z-draggable {
@@ -67,81 +93,22 @@
         cursor: -webkit-grabbing;
     }
 
-    .modal_bd {}
-
-    .modal_ft {
-        .u-btn {}
-    }
-
-    // - Phone landscape and smaller
-    @media (max-width: $media-sm-max-width) {
-        // - Fit in small screen
-        .modal_dialog {
-            width: auto;
-        }
-    }
-
-}
-
-// - 禁止Modal的时候后面的内容还可以滚动，很重要的一条！
-html.z-modal,
-html.z-modal body {
-    overflow: hidden;
-}
-
-
-
-/////////////////////////////
-.m-modal {
-    // - Mask the background page
-    background: rgba(0, 0, 0, 0.6);
-
-    .modal_dialog {
-        width: 400px;
-        background: white;
-        $box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
-        // - Set style
-        // - Slide-in transition
-        // $opacity: 0;
-        // -webkit-transform: translateY(-100px);
-        // transform: translateY(-100px);
-        // -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-out;
-        // transition: opacity 0.3s linear, transform 0.3s ease-out;    
-    }
-
-    .modal_hd {
-        padding: 15px;
-        border-bottom: 1px solid $brand-default;
-    }
-    
-    .modal_title {
-        font-size: 18px;
-        // line-height: $line-height-base;
-    }
-
-    .modal_close {
-        margin: -2px 0px 0 0;
-        color: #bbb;
-
-        &:hover {
-            color: #888;
-        }
-    }
-
     .modal_bd {
-        padding: 15px;
+        padding: 20px 15px 17px 15px;
         min-height: 10px;
-        max-height:550px;
+        max-height:491px;
         overflow:auto;
+        font-size: 12px;
     }
 
     .modal_ft {
-        padding: 15px;
+        padding: 15px 15px 30px 15px;
         text-align: center;
         border-top: 1px solid $brand-default;
+        font-size: 0;
 
         .u-btn {
-            margin: 0 10px;
+            margin: 0 8px;
         }
     }
 
@@ -152,4 +119,11 @@ html.z-modal body {
             margin: 10px;
         }
     }
+
+}
+
+// - 禁止Modal的时候后面的内容还可以滚动，很重要的一条！
+html.z-modal,
+html.z-modal body {
+    overflow: hidden;
 }

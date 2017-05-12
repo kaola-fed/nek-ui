@@ -9,43 +9,12 @@
 // ========================================================================
 
 .m-panel {
+    background: white;
     .panel_hd, .panel_ft {
         background: $panel-header;
         padding: 8px 10px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
     }
-    .panel_ft {
-        padding:5px 10px;
-    }
-
-    .panel_bd {
-        padding: 20px 0;
-    }
-
-    .panel_img {
-
-    }
-}
-
-// Color Extends:
-// ========================================================================
-
-$m-panel-extend_color = ($name, $background, $color = null, $border_ = null) {
-    .m-panel-#{$name} {
-        @if($border_) {border-color: $border_;}
-
-        .panel_hd {
-            background: $background;
-            @if($color) {color: $color;}
-            @if($border_) {border-color: $border_;}
-        }
-    }
-}
-
-//////////////
-.m-panel {
-    background: white;
-
-    .panel_hd, .panel_ft { box-shadow: 0 1px 3px rgba(0,0,0,.3); }
 
     .panel_hd {
         display: flex;
@@ -70,15 +39,29 @@ $m-panel-extend_color = ($name, $background, $color = null, $border_ = null) {
             border: 1px solid $panel-header;
         }
     }
-
-    .panel_tt { font-size:14px; font-weight:bold; }
+    .panel_ft {
+        padding:5px 10px;
+    }
 
     .panel_bd {
+        padding: 20px 5px;
         border: 1px solid rgb(239, 239, 239);
         border-top:0;
     }
+    .panel_tt { font-size:14px; font-weight:bold; }
+}
 
-    .panel_img {
+// Color Extends:
+// ========================================================================
 
+$m-panel-extend_color = ($name, $background, $color = null, $border_ = null) {
+    .m-panel-#{$name} {
+        @if($border_) {border-color: $border_;}
+
+        .panel_hd {
+            background: $background;
+            @if($color) {color: $color;}
+            @if($border_) {border-color: $border_;}
+        }
     }
 }

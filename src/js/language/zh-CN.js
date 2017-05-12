@@ -13,8 +13,13 @@ module.exports = {
     UPLOAD: '上传',
     DROPDOWN_LIST: '下拉菜单',
     MULTILEVEL_MENU: '多级菜单',
+    GOTO: '跳至',
     PAGE_NEXT: '下一页',
     PAGE_PREV: '上一页',
     CANCEL: '取消',
     NOTICE: '提示',
+    ITEM_PAGE: '条/页',
+    TOTAL: '共',
+    ITEMS: '条',
+    PAGE: '页',
 }
