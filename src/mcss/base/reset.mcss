@@ -361,6 +361,9 @@ input, textarea{
     // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
     max-width: 100%;
 }
+input[type=checkbox], input[type=radio] {
+    -webkit-appearance: checkbox;
+}
 
 *::selection, *::-moz-selection, *::-webkit-selection {
     color: #fff;
