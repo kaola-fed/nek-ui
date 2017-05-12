@@ -24168,12 +24168,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var match = regexp.exec(value);
 	        if (match) value = match[0];
 
-	        value = parseInt(value);
+	        if (value) value = parseInt(value);
 	        return value;
 	    },
 	    /**
 	     *  测试数据:
-	     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12, 00001.23
+	     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12
 	     * */
 	    "float": function float(value, decimalDigits) {
 	        value = value.replace(/[^\d+-\.]/g, '');
@@ -24188,7 +24188,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
 	        }
 
-	        value = parseFloat(value);
+	        if (value) value = parseFloat(value);
 	        return value;
 	    },
 	    "default": function _default(value) {
