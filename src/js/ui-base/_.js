@@ -1,6 +1,7 @@
 'use strict';
 
 var Regular = require('regularjs');
+var language = require('../language');
 
 Regular.prototype.$once = function(event, fn) {
     var call = function() {
@@ -248,6 +249,11 @@ _.dom.fireEvent = function(node, eventName) {
         event.synthetic = true; // allow detection of synthetic events
         node.fireEvent("on" + eventName, event);
     }
+};
+
+_.$trans = function(key) {
+    const $NEKUI = window.$NEKUI || {};
+    return language[$NEKUI.lang || (this.data ? this.data.lang : '') || 'zh-CN'][key] || '';
 };
 
 module.exports = _;

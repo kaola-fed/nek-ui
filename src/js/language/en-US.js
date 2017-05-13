@@ -23,4 +23,7 @@ module.exports = {
     TOTAL: 'total',
     ITEMS: 'items',
     PAGE: '',
+    FORMAT_ERROR: 'Format Error',
+    VALUE_ERROR: 'Value Error',
+    LENGTH_ERROR: 'Length Error',
 }

@@ -23,4 +23,7 @@ module.exports = {
     TOTAL: '共',
     ITEMS: '条',
     PAGE: '页',
+    FORMAT_ERROR: '格式错误',
+    VALUE_ERROR: '错误的值',
+    LENGTH_ERROR: '长度错误',
 }

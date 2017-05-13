@@ -12,7 +12,6 @@ var polyfill = require('./polyfill');
 var _ = require('./_');
 var filter = require('./filter');
 var directive = require('./directive');
-var language = require('../language');
 
 /**
  * @class Component
@@ -93,10 +92,7 @@ var Component = Regular.extend({
         this.data = {};
         this.config();
     },
-    $trans: function(key) {
-        const $NEKUI = window.$NEKUI || {};
-        return language[$NEKUI.lang || this.data.lang || 'zh-CN'][key] || '';
-    },
+    $trans: _.$trans.bind(this),
 })
 .filter(filter)
 .directive(directive);
