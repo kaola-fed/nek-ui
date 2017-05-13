@@ -1,5 +1,6 @@
 module.exports = {
     PLEASE_SELECT: '请选择',
+    PLEASE_INPUT: '请输入',
     NO_MATCH: '无匹配项目',
     CAL_MONDAY: '一',
     CAL_TUESDAY: '二',

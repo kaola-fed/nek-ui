@@ -34,7 +34,7 @@ var bowser = require('bowser');
  * @param {boolean}         [options.data.required]           => 【验证规则】是否必填
  * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
- * @oaram {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
+ * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
  * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
  * @param {number}          [options.data.width]              => 组件宽度
  */
@@ -106,6 +106,10 @@ var Input = Component.extend({
             max = this.data.max,
             message = this.data.message,
             rules = this.data.rules;
+
+        if (name === 'required') {
+            message = message || this.$trans('PLEASE_INPUT');
+        }
 
         if (!this.data[name]) { return; }
         var rule = inputRules[name];

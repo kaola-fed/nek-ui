@@ -1,5 +1,6 @@
 module.exports = {
     PLEASE_SELECT: 'Please Select',
+    PLEASE_INPUT: 'Please Input',
     NO_MATCH: 'No Match',
     CAL_MONDAY: 'Mon',
     CAL_TUESDAY: 'Tue',
