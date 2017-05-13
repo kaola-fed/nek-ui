@@ -1241,9 +1241,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Regular = __webpack_require__(68);
 	var polyfill = __webpack_require__(70);
 	var _ = __webpack_require__(98);
-	var filter = __webpack_require__(101);
-	var directive = __webpack_require__(102);
-	var language = __webpack_require__(103);
+	var filter = __webpack_require__(104);
+	var directive = __webpack_require__(105);
 
 	/**
 	 * @class Component
@@ -1323,10 +1322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.data = {};
 	        this.config();
 	    },
-	    $trans: function $trans(key) {
-	        var $NEKUI = window.$NEKUI || {};
-	        return language[$NEKUI.lang || this.data.lang || 'zh-CN'][key] || '';
-	    }
+	    $trans: _.$trans.bind(undefined)
 	}).filter(filter).directive(directive);
 
 		module.exports = Component;
@@ -2705,6 +2701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Regular = __webpack_require__(68);
+	var language = __webpack_require__(101);
 
 	Regular.prototype.$once = function (event, fn) {
 	    var call = function call() {
@@ -2950,6 +2947,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	};
 
+	_.$trans = function (key) {
+	    var $NEKUI = window.$NEKUI || {};
+	    return language[$NEKUI.lang || (this.data ? this.data.lang : '') || 'zh-CN'][key] || '';
+	};
+
 	module.exports = _;
 
 /***/ }),
@@ -2970,6 +2972,89 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = {
+	    'zh-CN': __webpack_require__(102),
+	    'en-US': __webpack_require__(103)
+		};
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+	    PLEASE_SELECT: '请选择',
+	    PLEASE_INPUT: '请输入',
+	    NO_MATCH: '无匹配项目',
+	    CAL_MONDAY: '一',
+	    CAL_TUESDAY: '二',
+	    CAL_WENSDAY: '三',
+	    CAL_THURSDAY: '四',
+	    CAL_FRIDAY: '五',
+	    CAL_SATURDAY: '六',
+	    CAL_SUNDAY: '日',
+	    CONFIRM: '确定',
+	    ALL: '全部',
+	    UPLOAD: '上传',
+	    DROPDOWN_LIST: '下拉菜单',
+	    MULTILEVEL_MENU: '多级菜单',
+	    GOTO: '跳至',
+	    PAGE_NEXT: '下一页',
+	    PAGE_PREV: '上一页',
+	    CANCEL: '取消',
+	    NOTICE: '提示',
+	    ITEM_PAGE: '条/页',
+	    TOTAL: '共',
+	    ITEMS: '条',
+	    PAGE: '页',
+	    FORMAT_ERROR: '格式错误',
+	    VALUE_ERROR: '错误的值',
+	    LENGTH_ERROR: '长度错误'
+		};
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+	    PLEASE_SELECT: 'Please Select',
+	    PLEASE_INPUT: 'Please Input',
+	    NO_MATCH: 'No Match',
+	    CAL_MONDAY: 'Mon',
+	    CAL_TUESDAY: 'Tue',
+	    CAL_WENSDAY: 'Wen',
+	    CAL_THURSDAY: 'Thu',
+	    CAL_FRIDAY: 'Fri',
+	    CAL_SATURDAY: 'Sat',
+	    CAL_SUNDAY: 'Sun',
+	    CONFIRM: 'Confirm',
+	    ALL: 'All',
+	    UPLOAD: 'Upload',
+	    DROPDOWN_LIST: 'Dropdown List',
+	    MULTILEVEL_MENU: 'Multi-level Menu',
+	    GOTO: 'Goto',
+	    PAGE_NEXT: 'Next',
+	    PAGE_PREV: 'Prev',
+	    CANCEL: 'Cancel',
+	    NOTICE: 'Notice',
+	    ITEM_PAGE: '/page',
+	    TOTAL: 'total',
+	    ITEMS: 'items',
+	    PAGE: '',
+	    FORMAT_ERROR: 'Format Error',
+	    VALUE_ERROR: 'Value Error',
+	    LENGTH_ERROR: 'Length Error'
+		};
+
+/***/ }),
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3041,7 +3126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 102 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3112,83 +3197,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    });
 	};
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = {
-	    'zh-CN': __webpack_require__(104),
-	    'en-US': __webpack_require__(105)
-		};
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	module.exports = {
-	    PLEASE_SELECT: '请选择',
-	    PLEASE_INPUT: '请输入',
-	    NO_MATCH: '无匹配项目',
-	    CAL_MONDAY: '一',
-	    CAL_TUESDAY: '二',
-	    CAL_WENSDAY: '三',
-	    CAL_THURSDAY: '四',
-	    CAL_FRIDAY: '五',
-	    CAL_SATURDAY: '六',
-	    CAL_SUNDAY: '日',
-	    CONFIRM: '确定',
-	    ALL: '全部',
-	    UPLOAD: '上传',
-	    DROPDOWN_LIST: '下拉菜单',
-	    MULTILEVEL_MENU: '多级菜单',
-	    GOTO: '跳至',
-	    PAGE_NEXT: '下一页',
-	    PAGE_PREV: '上一页',
-	    CANCEL: '取消',
-	    NOTICE: '提示',
-	    ITEM_PAGE: '条/页',
-	    TOTAL: '共',
-	    ITEMS: '条',
-	    PAGE: '页'
-		};
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	module.exports = {
-	    PLEASE_SELECT: 'Please Select',
-	    PLEASE_INPUT: 'Please Input',
-	    NO_MATCH: 'No Match',
-	    CAL_MONDAY: 'Mon',
-	    CAL_TUESDAY: 'Tue',
-	    CAL_WENSDAY: 'Wen',
-	    CAL_THURSDAY: 'Thu',
-	    CAL_FRIDAY: 'Fri',
-	    CAL_SATURDAY: 'Sat',
-	    CAL_SUNDAY: 'Sun',
-	    CONFIRM: 'Confirm',
-	    ALL: 'All',
-	    UPLOAD: 'Upload',
-	    DROPDOWN_LIST: 'Dropdown List',
-	    MULTILEVEL_MENU: 'Multi-level Menu',
-	    GOTO: 'Goto',
-	    PAGE_NEXT: 'Next',
-	    PAGE_PREV: 'Prev',
-	    CANCEL: 'Cancel',
-	    NOTICE: 'Notice',
-	    ITEM_PAGE: '/page',
-	    TOTAL: 'total',
-	    ITEMS: 'items',
-	    PAGE: ''
-		};
 
 /***/ }),
 /* 106 */
@@ -7200,7 +7208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var template = __webpack_require__(183);
 	var _ = __webpack_require__(98);
 
-	var filter = __webpack_require__(101);
+	var filter = __webpack_require__(104);
 	var Calendar = __webpack_require__(184);
 	var TimePicker = __webpack_require__(304);
 	var bowser = __webpack_require__(96);
@@ -24113,9 +24121,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 309 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
+
+	var _ = __webpack_require__(98);
 
 	function stringBytes(c) {
 	  var n = c.length,
@@ -24132,23 +24142,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = {
-	  required: { type: 'isRequired', message: '请填写' },
-	  isEmail: { type: 'isEmail', message: '格式错误' },
-	  isURL: { type: 'isURL', message: '格式错误' },
+	  required: { type: 'isRequired', message: _.$trans('PLEASE_INPUT') },
+	  isEmail: { type: 'isEmail', message: _.$trans('FORMAT_ERROR') },
+	  isURL: { type: 'isURL', message: _.$trans('FORMAT_ERROR') },
 	  isInt: function isInt(min, max, message) {
 	    min = min / 1 || -Infinity;
 	    max = max / 1 || Infinity;
-	    return { type: 'isInt', message: message || '错误的值', options: { min: min, max: max } };
+	    return { type: 'isInt', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
 	  },
 	  isFloat: function isFloat(min, max, message) {
 	    min = min / 1 || -Infinity;
 	    max = max / 1 || Infinity;
-	    return { type: 'isFloat', message: message || '错误的值', options: { min: min, max: max } };
+	    return { type: 'isFloat', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
 	  },
 	  byteLen: function byteLen(min, max, message) {
 	    min = min || 0;
 	    max = max || Infinity;
-	    return { message: message || '长度错误', method: function method(value) {
+	    return { message: message || _.$trans('LENGTH_ERROR'), method: function method(value) {
 	        value = value || '';
 	        var len = stringBytes(value);
 	        return len >= min && len <= max;
