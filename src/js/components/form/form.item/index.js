@@ -61,7 +61,7 @@ var FormItem = Validation.extend({
         if (!this.controls.length) { return; }
 
         var controls = this.controls || [],
-            message = this.data.message || this.$trans('PLEASE_SELECT');
+            message = this.data.message;
         controls.forEach(function($component) {
           if (this.data.required) {
             $component.data.required = true;
