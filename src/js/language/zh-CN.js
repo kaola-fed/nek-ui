@@ -24,6 +24,6 @@ module.exports = {
     ITEMS: '条',
     PAGE: '页',
     FORMAT_ERROR: '格式错误',
-    VALUE_ERROR: '错误的值',
+    VALUE_ERROR: '值错误',
     LENGTH_ERROR: '长度错误',
 }
