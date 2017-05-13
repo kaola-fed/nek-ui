@@ -92,7 +92,9 @@ var Component = Regular.extend({
         this.data = {};
         this.config();
     },
-    $trans: _.$trans.bind(this),
+    $trans: function(key) {
+        return _.$trans(key, this);
+    },
 })
 .filter(filter)
 .directive(directive);

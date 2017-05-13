@@ -251,9 +251,9 @@ _.dom.fireEvent = function(node, eventName) {
     }
 };
 
-_.$trans = function(key) {
+_.$trans = function(key, self) {
     const $NEKUI = window.$NEKUI || {};
-    return language[$NEKUI.lang || (this.data ? this.data.lang : '') || 'zh-CN'][key] || '';
+    return language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || '';
 };
 
 module.exports = _;
