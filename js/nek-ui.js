@@ -24146,18 +24146,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isEmail: { type: 'isEmail', message: _.$trans('FORMAT_ERROR') },
 	  isURL: { type: 'isURL', message: _.$trans('FORMAT_ERROR') },
 	  isInt: function isInt(min, max, message) {
-	    min = min / 1 || -Infinity;
-	    max = max / 1 || Infinity;
+	    min = isNaN(min / 1) ? min / 1 : -Infinity;
+	    max = isNaN(max / 1) ? max / 1 : Infinity;
 	    return { type: 'isInt', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
 	  },
 	  isFloat: function isFloat(min, max, message) {
-	    min = min / 1 || -Infinity;
-	    max = max / 1 || Infinity;
+	    min = isNaN(min / 1) ? min / 1 : -Infinity;
+	    max = isNaN(max / 1) ? max / 1 : Infinity;
 	    return { type: 'isFloat', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
 	  },
 	  byteLen: function byteLen(min, max, message) {
-	    min = min || 0;
-	    max = max || Infinity;
+	    min = isNaN(min / 1) ? min / 1 : 0;
+	    max = isNaN(max / 1) ? max / 1 : Infinity;
 	    return { message: message || _.$trans('LENGTH_ERROR'), method: function method(value) {
 	        value = value || '';
 	        var len = stringBytes(value);
