@@ -1322,7 +1322,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.data = {};
 	        this.config();
 	    },
-	    $trans: _.$trans.bind(undefined)
+	    $trans: function $trans(key) {
+	        return _.$trans(key, this);
+	    }
 	}).filter(filter).directive(directive);
 
 		module.exports = Component;
@@ -2947,9 +2949,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	};
 
-	_.$trans = function (key) {
+	_.$trans = function (key, self) {
 	    var $NEKUI = window.$NEKUI || {};
-	    return language[$NEKUI.lang || (this.data ? this.data.lang : '') || 'zh-CN'][key] || '';
+	    return language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || '';
 	};
 
 	module.exports = _;
