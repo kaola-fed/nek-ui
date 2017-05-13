@@ -27,6 +27,7 @@ var Validation = require('../../../util/validation');
  * @param {string[]|number[]} [options.data.values=[]]          <=> 所有的选择值
  * @param {string}            [options.data.key=id]             => 数据项的键
  * @param {string[]}          [options.data.placeholders=[]]    => 默认项的文字
+ * @param {boolean}           [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {boolean}           [options.data.readonly=false]     => 是否只读
  * @param {boolean}           [options.data.disabled=false]     => 是否禁用
  * @param {boolean}           [options.data.visible=true]       => 是否显示
@@ -42,6 +43,7 @@ var SelectGroup = Component.extend({
     config: function() {
         _.extend(this.data, {
             // @inherited source: [],
+            hideTip: false,
             depth: 1,
             sources: [],
             selected: undefined,

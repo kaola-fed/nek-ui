@@ -25,6 +25,7 @@ var Validation = require('../../../util/validation');
  * @param {boolean}       [options.data.block=false]      => 多行显
  * @param {boolean}       [options.data.required=false]   => 是否必选
  * @param {string}        [options.data.message]          => 验证错误提示
+ * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
  * @param {boolean}       [options.data.visible=true]     => 是否显
@@ -40,6 +41,7 @@ var RadioGroup = SourceComponent.extend({
     config: function() {
         _.extend(this.data, {
             // @inherited source: [],
+            hideTip: false,
             selected: null,
             _radioGroupId: new Date(),
             required: false,

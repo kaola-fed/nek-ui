@@ -33,6 +33,7 @@ require('../check');
  * @param {string}            [options.data.key=id]                   => 数据项的键
  * @param {string}            [options.data.nameKey=name]             => 数据项的name键
  * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
+ * @param {boolean}           [options.data.hideTip=false]            => 是否显示校验错误信息
  * @param {boolean}           [options.data.required=false]           => 是否必填
  * @param {boolean}           [options.data.readonly=false]           => 是否只读
  * @param {boolean}           [options.data.disabled=false]           => 是否禁用
@@ -61,6 +62,7 @@ var Select = Dropdown.extend({
     config: function () {
         var data = this.data;
         _.extend(data, {
+            hideTip: false,
             selected: undefined,
             key: 'id',
             nameKey: 'name',

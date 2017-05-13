@@ -27,6 +27,7 @@ var Validation = require('../../../util/validation');
  * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
  * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
  * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
+ * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
  * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
  * @param {boolean}       [options.data.required=false]   => 是否必填
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
@@ -46,6 +47,7 @@ var DatePicker = Dropdown.extend({
         _.extend(this.data, {
             // @inherited source: [],
             // @inherited open: false,
+            hideTip: false,
             minDate: null,
             maxDate: null,
             placeholder: this.$trans('PLEASE_SELECT'),

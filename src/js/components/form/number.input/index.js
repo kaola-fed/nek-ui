@@ -16,6 +16,7 @@ var _ = require('../../../ui-base/_');
  * @param {string}        [options.data.state]            <=> 文本框的状态
  * @param {number}        [options.data.min]              => 最小值
  * @param {number}        [options.data.max]              => 最大值
+ * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
  * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
@@ -33,6 +34,7 @@ var NumberInput = Input.extend({
             value: 0,
             // @inherited state: '',
             // @inherited placeholder: '',
+            hideTip: false,
             min: undefined,
             max: undefined,
             autofocus: false

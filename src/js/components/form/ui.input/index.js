@@ -32,6 +32,7 @@ var bowser = require('bowser');
  * @param {string}          [options.data.class]              => 补充class
  * @param {number}          [options.data.decimalDigits]      => type=float时,最多输入几位小数的filter
  * @param {boolean}         [options.data.required]           => 【验证规则】是否必填
+ * @param {boolean}         [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
  * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
@@ -46,6 +47,7 @@ var Input = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
+            hideTip: false,
             value: '',
             type: 'char',
             placeholder: '',

@@ -25,6 +25,7 @@ var bowser = require('bowser');
  * @param {number}        [options.data.height=120]         => 高度
  * @param {boolean}       [options.data.required=false]     => 是否必填
  * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+ * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
@@ -40,6 +41,7 @@ var TextArea = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
+            hideTip: false,
             value: '',
             placeholder: '',
             state: '',

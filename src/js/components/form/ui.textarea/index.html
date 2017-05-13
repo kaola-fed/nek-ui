@@ -6,5 +6,5 @@
         on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change" ></textarea>
 	{#if maxlength && value}<span class="textarea_len">{value.length}/{maxlength}</span>{/if}
     {#if _eltIE9 && !value}<span class="textarea_placeholder">{placeholder}</span>{/if}
-    {#if tip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+    {#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </label>

@@ -27,6 +27,7 @@ var Validation = require('../../../util/validation');
  * @param {number}    [options.data.max]                => 最多选几项
  * @param {boolean}   [options.data.required]           => 是否必选
  * @param {string}    [options.data.message]            => 校验错误提示信息
+ * @param {boolean}   [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {boolean}   [options.data.block=false]        => 多行显示
  * @param {boolean}   [options.data.readonly=false]     => 是否只读
  * @param {boolean}   [options.data.disabled=false]     => 是否禁用
@@ -44,6 +45,7 @@ var CheckGroup = SourceComponent.extend({
         this.defaults({
             // @inherited source: [],
             block: false,
+            hideTip: false,
             source: [],
             min: 0,
             max: 1000,

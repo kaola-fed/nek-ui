@@ -31,6 +31,7 @@ var Validation = require('../../../util/validation');
  * @param {boolean}       [options.data.strict]                   => 是否为严格模式。当为严格模式时，`value`属性必须在source中选择，否则为空。
  * @param {boolean}       [options.data.autofocus]                => 是否自动获得焦点
  * @param {string}        [options.data.itemTemplate=null]        @=> 单项模板
+ * @param {boolean}       [options.data.hideTip=false]            => 是否显示校验错误信息
  * @param {boolean}       [options.data.open]                     <=> 当前为展开/收起状态
  * @param {boolean}       [options.data.readonly]                 => 是否只读
  * @param {boolean}       [options.data.disabled]                 => 是否禁用
@@ -48,6 +49,7 @@ var Suggest = Dropdown.extend({
         _.extend(this.data, {
             // @inherited source: [],
             // @inherited open: false,
+            hideTip: false,
             selected: null,
             value: '',
             id: '',
