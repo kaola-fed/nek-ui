@@ -7053,6 +7053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}    [options.data.max]                => 最多选几项
 	 * @param {boolean}   [options.data.required]           => 是否必选
 	 * @param {string}    [options.data.message]            => 校验错误提示信息
+	 * @param {boolean}   [options.data.hideTip=false]      => 是否显示校验错误信息
 	 * @param {boolean}   [options.data.block=false]        => 多行显示
 	 * @param {boolean}   [options.data.readonly=false]     => 是否只读
 	 * @param {boolean}   [options.data.disabled=false]     => 是否禁用
@@ -7070,6 +7071,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.defaults({
 	            // @inherited source: [],
 	            block: false,
+	            hideTip: false,
 	            source: [],
 	            min: 0,
 	            max: 1000,
@@ -7189,7 +7191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 179 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 180 */
@@ -7226,6 +7228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
 	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
 	 * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
+	 * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
 	 * @param {boolean}       [options.data.required=false]   => 是否必填
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
@@ -7245,6 +7248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _.extend(this.data, {
 	            // @inherited source: [],
 	            // @inherited open: false,
+	            hideTip: false,
 	            minDate: null,
 	            maxDate: null,
 	            placeholder: this.$trans('PLEASE_SELECT'),
@@ -7563,7 +7567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 183 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t\t{#else}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t\t{#else}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 184 */
@@ -23784,6 +23788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.state]            <=> 文本框的状态
 	 * @param {number}        [options.data.min]              => 最小值
 	 * @param {number}        [options.data.max]              => 最大值
+	 * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
@@ -23801,6 +23806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value: 0,
 	            // @inherited state: '',
 	            // @inherited placeholder: '',
+	            hideTip: false,
 	            min: undefined,
 	            max: undefined,
 	            autofocus: false
@@ -23924,6 +23930,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.class]              => 补充class
 	 * @param {number}          [options.data.decimalDigits]      => type=float时,最多输入几位小数的filter
 	 * @param {boolean}         [options.data.required]           => 【验证规则】是否必填
+	 * @param {boolean}         [options.data.hideTip=false]      => 是否显示校验错误信息
 	 * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
 	 * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
 	 * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
@@ -23938,6 +23945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    config: function config() {
 	        _.extend(this.data, {
+	            hideTip: false,
 	            value: '',
 	            type: 'char',
 	            placeholder: '',
@@ -24117,7 +24125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 308 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n\n"
+	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n\n"
 
 /***/ }),
 /* 309 */
@@ -24220,7 +24228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 311 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\n    <ui.input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label>\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\n    <ui.input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 312 */
@@ -26139,6 +26147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.block=false]      => 多行显
 	 * @param {boolean}       [options.data.required=false]   => 是否必选
 	 * @param {string}        [options.data.message]          => 验证错误提示
+	 * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]     => 是否显
@@ -26154,6 +26163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    config: function config() {
 	        _.extend(this.data, {
 	            // @inherited source: [],
+	            hideTip: false,
 	            selected: null,
 	            _radioGroupId: new Date(),
 	            required: false,
@@ -26272,7 +26282,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 331 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 332 */
@@ -26307,6 +26317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string[]|number[]} [options.data.values=[]]          <=> 所有的选择值
 	 * @param {string}            [options.data.key=id]             => 数据项的键
 	 * @param {string[]}          [options.data.placeholders=[]]    => 默认项的文字
+	 * @param {boolean}           [options.data.hideTip=false]      => 是否显示校验错误信息
 	 * @param {boolean}           [options.data.readonly=false]     => 是否只读
 	 * @param {boolean}           [options.data.disabled=false]     => 是否禁用
 	 * @param {boolean}           [options.data.visible=true]       => 是否显示
@@ -26322,6 +26333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    config: function config() {
 	        _.extend(this.data, {
 	            // @inherited source: [],
+	            hideTip: false,
 	            depth: 1,
 	            sources: [],
 	            selected: undefined,
@@ -26430,7 +26442,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 333 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip}\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n{/if}"
+	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 334 */
@@ -26469,6 +26481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.strict]                   => 是否为严格模式。当为严格模式时，`value`属性必须在source中选择，否则为空。
 	 * @param {boolean}       [options.data.autofocus]                => 是否自动获得焦点
 	 * @param {string}        [options.data.itemTemplate=null]        @=> 单项模板
+	 * @param {boolean}       [options.data.hideTip=false]            => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.open]                     <=> 当前为展开/收起状态
 	 * @param {boolean}       [options.data.readonly]                 => 是否只读
 	 * @param {boolean}       [options.data.disabled]                 => 是否禁用
@@ -26486,6 +26499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _.extend(this.data, {
 	            // @inherited source: [],
 	            // @inherited open: false,
+	            hideTip: false,
 	            selected: null,
 	            value: '',
 	            id: '',
@@ -26672,7 +26686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 335 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <label class=\"u-input\">\n            <input class=\"input\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n        </label>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>\n{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <label class=\"u-input\">\n            <input class=\"input\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n        </label>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 336 */
@@ -27221,6 +27235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}            [options.data.key=id]                   => 数据项的键
 	 * @param {string}            [options.data.nameKey=name]             => 数据项的name键
 	 * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
+	 * @param {boolean}           [options.data.hideTip=false]            => 是否显示校验错误信息
 	 * @param {boolean}           [options.data.required=false]           => 是否必填
 	 * @param {boolean}           [options.data.readonly=false]           => 是否只读
 	 * @param {boolean}           [options.data.disabled=false]           => 是否禁用
@@ -27249,6 +27264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    config: function config() {
 	        var data = this.data;
 	        _.extend(data, {
+	            hideTip: false,
 	            selected: undefined,
 	            key: 'id',
 	            nameKey: 'name',
@@ -27523,7 +27539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 345 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 346 */
@@ -27841,6 +27857,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}        [options.data.height=120]         => 高度
 	 * @param {boolean}       [options.data.required=false]     => 是否必填
 	 * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+	 * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.readonly=false]     => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]       => 是否显示
@@ -27856,6 +27873,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	    config: function config() {
 	        _.extend(this.data, {
+	            hideTip: false,
 	            value: '',
 	            placeholder: '',
 	            state: '',
@@ -27947,7 +27965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 352 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n\t{#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n\t{#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 353 */
