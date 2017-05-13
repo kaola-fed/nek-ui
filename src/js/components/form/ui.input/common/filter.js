@@ -10,7 +10,7 @@ module.exports = {
         var match = regexp.exec(value);
         if (match) value = match[0];
 
-        if (value) value = parseInt(value);
+        if (value && !isNaN(value)) value = parseInt(value);
         return value;
     },
     /**
@@ -30,7 +30,7 @@ module.exports = {
             value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
         }
   
-        if (value) value = parseFloat(value);
+        if (value && !isNaN(value)) value = parseFloat(value);
         return value;
     },
     "default": function(value) { return value; }
