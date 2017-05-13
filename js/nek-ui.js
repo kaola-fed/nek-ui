@@ -3132,6 +3132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = {
 	    PLEASE_SELECT: '请选择',
+	    PLEASE_INPUT: '请输入',
 	    NO_MATCH: '无匹配项目',
 	    CAL_MONDAY: '一',
 	    CAL_TUESDAY: '二',
@@ -3164,6 +3165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = {
 	    PLEASE_SELECT: 'Please Select',
+	    PLEASE_INPUT: 'Please Input',
 	    NO_MATCH: 'No Match',
 	    CAL_MONDAY: 'Mon',
 	    CAL_TUESDAY: 'Tue',
@@ -23916,7 +23918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}         [options.data.required]           => 【验证规则】是否必填
 	 * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
 	 * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
-	 * @oaram {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
+	 * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
 	 * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
 	 * @param {number}          [options.data.width]              => 组件宽度
 	 */
@@ -23988,6 +23990,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            max = this.data.max,
 	            message = this.data.message,
 	            rules = this.data.rules;
+
+	        if (name === 'required') {
+	            message = message || this.$trans('PLEASE_INPUT');
+	        }
 
 	        if (!this.data[name]) {
 	            return;
@@ -24273,7 +24279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        var controls = this.controls || [],
-	            message = this.data.message || this.$trans('PLEASE_SELECT');
+	            message = this.data.message;
 	        controls.forEach(function ($component) {
 	            if (this.data.required) {
 	                $component.data.required = true;
