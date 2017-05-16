@@ -3164,6 +3164,9 @@ body{
 .u-icon-plus:before{
 	content:"\e916";
 }
+.u-icon-home2:before{
+	content:"\e917";
+}
 .u-select{
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
