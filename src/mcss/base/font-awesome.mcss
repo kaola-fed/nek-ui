@@ -2093,3 +2093,6 @@
 .u-icon-plus:before {
   content: "\e916";
 }
+.u-icon-home2:before {
+  content: "\e917";
+}
