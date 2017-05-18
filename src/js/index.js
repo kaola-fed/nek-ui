@@ -14,6 +14,8 @@ const Components = {
     CheckGroup : require('./components/form/check.group'),
     DatePicker : require('./components/form/date.picker'),
     FormItem : require('./components/form/form.item'),
+    FormItemTitle: require('./components/form/form.item/modules/title'),
+    FormItemDescription: require('./components/form/form.item/modules/description'),
     NumberInput : require('./components/form/number.input'),
     RadioGroup : require('./components/form/radio.group'),
     SelectGroup : require('./components/form/select.group'),

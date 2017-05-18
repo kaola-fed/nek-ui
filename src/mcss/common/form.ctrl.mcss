@@ -72,7 +72,6 @@
     // - (It has been realized in normalize.css) Remove default vertical scrollbar in IE 8/9/10/11.
     // overflow: auto;
     // - Improve readability and alignment in all browsers.
-    vertical-align: top;
     width: 100%;
     height: 120px;
 }

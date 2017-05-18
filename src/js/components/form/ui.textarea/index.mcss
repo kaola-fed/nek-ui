@@ -12,7 +12,6 @@
     display: inline-block;
     position: relative;
     width:100%;
-    vertical-align:top;
     .textarea {
         padding: $u-formctrl_padding;
         color: $u-formctrl_color;
@@ -34,6 +33,10 @@
             background: $u-formctrl-disabled_background;
             color: $u-formctrl-disabled_color;
             $border: $u-formctrl-disabled_border;
+        }
+
+        &-error {
+            border-color: $u-formctrl-error-border;
         }
     }
     .textarea_placeholder {

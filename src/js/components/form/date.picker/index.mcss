@@ -7,3 +7,10 @@
 
 // Extends:
 // ========================================================================
+.u-datetimepicker {
+    .input {
+        &-error {
+            border-color: $u-formctrl-error-border;
+        }
+    }
+}

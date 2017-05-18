@@ -1,21 +1,24 @@
-{#if title}
-<div class="u-formitem {class}" cols="{cols}" offset="{offset}" row="{row}">
-	<label class="formitem_tt" cols="{labelCols}" size="{labelSize}" style="text-align:{textAlign}">
-		<span class="formitem_rqr" r-hide="{!required}">&#42;</span>
-		{title}
-		{#if tip}
-		<tooltip tip="{tip}">
-			<i class="u-icon u-icon-info-circle"></i>
-		</tooltip>
-		{/if}:
-	</label>
-	<span class="formitem_ct" remainCols="{labelCols}">
-		{#inc this.$body}
-	</span>
-</div>
+<div class="u-formitem {class}" cols="{cols}">
+  <!--title区块-->
+  {#if title || this.$title}
+  <label class="formitem_tt" cols="{labelCols}" size="{labelSize}" lineHeight="{labelLineHeight}" style="text-align:{textAlign}">
+    {#if title}
+      <span class="formitem_rqr" r-hide="{!required}">&#42;</span>{title}
+      {#if tip}<tooltip tip="{tip}"><i class="u-icon u-icon-warning formitem_info"></i></tooltip>{/if}
+    {#else}
+      {#inc this.$title.$body}
+    {/if}
+  </label>
+  {/if}
+  <!--内容区块-->
+  <span class="formitem_ct">
+    {#inc this.$body}
 
-{#else}
-<div class="{class}" cols="{cols}" offset="{offset}" row="{row}">
-	{#inc this.$body}
+    <!--说明区块-->
+    {#if this.$description}
+      <div lineHeight="{labelLineHeight}" class="formitem_desc">
+        {#inc this.$description.$body}
+      </div>
+    {/if}
+  </span>
 </div>
-{/if}

@@ -73,7 +73,7 @@ $u-radio_u-icon_font-size = 7px;
 
 .u-radio-block {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: $size-base;
 }
 
 

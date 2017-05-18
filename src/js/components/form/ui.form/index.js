@@ -14,6 +14,7 @@ var template = require('./index.html');
  * @param {string}      [options.data.class]              => 扩展样式
  * @param {boolean}     [options.data.inline='']          => 如果true,form.item按照inline-block排列
  * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
+ * @param {string|number} [options.data.labelSize='']     => 批量设置form.item的labelSize,取值与form.item的labelSize相同
  */
 var UIForm = Validation.extend({
     name: 'ui.form',
@@ -51,6 +52,7 @@ var UIForm = Validation.extend({
 
         this.$watch('this.controls.length', function() {
           this.initSelectorSource();
+          this.initLabelSize();
         });
 
         this.adjustInline();
@@ -65,6 +67,13 @@ var UIForm = Validation.extend({
                     $component.$update('labelCols', 0);
                 }
             });
+        });
+    },
+    initLabelSize: function() {
+        var controls = this.controls,
+            labelSize = this.data.labelSize;
+        labelSize && controls.forEach(function($component) {
+            $component.$update('labelSize', labelSize);
         });
     },
     initSelectorSource: function() {

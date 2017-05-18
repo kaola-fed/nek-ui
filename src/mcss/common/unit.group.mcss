@@ -18,16 +18,20 @@
     }
 
     .u-check, .u-radio{
+        margin-bottom: $size-base;
         margin-right: 40px;
     }
-    .u-check:last-child, .u-radio:last-child{
+    .u-check:last-child, .u-radio:last-child {
         margin-right: 0;
+    }
+    .u-tip {
+        margin-top: 0;
     }
 }
 
 .u-unitgroup-sm {
     font-size: 0;   //解决display: inline-block的元素之前产生的间距
-    .u-btn{
+    .u-btn {
         margin-right: 8px;
     }
     .u-btn:last-child{
