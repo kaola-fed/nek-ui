@@ -26,4 +26,5 @@ module.exports = {
     FORMAT_ERROR: 'Format Error',
     VALUE_ERROR: 'Value Error',
     LENGTH_ERROR: 'Length Error',
+    LOADING: 'Loading'
 }

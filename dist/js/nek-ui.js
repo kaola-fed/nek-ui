@@ -128,9 +128,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Layout
 	    Panel: __webpack_require__(358),
 	    PanelTool: __webpack_require__(393),
+	    UITable: __webpack_require__(394),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(394)
+	    LocaleProvider: __webpack_require__(407)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -3016,7 +3017,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PAGE: '页',
 	    FORMAT_ERROR: '格式错误',
 	    VALUE_ERROR: '值错误',
-	    LENGTH_ERROR: '长度错误'
+	    LENGTH_ERROR: '长度错误',
+	    LOADING: '加载中'
 		};
 
 /***/ }),
@@ -3052,7 +3054,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PAGE: '',
 	    FORMAT_ERROR: 'Format Error',
 	    VALUE_ERROR: 'Value Error',
-	    LENGTH_ERROR: 'Length Error'
+	    LENGTH_ERROR: 'Length Error',
+	    LOADING: 'Loading'
 		};
 
 /***/ }),
@@ -30491,6 +30494,1013 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableHeader = __webpack_require__(395);
+	var TableBody = __webpack_require__(398);
+	var TableCol = __webpack_require__(399);
+	var TableTemplate = __webpack_require__(396);
+	var _ = __webpack_require__(98);
+	var utils = __webpack_require__(400);
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(406);
+
+	var getLeaves = function getLeaves(columns) {
+	    var res = [];
+	    var extractLeaves = function extractLeaves(columns) {
+	        if (columns.forEach) {
+	            return columns.forEach(function (item) {
+	                if (item.children && item.children.length > 0) {
+	                    extractLeaves(item.children);
+	                } else {
+	                    res.push(item);
+	                }
+	            });
+	        }
+	    };
+	    extractLeaves(columns);
+	    return res;
+	};
+
+	var UiTable = Component.extend({
+	    name: 'ui.table',
+	    template: tpl,
+	    computed: {
+	        bodyHeight: {
+	            get: function get() {
+	                var data = this.data;
+	                if (data.height != undefined && data.headerHeight != undefined) {
+	                    return +data.height - data.headerHeight;
+	                }
+	            },
+	            set: function set(val) {
+	                return this.data.bodyHeight = val;
+	            }
+	        }
+	    },
+	    config: function config(data) {
+	        this.defaults({
+	            enableHover: true,
+	            scrollYBar: 0,
+	            scrollXBar: 0,
+
+	            show: true,
+	            x: 1,
+	            columns: [],
+	            sorting: {},
+	            config: {},
+	            _scrollBarTimer: null
+	        });
+	        this.supr(data);
+
+	        this._initWatchers();
+	    },
+
+	    _initWatchers: function _initWatchers() {
+	        this.$watch('scrollYBar', this._onScrollYBarChange);
+	        this.$watch('columns', this._onColumnsChange);
+
+	        this._onScroll = utils.throttle(this._onScroll.bind(this), 200);
+	        window.document.addEventListener('scroll', this._onScroll);
+
+	        this._watchWidthChange();
+	    },
+
+	    _onScroll: function _onScroll() {
+	        var data = this.data;
+
+	        if (data.stickyHeader) {
+	            this._updateStickyHeaderStatus();
+	        }
+
+	        if (data.stickyFooter) {
+	            this._updateStickyFooterStatus();
+	        }
+	    },
+
+	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus() {
+	        var headerHeight = this._getHeaderHeight();
+	        var scrollY = window.scrollY;
+	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+	        var tableWrapOffset = {
+	            top: tableRect.top + scrollTop,
+	            bottom: tableRect.bottom + scrollTop
+	        };
+
+	        if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
+	            this.$update('stickyHeaderActive', false);
+	        } else if (scrollY > tableWrapOffset.top) {
+	            this.$update('stickyHeaderActive', true);
+	        }
+	    },
+
+	    _updateStickyFooterStatus: function _updateStickyFooterStatus() {
+	        this._getHeaderHeight();
+	        var scrollY = window.scrollY;
+	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	        var innerHeight = window.innerHeight;
+
+	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+	        var tableWrapOffset = {
+	            top: tableRect.top + scrollTop,
+	            bottom: tableRect.bottom + scrollTop
+	        };
+
+	        if (scrollY + innerHeight > tableWrapOffset.bottom) {
+	            this.$update('stickyFooterActive', false);
+	        } else if (scrollY > tableWrapOffset.top && scrollY < tableWrapOffset.bottom) {
+	            this.$update('stickyFooterActive', true);
+	        }
+	    },
+
+	    getNum: function getNum(str) {
+	        return +(str + '').split('px')[0];
+	    },
+
+	    _watchWidthChange: function _watchWidthChange() {
+	        this.data._widthTimer = setInterval(function () {
+	            this._updateScrollBar();
+	            this._updateColumnsWidth();
+	            this._updateFixedColumnWidth();
+	        }.bind(this), 200);
+	    },
+
+	    _updateScrollBar: function _updateScrollBar() {
+	        var data = this.data;
+	        var tableWrap = this.$refs.bodyWrap;
+	        if (!tableWrap) {
+	            return;
+	        }
+
+	        var yBarWidth = tableWrap.offsetWidth - tableWrap.clientWidth;
+	        var xBarWidth = tableWrap.offsetHeight - tableWrap.clientHeight;
+
+	        if (data.scrollYBar !== yBarWidth) {
+	            this.$update('scrollYBar', yBarWidth);
+	        }
+	        if (data.scrollXBar !== xBarWidth) {
+	            this.$update('scrollXBar', xBarWidth);
+	        }
+	    },
+
+	    _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
+	        if (oldVal === undefined) {
+	            return;
+	        }
+	        this._updateTableWidth();
+	    },
+
+	    _onColumnsChange: function _onColumnsChange(newVal) {
+	        if (newVal) {
+	            this._updateDataColumn();
+	        }
+	    },
+
+	    _updateDataColumn: function _updateDataColumn() {
+	        this.data._dataColumns = getLeaves(this.data.columns);
+	    },
+
+	    init: function init() {
+	        this._initTable();
+	    },
+
+	    _initTable: function _initTable() {
+	        setTimeout(function () {
+	            this.$update('headerHeight', this.$refs.headerWrap.offsetHeight);
+	            this._initTableWidth();
+	            this._getHeaderHeight();
+	            this._updateStickyHeaderStatus();
+	        }.bind(this), 200);
+	    },
+
+	    _updateTableWidth: function _updateTableWidth() {
+	        this._updateColumnsWidth();
+	        this._updateFixedColumnWidth();
+	    },
+
+	    _initTableWidth: function _initTableWidth() {
+	        var data = this.data;
+	        var _dataColumns = data._dataColumns;
+	        if (!_dataColumns) {
+	            return;
+	        }
+
+	        var tableWidth = this.$refs.table.clientWidth;
+	        var customWidthCount = 0;
+	        var customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
+	            var width = parseInt(current.width);
+	            if (width) {
+	                customWidthCount++;
+	                return previous + width;
+	            }
+	            return previous;
+	        }, 0);
+
+	        var tableViewWidth = tableWidth - data.scrollYBar;
+	        var autoWidth = Math.floor((tableViewWidth - customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
+	        autoWidth = autoWidth >= 0 ? autoWidth : 100;
+
+	        var totalWidth = 0;
+	        _dataColumns.forEach(function (dataColumn) {
+	            dataColumn._width = parseInt(dataColumn.width || autoWidth);
+	            totalWidth += dataColumn._width;
+	            return dataColumn;
+	        });
+	        data.tableWidth = totalWidth;
+	        this.$update();
+	    },
+
+	    _getHeaderHeight: function _getHeaderHeight() {
+	        var headerHeight = this.data.headerHeight;
+	        if (headerHeight != undefined) {
+	            return headerHeight;
+	        }
+	        var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
+	        headerHeight = this.getNum(computedStyle.marginTop) + this.getNum(computedStyle.borderTopWidth) + this.getNum(this.$refs.headerWrap.offsetHeight) + this.getNum(computedStyle.borderBottomWidth) + this.getNum(computedStyle.marginBottom);
+
+	        this.$update('headerHeight', headerHeight);
+	        return headerHeight;
+	    },
+
+	    _getFooterHeight: function _getFooterHeight() {
+	        var footerHeight = this.data.footerHeight;
+	        if (footerHeight != undefined) {
+	            return footerHeight;
+	        }
+	        var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
+	        footerHeight = this.getNum(computedStyle.marginTop) + this.getNum(computedStyle.borderTopWidth) + this.getNum(this.$refs.footerWrap.offsetHeight) + this.getNum(computedStyle.borderBottomWidth) + this.getNum(computedStyle.marginBottom);
+
+	        this.$update('footerHeight', footerHeight);
+	        return footerHeight;
+	    },
+
+	    _updateColumnsWidth: function _updateColumnsWidth() {
+	        var data = this.data;
+	        var _dataColumns = data._dataColumns;
+	        if (!_dataColumns) {
+	            return;
+	        }
+	        var newTableWidth = _dataColumns.reduce(function (previous, current) {
+	            return previous + current._width;
+	        }, 0);
+
+	        if (data.tableWidth !== newTableWidth) {
+	            this.$update('tableWidth', newTableWidth);
+	        }
+	    },
+
+	    _updateFixedColumnWidth: function _updateFixedColumnWidth() {
+	        var data = this.data;
+	        if (!data._dataColumns || !this.$refs.table && this.$refs.table.clientWidth <= 0) {
+	            return;
+	        }
+
+	        var fixedCol = false;
+	        var fixedColRight = false;
+	        var fixedTableWidth = 0;
+	        var fixedTableWidthRight = 0;
+	        data._dataColumns.forEach(function (item) {
+	            if (item._width && item.fixed) {
+	                if (item.fixed === 'right') {
+	                    fixedColRight = true;
+	                    fixedTableWidthRight += item._width;
+	                } else {
+	                    fixedCol = true;
+	                    fixedTableWidth += item._width;
+	                }
+	            }
+	        });
+
+	        data.fixedTableWidth = fixedTableWidth;
+	        data.fixedTableWidthRight = fixedTableWidthRight;
+	        data.fixedCol = fixedCol;
+	        data.fixedColRight = fixedColRight;
+	        this.$update();
+	    },
+
+	    _onBodyScroll: function _onBodyScroll(host) {
+	        var $refs = this.$refs;
+
+	        this._setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+	        this._setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+	        this._setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+	        this._setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+	    },
+
+	    _setElementValue: function _setElementValue(ele, prop, val) {
+	        if (ele) {
+	            ele[prop] = val;
+	        }
+	    },
+
+	    _onSort: function _onSort(e) {
+	        this.$emit('sort', e);
+	    },
+
+	    _onCustomEvent: function _onCustomEvent(e) {
+	        this.$emit(e.type, _.extend({
+	            sender: this,
+	            custom: true
+	        }, e.args));
+	    },
+
+	    _onItemCheckChange: function _onItemCheckChange(e) {
+	        this.$emit('checkchange', {
+	            sender: this,
+	            item: e.item,
+	            checked: e.checked,
+	            checkedEvent: e.event
+	        });
+	    },
+
+	    emitEvent: function emitEvent(type) {
+	        var args = [].slice.call(arguments, 1);
+	        this.$emit(type, {
+	            custom: true,
+	            sender: this,
+	            param: args
+	        });
+	    },
+
+	    _onExpand: function _onExpand(e) {
+	        this.$emit('expand', {
+	            sender: this,
+	            expand: e.expand,
+	            item: e.item,
+	            itemIndex: e.itemIndex,
+	            column: e.column
+	        });
+	    },
+
+	    _onFixedExpand: function _onFixedExpand(e) {
+	        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+	    },
+
+	    destroy: function destroy() {
+	        clearInterval(this.data._widthTimer);
+	        window.document.removeEventListener('scroll', this._onScroll);
+	        this.supr();
+	    }
+	}).component('table.header', TableHeader).component('table.body', TableBody).component('table.col', TableCol).component('table.template', TableTemplate);
+
+		module.exports = UiTable;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableTemplate = __webpack_require__(396);
+	// var _ = require('utils/extend');
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(397);
+	//
+	// var _parseFormat = function(str) {
+	//     return str.replace(/</g, '&lt;')
+	//         .replace(/>/g, '&gt;');
+	// };
+
+	var TableBasic = Component.extend({
+	    template: tpl,
+	    computed: {
+	        fixedWidth: {
+	            get: function get() {
+	                return this.data.headers.reduce(function (previous, current) {
+	                    if (current.fixed) {
+	                        return previous + current._width;
+	                    }
+	                    return previous;
+	                }, 0);
+	            }
+	        }
+	    },
+
+	    config: function config(data) {
+	        this.defaults({
+	            type: '',
+	            enableHover: true,
+	            show: true,
+	            x: 1,
+	            columns: [],
+	            sorting: {},
+	            config: {}
+	        });
+	        this.supr(data);
+	        this._updateHeaders();
+	    },
+
+	    _updateHeaders: function _updateHeaders() {
+	        var columns = this.data.columns;
+
+	        if (!columns) {
+	            return;
+	        }
+
+	        var headers = [];
+	        var extractHeaders = function extractHeaders(columns, depth) {
+	            columns.forEach(function (column) {
+	                if (column.children && column.children.length > 0) {
+	                    column._dataColumn = extractHeaders(column.children, depth + 1);
+	                }
+	                if (!headers[depth]) {
+	                    headers[depth] = [];
+	                }
+	                if (column.children && column.children.length > 0) {
+	                    column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
+	                        if (current.childrenDepth > previous) {
+	                            return current.childrenDepth;
+	                        }
+	                        return previous;
+	                    }, -1);
+	                    column.colSpan = column.children.reduce(function (previous, current) {
+	                        if (current.colSpan) {
+	                            return previous + current.colSpan;
+	                        }
+	                        return previous;
+	                    }, 0);
+	                } else {
+	                    column.childrenDepth = 0;
+	                    column.colSpan = 1;
+	                }
+	                headers[depth].push(column);
+	            });
+	        };
+	        extractHeaders(columns, 0);
+	        this.data.headers = headers;
+	    },
+
+	    _onHeaderClick: function _onHeaderClick(header, headerIndex) {
+	        if (!header.sortable) {
+	            return;
+	        }
+	        this._onSort(header, headerIndex);
+	    },
+
+	    _onSort: function _onSort(header, headerIndex) {
+	        if (header._isDragging) {
+	            return;
+	        }
+	        var sorting = this.data.sorting;
+
+	        if (sorting.key === header.key) {
+	            sorting.isAsc = !sorting.isAsc;
+	        } else {
+	            sorting.isAsc = header.isDefaultAsc || false;
+	        }
+
+	        sorting.columnIndex = headerIndex;
+	        sorting.key = header.key;
+
+	        this.$emit('sort', {
+	            sender: this,
+	            sorting: sorting,
+	            column: header,
+	            columnIndex: headerIndex,
+	            key: header.key,
+	            asc: sorting.isAsc
+	        });
+	    },
+
+	    _onMouseDown: function _onMouseDown(e, header, headerIndex, headerTrIndex) {
+	        var data = this.data;
+	        if (!data._ok2ResizeCol) {
+	            return;
+	        }
+	        header._isDragging = true;
+
+	        var tableLeft = this.$parent.$refs.table.getBoundingClientRect().left;
+	        var mouseLeft = e.pageX;
+	        var headerEle = this.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
+	        var headerLeft = headerEle.getBoundingClientRect().left;
+
+	        header._resizeParam = {
+	            tableLeft: tableLeft,
+	            mouseLeft: mouseLeft,
+	            headerLeft: headerLeft
+	        };
+
+	        var resizeProxy = this.$parent.$refs.resizeProxy;
+	        resizeProxy.style.visibility = 'visible';
+
+	        var onMouseMove = function onMouseMove(_e) {
+	            var proxyLeft = _e.pageX - tableLeft;
+	            var headerWidth = _e.pageX - headerLeft;
+
+	            if (headerWidth > 30) {
+	                resizeProxy.style.left = proxyLeft + 'px';
+	            }
+
+	            _e.preventDefault();
+	        };
+
+	        var onMouseUp = function onMouseUp(_e) {
+	            _e.preventDefault();
+	            resizeProxy.style.visibility = 'hidden';
+	            document.body.style.cursor = '';
+	            header._isDragging = false;
+
+	            var headerWidth = _e.pageX - headerLeft;
+
+	            var setWidth = function setWidth(column, width) {
+	                var children = column.children;
+	                if (children && children.length > 0) {
+	                    setWidth(children[children.length - 1], width);
+	                    return;
+	                }
+	                column._width = Math.max(width, 30);
+	            };
+
+	            var getWidth = function getWidth(column) {
+	                var ret = {
+	                    width: 0,
+	                    lastLeafWidth: 0
+	                };
+	                if (column.children && column.children.length > 0) {
+	                    column.children.forEach(function (item, index) {
+	                        var tmp = getWidth(item);
+	                        if (index === column.children.length - 1) {
+	                            ret.lastLeafWidth = tmp.width;
+	                        }
+	                        ret.width += tmp.width;
+	                    });
+	                } else {
+	                    return {
+	                        width: column._width,
+	                        lastLeafWidth: column._width
+	                    };
+	                }
+	                return ret;
+	            };
+
+	            var widthInfo = getWidth(header);
+	            setWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
+
+	            document.removeEventListener('mousemove', onMouseMove);
+	            document.removeEventListener('mouseup', onMouseUp);
+	        };
+
+	        document.addEventListener('mousemove', onMouseMove);
+	        document.addEventListener('mouseup', onMouseUp);
+	    },
+
+	    _onMouseUp: function _onMouseUp(e, header) {
+	        var data = this.data;
+	        if (!data._ok2ResizeCol) {
+	            return;
+	        }
+	        header._isDragging = false;
+	    },
+
+	    _onMouseMove: function _onMouseMove(e, header) {
+	        var target = e.target;
+	        while (target && target.tagName !== 'TH') {
+	            target = target.parentNode;
+	        }
+	        var data = this.data;
+
+	        if (!header._isDragging) {
+	            var rect = target.getBoundingClientRect();
+	            var bodyStyle = document.body.style;
+	            if (rect.width > 12 && rect.right - event.pageX < 8) {
+	                bodyStyle.cursor = 'col-resize';
+	                data._ok2ResizeCol = true;
+	            } else if (!header._dragging) {
+	                bodyStyle.cursor = '';
+	                data._ok2ResizeCol = false;
+	            }
+	        }
+	    }
+	}).filter('sortingClass', function (header) {
+	    var data = this.data;
+	    var sorting = data.sorting;
+	    if (sorting) {
+	        if (sorting.key === header.key) {
+	            return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
+	        }
+	        return '';
+	    }
+	});
+
+	TableBasic.component('table.template', TableTemplate);
+
+	module.exports = TableBasic;
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+
+	var TableCol = Component.extend({
+	    name: 'table.template',
+	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	    config: function config() {
+	        this.defaults({
+	            type: 'content'
+	        });
+	    },
+
+	    init: function init() {
+	        this._register();
+	    },
+
+	    _register: function _register() {
+	        switch (this.data.type) {
+	            case 'header':
+	                this._register2Header();break;
+	            case 'sub':
+	                this._register2Sub();break;
+	            default:
+	                this._register2Content();
+	        }
+	    },
+
+	    _register2Content: function _register2Content() {
+	        var outerData = this.$outer.data;
+	        if (!outerData._templates) {
+	            outerData._templates = [];
+	        }
+	        outerData._templates.push(this.getInnertTemplate());
+	    },
+
+	    _register2Header: function _register2Header() {
+	        var outerData = this.$outer.data;
+	        if (!outerData._headerTemplates) {
+	            outerData._headerTemplates = [];
+	        }
+	        outerData._headerTemplates.push(this.getInnertTemplate());
+	    },
+
+	    _register2Sub: function _register2Sub() {
+	        this.$outer.data._subs = this.getInnertTemplate();
+	    },
+
+	    getInnertTemplate: function getInnertTemplate() {
+	        var template = this.$refs.bodyContainer.innerHTML;
+	        return this.parseTemplate(template);
+	    },
+
+	    parseTemplate: function parseTemplate(template) {
+	        // <a>$:item.title:$ - $:item.value:$</a>
+	        return template.replace(/(<!--)(.*)(-->)/g, '')
+	        // .replace(/\$:/g, '{')
+	        // .replace(/:\$/g, '}')
+	        .replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/:\$/g, '}').trim();
+	    }
+
+	});
+
+		module.exports = TableCol;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th id=\"table_th_{headerTr_index}_{header_index}\"\n                        ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),\n                        }}\n                        colspan=\"{header.colSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseup={this._onMouseUp($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {header.name}\n                            <span>\n                                {#if tip}\n                                    <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                        <i class=\"u-icon u-icon-info-circle\" />\n                                    </tooltip>\n                                {/if}\n                                {#if header.sortable && header.key}\n                                    <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                        <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                    </i>\n                                {/if}\n                            </span>\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableCol = __webpack_require__(399);
+	var TableTemplate = __webpack_require__(396);
+	var _ = __webpack_require__(400);
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(401);
+	var templates = __webpack_require__(402);
+
+	var _parseFormat = function _parseFormat(str) {
+	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	};
+
+	var TableBasic = Component.extend({
+	    template: tpl,
+	    config: function config(data) {
+	        this.defaults({
+	            type: '',
+	            enableHover: true,
+	            show: true,
+	            x: 1,
+	            columns: [],
+	            sorting: {},
+	            config: {}
+	        });
+	        this.supr(data);
+	    },
+
+	    _onExpand: function _onExpand(item, itemIndex, column) {
+	        if (!this.data.fixedCol) {
+	            this._expandTr(item, itemIndex, column);
+	        }
+
+	        this.$emit('expand', {
+	            sender: this,
+	            expand: item.expand,
+	            column: column,
+	            item: item,
+	            index: itemIndex
+	        });
+	    },
+
+	    _onItemCheckChange: function _onItemCheckChange(item, e) {
+	        this.$emit('checkchange', {
+	            item: item,
+	            checked: e.checked,
+	            event: e
+	        });
+	    },
+
+	    _expandTr: function _expandTr(item, itemIndex, column) {
+	        item._expanddingColumn = column;
+	        item.expand = !item.expand;
+
+	        this._updateSubTrHeight(item, itemIndex);
+	    },
+
+	    _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
+	        var timer = setInterval(function () {
+	            var tdElement = this.$refs['td' + itemIndex];
+	            if (tdElement && item._expandHeight !== tdElement.clientHeight) {
+	                item._expandHeight = tdElement.clientHeight;
+	                this.$update();
+	            }
+	            if (!item.expand) {
+	                clearInterval(timer);
+	            }
+	        }.bind(this), 100);
+	    },
+
+	    _onSubEvent: function _onSubEvent(type, table, e) {
+	        this.$emit('subevent', {
+	            sender: table,
+	            type: type,
+	            event: e
+	        });
+	    },
+
+	    _isArray: function _isArray(arr) {
+	        return _.isArray(arr);
+	    },
+
+	    _getTDElement: function _getTDElement(column, item) {
+	        if (column.format || column.formatter || column.template) {
+	            return this._getCustom(column, item);
+	        }
+	        return templates.get(column.type);
+	    },
+
+	    _getCustom: function _getCustom(column, item) {
+	        if (column.template) {
+	            return this._getTemplate(column);
+	        } else if (column.formatter) {
+	            return this._getFormatter(column, item);
+	        } else if (column.format) {
+	            return this._getFormat(column);
+	        }
+	        return '';
+	    },
+
+	    _getTemplate: function _getTemplate(column) {
+	        if (_.isArray(column.template)) {
+	            return '{#list column.template as template by template_index}{#include template}{/list}';
+	        }
+	        return '{#include column.template}';
+	    },
+
+	    _getFormatter: function _getFormatter(column, item) {
+	        var formatter = column.formatter;
+	        if (_.isArray(formatter)) {
+	            return formatter.reduce(function (previous, current) {
+	                return previous + (current.call(this, column, item) || '');
+	            }.bind(this), '');
+	        }
+	        return formatter.call(this, column, item) || '';
+	    },
+
+	    _getFormat: function _getFormat(column) {
+	        var format = column.format;
+	        if (_.isArray(format)) {
+	            return format.reduce(function (previous, current) {
+	                return previous + _parseFormat(current);
+	            }.bind(this), '');
+	        }
+	        return _parseFormat(format);
+	    },
+
+	    emitEvent: function emitEvent(type) {
+	        var args = [].slice.call(arguments, 1);
+	        this.$emit('customevent', {
+	            type: type,
+	            sender: this,
+	            args: {
+	                param: args
+	            }
+	        });
+	    },
+
+	    _onTrHover: function _onTrHover($event, item) {
+	        item._hover = true;
+	    },
+
+	    _onTrBlur: function _onTrBlur($event, item) {
+	        item._hover = false;
+	    }
+	}).filter('placeholder', function (val) {
+	    if (val === null || val === undefined) {
+	        return '-';
+	    }
+	    return val;
+	}).filter('expandSign', function (item) {
+	    return item.expand ? '-' : '+';
+	});
+
+	TableBasic.component('table.col', TableCol);
+	TableBasic.component('table.template', TableTemplate);
+
+	module.exports = TableBasic;
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var TableTemplate = __webpack_require__(396);
+
+	var TableCol = Component.extend({
+	    name: 'table.col',
+	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	    config: function config() {
+	        this.defaults({
+	            _innerColumns: [],
+	            colSpan: 1
+	        });
+	    },
+
+	    init: function init() {
+	        this._register();
+	    },
+
+	    _register: function _register() {
+	        var $outer = this.$outer;
+	        if ($outer.name === 'ui.table') {
+	            this._register2Table();
+	        } else if ($outer.name === 'table.col') {
+	            this._register2TableCol();
+	        }
+	    },
+
+	    _register2Table: function _register2Table() {
+	        var _outer = this.data._outer = this.$outer;
+	        this._push2Columns(_outer.data.columns);
+	    },
+
+	    _register2TableCol: function _register2TableCol() {
+	        var _outer = this.$outer;
+	        this._push2Columns(_outer.data._innerColumns);
+	    },
+
+	    _push2Columns: function _push2Columns(columns) {
+	        var data = this.data;
+
+	        columns && columns.push({
+	            name: data.name,
+	            key: data.key,
+	            type: data.type,
+	            width: data.width,
+	            tdClass: data.tdClass,
+	            thClass: data.thClass,
+	            sortable: data.sortable,
+	            expandable: data.expandable,
+	            template: data._templates,
+	            subs: data._subs,
+	            children: data._innerColumns,
+	            fixed: data.fixed
+	        });
+	    }
+	}).filter('sortingClass', function (key) {
+	    var data = this.data;
+	    var sorting = data.sorting;
+	    if (sorting) {
+	        if (sorting.key === key) {
+	            return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
+	        }
+	        return '';
+	    }
+	}).component('table.tempalte', TableTemplate);
+
+		module.exports = TableCol;
+
+/***/ }),
+/* 400 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	var _ = {};
+
+	_.isType = function (target, type) {
+	    return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
+	};
+
+	['String', 'Object', 'Array', 'Number', 'Null', 'Undefined'].forEach(function (item) {
+	    _['is' + item] = function (target) {
+	        return _.isType(target, item.toLowerCase());
+	    };
+	});
+
+	_.fillWithZero = function (val, len) {
+	    var valLen = val.toString().length;
+	    if (valLen < len) {
+	        return (Array(len).join(0) + val).slice(-len);
+	    }
+	    return val + '';
+	};
+
+	_.throttle = function (fn, delay) {
+	    var last = null;
+	    var timer = null;
+	    delay = delay || 100;
+	    return function () {
+	        var now = +new Date();
+	        var args = [].slice.call(arguments, 0);
+
+	        clearTimeout(timer);
+	        if (now - last > delay) {
+	            last = now;
+	            fn.apply(this, args);
+	        } else {
+	            // run at last time
+	            setTimeout(function () {
+	                fn.apply(this, args);
+	            }.bind(this), delay);
+	        }
+	    };
+	};
+
+	module.exports = _;
+
+/***/ }),
+/* 401 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={column.length}>\n                <loading visible={loading} static/>{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {column.tdClass}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.subs}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{emptyInfo}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+
+/***/ }),
+/* 402 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var tplMap = {
+	    default: __webpack_require__(403),
+	    progress: __webpack_require__(404),
+	    check: __webpack_require__(405)
+	};
+
+	exports.get = function getTemplate(type) {
+	    return tplMap[type] || tplMap.default;
+	};
+
+/***/ }),
+/* 403 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={value}>{value | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"{column.lineClamp || lineClamp ? 'f-ellipsis f-line-clamp-' + (column.lineClamp || lineClamp) : ''}\" title={item[column.key]}>{item[column.key] | placeholder}</span>\n{/if}\n"
+
+/***/ }),
+/* 404 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
+
+/***/ }),
+/* 405 */
+/***/ (function(module, exports) {
+
+	module.exports = "<check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}\n    r-style={{\n        width: width == undefined ? 'auto' : width + 'px'\n    }}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: width == undefined ? 'auto' : width + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeader\"\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                _dataColumns={_dataColumns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table.body\n                ref=\"tableBody\"\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                _dataColumns={_dataColumns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeaderFixed\"\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body\n                ref=\"tableBodyFixed\"\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: 0,\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px'\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}>\n            <table.header ref=\"tableHeaderFixedRight\"\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                _dataColumns={_dataColumns}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body ref=\"tableBodyFixedRight\"\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    {#if paging}\n    <pager position={paging.position || 'right'}\n        current={paging.current}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+
+/***/ }),
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

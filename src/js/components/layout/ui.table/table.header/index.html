@@ -1,0 +1,58 @@
+<table
+    class="table_tb"
+    r-style={{
+        'width': width == undefined ? 'auto' : width + 'px',
+        'text-align': config.textAlign || 'center',
+        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''
+    }}>
+    <colgroup>
+        {#list _dataColumns as _dataColumn by _dataColumn_index}
+            <col width={_dataColumn._width}>
+        {/list}
+        {#if scrollYBar}
+            <col name="gutter" width={scrollYBar}>
+        {/if}
+    </colgroup>
+
+    <thead class="tb_hd">
+        {#list headers as headerTr by headerTr_index}
+            <tr class="tb_hd_tr">
+                {#list headerTr as header by header_index}
+                    <th id="table_th_{headerTr_index}_{header_index}"
+                        ref="table_th_{headerTr_index}_{header_index}"
+                        class="tb_hd_th {header.thClass}"
+                        r-class={{
+                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),
+                        }}
+                        colspan="{header.colSpan}"
+                        rowspan="{headers.length - headerTr_index - header.childrenDepth}"
+                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}
+                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}
+                        on-mouseup={this._onMouseUp($event, header, header_index, headerTr_index)}>
+                        <div class="th_content"
+                            title={header.name}
+                            on-click={this._onHeaderClick(header, header_index)}>
+                            {header.name}
+                            <span>
+                                {#if tip}
+                                    <tooltip tip={header.tip} placement={header.tipPos || 'top'}>
+                                        <i class="u-icon u-icon-info-circle" />
+                                    </tooltip>
+                                {/if}
+                                {#if header.sortable && header.key}
+                                    <i class="u-icon u-icon-unsorted u-icon-1">
+                                        <i class="u-icon u-icon-2 {header | sortingClass}"/>
+                                    </i>
+                                {/if}
+                            </span>
+                        </div>
+                    </th>
+                {/list}
+
+                {#if scrollYBar}
+                    <th class="th_hd_gutter" />
+                {/if}
+            </tr>
+        {/list}
+    </thead>
+</table>

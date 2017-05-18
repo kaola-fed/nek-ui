@@ -53,6 +53,7 @@ const Components = {
     // Layout
     Panel : require('./components/layout/panel'),
     PanelTool : require('./components/layout/panel.tool'),
+    UITable : require('./components/layout/ui.table'),
 
     //i18n
     LocaleProvider : require('./components/i18n/locale.provider'),
