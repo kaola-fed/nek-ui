@@ -10,6 +10,7 @@
 
 .u-dropdown {
     position: relative;
+    vertical-align: top;
 
     .dropdown_bd {
         position: absolute;

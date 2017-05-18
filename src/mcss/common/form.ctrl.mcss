@@ -127,11 +127,16 @@ $u-formctrl-extend_width = ($name, $width) {
 
 // Color Extends:
 // ========================================================================
+.u-input .input,
+.u-select,
+.u-textarea, .textarea {
+    transition: border-color 1s ease;
+}
 
 $u-formctrl-extend_color = ($name, $background, $color, $border_) {
-    .u-input.u-input-#{$name},
+    .u-input .input-#{$name},
     .u-select.u-select-#{$name},
-    .textarea.textarea-#{$name} {
+    .u-textarea .textarea-#{$name} {
         @if($background) {background: $background;}
         color: $color;
         border-color: $border_;
@@ -171,7 +176,7 @@ $u-formctrl-extend_width(lg, 300px);
 
 $u-formctrl-extend_color(success, null, $brand-success, $brand-success);
 $u-formctrl-extend_color(warning, null, $brand-warning, $brand-warning);
-$u-formctrl-extend_color(error, null, $brand-error, $brand-error);
+$u-formctrl-extend_color(error, null, $u-formctrl-error-border, $u-formctrl-error-border);
 
 
 // Other Extends:
