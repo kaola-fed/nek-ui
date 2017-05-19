@@ -30,7 +30,6 @@ module.exports = {
             value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
         }
   
-        if (value && !isNaN(value)) value = parseFloat(value);
         return value;
     },
     "default": function(value) { return value; }
