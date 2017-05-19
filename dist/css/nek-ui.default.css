@@ -3448,7 +3448,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	cursor:not-allowed;
 }
 .u-calendar{
-	width:238px;
+	width:250px;
 	padding:4px;
 	background:#fff;
 	color:#999;
@@ -4757,7 +4757,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	z-index:1;
 	width:100%;
 	top:100%;
-	background:#fff;
 	line-height:normal;
 }
 .u-dropdown .dropdown_bd .m-listview >li>a{
