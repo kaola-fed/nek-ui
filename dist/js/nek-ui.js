@@ -89,48 +89,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	    CheckGroup: __webpack_require__(178),
 	    DatePicker: __webpack_require__(180),
 	    FormItem: __webpack_require__(312),
+	    FormItemTitle: __webpack_require__(330),
+	    FormItemDescription: __webpack_require__(331),
 	    NumberInput: __webpack_require__(306),
-	    RadioGroup: __webpack_require__(330),
-	    SelectGroup: __webpack_require__(332),
-	    Suggest: __webpack_require__(334),
+	    RadioGroup: __webpack_require__(332),
+	    SelectGroup: __webpack_require__(334),
+	    Suggest: __webpack_require__(336),
 	    TimePicker: __webpack_require__(304),
-	    TreeSelect: __webpack_require__(336),
-	    UIButton: __webpack_require__(342),
+	    TreeSelect: __webpack_require__(338),
+	    UIButton: __webpack_require__(344),
 	    UIForm: __webpack_require__(313),
 	    UIInput: __webpack_require__(307),
-	    UISelect: __webpack_require__(344),
-	    UIText: __webpack_require__(349),
-	    UITextArea: __webpack_require__(351),
-	    Uploader: __webpack_require__(353),
-	    UIGroup: __webpack_require__(355),
+	    UISelect: __webpack_require__(346),
+	    UIText: __webpack_require__(351),
+	    UITextArea: __webpack_require__(353),
+	    Uploader: __webpack_require__(355),
+	    UIGroup: __webpack_require__(357),
 
 	    // Navigation
-	    Collapse: __webpack_require__(356),
+	    Collapse: __webpack_require__(358),
 	    Dropdown: __webpack_require__(181),
-	    Menu: __webpack_require__(360),
-	    Pager: __webpack_require__(364),
-	    Tabs: __webpack_require__(366),
-	    Steps: __webpack_require__(368),
+	    Menu: __webpack_require__(362),
+	    Pager: __webpack_require__(366),
+	    Tabs: __webpack_require__(368),
+	    Steps: __webpack_require__(370),
 
 	    // Notice
-	    Modal: __webpack_require__(370),
-	    Mask: __webpack_require__(372),
-	    Notify: __webpack_require__(374),
-	    PopConfirm: __webpack_require__(376),
+	    Modal: __webpack_require__(372),
+	    Mask: __webpack_require__(374),
+	    Notify: __webpack_require__(376),
+	    PopConfirm: __webpack_require__(378),
 
 	    // Widget
-	    Gotop: __webpack_require__(378),
-	    Loading: __webpack_require__(380),
-	    Progress: __webpack_require__(382),
+	    Gotop: __webpack_require__(380),
+	    Loading: __webpack_require__(382),
+	    Progress: __webpack_require__(384),
 	    Tooltip: __webpack_require__(315),
-	    PathTool: __webpack_require__(384),
+	    PathTool: __webpack_require__(386),
 
 	    // Layout
-	    Panel: __webpack_require__(358),
-	    PanelTool: __webpack_require__(393),
+	    Panel: __webpack_require__(360),
+	    PanelTool: __webpack_require__(395),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(394)
+	    LocaleProvider: __webpack_require__(396)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -7193,7 +7195,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 179 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} aniamted\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 180 */
@@ -7569,7 +7571,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 183 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t\t{#else}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    <div class=\"dropdown_hd\">\n\t\t    {#if showTime}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t\t{#else}\n\t\t\t<label class=\"u-input\">\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n\t\t\t</label>\n\t\t    {/if}\n\t    </div>\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n\t            {#if showTime}\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n\t\t        {/if}\n\t        </calendar>\n\t    </div>\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 184 */
@@ -24127,7 +24129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 308 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n\n"
+	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n\n"
 
 /***/ }),
 /* 309 */
@@ -24248,26 +24250,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * @class FormItem
 	 * @extend Validation
-	 * @param {object}        [options.data]                    = 绑定属性
-	 * @param {string}        [options.data.title]              => label显示的文字
-	 * @param {number}        [options.data.cols]               => 布局列数
-	 * @param {number}        [options.data.labelCols=12]       => 如果有title, label占的列数
-	 * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
-	 * @param {number}        [options.data.offset]             => 布局offset
-	 * @param {string}        [options.data.row]                => 水平布局row
-	 * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
-	 * @param {boolean}       [options.data.required=false]     => 是否必选项
-	 * @param {string}        [options.data.tip]                => 字段说明
-	 * @param {string}        [options.data.class]              => 样式扩展
-	 * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
+	   * @param {object}        [options.data]                    = 绑定属性
+	   * @param {string}        [options.data.title]              => label显示的文字
+	   * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
+	   * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
+	   * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
+	   * @param {string}        [options.data.labelLineHeight="lg"] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.3), lg(值:2.5)
+	   * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
+	   * @param {boolean}       [options.data.required=false]     => 是否必选项
+	   * @param {string}        [options.data.tip]                => 字段说明
+	   * @param {string}        [options.data.class]              => 样式扩展
+	   * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
 	 */
 	var FormItem = Validation.extend({
 	    name: 'form.item',
 	    template: template,
 	    config: function config(data) {
 	        _.extend(data, {
-	            textAlign: 'none',
-	            labelCols: 12
+	            textAlign: 'right',
+	            labelCols: '',
+	            labelLineHeight: 'lg'
 	        });
 	        this.supr(data);
 
@@ -24325,34 +24327,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	});
 
-	FormItem.directive('remainCols', function (ele, cols) {
-	    this.$watch(cols, function (ncols) {
-	        ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
-	        if (this.data.row && ncols) {
-	            ele.classList.add('g-col', 'g-col-' + (12 - ncols));
-	        }
-	    });
-	});
-
-	FormItem.directive('offset', function (ele, offset) {
-	    this.$watch(offset, function (noffset) {
-	        ele.className = ele.className.replace(/(\s)?g-offset(-\d)?/gim, '');
-
-	        if (noffset) {
-	            ele.classList.add('g-offset-' + noffset);
-	        }
-	    });
-	});
-
-	FormItem.directive('row', function (ele, row) {
-	    this.$watch(row, function (newValue) {
-	        if (newValue) {
-	            ele.classList.add('u-formitem-row');
-	            this.data.labelCols = this.data.labelCols == 12 ? 4 : this.data.labelCols;
-	        }
-	    });
-	});
-
 	FormItem.directive('size', function (ele, size) {
 	    this.$watch(size, function (newValue, oldValue) {
 	        if (!newValue) {
@@ -24362,8 +24336,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (parseInt(newValue)) {
 	            ele.style.width = parseInt(newValue) + 'px';
 	        } else {
+	            ele.style.width = '';
 	            ele.classList.remove(oldValue);
 	            ele.classList.add('formitem_tt-' + newValue);
+	        }
+	    });
+	});
+
+	FormItem.directive('lineHeight', function (ele, lineHeight) {
+	    this.$watch(lineHeight, function (newValue, oldValue) {
+	        if (!newValue) {
+	            return;
+	        }
+
+	        if (!isNaN(newValue)) {
+	            ele.style.lineHeight = newValue;
+	        } else {
+	            ele.style.lineHeight = '';
+	            ele.classList.remove(oldValue);
+	            ele.classList.add('formitem_tt-lh-' + newValue);
 	        }
 	    });
 	});
@@ -24390,6 +24381,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.class]              => 扩展样式
 	 * @param {boolean}     [options.data.inline='']          => 如果true,form.item按照inline-block排列
 	 * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
+	 * @param {string|number} [options.data.labelSize='']     => 批量设置form.item的labelSize,取值与form.item的labelSize相同
+	 * @param {string|number} [options.data.labelLineHeight='']  => 批量设置form.item的labelLineHeight,取值与form.item的labelLineHeight相同
 	 */
 	var UIForm = Validation.extend({
 	    name: 'ui.form',
@@ -24428,6 +24421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this.$watch('this.controls.length', function () {
 	            this.initSelectorSource();
+	            this.initFormItem();
 	        });
 
 	        this.adjustInline();
@@ -24444,6 +24438,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    $component.$update('labelCols', 0);
 	                }
 	            });
+	        });
+	    },
+	    initFormItem: function initFormItem() {
+	        var controls = this.controls,
+	            labelSize = this.data.labelSize,
+	            labelLineHeight = this.data.labelLineHeight;
+	        labelSize && controls.forEach(function ($component) {
+	            if (!$component.labelSize) {
+	                $component.$update('labelSize', labelSize);
+	            }
+	        });
+	        labelLineHeight && controls.forEach(function ($component) {
+	            if (!$component.labelLineHeight) {
+	                $component.$update('labelLineHeight', labelLineHeight);
+	            }
 	        });
 	    },
 	    initSelectorSource: function initSelectorSource() {
@@ -24611,7 +24620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 316 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-tooltip {placement}\" r-hide=\"{!isShow}\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
+	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
 
 /***/ }),
 /* 317 */
@@ -26116,10 +26125,84 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 329 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if title}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t\t{title}\n\t\t{#if tip}\n\t\t<tooltip tip=\"{tip}\">\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\n\t\t</tooltip>\n\t\t{/if}:\n\t</label>\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n\n{#else}\n<div class=\"{class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t{#inc this.$body}\n</div>\n{/if}\n"
+	module.exports = "<div class=\"u-formitem {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || this.$title}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n    {#if title}\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>{title}\n      {#if tip}<tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></tooltip>{/if}\n    {#else}\n      {#inc this.$title.$body}\n    {/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if this.$description}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc this.$description.$body}\n      </div>\n    {/if}\n  </span>\n</div>\n"
 
 /***/ }),
 /* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * FormItemTitle FormItem中title的自定义模板
+	 * @author   nupthale(nupthale@163.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var FormItem = __webpack_require__(312);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}            [options.data]                = 绑定属性
+	 */
+	var FormItemTitle = Component.extend({
+	  name: 'form.item.title',
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof FormItem) {
+	      this.$outer.$title = this;
+	    }
+	  }
+	});
+
+		module.exports = FormItemTitle;
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * FormItemDescription FormItem中description的自定义模板
+	 * @author   nupthale(nupthale@163.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var FormItem = __webpack_require__(312);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}            [options.data]                = 绑定属性
+	 */
+	var FormItemDescription = Component.extend({
+	  name: 'form.item.description',
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof FormItem) {
+	      this.$outer.$description = this;
+	    }
+	  }
+	});
+
+		module.exports = FormItemDescription;
+
+/***/ }),
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26132,7 +26215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(331);
+	var template = __webpack_require__(333);
 	var _ = __webpack_require__(98);
 	var Validation = __webpack_require__(110);
 
@@ -26281,13 +26364,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = RadioGroup;
 
 /***/ }),
-/* 331 */
+/* 333 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div>\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
-/* 332 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26300,7 +26383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(333);
+	var template = __webpack_require__(335);
 	var _ = __webpack_require__(98);
 	var Validation = __webpack_require__(110);
 
@@ -26441,13 +26524,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = SelectGroup;
 
 /***/ }),
-/* 333 */
+/* 335 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\n    {#list 0..(depth - 1) as i}\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\n    {/list}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
-/* 334 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26460,7 +26543,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(335);
+	var template = __webpack_require__(337);
 	var _ = __webpack_require__(98);
 	var Validation = __webpack_require__(110);
 
@@ -26685,13 +26768,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Suggest;
 
 /***/ }),
-/* 335 */
+/* 337 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n        <label class=\"u-input\">\n            <input class=\"input\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\n        </label>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            {#if this.filter(item)}\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\n            {/if}\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
-/* 336 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26705,9 +26788,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Dropdown = __webpack_require__(181);
 	var Validation = __webpack_require__(110);
-	var template = __webpack_require__(337);
+	var template = __webpack_require__(339);
 	var _ = __webpack_require__(98);
-	var Treeview = __webpack_require__(338);
+	var Treeview = __webpack_require__(340);
 
 	/**
 	 * @class TreeSelect
@@ -26778,13 +26861,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TreeSelect;
 
 /***/ }),
-/* 337 */
+/* 339 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <tree.view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 338 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26797,10 +26880,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(339);
+	var template = __webpack_require__(341);
 	var _ = __webpack_require__(98);
 
-	var TreeViewList = __webpack_require__(340);
+	var TreeViewList = __webpack_require__(342);
 
 	/**
 	 * @class TreeView
@@ -26923,13 +27006,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		});
 
 /***/ }),
-/* 339 */
+/* 341 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-treeview {class}\" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>\n\t<tree.view.list source={source} childKey={childKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\n</div>"
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -26942,7 +27025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(341);
+	var template = __webpack_require__(343);
 	var _ = __webpack_require__(98);
 
 	var check = __webpack_require__(176);
@@ -27058,13 +27141,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TreeViewList;
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree.view.list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -27079,7 +27162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var validator = __webpack_require__(111);
 	var bowser = __webpack_require__(96);
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(343);
+	var template = __webpack_require__(345);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -27193,13 +27276,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIButton;
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}"
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -27212,12 +27295,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(345);
+	var template = __webpack_require__(347);
 	var _ = __webpack_require__(98);
 	var Validation = __webpack_require__(110);
-	var util = __webpack_require__(346);
-	var Multiple = __webpack_require__(347);
-	var PrivateMethod = __webpack_require__(348);
+	var util = __webpack_require__(348);
+	var Multiple = __webpack_require__(349);
+	var PrivateMethod = __webpack_require__(350);
 	var tip = __webpack_require__(315);
 
 	__webpack_require__(176);
@@ -27538,13 +27621,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Select;
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\">\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if open && canSearch}\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {item[nameKey]}\n\t                        {/if}\n\t                    </li>\n\t                </tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {item[nameKey]}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {noMatchText}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports) {
 
 	/**
@@ -27597,7 +27680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = selectUtil;
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27608,7 +27691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(346);
+	var util = __webpack_require__(348);
 	'use strict';
 	module.exports = function Multiple(Component) {
 	    Component.implement({
@@ -27666,7 +27749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -27683,7 +27766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var util = __webpack_require__(346);
+	var util = __webpack_require__(348);
 	module.exports = function PrivateMethod(Component) {
 	    Component.implement({
 	        /**
@@ -27766,7 +27849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -27779,7 +27862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(350);
+	var template = __webpack_require__(352);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -27821,13 +27904,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIText;
 
 /***/ }),
-/* 350 */
+/* 352 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>\n    {text}\n</a>"
 
 /***/ }),
-/* 351 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27840,7 +27923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(352);
+	var template = __webpack_require__(354);
 	var _ = __webpack_require__(98);
 	var Validation = __webpack_require__(110);
 
@@ -27964,13 +28047,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TextArea;
 
 /***/ }),
-/* 352 */
+/* 354 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n\t{#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -27983,7 +28066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(354);
+	var template = __webpack_require__(356);
 	var _ = __webpack_require__(98);
 
 	var SIZE_UNITS = {
@@ -28194,13 +28277,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Uploader;
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-uploader {class}\" r-hide={!visible}>\n    <div on-click={this.upload()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\">{title || this.$trans('UPLOAD')}</a>\n        {/if}\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        {#if !_sending}\n        <!-- IE需要重置input[type=file] -->\n        <input type=\"file\" name={name} ref=\"file\" on-change={this._submit()}>\n        {/if}\n        {#list Object.keys(data) as key}\n        <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <iframe name=\"iframe{_id}\" on-load={this._onLoad()} ref=\"iframe\" />\n</div>"
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28236,7 +28319,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIGroup;
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28249,10 +28332,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(357);
+	var template = __webpack_require__(359);
 	var _ = __webpack_require__(98);
 
-	var Panel = __webpack_require__(358);
+	var Panel = __webpack_require__(360);
 
 	/**
 	 * @class Collapse
@@ -28281,13 +28364,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Collapse;
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28300,7 +28383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(359);
+	var template = __webpack_require__(361);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28355,13 +28438,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Panel;
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\n\n    <div class=\"panel_hd f-cb\" on-click={this.toggle()}>\n\t    <span class=\"panel_tt\">\n\t\t\t<i class=\"u-icon\" r-class=\"{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}\"></i>\n\t\t\t {title}\n\t\t</span>\n        {#if this.$tools}\n\t\t<div class=\"tools\" on-click={this.stopPropagation($event)}>\n\t\t\t{#inc this.$tools.$body}\n\t\t</div>\n\t\t{/if}\n    </div>\n\n\t<div class=\"panel_bd\" r-hide={!open} r-animation=\"on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;\">\n\t\t{#inc this.$body}\n\t</div>\n\n\t{#if this.$foot}\n\t<div class=\"panel_ft\">\n\t\t{#inc this.$foot.$body}\n\t</div>\n\t{/if}\n</div>"
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28374,10 +28457,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(361);
+	var template = __webpack_require__(363);
 	var _ = __webpack_require__(98);
 
-	var MenuList = __webpack_require__(362);
+	var MenuList = __webpack_require__(364);
 
 	/**
 	 * @class Menu
@@ -28415,13 +28498,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Menu;
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-menu {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || this.$trans('MULTILEVEL_MENU')}>{title || this.$trans('MULTILEVEL_MENU')} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <menu.list source={source} visible />\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28434,7 +28517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(363);
+	var template = __webpack_require__(365);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28470,13 +28553,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = MenuList;
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-listview menu_list\" r-hide={!visible}>\n    {#list source as item}\n    <li z-dis={item.disabled} z-divider={item.divider}>\n        <div class=\"menu_item\">\n            {#if item.childrenCount || (item.children && item.children.length)}\n            <i class=\"u-icon u-icon-caret-right\"></i>\n            {/if}\n            <div class=\"menu_itemname\" title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n        </div>\n        {#if item.childrenCount || (item.children && item.children.length)}<menu.list source={item.children} visible={item.open} parent={item} />{/if}\n    </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 364 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28489,7 +28572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(365);
+	var template = __webpack_require__(367);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28611,13 +28694,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Pager;
 
 /***/ }),
-/* 365 */
+/* 367 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 366 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28630,7 +28713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(367);
+	var template = __webpack_require__(369);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28713,13 +28796,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Tabs;
 
 /***/ }),
-/* 367 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28732,7 +28815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(369);
+	var template = __webpack_require__(371);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28780,13 +28863,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Steps;
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -28799,7 +28882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(371);
+	var template = __webpack_require__(373);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28952,13 +29035,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Modal;
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28971,7 +29054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(373);
+	var template = __webpack_require__(375);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29033,13 +29116,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Mask;
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29052,7 +29135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(375);
+	var template = __webpack_require__(377);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29224,13 +29307,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29245,7 +29328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(68).dom;
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(377);
+	var template = __webpack_require__(379);
 	var _ = __webpack_require__(98);
 	var trigger = __webpack_require__(317);
 
@@ -29359,13 +29442,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PopConfirm;
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29378,7 +29461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(379);
+	var template = __webpack_require__(381);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29416,13 +29499,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Gotop;
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-arrow-up\"></i>\n    {/if}\n</a>"
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29435,7 +29518,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(381);
+	var template = __webpack_require__(383);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29521,13 +29604,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 382 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29540,7 +29623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(383);
+	var template = __webpack_require__(385);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29578,13 +29661,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Progress;
 
 /***/ }),
-/* 383 */
+/* 385 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 384 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29597,7 +29680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use stict';
 
-	var Clipboard = __webpack_require__(385);
+	var Clipboard = __webpack_require__(387);
 
 	/**
 	 * 获取 js 路径快捷键 ctrl + alt + shift + c  
@@ -29644,12 +29727,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PathTool;
 
 /***/ }),
-/* 385 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(386), __webpack_require__(388), __webpack_require__(389)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(388), __webpack_require__(390), __webpack_require__(391)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -29848,12 +29931,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 386 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(387)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(389)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -30081,7 +30164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 387 */
+/* 389 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -30130,7 +30213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 388 */
+/* 390 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -30202,11 +30285,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(390);
-	var delegate = __webpack_require__(391);
+	var is = __webpack_require__(392);
+	var delegate = __webpack_require__(393);
 
 	/**
 	 * Validates all params and calls the right
@@ -30303,7 +30386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 390 */
+/* 392 */
 /***/ (function(module, exports) {
 
 	/**
@@ -30358,10 +30441,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 391 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(392);
+	var closest = __webpack_require__(394);
 
 	/**
 	 * Delegates event to a selector.
@@ -30408,7 +30491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 392 */
+/* 394 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -30444,7 +30527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 393 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30457,7 +30540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var Panel = __webpack_require__(358);
+	var Panel = __webpack_require__(360);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30490,7 +30573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PanelTool;
 
 /***/ }),
-/* 394 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';

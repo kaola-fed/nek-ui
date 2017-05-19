@@ -14,16 +14,16 @@ $u-check_box_size = 13px;
     $user-select: none;
     white-space:nowrap;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 32px;
     .check_box {
         display: inline-block;
-        vertical-align: top;
         position: relative;
         overflow: hidden;
         text-align: center;
         margin-right: 8px;
         $size: $u-check_box_size;
         line-height: $u-check_box_size - 1;
+        vertical-align: text-top;
         background: white;
         color: #E61438;
         $border: $u-formctrl_border;

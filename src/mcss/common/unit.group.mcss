@@ -18,7 +18,6 @@
     }
 
     .u-check, .u-radio{
-        margin-bottom: $size-base;
         margin-right: 40px;
     }
     .u-check:last-child, .u-radio:last-child {
@@ -26,6 +25,12 @@
     }
     .u-tip {
         margin-top: 0;
+    }
+
+    .unitgroup_wrap {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
     }
 }
 
@@ -40,6 +45,7 @@
 
     .u-check, .u-radio{
         margin-right: 16px;
+        line-height: 24px;
     }
     .u-check:last-child, .u-radio:last-child{
         margin-right: 0;

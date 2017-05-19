@@ -49,6 +49,6 @@
     }
 
     > .u-formitem, fieldset > .u-formitem {
-        margin-bottom: 1em;
+        margin-bottom: $size-base * 2;
     }
 }

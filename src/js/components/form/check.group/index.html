@@ -1,5 +1,5 @@
 <div class="u-unitgroup u-unitgroup-{size} {class}" r-hide={!visible} r-width="{width}">
-	<div>
+	<div class="unitgroup_wrap">
 	    {#list source as item}
 	        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />
 	    {/list}

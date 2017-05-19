@@ -16,16 +16,16 @@ $u-radio_u-icon_font-size = 7px;
     $user-select: none;
     white-space:nowrap;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 32px;
     .radio_box {
         display: inline-block;
-        vertical-align: top;
         position: relative;
         overflow: hidden;
         text-align: center;
-        margin-right: 6px;
+        margin-right: $size-base;
         $size: $u-radio_box_size;
         line-height: $u-radio_box_size;
+        vertical-align: text-top;
         background: white;
         color: $brand-primary;
         $border: #DFE3E9;
@@ -73,7 +73,7 @@ $u-radio_u-icon_font-size = 7px;
 
 .u-radio-block {
     display: block;
-    margin-bottom: $size-base;
+    width: 100%;
 }
 
 

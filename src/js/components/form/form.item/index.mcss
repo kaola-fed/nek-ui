@@ -34,7 +34,7 @@
     }
 
     .formitem_ct{
-        line-height: 1;
+        line-height: 32px;
         flex: 1;
         font-size: $font-size-base;
     }
