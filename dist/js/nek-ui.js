@@ -24218,7 +24218,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
 	        }
 
-	        if (value && !isNaN(value)) value = parseFloat(value);
 	        return value;
 	    },
 	    "default": function _default(value) {
