@@ -19,7 +19,7 @@ title: 表格
             {'<check name={header.name} on-change={this.emitEvent("check",  $event, header)}/> <span>{header.name}</span>'}
         </table.template>
     </table.col>
-    <table.col name="value" key="value">
+    <table.col name="value" key="value" tip="asdasd">
     </table.col>
 </ui.table>
 ```
@@ -59,7 +59,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<!-- <ui.table
+<ui.table
     stickyHeader
     stickyFooter
     width=778
@@ -94,7 +94,7 @@ var component = new NEKUI.Component({
         <table.col name="col1.2" key="value" width="160" />
     </table.col>
     <table.col name="value" key="value" width="200" sortable />
-</ui.table> -->
+</ui.table>
 ```
 
 ```javascript

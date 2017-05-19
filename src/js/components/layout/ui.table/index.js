@@ -27,7 +27,17 @@ var getLeaves = function(columns) {
     return res;
 };
 
-var UiTable = Component.extend({
+var getNum = function(str) {
+    return +((str+'').split('px')[0]);
+};
+
+var setElementValue = function(ele, prop, val) {
+    if(ele) {
+        ele[prop] = val;
+    }
+};
+
+var UITable = Component.extend({
     name: 'ui.table',
     template: tpl,
     computed: {
@@ -50,20 +60,15 @@ var UiTable = Component.extend({
             scrollXBar: 0,
 
             show: true,
-            x: 1,
             columns: [],
-            sorting: {
-
-            },
-            config: {
-            },
+            sorting: {},
+            config: {},
             _scrollBarTimer: null
         });
         this.supr(data);
 
         this._initWatchers();
     },
-
     _initWatchers: function() {
         this.$watch('scrollYBar', this._onScrollYBarChange);
         this.$watch('columns', this._onColumnsChange);
@@ -73,7 +78,6 @@ var UiTable = Component.extend({
 
         this._watchWidthChange();
     },
-
     _onScroll: function() {
         var data = this.data;
 
@@ -85,7 +89,6 @@ var UiTable = Component.extend({
             this._updateStickyFooterStatus();
         }
     },
-
     _updateStickyHeaderStatus: function() {
         var headerHeight = this._getHeaderHeight();
         var scrollY = window.scrollY;
@@ -105,7 +108,6 @@ var UiTable = Component.extend({
             this.$update('stickyHeaderActive', true);
         }
     },
-
     _updateStickyFooterStatus: function() {
         this._getHeaderHeight();
         var scrollY = window.scrollY;
@@ -124,11 +126,6 @@ var UiTable = Component.extend({
             this.$update('stickyFooterActive', true);
         }
     },
-
-    getNum: function(str) {
-        return +((str+'').split('px')[0]);
-    },
-
     _watchWidthChange: function() {
         this.data._widthTimer = setInterval(function() {
             this._updateScrollBar();
@@ -136,7 +133,6 @@ var UiTable = Component.extend({
             this._updateFixedColumnWidth();
         }.bind(this), 200);
     },
-
     _updateScrollBar: function() {
         var data = this.data;
         var tableWrap = this.$refs.bodyWrap;
@@ -154,28 +150,23 @@ var UiTable = Component.extend({
             this.$update('scrollXBar', xBarWidth);
         }
     },
-
     _onScrollYBarChange: function(newVal, oldVal) {
         if(oldVal === undefined) {
             return;
         }
         this._updateTableWidth();
     },
-
     _onColumnsChange: function(newVal) {
         if(newVal) {
             this._updateDataColumn();
         }
     },
-
     _updateDataColumn: function() {
         this.data._dataColumns = getLeaves(this.data.columns);
     },
-
     init: function() {
         this._initTable();
     },
-
     _initTable: function() {
         setTimeout(function() {
             this.$update('headerHeight', this.$refs.headerWrap.offsetHeight);
@@ -184,12 +175,10 @@ var UiTable = Component.extend({
             this._updateStickyHeaderStatus();
         }.bind(this), 200);
     },
-
     _updateTableWidth: function() {
         this._updateColumnsWidth();
         this._updateFixedColumnWidth();
     },
-
     _initTableWidth: function() {
         var data = this.data;
         var _dataColumns = data._dataColumns;
@@ -221,39 +210,36 @@ var UiTable = Component.extend({
         data.tableWidth = totalWidth;
         this.$update();
     },
-
     _getHeaderHeight: function() {
         var headerHeight = this.data.headerHeight;
         if(headerHeight != undefined) {
             return headerHeight;
         }
         var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
-        headerHeight = this.getNum(computedStyle.marginTop)
-                + this.getNum(computedStyle.borderTopWidth)
-                + this.getNum(this.$refs.headerWrap.offsetHeight)
-                + this.getNum(computedStyle.borderBottomWidth)
-                + this.getNum(computedStyle.marginBottom);
+        headerHeight = getNum(computedStyle.marginTop)
+                + getNum(computedStyle.borderTopWidth)
+                + getNum(this.$refs.headerWrap.offsetHeight)
+                + getNum(computedStyle.borderBottomWidth)
+                + getNum(computedStyle.marginBottom);
 
         this.$update('headerHeight', headerHeight);
         return headerHeight;
     },
-
     _getFooterHeight: function() {
         var footerHeight = this.data.footerHeight;
         if(footerHeight != undefined) {
             return footerHeight;
         }
         var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
-        footerHeight = this.getNum(computedStyle.marginTop)
-                + this.getNum(computedStyle.borderTopWidth)
-                + this.getNum(this.$refs.footerWrap.offsetHeight)
-                + this.getNum(computedStyle.borderBottomWidth)
-                + this.getNum(computedStyle.marginBottom);
+        footerHeight = getNum(computedStyle.marginTop)
+                + getNum(computedStyle.borderTopWidth)
+                + getNum(this.$refs.footerWrap.offsetHeight)
+                + getNum(computedStyle.borderBottomWidth)
+                + getNum(computedStyle.marginBottom);
 
         this.$update('footerHeight', footerHeight);
         return footerHeight;
     },
-
     _updateColumnsWidth: function() {
         var data = this.data;
         var _dataColumns = data._dataColumns;
@@ -268,7 +254,6 @@ var UiTable = Component.extend({
             this.$update('tableWidth', newTableWidth);
         }
     },
-
     _updateFixedColumnWidth: function() {
         var data = this.data;
         if(!data._dataColumns
@@ -298,33 +283,23 @@ var UiTable = Component.extend({
         data.fixedColRight = fixedColRight;
         this.$update();
     },
-
     _onBodyScroll: function(host) {
         var $refs = this.$refs;
 
-        this._setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
-        this._setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
-        this._setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
-        this._setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+        setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+        setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+        setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+        setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
     },
-
-    _setElementValue: function(ele, prop, val) {
-        if(ele) {
-            ele[prop] = val;
-        }
-    },
-
     _onSort: function(e) {
         this.$emit('sort', e);
     },
-
     _onCustomEvent: function(e) {
         this.$emit(e.type, _.extend({
             sender: this,
             custom: true
         }, e.args));
     },
-
     _onItemCheckChange: function(e) {
         this.$emit('checkchange', {
             sender: this,
@@ -333,7 +308,6 @@ var UiTable = Component.extend({
             checkedEvent: e.event
         });
     },
-
     emitEvent: function(type) {
         var args = [].slice.call(arguments, 1);
         this.$emit(type, {
@@ -342,7 +316,6 @@ var UiTable = Component.extend({
             param: args
         });
     },
-
     _onExpand: function(e) {
         this.$emit('expand', {
             sender: this,
@@ -352,15 +325,12 @@ var UiTable = Component.extend({
             column: e.column
         });
     },
-
     _onPaging: function(e) {
         console.log(e);
     },
-
     _onFixedExpand: function(e) {
         this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
     },
-
     destroy: function() {
         clearInterval(this.data._widthTimer);
         window.document.removeEventListener('scroll', this._onScroll);
@@ -372,5 +342,5 @@ var UiTable = Component.extend({
 .component('table.col', TableCol)
 .component('table.template', TableTemplate);
 
-module.exports = UiTable;
+module.exports = UITable;
 

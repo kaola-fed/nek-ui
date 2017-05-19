@@ -96,6 +96,11 @@ $orderIconColor = #666;
                     align-items: center;
                     justify-content: center;
                     padding: 6px 8px;
+                    .header_text {
+                    }
+                    .th_tip {
+                        margin-left: 8px;
+                    }
                 }
                 &:not(:last-child){
                     border-right: 1px solid #fff;

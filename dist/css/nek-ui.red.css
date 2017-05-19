@@ -4783,6 +4783,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	justify-content:center;
 	padding:6px 8px;
 }
+.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th >.th_content .th_tip{
+	margin-left:8px;
+}
 .m-ui-table .tb_hd .tb_hd_tr .tb_hd_th:not(:last-child){
 	border-right:1px solid #fff;
 }

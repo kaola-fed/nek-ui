@@ -3,7 +3,6 @@ var _ = {};
 _.isType = function(target, type) {
     return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
 };
-
 [
     'String',
     'Object',

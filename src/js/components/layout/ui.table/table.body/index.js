@@ -20,17 +20,11 @@ var TableBasic = Component.extend({
             type: '',
             enableHover: true,
             show: true,
-            x: 1,
             columns: [],
-            sorting: {
-
-            },
-            config: {
-            }
+            config: {}
         });
         this.supr(data);
     },
-
     _onExpand: function(item, itemIndex, column) {
         if(!this.data.fixedCol) {
             this._expandTr(item, itemIndex, column);
@@ -44,7 +38,6 @@ var TableBasic = Component.extend({
             index: itemIndex
         });
     },
-
     _onItemCheckChange: function(item, e) {
         this.$emit('checkchange', {
             item: item,
@@ -52,14 +45,12 @@ var TableBasic = Component.extend({
             event: e
         });
     },
-
     _expandTr: function(item, itemIndex, column) {
         item._expanddingColumn = column;
         item.expand = !item.expand;
 
         this._updateSubTrHeight(item, itemIndex);
     },
-
     _updateSubTrHeight: function(item, itemIndex) {
         var timer = setInterval(function() {
             var tdElement = this.$refs['td'+itemIndex];
@@ -72,7 +63,6 @@ var TableBasic = Component.extend({
             }
         }.bind(this), 100);
     },
-
     _onSubEvent: function(type, table, e) {
         this.$emit('subevent', {
             sender: table,
@@ -80,18 +70,15 @@ var TableBasic = Component.extend({
             event: e
         });
     },
-
     _isArray: function(arr) {
         return _.isArray(arr);
     },
-
     _getTDElement: function(column, item) {
         if(column.format || column.formatter || column.template) {
             return this._getCustom(column, item);
         }
         return templates.get(column.type);
     },
-
     _getCustom: function(column, item) {
         if(column.template) {
             return this._getTemplate(column);
@@ -102,14 +89,12 @@ var TableBasic = Component.extend({
         }
         return '';
     },
-
     _getTemplate: function(column) {
         if(_.isArray(column.template)) {
             return '{#list column.template as template by template_index}{#include template}{/list}';
         }
         return'{#include column.template}';
     },
-
     _getFormatter: function(column, item) {
         var formatter = column.formatter;
         if(_.isArray(formatter)) {
@@ -119,7 +104,6 @@ var TableBasic = Component.extend({
         }
         return formatter.call(this, column, item) || '';
     },
-
     _getFormat: function(column) {
         var format = column.format;
         if(_.isArray(format)) {
@@ -129,7 +113,6 @@ var TableBasic = Component.extend({
         }
         return _parseFormat(format);
     },
-
     emitEvent: function(type) {
         var args = [].slice.call(arguments, 1);
         this.$emit('customevent', {
@@ -140,11 +123,9 @@ var TableBasic = Component.extend({
             }
         });
     },
-
     _onTrHover: function($event, item) {
         item._hover = true;
     },
-
     _onTrBlur: function($event, item) {
         item._hover = false;
     }

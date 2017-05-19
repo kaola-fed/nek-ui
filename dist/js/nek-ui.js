@@ -30503,7 +30503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TableCol = __webpack_require__(402);
 	var TableTemplate = __webpack_require__(396);
 	var _ = __webpack_require__(98);
-	var utils = __webpack_require__(398);
+	var utils = __webpack_require__(400);
 
 	var Component = __webpack_require__(69);
 	var tpl = __webpack_require__(408);
@@ -30525,7 +30525,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return res;
 	};
 
-	var UiTable = Component.extend({
+	var getNum = function getNum(str) {
+	    return +(str + '').split('px')[0];
+	};
+
+	var setElementValue = function setElementValue(ele, prop, val) {
+	    if (ele) {
+	        ele[prop] = val;
+	    }
+	};
+
+	var UITable = Component.extend({
 	    name: 'ui.table',
 	    template: tpl,
 	    computed: {
@@ -30548,7 +30558,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            scrollXBar: 0,
 
 	            show: true,
-	            x: 1,
 	            columns: [],
 	            sorting: {},
 	            config: {},
@@ -30558,7 +30567,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this._initWatchers();
 	    },
-
 	    _initWatchers: function _initWatchers() {
 	        this.$watch('scrollYBar', this._onScrollYBarChange);
 	        this.$watch('columns', this._onColumnsChange);
@@ -30568,7 +30576,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this._watchWidthChange();
 	    },
-
 	    _onScroll: function _onScroll() {
 	        var data = this.data;
 
@@ -30580,7 +30587,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this._updateStickyFooterStatus();
 	        }
 	    },
-
 	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus() {
 	        var headerHeight = this._getHeaderHeight();
 	        var scrollY = window.scrollY;
@@ -30598,7 +30604,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.$update('stickyHeaderActive', true);
 	        }
 	    },
-
 	    _updateStickyFooterStatus: function _updateStickyFooterStatus() {
 	        this._getHeaderHeight();
 	        var scrollY = window.scrollY;
@@ -30617,11 +30622,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.$update('stickyFooterActive', true);
 	        }
 	    },
-
-	    getNum: function getNum(str) {
-	        return +(str + '').split('px')[0];
-	    },
-
 	    _watchWidthChange: function _watchWidthChange() {
 	        this.data._widthTimer = setInterval(function () {
 	            this._updateScrollBar();
@@ -30629,7 +30629,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this._updateFixedColumnWidth();
 	        }.bind(this), 200);
 	    },
-
 	    _updateScrollBar: function _updateScrollBar() {
 	        var data = this.data;
 	        var tableWrap = this.$refs.bodyWrap;
@@ -30647,28 +30646,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.$update('scrollXBar', xBarWidth);
 	        }
 	    },
-
 	    _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
 	        if (oldVal === undefined) {
 	            return;
 	        }
 	        this._updateTableWidth();
 	    },
-
 	    _onColumnsChange: function _onColumnsChange(newVal) {
 	        if (newVal) {
 	            this._updateDataColumn();
 	        }
 	    },
-
 	    _updateDataColumn: function _updateDataColumn() {
 	        this.data._dataColumns = getLeaves(this.data.columns);
 	    },
-
 	    init: function init() {
 	        this._initTable();
 	    },
-
 	    _initTable: function _initTable() {
 	        setTimeout(function () {
 	            this.$update('headerHeight', this.$refs.headerWrap.offsetHeight);
@@ -30677,12 +30671,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this._updateStickyHeaderStatus();
 	        }.bind(this), 200);
 	    },
-
 	    _updateTableWidth: function _updateTableWidth() {
 	        this._updateColumnsWidth();
 	        this._updateFixedColumnWidth();
 	    },
-
 	    _initTableWidth: function _initTableWidth() {
 	        var data = this.data;
 	        var _dataColumns = data._dataColumns;
@@ -30714,31 +30706,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	        data.tableWidth = totalWidth;
 	        this.$update();
 	    },
-
 	    _getHeaderHeight: function _getHeaderHeight() {
 	        var headerHeight = this.data.headerHeight;
 	        if (headerHeight != undefined) {
 	            return headerHeight;
 	        }
 	        var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
-	        headerHeight = this.getNum(computedStyle.marginTop) + this.getNum(computedStyle.borderTopWidth) + this.getNum(this.$refs.headerWrap.offsetHeight) + this.getNum(computedStyle.borderBottomWidth) + this.getNum(computedStyle.marginBottom);
+	        headerHeight = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(this.$refs.headerWrap.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
 
 	        this.$update('headerHeight', headerHeight);
 	        return headerHeight;
 	    },
-
 	    _getFooterHeight: function _getFooterHeight() {
 	        var footerHeight = this.data.footerHeight;
 	        if (footerHeight != undefined) {
 	            return footerHeight;
 	        }
 	        var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
-	        footerHeight = this.getNum(computedStyle.marginTop) + this.getNum(computedStyle.borderTopWidth) + this.getNum(this.$refs.footerWrap.offsetHeight) + this.getNum(computedStyle.borderBottomWidth) + this.getNum(computedStyle.marginBottom);
+	        footerHeight = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(this.$refs.footerWrap.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
 
 	        this.$update('footerHeight', footerHeight);
 	        return footerHeight;
 	    },
-
 	    _updateColumnsWidth: function _updateColumnsWidth() {
 	        var data = this.data;
 	        var _dataColumns = data._dataColumns;
@@ -30753,7 +30742,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.$update('tableWidth', newTableWidth);
 	        }
 	    },
-
 	    _updateFixedColumnWidth: function _updateFixedColumnWidth() {
 	        var data = this.data;
 	        if (!data._dataColumns || !this.$refs.table && this.$refs.table.clientWidth <= 0) {
@@ -30782,33 +30770,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        data.fixedColRight = fixedColRight;
 	        this.$update();
 	    },
-
 	    _onBodyScroll: function _onBodyScroll(host) {
 	        var $refs = this.$refs;
 
-	        this._setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
-	        this._setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
-	        this._setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
-	        this._setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+	        setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+	        setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+	        setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+	        setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
 	    },
-
-	    _setElementValue: function _setElementValue(ele, prop, val) {
-	        if (ele) {
-	            ele[prop] = val;
-	        }
-	    },
-
 	    _onSort: function _onSort(e) {
 	        this.$emit('sort', e);
 	    },
-
 	    _onCustomEvent: function _onCustomEvent(e) {
 	        this.$emit(e.type, _.extend({
 	            sender: this,
 	            custom: true
 	        }, e.args));
 	    },
-
 	    _onItemCheckChange: function _onItemCheckChange(e) {
 	        this.$emit('checkchange', {
 	            sender: this,
@@ -30817,7 +30795,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            checkedEvent: e.event
 	        });
 	    },
-
 	    emitEvent: function emitEvent(type) {
 	        var args = [].slice.call(arguments, 1);
 	        this.$emit(type, {
@@ -30826,7 +30803,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            param: args
 	        });
 	    },
-
 	    _onExpand: function _onExpand(e) {
 	        this.$emit('expand', {
 	            sender: this,
@@ -30836,15 +30812,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            column: e.column
 	        });
 	    },
-
 	    _onPaging: function _onPaging(e) {
 	        console.log(e);
 	    },
-
 	    _onFixedExpand: function _onFixedExpand(e) {
 	        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
 	    },
-
 	    destroy: function destroy() {
 	        clearInterval(this.data._widthTimer);
 	        window.document.removeEventListener('scroll', this._onScroll);
@@ -30852,7 +30825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}).component('table.header', TableHeader).component('table.body', TableBody).component('table.col', TableCol).component('table.template', TableTemplate);
 
-		module.exports = UiTable;
+		module.exports = UITable;
 
 /***/ }),
 /* 395 */
@@ -30861,17 +30834,77 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var TableTemplate = __webpack_require__(396);
-	// var _ = require('utils/extend');
+	var templates = __webpack_require__(397);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(397);
-	var _ = __webpack_require__(398);
-	var templates = __webpack_require__(399);
-	//
-	// var _parseFormat = function(str) {
-	//     return str.replace(/</g, '&lt;')
-	//         .replace(/>/g, '&gt;');
-	// };
+	var tpl = __webpack_require__(399);
+	var _ = __webpack_require__(400);
+
+	var HEADER_MIN_WIDTH = 30;
+
+	var hasChildren = function hasChildren(column) {
+	    return column.children && column.children.length > 0;
+	};
+
+	var setColumnWidth = function setColumnWidth(column, width) {
+	    var children = column.children;
+	    if (children && children.length > 0) {
+	        setWidth(children[children.length - 1], width);
+	        return;
+	    }
+	    column._width = Math.max(width, HEADER_MIN_WIDTH);
+	};
+
+	var getColumnWidth = function getColumnWidth(column) {
+	    var ret = {
+	        width: 0,
+	        lastLeafWidth: 0
+	    };
+	    if (column.children && column.children.length > 0) {
+	        column.children.forEach(function (item, index) {
+	            var tmp = getWidth(item);
+	            if (index === column.children.length - 1) {
+	                ret.lastLeafWidth = tmp.width;
+	            }
+	            ret.width += tmp.width;
+	        });
+	    } else {
+	        return {
+	            width: column._width,
+	            lastLeafWidth: column._width
+	        };
+	    }
+	    return ret;
+	};
+
+	var getHeaders = function getHeaders(columns) {
+	    var headers = [];
+	    var extractHeaders = function extractHeaders(columns, depth) {
+	        columns.forEach(function (column) {
+	            if (hasChildren(column)) {
+	                column._dataColumn = extractHeaders(column.children, depth + 1);
+	            }
+	            if (!headers[depth]) {
+	                headers[depth] = [];
+	            }
+	            // 计算深度和宽度
+	            if (hasChildren(column)) {
+	                column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
+	                    return current.childrenDepth > previous ? current.childrenDepth : previous;
+	                }, -1);
+	                column.colSpan = column.children.reduce(function (previous, current) {
+	                    return previous + (current.colSpan || 0);
+	                }, 0);
+	            } else {
+	                column.childrenDepth = 0;
+	                column.colSpan = 1;
+	            }
+	            headers[depth].push(column);
+	        });
+	    };
+	    extractHeaders(columns, 0);
+	    return headers;
+	};
 
 	var TableBasic = Component.extend({
 	    template: tpl,
@@ -30879,21 +30912,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        fixedWidth: {
 	            get: function get() {
 	                return this.data.headers.reduce(function (previous, current) {
-	                    if (current.fixed) {
-	                        return previous + current._width;
-	                    }
-	                    return previous;
+	                    return current.fixed ? previous + current._width : previous;
 	                }, 0);
 	            }
 	        }
 	    },
-
 	    config: function config(data) {
 	        this.defaults({
 	            type: '',
-	            enableHover: true,
 	            show: true,
-	            x: 1,
 	            columns: [],
 	            sorting: {},
 	            config: {}
@@ -30901,7 +30928,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.supr(data);
 	        this._updateHeaders();
 	    },
-
 	    _updateHeaders: function _updateHeaders() {
 	        var columns = this.data.columns;
 
@@ -30909,46 +30935,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return;
 	        }
 
-	        var headers = [];
-	        var extractHeaders = function extractHeaders(columns, depth) {
-	            columns.forEach(function (column) {
-	                if (column.children && column.children.length > 0) {
-	                    column._dataColumn = extractHeaders(column.children, depth + 1);
-	                }
-	                if (!headers[depth]) {
-	                    headers[depth] = [];
-	                }
-	                if (column.children && column.children.length > 0) {
-	                    column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
-	                        if (current.childrenDepth > previous) {
-	                            return current.childrenDepth;
-	                        }
-	                        return previous;
-	                    }, -1);
-	                    column.colSpan = column.children.reduce(function (previous, current) {
-	                        if (current.colSpan) {
-	                            return previous + current.colSpan;
-	                        }
-	                        return previous;
-	                    }, 0);
-	                } else {
-	                    column.childrenDepth = 0;
-	                    column.colSpan = 1;
-	                }
-	                headers[depth].push(column);
-	            });
-	        };
-	        extractHeaders(columns, 0);
-	        this.data.headers = headers;
+	        this.data.headers = getHeaders(columns);
 	    },
-
 	    _onHeaderClick: function _onHeaderClick(header, headerIndex) {
 	        if (!header.sortable) {
 	            return;
 	        }
 	        this._onSort(header, headerIndex);
 	    },
-
 	    _onSort: function _onSort(header, headerIndex) {
 	        if (header._isDragging) {
 	            return;
@@ -30973,14 +30967,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            asc: sorting.isAsc
 	        });
 	    },
-
 	    _onMouseDown: function _onMouseDown(e, header, headerIndex, headerTrIndex) {
 	        var data = this.data;
+	        var self = this;
 	        if (!data._ok2ResizeCol) {
 	            return;
 	        }
 	        header._isDragging = true;
-
+	        this._startResizing(e, header, headerIndex, headerTrIndex);
+	    },
+	    _startResizing: function _startResizing(e, header, headerIndex, headerTrIndex) {
 	        var tableLeft = this.$parent.$refs.table.getBoundingClientRect().left;
 	        var mouseLeft = e.pageX;
 	        var headerEle = this.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
@@ -30996,66 +30992,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	        resizeProxy.style.visibility = 'visible';
 
 	        var onMouseMove = function onMouseMove(_e) {
+	            _e.preventDefault();
+
 	            var proxyLeft = _e.pageX - tableLeft;
 	            var headerWidth = _e.pageX - headerLeft;
 
-	            if (headerWidth > 30) {
+	            if (headerWidth > HEADER_MIN_WIDTH) {
 	                resizeProxy.style.left = proxyLeft + 'px';
 	            }
-
-	            _e.preventDefault();
 	        };
 
 	        var onMouseUp = function onMouseUp(_e) {
 	            _e.preventDefault();
 	            resizeProxy.style.visibility = 'hidden';
-	            document.body.style.cursor = '';
-	            header._isDragging = false;
 
 	            var headerWidth = _e.pageX - headerLeft;
-
-	            var setWidth = function setWidth(column, width) {
-	                var children = column.children;
-	                if (children && children.length > 0) {
-	                    setWidth(children[children.length - 1], width);
-	                    return;
-	                }
-	                column._width = Math.max(width, 30);
-	            };
-
-	            var getWidth = function getWidth(column) {
-	                var ret = {
-	                    width: 0,
-	                    lastLeafWidth: 0
-	                };
-	                if (column.children && column.children.length > 0) {
-	                    column.children.forEach(function (item, index) {
-	                        var tmp = getWidth(item);
-	                        if (index === column.children.length - 1) {
-	                            ret.lastLeafWidth = tmp.width;
-	                        }
-	                        ret.width += tmp.width;
-	                    });
-	                } else {
-	                    return {
-	                        width: column._width,
-	                        lastLeafWidth: column._width
-	                    };
-	                }
-	                return ret;
-	            };
-
-	            var widthInfo = getWidth(header);
-	            setWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
+	            var widthInfo = getColumnWidth(header);
+	            setColumnWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
 
 	            document.removeEventListener('mousemove', onMouseMove);
 	            document.removeEventListener('mouseup', onMouseUp);
+	            self._disableResize();
 	        };
 
 	        document.addEventListener('mousemove', onMouseMove);
 	        document.addEventListener('mouseup', onMouseUp);
 	    },
-
 	    _onMouseUp: function _onMouseUp(e, header) {
 	        var data = this.data;
 	        if (!data._ok2ResizeCol) {
@@ -31063,34 +31025,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        header._isDragging = false;
 	    },
-
 	    _onMouseMove: function _onMouseMove(e, header) {
+	        if (!header._isDragging && this._shouldStartDragging(e)) {
+	            this._enableResize();
+	        } else {
+	            this._disableResize();
+	        }
+	    },
+	    _shouldStartDragging: function _shouldStartDragging(e) {
 	        var target = e.target;
 	        while (target && target.tagName !== 'TH') {
 	            target = target.parentNode;
 	        }
-	        var data = this.data;
-
-	        if (!header._isDragging) {
-	            var rect = target.getBoundingClientRect();
-	            var bodyStyle = document.body.style;
-	            if (rect.width > 12 && rect.right - event.pageX < 8) {
-	                bodyStyle.cursor = 'col-resize';
-	                data._ok2ResizeCol = true;
-	            } else if (!header._dragging) {
-	                bodyStyle.cursor = '';
-	                data._ok2ResizeCol = false;
-	            }
-	        }
+	        var rect = target.getBoundingClientRect();
+	        return rect.width > 12 && rect.right - event.pageX < 8;
 	    },
-
+	    _enableResize: function _enableResize() {
+	        document.body.style.cursor = 'col-resize';
+	        this.$update('_ok2ResizeCol', true);
+	    },
+	    _disableResize: function _disableResize() {
+	        document.body.style.cursor = '';
+	        this.$update('_ok2ResizeCol', false);
+	    },
 	    _getTHElement: function _getTHElement(header, item) {
 	        if (header.headerFormat || header.headerFormatter || header.headerTemplate) {
 	            return this._getCustom(header, item);
 	        }
 	        return templates.get(header.type);
 	    },
-
 	    _getCustom: function _getCustom(header, item) {
 	        if (header.headerTemplate) {
 	            return this._getTemplate(header);
@@ -31101,14 +31064,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return '';
 	    },
-
 	    _getTemplate: function _getTemplate(header) {
 	        if (_.isArray(header.headerTemplate)) {
 	            return '{#list header.headerTemplate as template by template_index}{#include template}{/list}';
 	        }
 	        return '{#include header.headerTemplate}';
 	    },
-
 	    _getFormatter: function _getFormatter(header, headers) {
 	        var formatter = header.formatter;
 	        if (_.isArray(formatter)) {
@@ -31118,7 +31079,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return formatter.call(this, header, headers) || '';
 	    },
-
 	    _getFormat: function _getFormat(header) {
 	        var format = header.format;
 	        if (_.isArray(format)) {
@@ -31128,7 +31088,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return _parseFormat(format);
 	    },
-
 	    emitEvent: function emitEvent(type) {
 	        var args = [].slice.call(arguments, 1);
 	        this.$emit('customevent', {
@@ -31162,7 +31121,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 
-	var TableCol = Component.extend({
+	/**
+	 * @class TableTemplate
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.type="content"] => 模版类型, header, content, expand
+	 */
+	var TableTemplate = Component.extend({
 	    name: 'table.template',
 	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
 	    config: function config() {
@@ -31170,67 +31135,75 @@ return /******/ (function(modules) { // webpackBootstrap
 	            type: 'content'
 	        });
 	    },
-
 	    init: function init() {
 	        this._register();
 	    },
-
 	    _register: function _register() {
 	        switch (this.data.type) {
 	            case 'header':
 	                this._register2Header();break;
-	            case 'sub':
-	                this._register2Sub();break;
+	            case 'expand':
+	                this._register2Expand();break;
 	            default:
 	                this._register2Content();
 	        }
 	    },
-
-	    _register2Content: function _register2Content() {
-	        var outerData = this.$outer.data;
-	        if (!outerData._templates) {
-	            outerData._templates = [];
-	        }
-	        outerData._templates.push(this.getInnertTemplate());
-	    },
-
 	    _register2Header: function _register2Header() {
 	        var outerData = this.$outer.data;
 	        if (!outerData._headerTemplates) {
 	            outerData._headerTemplates = [];
 	        }
-	        outerData._headerTemplates.push(this.getInnertTemplate());
+	        outerData._headerTemplates.push(this._getInnertTemplate());
 	    },
-
-	    _register2Sub: function _register2Sub() {
-	        this.$outer.data._subs = this.getInnertTemplate();
+	    _register2Expand: function _register2Expand() {
+	        this.$outer.data._expandTemplate = this._getInnertTemplate();
 	    },
-
-	    getInnertTemplate: function getInnertTemplate() {
+	    _register2Content: function _register2Content() {
+	        var outerData = this.$outer.data;
+	        if (!outerData._templates) {
+	            outerData._templates = [];
+	        }
+	        outerData._templates.push(this._getInnertTemplate());
+	    },
+	    _getInnertTemplate: function _getInnertTemplate() {
 	        var template = this.$refs.bodyContainer.innerHTML;
-	        return this.parseTemplate(template);
+	        return this._parseTemplate(template);
 	    },
-
-	    parseTemplate: function parseTemplate(template) {
-	        // <a>$:item.title:$ - $:item.value:$</a>
-	        return template.replace(/(<!--)(.*)(-->)/g, '')
-	        // .replace(/\$:/g, '{')
-	        // .replace(/:\$/g, '}')
-	        .replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/:\$/g, '}').trim();
+	    _parseTemplate: function _parseTemplate(template) {
+	        return template.replace(/(<!--)(.*)(-->)/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/:\$/g, '}').trim();
 	    }
-
 	});
 
-		module.exports = TableCol;
+		module.exports = TableTemplate;
 
 /***/ }),
 /* 397 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th id=\"table_th_{headerTr_index}_{header_index}\"\n                        ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),\n                        }}\n                        colspan=\"{header.colSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseup={this._onMouseUp($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+	'use strict';
+
+	var tplMap = {
+	    default: __webpack_require__(398)
+	};
+
+	exports.get = function getTemplate(type) {
+	    return tplMap[type] || tplMap.default;
+	};
 
 /***/ }),
 /* 398 */
+/***/ (function(module, exports) {
+
+	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th id=\"table_th_{headerTr_index}_{header_index}\"\n                        ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),\n                        }}\n                        colspan=\"{header.colSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseup={this._onMouseUp($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+
+/***/ }),
+/* 400 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -31240,7 +31213,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	_.isType = function (target, type) {
 	    return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
 	};
-
 	['String', 'Object', 'Array', 'Number', 'Null', 'Undefined'].forEach(function (item) {
 	    _['is' + item] = function (target) {
 	        return _.isType(target, item.toLowerCase());
@@ -31279,26 +31251,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var tplMap = {
-	    default: __webpack_require__(400)
-	};
-
-	exports.get = function getTemplate(type) {
-	    return tplMap[type] || tplMap.default;
-	};
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports) {
-
-	module.exports = "{header.name}\n<span>\n    {#if tip}\n        <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n            <i class=\"u-icon u-icon-info-circle\" />\n        </tooltip>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
-
-/***/ }),
 /* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31306,7 +31258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var TableCol = __webpack_require__(402);
 	var TableTemplate = __webpack_require__(396);
-	var _ = __webpack_require__(398);
+	var _ = __webpack_require__(400);
 
 	var Component = __webpack_require__(69);
 	var tpl = __webpack_require__(403);
@@ -31323,14 +31275,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            type: '',
 	            enableHover: true,
 	            show: true,
-	            x: 1,
 	            columns: [],
-	            sorting: {},
 	            config: {}
 	        });
 	        this.supr(data);
 	    },
-
 	    _onExpand: function _onExpand(item, itemIndex, column) {
 	        if (!this.data.fixedCol) {
 	            this._expandTr(item, itemIndex, column);
@@ -31344,7 +31293,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            index: itemIndex
 	        });
 	    },
-
 	    _onItemCheckChange: function _onItemCheckChange(item, e) {
 	        this.$emit('checkchange', {
 	            item: item,
@@ -31352,14 +31300,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            event: e
 	        });
 	    },
-
 	    _expandTr: function _expandTr(item, itemIndex, column) {
 	        item._expanddingColumn = column;
 	        item.expand = !item.expand;
 
 	        this._updateSubTrHeight(item, itemIndex);
 	    },
-
 	    _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
 	        var timer = setInterval(function () {
 	            var tdElement = this.$refs['td' + itemIndex];
@@ -31372,7 +31318,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }.bind(this), 100);
 	    },
-
 	    _onSubEvent: function _onSubEvent(type, table, e) {
 	        this.$emit('subevent', {
 	            sender: table,
@@ -31380,18 +31325,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            event: e
 	        });
 	    },
-
 	    _isArray: function _isArray(arr) {
 	        return _.isArray(arr);
 	    },
-
 	    _getTDElement: function _getTDElement(column, item) {
 	        if (column.format || column.formatter || column.template) {
 	            return this._getCustom(column, item);
 	        }
 	        return templates.get(column.type);
 	    },
-
 	    _getCustom: function _getCustom(column, item) {
 	        if (column.template) {
 	            return this._getTemplate(column);
@@ -31402,14 +31344,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return '';
 	    },
-
 	    _getTemplate: function _getTemplate(column) {
 	        if (_.isArray(column.template)) {
 	            return '{#list column.template as template by template_index}{#include template}{/list}';
 	        }
 	        return '{#include column.template}';
 	    },
-
 	    _getFormatter: function _getFormatter(column, item) {
 	        var formatter = column.formatter;
 	        if (_.isArray(formatter)) {
@@ -31419,7 +31359,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return formatter.call(this, column, item) || '';
 	    },
-
 	    _getFormat: function _getFormat(column) {
 	        var format = column.format;
 	        if (_.isArray(format)) {
@@ -31429,7 +31368,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return _parseFormat(format);
 	    },
-
 	    emitEvent: function emitEvent(type) {
 	        var args = [].slice.call(arguments, 1);
 	        this.$emit('customevent', {
@@ -31440,11 +31378,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        });
 	    },
-
 	    _onTrHover: function _onTrHover($event, item) {
 	        item._hover = true;
 	    },
-
 	    _onTrBlur: function _onTrBlur($event, item) {
 	        item._hover = false;
 	    }
@@ -31471,6 +31407,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Component = __webpack_require__(69);
 	var TableTemplate = __webpack_require__(396);
 
+	/**
+	 * @class TableTemplate
+	 * @extend Component
+	 * @param {object}      [options.data]                  = 绑定属性
+	 * @param {string}      [options.data.name]             => 表头名称
+	 * @param {string}      [options.data.key]              => 列属性字段
+	 * @param {string}      [options.data.tip]              => 提示信息
+	 * @param {string}      [options.data.type]             => 列内容的预设类型
+	 * @param {string}      [options.data.width]            => 列宽
+	 * @param {string}      [options.data.tdClass]          => 列内容样式
+	 * @param {string}      [options.data.thClass]          => 表头样式
+	 * @param {boolean}     [options.data.sortable]         => 可排序
+	 * @param {boolean}     [options.data.expandable]       => 可下钻展开
+	 * @param {string}      [options.data.children]         => 子表头
+	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+
+	 * @param {string}      [options.data.template]         => 列内容模版
+	 * @param {string}      [options.data.headerTemplate]   => 列表头模版
+	 * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
+	 */
 	var TableCol = Component.extend({
 	    name: 'table.col',
 	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
@@ -31480,57 +31436,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	            colSpan: 1
 	        });
 	    },
-
 	    init: function init() {
 	        this._register();
 	    },
-
 	    _register: function _register() {
-	        var $outer = this.$outer;
-	        if ($outer.name === 'ui.table') {
+	        var outerName = this.$outer.name;
+	        if (outerName === 'ui.table') {
 	            this._register2Table();
-	        } else if ($outer.name === 'table.col') {
+	        } else if (outerName === 'table.col') {
 	            this._register2TableCol();
 	        }
 	    },
-
 	    _register2Table: function _register2Table() {
-	        var _outer = this.data._outer = this.$outer;
+	        var _outer = this.$outer;
 	        this._push2Columns(_outer.data.columns);
 	    },
-
 	    _register2TableCol: function _register2TableCol() {
 	        var _outer = this.$outer;
 	        this._push2Columns(_outer.data._innerColumns);
 	    },
-
 	    _push2Columns: function _push2Columns(columns) {
 	        var data = this.data;
-
 	        columns && columns.push({
 	            name: data.name,
 	            key: data.key,
 	            type: data.type,
 	            width: data.width,
+	            tip: data.tip,
 	            tdClass: data.tdClass,
 	            thClass: data.thClass,
 	            sortable: data.sortable,
 	            expandable: data.expandable,
 	            template: data._templates,
 	            headerTemplate: data._headerTemplates,
-	            subs: data._subs,
+	            expandTemplate: data._expandTemplate,
 	            children: data._innerColumns,
 	            fixed: data.fixed
 	        });
-	    }
-	}).filter('sortingClass', function (key) {
-	    var data = this.data;
-	    var sorting = data.sorting;
-	    if (sorting) {
-	        if (sorting.key === key) {
-	            return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
-	        }
-	        return '';
 	    }
 	}).component('table.tempalte', TableTemplate);
 
@@ -31540,7 +31482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 403 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={column.length}>\n                <loading visible={loading} static/>{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {column.tdClass}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.subs}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{emptyInfo}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={column.length}>\n                <loading visible={loading} static/>{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {column.tdClass}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{emptyInfo}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
 /* 404 */
