@@ -47,6 +47,7 @@
                 source={source}
                 sorting={sorting}
                 scrollYBar={scrollYBar}
+                on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -114,6 +115,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 _dataColumns={_dataColumns}
+                on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -183,6 +185,7 @@
                 scrollYBar={scrollYBar}
                 marginLeft={tableWidth - fixedTableWidthRight}
                 _dataColumns={_dataColumns}
+                on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -241,7 +244,15 @@
     {/if}
 
     {#if paging}
-    <pager position={paging.position || 'right'}
+    <pager
+        position={paging.position || 'right'}
+        pageSize={paging.pageSize}
+        step={paging.step}
+        maxPageSize={paging.maxPageSize}
+        disabled={paging.disabled}
+        visible={paging.visible}
+        middle={paging.middle}
+        side={paging.side}
         current={paging.current}
         total={paging.total}
         on-select={this._onPaging($event)}/>

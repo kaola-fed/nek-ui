@@ -49,6 +49,7 @@ var TableCol = Component.extend({
             sortable: data.sortable,
             expandable: data.expandable,
             template: data._templates,
+            headerTemplate: data._headerTemplates,
             subs: data._subs,
             children: data._innerColumns,
             fixed: data.fixed

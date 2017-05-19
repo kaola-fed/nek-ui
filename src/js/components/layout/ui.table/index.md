@@ -4,34 +4,82 @@ title: 表格
 
 ## 代码演示
 
-### 基本方式1
+### 基本
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <ui.table
+    source={table.source}
+    on-check={this.onCheck($event)}
+>
+    <table.col name="title" key="title">
+        <table.template type="header">
+            {'<check name={header.name} on-change={this.emitEvent("check",  $event, header)}/> <span>{header.name}</span>'}
+        </table.template>
+    </table.col>
+    <table.col name="value" key="value">
+    </table.col>
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    onCheck: function(e) {
+        console.log(e);
+    },
+    init: function() {
+        setTimeout(function() {
+            this.data.table.source = [];
+            for(var i = 0; i < 3; ++i) {
+                this.data.table.source.push({
+                    title: 'test' + i,
+                    col1: '' + i,
+                    value: 10 * i,
+                    value2: 'adjasdlfj askldjf klasjdfkl jakldsfj aklsdjf klajsfdl jsdlkfj asdljakl jaklsdjf klasdjf klajsdklf jakls fjd'
+                });
+            }
+            this.$update();
+        }.bind(this), 200);
+    }
+});
+```
+<!-- demo_end -->
+
+### 表头与底部操作栏悬浮
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<!-- <ui.table
     stickyHeader
     stickyFooter
     width=778
     lineClamp=3
     source={table.source}
     sorting={table.sorting}
-    loading={true}
     on-checkchange={this.onCheck($event)}
     on-sort={this.onSort($event)}
     on-clicka={this.onClickA($event)}
     on-expand={this.onExpand($event)}
 >
     <table.col name="title" key="title" width="100" sortable type="check">
-        <!-- <table.template>
+        <table.template>
             {'<a on-click={this.emitEvent("clicka", item)}>{item.title} > {item.value}</a>'}
             {'<div>{item.col1}</div>'}
-        </table.template> -->
-        <!-- <table.template type="sub">
+        </table.template>
+        <table.template type="sub">
             {'<div style="padding: 20px 30px;"><bi.table columns={item.columns} source={item.source}/></div>'}
             {'{item.title}'}
-        </table.template> -->
+        </table.template>
     </table.col>
     <table.col name="col1">
         <table.col name="col1.1">
@@ -46,7 +94,7 @@ title: 表格
         <table.col name="col1.2" key="value" width="160" />
     </table.col>
     <table.col name="value" key="value" width="200" sortable />
-</ui.table>
+</ui.table> -->
 ```
 
 ```javascript
@@ -115,13 +163,13 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 基本方式2
+### 表头固定在表格顶部
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table
+<!-- <ui.table
     width=700
     height=200
     fixedHeader
@@ -130,7 +178,7 @@ var component = new NEKUI.Component({
     paging={table.paging}
     source={table.source}
     loading={loading}
-/>
+/> -->
 ```
 
 ```javascript

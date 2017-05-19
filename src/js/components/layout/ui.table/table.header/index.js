@@ -5,6 +5,8 @@ var TableTemplate = require('../table.template');
 
 var Component = require('../../../../ui-base/component');
 var tpl = require('./index.html');
+var _ = require('../utils');
+var templates = require('../th.elements');
 //
 // var _parseFormat = function(str) {
 //     return str.replace(/</g, '&lt;')
@@ -221,7 +223,63 @@ var TableBasic = Component.extend({
                 data._ok2ResizeCol = false;
             }
         }
-    }
+    },
+
+    _getTHElement: function(header, item) {
+        if(header.headerFormat || header.headerFormatter || header.headerTemplate) {
+            return this._getCustom(header, item);
+        }
+        return templates.get(header.type);
+    },
+
+    _getCustom: function(header, item) {
+        if(header.headerTemplate) {
+            return this._getTemplate(header);
+        } else if(header.headerFormatter) {
+            return this._getFormatter(header, item);
+        } else if(header.headerFormat) {
+            return this._getFormat(header);
+        }
+        return '';
+    },
+
+    _getTemplate: function(header) {
+        if(_.isArray(header.headerTemplate)) {
+            return '{#list header.headerTemplate as template by template_index}{#include template}{/list}';
+        }
+        return'{#include header.headerTemplate}';
+    },
+
+    _getFormatter: function(header, headers) {
+        var formatter = header.formatter;
+        if(_.isArray(formatter)) {
+            return formatter.reduce(function(previous, current) {
+                return previous + (current.call(this, header, headers) || '');
+            }.bind(this), '');
+        }
+        return formatter.call(this, header, headers) || '';
+    },
+
+    _getFormat: function(header) {
+        var format = header.format;
+        if(_.isArray(format)) {
+            return format.reduce(function(previous, current) {
+                return previous + _parseFormat(current);
+            }.bind(this), '');
+        }
+        return _parseFormat(format);
+    },
+
+    emitEvent: function(type) {
+        var args = [].slice.call(arguments, 1);
+        this.$emit('customevent', {
+            type: type,
+            sender: this,
+            args: {
+                param: args
+            }
+        });
+    },
 })
 .filter('sortingClass', function(header) {
     var data = this.data;

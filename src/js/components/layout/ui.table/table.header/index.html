@@ -32,19 +32,7 @@
                         <div class="th_content"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
-                            {header.name}
-                            <span>
-                                {#if tip}
-                                    <tooltip tip={header.tip} placement={header.tipPos || 'top'}>
-                                        <i class="u-icon u-icon-info-circle" />
-                                    </tooltip>
-                                {/if}
-                                {#if header.sortable && header.key}
-                                    <i class="u-icon u-icon-unsorted u-icon-1">
-                                        <i class="u-icon u-icon-2 {header | sortingClass}"/>
-                                    </i>
-                                {/if}
-                            </span>
+                            {#include this._getTHElement(header, headers)}
                         </div>
                     </th>
                 {/list}

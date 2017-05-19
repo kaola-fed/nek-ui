@@ -353,6 +353,10 @@ var UiTable = Component.extend({
         });
     },
 
+    _onPaging: function(e) {
+        console.log(e);
+    },
+
     _onFixedExpand: function(e) {
         this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
     },
