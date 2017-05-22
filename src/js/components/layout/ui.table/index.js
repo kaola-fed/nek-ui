@@ -109,10 +109,12 @@ var UITable = Component.extend({
         }
     },
     _updateStickyFooterStatus: function() {
-        this._getHeaderHeight();
-        var scrollY = window.scrollY;
+        var headerHeight = this._getHeaderHeight();
+        var footerHeight = this._getFooterHeight();
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var scrollY = window.scrollY;
         var innerHeight = window.innerHeight;
+        var scrollYBottom = scrollY + innerHeight;
 
         var tableRect = this.$refs.tableWrap.getBoundingClientRect();
         var tableWrapOffset = {
@@ -120,9 +122,11 @@ var UITable = Component.extend({
             bottom: tableRect.bottom + scrollTop
         };
 
-        if(scrollY + innerHeight > tableWrapOffset.bottom) {
+        if(scrollYBottom > tableWrapOffset.bottom + footerHeight
+            || scrollYBottom < tableWrapOffset.top + headerHeight + 20
+        ) {
             this.$update('stickyFooterActive', false);
-        } else if(scrollY > tableWrapOffset.top && scrollY < tableWrapOffset.bottom) {
+        } else {
             this.$update('stickyFooterActive', true);
         }
     },
@@ -212,9 +216,6 @@ var UITable = Component.extend({
     },
     _getHeaderHeight: function() {
         var headerHeight = this.data.headerHeight;
-        if(headerHeight != undefined) {
-            return headerHeight;
-        }
         var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
         headerHeight = getNum(computedStyle.marginTop)
                 + getNum(computedStyle.borderTopWidth)
@@ -227,9 +228,6 @@ var UITable = Component.extend({
     },
     _getFooterHeight: function() {
         var footerHeight = this.data.footerHeight;
-        if(footerHeight != undefined) {
-            return footerHeight;
-        }
         var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
         footerHeight = getNum(computedStyle.marginTop)
                 + getNum(computedStyle.borderTopWidth)

@@ -144,9 +144,10 @@ var TableBasic = Component.extend({
         this._startResizing(e, header, headerIndex, headerTrIndex);
     },
     _startResizing: function(e, header, headerIndex, headerTrIndex) {
-        var tableLeft = this.$parent.$refs.table.getBoundingClientRect().left;
+        var self = this;
+        var tableLeft = self.$parent.$refs.table.getBoundingClientRect().left;
         var mouseLeft = e.pageX;
-        var headerEle = this.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
+        var headerEle = self.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
         var headerLeft = headerEle.getBoundingClientRect().left;
 
         header._resizeParam = {
@@ -155,7 +156,7 @@ var TableBasic = Component.extend({
             headerLeft: headerLeft
         };
 
-        var resizeProxy = this.$parent.$refs.resizeProxy;
+        var resizeProxy = self.$parent.$refs.resizeProxy;
         resizeProxy.style.visibility = 'visible';
 
         var onMouseMove = function(_e) {
@@ -179,27 +180,28 @@ var TableBasic = Component.extend({
 
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
+
+            header._isDragging = false;
             self._disableResize();
         };
 
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
     },
-    _onMouseUp: function(e, header) {
-        var data = this.data;
-        if(!data._ok2ResizeCol) {
+    _onMouseOut: function(e, header) {
+        if(!header._isDragging) {
+            this._disableResize();
             return;
         }
-        header._isDragging = false;
     },
     _onMouseMove: function(e, header) {
-        if(!header._isDragging && this._shouldStartDragging(e)) {
+        if(!header._isDragging && this._shouldEnableResize(e)) {
             this._enableResize();
         } else {
             this._disableResize();
         }
     },
-    _shouldStartDragging: function(e) {
+    _shouldEnableResize: function(e) {
         var target = e.target;
         while(target && target.tagName !== 'TH') {
             target = target.parentNode;

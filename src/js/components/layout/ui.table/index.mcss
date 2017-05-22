@@ -1,4 +1,5 @@
 $headerGrey = #EEF1F4;
+$resizeProxyColor = #ddd;
 $trBorderColor = #ecf2f9;
 $trHoverColor = #ecf2f9;
 $trBackgroundColor = #f6f9fc;
@@ -17,7 +18,7 @@ $orderIconColor = #666;
         height: 100%;
         width: 1px;
         z-index: 100;
-        background: $headerGrey;
+        background: $resizeProxyColor;
     }
 }
 
@@ -125,12 +126,6 @@ $orderIconColor = #666;
 
     .tb_bd {
         .tb_bd_tr {
-            &:nth-child(2n-1){
-                background: #fff;
-            }
-            &:nth-child(2n){
-                background: $trBackgroundColor;
-            }
             &:not(:last-child) {
                 border-bottom: 1px solid $trBorderColor;
             }
@@ -154,6 +149,30 @@ $orderIconColor = #666;
             >.tb_bd_td_div {
                 padding: 6px 8px;
                 line-height: 18px;
+            }
+        }
+    }
+
+    &.strip {
+        .tb_bd {
+            .tb_bd_tr {
+                &:nth-child(2n-1){
+                    background: #fff;
+                }
+                &:nth-child(2n){
+                    background: $trBackgroundColor;
+                }
+                &:not(:last-child) {
+                    border-bottom: 1px solid $trBorderColor;
+                }
+                &.z-hover,
+                &:hover {
+                    background: $trHoverColor;
+                }
+                transition: background 200ms ease-out;
+                &.td_bd_tr_nohover {
+                    background: #fff;
+                }
             }
         }
     }

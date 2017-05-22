@@ -10,17 +10,9 @@ title: 表格
 <div class="m-example"></div>
 
 ```xml
-<ui.table
-    source={table.source}
-    on-check={this.onCheck($event)}
->
-    <table.col name="title" key="title">
-        <table.template type="header">
-            {'<check name={header.name} on-change={this.emitEvent("check",  $event, header)}/> <span>{header.name}</span>'}
-        </table.template>
-    </table.col>
-    <table.col name="value" key="value" tip="asdasd">
-    </table.col>
+<ui.table source={table.source} >
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" tip="I am tip"/>
 </ui.table>
 ```
 
@@ -32,8 +24,39 @@ var component = new NEKUI.Component({
             source: []
         }
     },
-    onCheck: function(e) {
-        console.log(e);
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
+### 条纹
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table strip source={table.source} >
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" tip="I am tip"/>
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
     },
     init: function() {
         setTimeout(function() {
@@ -42,8 +65,7 @@ var component = new NEKUI.Component({
                 this.data.table.source.push({
                     title: 'test' + i,
                     col1: '' + i,
-                    value: 10 * i,
-                    value2: 'adjasdlfj askldjf klasjdfkl jakldsfj aklsdjf klajsfdl jsdlkfj asdljakl jaklsdjf klasdjf klajsdklf jakls fjd'
+                    value: 10 * i
                 });
             }
             this.$update();
@@ -53,47 +75,22 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 表头与底部操作栏悬浮
+### 多级表头
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table
-    stickyHeader
-    stickyFooter
-    width=778
-    lineClamp=3
-    source={table.source}
-    sorting={table.sorting}
-    on-checkchange={this.onCheck($event)}
-    on-sort={this.onSort($event)}
-    on-clicka={this.onClickA($event)}
-    on-expand={this.onExpand($event)}
->
-    <table.col name="title" key="title" width="100" sortable type="check">
-        <table.template>
-            {'<a on-click={this.emitEvent("clicka", item)}>{item.title} > {item.value}</a>'}
-            {'<div>{item.col1}</div>'}
-        </table.template>
-        <table.template type="sub">
-            {'<div style="padding: 20px 30px;"><bi.table columns={item.columns} source={item.source}/></div>'}
-            {'{item.title}'}
-        </table.template>
-    </table.col>
+<ui.table source={table.source} >
+    <table.col name="title" key="title" width="100" />
     <table.col name="col1">
         <table.col name="col1.1">
-            <table.col name="col1.1.2" key="value" width="160" sortable >
-                <table.template type="sub">
-                    {'<bi.table columns={item.columns} source={item.source}/>'}
-                    {'{item.title}'}
-                </table.template>
-            </table.col>
+            <table.col name="col1.1.2" key="value" width="160" />
             <table.col name="col1.1.3" key="value2" width="160" />
         </table.col>
         <table.col name="col1.2" key="value" width="160" />
     </table.col>
-    <table.col name="value" key="value" width="200" sortable />
+    <table.col name="value" key="value" width="200" />
 </ui.table>
 ```
 
@@ -101,75 +98,75 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-        // loading: true,
         table: {
-            sorting: {
-                key: 'title',
-                isAsc: 0
-            },
-            paging: {
-                total: 10,
-                current: 1
-            },
-            config: {
-                textAlign: 'center',
-            },
             source: []
         }
     },
     init: function() {
-        setTimeout(function() {
-            this.data.table.source = [];
-            for(var i = 0; i < 20; ++i) {
-                this.data.table.source.push({
-                    title: 'test' + i,
-                    col1: '' + i,
-                    value: 10 * i,
-                    value2: 'adjasdlfj askldjf klasjdfkl jakldsfj aklsdjf klajsfdl jsdlkfj asdljakl jaklsdjf klasdjf klajsdklf jakls fjd'
-                });
-            }
-            this.$update();
-        }.bind(this), 200);
-    },
-    onCheck: function(e) {
-        console.log(e);
-    },
-    onExpand: function(e) {
-        e.item.columns = [
-            {
-                name: 'test',
-                key: 'value'
-            }
-        ];
-        setTimeout(function() {
-            e.item.source = [
-                {
-                    value: 't1'
-                },
-                {
-                    value: 't2'
-                }
-            ];
-            this.$update();
-        }.bind(this), 1000);
-    },
-    onSort: function(e) {
-        console.log(e);
-    },
-    onClickA: function(e) {
-        console.log(e);
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i,
+                value2: 'test'
+            });
+        }
     }
 });
 ```
 <!-- demo_end -->
 
-### 表头固定在表格顶部
+### 悬浮表头和底部
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<!-- <ui.table
+<ui.table stickyHeader stickyFooter width=700 source={table.source} >
+    <table.col name="title" key="title" width="500" />
+    <table.col name="value" key="value" width="500" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+
+<!-- demo_end -->
+
+### 表头固定在表格顶部
+
+### 自定义模版
+
+### 排序
+
+### 分页
+
+### 数据配置
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table
     width=700
     height=200
     fixedHeader
@@ -178,7 +175,7 @@ var component = new NEKUI.Component({
     paging={table.paging}
     source={table.source}
     loading={loading}
-/> -->
+/>
 ```
 
 ```javascript
