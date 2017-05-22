@@ -360,7 +360,7 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -427,9 +427,21 @@
 </tr>
 <tr>
 <td>[options.data.total]</td>
-<td><code>total</code></td>
-<td><code>11</code></td>
+<td><code>number</code></td>
+<td><code>0</code></td>
 <td>=&gt; 总页数</td>
+</tr>
+<tr>
+<td>[options.data.sumTotal]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 总个数</td>
+</tr>
+<tr>
+<td>[options.data.pageSize]</td>
+<td><code>number</code></td>
+<td><code>20</code></td>
+<td>=&gt; 每页个数</td>
 </tr>
 <tr>
 <td>[options.data.position]</td>
@@ -439,13 +451,13 @@
 </tr>
 <tr>
 <td>[options.data.middle]</td>
-<td><code>middle</code></td>
+<td><code>number</code></td>
 <td><code>5</code></td>
 <td>=&gt; 当页数较多时，中间显示的页数</td>
 </tr>
 <tr>
 <td>[options.data.side]</td>
-<td><code>side</code></td>
+<td><code>number</code></td>
 <td><code>2</code></td>
 <td>=&gt; 当页数较多时，两端显示的页数</td>
 </tr>
@@ -540,7 +552,7 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<pager current=6 total=11 />
+<pager current=3 sumTotal=200 pageSize=5 />
 
       */});
       var component = new NEKUI.Component({template: template});
