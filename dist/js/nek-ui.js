@@ -130,9 +130,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Layout
 	    Panel: __webpack_require__(360),
 	    PanelTool: __webpack_require__(395),
+	    Row: __webpack_require__(396),
+	    Col: __webpack_require__(398),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(396)
+	    LocaleProvider: __webpack_require__(400)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -30574,6 +30576,94 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Row 栅格布局-行
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var template = __webpack_require__(397);
+
+	/**
+	 * @class Row
+	 * @extend Component
+	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {number}          [options.data.span='']              => 栅格占据的列数
+	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 */
+	var Row = Component.extend({
+	  name: 'ui.row',
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      span: '',
+	      offset: ''
+	    });
+
+	    this.supr(data);
+	  }
+	});
+
+		module.exports = Row;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"g-row\">\n  {#inc this.$body}\n</div>"
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Col 栅格布局-列
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var template = __webpack_require__(399);
+
+	/**
+	 * @class Col
+	 * @extend Component
+	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {number}          [options.data.span='']              => 栅格占据的列数
+	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 */
+	var Col = Component.extend({
+	  name: 'ui.col',
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      span: '',
+	      offset: ''
+	    });
+
+	    this.supr(data);
+	  }
+	});
+
+		module.exports = Col;
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"g-col g-col-{span} g-col-{offset}\">\n  {#inc this.$body}\n</div>"
+
+/***/ }),
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
