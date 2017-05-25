@@ -1,0 +1,33 @@
+<div class="u-dropdown u-select {class}" z-dis={disabled} r-hide={!visible} ref="element">
+    <div class="dropdown_hd" on-click={this.toggle(!open)}>
+        <i class="u-icon u-icon-caret-down"></i>
+        {#list selected as item}
+        <span class="selected-tag">{item[nameKey]}
+			<i class="u-icon u-icon-remove" on-click={this.delete(item)}></i>
+        </span>
+        {/list}
+    </div>
+    {#if open}
+    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        <div class="cateWrap f-cb">
+            {#list 0..4 as level}
+            <ul class="f-fl">
+                <input type="text" class="form-control" r-model={search[level]}>
+                {#list tree[level] | search : search[level] as cate}
+                <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
+                	{#if multiple}
+                    <input type="checkbox" r-model={cate[checkKey]} on-change={this.checkCate(cate, level, cate[checkKey])}>
+                    {/if}
+                    {cate[nameKey]}
+                    {#if cate[childKey] && cate[childKey].length}&gt;{/if}
+                </li>
+                {/list}
+                {#if empty[level]}
+				<li class="f-csp">无任何匹配选项</li>
+                {/if}
+            </ul>
+            {/list}
+        </div>
+    </div>
+    {/if}
+</div>
