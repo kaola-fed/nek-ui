@@ -3679,6 +3679,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	flex:1;
 	line-height:32px;
 }
+.cateWrap ul,.cateWrap li{
+	list-style-type:none;
+}
 .u-numberinput{
 	display:inline-block;
 	position:relative;

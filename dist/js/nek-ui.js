@@ -26161,6 +26161,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(110);
 	var template = __webpack_require__(336);
 	var _ = __webpack_require__(98);
+	var check = __webpack_require__(176);
+
+	/**
+	 * @class TreeSelect
+	 * @extend Select
+	 * @param {object}          [options.data]                          = 绑定属性
+	 * @param {object[]}        [options.data.source=[]]                <=> 数据源
+	 * @param {string}          [options.data.source[].name]            => 每项的内容
+	 * @param {string}          [options.data.key=id]                   => 数据项的键
+	 * @param {string}          [options.data.nameKey=name]             => 数据项的name键
+	 * @param {string}          [options.data.childKey=children]        => 数据子项的键
+	 * @param {string}          [options.data.value=null]               <=> 当前选择值
+	 * @param {object}          [options.data.selected=null]            <=> 当前选择项
+	 * @param {string}          [options.data.separator=,]              => 多选时value分隔符
+	 * @param {boolean}         [options.data.readonly=false]           => 是否只读
+	 * @param {boolean}         [options.data.multiple=false]           => 是否多选
+	 * @param {boolean}         [options.data.disabled=false]           => 是否禁用
+	 * @param {boolean}         [options.data.visible=true]             => 是否显示
+	 * @param {string}          [options.data.class]                 => 补充class
+	 */
 
 	var MultiSelect = Dropdown.extend({
 	    name: 'multi.select',
@@ -26199,21 +26219,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    initSelected: function initSelected() {
 	        var data = this.data;
-	        if (data.value) {
+	        if (data.value !== null) {
 	            var _list = data.value.split(data.separator);
-	            var _checked = function _checked(list) {
-	                _list.map(function (item) {
-	                    list.map(function (item2) {
-	                        if (item == item2[data.key]) {
+	            var _checkedItem = function _checkedItem(list) {
+	                list.map(function (item2) {
+	                    if (item2[data.childKey] && item2[data.childKey].length) {
+	                        _checkedItem(item2[data.childKey]);
+	                    } else {
+	                        if (_list.indexOf(item2[data.key].toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
 	                            item2[data.checkKey] = true;
+	                        } else {
+	                            item2[data.checkKey] = false;
 	                        }
-	                        if (item2[data.childKey] && item2[data.childKey].length) {
-	                            _checked(item2[data.childKey]);
-	                        }
-	                    });
+	                    }
 	                });
 	            };
-	            _checked(data._source);
+	            var _checkedSelf = function _checkedSelf(list) {
+	                list.map(function (item) {
+	                    if (item[data.childKey] && item[data.childKey].length) {
+	                        _checkedSelf(item[data.childKey]);
+	                        if (item[data.childKey].every(function (item2) {
+	                            return item2[data.checkKey];
+	                        })) {
+	                            item[data.checkKey] = true;
+	                        } else if (item[data.childKey].some(function (item2) {
+	                            return item2[data.checkKey] === true || item2[data.checkKey] === null;
+	                        })) {
+	                            item[data.checkKey] = null;
+	                        } else {
+	                            item[data.checkKey] = false;
+	                        }
+	                    }
+	                });
+	            };
+	            _checkedItem(data._source);
+	            _checkedSelf(data._source);
 	            this.watchValue();
 	        }
 	    },
@@ -26241,38 +26281,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    },
 	    checkCate: function checkCate(cate, level, checked) {
+	        checked = !checked;
 	        var data = this.data;
+	        cate[data.checkKey] = checked;
 	        this.setCheck(cate[data.childKey], checked);
 
-	        // 取消勾选的情况，找到前面各级active的cate，设置为不勾选
-	        if (level > 0 && !checked) {
-	            for (var i = 0; i < level; i++) {
-	                data.tree[i].forEach(function (item) {
-	                    if (item.active) {
-	                        item[data.checkKey] = false;
-	                    }
-	                });
-	            }
+	        for (var i = level - 1; i >= 0; i--) {
+	            data.tree[i].forEach(function (item) {
+	                if (item.active) {
+	                    var checkedCount = 0;
+	                    item[data.childKey].forEach(function (child) {
+	                        if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
+	                    });
+
+	                    if (checkedCount === 0) item.checked = false;else if (checkedCount === item[data.childKey].length) item.checked = true;else item.checked = null;
+	                }
+	            });
 	        }
 
-	        // 勾选的情况，判断本级是否全选，全选则设置上一级为勾选
-	        if (level > 0 && checked) {
-	            for (var i = level; i > 0; i--) {
-	                var flag = true;
-	                data.tree[i].forEach(function (item) {
-	                    if (!item[data.checkKey]) {
-	                        flag = false;
-	                    }
-	                });
-	                if (flag) {
-	                    data.tree[i - 1].forEach(function (item) {
-	                        if (item.active) {
-	                            item[data.checkKey] = true;
-	                        }
-	                    });
-	                }
-	            }
-	        }
+	        // 取消勾选的情况，找到前面各级active的cate，设置为不勾选
+	        // if(level > 0 && !checked) {
+	        //     for(var i = 0; i < level; i++) {
+	        //         data.tree[i].forEach(function(item) {
+	        //             if(item.active) {
+	        //                 item[data.checkKey] = false;
+	        //             }
+	        //         })
+	        //     }
+	        // }
+
+	        // // 勾选的情况，判断本级是否全选，全选则设置上一级为勾选
+	        // if(level > 0 && checked) {
+	        //     for(var i = level; i > 0; i--) {
+	        //         var flag = true;
+	        //         data.tree[i].forEach(function(item) {
+	        //             if(!item[data.checkKey]) {
+	        //                 flag = false;
+	        //             }
+	        //         })
+	        //         if(flag) {
+	        //             data.tree[i - 1].forEach(function(item) {
+	        //                 if(item.active) {
+	        //                     item[data.checkKey] = true;
+	        //                 }
+	        //             })
+	        //         }
+	        //     }
+	        // }
 	        this.watchValue();
 	    },
 	    // 循环列表获取 value 值
@@ -26310,10 +26365,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    },
 	    // 删除某一项
-	    delete: function _delete(item) {
+	    delete: function _delete(event, item) {
+	        event && event.stopPropagation();
+	        this.toggle(true);
 	        var data = this.data;
 	        var _list = data.value.split(data.separator);
-	        _list.splice(_list.indexOf(item[data.key]), 1);
+	        _list.splice(_list.indexOf(item[data.key].toString()), 1);
 	        data.value = _list.join(data.separator);
 	        this.initSelected();
 	        this.watchValue();
@@ -26332,7 +26389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 336 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\r\n        <i class=\"u-icon u-icon-caret-down\"></i>\r\n        {#list selected as item}\r\n        <span class=\"selected-tag\">{item[nameKey]}\r\n\t\t\t<i class=\"u-icon u-icon-remove\" on-click={this.delete(item)}></i>\r\n        </span>\r\n        {/list}\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <div class=\"cateWrap f-cb\">\r\n            {#list 0..4 as level}\r\n            <ul class=\"f-fl\">\r\n                <input type=\"text\" class=\"form-control\" r-model={search[level]}>\r\n                {#list tree[level] | search : search[level] as cate}\r\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\r\n                \t{#if multiple}\r\n                    <input type=\"checkbox\" r-model={cate[checkKey]} on-change={this.checkCate(cate, level, cate[checkKey])}>\r\n                    {/if}\r\n                    {cate[nameKey]}\r\n                    {#if cate[childKey] && cate[childKey].length}&gt;{/if}\r\n                </li>\r\n                {/list}\r\n                {#if empty[level]}\r\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\r\n                {/if}\r\n            </ul>\r\n            {/list}\r\n        </div>\r\n    </div>\r\n    {/if}\r\n</div>"
+	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\r\n        {#list selected as item}\r\n        <span class=\"selected-tag\">{item[nameKey]}\r\n\t\t\t<i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\r\n        </span>\r\n        {/list}\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <div class=\"cateWrap f-cb\">\r\n            {#list 0..4 as level}\r\n            <ul class=\"f-fl\">\r\n                <input type=\"text\" class=\"form-control\" r-model={search[level]}>\r\n                {#list tree[level] | search : search[level] as cate}\r\n                {#if !filter || (filter && filter(cate))}\r\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\r\n                \t{#if multiple}\r\n                \t<check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></check>\r\n                    {/if}\r\n                    {cate[nameKey]}\r\n                    {#if cate[childKey] && cate[childKey].length}&gt;{/if}\r\n                </li>\r\n                {/if}\r\n                {/list}\r\n                {#if empty[level]}\r\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\r\n                {/if}\r\n            </ul>\r\n            {/list}\r\n        </div>\r\n    </div>\r\n    {/if}\r\n</div>"
 
 /***/ },
 /* 337 */
@@ -26502,6 +26559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.source[].disabled=false]  => 禁用此项
 	 * @param {string}            [options.data.source[].tip]             => 禁用此项显示的提示，如果没有则不显示
 	 * @param {string}            [options.data.source[].placement]       => 禁用此项显示提示的方向，默认下方
+	 * @param {function}          [options.data.filter]                   => 如果传了该参数会对 source 数组的每一项 item 进行 filter(item) 返回 true 则显示，否则不显示
 	 * @param {boolean}           [options.data.source[].divider=false]   => 设置此项为分隔线
 	 * @param {object}            [options.data.selected]                 <=> 当前选择项
 	 * @param {string|number}     [options.data.value]                    <=> 当前选择值
@@ -26546,6 +26604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // 搜索的文案
 	            searchValue: '',
 	            canSearch: undefined,
+	            filter: null,
 	            // 默认不区分大小写
 	            isCaseSensitive: true,
 	            noMatchText: this.$trans('NO_MATCH'),
@@ -26812,7 +26871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 340 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\r\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\r\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n\t    {#if !multiple}\r\n\t        <div class=\"dropdown_hd\"\r\n\t\t\t\t z-dis={disabled}\r\n\t             title={selected?selected[nameKey]:placeholder}\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\r\n\t            {#if open && canSearch}\r\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\r\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\r\n\t            {#else}\r\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {#else}\r\n\t        <div class=\"dropdown_hd\"\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            {#list selected as item}\r\n\t                <span class=\"selected-tag\">\r\n\t                    {item[nameKey]}\r\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\r\n\t                </span>\r\n\t            {/list}\r\n\t            {#if open && canSearch}\r\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\r\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\r\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {/if}\r\n\t    {#if open}\r\n\t    <div class=\"dropdown_bd\"\r\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n\t        <ul class=\"m-listview\">\r\n\t            {#if placeholder}\r\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\r\n\t                    {placeholder}\r\n\t                </li>\r\n\t            {/if}\r\n\r\n\t            {#list this.filterArray(source) as item}\r\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\r\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\r\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\r\n\t                        {this.$trans('ALL')}\r\n\t                    </li>\r\n\t                {/if}\r\n\t                {#if item.disabled && item.tip}\r\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\r\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                        title={item[nameKey]} on-click={this.select(item)}>\r\n\t                        {#if multiple && !item.divider}\r\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                        {/if}\r\n\t                        {#if @(itemTemplate)}\r\n\t                            {#inc @(itemTemplate)}\r\n\t                        {#else}\r\n\t                            {item[nameKey]}\r\n\t                        {/if}\r\n\t                    </li>\r\n\t                </tooltip>\r\n\t                {#else}\r\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                    title={item[nameKey]} on-click={this.select(item)}>\r\n\t                    {#if multiple && !item.divider}\r\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                    {/if}\r\n\t                    {#if @(itemTemplate)}\r\n\t                        {#inc @(itemTemplate)}\r\n\t                    {#else}\r\n\t                        {item[nameKey]}\r\n\t                    {/if}\r\n\t                </li>\r\n\t                {/if}\r\n\t            {#else}\r\n\t                {#if searchValue}\r\n\t                <li>\r\n\t                    {noMatchText}\r\n\t                </li>\r\n\t                {/if}\r\n\t            {/list}\r\n\t        </ul>\r\n\t    </div>\r\n\t    {/if}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\r\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\r\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n\t    {#if !multiple}\r\n\t        <div class=\"dropdown_hd\"\r\n\t\t\t\t z-dis={disabled}\r\n\t             title={selected?selected[nameKey]:placeholder}\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\r\n\t            {#if open && canSearch}\r\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\r\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\r\n\t            {#else}\r\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {#else}\r\n\t        <div class=\"dropdown_hd\"\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            {#list selected as item}\r\n\t                <span class=\"selected-tag\">\r\n\t                    {item[nameKey]}\r\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\r\n\t                </span>\r\n\t            {/list}\r\n\t            {#if open && canSearch}\r\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\r\n\t                   on-keydown={this.backSearchValue($event,selected,searchValue)}\r\n\t                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {/if}\r\n\t    {#if open}\r\n\t    <div class=\"dropdown_bd\"\r\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n\t        <ul class=\"m-listview\">\r\n\t            {#if placeholder}\r\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\r\n\t                    {placeholder}\r\n\t                </li>\r\n\t            {/if}\r\n\r\n\t            {#list this.filterArray(source) as item}\r\n\t            {#if !filter || (filter && filter(item))}\r\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\r\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\r\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\r\n\t                        {this.$trans('ALL')}\r\n\t                    </li>\r\n\t                {/if}\r\n\t                {#if item.disabled && item.tip}\r\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\r\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                        title={item[nameKey]} on-click={this.select(item)}>\r\n\t                        {#if multiple && !item.divider}\r\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                        {/if}\r\n\t                        {#if @(itemTemplate)}\r\n\t                            {#inc @(itemTemplate)}\r\n\t                        {#else}\r\n\t                            {item[nameKey]}\r\n\t                        {/if}\r\n\t                    </li>\r\n\t                </tooltip>\r\n\t                {#else}\r\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                    title={item[nameKey]} on-click={this.select(item)}>\r\n\t                    {#if multiple && !item.divider}\r\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                    {/if}\r\n\t                    {#if @(itemTemplate)}\r\n\t                        {#inc @(itemTemplate)}\r\n\t                    {#else}\r\n\t                        {item[nameKey]}\r\n\t                    {/if}\r\n\t                </li>\r\n\t                {/if}\r\n\t            {#else}\r\n\t                {#if searchValue}\r\n\t                <li>\r\n\t                    {noMatchText}\r\n\t                </li>\r\n\t                {/if}\r\n                {/if}\r\n\t            {/list}\r\n\t        </ul>\r\n\t    </div>\r\n\t    {/if}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
 
 /***/ },
 /* 341 */
@@ -27468,7 +27527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 349 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-uploader {class}\" r-hide={!visible}>\r\n    <div on-click={this.upload()}>\r\n        {#if this.$body}\r\n            {#inc this.$body}\r\n        {#else}\r\n            <a class=\"u-btn\">{title || this.$trans('UPLOAD')}</a>\r\n        {/if}\r\n    </div>\r\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\r\n        {#if !_sending}\r\n        <!-- IE需要重置input[type=file] -->\r\n        <input type=\"file\" name={name} ref=\"file\" on-change={this._submit()}>\r\n        {/if}\r\n        {#list Object.keys(data) as key}\r\n        <input type=\"hidden\" name={key} value={data[key]}>\r\n        {/list}\r\n    </form>\r\n    <iframe name=\"iframe{_id}\" on-load={this._onLoad()} ref=\"iframe\" />\r\n</div>"
+	module.exports = "<div class=\"u-uploader {class}\" r-hide={!visible}>\r\n    <div on-click={this.upload()}>\r\n        {#if this.$body}\r\n            {#inc this.$body}\r\n        {#else}\r\n            <a class=\"u-btn\">{title || this.$trans('UPLOAD')}</a>\r\n        {/if}\r\n    </div>\r\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\r\n        {#if !_sending}\r\n        <!-- IE需要重置input[type=file] -->\r\n        <input type=\"file\" multiple=\"multiple\" name={name} ref=\"file\" on-change={this._submit()}>\r\n        {/if}\r\n        {#list Object.keys(data) as key}\r\n        <input type=\"hidden\" name={key} value={data[key]}>\r\n        {/list}\r\n    </form>\r\n    <iframe name=\"iframe{_id}\" on-load={this._onLoad()} ref=\"iframe\" />\r\n</div>"
 
 /***/ },
 /* 350 */

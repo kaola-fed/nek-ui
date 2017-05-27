@@ -41,6 +41,7 @@
 	            {/if}
 
 	            {#list this.filterArray(source) as item}
+	            {#if !filter || (filter && filter(item))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
 	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
@@ -80,6 +81,7 @@
 	                    {noMatchText}
 	                </li>
 	                {/if}
+                {/if}
 	            {/list}
 	        </ul>
 	    </div>

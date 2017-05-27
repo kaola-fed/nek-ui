@@ -95,20 +95,20 @@ gulp.task('dist', function(done) {
 });
 
 gulp.task('default', function(done) {
-  sequence('dist', 'gen-doc', done);
+  sequence('dist',  done);
 });
 
 gulp.task('server', ['default'], function() {
   browserSync.init({
     server: {
-      baseDir: ['./doc/public', './dist']
+      baseDir: ['./', './dist']
     },
     browser: 'default',
     reloadDelay: 1000,
     cors: true,
-    port: 8089
+    port: 8090
   });
-  gulp.watch("doc/public/*").on('change', reload);
+  gulp.watch("./test.html").on('change', reload);
 });
 
 gulp.task('watch', ['server'], function() {

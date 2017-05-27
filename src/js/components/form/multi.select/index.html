@@ -1,9 +1,8 @@
 <div class="u-dropdown u-select {class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open)}>
-        <i class="u-icon u-icon-caret-down"></i>
         {#list selected as item}
         <span class="selected-tag">{item[nameKey]}
-			<i class="u-icon u-icon-remove" on-click={this.delete(item)}></i>
+			<i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
         </span>
         {/list}
     </div>
@@ -14,13 +13,15 @@
             <ul class="f-fl">
                 <input type="text" class="form-control" r-model={search[level]}>
                 {#list tree[level] | search : search[level] as cate}
+                {#if !filter || (filter && filter(cate))}
                 <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
-                    <input type="checkbox" r-model={cate[checkKey]} on-change={this.checkCate(cate, level, cate[checkKey])}>
+                	<check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></check>
                     {/if}
                     {cate[nameKey]}
                     {#if cate[childKey] && cate[childKey].length}&gt;{/if}
                 </li>
+                {/if}
                 {/list}
                 {#if empty[level]}
 				<li class="f-csp">无任何匹配选项</li>

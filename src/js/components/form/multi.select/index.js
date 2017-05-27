@@ -11,6 +11,26 @@ var Dropdown = require('../../navigation/dropdown');
 var Validation = require('../../../util/validation');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
+var check = require('../check');
+
+/**
+ * @class TreeSelect
+ * @extend Select
+ * @param {object}          [options.data]                          = 绑定属性
+ * @param {object[]}        [options.data.source=[]]                <=> 数据源
+ * @param {string}          [options.data.source[].name]            => 每项的内容
+ * @param {string}          [options.data.key=id]                   => 数据项的键
+ * @param {string}          [options.data.nameKey=name]             => 数据项的name键
+ * @param {string}          [options.data.childKey=children]        => 数据子项的键
+ * @param {string}          [options.data.value=null]               <=> 当前选择值
+ * @param {object}          [options.data.selected=null]            <=> 当前选择项
+ * @param {string}          [options.data.separator=,]              => 多选时value分隔符
+ * @param {boolean}         [options.data.readonly=false]           => 是否只读
+ * @param {boolean}         [options.data.multiple=false]           => 是否多选
+ * @param {boolean}         [options.data.disabled=false]           => 是否禁用
+ * @param {boolean}         [options.data.visible=true]             => 是否显示
+ * @param {string}          [options.data.class]                 => 补充class
+ */
 
 
 var MultiSelect = Dropdown.extend({
@@ -50,21 +70,42 @@ var MultiSelect = Dropdown.extend({
     },
     initSelected: function() {
     	var data = this.data;
-    	if(data.value) {
+    	if(data.value !== null) {
         	var _list = data.value.split(data.separator);
-        	var _checked = function(list) {
-        		_list.map(function(item) {
+        	var _checkedItem = function(list) {
         			list.map(function(item2) {
-        				if(item == item2[data.key]) {
-        					item2[data.checkKey] = true;
-        				}
         				if(item2[data.childKey] && item2[data.childKey].length) {
-        					_checked(item2[data.childKey]);
+        					_checkedItem(item2[data.childKey]);
+        				} else {
+        					if(_list.indexOf(item2[data.key].toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
+	        					item2[data.checkKey] = true;
+	        				} else {
+	        					item2[data.checkKey] = false;
+	        				}
         				}
         			})
+        	}
+        	var _checkedSelf = function(list) {
+        		list.map(function(item) {
+        			if(item[data.childKey] && item[data.childKey].length) {
+                        _checkedSelf(item[data.childKey]);
+                        if (item[data.childKey].every(function(item2) {
+                            return item2[data.checkKey];
+                        })) {
+                            item[data.checkKey] = true;
+                        }
+        				else if (item[data.childKey].some(function(item2) {
+                            return item2[data.checkKey] === true || item2[data.checkKey] === null;
+                        })) {
+                            item[data.checkKey] = null;
+                        } else {
+                            item[data.checkKey] = false;
+                        }
+        			}
         		})
         	}
-        	_checked(data._source);
+        	_checkedItem(data._source);
+        	_checkedSelf(data._source);
         	this.watchValue();
         }
     },
@@ -92,38 +133,61 @@ var MultiSelect = Dropdown.extend({
         }
     },
     checkCate: function(cate, level, checked) {
+    	checked = !checked;
         var data = this.data;
+        cate[data.checkKey] = checked;
         this.setCheck(cate[data.childKey], checked);
 
-        // 取消勾选的情况，找到前面各级active的cate，设置为不勾选
-        if(level > 0 && !checked) {
-            for(var i = 0; i < level; i++) {
-                data.tree[i].forEach(function(item) {
-                    if(item.active) {
-                        item[data.checkKey] = false;
-                    }
-                })
-            }
+        for(var i = level - 1; i >= 0; i--) {
+            data.tree[i].forEach(function(item) {
+                if(item.active) {
+                    var checkedCount = 0;
+                    item[data.childKey].forEach(function(child) {
+                        if(child.checked)
+                            checkedCount++;
+                        else if(child.checked === null)
+                            checkedCount += 0.5;
+                    });
+
+                    if(checkedCount === 0)
+                        item.checked = false;
+                    else if(checkedCount === item[data.childKey].length)
+                        item.checked = true;
+                    else
+                        item.checked = null;
+                }
+            })
         }
 
-        // 勾选的情况，判断本级是否全选，全选则设置上一级为勾选
-        if(level > 0 && checked) {
-            for(var i = level; i > 0; i--) {
-                var flag = true;
-                data.tree[i].forEach(function(item) {
-                    if(!item[data.checkKey]) {
-                        flag = false;
-                    }
-                })
-                if(flag) {
-                    data.tree[i - 1].forEach(function(item) {
-                        if(item.active) {
-                            item[data.checkKey] = true;
-                        }
-                    })
-                }
-            }
-        }
+        // 取消勾选的情况，找到前面各级active的cate，设置为不勾选
+        // if(level > 0 && !checked) {
+        //     for(var i = 0; i < level; i++) {
+        //         data.tree[i].forEach(function(item) {
+        //             if(item.active) {
+        //                 item[data.checkKey] = false;
+        //             }
+        //         })
+        //     }
+        // }
+
+        // // 勾选的情况，判断本级是否全选，全选则设置上一级为勾选
+        // if(level > 0 && checked) {
+        //     for(var i = level; i > 0; i--) {
+        //         var flag = true;
+        //         data.tree[i].forEach(function(item) {
+        //             if(!item[data.checkKey]) {
+        //                 flag = false;
+        //             }
+        //         })
+        //         if(flag) {
+        //             data.tree[i - 1].forEach(function(item) {
+        //                 if(item.active) {
+        //                     item[data.checkKey] = true;
+        //                 }
+        //             })
+        //         }
+        //     }
+        // }
         this.watchValue();
     },
     // 循环列表获取 value 值
@@ -161,10 +225,12 @@ var MultiSelect = Dropdown.extend({
         })
     },
     // 删除某一项
-    delete: function(item) {
+    delete: function(event, item) {
+    	event && event.stopPropagation();
+    	this.toggle(true);
     	var data = this.data;
     	var _list = data.value.split(data.separator);
-    	_list.splice(_list.indexOf(item[data.key]), 1);
+    	_list.splice(_list.indexOf(item[data.key].toString()), 1);
     	data.value = _list.join(data.separator);
     	this.initSelected();
     	this.watchValue();
