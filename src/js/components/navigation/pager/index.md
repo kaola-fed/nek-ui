@@ -10,7 +10,7 @@ title: 分页
 <div class="m-example"></div>
 
 ```xml
-<pager current=6 total=11 />
+<pager current=3 sumTotal=200 pageSize=5 />
 ```
 <!-- demo_end -->
 

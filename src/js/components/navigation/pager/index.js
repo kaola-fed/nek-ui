@@ -14,10 +14,12 @@ var _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}        [options.data]                  = 绑定属性
  * @param {number}        [options.data.current=1]        <=> 当前页
- * @param {total}         [options.data.total=11]         => 总页数
+ * @param {number}        [options.data.total=0]          => 总页数
+ * @param {number}        [options.data.sumTotal=0]       => 总个数
+ * @param {number}        [options.data.pageSize=20]      => 每页个数
  * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
- * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
- * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+ * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+ * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
  * @param {number}        [options.data.step=5]           => 每页条数选择步长
  * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
@@ -32,9 +34,12 @@ var Pager = Component.extend({
      * @protected
      */
     config: function() {
+        var _total = Math.ceil(this.data.sumTotal / this.data.pageSize);
         _.extend(this.data, {
             current: 1,
-            total: 11,
+            total: _total,
+            sumTotal: 0,
+            pageSize: 20,
             position: 'center',
             middle: 5,
             side: 2,
@@ -70,6 +75,11 @@ var Pager = Component.extend({
             this.data.middle = +middle;
             this.data.side = +side;
         });
+
+        this.$watch('pageSize', function(val) {
+            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+            this.select(1);
+        });
     },
 
     _setPageSizeList: function() {
@@ -93,7 +103,6 @@ var Pager = Component.extend({
 
         if(page < 1) return;
         if(page > this.data.total) return;
-        if(page == this.data.current) return;
 
         this.data.current = page;
         /**
