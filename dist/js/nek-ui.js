@@ -30535,6 +30535,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	};
 
+	var getElementHeight = function getElementHeight(ele) {
+	    var computedStyle = window.getComputedStyle(ele);
+	    var height = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(ele.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
+	    return height;
+	};
+
 	var UITable = Component.extend({
 	    name: 'ui.table',
 	    template: tpl,
@@ -30570,66 +30576,92 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _initWatchers: function _initWatchers() {
 	        this.$watch('scrollYBar', this._onScrollYBarChange);
 	        this.$watch('columns', this._onColumnsChange);
+	        this.$watch('source', this._onSouceChange);
+
+	        this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
 
 	        this._onScroll = utils.throttle(this._onScroll.bind(this), 200);
 	        window.document.addEventListener('scroll', this._onScroll);
 
+	        this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
+	        window.addEventListener('resize', this._onWindowResize);
+
 	        this._watchWidthChange();
 	    },
 	    _onScroll: function _onScroll() {
-	        var data = this.data;
-
-	        if (data.stickyHeader) {
-	            this._updateStickyHeaderStatus();
+	        if (!this.$refs || !this._isShow()) {
+	            return;
 	        }
-
-	        if (data.stickyFooter) {
-	            this._updateStickyFooterStatus();
-	        }
+	        this._updateSticky();
 	    },
-	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus() {
-	        var headerHeight = this._getHeaderHeight();
-	        var scrollY = window.scrollY;
-	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	    _onSouceChange: function _onSouceChange() {
+	        setTimeout(function () {
+	            this._updateSticky();
+	        }.bind(this), 500);
+	    },
+	    _updateSticky: function _updateSticky() {
+	        var data = this.data;
+	        if (!data.stickyHeader && !data.stickyFooter) {
+	            return;
+	        }
 
+	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
 	        var tableWrapOffset = {
 	            top: tableRect.top + scrollTop,
 	            bottom: tableRect.bottom + scrollTop
 	        };
 
-	        if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
-	            this.$update('stickyHeaderActive', false);
-	        } else if (scrollY > tableWrapOffset.top) {
-	            this.$update('stickyHeaderActive', true);
+	        if (data.stickyHeader && tableWrapOffset) {
+	            this._updateStickyHeaderStatus(tableWrapOffset);
+	        }
+
+	        if (data.stickyFooter && tableWrapOffset) {
+	            this._updateStickyFooterStatus(tableWrapOffset);
 	        }
 	    },
-	    _updateStickyFooterStatus: function _updateStickyFooterStatus() {
+	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus(tableWrapOffset) {
+	        var headerHeight = this._getHeaderHeight();
+	        var scrollY = window.scrollY;
+	        var stickyActive = false;
+
+	        if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
+	            stickyActive = false;
+	        } else if (scrollY > tableWrapOffset.top) {
+	            stickyActive = true;
+	        }
+
+	        if (stickyActive !== this.data.stickyHeaderActive) {
+	            this.$update('stickyHeaderActive ', stickyActive);
+	        }
+	    },
+	    _updateStickyFooterStatus: function _updateStickyFooterStatus(tableWrapOffset) {
 	        var headerHeight = this._getHeaderHeight();
 	        var footerHeight = this._getFooterHeight();
-	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 	        var scrollY = window.scrollY;
 	        var innerHeight = window.innerHeight;
 	        var scrollYBottom = scrollY + innerHeight;
-
-	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
-	        var tableWrapOffset = {
-	            top: tableRect.top + scrollTop,
-	            bottom: tableRect.bottom + scrollTop
-	        };
+	        var stickyActive = false;
 
 	        if (scrollYBottom > tableWrapOffset.bottom + footerHeight || scrollYBottom < tableWrapOffset.top + headerHeight + 20) {
-	            this.$update('stickyFooterActive', false);
+	            stickyActive = false;
 	        } else {
-	            this.$update('stickyFooterActive', true);
+	            stickyActive = true;
+	        }
+
+	        if (stickyActive !== this.data.stickyFooterActive) {
+	            this.$update('stickyFooterActive', stickyActive);
 	        }
 	    },
 	    _watchWidthChange: function _watchWidthChange() {
 	        this.data._widthTimer = setInterval(function () {
+	            if (!this._isShow()) {
+	                return;
+	            }
 	            this._updateScrollBar();
 	            this._updateColumnsWidth();
 	            this._updateFixedColumnWidth();
-	        }.bind(this), 200);
+	        }.bind(this), 300);
 	    },
 	    _updateScrollBar: function _updateScrollBar() {
 	        var data = this.data;
@@ -30666,11 +30698,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this._initTable();
 	    },
 	    _initTable: function _initTable() {
+	        var data = this.data;
+	        var refs = this.$refs;
 	        setTimeout(function () {
-	            this.$update('headerHeight', this.$refs.headerWrap.offsetHeight);
+	            data.headerHeight = refs.headerWrap.offsetHeight;
+	            data.viewWidth = refs.table.offsetWidth;
+
 	            this._initTableWidth();
 	            this._getHeaderHeight();
-	            this._updateStickyHeaderStatus();
 	        }.bind(this), 200);
 	    },
 	    _updateTableWidth: function _updateTableWidth() {
@@ -30709,19 +30744,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$update();
 	    },
 	    _getHeaderHeight: function _getHeaderHeight() {
-	        var headerHeight = this.data.headerHeight;
-	        var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
-	        headerHeight = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(this.$refs.headerWrap.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
-
-	        this.$update('headerHeight', headerHeight);
+	        var headerHeight = getElementHeight(this.$refs.headerWrap);
+	        if (this.data.headerHeight !== headerHeight) {
+	            this.data.headerHeight = headerHeight;
+	        }
 	        return headerHeight;
 	    },
 	    _getFooterHeight: function _getFooterHeight() {
-	        var footerHeight = this.data.footerHeight;
-	        var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
-	        footerHeight = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(this.$refs.footerWrap.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
-
-	        this.$update('footerHeight', footerHeight);
+	        var footerHeight = getElementHeight(this.$refs.footerWrap);
+	        if (this.data.footerHeight !== footerHeight) {
+	            this.data.footerHeight = footerHeight;
+	        }
 	        return footerHeight;
 	    },
 	    _updateColumnsWidth: function _updateColumnsWidth() {
@@ -30733,6 +30766,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var newTableWidth = _dataColumns.reduce(function (previous, current) {
 	            return previous + current._width;
 	        }, 0);
+
+	        _dataColumns.forEach(function (column) {
+	            if (!column._width) {
+	                column._width = column.width || 100;
+	            }
+	        });
 
 	        if (data.tableWidth !== newTableWidth) {
 	            this.$update('tableWidth', newTableWidth);
@@ -30764,9 +30803,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        data.fixedTableWidthRight = fixedTableWidthRight;
 	        data.fixedCol = fixedCol;
 	        data.fixedColRight = fixedColRight;
-	        this.$update();
+	    },
+	    _onWindowResize: function _onWindowResize() {
+	        if (!this.$refs || !this._isShow()) {
+	            return;
+	        }
+	        this.$update('viewWidth', this.$refs.table.offsetWidth);
 	    },
 	    _onBodyScroll: function _onBodyScroll(host) {
+	        if (!this._isShow()) {
+	            return;
+	        }
 	        var $refs = this.$refs;
 
 	        setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
@@ -30814,10 +30861,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _onFixedExpand: function _onFixedExpand(e) {
 	        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
 	    },
+	    _isShow: function _isShow() {
+	        return this.data.show;
+	    },
 	    destroy: function destroy() {
+	        this.removeEventListener();
+	        this.supr();
+	    },
+	    removeEventListener: function removeEventListener() {
 	        clearInterval(this.data._widthTimer);
 	        window.document.removeEventListener('scroll', this._onScroll);
-	        this.supr();
+	        window.removeEventListener('resize', this._onWindowResize);
 	    }
 	}).component('table.header', TableHeader).component('table.body', TableBody).component('table.col', TableCol).component('table.template', TableTemplate);
 
@@ -31480,7 +31534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 403 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={column.length}>\n                <loading visible={loading} static/>{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {column.tdClass}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{emptyInfo}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={column.length}>\n                <loading visible={loading} static/>{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {column.trClass}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {column.tdClass}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{emptyInfo}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
 /* 404 */
@@ -31520,7 +31574,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 408 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}\n    r-style={{\n        width: width == undefined ? 'auto' : width + 'px'\n    }}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: width == undefined ? 'auto' : width + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeader\"\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                _dataColumns={_dataColumns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table.body\n                ref=\"tableBody\"\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                _dataColumns={_dataColumns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeaderFixed\"\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body\n                ref=\"tableBodyFixed\"\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: 0,\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px'\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}>\n            <table.header ref=\"tableHeaderFixedRight\"\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                _dataColumns={_dataColumns}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body ref=\"tableBodyFixedRight\"\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                _dataColumns={_dataColumns}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    {#if paging}\n    <pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}\n    r-style={{\n        width: width == undefined ? 'auto' : width + 'px'\n    }}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table.body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px'\n            }}\n        >\n            <table.header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: 0,\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px'\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}>\n            <table.header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}\n        />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        width: viewWidth + 'px'\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    {#if paging}\n    <pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
 /* 409 */

@@ -37,6 +37,16 @@ var setElementValue = function(ele, prop, val) {
     }
 };
 
+var getElementHeight = function(ele) {
+    var computedStyle = window.getComputedStyle(ele);
+    var height = getNum(computedStyle.marginTop)
+            + getNum(computedStyle.borderTopWidth)
+            + getNum(ele.offsetHeight)
+            + getNum(computedStyle.borderBottomWidth)
+            + getNum(computedStyle.marginBottom);
+    return height;
+}
+
 var UITable = Component.extend({
     name: 'ui.table',
     template: tpl,
@@ -72,70 +82,96 @@ var UITable = Component.extend({
     _initWatchers: function() {
         this.$watch('scrollYBar', this._onScrollYBarChange);
         this.$watch('columns', this._onColumnsChange);
+        this.$watch('source', this._onSouceChange)
+
+        this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
 
         this._onScroll = utils.throttle(this._onScroll.bind(this), 200);
         window.document.addEventListener('scroll', this._onScroll);
 
+        this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
+        window.addEventListener('resize', this._onWindowResize);
+
         this._watchWidthChange();
     },
     _onScroll: function() {
-        var data = this.data;
-
-        if(data.stickyHeader) {
-            this._updateStickyHeaderStatus();
+        if(!this.$refs || !this._isShow()) {
+            return;
         }
-
-        if(data.stickyFooter) {
-            this._updateStickyFooterStatus();
-        }
+        this._updateSticky();
     },
-    _updateStickyHeaderStatus: function() {
-        var headerHeight = this._getHeaderHeight();
-        var scrollY = window.scrollY;
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    _onSouceChange: function() {
+        setTimeout(function() {
+            this._updateSticky();
+        }.bind(this), 500)
+    },
+    _updateSticky: function() {
+        var data = this.data;
+        if(!data.stickyHeader && !data.stickyFooter) {
+            return;
+        }
 
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         var tableRect = this.$refs.tableWrap.getBoundingClientRect();
         var tableWrapOffset = {
             top: tableRect.top + scrollTop,
             bottom: tableRect.bottom + scrollTop
         };
+
+        if(data.stickyHeader && tableWrapOffset) {
+            this._updateStickyHeaderStatus(tableWrapOffset);
+        }
+
+        if(data.stickyFooter && tableWrapOffset) {
+            this._updateStickyFooterStatus(tableWrapOffset);
+        }
+    },
+    _updateStickyHeaderStatus: function(tableWrapOffset) {
+        var headerHeight = this._getHeaderHeight();
+        var scrollY = window.scrollY;
+        var stickyActive = false;
 
         if(scrollY + headerHeight > tableWrapOffset.bottom
             || scrollY < tableWrapOffset.top
         ) {
-            this.$update('stickyHeaderActive', false);
+            stickyActive = false;
         } else if(scrollY > tableWrapOffset.top) {
-            this.$update('stickyHeaderActive', true);
+            stickyActive = true;
+        }
+
+        if(stickyActive !== this.data.stickyHeaderActive) {
+            this.$update('stickyHeaderActive ', stickyActive);
         }
     },
-    _updateStickyFooterStatus: function() {
+    _updateStickyFooterStatus: function(tableWrapOffset) {
         var headerHeight = this._getHeaderHeight();
         var footerHeight = this._getFooterHeight();
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         var scrollY = window.scrollY;
         var innerHeight = window.innerHeight;
         var scrollYBottom = scrollY + innerHeight;
-
-        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
-        var tableWrapOffset = {
-            top: tableRect.top + scrollTop,
-            bottom: tableRect.bottom + scrollTop
-        };
+        var stickyActive = false;
 
         if(scrollYBottom > tableWrapOffset.bottom + footerHeight
             || scrollYBottom < tableWrapOffset.top + headerHeight + 20
         ) {
-            this.$update('stickyFooterActive', false);
+            stickyActive = false;
         } else {
-            this.$update('stickyFooterActive', true);
+            stickyActive = true;
+        }
+
+        if(stickyActive !== this.data.stickyFooterActive) {
+            this.$update('stickyFooterActive', stickyActive);
         }
     },
     _watchWidthChange: function() {
         this.data._widthTimer = setInterval(function() {
+            if(!this._isShow()) {
+                return;
+            }
             this._updateScrollBar();
             this._updateColumnsWidth();
             this._updateFixedColumnWidth();
-        }.bind(this), 200);
+        }.bind(this), 300);
     },
     _updateScrollBar: function() {
         var data = this.data;
@@ -172,11 +208,14 @@ var UITable = Component.extend({
         this._initTable();
     },
     _initTable: function() {
+        var data = this.data;
+        var refs = this.$refs;
         setTimeout(function() {
-            this.$update('headerHeight', this.$refs.headerWrap.offsetHeight);
+            data.headerHeight = refs.headerWrap.offsetHeight;
+            data.viewWidth = refs.table.offsetWidth;
+
             this._initTableWidth();
             this._getHeaderHeight();
-            this._updateStickyHeaderStatus();
         }.bind(this), 200);
     },
     _updateTableWidth: function() {
@@ -215,27 +254,17 @@ var UITable = Component.extend({
         this.$update();
     },
     _getHeaderHeight: function() {
-        var headerHeight = this.data.headerHeight;
-        var computedStyle = window.getComputedStyle(this.$refs.headerWrap);
-        headerHeight = getNum(computedStyle.marginTop)
-                + getNum(computedStyle.borderTopWidth)
-                + getNum(this.$refs.headerWrap.offsetHeight)
-                + getNum(computedStyle.borderBottomWidth)
-                + getNum(computedStyle.marginBottom);
-
-        this.$update('headerHeight', headerHeight);
+        var headerHeight = getElementHeight(this.$refs.headerWrap);
+        if(this.data.headerHeight !== headerHeight) {
+            this.data.headerHeight = headerHeight;
+        }
         return headerHeight;
     },
     _getFooterHeight: function() {
-        var footerHeight = this.data.footerHeight;
-        var computedStyle = window.getComputedStyle(this.$refs.footerWrap);
-        footerHeight = getNum(computedStyle.marginTop)
-                + getNum(computedStyle.borderTopWidth)
-                + getNum(this.$refs.footerWrap.offsetHeight)
-                + getNum(computedStyle.borderBottomWidth)
-                + getNum(computedStyle.marginBottom);
-
-        this.$update('footerHeight', footerHeight);
+        var footerHeight = getElementHeight(this.$refs.footerWrap);
+        if(this.data.footerHeight !== footerHeight) {
+           this.data.footerHeight = footerHeight;
+        }
         return footerHeight;
     },
     _updateColumnsWidth: function() {
@@ -247,6 +276,12 @@ var UITable = Component.extend({
         var newTableWidth = _dataColumns.reduce(function(previous, current) {
             return previous + current._width;
         }, 0);
+
+        _dataColumns.forEach(function(column) {
+            if(!column._width) {
+                column._width = column.width || 100;
+            }
+        });
 
         if(data.tableWidth !== newTableWidth) {
             this.$update('tableWidth', newTableWidth);
@@ -279,9 +314,17 @@ var UITable = Component.extend({
         data.fixedTableWidthRight = fixedTableWidthRight;
         data.fixedCol = fixedCol;
         data.fixedColRight = fixedColRight;
-        this.$update();
+    },
+    _onWindowResize: function() {
+        if(!this.$refs || !this._isShow()) {
+            return;
+        }
+        this.$update('viewWidth', this.$refs.table.offsetWidth);
     },
     _onBodyScroll: function(host) {
+        if(!this._isShow()) {
+            return;
+        }
         var $refs = this.$refs;
 
         setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
@@ -329,10 +372,17 @@ var UITable = Component.extend({
     _onFixedExpand: function(e) {
         this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
     },
+    _isShow: function() {
+        return this.data.show;
+    },
     destroy: function() {
+        this.removeEventListener();
+        this.supr();
+    },
+    removeEventListener: function() {
         clearInterval(this.data._widthTimer);
         window.document.removeEventListener('scroll', this._onScroll);
-        this.supr();
+        window.removeEventListener('resize', this._onWindowResize);
     }
 })
 .component('table.header', TableHeader)

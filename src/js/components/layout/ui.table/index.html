@@ -34,17 +34,17 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                width: width == undefined ? 'auto' : width + 'px'
+                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'
             }}
         >
             <table.header
                 ref="tableHeader"
+                _dataColumns={_dataColumns}
                 resizePorxy={this.$refs.resizeProxy}
                 fixedHeader={fixedHeader}
                 height={headerHeight}
                 width={tableWidth}
                 columns={columns}
-                _dataColumns={_dataColumns}
                 source={source}
                 sorting={sorting}
                 scrollYBar={scrollYBar}
@@ -65,17 +65,17 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                'height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',
+                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',
             }}
             on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >
             <table.body
                 ref="tableBody"
+                _dataColumns={_dataColumns}
                 fixedHeader={fixedHeader}
                 height={bodyHeight}
                 width={tableWidth}
                 lineClamp={lineClamp}
                 columns={columns}
-                _dataColumns={_dataColumns}
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
@@ -107,6 +107,7 @@
         >
             <table.header
                 ref="tableHeaderFixed"
+                _dataColumns={_dataColumns}
                 fixedCol
                 fixedHeader={fixedHeader}
                 height={headerHeight}
@@ -115,7 +116,6 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
-                _dataColumns={_dataColumns}
                 on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
@@ -129,10 +129,11 @@
         <div ref="bodyWrapFixed"
             class="ui_table_body"
             r-style={{
-                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
+                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
             }}>
             <table.body
                 ref="tableBodyFixed"
+                _dataColumns={_dataColumns}
                 fixedCol
                 fixedHeader={fixedHeader}
                 height={bodyHeight}
@@ -142,7 +143,6 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
-                _dataColumns={_dataColumns}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -176,6 +176,7 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}>
             <table.header ref="tableHeaderFixedRight"
+                _dataColumns={_dataColumns}
                 fixedCol="right"
                 fixedHeader={fixedHeader}
                 height={headerHeight}
@@ -185,7 +186,6 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 marginLeft={tableWidth - fixedTableWidthRight}
-                _dataColumns={_dataColumns}
                 on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
@@ -199,9 +199,10 @@
         <div ref="bodyWrapFixedRight"
             class="ui_table_body"
             r-style={{
-                'height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
+                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
             }}>
             <table.body ref="tableBodyFixedRight"
+                _dataColumns={_dataColumns}
                 fixedCol="right"
                 fixedHeader={fixedHeader}
                 marginLeft={tableWidth - fixedTableWidthRight}
@@ -212,7 +213,6 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
-                _dataColumns={_dataColumns}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -231,6 +231,9 @@
     ref="footerWrap"
     r-class={{
         'sticky_footer': stickyFooter && stickyFooterActive
+    }}
+    r-style={{
+        width: viewWidth + 'px'
     }}
 >
     {#if stickyFooter}

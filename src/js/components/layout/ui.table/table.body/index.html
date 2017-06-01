@@ -22,7 +22,7 @@
         <!-- 内容 -->
         {#elseif source.length > 0}
         {#list source as item by item_index}
-        <tr class="tb_bd_tr"
+        <tr class="tb_bd_tr {column.trClass}"
             r-class={{
                 'z-hover': item._hover
             }}
