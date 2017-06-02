@@ -129,6 +129,7 @@ $orderIconColor = #666;
 
     .tb_bd {
         .tb_bd_tr {
+            background: #fff;
             &:not(:last-child) {
                 border-bottom: 1px solid $trBorderColor;
             }

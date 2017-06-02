@@ -4809,6 +4809,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#666;
 }
 .m-ui-table .tb_bd .tb_bd_tr{
+	background:#fff;
 	transition:background 200ms ease-out;
 }
 .m-ui-table .tb_bd .tb_bd_tr:not(:last-child){
