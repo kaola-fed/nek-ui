@@ -71,6 +71,7 @@
             <table.body
                 ref="tableBody"
                 _dataColumns={_dataColumns}
+                loading={loading}
                 fixedHeader={fixedHeader}
                 height={bodyHeight}
                 width={tableWidth}
@@ -134,6 +135,7 @@
             <table.body
                 ref="tableBodyFixed"
                 _dataColumns={_dataColumns}
+                loading={loading}
                 fixedCol
                 fixedHeader={fixedHeader}
                 height={bodyHeight}
@@ -203,6 +205,7 @@
             }}>
             <table.body ref="tableBodyFixedRight"
                 _dataColumns={_dataColumns}
+                loading={loading}
                 fixedCol="right"
                 fixedHeader={fixedHeader}
                 marginLeft={tableWidth - fixedTableWidthRight}

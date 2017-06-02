@@ -14,22 +14,24 @@
         <!-- 加载中 -->
         {#if loading}
         <tr class="tb_bd_tr">
-            <td colspan={column.length}>
-                <loading visible={loading} static/>{this.$trans('LOADING')}...
+            <td class="tb_bd_td" colspan={_dataColumns.length}>
+                <loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...
             </td>
         </tr>
 
         <!-- 内容 -->
         {#elseif source.length > 0}
         {#list source as item by item_index}
-        <tr class="tb_bd_tr {column.trClass}"
+        <tr class="tb_bd_tr {item.trClass}"
+            style="{item.trStyle || column.trStyle}"
             r-class={{
                 'z-hover': item._hover
             }}
             on-mouseover={this._onTrHover($event, item)}
             on-mouseout={this._onTrBlur($event, item)}>
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {column.tdClass}"
+            <td class="tb_bd_td {item.tdClass || column.tdClass}"
+                style="{item.tdStyle || column.tdStyle}"
                 r-class={{
                     'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)
                 }}>
@@ -64,8 +66,8 @@
         <!-- 空内容 -->
         {#else}
         <tr class="tb_bd_tr">
-            <td colspan={_dataColumns.length}>
-                <span class="td-empty">{emptyInfo}</span>
+            <td class="tb_bd_td" colspan={_dataColumns.length}>
+                <span class="td-empty">{this.$trans('NO_DATA')}</span>
             </td>
         </tr>
         {/if}

@@ -261,6 +261,44 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+### 自定义行样式
+
+通过设置 `item.trClass` 或 `item.trStyle` 修改每一行的样式。
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700 stickyHeader source={table.source}>
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        var colors = ['#FFBC07', '#E89406', '#FF8306', '#E85706', '#FF3B07'];
+        this.data.table.source = [];
+        for(var i = 0; i < 5; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i,
+                trStyle: 'background-color:' + colors[i]
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
 ### 排序
 
 没有实际的排序效果，请查看 console 打印的事件对象。
@@ -421,6 +459,53 @@ var component = new NEKUI.Component({
                 col1: '' + i,
                 value: 10 * i
             });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
+
+### 空数据
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700>
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+        }
+    }
+});
+```
+<!-- demo_end -->
+
+### 加载中
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700 loading={true}>
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
         }
     }
 });
