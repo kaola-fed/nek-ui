@@ -47,6 +47,46 @@ var getElementHeight = function(ele) {
     return height;
 }
 
+/**
+ * @class UITable
+ * @extend Component
+ * @param {object}            [options.data]                      = 绑定属性
+ * @param {array}             [options.data.columns]              => 列配置
+ * @param {array}             [options.data.source]               => 数据源
+ * @param {object}            [options.data.paging]               => 分页
+ * @param {object}            [options.data.sorting]              => 排序
+ * @param {boolean}           [options.data.stickyHeader]         => 将表头固定到页面顶部
+ * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
+ * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
+ */
+
+/**
+ * @class TableCol
+ * @extend Component
+ * @param {object}      [options.data]                  = 绑定属性
+ * @param {string}      [options.data.name]             => 表头名称
+ * @param {string}      [options.data.key]              => 列属性字段
+ * @param {string}      [options.data.tip]              => 提示信息
+ * @param {string}      [options.data.type]             => 列内容的预设类型
+ * @param {string}      [options.data.width]            => 列宽
+ * @param {string}      [options.data.tdClass]          => 列内容样式
+ * @param {string}      [options.data.thClass]          => 表头样式
+ * @param {boolean}     [options.data.sortable]         => 可排序
+ * @param {string}      [options.data.children]         => 子表头
+ * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+
+ * @param {string}      [options.data.template]         => 列内容模版
+ * @param {string}      [options.data.headerTemplate]   => 列表头模版
+ * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
+ */
+
+/**
+ * @class TableTemplate
+ * @extend Component
+ * @param {object}      [options.data]                = 绑定属性
+ * @param {string}      [options.data.type="content"] => 模版类型, header, content
+ */
+
 var UITable = Component.extend({
     name: 'ui.table',
     template: tpl,
@@ -333,6 +373,15 @@ var UITable = Component.extend({
         setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
     },
     _onSort: function(e) {
+        /**
+         * @event sort 排序事件
+         * @property {object} sender 事件来源
+         * @property {boolean} asc 是否升序
+         * @property {object} column 目标列
+         * @property {number} columnIndex 目标列序号
+         * @property {string} key 排序字段
+         * @property {object} sorting 排序设置对象
+         */
         this.$emit('sort', e);
     },
     _onCustomEvent: function(e) {
@@ -342,6 +391,13 @@ var UITable = Component.extend({
         }, e.args));
     },
     _onItemCheckChange: function(e) {
+        /**
+         * @event checkchange 多选事件
+         * @property {object} sender 事件来源
+         * @property {boolean} checked 是否选中
+         * @property {object} item 操作对象
+         * @property {object} checkedEvent 多选事件对象源
+         */
         this.$emit('checkchange', {
             sender: this,
             item: e.item,
@@ -351,6 +407,12 @@ var UITable = Component.extend({
     },
     emitEvent: function(type) {
         var args = [].slice.call(arguments, 1);
+        /**
+         * @event [type] 自定义的操作事件
+         * @property {object} sender 事件来源
+         * @property {boolean} custom 自定义事件标识
+         * @property {array} param 自定义事件所带的参数
+         */
         this.$emit(type, {
             custom: true,
             sender: this,
@@ -367,6 +429,12 @@ var UITable = Component.extend({
         });
     },
     _onPaging: function(e) {
+        /**
+         * @event paging 分页事件
+         * @property {object} sender 事件来源
+         * @property {number} current 事件来源
+         * @property {object} paging 分页对象
+         */
         this.$emit('paging', {
             sender: this,
             current: e.current,

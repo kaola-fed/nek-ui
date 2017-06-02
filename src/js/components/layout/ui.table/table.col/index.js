@@ -4,7 +4,7 @@ var Component = require('../../../../ui-base/component');
 var TableTemplate = require('../table.template');
 
 /**
- * @class TableTemplate
+ * @class TableCol
  * @extend Component
  * @param {object}      [options.data]                  = 绑定属性
  * @param {string}      [options.data.name]             => 表头名称
