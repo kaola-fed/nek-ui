@@ -54,3 +54,7 @@
         color: #FF753F;
     }
 }
+
+.m-table .u-formitem {
+    margin-bottom: 0;
+}

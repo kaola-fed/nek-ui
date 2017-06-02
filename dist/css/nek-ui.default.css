@@ -3577,6 +3577,9 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-formitem .formitem_rqr{
 	color:#ff753f;
 }
+.m-table .u-formitem{
+	margin-bottom:0px;
+}
 .u-numberinput{
 	display:inline-block;
 	position:relative;
