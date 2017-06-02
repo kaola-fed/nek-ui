@@ -80,30 +80,43 @@ var UITable = Component.extend({
         this._initWatchers();
     },
     _initWatchers: function() {
-        this.$watch('scrollYBar', this._onScrollYBarChange);
-        this.$watch('columns', this._onColumnsChange);
+        this.$watch('show', this._onShowChange);
         this.$watch('source', this._onSouceChange)
+        this.$watch('columns', this._onColumnsChange);
+        this.$watch('scrollYBar', this._onScrollYBarChange);
 
         this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
 
-        this._onScroll = utils.throttle(this._onScroll.bind(this), 200);
-        window.document.addEventListener('scroll', this._onScroll);
+        this._onWinodwScroll = utils.throttle(this._onWinodwScroll.bind(this), 200);
+        window.document.addEventListener('scroll', this._onWinodwScroll);
 
         this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
         window.addEventListener('resize', this._onWindowResize);
 
         this._watchWidthChange();
     },
-    _onScroll: function() {
-        if(!this.$refs || !this._isShow()) {
-            return;
+    _onShowChange: function(newVal) {
+        if(newVal) {
+            setTimeout(function() {
+                this._updateViewWidth();
+            }.bind(this), 200)
         }
-        this._updateSticky();
+    },
+    _updateViewWidth: function() {
+        if(this.$refs.table) {
+            this._updateData('viewWidth', this.$refs.table.offsetWidth);
+        }
     },
     _onSouceChange: function() {
         setTimeout(function() {
             this._updateSticky();
         }.bind(this), 500)
+    },
+    _onWinodwScroll: function() {
+        if(!this.$refs || !this._isShow()) {
+            return;
+        }
+        this._updateSticky();
     },
     _updateSticky: function() {
         var data = this.data;
@@ -139,9 +152,8 @@ var UITable = Component.extend({
             stickyActive = true;
         }
 
-        if(stickyActive !== this.data.stickyHeaderActive) {
-            this.$update('stickyHeaderActive ', stickyActive);
-        }
+
+        this._updateData('stickyHeaderActive', stickyActive);
     },
     _updateStickyFooterStatus: function(tableWrapOffset) {
         var headerHeight = this._getHeaderHeight();
@@ -159,9 +171,7 @@ var UITable = Component.extend({
             stickyActive = true;
         }
 
-        if(stickyActive !== this.data.stickyFooterActive) {
-            this.$update('stickyFooterActive', stickyActive);
-        }
+        this._updateData('stickyFooterActive', stickyActive);
     },
     _watchWidthChange: function() {
         this.data._widthTimer = setInterval(function() {
@@ -183,12 +193,8 @@ var UITable = Component.extend({
         var yBarWidth = tableWrap.offsetWidth - tableWrap.clientWidth;
         var xBarWidth = tableWrap.offsetHeight - tableWrap.clientHeight;
 
-        if(data.scrollYBar !== yBarWidth) {
-            this.$update('scrollYBar', yBarWidth);
-        }
-        if(data.scrollXBar !== xBarWidth) {
-            this.$update('scrollXBar', xBarWidth);
-        }
+        this._updateData('scrollYBar', yBarWidth);
+        this._updateData('scrollXBar', xBarWidth);
     },
     _onScrollYBarChange: function(newVal, oldVal) {
         if(oldVal === undefined) {
@@ -250,21 +256,17 @@ var UITable = Component.extend({
             totalWidth += dataColumn._width;
             return dataColumn;
         });
-        data.tableWidth = totalWidth;
-        this.$update();
+
+        this._updateData('tableWidth', tableWidth);
     },
     _getHeaderHeight: function() {
         var headerHeight = getElementHeight(this.$refs.headerWrap);
-        if(this.data.headerHeight !== headerHeight) {
-            this.data.headerHeight = headerHeight;
-        }
+        this._updateData('headerHeight', headerHeight);
         return headerHeight;
     },
     _getFooterHeight: function() {
         var footerHeight = getElementHeight(this.$refs.footerWrap);
-        if(this.data.footerHeight !== footerHeight) {
-           this.data.footerHeight = footerHeight;
-        }
+        this._updateData('footerHeight', footerHeight);
         return footerHeight;
     },
     _updateColumnsWidth: function() {
@@ -283,9 +285,7 @@ var UITable = Component.extend({
             }
         });
 
-        if(data.tableWidth !== newTableWidth) {
-            this.$update('tableWidth', newTableWidth);
-        }
+        this._updateData('tableWidth', newTableWidth);
     },
     _updateFixedColumnWidth: function() {
         var data = this.data;
@@ -367,7 +367,11 @@ var UITable = Component.extend({
         });
     },
     _onPaging: function(e) {
-        console.log(e);
+        this.$emit('paging', {
+            sender: this,
+            current: e.current,
+            paging: this.data.paging
+        });
     },
     _onFixedExpand: function(e) {
         this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
@@ -375,13 +379,18 @@ var UITable = Component.extend({
     _isShow: function() {
         return this.data.show;
     },
+    _updateData: function(key, val) {
+        if(this.data[key] !== val) {
+            this.$update(key, val);
+        }
+    },
     destroy: function() {
         this.removeEventListener();
         this.supr();
     },
     removeEventListener: function() {
         clearInterval(this.data._widthTimer);
-        window.document.removeEventListener('scroll', this._onScroll);
+        window.document.removeEventListener('scroll', this._onWinodwScroll);
         window.removeEventListener('resize', this._onWindowResize);
     }
 })

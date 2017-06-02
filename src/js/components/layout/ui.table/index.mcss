@@ -73,7 +73,10 @@ $orderIconColor = #666;
     }
 
     .f-visibility-hidden {
-        //visibility: hidden;
+        visibility: hidden;
+        >.tb_bd_td_div {
+            display: none;
+        }
     }
 
     .table_tb {
@@ -211,6 +214,15 @@ $orderIconColor = #666;
         overflow: auto;
         >div {
             height: 1px;
+        }
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 8px;
+            height: 16px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,.2);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
         }
     }
     &.sticky_footer {

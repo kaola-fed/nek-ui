@@ -4763,6 +4763,12 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table.m-ui-table-fixed .ui_table_header,.m-ui-table.m-ui-table-fixed .ui_table_body{
 	overflow:hidden;
 }
+.m-ui-table .f-visibility-hidden{
+	visibility:hidden;
+}
+.m-ui-table .f-visibility-hidden >.tb_bd_td_div{
+	display:none;
+}
 .m-ui-table .table_tb{
 	width:100%;
 	table-layout:fixed;
@@ -4871,6 +4877,15 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-ui-table-ft .scroll_bar >div{
 	height:1px;
+}
+.m-ui-table-ft .scroll_bar::-webkit-scrollbar{
+	-webkit-appearance:none;
+	width:8px;
+	height:16px;
+}
+.m-ui-table-ft .scroll_bar::-webkit-scrollbar-thumb{
+	background-color:rgba(0,0,0,0.2);
+	-webkit-box-shadow:0 0 1px rgba(255,255,255,0.5);
 }
 .m-ui-table-ft.sticky_footer{
 	position:fixed;

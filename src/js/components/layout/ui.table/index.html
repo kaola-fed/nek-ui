@@ -246,7 +246,6 @@
         <div r-style={{ width: tableWidth + 'px' }} />
     </div>
     {/if}
-
     {#if paging}
     <pager
         position={paging.position || 'right'}
@@ -258,6 +257,7 @@
         middle={paging.middle}
         side={paging.side}
         current={paging.current}
+        sumTotal={paging.sumTotal}
         total={paging.total}
         on-select={this._onPaging($event)}/>
     {/if}

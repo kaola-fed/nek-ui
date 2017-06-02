@@ -1,5 +1,5 @@
 ---
-title: 表格
+title: UI表格
 ---
 
 ## 代码演示
@@ -124,8 +124,8 @@ var component = new NEKUI.Component({
 
 ```xml
 <ui.table stickyHeader stickyFooter width=700 source={table.source} >
-    <table.col name="title" key="title" width="500" />
-    <table.col name="value" key="value" width="500" />
+    <table.col name="title" key="title" width=500 />
+    <table.col name="value" key="value" width=500 />
 </ui.table>
 ```
 
@@ -149,16 +149,167 @@ var component = new NEKUI.Component({
     }
 });
 ```
-
 <!-- demo_end -->
 
 ### 表头固定在表格顶部
 
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table fixedHeader width=700 height=200 source={table.source}>
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
 ### 自定义模版
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700 height=200 source={table.source}>
+    <table.col name="title" key="title">
+        <table.template type="header">
+            {"<a>I\'m {header.name}</a>"}
+        </table.template>
+        <table.template>
+            {"<a>I\'m {item.title}</a>"}
+        </table.template>
+    </table.col>
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
 
 ### 排序
 
+没有实际的排序效果，请查看 console 打印的事件对象。
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700 source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
+    <table.col name="title" key="title" sortable/>
+    <table.col name="value" key="value" sortable/>
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: [],
+            sorting: {
+                key: 'title',
+                isAsc: 0
+            }
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    },
+    onSort: function(e) {
+        console.log(e);
+    }
+});
+```
+<!-- demo_end -->
+
 ### 分页
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table width=700 height=200 source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: [],
+            paging: {
+                pageSize: 10,
+                sumTotal: 100,
+                current: 1
+            }
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+```
+<!-- demo_end -->
 
 ### 数据配置
 
@@ -245,7 +396,8 @@ var component = new NEKUI.Component({
                 isAsc: 0
             },
             paging: {
-                total: 10,
+                pageSize: 10,
+                sumTotal: 100,
                 current: 1
             },
             source: [
