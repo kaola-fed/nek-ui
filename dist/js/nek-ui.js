@@ -26115,7 +26115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 329 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if title}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t\t{title}\n\t\t{#if tip}\n\t\t<tooltip tip=\"{tip}\">\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\n\t\t</tooltip>\n\t\t{/if}:\n\t</label>\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n\n{#else}\n<div class=\"{class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t{#inc this.$body}\n</div>\n{/if}\n"
+	module.exports = "{#if title}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t\t{title}\n\t\t{#if tip}\n\t\t<tooltip tip=\"{tip}\">\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\n\t\t</tooltip>\n\t\t{/if}:\n\t</label>\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n\n{#else}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t{#inc this.$body}\n</div>\n{/if}\n"
 
 /***/ }),
 /* 330 */
@@ -28496,10 +28496,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}        [options.data]                  = 绑定属性
 	 * @param {number}        [options.data.current=1]        <=> 当前页
-	 * @param {total}         [options.data.total=11]         => 总页数
+	 * @param {number}        [options.data.total=0]          => 总页数
+	 * @param {number}        [options.data.sumTotal=0]       => 总个数
+	 * @param {number}        [options.data.pageSize=20]      => 每页个数
 	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
-	 * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
-	 * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
 	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
 	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
@@ -28514,9 +28516,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @protected
 	     */
 	    config: function config() {
+	        var _total = Math.ceil(this.data.sumTotal / this.data.pageSize);
 	        _.extend(this.data, {
 	            current: 1,
-	            total: 11,
+	            total: _total,
+	            sumTotal: 0,
+	            pageSize: 20,
 	            position: 'center',
 	            middle: 5,
 	            side: 2,
@@ -28548,6 +28553,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.data.middle = +middle;
 	            this.data.side = +side;
 	        });
+
+	        this.$watch('pageSize', function (val) {
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	            this.select(1);
+	        });
 	    },
 
 	    _setPageSizeList: function _setPageSizeList() {
@@ -28574,7 +28584,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        if (page < 1) return;
 	        if (page > this.data.total) return;
-	        if (page == this.data.current) return;
 
 	        this.data.current = page;
 	        /**
@@ -28613,7 +28622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 365 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
+	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
 /* 366 */
