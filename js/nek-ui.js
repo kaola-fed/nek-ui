@@ -24853,14 +24853,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	var _getAlignOffset = __webpack_require__(327);
+
+	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } /**
+	                                                                                                                                                                                                                   * align dom node flexibly
+	                                                                                                                                                                                                                   * @author yiminghe@gmail.com
+	                                                                                                                                                                                                                   */
 
 	// http://yiminghe.iteye.com/blog/1124720
-
-	/**
-	 * align dom node flexibly
-	 * @author yiminghe@gmail.com
-	 */
 
 	function isFailX(elFuturePos, elRegion, visibleRect) {
 	  return elFuturePos.left < visibleRect.left || elFuturePos.left + elRegion.width > visibleRect.right;
@@ -24878,9 +24882,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return elFuturePos.top > visibleRect.bottom || elFuturePos.top + elRegion.height < visibleRect.top;
 	}
 
+	function isOutOfVisibleRect(target) {
+	  var visibleRect = (0, _getVisibleRectForElement2['default'])(target);
+	  var targetRegion = (0, _getRegion2['default'])(target);
+
+	  return !visibleRect || targetRegion.left + targetRegion.width <= visibleRect.left || targetRegion.top + targetRegion.height <= visibleRect.top || targetRegion.left >= visibleRect.right || targetRegion.top >= visibleRect.bottom;
+	}
+
 	function flip(points, reg, map) {
 	  var ret = [];
-	  _utils2["default"].each(points, function (p) {
+	  _utils2['default'].each(points, function (p) {
 	    ret.push(p.replace(reg, function (m) {
 	      return map[m];
 	    }));
@@ -24903,6 +24914,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return n || 0;
 	}
 
+	function ySize(region) {
+	  return region.bottom - region.top;
+	}
+
+	function xSize(region) {
+	  return region.right - region.left;
+	}
+
 	function normalizeOffset(offset, el) {
 	  offset[0] = convertOffset(offset[0], el.width);
 	  offset[1] = convertOffset(offset[1], el.height);
@@ -24919,24 +24938,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	  targetOffset = [].concat(targetOffset);
 	  overflow = overflow || {};
 	  var newOverflowCfg = {};
-
 	  var fail = 0;
 	  // 当前节点可以被放置的显示区域
-	  var visibleRect = (0, _getVisibleRectForElement2["default"])(source);
+	  var visibleRect = (0, _getVisibleRectForElement2['default'])(source);
 	  // 当前节点所占的区域, left/top/width/height
-	  var elRegion = (0, _getRegion2["default"])(source);
+	  var elRegion = (0, _getRegion2['default'])(source);
 	  // 参照节点所占的区域, left/top/width/height
-	  var refNodeRegion = (0, _getRegion2["default"])(target);
+	  var refNodeRegion = (0, _getRegion2['default'])(target);
 	  // 将 offset 转换成数值，支持百分比
 	  normalizeOffset(offset, elRegion);
 	  normalizeOffset(targetOffset, refNodeRegion);
 	  // 当前节点将要被放置的位置
-	  var elFuturePos = (0, _getElFuturePos2["default"])(elRegion, refNodeRegion, points, offset, targetOffset);
+	  var elFuturePos = (0, _getElFuturePos2['default'])(elRegion, refNodeRegion, points, offset, targetOffset);
 	  // 当前节点将要所处的区域
-	  var newElRegion = _utils2["default"].merge(elRegion, elFuturePos);
+	  var newElRegion = _utils2['default'].merge(elRegion, elFuturePos);
 
+	  var isTargetNotOutOfVisible = !isOutOfVisibleRect(target);
+	  var refNodeOffset = _utils2['default'].merge(refNodeRegion, (0, _getAlignOffset2['default'])(refNodeRegion, points[1]));
+
+	  var Xregion = void 0;
+	  var YRegion = void 0;
+	  var xRefPoint = points[0].charAt(1);
+	  // TODO if visibleRect.xx < refNodeOffset.left ??
+	  if (xRefPoint === 'c') {
+	    Xregion = _utils2['default'].merge(visibleRect, {
+	      left: refNodeOffset.left - elRegion.width / 2
+	    });
+	  } else {
+	    Xregion = _utils2['default'].merge(visibleRect, _defineProperty({}, xRefPoint === 'l' ? 'left' : 'right', refNodeOffset.left));
+	  }
+
+	  var yRefPoint = points[0].charAt(0);
+	  if (yRefPoint === 'c') {
+	    YRegion = _utils2['default'].merge(visibleRect, {
+	      top: refNodeOffset.top - elRegion.height / 2
+	    });
+	  } else {
+	    YRegion = _utils2['default'].merge(visibleRect, _defineProperty({}, yRefPoint === 't' ? 'top' : 'bottom', refNodeOffset.top));
+	  }
+
+	  var realXRegion = Xregion;
+	  var realYRegion = YRegion;
 	  // 如果可视区域不能完全放置当前节点时允许调整
-	  if (visibleRect && (overflow.adjustX || overflow.adjustY)) {
+	  if (visibleRect && (overflow.adjustX || overflow.adjustY) && isTargetNotOutOfVisible) {
 	    if (overflow.adjustX) {
 	      // 如果横向不能放下
 	      if (isFailX(elFuturePos, elRegion, visibleRect)) {
@@ -24948,12 +24992,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // 偏移量也反下
 	        var newOffset = flipOffset(offset, 0);
 	        var newTargetOffset = flipOffset(targetOffset, 0);
-	        var newElFuturePos = (0, _getElFuturePos2["default"])(elRegion, refNodeRegion, newPoints, newOffset, newTargetOffset);
-	        if (!isCompleteFailX(newElFuturePos, elRegion, visibleRect)) {
+	        var newElFuturePos = (0, _getElFuturePos2['default'])(elRegion, refNodeRegion, newPoints, newOffset, newTargetOffset);
+
+	        var XregionReversal = _utils2['default'].merge(visibleRect, _defineProperty({}, newPoints[0].charAt(1) === 'l' ? 'left' : 'right', (0, _getAlignOffset2['default'])(refNodeRegion, newPoints[1]).left));
+	        var canXFlip = xSize(XregionReversal) > xSize(Xregion);
+	        if (canXFlip && !isCompleteFailX(newElFuturePos, elRegion, visibleRect)) {
 	          fail = 1;
 	          points = newPoints;
 	          offset = newOffset;
 	          targetOffset = newTargetOffset;
+	          realXRegion = XregionReversal;
 	        }
 	      }
 	    }
@@ -24969,47 +25017,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // 偏移量也反下
 	        var _newOffset = flipOffset(offset, 1);
 	        var _newTargetOffset = flipOffset(targetOffset, 1);
-	        var _newElFuturePos = (0, _getElFuturePos2["default"])(elRegion, refNodeRegion, _newPoints, _newOffset, _newTargetOffset);
-	        if (!isCompleteFailY(_newElFuturePos, elRegion, visibleRect)) {
+	        var _newElFuturePos = (0, _getElFuturePos2['default'])(elRegion, refNodeRegion, _newPoints, _newOffset, _newTargetOffset);
+
+	        var YRegionReversal = _utils2['default'].merge(visibleRect, _defineProperty({}, _newPoints[0].charAt(0) === 't' ? 'top' : 'bottom', (0, _getAlignOffset2['default'])(refNodeRegion, _newPoints[1]).top));
+	        var canYFlip = ySize(YRegionReversal) > ySize(YRegion);
+
+	        if (canYFlip && !isCompleteFailY(_newElFuturePos, elRegion, visibleRect)) {
 	          fail = 1;
 	          points = _newPoints;
 	          offset = _newOffset;
 	          targetOffset = _newTargetOffset;
+	          realYRegion = YRegionReversal;
 	        }
 	      }
 	    }
 
 	    // 如果失败，重新计算当前节点将要被放置的位置
 	    if (fail) {
-	      elFuturePos = (0, _getElFuturePos2["default"])(elRegion, refNodeRegion, points, offset, targetOffset);
-	      _utils2["default"].mix(newElRegion, elFuturePos);
+	      elFuturePos = (0, _getElFuturePos2['default'])(elRegion, refNodeRegion, points, offset, targetOffset);
+	      _utils2['default'].mix(newElRegion, elFuturePos);
 	    }
 
+	    newOverflowCfg.resizeHeight = overflow.resizeHeight;
+	    newOverflowCfg.resizeWidth = overflow.resizeWidth;
 	    // 检查反下后的位置是否可以放下了
 	    // 如果仍然放不下只有指定了可以调整当前方向才调整
-	    newOverflowCfg.adjustX = overflow.adjustX && isFailX(elFuturePos, elRegion, visibleRect);
+	    newOverflowCfg.adjustX = overflow.adjustX && isFailX(elFuturePos, elRegion, realXRegion);
 
-	    newOverflowCfg.adjustY = overflow.adjustY && isFailY(elFuturePos, elRegion, visibleRect);
+	    newOverflowCfg.adjustY = overflow.adjustY && isFailY(elFuturePos, elRegion, realYRegion);
 
 	    // 确实要调整，甚至可能会调整高度宽度
 	    if (newOverflowCfg.adjustX || newOverflowCfg.adjustY) {
-	      newElRegion = (0, _adjustForViewport2["default"])(elFuturePos, elRegion, visibleRect, newOverflowCfg);
+	      newElRegion = (0, _adjustForViewport2['default'])(elFuturePos, elRegion, realXRegion, realYRegion, newOverflowCfg);
 	    }
 	  }
 
 	  // need judge to in case set fixed with in css on height auto element
 	  if (newElRegion.width !== elRegion.width) {
-	    _utils2["default"].css(source, 'width', _utils2["default"].width(source) + newElRegion.width - elRegion.width);
+	    _utils2['default'].css(source, 'width', _utils2['default'].width(source) + newElRegion.width - elRegion.width);
 	  }
 
 	  if (newElRegion.height !== elRegion.height) {
-	    _utils2["default"].css(source, 'height', _utils2["default"].height(source) + newElRegion.height - elRegion.height);
+	    _utils2['default'].css(source, 'height', _utils2['default'].height(source) + newElRegion.height - elRegion.height);
 	  }
 
 	  // https://github.com/kissyteam/kissy/issues/190
 	  // 相对于屏幕位置没变，而 left/top 变了
 	  // 例如 <div 'relative'><el absolute></div>
-	  _utils2["default"].offset(source, {
+	  _utils2['default'].offset(source, {
 	    left: newElRegion.left,
 	    top: newElRegion.top
 	  }, {
@@ -25026,11 +25081,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	}
 
-	domAlign.__getOffsetParent = _getOffsetParent2["default"];
+	domAlign.__getOffsetParent = _getOffsetParent2['default'];
 
-	domAlign.__getVisibleRectForElement = _getVisibleRectForElement2["default"];
+	domAlign.__getVisibleRectForElement = _getVisibleRectForElement2['default'];
 
-	exports["default"] = domAlign;
+	exports['default'] = domAlign;
 	/**
 	 *  2012-04-26 yiminghe@gmail.com
 	 *   - 优化智能对齐算法
@@ -25161,10 +25216,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  pos.top += getScrollTop(w);
 	  return pos;
 	}
+
+	/**
+	 * A crude way of determining if an object is a window
+	 * @member util
+	 */
+	function isWindow(obj) {
+	  // must use == for ie8
+	  /* eslint eqeqeq:0 */
+	  return obj !== null && obj !== undefined && obj == obj.window;
+	}
+
+	function getDocument(node) {
+	  if (isWindow(node)) {
+	    return node.document;
+	  }
+	  if (node.nodeType === 9) {
+	    return node;
+	  }
+	  return node.ownerDocument;
+	}
+
 	function _getComputedStyle(elem, name, cs) {
 	  var computedStyle = cs;
 	  var val = '';
-	  var d = elem.ownerDocument;
+	  var d = getDocument(elem);
 	  computedStyle = computedStyle || d.defaultView.getComputedStyle(elem, null);
 
 	  // https://github.com/kissyteam/kissy/issues/61
@@ -25394,16 +25470,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return value;
 	}
 
-	/**
-	 * A crude way of determining if an object is a window
-	 * @member util
-	 */
-	function isWindow(obj) {
-	  // must use == for ie8
-	  /* eslint eqeqeq:0 */
-	  return obj !== null && obj !== undefined && obj == obj.window;
-	}
-
 	var domUtils = {};
 
 	each(['Width', 'Height'], function (name) {
@@ -25546,6 +25612,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var doc = node.ownerDocument || node;
 	    return doc.defaultView || doc.parentWindow;
 	  },
+
+	  getDocument: getDocument,
 	  offset: function offset(el, value, option) {
 	    if (typeof value !== 'undefined') {
 	      setOffset(el, value, option || {});
@@ -25602,7 +25670,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	mix(utils, domUtils);
 
-	exports["default"] = utils;
+	exports['default'] = utils;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -25734,13 +25802,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	/**
 	 * 得到会导致元素显示不全的祖先元素
 	 */
 
 	function getOffsetParent(element) {
+	  if (_utils2['default'].isWindow(element) || element.nodeType === 9) {
+	    return null;
+	  }
 	  // ie 这个也不是完全可行
 	  /*
 	   <div style="width: 50px;height: 100px;overflow: hidden">
@@ -25756,10 +25827,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  //            return element.offsetParent;
 	  //        }
 	  // 统一的 offsetParent 方法
-	  var doc = element.ownerDocument;
+	  var doc = _utils2['default'].getDocument(element);
 	  var body = doc.body;
 	  var parent = void 0;
-	  var positionStyle = _utils2["default"].css(element, 'position');
+	  var positionStyle = _utils2['default'].css(element, 'position');
 	  var skipStatic = positionStyle === 'fixed' || positionStyle === 'absolute';
 
 	  if (!skipStatic) {
@@ -25767,7 +25838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  for (parent = element.parentNode; parent && parent !== body; parent = parent.parentNode) {
-	    positionStyle = _utils2["default"].css(parent, 'position');
+	    positionStyle = _utils2['default'].css(parent, 'position');
 	    if (positionStyle !== 'static') {
 	      return parent;
 	    }
@@ -25775,7 +25846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return null;
 	}
 
-	exports["default"] = getOffsetParent;
+	exports['default'] = getOffsetParent;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -25796,7 +25867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	/**
 	 * 获得元素的显示部分的区域
@@ -25808,11 +25879,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    top: 0,
 	    bottom: Infinity
 	  };
-	  var el = (0, _getOffsetParent2["default"])(element);
+	  var el = (0, _getOffsetParent2['default'])(element);
 	  var scrollX = void 0;
 	  var scrollY = void 0;
 	  var winSize = void 0;
-	  var doc = element.ownerDocument;
+	  var doc = _utils2['default'].getDocument(element);
 	  var win = doc.defaultView || doc.parentWindow;
 	  var body = doc.body;
 	  var documentElement = doc.documentElement;
@@ -25825,8 +25896,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // body may have overflow set on it, yet we still get the entire
 	    // viewport. In some browsers, el.offsetParent may be
 	    // document.documentElement, so check for that too.
-	    el !== body && el !== documentElement && _utils2["default"].css(el, 'overflow') !== 'visible') {
-	      var pos = _utils2["default"].offset(el);
+	    el !== body && el !== documentElement && _utils2['default'].css(el, 'overflow') !== 'visible') {
+	      var pos = _utils2['default'].offset(el);
 	      // add border
 	      pos.left += el.clientLeft;
 	      pos.top += el.clientTop;
@@ -25839,24 +25910,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (el === body || el === documentElement) {
 	      break;
 	    }
-	    el = (0, _getOffsetParent2["default"])(el);
+	    el = (0, _getOffsetParent2['default'])(el);
 	  }
 
 	  // Clip by window's viewport.
-	  scrollX = _utils2["default"].getWindowScrollLeft(win);
-	  scrollY = _utils2["default"].getWindowScrollTop(win);
+	  scrollX = _utils2['default'].getWindowScrollLeft(win);
+	  scrollY = _utils2['default'].getWindowScrollTop(win);
 	  visibleRect.left = Math.max(visibleRect.left, scrollX);
 	  visibleRect.top = Math.max(visibleRect.top, scrollY);
 	  winSize = {
-	    width: _utils2["default"].viewportWidth(win),
-	    height: _utils2["default"].viewportHeight(win)
+	    width: _utils2['default'].viewportWidth(win),
+	    height: _utils2['default'].viewportHeight(win)
 	  };
 	  visibleRect.right = Math.min(visibleRect.right, scrollX + winSize.width);
 	  visibleRect.bottom = Math.min(visibleRect.bottom, scrollY + winSize.height);
 	  return visibleRect.top >= 0 && visibleRect.left >= 0 && visibleRect.bottom > visibleRect.top && visibleRect.right > visibleRect.left ? visibleRect : null;
 	}
 
-	exports["default"] = getVisibleRectForElement;
+	exports['default'] = getVisibleRectForElement;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -25873,50 +25944,50 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function adjustForViewport(elFuturePos, elRegion, visibleRect, overflow) {
-	  var pos = _utils2["default"].clone(elFuturePos);
+	function adjustForViewport(elFuturePos, elRegion, xRect, yRect, overflow) {
+	  var pos = _utils2['default'].clone(elFuturePos);
 	  var size = {
 	    width: elRegion.width,
 	    height: elRegion.height
 	  };
 
-	  if (overflow.adjustX && pos.left < visibleRect.left) {
-	    pos.left = visibleRect.left;
+	  if (overflow.adjustX && pos.left < xRect.left) {
+	    pos.left = xRect.left;
 	  }
 
 	  // Left edge inside and right edge outside viewport, try to resize it.
-	  if (overflow.resizeWidth && pos.left >= visibleRect.left && pos.left + size.width > visibleRect.right) {
-	    size.width -= pos.left + size.width - visibleRect.right;
+	  if (overflow.resizeWidth && pos.left >= xRect.left && pos.left + size.width > xRect.right) {
+	    size.width -= pos.left + size.width - xRect.right;
 	  }
 
 	  // Right edge outside viewport, try to move it.
-	  if (overflow.adjustX && pos.left + size.width > visibleRect.right) {
+	  if (overflow.adjustX && pos.left + size.width > xRect.right) {
 	    // 保证左边界和可视区域左边界对齐
-	    pos.left = Math.max(visibleRect.right - size.width, visibleRect.left);
+	    pos.left = Math.max(xRect.right - size.width, xRect.left);
 	  }
 
 	  // Top edge outside viewport, try to move it.
-	  if (overflow.adjustY && pos.top < visibleRect.top) {
-	    pos.top = visibleRect.top;
+	  if (overflow.adjustY && pos.top < yRect.top) {
+	    pos.top = yRect.top;
 	  }
 
 	  // Top edge inside and bottom edge outside viewport, try to resize it.
-	  if (overflow.resizeHeight && pos.top >= visibleRect.top && pos.top + size.height > visibleRect.bottom) {
-	    size.height -= pos.top + size.height - visibleRect.bottom;
+	  if (overflow.resizeHeight && pos.top >= yRect.top && pos.top + size.height > yRect.bottom) {
+	    size.height -= pos.top + size.height - yRect.bottom;
 	  }
 
 	  // Bottom edge outside viewport, try to move it.
-	  if (overflow.adjustY && pos.top + size.height > visibleRect.bottom) {
+	  if (overflow.adjustY && pos.top + size.height > yRect.bottom) {
 	    // 保证上边界和可视区域上边界对齐
-	    pos.top = Math.max(visibleRect.bottom - size.height, visibleRect.top);
+	    pos.top = Math.max(yRect.bottom - size.height, yRect.top);
 	  }
 
-	  return _utils2["default"].mix(pos, size);
+	  return _utils2['default'].mix(pos, size);
 	}
 
-	exports["default"] = adjustForViewport;
+	exports['default'] = adjustForViewport;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -25933,31 +26004,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	function getRegion(node) {
 	  var offset = void 0;
 	  var w = void 0;
 	  var h = void 0;
-	  if (!_utils2["default"].isWindow(node) && node.nodeType !== 9) {
-	    offset = _utils2["default"].offset(node);
-	    w = _utils2["default"].outerWidth(node);
-	    h = _utils2["default"].outerHeight(node);
+	  if (!_utils2['default'].isWindow(node) && node.nodeType !== 9) {
+	    offset = _utils2['default'].offset(node);
+	    w = _utils2['default'].outerWidth(node);
+	    h = _utils2['default'].outerHeight(node);
 	  } else {
-	    var win = _utils2["default"].getWindow(node);
+	    var win = _utils2['default'].getWindow(node);
 	    offset = {
-	      left: _utils2["default"].getWindowScrollLeft(win),
-	      top: _utils2["default"].getWindowScrollTop(win)
+	      left: _utils2['default'].getWindowScrollLeft(win),
+	      top: _utils2['default'].getWindowScrollTop(win)
 	    };
-	    w = _utils2["default"].viewportWidth(win);
-	    h = _utils2["default"].viewportHeight(win);
+	    w = _utils2['default'].viewportWidth(win);
+	    h = _utils2['default'].viewportHeight(win);
 	  }
 	  offset.width = w;
 	  offset.height = h;
 	  return offset;
 	}
 
-	exports["default"] = getRegion;
+	exports['default'] = getRegion;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -25974,7 +26045,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	function getElFuturePos(elRegion, refNodeRegion, points, offset, targetOffset) {
 	  var xy = void 0;
@@ -25987,8 +26058,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    top: elRegion.top
 	  };
 
-	  p1 = (0, _getAlignOffset2["default"])(refNodeRegion, points[1]);
-	  p2 = (0, _getAlignOffset2["default"])(elRegion, points[0]);
+	  p1 = (0, _getAlignOffset2['default'])(refNodeRegion, points[1]);
+	  p2 = (0, _getAlignOffset2['default'])(elRegion, points[0]);
 
 	  diff = [p2.left - p1.left, p2.top - p1.top];
 
@@ -25998,7 +26069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	}
 
-	exports["default"] = getElFuturePos;
+	exports['default'] = getElFuturePos;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -26043,7 +26114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	}
 
-	exports["default"] = getAlignOffset;
+	exports['default'] = getAlignOffset;
 	module.exports = exports['default'];
 
 /***/ }),
@@ -26136,7 +26207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 329 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if title}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t\t{title}\n\t\t{#if tip}\n\t\t<tooltip tip=\"{tip}\">\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\n\t\t</tooltip>\n\t\t{/if}:\n\t</label>\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n\n{#else}\n<div class=\"{class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t{#inc this.$body}\n</div>\n{/if}\n"
+	module.exports = "{#if title}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n\t\t{title}\n\t\t{#if tip}\n\t\t<tooltip tip=\"{tip}\">\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\n\t\t</tooltip>\n\t\t{/if}:\n\t</label>\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\n\t\t{#inc this.$body}\n\t</span>\n</div>\n\n{#else}\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\n\t{#inc this.$body}\n</div>\n{/if}\n"
 
 /***/ }),
 /* 330 */
@@ -28010,24 +28081,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'kB': 1000,
 	    'MB': 1000 * 1000,
 	    'GB': 1000 * 1000 * 1000
-	};
 
-	/**
-	 * @class Uploader
-	 * @extend Component
-	 * @param {object}            [options.data]                    = 绑定属性
-	 * @param {string}            [options.data.title]              => 按钮文字
-	 * @param {string}            [options.data.url]                => 上传路径
-	 * @param {string}            [options.data.dataType=json]      => 数据类型。可以是：`text`、`xml`、`json`、`script`。
-	 * @param {object}            [options.data.data]               => 附加数据
-	 * @param {string}            [options.data.name=file]          => 上传文件的name
-	 * @param {string|string[]}   [options.data.extensions]         => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
-	 * @param {string|number}     [options.data.maxSize]            => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
-	 * @param {boolean}           [options.data.disabled=false]     => 是否禁用
-	 * @param {boolean}           [options.data.visible=true]       => 是否显示
-	 * @param {string}            [options.data.class]              => 补充class
-	 */
-	var Uploader = Component.extend({
+	    /**
+	     * @class Uploader
+	     * @extend Component
+	     * @param {object}            [options.data]                    = 绑定属性
+	     * @param {string}            [options.data.title]              => 按钮文字
+	     * @param {string}            [options.data.url]                => 上传路径
+	     * @param {string}            [options.data.dataType=json]      => 数据类型。可以是：`text`、`xml`、`json`、`script`。
+	     * @param {object}            [options.data.data]               => 附加数据
+	     * @param {string}            [options.data.name=file]          => 上传文件的name
+	     * @param {string|string[]}   [options.data.extensions]         => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
+	     * @param {string|number}     [options.data.maxSize]            => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
+	     * @param {boolean}           [options.data.disabled=false]     => 是否禁用
+	     * @param {boolean}           [options.data.visible=true]       => 是否显示
+	     * @param {string}            [options.data.class]              => 补充class
+	     */
+	};var Uploader = Component.extend({
 	    name: 'uploader',
 	    template: template,
 	    /**
@@ -28397,7 +28467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var template = __webpack_require__(361);
 	var _ = __webpack_require__(98);
 
-	var MenuList = __webpack_require__(362);
+	var MenuList = __webpack_require__(362
 
 	/**
 	 * @class Menu
@@ -28415,7 +28485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {object}        [options.service]                       @=> 数据服务
 	 */
-	var Menu = Dropdown.extend({
+	);var Menu = Dropdown.extend({
 	  name: 'menu',
 	  template: template,
 	  /**
@@ -28472,6 +28542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _.extend(this.data, {
 	      // @inherited source: [],
 	      itemTemplate: null
+	      // visible: false
 	    });
 	    this.supr();
 
@@ -29703,6 +29774,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    }
 
+	    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	        return typeof obj;
+	    } : function (obj) {
+	        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	    };
+
 	    function _classCallCheck(instance, Constructor) {
 	        if (!(instance instanceof Constructor)) {
 	            throw new TypeError("Cannot call a class as a function");
@@ -29783,6 +29860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
 	                this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
 	                this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+	                this.container = _typeof(options.container) === 'object' ? options.container : document.body;
 	            }
 	        }, {
 	            key: 'listenClick',
@@ -29806,6 +29884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    action: this.action(trigger),
 	                    target: this.target(trigger),
 	                    text: this.text(trigger),
+	                    container: this.container,
 	                    trigger: trigger,
 	                    emitter: this
 	                });
@@ -29956,6 +30035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	                this.action = options.action;
+	                this.container = options.container;
 	                this.emitter = options.emitter;
 	                this.target = options.target;
 	                this.text = options.text;
@@ -29984,7 +30064,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.fakeHandlerCallback = function () {
 	                    return _this.removeFake();
 	                };
-	                this.fakeHandler = document.body.addEventListener('click', this.fakeHandlerCallback) || true;
+	                this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
 
 	                this.fakeElem = document.createElement('textarea');
 	                // Prevent zooming on iOS
@@ -30003,7 +30083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                this.fakeElem.setAttribute('readonly', '');
 	                this.fakeElem.value = this.text;
 
-	                document.body.appendChild(this.fakeElem);
+	                this.container.appendChild(this.fakeElem);
 
 	                this.selectedText = (0, _select2.default)(this.fakeElem);
 	                this.copyText();
@@ -30012,13 +30092,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            key: 'removeFake',
 	            value: function removeFake() {
 	                if (this.fakeHandler) {
-	                    document.body.removeEventListener('click', this.fakeHandlerCallback);
+	                    this.container.removeEventListener('click', this.fakeHandlerCallback);
 	                    this.fakeHandler = null;
 	                    this.fakeHandlerCallback = null;
 	                }
 
 	                if (this.fakeElem) {
-	                    document.body.removeChild(this.fakeElem);
+	                    this.container.removeChild(this.fakeElem);
 	                    this.fakeElem = null;
 	                }
 	            }
@@ -30054,8 +30134,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }, {
 	            key: 'clearSelection',
 	            value: function clearSelection() {
-	                if (this.target) {
-	                    this.target.blur();
+	                if (this.trigger) {
+	                    this.trigger.focus();
 	                }
 
 	                window.getSelection().removeAllRanges();
@@ -30464,7 +30544,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	function closest (element, selector) {
 	    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-	        if (element.matches(selector)) return element;
+	        if (typeof element.matches === 'function' &&
+	            element.matches(selector)) {
+	          return element;
+	        }
 	        element = element.parentNode;
 	    }
 	}
