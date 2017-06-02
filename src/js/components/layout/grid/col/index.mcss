@@ -1,0 +1,19 @@
+$g_num = 12;
+
+.g-col {
+  $box-sizing: border-box;
+  float: left;
+  min-height: 1px;
+  padding: 0 20px;
+}
+
+@for $index of 1...$g_num {
+  .g-col-#{$index} {
+    width: 100% * $index / $g_num;
+  }
+
+  .g-offset-#{$index} {
+    $box-sizing: border-box;
+    margin-left: 100% * $index / $g_num;
+  }
+}

@@ -55,20 +55,6 @@ var UIForm = Validation.extend({
           this.initSelectorSource();
           this.initFormItem();
         });
-
-        this.adjustInline();
-    },
-    adjustInline: function() {
-        // 如果inline, 那么设置ui.form中的所有form.item的labelCols为0,否则label上会有'g-col g-col-4'的默认样式
-        this.$watch('inline', function(newValue) {
-            if (!newValue) { return; }
-            var controls = this.controls;
-            controls.forEach(function($component) {
-                if ($component.data.labelCols) {
-                    $component.$update('labelCols', 0);
-                }
-            });
-        });
     },
     initFormItem: function() {
         var controls = this.controls,

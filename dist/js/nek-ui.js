@@ -24425,22 +24425,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.initSelectorSource();
 	            this.initFormItem();
 	        });
-
-	        this.adjustInline();
-	    },
-	    adjustInline: function adjustInline() {
-	        // 如果inline, 那么设置ui.form中的所有form.item的labelCols为0,否则label上会有'g-col g-col-4'的默认样式
-	        this.$watch('inline', function (newValue) {
-	            if (!newValue) {
-	                return;
-	            }
-	            var controls = this.controls;
-	            controls.forEach(function ($component) {
-	                if ($component.data.labelCols) {
-	                    $component.$update('labelCols', 0);
-	                }
-	            });
-	        });
 	    },
 	    initFormItem: function initFormItem() {
 	        var controls = this.controls,
@@ -30594,29 +30578,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Row
 	 * @extend Component
 	 * @param {object}          [options.data]                        => 绑定数据
-	 * @param {number}          [options.data.span='']              => 栅格占据的列数
-	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 * @param {string}          [options.data.type='']              => 布局模式，可选 flex，现代浏览器下有效
+	 * @param {string}          [options.data.justify='start']      => flex 布局下的水平排列方式
+	 * @param {string}          [options.data.align='top']          => flex 布局下的垂直排列方式
+	 * @param {string}          [options.data.wrap='wrap']          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
+	 * @param {number}          [options.data.gutter='0']           => 栅格间隔
 	 */
 	var Row = Component.extend({
 	  name: 'ui.row',
 	  template: template,
 	  config: function config(data) {
 	    this.defaults({
-	      span: '',
-	      offset: ''
+	      type: '',
+	      justify: 'start',
+	      align: 'top',
+	      gutter: 0,
+	      wrap: 'wrap'
 	    });
 
 	    this.supr(data);
 	  }
 	});
 
-		module.exports = Row;
+	Row.directive('gutter', function (ele, value) {
+	  this.$watch(value, function (gutter) {
+	    if (gutter) {
+	      var margin = '-' + gutter / 2 + 'px';
+	      ele.style.marginLeft = margin;
+	      ele.style.marginRight = margin;
+	    }
+	  });
+	});
+
+	module.exports = Row;
 
 /***/ }),
 /* 397 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"g-row\">\n  {#inc this.$body}\n</div>"
+	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
 /* 398 */
@@ -30633,6 +30633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
 	var template = __webpack_require__(399);
+	var Row = __webpack_require__(396);
 
 	/**
 	 * @class Col
@@ -30647,20 +30648,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	  config: function config(data) {
 	    this.defaults({
 	      span: '',
-	      offset: ''
+	      offset: '',
+	      gutter: 0
 	    });
+
+	    var $outer = this;
+	    do {
+	      if ($outer.$outer) {
+	        $outer = $outer.$outer;
+	      } else if ($outer.$parent) {
+	        $outer = $outer.$parent;
+	      }
+	    } while (!($outer instanceof Row) && ($outer.$outer || $outer.$parent));
+
+	    if ($outer && $outer instanceof Row) {
+	      this.data.gutter = $outer.data.gutter;
+	    }
 
 	    this.supr(data);
 	  }
 	});
 
-		module.exports = Col;
+	Col.directive('gutter', function (ele, value) {
+	  this.$watch(value, function (gutter) {
+	    if (gutter) {
+	      var padding = gutter / 2 + 'px';
+	      ele.style.paddingLeft = padding;
+	      ele.style.paddingRight = padding;
+	    }
+	  });
+	});
+
+	module.exports = Col;
 
 /***/ }),
 /* 399 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"g-col g-col-{span} g-col-{offset}\">\n  {#inc this.$body}\n</div>"
+	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
 /* 400 */
