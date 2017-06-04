@@ -54,8 +54,9 @@ var MultiSelect = Dropdown.extend({
             updateAuto: false
         });
         data._source = _.clone(data.source);
-        data.tree = [data._source, [], [], [], []];
-        data.search = ['','','','',''];
+        data.tree = [data._source, [], [], [], [], [], [], [], [], []];
+        data.search = ['','','','','','','','','',''];
+        data.empty = [];
         this.initSelected();
         this.supr();
 
@@ -159,36 +160,6 @@ var MultiSelect = Dropdown.extend({
                 }
             })
         }
-
-        // 取消勾选的情况，找到前面各级active的cate，设置为不勾选
-        // if(level > 0 && !checked) {
-        //     for(var i = 0; i < level; i++) {
-        //         data.tree[i].forEach(function(item) {
-        //             if(item.active) {
-        //                 item[data.checkKey] = false;
-        //             }
-        //         })
-        //     }
-        // }
-
-        // // 勾选的情况，判断本级是否全选，全选则设置上一级为勾选
-        // if(level > 0 && checked) {
-        //     for(var i = level; i > 0; i--) {
-        //         var flag = true;
-        //         data.tree[i].forEach(function(item) {
-        //             if(!item[data.checkKey]) {
-        //                 flag = false;
-        //             }
-        //         })
-        //         if(flag) {
-        //             data.tree[i - 1].forEach(function(item) {
-        //                 if(item.active) {
-        //                     item[data.checkKey] = true;
-        //                 }
-        //             })
-        //         }
-        //     }
-        // }
         this.watchValue();
     },
     // 循环列表获取 value 值
@@ -236,12 +207,19 @@ var MultiSelect = Dropdown.extend({
     	this.initSelected();
     	this.watchValue();
     }
-}).filter('search', function(category, search) {
+}).filter('search', function(category, search, level) {
 	var data = this.data;
+    var target = [];
     if(category && category.filter) {
-        return category.filter(function(item, index) {
-            return item[data.nameKey].indexOf(search) != -1;
+        target =  category.filter(function(item, index) {
+            return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
         })
     }
-    return category;
+    if(target.length) {
+        data.empty[level] = false;
+        return target;
+    } else {
+        data.empty[level] = true;
+        return [];
+    }
 })

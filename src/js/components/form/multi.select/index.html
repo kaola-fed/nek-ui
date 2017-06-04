@@ -1,4 +1,4 @@
-<div class="u-dropdown u-select {class}" z-dis={disabled} r-hide={!visible} ref="element">
+<div class="u-dropdown u-select u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open)}>
         {#list selected as item}
         <span class="selected-tag">{item[nameKey]}
@@ -9,17 +9,18 @@
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         <div class="cateWrap f-cb">
-            {#list 0..4 as level}
-            <ul class="f-fl">
+            {#list 0..9 as level}
+            {#if tree[level] && tree[level].length}
+            <ul>
                 <ui.input value={search[level]}></ui.input>
-                {#list tree[level] | search : search[level] as cate}
+                {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}
                 <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
                 	<check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></check>
                     {/if}
-                    {cate[nameKey]}
-                    {#if cate[childKey] && cate[childKey].length}&gt;{/if}
+                    <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
+                    {#if cate[childKey] && cate[childKey].length}<span class="more">&gt;</span>{/if}
                 </li>
                 {/if}
                 {/list}
@@ -27,6 +28,7 @@
 				<li class="f-csp">无任何匹配选项</li>
                 {/if}
             </ul>
+            {/if}
             {/list}
         </div>
     </div>
