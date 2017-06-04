@@ -12,6 +12,7 @@ var Validation = require('../../../util/validation');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var check = require('../check');
+var Input = require('../ui.input');
 
 /**
  * @class TreeSelect

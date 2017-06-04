@@ -11,7 +11,7 @@
         <div class="cateWrap f-cb">
             {#list 0..4 as level}
             <ul class="f-fl">
-                <input type="text" class="form-control" r-model={search[level]}>
+                <ui.input value={search[level]}></ui.input>
                 {#list tree[level] | search : search[level] as cate}
                 {#if !filter || (filter && filter(cate))}
                 <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>

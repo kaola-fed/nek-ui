@@ -2,4 +2,30 @@
     ul, li {
         list-style-type: none;
     }
+    ::-webkit-scrollbar {
+	    width: 6px;
+	    background-color: #fff;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 3px;
+	    background-color: #dadada;
+	}
+	ul {
+		width: 136px;
+	    border-bottom: 1px solid #eee;
+	    border-left: 1px solid #eee;
+	    margin: 0;
+	    height: 200px;
+	    padding: 0;
+	    overflow: auto;
+	    &:last-child { border-right: 1px solid #eee; }
+	}
+	li {
+		height: 32px;
+	    overflow: hidden;
+	    line-height: 32px;
+	}
+	.input, input_wrap {
+		height: 32px;
+	}
 }
