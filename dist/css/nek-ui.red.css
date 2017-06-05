@@ -4730,12 +4730,6 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table.fixed_header .ui_table_header{
 	overflow:hidden;
 }
-.m-ui-table .ui_table_body{
-	transition:width 10ms;
-}
-.m-ui-table .ui_table_body.fixed_header{
-	overflow:auto;
-}
 .m-ui-table .ui_table_header.sticky_header{
 	position:fixed;
 	overflow:hidden;
@@ -4744,6 +4738,12 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-ui-table .ui_table_header.fixed_scrollx{
 	overflow:hidden;
+}
+.m-ui-table .ui_table_body{
+	transition:width 10ms;
+}
+.m-ui-table .ui_table_body.fixed_header{
+	overflow:auto;
 }
 .m-ui-table.m-ui-table-fixed{
 	position:absolute;
@@ -4763,17 +4763,11 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table.m-ui-table-fixed .ui_table_header,.m-ui-table.m-ui-table-fixed .ui_table_body{
 	overflow:hidden;
 }
-.m-ui-table .f-visibility-hidden{
-	visibility:hidden;
-}
-.m-ui-table .f-visibility-hidden >.tb_bd_td_div{
-	display:none;
-}
 .m-ui-table .table_tb{
 	width:100%;
 	table-layout:fixed;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th{
+.m-ui-table .tb_hd_th{
 	box-sizing:border-box;
 	background-color:#eef1f4;
 	height:40px;
@@ -4781,7 +4775,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	border-collapse:collapse;
 	border-bottom:1px solid #fff;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th >.th_content{
+.m-ui-table .tb_hd_th >.th_content{
 	box-sizing:border-box;
 	height:100%;
 	display:flex;
@@ -4789,64 +4783,64 @@ input.u-check:disabled,input.u-radio:disabled{
 	justify-content:center;
 	padding:6px 8px;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th >.th_content .th_tip{
+.m-ui-table .tb_hd_th >.th_content .th_tip{
 	margin-left:8px;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th:not(:last-child){
+.m-ui-table .tb_hd_th:not(:last-child){
 	border-right:1px solid #fff;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th .u-icon-1{
+.m-ui-table .tb_hd_th .u-icon-1{
 	position:relative;
 	cursor:pointer;
 	color:#ddd;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th .u-icon-2{
+.m-ui-table .tb_hd_th .u-icon-2{
 	position:absolute;
 	left:0;
 	top:0;
 }
-.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th .u-icon-2.u-icon-sort-desc,.m-ui-table .tb_hd .tb_hd_tr .tb_hd_th .u-icon-2.u-icon-sort-asc{
+.m-ui-table .tb_hd_th .u-icon-2.u-icon-sort-desc,.m-ui-table .tb_hd_th .u-icon-2.u-icon-sort-asc{
 	color:#666;
 }
-.m-ui-table .tb_bd .tb_bd_tr{
+.m-ui-table .tb_bd_tr{
 	background:#fff;
 	transition:background 200ms ease-out;
 }
-.m-ui-table .tb_bd .tb_bd_tr:not(:last-child){
+.m-ui-table .tb_bd_tr:not(:last-child){
 	border-bottom:1px solid #ecf2f9;
 }
-.m-ui-table .tb_bd .tb_bd_tr.z-hover,.m-ui-table .tb_bd .tb_bd_tr:hover{
+.m-ui-table .tb_bd_tr.z-hover,.m-ui-table .tb_bd_tr:hover{
 	background:#ecf2f9;
 }
-.m-ui-table .tb_bd .tb_bd_tr.td_bd_tr_nohover{
+.m-ui-table .tb_bd_tr.td_bd_tr_nohover{
 	background:#fff;
 }
-.m-ui-table .tb_bd .tb_bd_td{
+.m-ui-table .tb_bd_td{
 	box-sizing:border-box;
 	position:relative;
 	padding:0;
 	height:40px;
 }
-.m-ui-table .tb_bd .tb_bd_td >.tb_bd_td_div{
+.m-ui-table .tb_bd_td >.tb_bd_td_div{
 	padding:6px 8px;
 	line-height:18px;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr{
+.m-ui-table.strip .tb_bd_tr{
 	transition:background 200ms ease-out;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr:nth-child(2n-1){
+.m-ui-table.strip .tb_bd_tr:nth-child(2n-1){
 	background:#fff;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr:nth-child(2n){
+.m-ui-table.strip .tb_bd_tr:nth-child(2n){
 	background:#f6f9fc;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr:not(:last-child){
+.m-ui-table.strip .tb_bd_tr:not(:last-child){
 	border-bottom:1px solid #ecf2f9;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr.z-hover,.m-ui-table.strip .tb_bd .tb_bd_tr:hover{
+.m-ui-table.strip .tb_bd_tr.z-hover,.m-ui-table.strip .tb_bd_tr:hover{
 	background:#ecf2f9;
 }
-.m-ui-table.strip .tb_bd .tb_bd_tr.td_bd_tr_nohover{
+.m-ui-table.strip .tb_bd_tr.td_bd_tr_nohover{
 	background:#fff;
 }
 .m-ui-table .u-clickable{
@@ -4855,9 +4849,6 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-ui-table .u-clickable:hover{
 	text-decoration:underline;
-}
-.m-ui-table .f-cursor-pointer{
-	cursor:pointer;
 }
 .m-ui-table .u-progress-wrap{
 	box-sizing:border-box;
@@ -4893,8 +4884,14 @@ input.u-check:disabled,input.u-radio:disabled{
 	bottom:0;
 	z-index:1000;
 }
+.f-cursor-pointer{
+	cursor:pointer;
+}
 .f-overflow-hidden{
 	overflow:hidden;
+}
+.f-visibility-hidden{
+	visibility:hidden;
 }
 .f-ellipsis{
 	text-overflow:ellipsis;

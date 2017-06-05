@@ -219,8 +219,7 @@ var UITable = Component.extend({
                 return;
             }
             this._updateScrollBar();
-            this._updateColumnsWidth();
-            this._updateFixedColumnWidth();
+            this._updateTableWidth();
         }.bind(this), 300);
     },
     _updateScrollBar: function() {
@@ -248,7 +247,7 @@ var UITable = Component.extend({
         }
     },
     _updateDataColumn: function() {
-        this.data._dataColumns = getLeaves(this.data.columns);
+        this.$update('_dataColumns', getLeaves(this.data.columns));
     },
     init: function() {
         this._initTable();
@@ -258,15 +257,11 @@ var UITable = Component.extend({
         var refs = this.$refs;
         setTimeout(function() {
             data.headerHeight = refs.headerWrap.offsetHeight;
-            data.viewWidth = refs.table.offsetWidth;
 
+            this._updateViewWidth();
             this._initTableWidth();
             this._getHeaderHeight();
         }.bind(this), 200);
-    },
-    _updateTableWidth: function() {
-        this._updateColumnsWidth();
-        this._updateFixedColumnWidth();
     },
     _initTableWidth: function() {
         var data = this.data;
@@ -309,51 +304,44 @@ var UITable = Component.extend({
         this._updateData('footerHeight', footerHeight);
         return footerHeight;
     },
-    _updateColumnsWidth: function() {
+    _updateTableWidth: function() {
         var data = this.data;
         var _dataColumns = data._dataColumns;
         if(!_dataColumns) {
             return;
         }
-        var newTableWidth = _dataColumns.reduce(function(previous, current) {
-            return previous + current._width;
-        }, 0);
+        var newTableWidth = 0;
+        var fixedCol = false;
+        var fixedTableWidth = 0;
+        var fixedColRight = false;
+        var fixedTableWidthRight = 0;
 
         _dataColumns.forEach(function(column) {
+            // 计算表格宽度
+            newTableWidth += column._width;
+
+            // 更新列宽
             if(!column._width) {
                 column._width = column.width || 100;
             }
-        });
 
-        this._updateData('tableWidth', newTableWidth);
-    },
-    _updateFixedColumnWidth: function() {
-        var data = this.data;
-        if(!data._dataColumns
-            || (!this.$refs.table && this.$refs.table.clientWidth <= 0)) {
-            return;
-        }
-
-        var fixedCol = false;
-        var fixedColRight = false;
-        var fixedTableWidth = 0;
-        var fixedTableWidthRight = 0;
-        data._dataColumns.forEach(function(item) {
-            if(item._width && item.fixed) {
-                if(item.fixed === 'right') {
+            // 计算固定列的总宽度
+            if(column._width && column.fixed) {
+                if(column.fixed === 'right') {
                     fixedColRight = true;
-                    fixedTableWidthRight += item._width;
+                    fixedTableWidthRight += column._width;
                 } else {
                     fixedCol = true;
-                    fixedTableWidth += item._width;
+                    fixedTableWidth += column._width;
                 }
             }
         });
 
-        data.fixedTableWidth = fixedTableWidth;
-        data.fixedTableWidthRight = fixedTableWidthRight;
-        data.fixedCol = fixedCol;
-        data.fixedColRight = fixedColRight;
+        this._updateData('fixedCol', fixedCol);
+        this._updateData('fixedTableWidth', fixedTableWidth);
+        this._updateData('fixedColRight', fixedColRight);
+        this._updateData('fixedTableWidthRight', fixedTableWidthRight);
+        this._updateData('tableWidth', newTableWidth);
     },
     _onWindowResize: function() {
         if(!this.$refs || !this._isShow()) {

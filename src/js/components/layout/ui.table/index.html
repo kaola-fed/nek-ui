@@ -35,8 +35,7 @@
             }}
             r-style={{
                 width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'
-            }}
-        >
+            }}>
             <table.header
                 ref="tableHeader"
                 _dataColumns={_dataColumns}
@@ -55,8 +54,7 @@
         <div class="header_placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
-            }}
-        />
+            }}/>
 
         <div ref="bodyWrap"
             class="ui_table_body"
@@ -104,8 +102,7 @@
             }}
             r-style={{
                 width: fixedTableWidth + 'px'
-            }}
-        >
+            }} >
             <table.header
                 ref="tableHeaderFixed"
                 _dataColumns={_dataColumns}
@@ -124,8 +121,7 @@
         <div class="header_placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
-            }}
-        />
+            }} />
 
         <div ref="bodyWrapFixed"
             class="ui_table_body"
@@ -195,8 +191,7 @@
         <div class="header_placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
-            }}
-        />
+            }} />
 
         <div ref="bodyWrapFixedRight"
             class="ui_table_body"
@@ -236,7 +231,7 @@
         'sticky_footer': stickyFooter && stickyFooterActive
     }}
     r-style={{
-        width: viewWidth + 'px'
+        width: (viewWidth || tableWidth) + 'px'
     }}
 >
     {#if stickyFooter}

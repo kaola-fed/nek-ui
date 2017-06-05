@@ -33,12 +33,6 @@ $orderIconColor = #666;
             overflow: hidden;
         }
     }
-    .ui_table_body {
-        transition: width 10ms;
-        &.fixed_header {
-            overflow: auto;
-        }
-    }
 
     .ui_table_header {
         &.sticky_header {
@@ -49,6 +43,13 @@ $orderIconColor = #666;
         }
         &.fixed_scrollx {
             overflow: hidden;
+        }
+    }
+
+    .ui_table_body {
+        transition: width 10ms;
+        &.fixed_header {
+            overflow: auto;
         }
     }
 
@@ -72,64 +73,98 @@ $orderIconColor = #666;
         }
     }
 
-    .f-visibility-hidden {
-        visibility: hidden;
-        >.tb_bd_td_div {
-            display: none;
-        }
-    }
-
     .table_tb {
         width: 100%;
         table-layout: fixed;
     }
 
     .tb_hd {
-        .tb_hd_tr {
-            .tb_hd_th {
-                box-sizing: border-box;
-                background-color: $headerGrey;
-                height: 40px;
-                padding: 0;
-                border-collapse: collapse;
-                border-bottom: 1px solid #fff;
-                >.th_content {
-                    box-sizing: border-box;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 6px 8px;
-                    .header_text {
-                    }
-                    .th_tip {
-                        margin-left: 8px;
-                    }
-                }
-                &:not(:last-child){
-                    border-right: 1px solid #fff;
-                }
-                .u-icon-1 {
-                    position: relative;
-                    cursor: pointer;
-                    color: #ddd;
-                }
-                .u-icon-2 {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    &.u-icon-sort-desc,
-                    &.u-icon-sort-asc {
-                        color: $orderIconColor;
-                    }
-                }
+    }
+
+    .tb_hd_tr {
+    }
+
+    .tb_hd_th {
+        box-sizing: border-box;
+        background-color: $headerGrey;
+        height: 40px;
+        padding: 0;
+        border-collapse: collapse;
+        border-bottom: 1px solid #fff;
+        >.th_content {
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 8px;
+            .header_text {
+            }
+            .th_tip {
+                margin-left: 8px;
+            }
+        }
+        &:not(:last-child){
+            border-right: 1px solid #fff;
+        }
+        .u-icon-1 {
+            position: relative;
+            cursor: pointer;
+            color: #ddd;
+        }
+        .u-icon-2 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            &.u-icon-sort-desc,
+            &.u-icon-sort-asc {
+                color: $orderIconColor;
             }
         }
     }
 
     .tb_bd {
-        .tb_bd_tr {
+    }
+
+    .tb_bd_tr {
+        background: #fff;
+        &:not(:last-child) {
+            border-bottom: 1px solid $trBorderColor;
+        }
+        &.z-hover,
+        &:hover {
+            background: $trHoverColor;
+        }
+        transition: background 200ms ease-out;
+        &.td_bd_tr_nohover {
             background: #fff;
+        }
+    }
+
+    .tb_bd_td {
+        box-sizing: border-box;
+        position: relative;
+        padding: 0;
+        height: 40px;
+        &:not(:last-child){
+            //border-right: 1px solid #ddd;
+        }
+        >.tb_bd_td_div {
+            padding: 6px 8px;
+            line-height: 18px;
+        }
+    }
+
+    &.strip {
+        .tb_bd {
+        }
+        .tb_bd_tr {
+            &:nth-child(2n-1){
+                background: #fff;
+            }
+            &:nth-child(2n){
+                background: $trBackgroundColor;
+            }
             &:not(:last-child) {
                 border-bottom: 1px solid $trBorderColor;
             }
@@ -142,43 +177,6 @@ $orderIconColor = #666;
                 background: #fff;
             }
         }
-        .tb_bd_td {
-            box-sizing: border-box;
-            position: relative;
-            padding: 0;
-            height: 40px;
-            &:not(:last-child){
-                //border-right: 1px solid #ddd;
-            }
-            >.tb_bd_td_div {
-                padding: 6px 8px;
-                line-height: 18px;
-            }
-        }
-    }
-
-    &.strip {
-        .tb_bd {
-            .tb_bd_tr {
-                &:nth-child(2n-1){
-                    background: #fff;
-                }
-                &:nth-child(2n){
-                    background: $trBackgroundColor;
-                }
-                &:not(:last-child) {
-                    border-bottom: 1px solid $trBorderColor;
-                }
-                &.z-hover,
-                &:hover {
-                    background: $trHoverColor;
-                }
-                transition: background 200ms ease-out;
-                &.td_bd_tr_nohover {
-                    background: #fff;
-                }
-            }
-        }
     }
 
     .u-clickable {
@@ -187,10 +185,6 @@ $orderIconColor = #666;
         &:hover {
             text-decoration: underline;
         }
-    }
-
-    .f-cursor-pointer {
-        cursor: pointer;
     }
 
     .u-progress-wrap {
@@ -233,8 +227,16 @@ $orderIconColor = #666;
     }
 }
 
+.f-cursor-pointer {
+    cursor: pointer;
+}
+
 .f-overflow-hidden {
     overflow: hidden;
+}
+
+.f-visibility-hidden {
+    visibility: hidden;
 }
 
 .f-ellipsis {
