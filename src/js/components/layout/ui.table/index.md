@@ -384,6 +384,75 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+### 多选
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<check
+    name="全选"
+    checked={checkAllStatus}
+/>
+
+<ui.table width=700 source={table.source} on-checkchange={this.onCheck($event)}>
+    <table.col name="title" key="title" type="check" />
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    computed: {
+        checkAllStatus: {
+            get: function() {
+                var res = null;
+                var checkedList = this.data.table.source.filter(function(item) {
+                    return item._checked;
+                });
+
+                return checkedList.length === this.data.table.source.length ? true :
+                                                    checkedList.length > 0 ? null :
+                                                                            false;
+
+            },
+            set: function(val) {
+                if(val !== null) {
+                    this.data.table.source.forEach(function(item) {
+                        item._checked = !!val;
+                    });
+                }
+            }
+        }
+    },
+    data: {
+        table: {
+            source: [],
+            paging: {
+                pageSize: 10,
+                sumTotal: 100,
+                current: 1
+            }
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    },
+    onCheck: function(e) {
+        console.log(e);
+    }
+});
+```
+<!-- demo_end -->
+
 ### 数据配置
 
 <!-- demo_start -->
