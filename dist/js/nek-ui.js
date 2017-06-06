@@ -30562,6 +30562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.stickyHeader]         => 将表头固定到页面顶部
 	 * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
 	 * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
+	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
 	 */
 
 	/**
@@ -31297,7 +31298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this._parseTemplate(template);
 	    },
 	    _parseTemplate: function _parseTemplate(template) {
-	        return template.replace(/(<!--)(.*)(-->)/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').replace(/:\$/g, '}').trim();
+	        return template.replace(/(<!--)(.*)(-->)/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').trim();
 	    }
 	});
 
@@ -31631,7 +31632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 405 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={value}>{value | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"{column.lineClamp || lineClamp ? 'f-ellipsis f-line-clamp-' + (column.lineClamp || lineClamp) : ''}\" title={item[column.key]}>{item[column.key] | placeholder}</span>\n{/if}\n"
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={value}>{value | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={item[column.key]}>{item[column.key] | placeholder}</span>\n{/if}\n"
 
 /***/ }),
 /* 406 */

@@ -10,7 +10,7 @@ title: UI表格
 <div class="m-example"></div>
 
 ```xml
-<ui.table source={table.source} >
+<ui.table source={table.source}>
     <table.col name="title" key="title" />
     <table.col name="value" key="value" tip="I am tip"/>
 </ui.table>

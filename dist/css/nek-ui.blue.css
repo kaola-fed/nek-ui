@@ -4898,11 +4898,15 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow:hidden;
 	white-space:nowrap;
 }
-.f-line-clamp-2,.f-line-clamp-3,.f-line-clamp-4{
+.f-line-clamp-1,.f-line-clamp-2,.f-line-clamp-3,.f-line-clamp-4,.f-line-clamp-5{
 	display:-webkit-inline-box;
 	-webkit-box-orient:vertical;
 	white-space:normal;
 	vertical-align:middle;
+	word-break:break-all;
+}
+.f-line-clamp-1{
+	-webkit-line-clamp:1;
 }
 .f-line-clamp-2{
 	-webkit-line-clamp:2;
@@ -4912,6 +4916,9 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .f-line-clamp-4{
 	-webkit-line-clamp:4;
+}
+.f-line-clamp-5{
+	-webkit-line-clamp:5;
 }
 .m-collapse{
 	-webkit-user-select:none;

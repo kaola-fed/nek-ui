@@ -250,9 +250,10 @@ $orderIconColor = #666;
     -webkit-box-orient: vertical;
     white-space: normal;
     vertical-align: middle;
+    word-break: break-all;
 }
-$num = 4;
-@for $item of 2...$num {
+$num = 5;
+@for $item of 1...$num {
     .f-line-clamp-#{$item} {
         @extend clamp;
         -webkit-line-clamp: $item;

@@ -54,7 +54,6 @@ var TableTemplate = Component.extend({
         return template.replace(/(<!--)(.*)(-->)/g, '')
             .replace(/&gt;/g, '>')
             .replace(/&lt;/g, '<')
-            .replace(/:\$/g, '}')
             .trim();
     }
 });

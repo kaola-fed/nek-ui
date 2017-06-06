@@ -58,6 +58,7 @@ var getElementHeight = function(ele) {
  * @param {boolean}           [options.data.stickyHeader]         => 将表头固定到页面顶部
  * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
+ * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  */
 
 /**
