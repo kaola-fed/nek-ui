@@ -407,7 +407,6 @@ var component = new NEKUI.Component({
     computed: {
         checkAllStatus: {
             get: function() {
-                var res = null;
                 var checkedList = this.data.table.source.filter(function(item) {
                     return item._checked;
                 });

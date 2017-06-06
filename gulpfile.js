@@ -103,6 +103,7 @@ gulp.task('server', ['default'], function() {
     server: {
       baseDir: ['./doc/public', './dist']
     },
+    ghostMode: false,
     browser: 'default',
     // reloadDelay: 1000,
     // cors: true,

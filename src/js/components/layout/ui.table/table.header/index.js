@@ -15,8 +15,8 @@ var hasChildren = function(column) {
 
 var setColumnWidth = function(column, width) {
     var children = column.children;
-    if(children && children.length > 0) {
-        setWidth(children[children.length - 1], width);
+    if(hasChildren(column)) {
+        setColumnWidth(children[children.length - 1], width);
         return;
     }
     column._width = Math.max(width, HEADER_MIN_WIDTH);
@@ -27,9 +27,9 @@ var getColumnWidth = function(column) {
         width: 0,
         lastLeafWidth: 0
     };
-    if(column.children && column.children.length > 0) {
+    if(hasChildren(column)) {
         column.children.forEach(function(item, index) {
-            var tmp = getWidth(item);
+            var tmp = getColumnWidth(item);
             if(index === column.children.length - 1) {
                 ret.lastLeafWidth = tmp.width;
             }
