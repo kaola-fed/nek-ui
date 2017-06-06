@@ -38,8 +38,8 @@ var Pager = Component.extend({
         _.extend(this.data, {
             current: 1,
             total: _total,
-            sumTotal: 0,
-            pageSize: 20,
+            sumTotal: '',
+            pageSize: '',
             position: 'center',
             middle: 5,
             side: 2,
@@ -76,9 +76,16 @@ var Pager = Component.extend({
             this.data.side = +side;
         });
 
-        this.$watch('pageSize', function(val) {
+        this.$watch('pageSize', function(val, oldVal) {
+            if (!oldVal) return;
             this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
             this.select(1);
+        });
+
+        this.$watch('sumTotal', function(val, oldVal) {
+            // if (!oldVal) return;
+            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+            // this.select(1);
         });
     },
 
@@ -110,6 +117,7 @@ var Pager = Component.extend({
          * @property {object} sender 事件发送对象
          * @property {object} current 当前选择页
          */
+        this.$update();
         this.$emit('select', {
             sender: this,
             current: this.data.current
