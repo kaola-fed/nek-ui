@@ -104,6 +104,7 @@ var UITable = Component.extend({
     },
     config: function(data) {
         this.defaults({
+            strip: true,
             enableHover: true,
             scrollYBar: 0,
             scrollXBar: 0,

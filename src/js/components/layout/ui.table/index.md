@@ -38,13 +38,13 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 条纹
+### 无条纹
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table strip source={table.source} >
+<ui.table strip={false} source={table.source} >
     <table.col name="title" key="title" />
     <table.col name="value" key="value" tip="I am tip"/>
 </ui.table>
