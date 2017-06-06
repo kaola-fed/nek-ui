@@ -26,6 +26,7 @@ $orderIconColor = #666;
     overflow: auto;
     box-sizing: border-box;
     border-collapse: collapse;
+    border-bottom: 1px solid $trBorderColor;
     line-height: 18px;
     font-size: 12px;
     color: #333;
