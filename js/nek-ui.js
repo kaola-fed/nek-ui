@@ -28612,8 +28612,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _.extend(this.data, {
 	            current: 1,
 	            total: _total,
-	            sumTotal: 0,
-	            pageSize: 20,
+	            sumTotal: '',
+	            pageSize: '',
 	            position: 'center',
 	            middle: 5,
 	            side: 2,
@@ -28646,9 +28646,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.data.side = +side;
 	        });
 
-	        this.$watch('pageSize', function (val) {
+	        this.$watch('pageSize', function (val, oldVal) {
+	            if (!oldVal) return;
 	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
 	            this.select(1);
+	        });
+
+	        this.$watch('sumTotal', function (val, oldVal) {
+	            // if (!oldVal) return;
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	            // this.select(1);
 	        });
 	    },
 
@@ -28683,6 +28690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @property {object} sender 事件发送对象
 	         * @property {object} current 当前选择页
 	         */
+	        this.$update();
 	        this.$emit('select', {
 	            sender: this,
 	            current: this.data.current
@@ -28714,7 +28722,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 365 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select on-select={this.select(current)} placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
+	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n        <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
 /* 366 */
