@@ -51,7 +51,6 @@ var getElementHeight = function(ele) {
  * @class UITable
  * @extend Component
  * @param {object}            [options.data]                      = 绑定属性
- * @param {array}             [options.data.columns]              => 列配置
  * @param {array}             [options.data.source]               => 数据源
  * @param {object}            [options.data.paging]               => 分页
  * @param {object}            [options.data.sorting]              => 排序
@@ -59,6 +58,7 @@ var getElementHeight = function(ele) {
  * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
+ * @param {array}             [options.data.columns]              => 列配置
  */
 
 /**
@@ -77,8 +77,6 @@ var getElementHeight = function(ele) {
  * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
 
  * @param {string}      [options.data.template]         => 列内容模版
- * @param {string}      [options.data.headerTemplate]   => 列表头模版
- * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
  */
 
 /**

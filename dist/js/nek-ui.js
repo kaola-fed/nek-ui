@@ -30555,7 +30555,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class UITable
 	 * @extend Component
 	 * @param {object}            [options.data]                      = 绑定属性
-	 * @param {array}             [options.data.columns]              => 列配置
 	 * @param {array}             [options.data.source]               => 数据源
 	 * @param {object}            [options.data.paging]               => 分页
 	 * @param {object}            [options.data.sorting]              => 排序
@@ -30563,6 +30562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
 	 * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
 	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
+	 * @param {array}             [options.data.columns]              => 列配置
 	 */
 
 	/**
@@ -30581,8 +30581,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
 
 	 * @param {string}      [options.data.template]         => 列内容模版
-	 * @param {string}      [options.data.headerTemplate]   => 列表头模版
-	 * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
 	 */
 
 	/**
@@ -31260,7 +31258,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
 	    config: function config() {
 	        this.defaults({
-	            type: 'content'
+	            type: 'content',
+	            template: null
 	        });
 	    },
 	    init: function init() {
@@ -31294,7 +31293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        outerData._templates.push(this._getInnertTemplate());
 	    },
 	    _getInnertTemplate: function _getInnertTemplate() {
-	        var template = this.$refs.bodyContainer.innerHTML;
+	        var template = this.data.template || this.$refs.bodyContainer.innerHTML;
 	        return this._parseTemplate(template);
 	    },
 	    _parseTemplate: function _parseTemplate(template) {

@@ -13,7 +13,8 @@ var TableTemplate = Component.extend({
     template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
     config: function() {
         this.defaults({
-            type: 'content'
+            type: 'content',
+            template: null
         });
     },
     init: function() {
@@ -47,7 +48,7 @@ var TableTemplate = Component.extend({
         outerData._templates.push(this._getInnertTemplate());
     },
     _getInnertTemplate: function() {
-        var template = this.$refs.bodyContainer.innerHTML;
+        var template = this.data.template || this.$refs.bodyContainer.innerHTML;
         return this._parseTemplate(template);
     },
     _parseTemplate: function(template) {
