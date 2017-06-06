@@ -222,17 +222,19 @@ var component = new NEKUI.Component({
 
 ### 自定义模版
 
+自定义模版中可以通过 `emitEvent` 的方法向上抛出事件。
+
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table width=700 height=200 source={table.source}>
+<ui.table width=700 source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
     <table.col name="title" key="title">
         <table.template type="header">
-            {"<a>I\'m {header.name}</a>"}
+            {'<a on-click={this.emitEvent("headerclick", header)}>I am {header.name}</a>'}
         </table.template>
         <table.template>
-            {"<a>I\'m {item.title}</a>"}
+            {'<a on-click={this.emitEvent("itemclick", item)}>I am {item.title}</a>'}
         </table.template>
     </table.col>
     <table.col name="value" key="value" />
@@ -249,13 +251,19 @@ var component = new NEKUI.Component({
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
+        for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
                 col1: '' + i,
                 value: 10 * i
             });
         }
+    },
+    onItemClick: function(e) {
+        console.log(e);
+    },
+    onHeaderClick: function(e) {
+        console.log(e);
     }
 });
 ```
@@ -348,7 +356,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<ui.table width=700 height=200 source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
+<ui.table stickyFooter width=700 source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
     <table.col name="title" key="title" />
     <table.col name="value" key="value" />
 </ui.table>
