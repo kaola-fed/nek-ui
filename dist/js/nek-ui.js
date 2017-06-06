@@ -30620,6 +30620,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	        this.supr(data);
 
+	        this.data._defaultWidth = this.data.width;
+
 	        this._initWatchers();
 	    },
 	    _initWatchers: function _initWatchers() {
@@ -30742,6 +30744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _onColumnsChange: function _onColumnsChange(newVal) {
 	        if (newVal) {
 	            this._updateDataColumn();
+	            this._updateTableWidth();
 	        }
 	    },
 	    _updateDataColumn: function _updateDataColumn() {
@@ -30840,6 +30843,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this._updateData('fixedColRight', fixedColRight);
 	        this._updateData('fixedTableWidthRight', fixedTableWidthRight);
 	        this._updateData('tableWidth', newTableWidth);
+
+	        if (newTableWidth <= this.data._defaultWidth) {
+	            this._updateData('width', newTableWidth);
+	        } else {
+	            this._updateData('width', this.data._defaultWidth);
+	        }
 	    },
 	    _onWindowResize: function _onWindowResize() {
 	        if (!this.$refs || !this._isShow()) {
