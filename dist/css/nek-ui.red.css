@@ -3517,6 +3517,9 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-datetimepicker .input-error{
 	border-color:#f48080;
 }
+.u-datetimepicker .btns{
+	margin-top:10px;
+}
 .u-formitem{
 	display:flex;
 	margin-bottom:10px;
@@ -3578,7 +3581,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#ff753f;
 }
 .m-table .u-formitem{
-	margin-bottom:0px;
+	margin-bottom:0;
 }
 .u-numberinput{
 	display:inline-block;
@@ -3694,6 +3697,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-timepicker .u-numberinput .u-btn{
 	top:8px;
+	margin:auto;
 }
 .u-timepicker .u-numberinput .u-btn + .u-btn{
 	top:auto;

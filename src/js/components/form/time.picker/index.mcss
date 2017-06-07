@@ -28,6 +28,7 @@
     .u-numberinput {
         .u-btn  {
           top: 8px;
+          margin: auto;
         }
         .u-btn + .u-btn {
           top: auto;

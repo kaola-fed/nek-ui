@@ -13,4 +13,7 @@
             border-color: $u-formctrl-error-border;
         }
     }
+    .btns {
+        margin-top: 10px;
+    }
 }
