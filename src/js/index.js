@@ -36,6 +36,7 @@ const Components = {
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
+    Crumb : require('./components/navigation/crumb'),
 
     // Notice
     Modal : require('./components/notice/modal'),
@@ -53,6 +54,8 @@ const Components = {
     // Layout
     Panel : require('./components/layout/panel'),
     PanelTool : require('./components/layout/panel.tool'),
+    Card : require('./components/layout/card'),
+    CardTools : require('./components/layout/card.tools'),
 
     //i18n
     LocaleProvider : require('./components/i18n/locale.provider'),
