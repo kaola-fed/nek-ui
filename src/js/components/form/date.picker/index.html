@@ -17,10 +17,6 @@
       <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
         {#if showTime}
         <time.picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)} />
-        <div class="btns">
-          <ui.button type="primary" size="sm" on-click={this._onOk()} title="确定"></ui.button>
-          <ui.button type="primary" size="sm" on-click={this._onClose()} title="取消"></ui.button>
-        </div>
         {/if}
       </calendar>
     </div>

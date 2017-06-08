@@ -165,9 +165,8 @@ var DatePicker = Dropdown.extend({
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(date))
       return;
     this._onDateTimeChange(date, time);
-    if (!this.data.showTime) {
-      this._onOk();
-    }
+    
+    this._onOk();
 
     //this.toggle(false);
   },

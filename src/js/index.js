@@ -34,7 +34,10 @@ const Components = {
     // Navigation
     Collapse : require('./components/navigation/collapse'),
     Dropdown : require('./components/navigation/dropdown'),
+    Sidebar : require('./components/navigation/sidebar'),
     Menu : require('./components/navigation/menu'),
+    MenuSub : require('./components/navigation/menu/modules/submenu'),
+    MenuItem : require('./components/navigation/menu/modules/item'),
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
