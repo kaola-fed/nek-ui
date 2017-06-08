@@ -362,6 +362,16 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> /&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="总条数展示设置一"><a href="#总条数展示设置一" class="headerlink" title="总条数展示设置一"></a>总条数展示设置一</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="总条数展示设置二"><a href="#总条数展示设置二" class="headerlink" title="总条数展示设置二"></a>总条数展示设置二</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">maxTotal</span>=<span class="string">100</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
 <div class="m-example"></div>
 
@@ -492,6 +502,18 @@
 <td>=&gt; 是否显示</td>
 </tr>
 <tr>
+<td>[options.data.isEllipsis]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否展示位总条数+</td>
+</tr>
+<tr>
+<td>[options.data.maxTotal]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 总条数超过maxTotal条数时，展示为maxTotal+条数</td>
+</tr>
+<tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
 <td></td>
@@ -553,6 +575,26 @@ var index = 0;
       var template = NEKUI._.multiline(function(){/*
       
 <pager current=3 sumTotal=200 pageSize=5 />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=3 sumTotal=200 pageSize=5 isEllipsis={true} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<pager current=3 sumTotal=200 pageSize=5 maxTotal=100 />
 
       */});
       var component = new NEKUI.Component({template: template});
