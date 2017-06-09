@@ -25,6 +25,8 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
  * @param {boolean}       [options.data.visible=true]     => 是否显示
+ * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
+ * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
  * @param {string}        [options.data.class]            => 补充class
  */
 var Pager = Component.extend({
@@ -38,8 +40,8 @@ var Pager = Component.extend({
         _.extend(this.data, {
             current: 1,
             total: _total,
-            sumTotal: 0,
-            pageSize: 20,
+            sumTotal: '',
+            pageSize: '',
             position: 'center',
             middle: 5,
             side: 2,
@@ -47,7 +49,8 @@ var Pager = Component.extend({
             _end: 5,
             step: 5,
             maxPageSize: 50,
-            pageSizeList: []
+            pageSizeList: [],
+            isEllipsis: false
         });
         this.supr();
 
@@ -76,9 +79,14 @@ var Pager = Component.extend({
             this.data.side = +side;
         });
 
-        this.$watch('pageSize', function(val) {
+        this.$watch('pageSize', function(val, oldVal) {
+            if (!oldVal) return;
             this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
             this.select(1);
+        });
+
+        this.$watch('sumTotal', function(val, oldVal) {
+            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
         });
     },
 
@@ -110,6 +118,7 @@ var Pager = Component.extend({
          * @property {object} sender 事件发送对象
          * @property {object} current 当前选择页
          */
+        this.$update();
         this.$emit('select', {
             sender: this,
             current: this.data.current
