@@ -59,12 +59,12 @@ var getHeaders = function(columns) {
                 column.childrenDepth = 1 + column.children.reduce(function(previous, current) {
                     return current.childrenDepth > previous ? current.childrenDepth : previous;
                 }, -1);
-                column.colSpan = column.children.reduce(function(previous, current) {
-                    return previous + (current.colSpan || 0);
+                column.headerColSpan = column.children.reduce(function(previous, current) {
+                    return previous + (current.headerColSpan || 0);
                 }, 0);
             } else {
                 column.childrenDepth = 0;
-                column.colSpan = 1;
+                column.headerColSpan = 1;
             }
             headers[depth].push(column);
         });
@@ -93,7 +93,9 @@ var TableBasic = Component.extend({
             config: {}
         });
         this.supr(data);
-        this._updateHeaders();
+        this.$watch('columns', function() {
+            this._updateHeaders();
+        });
     },
     _updateHeaders: function() {
         var columns = this.data.columns;
