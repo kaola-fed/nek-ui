@@ -70,7 +70,7 @@ $u-calendar_item_height = 30px;
 // ========================================================================
 
 .u-calendar {
-    width: $u-calendar_item_width * 7 + 2 * 7;
+    width: 250px;
     padding: 4px;
     background: $u-formctrl_background;
     color: $u-formctrl_color;

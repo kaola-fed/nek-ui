@@ -1,0 +1,25 @@
+<aside class="m-sidebar" r-class={ {'active':active } } top="{top}">
+  <div class="sidebar_menus">
+    <ui.menu uniqueOpened="{uniqueOpened}">
+      {#list menus as menu}
+      {#if menu[childrenKey] && menu[childrenKey].length}
+      <menu.sub title="{menu[titleKey]}" defaultOpen="{menu.open}">
+        {#list menu[childrenKey] as page}
+        <menu.item isCurrent="{page.open}" url="{page[urlKey]}">{page[pageKey]}</menu.item>
+        {/list}
+      </menu.sub>
+      {#else}
+      <menu.sub titleTemplate="<a href='{menu[urlKey]}'>{menu[titleKey]}</a>"></menu.sub>
+      {/if}
+      {/list}
+    </ui.menu>
+  </div>
+
+  <div class="sidebar_slideBtn" on-click="{this.toggle($event)}">
+    {#if active}
+    <i class="u-icon u-icon-chevron_left"></i>
+    {#else}
+    <i class="u-icon u-icon-chevron_right"></i>
+    {/if}
+  </div>
+</aside>

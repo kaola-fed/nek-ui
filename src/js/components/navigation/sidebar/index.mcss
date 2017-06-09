@@ -9,47 +9,37 @@
 // ========================================================================
 
 .m-sidebar {
-    @extend .f-lsn;
+    position: absolute;
+    left: -181px;
+    bottom: 0;
+    width: 181px;
+    overflow: visible;
+    background: #fff;
+    border-right: 1px solid #E1E6ED;
+    transition: left .3s;
 
-    > li {
-        > a, > span {
-            display: block;
-            text-decoration: none;
-        }
+    &.active {
+        left: 0;
     }
 
-    > li:hover {}
-    
-    > li.z-crt {}
-    
-    > li.sidebar_group {}
-}
-
-//////////
-.m-sidebar {
-    > li {
-        > a, > span {
-            padding: 4px 12px; // 5px 15px
-            color: #555;
-        }
+    .sidebar_menus {
+        height: 100%;
+        overflow: auto;
     }
 
-    > li:hover > a {
-        background: $brand-default-dark;
-    }
-    
-    > li.z-crt > a {
-        background: $brand-default-dark;
-    }
-    
-    > li.sidebar_group {
-        margin-top: 20px;
-        font-weight: bold;
-        font-size: 12px;
-    }
-
-    > li.sidebar_divider {
-        margin: 8px 0;
-        border-top: 1px solid $brand-default-dark;
+    .sidebar_slideBtn {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 180px;
+        width: 10px;
+        height: 50px;
+        font-size: 10px;
+        margin-top: -60px;
+        z-index: 10;
+        align-items: center;
+        background: #C2C9D0;
+        color: #fff;
+        cursor: pointer;
     }
 }

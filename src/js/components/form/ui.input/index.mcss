@@ -42,6 +42,10 @@
             color: $u-formctrl-disabled_color;
             $border: $u-formctrl-disabled_border;
         }
+
+        &-error {
+            border-color: $u-formctrl-error-border;
+        }
     }
 
     .input_wrap {
@@ -90,7 +94,7 @@ $u-formctrl-extend_width = ($name, $width) {
     .u-input-#{$name}w {
         display:inline-block;
         width: $width;
-        vertical-align: middle;
+        vertical-align: top;
     }
 }
 
