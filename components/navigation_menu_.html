@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>多级菜单 - nek-ui</title>
+        <title>两级菜单 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="多级菜单 - nek-ui">
+        <meta property="og:title" content="两级菜单 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -96,6 +96,13 @@
                 
                 <li>
                     <a href="/components/layout_table_.html" class="sidebar-link beta">表格 table</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_ui.table_.html" class="sidebar-link">UI表格 ui.table</a>
                 </li>
             
                 
@@ -276,7 +283,7 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_menu_.html" class="sidebar-link current">多级菜单 menu</a>
+                    <a href="/components/navigation_menu_.html" class="sidebar-link current">两级菜单 menu</a>
                 </li>
             
                 
@@ -404,13 +411,12 @@
 </dl>
 
 <p><a name="Menu"></a></p>
-<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Dropdown<br><a name="new_Menu_new"></a></p>
+<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Menu_new"></a></p>
 <h3 id="new-Menu"><a href="#new-Menu" class="headerlink" title="new Menu()"></a>new Menu()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -418,74 +424,17 @@
 <tr>
 <td>[options.data]</td>
 <td><code>object</code></td>
-<td></td>
 <td>= 绑定属性</td>
-</tr>
-<tr>
-<td>[options.data.title]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 按钮文字</td>
-</tr>
-<tr>
-<td>[options.data.source]</td>
-<td><code>Array.&lt;object&gt;</code></td>
-<td><code>[]</code></td>
-<td>&lt;=&gt; 数据源</td>
-</tr>
-<tr>
-<td>[options.data.source[].name]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 每项的内容</td>
-</tr>
-<tr>
-<td>[options.data.source[].disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 禁用此项</td>
-</tr>
-<tr>
-<td>[options.data.source[].divider]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 设置此项为分隔线</td>
-</tr>
-<tr>
-<td>[options.data.itemTemplate]</td>
-<td><code>string</code></td>
-<td><code>null</code></td>
-<td>@=&gt; 单项模板</td>
-</tr>
-<tr>
-<td>[options.data.open]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>&lt;=&gt; 当前为展开/收起状态</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
-<td></td>
 <td>=&gt; 补充class</td>
 </tr>
 <tr>
-<td>[options.service]</td>
-<td><code>object</code></td>
-<td></td>
-<td>@=&gt; 数据服务</td>
+<td>[options.data.uniqueOpened]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 是否只保持打开一个菜单</td>
 </tr>
 </tbody>
 </table>
