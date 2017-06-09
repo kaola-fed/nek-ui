@@ -17,8 +17,7 @@
     "scripts": {
         "peta": "npm run build && peta",
         "build": "gulp dist",
-        "dev": "gulp watch --dev",
-        "dev-win": "gulp --gulpfile ./gulpfile.win.js watch --dev"
+        "dev": "gulp watch --dev"
     },
     "dependencies": {
         "babel-runtime": "^6.22.0",
@@ -56,7 +55,7 @@
         "gulp-uglify": "^1.5.3",
         "gulp-webpack": "^1.5.0",
         "gulp_mcss": "^0.2.0",
-        "hexo": "^3.2.2",
+        "hexo": "3.3.7",
         "jsdoc-to-markdown": "^2.0.1",
         "markextend": "0.0.2",
         "mcss-loader": "^0.2.0",
