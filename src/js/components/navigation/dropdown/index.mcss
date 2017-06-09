@@ -10,13 +10,13 @@
 
 .u-dropdown {
     position: relative;
+    vertical-align: top;
 
     .dropdown_bd {
         position: absolute;
         z-index: 1;
         width: 100%;
         top: 100%;
-        background: #fff;
         line-height:normal;
         .m-listview {
             > li > a {

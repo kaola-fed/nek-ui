@@ -343,8 +343,8 @@ $fadeOut();
 $bounceIn();
 $bounceOut();
 $fadeInX();
-$fadeInY(-10px);
-$fadeOutY(-10px);
+$fadeInY(-5px);
+$fadeOutY(-5px);
 $pulse();
 
 .animated {

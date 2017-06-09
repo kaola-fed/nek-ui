@@ -1,0 +1,35 @@
+.m-menuItem {
+   position: relative;
+   padding: 8px 0 8px 54px;
+   line-height: 1em;
+   transition: all .3s ease-in;
+
+   &:hover {
+     text-decoration: underline;
+     font-weight: bold;
+   }
+
+   &.active {
+      color: #D9244E;
+      font-weight: bold;
+
+      a { color: #D9244E; }
+      &:before {
+        position: absolute;
+        width: 2px;
+        height: 10px;
+        background: #D9244E;
+        content: '';
+        top: 8px;
+        left: 48px;
+      }
+   }
+
+   &:first-child {
+     padding-top: 0;
+
+     &:before {
+        top: 0;
+     }
+   }
+}

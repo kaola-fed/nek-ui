@@ -9,7 +9,7 @@
     // - Correct inability to style clickable `input` types in iOS.
     -webkit-appearance: none;
     // - 移除浏览器中的margin。| Remove margins in Chrome, Safari and Opera.
-    margin: 0;
+    margin: 0 0 10px 0;
     // - 移除浏览器中的默认border。| Remove borders for `button`.
     overflow: visible;
     // - 让字体继承父节点的。| Correct `font` properties not being inherited for `button`.
