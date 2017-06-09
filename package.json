@@ -24,14 +24,14 @@
     "bowser": "^1.5.0",
     "clipboard": "^1.6.0",
     "dom-align": "^1.5.2",
-    "mass": "^0.1.0",
-    "mcss": "^0.5.1",
     "moment": "^2.17.1",
     "regularjs": "0.4.3",
     "reqwest": "^2.0.5",
     "validator": "^6.1.0"
   },
   "devDependencies": {
+    "mcss": "^0.5.1",
+    "mass": "^0.1.0",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-runtime": "^6.22.0",
