@@ -58,6 +58,7 @@ const Components = {
     // Layout
     Panel : require('./components/layout/panel'),
     PanelTool : require('./components/layout/panel.tool'),
+    UITable : require('./components/layout/ui.table'),
     Row: require('./components/layout/grid/row'),
     Col: require('./components/layout/grid/col'),
 
