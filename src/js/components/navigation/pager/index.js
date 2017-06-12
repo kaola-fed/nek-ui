@@ -36,10 +36,9 @@ var Pager = Component.extend({
      * @protected
      */
     config: function() {
-        var _total = Math.ceil(this.data.sumTotal / this.data.pageSize);
         _.extend(this.data, {
             current: 1,
-            total: _total,
+            total: '',
             sumTotal: '',
             pageSize: '',
             position: 'center',
@@ -81,13 +80,23 @@ var Pager = Component.extend({
 
         this.$watch('pageSize', function(val, oldVal) {
             if (!oldVal) return;
-            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+            this.initTotal();
             this.select(1);
         });
 
         this.$watch('sumTotal', function(val, oldVal) {
-            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+            this.initTotal();
         });
+    },
+
+    initTotal: function () {
+        if (!!this.data.pageSize) {
+            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+        }
+
+        if ( (!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize ) {
+            console.error('Pager组件需要传pageSize')
+        }
     },
 
     _setPageSizeList: function() {
