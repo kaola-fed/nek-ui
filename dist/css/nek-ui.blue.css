@@ -3693,10 +3693,12 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow-y:auto;
 }
 .u-multi .cateWrap{
-	width:410px;
+	width:412px;
 	overflow-x:auto;
 	white-space:nowrap;
 	position:absolute;
+	background-color:#fff;
+	font-size:0;
 }
 .u-multi .cateWrap ul,.u-multi .cateWrap li{
 	list-style-type:none;
@@ -3717,7 +3719,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	height:260px;
 	padding:0;
 	overflow:hidden;
-	margin-right:-17px;
+	font-size:14px;
 	display:inline-block;
 }
 .u-multi .cateWrap ul:last-child{
@@ -4490,6 +4492,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	-moz-border-radius:2px;
 	border-radius:2px;
 	font-size:12px;
+	overflow-y:auto;
 }
 .u-select .dropdown_hd .u-icon{
 	float:right;
@@ -4516,16 +4519,16 @@ input.u-check:disabled,input.u-radio:disabled{
 	margin-bottom:6px;
 }
 .u-select .u-search-input{
-	padding:0;
-	border:none;
+	padding:5px 0;
+	border-bottom:1px solid #eee;
 	font-family:inherit;
 	line-height:20px;
-	width:calc(92%);
+	width:calc(100% - 8px);
 	background-color:transparent;
+	display:block;
 }
 .u-select .u-search-input:focus{
 	outline:none;
-	border:none;
 }
 .u-select.isMultiple .u-search-input{
 	float:left;

@@ -16,18 +16,17 @@
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
-	             on-click={this.toggle(!open, $event)}>
+	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
+	            {#if open && canSearch}
+	            <input disabled={disabled} type="text" class="u-search-input" ref="input"
+	                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
+	            {/if}
 	            {#list selected as item}
 	                <span class="selected-tag">
 	                    {item[nameKey]}
 	                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
 	            {/list}
-	            {#if open && canSearch}
-	            <input disabled={disabled} type="text" class="u-search-input" ref="input"
-	                   on-keydown={this.backSearchValue($event,selected,searchValue)}
-	                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>
-	            {/if}
 	        </div>
 	    {/if}
 	    {#if open}

@@ -8,7 +8,7 @@
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <div class="cateWrap f-cb">
+        <div class="cateWrap">
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
             <ul>

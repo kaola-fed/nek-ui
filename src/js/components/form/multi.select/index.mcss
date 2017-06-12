@@ -13,10 +13,12 @@
 	    overflow-y: auto;
 	}
 	.cateWrap {
-		width: 410px;
+		width: 412px;
 		overflow-x: auto;
 		white-space: nowrap;
 		position: absolute;
+        background-color: #fff;
+        font-size: 0;
 	    ul, li {
 	        list-style-type: none;
 	    }
@@ -36,7 +38,7 @@
 		    height: 260px;
 		    padding: 0;
 		    overflow: hidden;
-		    margin-right: -17px;
+            font-size: 14px;
 		    display: inline-block;
 		    &:last-child { border-right: 1px solid #eee; }
 		}
