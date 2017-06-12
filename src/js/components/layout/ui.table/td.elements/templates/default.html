@@ -1,0 +1,7 @@
+{#if this._isArray(item[column.key])}
+    {#list item[column.key] as value by value_index}
+        <p class="u-td-line"><span title={value}>{value | placeholder}</span></p>
+    {/list}
+{#else}
+    <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={item[column.key]}>{item[column.key] | placeholder}</span>
+{/if}

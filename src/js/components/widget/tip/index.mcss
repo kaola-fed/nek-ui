@@ -24,6 +24,10 @@
         vertical-align: top;
         display: inline-block;
         line-height: 18px;
+        &.animated {
+            animation-duration: .8s;
+            animation-timing-function: ease;
+        }
     }
 }
 

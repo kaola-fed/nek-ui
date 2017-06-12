@@ -14,6 +14,8 @@ const Components = {
     CheckGroup : require('./components/form/check.group'),
     DatePicker : require('./components/form/date.picker'),
     FormItem : require('./components/form/form.item'),
+    FormItemTitle: require('./components/form/form.item/modules/title'),
+    FormItemDescription: require('./components/form/form.item/modules/description'),
     NumberInput : require('./components/form/number.input'),
     RadioGroup : require('./components/form/radio.group'),
     SelectGroup : require('./components/form/select.group'),
@@ -32,7 +34,10 @@ const Components = {
     // Navigation
     Collapse : require('./components/navigation/collapse'),
     Dropdown : require('./components/navigation/dropdown'),
+    Sidebar : require('./components/navigation/sidebar'),
     Menu : require('./components/navigation/menu'),
+    MenuSub : require('./components/navigation/menu/modules/submenu'),
+    MenuItem : require('./components/navigation/menu/modules/item'),
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
@@ -54,6 +59,9 @@ const Components = {
     // Layout
     Panel : require('./components/layout/panel'),
     PanelTool : require('./components/layout/panel.tool'),
+    UITable : require('./components/layout/ui.table'),
+    Row: require('./components/layout/grid/row'),
+    Col: require('./components/layout/grid/col'),
     Card : require('./components/layout/card'),
     CardTools : require('./components/layout/card.tools'),
 

@@ -10,8 +10,7 @@
 
 .u-select {
     $user-select: none;
-    // - 防止select在文字为空时飘起来
-    vertical-align: middle;
+    vertical-align: top;
 
     .dropdown_hd {
         $box-sizing: border-box;
@@ -87,7 +86,7 @@
         max-height: 200px;
     }
 }
-.u-select-error .dropdown_hd { border-color: #d73925; }
+.u-select-error .dropdown_hd { border-color: $u-formctrl-error-border; }
 
 /* Disabled */
 .u-select.z-dis {

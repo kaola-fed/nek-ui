@@ -15,13 +15,13 @@ UI components based on [RegularJS][regularjs]
  //unpkg.com/nek-ui/dist/vendor/regular.min.js
  //unpkg.com/nek-ui/dist/js/nek-ui.min.js
  ```
- 
+
  - For Node:
  ```
  npm i nek-ui -S
- 
+
  const NEKUI = require('nek-ui');
- 
+
  ```
 
 ### Development ([GUIDE](https://github.com/kaola-fed/nek-ui/issues/2))
@@ -36,6 +36,7 @@ UI components based on [RegularJS][regularjs]
  - [Regular UI](https://regular-ui.github.io/) - forked from
  - [Vue](https://cn.vuejs.org/) - docs style
  - [Ant Design](https://ant.design/) - ideas
+ - [Element](http://element.eleme.io) - ideas
 
 ### LICENSE
 MIT

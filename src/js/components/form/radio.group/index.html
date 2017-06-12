@@ -1,5 +1,5 @@
 <div class="u-unitgroup u-unitgroup-{size} {class}" r-hide={!visible} r-width="{width}">
-	<div>
+	<div class="unitgroup_wrap">
 	    {#list source as item}
 	    <label class="u-radio" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>
 			<div class="radio_box">
@@ -8,5 +8,5 @@
 		</label>
 	    {/list}
 	</div>
-	{#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+	{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

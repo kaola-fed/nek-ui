@@ -14,6 +14,8 @@ var template = require('./index.html');
  * @param {string}      [options.data.class]              => 扩展样式
  * @param {boolean}     [options.data.inline='']          => 如果true,form.item按照inline-block排列
  * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
+ * @param {string|number} [options.data.labelSize='']     => 批量设置form.item的labelSize,取值与form.item的labelSize相同
+ * @param {string|number} [options.data.labelLineHeight='']  => 批量设置form.item的labelLineHeight,取值与form.item的labelLineHeight相同
  */
 var UIForm = Validation.extend({
     name: 'ui.form',
@@ -51,20 +53,22 @@ var UIForm = Validation.extend({
 
         this.$watch('this.controls.length', function() {
           this.initSelectorSource();
+          this.initFormItem();
         });
-
-        this.adjustInline();
     },
-    adjustInline: function() {
-        // 如果inline, 那么设置ui.form中的所有form.item的labelCols为0,否则label上会有'g-col g-col-4'的默认样式
-        this.$watch('inline', function(newValue) {
-            if (!newValue) { return; }
-            var controls = this.controls;
-            controls.forEach(function($component) {
-                if ($component.data.labelCols) {
-                    $component.$update('labelCols', 0);
-                }
-            });
+    initFormItem: function() {
+        var controls = this.controls,
+            labelSize = this.data.labelSize,
+            labelLineHeight = this.data.labelLineHeight;
+        labelSize && controls.forEach(function($component) {
+            if (!$component.labelSize) {
+              $component.$update('labelSize', labelSize);
+            }
+        });
+        labelLineHeight && controls.forEach(function($component) {
+            if (!$component.labelLineHeight) {
+              $component.$update('labelLineHeight', labelLineHeight);
+            }
         });
     },
     initSelectorSource: function() {
