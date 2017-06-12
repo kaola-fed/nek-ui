@@ -29,7 +29,7 @@ $height-lg = 38px;
 $height-xl = 46px;
 
 /* Font Size */
-$font-size-base = 14px;
+$font-size-base = 12px;
 $font-size-xs = 10px;
 $font-size-sm = 12px;
 $font-size-lg = 16px;
@@ -98,6 +98,8 @@ $u-formctrl-disabled_color = #999;
 $u-formctrl-disabled_border = $u-formctrl_border;
 
 $u-formctrl_placeholder_color = #999;
+
+$u-formctrl-error-border = #F48080;
 
 
 

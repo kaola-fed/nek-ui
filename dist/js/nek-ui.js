@@ -77,61 +77,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Base = {
 	    Regular: __webpack_require__(68),
 	    Component: __webpack_require__(69),
-	    SourceComponent: __webpack_require__(106),
+	    SourceComponent: __webpack_require__(107),
 	    _: __webpack_require__(98),
-	    ajax: __webpack_require__(107),
-	    Validation: __webpack_require__(110)
+	    ajax: __webpack_require__(108),
+	    Validation: __webpack_require__(111)
 	};
 
 	var Components = {
 	    // Form
-	    Check: __webpack_require__(176),
-	    CheckGroup: __webpack_require__(178),
-	    DatePicker: __webpack_require__(180),
-	    FormItem: __webpack_require__(305),
-	    NumberInput: __webpack_require__(299),
-	    RadioGroup: __webpack_require__(323),
-	    SelectGroup: __webpack_require__(325),
-	    Suggest: __webpack_require__(327),
-	    TimePicker: __webpack_require__(297),
-	    TreeSelect: __webpack_require__(329),
-	    MultiSelect: __webpack_require__(335),
-	    UIButton: __webpack_require__(337),
-	    UIForm: __webpack_require__(306),
-	    UIInput: __webpack_require__(300),
-	    UISelect: __webpack_require__(339),
-	    UIText: __webpack_require__(344),
-	    UITextArea: __webpack_require__(346),
-	    Uploader: __webpack_require__(348),
-	    UIGroup: __webpack_require__(350),
+	    Check: __webpack_require__(177),
+	    CheckGroup: __webpack_require__(179),
+	    DatePicker: __webpack_require__(181),
+	    FormItem: __webpack_require__(306),
+	    FormItemTitle: __webpack_require__(324),
+	    FormItemDescription: __webpack_require__(325),
+	    NumberInput: __webpack_require__(300),
+	    RadioGroup: __webpack_require__(326),
+	    SelectGroup: __webpack_require__(328),
+	    Suggest: __webpack_require__(330),
+	    TimePicker: __webpack_require__(298),
+	    TreeSelect: __webpack_require__(332),
+	    MultiSelect: __webpack_require__(338),
+	    UIButton: __webpack_require__(340),
+	    UIForm: __webpack_require__(307),
+	    UIInput: __webpack_require__(301),
+	    UISelect: __webpack_require__(342),
+	    UIText: __webpack_require__(347),
+	    UITextArea: __webpack_require__(349),
+	    Uploader: __webpack_require__(351),
+	    UIGroup: __webpack_require__(353),
 
 	    // Navigation
-	    Collapse: __webpack_require__(351),
-	    Dropdown: __webpack_require__(181),
-	    Menu: __webpack_require__(355),
-	    Pager: __webpack_require__(359),
-	    Tabs: __webpack_require__(361),
-	    Steps: __webpack_require__(363),
+	    Collapse: __webpack_require__(354),
+	    Dropdown: __webpack_require__(182),
+	    Sidebar: __webpack_require__(358),
+	    Menu: __webpack_require__(360),
+	    MenuSub: __webpack_require__(362),
+	    MenuItem: __webpack_require__(365),
+	    Pager: __webpack_require__(367),
+	    Tabs: __webpack_require__(369),
+	    Steps: __webpack_require__(371),
 
 	    // Notice
-	    Modal: __webpack_require__(365),
-	    Mask: __webpack_require__(367),
-	    Notify: __webpack_require__(369),
-	    PopConfirm: __webpack_require__(371),
+	    Modal: __webpack_require__(373),
+	    Mask: __webpack_require__(375),
+	    Notify: __webpack_require__(377),
+	    PopConfirm: __webpack_require__(379),
 
 	    // Widget
-	    Gotop: __webpack_require__(373),
-	    Loading: __webpack_require__(375),
-	    Progress: __webpack_require__(377),
-	    Tooltip: __webpack_require__(308),
-	    PathTool: __webpack_require__(379),
+	    Gotop: __webpack_require__(381),
+	    Loading: __webpack_require__(383),
+	    Progress: __webpack_require__(385),
+	    Tooltip: __webpack_require__(309),
+	    PathTool: __webpack_require__(387),
 
 	    // Layout
-	    Panel: __webpack_require__(353),
-	    PanelTool: __webpack_require__(388),
+	    Panel: __webpack_require__(356),
+	    PanelTool: __webpack_require__(396),
+	    UITable: __webpack_require__(397),
+	    Row: __webpack_require__(412),
+	    Col: __webpack_require__(414),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(389)
+	    LocaleProvider: __webpack_require__(416)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -1244,6 +1252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(98);
 	var filter = __webpack_require__(104);
 	var directive = __webpack_require__(105);
+	var animation = __webpack_require__(106);
 
 	/**
 	 * @class Component
@@ -1328,7 +1337,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}).filter(filter).directive(directive);
 
-		module.exports = Component;
+	animation.install(Regular);
+
+	module.exports = Component;
 
 /***/ },
 /* 70 */
@@ -3017,7 +3028,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PAGE: '页',
 	    FORMAT_ERROR: '格式错误',
 	    VALUE_ERROR: '值错误',
-	    LENGTH_ERROR: '长度错误'
+	    LENGTH_ERROR: '长度错误',
+	    LOADING: '加载中',
+	    NO_DATA: '无数据'
 		};
 
 /***/ },
@@ -3053,7 +3066,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    PAGE: '',
 	    FORMAT_ERROR: 'Format Error',
 	    VALUE_ERROR: 'Value Error',
-	    LENGTH_ERROR: 'Length Error'
+	    LENGTH_ERROR: 'Length Error',
+	    LOADING: 'Loading',
+	    NO_DATA: 'No data'
 		};
 
 /***/ },
@@ -3203,6 +3218,89 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 106 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	module.exports = {
+	  install: function install(Regular) {
+	    Regular.animation('collapse', function (step) {
+	      var param = step.param,
+	          el = step.element,
+	          on = param === 'on';
+
+	      return function (done) {
+	        if (on) {
+	          // beforeEnter
+	          if (!el.dataset) el.dataset = {};
+
+	          el.dataset.oldPaddingTop = el.style.paddingTop;
+	          el.dataset.oldPaddingBottom = el.style.paddingBottom;
+
+	          el.style.height = '0';
+	          el.style.paddingTop = 0;
+	          el.style.paddingBottom = 0;
+	          el.classList.add('collapse-transition');
+
+	          // enter
+	          el.dataset.oldOverflow = el.style.overflow;
+	          if (el.scrollHeight !== 0) {
+	            el.style.height = el.scrollHeight + 'px';
+	            el.style.paddingTop = el.dataset.oldPaddingTop;
+	            el.style.paddingBottom = el.dataset.oldPaddingBottom;
+	          } else {
+	            el.style.height = '';
+	            el.style.paddingTop = el.dataset.oldPaddingTop;
+	            el.style.paddingBottom = el.dataset.oldPaddingBottom;
+	          }
+
+	          el.style.overflow = 'hidden';
+
+	          // afterEnter
+	          el.addEventListener('transitionend', function () {
+	            el.classList.remove('collapse-transition');
+	            el.style.height = '';
+	            el.style.overflow = el.dataset.oldOverflow;
+	            el.removeEventListener('transitionend', function () {});
+	            done();
+	          });
+	        } else {
+	          // beforeLeave
+	          if (!el.dataset) el.dataset = {};
+	          el.dataset.oldPaddingTop = el.style.paddingTop;
+	          el.dataset.oldPaddingBottom = el.style.paddingBottom;
+	          el.dataset.oldOverflow = el.style.overflow;
+
+	          el.style.height = el.scrollHeight + 'px';
+	          el.style.overflow = 'hidden';
+
+	          // leave
+	          if (el.scrollHeight !== 0) {
+	            // for safari: add class after set height, or it will jump to zero height suddenly, weired
+	            el.classList.add('collapse-transition');
+	            el.style.height = 0;
+	            el.style.paddingTop = 0;
+	            el.style.paddingBottom = 0;
+	          }
+
+	          // afterLeave
+	          el.addEventListener('transitionend', function () {
+	            el.classList.remove('collapse-transition');
+	            el.style.height = '';
+	            el.style.overflow = el.dataset.oldOverflow;
+	            el.style.paddingTop = el.dataset.oldPaddingTop;
+	            el.style.paddingBottom = el.dataset.oldPaddingBottom;
+	            el.removeEventListener('transitionend', function () {});
+	            done();
+	          });
+	        }
+	      };
+	    });
+	  }
+		};
+
+/***/ },
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -3216,7 +3314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var Ajax = __webpack_require__(107);
+	var Ajax = __webpack_require__(108);
 
 	/**
 	 * @class SourceComponent
@@ -3295,7 +3393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = SourceComponent;
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3306,7 +3404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var reqwest = __webpack_require__(108);
+	var reqwest = __webpack_require__(109);
 	var ajax = {};
 	// var eventEmitter = new require('events').EventEmitter();
 	// var ajax = {
@@ -3377,7 +3475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ajax;
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -3401,7 +3499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  } else {
 	    var XHR2
 	    try {
-	      XHR2 = __webpack_require__(109)
+	      XHR2 = __webpack_require__(110)
 	    } catch (ex) {
 	      throw new Error('Peer dependency `xhr2` required! Please npm install xhr2')
 	    }
@@ -4013,13 +4111,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports) {
 
 	/* (ignored) */
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	
@@ -4040,7 +4138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var validator = __webpack_require__(111);
+	var validator = __webpack_require__(112);
 
 	/**
 	 * @class Validation
@@ -4137,7 +4235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Validation;
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4146,247 +4244,247 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _toDate = __webpack_require__(112);
+	var _toDate = __webpack_require__(113);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
-	var _toFloat = __webpack_require__(114);
+	var _toFloat = __webpack_require__(115);
 
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 
-	var _toInt = __webpack_require__(115);
+	var _toInt = __webpack_require__(116);
 
 	var _toInt2 = _interopRequireDefault(_toInt);
 
-	var _toBoolean = __webpack_require__(116);
+	var _toBoolean = __webpack_require__(117);
 
 	var _toBoolean2 = _interopRequireDefault(_toBoolean);
 
-	var _equals = __webpack_require__(117);
+	var _equals = __webpack_require__(118);
 
 	var _equals2 = _interopRequireDefault(_equals);
 
-	var _contains = __webpack_require__(118);
+	var _contains = __webpack_require__(119);
 
 	var _contains2 = _interopRequireDefault(_contains);
 
-	var _matches = __webpack_require__(120);
+	var _matches = __webpack_require__(121);
 
 	var _matches2 = _interopRequireDefault(_matches);
 
-	var _isEmail = __webpack_require__(121);
+	var _isEmail = __webpack_require__(122);
 
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 
-	var _isURL = __webpack_require__(125);
+	var _isURL = __webpack_require__(126);
 
 	var _isURL2 = _interopRequireDefault(_isURL);
 
-	var _isMACAddress = __webpack_require__(127);
+	var _isMACAddress = __webpack_require__(128);
 
 	var _isMACAddress2 = _interopRequireDefault(_isMACAddress);
 
-	var _isIP = __webpack_require__(126);
+	var _isIP = __webpack_require__(127);
 
 	var _isIP2 = _interopRequireDefault(_isIP);
 
-	var _isFQDN = __webpack_require__(124);
+	var _isFQDN = __webpack_require__(125);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
-	var _isBoolean = __webpack_require__(128);
+	var _isBoolean = __webpack_require__(129);
 
 	var _isBoolean2 = _interopRequireDefault(_isBoolean);
 
-	var _isAlpha = __webpack_require__(129);
+	var _isAlpha = __webpack_require__(130);
 
 	var _isAlpha2 = _interopRequireDefault(_isAlpha);
 
-	var _isAlphanumeric = __webpack_require__(131);
+	var _isAlphanumeric = __webpack_require__(132);
 
 	var _isAlphanumeric2 = _interopRequireDefault(_isAlphanumeric);
 
-	var _isNumeric = __webpack_require__(132);
+	var _isNumeric = __webpack_require__(133);
 
 	var _isNumeric2 = _interopRequireDefault(_isNumeric);
 
-	var _isLowercase = __webpack_require__(133);
+	var _isLowercase = __webpack_require__(134);
 
 	var _isLowercase2 = _interopRequireDefault(_isLowercase);
 
-	var _isUppercase = __webpack_require__(134);
+	var _isUppercase = __webpack_require__(135);
 
 	var _isUppercase2 = _interopRequireDefault(_isUppercase);
 
-	var _isAscii = __webpack_require__(135);
+	var _isAscii = __webpack_require__(136);
 
 	var _isAscii2 = _interopRequireDefault(_isAscii);
 
-	var _isFullWidth = __webpack_require__(136);
+	var _isFullWidth = __webpack_require__(137);
 
 	var _isFullWidth2 = _interopRequireDefault(_isFullWidth);
 
-	var _isHalfWidth = __webpack_require__(137);
+	var _isHalfWidth = __webpack_require__(138);
 
 	var _isHalfWidth2 = _interopRequireDefault(_isHalfWidth);
 
-	var _isVariableWidth = __webpack_require__(138);
+	var _isVariableWidth = __webpack_require__(139);
 
 	var _isVariableWidth2 = _interopRequireDefault(_isVariableWidth);
 
-	var _isMultibyte = __webpack_require__(139);
+	var _isMultibyte = __webpack_require__(140);
 
 	var _isMultibyte2 = _interopRequireDefault(_isMultibyte);
 
-	var _isSurrogatePair = __webpack_require__(140);
+	var _isSurrogatePair = __webpack_require__(141);
 
 	var _isSurrogatePair2 = _interopRequireDefault(_isSurrogatePair);
 
-	var _isInt = __webpack_require__(141);
+	var _isInt = __webpack_require__(142);
 
 	var _isInt2 = _interopRequireDefault(_isInt);
 
-	var _isFloat = __webpack_require__(142);
+	var _isFloat = __webpack_require__(143);
 
 	var _isFloat2 = _interopRequireDefault(_isFloat);
 
-	var _isDecimal = __webpack_require__(143);
+	var _isDecimal = __webpack_require__(144);
 
 	var _isDecimal2 = _interopRequireDefault(_isDecimal);
 
-	var _isHexadecimal = __webpack_require__(144);
+	var _isHexadecimal = __webpack_require__(145);
 
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 
-	var _isDivisibleBy = __webpack_require__(145);
+	var _isDivisibleBy = __webpack_require__(146);
 
 	var _isDivisibleBy2 = _interopRequireDefault(_isDivisibleBy);
 
-	var _isHexColor = __webpack_require__(146);
+	var _isHexColor = __webpack_require__(147);
 
 	var _isHexColor2 = _interopRequireDefault(_isHexColor);
 
-	var _isMD = __webpack_require__(147);
+	var _isMD = __webpack_require__(148);
 
 	var _isMD2 = _interopRequireDefault(_isMD);
 
-	var _isJSON = __webpack_require__(148);
+	var _isJSON = __webpack_require__(149);
 
 	var _isJSON2 = _interopRequireDefault(_isJSON);
 
-	var _isEmpty = __webpack_require__(149);
+	var _isEmpty = __webpack_require__(150);
 
 	var _isEmpty2 = _interopRequireDefault(_isEmpty);
 
-	var _isLength = __webpack_require__(150);
+	var _isLength = __webpack_require__(151);
 
 	var _isLength2 = _interopRequireDefault(_isLength);
 
-	var _isByteLength = __webpack_require__(123);
+	var _isByteLength = __webpack_require__(124);
 
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 
-	var _isUUID = __webpack_require__(151);
+	var _isUUID = __webpack_require__(152);
 
 	var _isUUID2 = _interopRequireDefault(_isUUID);
 
-	var _isMongoId = __webpack_require__(152);
+	var _isMongoId = __webpack_require__(153);
 
 	var _isMongoId2 = _interopRequireDefault(_isMongoId);
 
-	var _isDate = __webpack_require__(153);
+	var _isDate = __webpack_require__(154);
 
 	var _isDate2 = _interopRequireDefault(_isDate);
 
-	var _isAfter = __webpack_require__(155);
+	var _isAfter = __webpack_require__(156);
 
 	var _isAfter2 = _interopRequireDefault(_isAfter);
 
-	var _isBefore = __webpack_require__(156);
+	var _isBefore = __webpack_require__(157);
 
 	var _isBefore2 = _interopRequireDefault(_isBefore);
 
-	var _isIn = __webpack_require__(157);
+	var _isIn = __webpack_require__(158);
 
 	var _isIn2 = _interopRequireDefault(_isIn);
 
-	var _isCreditCard = __webpack_require__(158);
+	var _isCreditCard = __webpack_require__(159);
 
 	var _isCreditCard2 = _interopRequireDefault(_isCreditCard);
 
-	var _isISIN = __webpack_require__(159);
+	var _isISIN = __webpack_require__(160);
 
 	var _isISIN2 = _interopRequireDefault(_isISIN);
 
-	var _isISBN = __webpack_require__(160);
+	var _isISBN = __webpack_require__(161);
 
 	var _isISBN2 = _interopRequireDefault(_isISBN);
 
-	var _isISSN = __webpack_require__(161);
+	var _isISSN = __webpack_require__(162);
 
 	var _isISSN2 = _interopRequireDefault(_isISSN);
 
-	var _isMobilePhone = __webpack_require__(162);
+	var _isMobilePhone = __webpack_require__(163);
 
 	var _isMobilePhone2 = _interopRequireDefault(_isMobilePhone);
 
-	var _isCurrency = __webpack_require__(163);
+	var _isCurrency = __webpack_require__(164);
 
 	var _isCurrency2 = _interopRequireDefault(_isCurrency);
 
-	var _isISO = __webpack_require__(154);
+	var _isISO = __webpack_require__(155);
 
 	var _isISO2 = _interopRequireDefault(_isISO);
 
-	var _isBase = __webpack_require__(164);
+	var _isBase = __webpack_require__(165);
 
 	var _isBase2 = _interopRequireDefault(_isBase);
 
-	var _isDataURI = __webpack_require__(165);
+	var _isDataURI = __webpack_require__(166);
 
 	var _isDataURI2 = _interopRequireDefault(_isDataURI);
 
-	var _ltrim = __webpack_require__(166);
+	var _ltrim = __webpack_require__(167);
 
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 
-	var _rtrim = __webpack_require__(167);
+	var _rtrim = __webpack_require__(168);
 
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 
-	var _trim = __webpack_require__(168);
+	var _trim = __webpack_require__(169);
 
 	var _trim2 = _interopRequireDefault(_trim);
 
-	var _escape = __webpack_require__(169);
+	var _escape = __webpack_require__(170);
 
 	var _escape2 = _interopRequireDefault(_escape);
 
-	var _unescape = __webpack_require__(170);
+	var _unescape = __webpack_require__(171);
 
 	var _unescape2 = _interopRequireDefault(_unescape);
 
-	var _stripLow = __webpack_require__(171);
+	var _stripLow = __webpack_require__(172);
 
 	var _stripLow2 = _interopRequireDefault(_stripLow);
 
-	var _whitelist = __webpack_require__(173);
+	var _whitelist = __webpack_require__(174);
 
 	var _whitelist2 = _interopRequireDefault(_whitelist);
 
-	var _blacklist = __webpack_require__(172);
+	var _blacklist = __webpack_require__(173);
 
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 
-	var _isWhitelisted = __webpack_require__(174);
+	var _isWhitelisted = __webpack_require__(175);
 
 	var _isWhitelisted2 = _interopRequireDefault(_isWhitelisted);
 
-	var _normalizeEmail = __webpack_require__(175);
+	var _normalizeEmail = __webpack_require__(176);
 
 	var _normalizeEmail2 = _interopRequireDefault(_normalizeEmail);
 
-	var _toString = __webpack_require__(119);
+	var _toString = __webpack_require__(120);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -4463,7 +4561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4473,7 +4571,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toDate;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4487,7 +4585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4504,7 +4602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4514,7 +4612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toFloat;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4527,7 +4625,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4537,7 +4635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toInt;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4550,7 +4648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4560,7 +4658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = toBoolean;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4576,7 +4674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4586,7 +4684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = equals;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4599,7 +4697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4609,11 +4707,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = contains;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toString = __webpack_require__(119);
+	var _toString = __webpack_require__(120);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -4626,7 +4724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4653,7 +4751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4663,7 +4761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = matches;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4679,7 +4777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4689,19 +4787,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isEmail;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _merge = __webpack_require__(122);
+	var _merge = __webpack_require__(123);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
-	var _isByteLength = __webpack_require__(123);
+	var _isByteLength = __webpack_require__(124);
 
 	var _isByteLength2 = _interopRequireDefault(_isByteLength);
 
-	var _isFQDN = __webpack_require__(124);
+	var _isFQDN = __webpack_require__(125);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
@@ -4773,7 +4871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4796,7 +4894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4809,7 +4907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isByteLength;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -4834,7 +4932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4844,11 +4942,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isFDQN;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _merge = __webpack_require__(122);
+	var _merge = __webpack_require__(123);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -4896,7 +4994,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4906,19 +5004,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isURL;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isFQDN = __webpack_require__(124);
+	var _isFQDN = __webpack_require__(125);
 
 	var _isFQDN2 = _interopRequireDefault(_isFQDN);
 
-	var _isIP = __webpack_require__(126);
+	var _isIP = __webpack_require__(127);
 
 	var _isIP2 = _interopRequireDefault(_isIP);
 
-	var _merge = __webpack_require__(122);
+	var _merge = __webpack_require__(123);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -5043,7 +5141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5053,7 +5151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isIP;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5129,7 +5227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5139,7 +5237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMACAddress;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5154,7 +5252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5164,7 +5262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBoolean;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5177,7 +5275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5187,11 +5285,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAlpha;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _alpha = __webpack_require__(130);
+	var _alpha = __webpack_require__(131);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5207,7 +5305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -5274,7 +5372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5284,11 +5382,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAlphanumeric;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _alpha = __webpack_require__(130);
+	var _alpha = __webpack_require__(131);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5304,7 +5402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5314,7 +5412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isNumeric;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5329,7 +5427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5339,7 +5437,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isLowercase;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5352,7 +5450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5362,7 +5460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isUppercase;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5375,7 +5473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5385,7 +5483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAscii;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5402,7 +5500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5413,7 +5511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.fullWidth = undefined;
 	exports.default = isFullWidth;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5427,7 +5525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5438,7 +5536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.halfWidth = undefined;
 	exports.default = isHalfWidth;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5452,7 +5550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5462,13 +5560,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isVariableWidth;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isFullWidth = __webpack_require__(136);
+	var _isFullWidth = __webpack_require__(137);
 
-	var _isHalfWidth = __webpack_require__(137);
+	var _isHalfWidth = __webpack_require__(138);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5479,7 +5577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5489,7 +5587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMultibyte;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5506,7 +5604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5516,7 +5614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isSurrogatePair;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5531,7 +5629,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5541,7 +5639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isInt;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5569,7 +5667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5579,7 +5677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isFloat;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5598,7 +5696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5608,7 +5706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDecimal;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5623,7 +5721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5633,7 +5731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isHexadecimal;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5648,7 +5746,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5658,11 +5756,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDivisibleBy;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toFloat = __webpack_require__(114);
+	var _toFloat = __webpack_require__(115);
 
 	var _toFloat2 = _interopRequireDefault(_toFloat);
 
@@ -5675,7 +5773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5685,7 +5783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isHexColor;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5700,7 +5798,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5710,7 +5808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMD5;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5725,7 +5823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5738,7 +5836,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isJSON;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5755,7 +5853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5765,7 +5863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isEmpty;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5778,7 +5876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 150 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5791,7 +5889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isLength;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5817,7 +5915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5827,7 +5925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isUUID;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -5850,7 +5948,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 152 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5860,11 +5958,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMongoId;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isHexadecimal = __webpack_require__(144);
+	var _isHexadecimal = __webpack_require__(145);
 
 	var _isHexadecimal2 = _interopRequireDefault(_isHexadecimal);
 
@@ -5877,7 +5975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 153 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5887,11 +5985,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDate;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _isISO = __webpack_require__(154);
+	var _isISO = __webpack_require__(155);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5982,7 +6080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 154 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5997,7 +6095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return iso8601.test(str);
 	};
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6009,7 +6107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* eslint-enable max-len */
 
 /***/ },
-/* 155 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6019,11 +6117,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isAfter;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toDate = __webpack_require__(112);
+	var _toDate = __webpack_require__(113);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
@@ -6040,7 +6138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 156 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6050,11 +6148,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBefore;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toDate = __webpack_require__(112);
+	var _toDate = __webpack_require__(113);
 
 	var _toDate2 = _interopRequireDefault(_toDate);
 
@@ -6071,7 +6169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 157 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6084,11 +6182,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.default = isIn;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _toString = __webpack_require__(119);
+	var _toString = __webpack_require__(120);
 
 	var _toString2 = _interopRequireDefault(_toString);
 
@@ -6115,7 +6213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 158 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6125,7 +6223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isCreditCard;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6165,7 +6263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6175,7 +6273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISIN;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6218,7 +6316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6228,7 +6326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISBN;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6280,7 +6378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6290,7 +6388,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isISSN;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6343,7 +6441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6353,7 +6451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isMobilePhone;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6413,7 +6511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6423,11 +6521,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isCurrency;
 
-	var _merge = __webpack_require__(122);
+	var _merge = __webpack_require__(123);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6506,7 +6604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6516,7 +6614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isBase64;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6536,7 +6634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6546,7 +6644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isDataURI;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6561,7 +6659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6571,7 +6669,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = ltrim;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6585,7 +6683,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6595,7 +6693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = rtrim;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6615,7 +6713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6625,11 +6723,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = trim;
 
-	var _rtrim = __webpack_require__(167);
+	var _rtrim = __webpack_require__(168);
 
 	var _rtrim2 = _interopRequireDefault(_rtrim);
 
-	var _ltrim = __webpack_require__(166);
+	var _ltrim = __webpack_require__(167);
 
 	var _ltrim2 = _interopRequireDefault(_ltrim);
 
@@ -6637,29 +6735,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function trim(str, chars) {
 	  return (0, _rtrim2.default)((0, _ltrim2.default)(str, chars), chars);
-	}
-	module.exports = exports['default'];
-
-/***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	      value: true
-	});
-	exports.default = escape;
-
-	var _assertString = __webpack_require__(113);
-
-	var _assertString2 = _interopRequireDefault(_assertString);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function escape(str) {
-	      (0, _assertString2.default)(str);
-	      return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\//g, '&#x2F;').replace(/\\/g, '&#x5C;').replace(/`/g, '&#96;');
 	}
 	module.exports = exports['default'];
 
@@ -6672,9 +6747,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	      value: true
 	});
+	exports.default = escape;
+
+	var _assertString = __webpack_require__(114);
+
+	var _assertString2 = _interopRequireDefault(_assertString);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function escape(str) {
+	      (0, _assertString2.default)(str);
+	      return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\//g, '&#x2F;').replace(/\\/g, '&#x5C;').replace(/`/g, '&#96;');
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	      value: true
+	});
 	exports.default = unescape;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6687,7 +6785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6697,11 +6795,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = stripLow;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
-	var _blacklist = __webpack_require__(172);
+	var _blacklist = __webpack_require__(173);
 
 	var _blacklist2 = _interopRequireDefault(_blacklist);
 
@@ -6715,7 +6813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6725,7 +6823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = blacklist;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6738,7 +6836,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6748,7 +6846,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = whitelist;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6761,7 +6859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6771,7 +6869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = isWhitelisted;
 
-	var _assertString = __webpack_require__(113);
+	var _assertString = __webpack_require__(114);
 
 	var _assertString2 = _interopRequireDefault(_assertString);
 
@@ -6789,7 +6887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -6799,11 +6897,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.default = normalizeEmail;
 
-	var _isEmail = __webpack_require__(121);
+	var _isEmail = __webpack_require__(122);
 
 	var _isEmail2 = _interopRequireDefault(_isEmail);
 
-	var _merge = __webpack_require__(122);
+	var _merge = __webpack_require__(123);
 
 	var _merge2 = _interopRequireDefault(_merge);
 
@@ -6931,7 +7029,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6944,7 +7042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(177);
+	var template = __webpack_require__(178);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -7014,13 +7112,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Check;
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports) {
 
 	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\r\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\r\n<div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}</label>"
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7032,11 +7130,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(179);
+	var SourceComponent = __webpack_require__(107);
+	var template = __webpack_require__(180);
 	var _ = __webpack_require__(98);
-	var Check = __webpack_require__(176);
-	var Validation = __webpack_require__(110);
+	var Check = __webpack_require__(177);
+	var Validation = __webpack_require__(111);
 
 	/**
 	 * @class CheckGroup
@@ -7187,13 +7285,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = CheckGroup;
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n\t<div>\r\n\t    {#list source as item}\r\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\r\n\t    {/list}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n\t<div class=\"unitgroup_wrap\">\r\n\t    {#list source as item}\r\n\t        <check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\r\n\t    {/list}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} aniamted\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>"
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -7205,18 +7303,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(183);
+	var Dropdown = __webpack_require__(182);
+	var template = __webpack_require__(184);
 	var _ = __webpack_require__(98);
 
 	var filter = __webpack_require__(104);
-	var Calendar = __webpack_require__(184);
-	var TimePicker = __webpack_require__(297);
+	var Calendar = __webpack_require__(185);
+	var TimePicker = __webpack_require__(298);
 	var bowser = __webpack_require__(96);
-	var moment = __webpack_require__(186);
+	var moment = __webpack_require__(187);
 	var polyfill = __webpack_require__(70);
 
-	var Validation = __webpack_require__(110);
+	var Validation = __webpack_require__(111);
 
 	/**
 	 * @class DatePicker
@@ -7238,203 +7336,216 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var DatePicker = Dropdown.extend({
-	    name: 'date.picker',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            // @inherited open: false,
-	            hideTip: false,
-	            minDate: null,
-	            maxDate: null,
-	            placeholder: this.$trans('PLEASE_SELECT'),
-	            date: null,
-	            _date: undefined,
-	            _time: undefined,
-	            autofocus: false,
-	            required: false,
-	            showTime: false,
-	            open: false
-	        });
-	        this.supr();
+	  name: 'date.picker',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      // @inherited open: false,
+	      hideTip: false,
+	      minDate: null,
+	      maxDate: null,
+	      placeholder: this.$trans('PLEASE_SELECT'),
+	      date: null,
+	      _date: undefined,
+	      _time: undefined,
+	      autofocus: false,
+	      required: false,
+	      showTime: false,
+	      open: false
+	    });
+	    this.supr();
 
-	        this.$watch('date', function (newValue, oldValue) {
+	    this.$watch('date', function (newValue, oldValue) {
 
-	            // 字符类型自动转为日期类型
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.date = newValue ? new Date(newValue) : new Date();
-	            } else if (typeof newValue === 'number') {
-	                return this.data.date = new Date(newValue);
-	            }
+	      // 字符类型自动转为日期类型
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        return this.data.date = newValue ? new Date(newValue) : new Date();
+	      } else if (typeof newValue === 'number') {
+	        return this.data.date = new Date(newValue);
+	      }
 
-	            if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
 
-	            // 如果不为空并且超出日期范围，则设置为范围边界的日期
-	            if (newValue) {
-	                var isOutOfRange = this.isOutOfRange(newValue);
-	                if (isOutOfRange) return this.data.date = isOutOfRange;
-	            }
+	      // 如果不为空并且超出日期范围，则设置为范围边界的日期
+	      if (newValue) {
+	        var isOutOfRange = this.isOutOfRange(newValue);
+	        if (isOutOfRange) return this.data.date = isOutOfRange;
+	      }
 
-	            if (newValue) {
-	                this.data.date.setSeconds(0);
-	                this.data.date.setMilliseconds(0);
-	                this.data._date = new Date(newValue);
-	                this.data._time = filter.format(newValue, 'HH:mm');
-	            }
+	      if (newValue) {
+	        //this.data.date.setSeconds(0);
+	        this.data.date.setMilliseconds(0);
+	        this.data._date = new Date(newValue);
+	        this.data._time = filter.format(newValue, 'HH:mm:ss');
+	      }
 
-	            /**
-	             * @event change 日期时间改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} date 改变后的日期时间
-	             */
-	            this.$emit('change', {
-	                sender: this,
-	                date: newValue
-	            });
+	      /**
+	       * @event change 日期时间改变时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} date 改变后的日期时间
+	       */
+	      this.$emit('change', {
+	        sender: this,
+	        date: newValue
+	      });
 
-	            this.data.tip && this.validate();
-	        });
+	      this.data.tip && this.validate();
+	    });
 
-	        this.$watch('minDate', function (newValue, oldValue) {
-	            if (!newValue) return;
+	    this.$watch('minDate', function (newValue, oldValue) {
+	      if (!newValue) return;
 
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.minDate = new Date(newValue);
-	            }
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        return this.data.minDate = new Date(newValue);
+	      }
 
-	            if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
-	        });
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	    });
 
-	        this.$watch('maxDate', function (newValue, oldValue) {
-	            if (!newValue) return;
+	    this.$watch('maxDate', function (newValue, oldValue) {
+	      if (!newValue) return;
 
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.maxDate = new Date(newValue);
-	            }
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        return this.data.maxDate = new Date(newValue);
+	      }
 
-	            if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
-	        });
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	    });
 
-	        this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-	            if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) return;
+	    this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
+	      if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) return;
 
-	            if (minDate && maxDate && minDate - maxDate > 0) throw new Calendar.DateRangeError(minDate, maxDate);
+	      if (minDate && maxDate && minDate - maxDate > 0) throw new Calendar.DateRangeError(minDate, maxDate);
 
-	            // 如果不为空并且超出日期范围，则设置为范围边界的日期
-	            if (this.data.date) {
-	                var isOutOfRange = this.isOutOfRange(this.data.date);
-	                if (isOutOfRange) return this.data.date = isOutOfRange;
-	            }
-	        });
+	      // 如果不为空并且超出日期范围，则设置为范围边界的日期
+	      if (this.data.date) {
+	        var isOutOfRange = this.isOutOfRange(this.data.date);
+	        if (isOutOfRange) return this.data.date = isOutOfRange;
+	      }
+	    });
 
-	        var $outer = this.$outer;
-	        if ($outer && $outer instanceof Validation) {
-	            $outer.controls.push(this);
+	    var $outer = this.$outer;
+	    if ($outer && $outer instanceof Validation) {
+	      $outer.controls.push(this);
 
-	            this.$on('destroy', function () {
-	                var index = $outer.controls.indexOf(this);
-	                $outer.controls.splice(index, 1);
-	            });
-	        }
-	    },
-	    /**
-	     * @method select(date) 选择一个日期
-	     * @public
-	     * @param  {Date} date 选择的日期
-	     * @return {void}
-	     */
-	    select: function select(date, time) {
-	        if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) return;
-
-	        this._onDateTimeChange(date, time);
-
-	        /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} date 当前选择项
-	         */
-	        this.$emit('select', {
-	            sender: this,
-	            date: date
-	        });
-
-	        this.toggle(false);
-	    },
-	    /**
-	     * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
-	     * @private
-	     * @return {void}
-	     */
-	    _onDateTimeChange: function _onDateTimeChange(date, time) {
-	        this.data.time = time || '00:00';
-
-	        date = new Date(date);
-	        time = this.data.time.split(':');
-	        date.setHours(time[0]);
-	        date.setMinutes(time[1]);
-	        this.data.date = date;
-	    },
-	    /**
-	     * @method _onInput($event) 输入日期
-	     * @private
-	     * @param  {object} $event
-	     * @return {void}
-	     */
-	    _onInput: function _onInput($event) {
-	        var value = $event.target.value;
-	        var date = value ? new Date(value) : null;
-
-	        if (date != 'Invalid Date') this.data.date = date;else $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm');
-	    },
-	    /**
-	     * @method isOutOfRange(date) 是否超出规定的日期时间范围
-	     * @public
-	     * @param {Date} date 待测的日期时间
-	     * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
-	     */
-	    isOutOfRange: function isOutOfRange(date) {
-	        var minDate = this.data.minDate;
-	        var maxDate = this.data.maxDate;
-
-	        // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
-	        return minDate && moment(date).isBefore(minDate, 'day') && minDate || maxDate && moment(date).isAfter(maxDate, 'day') && maxDate;
-	    },
-	    validate: function validate(on) {
-	        var data = this.data,
-	            date = data.date || '';
-
-	        var result = date ? Validation.validate(date.toString(), [{ type: 'isDate', message: '请填写' }]) : { success: false };
-	        if (data.required && !result.success) {
-	            result.success = false;
-	            result.message = this.data.message || '请填写';
-	            this.data.state = 'error';
-	        } else {
-	            result.success = true;
-	            result.message = '';
-	            this.data.state = '';
-	        }
-	        this.data.tip = result.message;
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
+	      this.$on('destroy', function () {
+	        var index = $outer.controls.indexOf(this);
+	        $outer.controls.splice(index, 1);
+	      });
 	    }
+	  },
+	  /**
+	   * @method select(date) 选择一个日期
+	   * @public
+	   * @param  {Date} date 选择的日期
+	   * @return {void}
+	   */
+	  select: function select(date, time) {
+	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) return;
+	    this._onDateTimeChange(date, time);
+
+	    this._onOk();
+
+	    //this.toggle(false);
+	  },
+	  /**
+	   * 关闭
+	   * @private
+	   */
+	  _onClose: function _onClose() {
+	    this.toggle(false);
+	  },
+	  _onOk: function _onOk() {
+	    this.data.date = this.date;
+	    this.data.time = this.time;
+	    /**
+	     * @event select 选择某一项时触发
+	     * @property {object} sender 事件发送对象
+	     * @property {object} date 当前选择项
+	     */
+	    this.$emit('select', {
+	      sender: this,
+	      date: this.data.date
+	    });
+
+	    this.toggle(false);
+	  },
+	  /**
+	   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
+	   * @private
+	   * @return {void}
+	   */
+	  _onDateTimeChange: function _onDateTimeChange(date, time) {
+	    this.time = time || '00:00:00';
+	    //this.data.time
+	    this.date = new Date(date);
+	    time = this.time.split(':');
+	    this.date.setHours(time[0]);
+	    this.date.setMinutes(time[1]);
+	    this.date.setSeconds(time[2]);
+	  },
+	  /**
+	   * @method _onInput($event) 输入日期
+	   * @private
+	   * @param  {object} $event
+	   * @return {void}
+	   */
+	  _onInput: function _onInput($event) {
+	    var value = $event.target.value;
+	    var date = value ? new Date(value) : null;
+
+	    if (date != 'Invalid Date') this.data.date = date;else $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
+	  },
+	  /**
+	   * @method isOutOfRange(date) 是否超出规定的日期时间范围
+	   * @public
+	   * @param {Date} date 待测的日期时间
+	   * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
+	   */
+	  isOutOfRange: function isOutOfRange(date) {
+	    var minDate = this.data.minDate;
+	    var maxDate = this.data.maxDate;
+
+	    // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
+	    return minDate && moment(date).isBefore(minDate, 'day') && minDate || maxDate && moment(date).isAfter(maxDate, 'day') && maxDate;
+	  },
+	  validate: function validate(on) {
+	    var data = this.data,
+	        date = data.date || '';
+
+	    var result = date ? Validation.validate(date.toString(), [{ type: 'isDate', message: '请填写' }]) : { success: false };
+	    if (data.required && !result.success) {
+	      result.success = false;
+	      result.message = this.data.message || '请填写';
+	      this.data.state = 'error';
+	    } else {
+	      result.success = true;
+	      result.message = '';
+	      this.data.state = '';
+	    }
+	    this.data.tip = result.message;
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  }
 	});
 
 		module.exports = DatePicker;
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7446,8 +7557,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(182);
+	var SourceComponent = __webpack_require__(107);
+	var template = __webpack_require__(183);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -7557,19 +7668,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Dropdown;
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" z-dis={disabled} on-click={this.toggle()}>\r\n        {#if this.$body}\r\n            {#inc this.$body}\r\n        {#else}\r\n            <a class=\"u-btn\" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class=\"u-icon u-icon-caret-down\"></i></a>\r\n        {/if}\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <ul class=\"m-listview\">\r\n            {#list source as item}\r\n            <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\r\n            {/list}\r\n        </ul>\r\n    </div>\r\n    {/if}\r\n</div>"
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\r\n\t<div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n\t    <div class=\"dropdown_hd\">\r\n\t\t    {#if showTime}\r\n\t\t\t<label class=\"u-input\">\r\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm'} ref=\"input\"\r\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\r\n\t\t\t</label>\r\n\t\t\t{#else}\r\n\t\t\t<label class=\"u-input\">\r\n\t\t    \t<input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\r\n\t\t\t\t\tautofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\r\n\t\t\t</label>\r\n\t\t    {/if}\r\n\t    </div>\r\n\t    <div class=\"dropdown_bd\" r-hide={!open}>\r\n\t        <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\r\n\t            {#if showTime}\r\n\t\t        <time.picker time={_time} on-change={this._onDateTimeChange(_date, _time)} />\r\n\t\t        {/if}\r\n\t        </calendar>\r\n\t    </div>\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\r\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\">\r\n      {#if showTime}\r\n      <label class=\"u-input\">\r\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\r\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\r\n      </label>\r\n      {#else}\r\n      <label class=\"u-input\">\r\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\r\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\r\n      </label>\r\n      {/if}\r\n    </div>\r\n    <div class=\"dropdown_bd\" r-hide={!open}>\r\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\r\n        {#if showTime}\r\n        <time.picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\r\n        {/if}\r\n      </calendar>\r\n    </div>\r\n  </div>\r\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7588,11 +7699,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(185);
+	var template = __webpack_require__(186);
 	var _ = __webpack_require__(98);
 
 	var bowser = __webpack_require__(96);
-	var moment = __webpack_require__(186);
+	var moment = __webpack_require__(187);
 	var polyfill = __webpack_require__(70);
 	var MS_OF_DAY = 24 * 3600 * 1000;
 
@@ -7808,13 +7919,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Calendar;
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\r\n    <div class=\"calendar_hd\">\r\n        <span class=\"calendar_prev\">\r\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\r\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\r\n        </span>\r\n        <span>{date | format: 'yyyy-MM'}</span>\r\n        <span class=\"calendar_next\">\r\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\r\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\r\n        </span>\r\n    </div>\r\n    <div class=\"calendar_bd\">\r\n        <div class=\"calendar_week\"><span class=\"calendar_item\">{this.$trans('CAL_SUNDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_MONDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_TUESDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_WENSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_THURSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_FRIDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_SATURDAY')}</span></div>\r\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day)}>{day | format: 'dd'}</span>{/list}</div>\r\n        {#inc this.$body}\r\n    </div>\r\n</div>"
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -9631,7 +9742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            module && module.exports) {
 	        try {
 	            oldLocale = globalLocale._abbr;
-	            __webpack_require__(188)("./" + name);
+	            __webpack_require__(189)("./" + name);
 	            // because defineLocale currently also sets the global locale, we
 	            // want to undo that for lazy loaded locales
 	            getSetGlobalLocale(oldLocale);
@@ -12119,10 +12230,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(187)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(188)(module)))
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -12138,226 +12249,226 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 189,
-		"./af.js": 189,
-		"./ar": 190,
-		"./ar-dz": 191,
-		"./ar-dz.js": 191,
-		"./ar-ly": 192,
-		"./ar-ly.js": 192,
-		"./ar-ma": 193,
-		"./ar-ma.js": 193,
-		"./ar-sa": 194,
-		"./ar-sa.js": 194,
-		"./ar-tn": 195,
-		"./ar-tn.js": 195,
-		"./ar.js": 190,
-		"./az": 196,
-		"./az.js": 196,
-		"./be": 197,
-		"./be.js": 197,
-		"./bg": 198,
-		"./bg.js": 198,
-		"./bn": 199,
-		"./bn.js": 199,
-		"./bo": 200,
-		"./bo.js": 200,
-		"./br": 201,
-		"./br.js": 201,
-		"./bs": 202,
-		"./bs.js": 202,
-		"./ca": 203,
-		"./ca.js": 203,
-		"./cs": 204,
-		"./cs.js": 204,
-		"./cv": 205,
-		"./cv.js": 205,
-		"./cy": 206,
-		"./cy.js": 206,
-		"./da": 207,
-		"./da.js": 207,
-		"./de": 208,
-		"./de-at": 209,
-		"./de-at.js": 209,
-		"./de.js": 208,
-		"./dv": 210,
-		"./dv.js": 210,
-		"./el": 211,
-		"./el.js": 211,
-		"./en-au": 212,
-		"./en-au.js": 212,
-		"./en-ca": 213,
-		"./en-ca.js": 213,
-		"./en-gb": 214,
-		"./en-gb.js": 214,
-		"./en-ie": 215,
-		"./en-ie.js": 215,
-		"./en-nz": 216,
-		"./en-nz.js": 216,
-		"./eo": 217,
-		"./eo.js": 217,
-		"./es": 218,
-		"./es-do": 219,
-		"./es-do.js": 219,
-		"./es.js": 218,
-		"./et": 220,
-		"./et.js": 220,
-		"./eu": 221,
-		"./eu.js": 221,
-		"./fa": 222,
-		"./fa.js": 222,
-		"./fi": 223,
-		"./fi.js": 223,
-		"./fo": 224,
-		"./fo.js": 224,
-		"./fr": 225,
-		"./fr-ca": 226,
-		"./fr-ca.js": 226,
-		"./fr-ch": 227,
-		"./fr-ch.js": 227,
-		"./fr.js": 225,
-		"./fy": 228,
-		"./fy.js": 228,
-		"./gd": 229,
-		"./gd.js": 229,
-		"./gl": 230,
-		"./gl.js": 230,
-		"./he": 231,
-		"./he.js": 231,
-		"./hi": 232,
-		"./hi.js": 232,
-		"./hr": 233,
-		"./hr.js": 233,
-		"./hu": 234,
-		"./hu.js": 234,
-		"./hy-am": 235,
-		"./hy-am.js": 235,
-		"./id": 236,
-		"./id.js": 236,
-		"./is": 237,
-		"./is.js": 237,
-		"./it": 238,
-		"./it.js": 238,
-		"./ja": 239,
-		"./ja.js": 239,
-		"./jv": 240,
-		"./jv.js": 240,
-		"./ka": 241,
-		"./ka.js": 241,
-		"./kk": 242,
-		"./kk.js": 242,
-		"./km": 243,
-		"./km.js": 243,
-		"./ko": 244,
-		"./ko.js": 244,
-		"./ky": 245,
-		"./ky.js": 245,
-		"./lb": 246,
-		"./lb.js": 246,
-		"./lo": 247,
-		"./lo.js": 247,
-		"./lt": 248,
-		"./lt.js": 248,
-		"./lv": 249,
-		"./lv.js": 249,
-		"./me": 250,
-		"./me.js": 250,
-		"./mi": 251,
-		"./mi.js": 251,
-		"./mk": 252,
-		"./mk.js": 252,
-		"./ml": 253,
-		"./ml.js": 253,
-		"./mr": 254,
-		"./mr.js": 254,
-		"./ms": 255,
-		"./ms-my": 256,
-		"./ms-my.js": 256,
-		"./ms.js": 255,
-		"./my": 257,
-		"./my.js": 257,
-		"./nb": 258,
-		"./nb.js": 258,
-		"./ne": 259,
-		"./ne.js": 259,
-		"./nl": 260,
-		"./nl-be": 261,
-		"./nl-be.js": 261,
-		"./nl.js": 260,
-		"./nn": 262,
-		"./nn.js": 262,
-		"./pa-in": 263,
-		"./pa-in.js": 263,
-		"./pl": 264,
-		"./pl.js": 264,
-		"./pt": 265,
-		"./pt-br": 266,
-		"./pt-br.js": 266,
-		"./pt.js": 265,
-		"./ro": 267,
-		"./ro.js": 267,
-		"./ru": 268,
-		"./ru.js": 268,
-		"./se": 269,
-		"./se.js": 269,
-		"./si": 270,
-		"./si.js": 270,
-		"./sk": 271,
-		"./sk.js": 271,
-		"./sl": 272,
-		"./sl.js": 272,
-		"./sq": 273,
-		"./sq.js": 273,
-		"./sr": 274,
-		"./sr-cyrl": 275,
-		"./sr-cyrl.js": 275,
-		"./sr.js": 274,
-		"./ss": 276,
-		"./ss.js": 276,
-		"./sv": 277,
-		"./sv.js": 277,
-		"./sw": 278,
-		"./sw.js": 278,
-		"./ta": 279,
-		"./ta.js": 279,
-		"./te": 280,
-		"./te.js": 280,
-		"./tet": 281,
-		"./tet.js": 281,
-		"./th": 282,
-		"./th.js": 282,
-		"./tl-ph": 283,
-		"./tl-ph.js": 283,
-		"./tlh": 284,
-		"./tlh.js": 284,
-		"./tr": 285,
-		"./tr.js": 285,
-		"./tzl": 286,
-		"./tzl.js": 286,
-		"./tzm": 287,
-		"./tzm-latn": 288,
-		"./tzm-latn.js": 288,
-		"./tzm.js": 287,
-		"./uk": 289,
-		"./uk.js": 289,
-		"./uz": 290,
-		"./uz.js": 290,
-		"./vi": 291,
-		"./vi.js": 291,
-		"./x-pseudo": 292,
-		"./x-pseudo.js": 292,
-		"./yo": 293,
-		"./yo.js": 293,
-		"./zh-cn": 294,
-		"./zh-cn.js": 294,
-		"./zh-hk": 295,
-		"./zh-hk.js": 295,
-		"./zh-tw": 296,
-		"./zh-tw.js": 296
+		"./af": 190,
+		"./af.js": 190,
+		"./ar": 191,
+		"./ar-dz": 192,
+		"./ar-dz.js": 192,
+		"./ar-ly": 193,
+		"./ar-ly.js": 193,
+		"./ar-ma": 194,
+		"./ar-ma.js": 194,
+		"./ar-sa": 195,
+		"./ar-sa.js": 195,
+		"./ar-tn": 196,
+		"./ar-tn.js": 196,
+		"./ar.js": 191,
+		"./az": 197,
+		"./az.js": 197,
+		"./be": 198,
+		"./be.js": 198,
+		"./bg": 199,
+		"./bg.js": 199,
+		"./bn": 200,
+		"./bn.js": 200,
+		"./bo": 201,
+		"./bo.js": 201,
+		"./br": 202,
+		"./br.js": 202,
+		"./bs": 203,
+		"./bs.js": 203,
+		"./ca": 204,
+		"./ca.js": 204,
+		"./cs": 205,
+		"./cs.js": 205,
+		"./cv": 206,
+		"./cv.js": 206,
+		"./cy": 207,
+		"./cy.js": 207,
+		"./da": 208,
+		"./da.js": 208,
+		"./de": 209,
+		"./de-at": 210,
+		"./de-at.js": 210,
+		"./de.js": 209,
+		"./dv": 211,
+		"./dv.js": 211,
+		"./el": 212,
+		"./el.js": 212,
+		"./en-au": 213,
+		"./en-au.js": 213,
+		"./en-ca": 214,
+		"./en-ca.js": 214,
+		"./en-gb": 215,
+		"./en-gb.js": 215,
+		"./en-ie": 216,
+		"./en-ie.js": 216,
+		"./en-nz": 217,
+		"./en-nz.js": 217,
+		"./eo": 218,
+		"./eo.js": 218,
+		"./es": 219,
+		"./es-do": 220,
+		"./es-do.js": 220,
+		"./es.js": 219,
+		"./et": 221,
+		"./et.js": 221,
+		"./eu": 222,
+		"./eu.js": 222,
+		"./fa": 223,
+		"./fa.js": 223,
+		"./fi": 224,
+		"./fi.js": 224,
+		"./fo": 225,
+		"./fo.js": 225,
+		"./fr": 226,
+		"./fr-ca": 227,
+		"./fr-ca.js": 227,
+		"./fr-ch": 228,
+		"./fr-ch.js": 228,
+		"./fr.js": 226,
+		"./fy": 229,
+		"./fy.js": 229,
+		"./gd": 230,
+		"./gd.js": 230,
+		"./gl": 231,
+		"./gl.js": 231,
+		"./he": 232,
+		"./he.js": 232,
+		"./hi": 233,
+		"./hi.js": 233,
+		"./hr": 234,
+		"./hr.js": 234,
+		"./hu": 235,
+		"./hu.js": 235,
+		"./hy-am": 236,
+		"./hy-am.js": 236,
+		"./id": 237,
+		"./id.js": 237,
+		"./is": 238,
+		"./is.js": 238,
+		"./it": 239,
+		"./it.js": 239,
+		"./ja": 240,
+		"./ja.js": 240,
+		"./jv": 241,
+		"./jv.js": 241,
+		"./ka": 242,
+		"./ka.js": 242,
+		"./kk": 243,
+		"./kk.js": 243,
+		"./km": 244,
+		"./km.js": 244,
+		"./ko": 245,
+		"./ko.js": 245,
+		"./ky": 246,
+		"./ky.js": 246,
+		"./lb": 247,
+		"./lb.js": 247,
+		"./lo": 248,
+		"./lo.js": 248,
+		"./lt": 249,
+		"./lt.js": 249,
+		"./lv": 250,
+		"./lv.js": 250,
+		"./me": 251,
+		"./me.js": 251,
+		"./mi": 252,
+		"./mi.js": 252,
+		"./mk": 253,
+		"./mk.js": 253,
+		"./ml": 254,
+		"./ml.js": 254,
+		"./mr": 255,
+		"./mr.js": 255,
+		"./ms": 256,
+		"./ms-my": 257,
+		"./ms-my.js": 257,
+		"./ms.js": 256,
+		"./my": 258,
+		"./my.js": 258,
+		"./nb": 259,
+		"./nb.js": 259,
+		"./ne": 260,
+		"./ne.js": 260,
+		"./nl": 261,
+		"./nl-be": 262,
+		"./nl-be.js": 262,
+		"./nl.js": 261,
+		"./nn": 263,
+		"./nn.js": 263,
+		"./pa-in": 264,
+		"./pa-in.js": 264,
+		"./pl": 265,
+		"./pl.js": 265,
+		"./pt": 266,
+		"./pt-br": 267,
+		"./pt-br.js": 267,
+		"./pt.js": 266,
+		"./ro": 268,
+		"./ro.js": 268,
+		"./ru": 269,
+		"./ru.js": 269,
+		"./se": 270,
+		"./se.js": 270,
+		"./si": 271,
+		"./si.js": 271,
+		"./sk": 272,
+		"./sk.js": 272,
+		"./sl": 273,
+		"./sl.js": 273,
+		"./sq": 274,
+		"./sq.js": 274,
+		"./sr": 275,
+		"./sr-cyrl": 276,
+		"./sr-cyrl.js": 276,
+		"./sr.js": 275,
+		"./ss": 277,
+		"./ss.js": 277,
+		"./sv": 278,
+		"./sv.js": 278,
+		"./sw": 279,
+		"./sw.js": 279,
+		"./ta": 280,
+		"./ta.js": 280,
+		"./te": 281,
+		"./te.js": 281,
+		"./tet": 282,
+		"./tet.js": 282,
+		"./th": 283,
+		"./th.js": 283,
+		"./tl-ph": 284,
+		"./tl-ph.js": 284,
+		"./tlh": 285,
+		"./tlh.js": 285,
+		"./tr": 286,
+		"./tr.js": 286,
+		"./tzl": 287,
+		"./tzl.js": 287,
+		"./tzm": 288,
+		"./tzm-latn": 289,
+		"./tzm-latn.js": 289,
+		"./tzm.js": 288,
+		"./uk": 290,
+		"./uk.js": 290,
+		"./uz": 291,
+		"./uz.js": 291,
+		"./vi": 292,
+		"./vi.js": 292,
+		"./x-pseudo": 293,
+		"./x-pseudo.js": 293,
+		"./yo": 294,
+		"./yo.js": 294,
+		"./zh-cn": 295,
+		"./zh-cn.js": 295,
+		"./zh-hk": 296,
+		"./zh-hk.js": 296,
+		"./zh-tw": 297,
+		"./zh-tw.js": 297
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -12370,11 +12481,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 188;
+	webpackContext.id = 189;
 
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12382,7 +12493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12452,7 +12563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12462,7 +12573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12599,7 +12710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12607,7 +12718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12663,7 +12774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12671,7 +12782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ali Hmer: https://github.com/kikoanis
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12794,7 +12905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12803,7 +12914,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12859,7 +12970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12867,7 +12978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -12969,7 +13080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -12977,7 +13088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13033,7 +13144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13041,7 +13152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13143,7 +13254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13153,7 +13264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13282,7 +13393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13290,7 +13401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13377,7 +13488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13385,7 +13496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13501,7 +13612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13509,7 +13620,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13625,7 +13736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13633,7 +13744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13738,7 +13849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13747,7 +13858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13886,7 +13997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13894,7 +14005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -13972,7 +14083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -13980,7 +14091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14149,7 +14260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14157,7 +14268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14217,7 +14328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14226,7 +14337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14303,7 +14414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14311,7 +14422,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14368,7 +14479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14378,7 +14489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14451,7 +14562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14462,7 +14573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14535,7 +14646,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14543,7 +14654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14640,7 +14751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14648,7 +14759,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14743,7 +14854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14751,7 +14862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14815,7 +14926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14823,7 +14934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14883,7 +14994,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14891,7 +15002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -14955,7 +15066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -14963,7 +15074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15027,7 +15138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15035,7 +15146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15099,7 +15210,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15109,7 +15220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15177,7 +15288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15185,7 +15296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15263,14 +15374,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish (Dominican Republic) [es-do]
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15348,7 +15459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15357,7 +15468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15433,7 +15544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15441,7 +15552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15504,7 +15615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15512,7 +15623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15616,7 +15727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15624,7 +15735,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15728,7 +15839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15736,7 +15847,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15793,7 +15904,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15801,7 +15912,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15862,7 +15973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15870,7 +15981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15927,7 +16038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15935,7 +16046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15996,7 +16107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16004,7 +16115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16074,7 +16185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16082,7 +16193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16155,7 +16266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16163,7 +16274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16237,7 +16348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16247,7 +16358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16341,7 +16452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16349,7 +16460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16470,7 +16581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16478,7 +16589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16620,7 +16731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16628,7 +16739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16734,7 +16845,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16742,7 +16853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16834,7 +16945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16843,7 +16954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16922,7 +17033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16930,7 +17041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17054,7 +17165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17063,7 +17174,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17129,7 +17240,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17137,7 +17248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17210,7 +17321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17219,7 +17330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17298,7 +17409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17306,7 +17417,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17392,7 +17503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17400,7 +17511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17484,7 +17595,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17492,7 +17603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17547,7 +17658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17556,7 +17667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17617,7 +17728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17625,7 +17736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17710,7 +17821,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17719,7 +17830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17852,7 +17963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17860,7 +17971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17927,7 +18038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17935,7 +18046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18049,7 +18160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18058,7 +18169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18151,7 +18262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18159,7 +18270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18267,7 +18378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18275,7 +18386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18336,7 +18447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18344,7 +18455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18431,7 +18542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18439,7 +18550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18517,7 +18628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18526,7 +18637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18681,7 +18792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18689,7 +18800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18768,7 +18879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18777,7 +18888,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18856,7 +18967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18866,7 +18977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18957,7 +19068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18966,7 +19077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19025,7 +19136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19033,7 +19144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19153,7 +19264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19162,7 +19273,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19244,7 +19355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19253,7 +19364,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19335,7 +19446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19343,7 +19454,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19400,7 +19511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19408,7 +19519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19529,7 +19640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19537,7 +19648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19639,7 +19750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19647,7 +19758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19709,7 +19820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19717,7 +19828,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19775,7 +19886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19784,7 +19895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19855,7 +19966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19865,7 +19976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20043,7 +20154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20051,7 +20162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20109,7 +20220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20117,7 +20228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20185,7 +20296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20194,7 +20305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20340,7 +20451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20348,7 +20459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20507,7 +20618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20517,7 +20628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20582,7 +20693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20590,7 +20701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20697,7 +20808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20705,7 +20816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20812,7 +20923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20820,7 +20931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20906,7 +21017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20914,7 +21025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20980,7 +21091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20988,7 +21099,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21044,7 +21155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21052,7 +21163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21179,7 +21290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21187,7 +21298,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21273,7 +21384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21282,7 +21393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21346,7 +21457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21354,7 +21465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21418,7 +21529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21426,7 +21537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21485,7 +21596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21493,7 +21604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21610,7 +21721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21619,7 +21730,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21705,7 +21816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21714,7 +21825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21801,7 +21912,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21809,7 +21920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21864,7 +21975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21872,7 +21983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21927,7 +22038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21936,7 +22047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22078,7 +22189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22086,7 +22197,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22141,7 +22252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22149,7 +22260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22225,7 +22336,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22233,7 +22344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22298,7 +22409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22306,7 +22417,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22363,7 +22474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22372,7 +22483,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22495,7 +22606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22505,7 +22616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Konstantin : https://github.com/skfd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22605,7 +22716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22614,7 +22725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Lam : https://github.com/hehachris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(186)) :
+	    true ? factory(__webpack_require__(187)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22714,7 +22825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22733,9 +22844,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(298);
+	var template = __webpack_require__(299);
 	var _ = __webpack_require__(98);
-	var NumberInput = __webpack_require__(299);
+	var NumberInput = __webpack_require__(300);
 
 	/**
 	 * @class TimePicker
@@ -22751,83 +22862,86 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]           => 补充class
 	 */
 	var TimePicker = Component.extend({
-	    name: 'time.picker',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            time: '00:00',
-	            hour: 0,
-	            minute: 0,
-	            minTime: '00:00',
-	            maxTime: '23:59',
-	            autofocus: false
-	        });
-	        this.supr();
+	  name: 'time.picker',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      time: '00:00:00',
+	      hour: 0,
+	      minute: 0,
+	      seconds: 0,
+	      minTime: '00:00:00',
+	      maxTime: '23:59:59',
+	      autofocus: false
+	    });
+	    this.supr();
 
-	        this.$watch('time', function (newValue, oldValue) {
-	            if (oldValue === undefined) {
-	                return;
-	            }
+	    this.$watch('time', function (newValue, oldValue) {
+	      if (oldValue === undefined) {
+	        return;
+	      }
 
-	            if (!newValue) throw new TypeError('Invalid Time');
+	      if (!newValue) throw new TypeError('Invalid Time');
 
-	            // 如果超出时间范围，则设置为范围边界的时间
-	            var isOutOfRange = this.isOutOfRange(newValue);
-	            if (isOutOfRange) return this.data.time = isOutOfRange;
+	      // 如果超出时间范围，则设置为范围边界的时间
+	      var isOutOfRange = this.isOutOfRange(newValue);
+	      if (isOutOfRange) return this.data.time = isOutOfRange;
 
-	            var time = newValue.split(':');
-	            this.data.hour = +time[0];
-	            this.data.minute = +time[1];
+	      var time = newValue.split(':');
+	      this.data.hour = +time[0];
+	      this.data.minute = +time[1];
+	      this.data.seconds = +time[2];
 
-	            /**
-	             * @event change 时间改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} time 改变后的时间
-	             */
-	            this.$emit('change', {
-	                sender: this,
-	                time: newValue
-	            });
-	        });
+	      /**
+	       * @event change 时间改变时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} time 改变后的时间
+	       */
+	      this.$emit('change', {
+	        sender: this,
+	        time: newValue
+	      });
+	    });
 
-	        this.$watch(['hour', 'minute'], function (hour, minute) {
-	            hour += '';
-	            minute += '';
-	            this.data.time = (hour.length > 1 ? hour : '0' + hour) + ':' + (minute.length > 1 ? minute : '0' + minute);
-	        });
+	    this.$watch(['hour', 'minute', 'seconds'], function (hour, minute, seconds) {
+	      hour += '';
+	      minute += '';
+	      seconds += '';
+	      this.data.time = (hour.length > 1 ? hour : '0' + hour) + ':' + (minute.length > 1 ? minute : '0' + minute) + ":" + (seconds.length > 1 ? seconds : '0' + seconds);
+	    });
 
-	        this.$watch(['minTime', 'maxTime'], function (minTime, maxTime) {
-	            if (!minTime) throw new TypeError('Invalid Time');
-	            if (!maxTime) throw new TypeError('Invalid Time');
+	    this.$watch(['minTime', 'maxTime'], function (minTime, maxTime) {
+	      if (!minTime) throw new TypeError('Invalid Time');
+	      if (!maxTime) throw new TypeError('Invalid Time');
 
-	            if (minTime > maxTime) throw new TimePicker.TimeRangeError(minTime, maxTime);
+	      if (minTime > maxTime) throw new TimePicker.TimeRangeError(minTime, maxTime);
 
-	            // 如果超出时间范围，则设置为范围边界的时间
-	            var isOutOfRange = this.isOutOfRange(this.data.time);
-	            if (isOutOfRange) this.data.time = isOutOfRange;
-	        });
-	    },
-	    /**
-	     * @method isOutOfRange(time) 是否超出规定的时间范围
-	     * @public
-	     * @param {Time} time 待测的时间
-	     * @return {boolean|Time} time 如果没有超出时间范围，则返回false；如果超出时间范围，则返回范围边界的时间
-	     */
-	    isOutOfRange: function isOutOfRange(time) {
-	        var minTime = this.data.minTime;
-	        var maxTime = this.data.maxTime;
+	      // 如果超出时间范围，则设置为范围边界的时间
+	      var isOutOfRange = this.isOutOfRange(this.data.time);
+	      if (isOutOfRange) this.data.time = isOutOfRange;
+	    });
+	  },
+	  /**
+	   * @method isOutOfRange(time) 是否超出规定的时间范围
+	   * @public
+	   * @param {Time} time 待测的时间
+	   * @return {boolean|Time} time 如果没有超出时间范围，则返回false；如果超出时间范围，则返回范围边界的时间
+	   */
+	  isOutOfRange: function isOutOfRange(time) {
+	    var minTime = this.data.minTime;
+	    var maxTime = this.data.maxTime;
 
-	        // minTime && time < minTime && minTime，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的时间
-	        return minTime && time < minTime && minTime || maxTime && time > maxTime && maxTime;
-	    }
+	    // minTime && time < minTime && minTime，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的时间
+	    return minTime && time < minTime && minTime || maxTime && time > maxTime && maxTime;
+	  }
 	});
 
 	var TimeRangeError = function TimeRangeError(minTime, maxTime) {
-	    this.name = 'TimeRangeError';
-	    this.message = 'Wrong Time Range where `minTime` is ' + minTime + ' and `maxTime` is ' + maxTime + '!';
+	  this.name = 'TimeRangeError';
+	  this.message = 'Wrong Time Range where `minTime` is ' + minTime + ' and `maxTime` is ' + maxTime + '!';
 	};
 
 	TimeRangeError.prototype = (0, _create2.default)(Error.prototype);
@@ -22836,13 +22950,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TimePicker;
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports) {
 
-	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\r\n\t<number.input min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled} autofocus={autofocus} />\r\n\t<span>:</span>\r\n\t<number.input min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled} />\r\n</span>"
+	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\r\n\t<number.input min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled} autofocus={autofocus} />\r\n\t<span>:</span>\r\n\t<number.input min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled} />\r\n\t<span>:</span>\r\n\t<number.input min=\"0\" max=\"59\" format=\"00\" value={seconds} readonly={readonly} disabled={disabled} />\r\n</span>"
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22859,8 +22973,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-	var Input = __webpack_require__(300);
-	var template = __webpack_require__(304);
+	var Input = __webpack_require__(301);
+	var template = __webpack_require__(305);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -22974,7 +23088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = NumberInput;
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22987,11 +23101,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(301);
+	var template = __webpack_require__(302);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
-	var inputRules = __webpack_require__(302);
-	var inputFilters = __webpack_require__(303);
+	var Validation = __webpack_require__(111);
+	var inputRules = __webpack_require__(303);
+	var inputFilters = __webpack_require__(304);
 
 	var bowser = __webpack_require__(96);
 
@@ -23205,13 +23319,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Input;
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports) {
 
-	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    <span class=\"input_wrap\">\r\n        <input class=\"input input-{state}\" type={type | type}\r\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\r\n            r-model={value | valueFilter}\r\n            on-focus={this._onFocus($event)}\r\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\r\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\r\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\r\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\r\n     </span>\r\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</label>\r\n\r\n"
+	module.exports = "<label class=\"u-input u-input-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    <span class=\"input_wrap\">\r\n        <input class=\"input input-{state}\" type={type | type}\r\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\r\n            r-model={value | valueFilter}\r\n            on-focus={this._onFocus($event)}\r\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\r\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\r\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\r\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\r\n     </span>\r\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</label>\r\n\r\n"
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23262,7 +23376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23299,7 +23413,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
 	        }
 
-	        if (value && !isNaN(value)) value = parseFloat(value);
 	        return value;
 	    },
 	    "default": function _default(value) {
@@ -23308,47 +23421,47 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports) {
 
 	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\r\n    <ui.input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\r\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\r\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\r\n</label>\r\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
-	var UIForm = __webpack_require__(306);
-	var Tooltip = __webpack_require__(308);
+	var Validation = __webpack_require__(111);
+	var UIForm = __webpack_require__(307);
+	var Tooltip = __webpack_require__(309);
 
-	var template = __webpack_require__(322);
+	var template = __webpack_require__(323);
 
 	/**
 	 * @class FormItem
 	 * @extend Validation
-	 * @param {object}        [options.data]                    = 绑定属性
-	 * @param {string}        [options.data.title]              => label显示的文字
-	 * @param {number}        [options.data.cols]               => 布局列数
-	 * @param {number}        [options.data.labelCols=12]       => 如果有title, label占的列数
-	 * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
-	 * @param {number}        [options.data.offset]             => 布局offset
-	 * @param {string}        [options.data.row]                => 水平布局row
-	 * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
-	 * @param {boolean}       [options.data.required=false]     => 是否必选项
-	 * @param {string}        [options.data.tip]                => 字段说明
-	 * @param {string}        [options.data.class]              => 样式扩展
-	 * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
+	   * @param {object}        [options.data]                    = 绑定属性
+	   * @param {string}        [options.data.title]              => label显示的文字
+	   * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
+	   * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
+	   * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
+	   * @param {string}        [options.data.labelLineHeight="lg"] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.3), lg(值:2.5)
+	   * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
+	   * @param {boolean}       [options.data.required=false]     => 是否必选项
+	   * @param {string}        [options.data.tip]                => 字段说明
+	   * @param {string}        [options.data.class]              => 样式扩展
+	   * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
 	 */
 	var FormItem = Validation.extend({
 	    name: 'form.item',
 	    template: template,
 	    config: function config(data) {
 	        _.extend(data, {
-	            textAlign: 'none',
-	            labelCols: 12
+	            textAlign: 'right',
+	            labelCols: '',
+	            labelLineHeight: 'lg'
 	        });
 	        this.supr(data);
 
@@ -23406,34 +23519,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	});
 
-	FormItem.directive('remainCols', function (ele, cols) {
-	    this.$watch(cols, function (ncols) {
-	        ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
-	        if (this.data.row && ncols) {
-	            ele.classList.add('g-col', 'g-col-' + (12 - ncols));
-	        }
-	    });
-	});
-
-	FormItem.directive('offset', function (ele, offset) {
-	    this.$watch(offset, function (noffset) {
-	        ele.className = ele.className.replace(/(\s)?g-offset(-\d)?/gim, '');
-
-	        if (noffset) {
-	            ele.classList.add('g-offset-' + noffset);
-	        }
-	    });
-	});
-
-	FormItem.directive('row', function (ele, row) {
-	    this.$watch(row, function (newValue) {
-	        if (newValue) {
-	            ele.classList.add('u-formitem-row');
-	            this.data.labelCols = this.data.labelCols == 12 ? 4 : this.data.labelCols;
-	        }
-	    });
-	});
-
 	FormItem.directive('size', function (ele, size) {
 	    this.$watch(size, function (newValue, oldValue) {
 	        if (!newValue) {
@@ -23443,8 +23528,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (parseInt(newValue)) {
 	            ele.style.width = parseInt(newValue) + 'px';
 	        } else {
+	            ele.style.width = '';
 	            ele.classList.remove(oldValue);
 	            ele.classList.add('formitem_tt-' + newValue);
+	        }
+	    });
+	});
+
+	FormItem.directive('lineHeight', function (ele, lineHeight) {
+	    this.$watch(lineHeight, function (newValue, oldValue) {
+	        if (!newValue) {
+	            return;
+	        }
+
+	        if (!isNaN(newValue)) {
+	            ele.style.lineHeight = newValue;
+	        } else {
+	            ele.style.lineHeight = '';
+	            ele.classList.remove(oldValue);
+	            ele.classList.add('formitem_tt-lh-' + newValue);
 	        }
 	    });
 	});
@@ -23452,16 +23554,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = FormItem;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _ = __webpack_require__(98);
-	var ajax = __webpack_require__(107);
-	var Validation = __webpack_require__(110);
+	var ajax = __webpack_require__(108);
+	var Validation = __webpack_require__(111);
 
-	var template = __webpack_require__(307);
+	var template = __webpack_require__(308);
 
 	/**
 	 * @class UIForm
@@ -23471,6 +23573,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.class]              => 扩展样式
 	 * @param {boolean}     [options.data.inline='']          => 如果true,form.item按照inline-block排列
 	 * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
+	 * @param {string|number} [options.data.labelSize='']     => 批量设置form.item的labelSize,取值与form.item的labelSize相同
+	 * @param {string|number} [options.data.labelLineHeight='']  => 批量设置form.item的labelLineHeight,取值与form.item的labelLineHeight相同
 	 */
 	var UIForm = Validation.extend({
 	    name: 'ui.form',
@@ -23509,22 +23613,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this.$watch('this.controls.length', function () {
 	            this.initSelectorSource();
+	            this.initFormItem();
 	        });
-
-	        this.adjustInline();
 	    },
-	    adjustInline: function adjustInline() {
-	        // 如果inline, 那么设置ui.form中的所有form.item的labelCols为0,否则label上会有'g-col g-col-4'的默认样式
-	        this.$watch('inline', function (newValue) {
-	            if (!newValue) {
-	                return;
+	    initFormItem: function initFormItem() {
+	        var controls = this.controls,
+	            labelSize = this.data.labelSize,
+	            labelLineHeight = this.data.labelLineHeight;
+	        labelSize && controls.forEach(function ($component) {
+	            if (!$component.labelSize) {
+	                $component.$update('labelSize', labelSize);
 	            }
-	            var controls = this.controls;
-	            controls.forEach(function ($component) {
-	                if ($component.data.labelCols) {
-	                    $component.$update('labelCols', 0);
-	                }
-	            });
+	        });
+	        labelLineHeight && controls.forEach(function ($component) {
+	            if (!$component.labelLineHeight) {
+	                $component.$update('labelLineHeight', labelLineHeight);
+	            }
 	        });
 	    },
 	    initSelectorSource: function initSelectorSource() {
@@ -23599,13 +23703,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIForm;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	module.exports = "<form class=\"m-form f-row f-cb {class}\" r-class=\"{{'inline':!!inline}}\">\r\n\t{#inc this.$body}\r\n</form>"
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23620,9 +23724,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(68).dom;
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(309);
+	var template = __webpack_require__(310);
 	var _ = __webpack_require__(98);
-	var trigger = __webpack_require__(310);
+	var trigger = __webpack_require__(311);
 
 	/**
 	 * @class Tooltip
@@ -23689,13 +23793,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Tooltip;
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-tooltip {placement}\" r-hide=\"{!isShow}\">\r\n\t<div class=\"arrow\"></div>\r\n\t<p class=\"inner\">{tip}</p>\r\n</div>"
+	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\r\n\t<div class=\"arrow\"></div>\r\n\t<p class=\"inner\">{tip}</p>\r\n</div>"
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23711,7 +23815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var alignment = __webpack_require__(311);
+	var alignment = __webpack_require__(312);
 
 	/**
 	 * @class Trigger
@@ -23811,7 +23915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23824,11 +23928,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var dom = __webpack_require__(68).dom;
-	var domAlign = __webpack_require__(312);
+	var domAlign = __webpack_require__(313);
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var placement = __webpack_require__(321);
+	var placement = __webpack_require__(322);
 
 	/**
 	 * @class Alignment
@@ -23881,7 +23985,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23890,27 +23994,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(313);
+	var _utils = __webpack_require__(314);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(315);
+	var _getOffsetParent = __webpack_require__(316);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(316);
+	var _getVisibleRectForElement = __webpack_require__(317);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(317);
+	var _adjustForViewport = __webpack_require__(318);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(318);
+	var _getRegion = __webpack_require__(319);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(319);
+	var _getElFuturePos = __webpack_require__(320);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
@@ -24104,7 +24208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24115,7 +24219,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(314);
+	var _propertyUtils = __webpack_require__(315);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -24667,7 +24771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24782,7 +24886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24791,7 +24895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(313);
+	var _utils = __webpack_require__(314);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -24840,7 +24944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24849,11 +24953,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(313);
+	var _utils = __webpack_require__(314);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(315);
+	var _getOffsetParent = __webpack_require__(316);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -24921,7 +25025,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24930,7 +25034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(313);
+	var _utils = __webpack_require__(314);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -24981,7 +25085,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24990,7 +25094,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(313);
+	var _utils = __webpack_require__(314);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -25022,7 +25126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25031,7 +25135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(320);
+	var _getAlignOffset = __webpack_require__(321);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -25063,7 +25167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25108,7 +25212,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25194,13 +25298,87 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports) {
 
-	module.exports = "{#if title}\r\n<div class=\"u-formitem {class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\r\n\t<label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" style=\"text-align:{textAlign}\">\r\n\t\t<span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\r\n\t\t{title}\r\n\t\t{#if tip}\r\n\t\t<tooltip tip=\"{tip}\">\r\n\t\t\t<i class=\"u-icon u-icon-info-circle\"></i>\r\n\t\t</tooltip>\r\n\t\t{/if}:\r\n\t</label>\r\n\t<span class=\"formitem_ct\" remainCols=\"{labelCols}\">\r\n\t\t{#inc this.$body}\r\n\t</span>\r\n</div>\r\n\r\n{#else}\r\n<div class=\"{class}\" cols=\"{cols}\" offset=\"{offset}\" row=\"{row}\">\r\n\t{#inc this.$body}\r\n</div>\r\n{/if}\r\n"
+	module.exports = "<div class=\"u-formitem {class}\" cols=\"{cols}\">\r\n  <!--title区块-->\r\n  {#if title || this.$title}\r\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\r\n    {#if title}\r\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>{title}\r\n      {#if tip}<tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></tooltip>{/if}\r\n    {#else}\r\n      {#inc this.$title.$body}\r\n    {/if}\r\n  </label>\r\n  {/if}\r\n  <!--内容区块-->\r\n  <span class=\"formitem_ct\">\r\n    {#inc this.$body}\r\n\r\n    <!--说明区块-->\r\n    {#if this.$description}\r\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\r\n        {#inc this.$description.$body}\r\n      </div>\r\n    {/if}\r\n  </span>\r\n</div>\r\n"
 
 /***/ },
-/* 323 */
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * FormItemTitle FormItem中title的自定义模板
+	 * @author   nupthale(nupthale@163.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var FormItem = __webpack_require__(306);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}            [options.data]                = 绑定属性
+	 */
+	var FormItemTitle = Component.extend({
+	  name: 'form.item.title',
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof FormItem) {
+	      this.$outer.$title = this;
+	    }
+	  }
+	});
+
+		module.exports = FormItemTitle;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * FormItemDescription FormItem中description的自定义模板
+	 * @author   nupthale(nupthale@163.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var FormItem = __webpack_require__(306);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}            [options.data]                = 绑定属性
+	 */
+	var FormItemDescription = Component.extend({
+	  name: 'form.item.description',
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof FormItem) {
+	      this.$outer.$description = this;
+	    }
+	  }
+	});
+
+		module.exports = FormItemDescription;
+
+/***/ },
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25212,10 +25390,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(324);
+	var SourceComponent = __webpack_require__(107);
+	var template = __webpack_require__(327);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
+	var Validation = __webpack_require__(111);
 
 	/**
 	 * @class RadioGroup
@@ -25362,13 +25540,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = RadioGroup;
 
 /***/ },
-/* 324 */
+/* 327 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n\t<div>\r\n\t    {#list source as item}\r\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\r\n\t\t\t<div class=\"radio_box\">\r\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\r\n\t\t\t</div> {item[nameKey]}\r\n\t\t</label>\r\n\t    {/list}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n\t<div class=\"unitgroup_wrap\">\r\n\t    {#list source as item}\r\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\r\n\t\t\t<div class=\"radio_box\">\r\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\r\n\t\t\t</div> {item[nameKey]}\r\n\t\t</label>\r\n\t    {/list}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>"
 
 /***/ },
-/* 325 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25381,9 +25559,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(326);
+	var template = __webpack_require__(329);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
+	var Validation = __webpack_require__(111);
 
 	/**
 	 * @class SelectGroup
@@ -25522,13 +25700,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = SelectGroup;
 
 /***/ },
-/* 326 */
+/* 329 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    {#list 0..(depth - 1) as i}\r\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\r\n    {/list}\r\n</div>\r\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<div class=\"u-selectgroup u-selectgroup-{state} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    {#list 0..(depth - 1) as i}\r\n    <ui.select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />\r\n    {/list}\r\n</div>\r\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ },
-/* 327 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25540,10 +25718,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(328);
+	var Dropdown = __webpack_require__(182);
+	var template = __webpack_require__(331);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
+	var Validation = __webpack_require__(111);
 
 	/**
 	 * @class Suggest
@@ -25766,13 +25944,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Suggest;
 
 /***/ },
-/* 328 */
+/* 331 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-suggest {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\">\r\n        <label class=\"u-input\">\r\n            <input class=\"input\" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref=\"input\" readonly={readonly} disabled={disabled}>\r\n        </label>\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <ul class=\"m-listview\">\r\n            {#list source as item}\r\n            {#if this.filter(item)}\r\n                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>\r\n            {/if}\r\n            {/list}\r\n        </ul>\r\n    </div>\r\n    {/if}\r\n</div>\r\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ },
-/* 329 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25784,11 +25962,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(181);
-	var Validation = __webpack_require__(110);
-	var template = __webpack_require__(330);
+	var Dropdown = __webpack_require__(182);
+	var Validation = __webpack_require__(111);
+	var template = __webpack_require__(333);
 	var _ = __webpack_require__(98);
-	var Treeview = __webpack_require__(331);
+	var Treeview = __webpack_require__(334);
 
 	/**
 	 * @class TreeSelect
@@ -25859,13 +26037,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TreeSelect;
 
 /***/ },
-/* 330 */
+/* 333 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\r\n        <i class=\"u-icon u-icon-caret-down\"></i>\r\n        <span>{phShow}</span>\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <tree.view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\r\n    </div>\r\n    {/if}\r\n</div>"
 
 /***/ },
-/* 331 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25877,11 +26055,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(332);
+	var SourceComponent = __webpack_require__(107);
+	var template = __webpack_require__(335);
 	var _ = __webpack_require__(98);
 
-	var TreeViewList = __webpack_require__(333);
+	var TreeViewList = __webpack_require__(336);
 
 	/**
 	 * @class TreeView
@@ -26004,13 +26182,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		});
 
 /***/ },
-/* 332 */
+/* 335 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-treeview {class}\" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>\r\n\t<tree.view.list source={source} childKey={childKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\r\n</div>"
 
 /***/ },
-/* 333 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26022,11 +26200,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(334);
+	var SourceComponent = __webpack_require__(107);
+	var template = __webpack_require__(337);
 	var _ = __webpack_require__(98);
 
-	var check = __webpack_require__(176);
+	var check = __webpack_require__(177);
 
 	/**
 	 * @class TreeViewList
@@ -26139,13 +26317,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TreeViewList;
 
 /***/ },
-/* 334 */
+/* 337 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\r\n\t{#list source as item}\r\n\t<li>\r\n\t\t<div class=\"treeview_item\">\r\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\r\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\r\n\t\t\t{/if}\r\n\t\t\t{#if multiple && !item.divider}\r\n\t\t\t<check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\r\n\t\t\t{/if}\r\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\r\n\t\t</div>\r\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree.view.list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\r\n\t</li>\r\n\t{/list}\r\n</ul>"
 
 /***/ },
-/* 335 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26157,12 +26335,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(181);
-	var Validation = __webpack_require__(110);
-	var template = __webpack_require__(336);
+	var Dropdown = __webpack_require__(182);
+	var Validation = __webpack_require__(111);
+	var template = __webpack_require__(339);
 	var _ = __webpack_require__(98);
-	var check = __webpack_require__(176);
-	var Input = __webpack_require__(300);
+	var check = __webpack_require__(177);
+	var Input = __webpack_require__(301);
 
 	/**
 	 * @class TreeSelect
@@ -26365,13 +26543,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 336 */
+/* 339 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select u-multi{class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\r\n        {#list selected as item}\r\n        <span class=\"selected-tag\">{item[nameKey]}\r\n\t\t\t<i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\r\n        </span>\r\n        {/list}\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <div class=\"cateWrap\">\r\n            {#list 0..9 as level}\r\n            {#if tree[level] && tree[level].length}\r\n            <ul>\r\n                <ui.input value={search[level]}></ui.input>\r\n                {#list tree[level] | search : search[level],level as cate}\r\n                {#if !filter || (filter && filter(cate))}\r\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\r\n                \t{#if multiple}\r\n                \t<check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></check>\r\n                    {/if}\r\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\r\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\">&gt;</span>{/if}\r\n                </li>\r\n                {/if}\r\n                {/list}\r\n                {#if empty[level]}\r\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\r\n                {/if}\r\n            </ul>\r\n            {/if}\r\n            {/list}\r\n        </div>\r\n    </div>\r\n    {/if}\r\n</div>"
 
 /***/ },
-/* 337 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26383,10 +26561,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var validator = __webpack_require__(111);
+	var validator = __webpack_require__(112);
 	var bowser = __webpack_require__(96);
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(338);
+	var template = __webpack_require__(341);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -26500,13 +26678,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIButton;
 
 /***/ },
-/* 338 */
+/* 341 */
 /***/ function(module, exports) {
 
 	module.exports = "{#if link}\r\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\r\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\r\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\r\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\r\n\t{#if !shape}{title}{/if}\r\n</a>\r\n{#else}\r\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\r\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\r\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\r\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\r\n\t{#if !shape}{title}{/if}\r\n</button>\r\n{/if}"
 
 /***/ },
-/* 339 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26518,16 +26696,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(340);
+	var Dropdown = __webpack_require__(182);
+	var template = __webpack_require__(343);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
-	var util = __webpack_require__(341);
-	var Multiple = __webpack_require__(342);
-	var PrivateMethod = __webpack_require__(343);
-	var tip = __webpack_require__(308);
+	var Validation = __webpack_require__(111);
+	var util = __webpack_require__(344);
+	var Multiple = __webpack_require__(345);
+	var PrivateMethod = __webpack_require__(346);
+	var tip = __webpack_require__(309);
 
-	__webpack_require__(176);
+	__webpack_require__(177);
 
 	/**
 	 * @class Select
@@ -26847,13 +27025,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Select;
 
 /***/ },
-/* 340 */
+/* 343 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\r\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\r\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n\t    {#if !multiple}\r\n\t        <div class=\"dropdown_hd\"\r\n\t\t\t\t z-dis={disabled}\r\n\t             title={selected?selected[nameKey]:placeholder}\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\r\n\t            {#if open && canSearch}\r\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\r\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\r\n\t            {#else}\r\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {#else}\r\n\t        <div class=\"dropdown_hd\"\r\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\r\n\t            {#if open && canSearch}\r\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\r\n\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\r\n\t            {/if}\r\n\t            {#list selected as item}\r\n\t                <span class=\"selected-tag\">\r\n\t                    {item[nameKey]}\r\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\r\n\t                </span>\r\n\t            {/list}\r\n\t        </div>\r\n\t    {/if}\r\n\t    {#if open}\r\n\t    <div class=\"dropdown_bd\"\r\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n\t        <ul class=\"m-listview\">\r\n\t            {#if placeholder}\r\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\r\n\t                    {placeholder}\r\n\t                </li>\r\n\t            {/if}\r\n\r\n\t            {#list this.filterArray(source) as item}\r\n\t            {#if !filter || (filter && filter(item))}\r\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\r\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\r\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\r\n\t                        {this.$trans('ALL')}\r\n\t                    </li>\r\n\t                {/if}\r\n\t                {#if item.disabled && item.tip}\r\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\r\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                        title={item[nameKey]} on-click={this.select(item)}>\r\n\t                        {#if multiple && !item.divider}\r\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                        {/if}\r\n\t                        {#if @(itemTemplate)}\r\n\t                            {#inc @(itemTemplate)}\r\n\t                        {#else}\r\n\t                            {item[nameKey]}\r\n\t                        {/if}\r\n\t                    </li>\r\n\t                </tooltip>\r\n\t                {#else}\r\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                    title={item[nameKey]} on-click={this.select(item)}>\r\n\t                    {#if multiple && !item.divider}\r\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                    {/if}\r\n\t                    {#if @(itemTemplate)}\r\n\t                        {#inc @(itemTemplate)}\r\n\t                    {#else}\r\n\t                        {item[nameKey]}\r\n\t                    {/if}\r\n\t                </li>\r\n\t                {/if}\r\n\t            {#else}\r\n\t                {#if searchValue}\r\n\t                <li>\r\n\t                    {noMatchText}\r\n\t                </li>\r\n\t                {/if}\r\n                {/if}\r\n\t            {/list}\r\n\t        </ul>\r\n\t    </div>\r\n\t    {/if}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\r\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\r\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n\t    {#if !multiple}\r\n\t        <div class=\"dropdown_hd\"\r\n\t\t\t\t z-dis={disabled}\r\n\t             title={selected?selected[nameKey]:placeholder}\r\n\t             on-click={this.toggle(!open, $event)}>\r\n\t            <i class=\"u-icon u-icon-angle_down\"></i>\r\n\t            {#if open && canSearch}\r\n\t                <input disabled={disabled} type=\"text\" class=\"u-search-input\" r-autofocus\r\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\r\n\t            {#else}\r\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\r\n\t            {/if}\r\n\t        </div>\r\n\t    {#else}\r\n\t        <div class=\"dropdown_hd\"\r\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\r\n\t            {#if open && canSearch}\r\n\t            <input disabled={disabled} type=\"text\" class=\"u-search-input\" ref=\"input\"\r\n\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\r\n\t            {/if}\r\n\t            {#list selected as item}\r\n\t                <span class=\"selected-tag\">\r\n\t                    {item[nameKey]}\r\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\r\n\t                </span>\r\n\t            {/list}\r\n\t        </div>\r\n\t    {/if}\r\n\t    {#if open}\r\n\t    <div class=\"dropdown_bd\"\r\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n\t        <ul class=\"m-listview\">\r\n\t            {#if placeholder}\r\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\r\n\t                    {placeholder}\r\n\t                </li>\r\n\t            {/if}\r\n\r\n\t            {#list this.filterArray(source) as item}\r\n\t            {#if !filter || (filter && filter(item))}\r\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\r\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\r\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\r\n\t                        {this.$trans('ALL')}\r\n\t                    </li>\r\n\t                {/if}\r\n\t                {#if item.disabled && item.tip}\r\n\t                <tooltip tip={item.tip} placement={item.placement||'top'}>\r\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                        title={item[nameKey]} on-click={this.select(item)}>\r\n\t                        {#if multiple && !item.divider}\r\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                        {/if}\r\n\t                        {#if @(itemTemplate)}\r\n\t                            {#inc @(itemTemplate)}\r\n\t                        {#else}\r\n\t                            {item[nameKey]}\r\n\t                        {/if}\r\n\t                    </li>\r\n\t                </tooltip>\r\n\t                {#else}\r\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\r\n\t                    title={item[nameKey]} on-click={this.select(item)}>\r\n\t                    {#if multiple && !item.divider}\r\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\r\n\t                    {/if}\r\n\t                    {#if @(itemTemplate)}\r\n\t                        {#inc @(itemTemplate)}\r\n\t                    {#else}\r\n\t                        {item[nameKey]}\r\n\t                    {/if}\r\n\t                </li>\r\n\t                {/if}\r\n\t            {#else}\r\n\t                {#if searchValue}\r\n\t                <li>\r\n\t                    {noMatchText}\r\n\t                </li>\r\n\t                {/if}\r\n                {/if}\r\n\t            {/list}\r\n\t        </ul>\r\n\t    </div>\r\n\t    {/if}\r\n\t</div>\r\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</div>\r\n"
 
 /***/ },
-/* 341 */
+/* 344 */
 /***/ function(module, exports) {
 
 	/**
@@ -26906,7 +27084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = selectUtil;
 
 /***/ },
-/* 342 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26917,7 +27095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(341);
+	var util = __webpack_require__(344);
 	'use strict';
 	module.exports = function Multiple(Component) {
 	    Component.implement({
@@ -26980,7 +27158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ },
-/* 343 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26997,7 +27175,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var util = __webpack_require__(341);
+	var util = __webpack_require__(344);
 	module.exports = function PrivateMethod(Component) {
 	    Component.implement({
 	        /**
@@ -27080,7 +27258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ },
-/* 344 */
+/* 347 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27093,7 +27271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(345);
+	var template = __webpack_require__(348);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -27135,13 +27313,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIText;
 
 /***/ },
-/* 345 */
+/* 348 */
 /***/ function(module, exports) {
 
 	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}\"\r\n   target=\"{target}\"\r\n   on-click={this.onClick($event)}\r\n   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>\r\n    {text}\r\n</a>"
 
 /***/ },
-/* 346 */
+/* 349 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27154,9 +27332,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(347);
+	var template = __webpack_require__(350);
 	var _ = __webpack_require__(98);
-	var Validation = __webpack_require__(110);
+	var Validation = __webpack_require__(111);
 
 	var bowser = __webpack_require__(96);
 
@@ -27278,13 +27456,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TextArea;
 
 /***/ },
-/* 347 */
+/* 350 */
 /***/ function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\r\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\r\n        r-model={value}\r\n        style=\"height: {height}px\"\r\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\r\n\t{#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\r\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\r\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</label>\r\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\r\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\r\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\r\n        r-model={value}\r\n        style=\"height: {height}px\"\r\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\r\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\r\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\r\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\r\n</label>\r\n"
 
 /***/ },
-/* 348 */
+/* 351 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27297,7 +27475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(349);
+	var template = __webpack_require__(352);
 	var _ = __webpack_require__(98);
 
 	var SIZE_UNITS = {
@@ -27508,13 +27686,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Uploader;
 
 /***/ },
-/* 349 */
+/* 352 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-uploader {class}\" r-hide={!visible}>\r\n    <div on-click={this.upload()}>\r\n        {#if this.$body}\r\n            {#inc this.$body}\r\n        {#else}\r\n            <a class=\"u-btn\">{title || this.$trans('UPLOAD')}</a>\r\n        {/if}\r\n    </div>\r\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\r\n        {#if !_sending}\r\n        <!-- IE需要重置input[type=file] -->\r\n        <input type=\"file\" multiple=\"multiple\" name={name} ref=\"file\" on-change={this._submit()}>\r\n        {/if}\r\n        {#list Object.keys(data) as key}\r\n        <input type=\"hidden\" name={key} value={data[key]}>\r\n        {/list}\r\n    </form>\r\n    <iframe name=\"iframe{_id}\" on-load={this._onLoad()} ref=\"iframe\" />\r\n</div>"
 
 /***/ },
-/* 350 */
+/* 353 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27550,7 +27728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UIGroup;
 
 /***/ },
-/* 351 */
+/* 354 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27563,10 +27741,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(352);
+	var template = __webpack_require__(355);
 	var _ = __webpack_require__(98);
 
-	var Panel = __webpack_require__(353);
+	var Panel = __webpack_require__(356);
 
 	/**
 	 * @class Collapse
@@ -27595,13 +27773,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Collapse;
 
 /***/ },
-/* 352 */
+/* 355 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\r\n    {#inc this.$body}\r\n</div>"
 
 /***/ },
-/* 353 */
+/* 356 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27614,7 +27792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(354);
+	var template = __webpack_require__(357);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -27669,13 +27847,195 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Panel;
 
 /***/ },
-/* 354 */
+/* 357 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\r\n\r\n    <div class=\"panel_hd f-cb\" on-click={this.toggle()}>\r\n\t    <span class=\"panel_tt\">\r\n\t\t\t<i class=\"u-icon\" r-class=\"{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}\"></i>\r\n\t\t\t {title}\r\n\t\t</span>\r\n        {#if this.$tools}\r\n\t\t<div class=\"tools\" on-click={this.stopPropagation($event)}>\r\n\t\t\t{#inc this.$tools.$body}\r\n\t\t</div>\r\n\t\t{/if}\r\n    </div>\r\n\r\n\t<div class=\"panel_bd\" r-hide={!open} r-animation=\"on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;\">\r\n\t\t{#inc this.$body}\r\n\t</div>\r\n\r\n\t{#if this.$foot}\r\n\t<div class=\"panel_ft\">\r\n\t\t{#inc this.$foot.$body}\r\n\t</div>\r\n\t{/if}\r\n</div>"
 
 /***/ },
-/* 355 */
+/* 358 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      两级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(359);
+	var Menu = __webpack_require__(360);
+
+	/**
+	 * @class Sidebar
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {array}         [options.data.menus]                    => 菜单数组
+	 * @param {string='60px'} [options.data.top]                      => 菜单style top的值
+	 * @param {boolean=true}  [options.data.active]                   => 默认是否收起
+	 * @param {string=''}     [options.data.bodyEl]                   => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
+	 * @param {boolean=true}  [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+	 * @param {string=title}  [options.data.titleKey]                 => 一级菜单的字段key名
+	 * @param {string=url}    [options.data.urlKey]                   => 菜单结构中的链接key名
+	 * @param {string=title}  [options.data.pageKey]                  => 二级菜单的字段key名
+	 * @param {string=children} [options.data.childrenKey]            => 一级菜单对象下二级菜单数组的key名
+	 */
+	var Sidebar = Component.extend({
+	  name: 'ui.sidebar',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true,
+	      menus: [],
+	      titleKey: 'title',
+	      urlKey: 'url',
+	      pageKey: 'title',
+	      childrenKey: 'children',
+	      top: '60px',
+	      active: true,
+	      bodyEl: ''
+	    });
+
+	    this.initMenu();
+	    this.supr();
+	  },
+	  initMenu: function initMenu() {
+	    var url = location.href;
+	    var menus = this.data.menus;
+	    var childrenKey = this.data.childrenKey;
+	    var urlKey = this.data.urlKey;
+	    menus.forEach(function (menu) {
+	      var children = menu[childrenKey];
+	      var shouldOpen = false;
+	      if (children && children.length) {
+	        children.forEach(function (page) {
+	          if (url == page[urlKey]) {
+	            page.open = true;
+	            shouldOpen = true;
+	          }
+	        });
+	      }
+	      menu.open = shouldOpen;
+	    });
+	  },
+	  initBodyEl: function initBodyEl() {
+	    if (this.data.bodyEl) {
+	      this.data.$bodyEl = document.getElementById(this.data.bodyEl);
+	      if (this.data.$bodyEl) {
+	        this.data.$bodyEl.style.transition = 'left .3s';
+	      }
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.initBodyEl();
+
+	    this.data.active = !this.data.active;
+	    if (this.data.$bodyEl) {
+	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+	    }
+	  }
+	});
+
+	Sidebar.directive('top', function (ele, value) {
+	  this.$watch(value, function (top) {
+	    ele.style.top = top;
+	  });
+	});
+
+	module.exports = Sidebar;
+
+/***/ },
+/* 359 */
+/***/ function(module, exports) {
+
+	module.exports = "<aside class=\"m-sidebar\" r-class={ {'active':active } } top=\"{top}\">\r\n  <div class=\"sidebar_menus\">\r\n    <ui.menu uniqueOpened=\"{uniqueOpened}\">\r\n      {#list menus as menu}\r\n      {#if menu[childrenKey] && menu[childrenKey].length}\r\n      <menu.sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\r\n        {#list menu[childrenKey] as page}\r\n        <menu.item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</menu.item>\r\n        {/list}\r\n      </menu.sub>\r\n      {#else}\r\n      <menu.sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></menu.sub>\r\n      {/if}\r\n      {/list}\r\n    </ui.menu>\r\n  </div>\r\n\r\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\r\n    {#if active}\r\n    <i class=\"u-icon u-icon-chevron_left\"></i>\r\n    {#else}\r\n    <i class=\"u-icon u-icon-chevron_right\"></i>\r\n    {/if}\r\n  </div>\r\n</aside>"
+
+/***/ },
+/* 360 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      两级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(361);
+
+	/**
+	 * @class Menu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}  [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+	 */
+	var Menu = Component.extend({
+	  name: 'ui.menu',
+	  template: template,
+	  openedMenus: [],
+	  currentItem: null,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.$on('submenu-click', function (submenu) {
+	      var isOpened = this.openedMenus.indexOf(submenu) !== -1;
+	      if (isOpened) {
+	        this.closeMenu(submenu);
+	        this.$emit('close', submenu);
+	      } else {
+	        this.openMenu(submenu);
+	        this.$emit('open', submenu);
+	      }
+	    });
+
+	    this.$on('menuitem-click', function (menuitem) {
+	      this.currentItem = menuitem;
+	    });
+	  },
+	  closeMenu: function closeMenu(submenu) {
+	    this.openedMenus.splice(this.openedMenus.indexOf(submenu), 1);
+	  },
+	  openMenu: function openMenu(submenu) {
+	    var openedMenus = this.openedMenus;
+	    if (openedMenus.indexOf(submenu) !== -1) return;
+	    if (this.data.uniqueOpened) {
+	      this.openedMenus = [].concat(submenu);
+	    } else {
+	      this.openedMenus.push(submenu);
+	    }
+	  }
+	});
+
+		module.exports = Menu;
+
+/***/ },
+/* 361 */
+/***/ function(module, exports) {
+
+	module.exports = "<ul class=\"m-menu {class}\">\r\n  {#inc this.$body}\r\n</ul>"
+
+/***/ },
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27687,110 +28047,164 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var Dropdown = __webpack_require__(181);
-	var template = __webpack_require__(356);
-	var _ = __webpack_require__(98);
-
-	var MenuList = __webpack_require__(357);
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(363);
+	var RootMenuMixin = __webpack_require__(364);
 
 	/**
-	 * @class Menu
-	 * @extend Dropdown
+	 * @class SubMenu
+	 * @extend Component
 	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.title]                    => 按钮文字
-	 * @param {object[]}      [options.data.source=[]]                <=> 数据源
-	 * @param {string}        [options.data.source[].name]            => 每项的内容
-	 * @param {boolean}       [options.data.source[].disabled=false]  => 禁用此项
-	 * @param {boolean}       [options.data.source[].divider=false]   => 设置此项为分隔线
-	 * @param {string}        [options.data.itemTemplate=null]        @=> 单项模板
-	 * @param {boolean}       [options.data.open=false]               <=> 当前为展开/收起状态
-	 * @param {boolean}       [options.data.disabled=false]           => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]             => 是否显示
 	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {object}        [options.service]                       @=> 数据服务
+	 * @param {boolean=false} [options.data.defaultOpen]              => 是否默认展开,如果需要默认展开,设置为true
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
 	 */
-	var Menu = Dropdown.extend({
-	  name: 'menu',
+	var SubMenu = Component.extend({
+	  name: 'menu.sub',
 	  template: template,
 	  /**
 	   * @protected
 	   */
 	  config: function config() {
-	    _.extend(this.data, {
-	      // @inherited source: [],
-	      open: false
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      titleTemplate: ''
 	    });
 	    this.supr();
+	  },
+	  computed: {
+	    'active': function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
 
-	    this.$ancestor = this;
+	    if (this.data.defaultOpen) {
+	      this.data.rootMenu.openedMenus.push(this);
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.data.rootMenu.$emit('submenu-click', this);
+	    this.$emit('click', this);
 	  }
 	});
 
-		module.exports = Menu;
+	SubMenu.use(RootMenuMixin);
+
+	module.exports = SubMenu;
 
 /***/ },
-/* 356 */
+/* 363 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-menu {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\r\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\r\n        {#if this.$body}\r\n            {#inc this.$body}\r\n        {#else}\r\n            <a class=\"u-btn\" title={title || this.$trans('MULTILEVEL_MENU')}>{title || this.$trans('MULTILEVEL_MENU')} <i class=\"u-icon u-icon-caret-down\"></i></a>\r\n        {/if}\r\n    </div>\r\n    {#if open}\r\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\r\n        <menu.list source={source} visible />\r\n    </div>\r\n    {/if}\r\n</div>"
+	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\r\n  <div class=\"head\">\r\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\r\n    <span class=\"head_title\">\r\n      {#if title}\r\n        {title}\r\n      {#elseif titleTemplate}\r\n        {#inc titleTemplate}\r\n      {/if}\r\n    </span>\r\n  </div>\r\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\r\n    {#inc this.$body}\r\n  </ul>\r\n</li>"
 
 /***/ },
-/* 357 */
+/* 364 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Menu = __webpack_require__(360);
+
+	module.exports = function (Component) {
+	  Component.implement({
+	    initRootMenu: function initRootMenu() {
+	      var $outer = this;
+	      do {
+	        if ($outer.$outer) {
+	          $outer = $outer.$outer;
+	        } else if ($outer.$parent) {
+	          $outer = $outer.$parent;
+	        }
+	      } while (!($outer instanceof Menu) && ($outer.$outer || $outer.$parent));
+
+	      if ($outer && $outer instanceof Menu) {
+	        this.data.rootMenu = $outer;
+	      }
+	    }
+	  });
+		};
+
+/***/ },
+/* 365 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * ------------------------------------------------------------
-	 * MenuList  多级菜单列表
+	 * Menu      多级菜单
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
 
 	'use strict';
 
-	var SourceComponent = __webpack_require__(106);
-	var template = __webpack_require__(358);
-	var _ = __webpack_require__(98);
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(366);
+	var RootMenuMixin = __webpack_require__(364);
 
 	/**
-	 * @class MenuList
-	 * @extend SourceComponent
-	 * @private
+	 * @class MenuItem
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.url]                      => 跳转链接
+	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
 	 */
-	var MenuList = SourceComponent.extend({
-	  name: 'menu.list',
+	var MenuItem = Component.extend({
+	  name: 'menu.item',
 	  template: template,
 	  /**
 	   * @protected
 	   */
 	  config: function config() {
-	    _.extend(this.data, {
-	      // @inherited source: [],
-	      itemTemplate: null
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      active: false,
+	      url: ''
 	    });
-	    this.supr();
 
-	    this.$ancestor = this.$parent.$ancestor;
-	    this.service = this.$ancestor.service;
-	    this.data.itemTemplate = this.$ancestor.data.itemTemplate;
+	    this.supr();
 	  },
-	  /**
-	   * @note 移交$ancestor处理
-	   */
-	  select: function select() {
-	    this.$ancestor.select.apply(this.$ancestor, arguments);
+	  computed: {
+	    'active': function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.currentItem == this;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
+
+	    if (this.data.isCurrent) {
+	      this.data.rootMenu.currentItem = this;
+	    }
+	  },
+	  goto: function goto(e) {
+	    e.stopPropagation();
+	    this.data.rootMenu.$emit('menuitem-click', this);
+	    if (this.data.url) {
+	      location.href = this.data.url;
+	    }
 	  }
 	});
 
-		module.exports = MenuList;
+	MenuItem.use(RootMenuMixin);
+	module.exports = MenuItem;
 
 /***/ },
-/* 358 */
+/* 366 */
 /***/ function(module, exports) {
 
-	module.exports = "<ul class=\"m-listview menu_list\" r-hide={!visible}>\r\n    {#list source as item}\r\n    <li z-dis={item.disabled} z-divider={item.divider}>\r\n        <div class=\"menu_item\">\r\n            {#if item.childrenCount || (item.children && item.children.length)}\r\n            <i class=\"u-icon u-icon-caret-right\"></i>\r\n            {/if}\r\n            <div class=\"menu_itemname\" title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\r\n        </div>\r\n        {#if item.childrenCount || (item.children && item.children.length)}<menu.list source={item.children} visible={item.open} parent={item} />{/if}\r\n    </li>\r\n    {/list}\r\n</ul>"
+	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\r\n  {#if title}\r\n    {title}\r\n  {#else}\r\n    {#inc this.$body}\r\n  {/if}\r\n</li>"
 
 /***/ },
-/* 359 */
+/* 367 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27803,7 +28217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(360);
+	var template = __webpack_require__(368);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -27811,15 +28225,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}        [options.data]                  = 绑定属性
 	 * @param {number}        [options.data.current=1]        <=> 当前页
-	 * @param {total}         [options.data.total=11]         => 总页数
+	 * @param {number}        [options.data.total=0]          => 总页数
+	 * @param {number}        [options.data.sumTotal=0]       => 总个数
+	 * @param {number}        [options.data.pageSize=20]      => 每页个数
 	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
-	 * @param {middle}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
-	 * @param {side}          [options.data.side=2]           => 当页数较多时，两端显示的页数
+	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
 	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
 	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]     => 是否显示
+	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
+	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var Pager = Component.extend({
@@ -27829,9 +28247,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @protected
 	     */
 	    config: function config() {
+	        var _total = Math.ceil(this.data.sumTotal / this.data.pageSize);
 	        _.extend(this.data, {
 	            current: 1,
-	            total: 11,
+	            total: _total,
+	            sumTotal: '',
+	            pageSize: '',
 	            position: 'center',
 	            middle: 5,
 	            side: 2,
@@ -27839,7 +28260,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _end: 5,
 	            step: 5,
 	            maxPageSize: 50,
-	            pageSizeList: []
+	            pageSizeList: [],
+	            isEllipsis: false
 	        });
 	        this.supr();
 
@@ -27862,6 +28284,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$watch(['middle', 'side'], function (middle, side) {
 	            this.data.middle = +middle;
 	            this.data.side = +side;
+	        });
+
+	        this.$watch('pageSize', function (val, oldVal) {
+	            if (!oldVal) return;
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	            this.select(1);
+	        });
+
+	        this.$watch('sumTotal', function (val, oldVal) {
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
 	        });
 	    },
 
@@ -27889,7 +28321,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        if (page < 1) return;
 	        if (page > this.data.total) return;
-	        if (page == this.data.current) return;
 
 	        this.data.current = page;
 	        /**
@@ -27897,6 +28328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @property {object} sender 事件发送对象
 	         * @property {object} current 当前选择页
 	         */
+	        this.$update();
 	        this.$emit('select', {
 	            sender: this,
 	            current: this.data.current
@@ -27925,13 +28357,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Pager;
 
 /***/ },
-/* 360 */
+/* 368 */
 /***/ function(module, exports) {
 
-	module.exports = "{#if total > 1}\r\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\r\n    <div class=\"m-left-pager\">\r\n        {#if !!pageSize || pageSize === 0}\r\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\r\n        {/if}\r\n\r\n        {#if !!sumTotal || sumTotal === 0}\r\n        <div class=\"page_total\">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</div>\r\n        {/if}\r\n    </div>\r\n\r\n    <ul class=\"m-right-pager\">\r\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\r\n        <i class=\"u-icon u-icon-chevron_left\"></i>\r\n        </li>\r\n\r\n        {#if total - middle > side * 2 + 1}\r\n        {#list 1..side as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\r\n        {#list _start.._end as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\r\n        {#list (total - side + 1)..total as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#else}\r\n        {#list 1..total as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {/if}\r\n\r\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\r\n\r\n        <li class=\"page_goto\">\r\n            <span>{this.$trans('GOTO')}</span>\r\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\r\n            <span>{this.$trans('PAGE')}</span>\r\n        </li>\r\n\r\n        <li class=\"page_confirm\">\r\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\r\n        </li>\r\n    </ul>\r\n\r\n</div>\r\n{/if}\r\n"
+	module.exports = "{#if total > 1}\r\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\r\n    <div class=\"m-left-pager\">\r\n        {#if !!pageSize || pageSize === 0}\r\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\r\n        {/if}\r\n\r\n        {#if !!sumTotal || sumTotal === 0}\r\n            {#if !!maxTotal && sumTotal > maxTotal}\r\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\r\n            {#elseif isEllipsis}\r\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\r\n            {#else}\r\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\r\n            {/if}\r\n        {/if}\r\n    </div>\r\n\r\n    <ul class=\"m-right-pager\">\r\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\r\n        <i class=\"u-icon u-icon-chevron_left\"></i>\r\n        </li>\r\n\r\n        {#if total - middle > side * 2 + 1}\r\n        {#list 1..side as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\r\n        {#list _start.._end as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\r\n        {#list (total - side + 1)..total as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {#else}\r\n        {#list 1..total as i}\r\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\r\n        {/list}\r\n        {/if}\r\n\r\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\r\n\r\n        <li class=\"page_goto\">\r\n            <span>{this.$trans('GOTO')}</span>\r\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\r\n            <span>{this.$trans('PAGE')}</span>\r\n        </li>\r\n\r\n        <li class=\"page_confirm\">\r\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\r\n        </li>\r\n    </ul>\r\n\r\n</div>\r\n{/if}\r\n"
 
 /***/ },
-/* 361 */
+/* 369 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27944,7 +28376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(362);
+	var template = __webpack_require__(370);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28027,13 +28459,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Tabs;
 
 /***/ },
-/* 362 */
+/* 370 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\r\n    <ul class=\"tabs_hd\">\r\n        {#list tabs as item}\r\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\r\n        {/list}\r\n    </ul>\r\n    <div class=\"tabs_bd\">\r\n        {#inc this.$body}\r\n    </div>\r\n</div>"
 
 /***/ },
-/* 363 */
+/* 371 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28046,7 +28478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(364);
+	var template = __webpack_require__(372);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28094,13 +28526,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Steps;
 
 /***/ },
-/* 364 */
+/* 372 */
 /***/ function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\r\n    {#list steps as item by item_index}\r\n        <li class=\"stepsItem\"\r\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\r\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\r\n            {#if item_index != steps.length-1}\r\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\r\n                <i></i>\r\n            </div>\r\n            {/if}\r\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\r\n                <div class=\"itemHead\">\r\n                    {#if item_index < currentIndex}\r\n                    <div class=\"icon\">\r\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\r\n                    </div>\r\n                    {#else}\r\n                    <div class=\"icon\">\r\n                        <span class=\"stepIcon\">{item_index + 1}</span>\r\n                    </div>\r\n                    {/if}\r\n                </div>\r\n                <div class=\"itemMain\">\r\n                    <div class=\"mainTitle\">{item.title}</div>\r\n                    <div class=\"mainDescription\">{item.description}</div>\r\n                </div>\r\n            </div>\r\n        </li>\r\n    {/list}\r\n</ul>"
 
 /***/ },
-/* 365 */
+/* 373 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28113,7 +28545,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(366);
+	var template = __webpack_require__(374);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28266,13 +28698,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Modal;
 
 /***/ },
-/* 366 */
+/* 374 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\r\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\r\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\r\n        <div class=\"modal_hd\">\r\n            {#if isCanClose}\r\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\r\n            {/if}\r\n            <h3 class=\"modal_title\">{title}</h3>\r\n        </div>\r\n        </draggable>\r\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\r\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\r\n        </div>\r\n        {#if hasFooter}\r\n        <div class=\"modal_ft\">\r\n\t        {#if footerTemplate}\r\n\t            {#inc @(footerTemplate)}\r\n\t        {#else}\r\n\t\t        {#if okButton}\r\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\r\n\t\t        {/if}\r\n\t\t        {#if cancelButton && isCanClose}\r\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\r\n                    on-click={this.close(false)} disabled={cancelDisabled} />\r\n\t\t        {/if}\r\n\t        {/if}\r\n        </div>\r\n        {/if}\r\n    </div>\r\n</div>"
 
 /***/ },
-/* 367 */
+/* 375 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28285,7 +28717,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(368);
+	var template = __webpack_require__(376);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28347,13 +28779,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Mask;
 
 /***/ },
-/* 368 */
+/* 376 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\r\n  {#if content}{#inc @(content)}{/if}\r\n</div>"
 
 /***/ },
-/* 369 */
+/* 377 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28366,7 +28798,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(370);
+	var template = __webpack_require__(378);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28538,13 +28970,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ },
-/* 370 */
+/* 378 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\r\n    {#list messages as message}\r\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\r\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\r\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\r\n        <span class=\"message_ct\">{message.text}</span>\r\n    </div>\r\n    {/list}\r\n</div>"
 
 /***/ },
-/* 371 */
+/* 379 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28559,9 +28991,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(68).dom;
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(372);
+	var template = __webpack_require__(380);
 	var _ = __webpack_require__(98);
-	var trigger = __webpack_require__(310);
+	var trigger = __webpack_require__(311);
 
 	/**
 	 * @class PopConfirm
@@ -28673,13 +29105,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PopConfirm;
 
 /***/ },
-/* 372 */
+/* 380 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\r\n\t<div class=\"arrow\"></div>\r\n\t<div class=\"inner\">\r\n\t\t<div class=\"body\">\r\n\t\t\t{#if contentTemplate}\r\n\t\t\t{#inc @(contentTemplate)}\r\n\t\t\t{#else}\r\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\r\n\t\t\t{content}\r\n\t\t\t{/if}\r\n\t\t</div>\r\n\t\t<div class=\"foot\">\r\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\r\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\r\n\t\t</div>\r\n\t</div>\r\n</div>"
 
 /***/ },
-/* 373 */
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28692,7 +29124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(374);
+	var template = __webpack_require__(382);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28730,13 +29162,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Gotop;
 
 /***/ },
-/* 374 */
+/* 382 */
 /***/ function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\r\n    {#if this.$body}\r\n        {#inc this.$body}\r\n    {#else}\r\n        <i class=\"u-icon u-icon-arrow-up\"></i>\r\n    {/if}\r\n</a>"
 
 /***/ },
-/* 375 */
+/* 383 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28749,7 +29181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(376);
+	var template = __webpack_require__(384);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28835,13 +29267,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ },
-/* 376 */
+/* 384 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\r\n    {#if this.$body}\r\n        {#inc this.$body}\r\n    {#else}\r\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\r\n    {/if}\r\n</div>"
 
 /***/ },
-/* 377 */
+/* 385 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28854,7 +29286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(378);
+	var template = __webpack_require__(386);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -28892,13 +29324,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Progress;
 
 /***/ },
-/* 378 */
+/* 386 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\r\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\r\n</div>"
 
 /***/ },
-/* 379 */
+/* 387 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28911,7 +29343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use stict';
 
-	var Clipboard = __webpack_require__(380);
+	var Clipboard = __webpack_require__(388);
 
 	/**
 	 * 获取 js 路径快捷键 ctrl + alt + shift + c  
@@ -28958,12 +29390,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PathTool;
 
 /***/ },
-/* 380 */
+/* 388 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(381), __webpack_require__(383), __webpack_require__(384)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(389), __webpack_require__(391), __webpack_require__(392)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -29162,12 +29594,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 381 */
+/* 389 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(382)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(390)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -29395,7 +29827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 382 */
+/* 390 */
 /***/ function(module, exports) {
 
 	function select(element) {
@@ -29444,7 +29876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 383 */
+/* 391 */
 /***/ function(module, exports) {
 
 	function E () {
@@ -29516,11 +29948,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 384 */
+/* 392 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(385);
-	var delegate = __webpack_require__(386);
+	var is = __webpack_require__(393);
+	var delegate = __webpack_require__(394);
 
 	/**
 	 * Validates all params and calls the right
@@ -29617,7 +30049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 385 */
+/* 393 */
 /***/ function(module, exports) {
 
 	/**
@@ -29672,10 +30104,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 386 */
+/* 394 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(387);
+	var closest = __webpack_require__(395);
 
 	/**
 	 * Delegates event to a selector.
@@ -29722,7 +30154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 387 */
+/* 395 */
 /***/ function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -29758,7 +30190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 388 */
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -29771,7 +30203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var Panel = __webpack_require__(353);
+	var Panel = __webpack_require__(356);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29804,7 +30236,1297 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PanelTool;
 
 /***/ },
-/* 389 */
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableHeader = __webpack_require__(398);
+	var TableBody = __webpack_require__(404);
+	var TableCol = __webpack_require__(405);
+	var TableTemplate = __webpack_require__(399);
+	var _ = __webpack_require__(98);
+	var utils = __webpack_require__(403);
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(411);
+
+	var getLeaves = function getLeaves(columns) {
+	    var res = [];
+	    var extractLeaves = function extractLeaves(columns) {
+	        if (columns.forEach) {
+	            return columns.forEach(function (item) {
+	                if (item.children && item.children.length > 0) {
+	                    extractLeaves(item.children);
+	                } else {
+	                    res.push(item);
+	                }
+	            });
+	        }
+	    };
+	    extractLeaves(columns);
+	    return res;
+	};
+
+	var getNum = function getNum(str) {
+	    return +(str + '').split('px')[0];
+	};
+
+	var setElementValue = function setElementValue(ele, prop, val) {
+	    if (ele) {
+	        ele[prop] = val;
+	    }
+	};
+
+	var getElementHeight = function getElementHeight(ele) {
+	    var computedStyle = window.getComputedStyle(ele);
+	    var height = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(ele.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
+	    return height;
+	};
+
+	/**
+	 * @class UITable
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性
+	 * @param {array}             [options.data.source]               => 数据源
+	 * @param {object}            [options.data.paging]               => 分页
+	 * @param {object}            [options.data.sorting]              => 排序
+	 * @param {boolean}           [options.data.stickyHeader]         => 将表头固定到页面顶部
+	 * @param {boolean}           [options.data.stickyFooter]         => 将表格底部操作固定到页面底部
+	 * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
+	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
+	 * @param {array}             [options.data.columns]              => 列配置
+	 */
+
+	/**
+	 * @class TableCol
+	 * @extend Component
+	 * @param {object}      [options.data]                  = 绑定属性
+	 * @param {string}      [options.data.name]             => 表头名称
+	 * @param {string}      [options.data.key]              => 列属性字段
+	 * @param {string}      [options.data.tip]              => 提示信息
+	 * @param {string}      [options.data.type]             => 列内容的预设类型
+	 * @param {string}      [options.data.width]            => 列宽
+	 * @param {string}      [options.data.tdClass]          => 列内容样式
+	 * @param {string}      [options.data.thClass]          => 表头样式
+	 * @param {boolean}     [options.data.sortable]         => 可排序
+	 * @param {string}      [options.data.children]         => 子表头
+	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+
+	 * @param {string}      [options.data.template]         => 列内容模版
+	 */
+
+	/**
+	 * @class TableTemplate
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.type="content"] => 模版类型, header, content
+	 */
+
+	var UITable = Component.extend({
+	    name: 'ui.table',
+	    template: tpl,
+	    computed: {
+	        bodyHeight: {
+	            get: function get() {
+	                var data = this.data;
+	                if (data.height != undefined && data.headerHeight != undefined) {
+	                    return +data.height - data.headerHeight;
+	                }
+	            },
+	            set: function set(val) {
+	                return this.data.bodyHeight = val;
+	            }
+	        }
+	    },
+	    config: function config(data) {
+	        this.defaults({
+	            strip: true,
+	            enableHover: true,
+	            scrollYBar: 0,
+	            scrollXBar: 0,
+
+	            show: true,
+	            columns: [],
+	            sorting: {},
+	            config: {},
+	            _scrollBarTimer: null
+	        });
+	        this.supr(data);
+
+	        this.data._defaultWidth = this.data.width;
+
+	        this._initWatchers();
+	    },
+	    _initWatchers: function _initWatchers() {
+	        this.$watch('show', this._onShowChange);
+	        this.$watch('source', this._onSouceChange);
+	        this.$watch('columns', this._onColumnsChange);
+	        this.$watch('scrollYBar', this._onScrollYBarChange);
+
+	        this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
+
+	        this._onWinodwScroll = utils.throttle(this._onWinodwScroll.bind(this), 200);
+	        window.document.addEventListener('scroll', this._onWinodwScroll);
+
+	        this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
+	        window.addEventListener('resize', this._onWindowResize);
+
+	        this._watchWidthChange();
+	    },
+	    _onShowChange: function _onShowChange(newVal) {
+	        if (newVal) {
+	            setTimeout(function () {
+	                this._updateViewWidth();
+	            }.bind(this), 200);
+	        }
+	    },
+	    _updateViewWidth: function _updateViewWidth() {
+	        if (this.$refs.table) {
+	            this._updateData('viewWidth', this.$refs.table.offsetWidth);
+	        }
+	    },
+	    _onSouceChange: function _onSouceChange() {
+	        setTimeout(function () {
+	            this._updateSticky();
+	        }.bind(this), 500);
+	    },
+	    _onWinodwScroll: function _onWinodwScroll() {
+	        if (!this.$refs || !this._isShow()) {
+	            return;
+	        }
+	        this._updateSticky();
+	    },
+	    _updateSticky: function _updateSticky() {
+	        var data = this.data;
+	        if (!data.stickyHeader && !data.stickyFooter) {
+	            return;
+	        }
+
+	        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+	        var tableWrapOffset = {
+	            top: tableRect.top + scrollTop,
+	            bottom: tableRect.bottom + scrollTop
+	        };
+
+	        if (data.stickyHeader && tableWrapOffset) {
+	            this._updateStickyHeaderStatus(tableWrapOffset);
+	        }
+
+	        if (data.stickyFooter && tableWrapOffset) {
+	            this._updateStickyFooterStatus(tableWrapOffset);
+	        }
+	    },
+	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus(tableWrapOffset) {
+	        var headerHeight = this._getHeaderHeight();
+	        var scrollY = window.scrollY;
+	        var stickyActive = false;
+
+	        if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
+	            stickyActive = false;
+	        } else if (scrollY > tableWrapOffset.top) {
+	            stickyActive = true;
+	        }
+
+	        this._updateData('stickyHeaderActive', stickyActive);
+	    },
+	    _updateStickyFooterStatus: function _updateStickyFooterStatus(tableWrapOffset) {
+	        var headerHeight = this._getHeaderHeight();
+	        var footerHeight = this._getFooterHeight();
+	        var scrollY = window.scrollY;
+	        var innerHeight = window.innerHeight;
+	        var scrollYBottom = scrollY + innerHeight;
+	        var stickyActive = false;
+
+	        if (scrollYBottom > tableWrapOffset.bottom + footerHeight || scrollYBottom < tableWrapOffset.top + headerHeight + 20) {
+	            stickyActive = false;
+	        } else {
+	            stickyActive = true;
+	        }
+
+	        this._updateData('stickyFooterActive', stickyActive);
+	    },
+	    _watchWidthChange: function _watchWidthChange() {
+	        this.data._widthTimer = setInterval(function () {
+	            if (!this._isShow()) {
+	                return;
+	            }
+	            this._updateScrollBar();
+	            this._updateTableWidth();
+	        }.bind(this), 300);
+	    },
+	    _updateScrollBar: function _updateScrollBar() {
+	        var data = this.data;
+	        var tableWrap = this.$refs.bodyWrap;
+	        if (!tableWrap) {
+	            return;
+	        }
+
+	        var yBarWidth = tableWrap.offsetWidth - tableWrap.clientWidth;
+	        var xBarWidth = tableWrap.offsetHeight - tableWrap.clientHeight;
+
+	        this._updateData('scrollYBar', yBarWidth);
+	        this._updateData('scrollXBar', xBarWidth);
+	    },
+	    _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
+	        if (oldVal === undefined) {
+	            return;
+	        }
+	        this._updateTableWidth();
+	    },
+	    _onColumnsChange: function _onColumnsChange(newVal) {
+	        if (newVal) {
+	            this._updateDataColumn();
+	            this._updateTableWidth();
+	        }
+	    },
+	    _updateDataColumn: function _updateDataColumn() {
+	        this.$update('_dataColumns', getLeaves(this.data.columns));
+	    },
+	    init: function init() {
+	        this._initTable();
+	    },
+	    _initTable: function _initTable() {
+	        var data = this.data;
+	        var refs = this.$refs;
+	        setTimeout(function () {
+	            data.headerHeight = refs.headerWrap.offsetHeight;
+
+	            this._updateViewWidth();
+	            this._initTableWidth();
+	            this._getHeaderHeight();
+	        }.bind(this), 200);
+	    },
+	    _initTableWidth: function _initTableWidth() {
+	        var data = this.data;
+	        var _dataColumns = data._dataColumns;
+	        if (!_dataColumns) {
+	            return;
+	        }
+
+	        var tableWidth = this.$refs.table.clientWidth;
+	        var customWidthCount = 0;
+	        var customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
+	            var width = parseInt(current.width);
+	            if (width) {
+	                customWidthCount++;
+	                return previous + width;
+	            }
+	            return previous;
+	        }, 0);
+
+	        var tableViewWidth = tableWidth - data.scrollYBar;
+	        var autoWidth = Math.floor((tableViewWidth - customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
+	        autoWidth = autoWidth >= 0 ? autoWidth : 100;
+
+	        var totalWidth = 0;
+	        _dataColumns.forEach(function (dataColumn) {
+	            dataColumn._width = parseInt(dataColumn.width || autoWidth);
+	            totalWidth += dataColumn._width;
+	            return dataColumn;
+	        });
+
+	        this._updateData('tableWidth', tableWidth);
+	    },
+	    _getHeaderHeight: function _getHeaderHeight() {
+	        var headerHeight = getElementHeight(this.$refs.headerWrap);
+	        this._updateData('headerHeight', headerHeight);
+	        return headerHeight;
+	    },
+	    _getFooterHeight: function _getFooterHeight() {
+	        var footerHeight = getElementHeight(this.$refs.footerWrap);
+	        this._updateData('footerHeight', footerHeight);
+	        return footerHeight;
+	    },
+	    _updateTableWidth: function _updateTableWidth() {
+	        var data = this.data;
+	        var _dataColumns = data._dataColumns;
+	        if (!_dataColumns) {
+	            return;
+	        }
+	        var newTableWidth = 0;
+	        var fixedCol = false;
+	        var fixedTableWidth = 0;
+	        var fixedColRight = false;
+	        var fixedTableWidthRight = 0;
+
+	        _dataColumns.forEach(function (column) {
+	            // 计算表格宽度
+	            newTableWidth += column._width;
+
+	            // 更新列宽
+	            if (!column._width) {
+	                column._width = column.width || 100;
+	            }
+
+	            // 计算固定列的总宽度
+	            if (column._width && column.fixed) {
+	                if (column.fixed === 'right') {
+	                    fixedColRight = true;
+	                    fixedTableWidthRight += column._width;
+	                } else {
+	                    fixedCol = true;
+	                    fixedTableWidth += column._width;
+	                }
+	            }
+	        });
+
+	        this._updateData('fixedCol', fixedCol);
+	        this._updateData('fixedTableWidth', fixedTableWidth);
+	        this._updateData('fixedColRight', fixedColRight);
+	        this._updateData('fixedTableWidthRight', fixedTableWidthRight);
+	        this._updateData('tableWidth', newTableWidth);
+
+	        if (newTableWidth <= this.data._defaultWidth) {
+	            this._updateData('width', newTableWidth);
+	        } else {
+	            this._updateData('width', this.data._defaultWidth);
+	        }
+	    },
+	    _onWindowResize: function _onWindowResize() {
+	        if (!this.$refs || !this._isShow()) {
+	            return;
+	        }
+	        this.$update('viewWidth', this.$refs.table.offsetWidth);
+	    },
+	    _onBodyScroll: function _onBodyScroll(host) {
+	        if (!this._isShow()) {
+	            return;
+	        }
+	        var $refs = this.$refs;
+
+	        setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+	        setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+	        setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+	        setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+	    },
+	    _onSort: function _onSort(e) {
+	        /**
+	         * @event sort 排序事件
+	         * @property {object} sender 事件来源
+	         * @property {boolean} asc 是否升序
+	         * @property {object} column 目标列
+	         * @property {number} columnIndex 目标列序号
+	         * @property {string} key 排序字段
+	         * @property {object} sorting 排序设置对象
+	         */
+	        this.$emit('sort', e);
+	    },
+	    _onCustomEvent: function _onCustomEvent(e) {
+	        this.$emit(e.type, _.extend({
+	            sender: this,
+	            custom: true
+	        }, e.args));
+	    },
+	    _onItemCheckChange: function _onItemCheckChange(e) {
+	        /**
+	         * @event checkchange 多选事件
+	         * @property {object} sender 事件来源
+	         * @property {boolean} checked 是否选中
+	         * @property {object} item 操作对象
+	         * @property {object} checkedEvent 多选事件对象源
+	         */
+	        this.$emit('checkchange', {
+	            sender: this,
+	            item: e.item,
+	            checked: e.checked,
+	            checkedEvent: e.event
+	        });
+	    },
+	    emitEvent: function emitEvent(type) {
+	        var args = [].slice.call(arguments, 1);
+	        /**
+	         * @event [type] 自定义的操作事件
+	         * @property {object} sender 事件来源
+	         * @property {boolean} custom 自定义事件标识
+	         * @property {array} param 自定义事件所带的参数
+	         */
+	        this.$emit(type, {
+	            custom: true,
+	            sender: this,
+	            param: args
+	        });
+	    },
+	    _onExpand: function _onExpand(e) {
+	        this.$emit('expand', {
+	            sender: this,
+	            expand: e.expand,
+	            item: e.item,
+	            itemIndex: e.itemIndex,
+	            column: e.column
+	        });
+	    },
+	    _onPaging: function _onPaging(e) {
+	        /**
+	         * @event paging 分页事件
+	         * @property {object} sender 事件来源
+	         * @property {number} current 事件来源
+	         * @property {object} paging 分页对象
+	         */
+	        this.$emit('paging', {
+	            sender: this,
+	            current: e.current,
+	            paging: this.data.paging
+	        });
+	    },
+	    _onFixedExpand: function _onFixedExpand(e) {
+	        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+	    },
+	    _isShow: function _isShow() {
+	        return this.data.show;
+	    },
+	    _updateData: function _updateData(key, val) {
+	        if (this.data[key] !== val) {
+	            this.$update(key, val);
+	        }
+	    },
+	    destroy: function destroy() {
+	        this.removeEventListener();
+	        this.supr();
+	    },
+	    removeEventListener: function removeEventListener() {
+	        clearInterval(this.data._widthTimer);
+	        window.document.removeEventListener('scroll', this._onWinodwScroll);
+	        window.removeEventListener('resize', this._onWindowResize);
+	    }
+	}).component('table.header', TableHeader).component('table.body', TableBody).component('table.col', TableCol).component('table.template', TableTemplate);
+
+		module.exports = UITable;
+
+/***/ },
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableTemplate = __webpack_require__(399);
+	var templates = __webpack_require__(400);
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(402);
+	var _ = __webpack_require__(403);
+
+	var HEADER_MIN_WIDTH = 30;
+
+	var hasChildren = function hasChildren(column) {
+	    return column.children && column.children.length > 0;
+	};
+
+	var setColumnWidth = function setColumnWidth(column, width) {
+	    var children = column.children;
+	    if (hasChildren(column)) {
+	        setColumnWidth(children[children.length - 1], width);
+	        return;
+	    }
+	    column._width = Math.max(width, HEADER_MIN_WIDTH);
+	};
+
+	var getColumnWidth = function getColumnWidth(column) {
+	    var ret = {
+	        width: 0,
+	        lastLeafWidth: 0
+	    };
+	    if (hasChildren(column)) {
+	        column.children.forEach(function (item, index) {
+	            var tmp = getColumnWidth(item);
+	            if (index === column.children.length - 1) {
+	                ret.lastLeafWidth = tmp.width;
+	            }
+	            ret.width += tmp.width;
+	        });
+	    } else {
+	        return {
+	            width: column._width,
+	            lastLeafWidth: column._width
+	        };
+	    }
+	    return ret;
+	};
+
+	var getHeaders = function getHeaders(columns) {
+	    var headers = [];
+	    var extractHeaders = function extractHeaders(columns, depth) {
+	        columns.forEach(function (column) {
+	            if (hasChildren(column)) {
+	                column._dataColumn = extractHeaders(column.children, depth + 1);
+	            }
+	            if (!headers[depth]) {
+	                headers[depth] = [];
+	            }
+	            // 计算深度和宽度
+	            if (hasChildren(column)) {
+	                column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
+	                    return current.childrenDepth > previous ? current.childrenDepth : previous;
+	                }, -1);
+	                column.headerColSpan = column.children.reduce(function (previous, current) {
+	                    return previous + (current.headerColSpan || 0);
+	                }, 0);
+	            } else {
+	                column.childrenDepth = 0;
+	                column.headerColSpan = 1;
+	            }
+	            headers[depth].push(column);
+	        });
+	    };
+	    extractHeaders(columns, 0);
+	    return headers;
+	};
+
+	var TableBasic = Component.extend({
+	    template: tpl,
+	    computed: {
+	        fixedWidth: {
+	            get: function get() {
+	                return this.data.headers.reduce(function (previous, current) {
+	                    return current.fixed ? previous + current._width : previous;
+	                }, 0);
+	            }
+	        }
+	    },
+	    config: function config(data) {
+	        this.defaults({
+	            type: '',
+	            show: true,
+	            columns: [],
+	            sorting: {},
+	            config: {}
+	        });
+	        this.supr(data);
+	        this.$watch('columns', function () {
+	            this._updateHeaders();
+	        });
+	    },
+	    _updateHeaders: function _updateHeaders() {
+	        var columns = this.data.columns;
+
+	        if (!columns) {
+	            return;
+	        }
+
+	        this.data.headers = getHeaders(columns);
+	    },
+	    _onHeaderClick: function _onHeaderClick(header, headerIndex) {
+	        if (!header.sortable) {
+	            return;
+	        }
+	        this._onSort(header, headerIndex);
+	    },
+	    _onSort: function _onSort(header, headerIndex) {
+	        if (header._isDragging) {
+	            return;
+	        }
+	        var sorting = this.data.sorting;
+
+	        if (sorting.key === header.key) {
+	            sorting.isAsc = !sorting.isAsc;
+	        } else {
+	            sorting.isAsc = header.isDefaultAsc || false;
+	        }
+
+	        sorting.columnIndex = headerIndex;
+	        sorting.key = header.key;
+
+	        this.$emit('sort', {
+	            sender: this,
+	            sorting: sorting,
+	            column: header,
+	            columnIndex: headerIndex,
+	            key: header.key,
+	            asc: sorting.isAsc
+	        });
+	    },
+	    _onMouseDown: function _onMouseDown(e, header, headerIndex, headerTrIndex) {
+	        var data = this.data;
+	        var self = this;
+	        if (!data._ok2ResizeCol) {
+	            return;
+	        }
+	        header._isDragging = true;
+	        this._startResizing(e, header, headerIndex, headerTrIndex);
+	    },
+	    _startResizing: function _startResizing(e, header, headerIndex, headerTrIndex) {
+	        var self = this;
+	        var tableLeft = self.$parent.$refs.table.getBoundingClientRect().left;
+	        var mouseLeft = e.pageX;
+	        var headerEle = self.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
+	        var headerLeft = headerEle.getBoundingClientRect().left;
+
+	        header._resizeParam = {
+	            tableLeft: tableLeft,
+	            mouseLeft: mouseLeft,
+	            headerLeft: headerLeft
+	        };
+
+	        var resizeProxy = self.$parent.$refs.resizeProxy;
+	        resizeProxy.style.visibility = 'visible';
+
+	        var onMouseMove = function onMouseMove(_e) {
+	            _e.preventDefault();
+
+	            var proxyLeft = _e.pageX - tableLeft;
+	            var headerWidth = _e.pageX - headerLeft;
+
+	            if (headerWidth > HEADER_MIN_WIDTH) {
+	                resizeProxy.style.left = proxyLeft + 'px';
+	            }
+	        };
+
+	        var onMouseUp = function onMouseUp(_e) {
+	            _e.preventDefault();
+	            resizeProxy.style.visibility = 'hidden';
+
+	            var headerWidth = _e.pageX - headerLeft;
+	            var widthInfo = getColumnWidth(header);
+	            setColumnWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
+
+	            document.removeEventListener('mousemove', onMouseMove);
+	            document.removeEventListener('mouseup', onMouseUp);
+
+	            header._isDragging = false;
+	            self._disableResize();
+	        };
+
+	        document.addEventListener('mousemove', onMouseMove);
+	        document.addEventListener('mouseup', onMouseUp);
+	    },
+	    _onMouseOut: function _onMouseOut(e, header) {
+	        if (!header._isDragging) {
+	            this._disableResize();
+	            return;
+	        }
+	    },
+	    _onMouseMove: function _onMouseMove(e, header) {
+	        if (!header._isDragging && this._shouldEnableResize(e)) {
+	            this._enableResize();
+	        } else {
+	            this._disableResize();
+	        }
+	    },
+	    _shouldEnableResize: function _shouldEnableResize(e) {
+	        var target = e.target;
+	        while (target && target.tagName !== 'TH') {
+	            target = target.parentNode;
+	        }
+	        var rect = target.getBoundingClientRect();
+	        return rect.width > 12 && rect.right - event.pageX < 8;
+	    },
+	    _enableResize: function _enableResize() {
+	        document.body.style.cursor = 'col-resize';
+	        this.$update('_ok2ResizeCol', true);
+	    },
+	    _disableResize: function _disableResize() {
+	        document.body.style.cursor = '';
+	        this.$update('_ok2ResizeCol', false);
+	    },
+	    _getTHElement: function _getTHElement(header, item) {
+	        if (header.headerFormat || header.headerFormatter || header.headerTemplate) {
+	            return this._getCustom(header, item);
+	        }
+	        return templates.get(header.type);
+	    },
+	    _getCustom: function _getCustom(header, item) {
+	        if (header.headerTemplate) {
+	            return this._getTemplate(header);
+	        } else if (header.headerFormatter) {
+	            return this._getFormatter(header, item);
+	        } else if (header.headerFormat) {
+	            return this._getFormat(header);
+	        }
+	        return '';
+	    },
+	    _getTemplate: function _getTemplate(header) {
+	        if (_.isArray(header.headerTemplate)) {
+	            return '{#list header.headerTemplate as template by template_index}{#include template}{/list}';
+	        }
+	        return '{#include header.headerTemplate}';
+	    },
+	    _getFormatter: function _getFormatter(header, headers) {
+	        var formatter = header.formatter;
+	        if (_.isArray(formatter)) {
+	            return formatter.reduce(function (previous, current) {
+	                return previous + (current.call(this, header, headers) || '');
+	            }.bind(this), '');
+	        }
+	        return formatter.call(this, header, headers) || '';
+	    },
+	    _getFormat: function _getFormat(header) {
+	        var format = header.format;
+	        if (_.isArray(format)) {
+	            return format.reduce(function (previous, current) {
+	                return previous + _parseFormat(current);
+	            }.bind(this), '');
+	        }
+	        return _parseFormat(format);
+	    },
+	    emitEvent: function emitEvent(type) {
+	        var args = [].slice.call(arguments, 1);
+	        this.$emit('customevent', {
+	            type: type,
+	            sender: this,
+	            args: {
+	                param: args
+	            }
+	        });
+	    }
+	}).filter('sortingClass', function (header) {
+	    var data = this.data;
+	    var sorting = data.sorting;
+	    if (sorting) {
+	        if (sorting.key === header.key) {
+	            return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
+	        }
+	        return '';
+	    }
+	});
+
+	TableBasic.component('table.template', TableTemplate);
+
+	module.exports = TableBasic;
+
+/***/ },
+/* 399 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+
+	/**
+	 * @class TableTemplate
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.type="content"] => 模版类型, header, content, expand
+	 */
+	var TableTemplate = Component.extend({
+	    name: 'table.template',
+	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	    config: function config() {
+	        this.defaults({
+	            type: 'content',
+	            template: null
+	        });
+	    },
+	    init: function init() {
+	        this._register();
+	    },
+	    _register: function _register() {
+	        switch (this.data.type) {
+	            case 'header':
+	                this._register2Header();break;
+	            case 'expand':
+	                this._register2Expand();break;
+	            default:
+	                this._register2Content();
+	        }
+	    },
+	    _register2Header: function _register2Header() {
+	        var outerData = this.$outer.data;
+	        if (!outerData._headerTemplates) {
+	            outerData._headerTemplates = [];
+	        }
+	        outerData._headerTemplates.push(this._getInnertTemplate());
+	    },
+	    _register2Expand: function _register2Expand() {
+	        this.$outer.data._expandTemplate = this._getInnertTemplate();
+	    },
+	    _register2Content: function _register2Content() {
+	        var outerData = this.$outer.data;
+	        if (!outerData._templates) {
+	            outerData._templates = [];
+	        }
+	        outerData._templates.push(this._getInnertTemplate());
+	    },
+	    _getInnertTemplate: function _getInnertTemplate() {
+	        var template = this.data.template || this.$refs.bodyContainer.innerHTML;
+	        return this._parseTemplate(template);
+	    },
+	    _parseTemplate: function _parseTemplate(template) {
+	        return template.replace(/(<!--)(.*)(-->)/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').trim();
+	    }
+	});
+
+		module.exports = TableTemplate;
+
+/***/ },
+/* 400 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var tplMap = {
+	    default: __webpack_require__(401)
+	};
+
+	exports.get = function getTemplate(type) {
+	    return tplMap[type] || tplMap.default;
+	};
+
+/***/ },
+/* 401 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<span class=\"header_text\">{header.name}</span>\r\n<span>\r\n    {#if header.tip}\r\n        <span class=\"th_tip\">\r\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\r\n                <i class=\"u-icon u-icon-info-circle\" />\r\n            </tooltip>\r\n        </span>\r\n    {/if}\r\n    {#if header.sortable && header.key}\r\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\r\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\r\n        </i>\r\n    {/if}\r\n</span>\r\n"
+
+/***/ },
+/* 402 */
+/***/ function(module, exports) {
+
+	module.exports = "<table\r\n    class=\"table_tb\"\r\n    r-style={{\r\n        'width': width == undefined ? 'auto' : width + 'px',\r\n        'text-align': config.textAlign || 'center',\r\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\r\n    }}>\r\n    <colgroup>\r\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\r\n            <col width={_dataColumn._width}>\r\n        {/list}\r\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\r\n        {#if scrollYBar}\r\n            <col name=\"gutter\" width={scrollYBar}>\r\n        {/if}\r\n    </colgroup>\r\n\r\n    <thead class=\"tb_hd\">\r\n        {#list headers as headerTr by headerTr_index}\r\n            <tr class=\"tb_hd_tr\">\r\n                {#list headerTr as header by header_index}\r\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\r\n                        class=\"tb_hd_th {header.thClass}\"\r\n                        r-class={{\r\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),\r\n                        }}\r\n                        colspan=\"{header.headerColSpan}\"\r\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\r\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\r\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\r\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\r\n                        <div class=\"th_content\"\r\n                            title={header.name}\r\n                            on-click={this._onHeaderClick(header, header_index)}>\r\n                            {#include this._getTHElement(header, headers)}\r\n                        </div>\r\n                    </th>\r\n                {/list}\r\n\r\n                {#if scrollYBar}\r\n                    <th class=\"th_hd_gutter\" />\r\n                {/if}\r\n            </tr>\r\n        {/list}\r\n    </thead>\r\n</table>\r\n"
+
+/***/ },
+/* 403 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _ = {};
+
+	_.isType = function (target, type) {
+	    return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
+	};
+	['String', 'Object', 'Array', 'Number', 'Null', 'Undefined'].forEach(function (item) {
+	    _['is' + item] = function (target) {
+	        return _.isType(target, item.toLowerCase());
+	    };
+	});
+
+	_.fillWithZero = function (val, len) {
+	    var valLen = val.toString().length;
+	    if (valLen < len) {
+	        return (Array(len).join(0) + val).slice(-len);
+	    }
+	    return val + '';
+	};
+
+	_.throttle = function (fn, delay) {
+	    var last = null;
+	    var timer = null;
+	    delay = delay || 100;
+	    return function () {
+	        var now = +new Date();
+	        var args = [].slice.call(arguments, 0);
+
+	        clearTimeout(timer);
+	        if (now - last > delay) {
+	            last = now;
+	            fn.apply(this, args);
+	        } else {
+	            // run at last time
+	            setTimeout(function () {
+	                fn.apply(this, args);
+	            }.bind(this), delay);
+	        }
+	    };
+	};
+
+	module.exports = _;
+
+/***/ },
+/* 404 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableCol = __webpack_require__(405);
+	var TableTemplate = __webpack_require__(399);
+	var _ = __webpack_require__(403);
+
+	var Component = __webpack_require__(69);
+	var tpl = __webpack_require__(406);
+	var templates = __webpack_require__(407);
+
+	var _parseFormat = function _parseFormat(str) {
+	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	};
+
+	var TableBasic = Component.extend({
+	    template: tpl,
+	    config: function config(data) {
+	        this.defaults({
+	            type: '',
+	            enableHover: true,
+	            show: true,
+	            columns: [],
+	            config: {}
+	        });
+	        this.supr(data);
+	    },
+	    _onExpand: function _onExpand(item, itemIndex, column) {
+	        if (!this.data.fixedCol) {
+	            this._expandTr(item, itemIndex, column);
+	        }
+
+	        this.$emit('expand', {
+	            sender: this,
+	            expand: item.expand,
+	            column: column,
+	            item: item,
+	            index: itemIndex
+	        });
+	    },
+	    _onItemCheckChange: function _onItemCheckChange(item, e) {
+	        this.$emit('checkchange', {
+	            item: item,
+	            checked: e.checked,
+	            event: e
+	        });
+	    },
+	    _expandTr: function _expandTr(item, itemIndex, column) {
+	        item._expanddingColumn = column;
+	        item.expand = !item.expand;
+
+	        this._updateSubTrHeight(item, itemIndex);
+	    },
+	    _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
+	        var timer = setInterval(function () {
+	            var tdElement = this.$refs['td' + itemIndex];
+	            if (tdElement && item._expandHeight !== tdElement.clientHeight) {
+	                item._expandHeight = tdElement.clientHeight;
+	                this.$update();
+	            }
+	            if (!item.expand) {
+	                clearInterval(timer);
+	            }
+	        }.bind(this), 100);
+	    },
+	    _onSubEvent: function _onSubEvent(type, table, e) {
+	        this.$emit('subevent', {
+	            sender: table,
+	            type: type,
+	            event: e
+	        });
+	    },
+	    _isArray: function _isArray(arr) {
+	        return _.isArray(arr);
+	    },
+	    _getTDElement: function _getTDElement(column, item) {
+	        if (column.format || column.formatter || column.template) {
+	            return this._getCustom(column, item);
+	        }
+	        return templates.get(column.type);
+	    },
+	    _getCustom: function _getCustom(column, item) {
+	        if (column.template) {
+	            return this._getTemplate(column);
+	        } else if (column.formatter) {
+	            return this._getFormatter(column, item);
+	        } else if (column.format) {
+	            return this._getFormat(column);
+	        }
+	        return '';
+	    },
+	    _getTemplate: function _getTemplate(column) {
+	        if (_.isArray(column.template)) {
+	            return '{#list column.template as template by template_index}{#include template}{/list}';
+	        }
+	        return '{#include column.template}';
+	    },
+	    _getFormatter: function _getFormatter(column, item) {
+	        var formatter = column.formatter;
+	        if (_.isArray(formatter)) {
+	            return formatter.reduce(function (previous, current) {
+	                return previous + (current.call(this, column, item) || '');
+	            }.bind(this), '');
+	        }
+	        return formatter.call(this, column, item) || '';
+	    },
+	    _getFormat: function _getFormat(column) {
+	        var format = column.format;
+	        if (_.isArray(format)) {
+	            return format.reduce(function (previous, current) {
+	                return previous + _parseFormat(current);
+	            }.bind(this), '');
+	        }
+	        return _parseFormat(format);
+	    },
+	    emitEvent: function emitEvent(type) {
+	        var args = [].slice.call(arguments, 1);
+	        this.$emit('customevent', {
+	            type: type,
+	            sender: this,
+	            args: {
+	                param: args
+	            }
+	        });
+	    },
+	    _onTrHover: function _onTrHover($event, item) {
+	        item._hover = true;
+	    },
+	    _onTrBlur: function _onTrBlur($event, item) {
+	        item._hover = false;
+	    }
+	}).filter('placeholder', function (val) {
+	    if (val === null || val === undefined) {
+	        return '-';
+	    }
+	    return val;
+	}).filter('expandSign', function (item) {
+	    return item.expand ? '-' : '+';
+	});
+
+	TableBasic.component('table.col', TableCol);
+	TableBasic.component('table.template', TableTemplate);
+
+	module.exports = TableBasic;
+
+/***/ },
+/* 405 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var TableTemplate = __webpack_require__(399);
+
+	/**
+	 * @class TableCol
+	 * @extend Component
+	 * @param {object}      [options.data]                  = 绑定属性
+	 * @param {string}      [options.data.name]             => 表头名称
+	 * @param {string}      [options.data.key]              => 列属性字段
+	 * @param {string}      [options.data.tip]              => 提示信息
+	 * @param {string}      [options.data.type]             => 列内容的预设类型
+	 * @param {string}      [options.data.width]            => 列宽
+	 * @param {string}      [options.data.tdClass]          => 列内容样式
+	 * @param {string}      [options.data.thClass]          => 表头样式
+	 * @param {boolean}     [options.data.sortable]         => 可排序
+	 * @param {boolean}     [options.data.expandable]       => 可下钻展开
+	 * @param {string}      [options.data.children]         => 子表头
+	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+
+	 * @param {string}      [options.data.template]         => 列内容模版
+	 * @param {string}      [options.data.headerTemplate]   => 列表头模版
+	 * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
+	 */
+	var TableCol = Component.extend({
+	    name: 'table.col',
+	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	    config: function config() {
+	        this.defaults({
+	            _innerColumns: [],
+	            colSpan: 1
+	        });
+	    },
+	    init: function init() {
+	        this._register();
+	    },
+	    _register: function _register() {
+	        var outerName = this.$outer.name;
+	        if (outerName === 'ui.table') {
+	            this._register2Table();
+	        } else if (outerName === 'table.col') {
+	            this._register2TableCol();
+	        }
+	    },
+	    _register2Table: function _register2Table() {
+	        var _outer = this.$outer;
+	        this._push2Columns(_outer.data.columns);
+	    },
+	    _register2TableCol: function _register2TableCol() {
+	        var _outer = this.$outer;
+	        this._push2Columns(_outer.data._innerColumns);
+	    },
+	    _push2Columns: function _push2Columns(columns) {
+	        var data = this.data;
+	        columns && columns.push({
+	            name: data.name,
+	            key: data.key,
+	            type: data.type,
+	            width: data.width,
+	            tip: data.tip,
+	            tdClass: data.tdClass,
+	            thClass: data.thClass,
+	            sortable: data.sortable,
+	            expandable: data.expandable,
+	            template: data._templates,
+	            headerTemplate: data._headerTemplates,
+	            expandTemplate: data._expandTemplate,
+	            children: data._innerColumns,
+	            fixed: data.fixed
+	        });
+	    }
+	}).component('table.tempalte', TableTemplate);
+
+		module.exports = TableCol;
+
+/***/ },
+/* 406 */
+/***/ function(module, exports) {
+
+	module.exports = "<table class=\"table_tb\"\r\n    r-style={{\r\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\r\n        'text-align': config.textAlign || 'center',\r\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\r\n    }}>\r\n    <colgroup>\r\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\r\n            <col width={_dataColumn._width}>\r\n        {/list}\r\n    </colgroup>\r\n\r\n    <tbody class=\"tb_bd\">\r\n        <!-- 加载中 -->\r\n        {#if loading}\r\n        <tr class=\"tb_bd_tr\">\r\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\r\n                <loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\r\n            </td>\r\n        </tr>\r\n\r\n        <!-- 内容 -->\r\n        {#elseif source.length > 0}\r\n        {#list source as item by item_index}\r\n        <tr class=\"tb_bd_tr {item.trClass}\"\r\n            style=\"{item.trStyle || column.trStyle}\"\r\n            r-class={{\r\n                'z-hover': item._hover\r\n            }}\r\n            on-mouseover={this._onTrHover($event, item)}\r\n            on-mouseout={this._onTrBlur($event, item)}>\r\n            {#list _dataColumns as column by column_index}\r\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\r\n                style=\"{item.tdStyle || column.tdStyle}\"\r\n                r-class={{\r\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\r\n                }}>\r\n                <div class=\"tb_bd_td_div \">\r\n                    {#include this._getTDElement(column, item)}\r\n                    {#if column.expandable}\r\n                    <span class=\"u-expand-sign f-cursor-pointer\"\r\n                        on-click={this._onExpand(item, item_index, column)}>\r\n                        {item | expandSign}\r\n                    </span>\r\n                    {/if}\r\n                </div>\r\n            </td>\r\n            {/list}\r\n        </tr>\r\n\r\n        <!-- 下钻内容 -->\r\n        {#if item.expand}\r\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\r\n            <td ref=\"td{item_index}\"\r\n                r-style={{\r\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\r\n                }}\r\n                class=\"m-sub-protable-td {column.tdClass}\"\r\n                colspan={_dataColumns.length}>\r\n                {#include item._expanddingColumn.expandTemplate}\r\n            </td>\r\n        </tr>\r\n        {/if}\r\n        {/list}\r\n\r\n        <!-- 空内容 -->\r\n        {#else}\r\n        <tr class=\"tb_bd_tr\">\r\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\r\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\r\n            </td>\r\n        </tr>\r\n        {/if}\r\n    </tbody>\r\n</table>\r\n"
+
+/***/ },
+/* 407 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var tplMap = {
+	    default: __webpack_require__(408),
+	    progress: __webpack_require__(409),
+	    check: __webpack_require__(410)
+	};
+
+	exports.get = function getTemplate(type) {
+	    return tplMap[type] || tplMap.default;
+	};
+
+/***/ },
+/* 408 */
+/***/ function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\r\n    {#list item[column.key] as value by value_index}\r\n        <p class=\"u-td-line\"><span title={value}>{value | placeholder}</span></p>\r\n    {/list}\r\n{#else}\r\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={item[column.key]}>{item[column.key] | placeholder}</span>\r\n{/if}\r\n"
+
+/***/ },
+/* 409 */
+/***/ function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\r\n    {#list item[column.key] as value by value_index}\r\n        <div class=\"u-progress-wrap\">\r\n            <progress percent={value} />\r\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\r\n        </div>\r\n    {/list}\r\n{#else}\r\n    <div class=\"u-progress-wrap\">\r\n        <progress percent={item[column.key]} />\r\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\r\n    </div>\r\n{/if}\r\n"
+
+/***/ },
+/* 410 */
+/***/ function(module, exports) {
+
+	module.exports = "<check\r\n    name={item[column.key] | placeholder}\r\n    checked={item._checked}\r\n    on-change={this._onItemCheckChange(item, $event)}/>"
+
+/***/ },
+/* 411 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"m-ui-table-wrap \"\r\n    ref=\"tableWrap\"\r\n    r-hide={!show}\r\n    r-style={{\r\n        width: width == undefined ? 'auto' : width + 'px'\r\n    }}>\r\n\r\n    <!-- 读取内嵌模版 -->\r\n    <div ref=\"bodyContainer\" style=\"display: none\" >\r\n        {#include this.$body}\r\n    </div>\r\n\r\n    <!-- 列表拖动标尺 -->\r\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\r\n\r\n    <!-- 表格主体 -->\r\n    <div\r\n        ref=\"table\"\r\n        class=\"m-ui-table\"\r\n        r-class={{\r\n            'fixed_header': fixedHeader,\r\n            'strip': strip\r\n        }}\r\n        r-style={{\r\n            height: fixedHeader ? 'auto' : height + 'px',\r\n            width: width == undefined ? 'auto' : width + 'px',\r\n        }}\r\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\r\n\r\n        <div ref=\"headerWrap\"\r\n            class=\"ui_table_header\"\r\n            r-class={{\r\n                'sticky_header': stickyHeader && stickyHeaderActive,\r\n                'f-overflow-hidden': stickyFooter\r\n            }}\r\n            r-style={{\r\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'\r\n            }}>\r\n            <table.header\r\n                ref=\"tableHeader\"\r\n                _dataColumns={_dataColumns}\r\n                resizePorxy={this.$refs.resizeProxy}\r\n                fixedHeader={fixedHeader}\r\n                height={headerHeight}\r\n                width={tableWidth}\r\n                columns={columns}\r\n                source={source}\r\n                sorting={sorting}\r\n                scrollYBar={scrollYBar}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-sort={this._onSort($event)}/>\r\n        </div>\r\n\r\n        <div class=\"header_placeholder\"\r\n            r-style={{\r\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\r\n            }}/>\r\n\r\n        <div ref=\"bodyWrap\"\r\n            class=\"ui_table_body\"\r\n            r-class={{\r\n                'fixed_header': fixedHeader,\r\n                'f-overflow-hidden': stickyFooter\r\n            }}\r\n            r-style={{\r\n                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\r\n            }}\r\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\r\n            <table.body\r\n                ref=\"tableBody\"\r\n                _dataColumns={_dataColumns}\r\n                loading={loading}\r\n                fixedHeader={fixedHeader}\r\n                height={bodyHeight}\r\n                width={tableWidth}\r\n                lineClamp={lineClamp}\r\n                columns={columns}\r\n                sorting={sorting}\r\n                source={source}\r\n                scrollYBar={scrollYBar}\r\n                on-checkchange={this._onItemCheckChange($event)}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-expand={this._onExpand($event)}/>\r\n        </div>\r\n    </div>\r\n\r\n    <!-- 左固定列 -->\r\n    {#if fixedCol }\r\n    <div ref=\"tableFixed\"\r\n        class=\"m-ui-table m-ui-table-fixed\"\r\n        r-class={{\r\n            'm-ui-table-hover': enableHover\r\n        }}\r\n        r-style={{\r\n            bottom: scrollXBar + 'px',\r\n            width: fixedTableWidth + 'px'\r\n        }}>\r\n        <div ref=\"headerWrapFixed\"\r\n            class=\"ui_table_header\"\r\n            r-class={{\r\n                'sticky_header': stickyHeader && stickyHeaderActive\r\n            }}\r\n            r-style={{\r\n                width: fixedTableWidth + 'px'\r\n            }} >\r\n            <table.header\r\n                ref=\"tableHeaderFixed\"\r\n                _dataColumns={_dataColumns}\r\n                fixedCol\r\n                fixedHeader={fixedHeader}\r\n                height={headerHeight}\r\n                width={tableWidth}\r\n                columns={columns}\r\n                sorting={sorting}\r\n                source={source}\r\n                scrollYBar={scrollYBar}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-sort={this._onSort($event)}/>\r\n        </div>\r\n\r\n        <div class=\"header_placeholder\"\r\n            r-style={{\r\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\r\n            }} />\r\n\r\n        <div ref=\"bodyWrapFixed\"\r\n            class=\"ui_table_body\"\r\n            r-style={{\r\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\r\n            }}>\r\n            <table.body\r\n                ref=\"tableBodyFixed\"\r\n                _dataColumns={_dataColumns}\r\n                loading={loading}\r\n                fixedCol\r\n                fixedHeader={fixedHeader}\r\n                height={bodyHeight}\r\n                width={tableWidth}\r\n                lineClamp={lineClamp}\r\n                columns={columns}\r\n                sorting={sorting}\r\n                source={source}\r\n                scrollYBar={scrollYBar}\r\n                on-checkchange={this._onItemCheckChange($event)}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-expand={this._onFixedExpand($event)}/>\r\n        </div>\r\n    </div>\r\n    {/if}\r\n\r\n\r\n    <!-- 右固定列 -->\r\n    {#if fixedColRight }\r\n    <div class=\"ui_table_header_fiexd_right_gutter\"\r\n        r-style={{\r\n            width: scrollYBar + 'px',\r\n            height: headerHeight + 'px',\r\n            right: 0,\r\n            top: 0\r\n        }}/>\r\n    <div ref=\"tableFixedRight\"\r\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\r\n        r-class={{\r\n            'm-ui-table-hover': enableHover\r\n        }}\r\n        r-style={{\r\n            bottom: scrollXBar + 'px',\r\n            right: scrollYBar + 'px',\r\n            width: fixedTableWidthRight + 'px'\r\n        }}>\r\n        <div ref=\"headerWrapFixedRight\"\r\n            class=\"ui_table_header\"\r\n            r-class={{\r\n                'sticky_header': stickyHeader && stickyHeaderActive\r\n            }}>\r\n            <table.header ref=\"tableHeaderFixedRight\"\r\n                _dataColumns={_dataColumns}\r\n                fixedCol=\"right\"\r\n                fixedHeader={fixedHeader}\r\n                height={headerHeight}\r\n                width={tableWidth}\r\n                columns={columns}\r\n                sorting={sorting}\r\n                source={source}\r\n                scrollYBar={scrollYBar}\r\n                marginLeft={tableWidth - fixedTableWidthRight}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-sort={this._onSort($event)}/>\r\n        </div>\r\n\r\n        <div class=\"header_placeholder\"\r\n            r-style={{\r\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\r\n            }} />\r\n\r\n        <div ref=\"bodyWrapFixedRight\"\r\n            class=\"ui_table_body\"\r\n            r-style={{\r\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\r\n            }}>\r\n            <table.body ref=\"tableBodyFixedRight\"\r\n                _dataColumns={_dataColumns}\r\n                loading={loading}\r\n                fixedCol=\"right\"\r\n                fixedHeader={fixedHeader}\r\n                marginLeft={tableWidth - fixedTableWidthRight}\r\n                height={bodyHeight}\r\n                width={tableWidth}\r\n                lineClamp={lineClamp}\r\n                columns={columns}\r\n                sorting={sorting}\r\n                source={source}\r\n                scrollYBar={scrollYBar}\r\n                on-checkchange={this._onItemCheckChange($event)}\r\n                on-customevent={this._onCustomEvent($event)}\r\n                on-expand={this._onFixedExpand($event)}/>\r\n        </div>\r\n    </div>\r\n    {/if}\r\n\r\n</div>\r\n\r\n<div class=\"footer_placeholder\"\r\n    r-style={{\r\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\r\n    }}\r\n/>\r\n<div class=\"m-ui-table-ft\"\r\n    ref=\"footerWrap\"\r\n    r-class={{\r\n        'sticky_footer': stickyFooter && stickyFooterActive\r\n    }}\r\n    r-style={{\r\n        width: (viewWidth || tableWidth) + 'px'\r\n    }}\r\n>\r\n    {#if stickyFooter}\r\n    <div ref=\"scrollBar\"\r\n        class=\"scroll_bar\"\r\n        r-style={{\r\n            width: width + 'px'\r\n        }}\r\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\r\n        <div r-style={{ width: tableWidth + 'px' }} />\r\n    </div>\r\n    {/if}\r\n    {#if paging}\r\n    <pager\r\n        position={paging.position || 'right'}\r\n        pageSize={paging.pageSize}\r\n        step={paging.step}\r\n        maxPageSize={paging.maxPageSize}\r\n        disabled={paging.disabled}\r\n        visible={paging.visible}\r\n        middle={paging.middle}\r\n        side={paging.side}\r\n        current={paging.current}\r\n        sumTotal={paging.sumTotal}\r\n        total={paging.total}\r\n        on-select={this._onPaging($event)}/>\r\n    {/if}\r\n</div>\r\n"
+
+/***/ },
+/* 412 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Row 栅格布局-行
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var template = __webpack_require__(413);
+
+	/**
+	 * @class Row
+	 * @extend Component
+	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {string}          [options.data.type='']              => 布局模式，可选 flex，现代浏览器下有效
+	 * @param {string}          [options.data.justify='start']      => flex 布局下的水平排列方式
+	 * @param {string}          [options.data.align='top']          => flex 布局下的垂直排列方式
+	 * @param {string}          [options.data.wrap='wrap']          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
+	 * @param {number}          [options.data.gutter='0']           => 栅格间隔
+	 */
+	var Row = Component.extend({
+	  name: 'ui.row',
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      type: '',
+	      justify: 'start',
+	      align: 'top',
+	      gutter: 0,
+	      wrap: 'wrap'
+	    });
+
+	    this.supr(data);
+	  }
+	});
+
+	Row.directive('gutter', function (ele, value) {
+	  this.$watch(value, function (gutter) {
+	    if (gutter) {
+	      var margin = '-' + gutter / 2 + 'px';
+	      ele.style.marginLeft = margin;
+	      ele.style.marginRight = margin;
+	    }
+	  });
+	});
+
+	module.exports = Row;
+
+/***/ },
+/* 413 */
+/***/ function(module, exports) {
+
+	module.exports = "{#if type === 'flex'}\r\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap}\" gutter=\"{gutter}\">\r\n  {#inc this.$body}\r\n</div>\r\n{#else}\r\n<div class=\"g-row\" gutter=\"{gutter}\">\r\n  {#inc this.$body}\r\n</div>\r\n{/if}"
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Col 栅格布局-列
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var template = __webpack_require__(415);
+	var Row = __webpack_require__(412);
+
+	/**
+	 * @class Col
+	 * @extend Component
+	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {number}          [options.data.span='']              => 栅格占据的列数
+	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 */
+	var Col = Component.extend({
+	  name: 'ui.col',
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      span: '',
+	      offset: '',
+	      gutter: 0
+	    });
+
+	    var $outer = this;
+	    do {
+	      if ($outer.$outer) {
+	        $outer = $outer.$outer;
+	      } else if ($outer.$parent) {
+	        $outer = $outer.$parent;
+	      }
+	    } while (!($outer instanceof Row) && ($outer.$outer || $outer.$parent));
+
+	    if ($outer && $outer instanceof Row) {
+	      this.data.gutter = $outer.data.gutter;
+	    }
+
+	    this.supr(data);
+	  }
+	});
+
+	Col.directive('gutter', function (ele, value) {
+	  this.$watch(value, function (gutter) {
+	    if (gutter) {
+	      var padding = gutter / 2 + 'px';
+	      ele.style.paddingLeft = padding;
+	      ele.style.paddingRight = padding;
+	    }
+	  });
+	});
+
+	module.exports = Col;
+
+/***/ },
+/* 415 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset}\" gutter=\"{gutter}\">\r\n  {#inc this.$body}\r\n</div>"
+
+/***/ },
+/* 416 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29816,7 +31538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Component = __webpack_require__(69);
-	var ajax = __webpack_require__(107);
+	var ajax = __webpack_require__(108);
 	var _ = __webpack_require__(98);
 
 	var LocaleProvider = Component.extend({

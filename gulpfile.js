@@ -94,8 +94,13 @@ gulp.task('dist', function(done) {
   sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
 });
 
+
+gulp.task('reload', function() {
+  reload();
+});
+
 gulp.task('default', function(done) {
-  sequence('dist', 'gen-doc', done);
+  sequence('dist', 'gen-doc', 'reload', done);
 });
 
 gulp.task('server', ['default'], function() {
@@ -104,11 +109,11 @@ gulp.task('server', ['default'], function() {
       baseDir: ['./doc/public', './dist']
     },
     browser: 'default',
+    ghostMode: false,
     reloadDelay: 1000,
     cors: true,
     port: 8089
   });
-  gulp.watch("doc/public/*").on('change', reload);
 });
 
 gulp.task('watch', ['server'], function() {

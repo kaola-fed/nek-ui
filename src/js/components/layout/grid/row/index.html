@@ -1,0 +1,9 @@
+{#if type === 'flex'}
+<div class="g-row g-row-flex justify-{justify} align-{align} flex-{wrap}" gutter="{gutter}">
+  {#inc this.$body}
+</div>
+{#else}
+<div class="g-row" gutter="{gutter}">
+  {#inc this.$body}
+</div>
+{/if}

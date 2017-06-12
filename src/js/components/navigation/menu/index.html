@@ -1,14 +1,3 @@
-<div class="u-dropdown u-menu {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" on-click={this.toggle(!open)}>
-        {#if this.$body}
-            {#inc this.$body}
-        {#else}
-            <a class="u-btn" title={title || this.$trans('MULTILEVEL_MENU')}>{title || this.$trans('MULTILEVEL_MENU')} <i class="u-icon u-icon-caret-down"></i></a>
-        {/if}
-    </div>
-    {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <menu.list source={source} visible />
-    </div>
-    {/if}
-</div>
+<ul class="m-menu {class}">
+  {#inc this.$body}
+</ul>

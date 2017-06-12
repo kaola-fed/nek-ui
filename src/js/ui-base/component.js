@@ -12,6 +12,7 @@ var polyfill = require('./polyfill');
 var _ = require('./_');
 var filter = require('./filter');
 var directive = require('./directive');
+var animation = require('./animation');
 
 /**
  * @class Component
@@ -98,5 +99,7 @@ var Component = Regular.extend({
 })
 .filter(filter)
 .directive(directive);
+
+animation.install(Regular);
 
 module.exports = Component;

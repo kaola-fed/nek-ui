@@ -6,7 +6,13 @@
         {/if}
 
         {#if !!sumTotal || sumTotal === 0}
-        <div class="page_total">{this.$trans('TOTAL')}{sumTotal}{this.$trans('ITEMS')}</div>
+            {#if !!maxTotal && sumTotal > maxTotal}
+            <div class="page_total">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>
+            {#elseif isEllipsis}
+            <div class="page_total">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>
+            {#else}
+            <div class="page_total">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>
+            {/if}
         {/if}
     </div>
 

@@ -10,7 +10,27 @@ title: 分页
 <div class="m-example"></div>
 
 ```xml
-<pager current=6 total=11 />
+<pager current=3 sumTotal=200 pageSize=5 />
+```
+<!-- demo_end -->
+
+### 总条数展示设置一
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<pager current=3 sumTotal=200 pageSize=5 isEllipsis={true} />
+```
+<!-- demo_end -->
+
+### 总条数展示设置二
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<pager current=3 sumTotal=200 pageSize=5 maxTotal=100 />
 ```
 <!-- demo_end -->
 

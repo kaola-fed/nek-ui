@@ -1,0 +1,46 @@
+.m-subMenu {
+    position: relative;
+    border-bottom: 1px solid #DFEAF3;
+    cursor: pointer;
+
+    .head {
+        position: relative;
+        padding: 15px 0 15px 47px;
+        font-size: 14px;
+        transition: all .4s ease;
+        &:hover .head_title, &:hover a {
+            text-decoration:underline;
+            font-weight:bold;
+        }
+
+        .head_arrow {
+            position: absolute;
+            top: 15px;
+            left: 28px;
+            font-size: 14px;
+            transition: all .4s ease;
+            transform: rotate(0);
+
+            &.isOpen {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .menuItems {
+        position: relative;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+    }
+
+    &.active {
+        background: #F6F9FC;
+        padding-bottom: 5px;
+    }
+}
+
+.collapse-transition {
+  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+}
