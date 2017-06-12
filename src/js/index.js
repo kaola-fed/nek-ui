@@ -42,6 +42,7 @@ const Components = {
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
+    Crumb : require('./components/navigation/crumb'),
 
     // Notice
     Modal : require('./components/notice/modal'),
@@ -62,6 +63,8 @@ const Components = {
     UITable : require('./components/layout/ui.table'),
     Row: require('./components/layout/grid/row'),
     Col: require('./components/layout/grid/col'),
+    Card : require('./components/layout/card'),
+    CardTools : require('./components/layout/card.tools'),
 
     //i18n
     LocaleProvider : require('./components/i18n/locale.provider'),
