@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>步骤 - nek-ui</title>
+        <title>多级选择 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="步骤 - nek-ui">
+        <meta property="og:title" content="多级选择 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -146,7 +146,7 @@
                     
                 
                 <li>
-                    <a href="/components/form_multi.select_.html" class="sidebar-link">多级选择 multi.select</a>
+                    <a href="/components/form_multi.select_.html" class="sidebar-link current">多级选择 multi.select</a>
                 </li>
             
                 
@@ -311,7 +311,7 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_steps_.html" class="sidebar-link current">步骤 steps</a>
+                    <a href="/components/navigation_steps_.html" class="sidebar-link">步骤 steps</a>
                 </li>
             
                 
@@ -381,29 +381,18 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">multi.select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="string">'1'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="string">'1.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="string">'1.2'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1'</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1'</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1.1'</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1.2'</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.2'</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.3'</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="string">'1.2.2'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="string">'1.3'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="string">'1.4'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="string">'2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="string">'3'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="string">'3.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="string">'3.2'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="迷你版"><a href="#迷你版" class="headerlink" title="迷你版"></a>迷你版</h3><p>在表单中使用</p>
-<!-- demo_start -->
+<h3 id="多选"><a href="#多选" class="headerlink" title="多选"></a>多选</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">steps</span> <span class="attr">size</span>=<span class="string">"sm"</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">multi.select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">multiple</span>=<span class="string">&#123;multiple&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="string">'1'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="string">'1.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="string">'1.2'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1'</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1'</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1.1'</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.1.2'</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.2'</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="string">'1.2.1.3'</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="string">'1.2.2'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="string">'1.3'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="string">'1.4'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="string">'2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="string">'3'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="string">'3.1'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="string">'3.2'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">multiple</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#Tabs">Tabs</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="Tabs"></a></p>
-<h2 id="Tabs"><a href="#Tabs" class="headerlink" title="Tabs"></a>Tabs</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Tabs_new"></a></p>
-<h3 id="new-Tabs"><a href="#new-Tabs" class="headerlink" title="new Tabs()"></a>new Tabs()</h3><table>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a name="TreeSelect"></a></p>
+<h2 id="TreeSelect"><a href="#TreeSelect" class="headerlink" title="TreeSelect"></a>TreeSelect</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Select<br><a name="new_TreeSelect_new"></a></p>
+<h3 id="new-TreeSelect"><a href="#new-TreeSelect" class="headerlink" title="new TreeSelect()"></a>new TreeSelect()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -420,27 +409,85 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.steps]</td>
-<td><code>object</code></td>
-<td><code></code></td>
-<td>&lt;=&gt; 类似于ui.select的source</td>
+<td>[options.data.source]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 数据源</td>
 </tr>
 <tr>
-<td>[options.data.current]</td>
+<td>[options.data.source[].name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 每项的内容</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的键</td>
+</tr>
+<tr>
+<td>[options.data.nameKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;name&quot;</code></td>
+<td>=&gt; 数据项的name键</td>
+</tr>
+<tr>
+<td>[options.data.childKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;children&quot;</code></td>
+<td>=&gt; 数据子项的键</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
 <td><code>string</code></td>
 <td><code>null</code></td>
-<td>&lt;=&gt; 当前状态</td>
+<td>&lt;=&gt; 当前选择值</td>
 </tr>
 <tr>
-<td>[options.data.size]</td>
+<td>[options.data.selected]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择项</td>
+</tr>
+<tr>
+<td>[options.data.separator]</td>
+<td><code>string</code></td>
+<td><code>&quot;,&quot;</code></td>
+<td>=&gt; 多选时value分隔符</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt;  当前尺寸</td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.multiple]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否多选</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
 </tr>
 </tbody>
 </table>
-<p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
 var index = 0;
@@ -448,30 +495,38 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<steps current=2 steps={steps} />
+<multi.select source={source} value={value} />
+选择的是：{value}
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
     data: {
-        steps: [{
-            status: 0,
-            title: '编辑',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 1,
-            title: '保存',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 2,
-            title: '提交',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 3,
-            title: '审核',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }]
+        source: [
+            {name: '节点1', id: '1', children: [
+                {name: '节点1.1', id: '1.1'},
+                {name: '节点1.2', id: '1.2', children: [
+                    {name: '节点1.2.1', id: '1.2.1', children: [
+                        {name: '节点1.2.1.1', id: '1.2.1.1', children: [
+                            {name: '节点1.2.1.1.1', id: '1.2.1.1.1'},
+                            {name: '节点1.2.1.1.2', id: '1.2.1.1.2'}
+                            ]},
+                        {name: '节点1.2.1.3', id: '1.2.1.2'},
+                        {name: '节点1.2.1.3', id: '1.2.1.3'}
+                        ]},
+                    {name: '节点1.2.2', id: '1.2.2'}
+                ]},
+                {name: '节点1.3', id: '1.3'},
+                {name: '节点1.4', id: '1.4'},
+            ]},
+            {name: '节点2', id: '2'},
+            {name: '节点3', id: '3', children: [
+                {name: '节点3.1', id: '3.1'},
+                {name: '节点3.2', id: '3.2'}
+            ]}
+        ],
+        value: ''
     }
 });
 
@@ -481,30 +536,39 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<steps size="sm" current=2 steps={steps} />
+<multi.select source={source} multiple={multiple} value={value} />
+选择的是：{value}
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
     data: {
-        steps: [{
-            status: 0,
-            title: '编辑',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 1,
-            title: '保存',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 2,
-            title: '提交',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }, {
-            status: 3,
-            title: '审核',
-            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
-        }]
+        source: [
+            {name: '节点1', id: '1', children: [
+                {name: '节点1.1', id: '1.1'},
+                {name: '节点1.2', id: '1.2', children: [
+                    {name: '节点1.2.1', id: '1.2.1', children: [
+                        {name: '节点1.2.1.1', id: '1.2.1.1', children: [
+                            {name: '节点1.2.1.1.1', id: '1.2.1.1.1'},
+                            {name: '节点1.2.1.1.2', id: '1.2.1.1.2'}
+                            ]},
+                        {name: '节点1.2.1.3', id: '1.2.1.2'},
+                        {name: '节点1.2.1.3', id: '1.2.1.3'}
+                        ]},
+                    {name: '节点1.2.2', id: '1.2.2'}
+                ]},
+                {name: '节点1.3', id: '1.3'},
+                {name: '节点1.4', id: '1.4'},
+            ]},
+            {name: '节点2', id: '2'},
+            {name: '节点3', id: '3', children: [
+                {name: '节点3.1', id: '3.1'},
+                {name: '节点3.2', id: '3.2'}
+            ]}
+        ],
+        value: '',
+        multiple: true
     }
 });
 
@@ -515,10 +579,10 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <span>← <a href="/components/navigation_pager_.html">分页</a></span>
+        <span>← <a href="/components/form_form.item_.html">表单项</a></span>
       
       
-        <span style="float:right"><a href="/components/navigation_tabs_.html">选项卡</a> →</span>
+        <span style="float:right"><a href="/components/form_number.input_.html">数字输入</a> →</span>
       
     </div>
     <div class="footer">

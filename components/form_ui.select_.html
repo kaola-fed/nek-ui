@@ -146,6 +146,13 @@
                     
                 
                 <li>
+                    <a href="/components/form_multi.select_.html" class="sidebar-link">多级选择 multi.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
                     <a href="/components/form_number.input_.html" class="sidebar-link">数字输入 number.input</a>
                 </li>
             
@@ -160,7 +167,7 @@
                     
                 
                 <li>
-                    <a href="/components/form_select.group_.html" class="sidebar-link">多级选择 select.group</a>
+                    <a href="/components/form_select.group_.html" class="sidebar-link">联动选择 select.group</a>
                 </li>
             
                 
@@ -502,6 +509,12 @@
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 禁用此项显示提示的方向，默认下方</td>
+</tr>
+<tr>
+<td>[options.data.filter]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 如果传了该参数会对 source 数组的每一项 item 进行 filter(item) 返回 true 则显示，否则不显示</td>
 </tr>
 <tr>
 <td>[options.data.source[].divider]</td>

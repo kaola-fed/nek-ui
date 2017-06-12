@@ -3583,6 +3583,82 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-table .u-formitem{
 	margin-bottom:0;
 }
+.u-multi ::-webkit-scrollbar{
+	width:6px;
+	height:8px;
+	background-color:#fff;
+}
+.u-multi ::-webkit-scrollbar-thumb{
+	border-radius:3px;
+	background-color:#dadada;
+}
+.u-multi .dropdown_hd{
+	max-height:84px;
+	overflow-y:auto;
+}
+.u-multi .cateWrap{
+	width:412px;
+	overflow-x:auto;
+	white-space:nowrap;
+	position:absolute;
+	background-color:#fff;
+	font-size:0;
+}
+.u-multi .cateWrap ul,.u-multi .cateWrap li{
+	list-style-type:none;
+}
+.u-multi .cateWrap ::-webkit-scrollbar{
+	width:6px;
+	background-color:#fff;
+}
+.u-multi .cateWrap ::-webkit-scrollbar-thumb{
+	border-radius:3px;
+	background-color:#dadada;
+}
+.u-multi .cateWrap ul{
+	width:136px;
+	border-bottom:1px solid #eee;
+	border-left:1px solid #eee;
+	margin:0;
+	height:260px;
+	padding:0;
+	overflow:hidden;
+	font-size:14px;
+	display:inline-block;
+}
+.u-multi .cateWrap ul:last-child{
+	border-right:1px solid #eee;
+}
+.u-multi .cateWrap li{
+	height:32px;
+	overflow:hidden;
+	line-height:32px;
+	word-wrap:normal;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	padding-right:15px;
+	position:relative;
+}
+.u-multi .cateWrap li:hover{
+	background-color:#f6f9fc;
+}
+.u-multi .cateWrap .u-input,.u-multi .cateWrap .input_wrap{
+	height:32px;
+}
+.u-multi .cateWrap .u-check{
+	margin-left:13px;
+	width:15px;
+}
+.u-multi .cateWrap .more{
+	position:absolute;
+	right:10px;
+}
+.u-multi .cateWrap .cateName{
+	padding-left:15px;
+}
+.u-multi .cateWrap .active{
+	background-color:#f6f9fc;
+}
 .u-numberinput{
 	display:inline-block;
 	position:relative;
@@ -4324,6 +4400,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	-moz-border-radius:2px;
 	border-radius:2px;
 	font-size:12px;
+	overflow-y:auto;
 }
 .u-select .dropdown_hd .u-icon{
 	float:right;
@@ -4350,16 +4427,16 @@ input.u-check:disabled,input.u-radio:disabled{
 	margin-bottom:6px;
 }
 .u-select .u-search-input{
-	padding:0;
-	border:none;
+	padding:5px 0;
+	border-bottom:1px solid #eee;
 	font-family:inherit;
 	line-height:20px;
-	width:calc(92%);
+	width:calc(100% - 8px);
 	background-color:transparent;
+	display:block;
 }
 .u-select .u-search-input:focus{
 	outline:none;
-	border:none;
 }
 .u-select.isMultiple .u-search-input{
 	float:left;
