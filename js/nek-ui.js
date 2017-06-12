@@ -116,29 +116,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Pager: __webpack_require__(372),
 	    Tabs: __webpack_require__(374),
 	    Steps: __webpack_require__(376),
+	    Crumb: __webpack_require__(378),
 
 	    // Notice
-	    Modal: __webpack_require__(378),
-	    Mask: __webpack_require__(380),
-	    Notify: __webpack_require__(382),
-	    PopConfirm: __webpack_require__(384),
+	    Modal: __webpack_require__(380),
+	    Mask: __webpack_require__(382),
+	    Notify: __webpack_require__(384),
+	    PopConfirm: __webpack_require__(386),
 
 	    // Widget
-	    Gotop: __webpack_require__(386),
-	    Loading: __webpack_require__(388),
-	    Progress: __webpack_require__(390),
+	    Gotop: __webpack_require__(388),
+	    Loading: __webpack_require__(390),
+	    Progress: __webpack_require__(392),
 	    Tooltip: __webpack_require__(316),
-	    PathTool: __webpack_require__(392),
+	    PathTool: __webpack_require__(394),
 
 	    // Layout
 	    Panel: __webpack_require__(361),
-	    PanelTool: __webpack_require__(401),
-	    UITable: __webpack_require__(402),
-	    Row: __webpack_require__(417),
-	    Col: __webpack_require__(419),
+	    PanelTool: __webpack_require__(403),
+	    UITable: __webpack_require__(404),
+	    Row: __webpack_require__(419),
+	    Col: __webpack_require__(421),
+	    Card: __webpack_require__(423),
+	    CardTools: __webpack_require__(425),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(421)
+	    LocaleProvider: __webpack_require__(426)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -29024,10 +29027,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @protected
 	     */
 	    config: function config() {
-	        var _total = Math.ceil(this.data.sumTotal / this.data.pageSize);
 	        _.extend(this.data, {
 	            current: 1,
-	            total: _total,
+	            total: '',
 	            sumTotal: '',
 	            pageSize: '',
 	            position: 'center',
@@ -29065,13 +29067,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this.$watch('pageSize', function (val, oldVal) {
 	            if (!oldVal) return;
-	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	            this.initTotal();
 	            this.select(1);
 	        });
 
 	        this.$watch('sumTotal', function (val, oldVal) {
-	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	            this.initTotal();
 	        });
+	    },
+
+	    initTotal: function initTotal() {
+	        if (!!this.data.pageSize) {
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	        }
+
+	        if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
+	            console.error('Pager组件需要传pageSize');
+	        }
 	    },
 
 	    _setPageSizeList: function _setPageSizeList() {
@@ -29314,6 +29326,53 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
+	 * Card     面包屑
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(379);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 * @param {string}          [options.data.list]               => 面包屑的每一项的配置
+	 * @param {string}          [options.data.separator]          => 分隔符自定义
+	 */
+	var Crumb = Component.extend({
+	  name: 'ui.crumb',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      separator: '/'
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = Crumb;
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports) {
+
+	module.exports = "<ul class=\"m-crumb {class}\">\n    <li class=\"home\"><i class=\"u-icon u-icon-home2\"></i></li>\n    {#list list as item by item_index}\n    <li on-click={this._onClick(item)}>\n        <a href=\"{item.url}\">{item.title}</a>\n        {#if item_index != list.length - 1}\n        <span>{#inc separator}</span>\n        {/if}\n    </li>\n    {/list}\n</ul>"
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
 	 * Modal     模态对话框
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
@@ -29322,7 +29381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(379);
+	var template = __webpack_require__(381);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29475,13 +29534,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Modal;
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29494,7 +29553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(381);
+	var template = __webpack_require__(383);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29556,13 +29615,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Mask;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
 
 /***/ }),
-/* 382 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29575,7 +29634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(383);
+	var template = __webpack_require__(385);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29747,13 +29806,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ }),
-/* 383 */
+/* 385 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 384 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29768,7 +29827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(68).dom;
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(385);
+	var template = __webpack_require__(387);
 	var _ = __webpack_require__(98);
 	var trigger = __webpack_require__(318);
 
@@ -29882,13 +29941,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PopConfirm;
 
 /***/ }),
-/* 385 */
+/* 387 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 386 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29901,7 +29960,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(387);
+	var template = __webpack_require__(389);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29939,13 +29998,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Gotop;
 
 /***/ }),
-/* 387 */
+/* 389 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-arrow-up\"></i>\n    {/if}\n</a>"
 
 /***/ }),
-/* 388 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29958,7 +30017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(389);
+	var template = __webpack_require__(391);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30044,13 +30103,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 390 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30063,7 +30122,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(391);
+	var template = __webpack_require__(393);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30101,13 +30160,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Progress;
 
 /***/ }),
-/* 391 */
+/* 393 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 392 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30120,7 +30179,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use stict';
 
-	var Clipboard = __webpack_require__(393);
+	var Clipboard = __webpack_require__(395);
 
 	/**
 	 * 获取 js 路径快捷键 ctrl + alt + shift + c  
@@ -30167,12 +30226,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PathTool;
 
 /***/ }),
-/* 393 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(394), __webpack_require__(396), __webpack_require__(397)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(396), __webpack_require__(398), __webpack_require__(399)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -30379,12 +30438,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 394 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(395)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(397)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -30613,7 +30672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 395 */
+/* 397 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -30662,7 +30721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 396 */
+/* 398 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -30734,11 +30793,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 397 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(398);
-	var delegate = __webpack_require__(399);
+	var is = __webpack_require__(400);
+	var delegate = __webpack_require__(401);
 
 	/**
 	 * Validates all params and calls the right
@@ -30835,7 +30894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 398 */
+/* 400 */
 /***/ (function(module, exports) {
 
 	/**
@@ -30890,10 +30949,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 399 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(400);
+	var closest = __webpack_require__(402);
 
 	/**
 	 * Delegates event to a selector.
@@ -30940,7 +30999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 400 */
+/* 402 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -30979,7 +31038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 401 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31025,20 +31084,20 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PanelTool;
 
 /***/ }),
-/* 402 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(403);
-	var TableBody = __webpack_require__(409);
-	var TableCol = __webpack_require__(410);
-	var TableTemplate = __webpack_require__(404);
+	var TableHeader = __webpack_require__(405);
+	var TableBody = __webpack_require__(411);
+	var TableCol = __webpack_require__(412);
+	var TableTemplate = __webpack_require__(406);
 	var _ = __webpack_require__(98);
-	var utils = __webpack_require__(408);
+	var utils = __webpack_require__(410);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(416);
+	var tpl = __webpack_require__(418);
 
 	var getLeaves = function getLeaves(columns) {
 	    var res = [];
@@ -31484,17 +31543,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UITable;
 
 /***/ }),
-/* 403 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableTemplate = __webpack_require__(404);
-	var templates = __webpack_require__(405);
+	var TableTemplate = __webpack_require__(406);
+	var templates = __webpack_require__(407);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(407);
-	var _ = __webpack_require__(408);
+	var tpl = __webpack_require__(409);
+	var _ = __webpack_require__(410);
 
 	var HEADER_MIN_WIDTH = 30;
 
@@ -31774,7 +31833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBasic;
 
 /***/ }),
-/* 404 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31838,13 +31897,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TableTemplate;
 
 /***/ }),
-/* 405 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var tplMap = {
-	    default: __webpack_require__(406)
+	    default: __webpack_require__(408)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -31852,19 +31911,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 406 */
+/* 408 */
 /***/ (function(module, exports) {
 
 	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
 
 /***/ }),
-/* 407 */
+/* 409 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
-/* 408 */
+/* 410 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -31912,18 +31971,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 409 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableCol = __webpack_require__(410);
-	var TableTemplate = __webpack_require__(404);
-	var _ = __webpack_require__(408);
+	var TableCol = __webpack_require__(412);
+	var TableTemplate = __webpack_require__(406);
+	var _ = __webpack_require__(410);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(411);
-	var templates = __webpack_require__(412);
+	var tpl = __webpack_require__(413);
+	var templates = __webpack_require__(414);
 
 	var _parseFormat = function _parseFormat(str) {
 	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -32060,13 +32119,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBasic;
 
 /***/ }),
-/* 410 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var TableTemplate = __webpack_require__(404);
+	var TableTemplate = __webpack_require__(406);
 
 	/**
 	 * @class TableCol
@@ -32140,21 +32199,21 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TableCol;
 
 /***/ }),
-/* 411 */
+/* 413 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 412 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var tplMap = {
-	    default: __webpack_require__(413),
-	    progress: __webpack_require__(414),
-	    check: __webpack_require__(415)
+	    default: __webpack_require__(415),
+	    progress: __webpack_require__(416),
+	    check: __webpack_require__(417)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -32162,31 +32221,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 413 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={value}>{value | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={item[column.key]}>{item[column.key] | placeholder}</span>\n{/if}\n"
 
 /***/ }),
-/* 414 */
+/* 416 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 415 */
+/* 417 */
 /***/ (function(module, exports) {
 
 	module.exports = "<check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 416 */
+/* 418 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}\n    r-style={{\n        width: width == undefined ? 'auto' : width + 'px'\n    }}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'\n            }}>\n            <table.header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table.body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px'\n            }} >\n            <table.header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: 0,\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px'\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}>\n            <table.header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        width: (viewWidth || tableWidth) + 'px'\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 417 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32199,7 +32258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var template = __webpack_require__(418);
+	var template = __webpack_require__(420);
 
 	/**
 	 * @class Row
@@ -32240,13 +32299,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Row;
 
 /***/ }),
-/* 418 */
+/* 420 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 419 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32259,8 +32318,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var template = __webpack_require__(420);
-	var Row = __webpack_require__(417);
+	var template = __webpack_require__(422);
+	var Row = __webpack_require__(419);
 
 	/**
 	 * @class Col
@@ -32309,13 +32368,105 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Col;
 
 /***/ }),
-/* 420 */
+/* 422 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 421 */
+/* 423 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Card     卡片
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(424);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}          [options.data]                        = 绑定属性
+	 * @param {string}          [options.data.class]                  => 补充class
+	 * @param {boolean}          [options.data.isShowLine]            => 控制展示title之前的竖线，默认展示出来
+	 * @param {boolean}          [options.data.isShowBtLine]          => 控制展示title下发的横线，默认不展示出来
+	 * @param {boolean}          [options.data.isIndent]              => 控制子模块的title是否缩进
+	 */
+	var Card = Component.extend({
+	  name: 'ui.card',
+	  template: template,
+	  $tools: null,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: '',
+	      isShowLine: true,
+	      isShowBtLine: false,
+	      isIndent: true
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = Card;
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
+
+/***/ }),
+/* 425 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Card     卡片组件上的操作区域
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var Card = __webpack_require__(423);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var CardTools = Component.extend({
+	  name: 'card.tools',
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof Card) {
+	      this.$outer.$tools = this;
+	    }
+	  }
+	});
+
+		module.exports = CardTools;
+
+/***/ }),
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
