@@ -100,6 +100,30 @@ var UITable = Component.extend({
             set: function(val) {
                 return this.data.bodyHeight = val;
             }
+        },
+        wrapWidth: {
+            get: function() {
+                var data = this.data;
+                if(data.width !== undefined) {
+                    return data.width + 'px';
+                } else {
+                    var parentNode = this.$parent.parentNode;
+                    var parentWidth = undefined;
+                    if(parentNode) {
+                        parentWidth = parentNode.clientWidth;
+                    }
+                    if(parentWidth && data.tableWidth > parentWidth) {
+                        return parentWidth + 'px';
+                    } else {
+                        return data.tableWidth + 'px';
+                    }
+                }
+
+                return 'auto';
+            },
+            set: function(val) {
+                return this.data.wrapWidth = val;
+            }
         }
     },
     config: function(data) {

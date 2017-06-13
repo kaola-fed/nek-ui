@@ -191,7 +191,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<ui.table fixedHeader width=700 height=200 source={table.source}>
+<ui.table fixedHeader height=200 source={table.source}>
     <table.col name="title" key="title" fixed/>
     <table.col name="col1" key="col1" />
     <table.col name="value" key="value" fixed="right"/>
