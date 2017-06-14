@@ -60,19 +60,19 @@ var component = new NEKUI.Component({
          title: '一级菜单A',
          children: [{
            title: '二级菜单A',
-           url: 'http://localhost:8000/test/menu.html?a=1'
+           url: '/'
          },{
            title: '二级菜单B',
-           url: 'http://localhost:8000/test/menu.html?a=2'
+           url: '/'
          }]
        }, {
          title: '一级菜单B',
          children: [{
            title: '二级菜单A',
-           url: 'http://localhost:8000/test/menu.html?b=1'
+           url: '/'
          },{
            title: '二级菜单B',
-           url: 'http://localhost:8000/test/menu.html?b=2'
+           url: '/'
          }]
        }]
     }
