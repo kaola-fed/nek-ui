@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>分页 - nek-ui</title>
+        <title>菜单栏 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="分页 - nek-ui">
+        <meta property="og:title" content="菜单栏 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -227,14 +227,14 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_pager_.html" class="sidebar-link current">分页 pager</a>
+                    <a href="/components/navigation_pager_.html" class="sidebar-link">分页 pager</a>
                 </li>
             
                 
                     
                 
                 <li>
-                    <a href="/components/navigation_sidebar_.html" class="sidebar-link">菜单栏 sidebar</a>
+                    <a href="/components/navigation_sidebar_.html" class="sidebar-link current">菜单栏 sidebar</a>
                 </li>
             
                 
@@ -274,62 +274,51 @@
 
 <div class="content components with-sidebar">
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="总条数展示设置一"><a href="#总条数展示设置一" class="headerlink" title="总条数展示设置一"></a>总条数展示设置一</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="总条数展示设置二"><a href="#总条数展示设置二" class="headerlink" title="总条数展示设置二"></a>总条数展示设置二</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">maxTotal</span>=<span class="string">100</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"left"</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"center"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"right"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">middle</span>=<span class="string">3</span> <span class="attr">side</span>=<span class="string">1</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p><div class="m-example"></div></p>
+<p><style>
+    .m-example {
+        font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+        overflow: hidden;
+        padding: 0;
+    }
+    .demo-main {
+        position:relative;
+        height: 400px;
+        background: #eaedf3;
+    }
+    .demo-head {
+        box-sizing: border-box;
+        height: 60px;
+        background: #22354a;
+        padding: 13px 30px;
+        font-size: 18px;
+        color: #fff;
+    }
+    .demo-body {
+        position: absolute;
+        left: 180px;
+        top: 60px;
+        bottom: 0;
+        right: 0;
+        padding: 10px 13px;
+    }
+</style>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        NEKUI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ui.sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.card</span> <span class="attr">title</span>=<span class="string">"标题"</span>&gt;</span></div><div class="line">            content</div><div class="line">        <span class="tag">&lt;/<span class="name">ui.card</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">menus</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单A'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'http://localhost:8000/test/menu.html?a=1'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'http://localhost:8000/test/menu.html?a=2'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;, &#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单B'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'http://localhost:8000/test/menu.html?b=1'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'http://localhost:8000/test/menu.html?b=2'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#Pager">Pager</a></dt>
+<dt><a href="#Sidebar">Sidebar</a></dt>
 <dd></dd>
-</dl>
-
-<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
-<dt><a href="#Component">Component</a></dt>
-<dd><hr>
-<p>Pager     分页</p>
-</dd>
 </dl>
 
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
 <dt><a href="#config">config()</a></dt>
 <dd></dd>
-<dt><a href="#select(page) 选择某一页">select(page) 选择某一页(page)</a> ⇒ <code>void</code></dt>
-<dd></dd>
 </dl>
 
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_select 选择某一页时触发">“select 选择某一页时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="Pager"></a></p>
-<h2 id="Pager"><a href="#Pager" class="headerlink" title="Pager"></a>Pager</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Pager_new"></a></p>
-<h3 id="new-Pager"><a href="#new-Pager" class="headerlink" title="new Pager()"></a>new Pager()</h3><table>
+<p><a name="Sidebar"></a></p>
+<h2 id="Sidebar"><a href="#Sidebar" class="headerlink" title="Sidebar"></a>Sidebar</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Sidebar_new"></a></p>
+<h3 id="new-Sidebar"><a href="#new-Sidebar" class="headerlink" title="new Sidebar()"></a>new Sidebar()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -346,143 +335,69 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.current]</td>
-<td><code>number</code></td>
-<td><code>1</code></td>
-<td>&lt;=&gt; 当前页</td>
-</tr>
-<tr>
-<td>[options.data.total]</td>
-<td><code>number</code></td>
-<td><code>0</code></td>
-<td>=&gt; 总页数</td>
-</tr>
-<tr>
-<td>[options.data.sumTotal]</td>
-<td><code>number</code></td>
-<td><code>0</code></td>
-<td>=&gt; 总个数</td>
-</tr>
-<tr>
-<td>[options.data.pageSize]</td>
-<td><code>number</code></td>
-<td><code>20</code></td>
-<td>=&gt; 每页个数</td>
-</tr>
-<tr>
-<td>[options.data.position]</td>
-<td><code>string</code></td>
-<td><code>&quot;center&quot;</code></td>
-<td>=&gt; 分页的位置，可选参数：<code>center</code>、<code>left</code>、<code>right</code></td>
-</tr>
-<tr>
-<td>[options.data.middle]</td>
-<td><code>number</code></td>
-<td><code>5</code></td>
-<td>=&gt; 当页数较多时，中间显示的页数</td>
-</tr>
-<tr>
-<td>[options.data.side]</td>
-<td><code>number</code></td>
-<td><code>2</code></td>
-<td>=&gt; 当页数较多时，两端显示的页数</td>
-</tr>
-<tr>
-<td>[options.data.step]</td>
-<td><code>number</code></td>
-<td><code>5</code></td>
-<td>=&gt; 每页条数选择步长</td>
-</tr>
-<tr>
-<td>[options.data.maxPageSize]</td>
-<td><code>number</code></td>
-<td><code>50</code></td>
-<td>=&gt; 最大可设置的每页条数</td>
-</tr>
-<tr>
-<td>[options.data.readonly]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否只读</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.isEllipsis]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否展示位总条数+</td>
-</tr>
-<tr>
-<td>[options.data.maxTotal]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 总条数超过maxTotal条数时，展示为maxTotal+条数</td>
-</tr>
-<tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
+<tr>
+<td>[options.data.menus]</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 菜单数组</td>
+</tr>
+<tr>
+<td>[options.data.top]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;60px&#x27;&quot;</code></td>
+<td>=&gt; 菜单style top的值</td>
+</tr>
+<tr>
+<td>[options.data.active]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 默认是否收起</td>
+</tr>
+<tr>
+<td>[options.data.bodyEl]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
+<td>=&gt; 主内容区body元素的id,当菜单收起时,拉伸bodyEl</td>
+</tr>
+<tr>
+<td>[options.data.uniqueOpened]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否只保持打开一个菜单</td>
+</tr>
+<tr>
+<td>[options.data.titleKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;title&quot;</code></td>
+<td>=&gt; 一级菜单的字段key名</td>
+</tr>
+<tr>
+<td>[options.data.urlKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;url\&quot;&quot;</code></td>
+<td>=&gt; 菜单结构中的链接key名</td>
+</tr>
+<tr>
+<td>[options.data.pageKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;title\&quot;&quot;</code></td>
+<td>=&gt; 二级菜单的字段key名</td>
+</tr>
+<tr>
+<td>[options.data.childrenKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;\&quot;children\&quot;&quot;</code></td>
+<td>=&gt; 一级菜单对象下二级菜单数组的key名</td>
+</tr>
 </tbody>
 </table>
-<p><a name="Component"></a></p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>Pager     分页</p>
-<p><strong>Kind</strong>: global variable  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(page) 选择某一页"></a></p>
-<h2 id="select-page-选择某一页-page-⇒-void"><a href="#select-page-选择某一页-page-⇒-void" class="headerlink" title="select(page) 选择某一页(page) ⇒ void"></a>select(page) 选择某一页(page) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>page</td>
-<td><code>object</code></td>
-<td>选择页</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_select 选择某一页时触发"></a></p>
-<h2 id="“select-选择某一页时触发”"><a href="#“select-选择某一页时触发”" class="headerlink" title="“select 选择某一页时触发”"></a>“select 选择某一页时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
-<td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>current</td>
-<td><code>object</code></td>
-<td>当前选择页</td>
-</tr>
-</tbody>
-</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
 var index = 0;
@@ -490,62 +405,47 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<pager current=3 sumTotal=200 pageSize=5 />
+
+<div class="demo-main">
+    <div class="demo-head">
+        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
+        NEKUI系统
+    </div>
+    <ui.sidebar menus={menus} bodyEl="j-body" />
+    <div id="j-body" class="demo-body">
+        <ui.card title="标题">
+            content
+        </ui.card>
+    </div>
+</div>
 
       */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
       
-<pager current=3 sumTotal=200 pageSize=5 isEllipsis={true} />
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        menus: [{
+         title: '一级菜单A',
+         children: [{
+           title: '二级菜单A',
+           url: 'http://localhost:8000/test/menu.html?a=1'
+         },{
+           title: '二级菜单B',
+           url: 'http://localhost:8000/test/menu.html?a=2'
+         }]
+       }, {
+         title: '一级菜单B',
+         children: [{
+           title: '二级菜单A',
+           url: 'http://localhost:8000/test/menu.html?b=1'
+         },{
+           title: '二级菜单B',
+           url: 'http://localhost:8000/test/menu.html?b=2'
+         }]
+       }]
+    }
+});
 
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<pager current=3 sumTotal=200 pageSize=5 maxTotal=100 />
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<pager pageSize=20 current=6 total=11 position="left" lang="en-US" />
-<pager pageSize=20 current=6 total=11 position="center" />
-<pager current=6 total=11 position="right" />
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<pager current=6 total=11 middle=3 side=1 />
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<pager current=6 total=11 disabled />
-
-      */});
-      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -553,10 +453,10 @@ var index = 0;
 
     <div class="guide-links">
       
-        <span>← <a href="/components/navigation_menu_.html">两级菜单</a></span>
+        <span>← <a href="/components/navigation_pager_.html">分页</a></span>
       
       
-        <span style="float:right"><a href="/components/navigation_sidebar_.html">菜单栏</a> →</span>
+        <span style="float:right"><a href="/components/navigation_steps_.html">步骤</a> →</span>
       
     </div>
     <div class="footer">

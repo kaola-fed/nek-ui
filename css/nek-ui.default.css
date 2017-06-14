@@ -4928,7 +4928,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	right:0;
 }
 .m-ui-table.m-ui-table-fixed .ui_table_header{
-	box-shadow:2px 0px 8px #d3d4d6;
+	box-shadow:1px -4px 8px #d3d4d6;
 }
 .m-ui-table.m-ui-table-fixed .ui_table_header,.m-ui-table.m-ui-table-fixed .ui_table_body{
 	overflow:hidden;
@@ -5037,7 +5037,6 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-ui-table-ft .scroll_bar{
 	overflow:auto;
-	margin-bottom:10px;
 }
 .m-ui-table-ft .scroll_bar >div{
 	height:1px;
@@ -5045,10 +5044,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table-ft .scroll_bar::-webkit-scrollbar{
 	-webkit-appearance:none;
 	width:8px;
-	height:12px;
-}
-.m-ui-table-ft .scroll_bar::-webkit-scrollbar:hover{
-	background-color:rgba(0,0,0,0.1);
+	height:16px;
 }
 .m-ui-table-ft .scroll_bar::-webkit-scrollbar-thumb{
 	background-color:rgba(0,0,0,0.2);
