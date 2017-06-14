@@ -157,13 +157,59 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+
 ### 悬浮表头和底部
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table stickyHeader stickyFooter source={table.source} >
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source} >
+    <table.col name="title" key="title" width=500 />
+    <table.col name="value" key="value" width=500 />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
+### 悬浮表头和底部(指定监听滚动的容器)
+
+<!-- demo_start -->
+<div class="m-example" id="m-ext" style="height: 400px; overflow-y: scroll;"></div>
+
+```xml
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source}
+    scrollParent="#m-ext" >
     <table.col name="title" key="title" width=500 />
     <table.col name="value" key="value" width=500 />
 </ui.table>

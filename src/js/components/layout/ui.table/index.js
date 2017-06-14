@@ -107,10 +107,10 @@ var UITable = Component.extend({
                 if(data.width !== undefined) {
                     return data.width + 'px';
                 } else {
-                    var parentNode = this.$parent.parentNode;
+                    var parentNode = this.$refs.tableWrap.parentNode;
                     var parentWidth = undefined;
                     if(parentNode) {
-                        parentWidth = parentNode.clientWidth;
+                        parentWidth = parentNode.scrollWidth;
                     }
                     if(parentWidth && data.tableWidth > parentWidth) {
                         return parentWidth + 'px';
@@ -128,6 +128,10 @@ var UITable = Component.extend({
     },
     config: function(data) {
         this.defaults({
+            stickyHeaderOffset: 0,
+            stickyFooterOffset: 0,
+            scrollParent: null,
+            scrollParentNode: null,
             strip: true,
             enableHover: true,
             scrollYBar: 0,
@@ -141,8 +145,6 @@ var UITable = Component.extend({
         });
         this.supr(data);
 
-        this.data._defaultWidth = this.data.width;
-
         this._initWatchers();
     },
     _initWatchers: function() {
@@ -154,12 +156,22 @@ var UITable = Component.extend({
         this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
 
         this._onWinodwScroll = utils.throttle(this._onWinodwScroll.bind(this), 200);
-        window.document.addEventListener('scroll', this._onWinodwScroll);
+        this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
 
         this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
         window.addEventListener('resize', this._onWindowResize);
 
         this._watchWidthChange();
+    },
+    _getScrollParentNode: function() {
+        var data = this.data;
+        if(data.scrollParentNode) {
+            return data.scrollParentNode;
+        }
+        if(data.scrollParent) {
+            return data.scrollParentNode = document.querySelector(data.scrollParent) || window;
+        }
+        return data.scrollParentNode = window;
     },
     _onShowChange: function(newVal) {
         if(newVal) {
@@ -190,11 +202,23 @@ var UITable = Component.extend({
             return;
         }
 
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var scrollParentNode = this._getScrollParentNode();
+        var parentRect = {
+            top: 0
+        };
+        var scrollTop;
+        if(scrollParentNode !== window) {
+            scrollTop = scrollParentNode.scrollTop;
+            parentRect = scrollParentNode.getBoundingClientRect();
+        } else {
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        }
+
         var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+
         var tableWrapOffset = {
-            top: tableRect.top + scrollTop,
-            bottom: tableRect.bottom + scrollTop
+            top: tableRect.top + scrollTop - parentRect.top,
+            bottom: tableRect.bottom + scrollTop - parentRect.top
         };
 
         if(data.stickyHeader && tableWrapOffset) {
@@ -207,7 +231,15 @@ var UITable = Component.extend({
     },
     _updateStickyHeaderStatus: function(tableWrapOffset) {
         var headerHeight = this._getHeaderHeight();
-        var scrollY = window.scrollY;
+
+        var scrollParentNode = this._getScrollParentNode();
+        var scrollY = 0;
+        if(scrollParentNode !== window) {
+            scrollY = scrollParentNode.scrollTop;
+        } else {
+            scrollY = window.scrollY;
+        }
+
         var stickyActive = false;
 
         if(scrollY + headerHeight > tableWrapOffset.bottom
@@ -218,14 +250,23 @@ var UITable = Component.extend({
             stickyActive = true;
         }
 
-
-        this._updateData('stickyHeaderActive', stickyActive);
+        this.data.stickyHeaderActive = stickyActive;
     },
     _updateStickyFooterStatus: function(tableWrapOffset) {
         var headerHeight = this._getHeaderHeight();
         var footerHeight = this._getFooterHeight();
-        var scrollY = window.scrollY;
-        var innerHeight = window.innerHeight;
+
+        var scrollY = 0;
+        var innerHeight = 0;
+        var scrollParentNode = this._getScrollParentNode();
+        if(scrollParentNode !== window) {
+            scrollY = scrollParentNode.scrollTop;
+            innerHeight = scrollParentNode.clientHeight;
+        } else {
+            scrollY = window.scrollY;
+            innerHeight = window.innerHeight;
+        }
+
         var scrollYBottom = scrollY + innerHeight;
         var stickyActive = false;
 
@@ -237,16 +278,17 @@ var UITable = Component.extend({
             stickyActive = true;
         }
 
-        this._updateData('stickyFooterActive', stickyActive);
+        this.data.stickyFooterActive = stickyActive;
     },
     _watchWidthChange: function() {
         this.data._widthTimer = setInterval(function() {
             if(!this._isShow()) {
                 return;
             }
+            this._updateDefaultWidth();
             this._updateScrollBar();
             this._updateTableWidth();
-        }.bind(this), 300);
+        }.bind(this), 400);
     },
     _updateScrollBar: function() {
         var data = this.data;
@@ -282,13 +324,26 @@ var UITable = Component.extend({
     _initTable: function() {
         var data = this.data;
         var refs = this.$refs;
+        var INIT = 1;
         setTimeout(function() {
             data.headerHeight = refs.headerWrap.offsetHeight;
 
+            this._updateDefaultWidth(INIT);
             this._updateViewWidth();
             this._initTableWidth();
             this._getHeaderHeight();
         }.bind(this), 200);
+    },
+    _updateDefaultWidth: function(init) {
+        var width = this.data.width;
+        if(init && width) {
+            this._updateData('_defaultWidth', width);
+            return;
+        }
+
+        var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
+        width = getNum(parentStyle.width) - getNum(parentStyle.paddingLeft) - getNum(parentStyle.paddingRight);
+        this._updateData('_defaultWidth', width);
     },
     _initTableWidth: function() {
         var data = this.data;
@@ -364,17 +419,20 @@ var UITable = Component.extend({
             }
         });
 
-        this._updateData('fixedCol', fixedCol);
-        this._updateData('fixedTableWidth', fixedTableWidth);
-        this._updateData('fixedColRight', fixedColRight);
-        this._updateData('fixedTableWidthRight', fixedTableWidthRight);
-        this._updateData('tableWidth', newTableWidth);
+        data.fixedCol = fixedCol;
+        data.fixedTableWidth = fixedTableWidth;
+        data.fixedColRight = fixedColRight;
+        data.fixedTableWidthRight = fixedTableWidthRight;
 
-        if(newTableWidth <= this.data._defaultWidth) {
-            this._updateData('width', newTableWidth);
+        data.tableWidth = newTableWidth;
+
+        if(newTableWidth <= data._defaultWidth) {
+            data.width = newTableWidth;
         } else {
-            this._updateData('width', this.data._defaultWidth);
+            data.width = data._defaultWidth;
         }
+
+        this.$update();
     },
     _onWindowResize: function() {
         if(!this.$refs || !this._isShow()) {

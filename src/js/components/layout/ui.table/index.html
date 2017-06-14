@@ -35,7 +35,8 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px'
+                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',
+                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}>
             <table.header
                 ref="tableHeader"
@@ -90,7 +91,8 @@
     <div ref="tableFixed"
         class="m-ui-table m-ui-table-fixed"
         r-class={{
-            'm-ui-table-hover': enableHover
+            'm-ui-table-hover': enableHover,
+            'strip': strip
         }}
         r-style={{
             bottom: scrollXBar + 'px',
@@ -102,7 +104,8 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
             r-style={{
-                width: fixedTableWidth + 'px'
+                width: fixedTableWidth + 'px',
+                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }} >
             <table.header
                 ref="tableHeaderFixed"
@@ -162,18 +165,23 @@
     <div ref="tableFixedRight"
         class="m-ui-table m-ui-table-fixed m-ui-table-fixed-right"
         r-class={{
-            'm-ui-table-hover': enableHover
+            'm-ui-table-hover': enableHover,
+            'strip': strip
         }}
         r-style={{
             bottom: scrollXBar + 'px',
             right: scrollYBar + 'px',
-            width: fixedTableWidthRight + 'px'
+            width: fixedTableWidthRight + 'px',
         }}>
         <div ref="headerWrapFixedRight"
             class="ui_table_header"
             r-class={{
                 'sticky_header': stickyHeader && stickyHeaderActive
-            }}>
+            }}
+            r-style={{
+                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
+            }}
+            >
             <table.header ref="tableHeaderFixedRight"
                 _dataColumns={_dataColumns}
                 fixedCol="right"
@@ -232,7 +240,8 @@
         'sticky_footer': stickyFooter && stickyFooterActive
     }}
     r-style={{
-        width: (viewWidth || tableWidth) + 'px'
+        width: (viewWidth || tableWidth) + 'px',
+        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0
     }}
 >
     {#if stickyFooter}
