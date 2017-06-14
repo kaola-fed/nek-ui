@@ -15,7 +15,7 @@ var template = require('./index.html');
  * @extend Component
  * @param {object}        [options.data]                          = 绑定属性
  * @param {string}        [options.data.class]                    => 补充class
- * @param {boolean}  [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+ * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
  */
 var Menu = Component.extend({
   name: 'ui.menu',

@@ -17,14 +17,14 @@ var Menu = require('../menu/index.js');
  * @param {object}        [options.data]                          = 绑定属性
  * @param {string}        [options.data.class]                    => 补充class
  * @param {array}         [options.data.menus]                    => 菜单数组
- * @param {string='60px'} [options.data.top]                      => 菜单style top的值
- * @param {boolean=true}  [options.data.active]                   => 默认是否收起
- * @param {string=''}     [options.data.bodyEl]                   => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
- * @param {boolean=true}  [options.data.uniqueOpened]             => 是否只保持打开一个菜单
- * @param {string=title}  [options.data.titleKey]                 => 一级菜单的字段key名
- * @param {string=url}    [options.data.urlKey]                   => 菜单结构中的链接key名
- * @param {string=title}  [options.data.pageKey]                  => 二级菜单的字段key名
- * @param {string=children} [options.data.childrenKey]            => 一级菜单对象下二级菜单数组的key名
+ * @param {string}        [options.data.top='60px']               => 菜单style top的值
+ * @param {boolean}       [options.data.active=true]              => 默认是否收起
+ * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
+ * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
+ * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
+ * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
+ * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
+ * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
  */
 var Sidebar = Component.extend({
   name: 'ui.sidebar',
