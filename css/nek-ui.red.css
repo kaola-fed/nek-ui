@@ -289,7 +289,7 @@ table{
 	-o-user-select:none;
 	user-select:none;
 }
-.f-lsn,.m-listview,.m-treeview .treeview_list,.m-list,.m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager,.m-tabs .tabs_hd{
+.f-lsn,.m-listview,.m-treeview .treeview_list,.m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager,.m-tabs .tabs_hd{
 	list-style:none;
 	margin:0;
 	padding:0;
@@ -4827,21 +4827,6 @@ input.u-check:disabled,input.u-radio:disabled{
 .g-row + .g-row{
 	margin-top:10px;
 }
-.m-list ul{
-	padding-left:20px;
-}
-.m-list-line li{
-	padding:4px 8px;
-}
-.m-list-line li + li{
-	border-top:1px solid #ddd;
-}
-.m-list-striped li:nth-of-type(odd){
-	background:#f5f5f5;
-}
-.m-list-hover li:hover{
-	background:#eee;
-}
 .m-panel{
 	background:#fff;
 }
@@ -4884,46 +4869,6 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-panel .panel_tt{
 	font-size:14px;
 	font-weight:bold;
-}
-.m-table{
-	table-layout:fixed;
-	width:100%;
-}
-.m-table caption{
-	color:#999;
-	font-size:12px;
-}
-.m-table th,.m-table td{
-	padding:6px 8px;
-	height:32px;
-	line-height:16px;
-	word-wrap:break-word;
-}
-.m-table thead{
-	background:#eef1f4;
-	font-size:12px;
-	color:#333;
-}
-.m-table thead th{
-	text-align:center;
-	border-right:1px solid #d8dee4;
-	border-bottom:1px solid #e3e7eb;
-}
-.m-table thead th:last-child{
-	border-right:none;
-}
-.m-table tbody{
-	font-size:12px;
-}
-.m-table tbody td{
-	text-align:center;
-	border-bottom:1px solid #ecf2f9;
-}
-.m-table-striped tbody tr:nth-of-type(2n+0){
-	background:#f6f9fc;
-}
-.m-table-hover tbody tr:hover{
-	background:#ecf2f9;
 }
 .m-ui-table-wrap{
 	position:relative;
