@@ -387,8 +387,14 @@
 <h3 id="无条纹"><a href="#无条纹" class="headerlink" title="无条纹"></a>无条纹</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">strip</span>=<span class="string">&#123;false&#125;</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">tip</span>=<span class="string">"I am tip"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">strip</span>=<span class="string">&#123;false&#125;</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source = [];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">                <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                    <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                    <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                    <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">200</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">filter</span>=<span class="string">&#123;this.titleFilter&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source = [];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">                <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                    <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                    <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                    <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">                &#125;);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">200</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">titleFilter</span>: <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'* '</span> + val + <span class="string">' *'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="多级表头"><a href="#多级表头" class="headerlink" title="多级表头"></a>多级表头</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -411,7 +417,7 @@
 <h3 id="固定列"><a href="#固定列" class="headerlink" title="固定列"></a>固定列</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">fixedHeader</span> <span class="attr">width</span>=<span class="string">700</span> <span class="attr">height</span>=<span class="string">200</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">fixed</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"col1"</span> <span class="attr">key</span>=<span class="string">"col1"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">fixed</span>=<span class="string">"right"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">fixedHeader</span> <span class="attr">height</span>=<span class="string">200</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">fixed</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"col1"</span> <span class="attr">key</span>=<span class="string">"col1"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">fixed</span>=<span class="string">"right"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="自定义模版"><a href="#自定义模版" class="headerlink" title="自定义模版"></a>自定义模版</h3><p>通过 <code>table.template</code> 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 <code>template</code> 属性。
@@ -825,7 +831,7 @@ var component = new NEKUI.Component({
       
 <ui.table strip={false} source={table.source} >
     <table.col name="title" key="title" />
-    <table.col name="value" key="value" tip="I am tip"/>
+    <table.col name="value" key="value" />
 </ui.table>
 
       */});
@@ -849,6 +855,44 @@ var component = new NEKUI.Component({
             }
             this.$update();
         }.bind(this), 200);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.table source={table.source} >
+    <table.col name="title" key="title" filter={this.titleFilter}/>
+    <table.col name="value" key="value" />
+</ui.table>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        setTimeout(function() {
+            this.data.table.source = [];
+            for(var i = 0; i < 3; ++i) {
+                this.data.table.source.push({
+                    title: 'test' + i,
+                    col1: '' + i,
+                    value: 10 * i
+                });
+            }
+            this.$update();
+        }.bind(this), 200);
+    },
+    titleFilter: function(val) {
+        return '* ' + val + ' *';
     }
 });
 
@@ -962,7 +1006,7 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<ui.table fixedHeader width=700 height=200 source={table.source}>
+<ui.table fixedHeader height=200 source={table.source}>
     <table.col name="title" key="title" fixed/>
     <table.col name="col1" key="col1" />
     <table.col name="value" key="value" fixed="right"/>

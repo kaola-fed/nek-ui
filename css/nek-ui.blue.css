@@ -3580,6 +3580,22 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-formitem .formitem_rqr{
 	color:#ff753f;
 }
+.u-formitem-inline{
+	display:inline-block;
+	vertical-align:top;
+	margin-bottom:0;
+}
+.u-formitem-inline .formitem_ct{
+	display:inline-block;
+}
+.u-formitem-vertical{
+	flex-direction:column;
+}
+.u-formitem-vertical .formitem_tt{
+	text-align:left !important;
+	width:100%;
+	max-width:100%;
+}
 .m-table .u-formitem{
 	margin-bottom:0;
 }
@@ -4929,7 +4945,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	box-sizing:border-box;
 	border-collapse:collapse;
 	border-bottom:1px solid #ecf2f9;
-	line-height:18px;
+	line-height:17px;
 	font-size:12px;
 	color:#333;
 }
@@ -4979,7 +4995,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table .tb_hd_th{
 	box-sizing:border-box;
 	background-color:#eef1f4;
-	height:40px;
+	height:32px;
 	padding:0;
 	border-collapse:collapse;
 	border-bottom:1px solid #fff;
@@ -5029,11 +5045,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	box-sizing:border-box;
 	position:relative;
 	padding:0;
-	height:40px;
+	height:32px;
 }
 .m-ui-table .tb_bd_td >.tb_bd_td_div{
 	padding:6px 8px;
-	line-height:18px;
+	line-height:17px;
 }
 .m-ui-table.strip .tb_bd_tr{
 	transition:background 200ms ease-out;
