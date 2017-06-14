@@ -1,7 +1,3 @@
-// Name:            Crumb
-// Description:     面包屑
-// Author:          sensen(rainforest92@126.com)
-// ========================================================================
 
 
 
@@ -11,16 +7,44 @@
 .m-crumb {
     @extend .f-lsn;
     @extend .f-lsi;
+    color: #333;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 
-    .home {
+    .crumb_home {
         color: $brand-primary;
-    }
-    > li {
+        font-size: 14px;
         display: inline-block;
     }
-
-    > li + li:before {
-        content: '/';
-        margin: 0 8px;
+    .crumbItem{
+        display: inline-block;
+        color: #333;
+        .separator{
+            margin: 0 10px;
+            font-size: 12px;
+        }
+        .crumbLink{
+            display: inline-block;
+            font-size: 12px;
+            .link:link, .link:visited, .link:hover {
+                text-decoration: none;
+                color: #333;
+            }
+        }
+        .crumbLink:hover{
+            color: #49a9ee;
+            cursor: pointer;
+        }
+    }
+    .crumbItem:last-child{
+        .crumbLink{
+            font-weight: bold;
+        }
+        .crumbLink:hover{
+            color: #333;
+            cursor: inherit;
+        }
     }
 }

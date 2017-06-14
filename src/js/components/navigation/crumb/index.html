@@ -1,11 +1,6 @@
 <ul class="m-crumb {class}">
-    <li class="home"><i class="u-icon u-icon-home2"></i></li>
-    {#list list as item by item_index}
-    <li on-click={this._onClick(item)}>
-        <a href="{item.url}">{item.title}</a>
-        {#if item_index != list.length - 1}
-        <span>{#inc separator}</span>
-        {/if}
-    </li>
-    {/list}
+    {#if isShowHome}
+    <li class="crumb_home"><i class="u-icon u-icon-home2"></i></li>
+    {/if}
+    {#inc this.$body}
 </ul>

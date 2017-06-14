@@ -16,8 +16,7 @@ var _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.class]              => 补充class
- * @param {string}          [options.data.list]               => 面包屑的每一项的配置
- * @param {string}          [options.data.separator]          => 分隔符自定义
+ * @param {boolean}          [options.data.isShowHome]               => 是否展示首页图标
  */
 var Crumb = Component.extend({
     name: 'ui.crumb',
@@ -27,6 +26,7 @@ var Crumb = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
+            isShowHome: true,
             separator: '/'
         });
         this.supr();

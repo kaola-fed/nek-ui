@@ -42,6 +42,7 @@ const Components = {
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
     Crumb : require('./components/navigation/crumb'),
+    CrumbItem : require('./components/navigation/crumb.item'),
 
     // Notice
     Modal : require('./components/notice/modal'),

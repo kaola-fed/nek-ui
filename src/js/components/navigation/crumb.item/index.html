@@ -1,0 +1,12 @@
+<li class="crumbItem {class}">
+    {#if !!separator}
+    <span class="separator">{#inc separator}</span>
+    {/if}
+    <div class="crumbLink">
+        {#if href}
+            <a class="link" href="{href}">{#inc this.$body}</a>
+        {#else}
+            {#inc this.$body}
+        {/if}
+    </div>
+</li>
