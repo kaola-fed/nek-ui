@@ -97,33 +97,18 @@
       var headers = content.querySelectorAll('h2')
       if (headers.length) {
         each.call(headers, function(h) {
-          sectionContainer.appendChild(makeLink(h))
           var h3s = collectH3s(h)
           allHeaders.push(h)
           allHeaders.push.apply(allHeaders, h3s)
-          if (h3s.length) {
-            sectionContainer.appendChild(makeSubLinks(h3s, isAPI))
-          }
         })
       } else {
         headers = content.querySelectorAll('h3')
         each.call(headers, function(h) {
-          sectionContainer.appendChild(makeLink(h))
           allHeaders.push(h)
         })
       }
 
       var animating = false
-      sectionContainer.addEventListener('click', function(e) {
-        if (e.target.classList.contains('section-link')) {
-          sidebar.classList.remove('open')
-          setActive(e.target)
-          animating = true
-          setTimeout(function() {
-            animating = false
-          }, 400)
-        }
-      }, true)
 
       // make links clickable
       allHeaders.forEach(makeHeaderClickable)
