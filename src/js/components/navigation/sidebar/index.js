@@ -65,7 +65,7 @@ var Sidebar = Component.extend({
           }
         });
       }
-      menu.open = shouldOpen;
+      menu.open = shouldOpen || menu.open;
     });
   },
   initBodyEl: function() {

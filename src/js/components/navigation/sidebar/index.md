@@ -58,6 +58,7 @@ var component = new NEKUI.Component({
     data: {
         menus: [{
          title: '一级菜单A',
+         open: true,
          children: [{
            title: '二级菜单A',
            url: '/'
