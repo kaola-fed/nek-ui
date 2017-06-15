@@ -300,7 +300,13 @@
 <h3 id="悬浮表头和底部"><a href="#悬浮表头和底部" class="headerlink" title="悬浮表头和底部"></a>悬浮表头和底部</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span> <span class="attr">stickyHeader</span> <span class="attr">stickyFooter</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span></span></div><div class="line">    <span class="attr">stickyHeader</span></div><div class="line">    <span class="attr">stickyFooter</span></div><div class="line">    <span class="attr">stickyHeaderOffset</span>=<span class="string">64</span></div><div class="line">    <span class="attr">stickyFooterOffset</span>=<span class="string">0</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="悬浮表头和底部-指定监听滚动的容器"><a href="#悬浮表头和底部-指定监听滚动的容器" class="headerlink" title="悬浮表头和底部(指定监听滚动的容器)"></a>悬浮表头和底部(指定监听滚动的容器)</h3><!-- demo_start -->
+<div class="m-example" id="m-ext" style="height: 400px; overflow-y: scroll;"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.table</span></span></div><div class="line">    <span class="attr">stickyHeader</span></div><div class="line">    <span class="attr">stickyFooter</span></div><div class="line">    <span class="attr">stickyHeaderOffset</span>=<span class="string">64</span></div><div class="line">    <span class="attr">stickyFooterOffset</span>=<span class="string">0</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span></div><div class="line">    <span class="attr">scrollParent</span>=<span class="string">"#m-ext"</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">table.col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.table</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="表头固定在表格顶部"><a href="#表头固定在表格顶部" class="headerlink" title="表头固定在表格顶部"></a>表头固定在表格顶部</h3><!-- demo_start -->
@@ -837,7 +843,50 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<ui.table stickyHeader stickyFooter source={table.source} >
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source} >
+    <table.col name="title" key="title" width=500 />
+    <table.col name="value" key="value" width=500 />
+</ui.table>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source}
+    scrollParent="#m-ext" >
     <table.col name="title" key="title" width=500 />
     <table.col name="value" key="value" width=500 />
 </ui.table>
