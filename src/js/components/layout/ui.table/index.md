@@ -160,8 +160,12 @@ var component = new NEKUI.Component({
 
 ### 悬浮表头和底部
 
+控制表头和底部的悬浮需要对 `scroll` 事件进行监听，在默认的情况下，监听对象是 `window`，即页面的滚动。
+
+如果页面布局比较特殊，需要指定监听的对象，则可以通过 `scrollParent` 指定会发生滚动的容器，如 `scrollParent="#example"`。
+
 <!-- demo_start -->
-<div class="m-example"></div>
+<div class="m-example" id="example"></div>
 
 ```xml
 <ui.table
@@ -170,46 +174,6 @@ var component = new NEKUI.Component({
     stickyHeaderOffset=64
     stickyFooterOffset=0
     source={table.source} >
-    <table.col name="title" key="title" width=500 />
-    <table.col name="value" key="value" width=500 />
-</ui.table>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        table: {
-            source: []
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                col1: '' + i,
-                value: 10 * i
-            });
-        }
-    }
-});
-```
-<!-- demo_end -->
-
-### 悬浮表头和底部(指定监听滚动的容器)
-
-<!-- demo_start -->
-<div class="m-example" id="m-ext" style="height: 400px; overflow-y: scroll;"></div>
-
-```xml
-<ui.table
-    stickyHeader
-    stickyFooter
-    stickyHeaderOffset=64
-    stickyFooterOffset=0
-    source={table.source}
-    scrollParent="#m-ext" >
     <table.col name="title" key="title" width=500 />
     <table.col name="value" key="value" width=500 />
 </ui.table>
@@ -319,7 +283,7 @@ var component = new NEKUI.Component({
 <ui.table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
     <table.col name="title" key="title">
         <table.template type="header">
-            {'<a on-click={this.emitEvent("headerclick", header)}>I am {header.name}</a>'}
+            {'<a href={header.name+"~!@#$%^&*()?><{}[]"} on-click={this.emitEvent("headerclick", header)}>I am && {header.name}</a>'}
         </table.template>
         <table.template template={tdTpl} />
     </table.col>
