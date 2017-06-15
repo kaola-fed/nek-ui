@@ -33,7 +33,7 @@
             <td class="tb_bd_td {item.tdClass || column.tdClass}"
                 style="{item.tdStyle || column.tdStyle}"
                 r-class={{
-                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && column.fixed)
+                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)
                 }}>
                 <div class="tb_bd_td_div ">
                     {#include this._getTDElement(column, item)}

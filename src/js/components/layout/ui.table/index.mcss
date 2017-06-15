@@ -63,12 +63,14 @@ $orderIconColor = #666;
         left: 0;
         border-bottom: none;
         box-shadow: 1px 0 8px #d3d4d6;
+        //z-index: 100;
+        //transform: scale(1);
         &.m-ui-table-fixed-right {
             left: auto;
             right: 0;
         }
         .ui_table_header {
-            box-shadow: 1px -4px 8px #d3d4d6;
+            box-shadow: 2px 0px 8px #d3d4d6;
         }
         .ui_table_header,
         .ui_table_body {
@@ -211,13 +213,17 @@ $orderIconColor = #666;
     background: #fff;
     .scroll_bar {
         overflow: auto;
+        margin-bottom: 10px;
         >div {
             height: 1px;
         }
         &::-webkit-scrollbar {
             -webkit-appearance: none;
             width: 8px;
-            height: 16px;
+            height: 12px;
+            &:hover {
+                background-color: rgba(0,0,0,.1);
+            }
         }
         &::-webkit-scrollbar-thumb {
             background-color: rgba(0,0,0,.2);

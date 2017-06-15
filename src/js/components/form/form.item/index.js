@@ -53,7 +53,7 @@ var FormItem = Validation.extend({
                 $outer.initSelectorSource();
             }
         });
-        
+
         this.$watch('required', function() {
             this.initValidateRule();
         });
