@@ -28938,7 +28938,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        });
 	      }
-	      menu.open = shouldOpen;
+	      menu.open = shouldOpen || menu.open;
 	    });
 	  },
 	  initBodyEl: function initBodyEl() {
