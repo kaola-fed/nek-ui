@@ -84,7 +84,6 @@ var TableTemplate = Component.extend({
         return this._parseTemplate(template);
     },
     _parseTemplate: function(template) {
-        console.log(template);
         return decodeChar(template)
                     .replace(/(<!--)(.*)(-->)/g, '')
                     .trim();
