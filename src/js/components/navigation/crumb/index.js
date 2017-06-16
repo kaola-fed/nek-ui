@@ -16,7 +16,7 @@ var _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.class]              => 补充class
- * @param {boolean}          [options.data.isShowHome]               => 是否展示首页图标
+ * @param {string}          [options.data.separator]              => 分隔符，支持模板
  */
 var Crumb = Component.extend({
     name: 'ui.crumb',
@@ -26,8 +26,8 @@ var Crumb = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
-            isShowHome: true,
-            separator: '/'
+            separator: '/',
+            crumbArr: []
         });
         this.supr();
     }

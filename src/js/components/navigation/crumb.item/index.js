@@ -9,6 +9,7 @@
 
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
+var Crumb = require('../crumb/index.js');
 var _ = require('../../../ui-base/_');
 
 /**
@@ -16,8 +17,7 @@ var _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.class]              => 补充class
- * @param {string}          [options.data.separator]          => 分隔符自定义(可以传入模板)
- * @param {string}          [options.data.href]          => 传入的链接
+ * @param {string}          [options.data.href]                => 传入的链接
  */
 var CrumbItem = Component.extend({
     name: 'crumb.item',
@@ -27,9 +27,12 @@ var CrumbItem = Component.extend({
      */
     config: function() {
         _.extend(this.data, {
-            separator: '/'
         });
         this.supr();
+
+        if (this.$outer && this.$outer instanceof Crumb) {
+            this.$outer.data.crumbArr.push(this);
+        }
     }
 });
 

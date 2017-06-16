@@ -18,32 +18,34 @@
         font-size: 14px;
         display: inline-block;
     }
-    .crumbItem{
+    .m-crumb_item{
         display: inline-block;
         color: #333;
-        .separator{
+        .crumb_separator{
+            display: inline-block;
             margin: 0 10px;
             font-size: 12px;
         }
-        .crumbLink{
+        .crumb_ct{
             display: inline-block;
             font-size: 12px;
-            .link:link, .link:visited, .link:hover {
+            .crumb_link:link, .crumb_link:visited, .crumb_link:hover {
                 text-decoration: none;
                 color: #333;
             }
+            .crumb_link:hover {
+                color: #49a9ee;
+            }
         }
-        .crumbLink:hover{
-            color: #49a9ee;
+        .crumb_ct:hover{
             cursor: pointer;
         }
     }
-    .crumbItem:last-child{
-        .crumbLink{
+    .m-crumb_item:last-child{
+        .crumb_ct{
             font-weight: bold;
         }
-        .crumbLink:hover{
-            color: #333;
+        .crumb_ct:hover{
             cursor: inherit;
         }
     }
