@@ -1,6 +1,7 @@
 'use strict';
 
 var Component = require('../../../../ui-base/component');
+var _ = require('../utils');
 
 /**
  * @class TableTemplate

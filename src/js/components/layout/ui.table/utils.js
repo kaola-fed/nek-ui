@@ -45,4 +45,17 @@ _.throttle = function(fn, delay) {
     };
 };
 
+_.convertBeginEnd = function(str) {
+    var BEGIN = Regular._BEGIN_;
+    var END = Regular._END_;
+    str = '' + str;
+    if(BEGIN && BEGIN !== '{') {
+        str = str.replace(/{/g, BEGIN);
+    }
+    if(END && END !== '}') {
+        str = str.replace(/}/g, END);
+    }
+    return str;
+}
+
 module.exports = _;

@@ -283,7 +283,8 @@ var component = new NEKUI.Component({
 <ui.table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
     <table.col name="title" key="title">
         <table.template type="header">
-            {'<a href={header.name+"~!@#$%^&*()?><{}[]"} on-click={this.emitEvent("headerclick", header)}>I am && {header.name}</a>'}
+            {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emitEvent("headerclick", header)}>I am && {header.name}</a>'}
+            {'<anchor/>'}
         </table.template>
         <table.template template={tdTpl} />
     </table.col>
@@ -292,6 +293,11 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
+var anchor = NEKUI.Component.extend({
+    name: 'anchor',
+    template: '<a>&nbsp;anchor</a>',
+});
+
 var component = new NEKUI.Component({
     template: template,
     data: {
@@ -636,3 +642,18 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 特殊
+
+由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
+
+为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
+
+```javascript
+Regular._BEGIN_ = '{{';
+Regular._END_ = '}}';
+Regular.config({
+    BEGIN: Regular._BEGIN_,
+    END: Regular._END_
+});
+```
