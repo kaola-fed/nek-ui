@@ -9,6 +9,7 @@ var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 var bowser = require('bowser');
 
@@ -55,15 +56,7 @@ var TextArea = Component.extend({
 
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     init: function() {
         this.$watch('required', function(value) {
@@ -133,4 +126,5 @@ var TextArea = Component.extend({
     }
 });
 
+TextArea.use(validationMixin);
 module.exports = TextArea;

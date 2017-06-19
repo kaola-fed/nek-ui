@@ -12,6 +12,7 @@ var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Check = require('../check');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class CheckGroup
@@ -56,15 +57,7 @@ var CheckGroup = SourceComponent.extend({
         });
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     init: function() {
         this.$watch('source', function(source) {
@@ -152,4 +145,5 @@ var CheckGroup = SourceComponent.extend({
     }
 });
 
+CheckGroup.use(validationMixin);
 module.exports = CheckGroup;

@@ -3,6 +3,7 @@
 var _ = require('../../../ui-base/_');
 var ajax = require('../../../ui-base/ajax');
 var Validation = require('../../../util/validation');
+var ValidationMixin = require('../../../util/validationMixin');
 
 var template = require('./index.html');
 
@@ -34,22 +35,7 @@ var UIForm = Validation.extend({
     init: function() {
         this.supr();
 
-        var $outer = this;
-        do {
-            if ($outer.$outer) {
-                $outer = $outer.$outer;
-            } else if ($outer.$parent) {
-                $outer = $outer.$parent;
-        }} while(!($outer instanceof Validation) && ($outer.$outer || $outer.$parent));
-
-        if ($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
 
         this.$watch('this.controls.length', function() {
           this.initSelectorSource();
@@ -134,5 +120,7 @@ var UIForm = Validation.extend({
         $selectItem.$update();
     }
 });
+
+UIForm.use(ValidationMixin);
 
 module.exports = UIForm;

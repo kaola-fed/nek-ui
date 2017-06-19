@@ -11,6 +11,7 @@ var Dropdown = require('../../navigation/dropdown');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 var util = require('./common/util');
 var Multiple = require('./plugins/multiple');
 var PrivateMethod = require('./plugins/private.method');
@@ -244,15 +245,7 @@ var Select = Dropdown.extend({
             });
         }
 
-        var $outer = this.$outer;
-        if ($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function () {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     /**
      * @method select(item) 选择某一项
@@ -333,6 +326,6 @@ var Select = Dropdown.extend({
 
         return result;
     }
-}).use(Multiple).use(PrivateMethod);
+}).use(Multiple).use(PrivateMethod).use(validationMixin);
 
 module.exports = Select;

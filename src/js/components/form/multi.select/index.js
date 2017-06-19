@@ -9,6 +9,7 @@
 
 var Dropdown = require('../../navigation/dropdown');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var check = require('../check');
@@ -60,15 +61,7 @@ var MultiSelect = Dropdown.extend({
         this.initSelected();
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     initSelected: function() {
     	var data = this.data;
@@ -222,4 +215,8 @@ var MultiSelect = Dropdown.extend({
         data.empty[level] = true;
         return [];
     }
-})
+});
+
+
+MultiSelect.use(validationMixin);
+module.exports = MultiSelect;

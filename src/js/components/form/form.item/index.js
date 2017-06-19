@@ -2,6 +2,7 @@
 
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 var UIForm = require('../ui.form');
 var Tooltip = require('../../widget/tooltip');
 
@@ -34,23 +35,15 @@ var FormItem = Validation.extend({
         });
         this.supr(data);
 
-        var $outer = this.$outer;
-        if ($outer && $outer instanceof UIForm) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     init: function() {
-        var $outer = this.$outer;
+        var parentValidator = this._parentValidator;
         this.$watch('this.controls.length', function(newValue, oldValue) {
             /* 处理form.item下面ui.select数量变化的情况,当从没有变为有时,需要赋值 */
             if (oldValue === undefined) { return; }
-            if ($outer && $outer.initSelectorSource) {
-                $outer.initSelectorSource();
+            if (parentValidator && parentValidator.initSelectorSource) {
+                parentValidator.initSelectorSource();
             }
         });
 
@@ -111,5 +104,7 @@ FormItem.directive('lineHeight', function(ele, lineHeight) {
     }
   });
 });
+
+FormItem.use(validationMixin);
 
 module.exports = FormItem;

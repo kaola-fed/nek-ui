@@ -11,6 +11,7 @@ var SourceComponent = require('../../../ui-base/sourceComponent');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class RadioGroup
@@ -50,15 +51,7 @@ var RadioGroup = SourceComponent.extend({
         });
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
 
         this.$watch('value', function(newValue) {
             var data = this.data;
@@ -153,4 +146,5 @@ var RadioGroup = SourceComponent.extend({
     },
 });
 
+RadioGroup.use(validationMixin);
 module.exports = RadioGroup;
