@@ -3049,7 +3049,7 @@ body{
 	color:inherit;
 	-webkit-appearance:none;
 	max-width:100%;
-	color:#999;
+	color:#333;
 	background:#fff;
 	-moz-border-radius:2px;
 	border-radius:2px;
@@ -3077,7 +3077,7 @@ body{
 .u-select:focus{
 	outline:0;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #f48080;
 }
 .u-select:disabled{
@@ -3321,7 +3321,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	width:250px;
 	padding:4px;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #eee;
 	-moz-border-radius:4px;
 	border-radius:4px;
@@ -3387,7 +3387,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-listview{
 	padding:5px 0;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #eee;
 	border-top:none;
 }
@@ -3465,7 +3465,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-treeview{
 	padding:5px 0;
 	background:#fff;
-	color:#999;
+	color:#333;
 	-moz-border-radius:4px;
 	border-radius:4px;
 	border:1px solid #eee;
@@ -4287,7 +4287,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-input .input{
 	padding:6px 10px 6px 8px;
-	color:#999;
+	color:#333;
 	background:#fff;
 	-moz-border-radius:2px;
 	border-radius:2px;
@@ -4324,7 +4324,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-input .input:focus{
 	outline:0;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #f48080;
 }
 .u-input .input:disabled{
@@ -4411,7 +4411,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:30px;
 	padding:0 10px;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #eee;
 	-moz-border-radius:2px;
 	border-radius:2px;
@@ -4548,7 +4548,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-textarea .textarea{
 	padding:6px 10px 6px 8px;
-	color:#999;
+	color:#333;
 	background:#fff;
 	-moz-border-radius:2px;
 	border-radius:2px;
@@ -4560,7 +4560,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-textarea .textarea:focus{
 	outline:0;
 	background:#fff;
-	color:#999;
+	color:#333;
 	border:1px solid #f48080;
 }
 .u-textarea .textarea:disabled{
