@@ -24184,7 +24184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return {object} result 结果
 	     */
 	    validate: function validate(on) {
-	        var value = this.data.value ? this.data.value + '' : '';
+	        var value = this.data.value || this.data.value == 0 ? this.data.value + '' : '';
 	        var rules = this.data.rules;
 
 	        var PRIORITY = {
