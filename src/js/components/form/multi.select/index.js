@@ -54,11 +54,24 @@ var MultiSelect = Dropdown.extend({
             hierarchical: false,
             updateAuto: false
         });
-        data._source = _.clone(data.source);
+        data._source = _.clone(data.source || []);
         data.tree = [data._source, [], [], [], [], [], [], [], [], []];
         data.search = ['','','','','','','','','',''];
         data.empty = [];
-        this.initSelected();
+        this.$watch('source', function(newValue, oldValue) {
+            if (!(newValue instanceof Array)) {
+                throw new TypeError('`source` is not an Array!');
+                return;
+            }
+            data._source = _.clone(data.source || []);
+            data.tree[0] = data._source;
+            this.initSelected()
+            this.$update();
+        }.bind(this));
+        this.$watch('value', function() {
+            this.initSelected();
+            this.$update();
+        }.bind(this));
         this.supr();
 
         this.initValidation();
