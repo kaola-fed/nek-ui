@@ -5103,15 +5103,46 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-collapse .m-panel .panel_hd{
 	cursor:pointer;
 }
-.m-crumb .home{
-	color:#e31436;
+.m-crumb{
+	color:#333;
+	font-size:0;
+	display:flex;
+	align-items:center;
+	box-sizing:border-box;
 }
-.m-crumb >li{
+.m-crumb .crumb_home{
+	color:#e31436;
+	font-size:14px;
 	display:inline-block;
 }
-.m-crumb >li + li:before{
-	content:"/";
-	margin:0 8px;
+.m-crumb .m-crumb_item{
+	display:inline-block;
+	color:#333;
+}
+.m-crumb .m-crumb_item .crumb_separator{
+	display:inline-block;
+	margin:0 10px;
+	font-size:12px;
+}
+.m-crumb .m-crumb_item .crumb_ct{
+	display:inline-block;
+	font-size:12px;
+}
+.m-crumb .m-crumb_item .crumb_ct .crumb_link:link,.m-crumb .m-crumb_item .crumb_ct .crumb_link:visited,.m-crumb .m-crumb_item .crumb_ct .crumb_link:hover{
+	text-decoration:none;
+	color:#333;
+}
+.m-crumb .m-crumb_item .crumb_ct .crumb_link:hover{
+	color:#49a9ee;
+}
+.m-crumb .m-crumb_item .crumb_ct:hover{
+	cursor:pointer;
+}
+.m-crumb .m-crumb_item:last-child .crumb_ct{
+	font-weight:bold;
+}
+.m-crumb .m-crumb_item:last-child .crumb_ct:hover{
+	cursor:inherit;
 }
 .u-dropdown{
 	position:relative;
