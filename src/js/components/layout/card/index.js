@@ -12,7 +12,7 @@ var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 
 /**
- * @class Panel
+ * @class Card
  * @extend Component
  * @param {object}          [options.data]                        = 绑定属性
  * @param {string}          [options.data.class]                  => 补充class
