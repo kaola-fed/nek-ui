@@ -1,5 +1,5 @@
 ---
-title: card
+title: 卡片
 ---
 
 ## 代码演示
@@ -31,7 +31,7 @@ title: card
 ```
 <!-- demo_end -->
 
-###嵌套多层
+### 嵌套多层
 
 <!-- demo_start -->
 <div class="m-example"></div>

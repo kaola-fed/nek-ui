@@ -11,6 +11,7 @@ var Dropdown = require('../../navigation/dropdown');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class Suggest
@@ -66,15 +67,7 @@ var Suggest = Dropdown.extend({
         });
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
 
         this.$watch('id', function(id) {
             var source = this.data.source || [],
@@ -241,4 +234,5 @@ var Suggest = Dropdown.extend({
     }
 });
 
+Suggest.use(validationMixin);
 module.exports = Suggest;

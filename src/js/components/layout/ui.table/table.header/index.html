@@ -22,7 +22,7 @@
                     <th ref="table_th_{headerTr_index}_{header_index}"
                         class="tb_hd_th {header.thClass}"
                         r-class={{
-                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && header.fixed),
+                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),
                         }}
                         colspan="{header.headerColSpan}"
                         rowspan="{headers.length - headerTr_index - header.childrenDepth}"

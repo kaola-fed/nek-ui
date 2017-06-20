@@ -29,6 +29,11 @@ module.exports = function Multiple(Component) {
                 this.removeSelected(selected, selected.length -1, event);
             }
         },
+        searchClick: function() {
+            event && event.stopPropagation();
+            this.toggle(true);
+            this.searchInputFocus();
+        },
         searchInputFocus: function(){
             this.$refs.input && this.$refs.input.focus();
         },

@@ -17,6 +17,7 @@ var moment = require('moment');
 var polyfill = require('../../../ui-base/polyfill');
 
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class DatePicker
@@ -145,15 +146,7 @@ var DatePicker = Dropdown.extend({
       }
     });
 
-    var $outer = this.$outer;
-    if ($outer && $outer instanceof Validation) {
-      $outer.controls.push(this);
-
-      this.$on('destroy', function () {
-        var index = $outer.controls.indexOf(this);
-        $outer.controls.splice(index, 1);
-      });
-    }
+    this.initValidation();
   },
   /**
    * @method select(date) 选择一个日期
@@ -261,4 +254,5 @@ var DatePicker = Dropdown.extend({
   }
 });
 
+DatePicker.use(validationMixin);
 module.exports = DatePicker;

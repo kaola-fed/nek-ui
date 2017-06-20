@@ -1,7 +1,7 @@
 {
     "name": "nek-ui",
     "description": "UI components based on RegularJS",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "main": "./dist/js/nek-ui.js",
     "homepage": "https://nek-ui.kaolafed.com/",
     "license": "MIT",
@@ -19,7 +19,8 @@
         "build": "gulp dist",
         "dev": "gulp watch --dev"
     },
-    "dependencies": {
+    "dependencies": {},
+    "devDependencies": {
         "babel-runtime": "^6.22.0",
         "bowser": "^1.5.0",
         "clipboard": "^1.6.0",
@@ -27,9 +28,7 @@
         "moment": "^2.17.1",
         "regularjs": "0.4.3",
         "reqwest": "^2.0.5",
-        "validator": "^6.1.0"
-    },
-    "devDependencies": {
+        "validator": "^6.1.0",
         "mcss": "^0.5.1",
         "mass": "^0.1.0",
         "babel-core": "^6.22.1",

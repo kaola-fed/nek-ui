@@ -1,5 +1,5 @@
 ---
-title: UI表格
+title: 表格
 ---
 
 ## 代码演示
@@ -46,7 +46,7 @@ var component = new NEKUI.Component({
 ```xml
 <ui.table strip={false} source={table.source} >
     <table.col name="title" key="title" />
-    <table.col name="value" key="value" tip="I am tip"/>
+    <table.col name="value" key="value" />
 </ui.table>
 ```
 
@@ -70,6 +70,46 @@ var component = new NEKUI.Component({
             }
             this.$update();
         }.bind(this), 200);
+    }
+});
+```
+<!-- demo_end -->
+
+### 过滤器
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table source={table.source} >
+    <table.col name="title" key="title" filter={this.titleFilter}/>
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        setTimeout(function() {
+            this.data.table.source = [];
+            for(var i = 0; i < 3; ++i) {
+                this.data.table.source.push({
+                    title: 'test' + i,
+                    col1: '' + i,
+                    value: 10 * i
+                });
+            }
+            this.$update();
+        }.bind(this), 200);
+    },
+    titleFilter: function(val) {
+        return '* ' + val + ' *';
     }
 });
 ```
@@ -117,13 +157,59 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+
 ### 悬浮表头和底部
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<ui.table stickyHeader stickyFooter source={table.source} >
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source} >
+    <table.col name="title" key="title" width=500 />
+    <table.col name="value" key="value" width=500 />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 20; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+    }
+});
+```
+<!-- demo_end -->
+
+### 悬浮表头和底部(指定监听滚动的容器)
+
+<!-- demo_start -->
+<div class="m-example" id="m-ext" style="height: 400px; overflow-y: scroll;"></div>
+
+```xml
+<ui.table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source}
+    scrollParent="#m-ext" >
     <table.col name="title" key="title" width=500 />
     <table.col name="value" key="value" width=500 />
 </ui.table>
@@ -191,7 +277,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<ui.table fixedHeader width=700 height=200 source={table.source}>
+<ui.table fixedHeader height=200 source={table.source}>
     <table.col name="title" key="title" fixed/>
     <table.col name="col1" key="col1" />
     <table.col name="value" key="value" fixed="right"/>

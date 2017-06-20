@@ -63,6 +63,7 @@ var TableCol = Component.extend({
             thClass: data.thClass,
             sortable: data.sortable,
             expandable: data.expandable,
+            filter: data.filter,
             template: data._templates,
             headerTemplate: data._headerTemplates,
             expandTemplate: data._expandTemplate,

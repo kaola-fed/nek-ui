@@ -11,6 +11,7 @@ var Dropdown = require('../../navigation/dropdown');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 var util = require('./common/util');
 var Multiple = require('./plugins/multiple');
 var PrivateMethod = require('./plugins/private.method');
@@ -27,6 +28,7 @@ require('../check');
  * @param {boolean}           [options.data.source[].disabled=false]  => 禁用此项
  * @param {string}            [options.data.source[].tip]             => 禁用此项显示的提示，如果没有则不显示
  * @param {string}            [options.data.source[].placement]       => 禁用此项显示提示的方向，默认下方
+ * @param {function}          [options.data.filter]                   => 如果传了该参数会对 source 数组的每一项 item 进行 filter(item) 返回 true 则显示，否则不显示
  * @param {boolean}           [options.data.source[].divider=false]   => 设置此项为分隔线
  * @param {object}            [options.data.selected]                 <=> 当前选择项
  * @param {string|number}     [options.data.value]                    <=> 当前选择值
@@ -71,6 +73,7 @@ var Select = Dropdown.extend({
             // 搜索的文案
             searchValue: '',
             canSearch: undefined,
+            filter: null,
             // 默认不区分大小写
             isCaseSensitive: true,
             noMatchText: this.$trans('NO_MATCH'),
@@ -242,15 +245,7 @@ var Select = Dropdown.extend({
             });
         }
 
-        var $outer = this.$outer;
-        if ($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function () {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     /**
      * @method select(item) 选择某一项
@@ -331,6 +326,6 @@ var Select = Dropdown.extend({
 
         return result;
     }
-}).use(Multiple).use(PrivateMethod);
+}).use(Multiple).use(PrivateMethod).use(validationMixin);
 
 module.exports = Select;

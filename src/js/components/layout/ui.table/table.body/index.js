@@ -113,6 +113,12 @@ var TableBasic = Component.extend({
         }
         return _parseFormat(format);
     },
+    _filter: function(column, val) {
+        if(column.filter && typeof column.filter === 'function') {
+            return column.filter.call(this, val);
+        }
+        return val;
+    },
     emitEvent: function(type) {
         var args = [].slice.call(arguments, 1);
         this.$emit('customevent', {

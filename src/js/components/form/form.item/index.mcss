@@ -53,6 +53,25 @@
     .formitem_rqr {
         color: #FF753F;
     }
+
+    &-inline {
+        display:inline-block;
+        vertical-align:top;
+        margin-bottom:0;
+
+        .formitem_ct {
+            display:inline-block;
+        }
+    }
+
+    &-vertical {
+        flex-direction: column;
+        .formitem_tt {
+            text-align: left!important;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
 }
 
 .m-table .u-formitem {

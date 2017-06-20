@@ -11,6 +11,7 @@ var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class SelectGroup
@@ -77,15 +78,7 @@ var SelectGroup = Component.extend({
 
         this.data.sources[0] = this.data.source;
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     /**
      * @private
@@ -148,4 +141,5 @@ var SelectGroup = Component.extend({
     },
 });
 
+SelectGroup.use(validationMixin);
 module.exports = SelectGroup;

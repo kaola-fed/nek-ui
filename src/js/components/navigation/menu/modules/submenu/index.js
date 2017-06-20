@@ -16,7 +16,7 @@ var RootMenuMixin = require('../../mixins/rootMenu');
  * @extend Component
  * @param {object}        [options.data]                          = 绑定属性
  * @param {string}        [options.data.class]                    => 补充class
- * @param {boolean=false} [options.data.defaultOpen]              => 是否默认展开,如果需要默认展开,设置为true
+ * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.titleTemplate]            => 标题文案模板
  */

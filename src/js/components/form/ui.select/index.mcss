@@ -25,6 +25,7 @@
         $border: $u-formctrl_border;
         $border-radius: $border-radius-base;
         font-size: 12px;
+        overflow-y: auto;
 
         .u-icon {
             float: right;
@@ -52,16 +53,16 @@
         }
     }
     .u-search-input{
-        padding: 0;
-        border: none;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
         font-family: inherit;
         line-height: 20px;
-        width: calc(100% - 8px);
+        width: t('calc(100% - 8px)');
         background-color: transparent;
         &:focus{
             outline: none;
-            border: none;
         }
+        display: block;
     }
     &.isMultiple{
         .u-search-input{
