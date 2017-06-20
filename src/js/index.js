@@ -56,6 +56,7 @@ const Components = {
     Progress : require('./components/widget/progress'),
     Tooltip : require('./components/widget/tooltip'),
     PathTool : require('./tools/path.tool'),
+    KLIcon : require('./components/widget/icon'),
 
     // Layout
     Panel : require('./components/layout/panel'),
