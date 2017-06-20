@@ -27371,11 +27371,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            hierarchical: false,
 	            updateAuto: false
 	        });
-	        data._source = _.clone(data.source);
+	        data._source = _.clone(data.source || []);
 	        data.tree = [data._source, [], [], [], [], [], [], [], [], []];
 	        data.search = ['', '', '', '', '', '', '', '', '', ''];
 	        data.empty = [];
-	        this.initSelected();
+	        this.$watch('source', function (newValue, oldValue) {
+	            if (!(newValue instanceof Array)) {
+	                throw new TypeError('`source` is not an Array!');
+	                return;
+	            }
+	            data._source = _.clone(data.source || []);
+	            data.tree[0] = data._source;
+	            this.initSelected();
+	            this.$update();
+	        }.bind(this));
+	        this.$watch('value', function () {
+	            this.initSelected();
+	            this.$update();
+	        }.bind(this));
 	        this.supr();
 
 	        this.initValidation();
@@ -27389,7 +27402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    if (item2[data.childKey] && item2[data.childKey].length) {
 	                        _checkedItem(item2[data.childKey]);
 	                    } else {
-	                        if (_list.indexOf(item2[data.key].toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
+	                        if (_list.indexOf((item2[data.key] || '').toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
 	                            item2[data.checkKey] = true;
 	                        } else {
 	                            item2[data.checkKey] = false;
@@ -27503,7 +27516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.toggle(true);
 	        var data = this.data;
 	        var _list = data.value.split(data.separator);
-	        _list.splice(_list.indexOf(item[data.key].toString()), 1);
+	        _list.splice(_list.indexOf((item[data.key] || '').toString()), 1);
 	        data.value = _list.join(data.separator);
 	        this.initSelected();
 	        this.watchValue();
@@ -27513,6 +27526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var target = [];
 	    if (category && category.filter) {
 	        target = category.filter(function (item, index) {
+	            if (!item[data.nameKey]) return true;
 	            return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
 	        });
 	    }
