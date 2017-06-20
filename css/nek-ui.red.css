@@ -4833,14 +4833,13 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-panel .panel_hd,.m-panel .panel_ft{
 	background:#fafafa;
 	padding:8px 10px;
-	box-shadow:0 1px 3px rgba(0,0,0,0.3);
 }
 .m-panel .panel_hd{
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
 	color:#fff;
-	box-shadow:0 1px 3px rgba(0,0,0,0.3);
+	border-bottom:1px solid #e31436;
 }
 .m-panel .panel_hd .tools{
 	margin-left:auto;

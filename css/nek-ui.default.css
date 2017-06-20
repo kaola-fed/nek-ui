@@ -4831,32 +4831,31 @@ input.u-check:disabled,input.u-radio:disabled{
 	background:#fff;
 }
 .m-panel .panel_hd,.m-panel .panel_ft{
-	background:#fafafa;
+	background:#000;
 	padding:8px 10px;
-	box-shadow:0 1px 3px rgba(0,0,0,0.3);
 }
 .m-panel .panel_hd{
 	display:flex;
 	justify-content:space-between;
 	align-items:center;
-	color:#fff;
-	box-shadow:0 1px 3px rgba(0,0,0,0.3);
+	color:#000;
+	border-bottom:1px solid #e31436;
 }
 .m-panel .panel_hd .tools{
 	margin-left:auto;
 }
 .m-panel .panel_hd .u-btn{
 	font-size:16px;
-	background:#fafafa;
-	border:1px solid #fafafa;
+	background:#000;
+	border:1px solid #000;
 }
 .m-panel .panel_hd .u-btn .u-icon{
 	color:#fff;
-	background:#fafafa;
-	border:1px solid #fafafa;
+	background:#000;
+	border:1px solid #000;
 }
 .m-panel .panel_hd .u-btn:hover{
-	border:1px solid #fafafa;
+	border:1px solid #000;
 }
 .m-panel .panel_ft{
 	padding:5px 10px;
