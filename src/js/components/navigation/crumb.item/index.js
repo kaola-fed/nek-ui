@@ -19,8 +19,8 @@ var _ = require('../../../ui-base/_');
  * @param {string}          [options.data.class]              => 补充class
  * @param {string}          [options.data.href]                => 传入的链接
  */
-var CrumbItem = Component.extend({
-    name: 'crumb.item',
+var KLCrumbItem = Component.extend({
+    name: 'kl-crumb-item',
     template: template,
     /**
      * @protected
@@ -36,4 +36,4 @@ var CrumbItem = Component.extend({
     }
 });
 
-module.exports = CrumbItem;
+module.exports = KLCrumbItem;

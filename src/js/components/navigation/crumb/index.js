@@ -14,12 +14,14 @@ var _ = require('../../../ui-base/_');
 /**
  * @class Panel
  * @extend Component
- * @param {object}          [options.data]                    = 绑定属性
- * @param {string}          [options.data.class]              => 补充class
- * @param {string}          [options.data.separator]              => 分隔符，支持模板
+ * @param {object}          [options.data]                     = 绑定属性
+ * @param {string}          [options.data.class]               => 补充class
+ * @param {string}          [options.data.separator]           => 分隔符，支持模板
+ * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
+ * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
  */
-var Crumb = Component.extend({
-    name: 'ui.crumb',
+var KLCrumb = Component.extend({
+    name: 'kl-crumb',
     template: template,
     /**
      * @protected
@@ -33,4 +35,4 @@ var Crumb = Component.extend({
     }
 });
 
-module.exports = Crumb;
+module.exports = KLCrumb;
