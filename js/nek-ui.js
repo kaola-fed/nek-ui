@@ -29531,7 +29531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(98);
 
 	/**
-	 * @class Panel
+	 * @class KLCrumb
 	 * @extend Component
 	 * @param {object}          [options.data]                     = 绑定属性
 	 * @param {string}          [options.data.class]               => 补充class
@@ -32777,7 +32777,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(98);
 
 	/**
-	 * @class Panel
+	 * @class Card
 	 * @extend Component
 	 * @param {object}          [options.data]                        = 绑定属性
 	 * @param {string}          [options.data.class]                  => 补充class

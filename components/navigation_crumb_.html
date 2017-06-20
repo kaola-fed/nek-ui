@@ -283,10 +283,10 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>第一级目录<span class="tag">&lt;/<span class="name">crumb.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第二级目录<span class="tag">&lt;/<span class="name">crumb.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第三级目录<span class="tag">&lt;/<span class="name">crumb.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span>&gt;</span>第四级目录<span class="tag">&lt;/<span class="name">crumb.item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第五级目录<span class="tag">&lt;/<span class="name">crumb.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第一级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第二级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第三级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span>&gt;</span>第四级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第五级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#Panel">Panel</a></dt>
+<dt><a href="#KLCrumb">KLCrumb</a></dt>
 <dd></dd>
 </dl>
 
@@ -295,9 +295,9 @@
 <dd></dd>
 </dl>
 
-<p><a name="Panel"></a></p>
-<h2 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Panel_new"></a></p>
-<h3 id="new-Panel"><a href="#new-Panel" class="headerlink" title="new Panel()"></a>new Panel()</h3><table>
+<p><a name="KLCrumb"></a></p>
+<h2 id="KLCrumb"><a href="#KLCrumb" class="headerlink" title="KLCrumb"></a>KLCrumb</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLCrumb_new"></a></p>
+<h3 id="new-KLCrumb"><a href="#new-KLCrumb" class="headerlink" title="new KLCrumb()"></a>new KLCrumb()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -343,11 +343,12 @@ var index = 0;
       var template = NEKUI._.multiline(function(){/*
       
 <kl-crumb separator="/">
-    <kl-crumb-item><kl-icon type="home2" color="#E31436"></i>第一级目录</crumb.item>
-    <kl-crumb-item>第二级目录</crumb.item>
-    <kl-crumb-item>第三级目录</crumb.item>
-    <kl-crumb-item href="http://www.kaola.com">第四级目录</crumb.item>
-    <kl-crumb-item>第五级目录</crumb.item>
+    <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
+    <kl-crumb-item>第一级目录</kl-crumb-item>
+    <kl-crumb-item>第二级目录</kl-crumb-item>
+    <kl-crumb-item>第三级目录</kl-crumb-item>
+    <kl-crumb-item href="http://www.kaola.com">第四级目录</kl-crumb-item>
+    <kl-crumb-item>第五级目录</kl-crumb-item>
 </kl-crumb>
 
       */});
