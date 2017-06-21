@@ -160,8 +160,12 @@ var component = new NEKUI.Component({
 
 ### 悬浮表头和底部
 
+控制表头和底部的悬浮需要对 `scroll` 事件进行监听，在默认的情况下，监听对象是 `window`，即页面的滚动。
+
+如果页面布局比较特殊，需要指定监听的对象，则可以通过 `scrollParent` 指定会发生滚动的容器，如 `scrollParent="#example"`。
+
 <!-- demo_start -->
-<div class="m-example"></div>
+<div class="m-example" id="example"></div>
 
 ```xml
 <ui.table
@@ -170,46 +174,6 @@ var component = new NEKUI.Component({
     stickyHeaderOffset=64
     stickyFooterOffset=0
     source={table.source} >
-    <table.col name="title" key="title" width=500 />
-    <table.col name="value" key="value" width=500 />
-</ui.table>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        table: {
-            source: []
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                col1: '' + i,
-                value: 10 * i
-            });
-        }
-    }
-});
-```
-<!-- demo_end -->
-
-### 悬浮表头和底部(指定监听滚动的容器)
-
-<!-- demo_start -->
-<div class="m-example" id="m-ext" style="height: 400px; overflow-y: scroll;"></div>
-
-```xml
-<ui.table
-    stickyHeader
-    stickyFooter
-    stickyHeaderOffset=64
-    stickyFooterOffset=0
-    source={table.source}
-    scrollParent="#m-ext" >
     <table.col name="title" key="title" width=500 />
     <table.col name="value" key="value" width=500 />
 </ui.table>
@@ -319,7 +283,8 @@ var component = new NEKUI.Component({
 <ui.table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
     <table.col name="title" key="title">
         <table.template type="header">
-            {'<a on-click={this.emitEvent("headerclick", header)}>I am {header.name}</a>'}
+            {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emitEvent("headerclick", header)}>I am && {header.name}</a>'}
+            {'<anchor/>'}
         </table.template>
         <table.template template={tdTpl} />
     </table.col>
@@ -328,6 +293,11 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
+var anchor = NEKUI.Component.extend({
+    name: 'anchor',
+    template: '<a>&nbsp;anchor</a>',
+});
+
 var component = new NEKUI.Component({
     template: template,
     data: {
@@ -672,3 +642,18 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 特殊
+
+由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
+
+为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
+
+```javascript
+Regular._BEGIN_ = '{{';
+Regular._END_ = '}}';
+Regular.config({
+    BEGIN: Regular._BEGIN_,
+    END: Regular._END_
+});
+```

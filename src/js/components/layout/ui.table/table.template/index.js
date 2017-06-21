@@ -1,6 +1,7 @@
 'use strict';
 
 var Component = require('../../../../ui-base/component');
+var _ = require('../utils');
 
 /**
  * @class TableTemplate
@@ -8,6 +9,37 @@ var Component = require('../../../../ui-base/component');
  * @param {object}      [options.data]                = 绑定属性
  * @param {string}      [options.data.type="content"] => 模版类型, header, content, expand
  */
+
+var matchList = [
+    {
+        reg: /&quot;/g,
+        glyph: '"'
+    },
+    {
+        reg: /&amp;/g,
+        glyph: '&'
+    },
+    {
+        reg: /&lt;/g,
+        glyph: '<'
+    },
+    {
+        reg: /&gt;/g,
+        glyph: '>'
+    },
+    {
+        reg: /&nbsp;/g,
+        glyph: ' '
+    }
+];
+
+var decodeChar = function(str) {
+    matchList.forEach(function(item) {
+        str = str.replace(item.reg, item.glyph);
+    });
+    return str;
+};
+
 var TableTemplate = Component.extend({
     name: 'table.template',
     template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
@@ -52,10 +84,9 @@ var TableTemplate = Component.extend({
         return this._parseTemplate(template);
     },
     _parseTemplate: function(template) {
-        return template.replace(/(<!--)(.*)(-->)/g, '')
-            .replace(/&gt;/g, '>')
-            .replace(/&lt;/g, '<')
-            .trim();
+        return decodeChar(template)
+                    .replace(/(<!--)(.*)(-->)/g, '')
+                    .trim();
     }
 });
 
