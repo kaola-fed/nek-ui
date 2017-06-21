@@ -27372,11 +27372,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	            hierarchical: false,
 	            updateAuto: false
 	        });
-	        data._source = _.clone(data.source);
+	        data._source = _.clone(data.source || []);
 	        data.tree = [data._source, [], [], [], [], [], [], [], [], []];
 	        data.search = ['', '', '', '', '', '', '', '', '', ''];
 	        data.empty = [];
-	        this.initSelected();
+	        this.$watch('source', function (newValue, oldValue) {
+	            if (!(newValue instanceof Array)) {
+	                throw new TypeError('`source` is not an Array!');
+	                return;
+	            }
+	            data._source = _.clone(data.source || []);
+	            data.tree[0] = data._source;
+	            this.initSelected();
+	            this.$update();
+	        }.bind(this));
+	        this.$watch('value', function () {
+	            this.initSelected();
+	            this.$update();
+	        }.bind(this));
 	        this.supr();
 
 	        this.initValidation();
@@ -27390,7 +27403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    if (item2[data.childKey] && item2[data.childKey].length) {
 	                        _checkedItem(item2[data.childKey]);
 	                    } else {
-	                        if (_list.indexOf(item2[data.key].toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
+	                        if (_list.indexOf((item2[data.key] || '').toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
 	                            item2[data.checkKey] = true;
 	                        } else {
 	                            item2[data.checkKey] = false;
@@ -27504,7 +27517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.toggle(true);
 	        var data = this.data;
 	        var _list = data.value.split(data.separator);
-	        _list.splice(_list.indexOf(item[data.key].toString()), 1);
+	        _list.splice(_list.indexOf((item[data.key] || '').toString()), 1);
 	        data.value = _list.join(data.separator);
 	        this.initSelected();
 	        this.watchValue();
@@ -27514,6 +27527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var target = [];
 	    if (category && category.filter) {
 	        target = category.filter(function (item, index) {
+	            if (!item[data.nameKey]) return true;
 	            return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
 	        });
 	    }
@@ -31390,7 +31404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TableCol = __webpack_require__(419);
 	var TableTemplate = __webpack_require__(413);
 	var _ = __webpack_require__(98);
-	var utils = __webpack_require__(417);
+	var utils = __webpack_require__(414);
 
 	var Component = __webpack_require__(69);
 	var tpl = __webpack_require__(425);
@@ -31928,11 +31942,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var TableTemplate = __webpack_require__(413);
-	var templates = __webpack_require__(414);
+	var templates = __webpack_require__(415);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(416);
-	var _ = __webpack_require__(417);
+	var tpl = __webpack_require__(417);
+	var _ = __webpack_require__(414);
 
 	var HEADER_MIN_WIDTH = 30;
 
@@ -32164,9 +32178,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    _getTemplate: function _getTemplate(header) {
 	        if (_.isArray(header.headerTemplate)) {
-	            return '{#list header.headerTemplate as template by template_index}{#include template}{/list}';
+	            return _.convertBeginEnd('{#list header.headerTemplate as template by template_index}{#include template}{/list}');
 	        }
-	        return '{#include header.headerTemplate}';
+	        return _.convertBeginEnd('{#include header.headerTemplate}');
 	    },
 	    _getFormatter: function _getFormatter(header, headers) {
 	        var formatter = header.formatter;
@@ -32218,6 +32232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(414);
 
 	/**
 	 * @class TableTemplate
@@ -32225,6 +32240,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}      [options.data]                = 绑定属性
 	 * @param {string}      [options.data.type="content"] => 模版类型, header, content, expand
 	 */
+
+	var matchList = [{
+	    reg: /&quot;/g,
+	    glyph: '"'
+	}, {
+	    reg: /&amp;/g,
+	    glyph: '&'
+	}, {
+	    reg: /&lt;/g,
+	    glyph: '<'
+	}, {
+	    reg: /&gt;/g,
+	    glyph: '>'
+	}, {
+	    reg: /&nbsp;/g,
+	    glyph: ' '
+	}];
+
+	var decodeChar = function decodeChar(str) {
+	    matchList.forEach(function (item) {
+	        str = str.replace(item.reg, item.glyph);
+	    });
+	    return str;
+	};
+
 	var TableTemplate = Component.extend({
 	    name: 'table.template',
 	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
@@ -32269,7 +32309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this._parseTemplate(template);
 	    },
 	    _parseTemplate: function _parseTemplate(template) {
-	        return template.replace(/(<!--)(.*)(-->)/g, '').replace(/&gt;/g, '>').replace(/&lt;/g, '<').trim();
+	        return decodeChar(template).replace(/(<!--)(.*)(-->)/g, '').trim();
 	    }
 	});
 
@@ -32277,32 +32317,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 414 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var tplMap = {
-	    default: __webpack_require__(415)
-	};
-
-	exports.get = function getTemplate(type) {
-	    return tplMap[type] || tplMap.default;
-	};
-
-/***/ }),
-/* 415 */
-/***/ (function(module, exports) {
-
-	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
-
-/***/ }),
-/* 416 */
-/***/ (function(module, exports) {
-
-	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
-
-/***/ }),
-/* 417 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32347,7 +32361,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	};
 
+	_.convertBeginEnd = function (str) {
+	    var BEGIN = Regular._BEGIN_;
+	    var END = Regular._END_;
+	    str = '' + str;
+	    if (BEGIN && BEGIN !== '{') {
+	        str = str.replace(/{/g, BEGIN);
+	    }
+	    if (END && END !== '}') {
+	        str = str.replace(/}/g, END);
+	    }
+	    return str;
+	};
+
 	module.exports = _;
+
+/***/ }),
+/* 415 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(414);
+
+	var tplMap = {
+	    default: __webpack_require__(416)
+	};
+
+	exports.get = function getTemplate(type) {
+	    return _.convertBeginEnd(tplMap[type] || tplMap.default);
+	};
+
+/***/ }),
+/* 416 */
+/***/ (function(module, exports) {
+
+	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
+
+/***/ }),
+/* 417 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
 /* 418 */
@@ -32357,7 +32412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var TableCol = __webpack_require__(419);
 	var TableTemplate = __webpack_require__(413);
-	var _ = __webpack_require__(417);
+	var _ = __webpack_require__(414);
 
 	var Component = __webpack_require__(69);
 	var tpl = __webpack_require__(420);
@@ -32445,9 +32500,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    _getTemplate: function _getTemplate(column) {
 	        if (_.isArray(column.template)) {
-	            return '{#list column.template as template by template_index}{#include template}{/list}';
+	            return _.convertBeginEnd('{#list column.template as template by template_index}{#include template}{/list}');
 	        }
-	        return '{#include column.template}';
+	        return _.convertBeginEnd('{#include column.template}');
 	    },
 	    _getFormatter: function _getFormatter(column, item) {
 	        var formatter = column.formatter;
@@ -32596,6 +32651,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _ = __webpack_require__(414);
+
 	var tplMap = {
 	    default: __webpack_require__(422),
 	    progress: __webpack_require__(423),
@@ -32603,7 +32660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	exports.get = function getTemplate(type) {
-	    return tplMap[type] || tplMap.default;
+	    return _.convertBeginEnd(tplMap[type] || tplMap.default);
 	};
 
 /***/ }),
