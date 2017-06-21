@@ -3522,7 +3522,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-formitem{
 	display:flex;
-	margin-bottom:10px;
+	margin-bottom:16px;
 }
 .u-formitem .formitem_tt{
 	position:relative;
@@ -3766,6 +3766,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	display:block;
 	width:100%;
 }
+.u-selectgroup{
+	vertical-align:top;
+}
 .u-selectgroup-error .u-select .dropdown_hd{
 	border-color:#d73925;
 }
@@ -3802,7 +3805,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-btn{
 	-webkit-appearance:none;
-	margin:0 0 10px 0;
+	margin:0;
 	overflow:visible;
 	font:inherit;
 	text-transform:none;
@@ -4842,7 +4845,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	flex-wrap:wrap-reverse;
 }
 .g-row + .g-row{
-	margin-top:10px;
+	margin-top:16px;
 }
 .m-panel{
 	background:#fff;
