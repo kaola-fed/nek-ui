@@ -3612,6 +3612,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	max-height:84px;
 	overflow-y:auto;
 }
+.u-multi .dropdown_hd .selectedTagMore{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width:150px;
+}
 .u-multi .cateWrap{
 	width:412px;
 	overflow-x:auto;
@@ -4423,6 +4428,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	width:auto;
 	line-height:inherit;
 }
+.u-select .dropdown_hd .u-select-errorIcon{
+	position:absolute;
+	right:20px;
+	top:2px;
+}
 .u-select .selected-tag{
 	position:relative;
 	padding:0 20px 0 10px;
@@ -4442,17 +4452,24 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-select .selected-tag:last-child{
 	margin-bottom:6px;
 }
+.u-select .selectedTagMore{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	max-width:150px;
+}
 .u-select .u-search-input{
 	padding:5px 0;
-	border-bottom:1px solid #eee;
 	font-family:inherit;
 	line-height:20px;
-	width:calc(100% - 8px);
+	width:calc(100% - 20px);
 	background-color:transparent;
-	display:block;
 }
 .u-select .u-search-input:focus{
 	outline:none;
+}
+.u-select .searchInput1{
+	border-bottom:1px solid #eee;
+	display:block;
 }
 .u-select.isMultiple .u-search-input{
 	float:left;
