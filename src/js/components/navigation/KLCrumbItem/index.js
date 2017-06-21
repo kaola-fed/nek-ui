@@ -9,11 +9,11 @@
 
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
-var Crumb = require('../crumb/index.js');
+var KLCrumb = require('../KLCrumb');
 var _ = require('../../../ui-base/_');
 
 /**
- * @class CrumbItem
+ * @class KLCrumbItem
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.class]              => 补充class
@@ -30,7 +30,7 @@ var KLCrumbItem = Component.extend({
         });
         this.supr();
 
-        if (this.$outer && this.$outer instanceof Crumb) {
+        if (this.$outer && this.$outer instanceof KLCrumb) {
             this.$outer.data.crumbArr.push(this);
         }
     }
