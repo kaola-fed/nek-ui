@@ -46,27 +46,7 @@ var Sidebar = Component.extend({
       bodyEl: '',
     });
 
-    this.initMenu();
     this.supr();
-  },
-  initMenu: function() {
-    var url = location.href;
-    var menus = this.data.menus;
-    var childrenKey = this.data.childrenKey;
-    var urlKey = this.data.urlKey;
-    menus.forEach(function(menu) {
-      var children = menu[childrenKey];
-      var shouldOpen = false;
-      if (children && children.length) {
-        children.forEach(function(page) {
-          if (url == page[urlKey]) {
-            page.open = true;
-            shouldOpen = true;
-          }
-        });
-      }
-      menu.open = shouldOpen || menu.open;
-    });
   },
   initBodyEl: function() {
     if (this.data.bodyEl) {
