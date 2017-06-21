@@ -18,7 +18,7 @@ $brand-error-lighter =                  #f58d8d;
 $brand-error-darker =                   #dc7373;
 $brand-secondary =                      $brand-primary;
 $brand-secondary-darker =               $brand-primary-darker;
-$panel-header =                         #000;
+$panel-header =                         #fff;
 $panel-header-color =                   #000;
 $panel-header-icon-color =              $brand-default;
 
