@@ -4848,7 +4848,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	background:#fff;
 }
 .m-panel .panel_hd,.m-panel .panel_ft{
-	background:#000;
+	background:#fff;
 	padding:8px 10px;
 }
 .m-panel .panel_hd{
@@ -4863,16 +4863,16 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-panel .panel_hd .u-btn{
 	font-size:16px;
-	background:#000;
-	border:1px solid #000;
+	background:#fff;
+	border:1px solid #fff;
 }
 .m-panel .panel_hd .u-btn .u-icon{
 	color:#fff;
-	background:#000;
-	border:1px solid #000;
+	background:#fff;
+	border:1px solid #fff;
 }
 .m-panel .panel_hd .u-btn:hover{
-	border:1px solid #000;
+	border:1px solid #fff;
 }
 .m-panel .panel_ft{
 	padding:5px 10px;
