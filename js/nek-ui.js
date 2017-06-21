@@ -28947,7 +28947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 367 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <ui.menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <menu.sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <menu.item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</menu.item>\n        {/list}\n      </menu.sub>\n      {#else}\n      <menu.sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></menu.sub>\n      {/if}\n      {/list}\n    </ui.menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <ui.menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <menu.sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <menu.item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</menu.item>\n        {/list}\n      </menu.sub>\n      {#else}\n      <menu.sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></menu.sub>\n      {/if}\n      {/list}\n    </ui.menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 368 */
@@ -32711,6 +32711,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Row
 	 * @extend Component
 	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {string}          [options.data.class]                  => 补充class
 	 * @param {string}          [options.data.type='']              => 布局模式，可选 flex，现代浏览器下有效
 	 * @param {string}          [options.data.justify='start']      => flex 布局下的水平排列方式
 	 * @param {string}          [options.data.align='top']          => flex 布局下的垂直排列方式
@@ -32749,7 +32750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 427 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
+	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
 /* 428 */
@@ -32772,6 +32773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class Col
 	 * @extend Component
 	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {string}          [options.data.class]                  => 补充class
 	 * @param {number}          [options.data.span='']              => 栅格占据的列数
 	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
 	 */
@@ -32818,7 +32820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 429 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
+	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
 /* 430 */
