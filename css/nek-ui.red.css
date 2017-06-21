@@ -4669,7 +4669,6 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-card .m-card{
 	box-shadow:none;
 	border-radius:initial;
-	font-size:14px;
 	padding:0 40px;
 }
 .m-card .m-card .card_hd{
