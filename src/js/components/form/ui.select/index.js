@@ -294,6 +294,10 @@ var Select = Dropdown.extend({
         }
         this.toggle(false);
     },
+    clearContent: function(e) {
+        e && e.stopPropagation();
+        this.data.searchValue = '';
+    },
     toggle: function (open, e) {
         e && e.stopPropagation();
         var data = this.data;

@@ -6,7 +6,6 @@
 				 z-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
-	            <i class="u-icon u-icon-angle_down"></i>
 	            {#if open && canSearch}
 	                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
@@ -18,11 +17,12 @@
 	        <div class="dropdown_hd"
 	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
 	            {#if open && canSearch}
-	            <input disabled={disabled} type="text" class="u-search-input" ref="input"
+	            <input disabled={disabled} type="text" class="u-search-input searchInput1" ref="input"
 	                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
+	                   <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
 	            {/if}
 	            {#list selected as item}
-	                <span class="selected-tag">
+	                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>
 	                    {item[nameKey]}
 	                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>

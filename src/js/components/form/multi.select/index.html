@@ -1,7 +1,7 @@
-<div class="u-dropdown u-select u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
+<div class="u-dropdown u-select u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open)}>
         {#list selected as item}
-        <span class="selected-tag">{item[nameKey]}
+        <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
 			<i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
         </span>
         {/list}
