@@ -29595,11 +29595,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var template = __webpack_require__(384);
-	var Crumb = __webpack_require__(381);
+	var KLCrumb = __webpack_require__(381);
 	var _ = __webpack_require__(98);
 
 	/**
-	 * @class CrumbItem
+	 * @class KLCrumbItem
 	 * @extend Component
 	 * @param {object}          [options.data]                    = 绑定属性
 	 * @param {string}          [options.data.class]              => 补充class
@@ -29615,7 +29615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _.extend(this.data, {});
 	    this.supr();
 
-	    if (this.$outer && this.$outer instanceof Crumb) {
+	    if (this.$outer && this.$outer instanceof KLCrumb) {
 	      this.$outer.data.crumbArr.push(this);
 	    }
 	  }
