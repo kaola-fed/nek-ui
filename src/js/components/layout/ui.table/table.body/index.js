@@ -91,9 +91,9 @@ var TableBasic = Component.extend({
     },
     _getTemplate: function(column) {
         if(_.isArray(column.template)) {
-            return '{#list column.template as template by template_index}{#include template}{/list}';
+            return _.convertBeginEnd('{#list column.template as template by template_index}{#include template}{/list}');
         }
-        return'{#include column.template}';
+        return _.convertBeginEnd('{#include column.template}');
     },
     _getFormatter: function(column, item) {
         var formatter = column.formatter;

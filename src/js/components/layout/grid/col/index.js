@@ -15,6 +15,7 @@ var Row = require('../row');
  * @class Col
  * @extend Component
  * @param {object}          [options.data]                        => 绑定数据
+ * @param {string}          [options.data.class]                  => 补充class
  * @param {number}          [options.data.span='']              => 栅格占据的列数
  * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
  */

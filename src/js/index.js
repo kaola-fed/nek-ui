@@ -42,7 +42,8 @@ const Components = {
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
-    Crumb : require('./components/navigation/crumb'),
+    KLCrumb : require('./components/navigation/KLCrumb'),
+    KLCrumbItem : require('./components/navigation/KLCrumbItem'),
 
     // Notice
     Modal : require('./components/notice/modal'),
@@ -56,6 +57,7 @@ const Components = {
     Progress : require('./components/widget/progress'),
     Tooltip : require('./components/widget/tooltip'),
     PathTool : require('./tools/path.tool'),
+    KLIcon : require('./components/widget/KLIcon'),
 
     // Layout
     Panel : require('./components/layout/panel'),

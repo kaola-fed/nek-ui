@@ -11,6 +11,11 @@
 	.dropdown_hd {
 		max-height: 84px;
 	    overflow-y: auto;
+	    .selectedTagMore {
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        max-width: 150px;
+	    }
 	}
 	.cateWrap {
 		width: 412px;

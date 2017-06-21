@@ -237,9 +237,9 @@ var TableBasic = Component.extend({
     },
     _getTemplate: function(header) {
         if(_.isArray(header.headerTemplate)) {
-            return '{#list header.headerTemplate as template by template_index}{#include template}{/list}';
+            return _.convertBeginEnd('{#list header.headerTemplate as template by template_index}{#include template}{/list}');
         }
-        return'{#include header.headerTemplate}';
+        return _.convertBeginEnd('{#include header.headerTemplate}');
     },
     _getFormatter: function(header, headers) {
         var formatter = header.formatter;
