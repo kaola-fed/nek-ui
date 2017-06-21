@@ -1,5 +1,5 @@
 ---
-title: 面包屑组件
+title: 面包屑
 is_new: true
 ---
 
