@@ -1,3 +1,7 @@
+.u-selectgroup {
+    vertical-align: top;
+}
+
 .u-selectgroup-error {
     .u-select {
         .dropdown_hd  {
