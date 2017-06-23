@@ -31938,7 +31938,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	}).component('table.header', TableHeader).component('table.body', TableBody).component('table.col', TableCol).component('table.template', TableTemplate);
 
-		module.exports = UITable;
+	var oldFilterFunc = UITable.filter;
+
+	UITable.filter = function () {
+	    var args = [].slice.call(arguments, 0);
+	    TableHeader.filter.apply(TableHeader, args);
+	    TableBody.filter.apply(TableBody, args);
+	    TableCol.filter.apply(TableCol, args);
+	    TableTemplate.filter.apply(TableTemplate, args);
+	    oldFilterFunc.apply(UITable, args);
+	};
+
+	module.exports = UITable;
 
 /***/ }),
 /* 412 */
