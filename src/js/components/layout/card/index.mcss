@@ -44,7 +44,6 @@
     .m-card {
         box-shadow: none;
         border-radius: initial;
-        font-size: 14px;
         padding: 0 40px;
         .card_hd {
             margin-bottom: 8px;

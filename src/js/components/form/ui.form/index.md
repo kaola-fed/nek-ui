@@ -86,3 +86,32 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 验证示例
+
+<!-- demo_start -->
+如果不想使用Form标签
+<div class="m-example"></div>
+
+```xml
+<ui.form service={api.selector} ref="formgroup">
+    <form.item title="标题1" cols=12 sourceKey="importTypeList">
+        <ui.select />
+    </form.item>
+    <form.item title="标题2" cols=12>
+        <ui.input />
+    </form.item>
+</ui.form>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        api: {
+            selector: '../../data/selector.json'
+        }
+    }
+});
+```
+<!-- demo_end -->

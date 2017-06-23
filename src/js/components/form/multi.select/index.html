@@ -1,0 +1,36 @@
+<div class="u-dropdown u-select u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
+    <div class="dropdown_hd" on-click={this.toggle(!open)}>
+        {#list selected as item}
+        <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
+			<i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
+        </span>
+        {/list}
+    </div>
+    {#if open}
+    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        <div class="cateWrap">
+            {#list 0..9 as level}
+            {#if tree[level] && tree[level].length}
+            <ul>
+                <ui.input value={search[level]}></ui.input>
+                {#list tree[level] | search : search[level],level as cate}
+                {#if !filter || (filter && filter(cate))}
+                <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
+                	{#if multiple}
+                	<check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></check>
+                    {/if}
+                    <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
+                    {#if cate[childKey] && cate[childKey].length}<span class="more">&gt;</span>{/if}
+                </li>
+                {/if}
+                {/list}
+                {#if empty[level]}
+				<li class="f-csp">无任何匹配选项</li>
+                {/if}
+            </ul>
+            {/if}
+            {/list}
+        </div>
+    </div>
+    {/if}
+</div>

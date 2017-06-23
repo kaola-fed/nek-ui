@@ -9,6 +9,7 @@
 
 var Dropdown = require('../../navigation/dropdown');
 var Validation = require('../../../util/validation');
+var validationMixin = require('../../../util/validationMixin');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 var Treeview = require('../common/tree.view');
@@ -58,15 +59,7 @@ var TreeSelect = Dropdown.extend({
         });
         this.supr();
 
-        var $outer = this.$outer;
-        if($outer && $outer instanceof Validation) {
-            $outer.controls.push(this);
-
-            this.$on('destroy', function() {
-                var index = $outer.controls.indexOf(this);
-                $outer.controls.splice(index, 1);
-            });
-        }
+        this.initValidation();
     },
     computed: {
         phShow: function(data) {
@@ -79,4 +72,5 @@ var TreeSelect = Dropdown.extend({
     }
 });
 
+TreeSelect.use(validationMixin);
 module.exports = TreeSelect;

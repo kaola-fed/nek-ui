@@ -13,7 +13,6 @@
     .panel_hd, .panel_ft {
         background: $panel-header;
         padding: 8px 10px;
-        box-shadow: 0 1px 3px rgba(0,0,0,.3);
     }
 
     .panel_hd {
@@ -21,7 +20,7 @@
         justify-content: space-between;
         align-items: center;
         color: $panel-header-color;
-        box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        border-bottom: 1px solid #e31436;
         .tools{
             margin-left: auto;
         }

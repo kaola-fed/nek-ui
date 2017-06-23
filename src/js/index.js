@@ -22,6 +22,7 @@ const Components = {
     Suggest : require('./components/form/suggest'),
     TimePicker : require('./components/form/time.picker'),
     TreeSelect : require('./components/form/tree.select'),
+    MultiSelect : require('./components/form/multi.select'),
     UIButton : require('./components/form/ui.button'),
     UIForm : require('./components/form/ui.form'),
     UIInput : require('./components/form/ui.input'),
@@ -41,7 +42,8 @@ const Components = {
     Pager : require('./components/navigation/pager'),
     Tabs : require('./components/navigation/tabs'),
     Steps : require('./components/navigation/steps'),
-    Crumb : require('./components/navigation/crumb'),
+    KLCrumb : require('./components/navigation/KLCrumb'),
+    KLCrumbItem : require('./components/navigation/KLCrumbItem'),
 
     // Notice
     Modal : require('./components/notice/modal'),
@@ -55,6 +57,7 @@ const Components = {
     Progress : require('./components/widget/progress'),
     Tooltip : require('./components/widget/tooltip'),
     PathTool : require('./tools/path.tool'),
+    KLIcon : require('./components/widget/KLIcon'),
 
     // Layout
     Panel : require('./components/layout/panel'),

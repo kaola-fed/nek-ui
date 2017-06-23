@@ -1,6 +1,6 @@
 /**
  * ------------------------------------------------------------
- * Card     卡片
+ * KLIcon     图标
  * @author   zianecui@gmail.com
  * ------------------------------------------------------------
  */
@@ -12,31 +12,31 @@ var template = require('./index.html');
 var _ = require('../../../ui-base/_');
 
 /**
- * @class Card
+ * @class KLIcon
  * @extend Component
  * @param {object}          [options.data]                        = 绑定属性
  * @param {string}          [options.data.class]                  => 补充class
- * @param {boolean}          [options.data.isShowLine]            => 控制展示title之前的竖线，默认展示出来
- * @param {boolean}          [options.data.isShowBtLine]          => 控制展示title下发的横线，默认不展示出来
- * @param {boolean}          [options.data.isIndent]              => 控制子模块的title是否缩进
+ * @param {string}          [options.data.type]                  => 补充class
+ * @param {string}          [options.data.fontSize]                  => 设置图标胆小
+ * @param {string}          [options.data.color]                  => 设置图标颜色
  */
-var Card = Component.extend({
-    name: 'ui.card',
+var KLIcon = Component.extend({
+    name: 'kl-icon',
     template: template,
-    $tools: null,
     /**
      * @protected
      */
     config: function() {
         _.extend(this.data, {
-            title: '',
-            isShowLine: true,
-            isShowBtLine: false,
-            isIndent: true,
+            type: '',
+            fontSize: '',
+            color: ''
         });
         this.supr();
-
+    },
+    onClick: function (e) {
+        this.$emit('click', e);
     }
 });
 
-module.exports = Card;
+module.exports = KLIcon;

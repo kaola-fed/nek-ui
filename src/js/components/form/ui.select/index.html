@@ -6,7 +6,6 @@
 				 z-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
-	            <i class="u-icon u-icon-angle_down"></i>
 	            {#if open && canSearch}
 	                <input disabled={disabled} type="text" class="u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
@@ -16,18 +15,18 @@
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
-	             on-click={this.toggle(!open, $event)}>
+	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
+	            {#if open && canSearch}
+	            <input disabled={disabled} type="text" class="u-search-input searchInput1" ref="input"
+	                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
+	                   <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
+	            {/if}
 	            {#list selected as item}
-	                <span class="selected-tag">
+	                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>
 	                    {item[nameKey]}
 	                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
 	            {/list}
-	            {#if open && canSearch}
-	            <input disabled={disabled} type="text" class="u-search-input" ref="input"
-	                   on-keydown={this.backSearchValue($event,selected,searchValue)}
-	                   computedTextWidth={searchValue} r-autofocus r-model={searchValue}/>
-	            {/if}
 	        </div>
 	    {/if}
 	    {#if open}
@@ -41,6 +40,7 @@
 	            {/if}
 
 	            {#list this.filterArray(source) as item}
+	            {#if !filter || (filter && filter(item))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
 	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
@@ -80,6 +80,7 @@
 	                    {noMatchText}
 	                </li>
 	                {/if}
+                {/if}
 	            {/list}
 	        </ul>
 	    </div>
