@@ -34,9 +34,8 @@
         }
 
         .u-select-errorIcon {
-            position: absolute;
-            right: 20px;
-            top: 2px;
+            position: relative;
+            top: -28px;
         }
     }
 

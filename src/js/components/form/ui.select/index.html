@@ -17,9 +17,11 @@
 	        <div class="dropdown_hd"
 	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
 	            {#if open && canSearch}
-	            <input disabled={disabled} type="text" class="u-search-input searchInput1" ref="input"
-	                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
-	                   <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
+	            <div>
+		            <input disabled={disabled} type="text" class="u-search-input searchInput1" ref="input"
+		                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
+		            <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
+	            </div>
 	            {/if}
 	            {#list selected as item}
 	                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>
@@ -34,13 +36,13 @@
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="m-listview">
 	            {#if placeholder}
-	                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+	                <li z-sel={multiple?!selected.length:!selected}>
 	                    {placeholder}
 	                </li>
 	            {/if}
 
-	            {#list this.filterArray(source) as item}
-	            {#if !filter || (filter && filter(item))}
+	            {#list this.filterArray(source) as item by item_index}
+	            {#if (!filter || (filter && filter(item))) && (item_index < limit)}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
 	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
@@ -57,7 +59,7 @@
 	                        {#if @(itemTemplate)}
 	                            {#inc @(itemTemplate)}
 	                        {#else}
-	                            {item[nameKey]}
+	                            {@(item[nameKey])}
 	                        {/if}
 	                    </li>
 	                </tooltip>
@@ -70,17 +72,17 @@
 	                    {#if @(itemTemplate)}
 	                        {#inc @(itemTemplate)}
 	                    {#else}
-	                        {item[nameKey]}
+	                        {@(item[nameKey])}
 	                    {/if}
 	                </li>
 	                {/if}
+                {/if}
 	            {#else}
 	                {#if searchValue}
 	                <li>
-	                    {noMatchText}
+	                    {@(noMatchText)}
 	                </li>
 	                {/if}
-                {/if}
 	            {/list}
 	        </ul>
 	    </div>
