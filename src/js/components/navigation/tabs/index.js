@@ -17,6 +17,7 @@ var _ = require('../../../ui-base/_');
  * @param {object}        [options.data]                      = 绑定属性
  * @param {object}        [options.data.selected=null]        <=> 当前选择卡
  * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
+ * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
  * @param {boolean}       [options.data.readonly=false]       => 是否只读
  * @param {boolean}       [options.data.disabled=false]       => 是否禁用
  * @param {boolean}       [options.data.visible=true]         => 是否显示
@@ -71,6 +72,13 @@ var Tabs = Component.extend({
     }
 });
 
+/**
+ * @class Tab
+ * @extend Component
+ * @param {object}        [options.data]                      = 绑定属性
+ * @param {object}        [options.data.title='']             => 标题
+ * @param {string}        [options.data.key=null]             => key 标识
+ */
 var Tab = Component.extend({
     name: 'tab',
     template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
@@ -88,7 +96,18 @@ var Tab = Component.extend({
 
         if(!this.$outer.data.selected)
             this.$outer.data.selected = this;
-    }
+
+        this._setDefaultTab();
+    },
+
+    _setDefaultTab: function() {
+        var defaultKey = this.$outer.data.defaultKey,
+            key = this.data.key;
+
+        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
+            this.$outer.data.selected = this;
+        }
+    },
 });
 
 module.exports = Tabs;
