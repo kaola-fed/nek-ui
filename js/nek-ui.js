@@ -29393,7 +29393,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	             */
 	            this.$emit('change', {
 	                sender: this,
-	                selected: newValue
+	                selected: newValue,
+	                key: newValue.data.key
 	            });
 	        });
 	    },
@@ -29414,7 +29415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	         */
 	        this.$emit('select', {
 	            sender: this,
-	            selected: item
+	            selected: item,
+	            key: item.data.key
 	        });
 	    }
 	});
