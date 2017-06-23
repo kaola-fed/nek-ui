@@ -45,7 +45,8 @@ var Tabs = Component.extend({
              */
             this.$emit('change', {
                 sender: this,
-                selected: newValue
+                selected: newValue,
+                key: newValue.data.key
             });
         });
     },
@@ -67,7 +68,8 @@ var Tabs = Component.extend({
          */
         this.$emit('select', {
             sender: this,
-            selected: item
+            selected: item,
+            key: item.data.key
         });
     }
 });
