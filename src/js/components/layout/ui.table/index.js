@@ -546,5 +546,16 @@ var UITable = Component.extend({
 .component('table.col', TableCol)
 .component('table.template', TableTemplate);
 
+var oldFilterFunc = UITable.filter;
+
+UITable.filter = function() {
+    var args = [].slice.call(arguments, 0);
+    TableHeader.filter.apply(TableHeader, args);
+    TableBody.filter.apply(TableBody, args);
+    TableCol.filter.apply(TableCol, args);
+    TableTemplate.filter.apply(TableTemplate, args);
+    oldFilterFunc.apply(UITable, args);
+};
+
 module.exports = UITable;
 
