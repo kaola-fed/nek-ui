@@ -289,15 +289,15 @@ table{
 	-o-user-select:none;
 	user-select:none;
 }
-.f-lsn,.m-listview,.m-treeview .treeview_list,.m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager,.m-tabs .tabs_hd{
+.f-lsn,.m-listview,.m-treeview .treeview_list,.kl-m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager,.m-tabs .tabs_hd{
 	list-style:none;
 	margin:0;
 	padding:0;
 }
-.f-lsi,.m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager{
+.f-lsi,.kl-m-crumb,.m-navbar,.m-pager,.m-pager .m-right-pager{
 	letter-spacing:-5px;
 }
-.f-lsi >*,.m-crumb >*,.m-navbar >*,.m-pager >*,.m-pager .m-right-pager >*{
+.f-lsi >*,.kl-m-crumb >*,.m-navbar >*,.m-pager >*,.m-pager .m-right-pager >*{
 	letter-spacing:normal;
 }
 .f-ti{
@@ -4628,6 +4628,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-card{
 	background:#fff;
 	box-shadow:2px 2px 3px 0 rgba(34,52,73,0.1);
+	border:1px solid rgba(34,52,73,0.1);
 	border-radius:4px;
 	padding:16px;
 	margin-bottom:20px;
@@ -5145,45 +5146,45 @@ input.u-check:disabled,input.u-radio:disabled{
 	border:1px solid #d2d6de;
 	cursor:not-allowed;
 }
-.m-crumb{
+.kl-m-crumb{
 	color:#333;
 	font-size:0;
 	display:flex;
 	align-items:center;
 	box-sizing:border-box;
 }
-.m-crumb .crumb_home{
+.kl-m-crumb .crumb_home{
 	color:#e31436;
 	font-size:14px;
 	display:inline-block;
 }
-.m-crumb .m-crumb_item{
+.kl-m-crumb .kl-m-crumb_item{
 	display:inline-block;
 	color:#333;
 }
-.m-crumb .m-crumb_item .crumb_separator{
+.kl-m-crumb .kl-m-crumb_item .crumb_separator{
 	display:inline-block;
 	margin:0 10px;
 	font-size:12px;
 }
-.m-crumb .m-crumb_item .crumb_ct{
+.kl-m-crumb .kl-m-crumb_item .crumb_ct{
 	display:inline-block;
 	font-size:12px;
 }
-.m-crumb .m-crumb_item .crumb_ct .crumb_link:link,.m-crumb .m-crumb_item .crumb_ct .crumb_link:visited,.m-crumb .m-crumb_item .crumb_ct .crumb_link:hover{
+.kl-m-crumb .kl-m-crumb_item .crumb_ct .crumb_link:link,.kl-m-crumb .kl-m-crumb_item .crumb_ct .crumb_link:visited,.kl-m-crumb .kl-m-crumb_item .crumb_ct .crumb_link:hover{
 	text-decoration:none;
 	color:#333;
 }
-.m-crumb .m-crumb_item .crumb_ct .crumb_link:hover{
+.kl-m-crumb .kl-m-crumb_item .crumb_ct .crumb_link:hover{
 	color:#49a9ee;
 }
-.m-crumb .m-crumb_item .crumb_ct:hover{
+.kl-m-crumb .kl-m-crumb_item .crumb_ct:hover{
 	cursor:pointer;
 }
-.m-crumb .m-crumb_item:last-child .crumb_ct{
+.kl-m-crumb .kl-m-crumb_item:last-child .crumb_ct{
 	font-weight:bold;
 }
-.m-crumb .m-crumb_item:last-child .crumb_ct:hover{
+.kl-m-crumb .kl-m-crumb_item:last-child .crumb_ct:hover{
 	cursor:inherit;
 }
 .m-menu{

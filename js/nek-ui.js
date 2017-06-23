@@ -29579,7 +29579,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 382 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
+	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
 /* 383 */
@@ -29628,7 +29628,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 384 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc this.$body}\n        {/if}\n    </div>\n</div>"
+	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 385 */
