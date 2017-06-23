@@ -4432,9 +4432,8 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:inherit;
 }
 .u-select .dropdown_hd .u-select-errorIcon{
-	position:absolute;
-	right:20px;
-	top:2px;
+	position:relative;
+	top:-28px;
 }
 .u-select .selected-tag{
 	position:relative;
@@ -4487,6 +4486,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow-y:auto;
 	padding:0;
 	max-height:200px;
+}
+.u-select .m-listview .u-check{
+	line-height:0;
 }
 .u-select .m-treeview{
 	overflow:auto;
