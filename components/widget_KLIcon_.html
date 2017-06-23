@@ -298,7 +298,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">copy</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> type = e.target.className.trim();</div><div class="line">        type = type.slice(<span class="number">14</span>)</div><div class="line">        <span class="keyword">var</span> text = <span class="string">'&lt;kl-icon type="'</span> + type + <span class="string">'" /&gt;'</span></div><div class="line">        <span class="keyword">var</span> copyFrom, body;</div><div class="line">        copyFrom = <span class="built_in">document</span>.createElement(<span class="string">'textarea'</span>);</div><div class="line">        copyFrom.textContent = text;</div><div class="line">        body = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>];</div><div class="line">        body.appendChild(copyFrom);</div><div class="line">        copyFrom.select();</div><div class="line">        <span class="built_in">document</span>.execCommand(<span class="string">'copy'</span>);</div><div class="line">        body.removeChild(copyFrom);</div><div class="line">        NEKUI.Notify.success(text + <span class="string">'复制成功'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#Panel">Panel</a></dt>
+<dt><a href="#KLIcon">KLIcon</a></dt>
 <dd></dd>
 </dl>
 
@@ -307,9 +307,9 @@
 <dd></dd>
 </dl>
 
-<p><a name="Panel"></a></p>
-<h2 id="Panel"><a href="#Panel" class="headerlink" title="Panel"></a>Panel</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Panel_new"></a></p>
-<h3 id="new-Panel"><a href="#new-Panel" class="headerlink" title="new Panel()"></a>new Panel()</h3><table>
+<p><a name="KLIcon"></a></p>
+<h2 id="KLIcon"><a href="#KLIcon" class="headerlink" title="KLIcon"></a>KLIcon</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLIcon_new"></a></p>
+<h3 id="new-KLIcon"><a href="#new-KLIcon" class="headerlink" title="new KLIcon()"></a>new KLIcon()</h3><table>
 <thead>
 <tr>
 <th>Param</th>

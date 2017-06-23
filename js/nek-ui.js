@@ -29365,6 +29365,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                      = 绑定属性
 	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
 	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
+	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
 	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]         => 是否显示
@@ -29418,6 +29419,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	});
 
+	/**
+	 * @class Tab
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.title='']             => 标题
+	 * @param {string}        [options.data.key=null]             => key 标识
+	 */
 	var Tab = Component.extend({
 	    name: 'tab',
 	    template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
@@ -29433,6 +29441,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.$outer) this.$outer.data.tabs.push(this);
 
 	        if (!this.$outer.data.selected) this.$outer.data.selected = this;
+
+	        this._setDefaultTab();
+	    },
+
+	    _setDefaultTab: function _setDefaultTab() {
+	        var defaultKey = this.$outer.data.defaultKey,
+	            key = this.data.key;
+
+	        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
+	            this.$outer.data.selected = this;
+	        }
 	    }
 	});
 
@@ -29517,7 +29536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
-	 * Card     面包屑
+	 * KLCrumb     面包屑
 	 * @author   zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
@@ -29566,7 +29585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
-	 * CrumbItem     面包屑里的每一项
+	 * KLCrumbItem     面包屑里的每一项
 	 * @author   zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
@@ -31284,7 +31303,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * ------------------------------------------------------------
-	 * Icon     图标
+	 * KLIcon     图标
 	 * @author   zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
@@ -31296,7 +31315,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(98);
 
 	/**
-	 * @class Panel
+	 * @class KLIcon
 	 * @extend Component
 	 * @param {object}          [options.data]                        = 绑定属性
 	 * @param {string}          [options.data.class]                  => 补充class

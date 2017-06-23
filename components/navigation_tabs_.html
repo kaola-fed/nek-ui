@@ -318,8 +318,16 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tabs</span> <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.selected:</span>', $<span class="attr">event.selected</span>)&#125;</span></div><div class="line">      <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.selected:</span>', $<span class="attr">event.selected</span>)&#125;&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tabs</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="默认选中-Tab"><a href="#默认选中-Tab" class="headerlink" title="默认选中 Tab"></a>默认选中 Tab</h3><p>需要同时设置 <code>tabs</code> 的 <code>defaultKey</code> 和 <code>tab</code> 的 <code>key</code></p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">tabs</span> <span class="attr">defaultKey</span>=<span class="string">"3"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span> <span class="attr">key</span>=<span class="string">"3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span> <span class="attr">key</span>=<span class="string">"4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">tabs</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#Tabs">Tabs</a></dt>
+<dd></dd>
+<dt><a href="#Tab">Tab</a></dt>
 <dd></dd>
 </dl>
 
@@ -370,6 +378,12 @@
 <td>@=&gt; 标题模板</td>
 </tr>
 <tr>
+<td>[options.data.defaultKey]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>=&gt; 默认显示对应 key 的 Tab</td>
+</tr>
+<tr>
 <td>[options.data.readonly]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -392,6 +406,38 @@
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Tab"></a></p>
+<h2 id="Tab"><a href="#Tab" class="headerlink" title="Tab"></a>Tab</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Tab_new"></a></p>
+<h3 id="new-Tab"><a href="#new-Tab" class="headerlink" title="new Tab()"></a>new Tab()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>object</code></td>
+<td><code>&#x27;&#x27;</code></td>
+<td>=&gt; 标题</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>=&gt; key 标识</td>
 </tr>
 </tbody>
 </table>
@@ -597,6 +643,21 @@ var component = new NEKUI.Component({
     }
 });
 
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<tabs defaultKey="3">
+    <tab title="Tab1" key="1">Content1</tab>
+    <tab title="Tab2" key="2">Content2</tab>
+    <tab title="Tab3" key="3">Content3</tab>
+    <tab title="Tab4" key="4">Content4</tab>
+</tabs>
+
+      */});
+      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
