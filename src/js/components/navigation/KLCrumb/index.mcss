@@ -4,7 +4,7 @@
 // Component:       `m-crumb`
 // ========================================================================
 
-.m-crumb {
+.kl-m-crumb {
     @extend .f-lsn;
     @extend .f-lsi;
     color: #333;
@@ -18,7 +18,7 @@
         font-size: 14px;
         display: inline-block;
     }
-    .m-crumb_item{
+    .kl-m-crumb_item{
         display: inline-block;
         color: #333;
         .crumb_separator{
@@ -41,7 +41,7 @@
             cursor: pointer;
         }
     }
-    .m-crumb_item:last-child{
+    .kl-m-crumb_item:last-child{
         .crumb_ct{
             font-weight: bold;
         }
