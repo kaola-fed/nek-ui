@@ -123,11 +123,11 @@ var component = new NEKUI.Component({
 
 ```xml
 <tabs on-select={console.log('on-select:', '$event.selected:', $event.selected)}
-      on-change={console.log('on-change:', '$event.selected:', $event.selected)}>
-    <tab title="Tab1">Content1</tab>
-    <tab title="Tab2">Content2</tab>
-    <tab title="Tab3">Content3</tab>
-    <tab title="Tab4">Content4</tab>
+      on-change={console.log('on-change:', 'key:', $event.key)}>
+    <tab title="Tab1" key="1">Content1</tab>
+    <tab title="Tab2" key="2">Content2</tab>
+    <tab title="Tab3" key="3">Content3</tab>
+    <tab title="Tab4" key="4">Content4</tab>
 </tabs>
 ```
 
@@ -142,5 +142,22 @@ var component = new NEKUI.Component({
         ]
     }
 });
+```
+<!-- demo_end -->
+
+### 默认选中 Tab
+
+需要同时设置 `tabs` 的 `defaultKey` 和 `tab` 的 `key`
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<tabs defaultKey="3">
+    <tab title="Tab1" key="1">Content1</tab>
+    <tab title="Tab2" key="2">Content2</tab>
+    <tab title="Tab3" key="3">Content3</tab>
+    <tab title="Tab4" key="4">Content4</tab>
+</tabs>
 ```
 <!-- demo_end -->
