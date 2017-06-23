@@ -281,6 +281,10 @@ var component = new NEKUI.Component({
     <ui.input value={separator}/>
 </div>
 <div class=g-row>
+    最多展示多少个选项：
+    <ui.input value={limit}/>
+</div>
+<div class=g-row>
     <ui.button title="是否可搜索" on-click={this.toggleCanSearch(canSearch)}/>
     {canSearch?'true:可搜索':'false:不可搜索'}
 </div>
@@ -292,7 +296,7 @@ var component = new NEKUI.Component({
             showSeparator={showSeparator} separator={separator}
             selectedClose={selectedClose} canSelectAll={canSelectAll}
             isCaseSensitive={isCaseSensitive} searchInputPlaceholder="请输入"
-            value={value}/>
+            value={value} limit={limit}/>
 <div class=g-row>
     选中值：{value}
 </div>
@@ -310,13 +314,17 @@ var component = new NEKUI.Component({
         canSearch: true,
         isCaseSensitive: false,
         value: '',
+        limit: null,
         source: [
-            {name: '选项A'},
-            {name: '选项a'},
-            {name: '选项B'},
-            {name: '选项b'},
-            {name: '选项C'},
-            {name: '选项c'}
+            {name: '选项A'},{name: '选项a'},{name: '选项B'},{name: '选项b'},{name: '选项C'},{name: '选项c'},
+            {name: '选项D'},{name: '选项d'},{name: '选项E'},{name: '选项e'},{name: '选项F'},{name: '选项f'},
+            {name: '选项G'},{name: '选项g'},{name: '选项H'},{name: '选项h'},{name: '选项I'},{name: '选项i'},
+            {name: '选项J'},{name: '选项j'},{name: '选项K'},{name: '选项k'},{name: '选项L'},{name: '选项l'},
+            {name: '选项M'},{name: '选项m'},{name: '选项N'},{name: '选项n'},{name: '选项O'},{name: '选项o'},
+            {name: '选项P'},{name: '选项p'},{name: '选项Q'},{name: '选项q'},{name: '选项R'},{name: '选项r'},
+            {name: '选项S'},{name: '选项s'},{name: '选项T'},{name: '选项t'},{name: '选项U'},{name: '选项u'},
+            {name: '选项V'},{name: '选项v'},{name: '选项W'},{name: '选项w'},{name: '选项X'},{name: '选项x'},
+            {name: '选项Y'},{name: '选项y'},{name: '选项Z'}
         ]
     },
     toggleSelectedClose: function(selectedClose){

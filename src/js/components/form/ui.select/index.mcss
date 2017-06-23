@@ -95,6 +95,9 @@
         overflow-y: auto;
         padding: 0;
         max-height: 200px;
+        .u-check {
+            line-height: 0;
+        }
     }
     .m-treeview {
         overflow: auto;

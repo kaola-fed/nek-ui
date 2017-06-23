@@ -53,7 +53,7 @@ require('../check');
  * @param {boolean}           [options.data.canSelectAll=false]       => 是否有全选
  * @param {string}            [options.data.size]                     => 组件大小, sm/md/lg
  * @param {number}            [options.data.width]                    => 组件宽度
- * @param {number}            [options.data.limit=99999]              => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
+ * @param {number}            [options.data.limit]                    => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
  */
 
 var Select = Dropdown.extend({
@@ -85,7 +85,7 @@ var Select = Dropdown.extend({
             multiple: false,
             selectedClose: false,
             canSelectAll: true,
-            limit: 99999,
+            limit: null,
 
             placeholder: this.$trans('PLEASE_SELECT'),
             required: false
@@ -235,6 +235,20 @@ var Select = Dropdown.extend({
                 }
             } else {
                 data.value = '';
+            }
+        });
+        this.$watch('limit', function (newValue, oldValue) {
+            if (oldValue === undefined) {
+                return;
+            }
+            try {
+                newValue = Number(newValue);
+                if(isNaN(newValue)) {
+                    console.error('limit 请输入数字');
+                }
+            }
+            catch(e) {
+                console.error('limit 请输入数字');
             }
         });
         if (this.service && this.service.getList) {
