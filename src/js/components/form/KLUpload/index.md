@@ -4,13 +4,17 @@ title: 上传组件
 
 ## 代码演示
 
+### 注
+
+目前该上传组件采用FormData向后台提交文件数据。
+
 ### 基本展示形式（列表形式）, 用于表单上传
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload'></kl-upload>
+<kl-upload action='your_upload_address'></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -20,7 +24,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' list-type="card"></kl-upload>
+<kl-upload action='your_upload_address' list-type="card"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -30,7 +34,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' multiple={true}></kl-upload>
+<kl-upload action='your_upload_address' multiple={true}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -40,7 +44,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' list-type="card" multiple={true}></kl-upload>
+<kl-upload action='your_upload_address' list-type="card" multiple={true}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -50,7 +54,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' file-list={list} accept=".jpg,.zip,video/*,audio/*"></kl-upload>
+<kl-upload action='your_upload_address' file-list={list} accept=".jpg,.zip,video/*,audio/*"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -60,7 +64,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' max-size="830M"></kl-upload>
+<kl-upload action='your_upload_address' max-size="830M"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -70,7 +74,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' multiple={true} num-limit={15} num-perline={4}></kl-upload>
+<kl-upload action='your_upload_address' multiple={true} num-limit={15} num-perline={4}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -80,7 +84,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://10.240.180.98:3000/upload' file-list={list}></kl-upload>
+<kl-upload action='your_upload_address' file-list={list}></kl-upload>
 ```
 
 ```javascript

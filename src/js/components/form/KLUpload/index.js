@@ -17,6 +17,11 @@ var tpl = require('./index.html');
  * @extend Component
  * @param {object}         [options.data]                  = 绑定属性
  * @param {string}         [options.data.action]           => 必选，上传地址
+ * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+ *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+ *                                                             name: 文件名称
+ *                                                             url: 文件的路径
+ *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
  * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
  * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
  * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
