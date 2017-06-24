@@ -11,7 +11,7 @@
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type}</span>
         {/if}
-        <div class="m-delete" r-hide={!deletable} on-click={this.onDelete()}></div>
+        <div class="m-delete" r-hide={!deletable} on-click={this.onDelete()}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">
             {#if status === 'failed'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>
@@ -28,7 +28,7 @@
                 </span>
             {#elseif status === 'uploaded'}
                 <span class="u-uploaded">
-                    <a class="u-uploaded-zone" href={src} download={name}>下载<i class="u-icon u-icon-import"></i></a>
+                    <a class="u-uploaded-zone" href={src} download={name}>下载<i class="u-icon u-icon-export"></i></a>
                 </span>
             {/if}
         </div>
