@@ -96,8 +96,6 @@ var FileUnit = Component.extend({
         var options = {
             upload: {
                 onload: function(e) {
-                    data.status = 'uploaded';
-                    data.info = '';
                     data.progress = '100%';
                     self.$update();
                     self.$emit('success', { progress: data.progress, info: e });
@@ -114,6 +112,8 @@ var FileUnit = Component.extend({
                 if (target.status === 200) {
                     var response = JSON.parse(target.responseText);
                     self.data.file.url = response.url;
+                    self.data.status = 'uploaded';
+                    self.data.info = '';
                 } else {
                     data.status = 'failed';
                     data.info = '上传失败';

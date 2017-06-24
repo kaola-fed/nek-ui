@@ -221,17 +221,21 @@ var UploadCard = UploadBase.extend({
         }
 
         fileunit.$on('onload', successCb);
-        fileunit.$on('success', successCb);
+        // fileunit.$on('success', successCb);
         
         function successCb() {
             var allUploaded = true;
+            var hasFailed = false;
             self.data.fileUnitList.forEach(function(item) {
-                allUploaded &= item.inst.data.status === 'uploaded';
+                allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+                hasFailed = hasFailed || item.inst.data.status === 'failed';
             });
             if (allUploaded) {
                 self.data.status = 'uploaded';
-                self.$update();
+            } else if (hasFailed) {
+                self.data.status = 'failed';
             }
+            self.$update();
             self.updateFileList();
         }
 
@@ -253,7 +257,7 @@ var UploadCard = UploadBase.extend({
             self.toggle(false);
             this.destroyed = true;
             this.$off('preview', previewCb);
-            this.$off('success', successCb);
+            this.$off('onload', successCb);
             self.updateFileList();
             self.updateFilesZone();
             resetStatus();
