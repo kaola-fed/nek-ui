@@ -95,12 +95,12 @@ var FileUnit = Component.extend({
 
         var options = {
             upload: {
-                onload: function() {
+                onload: function(e) {
                     data.status = 'uploaded';
                     data.info = '';
                     data.progress = '100%';
                     self.$update();
-                    self.$emit('success', { progress: data.progress });
+                    self.$emit('success', { progress: data.progress, info: e });
                 },
                 onprogress: function(e) {
                     data.status = 'uploading';
@@ -110,8 +110,15 @@ var FileUnit = Component.extend({
                 }
             },
             onload: function(e) {
-                var response = e.target && JSON.parse(e.target.responseText);
-                self.data.file.url = response.url;
+                var target = e.target;
+                if (target.status === 200) {
+                    var response = JSON.parse(target.responseText);
+                    self.data.file.url = response.url;
+                } else {
+                    data.status = 'failed';
+                    data.info = '上传失败';
+                }
+                self.$update();
                 self.$emit('onload', { info: e });
             },
             onerror: function(e) {
