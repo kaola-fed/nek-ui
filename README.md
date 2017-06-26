@@ -18,7 +18,7 @@ UI components based on [RegularJS][regularjs]
 
  - For Node:
  ```
- npm i nek-ui -S
+ npm i regularjs@0.4.3 nek-ui -S
 
  const NEKUI = require('nek-ui');
 

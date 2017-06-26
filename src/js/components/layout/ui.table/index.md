@@ -298,13 +298,17 @@ var anchor = NEKUI.Component.extend({
     template: '<a>&nbsp;anchor</a>',
 });
 
+NEKUI.UITable.filter('txtFilter', function(val) {
+    return val + '*';
+});
+
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
             source: []
         },
-        tdTpl: '<a on-click={this.emitEvent("itemclick", item)}>I am {item.title}</a>'
+        tdTpl: '<a on-click={this.emitEvent("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
     },
     init: function() {
         this.data.table.source = [];

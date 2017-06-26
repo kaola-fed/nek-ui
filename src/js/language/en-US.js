@@ -35,5 +35,6 @@ module.exports = {
     DOWNLOAD_FILE: '',
     UPLOAD_FAIL: 'Fail',
     UNKNOWN: 'UNKNOWN',
-    DELETE_CONFIRM: 'Are you sure to delete'
+    DELETE_CONFIRM: 'Are you sure to delete',
+    LIMIT_ERROR: 'the limit should be a number',
 }

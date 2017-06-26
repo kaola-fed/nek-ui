@@ -34,9 +34,8 @@
         }
 
         .u-select-errorIcon {
-            position: absolute;
-            right: 20px;
-            top: 2px;
+            position: relative;
+            top: -28px;
         }
     }
 
@@ -96,6 +95,9 @@
         overflow-y: auto;
         padding: 0;
         max-height: 200px;
+        .u-check {
+            line-height: 0;
+        }
     }
     .m-treeview {
         overflow: auto;
