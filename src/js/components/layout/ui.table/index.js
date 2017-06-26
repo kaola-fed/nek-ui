@@ -105,21 +105,17 @@ var UITable = Component.extend({
             get: function() {
                 var data = this.data;
                 if(data.width !== undefined) {
-                    return data.width + 'px';
+                    return data.width;
                 } else {
-                    var parentNode = this.$refs.tableWrap.parentNode;
-                    var parentWidth = undefined;
-                    if(parentNode) {
-                        parentWidth = parentNode.scrollWidth;
-                    }
+                    var parentWidth = this.data.parentWidth;
                     if(parentWidth && data.tableWidth > parentWidth) {
-                        return parentWidth + 'px';
+                        return parentWidth;
                     } else {
-                        return data.tableWidth + 'px';
+                        return data.tableWidth;
                     }
                 }
 
-                return 'auto';
+                return null;
             },
             set: function(val) {
                 return this.data.wrapWidth = val;
@@ -141,6 +137,7 @@ var UITable = Component.extend({
             columns: [],
             sorting: {},
             config: {},
+            initFinished: false,
             _scrollBarTimer: null
         });
         this.supr(data);
@@ -152,6 +149,7 @@ var UITable = Component.extend({
         this.$watch('source', this._onSouceChange)
         this.$watch('columns', this._onColumnsChange);
         this.$watch('scrollYBar', this._onScrollYBarChange);
+        this.$watch('parentWidth', this._onParentWidthChange);
 
         this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
 
@@ -184,6 +182,13 @@ var UITable = Component.extend({
         if(this.$refs.table) {
             this._updateData('viewWidth', this.$refs.table.offsetWidth);
         }
+    },
+    _onParentWidthChange: function(newVal, oldVal) {
+        if(newVal == undefined || oldVal == undefined || oldVal === 0) {
+            return;
+        }
+        var ratio = newVal / oldVal;
+        this._updateTableWidth(ratio);
     },
     _onSouceChange: function() {
         setTimeout(function() {
@@ -285,10 +290,17 @@ var UITable = Component.extend({
             if(!this._isShow()) {
                 return;
             }
+            this._updateParentWidth();
             this._updateDefaultWidth();
             this._updateScrollBar();
             this._updateTableWidth();
         }.bind(this), 400);
+    },
+    _updateParentWidth: function() {
+        var parentNode = this.$refs.tableWrap.parentNode;
+        if(parentNode) {
+            this.data.parentWidth = parentNode.scrollWidth;
+        }
     },
     _updateScrollBar: function() {
         var data = this.data;
@@ -332,7 +344,8 @@ var UITable = Component.extend({
             this._updateViewWidth();
             this._initTableWidth();
             this._getHeaderHeight();
-        }.bind(this), 200);
+            this.data.initFinished = true;
+        }.bind(this), 100);
     },
     _updateDefaultWidth: function(init) {
         var width = this.data.width;
@@ -386,12 +399,13 @@ var UITable = Component.extend({
         this._updateData('footerHeight', footerHeight);
         return footerHeight;
     },
-    _updateTableWidth: function() {
+    _updateTableWidth: function(ratio) {
         var data = this.data;
         var _dataColumns = data._dataColumns;
         if(!_dataColumns) {
             return;
         }
+        ratio = ratio || 1;
         var newTableWidth = 0;
         var fixedCol = false;
         var fixedTableWidth = 0;
@@ -406,6 +420,11 @@ var UITable = Component.extend({
             if(!column._width) {
                 column._width = column.width || 100;
             }
+
+            if(ratio !== 1) {
+                column._width = parseFloat((column._width * ratio).toFixed(1));
+            }
+
 
             // 计算固定列的总宽度
             if(column._width && column.fixed) {
