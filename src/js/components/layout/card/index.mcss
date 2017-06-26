@@ -45,6 +45,7 @@
     .m-card {
         box-shadow: none;
         border-radius: initial;
+        border: none;
         padding: 0 40px;
         .card_hd {
             margin-bottom: 8px;
