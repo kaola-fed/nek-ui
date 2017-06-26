@@ -244,11 +244,11 @@ var Select = Dropdown.extend({
             try {
                 newValue = Number(newValue);
                 if(isNaN(newValue)) {
-                    console.error('limit 请输入数字');
+                    console.error(this.$trans('LIMIT_ERROR'));
                 }
             }
             catch(e) {
-                console.error('limit 请输入数字');
+                console.error(this.$trans('LIMIT_ERROR'));
             }
         });
         if (this.service && this.service.getList) {

@@ -27,5 +27,6 @@ module.exports = {
     VALUE_ERROR: '值错误',
     LENGTH_ERROR: '长度错误',
     LOADING: '加载中',
-    NO_DATA: '无数据'
+    NO_DATA: '无数据',
+    LIMIT_ERROR: 'limit 应该为数字'
 }

@@ -27,5 +27,6 @@ module.exports = {
     VALUE_ERROR: 'Value Error',
     LENGTH_ERROR: 'Length Error',
     LOADING: 'Loading',
-    NO_DATA: 'No data'
+    NO_DATA: 'No data',
+    LIMIT_ERROR: 'the limit should be a number'
 }
