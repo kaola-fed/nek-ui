@@ -11,7 +11,7 @@
         {#if this.$body}
             {#inc this.$body}
         {#else}
-            <div class="u-input-btn" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class="u-input-content"><i class="u-icon u-icon-plus"></i>上传文件</span></div>
+            <div class="u-input-btn" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span></div>
             <div class="u-input-info">{preCheckInfo}</div>
         {/if}
     </li>

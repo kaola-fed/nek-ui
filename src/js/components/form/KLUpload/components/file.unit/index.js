@@ -116,14 +116,14 @@ var FileUnit = Component.extend({
                     self.data.info = '';
                 } else {
                     data.status = 'failed';
-                    data.info = '上传失败';
+                    data.info = this.$trans('UPLOAD_FAIL');
                 }
                 self.$update();
                 self.$emit('onload', { info: e });
             },
             onerror: function(e) {
                 data.status = 'failed';
-                data.info = '上传失败';
+                data.info = this.$trans('UPLOAD_FAIL');
                 self.$update();
                 self.$emit('error', { info: e });
             }
@@ -140,7 +140,7 @@ var FileUnit = Component.extend({
         if (data.delConfirm) {
             var modal = new Modal({
                 data: {
-                    content: '确认删除' + data.name + '?'
+                    content: this.$trans('DELETE_CONFIRM') + data.name + '?'
                 }
             });
             modal.$on('ok', function() {

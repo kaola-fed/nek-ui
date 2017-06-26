@@ -221,7 +221,7 @@ var ImagePreview = Component.extend({
 
         var modal = new Modal({
             data: {
-                content: '确认删除' + img.name + '?'
+                content: this.$trans('DELETE_CONFIRM') + img.name + '?'
             }
         });
         modal.$on('ok', function() {

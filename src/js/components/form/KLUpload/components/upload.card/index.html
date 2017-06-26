@@ -10,7 +10,7 @@
                 {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}
                     <span class="u-txt">ZIP</span>
                 {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}
-                    <span class="u-txt">未知</span>
+                    <span class="u-txt">{this.$trans('UNKNOWN')}</span>
                 {#else} <!-- TEXT, DOC, JS, HTML -->
                     <span class="u-txt">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>
                 {/if}
@@ -42,7 +42,7 @@
                 {#inc this.$body}
             {#else}
                 <div class="u-input-btn" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>
-                    <span class="u-input-content"><i class="u-icon u-icon-plus"></i>上传文件</span>
+                    <span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span>
                 </div>
                 <div class="u-input-info">{preCheckInfo}</div>
             {/if}

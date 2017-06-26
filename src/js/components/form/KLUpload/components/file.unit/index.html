@@ -7,7 +7,7 @@
         {#elseif type === 'ZIP'}
             <span class="u-txt">ZIP</span>
         {#elseif type === 'UNKNOWN'}
-            <span class="u-txt">未知</span>
+            <span class="u-txt">{this.$trans('UNKNOWN')}</span>
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type}</span>
         {/if}
@@ -15,7 +15,7 @@
         <div class="m-status">
             {#if status === 'failed'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>
-                    <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>重试</span>
+                    <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
                 </span>
             {#elseif status === 'uploading'}
                 <span class="u-uploading">
@@ -28,7 +28,7 @@
                 </span>
             {#elseif status === 'uploaded'}
                 <span class="u-uploaded">
-                    <a class="u-uploaded-zone" href={src} download={name}>下载<i class="u-icon u-icon-export"></i></a>
+                    <a class="u-uploaded-zone" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
                 </span>
             {/if}
         </div>
