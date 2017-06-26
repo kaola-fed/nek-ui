@@ -87,7 +87,7 @@ $u-formctrl_min-width = 160px;
 /* Colors */
 $u-formctrl_background = white;
 $u-formctrl_color = #333;
-$u-formctrl_border = #eee;
+$u-formctrl_border = #ddd;
 
 $u-formctrl-focus_background = $u-formctrl_background;
 $u-formctrl-focus_color = $u-formctrl_color;
