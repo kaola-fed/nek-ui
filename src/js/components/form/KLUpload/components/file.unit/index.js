@@ -116,14 +116,14 @@ var FileUnit = Component.extend({
                     self.data.info = '';
                 } else {
                     data.status = 'failed';
-                    data.info = this.$trans('UPLOAD_FAIL');
+                    data.info = self.$trans('UPLOAD_FAIL');
                 }
                 self.$update();
                 self.$emit('onload', { info: e });
             },
             onerror: function(e) {
                 data.status = 'failed';
-                data.info = this.$trans('UPLOAD_FAIL');
+                data.info = self.$trans('UPLOAD_FAIL');
                 self.$update();
                 self.$emit('error', { info: e });
             }

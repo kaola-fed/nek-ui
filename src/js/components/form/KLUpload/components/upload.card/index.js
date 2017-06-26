@@ -241,7 +241,7 @@ var UploadCard = UploadBase.extend({
 
         fileunit.$on('error', function() {
             self.data.status = 'failed';
-            self.data.info = this.$trans('UPLOAD_FAIL');
+            self.data.info = self.$trans('UPLOAD_FAIL');
             self.$update();
         });
         
