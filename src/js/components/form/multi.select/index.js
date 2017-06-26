@@ -78,14 +78,14 @@ var MultiSelect = Dropdown.extend({
     },
     initSelected: function() {
     	var data = this.data;
-    	if(data.value !== null) {
-        	var _list = data.value.split(data.separator);
+    	if(data.value !== null && data.value !== undefined) {
+        	var _list = data.value.toString().split(data.separator);
         	var _checkedItem = function(list) {
         			list.map(function(item2) {
         				if(item2[data.childKey] && item2[data.childKey].length) {
         					_checkedItem(item2[data.childKey]);
         				} else {
-        					if(_list.indexOf((item2[data.key] || '').toString()) > -1 || _list.indexOf(item2[data.key]) > -1) {
+        					if(_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
 	        					item2[data.checkKey] = true;
 	        				} else {
 	        					item2[data.checkKey] = false;
@@ -130,14 +130,23 @@ var MultiSelect = Dropdown.extend({
         cate.active = true;
 
         // 将下一级后面的都置空
-        for(i = level + 2; i < 5; i++) {
+        for(i = level + 2; i < data.tree.length; i++) {
             data.tree[i] = {};
         }
 
         if(!data.multiple && !(cate[data.childKey] && cate[data.childKey].length)) {
-        	data.value = cate[data.key];
+        	data.value = cate[data.key].toString();
         	data.selected = [cate];
         	data.open = false;
+            /**
+             * @event select 选择某一项时触发
+             * @property {object} sender 事件发送对象
+             * @property {object} selected 当前选择项
+             */
+            this.$emit('select', {
+                sender: this,
+                selected: cate
+            });
         }
     },
     checkCate: function(cate, level, checked) {
@@ -166,6 +175,10 @@ var MultiSelect = Dropdown.extend({
                 }
             })
         }
+        this.$emit('select', {
+            sender: this,
+            selected: cate
+        });
         this.watchValue();
     },
     // 循环列表获取 value 值
@@ -179,7 +192,7 @@ var MultiSelect = Dropdown.extend({
 	    			_getChecked(item[data.childKey]);
 	    		} else {
 	    			if(item[data.checkKey]) {
-	    				_value.push(item[data.key]);
+	    				_value.push(item[data.key].toString());
 	    				data.selected.push(item);
 	    			}
 	    		}
@@ -207,8 +220,8 @@ var MultiSelect = Dropdown.extend({
     	event && event.stopPropagation();
     	this.toggle(true);
     	var data = this.data;
-    	var _list = data.value.split(data.separator);
-    	_list.splice(_list.indexOf((item[data.key] || '').toString()), 1);
+    	var _list = data.value.toString().split(data.separator);
+    	_list.splice(_list.indexOf((item[data.key].toString() || '').toString()), 1);
     	data.value = _list.join(data.separator);
     	this.initSelected();
     	this.watchValue();

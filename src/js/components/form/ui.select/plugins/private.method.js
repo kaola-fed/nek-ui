@@ -42,11 +42,13 @@ module.exports = function PrivateMethod(Component) {
             var maxShowCount = data.maxShowCount;
             var isCaseSensitive = data.isCaseSensitive;
             searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
-            return source.filter(function (item, index) {
+            var targetSource = source.filter(function (item, index) {
                 var text = item[nameKey] + '';
                 var value = isCaseSensitive ? text.toLowerCase() : text;
                 return (searchValue && value.indexOf(searchValue) >= 0) || (!searchValue && index < maxShowCount)
             });
+            if(data.limit) return targetSource.slice(0, data.limit);
+            return targetSource
         },
         /**
          * 获取 Map 在 List<Map> 中的索引，因为是数据，所以转化为字符串比较
