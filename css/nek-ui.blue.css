@@ -5522,6 +5522,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-card .m-card{
 	box-shadow:none;
 	border-radius:initial;
+	border:none;
 	padding:0 40px;
 }
 .m-card .m-card .card_hd{
