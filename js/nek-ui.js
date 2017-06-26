@@ -106,45 +106,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	    UITextArea: __webpack_require__(357),
 	    Uploader: __webpack_require__(359),
 	    UIGroup: __webpack_require__(361),
+	    KLUpload: __webpack_require__(362),
 
 	    // Navigation
-	    Collapse: __webpack_require__(362),
+	    Collapse: __webpack_require__(377),
 	    Dropdown: __webpack_require__(183),
-	    Sidebar: __webpack_require__(366),
-	    Menu: __webpack_require__(368),
-	    MenuSub: __webpack_require__(370),
-	    MenuItem: __webpack_require__(373),
-	    Pager: __webpack_require__(375),
-	    Tabs: __webpack_require__(377),
-	    Steps: __webpack_require__(379),
-	    KLCrumb: __webpack_require__(381),
-	    KLCrumbItem: __webpack_require__(383),
+	    Sidebar: __webpack_require__(381),
+	    Menu: __webpack_require__(383),
+	    MenuSub: __webpack_require__(385),
+	    MenuItem: __webpack_require__(388),
+	    Pager: __webpack_require__(390),
+	    Tabs: __webpack_require__(392),
+	    Steps: __webpack_require__(394),
+	    KLCrumb: __webpack_require__(396),
+	    KLCrumbItem: __webpack_require__(398),
 
 	    // Notice
-	    Modal: __webpack_require__(385),
-	    Mask: __webpack_require__(387),
-	    Notify: __webpack_require__(389),
-	    PopConfirm: __webpack_require__(391),
+	    Modal: __webpack_require__(367),
+	    Mask: __webpack_require__(400),
+	    Notify: __webpack_require__(402),
+	    PopConfirm: __webpack_require__(404),
 
 	    // Widget
-	    Gotop: __webpack_require__(393),
-	    Loading: __webpack_require__(395),
-	    Progress: __webpack_require__(397),
+	    Gotop: __webpack_require__(406),
+	    Loading: __webpack_require__(408),
+	    Progress: __webpack_require__(410),
 	    Tooltip: __webpack_require__(317),
-	    PathTool: __webpack_require__(399),
-	    KLIcon: __webpack_require__(408),
+	    PathTool: __webpack_require__(412),
+	    KLIcon: __webpack_require__(421),
 
 	    // Layout
-	    Panel: __webpack_require__(364),
-	    PanelTool: __webpack_require__(410),
-	    UITable: __webpack_require__(411),
-	    Row: __webpack_require__(426),
-	    Col: __webpack_require__(428),
-	    Card: __webpack_require__(430),
-	    CardTools: __webpack_require__(432),
+	    Panel: __webpack_require__(379),
+	    PanelTool: __webpack_require__(423),
+	    UITable: __webpack_require__(424),
+	    Row: __webpack_require__(439),
+	    Col: __webpack_require__(441),
+	    Card: __webpack_require__(443),
+	    CardTools: __webpack_require__(445),
 
 	    //i18n
-	    LocaleProvider: __webpack_require__(433)
+	    LocaleProvider: __webpack_require__(446)
 	};
 
 	module.exports = (0, _assign2.default)({
@@ -3057,6 +3058,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    LENGTH_ERROR: '长度错误',
 	    LOADING: '加载中',
 	    NO_DATA: '无数据',
+	    FILE_TYPE_ERROR: '格式错误',
+	    FILE_TOO_LARGE: '文件过大',
+	    RETRY: '重试',
+	    UPLOAD_FILE: '上传文件',
+	    DOWNLOAD_FILE: '下载',
+	    UPLOAD_FAIL: '上传失败',
+	    UNKNOWN: '未知',
+	    DELETE_CONFIRM: '确认删除',
 	    LIMIT_ERROR: 'limit 应该为数字'
 		};
 
@@ -3096,6 +3105,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    LENGTH_ERROR: 'Length Error',
 	    LOADING: 'Loading',
 	    NO_DATA: 'No data',
+	    FILE_TYPE_ERROR: 'TypeError',
+	    FILE_TOO_LARGE: 'TooLarge',
+	    RETRY: 'Retry',
+	    UPLOAD_FILE: 'File',
+	    DOWNLOAD_FILE: '',
+	    UPLOAD_FAIL: 'Fail',
+	    UNKNOWN: 'UNKNOWN',
+	    DELETE_CONFIRM: 'Are you sure to delete',
 	    LIMIT_ERROR: 'the limit should be a number'
 		};
 
@@ -28755,915 +28772,574 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * ------------------------------------------------------------
-	 * Collapse  折叠面板
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 *  ------------------------------
+	 *  kl-upload 上传
+	 *  ------------------------------
 	 */
-
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(363);
 	var _ = __webpack_require__(98);
-
-	var Panel = __webpack_require__(364);
+	var UploadList = __webpack_require__(363);
+	var UploadCard = __webpack_require__(374);
+	var Config = __webpack_require__(370);
+	var tpl = __webpack_require__(376);
 
 	/**
-	 * @class Collapse
+	 * @class KLUpload
 	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性
-	 * @param {boolean}           [options.data.accordion=false]      => 是否每次只展开一个
-	 * @param {boolean}           [options.data.disabled=false]       => 是否禁用
-	 * @param {boolean}           [options.data.visible=true]         => 是否显示
-	 * @param {string}            [options.data.class]                => 补充class
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+	 *                                                             name: 文件名称
+	 *                                                             url: 文件的路径
+	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
 	 */
-	var Collapse = Component.extend({
-	  name: 'collapse',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    _.extend(this.data, {
-	      panels: [],
-	      accordion: false
-	    });
-	    this.supr();
-	  }
+	var KLUpload = Component.extend({
+	    name: 'kl-upload',
+	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	    config: function config(data) {
+	        _.extend(data, {
+	            action: '',
+	            name: 'file',
+	            multiple: false,
+	            drag: false,
+	            accept: '*',
+	            listType: 'list',
+	            fileList: [],
+	            data: {},
+	            numLimit: 10,
+	            numPerline: 5,
+	            maxSize: Config.sizeMap.GB,
+	            deletable: true,
+	            encType: 'multipart/form-data'
+	        });
+
+	        this.supr(data);
+	    },
+
+	    init: function init(data) {
+	        this.preProcess(data);
+	        this.initUploadInst(data);
+	        this.supr(data);
+	    },
+
+	    preProcess: function preProcess(data) {
+	        if (typeof data.maxSize === 'number') {
+	            data.maxSize += '';
+	        }
+	    },
+
+	    initUploadInst: function initUploadInst(data) {
+	        var uploadNode = this.$refs['m-upload'],
+	            typeMap = {
+	            list: UploadList,
+	            card: UploadCard
+	        };
+
+	        new typeMap[data.listType]({
+	            data: data
+	        }).$inject(uploadNode);
+	    }
 	});
 
-		module.exports = Collapse;
+		module.exports = KLUpload;
 
 /***/ }),
 /* 363 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\n    {#inc this.$body}\n</div>"
+	/**
+	 *  ------------------------------
+	 *  upload.list 上传
+	 *  ------------------------------
+	 */
+	'use strict';
+
+	var FileUnit = __webpack_require__(364);
+	var UploadBase = __webpack_require__(369);
+	var ImagePreview = __webpack_require__(371);
+	var tpl = __webpack_require__(373);
+
+	/**
+	 * @class UploadList
+	 * @extend UploadBase
+	 */
+	var UploadList = UploadBase.extend({
+	    name: 'upload.list',
+	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	    config: function config(data) {
+	        this.supr(data);
+	    },
+
+	    init: function init(data) {
+	        this.initFilesWrapper();
+	        this.supr(data);
+	    },
+
+	    initFilesWrapper: function initFilesWrapper() {
+	        var inputWrapper = this.data.inputWrapper = this.$refs.inputwrapper;
+	        var filesWrapper = this.data.filesWrapper = this.$refs.fileswrapper;
+	        filesWrapper.appendChild(inputWrapper);
+	        inputWrapper.style.display = 'inline-block';
+	    },
+
+	    onDragEnter: function onDragEnter(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	    },
+
+	    onDragOver: function onDragOver(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	    },
+
+	    onDrop: function onDrop(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+
+	        if (!this.data.drag) {
+	            return;
+	        }
+
+	        var dt = e.event && e.event.dataTransfer;
+	        var files = dt.files;
+
+	        this.handleFiles(files);
+	    },
+
+	    fileSelect: function fileSelect() {
+	        var inputNode = this.$refs.file,
+	            files = inputNode.files;
+
+	        this.handleFiles(files);
+
+	        inputNode.value = '';
+	    },
+
+	    handleFiles: function handleFiles(files) {
+	        var data = this.data,
+	            index = 0,
+	            len = files.length,
+	            file,
+	            fileunit,
+	            options;
+
+	        options = this.setOptions(data);
+
+	        data.preCheckInfo = '';
+
+	        for (; index < len; index++) {
+	            if (data.fileUnitList.length < data.numLimit) {
+	                file = files[index];
+	                data.preCheckInfo = this.preCheck(file);
+	                if (data.preCheckInfo) {
+	                    continue;
+	                }
+	                fileunit = this.createFileUnit({
+	                    file: file,
+	                    options: options,
+	                    deletable: data.deletable
+	                });
+	                fileunit.flag = 'ADDED';
+	                data.fileUnitList.push({
+	                    inst: fileunit
+	                });
+	            }
+	        }
+
+	        this.updateFileList();
+	    },
+
+	    createFileUnit: function createFileUnit(data) {
+	        var self = this,
+	            imagePreview = this.$refs.imagepreview,
+	            fileunit = new FileUnit({ data: data });
+
+	        fileunit.$on('preview', function () {
+	            var current = this;
+
+	            function filterImgFile(file) {
+	                return file.inst.data.type === 'IMAGE';
+	            }
+
+	            function mapHelper(img) {
+	                if (current === img.inst) {
+	                    img.inst.current = true;
+	                }
+	                return img.inst;
+	            }
+
+	            var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	            var preview = createImagePreview(imgList);
+
+	            preview.$inject(imagePreview);
+	        });
+
+	        function createImagePreview(imgFileList) {
+	            function findHelper(img) {
+	                return img.current;
+	            }
+	            var curIndex = imgFileList.findIndex(findHelper);
+
+	            function mapHelper(img) {
+	                delete img.current;
+	                return {
+	                    src: img.data.src,
+	                    name: img.data.name,
+	                    status: img.data.status
+	                };
+	            }
+	            var imgList = imgFileList.map(mapHelper);
+
+	            var imagePreview = new ImagePreview({
+	                data: {
+	                    imgList: imgList,
+	                    curIndex: curIndex
+	                }
+	            });
+
+	            imagePreview.$on('delete', function (imgInfo) {
+	                var index = imgInfo.index,
+	                    imgInst = imgFileList[index];
+
+	                if (imgInst) {
+	                    imgInst.$emit('delete');
+	                }
+	            });
+
+	            imagePreview.$on('$destroy', function () {
+	                imgFileList = null;
+	            });
+
+	            return imagePreview;
+	        }
+
+	        fileunit.$on('onload', function () {
+	            self.updateFileList();
+	        });
+
+	        fileunit.$on('success', function () {
+	            self.updateFileList();
+	        });
+
+	        fileunit.$on('delete', function () {
+	            if (this.flag === 'ORIGINAL') {
+	                this.flag = 'DELETED';
+	                this.file = this.data.file;
+	            }
+	            this.destroy();
+	        });
+
+	        fileunit.$on('$destroy', function () {
+	            this.destroyed = true;
+	            self.updateFileList();
+	        });
+
+	        return fileunit;
+	    },
+
+	    updateFileList: function updateFileList() {
+	        this.supr();
+	        this.appendInputWrapper();
+	        this.$update();
+	    },
+
+	    createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	        var wrapper = document.createElement('li');
+
+	        parent.appendChild(wrapper);
+
+	        this.setFileUnitWrapperStyle(wrapper, index);
+
+	        return wrapper;
+	    },
+
+	    setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	        var data = this.data,
+	            numPerline = data.numPerline,
+	            fileUnitWidth = data.fileUnitWidth,
+	            fileUnitMargin = data.fileUnitMargin;
+
+	        wrapper.className = 'u-fileitem';
+	        wrapper.style.display = 'inline-block';
+	        wrapper.style.width = fileUnitWidth + 'px';
+
+	        if (index && index % numPerline) {
+	            wrapper.style.marginLeft = fileUnitMargin + 'px';
+	        }
+	    },
+
+	    appendInputWrapper: function appendInputWrapper() {
+	        var data = this.data,
+	            inputWrapper = data.inputWrapper,
+	            filesWrapper = data.filesWrapper,
+	            numPerline = data.numPerline,
+	            numLimit = data.numLimit,
+	            fileUnitMargin = data.fileUnitMargin,
+	            length = data.fileUnitList.length;
+
+	        if (length < numLimit) {
+	            filesWrapper.appendChild(inputWrapper);
+
+	            if (length % numPerline) {
+	                inputWrapper.style.marginLeft = fileUnitMargin + 'px';
+	            } else {
+	                inputWrapper.style.marginLeft = '0';
+	            }
+	        }
+	    }
+	});
+
+		module.exports = UploadList;
 
 /***/ }),
 /* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
-	 * ------------------------------------------------------------
-	 * Panel     面板
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 *  ------------------------------
+	 *  file unit
+	 *  ------------------------------
 	 */
 
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(365);
 	var _ = __webpack_require__(98);
+	var tpl = __webpack_require__(365);
+	var upload = __webpack_require__(366);
+	var Modal = __webpack_require__(367);
 
-	/**
-	 * @class Panel
-	 * @extend Component
-	 * @param {object}          [options.data]                    = 绑定属性
-	 * @param {boolean}         [options.data.disabled=false]     => 是否禁用
-	 * @param {boolean}         [options.data.visible=true]       => 是否显示
-	 * @param {string}          [options.data.class]              => 补充class
-	 */
-	var Panel = Component.extend({
-	    name: 'panel',
-	    template: template,
-	    $tools: null,
-	    $foot: null,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: '',
-	            open: true
+	var FileUnit = Component.extend({
+	    name: 'file.unit',
+	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	    config: function config(data) {
+	        _.extend(data, {
+	            file: {},
+	            options: {}
 	        });
-	        this.supr();
 
-	        if (this.$outer && this.$outer.data.panels) this.$outer.data.panels.push(this);
+	        _.extend(data, {
+	            info: '',
+	            status: '',
+	            deletable: true,
+	            delConfirm: false
+	        });
+
+	        this.initData(data);
+
+	        this.supr(data);
 	    },
-	    /**
-	     * @method toggle(open) 展开/收起
-	     * @public
-	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
-	     * @return {void}
-	     */
-	    toggle: function toggle(open) {
-	        if (this.data.disabled) return;
 
-	        if (open === undefined) open = !this.data.open;
+	    initData: function initData(data) {
+	        var file = data.file;
+	        data.name = this.getFileName(file);
+	        data.type = this.getFileType(file);
 
-	        if (open && this.$outer && this.$outer.data.panels && this.$outer.data.accordion) {
-	            this.$outer.data.panels.forEach(function (panel) {
-	                panel.data.open = false;
-	            });
+	        // for initial uploaded files
+	        if (file.url) {
+	            data.src = file.url;
+	            data.status = 'uploaded';
+	        } else {
+	            data.src = window.URL.createObjectURL(file);
+	            this.uploadFile(file);
+	        }
+	    },
+
+	    getFileName: function getFileName(file) {
+	        return file.name;
+	    },
+
+	    getFileType: function getFileType(file) {
+	        var type = file.type || '',
+	            name = file.name || '';
+
+	        if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	            return 'IMAGE';
+	        } else if (/zip|rar|gz/i.test(name)) {
+	            return 'ZIP';
+	        } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	            return 'DOC';
+	        } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	            return 'VIDEO';
+	        } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	            return 'AUDIO';
+	        } else if (/text\/plain/.test(type)) {
+	            return 'TEXT';
+	        } else if (/text\/html/.test(type)) {
+	            return 'HTML';
+	        } else if (/application\/pdf/.test(type)) {
+	            return 'PDF';
+	        } else if (/application\/javascript/.test(type)) {
+	            return 'JS';
 	        }
 
-	        this.data.open = open;
+	        return 'UNKNOWN';
 	    },
-	    stopPropagation: function stopPropagation(e) {
-	        e.stopPropagation();
+
+	    uploadFile: function uploadFile(file) {
+	        var self = this,
+	            data = this.data;
+
+	        data.info = '';
+
+	        var options = {
+	            upload: {
+	                onload: function onload(e) {
+	                    data.progress = '100%';
+	                    self.$update();
+	                    self.$emit('success', { progress: data.progress, info: e });
+	                },
+	                onprogress: function onprogress(e) {
+	                    data.status = 'uploading';
+	                    data.progress = parseInt(e.loaded / e.total * 100) + '%';
+	                    self.$update();
+	                    self.$emit('progress', { progress: data.progress });
+	                }
+	            },
+	            onload: function onload(e) {
+	                var target = e.target;
+	                if (target.status === 200) {
+	                    var response = JSON.parse(target.responseText);
+	                    self.data.file.url = response.url;
+	                    self.data.status = 'uploaded';
+	                    self.data.info = '';
+	                } else {
+	                    data.status = 'failed';
+	                    data.info = self.$trans('UPLOAD_FAIL');
+	                }
+	                self.$update();
+	                self.$emit('onload', { info: e });
+	            },
+	            onerror: function onerror(e) {
+	                data.status = 'failed';
+	                data.info = self.$trans('UPLOAD_FAIL');
+	                self.$update();
+	                self.$emit('error', { info: e });
+	            }
+	        };
+
+	        options = _.extend(options, data.options);
+	        upload(options.url, file, options);
+	    },
+
+	    onDelete: function onDelete() {
+	        var self = this,
+	            data = this.data;
+
+	        if (data.delConfirm) {
+	            var modal = new Modal({
+	                data: {
+	                    content: this.$trans('DELETE_CONFIRM') + data.name + '?'
+	                }
+	            });
+	            modal.$on('ok', function () {
+	                self.$emit('delete');
+	            });
+	        } else {
+	            self.$emit('delete');
+	        }
+	    },
+
+	    onPreview: function onPreview() {
+	        this.$emit('preview');
 	    }
 	});
 
-		module.exports = Panel;
+		module.exports = FileUnit;
 
 /***/ }),
 /* 365 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\n\n    <div class=\"panel_hd f-cb\" on-click={this.toggle()}>\n\t    <span class=\"panel_tt\">\n\t\t\t<i class=\"u-icon\" r-class=\"{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}\"></i>\n\t\t\t {title}\n\t\t</span>\n        {#if this.$tools}\n\t\t<div class=\"tools\" on-click={this.stopPropagation($event)}>\n\t\t\t{#inc this.$tools.$body}\n\t\t</div>\n\t\t{/if}\n    </div>\n\n\t<div class=\"panel_bd\" r-hide={!open} r-animation=\"on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;\">\n\t\t{#inc this.$body}\n\t</div>\n\n\t{#if this.$foot}\n\t<div class=\"panel_ft\">\n\t\t{#inc this.$foot.$body}\n\t</div>\n\t{/if}\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'IMAGE'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={src}/>\n            </div>\n        {#elseif type === 'ZIP'}\n            <span class=\"u-txt\">ZIP</span>\n        {#elseif type === 'UNKNOWN'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type}</span>\n        {/if}\n        <div class=\"m-delete\" r-hide={!deletable} on-click={this.onDelete()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'failed'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'uploaded'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={name}>{name}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
-	 * ------------------------------------------------------------
-	 * Menu      两级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
 	'use strict';
 
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(367);
-	var Menu = __webpack_require__(368);
+	var _ = __webpack_require__(98);
 
-	/**
-	 * @class Sidebar
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {array}         [options.data.menus]                    => 菜单数组
-	 * @param {string}        [options.data.top='60px']               => 菜单style top的值
-	 * @param {boolean}       [options.data.active=true]              => 默认是否收起
-	 * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
-	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
-	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
-	 * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
-	 * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
-	 * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
-	 */
-	var Sidebar = Component.extend({
-	  name: 'ui.sidebar',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      uniqueOpened: true,
-	      menus: [],
-	      titleKey: 'title',
-	      urlKey: 'url',
-	      pageKey: 'title',
-	      childrenKey: 'children',
-	      top: '60px',
-	      active: true,
-	      bodyEl: ''
-	    });
+	var defaults = {
+	    type: 'POST',
+	    async: true
+	};
 
-	    this.supr();
-	  },
-	  initBodyEl: function initBodyEl() {
-	    if (this.data.bodyEl) {
-	      this.data.$bodyEl = document.getElementById(this.data.bodyEl);
-	      if (this.data.$bodyEl) {
-	        this.data.$bodyEl.style.transition = 'left .3s';
-	      }
+	function upload(url, data, options) {
+	    var fd = new FormData();
+
+	    if (data instanceof File) {
+	        data = {
+	            file: data
+	        };
 	    }
-	  },
-	  toggle: function toggle() {
-	    this.initBodyEl();
 
-	    this.data.active = !this.data.active;
-	    if (this.data.$bodyEl) {
-	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+	    for (var key in data) {
+	        if (data.hasOwnProperty(key)) {
+	            fd.append(key, data[key]);
+	        }
 	    }
-	  }
-	});
 
-	Sidebar.directive('top', function (ele, value) {
-	  this.$watch(value, function (top) {
-	    ele.style.top = top;
-	  });
-	});
+	    options.url = url;
+	    options.data = fd;
+	    options = _.extend(defaults, options, true);
 
-	module.exports = Sidebar;
+	    return ajax(options);
+	}
+
+	function ajax(options) {
+	    var xhr = new XMLHttpRequest(),
+	        headers = options.headers || {};
+
+	    xhr.open(options.type, options.url, options.async);
+
+	    for (var key in headers) {
+	        if (headers.hasOwnProperty(key)) {
+	            xhr.setRequestHeader(key, headers[key]);
+	        }
+	    }
+
+	    var noop = function noop() {};
+	    var onerror = options.onerror || noop;
+
+	    var onload = options.onload || noop;
+
+	    var onprogress = options.onprogress || noop;
+
+	    xhr.addEventListener('load', onload);
+	    xhr.addEventListener('error', onerror);
+	    xhr.addEventListener('progress', onprogress);
+
+	    if (options.upload) {
+	        var onuploadLoad = options.upload.onload || noop;
+
+	        var onuploadProgress = options.upload.onprogress || noop;
+
+	        xhr.upload.addEventListener('load', onuploadLoad);
+	        xhr.upload.addEventListener('progress', onuploadProgress);
+	    }
+
+	    xhr.send(options.data);
+	}
+
+	module.exports = upload;
 
 /***/ }),
 /* 367 */
-/***/ (function(module, exports) {
-
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <ui.menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <menu.sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <menu.item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</menu.item>\n        {/list}\n      </menu.sub>\n      {#else}\n      <menu.sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></menu.sub>\n      {/if}\n      {/list}\n    </ui.menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
-
-/***/ }),
-/* 368 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Menu      两级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(369);
-
-	/**
-	 * @class Menu
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
-	 */
-	var Menu = Component.extend({
-	  name: 'ui.menu',
-	  template: template,
-	  openedMenus: [],
-	  currentItem: null,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      uniqueOpened: true
-	    });
-	    this.supr();
-	  },
-	  init: function init() {
-	    this.$on('submenu-click', function (submenu) {
-	      var isOpened = this.openedMenus.indexOf(submenu) !== -1;
-	      if (isOpened) {
-	        this.closeMenu(submenu);
-	        this.$emit('close', submenu);
-	      } else {
-	        this.openMenu(submenu);
-	        this.$emit('open', submenu);
-	      }
-	    });
-
-	    this.$on('menuitem-click', function (menuitem) {
-	      this.currentItem = menuitem;
-	    });
-	  },
-	  closeMenu: function closeMenu(submenu) {
-	    this.openedMenus.splice(this.openedMenus.indexOf(submenu), 1);
-	  },
-	  openMenu: function openMenu(submenu) {
-	    var openedMenus = this.openedMenus;
-	    if (openedMenus.indexOf(submenu) !== -1) return;
-	    if (this.data.uniqueOpened) {
-	      this.openedMenus = [].concat(submenu);
-	    } else {
-	      this.openedMenus.push(submenu);
-	    }
-	  }
-	});
-
-		module.exports = Menu;
-
-/***/ }),
-/* 369 */
-/***/ (function(module, exports) {
-
-	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
-
-/***/ }),
-/* 370 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Menu      多级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(371);
-	var RootMenuMixin = __webpack_require__(372);
-
-	/**
-	 * @class SubMenu
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
-	 * @param {string}        [options.data.title]                    => 标题文案
-	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
-	 */
-	var SubMenu = Component.extend({
-	  name: 'menu.sub',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      title: '',
-	      titleTemplate: ''
-	    });
-	    this.supr();
-	  },
-	  computed: {
-	    'active': function active() {
-	      if (!this.data.rootMenu) return;
-	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
-	    }
-	  },
-	  init: function init() {
-	    this.initRootMenu();
-
-	    if (this.data.defaultOpen) {
-	      this.data.rootMenu.openedMenus.push(this);
-	    }
-	  },
-	  toggle: function toggle() {
-	    this.data.rootMenu.$emit('submenu-click', this);
-	    this.$emit('click', this);
-	  }
-	});
-
-	SubMenu.use(RootMenuMixin);
-
-	module.exports = SubMenu;
-
-/***/ }),
-/* 371 */
-/***/ (function(module, exports) {
-
-	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
-
-/***/ }),
-/* 372 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Menu = __webpack_require__(368);
-
-	module.exports = function (Component) {
-	  Component.implement({
-	    initRootMenu: function initRootMenu() {
-	      var $outer = this;
-	      do {
-	        if ($outer.$outer) {
-	          $outer = $outer.$outer;
-	        } else if ($outer.$parent) {
-	          $outer = $outer.$parent;
-	        }
-	      } while (!($outer instanceof Menu) && ($outer.$outer || $outer.$parent));
-
-	      if ($outer && $outer instanceof Menu) {
-	        this.data.rootMenu = $outer;
-	      }
-	    }
-	  });
-		};
-
-/***/ }),
-/* 373 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Menu      多级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(374);
-	var RootMenuMixin = __webpack_require__(372);
-
-	/**
-	 * @class MenuItem
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {string}        [options.data.title]                    => 标题文案
-	 * @param {string}        [options.data.url]                      => 跳转链接
-	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
-	 */
-	var MenuItem = Component.extend({
-	  name: 'menu.item',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      title: '',
-	      active: false,
-	      url: ''
-	    });
-
-	    this.supr();
-	  },
-	  computed: {
-	    'active': function active() {
-	      if (!this.data.rootMenu) return;
-	      return this.data.rootMenu.currentItem == this;
-	    }
-	  },
-	  init: function init() {
-	    this.initRootMenu();
-
-	    if (this.data.isCurrent) {
-	      this.data.rootMenu.currentItem = this;
-	    }
-	  },
-	  goto: function goto(e) {
-	    e.stopPropagation();
-	    this.data.rootMenu.$emit('menuitem-click', this);
-	    if (this.data.url) {
-	      location.href = this.data.url;
-	    }
-	  }
-	});
-
-	MenuItem.use(RootMenuMixin);
-	module.exports = MenuItem;
-
-/***/ }),
-/* 374 */
-/***/ (function(module, exports) {
-
-	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
-
-/***/ }),
-/* 375 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * Pager     分页
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(376);
-	var _ = __webpack_require__(98);
-
-	/**
-	 * @class Pager
-	 * @extend Component
-	 * @param {object}        [options.data]                  = 绑定属性
-	 * @param {number}        [options.data.current=1]        <=> 当前页
-	 * @param {number}        [options.data.total=0]          => 总页数
-	 * @param {number}        [options.data.sumTotal=0]       => 总个数
-	 * @param {number}        [options.data.pageSize=20]      => 每页个数
-	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
-	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
-	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
-	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
-	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
-	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]     => 是否显示
-	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
-	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
-	 * @param {string}        [options.data.class]            => 补充class
-	 */
-	var Pager = Component.extend({
-	    name: 'pager',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            current: 1,
-	            total: '',
-	            sumTotal: '',
-	            pageSize: '',
-	            position: 'center',
-	            middle: 5,
-	            side: 2,
-	            _start: 1,
-	            _end: 5,
-	            step: 5,
-	            maxPageSize: 50,
-	            pageSizeList: [],
-	            isEllipsis: false
-	        });
-	        this.supr();
-
-	        this._setPageSizeList();
-
-	        this.$watch(['current', 'total'], function (current, total) {
-	            this.data.current = current = +current;
-	            this.data.total = total = +total;
-	            var show = this.data.middle >> 1;
-	            var side = this.data.side;
-
-	            this.data._start = current - show;
-	            this.data._end = current + show;
-	            if (this.data._start < side + 1) this.data._start = side + 1;
-	            if (this.data._end > total - side) this.data._end = total - side;
-	            if (current - this.data._start < show) this.data._end += this.data._start - current + show;
-	            if (this.data._end - current < show) this.data._start += this.data._end - current - show;
-	        });
-
-	        this.$watch(['middle', 'side'], function (middle, side) {
-	            this.data.middle = +middle;
-	            this.data.side = +side;
-	        });
-
-	        this.$watch('pageSize', function (val, oldVal) {
-	            if (!oldVal) return;
-	            this.initTotal();
-	            this.select(1);
-	        });
-
-	        this.$watch('sumTotal', function (val, oldVal) {
-	            this.initTotal();
-	        });
-	    },
-
-	    initTotal: function initTotal() {
-	        if (!!this.data.pageSize) {
-	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
-	        }
-
-	        if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
-	            console.error('Pager组件需要传pageSize');
-	        }
-	    },
-
-	    _setPageSizeList: function _setPageSizeList() {
-	        var _data = this.data,
-	            step = _data.step,
-	            maxPageSize = _data.maxPageSize;
-
-	        for (var i = 1; i * step <= maxPageSize; ++i) {
-	            this.data.pageSizeList.push({
-	                id: i * step,
-	                name: i * step + this.$trans('ITEM_PAGE')
-	            });
-	        }
-	    },
-
-	    /**
-	     * @method select(page) 选择某一页
-	     * @public
-	     * @param  {object} page 选择页
-	     * @return {void}
-	     */
-	    select: function select(page) {
-	        if (this.data.readonly || this.data.disabled) return;
-
-	        if (page < 1) return;
-	        if (page > this.data.total) return;
-
-	        this.data.current = page;
-	        /**
-	         * @event select 选择某一页时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} current 当前选择页
-	         */
-	        this.$update();
-	        this.$emit('select', {
-	            sender: this,
-	            current: this.data.current
-	        });
-	    },
-	    enter: function enter(ev) {
-	        var data = this.data;
-	        if (ev.which == 13) {
-	            // ENTER key
-	            ev.preventDefault();
-	            this.goto();
-	        }
-	    },
-	    goto: function goto() {
-	        var data = this.data;
-	        if (!data.pageNo && data.pageNo != 0) return;
-	        if (data.pageNo > data.total) {
-	            data.pageNo = data.total;
-	        } else if (data.pageNo < 1) {
-	            data.pageNo = 1;
-	        }
-	        this.select(this.data.pageNo);
-	    }
-	});
-
-		module.exports = Pager;
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
-
-/***/ }),
-/* 377 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Tabs       选项卡
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(378);
-	var _ = __webpack_require__(98);
-
-	/**
-	 * @class Tabs
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
-	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
-	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
-	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]         => 是否显示
-	 * @param {string}        [options.data.class]                => 补充class
-	 */
-	var Tabs = Component.extend({
-	    name: 'tabs',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            tabs: [],
-	            selected: undefined,
-	            titleTemplate: null
-	        });
-	        this.supr();
-
-	        this.$watch('selected', function (newValue, oldValue) {
-	            /**
-	             * @event change 选项卡改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 改变后的选项卡
-	             */
-	            this.$emit('change', {
-	                sender: this,
-	                selected: newValue,
-	                key: newValue.data.key
-	            });
-	        });
-	    },
-	    /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
-	    select: function select(item) {
-	        if (this.data.readonly || this.data.disabled || item.data.disabled) return;
-
-	        this.data.selected = item;
-	        /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择卡
-	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item,
-	            key: item.data.key
-	        });
-	    }
-	});
-
-	/**
-	 * @class Tab
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.title='']             => 标题
-	 * @param {string}        [options.data.key=null]             => key 标识
-	 */
-	var Tab = Component.extend({
-	    name: 'tab',
-	    template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: ''
-	        });
-	        this.supr();
-
-	        if (this.$outer) this.$outer.data.tabs.push(this);
-
-	        if (!this.$outer.data.selected) this.$outer.data.selected = this;
-
-	        this._setDefaultTab();
-	    },
-
-	    _setDefaultTab: function _setDefaultTab() {
-	        var defaultKey = this.$outer.data.defaultKey,
-	            key = this.data.key;
-
-	        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
-	            this.$outer.data.selected = this;
-	        }
-	    }
-	});
-
-		module.exports = Tabs;
-
-/***/ }),
-/* 378 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
-
-/***/ }),
-/* 379 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * Steps     步骤条
-	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(380);
-	var _ = __webpack_require__(98);
-
-	/**
-	 * @class Tabs
-	 * @extend Component
-	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {object}      [options.data.steps=null]     <=> 类似于ui.select的source
-	 * @param {string}      [options.data.current=null]   <=> 当前状态
-	 * @param {boolean}     [options.data.size=false]     =>  当前尺寸
-	 */
-	var Steps = Component.extend({
-	    name: 'steps',
-	    template: template,
-	    /**
-	     * @protected
-	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            steps: [],
-	            current: 0,
-	            size: '',
-	            currentIndex: 0
-	        });
-	        this.supr();
-	    },
-	    init: function init() {
-	        this.supr();
-	        this.$watch('current', function (newValue, oldValue) {
-	            this.juedgeFinishedItem();
-	        });
-	    },
-	    juedgeFinishedItem: function juedgeFinishedItem() {
-	        var data = this.data;
-	        var current = data.current;
-	        var steps = data.steps;
-
-	        steps.forEach(function (item, index) {
-	            if (item.status == current) {
-	                data.currentIndex = index;
-	            }
-	        });
-	    }
-	});
-
-		module.exports = Steps;
-
-/***/ }),
-/* 380 */
-/***/ (function(module, exports) {
-
-	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
-
-/***/ }),
-/* 381 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLCrumb     面包屑
-	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(382);
-	var _ = __webpack_require__(98);
-
-	/**
-	 * @class KLCrumb
-	 * @extend Component
-	 * @param {object}          [options.data]                     = 绑定属性
-	 * @param {string}          [options.data.class]               => 补充class
-	 * @param {string}          [options.data.separator]           => 分隔符，支持模板
-	 * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
-	 * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
-	 */
-	var KLCrumb = Component.extend({
-	  name: 'kl-crumb',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    _.extend(this.data, {
-	      separator: '/',
-	      crumbArr: []
-	    });
-	    this.supr();
-	  }
-	});
-
-		module.exports = KLCrumb;
-
-/***/ }),
-/* 382 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLCrumbItem     面包屑里的每一项
-	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
-	 */
-
-	'use strict';
-
-	var Component = __webpack_require__(69);
-	var template = __webpack_require__(384);
-	var KLCrumb = __webpack_require__(381);
-	var _ = __webpack_require__(98);
-
-	/**
-	 * @class KLCrumbItem
-	 * @extend Component
-	 * @param {object}          [options.data]                    = 绑定属性
-	 * @param {string}          [options.data.class]              => 补充class
-	 * @param {string}          [options.data.href]                => 传入的链接
-	 */
-	var KLCrumbItem = Component.extend({
-	  name: 'kl-crumb-item',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    _.extend(this.data, {});
-	    this.supr();
-
-	    if (this.$outer && this.$outer instanceof KLCrumb) {
-	      this.$outer.data.crumbArr.push(this);
-	    }
-	  }
-	});
-
-		module.exports = KLCrumbItem;
-
-/***/ }),
-/* 384 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc this.$body}\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
-/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29676,7 +29352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(386);
+	var template = __webpack_require__(368);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29829,13 +29505,1989 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Modal;
 
 /***/ }),
-/* 386 */
+/* 368 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <ui.button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <ui.button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
+/* 369 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 *  ------------------------------
+	 *  upload.base 上传基础类
+	 *  ------------------------------
+	 */
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var Config = __webpack_require__(370);
+
+	/**
+	 * @class UploadBase
+	 * @extend Component
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+	 *                                                             name: 文件名称
+	 *                                                             url: 文件的路径
+	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+	 */
+	var UploadBase = Component.extend({
+	    name: 'upload.list',
+	    config: function config(data) {
+	        _.extend(data, {
+	            action: '',
+	            name: 'file',
+	            multiple: false,
+	            drag: false,
+	            accept: '*',
+	            listType: 'list',
+	            fileList: [],
+	            data: {},
+	            numLimit: 10,
+	            numPerline: 5,
+	            maxSize: Config.sizeMap.GB,
+	            deletable: true,
+	            encType: 'multipart/form-data'
+	        });
+
+	        _.extend(data, {
+	            fileUnitList: [],
+	            fileDeletedList: [],
+	            fileUnitWidth: 50,
+	            fileUnitMargin: 25
+	        });
+
+	        this.supr(data);
+	    },
+
+	    init: function init(data) {
+	        this.initUploadedFileUnits();
+	        this.supr(data);
+	    },
+
+	    initUploadedFileUnits: function initUploadedFileUnits() {
+	        var self = this,
+	            data = this.data;
+
+	        if (data.fileList.length > 0) {
+	            var fileList = data.fileList.splice(0);
+	            fileList.forEach(function (file) {
+	                var fileunit = self.createFileUnit({
+	                    file: file,
+	                    options: {},
+	                    deletable: data.deletable
+	                });
+
+	                fileunit.flag = 'ORIGINAL';
+
+	                data.fileUnitList.push({
+	                    inst: fileunit
+	                });
+	            });
+
+	            this.updateFileList();
+	        }
+	    },
+
+	    updateFileList: function updateFileList() {
+	        var self = this,
+	            data = this.data,
+	            filesWrapper = data.filesWrapper,
+	            fileList = data.fileList,
+	            fileDeletedList = data.fileDeletedList,
+	            fileUnitList;
+
+	        fileUnitList = data.fileUnitList = data.fileUnitList.filter(function (item) {
+	            var inst = item.inst,
+	                flag = inst.flag,
+	                file = inst.file,
+	                destroyed = inst.destroyed;
+
+	            // item.inst = {};
+
+	            if (flag === 'DELETED') {
+	                file.flag = 'DELETED';
+	                fileDeletedList.push(file);
+	                return false;
+	            }
+	            return !destroyed;
+	        });
+
+	        filesWrapper.innerHTML = '';
+	        fileUnitList.forEach(function (item, index) {
+	            var wrapper = item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
+	            item.inst.$inject(wrapper);
+	        });
+
+	        fileList.splice(0);
+	        fileUnitList.forEach(function (item) {
+	            var inst = item.inst,
+	                file = inst.data.file || {};
+
+	            fileList.push({
+	                name: file.name,
+	                url: file.url,
+	                flag: Config.flagMap[inst.flag]
+	            });
+	        });
+
+	        fileDeletedList.forEach(function (file) {
+	            fileList.push({
+	                name: file && file.name,
+	                url: file && file.url,
+	                flag: file && Config.flagMap[file.flag]
+	            });
+	        });
+	    },
+
+	    fileDialogOpen: function fileDialogOpen() {
+	        this.$refs.file && this.$refs.file.click();
+	    },
+
+	    setOptions: function setOptions(data) {
+	        data = data || {};
+
+	        return {
+	            url: data.action
+	        };
+	    },
+
+	    preCheck: function preCheck(file) {
+	        var preCheckInfo = '';
+	        if (!this.isAcceptedFileSize(file)) {
+	            preCheckInfo = this.$trans('FILE_TOO_LARGE');
+	        }
+	        if (!this.isAcceptedFileType(file)) {
+	            preCheckInfo = this.$trans('FILE_TYPE_ERROR');
+	        }
+	        return preCheckInfo;
+	    },
+
+	    isAcceptedFileType: function isAcceptedFileType(file) {
+	        var data = this.data,
+	            accept = data.accept,
+	            type = this.getFileType(file).toLowerCase(),
+	            isValid = false;
+
+	        accept.split(',').forEach(function (cond) {
+	            if ('*' === cond) {
+	                isValid = true;
+	            } else if (/image\/.*/.test(cond)) {
+	                isValid = isValid || type === 'image';
+	            } else if (/audio\/.*/.test(cond)) {
+	                isValid = isValid || type === 'audio';
+	            } else if (/video\/.*/.test(cond)) {
+	                isValid = isValid || type === 'video';
+	            } else {
+	                isValid = isValid || type === Config.typeMap[cond];
+	            }
+	        });
+
+	        return isValid;
+	    },
+
+	    getFileType: function getFileType(file) {
+	        var type = file.type || '',
+	            name = file.name || '';
+
+	        if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	            return 'IMAGE';
+	        } else if (/zip|rar|gz/i.test(name)) {
+	            return 'ZIP';
+	        } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	            return 'DOC';
+	        } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	            return 'VIDEO';
+	        } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	            return 'AUDIO';
+	        } else if (/text\/plain/.test(type)) {
+	            return 'TEXT';
+	        } else if (/text\/html/.test(type)) {
+	            return 'HTML';
+	        } else if (/application\/pdf/.test(type)) {
+	            return 'PDF';
+	        } else if (/application\/javascript/.test(type)) {
+	            return 'JS';
+	        }
+
+	        return 'UNKNOWN';
+	    },
+
+	    isAcceptedFileSize: function isAcceptedFileSize(file) {
+	        var data = this.data,
+	            maxSize = data.maxSize,
+	            fileSize = file.size;
+
+	        var patterns = maxSize.match(/(\d+)(\D+)?/i);
+	        var size = patterns[1];
+	        var unit = patterns[2];
+
+	        if (unit) {
+	            size *= Config.sizeMap[unit.toUpperCase()];
+	        }
+
+	        return size >= fileSize;
+	    }
+	});
+
+		module.exports = UploadBase;
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * common config
+	 */
+
+	var sizeMap = {
+	    K: '1024',
+	    KB: '1024',
+	    M: '1048576', // 1024 * 1024
+	    MB: '1048576', // 1024 * 1024
+	    G: '1073741824', // 1024 * 1024 * 1024
+	    GB: '1073741824' // 1024 * 1024 * 1024
+	};
+
+	var typeMap = {
+	    '.jpg': 'image',
+	    '.jpeg': 'image',
+	    '.gif': 'image',
+	    '.png': 'image',
+	    '.zip': 'zip',
+	    '.rar': 'zip',
+	    '.gz': 'zip',
+	    '.doc': 'doc',
+	    '.xlsx': 'doc',
+	    '.ppt': 'doc',
+	    '.mp4': 'video',
+	    '.mkv': 'video',
+	    '.rmvb': 'video',
+	    '.avi': 'video',
+	    '.mp3': 'audio',
+	    '.pdf': 'pdf',
+	    '.js': 'js',
+	    '.html': 'html',
+	    '.txt': 'text'
+	};
+
+	var flagMap = {
+	    ADDED: 0,
+	    ORIGINAL: 1,
+	    DELETED: 2
+	};
+
+	module.exports = {
+	    sizeMap: sizeMap,
+	    typeMap: typeMap,
+	    flagMap: flagMap
+		};
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 *  ------------------------------
+	 *  image preview
+	 *  ------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var _ = __webpack_require__(98);
+	var Modal = __webpack_require__(367);
+	var tpl = __webpack_require__(372);
+
+	var ImagePreview = Component.extend({
+	    name: 'image.preview',
+	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	    config: function config(data) {
+	        _.extend(data, {
+	            imgList: [],
+	            curIndex: 0,
+	            uploaded: true
+	        });
+
+	        _.extend(data, {
+	            showVirtual: false,
+	            virtualInfo: {
+	                rotate: 0,
+	                scale: 1,
+	                translateX: 0,
+	                translateY: 0,
+	                mouseDownX: 0,
+	                mouseDownY: 0,
+	                dragTarget: null
+	            },
+	            opList: [{
+	                name: 'zoomIn',
+	                icon: 'zoomin',
+	                fnName: 'zoomIn'
+	            }, {
+	                name: 'zoomOut',
+	                icon: 'zoomout',
+	                fnName: 'zoomOut'
+	            }, {
+	                name: 'rezoom',
+	                icon: 'rezoom',
+	                fnName: 'rezoom'
+	            }, {
+	                name: 'rotate',
+	                icon: 'rotate_right',
+	                fnName: 'rotate'
+	            }, {
+	                name: 'delete',
+	                icon: 'delete',
+	                fnName: 'onDel'
+	            }]
+	        });
+
+	        this.supr(data);
+	    },
+	    init: function init(data) {
+	        this.supr(data);
+	    },
+	    onClose: function onClose() {
+	        this.destroy();
+	    },
+	    onPrev: function onPrev() {
+	        var data = this.data,
+	            curIndex = data.curIndex,
+	            length = data.imgList.length,
+	            toIndex = length - 1;
+
+	        if (curIndex > 0) {
+	            toIndex = --data.curIndex;
+	        }
+
+	        this.setCurrentTo(toIndex);
+	    },
+	    onNext: function onNext() {
+	        var data = this.data,
+	            curIndex = data.curIndex,
+	            length = data.imgList.length,
+	            toIndex = 0;
+
+	        if (curIndex < length - 1) {
+	            toIndex = ++data.curIndex;
+	        }
+
+	        this.setCurrentTo(toIndex);
+	    },
+	    setCurrentTo: function setCurrentTo(toIndex) {
+	        var data = this.data,
+	            refs = this.$refs,
+	            curIndex = data.curIndex;
+
+	        data.showVirtual = false;
+	        data.virtualInfo.scale = 1;
+	        data.virtualInfo.rotate = 0;
+	        data.virtualInfo.translateX = 0;
+	        data.virtualInfo.translateY = 0;
+
+	        refs['full-' + curIndex].style.opacity = 0;
+	        refs['full-' + toIndex].style.opacity = 1;
+
+	        this.data.curIndex = toIndex;
+	    },
+	    zoomIn: function zoomIn() {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo,
+	            step = this.getZoomInStep();
+
+	        data.showVirtual = true;
+
+	        virtualInfo.scale += step;
+
+	        this.$refs.virtualimage.style.transform = this.genTransform();
+	    },
+	    zoomOut: function zoomOut() {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo,
+	            step = this.getZoomOutStep(),
+	            translateStepInfo = this.getTranslateStep(step);
+
+	        data.showVirtual = true;
+
+	        virtualInfo.scale -= step;
+	        virtualInfo.translateX -= translateStepInfo.xStep;
+	        virtualInfo.translateY -= translateStepInfo.yStep;
+
+	        this.$refs.virtualimage.style.transform = this.genTransform();
+	    },
+	    rezoom: function rezoom() {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo;
+
+	        data.showVirtual = true;
+
+	        virtualInfo.scale = 1;
+	        virtualInfo.translateX = 0;
+	        virtualInfo.translateY = 0;
+
+	        this.$refs.virtualimage.style.transform = this.genTransform();
+	    },
+	    getZoomInStep: function getZoomInStep() {
+	        var virtualInfo = this.data.virtualInfo,
+	            scale = +virtualInfo.scale.toFixed(1),
+	            step = this.getScaleStep();
+
+	        if (scale <= 0.1) {
+	            return 0.1;
+	        }
+
+	        return step;
+	    },
+	    getZoomOutStep: function getZoomOutStep() {
+	        var virtualInfo = this.data.virtualInfo,
+	            scale = +virtualInfo.scale.toFixed(1),
+	            step = this.getScaleStep();
+
+	        if (scale >= 10) {
+	            return 1;
+	        }
+
+	        return step;
+	    },
+	    getScaleStep: function getScaleStep() {
+	        var virtualInfo = this.data.virtualInfo,
+	            scale = +virtualInfo.scale.toFixed(1);
+
+	        if (scale > 0.1 && scale < 1.5) {
+	            return 0.1;
+	        } else if (scale >= 1.5 && scale < 4) {
+	            return 0.5;
+	        } else if (scale >= 4 && scale < 10) {
+	            return 1;
+	        }
+
+	        return 0;
+	    },
+	    getTranslateStep: function getTranslateStep(scaleStep) {
+	        var virtualInfo = this.data.virtualInfo,
+	            scale = +virtualInfo.scale.toFixed(1);
+
+	        var totalSteps = (scale - 1) * 10;
+	        var translateX = virtualInfo.translateX;
+	        var translateY = virtualInfo.translateY;
+
+	        return {
+	            xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
+	            yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
+	        };
+	    },
+	    rotate: function rotate() {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo,
+	            img = this.$refs.virtualimage;
+
+	        data.showVirtual = true;
+	        virtualInfo.rotate += 90;
+
+	        img.style.transform = this.genTransform();
+	    },
+	    genTransform: function genTransform() {
+	        var virtualInfo = this.data.virtualInfo;
+
+	        return 'translateX(' + virtualInfo.translateX + 'px)' + ' translateY(' + virtualInfo.translateY + 'px)' + ' rotate(' + virtualInfo.rotate + 'deg)' + ' scale(' + virtualInfo.scale + ')';
+	    },
+	    onDel: function onDel(index) {
+	        var self = this,
+	            data = this.data,
+	            imgList = data.imgList,
+	            img = imgList[index];
+
+	        var modal = new Modal({
+	            data: {
+	                content: this.$trans('DELETE_CONFIRM') + img.name + '?'
+	            }
+	        });
+	        modal.$on('ok', function () {
+	            imgList = data.imgList.splice(index, 1);
+
+	            if (!imgList[index]) {
+	                data.curIndex = 0;
+	            }
+	            self.$emit('delete', {
+	                name: img.name,
+	                index: index
+	            });
+	            self.$update();
+	        });
+	    },
+	    onMouseDown: function onMouseDown(e) {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo;
+
+	        virtualInfo.mouseDownX = e.pageX;
+	        virtualInfo.mouseDownY = e.pageY;
+	        virtualInfo.dragTarget = e.origin;
+	        virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+	    },
+	    onMouseMove: function onMouseMove(e) {
+	        var data = this.data,
+	            virtualImg = this.$refs.virtualimage,
+	            virtualInfo = data.virtualInfo,
+	            originX = virtualInfo.mouseDownX,
+	            originY = virtualInfo.mouseDownY,
+	            boundary = virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+
+	        if (virtualInfo.dragTarget) {
+	            var translateX = e.pageX - originX;
+	            var translateY = e.pageY - originY;
+	            translateX = translateX > boundary.maxTranslateX ? boundary.maxTranslateX : translateX < boundary.minTranslateX ? boundary.minTranslateX : translateX;
+
+	            translateY = translateY > boundary.maxTranslateY ? boundary.maxTranslateY : translateY < boundary.minTranslateY ? boundary.minTranslateY : translateY;
+
+	            virtualInfo.translateX += translateX;
+	            virtualInfo.translateY += translateY;
+	            virtualInfo.mouseDownX = e.pageX;
+	            virtualInfo.mouseDownY = e.pageY;
+	            virtualImg.style.transform = this.genTransform();
+	        }
+	    },
+	    onMouseUp: function onMouseUp() {
+	        var data = this.data,
+	            virtualInfo = data.virtualInfo;
+
+	        if (virtualInfo.dragTarget) {
+	            virtualInfo.mouseDownX = 0;
+	            virtualInfo.mouseDownY = 0;
+	            virtualInfo.dragTarget = null;
+	        }
+	    },
+	    onMouseWheel: function onMouseWheel(e) {
+	        if (e.wheelDelta > 0) {
+	            this.zoomIn();
+	        } else if (e.wheelDelta < 0) {
+	            this.zoomOut();
+	        }
+	    },
+	    getMaxMinTranslateValue: function getMaxMinTranslateValue() {
+	        var virtualImg = this.$refs.virtualimage,
+	            virtualZone = this.$refs.virtualzone;
+
+	        var virtualImgRect = virtualImg.getBoundingClientRect();
+	        var virtualZoneRect = virtualZone.getBoundingClientRect();
+	        var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
+	        var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
+	        var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
+	        var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
+
+	        return {
+	            maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
+	            maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
+	            minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
+	            minTranslateY: minDeltaY < 0 ? minDeltaY : 0
+	        };
+	    }
+	});
+
+		module.exports = ImagePreview;
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'delete'}\n                            <a class=\"u-download\" href={imgList[curIndex].src} download={imgList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imgList[curIndex].src} alt={imgList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\">{imgList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <li ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()} r-hide={true}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n            <div class=\"u-input-info\">{preCheckInfo}</div>\n        {/if}\n    </li>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 *  ------------------------------
+	 *  upload.card 上传
+	 *  ------------------------------
+	 */
+	'use strict';
+
+	var _ = __webpack_require__(98);
+	var FileUnit = __webpack_require__(364);
+	var UploadBase = __webpack_require__(369);
+	var ImagePreview = __webpack_require__(371);
+	var tpl = __webpack_require__(375);
+
+	/**
+	 * @class UploadCard
+	 * @extend UploadBase
+	 */
+
+	var UploadCard = UploadBase.extend({
+	    name: 'upload.card',
+	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	    config: function config(data) {
+	        _.extend(data, {
+	            status: 'uploaded',
+	            info: '',
+	            fileUnitListPadding: 22
+	        });
+
+	        this.supr(data);
+	    },
+
+	    init: function init(data) {
+	        this.initFilesZone();
+	        this.supr(data);
+	    },
+
+	    initFilesZone: function initFilesZone() {
+	        var data = this.data,
+	            numPerline = data.numPerline,
+	            fileUnitWidth = data.fileUnitWidth,
+	            fileUnitMargin = data.fileUnitMargin;
+
+	        data.filesWrapper = this.$refs.fileswrapper;
+	        data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
+	    },
+
+	    onDragEnter: function onDragEnter(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	    },
+
+	    onDragOver: function onDragOver(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+	    },
+
+	    onDrop: function onDrop(e) {
+	        e.stopPropagation();
+	        e.preventDefault();
+
+	        if (!this.data.drag) {
+	            return;
+	        }
+
+	        var dt = e.event && e.event.dataTransfer;
+	        var files = dt.files;
+
+	        this.handleFiles(files);
+	    },
+
+	    fileSelect: function fileSelect() {
+	        var inputNode = this.$refs.file,
+	            files = inputNode.files;
+
+	        this.handleFiles(files);
+
+	        inputNode.value = '';
+	    },
+
+	    handleFiles: function handleFiles(files) {
+	        var data = this.data,
+	            index = 0,
+	            len = files.length,
+	            file,
+	            fileunit,
+	            options;
+
+	        this.toggle(false);
+
+	        options = this.setOptions(data);
+
+	        data.preCheckInfo = '';
+
+	        for (; index < len; index++) {
+	            if (data.fileUnitList.length < data.numLimit) {
+	                file = files[index];
+	                data.preCheckInfo = this.preCheck(file);
+	                if (data.preCheckInfo) {
+	                    continue;
+	                }
+	                fileunit = this.createFileUnit({
+	                    file: file,
+	                    options: options,
+	                    deletable: data.deletable
+	                });
+	                fileunit.flag = 'ADDED';
+	                data.fileUnitList.push({
+	                    inst: fileunit
+	                });
+	                this.updateFilesZone();
+	            }
+	        }
+
+	        this.updateFileList();
+	    },
+
+	    updateFilesZone: function updateFilesZone() {
+	        var data = this.data,
+	            filesZone = this.$refs.fileszone,
+	            entryWrapper = this.$refs.entrywrapper,
+	            inputWrapper = this.$refs.inputwrapper;
+
+	        if (data.fileUnitList.length < data.numLimit) {
+	            filesZone.style.width = '125px';
+	            entryWrapper.style['margin-right'] = '20px';
+	            inputWrapper.style.display = 'inline-block';
+	        } else if (data.fileUnitList.length == data.numLimit) {
+	            filesZone.style.width = '50px';
+	            entryWrapper.style['margin-right'] = '0';
+	            inputWrapper.style.display = 'none';
+	        }
+	    },
+
+	    createFileUnit: function createFileUnit(data) {
+	        var self = this,
+	            imagePreview = this.$refs.imagepreview,
+	            fileunit = new FileUnit({ data: data });
+
+	        fileunit.$on('preview', previewCb);
+
+	        function previewCb() {
+	            var current = this;
+
+	            function filterImgFile(file) {
+	                return file.inst.data.type === 'IMAGE';
+	            }
+
+	            function mapHelper(img) {
+	                if (current === img.inst) {
+	                    img.inst.current = true;
+	                }
+	                return img.inst;
+	            }
+
+	            var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	            var preview = createImagePreview(imgList);
+
+	            preview.$inject(imagePreview);
+	        }
+
+	        function createImagePreview(imgFileList) {
+	            function findHelper(img) {
+	                return img.current;
+	            }
+	            var curIndex = imgFileList.findIndex(findHelper);
+
+	            function mapHelper(img) {
+	                delete img.current;
+	                return {
+	                    src: img.data.src,
+	                    name: img.data.name,
+	                    status: img.data.status
+	                };
+	            }
+	            var imgList = imgFileList.map(mapHelper);
+
+	            var imagePreview = new ImagePreview({
+	                data: {
+	                    imgList: imgList,
+	                    curIndex: curIndex
+	                }
+	            });
+
+	            imagePreview.$on('delete', function (imgInfo) {
+	                var index = imgInfo.index,
+	                    imgInst = imgFileList[index];
+
+	                if (imgInst) {
+	                    imgInst.$emit('delete');
+	                }
+	            });
+
+	            imagePreview.$on('$destroy', function () {
+	                imgFileList = null;
+	            });
+
+	            return imagePreview;
+	        }
+
+	        fileunit.$on('progress', progressCb);
+
+	        function progressCb(info) {
+	            var data = self.data,
+	                curInst = this,
+	                curIndex = -1,
+	                lastIndex = -1;
+
+	            self.data.fileUnitList.forEach(function (item, index) {
+	                if (item.inst.data.status === 'uploading') {
+	                    lastIndex = index;
+	                }
+	                if (item.inst === curInst) {
+	                    curIndex = index;
+	                }
+	            });
+
+	            if (curIndex >= lastIndex && data.status != 'failed') {
+	                data.status = 'uploading';
+	                data.progress = info.progress;
+	                self.$update();
+	            }
+	        }
+
+	        fileunit.$on('onload', successCb);
+	        // fileunit.$on('success', successCb);
+
+	        function successCb() {
+	            var allUploaded = true;
+	            var hasFailed = false;
+	            self.data.fileUnitList.forEach(function (item) {
+	                allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+	                hasFailed = hasFailed || item.inst.data.status === 'failed';
+	            });
+	            if (allUploaded) {
+	                self.data.status = 'uploaded';
+	            } else if (hasFailed) {
+	                self.data.status = 'failed';
+	            }
+	            self.$update();
+	            self.updateFileList();
+	        }
+
+	        fileunit.$on('error', function () {
+	            self.data.status = 'failed';
+	            self.data.info = self.$trans('UPLOAD_FAIL');
+	            self.$update();
+	        });
+
+	        fileunit.$on('delete', function () {
+	            if (this.flag === 'ORIGINAL') {
+	                this.flag = 'DELETED';
+	                this.file = this.data.file;
+	            }
+	            this.destroy();
+	        });
+
+	        fileunit.$on('$destroy', function () {
+	            self.toggle(false);
+	            this.destroyed = true;
+	            this.$off('preview', previewCb);
+	            this.$off('onload', successCb);
+	            self.updateFileList();
+	            self.updateFilesZone();
+	            resetStatus();
+	        });
+
+	        function resetStatus() {
+	            successCb();
+	        }
+
+	        return fileunit;
+	    },
+
+	    updateFileList: function updateFileList() {
+	        this.supr();
+	        this.$update();
+	    },
+
+	    createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	        var wrapper = document.createElement('li');
+
+	        parent.appendChild(wrapper);
+
+	        this.setFileUnitWrapperStyle(wrapper, index);
+
+	        return wrapper;
+	    },
+
+	    setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	        var data = this.data,
+	            numPerline = data.numPerline,
+	            fileUnitWidth = data.fileUnitWidth,
+	            fileUnitMargin = data.fileUnitMargin;
+
+	        wrapper.className = 'u-fileitem';
+	        wrapper.style.display = 'inline-block';
+	        wrapper.style.width = fileUnitWidth + 'px';
+
+	        if (index && index % numPerline) {
+	            wrapper.style.marginLeft = fileUnitMargin + 'px';
+	        }
+	    },
+
+	    uploadFiles: function uploadFiles() {
+	        var data = this.data,
+	            fileUnitList = data.fileUnitList;
+
+	        data.status = 'uploaded';
+	        data.info = '';
+
+	        fileUnitList.forEach(function (item) {
+	            var inst = item.inst,
+	                data = inst.data;
+
+	            if (data.status === 'failed') {
+	                inst.uploadFile(data.file);
+	            }
+	        });
+	    },
+
+	    toggle: function toggle(open, e) {
+	        e && e.stopPropagation();
+
+	        var data = this.data;
+	        if (typeof open === 'undefined') {
+	            open = !data.open;
+	        }
+	        data.open = open;
+
+	        this.setPosition(!open);
+
+	        var index = UploadCard.opens.indexOf(this);
+	        if (open && index < 0) {
+	            UploadCard.opens.push(this);
+	        } else if (!open && index >= 0) {
+	            UploadCard.opens.splice(index, 1);
+	        }
+	    },
+
+	    setPosition: function setPosition(hidden) {
+	        var filesBanner = this.$refs.filesbanner;
+	        var filesWrapper = this.$refs.fileswrapper;
+	        if (hidden) {
+	            filesBanner.style.left = '-9999px';
+	            filesWrapper.style.left = '-9999px';
+	            return;
+	        }
+	        this.setVerticalPosition();
+	        this.setHorizontalPosition();
+	    },
+
+	    setVerticalPosition: function setVerticalPosition() {
+	        var filesEntry = this.$refs.filesentry;
+	        var filesEntryCoors = filesEntry.getBoundingClientRect();
+	        var filesWrapper = this.$refs.fileswrapper;
+	        var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	        var viewHeight = document.documentElement.clientHeight;
+
+	        // show at vertical bottom side
+	        var vertical = 'bottom';
+	        // show at vertical top side
+	        var isVerticalTopSide = filesEntryCoors.top - filesWrapperCoors.height > 0;
+	        var isVerticalBottomSide = filesEntryCoors.bottom + filesWrapperCoors.height < viewHeight;
+	        if (isVerticalTopSide && !isVerticalBottomSide) {
+	            vertical = 'top';
+	        }
+
+	        if (vertical === 'bottom') {
+	            this.data.isTopBanner = false;
+	            filesWrapper.style.top = '53px';
+	            filesWrapper.style.bottom = 'auto';
+	            filesWrapper.style.boxShadow = 'auto';
+	            filesWrapper.style.boxShadow = '0 2px 3px 0 rgba(0,0,0,0.1)';
+	        } else {
+	            this.data.isTopBanner = true;
+	            filesWrapper.style.top = 'auto';
+	            filesWrapper.style.bottom = '53px';
+	            filesWrapper.style.boxShadow = '0 -2px 3px 0 rgba(0,0,0,0.1)';
+	        }
+	    },
+
+	    setHorizontalPosition: function setHorizontalPosition() {
+	        var filesEntry = this.$refs.filesentry;
+	        var filesEntryCoors = filesEntry.getBoundingClientRect();
+	        var filesBanner = this.$refs.filesbanner;
+	        var filesWrapper = this.$refs.fileswrapper;
+	        var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	        var viewWidth = document.documentElement.clientWidth;
+
+	        // show at central
+	        var horizontal = 'left';
+	        var offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
+	        var isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
+	        var isHorizontalRightEdge = filesEntryCoors.right + offsetWidth > viewWidth;
+	        if (isHorizontalRightEdge) {
+	            horizontal = 'right';
+	        }
+	        var isHorizontalCenter = !isHorizontalLeftEdge && !isHorizontalRightEdge;
+	        if (isHorizontalCenter) {
+	            horizontal = 'central';
+	        }
+
+	        if (horizontal === 'left') {
+	            filesWrapper.style.left = '0';
+	            filesWrapper.style.right = 'auto';
+	        } else if (horizontal === 'right') {
+	            filesWrapper.style.left = 'auto';
+	            filesWrapper.style.right = '0';
+	        } else if (horizontal === 'central') {
+	            filesWrapper.style.left = '-' + offsetWidth + 'px';
+	        }
+
+	        filesBanner.style.left = '20px';
+	    }
+	});
+
+	var opens = UploadCard.opens = [];
+	document.addEventListener('click', function (e) {
+	    for (var len = opens.length, i = len - 1; i >= 0; i--) {
+	        var close = true;
+
+	        var upload = opens[i];
+	        var uploadElement = upload.$refs.element;
+	        var iterator = e.target;
+
+	        while (iterator) {
+	            if (uploadElement == iterator) {
+	                close = false;
+	                break;
+	            }
+	            iterator = iterator.parentElement;
+	        }
+
+	        if (close) {
+	            upload.toggle(false, e);
+	            upload.$update();
+	        }
+	    }
+	}, false);
+
+	module.exports = UploadCard;
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'IMAGE'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.src}\n                             alt={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.name}/>\n                    </div>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}\n                    <span class=\"u-txt\">ZIP</span>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'failed'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>重试</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 376 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div ref=\"m-upload\"></div>\n"
+
+/***/ }),
+/* 377 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Collapse  折叠面板
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(378);
+	var _ = __webpack_require__(98);
+
+	var Panel = __webpack_require__(379);
+
+	/**
+	 * @class Collapse
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性
+	 * @param {boolean}           [options.data.accordion=false]      => 是否每次只展开一个
+	 * @param {boolean}           [options.data.disabled=false]       => 是否禁用
+	 * @param {boolean}           [options.data.visible=true]         => 是否显示
+	 * @param {string}            [options.data.class]                => 补充class
+	 */
+	var Collapse = Component.extend({
+	  name: 'collapse',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      panels: [],
+	      accordion: false
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = Collapse;
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-collapse {class}\" z-dis={disabled} r-hide={!visible}>\n    {#inc this.$body}\n</div>"
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Panel     面板
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(380);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Panel
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {boolean}         [options.data.disabled=false]     => 是否禁用
+	 * @param {boolean}         [options.data.visible=true]       => 是否显示
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var Panel = Component.extend({
+	    name: 'panel',
+	    template: template,
+	    $tools: null,
+	    $foot: null,
+	    /**
+	     * @protected
+	     */
+	    config: function config() {
+	        _.extend(this.data, {
+	            title: '',
+	            open: true
+	        });
+	        this.supr();
+
+	        if (this.$outer && this.$outer.data.panels) this.$outer.data.panels.push(this);
+	    },
+	    /**
+	     * @method toggle(open) 展开/收起
+	     * @public
+	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
+	     * @return {void}
+	     */
+	    toggle: function toggle(open) {
+	        if (this.data.disabled) return;
+
+	        if (open === undefined) open = !this.data.open;
+
+	        if (open && this.$outer && this.$outer.data.panels && this.$outer.data.accordion) {
+	            this.$outer.data.panels.forEach(function (panel) {
+	                panel.data.open = false;
+	            });
+	        }
+
+	        this.data.open = open;
+	    },
+	    stopPropagation: function stopPropagation(e) {
+	        e.stopPropagation();
+	    }
+	});
+
+		module.exports = Panel;
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-panel {class}\" r-hide={!visible} z-dis={disabled}>\n\n    <div class=\"panel_hd f-cb\" on-click={this.toggle()}>\n\t    <span class=\"panel_tt\">\n\t\t\t<i class=\"u-icon\" r-class=\"{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}\"></i>\n\t\t\t {title}\n\t\t</span>\n        {#if this.$tools}\n\t\t<div class=\"tools\" on-click={this.stopPropagation($event)}>\n\t\t\t{#inc this.$tools.$body}\n\t\t</div>\n\t\t{/if}\n    </div>\n\n\t<div class=\"panel_bd\" r-hide={!open} r-animation=\"on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;\">\n\t\t{#inc this.$body}\n\t</div>\n\n\t{#if this.$foot}\n\t<div class=\"panel_ft\">\n\t\t{#inc this.$foot.$body}\n\t</div>\n\t{/if}\n</div>"
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      两级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(382);
+	var Menu = __webpack_require__(383);
+
+	/**
+	 * @class Sidebar
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {array}         [options.data.menus]                    => 菜单数组
+	 * @param {string}        [options.data.top='60px']               => 菜单style top的值
+	 * @param {boolean}       [options.data.active=true]              => 默认是否收起
+	 * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
+	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
+	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
+	 * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
+	 * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
+	 * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
+	 */
+	var Sidebar = Component.extend({
+	  name: 'ui.sidebar',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true,
+	      menus: [],
+	      titleKey: 'title',
+	      urlKey: 'url',
+	      pageKey: 'title',
+	      childrenKey: 'children',
+	      top: '60px',
+	      active: true,
+	      bodyEl: ''
+	    });
+
+	    this.supr();
+	  },
+	  initBodyEl: function initBodyEl() {
+	    if (this.data.bodyEl) {
+	      this.data.$bodyEl = document.getElementById(this.data.bodyEl);
+	      if (this.data.$bodyEl) {
+	        this.data.$bodyEl.style.transition = 'left .3s';
+	      }
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.initBodyEl();
+
+	    this.data.active = !this.data.active;
+	    if (this.data.$bodyEl) {
+	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+	    }
+	  }
+	});
+
+	Sidebar.directive('top', function (ele, value) {
+	  this.$watch(value, function (top) {
+	    ele.style.top = top;
+	  });
+	});
+
+	module.exports = Sidebar;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports) {
+
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <ui.menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <menu.sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <menu.item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</menu.item>\n        {/list}\n      </menu.sub>\n      {#else}\n      <menu.sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></menu.sub>\n      {/if}\n      {/list}\n    </ui.menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      两级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(384);
+
+	/**
+	 * @class Menu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+	 */
+	var Menu = Component.extend({
+	  name: 'ui.menu',
+	  template: template,
+	  openedMenus: [],
+	  currentItem: null,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.$on('submenu-click', function (submenu) {
+	      var isOpened = this.openedMenus.indexOf(submenu) !== -1;
+	      if (isOpened) {
+	        this.closeMenu(submenu);
+	        this.$emit('close', submenu);
+	      } else {
+	        this.openMenu(submenu);
+	        this.$emit('open', submenu);
+	      }
+	    });
+
+	    this.$on('menuitem-click', function (menuitem) {
+	      this.currentItem = menuitem;
+	    });
+	  },
+	  closeMenu: function closeMenu(submenu) {
+	    this.openedMenus.splice(this.openedMenus.indexOf(submenu), 1);
+	  },
+	  openMenu: function openMenu(submenu) {
+	    var openedMenus = this.openedMenus;
+	    if (openedMenus.indexOf(submenu) !== -1) return;
+	    if (this.data.uniqueOpened) {
+	      this.openedMenus = [].concat(submenu);
+	    } else {
+	      this.openedMenus.push(submenu);
+	    }
+	  }
+	});
+
+		module.exports = Menu;
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports) {
+
+	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      多级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(386);
+	var RootMenuMixin = __webpack_require__(387);
+
+	/**
+	 * @class SubMenu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
+	 */
+	var SubMenu = Component.extend({
+	  name: 'menu.sub',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      titleTemplate: ''
+	    });
+	    this.supr();
+	  },
+	  computed: {
+	    'active': function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
+
+	    if (this.data.defaultOpen) {
+	      this.data.rootMenu.openedMenus.push(this);
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.data.rootMenu.$emit('submenu-click', this);
+	    this.$emit('click', this);
+	  }
+	});
+
+	SubMenu.use(RootMenuMixin);
+
+	module.exports = SubMenu;
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports) {
+
+	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
+
+/***/ }),
 /* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Menu = __webpack_require__(383);
+
+	module.exports = function (Component) {
+	  Component.implement({
+	    initRootMenu: function initRootMenu() {
+	      var $outer = this;
+	      do {
+	        if ($outer.$outer) {
+	          $outer = $outer.$outer;
+	        } else if ($outer.$parent) {
+	          $outer = $outer.$parent;
+	        }
+	      } while (!($outer instanceof Menu) && ($outer.$outer || $outer.$parent));
+
+	      if ($outer && $outer instanceof Menu) {
+	        this.data.rootMenu = $outer;
+	      }
+	    }
+	  });
+		};
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Menu      多级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(389);
+	var RootMenuMixin = __webpack_require__(387);
+
+	/**
+	 * @class MenuItem
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.url]                      => 跳转链接
+	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
+	 */
+	var MenuItem = Component.extend({
+	  name: 'menu.item',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      active: false,
+	      url: ''
+	    });
+
+	    this.supr();
+	  },
+	  computed: {
+	    'active': function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.currentItem == this;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
+
+	    if (this.data.isCurrent) {
+	      this.data.rootMenu.currentItem = this;
+	    }
+	  },
+	  goto: function goto(e) {
+	    e.stopPropagation();
+	    this.data.rootMenu.$emit('menuitem-click', this);
+	    if (this.data.url) {
+	      location.href = this.data.url;
+	    }
+	  }
+	});
+
+	MenuItem.use(RootMenuMixin);
+	module.exports = MenuItem;
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * Pager     分页
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(391);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Pager
+	 * @extend Component
+	 * @param {object}        [options.data]                  = 绑定属性
+	 * @param {number}        [options.data.current=1]        <=> 当前页
+	 * @param {number}        [options.data.total=0]          => 总页数
+	 * @param {number}        [options.data.sumTotal=0]       => 总个数
+	 * @param {number}        [options.data.pageSize=20]      => 每页个数
+	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
+	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
+	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
+	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
+	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
+	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+	 * @param {boolean}       [options.data.visible=true]     => 是否显示
+	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
+	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
+	 * @param {string}        [options.data.class]            => 补充class
+	 */
+	var Pager = Component.extend({
+	    name: 'pager',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function config() {
+	        _.extend(this.data, {
+	            current: 1,
+	            total: '',
+	            sumTotal: '',
+	            pageSize: '',
+	            position: 'center',
+	            middle: 5,
+	            side: 2,
+	            _start: 1,
+	            _end: 5,
+	            step: 5,
+	            maxPageSize: 50,
+	            pageSizeList: [],
+	            isEllipsis: false
+	        });
+	        this.supr();
+
+	        this._setPageSizeList();
+
+	        this.$watch(['current', 'total'], function (current, total) {
+	            this.data.current = current = +current;
+	            this.data.total = total = +total;
+	            var show = this.data.middle >> 1;
+	            var side = this.data.side;
+
+	            this.data._start = current - show;
+	            this.data._end = current + show;
+	            if (this.data._start < side + 1) this.data._start = side + 1;
+	            if (this.data._end > total - side) this.data._end = total - side;
+	            if (current - this.data._start < show) this.data._end += this.data._start - current + show;
+	            if (this.data._end - current < show) this.data._start += this.data._end - current - show;
+	        });
+
+	        this.$watch(['middle', 'side'], function (middle, side) {
+	            this.data.middle = +middle;
+	            this.data.side = +side;
+	        });
+
+	        this.$watch('pageSize', function (val, oldVal) {
+	            if (!oldVal) return;
+	            this.initTotal();
+	            this.select(1);
+	        });
+
+	        this.$watch('sumTotal', function (val, oldVal) {
+	            this.initTotal();
+	        });
+	    },
+
+	    initTotal: function initTotal() {
+	        if (!!this.data.pageSize) {
+	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	        }
+
+	        if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
+	            console.error('Pager组件需要传pageSize');
+	        }
+	    },
+
+	    _setPageSizeList: function _setPageSizeList() {
+	        var _data = this.data,
+	            step = _data.step,
+	            maxPageSize = _data.maxPageSize;
+
+	        for (var i = 1; i * step <= maxPageSize; ++i) {
+	            this.data.pageSizeList.push({
+	                id: i * step,
+	                name: i * step + this.$trans('ITEM_PAGE')
+	            });
+	        }
+	    },
+
+	    /**
+	     * @method select(page) 选择某一页
+	     * @public
+	     * @param  {object} page 选择页
+	     * @return {void}
+	     */
+	    select: function select(page) {
+	        if (this.data.readonly || this.data.disabled) return;
+
+	        if (page < 1) return;
+	        if (page > this.data.total) return;
+
+	        this.data.current = page;
+	        /**
+	         * @event select 选择某一页时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} current 当前选择页
+	         */
+	        this.$update();
+	        this.$emit('select', {
+	            sender: this,
+	            current: this.data.current
+	        });
+	    },
+	    enter: function enter(ev) {
+	        var data = this.data;
+	        if (ev.which == 13) {
+	            // ENTER key
+	            ev.preventDefault();
+	            this.goto();
+	        }
+	    },
+	    goto: function goto() {
+	        var data = this.data;
+	        if (!data.pageNo && data.pageNo != 0) return;
+	        if (data.pageNo > data.total) {
+	            data.pageNo = data.total;
+	        } else if (data.pageNo < 1) {
+	            data.pageNo = 1;
+	        }
+	        this.select(this.data.pageNo);
+	    }
+	});
+
+		module.exports = Pager;
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><ui.select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></ui.select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <ui.input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <ui.button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Tabs       选项卡
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(393);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Tabs
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
+	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
+	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
+	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
+	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
+	 * @param {boolean}       [options.data.visible=true]         => 是否显示
+	 * @param {string}        [options.data.class]                => 补充class
+	 */
+	var Tabs = Component.extend({
+	    name: 'tabs',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function config() {
+	        _.extend(this.data, {
+	            tabs: [],
+	            selected: undefined,
+	            titleTemplate: null
+	        });
+	        this.supr();
+
+	        this.$watch('selected', function (newValue, oldValue) {
+	            /**
+	             * @event change 选项卡改变时触发
+	             * @property {object} sender 事件发送对象
+	             * @property {object} selected 改变后的选项卡
+	             */
+	            this.$emit('change', {
+	                sender: this,
+	                selected: newValue,
+	                key: newValue.data.key
+	            });
+	        });
+	    },
+	    /**
+	     * @method select(item) 选择某一项
+	     * @public
+	     * @param  {object} item 选择项
+	     * @return {void}
+	     */
+	    select: function select(item) {
+	        if (this.data.readonly || this.data.disabled || item.data.disabled) return;
+
+	        this.data.selected = item;
+	        /**
+	         * @event select 选择某一项时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} selected 当前选择卡
+	         */
+	        this.$emit('select', {
+	            sender: this,
+	            selected: item,
+	            key: item.data.key
+	        });
+	    }
+	});
+
+	/**
+	 * @class Tab
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.title='']             => 标题
+	 * @param {string}        [options.data.key=null]             => key 标识
+	 */
+	var Tab = Component.extend({
+	    name: 'tab',
+	    template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
+	    /**
+	     * @protected
+	     */
+	    config: function config() {
+	        _.extend(this.data, {
+	            title: ''
+	        });
+	        this.supr();
+
+	        if (this.$outer) this.$outer.data.tabs.push(this);
+
+	        if (!this.$outer.data.selected) this.$outer.data.selected = this;
+
+	        this._setDefaultTab();
+	    },
+
+	    _setDefaultTab: function _setDefaultTab() {
+	        var defaultKey = this.$outer.data.defaultKey,
+	            key = this.data.key;
+
+	        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
+	            this.$outer.data.selected = this;
+	        }
+	    }
+	});
+
+		module.exports = Tabs;
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * Steps     步骤条
+	 * @author   ziane(zianecui@gmail.com)
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(395);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class Tabs
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {object}      [options.data.steps=null]     <=> 类似于ui.select的source
+	 * @param {string}      [options.data.current=null]   <=> 当前状态
+	 * @param {boolean}     [options.data.size=false]     =>  当前尺寸
+	 */
+	var Steps = Component.extend({
+	    name: 'steps',
+	    template: template,
+	    /**
+	     * @protected
+	     */
+	    config: function config() {
+	        _.extend(this.data, {
+	            steps: [],
+	            current: 0,
+	            size: '',
+	            currentIndex: 0
+	        });
+	        this.supr();
+	    },
+	    init: function init() {
+	        this.supr();
+	        this.$watch('current', function (newValue, oldValue) {
+	            this.juedgeFinishedItem();
+	        });
+	    },
+	    juedgeFinishedItem: function juedgeFinishedItem() {
+	        var data = this.data;
+	        var current = data.current;
+	        var steps = data.steps;
+
+	        steps.forEach(function (item, index) {
+	            if (item.status == current) {
+	                data.currentIndex = index;
+	            }
+	        });
+	    }
+	});
+
+		module.exports = Steps;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports) {
+
+	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLCrumb     面包屑
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(397);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class KLCrumb
+	 * @extend Component
+	 * @param {object}          [options.data]                     = 绑定属性
+	 * @param {string}          [options.data.class]               => 补充class
+	 * @param {string}          [options.data.separator]           => 分隔符，支持模板
+	 * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
+	 * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
+	 */
+	var KLCrumb = Component.extend({
+	  name: 'kl-crumb',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {
+	      separator: '/',
+	      crumbArr: []
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = KLCrumb;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLCrumbItem     面包屑里的每一项
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	'use strict';
+
+	var Component = __webpack_require__(69);
+	var template = __webpack_require__(399);
+	var KLCrumb = __webpack_require__(396);
+	var _ = __webpack_require__(98);
+
+	/**
+	 * @class KLCrumbItem
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 * @param {string}          [options.data.href]                => 传入的链接
+	 */
+	var KLCrumbItem = Component.extend({
+	  name: 'kl-crumb-item',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLCrumb) {
+	      this.$outer.data.crumbArr.push(this);
+	    }
+	  }
+	});
+
+		module.exports = KLCrumbItem;
+
+/***/ }),
+/* 399 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc this.$body}\n        {/if}\n    </div>\n</div>"
+
+/***/ }),
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29848,7 +31500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(388);
+	var template = __webpack_require__(401);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -29910,13 +31562,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Mask;
 
 /***/ }),
-/* 388 */
+/* 401 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
 
 /***/ }),
-/* 389 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -29929,7 +31581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(390);
+	var template = __webpack_require__(403);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30101,13 +31753,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Notify;
 
 /***/ }),
-/* 390 */
+/* 403 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 391 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30122,7 +31774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(68).dom;
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(392);
+	var template = __webpack_require__(405);
 	var _ = __webpack_require__(98);
 	var trigger = __webpack_require__(319);
 
@@ -30236,13 +31888,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PopConfirm;
 
 /***/ }),
-/* 392 */
+/* 405 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 393 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30255,7 +31907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(394);
+	var template = __webpack_require__(407);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30293,13 +31945,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Gotop;
 
 /***/ }),
-/* 394 */
+/* 407 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a class=\"u-gotop u-gotop-{position} {class}\" r-hide={!visible} on-click={this.gotop()}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-arrow-up\"></i>\n    {/if}\n</a>"
 
 /***/ }),
-/* 395 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30312,7 +31964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(396);
+	var template = __webpack_require__(409);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30398,13 +32050,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Loading;
 
 /***/ }),
-/* 396 */
+/* 409 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 397 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -30417,7 +32069,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(398);
+	var template = __webpack_require__(411);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -30455,13 +32107,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Progress;
 
 /***/ }),
-/* 398 */
+/* 411 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 399 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30473,7 +32125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use stict';
 
-	var Clipboard = __webpack_require__(400);
+	var Clipboard = __webpack_require__(413);
 
 	/**
 	 * 获取 js 路径快捷键 ctrl + alt + shift + c  
@@ -30520,12 +32172,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = PathTool;
 
 /***/ }),
-/* 400 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(401), __webpack_require__(403), __webpack_require__(404)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(414), __webpack_require__(416), __webpack_require__(417)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
 	    } else {
@@ -30732,12 +32384,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 401 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(402)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(415)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	    } else if (typeof exports !== "undefined") {
 	        factory(module, require('select'));
 	    } else {
@@ -30966,7 +32618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 402 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	function select(element) {
@@ -31015,7 +32667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 403 */
+/* 416 */
 /***/ (function(module, exports) {
 
 	function E () {
@@ -31087,11 +32739,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 404 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var is = __webpack_require__(405);
-	var delegate = __webpack_require__(406);
+	var is = __webpack_require__(418);
+	var delegate = __webpack_require__(419);
 
 	/**
 	 * Validates all params and calls the right
@@ -31188,7 +32840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 405 */
+/* 418 */
 /***/ (function(module, exports) {
 
 	/**
@@ -31243,10 +32895,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 406 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var closest = __webpack_require__(407);
+	var closest = __webpack_require__(420);
 
 	/**
 	 * Delegates event to a selector.
@@ -31293,7 +32945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 407 */
+/* 420 */
 /***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
@@ -31332,7 +32984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 408 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31345,7 +32997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(409);
+	var template = __webpack_require__(422);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -31379,13 +33031,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 409 */
+/* 422 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 410 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -31398,7 +33050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var Panel = __webpack_require__(364);
+	var Panel = __webpack_require__(379);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -31431,20 +33083,20 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = PanelTool;
 
 /***/ }),
-/* 411 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(412);
-	var TableBody = __webpack_require__(418);
-	var TableCol = __webpack_require__(419);
-	var TableTemplate = __webpack_require__(413);
+	var TableHeader = __webpack_require__(425);
+	var TableBody = __webpack_require__(431);
+	var TableCol = __webpack_require__(432);
+	var TableTemplate = __webpack_require__(426);
 	var _ = __webpack_require__(98);
-	var utils = __webpack_require__(414);
+	var utils = __webpack_require__(427);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(425);
+	var tpl = __webpack_require__(438);
 
 	var getLeaves = function getLeaves(columns) {
 	    var res = [];
@@ -31984,17 +33636,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = UITable;
 
 /***/ }),
-/* 412 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableTemplate = __webpack_require__(413);
-	var templates = __webpack_require__(415);
+	var TableTemplate = __webpack_require__(426);
+	var templates = __webpack_require__(428);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(417);
-	var _ = __webpack_require__(414);
+	var tpl = __webpack_require__(430);
+	var _ = __webpack_require__(427);
 
 	var HEADER_MIN_WIDTH = 30;
 
@@ -32274,13 +33926,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBasic;
 
 /***/ }),
-/* 413 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var _ = __webpack_require__(414);
+	var _ = __webpack_require__(427);
 
 	/**
 	 * @class TableTemplate
@@ -32364,7 +34016,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TableTemplate;
 
 /***/ }),
-/* 414 */
+/* 427 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -32425,15 +34077,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 415 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(414);
+	var _ = __webpack_require__(427);
 
 	var tplMap = {
-	    default: __webpack_require__(416)
+	    default: __webpack_require__(429)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -32441,30 +34093,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 416 */
+/* 429 */
 /***/ (function(module, exports) {
 
 	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
 
 /***/ }),
-/* 417 */
+/* 430 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#include this._getTHElement(header, headers)}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
-/* 418 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableCol = __webpack_require__(419);
-	var TableTemplate = __webpack_require__(413);
-	var _ = __webpack_require__(414);
+	var TableCol = __webpack_require__(432);
+	var TableTemplate = __webpack_require__(426);
+	var _ = __webpack_require__(427);
 
 	var Component = __webpack_require__(69);
-	var tpl = __webpack_require__(420);
-	var templates = __webpack_require__(421);
+	var tpl = __webpack_require__(433);
+	var templates = __webpack_require__(434);
 
 	var _parseFormat = function _parseFormat(str) {
 	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -32607,13 +34259,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBasic;
 
 /***/ }),
-/* 419 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var TableTemplate = __webpack_require__(413);
+	var TableTemplate = __webpack_require__(426);
 
 	/**
 	 * @class TableCol
@@ -32688,23 +34340,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = TableCol;
 
 /***/ }),
-/* 420 */
+/* 433 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#include this._getTDElement(column, item)}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 421 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(414);
+	var _ = __webpack_require__(427);
 
 	var tplMap = {
-	    default: __webpack_require__(422),
-	    progress: __webpack_require__(423),
-	    check: __webpack_require__(424)
+	    default: __webpack_require__(435),
+	    progress: __webpack_require__(436),
+	    check: __webpack_require__(437)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -32712,31 +34364,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 422 */
+/* 435 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value)}>{this._filter(column, value) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key])}>{this._filter(column, item[column.key]) | placeholder}</span>\n{/if}\n"
 
 /***/ }),
-/* 423 */
+/* 436 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 424 */
+/* 437 */
 /***/ (function(module, exports) {
 
 	module.exports = "<check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 425 */
+/* 438 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}\n    r-style={{\n        width: wrapWidth\n\n    }}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table.header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table.body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table.header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: 0,\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table.header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',\n            }}>\n            <table.body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        width: (viewWidth || tableWidth) + 'px',\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 426 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32749,7 +34401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var template = __webpack_require__(427);
+	var template = __webpack_require__(440);
 
 	/**
 	 * @class Row
@@ -32791,13 +34443,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Row;
 
 /***/ }),
-/* 427 */
+/* 440 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 428 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32810,8 +34462,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var template = __webpack_require__(429);
-	var Row = __webpack_require__(426);
+	var template = __webpack_require__(442);
+	var Row = __webpack_require__(439);
 
 	/**
 	 * @class Col
@@ -32861,13 +34513,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Col;
 
 /***/ }),
-/* 429 */
+/* 442 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 430 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32880,7 +34532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	var Component = __webpack_require__(69);
-	var template = __webpack_require__(431);
+	var template = __webpack_require__(444);
 	var _ = __webpack_require__(98);
 
 	/**
@@ -32913,13 +34565,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Card;
 
 /***/ }),
-/* 431 */
+/* 444 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 432 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/**
@@ -32933,7 +34585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(69);
 	var _ = __webpack_require__(98);
-	var Card = __webpack_require__(430);
+	var Card = __webpack_require__(443);
 
 	/**
 	 * @class Panel
@@ -32959,7 +34611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = CardTools;
 
 /***/ }),
-/* 433 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
