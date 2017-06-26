@@ -3138,7 +3138,7 @@ body{
 	cursor:not-allowed;
 	background:#eee;
 	color:#999;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 }
 .u-select{
 	text-transform:none;
@@ -3273,7 +3273,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	vertical-align:text-top;
 	background:#fff;
 	color:#e61438;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 }
 .u-check .check_box .u-icon{
 	display:none;
@@ -3376,7 +3376,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	padding:4px;
 	background:#fff;
 	color:#333;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 	-moz-border-radius:4px;
 	border-radius:4px;
 }
@@ -3522,7 +3522,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#333;
 	-moz-border-radius:4px;
 	border-radius:4px;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 }
 .m-treeview .treeview_item >.u-icon{
 	padding:3px 0;
@@ -5149,7 +5149,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	background:#fff;
 	-moz-border-radius:2px;
 	border-radius:2px;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 	height:32px;
 	line-height:32px;
 	font-size:12px;
@@ -5189,7 +5189,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	cursor:not-allowed;
 	background:#eee;
 	color:#999;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 }
 .u-input .input-error{
 	border-color:#f48080;
@@ -5270,7 +5270,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	padding:0 10px;
 	background:#fff;
 	color:#333;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 	-moz-border-radius:2px;
 	border-radius:2px;
 	font-size:12px;
@@ -5350,7 +5350,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-select.z-dis .dropdown_hd{
 	cursor:not-allowed;
 	background:#eee;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 	color:#999;
 }
 .u-selectgroup .u-select{
@@ -5439,7 +5439,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	cursor:not-allowed;
 	background:#eee;
 	color:#999;
-	border:1px solid #eee;
+	border:1px solid #ddd;
 }
 .u-textarea .textarea_placeholder{
 	position:absolute;
