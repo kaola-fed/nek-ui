@@ -16,7 +16,7 @@
         color: $u-formctrl_color;
         background: $u-formctrl_background;
         $border-radius: $border-radius-base;
-        border: 1px solid #EEEEEE;
+        border: 1px solid $u-formctrl_border;
         height: $height-base;
         line-height: $height-base;
         font-size: $font-size-sm;
