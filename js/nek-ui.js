@@ -28434,8 +28434,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    init: function init() {
 	        this.$watch('required', function (value) {
 	            var rules = this.data.rules,
-	                message = this.data.message;
-
+	                message = this.data.message || this.$trans('PLEASE_INPUT');
 	            if (value) {
 	                rules.push({ type: 'isRequired', message: message });
 	            } else {
