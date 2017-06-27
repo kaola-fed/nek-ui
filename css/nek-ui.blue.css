@@ -3576,7 +3576,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-formitem{
 	display:flex;
-	margin-bottom:16px;
+	margin-bottom:10px;
 }
 .u-formitem .formitem_tt{
 	position:relative;
@@ -5698,7 +5698,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	flex-wrap:wrap-reverse;
 }
 .g-row + .g-row{
-	margin-top:16px;
+	margin-top:10px;
 }
 .m-panel{
 	background:#fff;
