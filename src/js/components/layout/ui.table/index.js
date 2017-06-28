@@ -5,80 +5,10 @@ var TableBody = require('./table.body');
 var TableCol = require('./table.col');
 var TableTemplate = require('./table.template');
 var _ = require('../../../ui-base/_');
-var utils = require('./utils');
+var u = require('./utils');
 
 var Component = require('../../../ui-base/component');
 var tpl = require('./index.html');
-
-var hasChildren = function(column) {
-    return column.children && column.children.length > 0
-};
-
-var getHeaders = function(columns) {
-    var headers = [];
-    var extractHeaders = function(columns, depth) {
-        columns.forEach(function(column) {
-            if(hasChildren(column)) {
-                column._dataColumn = extractHeaders(column.children, depth + 1);
-            }
-            if(!headers[depth]) {
-                headers[depth] = [];
-            }
-            // 计算深度和宽度
-            if(hasChildren(column)) {
-                column.childrenDepth = 1 + column.children.reduce(function(previous, current) {
-                    return current.childrenDepth > previous ? current.childrenDepth : previous;
-                }, -1);
-                column.headerColSpan = column.children.reduce(function(previous, current) {
-                    return previous + (current.headerColSpan || 0);
-                }, 0);
-            } else {
-                column.childrenDepth = 0;
-                column.headerColSpan = 1;
-            }
-            headers[depth].push(column);
-        });
-    };
-    extractHeaders(columns, 0);
-    return headers;
-};
-
-var getLeaves = function(columns) {
-    var res = [];
-    var extractLeaves = function(columns) {
-        if(columns.forEach) {
-            return columns.forEach(function(item) {
-                if(item.children && item.children.length > 0) {
-                    extractLeaves(item.children);
-                } else {
-                    res.push(item);
-                }
-            });
-        }
-    };
-    extractLeaves(columns);
-    return res;
-};
-
-var getNum = function(str) {
-    return +((str+'').split('px')[0]);
-};
-
-var setElementValue = function(ele, prop, val) {
-    if(ele) {
-        ele[prop] = val;
-    }
-};
-
-var getElementHeight = function(ele) {
-    var computedStyle = window.getComputedStyle(ele);
-    var height = getNum(computedStyle.marginTop)
-            + getNum(computedStyle.borderTopWidth)
-            + getNum(ele.offsetHeight)
-            + getNum(computedStyle.borderBottomWidth)
-            + getNum(computedStyle.marginBottom);
-    return height;
-}
 
 /**
  * @class UITable
@@ -190,7 +120,7 @@ var UITable = Component.extend({
             this._updateViewWidth();
             this._initTableWidth();
             this._getHeaderHeight();
-            this.data.initFinished = true;
+            data.initFinished = true;
         }.bind(this), 50);
     },
     _initTableWidth: function() {
@@ -231,12 +161,12 @@ var UITable = Component.extend({
         this.$watch('scrollYBar', this._onScrollYBarChange);
         this.$watch('parentWidth', this._onParentWidthChange);
 
-        this._onBodyScroll = utils.throttle(this._onBodyScroll.bind(this), 16);
+        this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-        this._onWinodwScroll = utils.throttle(this._onWinodwScroll.bind(this), 200);
+        this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
         this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
 
-        this._onWindowResize = utils.throttle(this._onWindowResize.bind(this), 200);
+        this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
         window.addEventListener('resize', this._onWindowResize);
 
         this._watchWidthChange();
@@ -256,7 +186,7 @@ var UITable = Component.extend({
         if(!columns) {
             return;
         }
-        this.data.headers = getHeaders(columns);
+        this.data.headers = u.getHeaders(columns);
     },
     _onShowChange: function(newVal) {
         if(newVal) {
@@ -402,7 +332,7 @@ var UITable = Component.extend({
         }
 
         var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-        width = getNum(parentStyle.width) - getNum(parentStyle.paddingLeft) - getNum(parentStyle.paddingRight);
+        width = u.getNum(parentStyle.width) - u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
 
         data.parentWidth = width;
         data._defaultWidth = width;
@@ -436,15 +366,15 @@ var UITable = Component.extend({
         }
     },
     _updateDataColumn: function() {
-        this.$update('_dataColumns', getLeaves(this.data.columns));
+        this.$update('_dataColumns', u.getLeaves(this.data.columns));
     },
     _getHeaderHeight: function() {
-        var headerHeight = getElementHeight(this.$refs.headerWrap);
+        var headerHeight = u.getElementHeight(this.$refs.headerWrap);
         this._updateData('headerHeight', headerHeight);
         return headerHeight;
     },
     _getFooterHeight: function() {
-        var footerHeight = getElementHeight(this.$refs.footerWrap);
+        var footerHeight = u.getElementHeight(this.$refs.footerWrap);
         this._updateData('footerHeight', footerHeight);
         return footerHeight;
     },
@@ -473,7 +403,6 @@ var UITable = Component.extend({
             if(ratio !== 1) {
                 column._width = parseFloat((column._width * ratio).toFixed(1));
             }
-
 
             // 计算固定列的总宽度
             if(column._width && column.fixed) {
@@ -514,10 +443,10 @@ var UITable = Component.extend({
         }
         var $refs = this.$refs;
 
-        setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
-        setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
-        setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
-        setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+        u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+        u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+        u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+        u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
     },
     _onSort: function(e) {
         /**
