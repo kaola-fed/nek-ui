@@ -1,3 +1,5 @@
+var Regular = require('regularjs');
+
 var _ = {};
 
 _.isType = function(target, type) {
