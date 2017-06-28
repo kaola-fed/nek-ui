@@ -10,6 +10,39 @@ var utils = require('./utils');
 var Component = require('../../../ui-base/component');
 var tpl = require('./index.html');
 
+var hasChildren = function(column) {
+    return column.children && column.children.length > 0
+};
+
+var getHeaders = function(columns) {
+    var headers = [];
+    var extractHeaders = function(columns, depth) {
+        columns.forEach(function(column) {
+            if(hasChildren(column)) {
+                column._dataColumn = extractHeaders(column.children, depth + 1);
+            }
+            if(!headers[depth]) {
+                headers[depth] = [];
+            }
+            // 计算深度和宽度
+            if(hasChildren(column)) {
+                column.childrenDepth = 1 + column.children.reduce(function(previous, current) {
+                    return current.childrenDepth > previous ? current.childrenDepth : previous;
+                }, -1);
+                column.headerColSpan = column.children.reduce(function(previous, current) {
+                    return previous + (current.headerColSpan || 0);
+                }, 0);
+            } else {
+                column.childrenDepth = 0;
+                column.headerColSpan = 1;
+            }
+            headers[depth].push(column);
+        });
+    };
+    extractHeaders(columns, 0);
+    return headers;
+};
+
 var getLeaves = function(columns) {
     var res = [];
     var extractLeaves = function(columns) {
@@ -107,7 +140,7 @@ var UITable = Component.extend({
                 if(data.width !== undefined) {
                     return data.width;
                 } else {
-                    var parentWidth = this.data.parentWidth;
+                    var parentWidth = data.parentWidth;
                     if(parentWidth && data.tableWidth > parentWidth) {
                         return parentWidth;
                     } else {
@@ -137,12 +170,59 @@ var UITable = Component.extend({
             columns: [],
             sorting: {},
             config: {},
-            initFinished: false,
-            _scrollBarTimer: null
+            initFinished: false
         });
         this.supr(data);
 
         this._initWatchers();
+    },
+    init: function() {
+        this._initTable();
+    },
+    _initTable: function() {
+        var data = this.data;
+        var refs = this.$refs;
+        var INIT = 1;
+        setTimeout(function() {
+            data.headerHeight = refs.headerWrap.offsetHeight;
+
+            this._updateContainerWidth(INIT);
+            this._updateViewWidth();
+            this._initTableWidth();
+            this._getHeaderHeight();
+            this.data.initFinished = true;
+        }.bind(this), 50);
+    },
+    _initTableWidth: function() {
+        var data = this.data;
+        var _dataColumns = data._dataColumns;
+        if(!_dataColumns) {
+            return;
+        }
+
+        var tableWidth = data.parentWidth;
+        var customWidthCount = 0;
+        var customColumnWidthTotal = _dataColumns.reduce(function(previous, current) {
+            var width = parseInt(current.width);
+            if(width) {
+                customWidthCount++;
+                return previous + width;
+            }
+            return previous;
+        }, 0);
+
+        var tableViewWidth = tableWidth - data.scrollYBar;
+        var autoWidth = Math.floor((tableViewWidth-customColumnWidthTotal) / (_dataColumns.length-customWidthCount));
+        autoWidth = autoWidth > 0 ? autoWidth : 100;
+
+        var totalWidth = 0;
+        _dataColumns.forEach(function(dataColumn) {
+            dataColumn._width = parseInt(dataColumn.width || autoWidth);
+            totalWidth += dataColumn._width;
+            return dataColumn;
+        });
+
+        this._updateData('tableWidth', tableWidth);
     },
     _initWatchers: function() {
         this.$watch('show', this._onShowChange);
@@ -171,11 +251,18 @@ var UITable = Component.extend({
         }
         return data.scrollParentNode = window;
     },
+    _updateHeaders: function() {
+        var columns = this.data.columns;
+        if(!columns) {
+            return;
+        }
+        this.data.headers = getHeaders(columns);
+    },
     _onShowChange: function(newVal) {
         if(newVal) {
             setTimeout(function() {
                 this._updateViewWidth();
-            }.bind(this), 200)
+            }.bind(this), 100)
         }
     },
     _updateViewWidth: function() {
@@ -184,9 +271,10 @@ var UITable = Component.extend({
         }
     },
     _onParentWidthChange: function(newVal, oldVal) {
-        if(newVal == undefined || oldVal == undefined || oldVal === 0) {
+        if(newVal == undefined || oldVal == undefined) {
             return;
         }
+        oldVal = oldVal || this.data.tableWidth;
         var ratio = newVal / oldVal;
         this._updateTableWidth(ratio);
     },
@@ -207,6 +295,17 @@ var UITable = Component.extend({
             return;
         }
 
+        var tableWrapOffset = this._getTableWrapOffset();
+
+        if(data.stickyHeader && tableWrapOffset) {
+            this._updateStickyHeaderStatus(tableWrapOffset);
+        }
+
+        if(data.stickyFooter && tableWrapOffset) {
+            this._updateStickyFooterStatus(tableWrapOffset);
+        }
+    },
+    _getTableWrapOffset: function() {
         var scrollParentNode = this._getScrollParentNode();
         var parentRect = {
             top: 0
@@ -226,13 +325,7 @@ var UITable = Component.extend({
             bottom: tableRect.bottom + scrollTop - parentRect.top
         };
 
-        if(data.stickyHeader && tableWrapOffset) {
-            this._updateStickyHeaderStatus(tableWrapOffset);
-        }
-
-        if(data.stickyFooter && tableWrapOffset) {
-            this._updateStickyFooterStatus(tableWrapOffset);
-        }
+        return tableWrapOffset;
     },
     _updateStickyHeaderStatus: function(tableWrapOffset) {
         var headerHeight = this._getHeaderHeight();
@@ -286,31 +379,45 @@ var UITable = Component.extend({
         this.data.stickyFooterActive = stickyActive;
     },
     _watchWidthChange: function() {
-        this.data._widthTimer = setInterval(function() {
+        this.data._quickTimer = setInterval(function() {
             if(!this._isShow()) {
                 return;
             }
-            this._updateParentWidth();
-            this._updateDefaultWidth();
+            this._updateContainerWidth();
             this._updateScrollBar();
+        }.bind(this), 50);
+        this.data._slowTimer = setInterval(function() {
+            if(!this._isShow()) {
+                return;
+            }
             this._updateTableWidth();
-        }.bind(this), 400);
+        }.bind(this), 200);
     },
-    _updateParentWidth: function() {
-        var parentNode = this.$refs.tableWrap.parentNode;
-        if(parentNode) {
-            this.data.parentWidth = parentNode.scrollWidth;
-        }
-    },
-    _updateScrollBar: function() {
+    _updateContainerWidth: function(init) {
         var data = this.data;
-        var tableWrap = this.$refs.bodyWrap;
-        if(!tableWrap) {
+        var width = data.width;
+        if(init && width) {
+            data._defaultWidth = width;
             return;
         }
 
-        var yBarWidth = tableWrap.offsetWidth - tableWrap.clientWidth;
-        var xBarWidth = tableWrap.offsetHeight - tableWrap.clientHeight;
+        var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
+        width = getNum(parentStyle.width) - getNum(parentStyle.paddingLeft) - getNum(parentStyle.paddingRight);
+
+        data.parentWidth = width;
+        data._defaultWidth = width;
+    },
+    _updateScrollBar: function() {
+        var data = this.data;
+        var tableWrapEle = this.$refs.bodyWrap;
+        var tableEle = this.$refs.table;
+        if(!tableWrapEle || !tableEle) {
+            return;
+        }
+        var yBarWidth = Math.abs(tableWrapEle.offsetWidth - tableWrapEle.clientWidth);
+        var tableWrapEleXBarWidth = Math.abs(tableWrapEle.offsetHeight - tableWrapEle.clientHeight);
+        var tableEleXBarWidth = Math.abs(tableEle.offsetHeight - tableEle.clientHeight);
+        var xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
 
         this._updateData('scrollYBar', yBarWidth);
         this._updateData('scrollXBar', xBarWidth);
@@ -325,69 +432,11 @@ var UITable = Component.extend({
         if(newVal) {
             this._updateDataColumn();
             this._updateTableWidth();
+            this._updateHeaders();
         }
     },
     _updateDataColumn: function() {
         this.$update('_dataColumns', getLeaves(this.data.columns));
-    },
-    init: function() {
-        this._initTable();
-    },
-    _initTable: function() {
-        var data = this.data;
-        var refs = this.$refs;
-        var INIT = 1;
-        setTimeout(function() {
-            data.headerHeight = refs.headerWrap.offsetHeight;
-
-            this._updateDefaultWidth(INIT);
-            this._updateViewWidth();
-            this._initTableWidth();
-            this._getHeaderHeight();
-            this.data.initFinished = true;
-        }.bind(this), 100);
-    },
-    _updateDefaultWidth: function(init) {
-        var width = this.data.width;
-        if(init && width) {
-            this._updateData('_defaultWidth', width);
-            return;
-        }
-
-        var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-        width = getNum(parentStyle.width) - getNum(parentStyle.paddingLeft) - getNum(parentStyle.paddingRight);
-        this._updateData('_defaultWidth', width);
-    },
-    _initTableWidth: function() {
-        var data = this.data;
-        var _dataColumns = data._dataColumns;
-        if(!_dataColumns) {
-            return;
-        }
-
-        var tableWidth = this.$refs.table.clientWidth;
-        var customWidthCount = 0;
-        var customColumnWidthTotal = _dataColumns.reduce(function(previous, current) {
-            var width = parseInt(current.width);
-            if(width) {
-                customWidthCount++;
-                return previous + width;
-            }
-            return previous;
-        }, 0);
-
-        var tableViewWidth = tableWidth - data.scrollYBar;
-        var autoWidth = Math.floor((tableViewWidth-customColumnWidthTotal) / (_dataColumns.length-customWidthCount));
-        autoWidth = autoWidth >= 0 ? autoWidth : 100;
-
-        var totalWidth = 0;
-        _dataColumns.forEach(function(dataColumn) {
-            dataColumn._width = parseInt(dataColumn.width || autoWidth);
-            totalWidth += dataColumn._width;
-            return dataColumn;
-        });
-
-        this._updateData('tableWidth', tableWidth);
     },
     _getHeaderHeight: function() {
         var headerHeight = getElementHeight(this.$refs.headerWrap);
@@ -555,7 +604,8 @@ var UITable = Component.extend({
         this.supr();
     },
     removeEventListener: function() {
-        clearInterval(this.data._widthTimer);
+        clearInterval(this.data._quickTimer);
+        clearInterval(this.data._slowTimer);
         window.document.removeEventListener('scroll', this._onWinodwScroll);
         window.removeEventListener('resize', this._onWindowResize);
     }

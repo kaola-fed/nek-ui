@@ -40,6 +40,7 @@
             <table.header
                 ref="tableHeader"
                 _dataColumns={_dataColumns}
+                headers={headers}
                 resizePorxy={this.$refs.resizeProxy}
                 fixedHeader={fixedHeader}
                 height={headerHeight}
@@ -64,7 +65,7 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                height: !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',
+                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',
             }}
             on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >
             <table.body
@@ -109,6 +110,7 @@
             <table.header
                 ref="tableHeaderFixed"
                 _dataColumns={_dataColumns}
+                headers={headers}
                 fixedCol
                 fixedHeader={fixedHeader}
                 height={headerHeight}
@@ -129,7 +131,7 @@
         <div ref="bodyWrapFixed"
             class="ui_table_body"
             r-style={{
-                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
+                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table.body
                 ref="tableBodyFixed"
@@ -183,6 +185,7 @@
             >
             <table.header ref="tableHeaderFixedRight"
                 _dataColumns={_dataColumns}
+                headers={headers}
                 fixedCol="right"
                 fixedHeader={fixedHeader}
                 height={headerHeight}
@@ -204,7 +207,7 @@
         <div ref="bodyWrapFixedRight"
             class="ui_table_body"
             r-style={{
-                height: bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px',
+                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table.body ref="tableBodyFixedRight"
                 _dataColumns={_dataColumns}
