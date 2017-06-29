@@ -114,8 +114,9 @@ var TableBasic = Component.extend({
         return _parseFormat(format);
     },
     _filter: function(column, val) {
+        var args = [].slice.call(arguments, 1);
         if(column.filter && typeof column.filter === 'function') {
-            return column.filter.call(this, val);
+            return column.filter.apply(this, args);
         }
         return val;
     },
