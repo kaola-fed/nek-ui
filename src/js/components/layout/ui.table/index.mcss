@@ -216,7 +216,7 @@ $orderIconColor = #666;
 
 .m-ui-table-ft {
     padding: 10px 0;
-    background: #333;
+    background: #fff;
     .scroll_bar {
         overflow: auto;
         margin-bottom: 10px;

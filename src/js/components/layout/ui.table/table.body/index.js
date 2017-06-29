@@ -6,7 +6,6 @@ var _ = require('../utils');
 
 var Component = require('../../../../ui-base/component');
 var tpl = require('./index.html');
-var tdTpl = require('../td.elements/templates/default.html');
 var templates = require('../td.elements');
 
 var _parseFormat = function(str) {
@@ -19,7 +18,6 @@ var TableBasic = Component.extend({
     config: function(data) {
         this.defaults({
             type: '',
-            tdTpl: tdTpl,
             enableHover: true,
             show: true,
             columns: [],
@@ -72,47 +70,18 @@ var TableBasic = Component.extend({
             event: e
         });
     },
-    _isArray: function(arr) {
-        return _.isArray(arr);
-    },
-    _getTDElement: function(column, item) {
-        if(column.format || column.formatter || column.template) {
-            return this._getCustom(column, item);
-        }
+    _getTypeTemplate: function(column) {
         return templates.get(column.type);
     },
-    _getCustom: function(column, item) {
-        if(column.template) {
-            return this._getTemplate(column);
-        } else if(column.formatter) {
-            return this._getFormatter(column, item);
-        } else if(column.format) {
-            return this._getFormat(column);
-        }
-        return '';
-    },
     _getTemplate: function(column) {
-        if(_.isArray(column.template)) {
-            return _.convertBeginEnd('{#list column.template as template by template_index}{#include template}{/list}');
-        }
         return _.convertBeginEnd('{#include column.template}');
     },
     _getFormatter: function(column, item) {
         var formatter = column.formatter;
-        if(_.isArray(formatter)) {
-            return formatter.reduce(function(previous, current) {
-                return previous + (current.call(this, column, item) || '');
-            }.bind(this), '');
-        }
         return formatter.call(this, column, item) || '';
     },
     _getFormat: function(column) {
         var format = column.format;
-        if(_.isArray(format)) {
-            return format.reduce(function(previous, current) {
-                return previous + _parseFormat(current);
-            }.bind(this), '');
-        }
         return _parseFormat(format);
     },
     _filter: function(column, val) {

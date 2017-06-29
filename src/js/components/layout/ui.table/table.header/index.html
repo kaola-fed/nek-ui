@@ -32,10 +32,28 @@
                         <div class="th_content f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
-                            {#if !header.type}
-                                {#include thTpl}
+                            {#if header.headerTemplate}
+                                {#include header.headerTemplate}
+                            {#elseif header.headerFormatter}
+                                {#include this._getFormatter(header, headers)}
+                            {#elseif header.headerFormat}
+                                {#include this._getFormat(header)}
                             {#else}
-                                {#include this._getTHElement(header, headers)}
+                                <span class="header_text">{header.name}</span>
+                                <span>
+                                    {#if header.tip}
+                                        <span class="th_tip">
+                                            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>
+                                                <i class="u-icon u-icon-info-circle" />
+                                            </tooltip>
+                                        </span>
+                                    {/if}
+                                    {#if header.sortable && header.key}
+                                        <i class="u-icon u-icon-unsorted u-icon-1">
+                                            <i class="u-icon u-icon-2 {header | sortingClass}"/>
+                                        </i>
+                                    {/if}
+                                </span>
                             {/if}
                         </div>
                     </th>
