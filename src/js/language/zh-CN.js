@@ -27,5 +27,14 @@ module.exports = {
     VALUE_ERROR: '值错误',
     LENGTH_ERROR: '长度错误',
     LOADING: '加载中',
-    NO_DATA: '无数据'
+    NO_DATA: '无数据',
+    FILE_TYPE_ERROR: '格式错误',
+    FILE_TOO_LARGE: '文件过大',
+    RETRY: '重试',
+    UPLOAD_FILE: '上传文件',
+    DOWNLOAD_FILE: '下载',
+    UPLOAD_FAIL: '上传失败',
+    UNKNOWN: '未知',
+    DELETE_CONFIRM: '确认删除',
+    LIMIT_ERROR: 'limit 应该为数字',
 }
