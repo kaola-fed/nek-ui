@@ -32,6 +32,9 @@
             {#list _dataColumns as column by column_index}
             <td class="tb_bd_td {item.tdClass || column.tdClass}"
                 style="{item.tdStyle || column.tdStyle}"
+                r-style={{
+                    'text-align': column.align || align
+                }}
                 r-class={{
                     'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)
                 }}>

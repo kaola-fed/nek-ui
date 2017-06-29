@@ -99,6 +99,17 @@ $orderIconColor = #666;
             align-items: center;
             justify-content: center;
             padding: 6px 8px;
+
+            &.f-flex-center {
+                justify-content: center;
+            }
+            &.f-flex-right {
+                justify-content: flex-end;
+            }
+            &.f-flex-left {
+                justify-content: flex-start;
+            }
+
             .header_text {
             }
             .th_tip {
@@ -249,6 +260,7 @@ $orderIconColor = #666;
     overflow: hidden;
     white-space: nowrap;
 }
+
 
 @abstract clamp {
     display: -webkit-inline-box;

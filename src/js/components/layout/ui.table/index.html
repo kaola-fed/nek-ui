@@ -1,9 +1,6 @@
 <div class="m-ui-table-wrap "
     ref="tableWrap"
-    r-hide={!show}
-    r-style={{
-        width: wrapWidth ? wrapWidth + 'px' : 'auto'
-    }}>
+    r-hide={!show}>
 
     <!-- 读取内嵌模版 -->
     <div ref="bodyContainer" style="display: none" >
@@ -49,6 +46,7 @@
                 source={source}
                 sorting={sorting}
                 scrollYBar={scrollYBar}
+                align={align}
                 on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
@@ -80,6 +78,7 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                align={align}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onExpand($event)}/>
@@ -119,6 +118,7 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                align={align}
                 on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
         </div>
@@ -146,6 +146,7 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                align={align}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -160,7 +161,7 @@
         r-style={{
             width: scrollYBar + 'px',
             height: headerHeight + 'px',
-            right: 0,
+            right: Math.abs(parentWidth - tableWidth) + 'px',
             top: 0
         }}/>
     <div ref="tableFixedRight"
@@ -171,7 +172,7 @@
         }}
         r-style={{
             bottom: scrollXBar + 'px',
-            right: scrollYBar + 'px',
+            right: Math.abs(parentWidth - tableWidth) + scrollYBar + 'px',
             width: fixedTableWidthRight + 'px',
         }}>
         <div ref="headerWrapFixedRight"
@@ -194,6 +195,7 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                align={align}
                 marginLeft={tableWidth - fixedTableWidthRight}
                 on-customevent={this._onCustomEvent($event)}
                 on-sort={this._onSort($event)}/>
@@ -222,6 +224,7 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                align={align}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>

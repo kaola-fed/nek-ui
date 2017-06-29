@@ -68,6 +68,7 @@ var TableCol = Component.extend({
             headerTemplate: data._headerTemplates,
             expandTemplate: data._expandTemplate,
             children: data._innerColumns,
+            align: data.align,
             fixed: data.fixed
         });
     }

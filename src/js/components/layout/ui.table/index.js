@@ -22,6 +22,7 @@ var tpl = require('./index.html');
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  * @param {array}             [options.data.columns]              => 列配置
+ * @param {string}            [optiosn.data.align='center']       => 文字对齐
  */
 
 /**
@@ -38,6 +39,7 @@ var tpl = require('./index.html');
  * @param {boolean}     [options.data.sortable]         => 可排序
  * @param {string}      [options.data.children]         => 子表头
  * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+ * @param {string}      [optiosn.data.align='']         => 列文字对齐
 
  * @param {string}      [options.data.template]         => 列内容模版
  */
@@ -63,26 +65,6 @@ var UITable = Component.extend({
             set: function(val) {
                 return this.data.bodyHeight = val;
             }
-        },
-        wrapWidth: {
-            get: function() {
-                var data = this.data;
-                if(data.width !== undefined) {
-                    return data.width;
-                } else {
-                    var parentWidth = data.parentWidth;
-                    if(parentWidth && data.tableWidth > parentWidth) {
-                        return parentWidth;
-                    } else {
-                        return data.tableWidth;
-                    }
-                }
-
-                return null;
-            },
-            set: function(val) {
-                return this.data.wrapWidth = val;
-            }
         }
     },
     config: function(data) {
@@ -100,6 +82,7 @@ var UITable = Component.extend({
             columns: [],
             sorting: {},
             config: {},
+            align: 'center',
             initFinished: false
         });
         this.supr(data);
@@ -332,7 +315,9 @@ var UITable = Component.extend({
         }
 
         var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-        width = u.getNum(parentStyle.width) - u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
+        var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
+        var parentWidth = u.getNum(parentStyle.width);
+        width = parentWidth - parentPadding;
 
         data.parentWidth = width;
         data._defaultWidth = width;
