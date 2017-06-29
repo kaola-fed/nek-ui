@@ -32,7 +32,11 @@
                         <div class="th_content f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
-                            {#include this._getTHElement(header, headers)}
+                            {#if !header.type}
+                                {#include thTpl}
+                            {#else}
+                                {#include this._getTHElement(header, headers)}
+                            {/if}
                         </div>
                     </th>
                 {/list}

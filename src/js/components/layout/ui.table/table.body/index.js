@@ -6,6 +6,7 @@ var _ = require('../utils');
 
 var Component = require('../../../../ui-base/component');
 var tpl = require('./index.html');
+var tdTpl = require('../td.elements/templates/default.html');
 var templates = require('../td.elements');
 
 var _parseFormat = function(str) {
@@ -18,6 +19,7 @@ var TableBasic = Component.extend({
     config: function(data) {
         this.defaults({
             type: '',
+            tdTpl: tdTpl,
             enableHover: true,
             show: true,
             columns: [],

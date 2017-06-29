@@ -5,6 +5,7 @@ var templates = require('../th.elements');
 
 var Component = require('../../../../ui-base/component');
 var tpl = require('./index.html');
+var thTpl = require('../th.elements/templates/default.html');
 var _ = require('../utils');
 
 const HEADER_MIN_WIDTH = 30;
@@ -58,6 +59,7 @@ var TableBasic = Component.extend({
     config: function(data) {
         this.defaults({
             type: '',
+            thTpl: thTpl,
             show: true,
             columns: [],
             sorting: {},

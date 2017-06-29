@@ -39,7 +39,11 @@
                     'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)
                 }}>
                 <div class="tb_bd_td_div ">
-                    {#include this._getTDElement(column, item)}
+                    {#if !column.type}
+                        {#include tdTpl}
+                    {#else}
+                        {#include this._getTDElement(column, item)}
+                    {/if}
                     {#if column.expandable}
                     <span class="u-expand-sign f-cursor-pointer"
                         on-click={this._onExpand(item, item_index, column)}>
