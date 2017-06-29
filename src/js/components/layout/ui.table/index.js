@@ -413,6 +413,7 @@ var UITable = Component.extend({
         } else {
             data.width = data._defaultWidth;
         }
+        this.$update();
     },
     _onWindowResize: function() {
         if(!this.$refs || !this._isShow()) {
