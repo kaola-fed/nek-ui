@@ -75,6 +75,45 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+### 对齐方式
+
+默认 `align="center"`
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table strip={false} source={table.source} align="left">
+    <table.col name="title" key="title" />
+    <table.col name="value" key="value" align="right"/>
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        setTimeout(function() {
+            this.data.table.source = [];
+            for(var i = 0; i < 3; ++i) {
+                this.data.table.source.push({
+                    title: 'test' + i,
+                    col1: '' + i,
+                    value: 10 * i
+                });
+            }
+            this.$update();
+        }.bind(this), 200);
+    }
+});
+```
+<!-- demo_end -->
+
 ### 过滤器
 
 <!-- demo_start -->
@@ -108,8 +147,8 @@ var component = new NEKUI.Component({
             this.$update();
         }.bind(this), 200);
     },
-    titleFilter: function(val) {
-        return '* ' + val + ' *';
+    titleFilter: function(val, item, itemIndex) {
+        return itemIndex + ': ' + val + ' *';
     }
 });
 ```
@@ -432,7 +471,7 @@ var component = new NEKUI.Component({
             source: [],
             paging: {
                 pageSize: 10,
-                sumTotal: 100,
+                sumTotal: 10,
                 current: 1
             }
         }
