@@ -24649,6 +24649,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var source = result[key] || [];
 	            this.__updateSource($formitem, key, source);
 	        }.bind(this));
+	        /**
+	           * @event sourceCompleted ui.form自动获取sourceKey异步数据后触发
+	           * @property {object} sender 事件发送对象
+	           * @property {object} result 所有异步数据
+	           */
+	        this.$emit('sourceCompleted', {
+	            sender: this,
+	            result: window.NEKSelects
+	        });
 	    },
 	    __updateSource: function __updateSource($formitem, key, source) {
 	        var $selectItem = $formitem.controls[0];
