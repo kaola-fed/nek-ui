@@ -73,9 +73,6 @@ var TableBasic = Component.extend({
     _getTypeTemplate: function(column) {
         return templates.get(column.type);
     },
-    _getTemplate: function(column) {
-        return _.convertBeginEnd('{#include column.template}');
-    },
     _getFormatter: function(column, item) {
         var formatter = column.formatter;
         return formatter.call(this, column, item) || '';
@@ -100,6 +97,10 @@ var TableBasic = Component.extend({
                 param: args
             }
         });
+    },
+    emit: function() {
+        var args = [].slice.call(arguments, 0);
+        this.$parent.$emit.apply(this.$parent, args);
     },
     _onTrHover: function($event, item) {
         item._hover = true;

@@ -33,7 +33,7 @@
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
                             {#if header.headerTemplate}
-                                {#include header.headerTemplate}
+                                {#include @(header.headerTemplate)}
                             {#elseif header.headerFormatter}
                                 {#include this._getFormatter(header, headers)}
                             {#elseif header.headerFormat}

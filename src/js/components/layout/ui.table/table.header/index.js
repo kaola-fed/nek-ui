@@ -183,9 +183,6 @@ var TableBasic = Component.extend({
         document.body.style.cursor = '';
         this.$update('_ok2ResizeCol', false);
     },
-    _getTemplate: function(header) {
-        return _.convertBeginEnd('{#include header.headerTemplate}');
-    },
     _getFormatter: function(header, headers) {
         return header.headerFormatter.call(this, header, headers) || '';
     },
@@ -201,7 +198,11 @@ var TableBasic = Component.extend({
                 param: args
             }
         });
-    }
+    },
+    emit: function() {
+        var args = [].slice.call(arguments, 0);
+        this.$parent.$emit.apply(this.$parent, args);
+    },
 })
 .filter('sortingClass', function(header) {
     var data = this.data;
