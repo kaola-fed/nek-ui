@@ -1,10 +1,13 @@
-<div class="u-dropdown u-select u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
+<div class="u-dropdown u-select u-select-{state} u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open)}>
         {#list selected as item}
         <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
 			<i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
         </span>
         {/list}
+        {#if !open}
+        <kl-icon fontSize=12 type="angle_down" class="f-fr"/>
+        {/if}
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
@@ -33,4 +36,5 @@
         </div>
     </div>
     {/if}
+    {#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>
