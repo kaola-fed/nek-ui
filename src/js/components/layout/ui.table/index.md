@@ -11,7 +11,7 @@ title: 表格
 
 ```xml
 <ui.table source={table.source}>
-    <table.col name="title" key="title" />
+    <table.col name="title" key="title" width=150 />
     <table.col name="value" key="value" tip="I am tip"/>
 </ui.table>
 ```
@@ -116,6 +116,8 @@ var component = new NEKUI.Component({
 
 ### 过滤器
 
+`filter` 接收一个 `function`，依次可以取得参数 `val`，`item`，`itemIndex`。
+
 <!-- demo_start -->
 <div class="m-example"></div>
 
@@ -195,7 +197,6 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
-
 
 ### 悬浮表头和底部
 
@@ -309,11 +310,18 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 自定义模版
+### 自定义模版与filter
 
 通过 `table.template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
-自定义模版中可以通过 `emitEvent` 的方法向上抛出事件。
-注意：内嵌形式的模版需要在每行的两端加上 `{'`、`'}` ，否则模版字符串的插值会无法传递给模版组件。
+自定义模版中可以通过 `emit` 的方法向上抛出事件。
+
+要在模版中使用自定义的 `filter` 则需要将其先注册到 `NEKUI.UITable` 上。
+
+注意：
+1. 内嵌形式的模版需要在每行的两端加上 `{'`、`'}` ，否则模版字符串的插值会无法传递给模版组件，
+2. 原有的 `emitEvent` 方法不建议使用，但仍然保留。
+
+`table.col`上亦可以直接传入对应的模版属性， `template`，`headerTemplate`，`formatter`，`headerFormatter`，`format`，`headerFormat`。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -322,7 +330,7 @@ var component = new NEKUI.Component({
 <ui.table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
     <table.col name="title" key="title">
         <table.template type="header">
-            {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emitEvent("headerclick", header)}>I am && {header.name}</a>'}
+            {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emit("headerclick", header)}>I am && {header.name}</a>'}
             {'<anchor/>'}
         </table.template>
         <table.template template={tdTpl} />
@@ -347,7 +355,7 @@ var component = new NEKUI.Component({
         table: {
             source: []
         },
-        tdTpl: '<a on-click={this.emitEvent("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
+        tdTpl: '<a on-click={this.emit("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
     },
     init: function() {
         this.data.table.source = [];
@@ -700,3 +708,48 @@ Regular.config({
     END: Regular._END_
 });
 ```
+
+### 模版中获取外部数据的方法
+
+由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`ui.table` 上挂载的属性无法直接传递到表头和内容当中。
+
+如有需要获取外部的数据，则需要通过 `this.$parent.data` 去获取。
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<ui.table source={table.source} count={count}>
+    <table.col name="title" key="title" template={tdTpl} headerTemplate={thTpl}/>
+    <table.col name="value" key="value" />
+</ui.table>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        count: 0,
+        thTpl: '{header.name + " :" + this.$parent.data.count}',
+        tdTpl: '{item.title + " :" + this.$parent.data.count}',
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+        setInterval(function() {
+            this.data.count++;
+            this.$update();
+        }.bind(this), 1000);
+    },
+});
+```
+<!-- demo_end -->
