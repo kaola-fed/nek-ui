@@ -68,8 +68,24 @@ var MultiSelect = Dropdown.extend({
             this.initSelected()
             this.$update();
         }.bind(this));
-        this.$watch('value', function() {
+        this.$watch('value', function(newValue, oldValue) {
             this.initSelected();
+            if(oldValue !== null && oldValue !== undefined) {
+                /**
+                 * @event value 改变时触发
+                 * @property {object} sender 事件发送对象
+                 * @property {object} value 当前 value 的值
+                 */
+                this.$emit('change', {
+                    sender: this,
+                    value: newValue,
+                    key: data.key,
+                    value: data.value
+                });
+                if(data.source && data.source.length) {
+                    this.validate();
+                }
+            }
             this.$update();
         }.bind(this));
         this.supr();
@@ -115,6 +131,8 @@ var MultiSelect = Dropdown.extend({
         	_checkedItem(data._source);
         	_checkedSelf(data._source);
         	this.watchValue();
+        } else {
+            data.value = '';
         }
     },
     viewCate: function(cate, level) {
@@ -225,6 +243,32 @@ var MultiSelect = Dropdown.extend({
     	data.value = _list.join(data.separator);
     	this.initSelected();
     	this.watchValue();
+    },
+    validate: function (on) {
+        var data = this.data;
+
+        var result = {success: true, message: ''},
+            value = this.data.value;
+
+        value = ( typeof value == 'undefined' ) ? '' : value + '';
+        if (data.required && !value.length) {
+            result.success = false;
+            result.message = data.message || this.$trans('PLEASE_SELECT');
+            data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            data.state = '';
+        }
+        data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
 }).filter('search', function(category, search, level) {
 	var data = this.data;

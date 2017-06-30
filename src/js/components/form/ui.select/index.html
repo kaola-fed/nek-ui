@@ -12,6 +12,9 @@
 	            {#else}
 	                <span>{selected?selected[nameKey]:placeholder}</span>
 	            {/if}
+	            {#if !open}
+	            <kl-icon fontSize=12 type="angle_down" class="f-fr"/>
+	            {/if}
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
@@ -29,6 +32,9 @@
 	                    <i class="u-icon u-icon-remove" on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
 	            {/list}
+	            {#if !open}
+					<kl-icon fontSize=12 type="angle_down" class="f-fr" />
+	            {/if}
 	        </div>
 	    {/if}
 	    {#if open}
@@ -36,7 +42,7 @@
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="m-listview">
 	            {#if placeholder}
-	                <li z-sel={multiple?!selected.length:!selected}>
+	                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
 	                    {placeholder}
 	                </li>
 	            {/if}

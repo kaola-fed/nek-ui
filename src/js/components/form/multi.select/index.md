@@ -56,7 +56,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<multi.select source={source} multiple={multiple} value={value}  on-select={this.selected($event)} />
+<multi.select source={source} multiple={multiple} value={value}  on-select={this.selected($event)} on-change={this.change($event)}/>
 选择的是：{value}
 ```
 
@@ -91,7 +91,10 @@ var component = new NEKUI.Component({
         multiple: true
     },
     selected: function(event) {
-        console.log(event);
+        console.log('selected',event);
+    },
+    change: function(event) {
+        console.log('change',event);
     }
 });
 ```
