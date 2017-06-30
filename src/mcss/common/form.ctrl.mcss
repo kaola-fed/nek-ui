@@ -11,6 +11,24 @@
 // 一般认为input和textarea的样式是差不多的。
 // u-input用于input:not([type="radio"]), input:not([type="checkbox"])
 
+.input, .textarea{
+    // - Default is `content-box` with following exceptions set to `border-box`.
+    $box-sizing: border-box;
+    // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+    margin: 0;
+    border: 0;
+    padding: 0;
+    // - Remove `border-radius` in iOS.
+    border-radius: 0;
+    // - Correct `font` properties and `color` not being inherited.
+    font: inherit;
+    color: inherit;
+    // - Remove default style in iOS.
+    -webkit-appearance: none;
+    // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+    max-width: 100%;
+}
+
 .u-select {
     // - Default is `content-box` with following exceptions set to `border-box`.
     $box-sizing: border-box;

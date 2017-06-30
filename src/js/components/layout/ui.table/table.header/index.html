@@ -29,10 +29,35 @@
                         on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}
                         on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}
                         on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>
-                        <div class="th_content"
+                        <div class="th_content f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
-                            {#include this._getTHElement(header, headers)}
+                            {#if header.headerTemplate}
+                                {#include @(header.headerTemplate)}
+                            {#elseif header.headerFormatter}
+                                {#include this._getFormatter(header, headers)}
+                            {#elseif header.headerFormat}
+                                {#include this._getFormat(header)}
+                            {#else}
+                                <span class="header_text"
+                                    r-class={{
+                                        'f-cursor-pointer': !!(header.sortable && header.key),
+                                    }}>{header.name}</span>
+                                <span>
+                                    {#if header.tip}
+                                        <span class="th_tip">
+                                            <tooltip tip={header.tip} placement={header.tipPos || 'top'}>
+                                                <i class="u-icon u-icon-info-circle" />
+                                            </tooltip>
+                                        </span>
+                                    {/if}
+                                    {#if header.sortable && header.key}
+                                        <i class="u-icon u-icon-unsorted u-icon-1">
+                                            <i class="u-icon u-icon-2 {header | sortingClass}"/>
+                                        </i>
+                                    {/if}
+                                </span>
+                            {/if}
                         </div>
                     </th>
                 {/list}

@@ -1,7 +1,7 @@
 {#if this._isArray(item[column.key])}
     {#list item[column.key] as value by value_index}
-        <p class="u-td-line"><span title={this._filter(column, value)}>{this._filter(column, value) | placeholder}</span></p>
+        <p class="u-td-line"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>
     {/list}
 {#else}
-    <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key])}>{this._filter(column, item[column.key]) | placeholder}</span>
+    <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>
 {/if}

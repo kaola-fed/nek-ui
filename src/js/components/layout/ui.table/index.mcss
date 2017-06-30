@@ -44,9 +44,6 @@ $orderIconColor = #666;
             z-index: 100;
             top: 0;
         }
-        &.fixed_scrollx {
-            overflow: hidden;
-        }
     }
 
     .ui_table_body {
@@ -63,8 +60,6 @@ $orderIconColor = #666;
         left: 0;
         border-bottom: none;
         box-shadow: 1px 0 8px #d3d4d6;
-        //z-index: 100;
-        //transform: scale(1);
         &.m-ui-table-fixed-right {
             left: auto;
             right: 0;
@@ -104,6 +99,17 @@ $orderIconColor = #666;
             align-items: center;
             justify-content: center;
             padding: 6px 8px;
+
+            &.f-flex-center {
+                justify-content: center;
+            }
+            &.f-flex-right {
+                justify-content: flex-end;
+            }
+            &.f-flex-left {
+                justify-content: flex-start;
+            }
+
             .header_text {
             }
             .th_tip {
@@ -254,6 +260,7 @@ $orderIconColor = #666;
     overflow: hidden;
     white-space: nowrap;
 }
+
 
 @abstract clamp {
     display: -webkit-inline-box;
