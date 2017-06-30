@@ -161,7 +161,7 @@
         r-style={{
             width: scrollYBar + 'px',
             height: headerHeight + 'px',
-            right: Math.abs(parentWidth - tableWidth) + 'px',
+            right: fixedRight + 'px',
             top: 0
         }}/>
     <div ref="tableFixedRight"
@@ -172,7 +172,7 @@
         }}
         r-style={{
             bottom: scrollXBar + 'px',
-            right: Math.abs(parentWidth - tableWidth) + scrollYBar + 'px',
+            right: fixedRight - 1 + scrollYBar + 'px',
             width: fixedTableWidthRight + 'px',
         }}>
         <div ref="headerWrapFixedRight"
