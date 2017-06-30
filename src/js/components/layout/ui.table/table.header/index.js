@@ -8,6 +8,7 @@ var _ = require('../utils');
 var tpl = require('./index.html');
 
 const HEADER_MIN_WIDTH = 30;
+const SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
 
 var hasChildren = function(column) {
     return column.children && column.children.length > 0
@@ -173,7 +174,7 @@ var TableBasic = Component.extend({
             target = target.parentNode;
         }
         var rect = target.getBoundingClientRect();
-        return rect.width > 12 && rect.right - event.pageX < 8;
+        return rect.width > 12 && rect.right - event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD;
     },
     _enableResize: function() {
         document.body.style.cursor = 'col-resize';

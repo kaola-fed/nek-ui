@@ -39,7 +39,10 @@
                             {#elseif header.headerFormat}
                                 {#include this._getFormat(header)}
                             {#else}
-                                <span class="header_text">{header.name}</span>
+                                <span class="header_text"
+                                    r-class={{
+                                        'f-cursor-pointer': !!(header.sortable && header.key),
+                                    }}>{header.name}</span>
                                 <span>
                                     {#if header.tip}
                                         <span class="th_tip">
