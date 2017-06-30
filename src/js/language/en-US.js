@@ -28,5 +28,13 @@ module.exports = {
     LENGTH_ERROR: 'Length Error',
     LOADING: 'Loading',
     NO_DATA: 'No data',
-    LIMIT_ERROR: 'the limit should be a number'
+    FILE_TYPE_ERROR: 'TypeError',
+    FILE_TOO_LARGE: 'TooLarge',
+    RETRY: 'Retry',
+    UPLOAD_FILE: 'File',
+    DOWNLOAD_FILE: '',
+    UPLOAD_FAIL: 'Fail',
+    UNKNOWN: 'UNKNOWN',
+    DELETE_CONFIRM: 'Are you sure to delete',
+    LIMIT_ERROR: 'the limit should be a number',
 }

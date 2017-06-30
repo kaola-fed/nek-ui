@@ -64,20 +64,14 @@ var TableTemplate = Component.extend({
     },
     _register2Header: function() {
         var outerData = this.$outer.data;
-        if(!outerData._headerTemplates) {
-            outerData._headerTemplates = [];
-        }
-        outerData._headerTemplates.push(this._getInnertTemplate());
+        outerData._headerTemplate = this._getInnertTemplate();
     },
     _register2Expand: function() {
         this.$outer.data._expandTemplate = this._getInnertTemplate();
     },
     _register2Content: function() {
         var outerData = this.$outer.data;
-        if(!outerData._templates) {
-            outerData._templates = [];
-        }
-        outerData._templates.push(this._getInnertTemplate());
+        outerData._template = this._getInnertTemplate();
     },
     _getInnertTemplate: function() {
         var template = this.data.template || this.$refs.bodyContainer.innerHTML;

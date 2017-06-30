@@ -31,6 +31,7 @@ const Components = {
     UITextArea : require('./components/form/ui.textarea'),
     Uploader : require('./components/form/uploader'),
     UIGroup : require('./components/form/ui.group'),
+    KLUpload : require('./components/form/KLUpload'),
 
     // Navigation
     Collapse : require('./components/navigation/collapse'),

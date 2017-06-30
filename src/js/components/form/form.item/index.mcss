@@ -10,7 +10,7 @@
 
 .u-formitem {
     display: flex;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     .formitem_tt {
         position:relative;
         float: left;

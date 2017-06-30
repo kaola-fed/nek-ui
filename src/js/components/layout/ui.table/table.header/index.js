@@ -4,10 +4,11 @@ var TableTemplate = require('../table.template');
 var templates = require('../th.elements');
 
 var Component = require('../../../../ui-base/component');
-var tpl = require('./index.html');
 var _ = require('../utils');
+var tpl = require('./index.html');
 
 const HEADER_MIN_WIDTH = 30;
+const SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
 
 var hasChildren = function(column) {
     return column.children && column.children.length > 0
@@ -44,33 +45,9 @@ var getColumnWidth = function(column) {
     return ret;
 };
 
-var getHeaders = function(columns) {
-    var headers = [];
-    var extractHeaders = function(columns, depth) {
-        columns.forEach(function(column) {
-            if(hasChildren(column)) {
-                column._dataColumn = extractHeaders(column.children, depth + 1);
-            }
-            if(!headers[depth]) {
-                headers[depth] = [];
-            }
-            // 计算深度和宽度
-            if(hasChildren(column)) {
-                column.childrenDepth = 1 + column.children.reduce(function(previous, current) {
-                    return current.childrenDepth > previous ? current.childrenDepth : previous;
-                }, -1);
-                column.headerColSpan = column.children.reduce(function(previous, current) {
-                    return previous + (current.headerColSpan || 0);
-                }, 0);
-            } else {
-                column.childrenDepth = 0;
-                column.headerColSpan = 1;
-            }
-            headers[depth].push(column);
-        });
-    };
-    extractHeaders(columns, 0);
-    return headers;
+var _parseFormat = function(str) {
+    return str.replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
 };
 
 var TableBasic = Component.extend({
@@ -93,18 +70,6 @@ var TableBasic = Component.extend({
             config: {}
         });
         this.supr(data);
-        this.$watch('columns', function() {
-            this._updateHeaders();
-        });
-    },
-    _updateHeaders: function() {
-        var columns = this.data.columns;
-
-        if(!columns) {
-            return;
-        }
-
-        this.data.headers = getHeaders(columns);
     },
     _onHeaderClick: function(header, headerIndex) {
         if(!header.sortable) {
@@ -209,7 +174,7 @@ var TableBasic = Component.extend({
             target = target.parentNode;
         }
         var rect = target.getBoundingClientRect();
-        return rect.width > 12 && rect.right - event.pageX < 8;
+        return rect.width > 12 && rect.right - event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD;
     },
     _enableResize: function() {
         document.body.style.cursor = 'col-resize';
@@ -219,45 +184,11 @@ var TableBasic = Component.extend({
         document.body.style.cursor = '';
         this.$update('_ok2ResizeCol', false);
     },
-    _getTHElement: function(header, item) {
-        if(header.headerFormat || header.headerFormatter || header.headerTemplate) {
-            return this._getCustom(header, item);
-        }
-        return templates.get(header.type);
-    },
-    _getCustom: function(header, item) {
-        if(header.headerTemplate) {
-            return this._getTemplate(header);
-        } else if(header.headerFormatter) {
-            return this._getFormatter(header, item);
-        } else if(header.headerFormat) {
-            return this._getFormat(header);
-        }
-        return '';
-    },
-    _getTemplate: function(header) {
-        if(_.isArray(header.headerTemplate)) {
-            return _.convertBeginEnd('{#list header.headerTemplate as template by template_index}{#include template}{/list}');
-        }
-        return _.convertBeginEnd('{#include header.headerTemplate}');
-    },
     _getFormatter: function(header, headers) {
-        var formatter = header.formatter;
-        if(_.isArray(formatter)) {
-            return formatter.reduce(function(previous, current) {
-                return previous + (current.call(this, header, headers) || '');
-            }.bind(this), '');
-        }
-        return formatter.call(this, header, headers) || '';
+        return header.headerFormatter.call(this, header, headers) || '';
     },
     _getFormat: function(header) {
-        var format = header.format;
-        if(_.isArray(format)) {
-            return format.reduce(function(previous, current) {
-                return previous + _parseFormat(current);
-            }.bind(this), '');
-        }
-        return _parseFormat(format);
+        return _parseFormat(header.headerFormat);
     },
     emitEvent: function(type) {
         var args = [].slice.call(arguments, 1);
@@ -268,7 +199,11 @@ var TableBasic = Component.extend({
                 param: args
             }
         });
-    }
+    },
+    emit: function() {
+        var args = [].slice.call(arguments, 0);
+        this.$parent.$emit.apply(this.$parent, args);
+    },
 })
 .filter('sortingClass', function(header) {
     var data = this.data;

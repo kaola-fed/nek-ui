@@ -63,12 +63,18 @@ var TableCol = Component.extend({
             thClass: data.thClass,
             sortable: data.sortable,
             expandable: data.expandable,
-            filter: data.filter,
-            template: data._templates,
-            headerTemplate: data._headerTemplates,
-            expandTemplate: data._expandTemplate,
             children: data._innerColumns,
-            fixed: data.fixed
+            align: data.align,
+            fixed: data.fixed,
+
+            filter: data.filter,
+            template: data._template || data.template,
+            formatter: data.formatter,
+            format: data.format,
+            headerTemplate: data._headerTemplate || data.headerTemplate,
+            headerFormatter: data.headerFormatter,
+            headerFormat: data.headerFormat,
+            expandTemplate: data._expandTemplate,
         });
     }
 })

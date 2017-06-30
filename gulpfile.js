@@ -1,12 +1,12 @@
 var gulp = require('gulp');
 
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config');
 var rimraf = require('rimraf');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var ignore = require('gulp-ignore');
-var minifycss = require('gulp-minify-css');
+var minifycss = require('gulp-clean-css');
 var sequence = require('run-sequence');
 var all = require('gulp-all');
 var mcss = require('gulp_mcss');
