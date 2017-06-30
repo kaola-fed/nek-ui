@@ -584,21 +584,11 @@ pre{
 	-moz-border-radius:2px;
 	border-radius:2px;
 }
-input,textarea{
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	box-sizing:border-box;
-	margin:0;
-	border:0;
-	padding:0;
-	border-radius:0;
-	font:inherit;
-	color:inherit;
-	-webkit-appearance:none;
-	max-width:100%;
-}
-input[type=checkbox],input[type=radio]{
+input[type=checkbox]{
 	-webkit-appearance:checkbox;
+}
+input[type=radio]{
+	-webkit-appearance:radio;
 }
 *::selection,*::-moz-selection,*::-webkit-selection{
 	color:#fff;
@@ -3090,6 +3080,19 @@ body{
 }
 .u-icon-home2:before{
 	content:"\e920";
+}
+.input,.textarea{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	margin:0;
+	border:0;
+	padding:0;
+	border-radius:0;
+	font:inherit;
+	color:inherit;
+	-webkit-appearance:none;
+	max-width:100%;
 }
 .u-select{
 	-webkit-box-sizing:border-box;
