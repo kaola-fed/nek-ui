@@ -65,6 +65,13 @@ var UITable = Component.extend({
             set: function(val) {
                 return this.data.bodyHeight = val;
             }
+        },
+        fixedRight: {
+            get: function() {
+                var data = this.data;
+                var fixedRight = Math.floor(data.parentWidth - data.tableWidth);
+                return fixedRight > 0 ? fixedRight : 0;
+            }
         }
     },
     config: function(data) {
@@ -386,7 +393,7 @@ var UITable = Component.extend({
             }
 
             if(ratio !== 1) {
-                column._width = parseFloat((column._width * ratio).toFixed(1));
+                column._width = Math.floor(column._width * ratio);
             }
 
             // 计算固定列的总宽度
