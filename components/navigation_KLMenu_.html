@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>面包屑 - nek-ui</title>
+        <title>两级菜单 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="面包屑 - nek-ui">
+        <meta property="og:title" content="两级菜单 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -211,14 +211,14 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link current">面包屑 KLCrumb</a>
+                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
                 </li>
             
                 
                     
                 
                 <li>
-                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link">两级菜单 KLMenu</a>
+                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link current">两级菜单 KLMenu</a>
                 </li>
             
                 
@@ -271,13 +271,8 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第一级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第二级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第三级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span>&gt;</span>第四级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第五级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLCrumb">KLCrumb</a></dt>
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#Menu">Menu</a></dt>
 <dd></dd>
 </dl>
 
@@ -286,9 +281,9 @@
 <dd></dd>
 </dl>
 
-<p><a name="KLCrumb"></a></p>
-<h2 id="KLCrumb"><a href="#KLCrumb" class="headerlink" title="KLCrumb"></a>KLCrumb</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLCrumb_new"></a></p>
-<h3 id="new-KLCrumb"><a href="#new-KLCrumb" class="headerlink" title="new KLCrumb()"></a>new KLCrumb()</h3><table>
+<p><a name="Menu"></a></p>
+<h2 id="Menu"><a href="#Menu" class="headerlink" title="Menu"></a>Menu</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_Menu_new"></a></p>
+<h3 id="new-Menu"><a href="#new-Menu" class="headerlink" title="new Menu()"></a>new Menu()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -308,51 +303,21 @@
 <td>=&gt; 补充class</td>
 </tr>
 <tr>
-<td>[options.data.separator]</td>
-<td><code>string</code></td>
-<td>=&gt; 分隔符，支持模板</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
-<td><code>string</code></td>
-<td>=&gt; kl-crumb-item的属性：补充class</td>
-</tr>
-<tr>
-<td>[options.data.href]</td>
-<td><code>string</code></td>
-<td>=&gt; kl-crumb-item的属性：传入的链接</td>
+<td>[options.data.uniqueOpened]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 是否只保持打开一个菜单</td>
 </tr>
 </tbody>
 </table>
 <p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
-<script>
-var index = 0;
-
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-crumb separator="/">
-    <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
-    <kl-crumb-item>第一级目录</kl-crumb-item>
-    <kl-crumb-item>第二级目录</kl-crumb-item>
-    <kl-crumb-item>第三级目录</kl-crumb-item>
-    <kl-crumb-item href="http://www.kaola.com">第四级目录</kl-crumb-item>
-    <kl-crumb-item>第五级目录</kl-crumb-item>
-</kl-crumb>
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-</script>
-
     <div class="guide-links">
       
+        <span>← <a href="/components/navigation_KLCrumb_.html">面包屑</a></span>
       
-        <span style="float:right"><a href="/components/navigation_KLMenu_.html">两级菜单</a> →</span>
+      
+        <span style="float:right"><a href="/components/navigation_KLPager_.html">分页</a> →</span>
       
     </div>
     <div class="footer">
