@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>菜单栏 - nek-ui</title>
+        <title>加载中 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="菜单栏 - nek-ui">
+        <meta property="og:title" content="加载中 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -232,7 +232,7 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link current">菜单栏 KLSidebar</a>
+                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link">菜单栏 KLSidebar</a>
                 </li>
             
                 
@@ -269,7 +269,7 @@
                     
                 
                 <li>
-                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
+                    <a href="/components/widget_KLLoading_.html" class="sidebar-link current">加载中 KLLoading</a>
                 </li>
             
                 
@@ -299,52 +299,32 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
-<p><div class="m-example"></div></p>
-<p><style>
-    .m-example {
-        font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
-        overflow: hidden;
-        padding: 0;
-    }
-    .demo-main {
-        position:relative;
-        height: 400px;
-        background: #eaedf3;
-    }
-    .demo-head {
-        box-sizing: border-box;
-        height: 60px;
-        background: #22354a;
-        padding: 13px 30px;
-        font-size: 18px;
-        color: #fff;
-    }
-    .demo-body {
-        position: absolute;
-        left: 180px;
-        top: 60px;
-        bottom: 0;
-        right: 0;
-        padding: 10px 13px;
-    }
-</style>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        NEKUI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.card</span> <span class="attr">title</span>=<span class="string">"标题"</span>&gt;</span></div><div class="line">            content</div><div class="line">        <span class="tag">&lt;/<span class="name">ui.card</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">menus</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单A'</span>,</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;, &#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单B'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><p>书写中ing</p>
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLSidebar">KLSidebar</a></dt>
+<dt><a href="#KLLoading">KLLoading</a></dt>
 <dd></dd>
+</dl>
+
+<h2 id="Members"><a href="#Members" class="headerlink" title="Members"></a>Members</h2><dl>
+<dt><a href="#loading">loading</a> : <code>Loading</code></dt>
+<dd><p>直接初始化一个实例</p>
+</dd>
 </dl>
 
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
 <dt><a href="#config">config()</a></dt>
 <dd></dd>
+<dt><a href="#init">init()</a></dt>
+<dd></dd>
+<dt><a href="#show_new 显示组件">show() 显示组件()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#show_new 隐藏组件">show() 隐藏组件()</a> ⇒ <code>void</code></dt>
+<dd></dd>
 </dl>
 
-<p><a name="KLSidebar"></a></p>
-<h2 id="KLSidebar"><a href="#KLSidebar" class="headerlink" title="KLSidebar"></a>KLSidebar</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLSidebar_new"></a></p>
-<h3 id="new-KLSidebar"><a href="#new-KLSidebar" class="headerlink" title="new KLSidebar()"></a>new KLSidebar()</h3><table>
+<p><a name="KLLoading"></a></p>
+<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a>KLLoading</h2><p><strong>Kind</strong>: global class<br><a name="new_KLLoading_new"></a></p>
+<h3 id="new-KLLoading"><a href="#new-KLLoading" class="headerlink" title="new KLLoading()"></a>new KLLoading()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -361,129 +341,47 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
+<td>[options.data.static]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否嵌入文档流</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
-<tr>
-<td>[options.data.menus]</td>
-<td><code>array</code></td>
-<td></td>
-<td>=&gt; 菜单数组</td>
-</tr>
-<tr>
-<td>[options.data.top]</td>
-<td><code>string</code></td>
-<td><code>&quot;&#x27;60px&#x27;&quot;</code></td>
-<td>=&gt; 菜单style top的值</td>
-</tr>
-<tr>
-<td>[options.data.active]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 默认是否收起</td>
-</tr>
-<tr>
-<td>[options.data.bodyEl]</td>
-<td><code>string</code></td>
-<td><code>&quot;&#x27;&#x27;&quot;</code></td>
-<td>=&gt; 主内容区body元素的id,当菜单收起时,拉伸bodyEl</td>
-</tr>
-<tr>
-<td>[options.data.uniqueOpened]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否只保持打开一个菜单</td>
-</tr>
-<tr>
-<td>[options.data.titleKey]</td>
-<td><code>string</code></td>
-<td><code>&quot;title&quot;</code></td>
-<td>=&gt; 一级菜单的字段key名</td>
-</tr>
-<tr>
-<td>[options.data.urlKey]</td>
-<td><code>string</code></td>
-<td><code>&quot;\&quot;url\&quot;&quot;</code></td>
-<td>=&gt; 菜单结构中的链接key名</td>
-</tr>
-<tr>
-<td>[options.data.pageKey]</td>
-<td><code>string</code></td>
-<td><code>&quot;\&quot;title\&quot;&quot;</code></td>
-<td>=&gt; 二级菜单的字段key名</td>
-</tr>
-<tr>
-<td>[options.data.childrenKey]</td>
-<td><code>string</code></td>
-<td><code>&quot;\&quot;children\&quot;&quot;</code></td>
-<td>=&gt; 一级菜单对象下二级菜单数组的key名</td>
-</tr>
 </tbody>
 </table>
-<p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
-
-<script>
-var index = 0;
-
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-
-<div class="demo-main">
-    <div class="demo-head">
-        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
-        NEKUI系统
-    </div>
-    <kl-sidebar menus={menus} bodyEl="j-body" />
-    <div id="j-body" class="demo-body">
-        <ui.card title="标题">
-            content
-        </ui.card>
-    </div>
-</div>
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        menus: [{
-         title: '一级菜单A',
-         open: true,
-         children: [{
-           title: '二级菜单A',
-           url: '/'
-         },{
-           title: '二级菜单B',
-           url: '/'
-         }]
-       }, {
-         title: '一级菜单B',
-         children: [{
-           title: '二级菜单A',
-           url: '/'
-         },{
-           title: '二级菜单B',
-           url: '/'
-         }]
-       }]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-</script>
+<p><a name="loading"></a></p>
+<h2 id="loading-Loading"><a href="#loading-Loading" class="headerlink" title="loading : Loading"></a>loading : <code>Loading</code></h2><p>直接初始化一个实例</p>
+<p><strong>Kind</strong>: global variable<br><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="show_new 显示组件"></a></p>
+<h2 id="show-显示组件-⇒-void"><a href="#show-显示组件-⇒-void" class="headerlink" title="show() 显示组件() ⇒ void"></a>show() 显示组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 隐藏组件"></a></p>
+<h2 id="show-隐藏组件-⇒-void"><a href="#show-隐藏组件-⇒-void" class="headerlink" title="show() 隐藏组件() ⇒ void"></a>show() 隐藏组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 显示加载中"></a></p>
+<h2 id="show-显示加载中-⇒-void"><a href="#show-显示加载中-⇒-void" class="headerlink" title=".show() 显示加载中() ⇒ void"></a>.show() 显示加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public<br><a name="hide_new 隐藏加载中"></a></p>
+<h2 id="hide-隐藏加载中-⇒-void"><a href="#hide-隐藏加载中-⇒-void" class="headerlink" title=".hide() 隐藏加载中() ⇒ void"></a>.hide() 隐藏加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public  </p>
 
     <div class="guide-links">
       
-        <span>← <a href="/components/navigation_KLPager_.html">分页</a></span>
+        <span>← <a href="/components/widget_KLIcon_.html">图标</a></span>
       
       
-        <span style="float:right"><a href="/components/navigation_KLSteps_.html">步骤</a> →</span>
+        <span style="float:right"><a href="/components/widget_KLLocaleProvider_.html">国际化</a> →</span>
       
     </div>
     <div class="footer">

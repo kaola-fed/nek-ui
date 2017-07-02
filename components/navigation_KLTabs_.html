@@ -255,7 +255,35 @@
                     
                 
                 <li>
+                    <a href="/components/widget_KLBadge_.html" class="sidebar-link">徽标 KLBadge</a>
+                </li>
+            
+                
+                    
+                
+                <li>
                     <a href="/components/widget_KLIcon_.html" class="sidebar-link">图标 KLIcon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLocaleProvider_.html" class="sidebar-link">国际化 KLLocaleProvider</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLProgress_.html" class="sidebar-link">进度条 KLProgress</a>
                 </li>
             
                 
@@ -316,9 +344,9 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-tabs</span> <span class="attr">defaultKey</span>=<span class="string">"3"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span> <span class="attr">key</span>=<span class="string">"2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span> <span class="attr">key</span>=<span class="string">"3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span> <span class="attr">key</span>=<span class="string">"4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-tabs</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLTabs">KLTabs</a></dt>
-<dd></dd>
 <dt><a href="#KLTab">KLTab</a></dt>
+<dd></dd>
+<dt><a href="#KLTabs">KLTabs</a></dt>
 <dd></dd>
 </dl>
 
@@ -326,8 +354,6 @@
 <dt><a href="#config">config()</a></dt>
 <dd></dd>
 <dt><a href="#select(item) 选择某一项">select(item) 选择某一项(item)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#config">config()</a></dt>
 <dd></dd>
 </dl>
 
@@ -338,6 +364,38 @@
 <dd></dd>
 </dl>
 
+<p><a name="KLTab"></a></p>
+<h2 id="KLTab"><a href="#KLTab" class="headerlink" title="KLTab"></a>KLTab</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLTab_new"></a></p>
+<h3 id="new-KLTab"><a href="#new-KLTab" class="headerlink" title="new KLTab()"></a>new KLTab()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>object</code></td>
+<td><code>&#x27;&#x27;</code></td>
+<td>=&gt; 标题</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>=&gt; key 标识</td>
+</tr>
+</tbody>
+</table>
 <p><a name="KLTabs"></a></p>
 <h2 id="KLTabs"><a href="#KLTabs" class="headerlink" title="KLTabs"></a>KLTabs</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLTabs_new"></a></p>
 <h3 id="new-KLTabs"><a href="#new-KLTabs" class="headerlink" title="new KLTabs()"></a>new KLTabs()</h3><table>
@@ -400,38 +458,6 @@
 </tr>
 </tbody>
 </table>
-<p><a name="KLTab"></a></p>
-<h2 id="KLTab"><a href="#KLTab" class="headerlink" title="KLTab"></a>KLTab</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLTab_new"></a></p>
-<h3 id="new-KLTab"><a href="#new-KLTab" class="headerlink" title="new KLTab()"></a>new KLTab()</h3><table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[options.data]</td>
-<td><code>object</code></td>
-<td></td>
-<td>= 绑定属性</td>
-</tr>
-<tr>
-<td>[options.data.title]</td>
-<td><code>object</code></td>
-<td><code>&#x27;&#x27;</code></td>
-<td>=&gt; 标题</td>
-</tr>
-<tr>
-<td>[options.data.key]</td>
-<td><code>string</code></td>
-<td><code>null</code></td>
-<td>=&gt; key 标识</td>
-</tr>
-</tbody>
-</table>
 <p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(item) 选择某一项"></a></p>
 <h2 id="select-item-选择某一项-item-⇒-void"><a href="#select-item-选择某一项-item-⇒-void" class="headerlink" title="select(item) 选择某一项(item) ⇒ void"></a>select(item) 选择某一项(item) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
@@ -451,8 +477,7 @@
 </tr>
 </tbody>
 </table>
-<p><a name="config"></a></p>
-<h2 id="config-1"><a href="#config-1" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="event_change 选项卡改变时触发"></a></p>
+<p><a name="event_change 选项卡改变时触发"></a></p>
 <h2 id="“change-选项卡改变时触发”"><a href="#“change-选项卡改变时触发”" class="headerlink" title="“change 选项卡改变时触发”"></a>“change 选项卡改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
 <table>
 <thead>
