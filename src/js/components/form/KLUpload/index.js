@@ -7,8 +7,8 @@
 
 var Component = require('../../../ui-base/component');
 var _ = require('../../../ui-base/_');
-var UploadList = require('./components/upload.list');
-var UploadCard = require('./components/upload.card');
+var UploadList = require('./components/UploadList');
+var UploadCard = require('./components/UploadCard');
 var Config = require('./config');
 var tpl = require('./index.html');
 

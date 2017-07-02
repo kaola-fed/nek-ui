@@ -1,0 +1,6 @@
+<label class="u-numberinput {class}" r-hide={!visible}>
+    <kl-input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />
+    <a class="u-btn u-btn-tertiary" z-dis={disabled} on-click={this.add(1)}><i class="u-icon u-icon-caret-up"></i></a>
+    <a class="u-btn u-btn-tertiary" z-dis={disabled} on-click={this.add(-1)}><i class="u-icon u-icon-caret-down"></i></a>
+</label>
+{#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}

@@ -1,6 +1,5 @@
 ---
 title: 图标
-is_new: true
 ---
 
 使用字体图标，可以很方便地在任何位置放置矢量图形。本主题的部分字体图标由[Font Awesome](http://fortawesome.github.com/Font-Awesome)提供。
@@ -756,7 +755,7 @@ var component = new NEKUI.Component({
         copyFrom.select();
         document.execCommand('copy');
         body.removeChild(copyFrom);
-        NEKUI.Notify.success(text + '复制成功')
+        NEKUI.KLNotify.success(text + '复制成功')
     }
 });
 ```

@@ -1,0 +1,8 @@
+<div class="u-unitgroup u-unitgroup-{size} {class}" r-hide={!visible} r-width="{width}">
+	<div class="unitgroup_wrap">
+	    {#list source as item}
+	        <kl-check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />
+	    {/list}
+	</div>
+	{#if tip && !hideTip}<span class="u-tip u-tip-{state} aniamted" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+</div>

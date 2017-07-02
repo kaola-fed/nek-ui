@@ -10,5 +10,7 @@ $reset-normalize();
 
 @import "./common/form.ctrl.mcss";
 @import "./common/unit.group.mcss";
+@import "./common/tip.mcss";
+@import "./common/message.mcss";
 
 @import "./components.mcss";

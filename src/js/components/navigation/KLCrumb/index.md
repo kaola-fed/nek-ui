@@ -1,6 +1,5 @@
 ---
 title: 面包屑
-is_new: true
 ---
 
 ## 代码演示

@@ -48,5 +48,5 @@ install(Regular);
 如果不想将 NEKUI 的组件全部注册到全局上，或者是自己已有的组件和 NEKUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 Regular 实例上
 
 ```
-var Component = BaseComponent.extend({}).component('tooltip', NEKUI.Tooltip)
+var Component = BaseComponent.extend({}).component('kl-tooltip', NEKUI.KLTooltip)
 ```

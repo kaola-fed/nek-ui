@@ -10,6 +10,8 @@
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
+var KLCrumbItem = require('./KLCrumbItem');
+
 
 /**
  * @class KLCrumb
@@ -33,6 +35,6 @@ var KLCrumb = Component.extend({
         });
         this.supr();
     }
-});
+}).component('kl-crumb-item', KLCrumbItem);
 
 module.exports = KLCrumb;
