@@ -67,7 +67,11 @@ const injectComponents = md => {
 }
 
 const injectAPI = (md, source) => {
-  const docs = jsdoc2md.renderSync({ source, 'no-cache': true })
+  const docs = jsdoc2md.renderSync({
+    source,
+    'no-cache': true,
+    configure: path.join(__dirname, 'jsdoc.json'),
+  });
   return md + '\n## API\n' + docs;
 }
 

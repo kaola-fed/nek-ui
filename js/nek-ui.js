@@ -77,98 +77,98 @@ return /******/ (function(modules) { // webpackBootstrap
 	var backward = __webpack_require__(68);
 
 	var Base = {
-	    Regular: __webpack_require__(75),
-	    Component: __webpack_require__(74),
-	    SourceComponent: __webpack_require__(184),
-	    _: __webpack_require__(101),
-	    ajax: __webpack_require__(185),
-	    Validation: __webpack_require__(111)
+	  Regular: __webpack_require__(75),
+	  Component: __webpack_require__(74),
+	  SourceComponent: __webpack_require__(184),
+	  _: __webpack_require__(101),
+	  ajax: __webpack_require__(185),
+	  Validation: __webpack_require__(111)
 	};
 
 	var Components = {
-	    // Form
-	    KLCheck: __webpack_require__(195),
-	    KLCheckGroup: __webpack_require__(216),
-	    KLDatePicker: __webpack_require__(218),
-	    KLRadioGroup: __webpack_require__(340),
-	    KLMultiSelect: __webpack_require__(342),
-	    KLButton: __webpack_require__(348),
-	    KLForm: __webpack_require__(350),
-	    KLFormItem: __webpack_require__(352),
-	    KLInput: __webpack_require__(73),
-	    KLSelect: __webpack_require__(368),
-	    KLText: __webpack_require__(373),
-	    KLTextArea: __webpack_require__(375),
-	    KLUpload: __webpack_require__(377),
+	  // Form
+	  KLCheck: __webpack_require__(195),
+	  KLCheckGroup: __webpack_require__(216),
+	  KLDatePicker: __webpack_require__(218),
+	  KLRadioGroup: __webpack_require__(340),
+	  KLMultiSelect: __webpack_require__(342),
+	  KLButton: __webpack_require__(348),
+	  KLForm: __webpack_require__(350),
+	  KLFormItem: __webpack_require__(352),
+	  KLInput: __webpack_require__(73),
+	  KLSelect: __webpack_require__(368),
+	  KLText: __webpack_require__(373),
+	  KLTextArea: __webpack_require__(375),
+	  KLUpload: __webpack_require__(377),
 
-	    // Navigation
-	    KLSidebar: __webpack_require__(392),
-	    KLMenu: __webpack_require__(394),
-	    KLMenuItem: __webpack_require__(396),
-	    KLSubMenu: __webpack_require__(399),
-	    KLPager: __webpack_require__(401),
-	    KLTabs: __webpack_require__(403),
-	    KLTab: __webpack_require__(405),
-	    KLSteps: __webpack_require__(406),
-	    KLCrumb: __webpack_require__(408),
-	    KLCrumbItem: __webpack_require__(410),
+	  // Navigation
+	  KLSidebar: __webpack_require__(392),
+	  KLMenu: __webpack_require__(394),
+	  KLMenuItem: __webpack_require__(396),
+	  KLSubMenu: __webpack_require__(399),
+	  KLPager: __webpack_require__(401),
+	  KLTabs: __webpack_require__(403),
+	  KLTab: __webpack_require__(405),
+	  KLSteps: __webpack_require__(406),
+	  KLCrumb: __webpack_require__(408),
+	  KLCrumbItem: __webpack_require__(410),
 
-	    // Notice
-	    KLModal: __webpack_require__(382),
-	    KLMask: __webpack_require__(412),
-	    KLNotify: __webpack_require__(414),
-	    KLPopConfirm: __webpack_require__(416),
+	  // Notice
+	  KLModal: __webpack_require__(382),
+	  KLMask: __webpack_require__(412),
+	  KLNotify: __webpack_require__(414),
+	  KLPopConfirm: __webpack_require__(416),
 
-	    // Widget
-	    KLProgress: __webpack_require__(418),
-	    KLLoading: __webpack_require__(420),
-	    KLTooltip: __webpack_require__(353),
-	    KLIcon: __webpack_require__(422),
-	    KLLocaleProvider: __webpack_require__(424),
+	  // Widget
+	  KLProgress: __webpack_require__(418),
+	  KLLoading: __webpack_require__(420),
+	  KLTooltip: __webpack_require__(353),
+	  KLIcon: __webpack_require__(422),
+	  KLLocaleProvider: __webpack_require__(424),
 
-	    // Layout
-	    KLTable: __webpack_require__(425),
-	    KLTableCol: __webpack_require__(438),
-	    KLTableTemplate: __webpack_require__(439),
-	    KLRow: __webpack_require__(440),
-	    KLCol: __webpack_require__(442),
-	    KLCard: __webpack_require__(444),
-	    KLCardTools: __webpack_require__(446)
+	  // Layout
+	  KLTable: __webpack_require__(425),
+	  KLTableCol: __webpack_require__(446),
+	  KLTableTemplate: __webpack_require__(447),
+	  KLRow: __webpack_require__(448),
+	  KLCol: __webpack_require__(450),
+	  KLCard: __webpack_require__(452),
+	  KLCardTools: __webpack_require__(454)
 	};
 
 	backward(Components);
 
 	module.exports = (0, _assign2.default)({
-	    // Register
-	    install: function install(Regular) {
-	        var _iteratorNormalCompletion = true;
-	        var _didIteratorError = false;
-	        var _iteratorError = undefined;
+	  // Register
+	  install: function install(Regular) {
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
 
-	        try {
-	            for (var _iterator = (0, _getIterator3.default)((0, _entries2.default)(Components)), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	                var _step$value = (0, _slicedToArray3.default)(_step.value, 2),
-	                    k = _step$value[0],
-	                    m = _step$value[1];
+	    try {
+	      for (var _iterator = (0, _getIterator3.default)((0, _entries2.default)(Components)), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	        var _step$value = (0, _slicedToArray3.default)(_step.value, 2),
+	            k = _step$value[0],
+	            m = _step$value[1];
 
-	                var name = m.prototype && m.prototype.name;
-	                if (name) Regular.component(name, m);
-	            }
-	        } catch (err) {
-	            _didIteratorError = true;
-	            _iteratorError = err;
-	        } finally {
-	            try {
-	                if (!_iteratorNormalCompletion && _iterator.return) {
-	                    _iterator.return();
-	                }
-	            } finally {
-	                if (_didIteratorError) {
-	                    throw _iteratorError;
-	                }
-	            }
+	        var name = m.prototype && m.prototype.name;
+	        if (name) Regular.component(name, m);
+	      }
+	    } catch (err) {
+	      _didIteratorError = true;
+	      _iteratorError = err;
+	    } finally {
+	      try {
+	        if (!_iteratorNormalCompletion && _iterator.return) {
+	          _iterator.return();
 	        }
+	      } finally {
+	        if (_didIteratorError) {
+	          throw _iteratorError;
+	        }
+	      }
 	    }
+	  }
 		}, Base, Components);
 
 /***/ }),
@@ -1238,35 +1238,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TimePicker = __webpack_require__(181);
 	var Dropdown = __webpack_require__(183);
 
-	var aliasList = [{ oldObj: 'Check', newObj: 'KLCheck', oldName: 'check' }, { oldObj: 'CheckGroup', newObj: 'KLCheckGroup', oldName: 'check.group' }, { oldObj: 'DatePicker', newObj: 'KLDatePicker', oldName: 'date.picker' }, { oldObj: 'RadioGroup', newObj: 'KLRadioGroup', oldName: 'radio.group' }, { oldObj: 'MultiSelect', newObj: 'KLMultiSelect', oldName: 'multi.select' }, { oldObj: 'UIButton', newObj: 'KLButton', oldName: 'ui.button' }, { oldObj: 'UIForm', newObj: 'KLForm', oldName: 'ui.form' }, { oldObj: 'FormItem', newObj: 'KLFormItem', oldName: 'form.item' }, { oldObj: 'UIInput', newObj: 'KLInput', oldName: 'ui.input' }, { oldObj: 'UISelect', newObj: 'KLSelect', oldName: 'ui.select' }, { oldObj: 'UIText', newObj: 'KLText', oldName: 'ui.text' }, { oldObj: 'UITextArea', newObj: 'KLTextArea', oldName: 'ui.textarea' }, { oldObj: 'Sidebar', newObj: 'KLSidebar', oldName: 'ui.sidebar' }, { oldObj: 'Menu', newObj: 'KLMenu', oldName: 'ui.menu' }, { oldObj: 'MenuItem', newObj: 'KLMenuItem', oldName: 'menu.item' }, { oldObj: 'SubMenu', newObj: 'KLSubMenu', oldName: 'sub.menu' }, { oldObj: 'Pager', newObj: 'KLPager', oldName: 'pager' }, { oldObj: 'Tabs', newObj: 'KLTabs', oldName: 'tabs' }, { oldObj: 'Tab', newObj: 'KLTab', oldName: 'tab' }, { oldObj: 'Steps', newObj: 'KLSteps', oldName: 'steps' }, { oldObj: 'Modal', newObj: 'KLModal', oldName: 'modal', staticMethods: ['alert', 'confirm'] }, { oldObj: 'Mask', newObj: 'KLMask', oldName: 'mask' }, { oldObj: 'Notify', newObj: 'KLNotify', oldName: 'notify', staticMethods: ['notify', 'show', 'close', 'closeAll', 'success', 'warning', 'info', 'error'] }, { oldObj: 'PopConfirm', newObj: 'KLPopConfirm', oldName: 'pop.confirm' }, { oldObj: 'Loading', newObj: 'KLLoading', oldName: 'loading', staticMethods: ['loading', 'show', 'hide'] }, { oldObj: 'Progress', newObj: 'KLProgress', oldName: 'progress' }, { oldObj: 'Tooltip', newObj: 'KLTooltip', oldName: 'tooltip' }, { oldObj: 'LocaleProvider', newObj: 'KLLocaleProvider', oldName: 'locale.provider' }, { oldObj: 'UITable', newObj: 'KLTable', oldName: 'ui.table' }, { oldObj: 'TableCol', newObj: 'KLTableCol', oldName: 'table.col' }, { oldObj: 'TableTemplate', newObj: 'KLTableTemplate', oldName: 'table.template' }, { oldObj: 'Row', newObj: 'KLRow', oldName: 'ui.row' }, { oldObj: 'Col', newObj: 'KLCol', oldName: 'ui.col' }, { oldObj: 'Card', newObj: 'KLCard', oldName: 'ui.card' }, { oldObj: 'CardTools', newObj: 'KLCardTools', oldName: 'card.tools' }];
+	var aliasList = [{ oldObj: 'Check', newObj: 'KLCheck', oldName: 'check' }, { oldObj: 'CheckGroup', newObj: 'KLCheckGroup', oldName: 'check.group' }, { oldObj: 'DatePicker', newObj: 'KLDatePicker', oldName: 'date.picker' }, { oldObj: 'RadioGroup', newObj: 'KLRadioGroup', oldName: 'radio.group' }, { oldObj: 'MultiSelect', newObj: 'KLMultiSelect', oldName: 'multi.select' }, { oldObj: 'UIButton', newObj: 'KLButton', oldName: 'ui.button' }, { oldObj: 'UIForm', newObj: 'KLForm', oldName: 'ui.form' }, { oldObj: 'FormItem', newObj: 'KLFormItem', oldName: 'form.item' }, { oldObj: 'UIInput', newObj: 'KLInput', oldName: 'ui.input' }, { oldObj: 'UISelect', newObj: 'KLSelect', oldName: 'ui.select' }, { oldObj: 'UIText', newObj: 'KLText', oldName: 'ui.text' }, { oldObj: 'UITextArea', newObj: 'KLTextArea', oldName: 'ui.textarea' }, { oldObj: 'Sidebar', newObj: 'KLSidebar', oldName: 'ui.sidebar' }, { oldObj: 'Menu', newObj: 'KLMenu', oldName: 'ui.menu' }, { oldObj: 'MenuItem', newObj: 'KLMenuItem', oldName: 'menu.item' }, { oldObj: 'SubMenu', newObj: 'KLSubMenu', oldName: 'sub.menu' }, { oldObj: 'Pager', newObj: 'KLPager', oldName: 'pager' }, { oldObj: 'Tabs', newObj: 'KLTabs', oldName: 'tabs' }, { oldObj: 'Tab', newObj: 'KLTab', oldName: 'tab' }, { oldObj: 'Steps', newObj: 'KLSteps', oldName: 'steps' }, {
+	  oldObj: 'Modal',
+	  newObj: 'KLModal',
+	  oldName: 'modal',
+	  staticMethods: ['alert', 'confirm']
+	}, { oldObj: 'Mask', newObj: 'KLMask', oldName: 'mask' }, {
+	  oldObj: 'Notify',
+	  newObj: 'KLNotify',
+	  oldName: 'notify',
+	  staticMethods: ['notify', 'show', 'close', 'closeAll', 'success', 'warning', 'info', 'error']
+	}, { oldObj: 'PopConfirm', newObj: 'KLPopConfirm', oldName: 'pop.confirm' }, {
+	  oldObj: 'Loading',
+	  newObj: 'KLLoading',
+	  oldName: 'loading',
+	  staticMethods: ['loading', 'show', 'hide']
+	}, { oldObj: 'Progress', newObj: 'KLProgress', oldName: 'progress' }, { oldObj: 'Tooltip', newObj: 'KLTooltip', oldName: 'tooltip' }, {
+	  oldObj: 'LocaleProvider',
+	  newObj: 'KLLocaleProvider',
+	  oldName: 'locale.provider'
+	}, { oldObj: 'UITable', newObj: 'KLTable', oldName: 'ui.table' }, { oldObj: 'TableCol', newObj: 'KLTableCol', oldName: 'table.col' }, {
+	  oldObj: 'TableTemplate',
+	  newObj: 'KLTableTemplate',
+	  oldName: 'table.template'
+	}, { oldObj: 'Row', newObj: 'KLRow', oldName: 'ui.row' }, { oldObj: 'Col', newObj: 'KLCol', oldName: 'ui.col' }, { oldObj: 'Card', newObj: 'KLCard', oldName: 'ui.card' }, { oldObj: 'CardTools', newObj: 'KLCardTools', oldName: 'card.tools' }];
 
 	module.exports = function (Components) {
-	    // 别名组件
-	    aliasList.forEach(function (alias) {
-	        Components[alias.oldObj] = Components[alias.newObj].extend({ name: alias.oldName });
-	        (alias.staticMethods || []).forEach(function (_static) {
-	            Components[alias.oldObj][_static] = Components[alias.newObj][_static];
-	        });
+	  // 别名组件
+	  aliasList.forEach(function (alias) {
+	    Components[alias.oldObj] = Components[alias.newObj].extend({
+	      name: alias.oldName
 	    });
-
-	    (0, _assign2.default)(Components, {
-	        // 内部组件
-	        NumberInput: NumberInput.extend({ name: 'number.input' }),
-	        TimePicker: TimePicker.extend({ name: 'time.picker' }),
-	        Dropdown: Dropdown.extend({ name: 'dropdown' }),
-
-	        // 废弃组件
-	        SelectGroup: __webpack_require__(189),
-	        Suggest: __webpack_require__(189),
-	        TreeSelect: __webpack_require__(189),
-	        Uploader: __webpack_require__(197),
-	        UIGroup: __webpack_require__(199),
-	        Collapse: __webpack_require__(200),
-	        Gotop: __webpack_require__(204),
-	        PathTool: __webpack_require__(206),
-	        Panel: __webpack_require__(202),
-	        PanelTool: __webpack_require__(215)
+	    (alias.staticMethods || []).forEach(function (_static) {
+	      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
 	    });
+	  });
+
+	  (0, _assign2.default)(Components, {
+	    // 内部组件
+	    NumberInput: NumberInput.extend({ name: 'number.input' }),
+	    TimePicker: TimePicker.extend({ name: 'time.picker' }),
+	    Dropdown: Dropdown.extend({ name: 'dropdown' }),
+
+	    // 废弃组件
+	    SelectGroup: __webpack_require__(189),
+	    Suggest: __webpack_require__(189),
+	    TreeSelect: __webpack_require__(189),
+	    Uploader: __webpack_require__(197),
+	    UIGroup: __webpack_require__(199),
+	    Collapse: __webpack_require__(200),
+	    Gotop: __webpack_require__(204),
+	    PathTool: __webpack_require__(206),
+	    Panel: __webpack_require__(202),
+	    PanelTool: __webpack_require__(215)
+	  });
 		};
 
 /***/ }),
@@ -1307,94 +1332,101 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var NumberInput = KLInput.extend({
-	    name: 'number-input',
-	    template: template,
-	    /**
+	  name: 'number-input',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            value: 0,
-	            // @inherited state: '',
-	            // @inherited placeholder: '',
-	            hideTip: false,
-	            min: undefined,
-	            max: undefined,
-	            autofocus: false
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      value: 0,
+	      // @inherited state: '',
+	      // @inherited placeholder: '',
+	      hideTip: false,
+	      min: undefined,
+	      max: undefined,
+	      autofocus: false
+	    });
+	    this.supr();
 
-	        this.$watch('value', function (newValue, oldValue) {
-	            // 字符类型自动转为数字类型
-	            if (typeof newValue === 'string') return this.data.value = +newValue;
+	    this.$watch('value', function (newValue, oldValue) {
+	      // 字符类型自动转为数字类型
+	      if (typeof newValue === 'string') return this.data.value = +newValue;
 
-	            // 如果超出数值范围，则设置为范围边界的数值
-	            var isOutOfRange = this.isOutOfRange(newValue);
-	            if (isOutOfRange !== false) return this.data.value = isOutOfRange;
+	      // 如果超出数值范围，则设置为范围边界的数值
+	      var isOutOfRange = this.isOutOfRange(newValue);
+	      if (isOutOfRange !== false) return this.data.value = isOutOfRange;
 
-	            /**
+	      /**
 	             * @event change 数值改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {number} value 改变后的数值
 	             */
-	            this.$emit('change', {
-	                sender: this,
-	                value: newValue
-	            });
-	        });
+	      this.$emit('change', {
+	        sender: this,
+	        value: newValue
+	      });
+	    });
 
-	        this.$watch(['min', 'max'], function (min, max) {
-	            if (!isNaN(min) && !isNaN(max) && min - max > 0) throw new NumberInput.NumberRangeError(min, max);
+	    this.$watch(['min', 'max'], function (min, max) {
+	      if (!isNaN(min) && !isNaN(max) && min - max > 0) {
+	        throw new NumberInput.NumberRangeError(min, max);
+	      }
 
-	            // 如果超出数值范围，则设置为范围边界的数值
-	            var isOutOfRange = this.isOutOfRange(this.data.value);
-	            if (isOutOfRange !== false) return this.data.value = isOutOfRange;
-	        });
-	    },
-	    /**
+	      // 如果超出数值范围，则设置为范围边界的数值
+	      var isOutOfRange = this.isOutOfRange(this.data.value);
+	      if (isOutOfRange !== false) return this.data.value = isOutOfRange;
+	    });
+	  },
+
+	  /**
 	     * @method add(value) 调整数值
 	     * @public
 	     * @param  {number} [value=0] 加/减的值
 	     * @return {number} value 计算后的值
 	     */
-	    add: function add(value) {
-	        if (this.data.readonly || this.data.disabled || !value) return;
+	  add: function add(value) {
+	    if (this.data.readonly || this.data.disabled || !value) return;
 
-	        if (isNaN(value)) throw new TypeError(value + ' is not a number!');
+	    if (isNaN(value)) throw new TypeError(value + ' is not a number!');
 
-	        return this.data.value += value;
-	    },
-	    /**
+	    return this.data.value += value;
+	  },
+
+	  /**
 	     * @method isOutOfRange(value) 是否超出规定的数值范围
 	     * @public
 	     * @param {number} value 待测的值
 	     * @return {boolean|number} number 如果没有超出数值范围，则返回false；如果超出数值范围，则返回范围边界的数值
 	     */
-	    isOutOfRange: function isOutOfRange(value) {
-	        var min = +this.data.min;
-	        var max = +this.data.max;
+	  isOutOfRange: function isOutOfRange(value) {
+	    var min = +this.data.min;
+	    var max = +this.data.max;
 
-	        // min && value < min && min，先判断是否为空，再判断是否超出数值范围，如果超出则返回范围边界的数值
-	        if (!isNaN(min) && value < min) return min;else if (!isNaN(max) && value > max) return max;else return false;
-	    }
+	    // min && value < min && min，先判断是否为空，再判断是否超出数值范围，如果超出则返回范围边界的数值
+	    if (!isNaN(min) && value < min) return min;else if (!isNaN(max) && value > max) return max;
+	    return false;
+	  }
 	}).filter({
-	    number: {
-	        get: function get(value) {
-	            value = '' + (value || 0);
-	            if (this.data.format) return this.data.format.replace(new RegExp('\\d{0,' + value.length + '}$'), value);
-	            return value;
-	        },
-	        set: function set(value) {
-	            // return (value.replace(/[^0-9\-\.]/g, ''));
-	            return +value;
-	            // return +(value.replace(/[^\d\.\-]/g, '')) || 0;
-	        }
+	  number: {
+	    get: function get(value) {
+	      value = '' + (value || 0);
+	      if (this.data.format) {
+	        return this.data.format.replace(new RegExp('\\d{0,' + value.length + '}$'), value);
+	      }
+	      return value;
+	    },
+	    set: function set(value) {
+	      // return (value.replace(/[^0-9\-\.]/g, ''));
+	      return +value;
+	      // return +(value.replace(/[^\d\.\-]/g, '')) || 0;
 	    }
+	  }
 	});
 
 	var NumberRangeError = function NumberRangeError(min, max) {
-	    this.type = 'NumberRangeError';
-	    this.message = 'Wrong Number Range where `min` is ' + min + ' and `max` is ' + max + '!';
+	  this.type = 'NumberRangeError';
+	  this.message = 'Wrong Number Range where `min` is ' + min + ' and `max` is ' + max + '!';
 	};
 	NumberRangeError.prototype = (0, _create2.default)(RangeError.prototype);
 	NumberInput.NumberRangeError = NumberRangeError.prototype.constructor = NumberRangeError;
@@ -1474,177 +1506,184 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}          [options.data.width]              => 组件宽度
 	 */
 	var KLInput = Component.extend({
-	    name: 'kl-input',
-	    template: template,
-	    /**
+	  name: 'kl-input',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            hideTip: false,
-	            value: '',
-	            type: 'char',
-	            placeholder: '',
-	            state: '',
-	            maxlength: undefined,
-	            unit: '',
-	            rules: [],
-	            autofocus: false,
-	            _eltIE9: bowser.msie && bowser.version <= 9
-	        });
-	        this.rules({
-	            required: false,
-	            byteLen: this.data.type === 'char',
-	            isEmail: this.data.type === 'email',
-	            isURL: this.data.type === 'url',
-	            isInt: this.data.type === 'int',
-	            isFloat: this.data.type === 'float',
-	            message: ''
-	        });
+	  config: function config() {
+	    _.extend(this.data, {
+	      hideTip: false,
+	      value: '',
+	      type: 'char',
+	      placeholder: '',
+	      state: '',
+	      maxlength: undefined,
+	      unit: '',
+	      rules: [],
+	      autofocus: false,
+	      _eltIE9: bowser.msie && bowser.version <= 9
+	    });
+	    this.rules({
+	      required: false,
+	      byteLen: this.data.type === 'char',
+	      isEmail: this.data.type === 'email',
+	      isURL: this.data.type === 'url',
+	      isInt: this.data.type === 'int',
+	      isFloat: this.data.type === 'float',
+	      message: ''
+	    });
 
-	        this.supr();
+	    this.supr();
 
-	        this.initValidation();
-	    },
-	    init: function init() {
-	        this.$watch('required', function (value) {
-	            if (value) {
-	                this.addRule('required');
-	            } else {
-	                this.data.rules = this.data.rules.filter(function (rule) {
-	                    return rule.type !== 'isRequired';
-	                });
-	            }
+	    this.initValidation();
+	  },
+	  init: function init() {
+	    this.$watch('required', function (value) {
+	      if (value) {
+	        this.addRule('required');
+	      } else {
+	        this.data.rules = this.data.rules.filter(function (rule) {
+	          return rule.type !== 'isRequired';
 	        });
-	    },
-	    /**
-	     * @override 
+	      }
+	    });
+	  },
+
+	  /**
+	     * @override
 	     */
-	    rules: function rules(ruleAttris) {
-	        this.supr(ruleAttris);
-	        ['required', 'isEmail', 'isURL', 'isFloat', 'isInt', 'byteLen'].forEach(function (name) {
-	            this.addRule(name);
-	        }.bind(this));
-	    },
-	    /**
+	  rules: function rules(ruleAttris) {
+	    this.supr(ruleAttris);
+	    var self = this;
+	    ['required', 'isEmail', 'isURL', 'isFloat', 'isInt', 'byteLen'].forEach(function (name) {
+	      self.addRule(name);
+	    });
+	  },
+
+	  /**
 	     * @protected
 	     */
-	    addRule: function addRule(name) {
-	        var min = this.data.min,
-	            max = this.data.max,
-	            message = this.data.message,
-	            rules = this.data.rules;
+	  addRule: function addRule(name) {
+	    var min = this.data.min,
+	        max = this.data.max,
+	        message = this.data.message,
+	        rules = this.data.rules;
 
-	        if (name === 'required') {
-	            message = message || this.$trans('PLEASE_INPUT');
-	        }
+	    if (name === 'required') {
+	      message = message || this.$trans('PLEASE_INPUT');
+	    }
 
-	        if (!this.data[name]) {
-	            return;
-	        }
-	        var rule = inputRules[name];
-	        if (typeof rule === 'function') {
-	            rules.push(rule(min, max, message));
-	        } else {
-	            var ruleCopy = _.extend({}, rule);
-	            message && (ruleCopy.message = message);
-	            rules.push(ruleCopy);
-	        }
-	    },
-	    /**
+	    if (!this.data[name]) {
+	      return;
+	    }
+	    var rule = inputRules[name];
+	    if (typeof rule === 'function') {
+	      rules.push(rule(min, max, message));
+	    } else {
+	      var ruleCopy = _.extend({}, rule);
+	      message && (ruleCopy.message = message);
+	      rules.push(ruleCopy);
+	    }
+	  },
+
+	  /**
 	     * @method validate() 根据`rules`验证组件的值是否正确
 	     * @public
 	     * @return {object} result 结果
 	     */
-	    validate: function validate(on) {
-	        var value = this.data.value || this.data.value == 0 ? this.data.value + '' : '';
-	        var rules = this.data.rules;
+	  validate: function validate(on) {
+	    var value = this.data.value || this.data.value == 0 ? '' + this.data.value : '';
+	    var rules = this.data.rules;
 
-	        var PRIORITY = {
-	            'keyup': 2,
-	            'blur': 1,
-	            'submit': 0,
-	            '': 0
-	        };
+	    var PRIORITY = {
+	      keyup: 2,
+	      blur: 1,
+	      submit: 0,
+	      '': 0
+	    };
 
-	        on = on || '';
-	        rules = rules.filter(function (rule) {
-	            return (rule.on || '').indexOf(on) >= 0;
-	        });
+	    on = on || '';
+	    rules = rules.filter(function (rule) {
+	      return (rule.on || '').indexOf(on) >= 0;
+	    });
 
-	        var result = Validation.validate(value, rules);
-	        if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) this.data.tip = result.firstRule.message;else this.data.tip = '';
+	    var result = Validation.validate(value, rules);
+	    if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) {
+	      this.data.tip = result.firstRule.message;
+	    } else this.data.tip = '';
 
-	        // @TODO
-	        if (!result.success) this.data.state = 'error';
-	        // else if(PRIORITY[on] <= PRIORITY['blur'])
-	        //     this.data.state = 'success';
-	        else this.data.state = '';
+	    // @TODO
+	    if (!result.success) this.data.state = 'error';else {
+	      // else if(PRIORITY[on] <= PRIORITY['blur'])
+	      //     this.data.state = 'success';
+	      this.data.state = '';
+	    }
 
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
 
-	        return result;
-	    },
+	    return result;
+	  },
 
-	    /**
+
+	  /**
 	     * 1. type=char时,去除前后的空格;
 	     * 2. type=int/float时, 只能输入对应类型的数字;
 	     **/
-	    __valueFilter: function __valueFilter(value) {
-	        var type = this.data.type;
+	  __valueFilter: function __valueFilter(value) {
+	    var type = this.data.type;
 
-	        if (type != 'char') value = (value + '').trim();
-	        value = (inputFilters[type] || inputFilters['default'])(value, this.data.decimalDigits);
-	        return value;
-	    },
-	    _onKeyUp: function _onKeyUp($event) {
-	        this.validate('keyup');
-	        this.$emit('keyup', $event);
-	    },
-	    _onBlur: function _onBlur($event) {
-	        this.validate('blur');
-	        this.$emit('blur', $event);
-	    },
-	    _onFocus: function _onFocus($event) {
-	        this.$emit('focus', $event);
-	    },
-	    _onChange: function _onChange($event) {
-	        this.validate('change');
-	        this.$emit('change', $event);
-	    },
-	    _onInput: function _onInput($event) {
-	        this.validate('input');
-	        this.$emit('input', $event);
-	    },
-	    _onSearch: function _onSearch($event) {
-	        this.$emit('search', $event);
-	    }
+	    if (type != 'char') value = ('' + value).trim();
+	    value = (inputFilters[type] || inputFilters.default)(value, this.data.decimalDigits);
+	    return value;
+	  },
+	  _onKeyUp: function _onKeyUp($event) {
+	    this.validate('keyup');
+	    this.$emit('keyup', $event);
+	  },
+	  _onBlur: function _onBlur($event) {
+	    this.validate('blur');
+	    this.$emit('blur', $event);
+	  },
+	  _onFocus: function _onFocus($event) {
+	    this.$emit('focus', $event);
+	  },
+	  _onChange: function _onChange($event) {
+	    this.validate('change');
+	    this.$emit('change', $event);
+	  },
+	  _onInput: function _onInput($event) {
+	    this.validate('input');
+	    this.$emit('input', $event);
+	  },
+	  _onSearch: function _onSearch($event) {
+	    this.$emit('search', $event);
+	  }
 	});
 
 	KLInput.filter('type', function (val) {
-	    if (['int', 'float'].indexOf(val) != -1) {
-	        /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
-	        return 'text';
-	    } else if (val == 'password') {
-	        return 'password';
-	    } else {
-	        return 'text';
-	    }
+	  if (['int', 'float'].indexOf(val) != -1) {
+	    /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
+	    return 'text';
+	  } else if (val == 'password') {
+	    return 'password';
+	  }
+	  return 'text';
 	});
 
 	KLInput.filter({
-	    'valueFilter': {
-	        get: function get(val) {
-	            return this.__valueFilter(val);
-	        },
-	        set: function set(val) {
-	            return this.__valueFilter(val);
-	        }
+	  valueFilter: {
+	    get: function get(val) {
+	      return this.__valueFilter(val);
+	    },
+	    set: function set(val) {
+	      return this.__valueFilter(val);
 	    }
+	  }
 	});
 
 	KLInput.use(validationMixin);
@@ -1654,13 +1693,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
-	 * ------------------------------------------------------------
-	 * Component 组件基类
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
 	'use strict';
 
 	var _assign = __webpack_require__(63);
@@ -1668,6 +1700,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _assign2 = _interopRequireDefault(_assign);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * ------------------------------------------------------------
+	 * Component 组件基类
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
 
 	var Regular = __webpack_require__(75);
 	var polyfill = __webpack_require__(76);
@@ -1686,8 +1725,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var Component = Regular.extend({
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      readonly: false,
@@ -1695,26 +1734,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	      visible: true,
 	      // zh-CN, en-US
 	      lang: 'zh-CN',
-	      'class': '',
+	      class: '',
 	      console: typeof console === 'undefined' ? undefined : console
 	    });
 	    this.supr();
 	  },
+
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  defaults: function defaults(data) {
 	    this.data = (0, _assign2.default)(data, this.data);
 	  },
+
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  rules: function rules(attris) {
 	    this.data = (0, _assign2.default)(attris, this.data);
 	  },
+
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  reset: function reset() {
 	    this.data = {};
 	    this.config();
@@ -1757,189 +1799,199 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bowser = __webpack_require__(99);
 
 	if (!_keys2.default) {
-	    Object.keys = function () {
-	        var hasOwnProperty = Object.prototype.hasOwnProperty,
-	            hasDontEnumBug = !{ toString: null }.propertyIsEnumerable('toString'),
-	            dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'],
-	            dontEnumsLength = dontEnums.length;
+	  Object.keys = function () {
+	    var hasOwnProperty = Object.prototype.hasOwnProperty,
+	        hasDontEnumBug = !{ toString: null }.propertyIsEnumerable('toString'),
+	        dontEnums = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable', 'constructor'],
+	        dontEnumsLength = dontEnums.length;
 
-	        return function (obj) {
-	            if ((typeof obj === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj)) !== 'object' && (typeof obj !== 'function' || obj === null)) {
-	                throw new TypeError('Object.keys called on non-object');
-	            }
-	            var result = [],
-	                prop,
-	                i;
-	            for (prop in obj) {
-	                if (hasOwnProperty.call(obj, prop)) {
-	                    result.push(prop);
-	                }
-	            }
-	            if (hasDontEnumBug) {
-	                for (i = 0; i < dontEnumsLength; i++) {
-	                    if (hasOwnProperty.call(obj, dontEnums[i])) {
-	                        result.push(dontEnums[i]);
-	                    }
-	                }
-	            }
-	            return result;
-	        };
-	    }();
+	    return function (obj) {
+	      if ((typeof obj === 'undefined' ? 'undefined' : (0, _typeof3.default)(obj)) !== 'object' && (typeof obj !== 'function' || obj === null)) {
+	        throw new TypeError('Object.keys called on non-object');
+	      }
+	      var result = [],
+	          prop = void 0,
+	          i = void 0;
+	      for (prop in obj) {
+	        if (hasOwnProperty.call(obj, prop)) {
+	          result.push(prop);
+	        }
+	      }
+	      if (hasDontEnumBug) {
+	        for (i = 0; i < dontEnumsLength; i++) {
+	          if (hasOwnProperty.call(obj, dontEnums[i])) {
+	            result.push(dontEnums[i]);
+	          }
+	        }
+	      }
+	      return result;
+	    };
+	  }();
 	}
 
-	if (typeof _create2.default != 'function') {
-	    Object.create = function () {
-	        function Temp() {}
-	        var hasOwn = Object.prototype.hasOwnProperty;
-	        return function (O) {
-	            if ((typeof O === 'undefined' ? 'undefined' : (0, _typeof3.default)(O)) != 'object') throw TypeError('Object prototype may only be an Object or null');
-	            Temp.prototype = O;
-	            var obj = new Temp();
-	            Temp.prototype = null;
-	            if (arguments.length > 1) {
-	                var Properties = Object(arguments[1]);
-	                for (var prop in Properties) {
-	                    if (hasOwn.call(Properties, prop)) obj[prop] = Properties[prop];
-	                }
-	            }
-	            return obj;
-	        };
-	    }();
+	if (typeof _create2.default !== 'function') {
+	  Object.create = function () {
+	    function Temp() {}
+	    var hasOwn = Object.prototype.hasOwnProperty;
+	    return function (O) {
+	      if ((typeof O === 'undefined' ? 'undefined' : (0, _typeof3.default)(O)) !== 'object') {
+	        throw TypeError('Object prototype may only be an Object or null');
+	      }
+	      Temp.prototype = O;
+	      var obj = new Temp();
+	      Temp.prototype = null;
+	      if (arguments.length > 1) {
+	        var Properties = Object(arguments[1]);
+	        for (var prop in Properties) {
+	          if (hasOwn.call(Properties, prop)) obj[prop] = Properties[prop];
+	        }
+	      }
+	      return obj;
+	    };
+	  }();
 	}
 
 	if (!Array.prototype.map) {
-	    Array.prototype.map = function (callback, thisArg) {
-	        var T, A, k;
-	        if (this == null) throw new TypeError('This is null or not defined');
-	        var O = Object(this);
-	        var len = O.length >>> 0;
-	        if (typeof callback !== 'function') throw new TypeError(callback + ' is not a function');
-	        if (arguments.length > 1) T = thisArg;
-	        A = new Array(len);
-	        k = 0;
-	        while (k < len) {
-	            var kValue, mappedValue;
-	            if (k in O) {
-	                kValue = O[k];
-	                mappedValue = callback.call(T, kValue, k, O);
-	                A[k] = mappedValue;
-	            }
-	            k++;
-	        }
-	        return A;
-	    };
+	  Array.prototype.map = function (callback, thisArg) {
+	    var T = void 0,
+	        A = void 0,
+	        k = void 0;
+	    if (this == null) throw new TypeError('This is null or not defined');
+	    var O = Object(this);
+	    var len = O.length >>> 0;
+	    if (typeof callback !== 'function') {
+	      throw new TypeError(callback + ' is not a function');
+	    }
+	    if (arguments.length > 1) T = thisArg;
+	    A = new Array(len);
+	    k = 0;
+	    while (k < len) {
+	      var kValue, mappedValue;
+	      if (k in O) {
+	        kValue = O[k];
+	        mappedValue = callback.call(T, kValue, k, O);
+	        A[k] = mappedValue;
+	      }
+	      k++;
+	    }
+	    return A;
+	  };
 	}
 
 	if (!Array.prototype.find) {
-	    Array.prototype.find = function (predicate) {
-	        if (this === null) throw new TypeError('Array.prototype.find called on null or undefined');
-	        if (typeof predicate !== 'function') throw new TypeError('predicate must be a function');
-	        var list = Object(this);
-	        var length = list.length >>> 0;
-	        var thisArg = arguments[1];
-	        var value;
-	        for (var i = 0; i < length; i++) {
-	            value = list[i];
-	            if (predicate.call(thisArg, value, i, list)) return value;
-	        }
-	    };
+	  Array.prototype.find = function (predicate) {
+	    if (this === null) {
+	      throw new TypeError('Array.prototype.find called on null or undefined');
+	    }
+	    if (typeof predicate !== 'function') {
+	      throw new TypeError('predicate must be a function');
+	    }
+	    var list = Object(this);
+	    var length = list.length >>> 0;
+	    var thisArg = arguments[1];
+	    var value = void 0;
+	    for (var i = 0; i < length; i++) {
+	      value = list[i];
+	      if (predicate.call(thisArg, value, i, list)) return value;
+	    }
+	  };
 	}
 
 	if (bowser.msie && bowser.version <= 8) {
-	    var splitSolved;
-	    splitSolved = splitSolved || function (undef) {
-	        var nativeSplit = String.prototype.split,
-	            compliantExecNpcg = /()??/.exec("")[1] === undef,
-	            // NPCG: nonparticipating capturing group
-	        self;
+	  var splitSolved = void 0;
+	  splitSolved = splitSolved || function (undef) {
+	    var nativeSplit = String.prototype.split,
+	        compliantExecNpcg = /()??/.exec('')[1] === undef,
+	        // NPCG: nonparticipating capturing group
+	    self = void 0;
 
-	        self = function self(str, separator, limit) {
-	            // If `separator` is not a regex, use `nativeSplit`
-	            if (Object.prototype.toString.call(separator) !== "[object RegExp]") {
-	                return nativeSplit.call(str, separator, limit);
-	            }
-	            var output = [],
-	                flags = (separator.ignoreCase ? "i" : "") + (separator.multiline ? "m" : "") + (separator.extended ? "x" : "") + ( // Proposed for ES6
-	            separator.sticky ? "y" : ""),
-	                // Firefox 3+
-	            lastLastIndex = 0,
+	    self = function self(str, separator, limit) {
+	      // If `separator` is not a regex, use `nativeSplit`
+	      if (Object.prototype.toString.call(separator) !== '[object RegExp]') {
+	        return nativeSplit.call(str, separator, limit);
+	      }
+	      var output = [],
+	          flags = (separator.ignoreCase ? 'i' : '') + (separator.multiline ? 'm' : '') + (separator.extended ? 'x' : '') + ( // Proposed for ES6
+	      separator.sticky ? 'y' : ''),
+	          // Firefox 3+
+	      lastLastIndex = 0,
 
-	            // Make `global` and avoid `lastIndex` issues by working with a copy
-	            separator = new RegExp(separator.source, flags + "g"),
-	                separator2,
-	                match,
-	                lastIndex,
-	                lastLength;
-	            str += ""; // Type-convert
-	            if (!compliantExecNpcg) {
-	                // Doesn't need flags gy, but they don't hurt
-	                separator2 = new RegExp("^" + separator.source + "$(?!\\s)", flags);
-	            }
-	            /* Values for `limit`, per the spec:
-	             * If undefined: 4294967295 // Math.pow(2, 32) - 1
-	             * If 0, Infinity, or NaN: 0
-	             * If positive number: limit = Math.floor(limit); if (limit > 4294967295) limit -= 4294967296;
-	             * If negative number: 4294967296 - Math.floor(Math.abs(limit))
-	             * If other: Type-convert, then use the above rules
-	             */
-	            limit = limit === undef ? -1 >>> 0 : // Math.pow(2, 32) - 1
-	            limit >>> 0; // ToUint32(limit)
-	            while (match = separator.exec(str)) {
-	                // `separator.lastIndex` is not reliable cross-browser
-	                lastIndex = match.index + match[0].length;
-	                if (lastIndex > lastLastIndex) {
-	                    output.push(str.slice(lastLastIndex, match.index));
-	                    // Fix browsers whose `exec` methods don't consistently return `undefined` for
-	                    // nonparticipating capturing groups
-	                    if (!compliantExecNpcg && match.length > 1) {
-	                        match[0].replace(separator2, function () {
-	                            for (var i = 1; i < arguments.length - 2; i++) {
-	                                if (arguments[i] === undef) {
-	                                    match[i] = undef;
-	                                }
-	                            }
-	                        });
-	                    }
-	                    if (match.length > 1 && match.index < str.length) {
-	                        Array.prototype.push.apply(output, match.slice(1));
-	                    }
-	                    lastLength = match[0].length;
-	                    lastLastIndex = lastIndex;
-	                    if (output.length >= limit) {
-	                        break;
-	                    }
+	      // Make `global` and avoid `lastIndex` issues by working with a copy
+	      separator = new RegExp(separator.source, flags + 'g'),
+	          separator2,
+	          match,
+	          lastIndex,
+	          lastLength;
+	      str += ''; // Type-convert
+	      if (!compliantExecNpcg) {
+	        // Doesn't need flags gy, but they don't hurt
+	        separator2 = new RegExp('^' + separator.source + '$(?!\\s)', flags);
+	      }
+	      /* Values for `limit`, per the spec:
+	           * If undefined: 4294967295 // Math.pow(2, 32) - 1
+	           * If 0, Infinity, or NaN: 0
+	           * If positive number: limit = Math.floor(limit); if (limit > 4294967295) limit -= 4294967296;
+	           * If negative number: 4294967296 - Math.floor(Math.abs(limit))
+	           * If other: Type-convert, then use the above rules
+	           */
+	      limit = limit === undef ? -1 >>> 0 // Math.pow(2, 32) - 1
+	      : limit >>> 0; // ToUint32(limit)
+	      while (match = separator.exec(str)) {
+	        // `separator.lastIndex` is not reliable cross-browser
+	        lastIndex = match.index + match[0].length;
+	        if (lastIndex > lastLastIndex) {
+	          output.push(str.slice(lastLastIndex, match.index));
+	          // Fix browsers whose `exec` methods don't consistently return `undefined` for
+	          // nonparticipating capturing groups
+	          if (!compliantExecNpcg && match.length > 1) {
+	            match[0].replace(separator2, function () {
+	              for (var i = 1; i < arguments.length - 2; i++) {
+	                if (arguments[i] === undef) {
+	                  match[i] = undef;
 	                }
-	                if (separator.lastIndex === match.index) {
-	                    separator.lastIndex++; // Avoid an infinite loop
-	                }
-	            }
-	            if (lastLastIndex === str.length) {
-	                if (lastLength || !separator.test("")) {
-	                    output.push("");
-	                }
-	            } else {
-	                output.push(str.slice(lastLastIndex));
-	            }
-	            return output.length > limit ? output.slice(0, limit) : output;
-	        };
+	              }
+	            });
+	          }
+	          if (match.length > 1 && match.index < str.length) {
+	            Array.prototype.push.apply(output, match.slice(1));
+	          }
+	          lastLength = match[0].length;
+	          lastLastIndex = lastIndex;
+	          if (output.length >= limit) {
+	            break;
+	          }
+	        }
+	        if (separator.lastIndex === match.index) {
+	          separator.lastIndex++; // Avoid an infinite loop
+	        }
+	      }
+	      if (lastLastIndex === str.length) {
+	        if (lastLength || !separator.test('')) {
+	          output.push('');
+	        }
+	      } else {
+	        output.push(str.slice(lastLastIndex));
+	      }
+	      return output.length > limit ? output.slice(0, limit) : output;
+	    };
 
-	        // For convenience
-	        String.prototype.split = function (separator, limit) {
-	            return self(this, separator, limit);
-	        };
+	    // For convenience
+	    String.prototype.split = function (separator, limit) {
+	      return self(this, separator, limit);
+	    };
 
-	        return self;
-	    }();
+	    return self;
+	  }();
 	}
 
 	exports.StringDate = function (value) {
-	    if (!value) return new Date();
-	    value = value.split(' ');
-	    var date = value[0].split('-');
-	    var time = value[1] ? value[1].split(':') : [];
+	  if (!value) return new Date();
+	  value = value.split(' ');
+	  var date = value[0].split('-');
+	  var time = value[1] ? value[1].split(':') : [];
 
-	    return new Date(date[0], date[1] - 1, date[2], time[0] || 0, time[1] || 0, time[2] || 0);
-	};
+	  return new Date(date[0], date[1] - 1, date[2], time[0] || 0, time[1] || 0, time[2] || 0);
+		};
 
 /***/ }),
 /* 77 */
@@ -3108,48 +3160,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	var language = __webpack_require__(104);
 
 	Regular.prototype.$once = function (event, fn) {
-	    var call = function call() {
-	        fn && fn.apply(this, arguments);
-	        this.$off(event, call);
-	    };
-	    this.$on(event, call);
+	  var call = function call() {
+	    fn && fn.apply(this, arguments);
+	    this.$off(event, call);
+	  };
+	  this.$on(event, call);
 	};
 
 	var _ = {
-	    noop: Regular.util.noop,
-	    dom: Regular.dom,
-	    isNil: function isNil(val) {
-	        return val == null || val == undefined;
-	    },
-	    /**
+	  noop: Regular.util.noop,
+	  dom: Regular.dom,
+	  isNil: function isNil(val) {
+	    return val == null || val == undefined;
+	  },
+
+	  /**
 	     * Check whether the object has the property.
 	     *
 	     * @param {Object} obj
 	     * @param {String} key
 	     * @return {Boolean}
 	     */
-	    hasOwn: function hasOwn(obj, key) {
-	        var hasOwnProperty = Object.prototype.hasOwnProperty;
-	        return hasOwnProperty.call(obj, key);
-	    },
-	    multiline: function multiline(func) {
-	        var reg = /^function\s*\(\)\s*\{\s*\/\*+\s*([\s\S]*)\s*\*+\/\s*\}$/;
-	        return reg.exec(func)[1];
-	    },
-	    clone: function clone(obj) {
-	        return JSON.parse((0, _stringify2.default)(obj));
-	    }
+	  hasOwn: function hasOwn(obj, key) {
+	    var hasOwnProperty = Object.prototype.hasOwnProperty;
+	    return hasOwnProperty.call(obj, key);
+	  },
+	  multiline: function multiline(func) {
+	    var reg = /^function\s*\(\)\s*\{\s*\/\*+\s*([\s\S]*)\s*\*+\/\s*\}$/;
+	    return reg.exec(func)[1];
+	  },
+	  clone: function clone(obj) {
+	    return JSON.parse((0, _stringify2.default)(obj));
+	  }
 	};
 
 	_.throttle = function (fn, delay) {
-	    var timer = null;
+	  var timer = null;
 
-	    return function () {
-	        clearTimeout(timer);
-	        timer = setTimeout(function () {
-	            fn();
-	        }, delay);
-	    };
+	  return function () {
+	    clearTimeout(timer);
+	    timer = setTimeout(function () {
+	      fn();
+	    }, delay);
+	  };
 	};
 
 	/**
@@ -3161,39 +3214,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {function}             返回客户调用函数
 	 */
 	_.debounce = function (func, wait, immediate) {
-	    var timeout, args, context, timestamp, result;
+	  var timeout = void 0,
+	      args = void 0,
+	      context = void 0,
+	      timestamp = void 0,
+	      result = void 0;
 
-	    var later = function later() {
-	        // 据上一次触发时间间隔
-	        var last = +new Date() - timestamp;
+	  var later = function later() {
+	    // 据上一次触发时间间隔
+	    var last = +new Date() - timestamp;
 
-	        // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
-	        if (last < wait && last > 0) {
-	            timeout = setTimeout(later, wait - last);
-	        } else {
-	            timeout = null;
-	            // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
-	            if (!immediate) {
-	                result = func.apply(context, args);
-	                if (!timeout) context = args = null;
-	            }
-	        }
-	    };
+	    // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
+	    if (last < wait && last > 0) {
+	      timeout = setTimeout(later, wait - last);
+	    } else {
+	      timeout = null;
+	      // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+	      if (!immediate) {
+	        result = func.apply(context, args);
+	        if (!timeout) context = args = null;
+	      }
+	    }
+	  };
 
-	    return function () {
-	        context = this;
-	        args = arguments;
-	        timestamp = +new Date();
-	        var callNow = immediate && !timeout;
-	        // 如果延时不存在，重新设定延时
-	        if (!timeout) timeout = setTimeout(later, wait);
-	        if (callNow) {
-	            result = func.apply(context, args);
-	            context = args = null;
-	        }
+	  return function () {
+	    context = this;
+	    args = arguments;
+	    timestamp = +new Date();
+	    var callNow = immediate && !timeout;
+	    // 如果延时不存在，重新设定延时
+	    if (!timeout) timeout = setTimeout(later, wait);
+	    if (callNow) {
+	      result = func.apply(context, args);
+	      context = args = null;
+	    }
 
-	        return result;
-	    };
+	    return result;
+	  };
 	};
 
 	/**
@@ -3203,157 +3260,160 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * add by xuejimiao 2016/02/25
 	 */
 	_.compressHtml = function (htmlstr) {
-	    //防止nej打包模版后报错
-	    if (typeof htmlstr !== "string") {
-	        return htmlstr;
+	  // 防止nej打包模版后报错
+	  if (typeof htmlstr !== 'string') {
+	    return htmlstr;
+	  }
+	  var htmlStrArrs = void 0,
+	      onHTML = false,
+	      onRegularExpression = false;
+	  htmlStrArrs = htmlstr.split('');
+	  return htmlStrArrs.map(function (item) {
+	    if (item == '<') {
+	      onHTML = true;
+	    } else if (item == '>') {
+	      onHTML = false;
+	      return item;
+	    } else if (item == '{') {
+	      onRegularExpression = true;
+	    } else if (item == '}') {
+	      onRegularExpression = false;
+	      return item;
 	    }
-	    var htmlStrArrs,
-	        onHTML = false,
-	        onRegularExpression = false;
-	    htmlStrArrs = htmlstr.split('');
-	    return htmlStrArrs.map(function (item) {
-	        if (item == '<') {
-	            onHTML = true;
-	        } else if (item == '>') {
-	            onHTML = false;
-	            return item;
-	        } else if (item == '{') {
-	            onRegularExpression = true;
-	        } else if (item == '}') {
-	            onRegularExpression = false;
-	            return item;
-	        }
 
-	        if (onHTML || onRegularExpression || !/[\n\s]/g.test(item)) {
-	            return item;
-	        }
-	    }).join('');
+	    if (onHTML || onRegularExpression || !/[\n\s]/g.test(item)) {
+	      return item;
+	    }
+	  }).join('');
 	};
 
 	_.extend = function (o1, o2, override, hasOwnProperty) {
-	    for (var i in o2) {
-	        if ((!hasOwnProperty || o2.hasOwnProperty(i)) && (override || o1[i] === undefined)) o1[i] = o2[i];
-	    }return o1;
+	  for (var i in o2) {
+	    if ((!hasOwnProperty || o2.hasOwnProperty(i)) && (override || o1[i] === undefined)) {
+	      o1[i] = o2[i];
+	    }
+	  }
+	  return o1;
 	};
 
 	_.dom.emit = function (elem, eventName) {
-	    if (elem.dispatchEvent) {
-	        var event = new CustomEvent(eventName);
-	        elem.dispatchEvent(event);
-	    } else {
-	        var event = document.createEventObject();
-	        elem.fireEvent('on' + eventName, event);
-	    }
+	  if (elem.dispatchEvent) {
+	    var event = new CustomEvent(eventName);
+	    elem.dispatchEvent(event);
+	  } else {
+	    var event = document.createEventObject();
+	    elem.fireEvent('on' + eventName, event);
+	  }
 	};
 
 	_.dom.getPosition = function (elem) {
-	    var doc = elem && elem.ownerDocument,
-	        docElem = doc.documentElement,
-	        body = doc.body;
+	  var doc = elem && elem.ownerDocument,
+	      docElem = doc.documentElement,
+	      body = doc.body;
 
-	    var box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : { top: 0, left: 0 };
+	  var box = elem.getBoundingClientRect ? elem.getBoundingClientRect() : { top: 0, left: 0 };
 
-	    var clientTop = docElem.clientTop || body.clientTop || 0,
-	        clientLeft = docElem.clientLeft || body.clientLeft || 0;
+	  var clientTop = docElem.clientTop || body.clientTop || 0,
+	      clientLeft = docElem.clientLeft || body.clientLeft || 0;
 
-	    return { top: box.top - clientTop, left: box.left - clientLeft };
+	  return { top: box.top - clientTop, left: box.left - clientLeft };
 
-	    // var scrollTop = window.pageYOffset || docElem.scrollTop,
-	    //     scrollLeft = window.pageXOffset || docElem.scrollLeft;
+	  // var scrollTop = window.pageYOffset || docElem.scrollTop,
+	  //     scrollLeft = window.pageXOffset || docElem.scrollLeft;
 
-	    // return {top: box.top + scrollTop - clientTop, left: box.left + scrollLeft - clientLeft}
+	  // return {top: box.top + scrollTop - clientTop, left: box.left + scrollLeft - clientLeft}
 	};
 
 	_.dom.getOffset = function (elem) {
-	    return { width: elem.clientWidth, height: elem.clientHeight };
+	  return { width: elem.clientWidth, height: elem.clientHeight };
 	};
 
 	_.dom.getDimension = function (elem, fixed) {
-	    return _.extend(_.dom.getOffset(elem), _.dom.getPosition(elem, fixed));
+	  return _.extend(_.dom.getOffset(elem), _.dom.getPosition(elem, fixed));
 	};
 
 	_.dom.isInRect = function (position, dimension) {
-	    if (!position || !dimension) return false;
+	  if (!position || !dimension) return false;
 
-	    return position.left > dimension.left && position.left < dimension.left + dimension.width && position.top > dimension.top && position.top < dimension.top + dimension.height;
+	  return position.left > dimension.left && position.left < dimension.left + dimension.width && position.top > dimension.top && position.top < dimension.top + dimension.height;
 	};
 
 	_.dom.once = function (elem, ev, handle) {
-	    function real() {
-	        handle.apply(this, arguments);
-	        _.dom.off(elem, ev, real);
-	    }
-	    _.dom.on(elem, ev, real);
+	  function real() {
+	    handle.apply(this, arguments);
+	    _.dom.off(elem, ev, real);
+	  }
+	  _.dom.on(elem, ev, real);
 	};
 
 	_.dom.contains = function (root, n) {
-	    var node = n;
-	    while (node) {
-	        if (node === root) {
-	            return true;
-	        }
-	        node = node.parentNode;
+	  var node = n;
+	  while (node) {
+	    if (node === root) {
+	      return true;
 	    }
+	    node = node.parentNode;
+	  }
 
-	    return false;
+	  return false;
 	};
 
 	// Ref: http://jsfiddle.net/mendesjuan/rHMCy/4/
 	_.dom.fireEvent = function (node, eventName) {
-	    // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
-	    var doc;
-	    if (node.ownerDocument) {
-	        doc = node.ownerDocument;
-	    } else if (node.nodeType == 9) {
-	        // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
-	        doc = node;
-	    } else {
-	        throw new Error("Invalid node passed to fireEvent: " + node.id);
+	  // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
+	  var doc = void 0;
+	  if (node.ownerDocument) {
+	    doc = node.ownerDocument;
+	  } else if (node.nodeType == 9) {
+	    // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
+	    doc = node;
+	  } else {
+	    throw new Error('Invalid node passed to fireEvent: ' + node.id);
+	  }
+
+	  if (node.dispatchEvent) {
+	    // Gecko-style approach (now the standard) takes more work
+	    var eventClass = '';
+
+	    // Different events have different event classes.
+	    // If this switch statement can't map an eventName to an eventClass,
+	    // the event firing is going to fail.
+	    switch (eventName) {
+	      case 'click': // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
+	      case 'mousedown':
+	      case 'mouseup':
+	        eventClass = 'MouseEvents';
+	        break;
+
+	      case 'focus':
+	      case 'change':
+	      case 'blur':
+	      case 'select':
+	        eventClass = 'HTMLEvents';
+	        break;
+
+	      default:
+	        throw 'fireEvent: Couldn\'t find an event class for event \'' + eventName + '\'.';
+	        break;
 	    }
+	    var event = doc.createEvent(eventClass);
 
-	    if (node.dispatchEvent) {
-	        // Gecko-style approach (now the standard) takes more work
-	        var eventClass = "";
+	    var bubbles = eventName != 'change';
+	    event.initEvent(eventName, bubbles, true); // All events created as bubbling and cancelable.
 
-	        // Different events have different event classes.
-	        // If this switch statement can't map an eventName to an eventClass,
-	        // the event firing is going to fail.
-	        switch (eventName) {
-	            case "click": // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
-	            case "mousedown":
-	            case "mouseup":
-	                eventClass = "MouseEvents";
-	                break;
-
-	            case "focus":
-	            case "change":
-	            case "blur":
-	            case "select":
-	                eventClass = "HTMLEvents";
-	                break;
-
-	            default:
-	                throw "fireEvent: Couldn't find an event class for event '" + eventName + "'.";
-	                break;
-	        }
-	        var event = doc.createEvent(eventClass);
-
-	        var bubbles = eventName == "change" ? false : true;
-	        event.initEvent(eventName, bubbles, true); // All events created as bubbling and cancelable.
-
-	        event.synthetic = true; // allow detection of synthetic events
-	        node.dispatchEvent(event, true);
-	    } else if (node.fireEvent) {
-	        // IE-old school style
-	        var event = doc.createEventObject();
-	        event.synthetic = true; // allow detection of synthetic events
-	        node.fireEvent("on" + eventName, event);
-	    }
+	    event.synthetic = true; // allow detection of synthetic events
+	    node.dispatchEvent(event, true);
+	  } else if (node.fireEvent) {
+	    // IE-old school style
+	    var event = doc.createEventObject();
+	    event.synthetic = true; // allow detection of synthetic events
+	    node.fireEvent('on' + eventName, event);
+	  }
 	};
 
 	_.$trans = function (key, self) {
-	    var $NEKUI = window.$NEKUI || {};
-	    return language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || '';
+	  var $NEKUI = window.$NEKUI || {};
+	  return language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || '';
 	};
 
 	module.exports = _;
@@ -3381,8 +3441,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports = {
-	    'zh-CN': __webpack_require__(105),
-	    'en-US': __webpack_require__(106)
+	  'zh-CN': __webpack_require__(105),
+	  'en-US': __webpack_require__(106)
 		};
 
 /***/ }),
@@ -3392,44 +3452,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports = {
-	    PLEASE_SELECT: '请选择',
-	    PLEASE_INPUT: '请输入',
-	    NO_MATCH: '无匹配项目',
-	    CAL_MONDAY: '一',
-	    CAL_TUESDAY: '二',
-	    CAL_WENSDAY: '三',
-	    CAL_THURSDAY: '四',
-	    CAL_FRIDAY: '五',
-	    CAL_SATURDAY: '六',
-	    CAL_SUNDAY: '日',
-	    CONFIRM: '确定',
-	    ALL: '全部',
-	    UPLOAD: '上传',
-	    DROPDOWN_LIST: '下拉菜单',
-	    MULTILEVEL_MENU: '多级菜单',
-	    GOTO: '跳至',
-	    PAGE_NEXT: '下一页',
-	    PAGE_PREV: '上一页',
-	    CANCEL: '取消',
-	    NOTICE: '提示',
-	    ITEM_PAGE: '条/页',
-	    TOTAL: '共',
-	    ITEMS: '条',
-	    PAGE: '页',
-	    FORMAT_ERROR: '格式错误',
-	    VALUE_ERROR: '值错误',
-	    LENGTH_ERROR: '长度错误',
-	    LOADING: '加载中',
-	    NO_DATA: '无数据',
-	    FILE_TYPE_ERROR: '格式错误',
-	    FILE_TOO_LARGE: '文件过大',
-	    RETRY: '重试',
-	    UPLOAD_FILE: '上传文件',
-	    DOWNLOAD_FILE: '下载',
-	    UPLOAD_FAIL: '上传失败',
-	    UNKNOWN: '未知',
-	    DELETE_CONFIRM: '确认删除',
-	    LIMIT_ERROR: 'limit 应该为数字'
+	  PLEASE_SELECT: '请选择',
+	  PLEASE_INPUT: '请输入',
+	  NO_MATCH: '无匹配项目',
+	  CAL_MONDAY: '一',
+	  CAL_TUESDAY: '二',
+	  CAL_WENSDAY: '三',
+	  CAL_THURSDAY: '四',
+	  CAL_FRIDAY: '五',
+	  CAL_SATURDAY: '六',
+	  CAL_SUNDAY: '日',
+	  CONFIRM: '确定',
+	  ALL: '全部',
+	  UPLOAD: '上传',
+	  DROPDOWN_LIST: '下拉菜单',
+	  MULTILEVEL_MENU: '多级菜单',
+	  GOTO: '跳至',
+	  PAGE_NEXT: '下一页',
+	  PAGE_PREV: '上一页',
+	  CANCEL: '取消',
+	  NOTICE: '提示',
+	  ITEM_PAGE: '条/页',
+	  TOTAL: '共',
+	  ITEMS: '条',
+	  PAGE: '页',
+	  FORMAT_ERROR: '格式错误',
+	  VALUE_ERROR: '值错误',
+	  LENGTH_ERROR: '长度错误',
+	  LOADING: '加载中',
+	  NO_DATA: '无数据',
+	  FILE_TYPE_ERROR: '格式错误',
+	  FILE_TOO_LARGE: '文件过大',
+	  RETRY: '重试',
+	  UPLOAD_FILE: '上传文件',
+	  DOWNLOAD_FILE: '下载',
+	  UPLOAD_FAIL: '上传失败',
+	  UNKNOWN: '未知',
+	  DELETE_CONFIRM: '确认删除',
+	  LIMIT_ERROR: 'limit 应该为数字'
 		};
 
 /***/ }),
@@ -3439,44 +3499,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	module.exports = {
-	    PLEASE_SELECT: 'Please Select',
-	    PLEASE_INPUT: 'Please Input',
-	    NO_MATCH: 'No Match',
-	    CAL_MONDAY: 'Mon',
-	    CAL_TUESDAY: 'Tue',
-	    CAL_WENSDAY: 'Wen',
-	    CAL_THURSDAY: 'Thu',
-	    CAL_FRIDAY: 'Fri',
-	    CAL_SATURDAY: 'Sat',
-	    CAL_SUNDAY: 'Sun',
-	    CONFIRM: 'Confirm',
-	    ALL: 'All',
-	    UPLOAD: 'Upload',
-	    DROPDOWN_LIST: 'Dropdown List',
-	    MULTILEVEL_MENU: 'Multi-level Menu',
-	    GOTO: 'Goto',
-	    PAGE_NEXT: 'Next',
-	    PAGE_PREV: 'Prev',
-	    CANCEL: 'Cancel',
-	    NOTICE: 'Notice',
-	    ITEM_PAGE: '/page',
-	    TOTAL: 'total',
-	    ITEMS: 'items',
-	    PAGE: '',
-	    FORMAT_ERROR: 'Format Error',
-	    VALUE_ERROR: 'Value Error',
-	    LENGTH_ERROR: 'Length Error',
-	    LOADING: 'Loading',
-	    NO_DATA: 'No data',
-	    FILE_TYPE_ERROR: 'TypeError',
-	    FILE_TOO_LARGE: 'TooLarge',
-	    RETRY: 'Retry',
-	    UPLOAD_FILE: 'File',
-	    DOWNLOAD_FILE: '',
-	    UPLOAD_FAIL: 'Fail',
-	    UNKNOWN: 'UNKNOWN',
-	    DELETE_CONFIRM: 'Are you sure to delete',
-	    LIMIT_ERROR: 'the limit should be a number'
+	  PLEASE_SELECT: 'Please Select',
+	  PLEASE_INPUT: 'Please Input',
+	  NO_MATCH: 'No Match',
+	  CAL_MONDAY: 'Mon',
+	  CAL_TUESDAY: 'Tue',
+	  CAL_WENSDAY: 'Wen',
+	  CAL_THURSDAY: 'Thu',
+	  CAL_FRIDAY: 'Fri',
+	  CAL_SATURDAY: 'Sat',
+	  CAL_SUNDAY: 'Sun',
+	  CONFIRM: 'Confirm',
+	  ALL: 'All',
+	  UPLOAD: 'Upload',
+	  DROPDOWN_LIST: 'Dropdown List',
+	  MULTILEVEL_MENU: 'Multi-level Menu',
+	  GOTO: 'Goto',
+	  PAGE_NEXT: 'Next',
+	  PAGE_PREV: 'Prev',
+	  CANCEL: 'Cancel',
+	  NOTICE: 'Notice',
+	  ITEM_PAGE: '/page',
+	  TOTAL: 'total',
+	  ITEMS: 'items',
+	  PAGE: '',
+	  FORMAT_ERROR: 'Format Error',
+	  VALUE_ERROR: 'Value Error',
+	  LENGTH_ERROR: 'Length Error',
+	  LOADING: 'Loading',
+	  NO_DATA: 'No data',
+	  FILE_TYPE_ERROR: 'TypeError',
+	  FILE_TOO_LARGE: 'TooLarge',
+	  RETRY: 'Retry',
+	  UPLOAD_FILE: 'File',
+	  DOWNLOAD_FILE: '',
+	  UPLOAD_FAIL: 'Fail',
+	  UNKNOWN: 'UNKNOWN',
+	  DELETE_CONFIRM: 'Are you sure to delete',
+	  LIMIT_ERROR: 'the limit should be a number'
 		};
 
 /***/ }),
@@ -3492,63 +3552,63 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.format = function () {
-	    function fix(str) {
-	        str = '' + (String(str) || '');
-	        return str.length <= 1 ? '0' + str : str;
+	  function fix(str) {
+	    str = '' + (String(str) || '');
+	    return str.length <= 1 ? '0' + str : str;
+	  }
+	  var maps = {
+	    yyyy: function yyyy(date) {
+	      return date.getFullYear();
+	    },
+	    MM: function MM(date) {
+	      return fix(date.getMonth() + 1);
+	    },
+	    dd: function dd(date) {
+	      return fix(date.getDate());
+	    },
+	    HH: function HH(date) {
+	      return fix(date.getHours());
+	    },
+	    mm: function mm(date) {
+	      return fix(date.getMinutes());
+	    },
+	    ss: function ss(date) {
+	      return fix(date.getSeconds());
 	    }
-	    var maps = {
-	        'yyyy': function yyyy(date) {
-	            return date.getFullYear();
-	        },
-	        'MM': function MM(date) {
-	            return fix(date.getMonth() + 1);
-	        },
-	        'dd': function dd(date) {
-	            return fix(date.getDate());
-	        },
-	        'HH': function HH(date) {
-	            return fix(date.getHours());
-	        },
-	        'mm': function mm(date) {
-	            return fix(date.getMinutes());
-	        },
-	        'ss': function ss(date) {
-	            return fix(date.getSeconds());
-	        }
-	    };
+	  };
 
-	    var trunk = new RegExp((0, _keys2.default)(maps).join('|'), 'g');
-	    return function (value, format) {
-	        if (!value) {
-	            return '';
-	        }
-	        format = format || 'yyyy-MM-dd HH:mm';
-	        value = new Date(value);
+	  var trunk = new RegExp((0, _keys2.default)(maps).join('|'), 'g');
+	  return function (value, format) {
+	    if (!value) {
+	      return '';
+	    }
+	    format = format || 'yyyy-MM-dd HH:mm';
+	    value = new Date(value);
 
-	        return format.replace(trunk, function (capture) {
-	            return maps[capture] ? maps[capture](value) : '';
-	        });
-	    };
+	    return format.replace(trunk, function (capture) {
+	      return maps[capture] ? maps[capture](value) : '';
+	    });
+	  };
 	}();
 
 	exports.average = function (array, key) {
-	    array = array || [];
-	    return array.length ? exports.total(array, key) / array.length : 0;
+	  array = array || [];
+	  return array.length ? exports.total(array, key) / array.length : 0;
 	};
 	exports.total = function (array, key) {
-	    var total = 0;
-	    if (!array) return;
-	    array.forEach(function (item) {
-	        total += key ? item[key] : item;
-	    });
-	    return total;
+	  var total = 0;
+	  if (!array) return;
+	  array.forEach(function (item) {
+	    total += key ? item[key] : item;
+	  });
+	  return total;
 	};
 
 	exports.filter = function (array, filterFn) {
-	    if (!array || !array.length) return;
-	    return array.filter(function (item, index) {
-	        return filterFn(item, index);
-	    });
+	  if (!array || !array.length) return;
+	  return array.filter(function (item, index) {
+	    return filterFn(item, index);
+	  });
 	};
 
 /***/ }),
@@ -3566,11 +3626,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(101);
 
 	var rClassGenerator = function rClassGenerator(rClass) {
-	    exports[rClass] = function (elem, value) {
-	        if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object' && value.type == 'expression') this.$watch(value, function (newValue, oldValue) {
-	            _.dom[newValue ? 'addClass' : 'delClass'](elem, rClass);
-	        });else if (!!value || value === '') _.dom.addClass(elem, rClass);
-	    };
+	  exports[rClass] = function (elem, value) {
+	    if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object' && value.type == 'expression') {
+	      this.$watch(value, function (newValue, oldValue) {
+	        _.dom[newValue ? 'addClass' : 'delClass'](elem, rClass);
+	      });
+	    } else if (!!value || value === '') _.dom.addClass(elem, rClass);
+	  };
 	};
 
 	rClassGenerator('z-crt');
@@ -3581,33 +3643,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	rClassGenerator('z-divider');
 
 	exports['r-show'] = function (elem, value) {
-	    if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object' && value.type == 'expression') this.$watch(value, function (newValue, oldValue) {
-	        if (!newValue == !oldValue) return;
+	  if ((typeof value === 'undefined' ? 'undefined' : (0, _typeof3.default)(value)) === 'object' && value.type == 'expression') {
+	    this.$watch(value, function (newValue, oldValue) {
+	      if (!newValue == !oldValue) return;
 
-	        if (typeof newValue === 'string') elem.style.display = newValue;else elem.style.display = newValue ? 'block' : '';
-	    });else if (!!value || value === '') {
-	        if (typeof value === 'string' && value !== '') elem.style.display = value;else elem.style.display = value ? 'block' : '';
-	    }
+	      if (typeof newValue === 'string') elem.style.display = newValue;else elem.style.display = newValue ? 'block' : '';
+	    });
+	  } else if (!!value || value === '') {
+	    if (typeof value === 'string' && value !== '') elem.style.display = value;else elem.style.display = value ? 'block' : '';
+	  }
 	};
 
 	exports['r-autofocus'] = function (elem, value) {
-	    setTimeout(function () {
-	        elem.focus();
-	    }, 0);
+	  setTimeout(function () {
+	    elem.focus();
+	  }, 0);
 	};
 
 	exports['r-attr'] = function (elem, value) {
-	    var attrs = {
-	        'INPUT': ['autocomplete', 'autofocus', 'checked', 'disabled', 'max', 'maxlength', 'min', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'step', 'type'],
-	        'TEXTAREA': ['autofocus', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'wrap'],
-	        'SELECT': ['autofocus', 'disabled', 'multiple', 'name', 'required']
-	    };
+	  var attrs = {
+	    INPUT: ['autocomplete', 'autofocus', 'checked', 'disabled', 'max', 'maxlength', 'min', 'multiple', 'name', 'pattern', 'placeholder', 'readonly', 'required', 'step', 'type'],
+	    TEXTAREA: ['autofocus', 'disabled', 'maxlength', 'name', 'placeholder', 'readonly', 'required', 'wrap'],
+	    SELECT: ['autofocus', 'disabled', 'multiple', 'name', 'required']
+	  };
 
-	    this.$watch(value, function (newValue, oldValue) {
-	        attrs[elem.tagName].forEach(function (attr) {
-	            if (newValue[attr]) _.dom.attr(elem, attr, newValue[attr]);
-	        });
-	    }, true);
+	  this.$watch(value, function (newValue, oldValue) {
+	    attrs[elem.tagName].forEach(function (attr) {
+	      if (newValue[attr]) _.dom.attr(elem, attr, newValue[attr]);
+	    });
+	  }, true);
 	};
 
 	/**
@@ -3616,12 +3680,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param value
 	 */
 	exports['r-width'] = function (elem, value) {
-	    this.$watch(value, function (newValue, oldValue) {
-	        if (parseInt(newValue)) {
-	            elem.style.width = parseInt(newValue) + 'px';
-	            elem.style.display = 'inline-block';
-	        }
-	    });
+	  this.$watch(value, function (newValue, oldValue) {
+	    if (parseInt(newValue)) {
+	      elem.style.width = parseInt(newValue) + 'px';
+	      elem.style.display = 'inline-block';
+	    }
+	  });
 	};
 
 /***/ }),
@@ -3717,14 +3781,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	
-	/**
-	 * ------------------------------------------------------------
-	 * Validation  表单验证
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
 	'use strict';
 
 	var _keys = __webpack_require__(95);
@@ -3732,6 +3788,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _keys2 = _interopRequireDefault(_keys);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * ------------------------------------------------------------
+	 * Validation  表单验证
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -3744,88 +3807,99 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.disabled=false]       => 是否禁用。当禁用时验证始终通过。
 	 */
 	var Validation = Component.extend({
-	    name: 'validation',
-	    template: '{#inc this.$body}',
-	    /**
+	  name: 'validation',
+	  template: '{#inc this.$body}',
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        this.controls = [];
+	  config: function config() {
+	    this.controls = [];
 
-	        _.extend(this.data, {});
-	        this.supr();
-	    },
-	    /**
+	    _.extend(this.data, {});
+	    this.supr();
+	  },
+
+	  /**
 	     * @method validate() 验证所有表单组件
 	     * @public
 	     * @return {object} conclusion 结论
 	     */
-	    validate: function validate() {
-	        if (this.data.disabled) return {
-	            success: true,
-	            message: 'Validation is disabled.'
-	        };
-
-	        var conclusion = {
-	            results: [],
-	            success: true,
-	            message: ''
-	        };
-
-	        this.controls.forEach(function (control) {
-	            if (!control) {
-	                return;
-	            }
-
-	            var result = control.validate();
-	            conclusion.results.push(result);
-	            if (!result.success) {
-	                conclusion.success = false;
-	                conclusion.message = conclusion.message || result.message;
-	            }
-	        });
-
-	        return conclusion;
+	  validate: function validate() {
+	    if (this.data.disabled) {
+	      return {
+	        success: true,
+	        message: 'Validation is disabled.'
+	      };
 	    }
+
+	    var conclusion = {
+	      results: [],
+	      success: true,
+	      message: ''
+	    };
+
+	    this.controls.forEach(function (control) {
+	      if (!control) {
+	        return;
+	      }
+
+	      var result = control.validate();
+	      conclusion.results.push(result);
+	      if (!result.success) {
+	        conclusion.success = false;
+	        conclusion.message = conclusion.message || result.message;
+	      }
+	    });
+
+	    return conclusion;
+	  }
 	});
 
 	Validation.validate = function (value, rules) {
-	    var result = {
-	        success: true,
-	        message: ''
-	    };
+	  var result = {
+	    success: true,
+	    message: ''
+	  };
 
-	    rules.forEach(function (rule) {
-	        rule.success = true;
+	  rules.forEach(function (rule) {
+	    rule.success = true;
 
-	        // 为了兼容
-	        if (rule.type === 'is') rule.success = (rule.options || rule.reg).test(value);else if (rule.type === 'isNot') rule.success = !(rule.options || rule.reg).test(value);else if (rule.type === 'isRequired' || rule.type === 'isFilled') rule.success = !!validator.toString(value).trim();else if (rule.type === 'method' || rule.method) rule.success = (rule.options || rule.method)(value, rule);else rule.success = !value || validator[rule.type](value, rule.options);
+	    // 为了兼容
+	    if (rule.type === 'is') {
+	      rule.success = (rule.options || rule.reg).test(value);
+	    } else if (rule.type === 'isNot') {
+	      rule.success = !(rule.options || rule.reg).test(value);
+	    } else if (rule.type === 'isRequired' || rule.type === 'isFilled') {
+	      rule.success = !!validator.toString(value).trim();
+	    } else if (rule.type === 'method' || rule.method) {
+	      rule.success = (rule.options || rule.method)(value, rule);
+	    } else rule.success = !value || validator[rule.type](value, rule.options);
 
-	        rule.callback && rule.callback(value, rule);
+	    rule.callback && rule.callback(value, rule);
 
-	        if (!rule.success && result.success) {
-	            result.success = false;
-	            result.firstRule = rule;
-	            // @deprecated
-	            result.message = rule.message;
-	        }
-	    });
+	    if (!rule.success && result.success) {
+	      result.success = false;
+	      result.firstRule = rule;
+	      // @deprecated
+	      result.message = rule.message;
+	    }
+	  });
 
-	    return result;
+	  return result;
 	};
 
 	// Patch for validator, ref: https://302.at/0wy3Z
 	(0, _keys2.default)(validator).forEach(function (d) {
-	    if (/^is/.test(d)) {
-	        validator['_' + d] = function (str, isRequired) {
-	            if (!isRequired && !str) {
-	                return function () {
-	                    return true;
-	                };
-	            }
-	            return validator[d].bind(null, str);
+	  if (/^is/.test(d)) {
+	    validator['_' + d] = function (str, isRequired) {
+	      if (!isRequired && !str) {
+	        return function () {
+	          return true;
 	        };
-	    }
+	      }
+	      return validator[d].bind(null, str);
+	    };
+	  }
 	});
 	Validation.validator = validator;
 
@@ -6672,13 +6746,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function stringBytes(c) {
 	  var n = c.length,
-	      s;
+	      s = void 0;
 	  var len = 0;
 	  for (var i = 0; i < n; i++) {
 	    s = c.charCodeAt(i);
 	    while (s > 0) {
 	      len++;
-	      s = s >> 8;
+	      s >>= 8;
 	    }
 	  }
 	  return len;
@@ -6695,21 +6769,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isInt: function isInt(min, max, message) {
 	    min = isNumeric(min) ? min / 1 : -Infinity;
 	    max = isNumeric(max) ? max / 1 : Infinity;
-	    return { type: 'isInt', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
+	    return {
+	      type: 'isInt',
+	      message: message || _.$trans('VALUE_ERROR'),
+	      options: { min: min, max: max }
+	    };
 	  },
 	  isFloat: function isFloat(min, max, message) {
 	    min = isNumeric(min) ? min / 1 : -Infinity;
 	    max = isNumeric(max) ? max / 1 : Infinity;
-	    return { type: 'isFloat', message: message || _.$trans('VALUE_ERROR'), options: { min: min, max: max } };
+	    return {
+	      type: 'isFloat',
+	      message: message || _.$trans('VALUE_ERROR'),
+	      options: { min: min, max: max }
+	    };
 	  },
 	  byteLen: function byteLen(min, max, message) {
 	    min = isNumeric(min) ? min / 1 : 0;
 	    max = isNumeric(max) ? max / 1 : Infinity;
-	    return { message: message || _.$trans('LENGTH_ERROR'), method: function method(value) {
+	    return {
+	      message: message || _.$trans('LENGTH_ERROR'),
+	      method: function method(value) {
 	        value = value || '';
 	        var len = stringBytes(value);
 	        return len >= min && len <= max;
-	      } };
+	      }
+	    };
 	  }
 		};
 
@@ -6717,45 +6802,46 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 179 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	module.exports = {
-	    /**
+	  /**
 	     *  测试数据:
 	     *  1, +1, -1, ++1, ++++, 1++, 1+1, 001, 01
 	     * */
-	    "int": function int(value) {
-	        value = value.replace(/[^\d+-]/g, '');
+	  int: function int(value) {
+	    value = value.replace(/[^\d+-]/g, '');
 
-	        var regexp = /[+-]?\d*/;
-	        var match = regexp.exec(value);
-	        if (match) value = match[0];
+	    var regexp = /[+-]?\d*/;
+	    var match = regexp.exec(value);
+	    if (match) value = match[0];
 
-	        if (value && !isNaN(value)) value = parseInt(value);
-	        return value;
-	    },
-	    /**
+	    if (value && !isNaN(value)) value = parseInt(value);
+	    return value;
+	  },
+
+	  /**
 	     *  测试数据:
 	     *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12
 	     * */
-	    "float": function float(value, decimalDigits) {
-	        value = value.replace(/[^\d+-\.]/g, '');
+	  float: function float(value, decimalDigits) {
+	    value = value.replace(/[^\d+-\.]/g, '');
 
-	        var regexp = /([+-]?\d*(\.\d*)?)/;
-	        var match = regexp.exec(value);
-	        if (match) value = match[0];
+	    var regexp = /([+-]?\d*(\.\d*)?)/;
+	    var match = regexp.exec(value);
+	    if (match) value = match[0];
 
-	        // 这里没使用toFixed, 是因为不希望四舍五入,不断输入最后一位数字会一直变大
-	        var digits = value.split('.');
-	        if (digits[1] && decimalDigits) {
-	            value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
-	        }
-
-	        return value;
-	    },
-	    "default": function _default(value) {
-	        return value;
+	    // 这里没使用toFixed, 是因为不希望四舍五入,不断输入最后一位数字会一直变大
+	    var digits = value.split('.');
+	    if (digits[1] && decimalDigits) {
+	      value = digits[0] + '.' + digits[1].substring(0, decimalDigits);
 	    }
+
+	    return value;
+	  },
+	  default: function _default(value) {
+	    return value;
+	  }
 		};
 
 /***/ }),
@@ -6850,20 +6936,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      hour += '';
 	      minute += '';
 	      seconds += '';
-	      this.data.time = (hour.length > 1 ? hour : '0' + hour) + ':' + (minute.length > 1 ? minute : '0' + minute) + ":" + (seconds.length > 1 ? seconds : '0' + seconds);
+	      this.data.time = (hour.length > 1 ? hour : '0' + hour) + ':' + (minute.length > 1 ? minute : '0' + minute) + ':' + (seconds.length > 1 ? seconds : '0' + seconds);
 	    });
 
 	    this.$watch(['minTime', 'maxTime'], function (minTime, maxTime) {
 	      if (!minTime) throw new TypeError('Invalid Time');
 	      if (!maxTime) throw new TypeError('Invalid Time');
 
-	      if (minTime > maxTime) throw new TimePicker.TimeRangeError(minTime, maxTime);
+	      if (minTime > maxTime) {
+	        throw new TimePicker.TimeRangeError(minTime, maxTime);
+	      }
 
 	      // 如果超出时间范围，则设置为范围边界的时间
 	      var isOutOfRange = this.isOutOfRange(this.data.time);
 	      if (isOutOfRange) this.data.time = isOutOfRange;
 	    });
 	  },
+
 	  /**
 	   * @method isOutOfRange(time) 是否超出规定的时间范围
 	   * @public
@@ -6899,14 +6988,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Dropdown  下拉菜单
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var SourceComponent = __webpack_require__(184);
 	var template = __webpack_require__(188);
@@ -6929,91 +7018,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}            [options.service]                       @=> 数据服务
 	 */
 	var Dropdown = SourceComponent.extend({
-	    name: 'dropdown',
-	    template: template,
-	    /**
+	  name: 'dropdown',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            itemTemplate: null,
-	            open: false
-	        });
-	        this.supr();
-	    },
-	    /**
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      itemTemplate: null,
+	      open: false
+	    });
+	    this.supr();
+	  },
+
+	  /**
 	     * @method toggle(open) 展开/收起
 	     * @public
 	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
 	     * @return {void}
 	     */
-	    toggle: function toggle(open) {
-	        if (this.data.disabled) return;
+	  toggle: function toggle(open) {
+	    if (this.data.disabled) return;
 
-	        if (open === undefined) open = !this.data.open;
-	        this.data.open = open;
+	    if (open === undefined) open = !this.data.open;
+	    this.data.open = open;
 
-	        // 根据状态在Dropdown.opens列表中添加/删除管理项
-	        var index = Dropdown.opens.indexOf(this);
-	        if (open && index < 0) Dropdown.opens.push(this);else if (!open && index >= 0) Dropdown.opens.splice(index, 1);
+	    // 根据状态在Dropdown.opens列表中添加/删除管理项
+	    var index = Dropdown.opens.indexOf(this);
+	    if (open && index < 0) Dropdown.opens.push(this);else if (!open && index >= 0) Dropdown.opens.splice(index, 1);
 
-	        /**
+	    /**
 	         * @event toggle  展开/收起时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} open 展开/收起状态
 	         */
-	        this.$emit('toggle', {
-	            sender: this,
-	            open: open
-	        });
-	    },
-	    /**
+	    this.$emit('toggle', {
+	      sender: this,
+	      open: open
+	    });
+	  },
+
+	  /**
 	     * @method select(item) 选择某一项
 	     * @public
 	     * @param  {object} item 选择项
 	     * @return {void}
 	     */
-	    select: function select(item) {
-	        if (this.data.disabled || item.disabled || item.divider) return;
+	  select: function select(item) {
+	    if (this.data.disabled || item.disabled || item.divider) return;
 
-	        /**
+	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择项
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item
-	        });
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item
+	    });
 
-	        this.toggle(false);
-	    },
-	    destroy: function destroy() {
-	        var index = Dropdown.opens.indexOf(this);
-	        index >= 0 && Dropdown.opens.splice(index, 1);
-	        this.supr();
-	    }
+	    this.toggle(false);
+	  },
+	  destroy: function destroy() {
+	    var index = Dropdown.opens.indexOf(this);
+	    index >= 0 && Dropdown.opens.splice(index, 1);
+	    this.supr();
+	  }
 	});
 
 	// 处理点击dropdown之外的地方后的收起事件。
 	Dropdown.opens = [];
 
 	_.dom.on(document, 'click', function (e) {
-	    var opens = Dropdown.opens.map(function (d) {
-	        return d;
-	    });
-	    opens.forEach(function (dropdown, index) {
-	        // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
-	        var element = dropdown.$refs.element;
-	        var element2 = e.target;
-	        while (element2) {
-	            if (element == element2) return;
-	            element2 = element2.parentElement;
-	        }
-	        dropdown.toggle(false);
-	        dropdown.$update();
-	    });
+	  var opens = Dropdown.opens.map(function (d) {
+	    return d;
+	  });
+	  opens.forEach(function (dropdown, index) {
+	    // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
+	    var element = dropdown.$refs.element;
+	    var element2 = e.target;
+	    while (element2) {
+	      if (element == element2) return;
+	      element2 = element2.parentElement;
+	    }
+	    dropdown.toggle(false);
+	    dropdown.$update();
+	  });
 	});
 
 	module.exports = Dropdown;
@@ -7022,14 +7113,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * SourceComponent 数据组件基类
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -7048,65 +7139,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}          [options.service]                 @=> 数据服务
 	 */
 	var SourceComponent = Component.extend({
-	    service: null,
-	    /**
+	  service: null,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            source: [],
-	            updateAuto: true
-	        });
+	  config: function config() {
+	    _.extend(this.data, {
+	      source: [],
+	      updateAuto: true
+	    });
 
-	        if (this.data.service) this.service = this.data.service;
+	    if (this.data.service) this.service = this.data.service;
 
-	        if (this.service && this.data.updateAuto) this.$updateSource();
+	    if (this.service && this.data.updateAuto) this.$updateSource();
 
-	        this.supr();
-	    },
-	    request: function request(options) {
-	        var data = this.data;
-	        var oldError = options.error,
-	            oldSuccess = options.success,
-	            oldComplete = options.complete;
-	        data.loading = true;
+	    this.supr();
+	  },
+	  request: function request(options) {
+	    var self = this;
+	    var data = this.data;
+	    var oldError = options.error,
+	        oldSuccess = options.success,
+	        oldComplete = options.complete;
+	    data.loading = true;
 
-	        options.success = function (data) {
-	            oldSuccess && oldSuccess(data);
-	            this.$update('loading', false);
-	        }.bind(this);
-	        options.error = function (data) {
-	            oldError && oldError(data);
-	            this.$update('loading', false);
-	        }.bind(this);
+	    options.success = function (data) {
+	      oldSuccess && oldSuccess(data);
+	      self.$update('loading', false);
+	    };
+	    options.error = function (data) {
+	      oldError && oldError(data);
+	      self.$update('loading', false);
+	    };
 
-	        options.complete = function (data) {
-	            oldComplete && oldComplete(data);
-	            this.$update('loading', false);
-	        }.bind(this);
-	        Ajax.request(options);
-	    },
-	    /**
+	    options.complete = function (data) {
+	      oldComplete && oldComplete(data);
+	      self.$update('loading', false);
+	    };
+	    Ajax.request(options);
+	  },
+
+	  /**
 	     * @method getParams 返回请求时需要的参数
 	     * @protected
 	     * @deprecated
 	     * @return {object} object
 	     */
-	    getParams: function getParams() {
-	        return {};
-	    },
-	    /**
+	  getParams: function getParams() {
+	    return {};
+	  },
+
+	  /**
 	     * @method $updateSource() 从service中更新数据源
 	     * @public
 	     * @deprecated
 	     * @return {SourceComponent} this
 	     */
-	    $updateSource: function $updateSource() {
-	        this.service.getList.call(this, this.getParams(), function (result) {
-	            this.$update('source', result);
-	        }.bind(this));
-	        return this;
-	    }
+	  $updateSource: function $updateSource() {
+	    var self = this;
+	    this.service.getList.call(this, this.getParams(), function (result) {
+	      self.$update('source', result);
+	    });
+	    return this;
+	  }
 	});
 
 		module.exports = SourceComponent;
@@ -7124,6 +7219,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var reqwest = __webpack_require__(186);
+
 	var ajax = {};
 	// var eventEmitter = new require('events').EventEmitter();
 	// var ajax = {
@@ -7135,60 +7231,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	// var Notify = require('../module/notify.js');
 
 	ajax.request = function (opt) {
-	    var oldError = opt.error,
-	        oldSuccess = opt.success,
-	        oldComplete = opt.complete;
+	  var oldError = opt.error,
+	      oldSuccess = opt.success,
+	      oldComplete = opt.complete;
 
-	    opt.data = opt.data || {};
+	  opt.data = opt.data || {};
 
-	    opt.type = opt.type || 'json';
+	  opt.type = opt.type || 'json';
 
-	    if (!opt.contentType && opt.method && opt.method.toLowerCase() !== 'get') opt.contentType = 'application/json';
+	  if (!opt.contentType && opt.method && opt.method.toLowerCase() !== 'get') {
+	    opt.contentType = 'application/json';
+	  }
 
-	    if (opt.contentType === 'application/json') {
-	        opt.data = (0, _stringify2.default)(opt.data);
-	    }
+	  if (opt.contentType === 'application/json') {
+	    opt.data = (0, _stringify2.default)(opt.data);
+	  }
 
-	    //ajax.$emit('start', opt);
-	    opt.success = function (data) {
-	        //ajax.$emit('success', data);
-	        if (data.code || data.success) {
-	            if (data.code != 200 && !data.success) {
-	                if (oldError) oldError(data.error, data.message, data.code);else ; // Notify.error(data.message);
-	            } else oldSuccess && oldSuccess(data, data.message, data.code);
-	        } else oldSuccess && oldSuccess(data);
-	    };
+	  // ajax.$emit('start', opt);
+	  opt.success = function (data) {
+	    // ajax.$emit('success', data);
+	    if (data.code || data.success) {
+	      if (data.code != 200 && !data.success) {
+	        if (oldError) oldError(data.error, data.message, data.code);else ; // Notify.error(data.message);
+	      } else oldSuccess && oldSuccess(data, data.message, data.code);
+	    } else oldSuccess && oldSuccess(data);
+	  };
 
-	    opt.error = function (data) {
-	        //ajax.$emit('error', data);
-	        oldError && oldError(data.result, data);
-	    };
+	  opt.error = function (data) {
+	    // ajax.$emit('error', data);
+	    oldError && oldError(data.result, data);
+	  };
 
-	    opt.complete = function (data) {
-	        //ajax.$emit('complete', data);
-	        oldComplete && oldComplete(data.result, data);
-	    };
+	  opt.complete = function (data) {
+	    // ajax.$emit('complete', data);
+	    oldComplete && oldComplete(data.result, data);
+	  };
 
-	    reqwest(opt);
+	  reqwest(opt);
 	};
 
 	ajax.get = function (url, success, error) {
-	    ajax.request({
-	        url: url,
-	        method: 'get',
-	        success: success,
-	        error: error
-	    });
+	  ajax.request({
+	    url: url,
+	    method: 'get',
+	    success: success,
+	    error: error
+	  });
 	};
 
 	ajax.post = function (url, data, success, error) {
-	    ajax.request({
-	        url: url,
-	        method: 'post',
-	        type: 'json',
-	        success: success,
-	        error: error
-	    });
+	  ajax.request({
+	    url: url,
+	    method: 'post',
+	    type: 'json',
+	    success: success,
+	    error: error
+	  });
 	};
 
 	module.exports = ajax;
@@ -7845,14 +7943,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * TreeSelect 树型选择
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Dropdown = __webpack_require__(183);
 	var Validation = __webpack_require__(111);
@@ -7887,36 +7985,39 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// TODO: value 数据回显
 	var TreeSelect = Dropdown.extend({
-	    name: 'tree.select',
-	    template: template,
-	    config: function config(data) {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            // @inherited open: false,
-	            multiple: false,
-	            value: null,
-	            selected: null,
-	            separator: ',',
-	            placeholder: this.$trans('PLEASE_SELECT'),
-	            key: 'id',
-	            nameKey: 'name',
-	            childKey: 'children',
-	            hierarchical: false,
-	            updateAuto: false
-	        });
-	        this.supr();
+	  name: 'tree.select',
+	  template: template,
+	  config: function config(data) {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      // @inherited open: false,
+	      multiple: false,
+	      value: null,
+	      selected: null,
+	      separator: ',',
+	      placeholder: this.$trans('PLEASE_SELECT'),
+	      key: 'id',
+	      nameKey: 'name',
+	      childKey: 'children',
+	      hierarchical: false,
+	      updateAuto: false
+	    });
+	    this.supr();
 
-	        this.initValidation();
-	    },
-	    computed: {
-	        phShow: function phShow(data) {
-	            if (!data.selected) return data.placeholder;
-	            if (Array.isArray(data.selected)) return data.selected.map(function (d) {
-	                return d[data.nameKey];
-	            }).join(data.separator);
-	            return data.selected[data.nameKey];
-	        }
+	    this.initValidation();
+	  },
+
+	  computed: {
+	    phShow: function phShow(data) {
+	      if (!data.selected) return data.placeholder;
+	      if (Array.isArray(data.selected)) {
+	        return data.selected.map(function (d) {
+	          return d[data.nameKey];
+	        }).join(data.separator);
+	      }
+	      return data.selected[data.nameKey];
 	    }
+	  }
 	});
 
 	TreeSelect.use(validationMixin);
@@ -7932,14 +8033,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * TreeView  树型视图
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var SourceComponent = __webpack_require__(184);
 	var template = __webpack_require__(192);
@@ -7970,101 +8071,110 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}    [options.service]                       @=> 数据服务
 	 */
 	var TreeView = SourceComponent.extend({
-	    name: 'tree-view',
-	    template: template,
-	    /**
+	  name: 'tree-view',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            key: 'id',
-	            nameKey: 'name',
-	            value: null,
-	            selected: null,
-	            multiple: false,
-	            hierarchical: false
-	        });
-	        this.supr();
-	        this.$ancestor = this;
-	        this.$watch('selected', function (newVal) {
-	            var key = this.data.key,
-	                nameKey = this.data.nameKey,
-	                separator = this.data.separator;
-	            if (!newVal) return this.data.value = '';
-	            if (Array.isArray(newVal)) return this.data.value = newVal.map(function (d) {
-	                return d[key] || d[nameKey];
-	            }).join(separator);
-	            this.data.value = newVal[key] || newVal[nameKey];
-	        });
-	    },
-	    /**
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      key: 'id',
+	      nameKey: 'name',
+	      value: null,
+	      selected: null,
+	      multiple: false,
+	      hierarchical: false
+	    });
+	    this.supr();
+	    this.$ancestor = this;
+	    this.$watch('selected', function (newVal) {
+	      var key = this.data.key,
+	          nameKey = this.data.nameKey,
+	          separator = this.data.separator;
+	      if (!newVal) return this.data.value = '';
+	      if (Array.isArray(newVal)) {
+	        return this.data.value = newVal.map(function (d) {
+	          return d[key] || d[nameKey];
+	        }).join(separator);
+	      }
+	      this.data.value = newVal[key] || newVal[nameKey];
+	    });
+	  },
+
+	  /**
 	     * @method select(item) 选择某一项
 	     * @public
 	     * @param  {object} item 选择项
 	     * @return {void}
 	     */
-	    select: function select(item) {
-	        if (this.data.readonly || this.data.disabled || item.disabled || item.divider) return;
+	  select: function select(item) {
+	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
+	      return;
+	    }
 
-	        if (this.data.multiple) return item.selected = !item.selected;
+	    if (this.data.multiple) return item.selected = !item.selected;
 
-	        this.data.selected = item;
-	        /**
+	    this.data.selected = item;
+	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择项
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item
-	        });
-	    },
-	    /**
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item
+	    });
+	  },
+
+	  /**
 	     * @method toggle(item,open) 展开/收起某一项
 	     * @public
 	     * @param  {object} item 处理项
 	     * @param  {object} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
 	     * @return {void}
 	     */
-	    toggle: function toggle(item, open) {
-	        if (this.data.readonly || this.data.disabled || item.disabled || item.divider) return;
+	  toggle: function toggle(item, open) {
+	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
+	      return;
+	    }
 
-	        if (open === undefined) open = !item.open;
-	        item.open = open;
+	    if (open === undefined) open = !item.open;
+	    item.open = open;
 
-	        /**
+	    /**
 	         * @event toggle 展开或收起某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} item 处理项
 	         * @property {boolean} open 展开/收起状态
 	         */
-	        this.$emit('toggle', {
-	            sender: this,
-	            item: item,
-	            open: open
-	        });
-	    },
-	    /**
+	    this.$emit('toggle', {
+	      sender: this,
+	      item: item,
+	      open: open
+	    });
+	  },
+
+	  /**
 	     * @private
 	     */
-	    _getSelected: function _getSelected(source) {
-	        var self = this;
-	        if (!source) return [];
-	        var arr = [];
-	        source.forEach(function (d) {
-	            var child = d[self.data.childKey];
-	            if (child && child.length) {
-	                arr = arr.concat(self._getSelected(d[self.data.childKey]));
-	            } else if (d.checked) {
-	                arr = arr.concat(d);
-	            }
-	        });
-	        return arr;
-	    },
-	    setSelected: function setSelected(event) {
-	        this.data.selected = this._getSelected(this.data.source);
-	    }
+	  _getSelected: function _getSelected(source) {
+	    var self = this;
+	    if (!source) return [];
+	    var arr = [];
+	    source.forEach(function (d) {
+	      var child = d[self.data.childKey];
+	      if (child && child.length) {
+	        arr = arr.concat(self._getSelected(d[self.data.childKey]));
+	      } else if (d.checked) {
+	        arr = arr.concat(d);
+	      }
+	    });
+	    return arr;
+	  },
+	  setSelected: function setSelected(event) {
+	    this.data.selected = this._getSelected(this.data.source);
+	  }
 		});
 
 /***/ }),
@@ -8077,14 +8187,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * TreeViewList  树型视图列表
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var SourceComponent = __webpack_require__(184);
 	var template = __webpack_require__(194);
@@ -8098,106 +8208,116 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @private
 	 */
 	var TreeViewList = SourceComponent.extend({
-	    name: 'tree-view-list',
-	    template: template,
-	    /**
+	  name: 'tree-view-list',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            itemTemplate: null,
-	            visible: false,
-	            multiple: false
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      itemTemplate: null,
+	      visible: false,
+	      multiple: false
+	    });
+	    this.supr();
 
-	        this.$ancestor = this.$parent.$ancestor;
-	        this.service = this.$ancestor.service;
-	        this.data.itemTemplate = this.$ancestor.data.itemTemplate;
-	        this.data.hierarchical = this.$ancestor.data.hierarchical;
+	    this.$ancestor = this.$parent.$ancestor;
+	    this.service = this.$ancestor.service;
+	    this.data.itemTemplate = this.$ancestor.data.itemTemplate;
+	    this.data.hierarchical = this.$ancestor.data.hierarchical;
 
-	        this.$watch('visible', function (newValue) {
-	            if (!this.data.hierarchical) return;
+	    this.$watch('visible', function (newValue) {
+	      if (!this.data.hierarchical) return;
 
-	            if (!newValue || this.$parent.name !== 'treeViewList') return;
+	      if (!newValue || this.$parent.name !== 'treeViewList') return;
 
-	            this.$updateSource(function () {
-	                this.data.hierarchical = false;
-	            });
-	        });
-	    },
-	    /**
+	      this.$updateSource(function () {
+	        this.data.hierarchical = false;
+	      });
+	    });
+	  },
+
+	  /**
 	     * @override
 	     */
-	    getParams: function getParams() {
-	        if (this.data.parent) return _.extend({ parentId: this.data.parent.id }, this.$ancestor.getParams());
-	    },
-	    /**
+	  getParams: function getParams() {
+	    if (this.data.parent) {
+	      return _.extend({ parentId: this.data.parent.id }, this.$ancestor.getParams());
+	    }
+	  },
+
+	  /**
 	     * @method $updateSource() 从service中更新数据源
 	     * @public
 	     * @deprecated
 	     * @return {SourceComponent} this
 	     */
-	    $updateSource: function $updateSource() {
-	        this.service.getList(this.getParams(), function (result) {
-	            // 给每个节点item添加parent
-	            result.forEach(function (item) {
-	                item.parent = this.data.parent;
-	            }.bind(this));
+	  $updateSource: function $updateSource() {
+	    var self = this;
+	    this.service.getList(this.getParams(), function (result) {
+	      // 给每个节点item添加parent
+	      result.forEach(function (item) {
+	        item.parent = self.data.parent;
+	      });
 
-	            this.$update('source', result);
+	      self.$update('source', result);
 
-	            this.$emit('updateSource', {
-	                sender: this,
-	                result: result
-	            });
-	        }.bind(this));
-	        return this;
-	    },
-	    /**
+	      self.$emit('updateSource', {
+	        sender: this,
+	        result: result
+	      });
+	    });
+	    return this;
+	  },
+
+	  /**
 	     * @note 移交$ancestor处理
 	     */
-	    select: function select() {
-	        this.$ancestor.select.apply(this.$ancestor, arguments);
-	    },
-	    /**
+	  select: function select() {
+	    this.$ancestor.select.apply(this.$ancestor, arguments);
+	  },
+
+	  /**
 	     * @note 移给$ancestor处理
 	     */
-	    toggle: function toggle() {
-	        this.$ancestor.toggle.apply(this.$ancestor, arguments);
-	    },
-	    check: function check() {
-	        this._setSelected({});
-	    },
-	    _setSelected: function _setSelected(event) {
-	        var self = this;
-	        setTimeout(function () {
-	            self.$emit('setselected', event);
-	        }, 0);
-	    },
-	    /**
+	  toggle: function toggle() {
+	    this.$ancestor.toggle.apply(this.$ancestor, arguments);
+	  },
+	  check: function check() {
+	    this._setSelected({});
+	  },
+	  _setSelected: function _setSelected(event) {
+	    var self = this;
+	    setTimeout(function () {
+	      self.$emit('setselected', event);
+	    }, 0);
+	  },
+
+	  /**
 	     * @private
 	     */
-	    _onItemCheckedChange: function _onItemCheckedChange($event, item) {
-	        var checked = $event.checked;
-	        item.checked = checked;
-	        if (checked !== null && item[this.data.childKey]) {
-	            item[this.data.childKey].forEach(function (child) {
-	                child.checked = checked;
-	            }.bind(this));
-	        }
-
-	        var parent = this.data.parent;
-	        if (parent && parent.checked !== item.checked) {
-	            var checkedCount = 0;
-	            parent[this.data.childKey].forEach(function (child) {
-	                if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
-	            });
-
-	            if (checkedCount === 0) parent.checked = false;else if (checkedCount === parent[this.data.childKey].length) parent.checked = true;else parent.checked = null;
-	        }
+	  _onItemCheckedChange: function _onItemCheckedChange($event, item) {
+	    var checked = $event.checked;
+	    item.checked = checked;
+	    if (checked !== null && item[this.data.childKey]) {
+	      item[this.data.childKey].forEach(function (child) {
+	        child.checked = checked;
+	      });
 	    }
+
+	    var parent = this.data.parent;
+	    if (parent && parent.checked !== item.checked) {
+	      var checkedCount = 0;
+	      parent[this.data.childKey].forEach(function (child) {
+	        if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
+	      });
+
+	      if (checkedCount === 0) parent.checked = false;else if (checkedCount === parent[this.data.childKey].length) {
+	        parent.checked = true;
+	      } else parent.checked = null;
+	    }
+	  }
 	});
 
 		module.exports = TreeViewList;
@@ -8212,14 +8332,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCheck   多选按钮
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(196);
@@ -8238,55 +8358,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.class]            => 补充class
 	 */
 	var KLCheck = Component.extend({
-	    name: 'kl-check',
-	    template: template,
-	    /**
+	  name: 'kl-check',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            name: '',
-	            checked: false,
-	            block: false
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      name: '',
+	      checked: false,
+	      block: false
+	    });
+	    this.supr();
 
-	        this.$watch('checked', function (newValue, oldValue) {
-	            if (oldValue === undefined) return;
+	    this.$watch('checked', function (newValue, oldValue) {
+	      if (oldValue === undefined) return;
 
-	            /**
+	      /**
 	             * @event change 选中状态改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} date 改变后的选中状态
 	             */
-	            this.$emit('change', {
-	                sender: this,
-	                checked: newValue
-	            });
-	        });
-	    },
-	    /**
+	      this.$emit('change', {
+	        sender: this,
+	        checked: newValue
+	      });
+	    });
+	  },
+
+	  /**
 	     * @method check(checked) 改变选中状态
 	     * @public
 	     * @param  {boolean} checked 选中状态。则在true/false之间切换。
 	     * @return {void}
 	     */
-	    check: function check(checked) {
-	        if (this.data.readonly || this.data.disabled) return;
+	  check: function check(checked) {
+	    if (this.data.readonly || this.data.disabled) return;
 
-	        if (checked === undefined) checked = !this.data.checked;
-	        this.data.checked = checked;
+	    if (checked === undefined) checked = !this.data.checked;
+	    this.data.checked = checked;
 
-	        /**
+	    /**
 	         * @event check 改变选中状态时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {boolean} checked 选中状态
 	         */
-	        this.$emit('check', {
-	            sender: this,
-	            checked: checked
-	        });
-	    }
+	    this.$emit('check', {
+	      sender: this,
+	      checked: checked
+	    });
+	  }
 	});
 
 		module.exports = KLCheck;
@@ -8301,6 +8422,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Uploader  上传
@@ -8308,104 +8431,104 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(198);
 	var _ = __webpack_require__(101);
 
 	var SIZE_UNITS = {
-	    'kB': 1000,
-	    'MB': 1000 * 1000,
-	    'GB': 1000 * 1000 * 1000
+	  kB: 1000,
+	  MB: 1000 * 1000,
+	  GB: 1000 * 1000 * 1000
+	};
 
-	    /**
-	     * @class Uploader
-	     * @extend Component
-	     * @param {object}            [options.data]                    = 绑定属性
-	     * @param {string}            [options.data.title]              => 按钮文字
-	     * @param {string}            [options.data.url]                => 上传路径
-	     * @param {string}            [options.data.dataType=json]      => 数据类型。可以是：`text`、`xml`、`json`、`script`。
-	     * @param {object}            [options.data.data]               => 附加数据
-	     * @param {string}            [options.data.name=file]          => 上传文件的name
-	     * @param {string|string[]}   [options.data.extensions]         => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
-	     * @param {string|number}     [options.data.maxSize]            => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
-	     * @param {boolean}           [options.data.disabled=false]     => 是否禁用
-	     * @param {boolean}           [options.data.visible=true]       => 是否显示
-	     * @param {string}            [options.data.class]              => 补充class
-	     */
-	};var Uploader = Component.extend({
-	    name: 'uploader',
-	    template: template,
-	    /**
+	/**
+	 * @class Uploader
+	 * @extend Component
+	 * @param {object}            [options.data]                    = 绑定属性
+	 * @param {string}            [options.data.title]              => 按钮文字
+	 * @param {string}            [options.data.url]                => 上传路径
+	 * @param {string}            [options.data.dataType=json]      => 数据类型。可以是：`text`、`xml`、`json`、`script`。
+	 * @param {object}            [options.data.data]               => 附加数据
+	 * @param {string}            [options.data.name=file]          => 上传文件的name
+	 * @param {string|string[]}   [options.data.extensions]         => 可上传的扩展名。默认为空，表示可上传任意文件类型的文件；可以为字符串，多个扩展名用`,`隔开，如：'png,jpg,gif'；也可以为数组，如：['png', 'jpg', 'gif']。
+	 * @param {string|number}     [options.data.maxSize]            => 可上传的最大文件大小。默认为空，表示可上传任意大小的文件；如果为数字，则表示单位为字节；如果为字符串，可以添加以下单位：`kB`、`MB`、`GB`。
+	 * @param {boolean}           [options.data.disabled=false]     => 是否禁用
+	 * @param {boolean}           [options.data.visible=true]       => 是否显示
+	 * @param {string}            [options.data.class]              => 补充class
+	 */
+	var Uploader = Component.extend({
+	  name: 'uploader',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: '',
-	            url: '',
-	            contentType: 'multipart/form-data',
-	            dataType: 'json',
-	            data: {},
-	            name: 'file',
-	            extensions: null,
-	            maxSize: '',
-	            _sending: false,
-	            _id: new Date().getTime()
-	        });
-	        this.supr();
-	    },
-	    /**
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: '',
+	      url: '',
+	      contentType: 'multipart/form-data',
+	      dataType: 'json',
+	      data: {},
+	      name: 'file',
+	      extensions: null,
+	      maxSize: '',
+	      _sending: false,
+	      _id: new Date().getTime()
+	    });
+	    this.supr();
+	  },
+
+	  /**
 	     * @method upload() 弹出文件对话框并且上传文件
 	     * @public
 	     * @return {void}
 	     */
-	    upload: function upload() {
-	        if (this.data.disabled || this.data._sending) return;
+	  upload: function upload() {
+	    if (this.data.disabled || this.data._sending) return;
 
-	        this.$refs.file.click();
-	    },
-	    _checkExtensions: function _checkExtensions(file) {
-	        if (!this.data.extensions) return true;
+	    this.$refs.file.click();
+	  },
+	  _checkExtensions: function _checkExtensions(file) {
+	    if (!this.data.extensions) return true;
 
-	        var fileName = file.name;
-	        var ext = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase();
+	    var fileName = file.name;
+	    var ext = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length).toLowerCase();
 
-	        var extensions = this.data.extensions;
-	        if (typeof extensions === 'string') extensions = extensions.split(',');
+	    var extensions = this.data.extensions;
+	    if (typeof extensions === 'string') extensions = extensions.split(',');
 
-	        if (extensions.indexOf(ext) >= 0) return true;
+	    if (extensions.indexOf(ext) >= 0) return true;
 
-	        /**
+	    /**
 	         * @event error 上传错误时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} name ExtensionError
 	         * @property {object} message 错误信息
 	         * @property {object} extensions 可上传的扩展名
 	         */
-	        this.$emit('error', {
-	            sender: this,
-	            name: 'ExtensionError',
-	            message: '只能上传' + extensions.join(', ') + '类型的文件！',
-	            extensions: extensions
-	        });
+	    this.$emit('error', {
+	      sender: this,
+	      name: 'ExtensionError',
+	      message: '\u53EA\u80FD\u4E0A\u4F20' + extensions.join(', ') + '\u7C7B\u578B\u7684\u6587\u4EF6\uFF01',
+	      extensions: extensions
+	    });
 
-	        return false;
-	    },
-	    _checkSize: function _checkSize(file) {
-	        if (!this.data.maxSize && this.data.maxSize !== 0) return true;
+	    return false;
+	  },
+	  _checkSize: function _checkSize(file) {
+	    if (!this.data.maxSize && this.data.maxSize !== 0) return true;
 
-	        var maxSize;
-	        if (!isNaN(this.data.maxSize)) maxSize = +this.data.maxSize;else {
-	            var unit = this.data.maxSize.slice(-2);
-	            if (!SIZE_UNITS[unit]) throw new Error('Unknown unit!');
+	    var maxSize = void 0;
+	    if (!isNaN(this.data.maxSize)) maxSize = +this.data.maxSize;else {
+	      var unit = this.data.maxSize.slice(-2);
+	      if (!SIZE_UNITS[unit]) throw new Error('Unknown unit!');
 
-	            maxSize = this.data.maxSize.slice(0, -2) * SIZE_UNITS[unit];
-	        }
+	      maxSize = this.data.maxSize.slice(0, -2) * SIZE_UNITS[unit];
+	    }
 
-	        if (file.size <= maxSize) return true;
+	    if (file.size <= maxSize) return true;
 
-	        /**
+	    /**
 	         * @event error 上传错误时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} name SizeError
@@ -8413,109 +8536,114 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @property {object} maxSize 可上传的最大文件大小
 	         * @property {object} size 当前文件大小
 	         */
-	        this.$emit('error', {
-	            sender: this,
-	            name: 'SizeError',
-	            message: '文件大小超出限制！',
-	            maxSize: this.data.maxSize,
-	            size: file.size
-	        });
+	    this.$emit('error', {
+	      sender: this,
+	      name: 'SizeError',
+	      message: '文件大小超出限制！',
+	      maxSize: this.data.maxSize,
+	      size: file.size
+	    });
 
-	        return false;
-	    },
-	    /**
+	    return false;
+	  },
+
+	  /**
 	     * @method _submit() 提交表单
 	     * @private
 	     * @return {void}
 	     */
-	    _submit: function _submit() {
-	        var file = this.$refs.file.files ? this.$refs.file.files[0] : {
-	            name: this.$refs.file.value,
-	            size: 0
-	        };
+	  _submit: function _submit() {
+	    var file = this.$refs.file.files ? this.$refs.file.files[0] : {
+	      name: this.$refs.file.value,
+	      size: 0
+	    };
 
-	        if (!file || !file.name || !this._checkExtensions(file) || !this._checkSize(file)) return;
+	    if (!file || !file.name || !this._checkExtensions(file) || !this._checkSize(file)) {
+	      return;
+	    }
 
-	        this.data._sending = true;
-	        /**
+	    this.data._sending = true;
+	    /**
 	         * @event sending 发送前触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} data 待发送的数据
 	         */
-	        this.$emit('sending', {
-	            sender: this,
-	            data: this.data.data
-	        });
+	    this.$emit('sending', {
+	      sender: this,
+	      data: this.data.data
+	    });
 
-	        this.$refs.form.submit();
-	    },
-	    _onLoad: function _onLoad() {
-	        var $iframe = this.$refs.iframe;
-	        var $file = this.$refs.file;
+	    this.$refs.form.submit();
+	  },
+	  _onLoad: function _onLoad() {
+	    var $iframe = this.$refs.iframe;
+	    var $file = this.$refs.file;
 
-	        if (!this.data._sending) return;
-	        this.data._sending = false;
+	    if (!this.data._sending) return;
+	    this.data._sending = false;
 
-	        var xml = {};
-	        if ($iframe.contentWindow) {
-	            xml.responseText = $iframe.contentWindow.document.body ? $iframe.contentWindow.document.body.innerText : null;
-	            xml.responseXML = $iframe.contentWindow.document.XMLDocument ? $iframe.contentWindow.document.XMLDocument : $iframe.contentWindow.document;
-	        } else if ($iframe.contentDocument) {
-	            xml.responseText = $iframe.contentDocument.document.body ? $iframe.contentDocument.document.body.innerText : null;
-	            xml.responseXML = $iframe.contentDocument.document.XMLDocument ? $iframe.contentDocument.document.XMLDocument : $iframe.contentDocument.document;
-	        }
+	    var xml = {};
+	    if ($iframe.contentWindow) {
+	      xml.responseText = $iframe.contentWindow.document.body ? $iframe.contentWindow.document.body.innerText : null;
+	      xml.responseXML = $iframe.contentWindow.document.XMLDocument ? $iframe.contentWindow.document.XMLDocument : $iframe.contentWindow.document;
+	    } else if ($iframe.contentDocument) {
+	      xml.responseText = $iframe.contentDocument.document.body ? $iframe.contentDocument.document.body.innerText : null;
+	      xml.responseXML = $iframe.contentDocument.document.XMLDocument ? $iframe.contentDocument.document.XMLDocument : $iframe.contentDocument.document;
+	    }
 
-	        if (!xml.responseText) {
-	            /**
+	    if (!xml.responseText) {
+	      /**
 	             * @event error 上传错误时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} name ResponseError
 	             * @property {object} message 错误信息
 	             */
-	            return this.$emit('error', {
-	                sender: this,
-	                name: 'ResponseError',
-	                message: 'No responseText!'
-	            });
-	        }
+	      return this.$emit('error', {
+	        sender: this,
+	        name: 'ResponseError',
+	        message: 'No responseText!'
+	      });
+	    }
 
-	        /**
+	    /**
 	         * @event complete 上传完成时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} xml 返回的xml
 	         */
-	        this.$emit('complete', {
-	            sender: this,
-	            xml: xml
-	        });
+	    this.$emit('complete', {
+	      sender: this,
+	      xml: xml
+	    });
 
-	        /**
+	    /**
 	         * @event success 上传成功时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} data 返回的数据
 	         */
-	        this.$emit('success', {
-	            sender: this,
-	            data: this._parseData(xml, this.data.dataType)
-	        });
-	    },
-	    /**
+	    this.$emit('success', {
+	      sender: this,
+	      data: this._parseData(xml, this.data.dataType)
+	    });
+	  },
+
+	  /**
 	     * @method _parseData(xml, type) 解析接收的数据
 	     * @private
 	     * @param  {object} xml 接收的xml
 	     * @param  {object} type 数据类型
 	     * @return {object|string} 解析后的数据
 	     */
-	    _parseData: function _parseData(xml, type) {
-	        if (type === 'text') return xml.responseText;else if (type === 'xml') return xml.responseXML;else if (type === 'json') {
-	            var data = xml.responseText;
-	            try {
-	                data = JSON.parse(data);
-	            } catch (e) {}
+	  _parseData: function _parseData(xml, type) {
+	    if (type === 'text') return xml.responseText;else if (type === 'xml') return xml.responseXML;else if (type === 'json') {
+	      var data = xml.responseText;
+	      try {
+	        data = JSON.parse(data);
+	      } catch (e) {}
 
-	            return data;
-	        } else if (type === 'script') return eval(xml.responseText);else return xml.responseText;
-	    }
+	      return data;
+	    } else if (type === 'script') return eval(xml.responseText);
+	    return xml.responseText;
+	  }
 	});
 
 		module.exports = Uploader;
@@ -8551,8 +8679,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'ui.group',
 	  template: '<span class="u-group {class}">{#inc this.$body}</span>',
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    this.defaults({});
 
@@ -8566,14 +8694,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Collapse  折叠面板
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(201);
@@ -8594,8 +8722,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'collapse',
 	  template: template,
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      panels: [],
@@ -8617,14 +8745,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Panel     面板
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(203);
@@ -8639,44 +8767,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.class]              => 补充class
 	 */
 	var Panel = Component.extend({
-	    name: 'panel',
-	    template: template,
-	    $tools: null,
-	    $foot: null,
-	    /**
+	  name: 'panel',
+	  template: template,
+	  $tools: null,
+	  $foot: null,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: '',
-	            open: true
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: '',
+	      open: true
+	    });
+	    this.supr();
 
-	        if (this.$outer && this.$outer.data.panels) this.$outer.data.panels.push(this);
-	    },
-	    /**
+	    if (this.$outer && this.$outer.data.panels) {
+	      this.$outer.data.panels.push(this);
+	    }
+	  },
+
+	  /**
 	     * @method toggle(open) 展开/收起
 	     * @public
 	     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
 	     * @return {void}
 	     */
-	    toggle: function toggle(open) {
-	        if (this.data.disabled) return;
+	  toggle: function toggle(open) {
+	    if (this.data.disabled) return;
 
-	        if (open === undefined) open = !this.data.open;
+	    if (open === undefined) open = !this.data.open;
 
-	        if (open && this.$outer && this.$outer.data.panels && this.$outer.data.accordion) {
-	            this.$outer.data.panels.forEach(function (panel) {
-	                panel.data.open = false;
-	            });
-	        }
-
-	        this.data.open = open;
-	    },
-	    stopPropagation: function stopPropagation(e) {
-	        e.stopPropagation();
+	    if (open && this.$outer && this.$outer.data.panels && this.$outer.data.accordion) {
+	      this.$outer.data.panels.forEach(function (panel) {
+	        panel.data.open = false;
+	      });
 	    }
+
+	    this.data.open = open;
+	  },
+	  stopPropagation: function stopPropagation(e) {
+	    e.stopPropagation();
+	  }
 	});
 
 		module.exports = Panel;
@@ -8691,14 +8822,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Gotop  回到顶部
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(205);
@@ -8713,27 +8844,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 */
 	var Gotop = Component.extend({
-	    name: 'gotop',
-	    template: template,
-	    /**
+	  name: 'gotop',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            position: 'bottomright'
-	        });
-	        this.supr();
-	    },
-	    /**
+	  config: function config() {
+	    _.extend(this.data, {
+	      position: 'bottomright'
+	    });
+	    this.supr();
+	  },
+
+	  /**
 	     * @method gotop() 回到顶部
 	     * @public
 	     * @return {void}
 	     */
-	    gotop: function gotop() {
-	        if (this.data.disabled) return;
+	  gotop: function gotop() {
+	    if (this.data.disabled) return;
 
-	        document.body.scrollTop = 0;
-	    }
+	    document.body.scrollTop = 0;
+	  }
 	});
 
 		module.exports = Gotop;
@@ -8760,45 +8892,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Clipboard = __webpack_require__(207);
 
 	/**
-	 * 获取 js 路径快捷键 ctrl + alt + shift + c  
+	 * 获取 js 路径快捷键 ctrl + alt + shift + c
 	 * 获取 ftl 路径快捷键 ctrl + alt + shift + d
 	 */
 
 	var PathTool = function PathTool(Comp) {
-	    Comp.implement({
-	        events: {
-	            $init: function $init() {
-	                console.log('init');
-	                var jCopy = new Clipboard('#j-copy');
-	                var jsLink = location.href.replace(/([A-Z])/g, '.$1').toLowerCase();
-	                jsLink = jsLink.replace('/backend', '');
-	                jsLink = jsLink.substring(jsLink.indexOf('/')).replace('/', 'page/') + '/index';
-	                var ftlLink = jsLink.replace('page/', 'pages/');
-	                jsLink = jsLink + '/entry';
-	                document.addEventListener('keydown', function (event) {
-	                    if (event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 67) {
-	                        var para = document.createElement('button');
-	                        para.setAttribute('data-clipboard-text', jsLink);
-	                        para.id = 'j-copy';
-	                        document.body.appendChild(para);
-	                        para.click();
-	                    } else if (event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 68) {
-	                        var para = document.createElement('button');
-	                        para.setAttribute('data-clipboard-text', ftlLink);
-	                        para.id = 'j-copy';
-	                        document.body.appendChild(para);
-	                        para.click();
-	                    }
-	                });
-	                jCopy.on('success', function (e) {
-	                    var copy = document.getElementById('j-copy');
-	                    if (copy) {
-	                        document.body.removeChild(copy);
-	                    }
-	                });
-	            }
-	        }
-	    });
+	  Comp.implement({
+	    events: {
+	      $init: function $init() {
+	        console.log('init');
+	        var jCopy = new Clipboard('#j-copy');
+	        var jsLink = location.href.replace(/([A-Z])/g, '.$1').toLowerCase();
+	        jsLink = jsLink.replace('/backend', '');
+	        jsLink = jsLink.substring(jsLink.indexOf('/')).replace('/', 'page/') + '/index';
+	        var ftlLink = jsLink.replace('page/', 'pages/');
+	        jsLink += '/entry';
+	        document.addEventListener('keydown', function (event) {
+	          if (event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 67) {
+	            var para = document.createElement('button');
+	            para.setAttribute('data-clipboard-text', jsLink);
+	            para.id = 'j-copy';
+	            document.body.appendChild(para);
+	            para.click();
+	          } else if (event.ctrlKey && event.altKey && event.shiftKey && event.keyCode == 68) {
+	            var para = document.createElement('button');
+	            para.setAttribute('data-clipboard-text', ftlLink);
+	            para.id = 'j-copy';
+	            document.body.appendChild(para);
+	            para.click();
+	          }
+	        });
+	        jCopy.on('success', function (e) {
+	          var copy = document.getElementById('j-copy');
+	          if (copy) {
+	            document.body.removeChild(copy);
+	          }
+	        });
+	      }
+	    }
+	  });
 	};
 
 	module.exports = PathTool;
@@ -9619,14 +9751,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * PanelTool 面板操作
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var Panel = __webpack_require__(202);
@@ -9665,14 +9797,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCheckGroup 输入扩展
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var SourceComponent = __webpack_require__(184);
 	var template = __webpack_require__(217);
@@ -9704,119 +9836,121 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}    [options.service]                 @=> 数据服务
 	 */
 	var KLCheckGroup = SourceComponent.extend({
-	    name: 'kl-check-group',
-	    template: template,
-	    /**
+	  name: 'kl-check-group',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        this.defaults({
-	            // @inherited source: [],
-	            block: false,
-	            hideTip: false,
-	            source: [],
-	            min: 0,
-	            max: 1000,
-	            nameKey: 'name',
-	            key: 'id',
-	            value: '',
-	            separator: ','
+	  config: function config() {
+	    this.defaults({
+	      // @inherited source: [],
+	      block: false,
+	      hideTip: false,
+	      source: [],
+	      min: 0,
+	      max: 1000,
+	      nameKey: 'name',
+	      key: 'id',
+	      value: '',
+	      separator: ','
+	    });
+	    this.supr();
+
+	    this.initValidation();
+	  },
+	  init: function init() {
+	    this.$watch('source', function (source) {
+	      if (!source || !(source instanceof Array)) {
+	        return console.error('source of check.group is not an array');
+	      }
+
+	      var key = this.data.key,
+	          separator = this.data.separator,
+	          value = this.data.value || '',
+	          values = value.split(separator);
+
+	      source.forEach(function (item) {
+	        if (values.indexOf('' + item[key]) != -1) {
+	          item.checked = true;
+	        }
+	      });
+	    });
+	    this.$watch('value', function (newValue) {
+	      var source = this.data.source;
+	      if (newValue === undefined || newValue === null) return;
+
+	      if (source) {
+	        var key = this.data.key,
+	            separator = this.data.separator,
+	            value = newValue || '',
+	            values = value.split(separator);
+	        source.forEach(function (item) {
+	          if (values.indexOf('' + item[key]) != -1) {
+	            item.checked = true;
+	          } else {
+	            item.checked = false;
+	          }
 	        });
-	        this.supr();
+	      }
+	    });
+	  },
 
-	        this.initValidation();
-	    },
-	    init: function init() {
-	        this.$watch('source', function (source) {
-	            if (!source || !(source instanceof Array)) {
-	                return console.error('source of check.group is not an array');
-	            }
-
-	            var key = this.data.key,
-	                separator = this.data.separator,
-	                value = this.data.value || '',
-	                values = value.split(separator);
-
-	            source.forEach(function (item) {
-	                if (values.indexOf(item[key] + '') != -1) {
-	                    item.checked = true;
-	                }
-	            });
-	        });
-	        this.$watch('value', function (newValue) {
-	            var source = this.data.source;
-	            if (newValue === undefined || newValue === null) return;
-
-	            if (source) {
-	                var key = this.data.key,
-	                    separator = this.data.separator,
-	                    value = newValue || '',
-	                    values = value.split(separator);
-	                source.forEach(function (item) {
-	                    if (values.indexOf(item[key] + '') != -1) {
-	                        item.checked = true;
-	                    } else {
-	                        item.checked = false;
-	                    }
-	                });
-	            }
-	        });
-	    },
-	    /**
+	  /**
 	     * @method validate() 根据min, max验证组件的值是否正确
 	     * @public
 	     * @return {object} result 结果
 	     */
-	    validate: function validate() {
-	        var source = this.data.source,
-	            result = { success: true, message: '' },
-	            required = this.data.required,
-	            min = this.data.min ? this.data.min : required / 1,
-	            max = this.data.max,
-	            checked = source.filter(function (item) {
-	            return !!item.checked;
-	        }),
-	            len = checked.length;
+	  validate: function validate() {
+	    var source = this.data.source,
+	        result = { success: true, message: '' },
+	        required = this.data.required,
+	        min = this.data.min ? this.data.min : required / 1,
+	        max = this.data.max,
+	        checked = source.filter(function (item) {
+	      return !!item.checked;
+	    }),
+	        len = checked.length;
 
-	        if (len < min || len > max) {
-	            result.success = false;
-	            result.message = this.data.message || '请选择(' + min + ',' + max + ']个选项';
-	            this.data.state = 'error';
-	        } else {
-	            result.success = true;
-	            result.message = '';
-	            this.data.state = '';
-	        }
-	        this.data.tip = result.message;
+	    if (len < min || len > max) {
+	      result.success = false;
+	      result.message = this.data.message || '\u8BF7\u9009\u62E9(' + min + ',' + max + ']\u4E2A\u9009\u9879';
+	      this.data.state = 'error';
+	    } else {
+	      result.success = true;
+	      result.message = '';
+	      this.data.state = '';
+	    }
+	    this.data.tip = result.message;
 
-	        this.$emit('validate', {
-	            sender: this,
-	            result: result
-	        });
+	    this.$emit('validate', {
+	      sender: this,
+	      result: result
+	    });
 
-	        return result;
-	    },
-	    /**
+	    return result;
+	  },
+
+	  /**
 	     * method _onCheck() 点击check时,改变对应的value值
 	     * @private
 	     */
-	    _onCheck: function _onCheck(item) {
-	        item.checked = !item.checked;
+	  _onCheck: function _onCheck(item) {
+	    item.checked = !item.checked;
 
-	        var key = this.data.key,
-	            separator = this.data.separator,
-	            source = this.data.source,
-	            checkedList = source.filter(function (item) {
-	            return item.checked;
-	        }),
-	            ids = checkedList.map(function (item) {
-	            return item[key];
-	        });
+	    var key = this.data.key,
+	        separator = this.data.separator,
+	        source = this.data.source,
+	        checkedList = source.filter(function (item) {
+	      return item.checked;
+	    }),
+	        ids = checkedList.map(function (item) {
+	      return item[key];
+	    });
 
-	        this.$update('value', ids.join(separator));
+	    this.$update('value', ids.join(separator));
 
-	        this.data.tip && this.validate();
-	    }
+	    this.data.tip && this.validate();
+	  }
 	});
 
 	KLCheckGroup.use(validationMixin);
@@ -9899,16 +10033,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr();
 
 	    this.$watch('date', function (newValue, oldValue) {
-
 	      // 字符类型自动转为日期类型
 	      if (typeof newValue === 'string') {
-	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
 	        return this.data.date = newValue ? new Date(newValue) : new Date();
 	      } else if (typeof newValue === 'number') {
 	        return this.data.date = new Date(newValue);
 	      }
 
-	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+	        throw new TypeError('Invalid Date');
+	      }
 
 	      // 如果不为空并且超出日期范围，则设置为范围边界的日期
 	      if (newValue) {
@@ -9917,7 +10054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      if (newValue) {
-	        //this.data.date.setSeconds(0);
+	        // this.data.date.setSeconds(0);
 	        this.data.date.setMilliseconds(0);
 	        this.data._date = new Date(newValue);
 	        this.data._time = filter.format(newValue, 'HH:mm:ss');
@@ -9940,28 +10077,40 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!newValue) return;
 
 	      if (typeof newValue === 'string') {
-	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
 	        return this.data.minDate = new Date(newValue);
 	      }
 
-	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+	        throw new TypeError('Invalid Date');
+	      }
 	    });
 
 	    this.$watch('maxDate', function (newValue, oldValue) {
 	      if (!newValue) return;
 
 	      if (typeof newValue === 'string') {
-	        if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
 	        return this.data.maxDate = new Date(newValue);
 	      }
 
-	      if (newValue == 'Invalid Date' || newValue == 'NaN') throw new TypeError('Invalid Date');
+	      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+	        throw new TypeError('Invalid Date');
+	      }
 	    });
 
 	    this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-	      if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) return;
+	      if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) {
+	        return;
+	      }
 
-	      if (minDate && maxDate && minDate - maxDate > 0) throw new Calendar.DateRangeError(minDate, maxDate);
+	      if (minDate && maxDate && minDate - maxDate > 0) {
+	        throw new Calendar.DateRangeError(minDate, maxDate);
+	      }
 
 	      // 如果不为空并且超出日期范围，则设置为范围边界的日期
 	      if (this.data.date) {
@@ -9972,6 +10121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
+
 	  /**
 	   * @method select(date) 选择一个日期
 	   * @public
@@ -9979,13 +10129,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {void}
 	   */
 	  select: function select(date, time) {
-	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) return;
+	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
+	      return;
+	    }
 	    this._onDateTimeChange(date, time);
 
 	    this._onOk();
 
-	    //this.toggle(false);
+	    // this.toggle(false);
 	  },
+
 	  /**
 	   * 关闭
 	   * @private
@@ -10008,6 +10161,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.toggle(false);
 	  },
+
 	  /**
 	   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
 	   * @private
@@ -10015,13 +10169,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  _onDateTimeChange: function _onDateTimeChange(date, time) {
 	    this.time = time || '00:00:00';
-	    //this.data.time
+	    // this.data.time
 	    this.date = new Date(date);
 	    time = this.time.split(':');
 	    this.date.setHours(time[0]);
 	    this.date.setMinutes(time[1]);
 	    this.date.setSeconds(time[2]);
 	  },
+
 	  /**
 	   * @method _onInput($event) 输入日期
 	   * @private
@@ -10032,8 +10187,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var value = $event.target.value;
 	    var date = value ? new Date(value) : null;
 
-	    if (date != 'Invalid Date') this.data.date = date;else $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
+	    if (date != 'Invalid Date') this.data.date = date;else {
+	      $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
+	    }
 	  },
+
 	  /**
 	   * @method isOutOfRange(date) 是否超出规定的日期时间范围
 	   * @public
@@ -10086,13 +10244,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
-	 * ------------------------------------------------------------
-	 * Calendar  日历
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
 	'use strict';
 
 	var _create = __webpack_require__(70);
@@ -10101,6 +10252,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * ------------------------------------------------------------
+	 * Calendar  日历
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(221);
 	var _ = __webpack_require__(101);
@@ -10108,6 +10266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bowser = __webpack_require__(99);
 	var moment = __webpack_require__(222);
 	var polyfill = __webpack_require__(76);
+
 	var MS_OF_DAY = 24 * 3600 * 1000;
 
 	/**
@@ -10123,198 +10282,226 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var Calendar = Component.extend({
-	    name: 'calendar',
-	    template: template,
-	    /**
+	  name: 'calendar',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            date: null,
-	            minDate: null,
-	            maxDate: null,
-	            _days: []
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      date: null,
+	      minDate: null,
+	      maxDate: null,
+	      _days: []
+	    });
+	    this.supr();
 
-	        this.$watch('date', function (newValue, oldValue) {
-	            // 字符类型自动转为日期类型
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.date = newValue ? new Date(newValue) : new Date();
-	            } else if (typeof newValue === 'number') {
-	                return this.data.date = new Date(newValue);
-	            }
+	    this.$watch('date', function (newValue, oldValue) {
+	      // 字符类型自动转为日期类型
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
+	        return this.data.date = newValue ? new Date(newValue) : new Date();
+	      } else if (typeof newValue === 'number') {
+	        return this.data.date = new Date(newValue);
+	      }
 
-	            // 如果newValue为空， 则自动转到今天
-	            if (!newValue) return this.data.date = new Date((new Date() / MS_OF_DAY >> 0) * MS_OF_DAY);
+	      // 如果newValue为空， 则自动转到今天
+	      if (!newValue) {
+	        return this.data.date = new Date((new Date() / MS_OF_DAY >> 0) * MS_OF_DAY);
+	      }
 
-	            if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+	      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
 
-	            // 如果超出日期范围，则设置为范围边界的日期
-	            var isOutOfRange = this.isOutOfRange(newValue);
-	            if (isOutOfRange) {
-	                this.data.date = isOutOfRange;
+	      // 如果超出日期范围，则设置为范围边界的日期
+	      var isOutOfRange = this.isOutOfRange(newValue);
+	      if (isOutOfRange) {
+	        this.data.date = isOutOfRange;
 
-	                // 防止第二次刷新同月
-	                this._update();
-	                return;
-	            }
+	        // 防止第二次刷新同月
+	        this._update();
+	        return;
+	      }
 
-	            if (!oldValue || !oldValue.getFullYear) this._update();else if (newValue.getFullYear() !== oldValue.getFullYear() || newValue.getMonth() !== oldValue.getMonth()) this._update();
+	      if (!oldValue || !oldValue.getFullYear) this._update();else if (newValue.getFullYear() !== oldValue.getFullYear() || newValue.getMonth() !== oldValue.getMonth()) {
+	        this._update();
+	      }
 
-	            /**
+	      /**
 	             * @event change 日期改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} date 改变后的日期
 	             */
-	            this.$emit('change', {
-	                sender: this,
-	                date: newValue
-	            });
-	        });
+	      this.$emit('change', {
+	        sender: this,
+	        date: newValue
+	      });
+	    });
 
-	        this.$watch('minDate', function (newValue, oldValue) {
-	            if (!newValue) return;
+	    this.$watch('minDate', function (newValue, oldValue) {
+	      if (!newValue) return;
 
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.minDate = new Date(newValue);
-	            }
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
+	        return this.data.minDate = new Date(newValue);
+	      }
 
-	            if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
-	        });
+	      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+	    });
 
-	        this.$watch('maxDate', function (newValue, oldValue) {
-	            if (!newValue) return;
+	    this.$watch('maxDate', function (newValue, oldValue) {
+	      if (!newValue) return;
 
-	            if (typeof newValue === 'string') {
-	                if (bowser.msie && bowser.version <= 9) return this.data.date = polyfill.StringDate(newValue);
-	                return this.data.maxDate = new Date(newValue);
-	            }
+	      if (typeof newValue === 'string') {
+	        if (bowser.msie && bowser.version <= 9) {
+	          return this.data.date = polyfill.StringDate(newValue);
+	        }
+	        return this.data.maxDate = new Date(newValue);
+	      }
 
-	            if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
-	        });
+	      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+	    });
 
-	        this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-	            if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) return;
+	    this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
+	      if (!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date)) {
+	        return;
+	      }
 
-	            if (minDate && maxDate) if (minDate / MS_OF_DAY >> 0 > maxDate / MS_OF_DAY >> 0) throw new Calendar.DateRangeError(minDate, maxDate);
+	      if (minDate && maxDate) {
+	        if (minDate / MS_OF_DAY >> 0 > maxDate / MS_OF_DAY >> 0) {
+	          throw new Calendar.DateRangeError(minDate, maxDate);
+	        }
+	      }
 
-	            // 如果超出日期范围，则设置为范围边界的日期
-	            var isOutOfRange = this.isOutOfRange(this.data.date);
-	            if (isOutOfRange) this.data.date = isOutOfRange;
-	        });
-	    },
-	    /**
+	      // 如果超出日期范围，则设置为范围边界的日期
+	      var isOutOfRange = this.isOutOfRange(this.data.date);
+	      if (isOutOfRange) this.data.date = isOutOfRange;
+	    });
+	  },
+
+	  /**
 	     * @method _update() 日期改变后更新日历
 	     * @private
 	     * @return {void}
 	     */
-	    _update: function _update() {
-	        this.data._days = [];
+	  _update: function _update() {
+	    this.data._days = [];
 
-	        var date = this.data.date;
-	        var month = date.getMonth();
-	        var mfirst = new Date(date);mfirst.setDate(1);
-	        var mfirstTime = +mfirst;
-	        var nfirst = new Date(mfirst);nfirst.setMonth(month + 1);nfirst.setDate(1);
-	        var nfirstTime = +nfirst;
-	        var lastTime = nfirstTime + ((7 - nfirst.getDay()) % 7 - 1) * MS_OF_DAY;
-	        var num = -mfirst.getDay();
-	        var tmpTime, tmp;
-	        do {
-	            tmpTime = mfirstTime + num++ * MS_OF_DAY;
-	            tmp = new Date(tmpTime);
-	            this.data._days.push(tmp);
-	        } while (tmpTime < lastTime);
-	    },
-	    /**
+	    var date = this.data.date;
+	    var month = date.getMonth();
+	    var mfirst = new Date(date);
+	    mfirst.setDate(1);
+	    var mfirstTime = +mfirst;
+	    var nfirst = new Date(mfirst);
+	    nfirst.setMonth(month + 1);
+	    nfirst.setDate(1);
+	    var nfirstTime = +nfirst;
+	    var lastTime = nfirstTime + ((7 - nfirst.getDay()) % 7 - 1) * MS_OF_DAY;
+	    var num = -mfirst.getDay();
+	    var tmpTime = void 0,
+	        tmp = void 0;
+	    do {
+	      tmpTime = mfirstTime + num++ * MS_OF_DAY;
+	      tmp = new Date(tmpTime);
+	      this.data._days.push(tmp);
+	    } while (tmpTime < lastTime);
+	  },
+
+	  /**
 	     * @method addYear(year) 调整年份
 	     * @public
 	     * @param  {number} [year=0] 加/减的年份
 	     * @return {Date} date 计算后的日期
 	     */
-	    addYear: function addYear(year) {
-	        if (this.data.readonly || this.data.disabled || !year) return;
+	  addYear: function addYear(year) {
+	    if (this.data.readonly || this.data.disabled || !year) return;
 
-	        if (isNaN(year)) throw new TypeError(year + ' is not a number!');
+	    if (isNaN(year)) throw new TypeError(year + ' is not a number!');
 
-	        var date = new Date(this.data.date);
-	        var oldMonth = date.getMonth();
-	        date.setFullYear(date.getFullYear() + year);
-	        if (date.getMonth() != oldMonth) date.setDate(0);
+	    var date = new Date(this.data.date);
+	    var oldMonth = date.getMonth();
+	    date.setFullYear(date.getFullYear() + year);
+	    if (date.getMonth() != oldMonth) date.setDate(0);
 
-	        return this.data.date = date;
-	    },
-	    /**
+	    return this.data.date = date;
+	  },
+
+	  /**
 	     * @method addMonth(month) 调整月份
 	     * @public
 	     * @param  {number} [month=0] 加/减的月份
 	     * @return {Date} date 计算后的日期
 	     */
-	    addMonth: function addMonth(month) {
-	        if (this.data.readonly || this.data.disabled || !month) return;
+	  addMonth: function addMonth(month) {
+	    if (this.data.readonly || this.data.disabled || !month) return;
 
-	        if (isNaN(month)) throw new TypeError(month + ' is not a number!');
+	    if (isNaN(month)) throw new TypeError(month + ' is not a number!');
 
-	        var date = new Date(this.data.date);
-	        var correctMonth = date.getMonth() + month;
-	        date.setMonth(correctMonth);
-	        // 如果跳月，则置为上一个月
-	        if ((date.getMonth() - correctMonth) % 12) date.setDate(0);
+	    var date = new Date(this.data.date);
+	    var correctMonth = date.getMonth() + month;
+	    date.setMonth(correctMonth);
+	    // 如果跳月，则置为上一个月
+	    if ((date.getMonth() - correctMonth) % 12) date.setDate(0);
 
-	        return this.data.date = date;
-	    },
-	    /**
+	    return this.data.date = date;
+	  },
+
+	  /**
 	     * @method select(date) 选择一个日期
 	     * @public
 	     * @param  {Date} date 选择的日期
 	     * @return {void}
 	     */
-	    select: function select(date) {
-	        if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) return;
+	  select: function select(date) {
+	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
+	      return;
+	    }
 
-	        this.data.date = new Date(date);
+	    this.data.date = new Date(date);
 
-	        /**
+	    /**
 	         * @event select 选择某一个日期时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} date 当前选择的日期
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            date: date
-	        });
-	    },
-	    /**
+	    this.$emit('select', {
+	      sender: this,
+	      date: date
+	    });
+	  },
+
+	  /**
 	     * @method goToday() 回到今天
 	     * @public
 	     * @return {void}
 	     */
-	    goToday: function goToday() {
-	        if (this.data.readonly || this.data.disabled) return;
+	  goToday: function goToday() {
+	    if (this.data.readonly || this.data.disabled) return;
 
-	        this.data.date = new Date((new Date() / MS_OF_DAY >> 0) * MS_OF_DAY);
-	    },
-	    /**
+	    this.data.date = new Date((new Date() / MS_OF_DAY >> 0) * MS_OF_DAY);
+	  },
+
+	  /**
 	     * @method isOutOfRange(date) 是否超出规定的日期范围
 	     * @public
 	     * @param {Date} date 待测的日期
 	     * @return {boolean|Date} date 如果没有超出日期范围，则返回false；如果超出日期范围，则返回范围边界的日期
 	     */
-	    isOutOfRange: function isOutOfRange(date) {
-	        var minDate = this.data.minDate;
-	        var maxDate = this.data.maxDate;
+	  isOutOfRange: function isOutOfRange(date) {
+	    var minDate = this.data.minDate;
+	    var maxDate = this.data.maxDate;
 
-	        // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
-	        return minDate && moment(date).isBefore(minDate, 'day') && minDate || maxDate && moment(date).isAfter(maxDate, 'day') && maxDate;
-	    }
+	    // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
+	    return minDate && moment(date).isBefore(minDate, 'day') && minDate || maxDate && moment(date).isAfter(maxDate, 'day') && maxDate;
+	  }
 	});
 
 	var DateRangeError = function DateRangeError(minDate, maxDate) {
-	    this.name = 'DateRangeError';
-	    this.message = 'Wrong Date Range where `minDate` is ' + minDate + ' and `maxDate` is ' + maxDate + '!';
+	  this.name = 'DateRangeError';
+	  this.message = 'Wrong Date Range where `minDate` is ' + minDate + ' and `maxDate` is ' + maxDate + '!';
 	};
 	DateRangeError.prototype = (0, _create2.default)(RangeError.prototype);
 	Calendar.DateRangeError = DateRangeError.prototype.constructor = DateRangeError;
@@ -26147,14 +26334,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLRadioGroup 输入扩展
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var SourceComponent = __webpack_require__(184);
 	var template = __webpack_require__(341);
@@ -26183,117 +26370,119 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.service]               @=> 数据服务
 	 */
 	var KLRadioGroup = SourceComponent.extend({
-	    name: 'kl-radio-group',
-	    template: template,
-	    /**
+	  name: 'kl-radio-group',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            hideTip: false,
-	            selected: null,
-	            _radioGroupId: new Date(),
-	            required: false,
-	            nameKey: 'name',
-	            key: 'id'
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      hideTip: false,
+	      selected: null,
+	      _radioGroupId: new Date(),
+	      required: false,
+	      nameKey: 'name',
+	      key: 'id'
+	    });
+	    this.supr();
+
+	    this.initValidation();
+
+	    this.$watch('value', function (newValue) {
+	      var data = this.data;
+	      var source = data.source;
+	      if (newValue === undefined || newValue === null) return;
+	      if (source) {
+	        var key = data.key;
+	        source.forEach(function (item) {
+	          if (item[key] === 0 && newValue === '') {
+	            return false;
+	          } else if (newValue == item[key]) {
+	            data.selected = item;
+	          }
 	        });
-	        this.supr();
+	      }
+	    });
 
-	        this.initValidation();
+	    this.$watch('source', function (source) {
+	      if (!source || !(source instanceof Array)) {
+	        return console.error('source of radio.group is not an array');
+	      }
 
-	        this.$watch('value', function (newValue) {
-	            var data = this.data;
-	            var source = data.source;
-	            if (newValue === undefined || newValue === null) return;
-	            if (source) {
-	                var key = data.key;
-	                source.forEach(function (item) {
-	                    if (item[key] === 0 && newValue === "") {
-	                        return false;
-	                    } else if (newValue == item[key]) {
-	                        data.selected = item;
-	                    }
-	                });
-	            }
+	      if (source) {
+	        var data = this.data,
+	            key = data.key,
+	            value = data.value;
+	        source.forEach(function (item) {
+	          if (item[key] === 0 && value === '') {
+	            return false;
+	          } else if (value == item[key]) {
+	            data.selected = item;
+	          }
 	        });
+	      }
+	    });
+	  },
 
-	        this.$watch('source', function (source) {
-	            if (!source || !(source instanceof Array)) {
-	                return console.error('source of radio.group is not an array');
-	            }
-
-	            if (source) {
-	                var data = this.data,
-	                    key = data.key,
-	                    value = data.value;
-	                source.forEach(function (item) {
-	                    if (item[key] === 0 && value === "") {
-	                        return false;
-	                    } else if (value == item[key]) {
-	                        data.selected = item;
-	                    }
-	                });
-	            }
-	        });
-	    },
-	    /**
+	  /**
 	     * @method select(item) 选择某一
 	     * @public
 	     * @param  {object} item 选择
 	     * @return {void}
 	     */
-	    select: function select(item) {
-	        if (this.data.readonly || this.data.disabled) return;
+	  select: function select(item) {
+	    if (this.data.readonly || this.data.disabled) return;
 
-	        var data = this.data;
-	        var key = data.key;
-	        var nameKey = data.nameKey;
-	        var value = item[key];
-	        data.value = value === undefined ? item[nameKey] : value;
+	    var data = this.data;
+	    var key = data.key;
+	    var nameKey = data.nameKey;
+	    var value = item[key];
+	    data.value = value === undefined ? item[nameKey] : value;
 
-	        data.selected = item;
-	        /**
+	    data.selected = item;
+	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item
-	        });
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item
+	    });
 
-	        this.data.tip && this.validate();
-	    },
-	    /**
+	    this.data.tip && this.validate();
+	  },
+
+	  /**
 	     * @method validate() 根据required验证组件的值是否正确
 	     * @public
 	     * @return {object} result 结果
 	     */
-	    validate: function validate(on) {
-	        var data = this.data,
-	            result = { success: true, message: '' },
-	            selected = data.selected;
+	  validate: function validate(on) {
+	    var data = this.data,
+	        result = { success: true, message: '' },
+	        selected = data.selected;
 
-	        if (data.required && !selected) {
-	            result.success = false;
-	            result.message = this.data.message || this.$trans('PLEASE_SELECT');
-	            this.data.state = 'error';
-	        } else {
-	            result.success = true;
-	            result.message = '';
-	            this.data.state = '';
-	        }
-	        this.data.tip = result.message;
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
+	    if (data.required && !selected) {
+	      result.success = false;
+	      result.message = this.data.message || this.$trans('PLEASE_SELECT');
+	      this.data.state = 'error';
+	    } else {
+	      result.success = true;
+	      result.message = '';
+	      this.data.state = '';
 	    }
+	    this.data.tip = result.message;
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  }
 	});
 
 	KLRadioGroup.use(validationMixin);
@@ -26309,13 +26498,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
-	 * ------------------------------------------------------------
-	 * KLMultiSelect 树型选择
-	 * @author   lilang
-	 * ------------------------------------------------------------
-	 */
-
 	'use strict';
 
 	var _defineProperty2 = __webpack_require__(343);
@@ -26323,6 +26505,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLMultiSelect 树型选择
+	 * @author   lilang
+	 * ------------------------------------------------------------
+	 */
 
 	var Dropdown = __webpack_require__(183);
 	var Validation = __webpack_require__(111);
@@ -26352,246 +26541,245 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var KLMultiSelect = Dropdown.extend({
-	    name: 'kl-multi-select',
-	    template: template,
-	    config: function config(data) {
-	        _.extend(this.data, {
-	            // @inherited source: [],
-	            // @inherited open: false,
-	            multiple: false,
-	            value: null,
-	            selected: [],
-	            separator: ',',
-	            placeholder: this.$trans('PLEASE_SELECT'),
-	            key: 'id',
-	            nameKey: 'name',
-	            childKey: 'children',
-	            checkKey: 'checked',
-	            hierarchical: false,
-	            updateAuto: false
-	        });
-	        data._source = _.clone(data.source || []);
-	        data.tree = [data._source, [], [], [], [], [], [], [], [], []];
-	        data.search = ['', '', '', '', '', '', '', '', '', ''];
-	        data.empty = [];
-	        this.$watch('source', function (newValue, oldValue) {
-	            if (!(newValue instanceof Array)) {
-	                throw new TypeError('`source` is not an Array!');
-	                return;
-	            }
-	            data._source = _.clone(data.source || []);
-	            data.tree[0] = data._source;
-	            this.initSelected();
-	            this.$update();
-	        }.bind(this));
-	        this.$watch('value', function (newValue, oldValue) {
-	            this.initSelected();
-	            if (oldValue !== null && oldValue !== undefined) {
-	                /**
+	  name: 'kl-multi-select',
+	  template: template,
+	  config: function config(data) {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      // @inherited open: false,
+	      multiple: false,
+	      value: null,
+	      selected: [],
+	      separator: ',',
+	      placeholder: this.$trans('PLEASE_SELECT'),
+	      key: 'id',
+	      nameKey: 'name',
+	      childKey: 'children',
+	      checkKey: 'checked',
+	      hierarchical: false,
+	      updateAuto: false
+	    });
+	    data._source = _.clone(data.source || []);
+	    data.tree = [data._source, [], [], [], [], [], [], [], [], []];
+	    data.search = ['', '', '', '', '', '', '', '', '', ''];
+	    data.empty = [];
+	    this.$watch('source', function (newValue, oldValue) {
+	      if (!(newValue instanceof Array)) {
+	        throw new TypeError('`source` is not an Array!');
+	      }
+	      data._source = _.clone(data.source || []);
+	      data.tree[0] = data._source;
+	      this.initSelected();
+	      this.$update();
+	    });
+	    this.$watch('value', function (newValue, oldValue) {
+	      this.initSelected();
+	      if (oldValue !== null && oldValue !== undefined) {
+	        /**
 	                 * @event value 改变时触发
 	                 * @property {object} sender 事件发送对象
 	                 * @property {object} value 当前 value 的值
 	                 */
-	                this.$emit('change', (0, _defineProperty3.default)({
-	                    sender: this,
-	                    value: newValue,
-	                    key: data.key
-	                }, 'value', data.value));
-	                if (data.source && data.source.length) {
-	                    this.validate();
-	                }
+	        this.$emit('change', (0, _defineProperty3.default)({
+	          sender: this,
+	          value: newValue,
+	          key: data.key
+	        }, 'value', data.value));
+	        if (data.source && data.source.length) {
+	          this.validate();
+	        }
+	      }
+	      this.$update();
+	    });
+	    this.supr();
+
+	    this.initValidation();
+	  },
+	  initSelected: function initSelected() {
+	    var data = this.data;
+	    if (data.value !== null && data.value !== undefined) {
+	      var _list = data.value.toString().split(data.separator);
+	      var _checkedItem = function _checkedItem(list) {
+	        list.map(function (item2) {
+	          if (item2[data.childKey] && item2[data.childKey].length) {
+	            _checkedItem(item2[data.childKey]);
+	          } else if (_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
+	            item2[data.checkKey] = true;
+	          } else {
+	            item2[data.checkKey] = false;
+	          }
+	        });
+	      };
+	      var _checkedSelf = function _checkedSelf(list) {
+	        list.map(function (item) {
+	          if (item[data.childKey] && item[data.childKey].length) {
+	            _checkedSelf(item[data.childKey]);
+	            if (item[data.childKey].every(function (item2) {
+	              return item2[data.checkKey];
+	            })) {
+	              item[data.checkKey] = true;
+	            } else if (item[data.childKey].some(function (item2) {
+	              return item2[data.checkKey] === true || item2[data.checkKey] === null;
+	            })) {
+	              item[data.checkKey] = null;
+	            } else {
+	              item[data.checkKey] = false;
 	            }
-	            this.$update();
-	        }.bind(this));
-	        this.supr();
+	          }
+	        });
+	      };
+	      _checkedItem(data._source);
+	      _checkedSelf(data._source);
+	      this.watchValue();
+	    } else {
+	      data.value = '';
+	    }
+	  },
+	  viewCate: function viewCate(cate, level) {
+	    var data = this.data;
+	    data.tree[level + 1] = cate[data.childKey] || [];
+	    // 将本级和下一级的active都置为false
+	    for (var i = level; i < level + 2; i++) {
+	      data.tree[i].forEach(function (item) {
+	        item.active = false;
+	      });
+	    }
+	    // 当前项active设为true
+	    cate.active = true;
 
-	        this.initValidation();
-	    },
-	    initSelected: function initSelected() {
-	        var data = this.data;
-	        if (data.value !== null && data.value !== undefined) {
-	            var _list = data.value.toString().split(data.separator);
-	            var _checkedItem = function _checkedItem(list) {
-	                list.map(function (item2) {
-	                    if (item2[data.childKey] && item2[data.childKey].length) {
-	                        _checkedItem(item2[data.childKey]);
-	                    } else {
-	                        if (_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
-	                            item2[data.checkKey] = true;
-	                        } else {
-	                            item2[data.checkKey] = false;
-	                        }
-	                    }
-	                });
-	            };
-	            var _checkedSelf = function _checkedSelf(list) {
-	                list.map(function (item) {
-	                    if (item[data.childKey] && item[data.childKey].length) {
-	                        _checkedSelf(item[data.childKey]);
-	                        if (item[data.childKey].every(function (item2) {
-	                            return item2[data.checkKey];
-	                        })) {
-	                            item[data.checkKey] = true;
-	                        } else if (item[data.childKey].some(function (item2) {
-	                            return item2[data.checkKey] === true || item2[data.checkKey] === null;
-	                        })) {
-	                            item[data.checkKey] = null;
-	                        } else {
-	                            item[data.checkKey] = false;
-	                        }
-	                    }
-	                });
-	            };
-	            _checkedItem(data._source);
-	            _checkedSelf(data._source);
-	            this.watchValue();
-	        } else {
-	            data.value = '';
-	        }
-	    },
-	    viewCate: function viewCate(cate, level) {
-	        var data = this.data;
-	        data.tree[level + 1] = cate[data.childKey] || [];
-	        // 将本级和下一级的active都置为false
-	        for (var i = level; i < level + 2; i++) {
-	            data.tree[i].forEach(function (item) {
-	                item.active = false;
-	            });
-	        }
-	        // 当前项active设为true
-	        cate.active = true;
+	    // 将下一级后面的都置空
+	    for (i = level + 2; i < data.tree.length; i++) {
+	      data.tree[i] = {};
+	    }
 
-	        // 将下一级后面的都置空
-	        for (i = level + 2; i < data.tree.length; i++) {
-	            data.tree[i] = {};
-	        }
-
-	        if (!data.multiple && !(cate[data.childKey] && cate[data.childKey].length)) {
-	            data.value = cate[data.key].toString();
-	            data.selected = [cate];
-	            data.open = false;
-	            /**
+	    if (!data.multiple && !(cate[data.childKey] && cate[data.childKey].length)) {
+	      data.value = cate[data.key].toString();
+	      data.selected = [cate];
+	      data.open = false;
+	      /**
 	             * @event select 选择某一项时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} selected 当前选择项
 	             */
-	            this.$emit('select', {
-	                sender: this,
-	                selected: cate
-	            });
-	        }
-	    },
-	    checkCate: function checkCate(cate, level, checked) {
-	        checked = !checked;
-	        var data = this.data;
-	        cate[data.checkKey] = checked;
-	        this.setCheck(cate[data.childKey], checked);
-
-	        for (var i = level - 1; i >= 0; i--) {
-	            data.tree[i].forEach(function (item) {
-	                if (item.active) {
-	                    var checkedCount = 0;
-	                    item[data.childKey].forEach(function (child) {
-	                        if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
-	                    });
-
-	                    if (checkedCount === 0) item.checked = false;else if (checkedCount === item[data.childKey].length) item.checked = true;else item.checked = null;
-	                }
-	            });
-	        }
-	        this.$emit('select', {
-	            sender: this,
-	            selected: cate
-	        });
-	        this.watchValue();
-	    },
-	    // 循环列表获取 value 值
-	    watchValue: function watchValue() {
-	        var data = this.data;
-	        data.selected = [];
-	        var _value = [];
-	        var _getChecked = function _getChecked(list) {
-	            list.map(function (item) {
-	                if (item[data.childKey] && item[data.childKey].length) {
-	                    _getChecked(item[data.childKey]);
-	                } else {
-	                    if (item[data.checkKey]) {
-	                        _value.push(item[data.key].toString());
-	                        data.selected.push(item);
-	                    }
-	                }
-	            });
-	        };
-	        _getChecked(data._source);
-	        if (_value.length) {
-	            data.value = _value.join([data.separator]);
-	        } else {
-	            data.value = '';
-	        }
-	    },
-	    // 循环设置类目及其子类目的check状态
-	    setCheck: function setCheck(category, value) {
-	        var data = this.data;
-	        var self = this;
-	        if (!category) return;
-	        category.forEach(function (item) {
-	            item[data.checkKey] = value;
-	            if (item[data.childKey]) self.setCheck(item[data.childKey], value);
-	        });
-	    },
-	    // 删除某一项
-	    delete: function _delete(event, item) {
-	        event && event.stopPropagation();
-	        this.toggle(true);
-	        var data = this.data;
-	        var _list = data.value.toString().split(data.separator);
-	        _list.splice(_list.indexOf((item[data.key].toString() || '').toString()), 1);
-	        data.value = _list.join(data.separator);
-	        this.initSelected();
-	        this.watchValue();
-	    },
-	    validate: function validate(on) {
-	        var data = this.data;
-
-	        var result = { success: true, message: '' },
-	            value = this.data.value;
-
-	        value = typeof value == 'undefined' ? '' : value + '';
-	        if (data.required && !value.length) {
-	            result.success = false;
-	            result.message = data.message || this.$trans('PLEASE_SELECT');
-	            data.state = 'error';
-	        } else {
-	            result.success = true;
-	            result.message = '';
-	            data.state = '';
-	        }
-	        data.tip = result.message;
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
+	      this.$emit('select', {
+	        sender: this,
+	        selected: cate
+	      });
 	    }
-	}).filter('search', function (category, search, level) {
+	  },
+	  checkCate: function checkCate(cate, level, checked) {
+	    checked = !checked;
 	    var data = this.data;
-	    var target = [];
-	    if (category && category.filter) {
-	        target = category.filter(function (item, index) {
-	            if (!item[data.nameKey]) return true;
-	            return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
-	        });
+	    cate[data.checkKey] = checked;
+	    this.setCheck(cate[data.childKey], checked);
+
+	    for (var i = level - 1; i >= 0; i--) {
+	      data.tree[i].forEach(function (item) {
+	        if (item.active) {
+	          var checkedCount = 0;
+	          item[data.childKey].forEach(function (child) {
+	            if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
+	          });
+
+	          if (checkedCount === 0) item.checked = false;else if (checkedCount === item[data.childKey].length) {
+	            item.checked = true;
+	          } else item.checked = null;
+	        }
+	      });
 	    }
-	    if (target.length) {
-	        data.empty[level] = false;
-	        return target;
+	    this.$emit('select', {
+	      sender: this,
+	      selected: cate
+	    });
+	    this.watchValue();
+	  },
+
+	  // 循环列表获取 value 值
+	  watchValue: function watchValue() {
+	    var data = this.data;
+	    data.selected = [];
+	    var _value = [];
+	    var _getChecked = function _getChecked(list) {
+	      list.map(function (item) {
+	        if (item[data.childKey] && item[data.childKey].length) {
+	          _getChecked(item[data.childKey]);
+	        } else if (item[data.checkKey]) {
+	          _value.push(item[data.key].toString());
+	          data.selected.push(item);
+	        }
+	      });
+	    };
+	    _getChecked(data._source);
+	    if (_value.length) {
+	      data.value = _value.join([data.separator]);
 	    } else {
-	        data.empty[level] = true;
-	        return [];
+	      data.value = '';
 	    }
+	  },
+
+	  // 循环设置类目及其子类目的check状态
+	  setCheck: function setCheck(category, value) {
+	    var data = this.data;
+	    var self = this;
+	    if (!category) return;
+	    category.forEach(function (item) {
+	      item[data.checkKey] = value;
+	      if (item[data.childKey]) self.setCheck(item[data.childKey], value);
+	    });
+	  },
+
+	  // 删除某一项
+	  delete: function _delete(event, item) {
+	    event && event.stopPropagation();
+	    this.toggle(true);
+	    var data = this.data;
+	    var _list = data.value.toString().split(data.separator);
+	    _list.splice(_list.indexOf((item[data.key].toString() || '').toString()), 1);
+	    data.value = _list.join(data.separator);
+	    this.initSelected();
+	    this.watchValue();
+	  },
+	  validate: function validate(on) {
+	    var data = this.data;
+
+	    var result = { success: true, message: '' },
+	        value = this.data.value;
+
+	    value = typeof value === 'undefined' ? '' : '' + value;
+	    if (data.required && !value.length) {
+	      result.success = false;
+	      result.message = data.message || this.$trans('PLEASE_SELECT');
+	      data.state = 'error';
+	    } else {
+	      result.success = true;
+	      result.message = '';
+	      data.state = '';
+	    }
+	    data.tip = result.message;
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  }
+	}).filter('search', function (category, search, level) {
+	  var data = this.data;
+	  var target = [];
+	  if (category && category.filter) {
+	    target = category.filter(function (item, index) {
+	      if (!item[data.nameKey]) return true;
+	      return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
+	    });
+	  }
+	  if (target.length) {
+	    data.empty[level] = false;
+	    return target;
+	  }
+	  data.empty[level] = true;
+	  return [];
 	});
 
 	KLMultiSelect.use(validationMixin);
@@ -26660,14 +26848,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLButton  按钮
 	 * @author   Cody Chan<int64ago@gmail.com>
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var validator = __webpack_require__(112);
 	var bowser = __webpack_require__(99);
@@ -26693,94 +26881,91 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}     [options.data.class=false]    => 样式扩展
 	 */
 	var actionIcons = {
-	    /* 查看 */
-	    view: 'eye',
-	    /* 发送 */
-	    send: 'send-o',
-	    /* 撤销 */
-	    undo: 'reply-all',
-	    /* 取消 */
-	    cancel: 'arrow-circle-left',
-	    /* 删除 */
-	    remove: 'trash',
-	    /* 更新 */
-	    update: 'refresh',
-	    /* 提交 */
-	    submit: 'legal',
-	    /* 保存 */
-	    save: 'save',
-	    /* 复制 */
-	    copy: 'copy',
-	    /* 通过 */
-	    pass: 'success',
-	    /* 驳回 */
-	    reject: 'warning',
-	    /* 返回 */
-	    backward: 'angle-double-left',
-	    /* 下载 */
-	    download: 'download',
-	    /* 上传 */
-	    upload: 'upload',
-	    /* 查询 */
-	    search: 'search',
-	    /* 编辑 */
-	    edit: 'edit',
-	    /* 添加 */
-	    add: 'add',
-	    /* 链接 */
-	    link: 'link',
-	    /* 单行添加 */
-	    plus: 'plus'
+	  /* 查看 */
+	  view: 'eye',
+	  /* 发送 */
+	  send: 'send-o',
+	  /* 撤销 */
+	  undo: 'reply-all',
+	  /* 取消 */
+	  cancel: 'arrow-circle-left',
+	  /* 删除 */
+	  remove: 'trash',
+	  /* 更新 */
+	  update: 'refresh',
+	  /* 提交 */
+	  submit: 'legal',
+	  /* 保存 */
+	  save: 'save',
+	  /* 复制 */
+	  copy: 'copy',
+	  /* 通过 */
+	  pass: 'success',
+	  /* 驳回 */
+	  reject: 'warning',
+	  /* 返回 */
+	  backward: 'angle-double-left',
+	  /* 下载 */
+	  download: 'download',
+	  /* 上传 */
+	  upload: 'upload',
+	  /* 查询 */
+	  search: 'search',
+	  /* 编辑 */
+	  edit: 'edit',
+	  /* 添加 */
+	  add: 'add',
+	  /* 链接 */
+	  link: 'link',
+	  /* 单行添加 */
+	  plus: 'plus'
 	};
 
 	var KLButton = Component.extend({
-	    name: 'kl-button',
-	    template: template,
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: this.$trans('CONFIRM'),
-	            type: 'default',
-	            size: 'normal',
-	            icon: '',
-	            loading: false,
-	            disabled: false,
-	            actionIcons: actionIcons,
-	            target: '_self'
-	        });
-	        this.supr();
-	    },
-
-	    init: function init() {
-	        this.supr();
-	        this.$watch('download', function (url) {
-	            if (validator.isURL(url)) {
-	                if (bowser.chrome) {
-	                    var a = document.createElement('a');
-	                    a.href = url;
-	                    a.download = url;
-	                    a.click();
-	                } else {
-	                    location.href = url;
-	                }
-	                this.data.download = '';
-	            }
-	        });
-	    },
-
-	    onClick: function onClick(e) {
-	        var loading = this.data.loading;
-	        if (!loading) {
-	            this.$emit('click', {
-	                sender: this,
-	                e: e
-	            });
+	  name: 'kl-button',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: this.$trans('CONFIRM'),
+	      type: 'default',
+	      size: 'normal',
+	      icon: '',
+	      loading: false,
+	      disabled: false,
+	      actionIcons: actionIcons,
+	      target: '_self'
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.supr();
+	    this.$watch('download', function (url) {
+	      if (validator.isURL(url)) {
+	        if (bowser.chrome) {
+	          var a = document.createElement('a');
+	          a.href = url;
+	          a.download = url;
+	          a.click();
+	        } else {
+	          location.href = url;
 	        }
-	        return !!this.data.link;
-	    },
-
-	    onMouseUp: function onMouseUp(e) {
-	        e.target.blur();
+	        this.data.download = '';
+	      }
+	    });
+	  },
+	  onClick: function onClick(e) {
+	    var loading = this.data.loading;
+	    if (!loading) {
+	      this.$emit('click', {
+	        sender: this,
+	        e: e
+	      });
 	    }
+	    return !!this.data.link;
+	  },
+	  onMouseUp: function onMouseUp(e) {
+	    e.target.blur();
+	  }
 	});
 
 		module.exports = KLButton;
@@ -26816,120 +27001,123 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string|number} [options.data.labelLineHeight='']  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
 	 */
 	var KLForm = Validation.extend({
-	    name: 'kl-form',
-	    template: template,
-	    selectors: [],
-	    config: function config(data) {
+	  name: 'kl-form',
+	  template: template,
+	  selectors: [],
+	  config: function config(data) {
+	    _.extend(data, {
+	      service: null,
+	      sourcePath: 'data',
+	      class: ''
+	    });
 
-	        _.extend(data, {
-	            service: null,
-	            sourcePath: 'data',
-	            class: ''
-	        });
+	    this.supr(data);
+	  },
+	  init: function init() {
+	    this.supr();
 
-	        this.supr(data);
-	    },
-	    init: function init() {
-	        this.supr();
+	    this.initValidation();
 
-	        this.initValidation();
+	    this.$watch('this.controls.length', function () {
+	      this.initSelectorSource();
+	      this.initFormItem();
+	    });
+	  },
+	  initFormItem: function initFormItem() {
+	    var controls = this.controls,
+	        labelSize = this.data.labelSize,
+	        labelLineHeight = this.data.labelLineHeight;
+	    labelSize && controls.forEach(function ($component) {
+	      if (!$component.labelSize) {
+	        $component.$update('labelSize', labelSize);
+	      }
+	    });
+	    labelLineHeight && controls.forEach(function ($component) {
+	      if (!$component.labelLineHeight) {
+	        $component.$update('labelLineHeight', labelLineHeight);
+	      }
+	    });
+	  },
+	  initSelectorSource: function initSelectorSource() {
+	    var controls = this.controls;
+	    this.selectors = controls.filter(function ($formitem) {
+	      return !!$formitem.data.sourceKey;
+	    });
 
-	        this.$watch('this.controls.length', function () {
-	            this.initSelectorSource();
-	            this.initFormItem();
-	        });
-	    },
-	    initFormItem: function initFormItem() {
-	        var controls = this.controls,
-	            labelSize = this.data.labelSize,
-	            labelLineHeight = this.data.labelLineHeight;
-	        labelSize && controls.forEach(function ($component) {
-	            if (!$component.labelSize) {
-	                $component.$update('labelSize', labelSize);
-	            }
-	        });
-	        labelLineHeight && controls.forEach(function ($component) {
-	            if (!$component.labelLineHeight) {
-	                $component.$update('labelLineHeight', labelLineHeight);
-	            }
-	        });
-	    },
-	    initSelectorSource: function initSelectorSource() {
-	        var controls = this.controls;
-	        this.selectors = controls.filter(function ($formitem) {
-	            return !!$formitem.data.sourceKey;
-	        });
+	    if (!this.data.service || !this.selectors.length) {
+	      return;
+	    }
 
-	        if (!this.data.service || !this.selectors.length) {
-	            return;
-	        }
+	    this.__reqSource();
+	  },
+	  __getSourceKeys: function __getSourceKeys() {
+	    return this.selectors.map(function ($formitem) {
+	      return $formitem.data.sourceKey;
+	    });
+	  },
+	  __reqSource: function __reqSource() {
+	    var self = this;
+	    var keys = this.__getSourceKeys();
 
-	        this.__reqSource();
-	    },
-	    __getSourceKeys: function __getSourceKeys() {
-	        return this.selectors.map(function ($formitem) {
-	            return $formitem.data.sourceKey;
-	        });
-	    },
-	    __reqSource: function __reqSource() {
-	        var keys = this.__getSourceKeys();
+	    window.NEKSelects = window.NEKSelects || {};
+	    keys = keys.filter(function (key) {
+	      return !window.NEKSelects[key];
+	    });
 
-	        window.NEKSelects = window.NEKSelects || {};
-	        keys = keys.filter(function (key) {
-	            return !window.NEKSelects[key];
-	        });
+	    this.selectors.forEach(function ($formitem) {
+	      var key = $formitem.data.sourceKey;
+	      var source = window.NEKSelects[key] || [];
+	      self.__updateSource($formitem, key, source);
+	    });
 
-	        this.selectors.forEach(function ($formitem) {
-	            var key = $formitem.data.sourceKey;
-	            var source = window.NEKSelects[key] || [];
-	            this.__updateSource($formitem, key, source);
-	        }.bind(this));
+	    if (!keys.length) {
+	      return;
+	    }
+	    this.keys = keys;
+	    ajax.request({
+	      url: this.data.service,
+	      method: 'get',
+	      type: 'json',
+	      data: {
+	        keys: keys.join(',')
+	      },
+	      success: this.__cbReqSource.bind(this)
+	    });
+	  },
+	  __cbReqSource: function __cbReqSource(json) {
+	    var self = this;
+	    var keys = this.keys,
+	        path = this.data.sourcePath,
+	        result = path === '' ? json : json[path];
 
-	        if (!keys.length) {
-	            return;
-	        }
-	        this.keys = keys;
-	        ajax.request({
-	            url: this.data.service,
-	            method: 'get',
-	            type: 'json',
-	            data: {
-	                keys: keys.join(',')
-	            },
-	            success: this.__cbReqSource.bind(this)
-	        });
-	    },
-	    __cbReqSource: function __cbReqSource(json) {
-	        var keys = this.keys,
-	            path = this.data.sourcePath,
-	            result = path === '' ? json : json[path];
+	    result = result || {};
 
-	        result = result || {};
-
-	        this.selectors.forEach(function ($formitem) {
-	            var key = $formitem.data.sourceKey;
-	            var source = result[key] || [];
-	            this.__updateSource($formitem, key, source);
-	        }.bind(this));
-	        /**
+	    this.selectors.forEach(function ($formitem) {
+	      var key = $formitem.data.sourceKey;
+	      var source = result[key] || [];
+	      self.__updateSource($formitem, key, source);
+	    });
+	    /**
 	           * @event sourceCompleted kl-form自动获取sourceKey异步数据后触发
 	           * @property {object} sender 事件发送对象
 	           * @property {object} result 所有异步数据
 	           */
-	        this.$emit('sourceCompleted', {
-	            sender: this,
-	            result: window.NEKSelects
-	        });
-	    },
-	    __updateSource: function __updateSource($formitem, key, source) {
-	        var $selectItem = $formitem.controls[0];
+	    this.$emit('sourceCompleted', {
+	      sender: this,
+	      result: window.NEKSelects
+	    });
+	  },
+	  __updateSource: function __updateSource($formitem, key, source) {
+	    var $selectItem = $formitem.controls[0];
 
-	        /* 三种情况不给组件赋值:1. kl-form-item下面没有选项组件; 2. source为空 3. 选项组件的source属性已经有值 */
-	        if (!$selectItem || !source.length || $selectItem.data.source.length) return;
-	        $selectItem.data.source = _.clone(source);
-	        window.NEKSelects[key] = _.clone(source);
-	        $selectItem.$update();
+	    /* 三种情况不给组件赋值:1. kl-form-item下面没有选项组件; 2. source为空 3. 选项组件的source属性已经有值 */
+	    if (!$selectItem || !source.length || $selectItem.data.source.length) {
+	      return;
 	    }
+	    $selectItem.data.source = _.clone(source);
+	    window.NEKSelects[key] = _.clone(source);
+	    $selectItem.$update();
+	  }
 	});
 
 	KLForm.use(ValidationMixin);
@@ -26974,92 +27162,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
 	 */
 	var KLFormItem = Validation.extend({
-	    name: 'kl-form-item',
-	    template: template,
-	    config: function config(data) {
-	        _.extend(data, {
-	            textAlign: 'right',
-	            labelCols: '',
-	            labelLineHeight: 'lg'
-	        });
-	        this.supr(data);
+	  name: 'kl-form-item',
+	  template: template,
+	  config: function config(data) {
+	    _.extend(data, {
+	      textAlign: 'right',
+	      labelCols: '',
+	      labelLineHeight: 'lg'
+	    });
+	    this.supr(data);
 
-	        this.initValidation();
-	    },
-	    init: function init() {
-	        var parentValidator = this._parentValidator;
-	        this.$watch('this.controls.length', function (newValue, oldValue) {
-	            /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
-	            if (oldValue === undefined) {
-	                return;
-	            }
-	            if (parentValidator && parentValidator.initSelectorSource) {
-	                parentValidator.initSelectorSource();
-	            }
-	        });
+	    this.initValidation();
+	  },
+	  init: function init() {
+	    var parentValidator = this._parentValidator;
+	    this.$watch('this.controls.length', function (newValue, oldValue) {
+	      /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
+	      if (oldValue === undefined) {
+	        return;
+	      }
+	      if (parentValidator && parentValidator.initSelectorSource) {
+	        parentValidator.initSelectorSource();
+	      }
+	    });
 
-	        this.$watch('required', function () {
-	            this.initValidateRule();
-	        });
-	    },
-	    initValidateRule: function initValidateRule() {
-	        if (!this.controls.length) {
-	            return;
-	        }
-
-	        var controls = this.controls || [],
-	            message = this.data.message;
-	        controls.forEach(function ($component) {
-	            if (this.data.required) {
-	                $component.data.required = true;
-	                $component.data.message = $component.data.message || message;
-	                $component.$update();
-	            } else {
-	                $component.$update('required', false);
-	            }
-	        }.bind(this));
+	    this.$watch('required', function () {
+	      this.initValidateRule();
+	    });
+	  },
+	  initValidateRule: function initValidateRule() {
+	    if (!this.controls.length) {
+	      return;
 	    }
+
+	    var self = this;
+	    var controls = this.controls || [],
+	        message = this.data.message;
+	    controls.forEach(function ($component) {
+	      if (self.data.required) {
+	        $component.data.required = true;
+	        $component.data.message = $component.data.message || message;
+	        $component.$update();
+	      } else {
+	        $component.$update('required', false);
+	      }
+	    });
+	  }
 	});
 
 	KLFormItem.directive('cols', function (ele, cols) {
-	    this.$watch(cols, function (ncols) {
-	        ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
-	        if (ncols) {
-	            ele.classList.add('g-col', 'g-col-' + ncols);
-	        }
-	    });
+	  this.$watch(cols, function (ncols) {
+	    ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
+	    if (ncols) {
+	      ele.classList.add('g-col', 'g-col-' + ncols);
+	    }
+	  });
 	});
 
 	KLFormItem.directive('size', function (ele, size) {
-	    this.$watch(size, function (newValue, oldValue) {
-	        if (!newValue) {
-	            return;
-	        }
+	  this.$watch(size, function (newValue, oldValue) {
+	    if (!newValue) {
+	      return;
+	    }
 
-	        if (parseInt(newValue)) {
-	            ele.style.width = parseInt(newValue) + 'px';
-	        } else {
-	            ele.style.width = '';
-	            ele.classList.remove(oldValue);
-	            ele.classList.add('formitem_tt-' + newValue);
-	        }
-	    });
+	    if (parseInt(newValue)) {
+	      ele.style.width = parseInt(newValue) + 'px';
+	    } else {
+	      ele.style.width = '';
+	      ele.classList.remove(oldValue);
+	      ele.classList.add('formitem_tt-' + newValue);
+	    }
+	  });
 	});
 
 	KLFormItem.directive('lineHeight', function (ele, lineHeight) {
-	    this.$watch(lineHeight, function (newValue, oldValue) {
-	        if (!newValue) {
-	            return;
-	        }
+	  this.$watch(lineHeight, function (newValue, oldValue) {
+	    if (!newValue) {
+	      return;
+	    }
 
-	        if (!isNaN(newValue)) {
-	            ele.style.lineHeight = newValue;
-	        } else {
-	            ele.style.lineHeight = '';
-	            ele.classList.remove(oldValue);
-	            ele.classList.add('formitem_tt-lh-' + newValue);
-	        }
-	    });
+	    if (!isNaN(newValue)) {
+	      ele.style.lineHeight = newValue;
+	    } else {
+	      ele.style.lineHeight = '';
+	      ele.classList.remove(oldValue);
+	      ele.classList.add('formitem_tt-lh-' + newValue);
+	    }
+	  });
 	});
 
 	KLFormItem.use(validationMixin);
@@ -27070,14 +27259,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLTooltip     提示
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var dom = __webpack_require__(75).dom;
 
@@ -27111,6 +27300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr();
 	  },
 	  getInstance: function getInstance() {
+	    var self = this;
 	    var tip = this.data.tip,
 	        placement = this.data.placement;
 	    if (!this.data.instance) {
@@ -27119,9 +27309,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 
 	      instance.$on('destroy', function () {
-	        this.$refs.trigger.data.isShow = false;
-	        this.data.instance = null;
-	      }.bind(this));
+	        self.$refs.trigger.data.isShow = false;
+	        self.data.instance = null;
+	      });
 
 	      this.data.instance = instance;
 	    }
@@ -27160,14 +27350,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Trigger   trigger component 当被包裹target的action事件触发时,执行getInstance方法的show;
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var dom = __webpack_require__(75).dom;
 
@@ -27192,6 +27382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.defaults({
 	      action: 'mouseEnter',
 	      getInstance: function getInstance() {},
+
 	      placement: 'top',
 	      destroyOnHide: false,
 	      hideWhenScroll: false
@@ -27200,46 +27391,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr(data);
 	  },
 	  init: function init() {
+	    var self = this;
 	    var element = dom.element(this),
 	        action = this.data.action;
 
 	    if (action == 'click') {
 	      dom.on(element, 'click', function (e) {
-	        this.toggle();
-	      }.bind(this));
+	        self.toggle();
+	      });
 	      dom.on(document.body, 'click', function (e) {
 	        var target = e.target;
-	        if (!_.dom.contains(element, target) && this.data.isShow) {
-	          this.toggle(false);
+	        if (!_.dom.contains(element, target) && self.data.isShow) {
+	          self.toggle(false);
 	        }
-	      }.bind(this));
+	      });
 	    }
 	    if (action == 'mouseEnter') {
 	      dom.on(element, 'mouseenter', function () {
-	        this.toggle(true);
-	      }.bind(this));
+	        self.toggle(true);
+	      });
 	      dom.on(element, 'mouseleave', function () {
-	        this.toggle(false);
-	      }.bind(this));
+	        self.toggle(false);
+	      });
 	    }
 	    if (action == 'focus') {
 	      dom.on(element, 'focus', function () {
-	        this.toggle(true);
-	      }.bind(this));
+	        self.toggle(true);
+	      });
 	      dom.on(element, 'blur', function () {
-	        this.toggle(false);
-	      }.bind(this));
+	        self.toggle(false);
+	      });
 	    }
 
 	    window.addEventListener('scroll', function () {
-	      var isShow = this.data.isShow;
-	      if (isShow && this.data.hideWhenScroll) {
-	        this.toggle(false);
+	      var isShow = self.data.isShow;
+	      if (isShow && self.data.hideWhenScroll) {
+	        self.toggle(false);
 	      }
-	    }.bind(this), true);
+	    }, true);
 	  },
 	  updateInstance: function updateInstance(isShow) {
-
 	    var instance = this.data.getInstance(),
 	        element = instance.getElement(),
 	        $align = this.$refs.alignment,
@@ -27264,7 +27455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  toggle: function toggle(isShow) {
-	    this.data.isShow = typeof isShow == 'undefined' ? !this.data.isShow : isShow;
+	    this.data.isShow = typeof isShow === 'undefined' ? !this.data.isShow : isShow;
 	    this.updateInstance(this.data.isShow);
 	    this.$update();
 	  }
@@ -27276,14 +27467,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	/**
 	 * ------------------------------------------------------------
 	 * Alignment tooltip, popconfirm使用的定位
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var dom = __webpack_require__(75).dom;
 	var domAlign = __webpack_require__(357);
@@ -27310,10 +27501,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  init: function init() {
 	    this.data.target = dom.element(this);
+	    var self = this;
 
 	    dom.on(window, 'resize', _.debounce(function () {
-	      this.reAlign();
-	    }.bind(this), 50));
+	      self.reAlign();
+	    }, 50));
 	  },
 	  reAlign: function reAlign(src) {
 	    var target = this.data.target,
@@ -28736,14 +28928,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * Select2  选择扩展
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Dropdown = __webpack_require__(183);
 	var template = __webpack_require__(369);
@@ -28794,292 +28986,289 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var KLSelect = Dropdown.extend({
-	    name: 'kl-select',
-	    template: template,
-	    /**
+	  name: 'kl-select',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        var data = this.data;
-	        _.extend(data, {
-	            hideTip: false,
-	            selected: undefined,
-	            key: 'id',
-	            nameKey: 'name',
-	            value: undefined,
+	  config: function config() {
+	    var data = this.data;
+	    _.extend(data, {
+	      hideTip: false,
+	      selected: undefined,
+	      key: 'id',
+	      nameKey: 'name',
+	      value: undefined,
 
-	            // 搜索的文案
-	            searchValue: '',
-	            canSearch: undefined,
-	            filter: null,
-	            // 默认不区分大小写
-	            isCaseSensitive: true,
-	            noMatchText: this.$trans('NO_MATCH'),
-	            delaySearch: 300,
-	            maxShowCount: 1000,
+	      // 搜索的文案
+	      searchValue: '',
+	      canSearch: undefined,
+	      filter: null,
+	      // 默认不区分大小写
+	      isCaseSensitive: true,
+	      noMatchText: this.$trans('NO_MATCH'),
+	      delaySearch: 300,
+	      maxShowCount: 1000,
 
-	            separator: ',',
-	            multiple: false,
-	            selectedClose: false,
-	            canSelectAll: true,
-	            limit: null,
+	      separator: ',',
+	      multiple: false,
+	      selectedClose: false,
+	      canSelectAll: true,
+	      limit: null,
 
-	            placeholder: this.$trans('PLEASE_SELECT'),
-	            required: false
-	        });
-	        if (data.multiple && !Array.isArray(data.selected)) {
-	            data.selected = data.selected ? [data.selected] : [];
-	        }
-	        this.supr();
+	      placeholder: this.$trans('PLEASE_SELECT'),
+	      required: false
+	    });
+	    if (data.multiple && !Array.isArray(data.selected)) {
+	      data.selected = data.selected ? [data.selected] : [];
+	    }
+	    this.supr();
 
-	        this.$watch('selected', function (newValue, oldValue) {
-
-	            //因为存在source异步获取的情况 如果source长度为0表示source还未获取
-	            if (oldValue === undefined && !(Array.isArray(data.source) && data.source.length)) {
-	                return;
-	            }
-	            data.value = this.getValue();
-	            if (!newValue && data.multiple) {
-	                data.selected = [];
-	            }
-	            /**
+	    this.$watch('selected', function (newValue, oldValue) {
+	      // 因为存在source异步获取的情况 如果source长度为0表示source还未获取
+	      if (oldValue === undefined && !(Array.isArray(data.source) && data.source.length)) {
+	        return;
+	      }
+	      data.value = this.getValue();
+	      if (!newValue && data.multiple) {
+	        data.selected = [];
+	      }
+	      /**
 	             * @event change 选择项改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} selected 改变后的选择项
 	             * @property {string} key 数据项的键
 	             * @property {string|number} value 改变后的选择值
 	             */
-	            this.$emit('change', {
-	                sender: this,
-	                selected: newValue,
-	                key: data.key,
-	                value: data.value
-	            });
+	      this.$emit('change', {
+	        sender: this,
+	        selected: newValue,
+	        key: data.key,
+	        value: data.value
+	      });
+	    });
+
+	    this.$watch('value', function (newValue) {
+	      var source = data.source;
+	      var key = data.key;
+	      if (newValue === undefined || newValue === null) {
+	        return data.selected = newValue;
+	      }
+
+	      if (source) {
+	        if (data.multiple) {
+	          var newValueArr = ('' + newValue).split(data.separator);
+	          data.selected = newValue ? source.filter(function (item) {
+	            return newValueArr.indexOf('' + item[key]) !== -1;
+	          }, this) : [];
+	        } else {
+	          data.selected = source.find(function (item) {
+	            return '' + item[key] === '' + newValue;
+	          }, this);
+	        }
+
+	        this.data.tip && this.validate();
+	      }
+	    });
+
+	    this.$watch('source', function (newValue, oldValue) {
+	      if (newValue === undefined) {
+	        return data.selected = undefined;
+	      }
+
+	      if (!(newValue instanceof Array)) {
+	        throw new TypeError('`source` is not an Array!');
+	      }
+
+	      var key = data.key;
+	      var nameKey = data.nameKey;
+	      var value = data.value;
+	      var itemHandleFn = function itemHandleFn(value) {
+	        return value;
+	      };
+	      if (newValue.length) {
+	        if (typeof newValue[0] === 'string' || typeof newValue[0] === 'number') {
+	          itemHandleFn = function itemHandleFn(value) {
+	            var item = {};
+	            item[key] = value;
+	            item[nameKey] = value;
+	            return item;
+	          };
+	        } else if (!newValue[0].hasOwnProperty(key)) {
+	          itemHandleFn = function itemHandleFn(value) {
+	            if (!value.hasOwnProperty('divider')) {
+	              value[key] = value[nameKey];
+	            }
+	            return value;
+	          };
+	        } else if (!newValue[0].hasOwnProperty(nameKey)) {
+	          itemHandleFn = function itemHandleFn(value) {
+	            value[nameKey] = value[key];
+	            return value;
+	          };
+	        }
+	        newValue = data.source = newValue.map(function (value) {
+	          return itemHandleFn(value);
 	        });
+	      }
 
-	        this.$watch('value', function (newValue) {
-	            var source = data.source;
-	            var key = data.key;
-	            if (newValue === undefined || newValue === null) {
-	                return data.selected = newValue;
-	            }
+	      if (data.multiple) {
+	        if (value !== undefined && value !== null) {
+	          var valueArr = ('' + value).split(data.separator);
+	          data.selected = [].concat(value ? newValue.filter(function (item) {
+	            return valueArr.indexOf('' + item[key]) !== -1;
+	          }, this) || [] : []);
+	        } else if (data.selected) {
+	          data.selected = data.selected.filter(function (item) {
+	            return newValue.indexOf(item) !== -1;
+	          });
+	        }
+	      } else {
+	        if (value !== undefined && value !== null) {
+	          data.selected = newValue.find(function (item) {
+	            return item[key] == value;
+	          }, this);
+	        } else if (data.selected && newValue.indexOf(data.selected) < 0) {
+	          data.selected = undefined;
+	        }
 
-	            if (source) {
-	                if (data.multiple) {
-	                    var newValueArr = (newValue + '').split(data.separator);
-	                    data.selected = newValue ? source.filter(function (item) {
-	                        return newValueArr.indexOf(item[key] + '') !== -1;
-	                    }, this) : [];
-	                } else {
-	                    data.selected = source.find(function (item) {
-	                        return item[key] + '' === newValue + '';
-	                    }, this);
-	                }
+	        // 当placeholder为空时，自动选择第一项
+	        if (!data.placeholder && !data.selected) {
+	          data.selected = newValue[0];
+	        }
+	      }
 
-	                this.data.tip && this.validate();
-	            }
-	        });
-
-	        this.$watch('source', function (newValue, oldValue) {
-
-	            if (newValue === undefined) {
-	                return data.selected = undefined;
-	            }
-
-	            if (!(newValue instanceof Array)) {
-	                throw new TypeError('`source` is not an Array!');
-	            }
-
-	            var key = data.key;
-	            var nameKey = data.nameKey;
-	            var value = data.value;
-	            var itemHandleFn = function itemHandleFn(value) {
-	                return value;
-	            };
-	            if (newValue.length) {
-	                if (typeof newValue[0] === 'string' || typeof newValue[0] === 'number') {
-	                    itemHandleFn = function itemHandleFn(value) {
-	                        var item = {};
-	                        item[key] = value;
-	                        item[nameKey] = value;
-	                        return item;
-	                    };
-	                } else if (!newValue[0].hasOwnProperty(key)) {
-	                    itemHandleFn = function itemHandleFn(value) {
-	                        if (!value.hasOwnProperty('divider')) {
-	                            value[key] = value[nameKey];
-	                        }
-	                        return value;
-	                    };
-	                } else if (!newValue[0].hasOwnProperty(nameKey)) {
-	                    itemHandleFn = function itemHandleFn(value) {
-	                        value[nameKey] = value[key];
-	                        return value;
-	                    };
-	                }
-	                newValue = data.source = newValue.map(function (value) {
-	                    return itemHandleFn(value);
-	                });
-	            }
-
-	            if (data.multiple) {
-	                if (value !== undefined && value !== null) {
-	                    var valueArr = (value + '').split(data.separator);
-	                    data.selected = [].concat(value ? newValue.filter(function (item) {
-	                        return valueArr.indexOf(item[key] + '') !== -1;
-	                    }, this) || [] : []);
-	                } else if (data.selected) {
-	                    data.selected = data.selected.filter(function (item) {
-	                        return newValue.indexOf(item) !== -1;
-	                    });
-	                }
-	            } else {
-	                if (value !== undefined && value !== null) {
-	                    data.selected = newValue.find(function (item) {
-	                        return item[key] == value;
-	                    }, this);
-	                } else if (data.selected && newValue.indexOf(data.selected) < 0) {
-	                    data.selected = undefined;
-	                }
-
-	                // 当placeholder为空时，自动选择第一项
-	                if (!data.placeholder && !data.selected) {
-	                    data.selected = newValue[0];
-	                }
-	            }
-
-	            /**
+	      /**
 	             * 1.明确指定isCanSearch为true直接开始搜索项功能
 	             * 2.当选这项多余20个，没有指定可搜索时 自动开启
 	             */
-	            var canSearch;
-	            if (this.hasOwnProperty('__canSearch')) {
-	                canSearch = this.__canSearch;
-	            } else {
-	                canSearch = this.__canSearch = data.canSearch;
-	            }
-	            data.canSearch = canSearch === true || Array.isArray(newValue) && newValue.length > 20 && canSearch !== false;
-	        });
+	      var canSearch = void 0;
+	      if (this.hasOwnProperty('__canSearch')) {
+	        canSearch = this.__canSearch;
+	      } else {
+	        canSearch = this.__canSearch = data.canSearch;
+	      }
+	      data.canSearch = canSearch === true || Array.isArray(newValue) && newValue.length > 20 && canSearch !== false;
+	    });
 
-	        this.$watch('multiple', function (newValue, oldValue) {
-	            if (oldValue === undefined) {
-	                return;
-	            }
-	            if (newValue) {
-	                if (!Array.isArray(data.selected)) {
-	                    data.selected = data.selected ? [data.selected] : data.selected;
-	                }
-	            } else {
-	                data.value = '';
-	            }
-	        });
-	        this.$watch('limit', function (newValue, oldValue) {
-	            if (oldValue === undefined) {
-	                return;
-	            }
-	            try {
-	                newValue = Number(newValue);
-	                if (isNaN(newValue)) {
-	                    console.error(this.$trans('LIMIT_ERROR'));
-	                }
-	            } catch (e) {
-	                console.error(this.$trans('LIMIT_ERROR'));
-	            }
-	        });
-	        if (this.service && this.service.getList) {
-	            var $updateSource = _.throttle(this.$updateSource.bind(this), data.delaySearch);
-	            this.$watch('searchValue', function (newValue, oldValue) {
-	                if (oldValue === undefined) {
-	                    return;
-	                }
-	                $updateSource();
-	            });
+	    this.$watch('multiple', function (newValue, oldValue) {
+	      if (oldValue === undefined) {
+	        return;
+	      }
+	      if (newValue) {
+	        if (!Array.isArray(data.selected)) {
+	          data.selected = data.selected ? [data.selected] : data.selected;
 	        }
+	      } else {
+	        data.value = '';
+	      }
+	    });
+	    this.$watch('limit', function (newValue, oldValue) {
+	      if (oldValue === undefined) {
+	        return;
+	      }
+	      try {
+	        newValue = Number(newValue);
+	        if (isNaN(newValue)) {
+	          console.error(this.$trans('LIMIT_ERROR'));
+	        }
+	      } catch (e) {
+	        console.error(this.$trans('LIMIT_ERROR'));
+	      }
+	    });
+	    if (this.service && this.service.getList) {
+	      var $updateSource = _.throttle(this.$updateSource.bind(this), data.delaySearch);
+	      this.$watch('searchValue', function (newValue, oldValue) {
+	        if (oldValue === undefined) {
+	          return;
+	        }
+	        $updateSource();
+	      });
+	    }
 
-	        this.initValidation();
-	    },
-	    /**
+	    this.initValidation();
+	  },
+
+	  /**
 	     * @method select(item) 选择某一项
 	     * @public
 	     * @param  {object} item 选择项
 	     * @return {void}
 	     */
-	    select: function select(item) {
-	        var data = this.data;
-	        var multiple = data.multiple;
-	        if (data.readonly || data.disabled || item && (item.disabled || item.divider)) {
-	            return;
-	        }
-	        if (multiple) {
-	            var selected = data.selected;
-	            var indexOf = this.indexOf(selected, item);
-	            if (indexOf !== -1) {
-	                selected.splice(indexOf, 1);
-	            } else {
-	                if (item) {
-	                    selected.push(item);
-	                } else {
-	                    selected.length = 0;
-	                }
-	            }
-	        } else {
-	            data.selected = item;
-	        }
+	  select: function select(item) {
+	    var data = this.data;
+	    var multiple = data.multiple;
+	    if (data.readonly || data.disabled || item && (item.disabled || item.divider)) {
+	      return;
+	    }
+	    if (multiple) {
+	      var selected = data.selected;
+	      var indexOf = this.indexOf(selected, item);
+	      if (indexOf !== -1) {
+	        selected.splice(indexOf, 1);
+	      } else if (item) {
+	        selected.push(item);
+	      } else {
+	        selected.length = 0;
+	      }
+	    } else {
+	      data.selected = item;
+	    }
 
-	        /**
+	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择项
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item
-	        });
-	        if (multiple) {
-	            this.searchInputFocus();
-	            if (!data.selectedClose && item) {
-	                data.canSearch && this.clearSearchValue();
-	                return;
-	            }
-	        }
-	        this.toggle(false);
-	    },
-	    clearContent: function clearContent(e) {
-	        e && e.stopPropagation();
-	        this.data.searchValue = '';
-	    },
-	    toggle: function toggle(open, e) {
-	        e && e.stopPropagation();
-	        var data = this.data;
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item
+	    });
+	    if (multiple) {
+	      this.searchInputFocus();
+	      if (!data.selectedClose && item) {
 	        data.canSearch && this.clearSearchValue();
-	        this.supr(open);
-	    },
-	    validate: function validate(on) {
-	        var data = this.data;
-
-	        var result = { success: true, message: '' },
-	            value = this.data.value;
-
-	        value = typeof value == 'undefined' ? '' : value + '';
-	        if (data.required && !value.length) {
-	            result.success = false;
-	            result.message = data.message || this.$trans('PLEASE_SELECT');
-	            data.state = 'error';
-	        } else {
-	            result.success = true;
-	            result.message = '';
-	            data.state = '';
-	        }
-	        data.tip = result.message;
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
+	        return;
+	      }
 	    }
+	    this.toggle(false);
+	  },
+	  clearContent: function clearContent(e) {
+	    e && e.stopPropagation();
+	    this.data.searchValue = '';
+	  },
+	  toggle: function toggle(open, e) {
+	    e && e.stopPropagation();
+	    var data = this.data;
+	    data.canSearch && this.clearSearchValue();
+	    this.supr(open);
+	  },
+	  validate: function validate(on) {
+	    var data = this.data;
+
+	    var result = { success: true, message: '' },
+	        value = this.data.value;
+
+	    value = typeof value === 'undefined' ? '' : '' + value;
+	    if (data.required && !value.length) {
+	      result.success = false;
+	      result.message = data.message || this.$trans('PLEASE_SELECT');
+	      data.state = 'error';
+	    } else {
+	      result.success = true;
+	      result.message = '';
+	      data.state = '';
+	    }
+	    data.tip = result.message;
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  }
 	}).use(Multiple).use(PrivateMethod).use(validationMixin);
 
 		module.exports = KLSelect;
@@ -29094,25 +29283,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 370 */
 /***/ (function(module, exports) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * kl-select  util
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var selectUtil = {
-	    /**
+	  /**
 	     * 设置对应的key为value
 	     * @param target   目标对象
 	     * @param key      需要设置的key
 	     * @param value    设置的值
 	     */
-	    clearDataToNUll: function clearDataToNUll(target, key, value) {
-	        target[key] = value || '';
-	    },
-	    /**
+	  clearDataToNUll: function clearDataToNUll(target, key, value) {
+	    target[key] = value || '';
+	  },
+
+	  /**
 	     * 根据是否多选获取selected中key对应的字段并返回
 	     * @param data          组件data
 	     * @param valueFn       非多选时获取selected中key对应值的函数
@@ -29121,24 +29311,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param key           获取值的key
 	     * @returns {string}    最终返回值
 	     */
-	    getSelectedTextByKey: function getSelectedTextByKey(data, valueFn, nullValue, separator, key) {
-	        var selected = data.selected;
-	        var value = '';
-	        if (selected) {
-	            if (data.multiple) {
-	                value = selected.length ? selected.reduce(function (prev, next, index) {
-	                    var nextValue = next[key];
-	                    if (index != selected.length - 1) {
-	                        nextValue += separator;
-	                    }
-	                    return prev + nextValue;
-	                }, '') : nullValue;
-	            } else {
-	                value = valueFn(selected);
-	            }
-	        }
-	        return value;
+	  getSelectedTextByKey: function getSelectedTextByKey(data, valueFn, nullValue, separator, key) {
+	    var selected = data.selected;
+	    var value = '';
+	    if (selected) {
+	      if (data.multiple) {
+	        value = selected.length ? selected.reduce(function (prev, next, index) {
+	          var nextValue = next[key];
+	          if (index != selected.length - 1) {
+	            nextValue += separator;
+	          }
+	          return prev + nextValue;
+	        }, '') : nullValue;
+	      } else {
+	        value = valueFn(selected);
+	      }
 	    }
+	    return value;
+	  }
 	};
 
 		module.exports = selectUtil;
@@ -29156,76 +29346,71 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var util = __webpack_require__(370);
+
 	'use strict';
 	module.exports = function Multiple(Component) {
-	    Component.implement({
-	        selectAll: function selectAll(isSelected) {
-	            var data = this.data;
-	            if (isSelected) {
-	                data.selected = this.filterData(data.source);
-	            } else {
-	                data.selected = [];
-	            }
-	            this.toggle(false);
-	        },
-	        removeSelected: function removeSelected(selected, index, event) {
-	            event && event.stopPropagation();
-	            selected.splice(index, 1);
-	            this.toggle(true);
-	            this.searchInputFocus();
-	        },
-	        backSearchValue: function backSearchValue(event, selected, searchValue) {
-	            var isBackSpaceKeyCode = 8;
-	            if (event.which == isBackSpaceKeyCode && !searchValue.trim()) {
-	                this.removeSelected(selected, selected.length - 1, event);
-	            }
-	        },
-	        searchClick: function searchClick() {
-	            event && event.stopPropagation();
-	            this.toggle(true);
-	            this.searchInputFocus();
-	        },
-	        searchInputFocus: function searchInputFocus() {
-	            this.$refs.input && this.$refs.input.focus();
-	        },
-	        clearSearchValue: function clearSearchValue() {
-	            var data = this.data;
-	            util.clearDataToNUll(data, 'searchValue', '');
+	  Component.implement({
+	    selectAll: function selectAll(isSelected) {
+	      var data = this.data;
+	      if (isSelected) {
+	        data.selected = this.filterData(data.source);
+	      } else {
+	        data.selected = [];
+	      }
+	      this.toggle(false);
+	    },
+	    removeSelected: function removeSelected(selected, index, event) {
+	      event && event.stopPropagation();
+	      selected.splice(index, 1);
+	      this.toggle(true);
+	      this.searchInputFocus();
+	    },
+	    backSearchValue: function backSearchValue(event, selected, searchValue) {
+	      var isBackSpaceKeyCode = 8;
+	      if (event.which == isBackSpaceKeyCode && !searchValue.trim()) {
+	        this.removeSelected(selected, selected.length - 1, event);
+	      }
+	    },
+	    searchClick: function searchClick() {
+	      event && event.stopPropagation();
+	      this.toggle(true);
+	      this.searchInputFocus();
+	    },
+	    searchInputFocus: function searchInputFocus() {
+	      this.$refs.input && this.$refs.input.focus();
+	    },
+	    clearSearchValue: function clearSearchValue() {
+	      var data = this.data;
+	      util.clearDataToNUll(data, 'searchValue', '');
+	    }
+	  }).directive({
+	    computedTextWidth: function computedTextWidth(element, value) {
+	      var getStrInDOMWidth = function getStrInDOMWidth(str) {
+	        var doc = document;
+	        var body = doc.body;
+	        var span = doc.createElement('span');
+	        span.style.whiteSpace = 'pre';
+	        span.style.visibility = 'hidden';
+	        span.innerText = str;
+	        body.appendChild(span);
+	        var width = span.getClientRects()[0].width;
+	        body.removeChild(span);
+	        return width;
+	      };
+	      this.$watch(value, function (newValue) {
+	        if (newValue) {
+	          element.style.width = getStrInDOMWidth(newValue) + 1 + 'px';
+	        } else {
+	          element.style.width = '';
 	        }
-	    }).directive({
-	        computedTextWidth: function computedTextWidth(element, value) {
-	            var getStrInDOMWidth = function getStrInDOMWidth(str) {
-	                var doc = document;
-	                var body = doc.body;
-	                var span = doc.createElement('span');
-	                span.style.whiteSpace = 'pre';
-	                span.style.visibility = 'hidden';
-	                span.innerText = str;
-	                body.appendChild(span);
-	                var width = span.getClientRects()[0].width;
-	                body.removeChild(span);
-	                return width;
-	            };
-	            this.$watch(value, function (newValue) {
-	                if (newValue) {
-	                    element.style.width = getStrInDOMWidth(newValue) + 1 + 'px';
-	                } else {
-	                    element.style.width = '';
-	                }
-	            });
-	        }
-	    });
+	      });
+	    }
+	  });
 		};
 
 /***/ }),
 /* 372 */
 /***/ (function(module, exports, __webpack_require__) {
-
-	/**
-	 * ------------------------------------------------------------
-	 * kl-select  内部私有方法
-	 * ------------------------------------------------------------
-	 */
 
 	'use strict';
 
@@ -29235,93 +29420,106 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * ------------------------------------------------------------
+	 * kl-select  内部私有方法
+	 * ------------------------------------------------------------
+	 */
+
 	var util = __webpack_require__(370);
+
 	module.exports = function PrivateMethod(Component) {
-	    Component.implement({
-	        /**
+	  Component.implement({
+	    /**
 	         * 过滤可选的数据项
 	         * @param source
 	         * @returns {*}
 	         */
-	        filterData: function filterData(source) {
-	            return source.filter(function (item) {
-	                return !item.hasOwnProperty('divider') && !item.hasOwnProperty('disabled') || item.hasOwnProperty('divider') && !item.divider || item.hasOwnProperty('disabled') && !item.disabled;
-	            });
-	        },
-	        /**
+	    filterData: function filterData(source) {
+	      return source.filter(function (item) {
+	        return !item.hasOwnProperty('divider') && !item.hasOwnProperty('disabled') || item.hasOwnProperty('divider') && !item.divider || item.hasOwnProperty('disabled') && !item.disabled;
+	      });
+	    },
+
+	    /**
 	         * 本地搜索时的过滤方法
 	         * @param source
 	         * @returns {*}
 	         */
-	        filterArray: function filterArray(source) {
-	            var data = this.data;
-	            if (this.service && this.service.getList) {
-	                return source;
-	            }
-	            if (!Array.isArray(source)) {
-	                return;
-	            }
+	    filterArray: function filterArray(source) {
+	      var data = this.data;
+	      if (this.service && this.service.getList) {
+	        return source;
+	      }
+	      if (!Array.isArray(source)) {
+	        return;
+	      }
 
-	            if (!data.canSearch) {
-	                return source;
-	            }
-	            var nameKey = data.nameKey;
-	            var searchValue = (data.searchValue || '').trim();
-	            var maxShowCount = data.maxShowCount;
-	            var isCaseSensitive = data.isCaseSensitive;
-	            searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
-	            var targetSource = source.filter(function (item, index) {
-	                var text = item[nameKey] + '';
-	                var value = isCaseSensitive ? text.toLowerCase() : text;
-	                return searchValue && value.indexOf(searchValue) >= 0 || !searchValue && index < maxShowCount;
-	            });
-	            if (data.limit) return targetSource.slice(0, data.limit);
-	            return targetSource;
-	        },
-	        /**
+	      if (!data.canSearch) {
+	        return source;
+	      }
+	      var nameKey = data.nameKey;
+	      var searchValue = (data.searchValue || '').trim();
+	      var maxShowCount = data.maxShowCount;
+	      var isCaseSensitive = data.isCaseSensitive;
+	      searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
+	      var targetSource = source.filter(function (item, index) {
+	        var text = '' + item[nameKey];
+	        var value = isCaseSensitive ? text.toLowerCase() : text;
+	        return searchValue && value.indexOf(searchValue) >= 0 || !searchValue && index < maxShowCount;
+	      });
+	      if (data.limit) return targetSource.slice(0, data.limit);
+	      return targetSource;
+	    },
+
+	    /**
 	         * 获取 Map 在 List<Map> 中的索引，因为是数据，所以转化为字符串比较
 	         * @param source{List<Object>}
 	         * @param target{Object}
 	         * @returns {number}
 	         */
-	        indexOf: function indexOf(source, target) {
-	            var index = -1;
-	            if (Array.isArray(source)) {
-	                source.forEach(function (item, itemIndex) {
-	                    if ((0, _stringify2.default)(item) === (0, _stringify2.default)(target)) {
-	                        index = itemIndex;
-	                    }
-	                });
-	            }
-	            return index;
-	        },
-	        /**
+	    indexOf: function indexOf(source, target) {
+	      var index = -1;
+	      if (Array.isArray(source)) {
+	        source.forEach(function (item, itemIndex) {
+	          if ((0, _stringify2.default)(item) === (0, _stringify2.default)(target)) {
+	            index = itemIndex;
+	          }
+	        });
+	      }
+	      return index;
+	    },
+
+	    /**
 	         * 用于获取选中项对应的索引，多个时以separator配置连接
 	         * @returns {*|string|string}
 	         */
-	        getValue: function getValue() {
-	            var data = this.data;
-	            var key = data.key;
-	            var separator = data.separator;
-	            return util.getSelectedTextByKey(data, function (selected) {
-	                return selected[key || data.nameKey];
-	            }, '', separator, key);
-	        },
-	        /**
+	    getValue: function getValue() {
+	      var data = this.data;
+	      var key = data.key;
+	      var separator = data.separator;
+	      return util.getSelectedTextByKey(data, function (selected) {
+	        return selected[key || data.nameKey];
+	      }, '', separator, key);
+	    },
+
+	    /**
 	         * 获取搜索值
 	         * @returns {{searchValue: (*|string)}}
 	         */
-	        params: function params() {
-	            return {
-	                searchValue: this.data.searchValue
-	            };
-	        }
-	    });
+	    params: function params() {
+	      return {
+	        searchValue: this.data.searchValue
+	      };
+	    }
+	  });
 		};
 
 /***/ }),
 /* 373 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
@@ -29329,8 +29527,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author   Cody Chan<int64ago@gmail.com>
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(374);
@@ -29348,28 +29544,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.type=default]   => 文本样式
 	 */
 	var KLText = Component.extend({
-	    name: 'kl-text',
-	    template: template,
-	    config: function config() {
-	        _.extend(this.data, {
-	            text: '--',
-	            // default/primary/info/success/warning/error
-	            type: 'default',
-	            // xs/sm/lg/xl
-	            size: '',
-	            isBold: false,
-	            // tal/tac/tar/taj
-	            align: '',
-	            // vat/vam/vab
-	            vertical: '',
-	            url: 'javascript:;',
-	            target: ''
-	        });
-	        this.supr();
-	    },
-	    onClick: function onClick(e) {
-	        this.$emit('click', e);
-	    }
+	  name: 'kl-text',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      text: '--',
+	      // default/primary/info/success/warning/error
+	      type: 'default',
+	      // xs/sm/lg/xl
+	      size: '',
+	      isBold: false,
+	      // tal/tac/tar/taj
+	      align: '',
+	      // vat/vam/vab
+	      vertical: '',
+	      url: 'javascript:;',
+	      target: ''
+	    });
+	    this.supr();
+	  },
+	  onClick: function onClick(e) {
+	    this.$emit('click', e);
+	  }
 	});
 
 		module.exports = KLText;
@@ -29423,88 +29619,92 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}        [options.data.width]              => 组件宽度
 	 */
 	var KLTextArea = Component.extend({
-	    name: 'kl-textarea',
-	    template: template,
-	    /**
+	  name: 'kl-textarea',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            hideTip: false,
-	            value: '',
-	            placeholder: '',
-	            state: '',
-	            maxlength: undefined,
-	            height: 120,
-	            rules: [],
-	            autofocus: false,
-	            _eltIE9: bowser.msie && bowser.version <= 9,
-	            required: false
-	        });
+	  config: function config() {
+	    _.extend(this.data, {
+	      hideTip: false,
+	      value: '',
+	      placeholder: '',
+	      state: '',
+	      maxlength: undefined,
+	      height: 120,
+	      rules: [],
+	      autofocus: false,
+	      _eltIE9: bowser.msie && bowser.version <= 9,
+	      required: false
+	    });
 
-	        this.supr();
+	    this.supr();
 
-	        this.initValidation();
-	    },
-	    init: function init() {
-	        this.$watch('required', function (value) {
-	            var rules = this.data.rules,
-	                message = this.data.message || this.$trans('PLEASE_INPUT');
-	            if (value) {
-	                rules.push({ type: 'isRequired', message: message });
-	            } else {
-	                this.data.rules = rules.filter(function (rule) {
-	                    return rule.type != 'isRequired';
-	                });
-	            }
+	    this.initValidation();
+	  },
+	  init: function init() {
+	    this.$watch('required', function (value) {
+	      var rules = this.data.rules,
+	          message = this.data.message || this.$trans('PLEASE_INPUT');
+	      if (value) {
+	        rules.push({ type: 'isRequired', message: message });
+	      } else {
+	        this.data.rules = rules.filter(function (rule) {
+	          return rule.type != 'isRequired';
 	        });
-	    },
-	    /**
+	      }
+	    });
+	  },
+
+	  /**
 	     * @method validate() 根据`rules`验证组件的值是否正确
 	     * @public
 	     * @return {object} result 结果
 	     */
-	    validate: function validate(on) {
-	        var value = this.data.value;
-	        var rules = this.data.rules;
+	  validate: function validate(on) {
+	    var value = this.data.value;
+	    var rules = this.data.rules;
 
-	        var PRIORITY = {
-	            'keyup': 2,
-	            'blur': 1,
-	            'submit': 0,
-	            '': 0
-	        };
+	    var PRIORITY = {
+	      keyup: 2,
+	      blur: 1,
+	      submit: 0,
+	      '': 0
+	    };
 
-	        on = on || '';
-	        rules = rules.filter(function (rule) {
-	            return (rule.on || '').indexOf(on) >= 0;
-	        });
+	    on = on || '';
+	    rules = rules.filter(function (rule) {
+	      return (rule.on || '').indexOf(on) >= 0;
+	    });
 
-	        var result = Validation.validate(value, rules);
-	        if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) this.data.tip = result.firstRule.message;else this.data.tip = '';
+	    var result = Validation.validate(value, rules);
+	    if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) {
+	      this.data.tip = result.firstRule.message;
+	    } else this.data.tip = '';
 
-	        // @TODO
-	        if (!result.success) this.data.state = 'error';
-	        // else if(PRIORITY[on] <= PRIORITY['blur'])
-	        //     this.data.state = 'success';
-	        else this.data.state = '';
-
-	        this.$emit('validate', {
-	            sender: this,
-	            on: on,
-	            result: result
-	        });
-
-	        return result;
-	    },
-	    _onKeyUp: function _onKeyUp($event) {
-	        this.validate('keyup');
-	        this.$emit('keyup', $event);
-	    },
-	    _onBlur: function _onBlur($event) {
-	        this.validate('blur');
-	        this.$emit('blur', $event);
+	    // @TODO
+	    if (!result.success) this.data.state = 'error';else {
+	      // else if(PRIORITY[on] <= PRIORITY['blur'])
+	      //     this.data.state = 'success';
+	      this.data.state = '';
 	    }
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  },
+	  _onKeyUp: function _onKeyUp($event) {
+	    this.validate('keyup');
+	    this.$emit('keyup', $event);
+	  },
+	  _onBlur: function _onBlur($event) {
+	    this.validate('blur');
+	    this.$emit('blur', $event);
+	  }
 	});
 
 	KLTextArea.use(validationMixin);
@@ -29520,12 +29720,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 *  ------------------------------
 	 *  kl-upload 上传
 	 *  ------------------------------
 	 */
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -29555,51 +29756,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
 	 */
 	var KLUpload = Component.extend({
-	    name: 'kl-upload',
-	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	    config: function config(data) {
-	        _.extend(data, {
-	            action: '',
-	            name: 'file',
-	            multiple: false,
-	            drag: false,
-	            accept: '*',
-	            listType: 'list',
-	            fileList: [],
-	            data: {},
-	            numLimit: 10,
-	            numPerline: 5,
-	            maxSize: Config.sizeMap.GB,
-	            deletable: true,
-	            encType: 'multipart/form-data'
-	        });
+	  name: 'kl-upload',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      action: '',
+	      name: 'file',
+	      multiple: false,
+	      drag: false,
+	      accept: '*',
+	      listType: 'list',
+	      fileList: [],
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
+	      maxSize: Config.sizeMap.GB,
+	      deletable: true,
+	      encType: 'multipart/form-data'
+	    });
 
-	        this.supr(data);
-	    },
-
-	    init: function init(data) {
-	        this.preProcess(data);
-	        this.initUploadInst(data);
-	        this.supr(data);
-	    },
-
-	    preProcess: function preProcess(data) {
-	        if (typeof data.maxSize === 'number') {
-	            data.maxSize += '';
-	        }
-	    },
-
-	    initUploadInst: function initUploadInst(data) {
-	        var uploadNode = this.$refs['m-upload'],
-	            typeMap = {
-	            list: UploadList,
-	            card: UploadCard
-	        };
-
-	        new typeMap[data.listType]({
-	            data: data
-	        }).$inject(uploadNode);
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.preProcess(data);
+	    this.initUploadInst(data);
+	    this.supr(data);
+	  },
+	  preProcess: function preProcess(data) {
+	    if (typeof data.maxSize === 'number') {
+	      data.maxSize += '';
 	    }
+	  },
+	  initUploadInst: function initUploadInst(data) {
+	    var uploadNode = this.$refs['m-upload'],
+	        typeMap = {
+	      list: UploadList,
+	      card: UploadCard
+	    };
+
+	    new typeMap[data.listType]({
+	      data: data
+	    }).$inject(uploadNode);
+	  }
 	});
 
 		module.exports = KLUpload;
@@ -29608,12 +29806,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 *  ------------------------------
 	 *  UploadList 上传
 	 *  ------------------------------
 	 */
-	'use strict';
 
 	var FileUnit = __webpack_require__(379);
 	var UploadBase = __webpack_require__(384);
@@ -29625,230 +29824,218 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend UploadBase
 	 */
 	var UploadList = UploadBase.extend({
-	    name: 'upload-list',
-	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	    config: function config(data) {
-	        this.supr(data);
-	    },
+	  name: 'upload-list',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initFilesWrapper();
+	    this.supr(data);
+	  },
+	  initFilesWrapper: function initFilesWrapper() {
+	    var inputWrapper = this.data.inputWrapper = this.$refs.inputwrapper;
+	    var filesWrapper = this.data.filesWrapper = this.$refs.fileswrapper;
+	    filesWrapper.appendChild(inputWrapper);
+	    inputWrapper.style.display = 'inline-block';
+	  },
+	  onDragEnter: function onDragEnter(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragOver: function onDragOver(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDrop: function onDrop(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
 
-	    init: function init(data) {
-	        this.initFilesWrapper();
-	        this.supr(data);
-	    },
-
-	    initFilesWrapper: function initFilesWrapper() {
-	        var inputWrapper = this.data.inputWrapper = this.$refs.inputwrapper;
-	        var filesWrapper = this.data.filesWrapper = this.$refs.fileswrapper;
-	        filesWrapper.appendChild(inputWrapper);
-	        inputWrapper.style.display = 'inline-block';
-	    },
-
-	    onDragEnter: function onDragEnter(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	    },
-
-	    onDragOver: function onDragOver(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	    },
-
-	    onDrop: function onDrop(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-
-	        if (!this.data.drag) {
-	            return;
-	        }
-
-	        var dt = e.event && e.event.dataTransfer;
-	        var files = dt.files;
-
-	        this.handleFiles(files);
-	    },
-
-	    fileSelect: function fileSelect() {
-	        var inputNode = this.$refs.file,
-	            files = inputNode.files;
-
-	        this.handleFiles(files);
-
-	        inputNode.value = '';
-	    },
-
-	    handleFiles: function handleFiles(files) {
-	        var data = this.data,
-	            index = 0,
-	            len = files.length,
-	            file,
-	            fileunit,
-	            options;
-
-	        options = this.setOptions(data);
-
-	        data.preCheckInfo = '';
-
-	        for (; index < len; index++) {
-	            if (data.fileUnitList.length < data.numLimit) {
-	                file = files[index];
-	                data.preCheckInfo = this.preCheck(file);
-	                if (data.preCheckInfo) {
-	                    continue;
-	                }
-	                fileunit = this.createFileUnit({
-	                    file: file,
-	                    options: options,
-	                    deletable: data.deletable
-	                });
-	                fileunit.flag = 'ADDED';
-	                data.fileUnitList.push({
-	                    inst: fileunit
-	                });
-	            }
-	        }
-
-	        this.updateFileList();
-	    },
-
-	    createFileUnit: function createFileUnit(data) {
-	        var self = this,
-	            imagePreview = this.$refs.imagepreview,
-	            fileunit = new FileUnit({ data: data });
-
-	        fileunit.$on('preview', function () {
-	            var current = this;
-
-	            function filterImgFile(file) {
-	                return file.inst.data.type === 'IMAGE';
-	            }
-
-	            function mapHelper(img) {
-	                if (current === img.inst) {
-	                    img.inst.current = true;
-	                }
-	                return img.inst;
-	            }
-
-	            var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
-
-	            var preview = createImagePreview(imgList);
-
-	            preview.$inject(imagePreview);
-	        });
-
-	        function createImagePreview(imgFileList) {
-	            function findHelper(img) {
-	                return img.current;
-	            }
-	            var curIndex = imgFileList.findIndex(findHelper);
-
-	            function mapHelper(img) {
-	                delete img.current;
-	                return {
-	                    src: img.data.src,
-	                    name: img.data.name,
-	                    status: img.data.status
-	                };
-	            }
-	            var imgList = imgFileList.map(mapHelper);
-
-	            var imagePreview = new ImagePreview({
-	                data: {
-	                    imgList: imgList,
-	                    curIndex: curIndex
-	                }
-	            });
-
-	            imagePreview.$on('delete', function (imgInfo) {
-	                var index = imgInfo.index,
-	                    imgInst = imgFileList[index];
-
-	                if (imgInst) {
-	                    imgInst.$emit('delete');
-	                }
-	            });
-
-	            imagePreview.$on('$destroy', function () {
-	                imgFileList = null;
-	            });
-
-	            return imagePreview;
-	        }
-
-	        fileunit.$on('onload', function () {
-	            self.updateFileList();
-	        });
-
-	        fileunit.$on('success', function () {
-	            self.updateFileList();
-	        });
-
-	        fileunit.$on('delete', function () {
-	            if (this.flag === 'ORIGINAL') {
-	                this.flag = 'DELETED';
-	                this.file = this.data.file;
-	            }
-	            this.destroy();
-	        });
-
-	        fileunit.$on('$destroy', function () {
-	            this.destroyed = true;
-	            self.updateFileList();
-	        });
-
-	        return fileunit;
-	    },
-
-	    updateFileList: function updateFileList() {
-	        this.supr();
-	        this.appendInputWrapper();
-	        this.$update();
-	    },
-
-	    createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
-	        var wrapper = document.createElement('li');
-
-	        parent.appendChild(wrapper);
-
-	        this.setFileUnitWrapperStyle(wrapper, index);
-
-	        return wrapper;
-	    },
-
-	    setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
-	        var data = this.data,
-	            numPerline = data.numPerline,
-	            fileUnitWidth = data.fileUnitWidth,
-	            fileUnitMargin = data.fileUnitMargin;
-
-	        wrapper.className = 'u-fileitem';
-	        wrapper.style.display = 'inline-block';
-	        wrapper.style.width = fileUnitWidth + 'px';
-
-	        if (index && index % numPerline) {
-	            wrapper.style.marginLeft = fileUnitMargin + 'px';
-	        }
-	    },
-
-	    appendInputWrapper: function appendInputWrapper() {
-	        var data = this.data,
-	            inputWrapper = data.inputWrapper,
-	            filesWrapper = data.filesWrapper,
-	            numPerline = data.numPerline,
-	            numLimit = data.numLimit,
-	            fileUnitMargin = data.fileUnitMargin,
-	            length = data.fileUnitList.length;
-
-	        if (length < numLimit) {
-	            filesWrapper.appendChild(inputWrapper);
-
-	            if (length % numPerline) {
-	                inputWrapper.style.marginLeft = fileUnitMargin + 'px';
-	            } else {
-	                inputWrapper.style.marginLeft = '0';
-	            }
-	        }
+	    if (!this.data.drag) {
+	      return;
 	    }
+
+	    var dt = e.event && e.event.dataTransfer;
+	    var files = dt.files;
+
+	    this.handleFiles(files);
+	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file,
+	        files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
+	  },
+	  handleFiles: function handleFiles(files) {
+	    var data = this.data,
+	        index = 0,
+	        len = files.length,
+	        file = void 0,
+	        fileunit = void 0,
+	        options = void 0;
+
+	    options = this.setOptions(data);
+
+	    data.preCheckInfo = '';
+
+	    for (; index < len; index++) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (data.preCheckInfo) {
+	          continue;
+	        }
+	        fileunit = this.createFileUnit({
+	          file: file,
+	          options: options,
+	          deletable: data.deletable
+	        });
+	        fileunit.flag = 'ADDED';
+	        data.fileUnitList.push({
+	          inst: fileunit
+	        });
+	      }
+	    }
+
+	    this.updateFileList();
+	  },
+	  createFileUnit: function createFileUnit(data) {
+	    var self = this,
+	        imagePreview = this.$refs.imagepreview,
+	        fileunit = new FileUnit({ data: data });
+
+	    fileunit.$on('preview', function () {
+	      var current = this;
+
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
+	      }
+
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
+
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreview);
+	    });
+
+	    function createImagePreview(imgFileList) {
+	      function findHelper(img) {
+	        return img.current;
+	      }
+	      var curIndex = imgFileList.findIndex(findHelper);
+
+	      function mapHelper(img) {
+	        delete img.current;
+	        return {
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
+	        };
+	      }
+	      var imgList = imgFileList.map(mapHelper);
+
+	      var imagePreview = new ImagePreview({
+	        data: {
+	          imgList: imgList,
+	          curIndex: curIndex
+	        }
+	      });
+
+	      imagePreview.$on('delete', function (imgInfo) {
+	        var index = imgInfo.index,
+	            imgInst = imgFileList[index];
+
+	        if (imgInst) {
+	          imgInst.$emit('delete');
+	        }
+	      });
+
+	      imagePreview.$on('$destroy', function () {
+	        imgFileList = null;
+	      });
+
+	      return imagePreview;
+	    }
+
+	    fileunit.$on('onload', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('success', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      this.destroyed = true;
+	      self.updateFileList();
+	    });
+
+	    return fileunit;
+	  },
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.appendInputWrapper();
+	    this.$update();
+	  },
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
+	  },
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data,
+	        numPerline = data.numPerline,
+	        fileUnitWidth = data.fileUnitWidth,
+	        fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
+	    }
+	  },
+	  appendInputWrapper: function appendInputWrapper() {
+	    var data = this.data,
+	        inputWrapper = data.inputWrapper,
+	        filesWrapper = data.filesWrapper,
+	        numPerline = data.numPerline,
+	        numLimit = data.numLimit,
+	        fileUnitMargin = data.fileUnitMargin,
+	        length = data.fileUnitList.length;
+
+	    if (length < numLimit) {
+	      filesWrapper.appendChild(inputWrapper);
+
+	      if (length % numPerline) {
+	        inputWrapper.style.marginLeft = fileUnitMargin + 'px';
+	      } else {
+	        inputWrapper.style.marginLeft = '0';
+	      }
+	    }
+	  }
 	});
 
 		module.exports = UploadList;
@@ -29857,13 +30044,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 *  ------------------------------
 	 *  FileUnit
 	 *  ------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -29872,139 +30059,133 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLModal = __webpack_require__(382);
 
 	var FileUnit = Component.extend({
-	    name: 'file-unit',
-	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	    config: function config(data) {
-	        _.extend(data, {
-	            file: {},
-	            options: {}
-	        });
+	  name: 'file-unit',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      file: {},
+	      options: {}
+	    });
 
-	        _.extend(data, {
-	            info: '',
-	            status: '',
-	            deletable: true,
-	            delConfirm: false
-	        });
+	    _.extend(data, {
+	      info: '',
+	      status: '',
+	      deletable: true,
+	      delConfirm: false
+	    });
 
-	        this.initData(data);
+	    this.initData(data);
 
-	        this.supr(data);
-	    },
+	    this.supr(data);
+	  },
+	  initData: function initData(data) {
+	    var file = data.file;
+	    data.name = this.getFileName(file);
+	    data.type = this.getFileType(file);
 
-	    initData: function initData(data) {
-	        var file = data.file;
-	        data.name = this.getFileName(file);
-	        data.type = this.getFileType(file);
-
-	        // for initial uploaded files
-	        if (file.url) {
-	            data.src = file.url;
-	            data.status = 'uploaded';
-	        } else {
-	            data.src = window.URL.createObjectURL(file);
-	            this.uploadFile(file);
-	        }
-	    },
-
-	    getFileName: function getFileName(file) {
-	        return file.name;
-	    },
-
-	    getFileType: function getFileType(file) {
-	        var type = file.type || '',
-	            name = file.name || '';
-
-	        if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-	            return 'IMAGE';
-	        } else if (/zip|rar|gz/i.test(name)) {
-	            return 'ZIP';
-	        } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
-	            return 'DOC';
-	        } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-	            return 'VIDEO';
-	        } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-	            return 'AUDIO';
-	        } else if (/text\/plain/.test(type)) {
-	            return 'TEXT';
-	        } else if (/text\/html/.test(type)) {
-	            return 'HTML';
-	        } else if (/application\/pdf/.test(type)) {
-	            return 'PDF';
-	        } else if (/application\/javascript/.test(type)) {
-	            return 'JS';
-	        }
-
-	        return 'UNKNOWN';
-	    },
-
-	    uploadFile: function uploadFile(file) {
-	        var self = this,
-	            data = this.data;
-
-	        data.info = '';
-
-	        var options = {
-	            upload: {
-	                onload: function onload(e) {
-	                    data.progress = '100%';
-	                    self.$update();
-	                    self.$emit('success', { progress: data.progress, info: e });
-	                },
-	                onprogress: function onprogress(e) {
-	                    data.status = 'uploading';
-	                    data.progress = parseInt(e.loaded / e.total * 100) + '%';
-	                    self.$update();
-	                    self.$emit('progress', { progress: data.progress });
-	                }
-	            },
-	            onload: function onload(e) {
-	                var target = e.target;
-	                if (target.status === 200) {
-	                    var response = JSON.parse(target.responseText);
-	                    self.data.file.url = response.url;
-	                    self.data.status = 'uploaded';
-	                    self.data.info = '';
-	                } else {
-	                    data.status = 'failed';
-	                    data.info = self.$trans('UPLOAD_FAIL');
-	                }
-	                self.$update();
-	                self.$emit('onload', { info: e });
-	            },
-	            onerror: function onerror(e) {
-	                data.status = 'failed';
-	                data.info = self.$trans('UPLOAD_FAIL');
-	                self.$update();
-	                self.$emit('error', { info: e });
-	            }
-	        };
-
-	        options = _.extend(options, data.options);
-	        upload(options.url, file, options);
-	    },
-
-	    onDelete: function onDelete() {
-	        var self = this,
-	            data = this.data;
-
-	        if (data.delConfirm) {
-	            var modal = new KLModal({
-	                data: {
-	                    content: this.$trans('DELETE_CONFIRM') + data.name + '?'
-	                }
-	            });
-	            modal.$on('ok', function () {
-	                self.$emit('delete');
-	            });
-	        } else {
-	            self.$emit('delete');
-	        }
-	    },
-
-	    onPreview: function onPreview() {
-	        this.$emit('preview');
+	    // for initial uploaded files
+	    if (file.url) {
+	      data.src = file.url;
+	      data.status = 'uploaded';
+	    } else {
+	      data.src = window.URL.createObjectURL(file);
+	      this.uploadFile(file);
 	    }
+	  },
+	  getFileName: function getFileName(file) {
+	    return file.name;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '',
+	        name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  uploadFile: function uploadFile(file) {
+	    var self = this,
+	        data = this.data;
+
+	    data.info = '';
+
+	    var options = {
+	      upload: {
+	        onload: function onload(e) {
+	          data.progress = '100%';
+	          self.$update();
+	          self.$emit('success', { progress: data.progress, info: e });
+	        },
+	        onprogress: function onprogress(e) {
+	          data.status = 'uploading';
+	          data.progress = parseInt(e.loaded / e.total * 100) + '%';
+	          self.$update();
+	          self.$emit('progress', { progress: data.progress });
+	        }
+	      },
+	      onload: function onload(e) {
+	        var target = e.target;
+	        if (target.status === 200) {
+	          var response = JSON.parse(target.responseText);
+	          self.data.file.url = response.url;
+	          self.data.status = 'uploaded';
+	          self.data.info = '';
+	        } else {
+	          data.status = 'failed';
+	          data.info = self.$trans('UPLOAD_FAIL');
+	        }
+	        self.$update();
+	        self.$emit('onload', { info: e });
+	      },
+	      onerror: function onerror(e) {
+	        data.status = 'failed';
+	        data.info = self.$trans('UPLOAD_FAIL');
+	        self.$update();
+	        self.$emit('error', { info: e });
+	      }
+	    };
+
+	    options = _.extend(options, data.options);
+	    upload(options.url, file, options);
+	  },
+	  onDelete: function onDelete() {
+	    var self = this,
+	        data = this.data;
+
+	    if (data.delConfirm) {
+	      var modal = new KLModal({
+	        data: {
+	          content: this.$trans('DELETE_CONFIRM') + data.name + '?'
+	        }
+	      });
+	      modal.$on('ok', function () {
+	        self.$emit('delete');
+	      });
+	    } else {
+	      self.$emit('delete');
+	    }
+	  },
+	  onPreview: function onPreview() {
+	    this.$emit('preview');
+	  }
 	});
 
 		module.exports = FileUnit;
@@ -30024,65 +30205,65 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(101);
 
 	var defaults = {
-	    type: 'POST',
-	    async: true
+	  type: 'POST',
+	  async: true
 	};
 
 	function upload(url, data, options) {
-	    var fd = new FormData();
+	  var fd = new FormData();
 
-	    if (data instanceof File) {
-	        data = {
-	            file: data
-	        };
+	  if (data instanceof File) {
+	    data = {
+	      file: data
+	    };
+	  }
+
+	  for (var key in data) {
+	    if (data.hasOwnProperty(key)) {
+	      fd.append(key, data[key]);
 	    }
+	  }
 
-	    for (var key in data) {
-	        if (data.hasOwnProperty(key)) {
-	            fd.append(key, data[key]);
-	        }
-	    }
+	  options.url = url;
+	  options.data = fd;
+	  options = _.extend(defaults, options, true);
 
-	    options.url = url;
-	    options.data = fd;
-	    options = _.extend(defaults, options, true);
-
-	    return ajax(options);
+	  return ajax(options);
 	}
 
 	function ajax(options) {
-	    var xhr = new XMLHttpRequest(),
-	        headers = options.headers || {};
+	  var xhr = new XMLHttpRequest(),
+	      headers = options.headers || {};
 
-	    xhr.open(options.type, options.url, options.async);
+	  xhr.open(options.type, options.url, options.async);
 
-	    for (var key in headers) {
-	        if (headers.hasOwnProperty(key)) {
-	            xhr.setRequestHeader(key, headers[key]);
-	        }
+	  for (var key in headers) {
+	    if (headers.hasOwnProperty(key)) {
+	      xhr.setRequestHeader(key, headers[key]);
 	    }
+	  }
 
-	    var noop = function noop() {};
-	    var onerror = options.onerror || noop;
+	  var noop = function noop() {};
+	  var onerror = options.onerror || noop;
 
-	    var onload = options.onload || noop;
+	  var onload = options.onload || noop;
 
-	    var onprogress = options.onprogress || noop;
+	  var onprogress = options.onprogress || noop;
 
-	    xhr.addEventListener('load', onload);
-	    xhr.addEventListener('error', onerror);
-	    xhr.addEventListener('progress', onprogress);
+	  xhr.addEventListener('load', onload);
+	  xhr.addEventListener('error', onerror);
+	  xhr.addEventListener('progress', onprogress);
 
-	    if (options.upload) {
-	        var onuploadLoad = options.upload.onload || noop;
+	  if (options.upload) {
+	    var onuploadLoad = options.upload.onload || noop;
 
-	        var onuploadProgress = options.upload.onprogress || noop;
+	    var onuploadProgress = options.upload.onprogress || noop;
 
-	        xhr.upload.addEventListener('load', onuploadLoad);
-	        xhr.upload.addEventListener('progress', onuploadProgress);
-	    }
+	    xhr.upload.addEventListener('load', onuploadLoad);
+	    xhr.upload.addEventListener('progress', onuploadProgress);
+	  }
 
-	    xhr.send(options.data);
+	  xhr.send(options.data);
 	}
 
 	module.exports = upload;
@@ -30091,14 +30272,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLModal     模态对话框
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(383);
@@ -30124,82 +30305,86 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
 	 */
 	var KLModal = Component.extend({
-	    name: 'kl-modal',
-	    template: template,
-	    /**
+	  name: 'kl-modal',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: this.$trans('NOTICE'),
-	            content: '',
-	            okButton: true,
-	            with: 400,
-	            cancelButton: false,
-	            noClose: false,
-	            okDisabled: false,
-	            cancelDisabled: false,
-	            hasFooter: true,
-	            isCanClose: true
-	        });
-	        this.supr();
-	    },
-	    /**
-	     * @protected
-	     */
-	    init: function init() {
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: this.$trans('NOTICE'),
+	      content: '',
+	      okButton: true,
+	      with: 400,
+	      cancelButton: false,
+	      noClose: false,
+	      okDisabled: false,
+	      cancelDisabled: false,
+	      hasFooter: true,
+	      isCanClose: true
+	    });
+	    this.supr();
+	  },
 
-	        // 如果不是内嵌组件，则嵌入到document.body中
-	        if (this.$root === this) this.$inject(document.body);
-	    },
-	    /**
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
 	     * @method close(result) 关闭对话框
 	     * @public
 	     * @param  {boolean} result 点击确定还是取消
 	     * @return {void}
 	     */
-	    close: function close(result, event) {
-	        /**
+	  close: function close(result, event) {
+	    /**
 	         * @event close 关闭对话框时触发
 	         * @property {boolean} result 点击了确定还是取消
 	         */
-	        this.$emit('close', {
-	            result: result
-	        });
-	        result ? this.ok(event) : this.cancel();
-	    },
-	    /**
+	    this.$emit('close', {
+	      result: result
+	    });
+	    result ? this.ok(event) : this.cancel();
+	  },
+
+	  /**
 	     * @method ok() 确定对话框
 	     * @public
 	     * @return {void}
 	     */
-	    ok: function ok(event) {
-	        /**
+	  ok: function ok(event) {
+	    /**
 	         * @event ok 确定对话框时触发
 	         */
-	        this.$emit('ok', event);
-	        !this.data.noClose && this.destroy();
-	    },
-	    /**
+	    this.$emit('ok', event);
+	    !this.data.noClose && this.destroy();
+	  },
+
+	  /**
 	     * @method cancel() 取消对话框
 	     * @public
 	     * @return {void}
 	     */
-	    cancel: function cancel() {
-	        /**
+	  cancel: function cancel() {
+	    /**
 	         * @event cancel 取消对话框时触发
 	         */
-	        this.$emit('cancel');
-	        this.destroy();
-	    },
-	    _onDragStart: function _onDragStart($event) {
-	        var dialog = $event.proxy;
-	        dialog.style.left = dialog.offsetLeft + 'px';
-	        dialog.style.top = dialog.offsetTop + 'px';
-	        dialog.style.zIndex = '1000';
-	        dialog.style.position = 'absolute';
-	    }
+	    this.$emit('cancel');
+	    this.destroy();
+	  },
+	  _onDragStart: function _onDragStart($event) {
+	    var dialog = $event.proxy;
+	    dialog.style.left = dialog.offsetLeft + 'px';
+	    dialog.style.top = dialog.offsetTop + 'px';
+	    dialog.style.zIndex = '1000';
+	    dialog.style.position = 'absolute';
+	  }
 	});
 
 	/**
@@ -30211,15 +30396,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {Modal} modal 返回该对话框
 	 */
 	KLModal.alert = function (content, title, okButton) {
-	    var modal = new this({
-	        data: {
-	            content: content,
-	            title: title,
-	            okButton: okButton
-	        }
-	    });
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton
+	    }
+	  });
 
-	    return modal;
+	  return modal;
 	};
 
 	/**
@@ -30231,16 +30416,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {Modal} modal 返回该对话框
 	 */
 	KLModal.confirm = function (content, title, okButton, cancelButton) {
-	    var modal = new this({
-	        data: {
-	            content: content,
-	            title: title,
-	            okButton: okButton,
-	            cancelButton: cancelButton || true
-	        }
-	    });
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton,
+	      cancelButton: cancelButton || true
+	    }
+	  });
 
-	    return modal;
+	  return modal;
 	};
 
 	// var oldExtend = Modal.extend;
@@ -30263,12 +30448,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 *  ------------------------------
 	 *  upload.base 上传基础类
 	 *  ------------------------------
 	 */
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -30295,202 +30481,193 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
 	 */
 	var UploadBase = Component.extend({
-	    name: 'upload-list',
-	    config: function config(data) {
-	        _.extend(data, {
-	            action: '',
-	            name: 'file',
-	            multiple: false,
-	            drag: false,
-	            accept: '*',
-	            listType: 'list',
-	            fileList: [],
-	            data: {},
-	            numLimit: 10,
-	            numPerline: 5,
-	            maxSize: Config.sizeMap.GB,
-	            deletable: true,
-	            encType: 'multipart/form-data'
+	  name: 'upload-list',
+	  config: function config(data) {
+	    _.extend(data, {
+	      action: '',
+	      name: 'file',
+	      multiple: false,
+	      drag: false,
+	      accept: '*',
+	      listType: 'list',
+	      fileList: [],
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
+	      maxSize: Config.sizeMap.GB,
+	      deletable: true,
+	      encType: 'multipart/form-data'
+	    });
+
+	    _.extend(data, {
+	      fileUnitList: [],
+	      fileDeletedList: [],
+	      fileUnitWidth: 50,
+	      fileUnitMargin: 25
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initUploadedFileUnits();
+	    this.supr(data);
+	  },
+	  initUploadedFileUnits: function initUploadedFileUnits() {
+	    var self = this,
+	        data = this.data;
+
+	    if (data.fileList.length > 0) {
+	      var fileList = data.fileList.splice(0);
+	      fileList.forEach(function (file) {
+	        var fileunit = self.createFileUnit({
+	          file: file,
+	          options: {},
+	          deletable: data.deletable
 	        });
 
-	        _.extend(data, {
-	            fileUnitList: [],
-	            fileDeletedList: [],
-	            fileUnitWidth: 50,
-	            fileUnitMargin: 25
+	        fileunit.flag = 'ORIGINAL';
+
+	        data.fileUnitList.push({
+	          inst: fileunit
 	        });
+	      });
 
-	        this.supr(data);
-	    },
-
-	    init: function init(data) {
-	        this.initUploadedFileUnits();
-	        this.supr(data);
-	    },
-
-	    initUploadedFileUnits: function initUploadedFileUnits() {
-	        var self = this,
-	            data = this.data;
-
-	        if (data.fileList.length > 0) {
-	            var fileList = data.fileList.splice(0);
-	            fileList.forEach(function (file) {
-	                var fileunit = self.createFileUnit({
-	                    file: file,
-	                    options: {},
-	                    deletable: data.deletable
-	                });
-
-	                fileunit.flag = 'ORIGINAL';
-
-	                data.fileUnitList.push({
-	                    inst: fileunit
-	                });
-	            });
-
-	            this.updateFileList();
-	        }
-	    },
-
-	    updateFileList: function updateFileList() {
-	        var self = this,
-	            data = this.data,
-	            filesWrapper = data.filesWrapper,
-	            fileList = data.fileList,
-	            fileDeletedList = data.fileDeletedList,
-	            fileUnitList;
-
-	        fileUnitList = data.fileUnitList = data.fileUnitList.filter(function (item) {
-	            var inst = item.inst,
-	                flag = inst.flag,
-	                file = inst.file,
-	                destroyed = inst.destroyed;
-
-	            // item.inst = {};
-
-	            if (flag === 'DELETED') {
-	                file.flag = 'DELETED';
-	                fileDeletedList.push(file);
-	                return false;
-	            }
-	            return !destroyed;
-	        });
-
-	        filesWrapper.innerHTML = '';
-	        fileUnitList.forEach(function (item, index) {
-	            var wrapper = item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
-	            item.inst.$inject(wrapper);
-	        });
-
-	        fileList.splice(0);
-	        fileUnitList.forEach(function (item) {
-	            var inst = item.inst,
-	                file = inst.data.file || {};
-
-	            fileList.push({
-	                name: file.name,
-	                url: file.url,
-	                flag: Config.flagMap[inst.flag]
-	            });
-	        });
-
-	        fileDeletedList.forEach(function (file) {
-	            fileList.push({
-	                name: file && file.name,
-	                url: file && file.url,
-	                flag: file && Config.flagMap[file.flag]
-	            });
-	        });
-	    },
-
-	    fileDialogOpen: function fileDialogOpen() {
-	        this.$refs.file && this.$refs.file.click();
-	    },
-
-	    setOptions: function setOptions(data) {
-	        data = data || {};
-
-	        return {
-	            url: data.action
-	        };
-	    },
-
-	    preCheck: function preCheck(file) {
-	        var preCheckInfo = '';
-	        if (!this.isAcceptedFileSize(file)) {
-	            preCheckInfo = this.$trans('FILE_TOO_LARGE');
-	        }
-	        if (!this.isAcceptedFileType(file)) {
-	            preCheckInfo = this.$trans('FILE_TYPE_ERROR');
-	        }
-	        return preCheckInfo;
-	    },
-
-	    isAcceptedFileType: function isAcceptedFileType(file) {
-	        var data = this.data,
-	            accept = data.accept,
-	            type = this.getFileType(file).toLowerCase(),
-	            isValid = false;
-
-	        accept.split(',').forEach(function (cond) {
-	            if ('*' === cond) {
-	                isValid = true;
-	            } else if (/image\/.*/.test(cond)) {
-	                isValid = isValid || type === 'image';
-	            } else if (/audio\/.*/.test(cond)) {
-	                isValid = isValid || type === 'audio';
-	            } else if (/video\/.*/.test(cond)) {
-	                isValid = isValid || type === 'video';
-	            } else {
-	                isValid = isValid || type === Config.typeMap[cond];
-	            }
-	        });
-
-	        return isValid;
-	    },
-
-	    getFileType: function getFileType(file) {
-	        var type = file.type || '',
-	            name = file.name || '';
-
-	        if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-	            return 'IMAGE';
-	        } else if (/zip|rar|gz/i.test(name)) {
-	            return 'ZIP';
-	        } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
-	            return 'DOC';
-	        } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-	            return 'VIDEO';
-	        } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-	            return 'AUDIO';
-	        } else if (/text\/plain/.test(type)) {
-	            return 'TEXT';
-	        } else if (/text\/html/.test(type)) {
-	            return 'HTML';
-	        } else if (/application\/pdf/.test(type)) {
-	            return 'PDF';
-	        } else if (/application\/javascript/.test(type)) {
-	            return 'JS';
-	        }
-
-	        return 'UNKNOWN';
-	    },
-
-	    isAcceptedFileSize: function isAcceptedFileSize(file) {
-	        var data = this.data,
-	            maxSize = data.maxSize,
-	            fileSize = file.size;
-
-	        var patterns = maxSize.match(/(\d+)(\D+)?/i);
-	        var size = patterns[1];
-	        var unit = patterns[2];
-
-	        if (unit) {
-	            size *= Config.sizeMap[unit.toUpperCase()];
-	        }
-
-	        return size >= fileSize;
+	      this.updateFileList();
 	    }
+	  },
+	  updateFileList: function updateFileList() {
+	    var self = this,
+	        data = this.data,
+	        filesWrapper = data.filesWrapper,
+	        fileList = data.fileList,
+	        fileDeletedList = data.fileDeletedList,
+	        fileUnitList = void 0;
+
+	    fileUnitList = data.fileUnitList = data.fileUnitList.filter(function (item) {
+	      var inst = item.inst,
+	          flag = inst.flag,
+	          file = inst.file,
+	          destroyed = inst.destroyed;
+
+	      // item.inst = {};
+
+	      if (flag === 'DELETED') {
+	        file.flag = 'DELETED';
+	        fileDeletedList.push(file);
+	        return false;
+	      }
+	      return !destroyed;
+	    });
+
+	    filesWrapper.innerHTML = '';
+	    fileUnitList.forEach(function (item, index) {
+	      var wrapper = item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
+	      item.inst.$inject(wrapper);
+	    });
+
+	    fileList.splice(0);
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst,
+	          file = inst.data.file || {};
+
+	      fileList.push({
+	        name: file.name,
+	        url: file.url,
+	        flag: Config.flagMap[inst.flag]
+	      });
+	    });
+
+	    fileDeletedList.forEach(function (file) {
+	      fileList.push({
+	        name: file && file.name,
+	        url: file && file.url,
+	        flag: file && Config.flagMap[file.flag]
+	      });
+	    });
+	  },
+	  fileDialogOpen: function fileDialogOpen() {
+	    this.$refs.file && this.$refs.file.click();
+	  },
+	  setOptions: function setOptions(data) {
+	    data = data || {};
+
+	    return {
+	      url: data.action
+	    };
+	  },
+	  preCheck: function preCheck(file) {
+	    var preCheckInfo = '';
+	    if (!this.isAcceptedFileSize(file)) {
+	      preCheckInfo = this.$trans('FILE_TOO_LARGE');
+	    }
+	    if (!this.isAcceptedFileType(file)) {
+	      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
+	    }
+	    return preCheckInfo;
+	  },
+	  isAcceptedFileType: function isAcceptedFileType(file) {
+	    var data = this.data,
+	        accept = data.accept,
+	        type = this.getFileType(file).toLowerCase(),
+	        isValid = false;
+
+	    accept.split(',').forEach(function (cond) {
+	      if (cond === '*') {
+	        isValid = true;
+	      } else if (/image\/.*/.test(cond)) {
+	        isValid = isValid || type === 'image';
+	      } else if (/audio\/.*/.test(cond)) {
+	        isValid = isValid || type === 'audio';
+	      } else if (/video\/.*/.test(cond)) {
+	        isValid = isValid || type === 'video';
+	      } else {
+	        isValid = isValid || type === Config.typeMap[cond];
+	      }
+	    });
+
+	    return isValid;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '',
+	        name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  isAcceptedFileSize: function isAcceptedFileSize(file) {
+	    var data = this.data,
+	        maxSize = data.maxSize,
+	        fileSize = file.size;
+
+	    var patterns = maxSize.match(/(\d+)(\D+)?/i);
+	    var size = patterns[1];
+	    var unit = patterns[2];
+
+	    if (unit) {
+	      size *= Config.sizeMap[unit.toUpperCase()];
+	    }
+
+	    return size >= fileSize;
+	  }
 	});
 
 		module.exports = UploadBase;
@@ -30506,51 +30683,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var sizeMap = {
-	    K: '1024',
-	    KB: '1024',
-	    M: '1048576', // 1024 * 1024
-	    MB: '1048576', // 1024 * 1024
-	    G: '1073741824', // 1024 * 1024 * 1024
-	    GB: '1073741824' // 1024 * 1024 * 1024
+	  K: '1024',
+	  KB: '1024',
+	  M: '1048576', // 1024 * 1024
+	  MB: '1048576', // 1024 * 1024
+	  G: '1073741824', // 1024 * 1024 * 1024
+	  GB: '1073741824' // 1024 * 1024 * 1024
 	};
 
 	var typeMap = {
-	    '.jpg': 'image',
-	    '.jpeg': 'image',
-	    '.gif': 'image',
-	    '.png': 'image',
-	    '.zip': 'zip',
-	    '.rar': 'zip',
-	    '.gz': 'zip',
-	    '.doc': 'doc',
-	    '.xlsx': 'doc',
-	    '.ppt': 'doc',
-	    '.mp4': 'video',
-	    '.mkv': 'video',
-	    '.rmvb': 'video',
-	    '.avi': 'video',
-	    '.mp3': 'audio',
-	    '.pdf': 'pdf',
-	    '.js': 'js',
-	    '.html': 'html',
-	    '.txt': 'text'
+	  '.jpg': 'image',
+	  '.jpeg': 'image',
+	  '.gif': 'image',
+	  '.png': 'image',
+	  '.zip': 'zip',
+	  '.rar': 'zip',
+	  '.gz': 'zip',
+	  '.doc': 'doc',
+	  '.xlsx': 'doc',
+	  '.ppt': 'doc',
+	  '.mp4': 'video',
+	  '.mkv': 'video',
+	  '.rmvb': 'video',
+	  '.avi': 'video',
+	  '.mp3': 'audio',
+	  '.pdf': 'pdf',
+	  '.js': 'js',
+	  '.html': 'html',
+	  '.txt': 'text'
 	};
 
 	var flagMap = {
-	    ADDED: 0,
-	    ORIGINAL: 1,
-	    DELETED: 2
+	  ADDED: 0,
+	  ORIGINAL: 1,
+	  DELETED: 2
 	};
 
 	module.exports = {
-	    sizeMap: sizeMap,
-	    typeMap: typeMap,
-	    flagMap: flagMap
+	  sizeMap: sizeMap,
+	  typeMap: typeMap,
+	  flagMap: flagMap
 		};
 
 /***/ }),
 /* 386 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 *  ------------------------------
@@ -30558,296 +30737,293 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  ------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
 	var KLModal = __webpack_require__(382);
 	var tpl = __webpack_require__(387);
 
 	var ImagePreview = Component.extend({
-	    name: 'image-preview',
-	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	    config: function config(data) {
-	        _.extend(data, {
-	            imgList: [],
-	            curIndex: 0,
-	            uploaded: true
-	        });
+	  name: 'image-preview',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      imgList: [],
+	      curIndex: 0,
+	      uploaded: true
+	    });
 
-	        _.extend(data, {
-	            showVirtual: false,
-	            virtualInfo: {
-	                rotate: 0,
-	                scale: 1,
-	                translateX: 0,
-	                translateY: 0,
-	                mouseDownX: 0,
-	                mouseDownY: 0,
-	                dragTarget: null
-	            },
-	            opList: [{
-	                name: 'zoomIn',
-	                icon: 'zoomin',
-	                fnName: 'zoomIn'
-	            }, {
-	                name: 'zoomOut',
-	                icon: 'zoomout',
-	                fnName: 'zoomOut'
-	            }, {
-	                name: 'rezoom',
-	                icon: 'rezoom',
-	                fnName: 'rezoom'
-	            }, {
-	                name: 'rotate',
-	                icon: 'rotate_right',
-	                fnName: 'rotate'
-	            }, {
-	                name: 'delete',
-	                icon: 'delete',
-	                fnName: 'onDel'
-	            }]
-	        });
+	    _.extend(data, {
+	      showVirtual: false,
+	      virtualInfo: {
+	        rotate: 0,
+	        scale: 1,
+	        translateX: 0,
+	        translateY: 0,
+	        mouseDownX: 0,
+	        mouseDownY: 0,
+	        dragTarget: null
+	      },
+	      opList: [{
+	        name: 'zoomIn',
+	        icon: 'zoomin',
+	        fnName: 'zoomIn'
+	      }, {
+	        name: 'zoomOut',
+	        icon: 'zoomout',
+	        fnName: 'zoomOut'
+	      }, {
+	        name: 'rezoom',
+	        icon: 'rezoom',
+	        fnName: 'rezoom'
+	      }, {
+	        name: 'rotate',
+	        icon: 'rotate_right',
+	        fnName: 'rotate'
+	      }, {
+	        name: 'delete',
+	        icon: 'delete',
+	        fnName: 'onDel'
+	      }]
+	    });
 
-	        this.supr(data);
-	    },
-	    init: function init(data) {
-	        this.supr(data);
-	    },
-	    onClose: function onClose() {
-	        this.destroy();
-	    },
-	    onPrev: function onPrev() {
-	        var data = this.data,
-	            curIndex = data.curIndex,
-	            length = data.imgList.length,
-	            toIndex = length - 1;
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.supr(data);
+	  },
+	  onClose: function onClose() {
+	    this.destroy();
+	  },
+	  onPrev: function onPrev() {
+	    var data = this.data,
+	        curIndex = data.curIndex,
+	        length = data.imgList.length,
+	        toIndex = length - 1;
 
-	        if (curIndex > 0) {
-	            toIndex = --data.curIndex;
-	        }
-
-	        this.setCurrentTo(toIndex);
-	    },
-	    onNext: function onNext() {
-	        var data = this.data,
-	            curIndex = data.curIndex,
-	            length = data.imgList.length,
-	            toIndex = 0;
-
-	        if (curIndex < length - 1) {
-	            toIndex = ++data.curIndex;
-	        }
-
-	        this.setCurrentTo(toIndex);
-	    },
-	    setCurrentTo: function setCurrentTo(toIndex) {
-	        var data = this.data,
-	            refs = this.$refs,
-	            curIndex = data.curIndex;
-
-	        data.showVirtual = false;
-	        data.virtualInfo.scale = 1;
-	        data.virtualInfo.rotate = 0;
-	        data.virtualInfo.translateX = 0;
-	        data.virtualInfo.translateY = 0;
-
-	        refs['full-' + curIndex].style.opacity = 0;
-	        refs['full-' + toIndex].style.opacity = 1;
-
-	        this.data.curIndex = toIndex;
-	    },
-	    zoomIn: function zoomIn() {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo,
-	            step = this.getZoomInStep();
-
-	        data.showVirtual = true;
-
-	        virtualInfo.scale += step;
-
-	        this.$refs.virtualimage.style.transform = this.genTransform();
-	    },
-	    zoomOut: function zoomOut() {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo,
-	            step = this.getZoomOutStep(),
-	            translateStepInfo = this.getTranslateStep(step);
-
-	        data.showVirtual = true;
-
-	        virtualInfo.scale -= step;
-	        virtualInfo.translateX -= translateStepInfo.xStep;
-	        virtualInfo.translateY -= translateStepInfo.yStep;
-
-	        this.$refs.virtualimage.style.transform = this.genTransform();
-	    },
-	    rezoom: function rezoom() {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo;
-
-	        data.showVirtual = true;
-
-	        virtualInfo.scale = 1;
-	        virtualInfo.translateX = 0;
-	        virtualInfo.translateY = 0;
-
-	        this.$refs.virtualimage.style.transform = this.genTransform();
-	    },
-	    getZoomInStep: function getZoomInStep() {
-	        var virtualInfo = this.data.virtualInfo,
-	            scale = +virtualInfo.scale.toFixed(1),
-	            step = this.getScaleStep();
-
-	        if (scale <= 0.1) {
-	            return 0.1;
-	        }
-
-	        return step;
-	    },
-	    getZoomOutStep: function getZoomOutStep() {
-	        var virtualInfo = this.data.virtualInfo,
-	            scale = +virtualInfo.scale.toFixed(1),
-	            step = this.getScaleStep();
-
-	        if (scale >= 10) {
-	            return 1;
-	        }
-
-	        return step;
-	    },
-	    getScaleStep: function getScaleStep() {
-	        var virtualInfo = this.data.virtualInfo,
-	            scale = +virtualInfo.scale.toFixed(1);
-
-	        if (scale > 0.1 && scale < 1.5) {
-	            return 0.1;
-	        } else if (scale >= 1.5 && scale < 4) {
-	            return 0.5;
-	        } else if (scale >= 4 && scale < 10) {
-	            return 1;
-	        }
-
-	        return 0;
-	    },
-	    getTranslateStep: function getTranslateStep(scaleStep) {
-	        var virtualInfo = this.data.virtualInfo,
-	            scale = +virtualInfo.scale.toFixed(1);
-
-	        var totalSteps = (scale - 1) * 10;
-	        var translateX = virtualInfo.translateX;
-	        var translateY = virtualInfo.translateY;
-
-	        return {
-	            xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
-	            yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
-	        };
-	    },
-	    rotate: function rotate() {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo,
-	            img = this.$refs.virtualimage;
-
-	        data.showVirtual = true;
-	        virtualInfo.rotate += 90;
-
-	        img.style.transform = this.genTransform();
-	    },
-	    genTransform: function genTransform() {
-	        var virtualInfo = this.data.virtualInfo;
-
-	        return 'translateX(' + virtualInfo.translateX + 'px)' + ' translateY(' + virtualInfo.translateY + 'px)' + ' rotate(' + virtualInfo.rotate + 'deg)' + ' scale(' + virtualInfo.scale + ')';
-	    },
-	    onDel: function onDel(index) {
-	        var self = this,
-	            data = this.data,
-	            imgList = data.imgList,
-	            img = imgList[index];
-
-	        var modal = new KLModal({
-	            data: {
-	                content: this.$trans('DELETE_CONFIRM') + img.name + '?'
-	            }
-	        });
-	        modal.$on('ok', function () {
-	            imgList = data.imgList.splice(index, 1);
-
-	            if (!imgList[index]) {
-	                data.curIndex = 0;
-	            }
-	            self.$emit('delete', {
-	                name: img.name,
-	                index: index
-	            });
-	            self.$update();
-	        });
-	    },
-	    onMouseDown: function onMouseDown(e) {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo;
-
-	        virtualInfo.mouseDownX = e.pageX;
-	        virtualInfo.mouseDownY = e.pageY;
-	        virtualInfo.dragTarget = e.origin;
-	        virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
-	    },
-	    onMouseMove: function onMouseMove(e) {
-	        var data = this.data,
-	            virtualImg = this.$refs.virtualimage,
-	            virtualInfo = data.virtualInfo,
-	            originX = virtualInfo.mouseDownX,
-	            originY = virtualInfo.mouseDownY,
-	            boundary = virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
-
-	        if (virtualInfo.dragTarget) {
-	            var translateX = e.pageX - originX;
-	            var translateY = e.pageY - originY;
-	            translateX = translateX > boundary.maxTranslateX ? boundary.maxTranslateX : translateX < boundary.minTranslateX ? boundary.minTranslateX : translateX;
-
-	            translateY = translateY > boundary.maxTranslateY ? boundary.maxTranslateY : translateY < boundary.minTranslateY ? boundary.minTranslateY : translateY;
-
-	            virtualInfo.translateX += translateX;
-	            virtualInfo.translateY += translateY;
-	            virtualInfo.mouseDownX = e.pageX;
-	            virtualInfo.mouseDownY = e.pageY;
-	            virtualImg.style.transform = this.genTransform();
-	        }
-	    },
-	    onMouseUp: function onMouseUp() {
-	        var data = this.data,
-	            virtualInfo = data.virtualInfo;
-
-	        if (virtualInfo.dragTarget) {
-	            virtualInfo.mouseDownX = 0;
-	            virtualInfo.mouseDownY = 0;
-	            virtualInfo.dragTarget = null;
-	        }
-	    },
-	    onMouseWheel: function onMouseWheel(e) {
-	        if (e.wheelDelta > 0) {
-	            this.zoomIn();
-	        } else if (e.wheelDelta < 0) {
-	            this.zoomOut();
-	        }
-	    },
-	    getMaxMinTranslateValue: function getMaxMinTranslateValue() {
-	        var virtualImg = this.$refs.virtualimage,
-	            virtualZone = this.$refs.virtualzone;
-
-	        var virtualImgRect = virtualImg.getBoundingClientRect();
-	        var virtualZoneRect = virtualZone.getBoundingClientRect();
-	        var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
-	        var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
-	        var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
-	        var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
-
-	        return {
-	            maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
-	            maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
-	            minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
-	            minTranslateY: minDeltaY < 0 ? minDeltaY : 0
-	        };
+	    if (curIndex > 0) {
+	      toIndex = --data.curIndex;
 	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  onNext: function onNext() {
+	    var data = this.data,
+	        curIndex = data.curIndex,
+	        length = data.imgList.length,
+	        toIndex = 0;
+
+	    if (curIndex < length - 1) {
+	      toIndex = ++data.curIndex;
+	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  setCurrentTo: function setCurrentTo(toIndex) {
+	    var data = this.data,
+	        refs = this.$refs,
+	        curIndex = data.curIndex;
+
+	    data.showVirtual = false;
+	    data.virtualInfo.scale = 1;
+	    data.virtualInfo.rotate = 0;
+	    data.virtualInfo.translateX = 0;
+	    data.virtualInfo.translateY = 0;
+
+	    refs['full-' + curIndex].style.opacity = 0;
+	    refs['full-' + toIndex].style.opacity = 1;
+
+	    this.data.curIndex = toIndex;
+	  },
+	  zoomIn: function zoomIn() {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo,
+	        step = this.getZoomInStep();
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale += step;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  zoomOut: function zoomOut() {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo,
+	        step = this.getZoomOutStep(),
+	        translateStepInfo = this.getTranslateStep(step);
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale -= step;
+	    virtualInfo.translateX -= translateStepInfo.xStep;
+	    virtualInfo.translateY -= translateStepInfo.yStep;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  rezoom: function rezoom() {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo;
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale = 1;
+	    virtualInfo.translateX = 0;
+	    virtualInfo.translateY = 0;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  getZoomInStep: function getZoomInStep() {
+	    var virtualInfo = this.data.virtualInfo,
+	        scale = +virtualInfo.scale.toFixed(1),
+	        step = this.getScaleStep();
+
+	    if (scale <= 0.1) {
+	      return 0.1;
+	    }
+
+	    return step;
+	  },
+	  getZoomOutStep: function getZoomOutStep() {
+	    var virtualInfo = this.data.virtualInfo,
+	        scale = +virtualInfo.scale.toFixed(1),
+	        step = this.getScaleStep();
+
+	    if (scale >= 10) {
+	      return 1;
+	    }
+
+	    return step;
+	  },
+	  getScaleStep: function getScaleStep() {
+	    var virtualInfo = this.data.virtualInfo,
+	        scale = +virtualInfo.scale.toFixed(1);
+
+	    if (scale > 0.1 && scale < 1.5) {
+	      return 0.1;
+	    } else if (scale >= 1.5 && scale < 4) {
+	      return 0.5;
+	    } else if (scale >= 4 && scale < 10) {
+	      return 1;
+	    }
+
+	    return 0;
+	  },
+	  getTranslateStep: function getTranslateStep(scaleStep) {
+	    var virtualInfo = this.data.virtualInfo,
+	        scale = +virtualInfo.scale.toFixed(1);
+
+	    var totalSteps = (scale - 1) * 10;
+	    var translateX = virtualInfo.translateX;
+	    var translateY = virtualInfo.translateY;
+
+	    return {
+	      xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
+	      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
+	    };
+	  },
+	  rotate: function rotate() {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo,
+	        img = this.$refs.virtualimage;
+
+	    data.showVirtual = true;
+	    virtualInfo.rotate += 90;
+
+	    img.style.transform = this.genTransform();
+	  },
+	  genTransform: function genTransform() {
+	    var virtualInfo = this.data.virtualInfo;
+	    return 'translateX(' + virtualInfo.translateX + 'px)' + (' translateY(' + virtualInfo.translateY + 'px)') + (' rotate(' + virtualInfo.rotate + 'deg)') + (' scale(' + virtualInfo.scale + ')');
+	  },
+	  onDel: function onDel(index) {
+	    var self = this,
+	        data = this.data,
+	        imgList = data.imgList,
+	        img = imgList[index];
+
+	    var modal = new KLModal({
+	      data: {
+	        content: this.$trans('DELETE_CONFIRM') + img.name + '?'
+	      }
+	    });
+	    modal.$on('ok', function () {
+	      imgList = data.imgList.splice(index, 1);
+
+	      if (!imgList[index]) {
+	        data.curIndex = 0;
+	      }
+	      self.$emit('delete', {
+	        name: img.name,
+	        index: index
+	      });
+	      self.$update();
+	    });
+	  },
+	  onMouseDown: function onMouseDown(e) {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo;
+
+	    virtualInfo.mouseDownX = e.pageX;
+	    virtualInfo.mouseDownY = e.pageY;
+	    virtualInfo.dragTarget = e.origin;
+	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+	  },
+	  onMouseMove: function onMouseMove(e) {
+	    var data = this.data,
+	        virtualImg = this.$refs.virtualimage,
+	        virtualInfo = data.virtualInfo,
+	        originX = virtualInfo.mouseDownX,
+	        originY = virtualInfo.mouseDownY,
+	        boundary = virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+
+	    if (virtualInfo.dragTarget) {
+	      var translateX = e.pageX - originX;
+	      var translateY = e.pageY - originY;
+	      translateX = translateX > boundary.maxTranslateX ? boundary.maxTranslateX : translateX < boundary.minTranslateX ? boundary.minTranslateX : translateX;
+
+	      translateY = translateY > boundary.maxTranslateY ? boundary.maxTranslateY : translateY < boundary.minTranslateY ? boundary.minTranslateY : translateY;
+
+	      virtualInfo.translateX += translateX;
+	      virtualInfo.translateY += translateY;
+	      virtualInfo.mouseDownX = e.pageX;
+	      virtualInfo.mouseDownY = e.pageY;
+	      virtualImg.style.transform = this.genTransform();
+	    }
+	  },
+	  onMouseUp: function onMouseUp() {
+	    var data = this.data,
+	        virtualInfo = data.virtualInfo;
+
+	    if (virtualInfo.dragTarget) {
+	      virtualInfo.mouseDownX = 0;
+	      virtualInfo.mouseDownY = 0;
+	      virtualInfo.dragTarget = null;
+	    }
+	  },
+	  onMouseWheel: function onMouseWheel(e) {
+	    if (e.wheelDelta > 0) {
+	      this.zoomIn();
+	    } else if (e.wheelDelta < 0) {
+	      this.zoomOut();
+	    }
+	  },
+	  getMaxMinTranslateValue: function getMaxMinTranslateValue() {
+	    var virtualImg = this.$refs.virtualimage,
+	        virtualZone = this.$refs.virtualzone;
+
+	    var virtualImgRect = virtualImg.getBoundingClientRect();
+	    var virtualZoneRect = virtualZone.getBoundingClientRect();
+	    var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
+	    var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
+	    var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
+	    var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
+
+	    return {
+	      maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
+	      maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
+	      minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
+	      minTranslateY: minDeltaY < 0 ? minDeltaY : 0
+	    };
+	  }
 	});
 
 		module.exports = ImagePreview;
@@ -30868,12 +31044,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 *  ------------------------------
 	 *  UploadCard 上传
 	 *  ------------------------------
 	 */
-	'use strict';
 
 	var _ = __webpack_require__(101);
 	var FileUnit = __webpack_require__(379);
@@ -30887,429 +31064,412 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var UploadCard = UploadBase.extend({
-	    name: 'upload-card',
-	    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	    config: function config(data) {
-	        _.extend(data, {
-	            status: 'uploaded',
-	            info: '',
-	            fileUnitListPadding: 22
-	        });
-
-	        this.supr(data);
-	    },
-
-	    init: function init(data) {
-	        this.initFilesZone();
-	        this.supr(data);
-	    },
-
-	    initFilesZone: function initFilesZone() {
-	        var data = this.data,
-	            numPerline = data.numPerline,
-	            fileUnitWidth = data.fileUnitWidth,
-	            fileUnitMargin = data.fileUnitMargin;
-
-	        data.filesWrapper = this.$refs.fileswrapper;
-	        data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
-	    },
-
-	    onDragEnter: function onDragEnter(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	    },
-
-	    onDragOver: function onDragOver(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-	    },
-
-	    onDrop: function onDrop(e) {
-	        e.stopPropagation();
-	        e.preventDefault();
-
-	        if (!this.data.drag) {
-	            return;
-	        }
-
-	        var dt = e.event && e.event.dataTransfer;
-	        var files = dt.files;
-
-	        this.handleFiles(files);
-	    },
-
-	    fileSelect: function fileSelect() {
-	        var inputNode = this.$refs.file,
-	            files = inputNode.files;
-
-	        this.handleFiles(files);
-
-	        inputNode.value = '';
-	    },
-
-	    handleFiles: function handleFiles(files) {
-	        var data = this.data,
-	            index = 0,
-	            len = files.length,
-	            file,
-	            fileunit,
-	            options;
-
-	        this.toggle(false);
-
-	        options = this.setOptions(data);
-
-	        data.preCheckInfo = '';
-
-	        for (; index < len; index++) {
-	            if (data.fileUnitList.length < data.numLimit) {
-	                file = files[index];
-	                data.preCheckInfo = this.preCheck(file);
-	                if (data.preCheckInfo) {
-	                    continue;
-	                }
-	                fileunit = this.createFileUnit({
-	                    file: file,
-	                    options: options,
-	                    deletable: data.deletable
-	                });
-	                fileunit.flag = 'ADDED';
-	                data.fileUnitList.push({
-	                    inst: fileunit
-	                });
-	                this.updateFilesZone();
-	            }
-	        }
-
-	        this.updateFileList();
-	    },
-
-	    updateFilesZone: function updateFilesZone() {
-	        var data = this.data,
-	            filesZone = this.$refs.fileszone,
-	            entryWrapper = this.$refs.entrywrapper,
-	            inputWrapper = this.$refs.inputwrapper;
-
-	        if (data.fileUnitList.length < data.numLimit) {
-	            filesZone.style.width = '125px';
-	            entryWrapper.style['margin-right'] = '20px';
-	            inputWrapper.style.display = 'inline-block';
-	        } else if (data.fileUnitList.length == data.numLimit) {
-	            filesZone.style.width = '50px';
-	            entryWrapper.style['margin-right'] = '0';
-	            inputWrapper.style.display = 'none';
-	        }
-	    },
-
-	    createFileUnit: function createFileUnit(data) {
-	        var self = this,
-	            imagePreview = this.$refs.imagepreview,
-	            fileunit = new FileUnit({ data: data });
-
-	        fileunit.$on('preview', previewCb);
-
-	        function previewCb() {
-	            var current = this;
-
-	            function filterImgFile(file) {
-	                return file.inst.data.type === 'IMAGE';
-	            }
-
-	            function mapHelper(img) {
-	                if (current === img.inst) {
-	                    img.inst.current = true;
-	                }
-	                return img.inst;
-	            }
-
-	            var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
-
-	            var preview = createImagePreview(imgList);
-
-	            preview.$inject(imagePreview);
-	        }
-
-	        function createImagePreview(imgFileList) {
-	            function findHelper(img) {
-	                return img.current;
-	            }
-	            var curIndex = imgFileList.findIndex(findHelper);
-
-	            function mapHelper(img) {
-	                delete img.current;
-	                return {
-	                    src: img.data.src,
-	                    name: img.data.name,
-	                    status: img.data.status
-	                };
-	            }
-	            var imgList = imgFileList.map(mapHelper);
-
-	            var imagePreview = new ImagePreview({
-	                data: {
-	                    imgList: imgList,
-	                    curIndex: curIndex
-	                }
-	            });
-
-	            imagePreview.$on('delete', function (imgInfo) {
-	                var index = imgInfo.index,
-	                    imgInst = imgFileList[index];
-
-	                if (imgInst) {
-	                    imgInst.$emit('delete');
-	                }
-	            });
-
-	            imagePreview.$on('$destroy', function () {
-	                imgFileList = null;
-	            });
-
-	            return imagePreview;
-	        }
-
-	        fileunit.$on('progress', progressCb);
-
-	        function progressCb(info) {
-	            var data = self.data,
-	                curInst = this,
-	                curIndex = -1,
-	                lastIndex = -1;
-
-	            self.data.fileUnitList.forEach(function (item, index) {
-	                if (item.inst.data.status === 'uploading') {
-	                    lastIndex = index;
-	                }
-	                if (item.inst === curInst) {
-	                    curIndex = index;
-	                }
-	            });
-
-	            if (curIndex >= lastIndex && data.status != 'failed') {
-	                data.status = 'uploading';
-	                data.progress = info.progress;
-	                self.$update();
-	            }
-	        }
-
-	        fileunit.$on('onload', successCb);
-	        // fileunit.$on('success', successCb);
-
-	        function successCb() {
-	            var allUploaded = true;
-	            var hasFailed = false;
-	            self.data.fileUnitList.forEach(function (item) {
-	                allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-	                hasFailed = hasFailed || item.inst.data.status === 'failed';
-	            });
-	            if (allUploaded) {
-	                self.data.status = 'uploaded';
-	            } else if (hasFailed) {
-	                self.data.status = 'failed';
-	            }
-	            self.$update();
-	            self.updateFileList();
-	        }
-
-	        fileunit.$on('error', function () {
-	            self.data.status = 'failed';
-	            self.data.info = self.$trans('UPLOAD_FAIL');
-	            self.$update();
-	        });
-
-	        fileunit.$on('delete', function () {
-	            if (this.flag === 'ORIGINAL') {
-	                this.flag = 'DELETED';
-	                this.file = this.data.file;
-	            }
-	            this.destroy();
-	        });
-
-	        fileunit.$on('$destroy', function () {
-	            self.toggle(false);
-	            this.destroyed = true;
-	            this.$off('preview', previewCb);
-	            this.$off('onload', successCb);
-	            self.updateFileList();
-	            self.updateFilesZone();
-	            resetStatus();
-	        });
-
-	        function resetStatus() {
-	            successCb();
-	        }
-
-	        return fileunit;
-	    },
-
-	    updateFileList: function updateFileList() {
-	        this.supr();
-	        this.$update();
-	    },
-
-	    createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
-	        var wrapper = document.createElement('li');
-
-	        parent.appendChild(wrapper);
-
-	        this.setFileUnitWrapperStyle(wrapper, index);
-
-	        return wrapper;
-	    },
-
-	    setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
-	        var data = this.data,
-	            numPerline = data.numPerline,
-	            fileUnitWidth = data.fileUnitWidth,
-	            fileUnitMargin = data.fileUnitMargin;
-
-	        wrapper.className = 'u-fileitem';
-	        wrapper.style.display = 'inline-block';
-	        wrapper.style.width = fileUnitWidth + 'px';
-
-	        if (index && index % numPerline) {
-	            wrapper.style.marginLeft = fileUnitMargin + 'px';
-	        }
-	    },
-
-	    uploadFiles: function uploadFiles() {
-	        var data = this.data,
-	            fileUnitList = data.fileUnitList;
-
-	        data.status = 'uploaded';
-	        data.info = '';
-
-	        fileUnitList.forEach(function (item) {
-	            var inst = item.inst,
-	                data = inst.data;
-
-	            if (data.status === 'failed') {
-	                inst.uploadFile(data.file);
-	            }
-	        });
-	    },
-
-	    toggle: function toggle(open, e) {
-	        e && e.stopPropagation();
-
-	        var data = this.data;
-	        if (typeof open === 'undefined') {
-	            open = !data.open;
-	        }
-	        data.open = open;
-
-	        this.setPosition(!open);
-
-	        var index = UploadCard.opens.indexOf(this);
-	        if (open && index < 0) {
-	            UploadCard.opens.push(this);
-	        } else if (!open && index >= 0) {
-	            UploadCard.opens.splice(index, 1);
-	        }
-	    },
-
-	    setPosition: function setPosition(hidden) {
-	        var filesBanner = this.$refs.filesbanner;
-	        var filesWrapper = this.$refs.fileswrapper;
-	        if (hidden) {
-	            filesBanner.style.left = '-9999px';
-	            filesWrapper.style.left = '-9999px';
-	            return;
-	        }
-	        this.setVerticalPosition();
-	        this.setHorizontalPosition();
-	    },
-
-	    setVerticalPosition: function setVerticalPosition() {
-	        var filesEntry = this.$refs.filesentry;
-	        var filesEntryCoors = filesEntry.getBoundingClientRect();
-	        var filesWrapper = this.$refs.fileswrapper;
-	        var filesWrapperCoors = filesWrapper.getBoundingClientRect();
-	        var viewHeight = document.documentElement.clientHeight;
-
-	        // show at vertical bottom side
-	        var vertical = 'bottom';
-	        // show at vertical top side
-	        var isVerticalTopSide = filesEntryCoors.top - filesWrapperCoors.height > 0;
-	        var isVerticalBottomSide = filesEntryCoors.bottom + filesWrapperCoors.height < viewHeight;
-	        if (isVerticalTopSide && !isVerticalBottomSide) {
-	            vertical = 'top';
-	        }
-
-	        if (vertical === 'bottom') {
-	            this.data.isTopBanner = false;
-	            filesWrapper.style.top = '53px';
-	            filesWrapper.style.bottom = 'auto';
-	            filesWrapper.style.boxShadow = 'auto';
-	            filesWrapper.style.boxShadow = '0 2px 3px 0 rgba(0,0,0,0.1)';
-	        } else {
-	            this.data.isTopBanner = true;
-	            filesWrapper.style.top = 'auto';
-	            filesWrapper.style.bottom = '53px';
-	            filesWrapper.style.boxShadow = '0 -2px 3px 0 rgba(0,0,0,0.1)';
-	        }
-	    },
-
-	    setHorizontalPosition: function setHorizontalPosition() {
-	        var filesEntry = this.$refs.filesentry;
-	        var filesEntryCoors = filesEntry.getBoundingClientRect();
-	        var filesBanner = this.$refs.filesbanner;
-	        var filesWrapper = this.$refs.fileswrapper;
-	        var filesWrapperCoors = filesWrapper.getBoundingClientRect();
-	        var viewWidth = document.documentElement.clientWidth;
-
-	        // show at central
-	        var horizontal = 'left';
-	        var offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
-	        var isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
-	        var isHorizontalRightEdge = filesEntryCoors.right + offsetWidth > viewWidth;
-	        if (isHorizontalRightEdge) {
-	            horizontal = 'right';
-	        }
-	        var isHorizontalCenter = !isHorizontalLeftEdge && !isHorizontalRightEdge;
-	        if (isHorizontalCenter) {
-	            horizontal = 'central';
-	        }
-
-	        if (horizontal === 'left') {
-	            filesWrapper.style.left = '0';
-	            filesWrapper.style.right = 'auto';
-	        } else if (horizontal === 'right') {
-	            filesWrapper.style.left = 'auto';
-	            filesWrapper.style.right = '0';
-	        } else if (horizontal === 'central') {
-	            filesWrapper.style.left = '-' + offsetWidth + 'px';
-	        }
-
-	        filesBanner.style.left = '20px';
+	  name: 'upload-card',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      status: 'uploaded',
+	      info: '',
+	      fileUnitListPadding: 22
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initFilesZone();
+	    this.supr(data);
+	  },
+	  initFilesZone: function initFilesZone() {
+	    var data = this.data,
+	        numPerline = data.numPerline,
+	        fileUnitWidth = data.fileUnitWidth,
+	        fileUnitMargin = data.fileUnitMargin;
+
+	    data.filesWrapper = this.$refs.fileswrapper;
+	    data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
+	  },
+	  onDragEnter: function onDragEnter(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragOver: function onDragOver(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDrop: function onDrop(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+
+	    if (!this.data.drag) {
+	      return;
 	    }
+
+	    var dt = e.event && e.event.dataTransfer;
+	    var files = dt.files;
+
+	    this.handleFiles(files);
+	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file,
+	        files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
+	  },
+	  handleFiles: function handleFiles(files) {
+	    var data = this.data,
+	        index = 0,
+	        len = files.length,
+	        file = void 0,
+	        fileunit = void 0,
+	        options = void 0;
+
+	    this.toggle(false);
+
+	    options = this.setOptions(data);
+
+	    data.preCheckInfo = '';
+
+	    for (; index < len; index++) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (data.preCheckInfo) {
+	          continue;
+	        }
+	        fileunit = this.createFileUnit({
+	          file: file,
+	          options: options,
+	          deletable: data.deletable
+	        });
+	        fileunit.flag = 'ADDED';
+	        data.fileUnitList.push({
+	          inst: fileunit
+	        });
+	        this.updateFilesZone();
+	      }
+	    }
+
+	    this.updateFileList();
+	  },
+	  updateFilesZone: function updateFilesZone() {
+	    var data = this.data,
+	        filesZone = this.$refs.fileszone,
+	        entryWrapper = this.$refs.entrywrapper,
+	        inputWrapper = this.$refs.inputwrapper;
+
+	    if (data.fileUnitList.length < data.numLimit) {
+	      filesZone.style.width = '125px';
+	      entryWrapper.style['margin-right'] = '20px';
+	      inputWrapper.style.display = 'inline-block';
+	    } else if (data.fileUnitList.length == data.numLimit) {
+	      filesZone.style.width = '50px';
+	      entryWrapper.style['margin-right'] = '0';
+	      inputWrapper.style.display = 'none';
+	    }
+	  },
+	  createFileUnit: function createFileUnit(data) {
+	    var self = this,
+	        imagePreview = this.$refs.imagepreview,
+	        fileunit = new FileUnit({ data: data });
+
+	    fileunit.$on('preview', previewCb);
+
+	    function previewCb() {
+	      var current = this;
+
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
+	      }
+
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
+
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreview);
+	    }
+
+	    function createImagePreview(imgFileList) {
+	      function findHelper(img) {
+	        return img.current;
+	      }
+	      var curIndex = imgFileList.findIndex(findHelper);
+
+	      function mapHelper(img) {
+	        delete img.current;
+	        return {
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
+	        };
+	      }
+	      var imgList = imgFileList.map(mapHelper);
+
+	      var imagePreview = new ImagePreview({
+	        data: {
+	          imgList: imgList,
+	          curIndex: curIndex
+	        }
+	      });
+
+	      imagePreview.$on('delete', function (imgInfo) {
+	        var index = imgInfo.index,
+	            imgInst = imgFileList[index];
+
+	        if (imgInst) {
+	          imgInst.$emit('delete');
+	        }
+	      });
+
+	      imagePreview.$on('$destroy', function () {
+	        imgFileList = null;
+	      });
+
+	      return imagePreview;
+	    }
+
+	    fileunit.$on('progress', progressCb);
+
+	    function progressCb(info) {
+	      var data = self.data,
+	          curInst = this,
+	          curIndex = -1,
+	          lastIndex = -1;
+
+	      self.data.fileUnitList.forEach(function (item, index) {
+	        if (item.inst.data.status === 'uploading') {
+	          lastIndex = index;
+	        }
+	        if (item.inst === curInst) {
+	          curIndex = index;
+	        }
+	      });
+
+	      if (curIndex >= lastIndex && data.status != 'failed') {
+	        data.status = 'uploading';
+	        data.progress = info.progress;
+	        self.$update();
+	      }
+	    }
+
+	    fileunit.$on('onload', successCb);
+	    // fileunit.$on('success', successCb);
+
+	    function successCb() {
+	      var allUploaded = true;
+	      var hasFailed = false;
+	      self.data.fileUnitList.forEach(function (item) {
+	        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+	        hasFailed = hasFailed || item.inst.data.status === 'failed';
+	      });
+	      if (allUploaded) {
+	        self.data.status = 'uploaded';
+	      } else if (hasFailed) {
+	        self.data.status = 'failed';
+	      }
+	      self.$update();
+	      self.updateFileList();
+	    }
+
+	    fileunit.$on('error', function () {
+	      self.data.status = 'failed';
+	      self.data.info = self.$trans('UPLOAD_FAIL');
+	      self.$update();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      self.toggle(false);
+	      this.destroyed = true;
+	      this.$off('preview', previewCb);
+	      this.$off('onload', successCb);
+	      self.updateFileList();
+	      self.updateFilesZone();
+	      resetStatus();
+	    });
+
+	    function resetStatus() {
+	      successCb();
+	    }
+
+	    return fileunit;
+	  },
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.$update();
+	  },
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
+	  },
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data,
+	        numPerline = data.numPerline,
+	        fileUnitWidth = data.fileUnitWidth,
+	        fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
+	    }
+	  },
+	  uploadFiles: function uploadFiles() {
+	    var data = this.data,
+	        fileUnitList = data.fileUnitList;
+
+	    data.status = 'uploaded';
+	    data.info = '';
+
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst,
+	          data = inst.data;
+
+	      if (data.status === 'failed') {
+	        inst.uploadFile(data.file);
+	      }
+	    });
+	  },
+	  toggle: function toggle(open, e) {
+	    e && e.stopPropagation();
+
+	    var data = this.data;
+	    if (typeof open === 'undefined') {
+	      open = !data.open;
+	    }
+	    data.open = open;
+
+	    this.setPosition(!open);
+
+	    var index = UploadCard.opens.indexOf(this);
+	    if (open && index < 0) {
+	      UploadCard.opens.push(this);
+	    } else if (!open && index >= 0) {
+	      UploadCard.opens.splice(index, 1);
+	    }
+	  },
+	  setPosition: function setPosition(hidden) {
+	    var filesBanner = this.$refs.filesbanner;
+	    var filesWrapper = this.$refs.fileswrapper;
+	    if (hidden) {
+	      filesBanner.style.left = '-9999px';
+	      filesWrapper.style.left = '-9999px';
+	      return;
+	    }
+	    this.setVerticalPosition();
+	    this.setHorizontalPosition();
+	  },
+	  setVerticalPosition: function setVerticalPosition() {
+	    var filesEntry = this.$refs.filesentry;
+	    var filesEntryCoors = filesEntry.getBoundingClientRect();
+	    var filesWrapper = this.$refs.fileswrapper;
+	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	    var viewHeight = document.documentElement.clientHeight;
+
+	    // show at vertical bottom side
+	    var vertical = 'bottom';
+	    // show at vertical top side
+	    var isVerticalTopSide = filesEntryCoors.top - filesWrapperCoors.height > 0;
+	    var isVerticalBottomSide = filesEntryCoors.bottom + filesWrapperCoors.height < viewHeight;
+	    if (isVerticalTopSide && !isVerticalBottomSide) {
+	      vertical = 'top';
+	    }
+
+	    if (vertical === 'bottom') {
+	      this.data.isTopBanner = false;
+	      filesWrapper.style.top = '53px';
+	      filesWrapper.style.bottom = 'auto';
+	      filesWrapper.style.boxShadow = 'auto';
+	      filesWrapper.style.boxShadow = '0 2px 3px 0 rgba(0,0,0,0.1)';
+	    } else {
+	      this.data.isTopBanner = true;
+	      filesWrapper.style.top = 'auto';
+	      filesWrapper.style.bottom = '53px';
+	      filesWrapper.style.boxShadow = '0 -2px 3px 0 rgba(0,0,0,0.1)';
+	    }
+	  },
+	  setHorizontalPosition: function setHorizontalPosition() {
+	    var filesEntry = this.$refs.filesentry;
+	    var filesEntryCoors = filesEntry.getBoundingClientRect();
+	    var filesBanner = this.$refs.filesbanner;
+	    var filesWrapper = this.$refs.fileswrapper;
+	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	    var viewWidth = document.documentElement.clientWidth;
+
+	    // show at central
+	    var horizontal = 'left';
+	    var offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
+	    var isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
+	    var isHorizontalRightEdge = filesEntryCoors.right + offsetWidth > viewWidth;
+	    if (isHorizontalRightEdge) {
+	      horizontal = 'right';
+	    }
+	    var isHorizontalCenter = !isHorizontalLeftEdge && !isHorizontalRightEdge;
+	    if (isHorizontalCenter) {
+	      horizontal = 'central';
+	    }
+
+	    if (horizontal === 'left') {
+	      filesWrapper.style.left = '0';
+	      filesWrapper.style.right = 'auto';
+	    } else if (horizontal === 'right') {
+	      filesWrapper.style.left = 'auto';
+	      filesWrapper.style.right = '0';
+	    } else if (horizontal === 'central') {
+	      filesWrapper.style.left = '-' + offsetWidth + 'px';
+	    }
+
+	    filesBanner.style.left = '20px';
+	  }
 	});
 
 	var opens = UploadCard.opens = [];
 	document.addEventListener('click', function (e) {
-	    for (var len = opens.length, i = len - 1; i >= 0; i--) {
-	        var close = true;
+	  for (var len = opens.length, i = len - 1; i >= 0; i--) {
+	    var close = true;
 
-	        var upload = opens[i];
-	        var uploadElement = upload.$refs.element;
-	        var iterator = e.target;
+	    var upload = opens[i];
+	    var uploadElement = upload.$refs.element;
+	    var iterator = e.target;
 
-	        while (iterator) {
-	            if (uploadElement == iterator) {
-	                close = false;
-	                break;
-	            }
-	            iterator = iterator.parentElement;
-	        }
-
-	        if (close) {
-	            upload.toggle(false, e);
-	            upload.$update();
-	        }
+	    while (iterator) {
+	      if (uploadElement == iterator) {
+	        close = false;
+	        break;
+	      }
+	      iterator = iterator.parentElement;
 	    }
+
+	    if (close) {
+	      upload.toggle(false, e);
+	      upload.$update();
+	    }
+	  }
 	}, false);
 
-	module.exports = UploadCard;
+		module.exports = UploadCard;
 
 /***/ }),
 /* 390 */
@@ -31327,14 +31487,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
-	 * KLSidebar 
+	 * KLSidebar
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(393);
@@ -31413,14 +31573,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLMenu      两级菜单
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(395);
@@ -31489,14 +31649,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
-	 * KLMenuItem 
+	 * KLMenuItem
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(397);
@@ -31527,8 +31687,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.supr();
 	  },
+
 	  computed: {
-	    'active': function active() {
+	    active: function active() {
 	      if (!this.data.rootMenu) return;
 	      return this.data.rootMenu.currentItem == this;
 	    }
@@ -31589,14 +31750,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
-	 * KLSubMenu 
+	 * KLSubMenu
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(400);
@@ -31625,8 +31786,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr();
 	  },
+
 	  computed: {
-	    'active': function active() {
+	    active: function active() {
 	      if (!this.data.rootMenu) return;
 	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
 	    }
@@ -31692,126 +31854,129 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var KLPager = Component.extend({
-	    name: 'kl-pager',
-	    template: template,
-	    /**
+	  name: 'kl-pager',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            current: 1,
-	            total: '',
-	            sumTotal: '',
-	            pageSize: '',
-	            position: 'center',
-	            middle: 5,
-	            side: 2,
-	            _start: 1,
-	            _end: 5,
-	            step: 5,
-	            maxPageSize: 50,
-	            pageSizeList: [],
-	            isEllipsis: false
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      current: 1,
+	      total: '',
+	      sumTotal: '',
+	      pageSize: '',
+	      position: 'center',
+	      middle: 5,
+	      side: 2,
+	      _start: 1,
+	      _end: 5,
+	      step: 5,
+	      maxPageSize: 50,
+	      pageSizeList: [],
+	      isEllipsis: false
+	    });
+	    this.supr();
 
-	        this._setPageSizeList();
+	    this._setPageSizeList();
 
-	        this.$watch(['current', 'total'], function (current, total) {
-	            this.data.current = current = +current;
-	            this.data.total = total = +total;
-	            var show = this.data.middle >> 1;
-	            var side = this.data.side;
+	    this.$watch(['current', 'total'], function (current, total) {
+	      this.data.current = current = +current;
+	      this.data.total = total = +total;
+	      var show = this.data.middle >> 1;
+	      var side = this.data.side;
 
-	            this.data._start = current - show;
-	            this.data._end = current + show;
-	            if (this.data._start < side + 1) this.data._start = side + 1;
-	            if (this.data._end > total - side) this.data._end = total - side;
-	            if (current - this.data._start < show) this.data._end += this.data._start - current + show;
-	            if (this.data._end - current < show) this.data._start += this.data._end - current - show;
-	        });
+	      this.data._start = current - show;
+	      this.data._end = current + show;
+	      if (this.data._start < side + 1) this.data._start = side + 1;
+	      if (this.data._end > total - side) this.data._end = total - side;
+	      if (current - this.data._start < show) {
+	        this.data._end += this.data._start - current + show;
+	      }
+	      if (this.data._end - current < show) {
+	        this.data._start += this.data._end - current - show;
+	      }
+	    });
 
-	        this.$watch(['middle', 'side'], function (middle, side) {
-	            this.data.middle = +middle;
-	            this.data.side = +side;
-	        });
+	    this.$watch(['middle', 'side'], function (middle, side) {
+	      this.data.middle = +middle;
+	      this.data.side = +side;
+	    });
 
-	        this.$watch('pageSize', function (val, oldVal) {
-	            if (!oldVal) return;
-	            this.initTotal();
-	            this.select(1);
-	        });
+	    this.$watch('pageSize', function (val, oldVal) {
+	      if (!oldVal) return;
+	      this.initTotal();
+	      this.select(1);
+	    });
 
-	        this.$watch('sumTotal', function (val, oldVal) {
-	            this.initTotal();
-	        });
-	    },
+	    this.$watch('sumTotal', function (val, oldVal) {
+	      this.initTotal();
+	    });
+	  },
+	  initTotal: function initTotal() {
+	    if (this.data.pageSize) {
+	      this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	    }
 
-	    initTotal: function initTotal() {
-	        if (!!this.data.pageSize) {
-	            this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
-	        }
+	    if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
+	      console.error('Pager组件需要传pageSize');
+	    }
+	  },
+	  _setPageSizeList: function _setPageSizeList() {
+	    var _data = this.data,
+	        step = _data.step,
+	        maxPageSize = _data.maxPageSize;
 
-	        if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
-	            console.error('Pager组件需要传pageSize');
-	        }
-	    },
+	    for (var i = 1; i * step <= maxPageSize; ++i) {
+	      this.data.pageSizeList.push({
+	        id: i * step,
+	        name: i * step + this.$trans('ITEM_PAGE')
+	      });
+	    }
+	  },
 
-	    _setPageSizeList: function _setPageSizeList() {
-	        var _data = this.data,
-	            step = _data.step,
-	            maxPageSize = _data.maxPageSize;
 
-	        for (var i = 1; i * step <= maxPageSize; ++i) {
-	            this.data.pageSizeList.push({
-	                id: i * step,
-	                name: i * step + this.$trans('ITEM_PAGE')
-	            });
-	        }
-	    },
-
-	    /**
+	  /**
 	     * @method select(page) 选择某一页
 	     * @public
 	     * @param  {object} page 选择页
 	     * @return {void}
 	     */
-	    select: function select(page) {
-	        if (this.data.readonly || this.data.disabled) return;
+	  select: function select(page) {
+	    if (this.data.readonly || this.data.disabled) return;
 
-	        if (page < 1) return;
-	        if (page > this.data.total) return;
+	    if (page < 1) return;
+	    if (page > this.data.total) return;
 
-	        this.data.current = page;
-	        /**
+	    this.data.current = page;
+	    /**
 	         * @event select 选择某一页时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} current 当前选择页
 	         */
-	        this.$update();
-	        this.$emit('select', {
-	            sender: this,
-	            current: this.data.current
-	        });
-	    },
-	    enter: function enter(ev) {
-	        var data = this.data;
-	        if (ev.which == 13) {
-	            // ENTER key
-	            ev.preventDefault();
-	            this.goto();
-	        }
-	    },
-	    goto: function goto() {
-	        var data = this.data;
-	        if (!data.pageNo && data.pageNo != 0) return;
-	        if (data.pageNo > data.total) {
-	            data.pageNo = data.total;
-	        } else if (data.pageNo < 1) {
-	            data.pageNo = 1;
-	        }
-	        this.select(this.data.pageNo);
+	    this.$update();
+	    this.$emit('select', {
+	      sender: this,
+	      current: this.data.current
+	    });
+	  },
+	  enter: function enter(ev) {
+	    var data = this.data;
+	    if (ev.which == 13) {
+	      // ENTER key
+	      ev.preventDefault();
+	      this.goto();
 	    }
+	  },
+	  goto: function goto() {
+	    var data = this.data;
+	    if (!data.pageNo && data.pageNo != 0) return;
+	    if (data.pageNo > data.total) {
+	      data.pageNo = data.total;
+	    } else if (data.pageNo < 1) {
+	      data.pageNo = 1;
+	    }
+	    this.select(this.data.pageNo);
+	  }
 	});
 
 		module.exports = KLPager;
@@ -31826,14 +31991,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLTabs       选项卡
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(404);
@@ -31860,53 +32025,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                => 补充class
 	 */
 	var KLTabs = Component.extend({
-	    name: 'kl-tabs',
-	    template: template,
-	    /**
+	  name: 'kl-tabs',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            tabs: [],
-	            selected: undefined,
-	            titleTemplate: null
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      tabs: [],
+	      selected: undefined,
+	      titleTemplate: null
+	    });
+	    this.supr();
 
-	        this.$watch('selected', function (newValue, oldValue) {
-	            /**
+	    this.$watch('selected', function (newValue, oldValue) {
+	      /**
 	             * @event change 选项卡改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} selected 改变后的选项卡
 	             */
-	            this.$emit('change', {
-	                sender: this,
-	                selected: newValue,
-	                key: newValue.data.key
-	            });
-	        });
-	    },
-	    /**
+	      this.$emit('change', {
+	        sender: this,
+	        selected: newValue,
+	        key: newValue.data.key
+	      });
+	    });
+	  },
+
+	  /**
 	     * @method select(item) 选择某一项
 	     * @public
 	     * @param  {object} item 选择项
 	     * @return {void}
 	     */
-	    select: function select(item) {
-	        if (this.data.readonly || this.data.disabled || item.data.disabled) return;
+	  select: function select(item) {
+	    if (this.data.readonly || this.data.disabled || item.data.disabled) return;
 
-	        this.data.selected = item;
-	        /**
+	    this.data.selected = item;
+	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择卡
 	         */
-	        this.$emit('select', {
-	            sender: this,
-	            selected: item,
-	            key: item.data.key
-	        });
-	    }
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item,
+	      key: item.data.key
+	    });
+	  }
 	});
 
 		module.exports = KLTabs;
@@ -31921,13 +32087,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLTab       子选项卡
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
@@ -31941,32 +32107,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.key=null]             => key 标识
 	 */
 	var KLTab = Component.extend({
-	    name: 'kl-tab',
-	    template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
-	    /**
+	  name: 'kl-tab',
+	  template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            title: ''
-	        });
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: ''
+	    });
+	    this.supr();
 
-	        if (this.$outer && this.$outer instanceof KLTabs) this.$outer.data.tabs.push(this);
-
-	        if (!this.$outer.data.selected) this.$outer.data.selected = this;
-
-	        this._setDefaultTab();
-	    },
-
-	    _setDefaultTab: function _setDefaultTab() {
-	        var defaultKey = this.$outer.data.defaultKey,
-	            key = this.data.key;
-
-	        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
-	            this.$outer.data.selected = this;
-	        }
+	    if (this.$outer && this.$outer instanceof KLTabs) {
+	      this.$outer.data.tabs.push(this);
 	    }
+
+	    if (!this.$outer.data.selected) this.$outer.data.selected = this;
+
+	    this._setDefaultTab();
+	  },
+	  _setDefaultTab: function _setDefaultTab() {
+	    var defaultKey = this.$outer.data.defaultKey,
+	        key = this.data.key;
+
+	    if (!!defaultKey && !!key && '' + defaultKey === '' + key) {
+	      this.$outer.data.selected = this;
+	    }
+	  }
 	});
 
 		module.exports = KLTab;
@@ -31975,14 +32142,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLSteps     步骤条
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(407);
@@ -31997,37 +32164,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}     [options.data.size=false]     =>  当前尺寸
 	 */
 	var KLSteps = Component.extend({
-	    name: 'kl-steps',
-	    template: template,
-	    /**
+	  name: 'kl-steps',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            steps: [],
-	            current: 0,
-	            size: '',
-	            currentIndex: 0
-	        });
-	        this.supr();
-	    },
-	    init: function init() {
-	        this.supr();
-	        this.$watch('current', function (newValue, oldValue) {
-	            this.juedgeFinishedItem();
-	        });
-	    },
-	    juedgeFinishedItem: function juedgeFinishedItem() {
-	        var data = this.data;
-	        var current = data.current;
-	        var steps = data.steps;
+	  config: function config() {
+	    _.extend(this.data, {
+	      steps: [],
+	      current: 0,
+	      size: '',
+	      currentIndex: 0
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.supr();
+	    this.$watch('current', function (newValue, oldValue) {
+	      this.juedgeFinishedItem();
+	    });
+	  },
+	  juedgeFinishedItem: function juedgeFinishedItem() {
+	    var data = this.data;
+	    var current = data.current;
+	    var steps = data.steps;
 
-	        steps.forEach(function (item, index) {
-	            if (item.status == current) {
-	                data.currentIndex = index;
-	            }
-	        });
-	    }
+	    steps.forEach(function (item, index) {
+	      if (item.status == current) {
+	        data.currentIndex = index;
+	      }
+	    });
+	  }
 	});
 
 		module.exports = KLSteps;
@@ -32042,14 +32209,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCrumb     面包屑
 	 * @author   zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(409);
@@ -32068,8 +32235,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-crumb',
 	  template: template,
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      separator: '/',
@@ -32091,6 +32258,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCrumbItem     面包屑里的每一项
@@ -32098,15 +32267,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(411);
 	var _ = __webpack_require__(101);
 	var KLCrumb = __webpack_require__(408);
 
 	/**
-	 * @class KLCrumbItem     
+	 * @class KLCrumbItem
 	 * @extend Component
 	 * @param {object}          [options.data]                    = 绑定属性
 	 * @param {string}          [options.data.class]              => 补充class
@@ -32116,8 +32283,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-crumb-item',
 	  template: template,
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {});
 	    this.supr();
@@ -32162,51 +32329,54 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}            [options.data.class]                => 补充class
 	 */
 	var KLMask = Component.extend({
-	    name: 'kl-mask',
-	    template: template,
-	    /**
+	  name: 'kl-mask',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            closable: true
-	        });
-	        this.supr();
-	    },
-	    /**
-	     * @protected
-	     */
-	    init: function init() {
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      closable: true
+	    });
+	    this.supr();
+	  },
 
-	        // 如果不是内嵌组件，则嵌入到document.body中
-	        if (this.$root === this) this.$inject(document.body);
-	    },
-	    /**
+	  /**
 	     * @protected
 	     */
-	    _handleClick: function _handleClick(e) {
-	        if (/m-mask/.test(e.target.className)) {
-	            if (this.data.closable) this.close();
-	        }
-	    },
-	    /**
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  _handleClick: function _handleClick(e) {
+	    if (/m-mask/.test(e.target.className)) {
+	      if (this.data.closable) this.close();
+	    }
+	  },
+
+	  /**
 	     * @method close(data) 关闭遮罩
 	     * @public
 	     * @param  {object} data 额外数据
 	     * @return {void}
 	     */
-	    close: function close(data) {
-	        /**
+	  close: function close(data) {
+	    /**
 	         * @event close 关闭遮罩时触发
 	         * @property {object} data 额外数据
 	         */
-	        this.$emit('close', {
-	            sender: this,
-	            data: data
-	        });
-	        this.destroy();
-	    }
+	    this.$emit('close', {
+	      sender: this,
+	      data: data
+	    });
+	    this.destroy();
+	  }
 	});
 
 		module.exports = KLMask;
@@ -32221,14 +32391,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLNotify    通知
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(415);
@@ -32245,30 +32415,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.class]                => 补充class
 	 */
 	var KLNotify = Component.extend({
-	    name: 'kl-notify',
-	    template: template,
-	    /**
+	  name: 'kl-notify',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            messages: [],
-	            position: 'topcenter',
-	            duration: 2000,
-	            single: false
-	        });
-	        this.supr();
-	    },
-	    /**
-	     * @protected
-	     */
-	    init: function init() {
-	        this.supr();
+	  config: function config() {
+	    _.extend(this.data, {
+	      messages: [],
+	      position: 'topcenter',
+	      duration: 2000,
+	      single: false
+	    });
+	    this.supr();
+	  },
 
-	        // 如果不是内嵌组件，则嵌入到document.body中
-	        if (this.$root === this) this.$inject(document.body);
-	    },
-	    /**
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
 	     * @method show(text[,state][,duration]) 弹出一个消息
 	     * @public
 	     * @param  {string} [text] 消息内容
@@ -32276,71 +32448,74 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
 	     * @return {void}
 	     */
-	    show: function show(text, state, duration) {
-	        var message = {
-	            text: text,
-	            state: state,
-	            duration: duration >= 0 ? +duration : +this.data.duration
-	        };
-	        var messages = this.data.messages;
+	  show: function show(text, state, duration) {
+	    var self = this;
+	    var message = {
+	      text: text,
+	      state: state,
+	      duration: duration >= 0 ? +duration : +this.data.duration
+	    };
+	    var messages = this.data.messages;
 
-	        if (this.data.single && messages[0]) {
-	            message = _.extend(messages[0], message, true);
-	            message.counter++;
-	        } else {
-	            messages.unshift(message);
-	            message.counter = 0;
-	        }
+	    if (this.data.single && messages[0]) {
+	      message = _.extend(messages[0], message, true);
+	      message.counter++;
+	    } else {
+	      messages.unshift(message);
+	      message.counter = 0;
+	    }
 
-	        this.$update();
+	    this.$update();
 
-	        if (message.duration) {
-	            setTimeout(function () {
-	                if (!message.counter) this.close(message);else message.counter--;
-	            }.bind(this), message.duration);
-	        }
+	    if (message.duration) {
+	      setTimeout(function () {
+	        if (!message.counter) self.close(message);else message.counter--;
+	      }, message.duration);
+	    }
 
-	        /**
+	    /**
 	         * @event show 弹出一个消息时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} message 弹出的消息对象
 	         */
-	        this.$emit('show', {
-	            sender: this,
-	            message: message
-	        });
-	    },
-	    /**
+	    this.$emit('show', {
+	      sender: this,
+	      message: message
+	    });
+	  },
+
+	  /**
 	     * @method close(message) 关闭某条消息
 	     * @public
 	     * @param  {object} message 需要关闭的消息对象
 	     * @return {void}
 	     */
-	    close: function close(message) {
-	        var index = this.data.messages.indexOf(message);
-	        if (index < 0) return;
-	        this.data.messages.splice(index, 1);
-	        this.$update();
+	  close: function close(message) {
+	    var index = this.data.messages.indexOf(message);
+	    if (index < 0) return;
+	    this.data.messages.splice(index, 1);
+	    this.$update();
 
-	        /**
+	    /**
 	         * @event close 关闭某条消息时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} message 关闭了的消息对象
 	         */
-	        this.$emit('close', {
-	            sender: this,
-	            message: message
-	        });
-	    },
-	    /**
+	    this.$emit('close', {
+	      sender: this,
+	      message: message
+	    });
+	  },
+
+	  /**
 	     * @method closeAll() 关闭所有消息
 	     * @public
 	     * @return {void}
 	     */
-	    closeAll: function closeAll() {
-	        this.data.messages = [];
-	        this.$update();
-	    }
+	  closeAll: function closeAll() {
+	    this.data.messages = [];
+	    this.$update();
+	  }
 	});
 
 	var STATES = ['success', 'warning', 'info', 'error'];
@@ -32352,9 +32527,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {void}
 	 */
 	STATES.forEach(function (state) {
-	    KLNotify.prototype[state] = function (text, duration) {
-	        this.show(text, state, duration);
-	    };
+	  KLNotify.prototype[state] = function (text, duration) {
+	    this.show(text, state, duration);
+	  };
 	});
 
 	/**
@@ -32397,7 +32572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {void}
 	 */
 	METHODS.forEach(function (method) {
-	    KLNotify[method] = notify[method].bind(notify);
+	  KLNotify[method] = notify[method].bind(notify);
 	});
 
 	module.exports = KLNotify;
@@ -32412,14 +32587,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLPopConfirm 气泡弹框
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var dom = __webpack_require__(75).dom;
 
@@ -32456,29 +32631,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr();
 	  },
 	  getInstance: function getInstance() {
+	    var self = this;
 	    if (!this.data.instance) {
 	      var instance = new PopUp({ data: this.data });
 
 	      instance.$on('ok', function (data) {
-	        if (this.events && this.events.ok) {
-	          this.$emit('ok', data);
+	        if (self.events && self.events.ok) {
+	          self.$emit('ok', data);
 	        } else {
-	          this.data.instance.destroy();
+	          self.data.instance.destroy();
 	        }
-	      }.bind(this));
+	      });
 
 	      instance.$on('cancel', function (data) {
-	        if (this.events && this.events.cancel) {
-	          this.$emit('cancel', data);
+	        if (self.events && self.events.cancel) {
+	          self.$emit('cancel', data);
 	        } else {
-	          this.data.instance.destroy();
+	          self.data.instance.destroy();
 	        }
-	      }.bind(this));
+	      });
 
 	      instance.$on('destroy', function () {
-	        this.$refs.trigger.data.isShow = false;
-	        this.data.instance = null;
-	      }.bind(this));
+	        self.$refs.trigger.data.isShow = false;
+	        self.data.instance = null;
+	      });
 
 	      this.data.instance = instance;
 	    }
@@ -32547,14 +32723,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLProgress  进度条
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(419);
@@ -32577,8 +32753,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-progress',
 	  template: template,
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      percent: 36,
@@ -32604,14 +32780,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLLoading   加载中
 	 * @author   sensen(rainforest92@126.com)
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(421);
@@ -32626,48 +32802,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]              => 补充class
 	 */
 	var KLLoading = Component.extend({
-	    name: 'kl-loading',
-	    template: template,
-	    /**
+	  name: 'kl-loading',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            'static': false,
-	            visible: false
-	        });
-	        this.supr();
-	    },
-	    /**
+	  config: function config() {
+	    _.extend(this.data, {
+	      static: false,
+	      visible: false
+	    });
+	    this.supr();
+	  },
+
+	  /**
 	     * @protected
 	     */
-	    init: function init() {
-	        this.supr();
-	        // 证明不是内嵌组件
-	        if (this.$root === this) this.$inject(document.body);
-	    },
-	    /**
+	  init: function init() {
+	    this.supr();
+	    // 证明不是内嵌组件
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
 	     * @method show() 显示组件
 	     * @public
 	     * @return {void}
 	     */
-	    show: function show() {
-	        if (this.data.disabled) return;
+	  show: function show() {
+	    if (this.data.disabled) return;
 
-	        this.data.visible = true;
-	        this.$update();
-	    },
-	    /**
+	    this.data.visible = true;
+	    this.$update();
+	  },
+
+	  /**
 	     * @method show() 隐藏组件
 	     * @public
 	     * @return {void}
 	     */
-	    hide: function hide() {
-	        if (this.data.disabled) return;
+	  hide: function hide() {
+	    if (this.data.disabled) return;
 
-	        this.data.visible = false;
-	        this.$update();
-	    }
+	    this.data.visible = false;
+	    this.$update();
+	  }
 	});
 
 	/**
@@ -32684,7 +32863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {void}
 	 */
 	KLLoading.show = function () {
-	    loading.show();
+	  loading.show();
 	};
 
 	/**
@@ -32694,7 +32873,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @return {void}
 	 */
 	KLLoading.hide = function () {
-	    loading.hide();
+	  loading.hide();
 	};
 
 	module.exports = KLLoading;
@@ -32709,14 +32888,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
+	'use strict';
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLIcon     图标
 	 * @author   zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
-
-	'use strict';
 
 	var Component = __webpack_require__(74);
 	var template = __webpack_require__(423);
@@ -32732,22 +32911,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.color]                  => 设置图标颜色
 	 */
 	var KLIcon = Component.extend({
-	    name: 'kl-icon',
-	    template: template,
-	    /**
+	  name: 'kl-icon',
+	  template: template,
+	  /**
 	     * @protected
 	     */
-	    config: function config() {
-	        _.extend(this.data, {
-	            type: '',
-	            fontSize: '',
-	            color: ''
-	        });
-	        this.supr();
-	    },
-	    onClick: function onClick(e) {
-	        this.$emit('click', e);
-	    }
+	  config: function config() {
+	    _.extend(this.data, {
+	      type: '',
+	      fontSize: '',
+	      color: ''
+	    });
+	    this.supr();
+	  },
+	  onClick: function onClick(e) {
+	    this.$emit('click', e);
+	  }
 	});
 
 		module.exports = KLIcon;
@@ -32775,27 +32954,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(101);
 
 	var KLLocaleProvider = Component.extend({
-	    name: 'kl-locale-provider',
-	    template: '{#if ready}{#inc this.$body}{/if}',
-	    config: function config() {
-	        this.defaults({
-	            lang: 'cn'
-	        });
+	  name: 'kl-locale-provider',
+	  template: '{#if ready}{#inc this.$body}{/if}',
+	  config: function config() {
+	    this.defaults({
+	      lang: 'cn'
+	    });
 
-	        this._initLang();
-	    },
-	    _initLang: function _initLang() {
-	        var api = this.data.api,
-	            lang = this.data.lang;
+	    this._initLang();
+	  },
+	  _initLang: function _initLang() {
+	    var self = this;
+	    var api = this.data.api,
+	        lang = this.data.lang;
 
-	        KLLocaleProvider.lang = lang;
-	        ajax.get(api + '?lang=' + lang, function (json) {
-	            KLLocaleProvider.locale[lang] = json;
-	            this.$update('ready', true);
+	    KLLocaleProvider.lang = lang;
+	    ajax.get(api + '?lang=' + lang, function (json) {
+	      KLLocaleProvider.locale[lang] = json;
+	      self.$update('ready', true);
 
-	            this.$emit('ready');
-	        }.bind(this));
-	    }
+	      self.$emit('ready');
+	    });
+	  }
 	});
 
 	KLLocaleProvider.lang = 'cn';
@@ -32803,69 +32983,68 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
 	KLLocaleProvider._format = function (str) {
-	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	        args[_key - 1] = arguments[_key];
+	  for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	    args[_key - 1] = arguments[_key];
+	  }
+
+	  if (args.length === 1 && (0, _typeof3.default)(args[0]) === 'object') {
+	    args = args[0];
+	  } else {
+	    args = {};
+	  }
+
+	  if (!args || !args.hasOwnProperty) {
+	    args = {};
+	  }
+
+	  return str.replace(RE_NARGS, function (match, prefix, i, index) {
+	    var result = void 0;
+
+	    if (str[index - 1] === '{' && str[index + match.length] === '}') {
+	      return i;
+	    }
+	    result = _.hasOwn(args, i) ? args[i] : match;
+	    if (_.isNil(result)) {
+	      return '';
 	    }
 
-	    if (args.length === 1 && (0, _typeof3.default)(args[0]) === 'object') {
-	        args = args[0];
-	    } else {
-	        args = {};
-	    }
-
-	    if (!args || !args.hasOwnProperty) {
-	        args = {};
-	    }
-
-	    return str.replace(RE_NARGS, function (match, prefix, i, index) {
-	        var result = void 0;
-
-	        if (str[index - 1] === '{' && str[index + match.length] === '}') {
-	            return i;
-	        } else {
-	            result = _.hasOwn(args, i) ? args[i] : match;
-	            if (_.isNil(result)) {
-	                return '';
-	            }
-
-	            return result;
-	        }
-	    });
+	    return result;
+	  });
 	};
 
 	/**
 	 * @private
 	 */
 	KLLocaleProvider._interpolate = function (key, args) {
-	    var lang = KLLocaleProvider.lang,
-	        map = KLLocaleProvider.locale[lang] || {};
+	  var lang = KLLocaleProvider.lang,
+	      map = KLLocaleProvider.locale[lang] || {};
 
-	    var val = map[key] || key;
+	  var val = map[key] || key;
 
-	    // Check for the existance of links within the translated string
-	    if (val.indexOf('@:') >= 0) {
-	        // Match all the links within the local
-	        // We are going to replace each of
-	        // them with its translation
-	        var matches = val.match(/(@:[\w|.]+)/g);
-	        for (var idx in matches) {
-	            var link = matches[idx];
-	            // Remove the leading @:
-	            var linkPlaceholder = link.substr(2);
-	            // Translate the link
-	            var translatedstring = KLLocaleProvider._interpolate(linkPlaceholder, args);
-	            // Replace the link with the translated string
-	            val = val.replace(link, translatedstring);
-	        }
+	  // Check for the existance of links within the translated string
+	  if (val.indexOf('@:') >= 0) {
+	    // Match all the links within the local
+	    // We are going to replace each of
+	    // them with its translation
+	    var matches = val.match(/(@:[\w|.]+)/g);
+	    for (var idx in matches) {
+	      var link = matches[idx];
+	      // Remove the leading @:
+	      var linkPlaceholder = link.substr(2);
+	      // Translate the link
+	      var translatedstring = KLLocaleProvider._interpolate(linkPlaceholder, args);
+	      // Replace the link with the translated string
+	      val = val.replace(link, translatedstring);
 	    }
-	    return !args ? val : KLLocaleProvider._format(val, args);
+	  }
+	  return !args ? val : KLLocaleProvider._format(val, args);
 	};
 
 	KLLocaleProvider.translate = function (key, params) {
-	    return KLLocaleProvider._interpolate(key, params);
+	  return KLLocaleProvider._interpolate(key, params);
 	};
 
-	module.exports = KLLocaleProvider;
+		module.exports = KLLocaleProvider;
 
 /***/ }),
 /* 425 */
@@ -32873,13 +33052,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(426);
-	var TableBody = __webpack_require__(431);
+	var _toConsumableArray2 = __webpack_require__(426);
+
+	var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var TableHeader = __webpack_require__(434);
+	var TableBody = __webpack_require__(439);
 	var _ = __webpack_require__(101);
-	var u = __webpack_require__(428);
+	var u = __webpack_require__(436);
 
 	var Component = __webpack_require__(74);
-	var tpl = __webpack_require__(437);
+	var tpl = __webpack_require__(445);
 
 	/**
 	 * @class KLTable
@@ -32923,391 +33108,395 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var KLTable = Component.extend({
-	    name: 'kl-table',
-	    template: tpl,
-	    computed: {
-	        bodyHeight: {
-	            get: function get() {
-	                var data = this.data;
-	                if (data.height != undefined && data.headerHeight != undefined) {
-	                    return +data.height - data.headerHeight;
-	                }
-	            },
-	            set: function set(val) {
-	                return this.data.bodyHeight = val;
-	            }
-	        },
-	        fixedRight: {
-	            get: function get() {
-	                var data = this.data;
-	                var fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-	                return fixedRight > 0 ? fixedRight : 0;
-	            }
-	        }
-	    },
-	    config: function config(data) {
-	        this.defaults({
-	            stickyHeaderOffset: 0,
-	            stickyFooterOffset: 0,
-	            scrollParent: null,
-	            scrollParentNode: null,
-	            strip: true,
-	            enableHover: true,
-	            scrollYBar: 0,
-	            scrollXBar: 0,
-
-	            show: true,
-	            columns: [],
-	            sorting: {},
-	            config: {},
-	            align: 'center',
-	            initFinished: false
-	        });
-	        this.supr(data);
-
-	        this._initWatchers();
-	    },
-	    init: function init() {
-	        this._initTable();
-	    },
-	    _initTable: function _initTable() {
+	  name: 'kl-table',
+	  template: tpl,
+	  computed: {
+	    bodyHeight: {
+	      get: function get() {
 	        var data = this.data;
-	        var refs = this.$refs;
-	        var INIT = 1;
-	        setTimeout(function () {
-	            data.headerHeight = refs.headerWrap.offsetHeight;
-
-	            this._updateContainerWidth(INIT);
-	            this._updateViewWidth();
-	            this._initTableWidth();
-	            this._getHeaderHeight();
-	            data.initFinished = true;
-	        }.bind(this), 50);
+	        if (data.height != undefined && data.headerHeight != undefined) {
+	          return +data.height - data.headerHeight;
+	        }
+	      },
+	      set: function set(val) {
+	        return this.data.bodyHeight = val;
+	      }
 	    },
-	    _initTableWidth: function _initTableWidth() {
+	    fixedRight: {
+	      get: function get() {
 	        var data = this.data;
-	        var _dataColumns = data._dataColumns;
-	        if (!_dataColumns) {
-	            return;
-	        }
+	        var fixedRight = Math.floor(data.parentWidth - data.tableWidth);
+	        return fixedRight > 0 ? fixedRight : 0;
+	      }
+	    }
+	  },
+	  config: function config(data) {
+	    this.defaults({
+	      stickyHeaderOffset: 0,
+	      stickyFooterOffset: 0,
+	      scrollParent: null,
+	      scrollParentNode: null,
+	      strip: true,
+	      enableHover: true,
+	      scrollYBar: 0,
+	      scrollXBar: 0,
 
-	        var tableWidth = data.parentWidth;
-	        var customWidthCount = 0;
-	        var customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
-	            var width = parseInt(current.width);
-	            if (width) {
-	                customWidthCount++;
-	                return previous + width;
-	            }
-	            return previous;
-	        }, 0);
+	      show: true,
+	      columns: [],
+	      sorting: {},
+	      config: {},
+	      align: 'center',
+	      initFinished: false
+	    });
+	    this.supr(data);
 
-	        var tableViewWidth = tableWidth - data.scrollYBar;
-	        var autoWidth = Math.floor((tableViewWidth - customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
-	        autoWidth = autoWidth > 0 ? autoWidth : 100;
+	    this._initWatchers();
+	  },
+	  init: function init() {
+	    this._initTable();
+	  },
+	  _initTable: function _initTable() {
+	    var self = this;
+	    var data = this.data;
+	    var refs = this.$refs;
+	    var INIT = 1;
+	    setTimeout(function () {
+	      data.headerHeight = refs.headerWrap.offsetHeight;
 
-	        var totalWidth = 0;
-	        _dataColumns.forEach(function (dataColumn) {
-	            dataColumn._width = parseInt(dataColumn.width || autoWidth);
-	            totalWidth += dataColumn._width;
-	            return dataColumn;
-	        });
+	      self._updateContainerWidth(INIT);
+	      self._updateViewWidth();
+	      self._initTableWidth();
+	      self._getHeaderHeight();
+	      data.initFinished = true;
+	    }, 50);
+	  },
+	  _initTableWidth: function _initTableWidth() {
+	    var data = this.data;
+	    var _dataColumns = data._dataColumns;
+	    if (!_dataColumns) {
+	      return;
+	    }
 
-	        this._updateData('tableWidth', tableWidth);
-	    },
-	    _initWatchers: function _initWatchers() {
-	        this.$watch('show', this._onShowChange);
-	        this.$watch('source', this._onSouceChange);
-	        this.$watch('columns', this._onColumnsChange);
-	        this.$watch('scrollYBar', this._onScrollYBarChange);
-	        this.$watch('parentWidth', this._onParentWidthChange);
+	    var tableWidth = data.parentWidth;
+	    var customWidthCount = 0;
+	    var customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
+	      var width = parseInt(current.width);
+	      if (width) {
+	        customWidthCount++;
+	        return previous + width;
+	      }
+	      return previous;
+	    }, 0);
 
-	        this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
+	    var tableViewWidth = tableWidth - data.scrollYBar;
+	    var autoWidth = Math.floor((tableViewWidth - customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
+	    autoWidth = autoWidth > 0 ? autoWidth : 100;
 
-	        this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
-	        this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
+	    var totalWidth = 0;
+	    _dataColumns.forEach(function (dataColumn) {
+	      dataColumn._width = parseInt(dataColumn.width || autoWidth);
+	      totalWidth += dataColumn._width;
+	      return dataColumn;
+	    });
 
-	        this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
-	        window.addEventListener('resize', this._onWindowResize);
+	    this._updateData('tableWidth', tableWidth);
+	  },
+	  _initWatchers: function _initWatchers() {
+	    this.$watch('show', this._onShowChange);
+	    this.$watch('source', this._onSouceChange);
+	    this.$watch('columns', this._onColumnsChange);
+	    this.$watch('scrollYBar', this._onScrollYBarChange);
+	    this.$watch('parentWidth', this._onParentWidthChange);
 
-	        this._watchWidthChange();
-	    },
-	    _getScrollParentNode: function _getScrollParentNode() {
-	        var data = this.data;
-	        if (data.scrollParentNode) {
-	            return data.scrollParentNode;
-	        }
-	        if (data.scrollParent) {
-	            return data.scrollParentNode = document.querySelector(data.scrollParent) || window;
-	        }
-	        return data.scrollParentNode = window;
-	    },
-	    _updateHeaders: function _updateHeaders() {
-	        var columns = this.data.columns;
-	        if (!columns) {
-	            return;
-	        }
-	        this.data.headers = u.getHeaders(columns);
-	    },
-	    _onShowChange: function _onShowChange(newVal) {
-	        if (newVal) {
-	            setTimeout(function () {
-	                this._updateViewWidth();
-	            }.bind(this), 100);
-	        }
-	    },
-	    _updateViewWidth: function _updateViewWidth() {
-	        if (this.$refs.table) {
-	            this._updateData('viewWidth', this.$refs.table.offsetWidth);
-	        }
-	    },
-	    _onParentWidthChange: function _onParentWidthChange(newVal, oldVal) {
-	        if (newVal == undefined || oldVal == undefined) {
-	            return;
-	        }
-	        oldVal = oldVal || this.data.tableWidth;
-	        var ratio = newVal / oldVal;
-	        this._updateTableWidth(ratio);
-	    },
-	    _onSouceChange: function _onSouceChange() {
-	        setTimeout(function () {
-	            this._updateSticky();
-	        }.bind(this), 500);
-	    },
-	    _onWinodwScroll: function _onWinodwScroll() {
-	        if (!this.$refs || !this._isShow()) {
-	            return;
-	        }
-	        this._updateSticky();
-	    },
-	    _updateSticky: function _updateSticky() {
-	        var data = this.data;
-	        if (!data.stickyHeader && !data.stickyFooter) {
-	            return;
-	        }
+	    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-	        var tableWrapOffset = this._getTableWrapOffset();
+	    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
+	    this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
 
-	        if (data.stickyHeader && tableWrapOffset) {
-	            this._updateStickyHeaderStatus(tableWrapOffset);
-	        }
+	    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
+	    window.addEventListener('resize', this._onWindowResize);
 
-	        if (data.stickyFooter && tableWrapOffset) {
-	            this._updateStickyFooterStatus(tableWrapOffset);
-	        }
-	    },
-	    _getTableWrapOffset: function _getTableWrapOffset() {
-	        var scrollParentNode = this._getScrollParentNode();
-	        var parentRect = {
-	            top: 0
-	        };
-	        var scrollTop;
-	        if (scrollParentNode !== window) {
-	            scrollTop = scrollParentNode.scrollTop;
-	            parentRect = scrollParentNode.getBoundingClientRect();
+	    this._watchWidthChange();
+	  },
+	  _getScrollParentNode: function _getScrollParentNode() {
+	    var data = this.data;
+	    if (data.scrollParentNode) {
+	      return data.scrollParentNode;
+	    }
+	    if (data.scrollParent) {
+	      return data.scrollParentNode = document.querySelector(data.scrollParent) || window;
+	    }
+	    return data.scrollParentNode = window;
+	  },
+	  _updateHeaders: function _updateHeaders() {
+	    var columns = this.data.columns;
+	    if (!columns) {
+	      return;
+	    }
+	    this.data.headers = u.getHeaders(columns);
+	  },
+	  _onShowChange: function _onShowChange(newVal) {
+	    var self = this;
+	    if (newVal) {
+	      setTimeout(function () {
+	        self._updateViewWidth();
+	      }, 100);
+	    }
+	  },
+	  _updateViewWidth: function _updateViewWidth() {
+	    if (this.$refs.table) {
+	      this._updateData('viewWidth', this.$refs.table.offsetWidth);
+	    }
+	  },
+	  _onParentWidthChange: function _onParentWidthChange(newVal, oldVal) {
+	    if (newVal == undefined || oldVal == undefined) {
+	      return;
+	    }
+	    oldVal = oldVal || this.data.tableWidth;
+	    var ratio = newVal / oldVal;
+	    this._updateTableWidth(ratio);
+	  },
+	  _onSouceChange: function _onSouceChange() {
+	    var self = this;
+	    setTimeout(function () {
+	      self._updateSticky();
+	    }, 500);
+	  },
+	  _onWinodwScroll: function _onWinodwScroll() {
+	    if (!this.$refs || !this._isShow()) {
+	      return;
+	    }
+	    this._updateSticky();
+	  },
+	  _updateSticky: function _updateSticky() {
+	    var data = this.data;
+	    if (!data.stickyHeader && !data.stickyFooter) {
+	      return;
+	    }
+
+	    var tableWrapOffset = this._getTableWrapOffset();
+
+	    if (data.stickyHeader && tableWrapOffset) {
+	      this._updateStickyHeaderStatus(tableWrapOffset);
+	    }
+
+	    if (data.stickyFooter && tableWrapOffset) {
+	      this._updateStickyFooterStatus(tableWrapOffset);
+	    }
+	  },
+	  _getTableWrapOffset: function _getTableWrapOffset() {
+	    var scrollParentNode = this._getScrollParentNode();
+	    var parentRect = {
+	      top: 0
+	    };
+	    var scrollTop = void 0;
+	    if (scrollParentNode !== window) {
+	      scrollTop = scrollParentNode.scrollTop;
+	      parentRect = scrollParentNode.getBoundingClientRect();
+	    } else {
+	      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	    }
+
+	    var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+
+	    var tableWrapOffset = {
+	      top: tableRect.top + scrollTop - parentRect.top,
+	      bottom: tableRect.bottom + scrollTop - parentRect.top
+	    };
+
+	    return tableWrapOffset;
+	  },
+	  _updateStickyHeaderStatus: function _updateStickyHeaderStatus(tableWrapOffset) {
+	    var headerHeight = this._getHeaderHeight();
+
+	    var scrollParentNode = this._getScrollParentNode();
+	    var scrollY = 0;
+	    if (scrollParentNode !== window) {
+	      scrollY = scrollParentNode.scrollTop;
+	    } else {
+	      scrollY = window.scrollY;
+	    }
+
+	    var stickyActive = false;
+
+	    if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
+	      stickyActive = false;
+	    } else if (scrollY > tableWrapOffset.top) {
+	      stickyActive = true;
+	    }
+
+	    this.data.stickyHeaderActive = stickyActive;
+	  },
+	  _updateStickyFooterStatus: function _updateStickyFooterStatus(tableWrapOffset) {
+	    var headerHeight = this._getHeaderHeight();
+	    var footerHeight = this._getFooterHeight();
+
+	    var scrollY = 0;
+	    var innerHeight = 0;
+	    var scrollParentNode = this._getScrollParentNode();
+	    if (scrollParentNode !== window) {
+	      scrollY = scrollParentNode.scrollTop;
+	      innerHeight = scrollParentNode.clientHeight;
+	    } else {
+	      scrollY = window.scrollY;
+	      innerHeight = window.innerHeight;
+	    }
+
+	    var scrollYBottom = scrollY + innerHeight;
+	    var stickyActive = false;
+
+	    if (scrollYBottom > tableWrapOffset.bottom + footerHeight || scrollYBottom < tableWrapOffset.top + headerHeight + 20) {
+	      stickyActive = false;
+	    } else {
+	      stickyActive = true;
+	    }
+
+	    this.data.stickyFooterActive = stickyActive;
+	  },
+	  _watchWidthChange: function _watchWidthChange() {
+	    var self = this;
+	    this.data._quickTimer = setInterval(function () {
+	      if (!self._isShow()) {
+	        return;
+	      }
+	      self._updateContainerWidth();
+	      self._updateScrollBar();
+	    }, 50);
+	    this.data._slowTimer = setInterval(function () {
+	      if (!self._isShow()) {
+	        return;
+	      }
+	      self._updateTableWidth();
+	    }, 200);
+	  },
+	  _updateContainerWidth: function _updateContainerWidth(init) {
+	    var data = this.data;
+	    var width = data.width;
+	    if (init && width) {
+	      data._defaultWidth = width;
+	      return;
+	    }
+
+	    var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
+	    var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
+	    var parentWidth = u.getNum(parentStyle.width);
+	    width = parentWidth - parentPadding;
+
+	    data.parentWidth = width;
+	    data._defaultWidth = width;
+	  },
+	  _updateScrollBar: function _updateScrollBar() {
+	    var data = this.data;
+	    var tableWrapEle = this.$refs.bodyWrap;
+	    var tableEle = this.$refs.table;
+	    if (!tableWrapEle || !tableEle) {
+	      return;
+	    }
+	    var yBarWidth = Math.abs(tableWrapEle.offsetWidth - tableWrapEle.clientWidth);
+	    var tableWrapEleXBarWidth = Math.abs(tableWrapEle.offsetHeight - tableWrapEle.clientHeight);
+	    var tableEleXBarWidth = Math.abs(tableEle.offsetHeight - tableEle.clientHeight);
+	    var xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
+
+	    this._updateData('scrollYBar', yBarWidth);
+	    this._updateData('scrollXBar', xBarWidth);
+	  },
+	  _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
+	    if (oldVal === undefined) {
+	      return;
+	    }
+	    this._updateTableWidth();
+	  },
+	  _onColumnsChange: function _onColumnsChange(newVal) {
+	    if (newVal) {
+	      this._updateDataColumn();
+	      this._updateTableWidth();
+	      this._updateHeaders();
+	    }
+	  },
+	  _updateDataColumn: function _updateDataColumn() {
+	    this.$update('_dataColumns', u.getLeaves(this.data.columns));
+	  },
+	  _getHeaderHeight: function _getHeaderHeight() {
+	    var headerHeight = u.getElementHeight(this.$refs.headerWrap);
+	    this._updateData('headerHeight', headerHeight);
+	    return headerHeight;
+	  },
+	  _getFooterHeight: function _getFooterHeight() {
+	    var footerHeight = u.getElementHeight(this.$refs.footerWrap);
+	    this._updateData('footerHeight', footerHeight);
+	    return footerHeight;
+	  },
+	  _updateTableWidth: function _updateTableWidth(ratio) {
+	    var data = this.data;
+	    var _dataColumns = data._dataColumns;
+	    if (!_dataColumns) {
+	      return;
+	    }
+	    ratio = ratio || 1;
+	    var newTableWidth = 0;
+	    var fixedCol = false;
+	    var fixedTableWidth = 0;
+	    var fixedColRight = false;
+	    var fixedTableWidthRight = 0;
+
+	    _dataColumns.forEach(function (column) {
+	      // 计算表格宽度
+	      newTableWidth += column._width;
+
+	      // 更新列宽
+	      if (!column._width) {
+	        column._width = column.width || 100;
+	      }
+
+	      if (ratio !== 1) {
+	        column._width = Math.floor(column._width * ratio);
+	      }
+
+	      // 计算固定列的总宽度
+	      if (column._width && column.fixed) {
+	        if (column.fixed === 'right') {
+	          fixedColRight = true;
+	          fixedTableWidthRight += column._width;
 	        } else {
-	            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	          fixedCol = true;
+	          fixedTableWidth += column._width;
 	        }
+	      }
+	    });
 
-	        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+	    data.fixedCol = fixedCol;
+	    data.fixedTableWidth = fixedTableWidth;
+	    data.fixedColRight = fixedColRight;
+	    data.fixedTableWidthRight = fixedTableWidthRight;
 
-	        var tableWrapOffset = {
-	            top: tableRect.top + scrollTop - parentRect.top,
-	            bottom: tableRect.bottom + scrollTop - parentRect.top
-	        };
+	    data.tableWidth = newTableWidth;
 
-	        return tableWrapOffset;
-	    },
-	    _updateStickyHeaderStatus: function _updateStickyHeaderStatus(tableWrapOffset) {
-	        var headerHeight = this._getHeaderHeight();
+	    if (newTableWidth <= data._defaultWidth) {
+	      data.width = newTableWidth;
+	    } else {
+	      data.width = data._defaultWidth;
+	    }
+	    this.$update();
+	  },
+	  _onWindowResize: function _onWindowResize() {
+	    if (!this.$refs || !this._isShow()) {
+	      return;
+	    }
+	    this.$update('viewWidth', this.$refs.table.offsetWidth);
+	  },
+	  _onBodyScroll: function _onBodyScroll(host) {
+	    if (!this._isShow()) {
+	      return;
+	    }
+	    var $refs = this.$refs;
 
-	        var scrollParentNode = this._getScrollParentNode();
-	        var scrollY = 0;
-	        if (scrollParentNode !== window) {
-	            scrollY = scrollParentNode.scrollTop;
-	        } else {
-	            scrollY = window.scrollY;
-	        }
-
-	        var stickyActive = false;
-
-	        if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
-	            stickyActive = false;
-	        } else if (scrollY > tableWrapOffset.top) {
-	            stickyActive = true;
-	        }
-
-	        this.data.stickyHeaderActive = stickyActive;
-	    },
-	    _updateStickyFooterStatus: function _updateStickyFooterStatus(tableWrapOffset) {
-	        var headerHeight = this._getHeaderHeight();
-	        var footerHeight = this._getFooterHeight();
-
-	        var scrollY = 0;
-	        var innerHeight = 0;
-	        var scrollParentNode = this._getScrollParentNode();
-	        if (scrollParentNode !== window) {
-	            scrollY = scrollParentNode.scrollTop;
-	            innerHeight = scrollParentNode.clientHeight;
-	        } else {
-	            scrollY = window.scrollY;
-	            innerHeight = window.innerHeight;
-	        }
-
-	        var scrollYBottom = scrollY + innerHeight;
-	        var stickyActive = false;
-
-	        if (scrollYBottom > tableWrapOffset.bottom + footerHeight || scrollYBottom < tableWrapOffset.top + headerHeight + 20) {
-	            stickyActive = false;
-	        } else {
-	            stickyActive = true;
-	        }
-
-	        this.data.stickyFooterActive = stickyActive;
-	    },
-	    _watchWidthChange: function _watchWidthChange() {
-	        this.data._quickTimer = setInterval(function () {
-	            if (!this._isShow()) {
-	                return;
-	            }
-	            this._updateContainerWidth();
-	            this._updateScrollBar();
-	        }.bind(this), 50);
-	        this.data._slowTimer = setInterval(function () {
-	            if (!this._isShow()) {
-	                return;
-	            }
-	            this._updateTableWidth();
-	        }.bind(this), 200);
-	    },
-	    _updateContainerWidth: function _updateContainerWidth(init) {
-	        var data = this.data;
-	        var width = data.width;
-	        if (init && width) {
-	            data._defaultWidth = width;
-	            return;
-	        }
-
-	        var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-	        var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
-	        var parentWidth = u.getNum(parentStyle.width);
-	        width = parentWidth - parentPadding;
-
-	        data.parentWidth = width;
-	        data._defaultWidth = width;
-	    },
-	    _updateScrollBar: function _updateScrollBar() {
-	        var data = this.data;
-	        var tableWrapEle = this.$refs.bodyWrap;
-	        var tableEle = this.$refs.table;
-	        if (!tableWrapEle || !tableEle) {
-	            return;
-	        }
-	        var yBarWidth = Math.abs(tableWrapEle.offsetWidth - tableWrapEle.clientWidth);
-	        var tableWrapEleXBarWidth = Math.abs(tableWrapEle.offsetHeight - tableWrapEle.clientHeight);
-	        var tableEleXBarWidth = Math.abs(tableEle.offsetHeight - tableEle.clientHeight);
-	        var xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
-
-	        this._updateData('scrollYBar', yBarWidth);
-	        this._updateData('scrollXBar', xBarWidth);
-	    },
-	    _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
-	        if (oldVal === undefined) {
-	            return;
-	        }
-	        this._updateTableWidth();
-	    },
-	    _onColumnsChange: function _onColumnsChange(newVal) {
-	        if (newVal) {
-	            this._updateDataColumn();
-	            this._updateTableWidth();
-	            this._updateHeaders();
-	        }
-	    },
-	    _updateDataColumn: function _updateDataColumn() {
-	        this.$update('_dataColumns', u.getLeaves(this.data.columns));
-	    },
-	    _getHeaderHeight: function _getHeaderHeight() {
-	        var headerHeight = u.getElementHeight(this.$refs.headerWrap);
-	        this._updateData('headerHeight', headerHeight);
-	        return headerHeight;
-	    },
-	    _getFooterHeight: function _getFooterHeight() {
-	        var footerHeight = u.getElementHeight(this.$refs.footerWrap);
-	        this._updateData('footerHeight', footerHeight);
-	        return footerHeight;
-	    },
-	    _updateTableWidth: function _updateTableWidth(ratio) {
-	        var data = this.data;
-	        var _dataColumns = data._dataColumns;
-	        if (!_dataColumns) {
-	            return;
-	        }
-	        ratio = ratio || 1;
-	        var newTableWidth = 0;
-	        var fixedCol = false;
-	        var fixedTableWidth = 0;
-	        var fixedColRight = false;
-	        var fixedTableWidthRight = 0;
-
-	        _dataColumns.forEach(function (column) {
-	            // 计算表格宽度
-	            newTableWidth += column._width;
-
-	            // 更新列宽
-	            if (!column._width) {
-	                column._width = column.width || 100;
-	            }
-
-	            if (ratio !== 1) {
-	                column._width = Math.floor(column._width * ratio);
-	            }
-
-	            // 计算固定列的总宽度
-	            if (column._width && column.fixed) {
-	                if (column.fixed === 'right') {
-	                    fixedColRight = true;
-	                    fixedTableWidthRight += column._width;
-	                } else {
-	                    fixedCol = true;
-	                    fixedTableWidth += column._width;
-	                }
-	            }
-	        });
-
-	        data.fixedCol = fixedCol;
-	        data.fixedTableWidth = fixedTableWidth;
-	        data.fixedColRight = fixedColRight;
-	        data.fixedTableWidthRight = fixedTableWidthRight;
-
-	        data.tableWidth = newTableWidth;
-
-	        if (newTableWidth <= data._defaultWidth) {
-	            data.width = newTableWidth;
-	        } else {
-	            data.width = data._defaultWidth;
-	        }
-	        this.$update();
-	    },
-	    _onWindowResize: function _onWindowResize() {
-	        if (!this.$refs || !this._isShow()) {
-	            return;
-	        }
-	        this.$update('viewWidth', this.$refs.table.offsetWidth);
-	    },
-	    _onBodyScroll: function _onBodyScroll(host) {
-	        if (!this._isShow()) {
-	            return;
-	        }
-	        var $refs = this.$refs;
-
-	        u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
-	        u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
-	        u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
-	        u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
-	    },
-	    _onSort: function _onSort(e) {
-	        /**
+	    u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+	    u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+	    u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+	    u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+	  },
+	  _onSort: function _onSort(e) {
+	    /**
 	         * @event sort 排序事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} asc 是否升序
@@ -33316,98 +33505,98 @@ return /******/ (function(modules) { // webpackBootstrap
 	         * @property {string} key 排序字段
 	         * @property {object} sorting 排序设置对象
 	         */
-	        this.$emit('sort', e);
-	    },
-	    _onCustomEvent: function _onCustomEvent(e) {
-	        this.$emit(e.type, _.extend({
-	            sender: this,
-	            custom: true
-	        }, e.args));
-	    },
-	    _onItemCheckChange: function _onItemCheckChange(e) {
-	        /**
+	    this.$emit('sort', e);
+	  },
+	  _onCustomEvent: function _onCustomEvent(e) {
+	    this.$emit(e.type, _.extend({
+	      sender: this,
+	      custom: true
+	    }, e.args));
+	  },
+	  _onItemCheckChange: function _onItemCheckChange(e) {
+	    /**
 	         * @event checkchange 多选事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} checked 是否选中
 	         * @property {object} item 操作对象
 	         * @property {object} checkedEvent 多选事件对象源
 	         */
-	        this.$emit('checkchange', {
-	            sender: this,
-	            item: e.item,
-	            checked: e.checked,
-	            checkedEvent: e.event
-	        });
-	    },
-	    emitEvent: function emitEvent(type) {
-	        var args = [].slice.call(arguments, 1);
-	        /**
+	    this.$emit('checkchange', {
+	      sender: this,
+	      item: e.item,
+	      checked: e.checked,
+	      checkedEvent: e.event
+	    });
+	  },
+	  emitEvent: function emitEvent(type) {
+	    var args = [].slice.call(arguments, 1);
+	    /**
 	         * @event [type] 自定义的操作事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} custom 自定义事件标识
 	         * @property {array} param 自定义事件所带的参数
 	         */
-	        this.$emit(type, {
-	            custom: true,
-	            sender: this,
-	            param: args
-	        });
-	    },
-	    _onExpand: function _onExpand(e) {
-	        this.$emit('expand', {
-	            sender: this,
-	            expand: e.expand,
-	            item: e.item,
-	            itemIndex: e.itemIndex,
-	            column: e.column
-	        });
-	    },
-	    _onPaging: function _onPaging(e) {
-	        /**
+	    this.$emit(type, {
+	      custom: true,
+	      sender: this,
+	      param: args
+	    });
+	  },
+	  _onExpand: function _onExpand(e) {
+	    this.$emit('expand', {
+	      sender: this,
+	      expand: e.expand,
+	      item: e.item,
+	      itemIndex: e.itemIndex,
+	      column: e.column
+	    });
+	  },
+	  _onPaging: function _onPaging(e) {
+	    /**
 	         * @event paging 分页事件
 	         * @property {object} sender 事件来源
 	         * @property {number} current 事件来源
 	         * @property {object} paging 分页对象
 	         */
-	        this.$emit('paging', {
-	            sender: this,
-	            current: e.current,
-	            paging: this.data.paging
-	        });
-	    },
-	    _onFixedExpand: function _onFixedExpand(e) {
-	        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
-	    },
-	    _isShow: function _isShow() {
-	        return this.data.show;
-	    },
-	    _updateData: function _updateData(key, val) {
-	        if (this.data[key] !== val) {
-	            this.$update(key, val);
-	        }
-	    },
-	    destroy: function destroy() {
-	        this.removeEventListener();
-	        this.supr();
-	    },
-	    removeEventListener: function removeEventListener() {
-	        clearInterval(this.data._quickTimer);
-	        clearInterval(this.data._slowTimer);
-	        window.document.removeEventListener('scroll', this._onWinodwScroll);
-	        window.removeEventListener('resize', this._onWindowResize);
+	    this.$emit('paging', {
+	      sender: this,
+	      current: e.current,
+	      paging: this.data.paging
+	    });
+	  },
+	  _onFixedExpand: function _onFixedExpand(e) {
+	    this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+	  },
+	  _isShow: function _isShow() {
+	    return this.data.show;
+	  },
+	  _updateData: function _updateData(key, val) {
+	    if (this.data[key] !== val) {
+	      this.$update(key, val);
 	    }
+	  },
+	  destroy: function destroy() {
+	    this.removeEventListener();
+	    this.supr();
+	  },
+	  removeEventListener: function removeEventListener() {
+	    clearInterval(this.data._quickTimer);
+	    clearInterval(this.data._slowTimer);
+	    window.document.removeEventListener('scroll', this._onWinodwScroll);
+	    window.removeEventListener('resize', this._onWindowResize);
+	  }
 	}).component('table-header', TableHeader).component('table-body', TableBody);
 
 	var oldFilterFunc = KLTable.filter;
 
 	KLTable.filter = function () {
-	    var args = [].slice.call(arguments, 0);
-	    TableHeader.filter.apply(TableHeader, args);
-	    TableBody.filter.apply(TableBody, args);
-	    // FIXME:
-	    // KLTableCol.filter.apply(KLTableCol, args);
-	    // KLTableTemplate.filter.apply(KLTableTemplate, args);
-	    oldFilterFunc.apply(KLTable, args);
+	  var args = [].slice.call(arguments, 0);
+	  TableHeader.filter.apply(TableHeader, (0, _toConsumableArray3.default)(args));
+	  TableBody.filter.apply(TableBody, (0, _toConsumableArray3.default)(args));
+	  // FIXME:
+	  // KLTableCol.filter.apply(KLTableCol, args);
+	  // KLTableTemplate.filter.apply(KLTableTemplate, args);
+	  oldFilterFunc.apply(KLTable, args);
 	};
 
 	module.exports = KLTable;
@@ -33416,241 +33605,392 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
-	var templates = __webpack_require__(427);
+	exports.__esModule = true;
 
-	var Component = __webpack_require__(74);
-	var _ = __webpack_require__(428);
-	var tpl = __webpack_require__(430);
+	var _from = __webpack_require__(427);
 
-	var HEADER_MIN_WIDTH = 30;
-	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
+	var _from2 = _interopRequireDefault(_from);
 
-	var hasChildren = function hasChildren(column) {
-	    return column.children && column.children.length > 0;
-	};
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var setColumnWidth = function setColumnWidth(column, width) {
-	    var children = column.children;
-	    if (hasChildren(column)) {
-	        setColumnWidth(children[children.length - 1], width);
-	        return;
+	exports.default = function (arr) {
+	  if (Array.isArray(arr)) {
+	    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+	      arr2[i] = arr[i];
 	    }
-	    column._width = Math.max(width, HEADER_MIN_WIDTH);
+
+	    return arr2;
+	  } else {
+	    return (0, _from2.default)(arr);
+	  }
 	};
-
-	var getColumnWidth = function getColumnWidth(column) {
-	    var ret = {
-	        width: 0,
-	        lastLeafWidth: 0
-	    };
-	    if (hasChildren(column)) {
-	        column.children.forEach(function (item, index) {
-	            var tmp = getColumnWidth(item);
-	            if (index === column.children.length - 1) {
-	                ret.lastLeafWidth = tmp.width;
-	            }
-	            ret.width += tmp.width;
-	        });
-	    } else {
-	        return {
-	            width: column._width,
-	            lastLeafWidth: column._width
-	        };
-	    }
-	    return ret;
-	};
-
-	var _parseFormat = function _parseFormat(str) {
-	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	};
-
-	var TableHeader = Component.extend({
-	    template: tpl,
-	    computed: {
-	        fixedWidth: {
-	            get: function get() {
-	                return this.data.headers.reduce(function (previous, current) {
-	                    return current.fixed ? previous + current._width : previous;
-	                }, 0);
-	            }
-	        }
-	    },
-	    config: function config(data) {
-	        this.defaults({
-	            type: '',
-	            show: true,
-	            columns: [],
-	            sorting: {},
-	            config: {}
-	        });
-	        this.supr(data);
-	    },
-	    _onHeaderClick: function _onHeaderClick(header, headerIndex) {
-	        if (!header.sortable) {
-	            return;
-	        }
-	        this._onSort(header, headerIndex);
-	    },
-	    _onSort: function _onSort(header, headerIndex) {
-	        if (header._isDragging) {
-	            return;
-	        }
-	        var sorting = this.data.sorting;
-
-	        if (sorting.key === header.key) {
-	            sorting.isAsc = !sorting.isAsc;
-	        } else {
-	            sorting.isAsc = header.isDefaultAsc || false;
-	        }
-
-	        sorting.columnIndex = headerIndex;
-	        sorting.key = header.key;
-
-	        this.$emit('sort', {
-	            sender: this,
-	            sorting: sorting,
-	            column: header,
-	            columnIndex: headerIndex,
-	            key: header.key,
-	            asc: sorting.isAsc
-	        });
-	    },
-	    _onMouseDown: function _onMouseDown(e, header, headerIndex, headerTrIndex) {
-	        var data = this.data;
-	        var self = this;
-	        if (!data._ok2ResizeCol) {
-	            return;
-	        }
-	        header._isDragging = true;
-	        this._startResizing(e, header, headerIndex, headerTrIndex);
-	    },
-	    _startResizing: function _startResizing(e, header, headerIndex, headerTrIndex) {
-	        var self = this;
-	        var tableLeft = self.$parent.$refs.table.getBoundingClientRect().left;
-	        var mouseLeft = e.pageX;
-	        var headerEle = self.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
-	        var headerLeft = headerEle.getBoundingClientRect().left;
-
-	        header._resizeParam = {
-	            tableLeft: tableLeft,
-	            mouseLeft: mouseLeft,
-	            headerLeft: headerLeft
-	        };
-
-	        var resizeProxy = self.$parent.$refs.resizeProxy;
-	        resizeProxy.style.visibility = 'visible';
-
-	        var onMouseMove = function onMouseMove(_e) {
-	            _e.preventDefault();
-
-	            var proxyLeft = _e.pageX - tableLeft;
-	            var headerWidth = _e.pageX - headerLeft;
-
-	            if (headerWidth > HEADER_MIN_WIDTH) {
-	                resizeProxy.style.left = proxyLeft + 'px';
-	            }
-	        };
-
-	        var onMouseUp = function onMouseUp(_e) {
-	            _e.preventDefault();
-	            resizeProxy.style.visibility = 'hidden';
-
-	            var headerWidth = _e.pageX - headerLeft;
-	            var widthInfo = getColumnWidth(header);
-	            setColumnWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
-
-	            document.removeEventListener('mousemove', onMouseMove);
-	            document.removeEventListener('mouseup', onMouseUp);
-
-	            header._isDragging = false;
-	            self._disableResize();
-	        };
-
-	        document.addEventListener('mousemove', onMouseMove);
-	        document.addEventListener('mouseup', onMouseUp);
-	    },
-	    _onMouseOut: function _onMouseOut(e, header) {
-	        if (!header._isDragging) {
-	            this._disableResize();
-	            return;
-	        }
-	    },
-	    _onMouseMove: function _onMouseMove(e, header) {
-	        if (!header._isDragging && this._shouldEnableResize(e)) {
-	            this._enableResize();
-	        } else {
-	            this._disableResize();
-	        }
-	    },
-	    _shouldEnableResize: function _shouldEnableResize(e) {
-	        var target = e.target;
-	        while (target && target.tagName !== 'TH') {
-	            target = target.parentNode;
-	        }
-	        var rect = target.getBoundingClientRect();
-	        return rect.width > 12 && rect.right - event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD;
-	    },
-	    _enableResize: function _enableResize() {
-	        document.body.style.cursor = 'col-resize';
-	        this.$update('_ok2ResizeCol', true);
-	    },
-	    _disableResize: function _disableResize() {
-	        document.body.style.cursor = '';
-	        this.$update('_ok2ResizeCol', false);
-	    },
-	    _getFormatter: function _getFormatter(header, headers) {
-	        return header.headerFormatter.call(this, header, headers) || '';
-	    },
-	    _getFormat: function _getFormat(header) {
-	        return _parseFormat(header.headerFormat);
-	    },
-	    emitEvent: function emitEvent(type) {
-	        var args = [].slice.call(arguments, 1);
-	        this.$emit('customevent', {
-	            type: type,
-	            sender: this,
-	            args: {
-	                param: args
-	            }
-	        });
-	    },
-	    emit: function emit() {
-	        var args = [].slice.call(arguments, 0);
-	        this.$parent.$emit.apply(this.$parent, args);
-	    }
-	}).filter('sortingClass', function (header) {
-	    var data = this.data;
-	    var sorting = data.sorting;
-	    if (sorting) {
-	        if (sorting.key === header.key) {
-	            return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
-	        }
-	        return '';
-	    }
-	});
-
-	module.exports = TableHeader;
 
 /***/ }),
 /* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _ = __webpack_require__(428);
-
-	var tplMap = {
-	    default: __webpack_require__(429)
-	};
-
-	exports.get = function getTemplate(type) {
-	    return _.convertBeginEnd(tplMap[type] || tplMap.default);
-	};
+	module.exports = { "default": __webpack_require__(428), __esModule: true };
 
 /***/ }),
 /* 428 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	__webpack_require__(50);
+	__webpack_require__(429);
+	module.exports = __webpack_require__(17).Array.from;
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var ctx            = __webpack_require__(18)
+	  , $export        = __webpack_require__(15)
+	  , toObject       = __webpack_require__(49)
+	  , call           = __webpack_require__(430)
+	  , isArrayIter    = __webpack_require__(431)
+	  , toLength       = __webpack_require__(38)
+	  , createProperty = __webpack_require__(432)
+	  , getIterFn      = __webpack_require__(57);
+
+	$export($export.S + $export.F * !__webpack_require__(433)(function(iter){ Array.from(iter); }), 'Array', {
+	  // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
+	  from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
+	    var O       = toObject(arrayLike)
+	      , C       = typeof this == 'function' ? this : Array
+	      , aLen    = arguments.length
+	      , mapfn   = aLen > 1 ? arguments[1] : undefined
+	      , mapping = mapfn !== undefined
+	      , index   = 0
+	      , iterFn  = getIterFn(O)
+	      , length, result, step, iterator;
+	    if(mapping)mapfn = ctx(mapfn, aLen > 2 ? arguments[2] : undefined, 2);
+	    // if object isn't iterable or it's array with default iterator - use simple case
+	    if(iterFn != undefined && !(C == Array && isArrayIter(iterFn))){
+	      for(iterator = iterFn.call(O), result = new C; !(step = iterator.next()).done; index++){
+	        createProperty(result, index, mapping ? call(iterator, mapfn, [step.value, index], true) : step.value);
+	      }
+	    } else {
+	      length = toLength(O.length);
+	      for(result = new C(length); length > index; index++){
+	        createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
+	      }
+	    }
+	    result.length = index;
+	    return result;
+	  }
+	});
+
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// call something on iterator step with safe closing on error
+	var anObject = __webpack_require__(22);
+	module.exports = function(iterator, fn, value, entries){
+	  try {
+	    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
+	  // 7.4.6 IteratorClose(iterator, completion)
+	  } catch(e){
+	    var ret = iterator['return'];
+	    if(ret !== undefined)anObject(ret.call(iterator));
+	    throw e;
+	  }
+	};
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// check on default Array iterator
+	var Iterators  = __webpack_require__(8)
+	  , ITERATOR   = __webpack_require__(47)('iterator')
+	  , ArrayProto = Array.prototype;
+
+	module.exports = function(it){
+	  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
+	};
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var $defineProperty = __webpack_require__(21)
+	  , createDesc      = __webpack_require__(29);
+
+	module.exports = function(object, index, value){
+	  if(index in object)$defineProperty.f(object, index, createDesc(0, value));
+	  else object[index] = value;
+	};
+
+/***/ }),
+/* 433 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var ITERATOR     = __webpack_require__(47)('iterator')
+	  , SAFE_CLOSING = false;
+
+	try {
+	  var riter = [7][ITERATOR]();
+	  riter['return'] = function(){ SAFE_CLOSING = true; };
+	  Array.from(riter, function(){ throw 2; });
+	} catch(e){ /* empty */ }
+
+	module.exports = function(exec, skipClosing){
+	  if(!skipClosing && !SAFE_CLOSING)return false;
+	  var safe = false;
+	  try {
+	    var arr  = [7]
+	      , iter = arr[ITERATOR]();
+	    iter.next = function(){ return {done: safe = true}; };
+	    arr[ITERATOR] = function(){ return iter; };
+	    exec(arr);
+	  } catch(e){ /* empty */ }
+	  return safe;
+	};
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var templates = __webpack_require__(435);
+
+	var Component = __webpack_require__(74);
+	var _ = __webpack_require__(436);
+	var tpl = __webpack_require__(438);
+
+	var HEADER_MIN_WIDTH = 30;
+	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
+
+	var hasChildren = function hasChildren(column) {
+	  return column.children && column.children.length > 0;
+	};
+
+	var setColumnWidth = function setColumnWidth(column, width) {
+	  var children = column.children;
+	  if (hasChildren(column)) {
+	    setColumnWidth(children[children.length - 1], width);
+	    return;
+	  }
+	  column._width = Math.max(width, HEADER_MIN_WIDTH);
+	};
+
+	var getColumnWidth = function getColumnWidth(column) {
+	  var ret = {
+	    width: 0,
+	    lastLeafWidth: 0
+	  };
+	  if (hasChildren(column)) {
+	    column.children.forEach(function (item, index) {
+	      var tmp = getColumnWidth(item);
+	      if (index === column.children.length - 1) {
+	        ret.lastLeafWidth = tmp.width;
+	      }
+	      ret.width += tmp.width;
+	    });
+	  } else {
+	    return {
+	      width: column._width,
+	      lastLeafWidth: column._width
+	    };
+	  }
+	  return ret;
+	};
+
+	var _parseFormat = function _parseFormat(str) {
+	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	};
+
+	var TableHeader = Component.extend({
+	  template: tpl,
+	  computed: {
+	    fixedWidth: {
+	      get: function get() {
+	        return this.data.headers.reduce(function (previous, current) {
+	          return current.fixed ? previous + current._width : previous;
+	        }, 0);
+	      }
+	    }
+	  },
+	  config: function config(data) {
+	    this.defaults({
+	      type: '',
+	      show: true,
+	      columns: [],
+	      sorting: {},
+	      config: {}
+	    });
+	    this.supr(data);
+	  },
+	  _onHeaderClick: function _onHeaderClick(header, headerIndex) {
+	    if (!header.sortable) {
+	      return;
+	    }
+	    this._onSort(header, headerIndex);
+	  },
+	  _onSort: function _onSort(header, headerIndex) {
+	    if (header._isDragging) {
+	      return;
+	    }
+	    var sorting = this.data.sorting;
+
+	    if (sorting.key === header.key) {
+	      sorting.isAsc = !sorting.isAsc;
+	    } else {
+	      sorting.isAsc = header.isDefaultAsc || false;
+	    }
+
+	    sorting.columnIndex = headerIndex;
+	    sorting.key = header.key;
+
+	    this.$emit('sort', {
+	      sender: this,
+	      sorting: sorting,
+	      column: header,
+	      columnIndex: headerIndex,
+	      key: header.key,
+	      asc: sorting.isAsc
+	    });
+	  },
+	  _onMouseDown: function _onMouseDown(e, header, headerIndex, headerTrIndex) {
+	    var data = this.data;
+	    var self = this;
+	    if (!data._ok2ResizeCol) {
+	      return;
+	    }
+	    header._isDragging = true;
+	    this._startResizing(e, header, headerIndex, headerTrIndex);
+	  },
+	  _startResizing: function _startResizing(e, header, headerIndex, headerTrIndex) {
+	    var self = this;
+	    var tableLeft = self.$parent.$refs.table.getBoundingClientRect().left;
+	    var mouseLeft = e.pageX;
+	    var headerEle = self.$refs['table_th_' + headerTrIndex + '_' + headerIndex];
+	    var headerLeft = headerEle.getBoundingClientRect().left;
+
+	    header._resizeParam = {
+	      tableLeft: tableLeft,
+	      mouseLeft: mouseLeft,
+	      headerLeft: headerLeft
+	    };
+
+	    var resizeProxy = self.$parent.$refs.resizeProxy;
+	    resizeProxy.style.visibility = 'visible';
+
+	    var onMouseMove = function onMouseMove(_e) {
+	      _e.preventDefault();
+
+	      var proxyLeft = _e.pageX - tableLeft;
+	      var headerWidth = _e.pageX - headerLeft;
+
+	      if (headerWidth > HEADER_MIN_WIDTH) {
+	        resizeProxy.style.left = proxyLeft + 'px';
+	      }
+	    };
+
+	    var onMouseUp = function onMouseUp(_e) {
+	      _e.preventDefault();
+	      resizeProxy.style.visibility = 'hidden';
+
+	      var headerWidth = _e.pageX - headerLeft;
+	      var widthInfo = getColumnWidth(header);
+	      setColumnWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
+
+	      document.removeEventListener('mousemove', onMouseMove);
+	      document.removeEventListener('mouseup', onMouseUp);
+
+	      header._isDragging = false;
+	      self._disableResize();
+	    };
+
+	    document.addEventListener('mousemove', onMouseMove);
+	    document.addEventListener('mouseup', onMouseUp);
+	  },
+	  _onMouseOut: function _onMouseOut(e, header) {
+	    if (!header._isDragging) {
+	      this._disableResize();
+	    }
+	  },
+	  _onMouseMove: function _onMouseMove(e, header) {
+	    if (!header._isDragging && this._shouldEnableResize(e)) {
+	      this._enableResize();
+	    } else {
+	      this._disableResize();
+	    }
+	  },
+	  _shouldEnableResize: function _shouldEnableResize(e) {
+	    var target = e.target;
+	    while (target && target.tagName !== 'TH') {
+	      target = target.parentNode;
+	    }
+	    var rect = target.getBoundingClientRect();
+	    return rect.width > 12 && rect.right - event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD;
+	  },
+	  _enableResize: function _enableResize() {
+	    document.body.style.cursor = 'col-resize';
+	    this.$update('_ok2ResizeCol', true);
+	  },
+	  _disableResize: function _disableResize() {
+	    document.body.style.cursor = '';
+	    this.$update('_ok2ResizeCol', false);
+	  },
+	  _getFormatter: function _getFormatter(header, headers) {
+	    return header.headerFormatter.call(this, header, headers) || '';
+	  },
+	  _getFormat: function _getFormat(header) {
+	    return _parseFormat(header.headerFormat);
+	  },
+	  emitEvent: function emitEvent(type) {
+	    var args = [].slice.call(arguments, 1);
+	    this.$emit('customevent', {
+	      type: type,
+	      sender: this,
+	      args: {
+	        param: args
+	      }
+	    });
+	  },
+	  emit: function emit() {
+	    var args = [].slice.call(arguments, 0);
+	    this.$parent.$emit.apply(this.$parent, args);
+	  }
+	}).filter('sortingClass', function (header) {
+	  var data = this.data;
+	  var sorting = data.sorting;
+	  if (sorting) {
+	    if (sorting.key === header.key) {
+	      return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
+	    }
+	    return '';
+	  }
+	});
+
+	module.exports = TableHeader;
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(436);
+
+	var tplMap = {
+	  default: __webpack_require__(437)
+	};
+
+	exports.get = function getTemplate(type) {
+	  return _.convertBeginEnd(tplMap[type] || tplMap.default);
+	};
+
+/***/ }),
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33660,314 +34000,316 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = {};
 
 	_.isType = function (target, type) {
-	    return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
+	  return Object.prototype.toString.call(target).toLowerCase() === '[object ' + type + ']';
 	};
 	['String', 'Object', 'Array', 'Number', 'Null', 'Undefined'].forEach(function (item) {
-	    _['is' + item] = function (target) {
-	        return _.isType(target, item.toLowerCase());
-	    };
+	  _['is' + item] = function (target) {
+	    return _.isType(target, item.toLowerCase());
+	  };
 	});
 
 	_.fillWithZero = function (val, len) {
-	    var valLen = val.toString().length;
-	    if (valLen < len) {
-	        return (Array(len).join(0) + val).slice(-len);
-	    }
-	    return val + '';
+	  var valLen = val.toString().length;
+	  if (valLen < len) {
+	    return (Array(len).join(0) + val).slice(-len);
+	  }
+	  return '' + val;
 	};
 
 	_.throttle = function (fn, delay) {
-	    var last = null;
-	    var timer = null;
-	    delay = delay || 100;
-	    return function () {
-	        var now = +new Date();
-	        var args = [].slice.call(arguments, 0);
+	  var self = this;
+	  var last = null;
+	  var timer = null;
+	  delay = delay || 100;
+	  return function () {
+	    var now = +new Date();
+	    var args = [].slice.call(arguments, 0);
 
-	        clearTimeout(timer);
-	        if (now - last > delay) {
-	            last = now;
-	            fn.apply(this, args);
-	        } else {
-	            // run at last time
-	            setTimeout(function () {
-	                fn.apply(this, args);
-	            }.bind(this), delay);
-	        }
-	    };
+	    clearTimeout(timer);
+	    if (now - last > delay) {
+	      last = now;
+	      fn.apply(self, args);
+	    } else {
+	      // run at last time
+	      setTimeout(function () {
+	        fn.apply(self, args);
+	      }, delay);
+	    }
+	  };
 	};
 
 	_.convertBeginEnd = function (str) {
-	    var BEGIN = Regular._BEGIN_;
-	    var END = Regular._END_;
-	    str = '' + str;
-	    if (BEGIN && BEGIN !== '{') {
-	        str = str.replace(/{/g, BEGIN);
-	    }
-	    if (END && END !== '}') {
-	        str = str.replace(/}/g, END);
-	    }
-	    return str;
+	  var BEGIN = Regular._BEGIN_;
+	  var END = Regular._END_;
+	  str = '' + str;
+	  if (BEGIN && BEGIN !== '{') {
+	    str = str.replace(/{/g, BEGIN);
+	  }
+	  if (END && END !== '}') {
+	    str = str.replace(/}/g, END);
+	  }
+	  return str;
 	};
 
 	var hasChildren = function hasChildren(root) {
-	    return root.children && root.children.length > 0;
+	  return root.children && root.children.length > 0;
 	};
 
 	_.getHeaders = function (columns) {
-	    var headers = [];
-	    var extractHeaders = function extractHeaders(columns, depth) {
-	        columns.forEach(function (column) {
-	            if (hasChildren(column)) {
-	                column._dataColumn = extractHeaders(column.children, depth + 1);
-	            }
-	            if (!headers[depth]) {
-	                headers[depth] = [];
-	            }
-	            // 计算深度和宽度
-	            if (hasChildren(column)) {
-	                column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
-	                    return current.childrenDepth > previous ? current.childrenDepth : previous;
-	                }, -1);
-	                column.headerColSpan = column.children.reduce(function (previous, current) {
-	                    return previous + (current.headerColSpan || 0);
-	                }, 0);
-	            } else {
-	                column.childrenDepth = 0;
-	                column.headerColSpan = 1;
-	            }
-	            headers[depth].push(column);
-	        });
-	    };
-	    extractHeaders(columns, 0);
-	    return headers;
+	  var headers = [];
+	  var extractHeaders = function extractHeaders(columns, depth) {
+	    columns.forEach(function (column) {
+	      if (hasChildren(column)) {
+	        column._dataColumn = extractHeaders(column.children, depth + 1);
+	      }
+	      if (!headers[depth]) {
+	        headers[depth] = [];
+	      }
+	      // 计算深度和宽度
+	      if (hasChildren(column)) {
+	        column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
+	          return current.childrenDepth > previous ? current.childrenDepth : previous;
+	        }, -1);
+	        column.headerColSpan = column.children.reduce(function (previous, current) {
+	          return previous + (current.headerColSpan || 0);
+	        }, 0);
+	      } else {
+	        column.childrenDepth = 0;
+	        column.headerColSpan = 1;
+	      }
+	      headers[depth].push(column);
+	    });
+	  };
+	  extractHeaders(columns, 0);
+	  return headers;
 	};
 
 	_.getLeaves = function (tree) {
-	    var res = [];
-	    var extractLeaves = function extractLeaves(root) {
-	        if (root.forEach) {
-	            return root.forEach(function (item) {
-	                if (hasChildren(item)) {
-	                    extractLeaves(item.children);
-	                } else {
-	                    res.push(item);
-	                }
-	            });
+	  var res = [];
+	  var extractLeaves = function extractLeaves(root) {
+	    if (root.forEach) {
+	      return root.forEach(function (item) {
+	        if (hasChildren(item)) {
+	          extractLeaves(item.children);
+	        } else {
+	          res.push(item);
 	        }
-	    };
-	    extractLeaves(tree);
-	    return res;
+	      });
+	    }
+	  };
+	  extractLeaves(tree);
+	  return res;
 	};
 
 	var getNum = _.getNum = function (str) {
-	    return +(str + '').split('px')[0];
+	  return +('' + str).split('px')[0];
 	};
 
 	_.setElementValue = function (ele, prop, val) {
-	    if (ele) {
-	        ele[prop] = val;
-	    }
+	  if (ele) {
+	    ele[prop] = val;
+	  }
 	};
 
 	_.getElementHeight = function (ele) {
-	    var computedStyle = window.getComputedStyle(ele);
-	    var height = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(ele.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
-	    return height;
+	  var computedStyle = window.getComputedStyle(ele);
+	  var height = getNum(computedStyle.marginTop) + getNum(computedStyle.borderTopWidth) + getNum(ele.offsetHeight) + getNum(computedStyle.borderBottomWidth) + getNum(computedStyle.marginBottom);
+	  return height;
 	};
 
-		module.exports = _;
-
-/***/ }),
-/* 429 */
-/***/ (function(module, exports) {
-
-	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </kl-tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
-
-/***/ }),
-/* 430 */
-/***/ (function(module, exports) {
-
-	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
-
-/***/ }),
-/* 431 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(428);
-
-	var Component = __webpack_require__(74);
-	var tpl = __webpack_require__(432);
-	var templates = __webpack_require__(433);
-
-	var _parseFormat = function _parseFormat(str) {
-	    return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	};
-
-	var TableBody = Component.extend({
-	    template: tpl,
-	    config: function config(data) {
-	        this.defaults({
-	            type: '',
-	            enableHover: true,
-	            show: true,
-	            columns: [],
-	            config: {}
-	        });
-	        this.supr(data);
-	    },
-	    _onExpand: function _onExpand(item, itemIndex, column) {
-	        if (!this.data.fixedCol) {
-	            this._expandTr(item, itemIndex, column);
-	        }
-
-	        this.$emit('expand', {
-	            sender: this,
-	            expand: item.expand,
-	            column: column,
-	            item: item,
-	            index: itemIndex
-	        });
-	    },
-	    _onItemCheckChange: function _onItemCheckChange(item, e) {
-	        this.$emit('checkchange', {
-	            item: item,
-	            checked: e.checked,
-	            event: e
-	        });
-	    },
-	    _expandTr: function _expandTr(item, itemIndex, column) {
-	        item._expanddingColumn = column;
-	        item.expand = !item.expand;
-
-	        this._updateSubTrHeight(item, itemIndex);
-	    },
-	    _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
-	        var timer = setInterval(function () {
-	            var tdElement = this.$refs['td' + itemIndex];
-	            if (tdElement && item._expandHeight !== tdElement.clientHeight) {
-	                item._expandHeight = tdElement.clientHeight;
-	                this.$update();
-	            }
-	            if (!item.expand) {
-	                clearInterval(timer);
-	            }
-	        }.bind(this), 100);
-	    },
-	    _onSubEvent: function _onSubEvent(type, table, e) {
-	        this.$emit('subevent', {
-	            sender: table,
-	            type: type,
-	            event: e
-	        });
-	    },
-	    _getTypeTemplate: function _getTypeTemplate(column) {
-	        return templates.get(column.type);
-	    },
-	    _getFormatter: function _getFormatter(column, item) {
-	        var formatter = column.formatter;
-	        return formatter.call(this, column, item) || '';
-	    },
-	    _getFormat: function _getFormat(column) {
-	        var format = column.format;
-	        return _parseFormat(format);
-	    },
-	    _filter: function _filter(column, val) {
-	        var args = [].slice.call(arguments, 1);
-	        if (column.filter && typeof column.filter === 'function') {
-	            return column.filter.apply(this, args);
-	        }
-	        return val;
-	    },
-	    emitEvent: function emitEvent(type) {
-	        var args = [].slice.call(arguments, 1);
-	        this.$emit('customevent', {
-	            type: type,
-	            sender: this,
-	            args: {
-	                param: args
-	            }
-	        });
-	    },
-	    emit: function emit() {
-	        var args = [].slice.call(arguments, 0);
-	        this.$parent.$emit.apply(this.$parent, args);
-	    },
-	    _onTrHover: function _onTrHover($event, item) {
-	        item._hover = true;
-	    },
-	    _onTrBlur: function _onTrBlur($event, item) {
-	        item._hover = false;
-	    }
-	}).filter('placeholder', function (val) {
-	    if (val === null || val === undefined) {
-	        return '-';
-	    }
-	    return val;
-	}).filter('expandSign', function (item) {
-	    return item.expand ? '-' : '+';
-	});
-
-	module.exports = TableBody;
-
-/***/ }),
-/* 432 */
-/***/ (function(module, exports) {
-
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
-
-/***/ }),
-/* 433 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(428);
-
-	var tplMap = {
-	    default: __webpack_require__(434),
-	    progress: __webpack_require__(435),
-	    check: __webpack_require__(436)
-	};
-
-	exports.get = function getTemplate(type) {
-	    return _.convertBeginEnd(tplMap[type] || tplMap.default);
-	};
-
-/***/ }),
-/* 434 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n{/if}\n"
-
-/***/ }),
-/* 435 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
-
-/***/ }),
-/* 436 */
-/***/ (function(module, exports) {
-
-	module.exports = "<kl-check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
+	module.exports = _;
 
 /***/ }),
 /* 437 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+	module.exports = "\n<span class=\"header_text\">{header.name}</span>\n<span>\n    {#if header.tip}\n        <span class=\"th_tip\">\n            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                <i class=\"u-icon u-icon-info-circle\" />\n            </kl-tooltip>\n        </span>\n    {/if}\n    {#if header.sortable && header.key}\n        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n        </i>\n    {/if}\n</span>\n"
 
 /***/ }),
 /* 438 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+
+/***/ }),
+/* 439 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(436);
+
+	var Component = __webpack_require__(74);
+	var tpl = __webpack_require__(440);
+	var templates = __webpack_require__(441);
+
+	var _parseFormat = function _parseFormat(str) {
+	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	};
+
+	var TableBody = Component.extend({
+	  template: tpl,
+	  config: function config(data) {
+	    this.defaults({
+	      type: '',
+	      enableHover: true,
+	      show: true,
+	      columns: [],
+	      config: {}
+	    });
+	    this.supr(data);
+	  },
+	  _onExpand: function _onExpand(item, itemIndex, column) {
+	    if (!this.data.fixedCol) {
+	      this._expandTr(item, itemIndex, column);
+	    }
+
+	    this.$emit('expand', {
+	      sender: this,
+	      expand: item.expand,
+	      column: column,
+	      item: item,
+	      index: itemIndex
+	    });
+	  },
+	  _onItemCheckChange: function _onItemCheckChange(item, e) {
+	    this.$emit('checkchange', {
+	      item: item,
+	      checked: e.checked,
+	      event: e
+	    });
+	  },
+	  _expandTr: function _expandTr(item, itemIndex, column) {
+	    item._expanddingColumn = column;
+	    item.expand = !item.expand;
+
+	    this._updateSubTrHeight(item, itemIndex);
+	  },
+	  _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
+	    var self = this;
+	    var timer = setInterval(function () {
+	      var tdElement = self.$refs['td' + itemIndex];
+	      if (tdElement && item._expandHeight !== tdElement.clientHeight) {
+	        item._expandHeight = tdElement.clientHeight;
+	        self.$update();
+	      }
+	      if (!item.expand) {
+	        clearInterval(timer);
+	      }
+	    }, 100);
+	  },
+	  _onSubEvent: function _onSubEvent(type, table, e) {
+	    this.$emit('subevent', {
+	      sender: table,
+	      type: type,
+	      event: e
+	    });
+	  },
+	  _getTypeTemplate: function _getTypeTemplate(column) {
+	    return templates.get(column.type);
+	  },
+	  _getFormatter: function _getFormatter(column, item) {
+	    var formatter = column.formatter;
+	    return formatter.call(this, column, item) || '';
+	  },
+	  _getFormat: function _getFormat(column) {
+	    var format = column.format;
+	    return _parseFormat(format);
+	  },
+	  _filter: function _filter(column, val) {
+	    var args = [].slice.call(arguments, 1);
+	    if (column.filter && typeof column.filter === 'function') {
+	      return column.filter.apply(this, args);
+	    }
+	    return val;
+	  },
+	  emitEvent: function emitEvent(type) {
+	    var args = [].slice.call(arguments, 1);
+	    this.$emit('customevent', {
+	      type: type,
+	      sender: this,
+	      args: {
+	        param: args
+	      }
+	    });
+	  },
+	  emit: function emit() {
+	    var args = [].slice.call(arguments, 0);
+	    this.$parent.$emit.apply(this.$parent, args);
+	  },
+	  _onTrHover: function _onTrHover($event, item) {
+	    item._hover = true;
+	  },
+	  _onTrBlur: function _onTrBlur($event, item) {
+	    item._hover = false;
+	  }
+	}).filter('placeholder', function (val) {
+	  if (val === null || val === undefined) {
+	    return '-';
+	  }
+	  return val;
+	}).filter('expandSign', function (item) {
+	  return item.expand ? '-' : '+';
+	});
+
+	module.exports = TableBody;
+
+/***/ }),
+/* 440 */
+/***/ (function(module, exports) {
+
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+
+/***/ }),
+/* 441 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(436);
+
+	var tplMap = {
+	  default: __webpack_require__(442),
+	  progress: __webpack_require__(443),
+	  check: __webpack_require__(444)
+	};
+
+	exports.get = function getTemplate(type) {
+	  return _.convertBeginEnd(tplMap[type] || tplMap.default);
+	};
+
+/***/ }),
+/* 442 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n{/if}\n"
+
+/***/ }),
+/* 443 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
+
+/***/ }),
+/* 444 */
+/***/ (function(module, exports) {
+
+	module.exports = "<kl-check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
+
+/***/ }),
+/* 445 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+
+/***/ }),
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(74);
-	var KLTableTemplate = __webpack_require__(439);
+	var KLTableTemplate = __webpack_require__(447);
 	var KLTable = __webpack_require__(425);
 
 	/**
@@ -33991,71 +34333,71 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
 	 */
 	var KLTableCol = Component.extend({
-	    name: 'kl-table-col',
-	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-	    config: function config() {
-	        this.defaults({
-	            _innerColumns: [],
-	            colSpan: 1
-	        });
-	    },
-	    init: function init() {
-	        this._register();
-	    },
-	    _register: function _register() {
-	        var outer = this.$outer;
-	        if (outer instanceof KLTable) {
-	            this._register2Table();
-	        } else if (outer instanceof KLTableCol) {
-	            this._register2TableCol();
-	        }
-	    },
-	    _register2Table: function _register2Table() {
-	        var _outer = this.$outer;
-	        this._push2Columns(_outer.data.columns);
-	    },
-	    _register2TableCol: function _register2TableCol() {
-	        var _outer = this.$outer;
-	        this._push2Columns(_outer.data._innerColumns);
-	    },
-	    _push2Columns: function _push2Columns(columns) {
-	        var data = this.data;
-	        columns && columns.push({
-	            name: data.name,
-	            key: data.key,
-	            type: data.type,
-	            width: data.width,
-	            tip: data.tip,
-	            tdClass: data.tdClass,
-	            thClass: data.thClass,
-	            sortable: data.sortable,
-	            expandable: data.expandable,
-	            children: data._innerColumns,
-	            align: data.align,
-	            fixed: data.fixed,
-
-	            filter: data.filter,
-	            template: data._template || data.template,
-	            formatter: data.formatter,
-	            format: data.format,
-	            headerTemplate: data._headerTemplate || data.headerTemplate,
-	            headerFormatter: data.headerFormatter,
-	            headerFormat: data.headerFormat,
-	            expandTemplate: data._expandTemplate
-	        });
+	  name: 'kl-table-col',
+	  template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	  config: function config() {
+	    this.defaults({
+	      _innerColumns: [],
+	      colSpan: 1
+	    });
+	  },
+	  init: function init() {
+	    this._register();
+	  },
+	  _register: function _register() {
+	    var outer = this.$outer;
+	    if (outer instanceof KLTable) {
+	      this._register2Table();
+	    } else if (outer instanceof KLTableCol) {
+	      this._register2TableCol();
 	    }
+	  },
+	  _register2Table: function _register2Table() {
+	    var _outer = this.$outer;
+	    this._push2Columns(_outer.data.columns);
+	  },
+	  _register2TableCol: function _register2TableCol() {
+	    var _outer = this.$outer;
+	    this._push2Columns(_outer.data._innerColumns);
+	  },
+	  _push2Columns: function _push2Columns(columns) {
+	    var data = this.data;
+	    columns && columns.push({
+	      name: data.name,
+	      key: data.key,
+	      type: data.type,
+	      width: data.width,
+	      tip: data.tip,
+	      tdClass: data.tdClass,
+	      thClass: data.thClass,
+	      sortable: data.sortable,
+	      expandable: data.expandable,
+	      children: data._innerColumns,
+	      align: data.align,
+	      fixed: data.fixed,
+
+	      filter: data.filter,
+	      template: data._template || data.template,
+	      formatter: data.formatter,
+	      format: data.format,
+	      headerTemplate: data._headerTemplate || data.headerTemplate,
+	      headerFormatter: data.headerFormatter,
+	      headerFormat: data.headerFormat,
+	      expandTemplate: data._expandTemplate
+	    });
+	  }
 	}).component('kl-table-tempalte', KLTableTemplate);
 
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 439 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(74);
-	var _ = __webpack_require__(428);
+	var _ = __webpack_require__(436);
 
 	/**
 	 * @class KLTableTemplate
@@ -34065,76 +34407,80 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var matchList = [{
-	    reg: /&quot;/g,
-	    glyph: '"'
+	  reg: /&quot;/g,
+	  glyph: '"'
 	}, {
-	    reg: /&amp;/g,
-	    glyph: '&'
+	  reg: /&amp;/g,
+	  glyph: '&'
 	}, {
-	    reg: /&lt;/g,
-	    glyph: '<'
+	  reg: /&lt;/g,
+	  glyph: '<'
 	}, {
-	    reg: /&gt;/g,
-	    glyph: '>'
+	  reg: /&gt;/g,
+	  glyph: '>'
 	}, {
-	    reg: /&nbsp;/g,
-	    glyph: ' '
+	  reg: /&nbsp;/g,
+	  glyph: ' '
 	}];
 
 	var decodeChar = function decodeChar(str) {
-	    matchList.forEach(function (item) {
-	        str = str.replace(item.reg, item.glyph);
-	    });
-	    return str;
+	  matchList.forEach(function (item) {
+	    str = str.replace(item.reg, item.glyph);
+	  });
+	  return str;
 	};
 
 	var KLTableTemplate = Component.extend({
-	    name: 'kl-table-template',
-	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-	    config: function config() {
-	        this.defaults({
-	            type: 'content',
-	            template: null
-	        });
-	    },
-	    init: function init() {
-	        this._register();
-	    },
-	    _register: function _register() {
-	        switch (this.data.type) {
-	            case 'header':
-	                this._register2Header();break;
-	            case 'expand':
-	                this._register2Expand();break;
-	            default:
-	                this._register2Content();
-	        }
-	    },
-	    _register2Header: function _register2Header() {
-	        var outerData = this.$outer.data;
-	        outerData._headerTemplate = this._getInnertTemplate();
-	    },
-	    _register2Expand: function _register2Expand() {
-	        this.$outer.data._expandTemplate = this._getInnertTemplate();
-	    },
-	    _register2Content: function _register2Content() {
-	        var outerData = this.$outer.data;
-	        outerData._template = this._getInnertTemplate();
-	    },
-	    _getInnertTemplate: function _getInnertTemplate() {
-	        var template = this.data.template || this.$refs.bodyContainer.innerHTML;
-	        return this._parseTemplate(template);
-	    },
-	    _parseTemplate: function _parseTemplate(template) {
-	        return decodeChar(template).replace(/(<!--)(.*)(-->)/g, '').trim();
+	  name: 'kl-table-template',
+	  template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	  config: function config() {
+	    this.defaults({
+	      type: 'content',
+	      template: null
+	    });
+	  },
+	  init: function init() {
+	    this._register();
+	  },
+	  _register: function _register() {
+	    switch (this.data.type) {
+	      case 'header':
+	        this._register2Header();
+	        break;
+	      case 'expand':
+	        this._register2Expand();
+	        break;
+	      default:
+	        this._register2Content();
 	    }
+	  },
+	  _register2Header: function _register2Header() {
+	    var outerData = this.$outer.data;
+	    outerData._headerTemplate = this._getInnertTemplate();
+	  },
+	  _register2Expand: function _register2Expand() {
+	    this.$outer.data._expandTemplate = this._getInnertTemplate();
+	  },
+	  _register2Content: function _register2Content() {
+	    var outerData = this.$outer.data;
+	    outerData._template = this._getInnertTemplate();
+	  },
+	  _getInnertTemplate: function _getInnertTemplate() {
+	    var template = this.data.template || this.$refs.bodyContainer.innerHTML;
+	    return this._parseTemplate(template);
+	  },
+	  _parseTemplate: function _parseTemplate(template) {
+	    return decodeChar(template).replace(/(<!--)(.*)(-->)/g, '').trim();
+	  }
 	});
 
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 440 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
@@ -34142,11 +34488,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
-	var template = __webpack_require__(441);
+	var template = __webpack_require__(449);
 
 	/**
 	 * @class KLRow
@@ -34188,14 +34532,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 441 */
+/* 449 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 442 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
@@ -34203,12 +34549,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
-	var template = __webpack_require__(443);
-	var KLRow = __webpack_require__(440);
+	var template = __webpack_require__(451);
+	var KLRow = __webpack_require__(448);
 
 	/**
 	 * @class KLCol
@@ -34258,14 +34602,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 443 */
+/* 451 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 444 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
@@ -34274,10 +34620,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
-	var template = __webpack_require__(445);
+	var template = __webpack_require__(453);
 	var _ = __webpack_require__(101);
 
 	/**
@@ -34294,8 +34638,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  template: template,
 	  $tools: null,
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      title: '',
@@ -34310,14 +34654,16 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 445 */
+/* 453 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 446 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
@@ -34326,11 +34672,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	'use strict';
-
 	var Component = __webpack_require__(74);
 	var _ = __webpack_require__(101);
-	var KLCard = __webpack_require__(444);
+	var KLCard = __webpack_require__(452);
 
 	/**
 	 * @class KLCardTools
@@ -34341,8 +34685,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLCardTools = Component.extend({
 	  name: 'kl-card-tools',
 	  /**
-	   * @protected
-	   */
+	     * @protected
+	     */
 	  config: function config() {
 	    _.extend(this.data, {});
 	    this.supr();
