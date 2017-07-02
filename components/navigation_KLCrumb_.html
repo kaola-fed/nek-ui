@@ -304,6 +304,11 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第一级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第二级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第三级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span>&gt;</span>第四级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第五级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="基本形式（简版）"><a href="#基本形式（简版）" class="headerlink" title="基本形式（简版）"></a>基本形式（简版）</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第一级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第二级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第三级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第四级目录"</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第五级目录"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#KLCrumb">KLCrumb</a></dt>
 <dd></dd>
@@ -379,6 +384,23 @@ var index = 0;
     <kl-crumb-item>第三级目录</kl-crumb-item>
     <kl-crumb-item href="http://www.kaola.com">第四级目录</kl-crumb-item>
     <kl-crumb-item>第五级目录</kl-crumb-item>
+</kl-crumb>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-crumb separator="/">
+    <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
+    <kl-crumb-item content="第一级目录" />
+    <kl-crumb-item content="第二级目录" />
+    <kl-crumb-item content="第三级目录" />
+    <kl-crumb-item content="第四级目录" href="http://www.kaola.com" />
+    <kl-crumb-item content="第五级目录" />
 </kl-crumb>
 
       */});

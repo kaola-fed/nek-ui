@@ -32433,6 +32433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class KLCrumbItem
 	 * @extend Component
 	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.content]            => 内容模板
 	 * @param {string}          [options.data.class]              => 补充class
 	 * @param {string}          [options.data.href]                => 传入的链接
 	 */
@@ -32458,7 +32459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 413 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc this.$body}\n        {/if}\n    </div>\n</div>"
+	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 414 */
