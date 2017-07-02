@@ -67,7 +67,7 @@ var KLMultiSelect = Dropdown.extend({
             data.tree[0] = data._source;
             this.initSelected()
             this.$update();
-        }.bind(this));
+        });
         this.$watch('value', function(newValue, oldValue) {
             this.initSelected();
             if(oldValue !== null && oldValue !== undefined) {
@@ -87,7 +87,7 @@ var KLMultiSelect = Dropdown.extend({
                 }
             }
             this.$update();
-        }.bind(this));
+        });
         this.supr();
 
         this.initValidation();

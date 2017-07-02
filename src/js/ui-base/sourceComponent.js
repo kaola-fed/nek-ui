@@ -43,6 +43,7 @@ var SourceComponent = Component.extend({
         this.supr();
     },
     request: function (options) {
+        var self = this;
         var data = this.data;
         var oldError = options.error,
             oldSuccess = options.success,
@@ -51,17 +52,17 @@ var SourceComponent = Component.extend({
 
         options.success = function (data) {
             oldSuccess && oldSuccess(data);
-            this.$update('loading', false);
-        }.bind(this);
+            self.$update('loading', false);
+        };
         options.error = function (data) {
             oldError && oldError(data);
-            this.$update('loading', false);
-        }.bind(this);
+            self.$update('loading', false);
+        };
 
         options.complete = function (data) {
             oldComplete && oldComplete(data);
-            this.$update('loading', false);
-        }.bind(this);
+            self.$update('loading', false);
+        };
         Ajax.request(options)
     },
     /**
@@ -80,9 +81,10 @@ var SourceComponent = Component.extend({
      * @return {SourceComponent} this
      */
     $updateSource: function() {
+        var self = this;
         this.service.getList.call(this, this.getParams(), function(result) {
-            this.$update('source', result);
-        }.bind(this));
+            self.$update('source', result);
+        });
         return this;
     }
 });

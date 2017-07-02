@@ -73,6 +73,7 @@ var KLForm = Validation.extend({
         })
     },
     __reqSource: function() {
+        var self = this;
         var keys = this.__getSourceKeys();
 
         window.NEKSelects = window.NEKSelects || {};
@@ -81,8 +82,8 @@ var KLForm = Validation.extend({
         this.selectors.forEach(function($formitem) {
             var key = $formitem.data.sourceKey;
             var source = window.NEKSelects[key] || [];
-            this.__updateSource($formitem, key, source);
-        }.bind(this));
+            self.__updateSource($formitem, key, source);
+        });
 
 
         if (!keys.length) { return; }
@@ -98,6 +99,7 @@ var KLForm = Validation.extend({
         })
     },
     __cbReqSource: function(json) {
+        var self = this;
         var keys = this.keys,
             path = this.data.sourcePath,
             result = path === '' ? json : json[path];
@@ -107,8 +109,8 @@ var KLForm = Validation.extend({
         this.selectors.forEach(function($formitem) {
             var key = $formitem.data.sourceKey;
             var source = result[key] || [];
-            this.__updateSource($formitem, key, source);
-        }.bind(this));
+            self.__updateSource($formitem, key, source);
+        });
         /**
            * @event sourceCompleted kl-form自动获取sourceKey异步数据后触发
            * @property {object} sender 事件发送对象

@@ -39,6 +39,7 @@ var KLTooltip = Component.extend({
         this.supr();
     },
     getInstance: function() {
+      var self = this;
       var tip = this.data.tip,
           placement = this.data.placement;
       if (!this.data.instance) {
@@ -47,9 +48,9 @@ var KLTooltip = Component.extend({
         });
 
         instance.$on('destroy', function() {
-          this.$refs.trigger.data.isShow = false;
-          this.data.instance = null;
-        }.bind(this));
+          self.$refs.trigger.data.isShow = false;
+          self.data.instance = null;
+        });
 
         this.data.instance = instance;
       }

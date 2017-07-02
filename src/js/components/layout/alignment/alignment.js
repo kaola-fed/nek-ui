@@ -32,10 +32,11 @@ var Alignment = Component.extend({
   },
   init:function() {
     this.data.target = dom.element(this);
+    var self = this;
 
     dom.on(window, 'resize', _.debounce(function() {
-      this.reAlign();
-    }.bind(this), 50));
+      self.reAlign();
+    }, 50));
   },
   reAlign: function(src) {
     var target = this.data.target,

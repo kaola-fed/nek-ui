@@ -89,9 +89,10 @@ var KLInput = Component.extend({
      */
     rules: function(ruleAttris) {
         this.supr(ruleAttris);
+        var self = this;
         ['required', 'isEmail', 'isURL', 'isFloat', 'isInt', 'byteLen'].forEach(function(name) {
-            this.addRule(name);
-        }.bind(this));
+            self.addRule(name);
+        });
     },
     /**
      * @protected

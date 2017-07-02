@@ -55,17 +55,18 @@ var KLFormItem = Validation.extend({
     initValidateRule: function() {
         if (!this.controls.length) { return; }
 
+        var self = this;
         var controls = this.controls || [],
             message = this.data.message;
         controls.forEach(function($component) {
-          if (this.data.required) {
+          if (self.data.required) {
             $component.data.required = true;
             $component.data.message = $component.data.message || message;
             $component.$update();
           } else {
             $component.$update('required', false);
           }
-        }.bind(this));
+        });
     }
 });
 

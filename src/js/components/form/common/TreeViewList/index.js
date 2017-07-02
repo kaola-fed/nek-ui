@@ -64,19 +64,20 @@ var TreeViewList = SourceComponent.extend({
      * @return {SourceComponent} this
      */
     $updateSource: function() {
+        var self = this;
         this.service.getList(this.getParams(), function(result) {
             // 给每个节点item添加parent
             result.forEach(function(item) {
-                item.parent = this.data.parent;
-            }.bind(this));
+                item.parent = self.data.parent;
+            });
 
-            this.$update('source', result);
+            self.$update('source', result);
 
-            this.$emit('updateSource', {
+            self.$emit('updateSource', {
                 sender: this,
                 result: result
             });
-        }.bind(this));
+        });
         return this;
     },
     /**
@@ -109,7 +110,7 @@ var TreeViewList = SourceComponent.extend({
         if(checked !== null && item[this.data.childKey]) {
             item[this.data.childKey].forEach(function(child) {
                 child.checked = checked;
-            }.bind(this));
+            });
         }
 
         var parent = this.data.parent;

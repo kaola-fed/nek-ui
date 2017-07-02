@@ -42,30 +42,31 @@ var KLPopConfirm = Component.extend({
     this.supr();
   },
   getInstance: function() {
+    var self = this;
     if (!this.data.instance) {
       var instance = new PopUp({ data: this.data });
 
       instance.$on('ok', function(data) {
-        if (this.events && this.events.ok) {
-          this.$emit('ok', data);
+        if (self.events && self.events.ok) {
+          self.$emit('ok', data);
         } else {
-          this.data.instance.destroy();
+          self.data.instance.destroy();
         }
 
-      }.bind(this));
+      });
 
       instance.$on('cancel', function(data) {
-        if (this.events && this.events.cancel) {
-          this.$emit('cancel', data);
+        if (self.events && self.events.cancel) {
+          self.$emit('cancel', data);
         } else {
-          this.data.instance.destroy();
+          self.data.instance.destroy();
         }
-      }.bind(this));
+      });
 
       instance.$on('destroy', function() {
-        this.$refs.trigger.data.isShow = false;
-        this.data.instance = null;
-      }.bind(this));
+        self.$refs.trigger.data.isShow = false;
+        self.data.instance = null;
+      });
 
       this.data.instance = instance;
     }

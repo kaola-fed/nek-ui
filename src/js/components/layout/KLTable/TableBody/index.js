@@ -50,16 +50,17 @@ var TableBody = Component.extend({
         this._updateSubTrHeight(item, itemIndex);
     },
     _updateSubTrHeight: function(item, itemIndex) {
+        var self = this;
         var timer = setInterval(function() {
-            var tdElement = this.$refs['td'+itemIndex];
+            var tdElement = self.$refs['td'+itemIndex];
             if(tdElement && item._expandHeight !== tdElement.clientHeight) {
                 item._expandHeight = tdElement.clientHeight;
-                this.$update();
+                self.$update();
             }
             if(!item.expand) {
                 clearInterval(timer);
             }
-        }.bind(this), 100);
+        }, 100);
     },
     _onSubEvent: function(type, table, e) {
         this.$emit('subevent', {

@@ -27,6 +27,7 @@ _.fillWithZero = function(val, len) {
 };
 
 _.throttle = function(fn, delay) {
+    var self = this;
     var last = null;
     var timer = null;
     delay = delay || 100;
@@ -37,12 +38,12 @@ _.throttle = function(fn, delay) {
         clearTimeout(timer);
         if(now - last > delay) {
             last = now;
-            fn.apply(this, args);
+            fn.apply(self, args);
         } else {
             // run at last time
             setTimeout(function() {
-                fn.apply(this, args);
-            }.bind(this), delay);
+                fn.apply(self, args);
+            }, delay);
         }
     };
 };

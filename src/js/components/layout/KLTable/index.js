@@ -98,18 +98,19 @@ var KLTable = Component.extend({
         this._initTable();
     },
     _initTable: function() {
+        var self = this;
         var data = this.data;
         var refs = this.$refs;
         var INIT = 1;
         setTimeout(function() {
             data.headerHeight = refs.headerWrap.offsetHeight;
 
-            this._updateContainerWidth(INIT);
-            this._updateViewWidth();
-            this._initTableWidth();
-            this._getHeaderHeight();
+            self._updateContainerWidth(INIT);
+            self._updateViewWidth();
+            self._initTableWidth();
+            self._getHeaderHeight();
             data.initFinished = true;
-        }.bind(this), 50);
+        }, 50);
     },
     _initTableWidth: function() {
         var data = this.data;
@@ -177,10 +178,11 @@ var KLTable = Component.extend({
         this.data.headers = u.getHeaders(columns);
     },
     _onShowChange: function(newVal) {
+        var self = this;
         if(newVal) {
             setTimeout(function() {
-                this._updateViewWidth();
-            }.bind(this), 100)
+                self._updateViewWidth();
+            }, 100)
         }
     },
     _updateViewWidth: function() {
@@ -197,9 +199,10 @@ var KLTable = Component.extend({
         this._updateTableWidth(ratio);
     },
     _onSouceChange: function() {
+        var self = this;
         setTimeout(function() {
-            this._updateSticky();
-        }.bind(this), 500)
+            self._updateSticky();
+        }, 500)
     },
     _onWinodwScroll: function() {
         if(!this.$refs || !this._isShow()) {
@@ -297,19 +300,20 @@ var KLTable = Component.extend({
         this.data.stickyFooterActive = stickyActive;
     },
     _watchWidthChange: function() {
+        var self = this;
         this.data._quickTimer = setInterval(function() {
-            if(!this._isShow()) {
+            if(!self._isShow()) {
                 return;
             }
-            this._updateContainerWidth();
-            this._updateScrollBar();
-        }.bind(this), 50);
+            self._updateContainerWidth();
+            self._updateScrollBar();
+        }, 50);
         this.data._slowTimer = setInterval(function() {
-            if(!this._isShow()) {
+            if(!self._isShow()) {
                 return;
             }
-            this._updateTableWidth();
-        }.bind(this), 200);
+            self._updateTableWidth();
+        }, 200);
     },
     _updateContainerWidth: function(init) {
         var data = this.data;

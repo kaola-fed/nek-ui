@@ -15,16 +15,17 @@ var KLLocaleProvider = Component.extend({
         this._initLang();
     },
     _initLang: function() {
+        var self = this;
         var api = this.data.api,
             lang = this.data.lang;
 
         KLLocaleProvider.lang = lang;
         ajax.get(`${api}?lang=${lang}`, function(json) {
             KLLocaleProvider.locale[lang] = json;
-            this.$update('ready', true);
+            self.$update('ready', true);
             
-            this.$emit('ready');
-        }.bind(this))
+            self.$emit('ready');
+        })
     }
 });
 

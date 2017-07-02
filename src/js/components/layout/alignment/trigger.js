@@ -38,33 +38,34 @@ var Trigger = Component.extend({
     this.supr(data);
   },
   init: function() {
+    var self = this;
     var element = dom.element(this),
         action  = this.data.action;
 
     if (action == 'click') {
-      dom.on(element, 'click', function(e) { this.toggle(); }.bind(this));
+      dom.on(element, 'click', function(e) { self.toggle(); });
       dom.on(document.body, 'click', function(e) {
         var target = e.target;
-        if (!_.dom.contains(element, target) && this.data.isShow) {
-          this.toggle(false);
+        if (!_.dom.contains(element, target) && self.data.isShow) {
+          self.toggle(false);
         }
-      }.bind(this));
+      });
     }
     if (action == 'mouseEnter') {
-      dom.on(element, 'mouseenter', function() { this.toggle(true); }.bind(this));
-      dom.on(element, 'mouseleave', function() { this.toggle(false); }.bind(this));
+      dom.on(element, 'mouseenter', function() { self.toggle(true); });
+      dom.on(element, 'mouseleave', function() { self.toggle(false); });
     }
     if (action == 'focus') {
-      dom.on(element, 'focus', function() { this.toggle(true); }.bind(this));
-      dom.on(element, 'blur', function() { this.toggle(false); }.bind(this));
+      dom.on(element, 'focus', function() { self.toggle(true); });
+      dom.on(element, 'blur', function() { self.toggle(false); });
     }
 
     window.addEventListener('scroll', function() {
-      var isShow = this.data.isShow;
-      if (isShow && this.data.hideWhenScroll) {
-        this.toggle(false);
+      var isShow = self.data.isShow;
+      if (isShow && self.data.hideWhenScroll) {
+        self.toggle(false);
       }
-    }.bind(this), true);
+    }, true);
   },
   updateInstance: function(isShow) {
 

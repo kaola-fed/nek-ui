@@ -55,6 +55,7 @@ var KLNotify = Component.extend({
      * @return {void}
      */
     show: function(text, state, duration) {
+        var self = this;
         var message = {
             text: text,
             state: state,
@@ -75,10 +76,10 @@ var KLNotify = Component.extend({
         if(message.duration) {
             setTimeout(function() {
                 if(!message.counter)
-                    this.close(message);
+                    self.close(message);
                 else
                     message.counter--;
-            }.bind(this), message.duration);
+            }, message.duration);
         }
 
         /**
