@@ -14,6 +14,7 @@ const KLCrumb = require('../index');
  * @class KLCrumbItem
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
+ * @param {string}          [options.data.content]            => 内容模板
  * @param {string}          [options.data.class]              => 补充class
  * @param {string}          [options.data.href]                => 传入的链接
  */

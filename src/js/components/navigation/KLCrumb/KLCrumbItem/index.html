@@ -6,7 +6,7 @@
         {#if href}
             <a class="crumb_link" href="{href}">{#inc this.$body}</a>
         {#else}
-            {#inc this.$body}
+            {#inc content || this.$body}
         {/if}
     </div>
 </div>
