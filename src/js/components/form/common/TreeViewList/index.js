@@ -9,8 +9,6 @@ const SourceComponent = require('../../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
 
-const KLCheck = require('../../KLCheck');
-
 /**
  * @class TreeViewList
  * @extend SourceComponent
@@ -83,14 +81,14 @@ const TreeViewList = SourceComponent.extend({
   /**
      * @note 移交$ancestor处理
      */
-  select() {
-    this.$ancestor.select.apply(this.$ancestor, arguments);
+  select(...args) {
+    this.$ancestor.select(args);
   },
   /**
      * @note 移给$ancestor处理
      */
-  toggle() {
-    this.$ancestor.toggle.apply(this.$ancestor, arguments);
+  toggle(...args) {
+    this.$ancestor.toggle(args);
   },
   check() {
     this._setSelected({});
@@ -117,7 +115,7 @@ const TreeViewList = SourceComponent.extend({
     if (parent && parent.checked !== item.checked) {
       let checkedCount = 0;
       parent[this.data.childKey].forEach((child) => {
-        if (child.checked) checkedCount++;
+        if (child.checked) checkedCount += 1;
         else if (child.checked === null) checkedCount += 0.5;
       });
 

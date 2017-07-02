@@ -2,7 +2,7 @@ const Component = require('../../../ui-base/component');
 const ajax = require('../../../ui-base/ajax');
 const _ = require('../../../ui-base/_');
 
-var KLLocaleProvider = Component.extend({
+const KLLocaleProvider = Component.extend({
   name: 'kl-locale-provider',
   template: '{#if ready}{#inc this.$body}{/if}',
   config() {
@@ -14,8 +14,7 @@ var KLLocaleProvider = Component.extend({
   },
   _initLang() {
     const self = this;
-    let api = this.data.api,
-      lang = this.data.lang;
+    const { api, lang } = this.data;
 
     KLLocaleProvider.lang = lang;
     ajax.get(`${api}?lang=${lang}`, (json) => {
@@ -31,9 +30,10 @@ KLLocaleProvider.lang = 'cn';
 KLLocaleProvider.locale = {};
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
-KLLocaleProvider._format = (str, ...args) => {
-  if (args.length === 1 && typeof args[0] === 'object') {
-    args = args[0];
+KLLocaleProvider._format = (str, ..._args) => {
+  let args = {};
+  if (_args.length === 1 && typeof _args[0] === 'object') {
+    args = _args[0];
   } else {
     args = {};
   }
@@ -43,12 +43,10 @@ KLLocaleProvider._format = (str, ...args) => {
   }
 
   return str.replace(RE_NARGS, (match, prefix, i, index) => {
-    let result;
-
     if (str[index - 1] === '{' && str[index + match.length] === '}') {
       return i;
     }
-    result = _.hasOwn(args, i) ? args[i] : match;
+    const result = _.hasOwn(args, i) ? args[i] : match;
     if (_.isNil(result)) {
       return '';
     }
@@ -61,8 +59,8 @@ KLLocaleProvider._format = (str, ...args) => {
  * @private
  */
 KLLocaleProvider._interpolate = (key, args) => {
-  let lang = KLLocaleProvider.lang,
-    map = KLLocaleProvider.locale[lang] || {};
+  const lang = KLLocaleProvider.lang;
+  const map = KLLocaleProvider.locale[lang] || {};
 
   let val = map[key] || key;
 
@@ -72,8 +70,8 @@ KLLocaleProvider._interpolate = (key, args) => {
     // We are going to replace each of
     // them with its translation
     const matches = val.match(/(@:[\w|.]+)/g);
-    for (const idx in matches) {
-      const link = matches[idx];
+    for (let i = 0; i < matches.length; i += 1) {
+      const link = matches[i];
       // Remove the leading @:
       const linkPlaceholder = link.substr(2);
       // Translate the link

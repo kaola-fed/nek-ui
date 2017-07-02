@@ -9,7 +9,7 @@ const SourceComponent = require('../../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
 
-const TreeViewList = require('../TreeViewList');
+require('../TreeViewList');
 
 /**
  * @class TreeView
@@ -52,9 +52,7 @@ const TreeView = SourceComponent.extend({
     this.supr();
     this.$ancestor = this;
     this.$watch('selected', function (newVal) {
-      let key = this.data.key,
-        nameKey = this.data.nameKey,
-        separator = this.data.separator;
+      const { key, nameKey, separator } = this.data;
       if (!newVal) return (this.data.value = '');
       if (Array.isArray(newVal)) {
         return (this.data.value = newVal
@@ -100,7 +98,7 @@ const TreeView = SourceComponent.extend({
      * @param  {object} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
      * @return {void}
      */
-  toggle(item, open) {
+  toggle(item, _open) {
     if (
       this.data.readonly ||
       this.data.disabled ||
@@ -110,6 +108,7 @@ const TreeView = SourceComponent.extend({
       return;
     }
 
+    let open = _open;
     if (open === undefined) open = !item.open;
     item.open = open;
 
@@ -142,7 +141,9 @@ const TreeView = SourceComponent.extend({
     });
     return arr;
   },
-  setSelected(event) {
+  setSelected() {
     this.data.selected = this._getSelected(this.data.source);
   },
 });
+
+module.exports = TreeView;

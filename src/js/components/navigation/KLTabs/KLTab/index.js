@@ -38,8 +38,8 @@ const KLTab = Component.extend({
   },
 
   _setDefaultTab() {
-    let defaultKey = this.$outer.data.defaultKey,
-      key = this.data.key;
+    const defaultKey = this.$outer.data.defaultKey;
+    const key = this.data.key;
 
     if (!!defaultKey && !!key && `${defaultKey}` === `${key}`) {
       this.$outer.data.selected = this;

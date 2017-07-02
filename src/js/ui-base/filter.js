@@ -1,6 +1,6 @@
 exports.format = (function () {
-  function fix(str) {
-    str = `${String(str) || ''}`;
+  function fix(_str) {
+    const str = `${String(_str) || ''}`;
     return str.length <= 1 ? `0${str}` : str;
   }
   const maps = {
@@ -25,12 +25,12 @@ exports.format = (function () {
   };
 
   const trunk = new RegExp(Object.keys(maps).join('|'), 'g');
-  return function (value, format) {
-    if (!value) {
+  return function (_value, _format) {
+    if (!_value) {
       return '';
     }
-    format = format || 'yyyy-MM-dd HH:mm';
-    value = new Date(value);
+    const format = _format || 'yyyy-MM-dd HH:mm';
+    const value = new Date(_value);
 
     return format.replace(
       trunk,
@@ -39,13 +39,13 @@ exports.format = (function () {
   };
 }());
 
-exports.average = function (array, key) {
-  array = array || [];
+exports.average = function (_array, key) {
+  const array = _array || [];
   return array.length ? exports.total(array, key) / array.length : 0;
 };
 exports.total = function (array, key) {
   let total = 0;
-  if (!array) return;
+  if (!array) return undefined;
   array.forEach((item) => {
     total += key ? item[key] : item;
   });
@@ -53,6 +53,6 @@ exports.total = function (array, key) {
 };
 
 exports.filter = function (array, filterFn) {
-  if (!array || !array.length) return;
+  if (!array || !array.length) return undefined;
   return array.filter((item, index) => filterFn(item, index));
 };

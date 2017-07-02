@@ -35,6 +35,7 @@ const KLText = Component.extend({
       align: '',
       // vat/vam/vab
       vertical: '',
+      /* eslint no-script-url: 0 */
       url: 'javascript:;',
       target: '',
     });

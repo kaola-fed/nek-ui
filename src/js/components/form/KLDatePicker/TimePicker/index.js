@@ -8,7 +8,7 @@
 const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
-const NumberInput = require('../NumberInput');
+require('../NumberInput');
 
 /**
  * @class TimePicker
@@ -23,7 +23,7 @@ const NumberInput = require('../NumberInput');
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]           => 补充class
  */
-var TimePicker = Component.extend({
+const TimePicker = Component.extend({
   name: 'time-picker',
   template,
   /**
@@ -68,7 +68,10 @@ var TimePicker = Component.extend({
       });
     });
 
-    this.$watch(['hour', 'minute', 'seconds'], function (hour, minute, seconds) {
+    this.$watch(['hour', 'minute', 'seconds'], function (_hour, _minute, _seconds) {
+      let hour = _hour;
+      let minute = _minute;
+      let seconds = _seconds;
       hour += '';
       minute += '';
       seconds += '';
@@ -115,6 +118,7 @@ const TimeRangeError = function (minTime, maxTime) {
 };
 
 TimeRangeError.prototype = Object.create(Error.prototype);
-TimePicker.TimeRangeError = TimeRangeError.prototype.constructor = TimeRangeError;
+TimeRangeError.prototype.constructor = TimeRangeError;
+TimePicker.TimeRangeError = TimeRangeError.prototype.constructor;
 
 module.exports = TimePicker;

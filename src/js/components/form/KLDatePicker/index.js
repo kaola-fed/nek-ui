@@ -11,7 +11,6 @@ const _ = require('../../../ui-base/_');
 
 const filter = require('../../../ui-base/filter');
 const Calendar = require('./Calendar');
-const TimePicker = require('./TimePicker');
 const bowser = require('bowser');
 const moment = require('moment');
 const polyfill = require('../../../ui-base/polyfill');
@@ -62,7 +61,7 @@ const KLDatePicker = Dropdown.extend({
     });
     this.supr();
 
-    this.$watch('date', function (newValue, oldValue) {
+    this.$watch('date', function (newValue) {
       // 字符类型自动转为日期类型
       if (typeof newValue === 'string') {
         if (bowser.msie && bowser.version <= 9) {
@@ -73,7 +72,7 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.date = new Date(newValue));
       }
 
-      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+      if (newValue === 'Invalid Date' || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
 
@@ -103,7 +102,7 @@ const KLDatePicker = Dropdown.extend({
       this.data.tip && this.validate();
     });
 
-    this.$watch('minDate', function (newValue, oldValue) {
+    this.$watch('minDate', function (newValue) {
       if (!newValue) return;
 
       if (typeof newValue === 'string') {
@@ -113,12 +112,12 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.minDate = new Date(newValue));
       }
 
-      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+      if (newValue === 'Invalid Date' || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
     });
 
-    this.$watch('maxDate', function (newValue, oldValue) {
+    this.$watch('maxDate', function (newValue) {
       if (!newValue) return;
 
       if (typeof newValue === 'string') {
@@ -128,7 +127,7 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.maxDate = new Date(newValue));
       }
 
-      if (newValue == 'Invalid Date' || newValue == 'NaN') {
+      if (newValue === 'Invalid Date' || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
     });
@@ -199,11 +198,11 @@ const KLDatePicker = Dropdown.extend({
    * @private
    * @return {void}
    */
-  _onDateTimeChange(date, time) {
-    this.time = time || '00:00:00';
+  _onDateTimeChange(date, _time) {
+    this.time = _time || '00:00:00';
     // this.data.time
     this.date = new Date(date);
-    time = this.time.split(':');
+    const time = this.time.split(':');
     this.date.setHours(time[0]);
     this.date.setMinutes(time[1]);
     this.date.setSeconds(time[2]);
@@ -218,7 +217,7 @@ const KLDatePicker = Dropdown.extend({
     const value = $event.target.value;
     const date = value ? new Date(value) : null;
 
-    if (date != 'Invalid Date') this.data.date = date;
+    if (date !== 'Invalid Date') this.data.date = date;
     else {
       $event.target.value = filter.format(
         this.data.date,
@@ -243,8 +242,8 @@ const KLDatePicker = Dropdown.extend({
     );
   },
   validate(on) {
-    let data = this.data,
-      date = data.date || '';
+    const data = this.data;
+    const date = data.date || '';
 
     const result = date
       ? Validation.validate(date.toString(), [

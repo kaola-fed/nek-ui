@@ -40,9 +40,11 @@ const KLForm = Validation.extend({
     });
   },
   initFormItem() {
-    let controls = this.controls,
-      labelSize = this.data.labelSize,
-      labelLineHeight = this.data.labelLineHeight;
+    const {
+      controls,
+      labelSize,
+      labelLineHeight,
+    } = this.data;
     labelSize &&
       controls.forEach(($component) => {
         if (!$component.labelSize) {
@@ -98,11 +100,8 @@ const KLForm = Validation.extend({
   },
   __cbReqSource(json) {
     const self = this;
-    let keys = this.keys,
-      path = this.data.sourcePath,
-      result = path === '' ? json : json[path];
-
-    result = result || {};
+    const path = this.data.sourcePath;
+    const result = (path === '' ? json : json[path]) || {};
 
     this.selectors.forEach(($formitem) => {
       const key = $formitem.data.sourceKey;

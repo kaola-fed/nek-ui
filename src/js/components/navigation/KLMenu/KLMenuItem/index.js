@@ -37,7 +37,7 @@ const KLMenuItem = Component.extend({
   computed: {
     active() {
       if (!this.data.rootMenu) return;
-      return this.data.rootMenu.currentItem == this;
+      return this.data.rootMenu.currentItem === this;
     },
   },
   init() {

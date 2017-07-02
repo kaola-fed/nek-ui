@@ -62,7 +62,7 @@ const KLNotify = Component.extend({
 
     if (this.data.single && messages[0]) {
       message = _.extend(messages[0], message, true);
-      message.counter++;
+      message.counter += 1;
     } else {
       messages.unshift(message);
       message.counter = 0;
@@ -73,7 +73,7 @@ const KLNotify = Component.extend({
     if (message.duration) {
       setTimeout(() => {
         if (!message.counter) self.close(message);
-        else message.counter--;
+        else message.counter -= 1;
       }, message.duration);
     }
 

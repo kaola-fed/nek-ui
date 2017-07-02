@@ -9,8 +9,56 @@ const dom = require('regularjs').dom;
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
-const trigger = require('../../layout/alignment/trigger');
+require('../../layout/alignment/trigger');
+
+const PopUp = Component.extend({
+  template,
+  config(data) {
+    this.defaults({
+      isShow: true,
+      content: '',
+      contentTemplate: '',
+    });
+    this.supr(data);
+  },
+  init() {
+    if (this.$root === this) {
+      this.$inject(document.body);
+    }
+    this.data.element = dom.element(this);
+    dom.on(this.data.element, 'click', (e) => {
+      e.stopPropagation();
+    });
+  },
+  getElement() {
+    return this.data.element;
+  },
+  ok() {
+    const $validation = this.$refs.validation;
+    if (!$validation || $validation.validate().success) {
+      /**
+       * @event ok 确定时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} data popConfirm组件的数据
+       */
+      this.$emit('ok', {
+        sender: this,
+        data: this.data,
+      });
+    }
+  },
+  cancel() {
+    /**
+     * @event cancel 取消时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} data popConfirm组件的数据
+     */
+    this.$emit('cancel', {
+      sender: this,
+      data: this.data,
+    });
+  },
+});
 
 /**
  * @class KLPopConfirm
@@ -69,55 +117,6 @@ const KLPopConfirm = Component.extend({
       this.data.instance = instance;
     }
     return this.data.instance;
-  },
-});
-
-var PopUp = Component.extend({
-  template,
-  config(data) {
-    this.defaults({
-      isShow: true,
-      content: '',
-      contentTemplate: '',
-    });
-    this.supr(data);
-  },
-  init() {
-    if (this.$root == this) {
-      this.$inject(document.body);
-    }
-    this.data.element = dom.element(this);
-    dom.on(this.data.element, 'click', (e) => {
-      e.stopPropagation();
-    });
-  },
-  getElement() {
-    return this.data.element;
-  },
-  ok() {
-    const $validation = this.$refs.validation;
-    if (!$validation || $validation.validate().success) {
-      /**
-       * @event ok 确定时触发
-       * @property {object} sender 事件发送对象
-       * @property {object} data popConfirm组件的数据
-       */
-      this.$emit('ok', {
-        sender: this,
-        data: this.data,
-      });
-    }
-  },
-  cancel() {
-    /**
-     * @event cancel 取消时触发
-     * @property {object} sender 事件发送对象
-     * @property {object} data popConfirm组件的数据
-     */
-    this.$emit('cancel', {
-      sender: this,
-      data: this.data,
-    });
   },
 });
 

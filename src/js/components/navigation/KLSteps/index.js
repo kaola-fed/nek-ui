@@ -34,7 +34,7 @@ const KLSteps = Component.extend({
   },
   init() {
     this.supr();
-    this.$watch('current', function (newValue, oldValue) {
+    this.$watch('current', () => {
       this.juedgeFinishedItem();
     });
   },
@@ -44,7 +44,7 @@ const KLSteps = Component.extend({
     const steps = data.steps;
 
     steps.forEach((item, index) => {
-      if (item.status == current) {
+      if (item.status / 1 === current / 1) {
         data.currentIndex = index;
       }
     });

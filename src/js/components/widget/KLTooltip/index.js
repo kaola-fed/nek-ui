@@ -9,8 +9,26 @@ const dom = require('regularjs').dom;
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
-const trigger = require('../../layout/alignment/trigger');
+require('../../layout/alignment/trigger');
+
+const TipPopUp = Component.extend({
+  template,
+  config(data) {
+    this.defaults({
+      isShow: true,
+    });
+    this.supr(data);
+  },
+  init() {
+    if (this.$root === this) {
+      this.$inject(document.body);
+    }
+    this.data.element = dom.element(this);
+  },
+  getElement() {
+    return this.data.element;
+  },
+});
 
 /**
  * @class KLTooltip
@@ -39,8 +57,7 @@ const KLTooltip = Component.extend({
   },
   getInstance() {
     const self = this;
-    let tip = this.data.tip,
-      placement = this.data.placement;
+    const { tip, placement } = this.data;
     if (!this.data.instance) {
       const instance = new TipPopUp({
         data: { tip, placement },
@@ -54,25 +71,6 @@ const KLTooltip = Component.extend({
       this.data.instance = instance;
     }
     return this.data.instance;
-  },
-});
-
-var TipPopUp = Component.extend({
-  template,
-  config(data) {
-    this.defaults({
-      isShow: true,
-    });
-    this.supr(data);
-  },
-  init() {
-    if (this.$root == this) {
-      this.$inject(document.body);
-    }
-    this.data.element = dom.element(this);
-  },
-  getElement() {
-    return this.data.element;
   },
 });
 

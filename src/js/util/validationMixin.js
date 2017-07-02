@@ -16,6 +16,7 @@ module.exports = function (Component) {
 
       if ($outer && $outer instanceof Validation) {
         $outer.controls.push(this);
+        /* eslint no-underscore-dangle: ["error", { "allowAfterThis": true }] */
         this._parentValidator = $outer;
 
         this.$on('destroy', function () {

@@ -27,7 +27,7 @@ const MS_OF_DAY = 24 * 3600 * 1000;
  * @param {boolean}       [options.data.visible=true]     => 是否显示
  * @param {string}        [options.data.class]            => 补充class
  */
-var Calendar = Component.extend({
+const Calendar = Component.extend({
   name: 'calendar',
   template,
   /**
@@ -56,11 +56,12 @@ var Calendar = Component.extend({
       // 如果newValue为空， 则自动转到今天
       if (!newValue) {
         return (this.data.date = new Date(
+          /* eslint no-bitwise: 0 */
           ((new Date() / MS_OF_DAY) >> 0) * MS_OF_DAY,
         ));
       }
 
-      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+      if (newValue === 'Invalid Date') throw new TypeError('Invalid Date');
 
       // 如果超出日期范围，则设置为范围边界的日期
       const isOutOfRange = this.isOutOfRange(newValue);
@@ -91,7 +92,7 @@ var Calendar = Component.extend({
       });
     });
 
-    this.$watch('minDate', function (newValue, oldValue) {
+    this.$watch('minDate', function (newValue) {
       if (!newValue) return;
 
       if (typeof newValue === 'string') {
@@ -101,10 +102,10 @@ var Calendar = Component.extend({
         return (this.data.minDate = new Date(newValue));
       }
 
-      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+      if (newValue === 'Invalid Date') throw new TypeError('Invalid Date');
     });
 
-    this.$watch('maxDate', function (newValue, oldValue) {
+    this.$watch('maxDate', function (newValue) {
       if (!newValue) return;
 
       if (typeof newValue === 'string') {
@@ -114,7 +115,7 @@ var Calendar = Component.extend({
         return (this.data.maxDate = new Date(newValue));
       }
 
-      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+      if (newValue === 'Invalid Date') throw new TypeError('Invalid Date');
     });
 
     this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
@@ -155,12 +156,13 @@ var Calendar = Component.extend({
     nfirst.setMonth(month + 1);
     nfirst.setDate(1);
     const nfirstTime = +nfirst;
-    const lastTime = nfirstTime + ((7 - nfirst.getDay()) % 7 - 1) * MS_OF_DAY;
+    const lastTime = nfirstTime + ((((7 - nfirst.getDay()) % 7) - 1) * MS_OF_DAY);
     let num = -mfirst.getDay();
-    let tmpTime,
-      tmp;
+    let tmpTime;
+    let tmp;
     do {
-      tmpTime = mfirstTime + num++ * MS_OF_DAY;
+      tmpTime = mfirstTime + (num * MS_OF_DAY);
+      num += 1;
       tmp = new Date(tmpTime);
       this.data._days.push(tmp);
     } while (tmpTime < lastTime);
@@ -179,7 +181,7 @@ var Calendar = Component.extend({
     const date = new Date(this.data.date);
     const oldMonth = date.getMonth();
     date.setFullYear(date.getFullYear() + year);
-    if (date.getMonth() != oldMonth) date.setDate(0);
+    if (date.getMonth() !== oldMonth) date.setDate(0);
 
     return (this.data.date = date);
   },
@@ -258,6 +260,7 @@ const DateRangeError = function (minDate, maxDate) {
   this.message = `Wrong Date Range where \`minDate\` is ${minDate} and \`maxDate\` is ${maxDate}!`;
 };
 DateRangeError.prototype = Object.create(RangeError.prototype);
-Calendar.DateRangeError = DateRangeError.prototype.constructor = DateRangeError;
+DateRangeError.prototype.constructor = DateRangeError;
+Calendar.DateRangeError = DateRangeError.prototype.constructor;
 
 module.exports = Calendar;

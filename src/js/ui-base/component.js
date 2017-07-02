@@ -6,7 +6,6 @@
  */
 
 const Regular = require('regularjs');
-const polyfill = require('./polyfill');
 const _ = require('./_');
 const filter = require('./filter');
 const directive = require('./directive');

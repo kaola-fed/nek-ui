@@ -25,7 +25,7 @@ const _ = require('../../../../ui-base/_');
  * @param {string}            [options.data.class]                    => 补充class
  * @param {object}            [options.service]                       @=> 数据服务
  */
-var Dropdown = SourceComponent.extend({
+const Dropdown = SourceComponent.extend({
   name: 'dropdown',
   template,
   /**
@@ -45,9 +45,10 @@ var Dropdown = SourceComponent.extend({
      * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
      * @return {void}
      */
-  toggle(open) {
+  toggle(_open) {
     if (this.data.disabled) return;
 
+    let open = _open;
     if (open === undefined) open = !this.data.open;
     this.data.open = open;
 
@@ -99,12 +100,12 @@ Dropdown.opens = [];
 
 _.dom.on(document, 'click', (e) => {
   const opens = Dropdown.opens.map(d => d);
-  opens.forEach((dropdown, index) => {
+  opens.forEach((dropdown) => {
     // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
     const element = dropdown.$refs.element;
     let element2 = e.target;
     while (element2) {
-      if (element == element2) return;
+      if (element === element2) return;
       element2 = element2.parentElement;
     }
     dropdown.toggle(false);

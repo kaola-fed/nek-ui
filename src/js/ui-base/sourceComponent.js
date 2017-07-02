@@ -41,22 +41,21 @@ const SourceComponent = Component.extend({
   request(options) {
     const self = this;
     const data = this.data;
-    let oldError = options.error,
-      oldSuccess = options.success,
-      oldComplete = options.complete;
+    const { error: oldError, success: oldSuccess, complete: oldComplete } = options;
+
     data.loading = true;
 
-    options.success = function (data) {
-      oldSuccess && oldSuccess(data);
+    options.success = function (_data) {
+      oldSuccess && oldSuccess(_data);
       self.$update('loading', false);
     };
-    options.error = function (data) {
-      oldError && oldError(data);
+    options.error = function (_data) {
+      oldError && oldError(_data);
       self.$update('loading', false);
     };
 
-    options.complete = function (data) {
-      oldComplete && oldComplete(data);
+    options.complete = function (_data) {
+      oldComplete && oldComplete(_data);
       self.$update('loading', false);
     };
     Ajax.request(options);

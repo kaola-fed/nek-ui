@@ -60,12 +60,12 @@ const KLTextArea = Component.extend({
   },
   init() {
     this.$watch('required', function (value) {
-      let rules = this.data.rules,
-        message = this.data.message || this.$trans('PLEASE_INPUT');
+      const rules = this.data.rules;
+      const message = this.data.message || this.$trans('PLEASE_INPUT');
       if (value) {
         rules.push({ type: 'isRequired', message });
       } else {
-        this.data.rules = rules.filter(rule => rule.type != 'isRequired');
+        this.data.rules = rules.filter(rule => rule.type !== 'isRequired');
       }
     });
   },
@@ -74,18 +74,10 @@ const KLTextArea = Component.extend({
      * @public
      * @return {object} result 结果
      */
-  validate(on) {
+  validate(on = '') {
     const value = this.data.value;
     let rules = this.data.rules;
 
-    const PRIORITY = {
-      keyup: 2,
-      blur: 1,
-      submit: 0,
-      '': 0,
-    };
-
-    on = on || '';
     rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
 
     const result = Validation.validate(value, rules);
@@ -103,8 +95,6 @@ const KLTextArea = Component.extend({
     // @TODO
     if (!result.success) this.data.state = 'error';
     else {
-      // else if(PRIORITY[on] <= PRIORITY['blur'])
-      //     this.data.state = 'success';
       this.data.state = '';
     }
 

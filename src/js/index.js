@@ -66,7 +66,7 @@ module.exports = Object.assign(
   {
     // Register
     install(Regular) {
-      for (const [k, m] of Object.entries(Components)) {
+      for (const m of Object.values(Components)) {
         const name = m.prototype && m.prototype.name;
         if (name) Regular.component(name, m);
       }

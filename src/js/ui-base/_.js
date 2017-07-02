@@ -1,3 +1,4 @@
+/* eslint-disable */
 const Regular = require('regularjs');
 const language = require('../language');
 

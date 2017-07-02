@@ -3,8 +3,8 @@ module.exports = {
      *  测试数据:
      *  1, +1, -1, ++1, ++++, 1++, 1+1, 001, 01
      * */
-  int(value) {
-    value = value.replace(/[^\d+-]/g, '');
+  int(_value) {
+    let value = _value.replace(/[^\d+-]/g, '');
 
     const regexp = /[+-]?\d*/;
     const match = regexp.exec(value);
@@ -17,8 +17,9 @@ module.exports = {
      *  测试数据:
      *  1.123, +1.123, -1.123, ++1.123, 1+++.23+, 1++.23, 1+1.23, 132.12.12
      * */
-  float(value, decimalDigits) {
-    value = value.replace(/[^\d+-\.]/g, '');
+  float(_value, decimalDigits) {
+    /* eslint no-useless-escape: 0 */
+    let value = _value.replace(/[^\d+-\.]/g, '');
 
     const regexp = /([+-]?\d*(\.\d*)?)/;
     const match = regexp.exec(value);

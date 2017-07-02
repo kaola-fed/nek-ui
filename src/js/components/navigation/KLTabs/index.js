@@ -43,7 +43,7 @@ const KLTabs = Component.extend({
     });
     this.supr();
 
-    this.$watch('selected', function (newValue, oldValue) {
+    this.$watch('selected', (newValue) => {
       /**
              * @event change 选项卡改变时触发
              * @property {object} sender 事件发送对象

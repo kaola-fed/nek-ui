@@ -1,7 +1,6 @@
 const _ = require('../../../../ui-base/_');
 const Validation = require('../../../../util/validation');
 const validationMixin = require('../../../../util/validationMixin');
-const KLTooltip = require('../../../widget/KLTooltip');
 
 const template = require('./index.html');
 
@@ -58,8 +57,8 @@ const KLFormItem = Validation.extend({
     }
 
     const self = this;
-    let controls = this.controls || [],
-      message = this.data.message;
+    const controls = this.controls || [];
+    const message = this.data.message;
     controls.forEach(($component) => {
       if (self.data.required) {
         $component.data.required = true;

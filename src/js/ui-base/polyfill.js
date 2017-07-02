@@ -1,3 +1,4 @@
+/* eslint-disable */
 const bowser = require('bowser');
 
 if (!Object.keys) {

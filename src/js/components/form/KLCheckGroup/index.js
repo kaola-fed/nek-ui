@@ -7,9 +7,6 @@
 
 const SourceComponent = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
-const KLCheck = require('../KLCheck');
-const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 
 /**
@@ -63,13 +60,11 @@ const KLCheckGroup = SourceComponent.extend({
         return console.error('source of check.group is not an array');
       }
 
-      let key = this.data.key,
-        separator = this.data.separator,
-        value = this.data.value || '',
-        values = value.split(separator);
+      const { key, separator, value = '' } = this.data;
+      const values = value.split(separator);
 
       source.forEach((item) => {
-        if (values.indexOf(`${item[key]}`) != -1) {
+        if (values.indexOf(`${item[key]}`) !== -1) {
           item.checked = true;
         }
       });
@@ -79,12 +74,10 @@ const KLCheckGroup = SourceComponent.extend({
       if (newValue === undefined || newValue === null) return;
 
       if (source) {
-        let key = this.data.key,
-          separator = this.data.separator,
-          value = newValue || '',
-          values = value.split(separator);
+        const { key, separator, value = '' } = this.data;
+        const values = value.split(separator);
         source.forEach((item) => {
-          if (values.indexOf(`${item[key]}`) != -1) {
+          if (values.indexOf(`${item[key]}`) !== -1) {
             item.checked = true;
           } else {
             item.checked = false;
@@ -99,13 +92,13 @@ const KLCheckGroup = SourceComponent.extend({
      * @return {object} result 结果
      */
   validate() {
-    let source = this.data.source,
-      result = { success: true, message: '' },
-      required = this.data.required,
-      min = this.data.min ? this.data.min : required / 1,
-      max = this.data.max,
-      checked = source.filter(item => !!item.checked),
-      len = checked.length;
+    const source = this.data.source;
+    const result = { success: true, message: '' };
+    const required = this.data.required;
+    const min = this.data.min ? this.data.min : required / 1;
+    const max = this.data.max;
+    const checked = source.filter(item => !!item.checked);
+    const len = checked.length;
 
     if (len < min || len > max) {
       result.success = false;
@@ -132,11 +125,9 @@ const KLCheckGroup = SourceComponent.extend({
   _onCheck(item) {
     item.checked = !item.checked;
 
-    let key = this.data.key,
-      separator = this.data.separator,
-      source = this.data.source,
-      checkedList = source.filter(item => item.checked),
-      ids = checkedList.map(item => item[key]);
+    const { key, separator, source } = this.data;
+    const checkedList = source.filter(_item => _item.checked);
+    const ids = checkedList.map(_item => _item[key]);
 
     this.$update('value', ids.join(separator));
 

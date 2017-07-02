@@ -55,10 +55,12 @@ const KLPager = Component.extend({
 
     this._setPageSizeList();
 
-    this.$watch(['current', 'total'], function (current, total) {
-      this.data.current = current = +current;
-      this.data.total = total = +total;
-      const show = this.data.middle >> 1;
+    this.$watch(['current', 'total'], function (_current, _total) {
+      const current = +_current;
+      const total = +_total;
+      this.data.current = current;
+      this.data.total = total;
+      const show = Math.floor(this.data.middle / 2);
       const side = this.data.side;
 
       this.data._start = current - show;
@@ -66,7 +68,7 @@ const KLPager = Component.extend({
       if (this.data._start < side + 1) this.data._start = side + 1;
       if (this.data._end > total - side) this.data._end = total - side;
       if (current - this.data._start < show) {
-        this.data._end += this.data._start - current + show;
+        this.data._end += ((this.data._start - current) + show);
       }
       if (this.data._end - current < show) {
         this.data._start += this.data._end - current - show;
@@ -84,7 +86,7 @@ const KLPager = Component.extend({
       this.select(1);
     });
 
-    this.$watch('sumTotal', function (val, oldVal) {
+    this.$watch('sumTotal', () => {
       this.initTotal();
     });
   },
@@ -104,10 +106,10 @@ const KLPager = Component.extend({
 
   _setPageSizeList() {
     const { step, maxPageSize } = this.data;
-    for (let i = 1; i * step <= maxPageSize; ++i) {
+    for (let i = 1; i * step <= maxPageSize; i += 1) {
       this.data.pageSizeList.push({
         id: i * step,
-        name: i * step + this.$trans('ITEM_PAGE'),
+        name: (i * step) + this.$trans('ITEM_PAGE'),
       });
     }
   },
@@ -137,8 +139,7 @@ const KLPager = Component.extend({
     });
   },
   enter(ev) {
-    const data = this.data;
-    if (ev.which == 13) {
+    if (ev.which === 13) {
       // ENTER key
       ev.preventDefault();
       this.goto();
@@ -146,7 +147,7 @@ const KLPager = Component.extend({
   },
   goto() {
     const data = this.data;
-    if (!data.pageNo && data.pageNo != 0) return;
+    if (!data.pageNo && data.pageNo / 1 !== 0) return;
     if (data.pageNo > data.total) {
       data.pageNo = data.total;
     } else if (data.pageNo < 1) {

@@ -2,8 +2,8 @@ const _ = require('./_');
 
 const rClassGenerator = function (rClass) {
   exports[rClass] = function (elem, value) {
-    if (typeof value === 'object' && value.type == 'expression') {
-      this.$watch(value, (newValue, oldValue) => {
+    if (typeof value === 'object' && value.type === 'expression') {
+      this.$watch(value, (newValue) => {
         _.dom[newValue ? 'addClass' : 'delClass'](elem, rClass);
       });
     } else if (!!value || value === '') _.dom.addClass(elem, rClass);
@@ -18,9 +18,9 @@ rClassGenerator('z-dis');
 rClassGenerator('z-divider');
 
 exports['r-show'] = function (elem, value) {
-  if (typeof value === 'object' && value.type == 'expression') {
+  if (typeof value === 'object' && value.type === 'expression') {
     this.$watch(value, (newValue, oldValue) => {
-      if (!newValue == !oldValue) return;
+      if (!newValue === !oldValue) return;
 
       if (typeof newValue === 'string') elem.style.display = newValue;
       else elem.style.display = newValue ? 'block' : '';
@@ -31,7 +31,7 @@ exports['r-show'] = function (elem, value) {
   }
 };
 
-exports['r-autofocus'] = function (elem, value) {
+exports['r-autofocus'] = function (elem) {
   setTimeout(() => {
     elem.focus();
   }, 0);
@@ -71,7 +71,7 @@ exports['r-attr'] = function (elem, value) {
 
   this.$watch(
     value,
-    (newValue, oldValue) => {
+    (newValue) => {
       attrs[elem.tagName].forEach((attr) => {
         if (newValue[attr]) _.dom.attr(elem, attr, newValue[attr]);
       });
@@ -86,7 +86,7 @@ exports['r-attr'] = function (elem, value) {
  * @param value
  */
 exports['r-width'] = function (elem, value) {
-  this.$watch(value, (newValue, oldValue) => {
+  this.$watch(value, (newValue) => {
     if (parseInt(newValue)) {
       elem.style.width = `${parseInt(newValue)}px`;
       elem.style.display = 'inline-block';

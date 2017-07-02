@@ -1,13 +1,13 @@
 const _ = require('../../../../ui-base/_');
 
 function stringBytes(c) {
-  let n = c.length,
-    s;
+  const n = c.length;
   let len = 0;
-  for (let i = 0; i < n; i++) {
-    s = c.charCodeAt(i);
+  for (let i = 0; i < n; i += 1) {
+    let s = c.charCodeAt(i);
     while (s > 0) {
-      len++;
+      len += 1;
+      /* eslint no-bitwise: 0 */
       s >>= 8;
     }
   }
@@ -22,7 +22,9 @@ module.exports = {
   required: { type: 'isRequired', message: _.$trans('PLEASE_INPUT') },
   isEmail: { type: 'isEmail', message: _.$trans('FORMAT_ERROR') },
   isURL: { type: 'isURL', message: _.$trans('FORMAT_ERROR') },
-  isInt(min, max, message) {
+  isInt(_min, _max, message) {
+    let min = _min;
+    let max = _max;
     min = isNumeric(min) ? min / 1 : -Infinity;
     max = isNumeric(max) ? max / 1 : Infinity;
     return {
@@ -31,7 +33,9 @@ module.exports = {
       options: { min, max },
     };
   },
-  isFloat(min, max, message) {
+  isFloat(_min, _max, message) {
+    let min = _min;
+    let max = _max;
     min = isNumeric(min) ? min / 1 : -Infinity;
     max = isNumeric(max) ? max / 1 : Infinity;
     return {
@@ -40,13 +44,14 @@ module.exports = {
       options: { min, max },
     };
   },
-  byteLen(min, max, message) {
+  byteLen(_min, _max, message) {
+    let min = _min;
+    let max = _max;
     min = isNumeric(min) ? min / 1 : 0;
     max = isNumeric(max) ? max / 1 : Infinity;
     return {
       message: message || _.$trans('LENGTH_ERROR'),
-      method(value) {
-        value = value || '';
+      method(value = '') {
         const len = stringBytes(value);
         return len >= min && len <= max;
       },

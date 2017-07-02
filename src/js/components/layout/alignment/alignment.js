@@ -40,10 +40,10 @@ const Alignment = Component.extend({
       }, 50),
     );
   },
-  reAlign(src) {
-    var target = this.data.target,
-      src = src || this.data.src,
-      align = placement[this.data.placement];
+  reAlign(_src) {
+    const target = this.data.target;
+    const src = _src || this.data.src;
+    const align = placement[this.data.placement];
 
     if (src) {
       this.data.src = src;
@@ -52,7 +52,7 @@ const Alignment = Component.extend({
       return;
     }
 
-    if (src.style.display == 'none') {
+    if (src.style.display === 'none') {
       return;
     }
 

@@ -8,7 +8,6 @@
 const SourceComponent = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 
 /**
@@ -60,9 +59,10 @@ const KLRadioGroup = SourceComponent.extend({
         source.forEach((item) => {
           if (item[key] === 0 && newValue === '') {
             return false;
-          } else if (newValue == item[key]) {
+          } else if (newValue === item[key]) {
             data.selected = item;
           }
+          return undefined;
         });
       }
     });
@@ -73,17 +73,18 @@ const KLRadioGroup = SourceComponent.extend({
       }
 
       if (source) {
-        let data = this.data,
-          key = data.key,
-          value = data.value;
+        const data = this.data;
+        const { key, value } = data;
         source.forEach((item) => {
           if (item[key] === 0 && value === '') {
             return false;
-          } else if (value == item[key]) {
+          } else if (value === item[key]) {
             data.selected = item;
           }
+          return undefined;
         });
       }
+      return undefined;
     });
   },
   /**
@@ -120,9 +121,9 @@ const KLRadioGroup = SourceComponent.extend({
      * @return {object} result 结果
      */
   validate(on) {
-    let data = this.data,
-      result = { success: true, message: '' },
-      selected = data.selected;
+    const data = this.data;
+    const result = { success: true, message: '' };
+    const selected = data.selected;
 
     if (data.required && !selected) {
       result.success = false;

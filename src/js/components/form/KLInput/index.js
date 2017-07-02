@@ -105,11 +105,9 @@ const KLInput = Component.extend({
      * @protected
      */
   addRule(name) {
-    let min = this.data.min,
-      max = this.data.max,
-      message = this.data.message,
-      rules = this.data.rules;
+    const { min, max, _message, rules } = this.data;
 
+    let message = _message;
     if (name === 'required') {
       message = message || this.$trans('PLEASE_INPUT');
     }
@@ -131,19 +129,11 @@ const KLInput = Component.extend({
      * @public
      * @return {object} result 结果
      */
-  validate(on) {
+  validate(on = '') {
     const value =
-      this.data.value || this.data.value == 0 ? `${this.data.value}` : '';
+      this.data.value || this.data.value === 0 ? `${this.data.value}` : '';
     let rules = this.data.rules;
 
-    const PRIORITY = {
-      keyup: 2,
-      blur: 1,
-      submit: 0,
-      '': 0,
-    };
-
-    on = on || '';
     rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
 
     const result = Validation.validate(value, rules);
@@ -161,8 +151,6 @@ const KLInput = Component.extend({
     // @TODO
     if (!result.success) this.data.state = 'error';
     else {
-      // else if(PRIORITY[on] <= PRIORITY['blur'])
-      //     this.data.state = 'success';
       this.data.state = '';
     }
 
@@ -179,10 +167,11 @@ const KLInput = Component.extend({
      * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
      **/
-  __valueFilter(value) {
+  __valueFilter(_value) {
     const type = this.data.type;
 
-    if (type != 'char') value = `${value}`.trim();
+    let value = _value;
+    if (type !== 'char') value = `${value}`.trim();
     value = (inputFilters[type] || inputFilters.default)(
       value,
       this.data.decimalDigits,
@@ -214,10 +203,10 @@ const KLInput = Component.extend({
 });
 
 KLInput.filter('type', (val) => {
-  if (['int', 'float'].indexOf(val) != -1) {
+  if (['int', 'float'].indexOf(val) !== -1) {
     /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
     return 'text';
-  } else if (val == 'password') {
+  } else if (val === 'password') {
     return 'password';
   }
   return 'text';

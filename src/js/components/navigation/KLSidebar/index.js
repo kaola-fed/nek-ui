@@ -7,7 +7,6 @@
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const KLMenu = require('../KLMenu');
 
 /**
  * @class KLSidebar

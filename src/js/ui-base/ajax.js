@@ -1,19 +1,9 @@
 const reqwest = require('reqwest');
 
 const ajax = {};
-// var eventEmitter = new require('events').EventEmitter();
-// var ajax = {
-//     $on: eventEmitter.on,
-//     $off: eventEmitter.removeListener,
-//     $emit: eventEmitter.emit
-// };
-
-// var Notify = require('../module/notify.js');
 
 ajax.request = function (opt) {
-  let oldError = opt.error,
-    oldSuccess = opt.success,
-    oldComplete = opt.complete;
+  const { error: oldError, success: oldSuccess, complete: oldComplete } = opt;
 
   opt.data = opt.data || {};
 
@@ -31,7 +21,7 @@ ajax.request = function (opt) {
   opt.success = function (data) {
     // ajax.$emit('success', data);
     if (data.code || data.success) {
-      if (data.code != 200 && !data.success) {
+      if (data.code !== 200 && !data.success) {
         if (oldError) oldError(data.error, data.message, data.code);
         else; // Notify.error(data.message);
       } else oldSuccess && oldSuccess(data, data.message, data.code);

@@ -1,9 +1,8 @@
 module.exports = {
   install(Regular) {
     Regular.animation('collapse', (step) => {
-      let param = step.param,
-        el = step.element,
-        on = param === 'on';
+      const { param, element: el } = step;
+      const on = param === 'on';
 
       return function (done) {
         if (on) {
@@ -52,7 +51,8 @@ module.exports = {
 
           // leave
           if (el.scrollHeight !== 0) {
-            // for safari: add class after set height, or it will jump to zero height suddenly, weired
+            // for safari: add class after set height,
+            // or it will jump to zero height suddenly, weired
             el.classList.add('collapse-transition');
             el.style.height = 0;
             el.style.paddingTop = 0;

@@ -23,7 +23,7 @@ const _ = require('../../../../ui-base/_');
  * @param {boolean}       [options.data.visible=true]     => 是否显示
  * @param {string}        [options.data.class]            => 补充class
  */
-var NumberInput = KLInput.extend({
+const NumberInput = KLInput.extend({
   name: 'number-input',
   template,
   /**
@@ -41,7 +41,7 @@ var NumberInput = KLInput.extend({
     });
     this.supr();
 
-    this.$watch('value', function (newValue, oldValue) {
+    this.$watch('value', function (newValue) {
       // 字符类型自动转为数字类型
       if (typeof newValue === 'string') return (this.data.value = +newValue);
 
@@ -100,8 +100,8 @@ var NumberInput = KLInput.extend({
   },
 }).filter({
   number: {
-    get(value) {
-      value = `${value || 0}`;
+    get(_value) {
+      const value = `${_value || 0}`;
       if (this.data.format) {
         return this.data.format.replace(
           new RegExp(`\\d{0,${value.length}}$`),
@@ -123,6 +123,7 @@ const NumberRangeError = function (min, max) {
   this.message = `Wrong Number Range where \`min\` is ${min} and \`max\` is ${max}!`;
 };
 NumberRangeError.prototype = Object.create(RangeError.prototype);
-NumberInput.NumberRangeError = NumberRangeError.prototype.constructor = NumberRangeError;
+NumberRangeError.prototype.constructor = NumberRangeError;
+NumberInput.NumberRangeError = NumberRangeError.prototype.constructor;
 
 module.exports = NumberInput;

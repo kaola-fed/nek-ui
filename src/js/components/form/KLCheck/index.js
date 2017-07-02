@@ -55,9 +55,10 @@ const KLCheck = Component.extend({
      * @param  {boolean} checked 选中状态。则在true/false之间切换。
      * @return {void}
      */
-  check(checked) {
+  check(_checked) {
     if (this.data.readonly || this.data.disabled) return;
 
+    let checked = _checked;
     if (checked === undefined) checked = !this.data.checked;
     this.data.checked = checked;
 

@@ -9,7 +9,7 @@ const dom = require('regularjs').dom;
 
 const Component = require('../../../ui-base/component');
 const _ = require('../../../ui-base/_');
-const alignment = require('./alignment');
+require('./alignment');
 
 /**
  * @class Trigger
@@ -38,11 +38,11 @@ const Trigger = Component.extend({
   },
   init() {
     const self = this;
-    let element = dom.element(this),
-      action = this.data.action;
+    const element = dom.element(this);
+    const action = this.data.action;
 
-    if (action == 'click') {
-      dom.on(element, 'click', (e) => {
+    if (action === 'click') {
+      dom.on(element, 'click', () => {
         self.toggle();
       });
       dom.on(document.body, 'click', (e) => {
@@ -52,7 +52,7 @@ const Trigger = Component.extend({
         }
       });
     }
-    if (action == 'mouseEnter') {
+    if (action === 'mouseEnter') {
       dom.on(element, 'mouseenter', () => {
         self.toggle(true);
       });
@@ -60,7 +60,7 @@ const Trigger = Component.extend({
         self.toggle(false);
       });
     }
-    if (action == 'focus') {
+    if (action === 'focus') {
       dom.on(element, 'focus', () => {
         self.toggle(true);
       });
@@ -81,12 +81,12 @@ const Trigger = Component.extend({
     );
   },
   updateInstance(isShow) {
-    let instance = this.data.getInstance(),
-      element = instance.getElement(),
-      $align = this.$refs.alignment,
-      destroyOnHide = this.data.destroyOnHide;
+    const instance = this.data.getInstance();
+    const element = instance.getElement();
+    const $align = this.$refs.alignment;
+    const destroyOnHide = this.data.destroyOnHide;
 
-    if (instance != this.data.instance) {
+    if (instance !== this.data.instance) {
       this.data.instance = instance;
 
       // firefox浏览器会造成死循环, 本来这里加事件的原因是为了处理:pop.confirm中验证之后,高度变化造成对不齐的情况 ;
