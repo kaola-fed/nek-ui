@@ -54,6 +54,7 @@
     "gulp-uglify": "^1.5.3",
     "gulp_mcss": "^0.2.0",
     "hexo": "3.3.7",
+    "jsdoc-babel": "^0.3.0",
     "jsdoc-to-markdown": "^2.0.1",
     "markextend": "0.0.2",
     "mass": "^0.1.0",
