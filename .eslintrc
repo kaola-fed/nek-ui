@@ -1,13 +1,3 @@
 {
-  "extends": [
-    "airbnb-base",
-    "prettier"
-  ],
-  "plugins": [
-    "prettier"
-  ],
-  "rules": {
-    "spaced-comment": ["error", "always"],
-    "prettier/prettier": "error"
-  }
+  "extends": "airbnb-base"
 }
