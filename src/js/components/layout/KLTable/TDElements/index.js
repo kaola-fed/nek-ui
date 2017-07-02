@@ -1,14 +1,11 @@
-'use strict';
+const _ = require('../utils');
 
-var _ = require('../utils');
-
-var tplMap = {
-    default: require('./templates/default.html'),
-    progress: require('./templates/progress.html'),
-    check: require('./templates/check.html')
+const tplMap = {
+  default: require('./templates/default.html'),
+  progress: require('./templates/progress.html'),
+  check: require('./templates/check.html'),
 };
 
 exports.get = function getTemplate(type) {
-    return _.convertBeginEnd(tplMap[type] || tplMap.default);
+  return _.convertBeginEnd(tplMap[type] || tplMap.default);
 };
-

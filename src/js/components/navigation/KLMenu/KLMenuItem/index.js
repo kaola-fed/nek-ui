@@ -1,15 +1,13 @@
 /**
  * ------------------------------------------------------------
- * KLMenuItem 
+ * KLMenuItem
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../../ui-base/component');
-var template = require('./index.html');
-var RootMenuMixin = require('../mixins/rootMenu');
+const Component = require('../../../../ui-base/component');
+const template = require('./index.html');
+const RootMenuMixin = require('../mixins/rootMenu');
 
 /**
  * @class KLMenuItem
@@ -20,13 +18,13 @@ var RootMenuMixin = require('../mixins/rootMenu');
  * @param {string}        [options.data.url]                      => 跳转链接
  * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
  */
-var KLMenuItem = Component.extend({
+const KLMenuItem = Component.extend({
   name: 'kl-menu-item',
-  template: template,
+  template,
   /**
    * @protected
    */
-  config: function() {
+  config() {
     this.defaults({
       class: '',
       title: '',
@@ -37,25 +35,25 @@ var KLMenuItem = Component.extend({
     this.supr();
   },
   computed: {
-    'active': function() {
+    active() {
       if (!this.data.rootMenu) return;
       return this.data.rootMenu.currentItem == this;
-    }
+    },
   },
-  init: function() {
+  init() {
     this.initRootMenu();
 
     if (this.data.isCurrent) {
       this.data.rootMenu.currentItem = this;
     }
   },
-  goto: function(e) {
+  goto(e) {
     e.stopPropagation();
     this.data.rootMenu.$emit('menuitem-click', this);
     if (this.data.url) {
-      location.href= this.data.url;
+      location.href = this.data.url;
     }
-  }
+  },
 });
 
 KLMenuItem.use(RootMenuMixin);

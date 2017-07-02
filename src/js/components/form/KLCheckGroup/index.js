@@ -5,14 +5,12 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var SourceComponent = require('../../../ui-base/sourceComponent');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var KLCheck = require('../KLCheck');
-var Validation = require('../../../util/validation');
-var validationMixin = require('../../../util/validationMixin');
+const SourceComponent = require('../../../ui-base/sourceComponent');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const KLCheck = require('../KLCheck');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class KLCheckGroup
@@ -36,113 +34,114 @@ var validationMixin = require('../../../util/validationMixin');
  * @param {string}    [options.data.class]              => 补充class
  * @param {object}    [options.service]                 @=> 数据服务
  */
-var KLCheckGroup = SourceComponent.extend({
-    name: 'kl-check-group',
-    template: template,
-    /**
+const KLCheckGroup = SourceComponent.extend({
+  name: 'kl-check-group',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        this.defaults({
-            // @inherited source: [],
-            block: false,
-            hideTip: false,
-            source: [],
-            min: 0,
-            max: 1000,
-            nameKey: 'name',
-            key: 'id',
-            value: '',
-            separator: ','
+  config() {
+    this.defaults({
+      // @inherited source: [],
+      block: false,
+      hideTip: false,
+      source: [],
+      min: 0,
+      max: 1000,
+      nameKey: 'name',
+      key: 'id',
+      value: '',
+      separator: ',',
+    });
+    this.supr();
+
+    this.initValidation();
+  },
+  init() {
+    this.$watch('source', function (source) {
+      if (!source || !(source instanceof Array)) {
+        return console.error('source of check.group is not an array');
+      }
+
+      let key = this.data.key,
+        separator = this.data.separator,
+        value = this.data.value || '',
+        values = value.split(separator);
+
+      source.forEach((item) => {
+        if (values.indexOf(`${item[key]}`) != -1) {
+          item.checked = true;
+        }
+      });
+    });
+    this.$watch('value', function (newValue) {
+      const source = this.data.source;
+      if (newValue === undefined || newValue === null) return;
+
+      if (source) {
+        let key = this.data.key,
+          separator = this.data.separator,
+          value = newValue || '',
+          values = value.split(separator);
+        source.forEach((item) => {
+          if (values.indexOf(`${item[key]}`) != -1) {
+            item.checked = true;
+          } else {
+            item.checked = false;
+          }
         });
-        this.supr();
-
-        this.initValidation();
-    },
-    init: function() {
-        this.$watch('source', function(source) {
-            if (!source || !(source instanceof Array)) { return console.error('source of check.group is not an array'); }
-
-            var key = this.data.key,
-                separator = this.data.separator,
-                value = this.data.value || '',
-                values = value.split(separator);
-
-            source.forEach(function(item) {
-                if (values.indexOf(item[key] + '') != -1) {
-                    item.checked = true;
-                }
-            });
-        });
-        this.$watch('value', function(newValue) {
-            var source = this.data.source;
-            if (newValue === undefined || newValue === null) return;
-
-            if (source) {
-                var key = this.data.key,
-                    separator = this.data.separator,
-                    value = newValue || '',
-                    values = value.split(separator);
-                source.forEach(function(item) {
-                    if (values.indexOf(item[key] + '') != -1) {
-                        item.checked = true;
-                    } else {
-                        item.checked = false;
-                    }
-                });
-            }
-
-        });
-    },
-    /**
+      }
+    });
+  },
+  /**
      * @method validate() 根据min, max验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
-    validate: function() {
-        var source = this.data.source,
-            result = { success: true, message: ''},
-            required = this.data.required,
-            min = this.data.min ? this.data.min : required/1,
-            max = this.data.max,
-            checked = source.filter(function(item) { return !!item.checked; }),
-            len = checked.length;
+  validate() {
+    let source = this.data.source,
+      result = { success: true, message: '' },
+      required = this.data.required,
+      min = this.data.min ? this.data.min : required / 1,
+      max = this.data.max,
+      checked = source.filter(item => !!item.checked),
+      len = checked.length;
 
-        if (len < min || len > max) {
-            result.success = false;
-            result.message = this.data.message || ( '请选择(' + min + ',' + max + ']个选项' );
-            this.data.state = 'error';
-        } else {
-            result.success = true;
-            result.message = '';
-            this.data.state = '';
-        }
-        this.data.tip = result.message;
+    if (len < min || len > max) {
+      result.success = false;
+      result.message = this.data.message || `请选择(${min},${max}]个选项`;
+      this.data.state = 'error';
+    } else {
+      result.success = true;
+      result.message = '';
+      this.data.state = '';
+    }
+    this.data.tip = result.message;
 
-        this.$emit('validate', {
-            sender: this,
-            result: result
-        });
+    this.$emit('validate', {
+      sender: this,
+      result,
+    });
 
-        return result;
-    },
-    /**
+    return result;
+  },
+  /**
      * method _onCheck() 点击check时,改变对应的value值
      * @private
      */
-    _onCheck: function(item) {
-        item.checked = !item.checked;
+  _onCheck(item) {
+    item.checked = !item.checked;
 
-        var key = this.data.key,
-            separator = this.data.separator,
-            source = this.data.source,
-            checkedList = source.filter(function(item) { return item.checked; }),
-            ids = checkedList.map(function(item) { return item[key]; });
+    let key = this.data.key,
+      separator = this.data.separator,
+      source = this.data.source,
+      checkedList = source.filter(item => item.checked),
+      ids = checkedList.map(item => item[key]);
 
-        this.$update('value', ids.join(separator));
+    this.$update('value', ids.join(separator));
 
-        this.data.tip && this.validate();
-    }
+    this.data.tip && this.validate();
+  },
 });
 
 KLCheckGroup.use(validationMixin);

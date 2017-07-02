@@ -1,12 +1,10 @@
-'use strict';
+const TableHeader = require('./TableHeader');
+const TableBody = require('./TableBody');
+const _ = require('../../../ui-base/_');
+const u = require('./utils');
 
-var TableHeader = require('./TableHeader');
-var TableBody = require('./TableBody');
-var _ = require('../../../ui-base/_');
-var u = require('./utils');
-
-var Component = require('../../../ui-base/component');
-var tpl = require('./index.html');
+const Component = require('../../../ui-base/component');
+const tpl = require('./index.html');
 
 /**
  * @class KLTable
@@ -49,400 +47,418 @@ var tpl = require('./index.html');
  * @param {string}      [options.data.type="content"] => 模版类型, header, content
  */
 
-var KLTable = Component.extend({
-    name: 'kl-table',
-    template: tpl,
-    computed: {
-        bodyHeight: {
-            get: function() {
-                var data = this.data;
-                if(data.height != undefined && data.headerHeight != undefined) {
-                    return +data.height - data.headerHeight;
-                }
-            },
-            set: function(val) {
-                return this.data.bodyHeight = val;
-            }
-        },
-        fixedRight: {
-            get: function() {
-                var data = this.data;
-                var fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-                return fixedRight > 0 ? fixedRight : 0;
-            }
+const KLTable = Component.extend({
+  name: 'kl-table',
+  template: tpl,
+  computed: {
+    bodyHeight: {
+      get() {
+        const data = this.data;
+        if (data.height != undefined && data.headerHeight != undefined) {
+          return +data.height - data.headerHeight;
         }
+      },
+      set(val) {
+        return (this.data.bodyHeight = val);
+      },
     },
-    config: function(data) {
-        this.defaults({
-            stickyHeaderOffset: 0,
-            stickyFooterOffset: 0,
-            scrollParent: null,
-            scrollParentNode: null,
-            strip: true,
-            enableHover: true,
-            scrollYBar: 0,
-            scrollXBar: 0,
-
-            show: true,
-            columns: [],
-            sorting: {},
-            config: {},
-            align: 'center',
-            initFinished: false
-        });
-        this.supr(data);
-
-        this._initWatchers();
+    fixedRight: {
+      get() {
+        const data = this.data;
+        const fixedRight = Math.floor(data.parentWidth - data.tableWidth);
+        return fixedRight > 0 ? fixedRight : 0;
+      },
     },
-    init: function() {
-        this._initTable();
-    },
-    _initTable: function() {
-        var self = this;
-        var data = this.data;
-        var refs = this.$refs;
-        var INIT = 1;
-        setTimeout(function() {
-            data.headerHeight = refs.headerWrap.offsetHeight;
+  },
+  config(data) {
+    this.defaults({
+      stickyHeaderOffset: 0,
+      stickyFooterOffset: 0,
+      scrollParent: null,
+      scrollParentNode: null,
+      strip: true,
+      enableHover: true,
+      scrollYBar: 0,
+      scrollXBar: 0,
 
-            self._updateContainerWidth(INIT);
-            self._updateViewWidth();
-            self._initTableWidth();
-            self._getHeaderHeight();
-            data.initFinished = true;
-        }, 50);
-    },
-    _initTableWidth: function() {
-        var data = this.data;
-        var _dataColumns = data._dataColumns;
-        if(!_dataColumns) {
-            return;
-        }
+      show: true,
+      columns: [],
+      sorting: {},
+      config: {},
+      align: 'center',
+      initFinished: false,
+    });
+    this.supr(data);
 
-        var tableWidth = data.parentWidth;
-        var customWidthCount = 0;
-        var customColumnWidthTotal = _dataColumns.reduce(function(previous, current) {
-            var width = parseInt(current.width);
-            if(width) {
-                customWidthCount++;
-                return previous + width;
-            }
-            return previous;
-        }, 0);
+    this._initWatchers();
+  },
+  init() {
+    this._initTable();
+  },
+  _initTable() {
+    const self = this;
+    const data = this.data;
+    const refs = this.$refs;
+    const INIT = 1;
+    setTimeout(() => {
+      data.headerHeight = refs.headerWrap.offsetHeight;
 
-        var tableViewWidth = tableWidth - data.scrollYBar;
-        var autoWidth = Math.floor((tableViewWidth-customColumnWidthTotal) / (_dataColumns.length-customWidthCount));
-        autoWidth = autoWidth > 0 ? autoWidth : 100;
+      self._updateContainerWidth(INIT);
+      self._updateViewWidth();
+      self._initTableWidth();
+      self._getHeaderHeight();
+      data.initFinished = true;
+    }, 50);
+  },
+  _initTableWidth() {
+    const data = this.data;
+    const _dataColumns = data._dataColumns;
+    if (!_dataColumns) {
+      return;
+    }
 
-        var totalWidth = 0;
-        _dataColumns.forEach(function(dataColumn) {
-            dataColumn._width = parseInt(dataColumn.width || autoWidth);
-            totalWidth += dataColumn._width;
-            return dataColumn;
-        });
+    const tableWidth = data.parentWidth;
+    let customWidthCount = 0;
+    const customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
+      const width = parseInt(current.width);
+      if (width) {
+        customWidthCount++;
+        return previous + width;
+      }
+      return previous;
+    }, 0);
 
-        this._updateData('tableWidth', tableWidth);
-    },
-    _initWatchers: function() {
-        this.$watch('show', this._onShowChange);
-        this.$watch('source', this._onSouceChange)
-        this.$watch('columns', this._onColumnsChange);
-        this.$watch('scrollYBar', this._onScrollYBarChange);
-        this.$watch('parentWidth', this._onParentWidthChange);
+    const tableViewWidth = tableWidth - data.scrollYBar;
+    let autoWidth = Math.floor(
+      (tableViewWidth - customColumnWidthTotal) /
+        (_dataColumns.length - customWidthCount),
+    );
+    autoWidth = autoWidth > 0 ? autoWidth : 100;
 
-        this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
+    let totalWidth = 0;
+    _dataColumns.forEach((dataColumn) => {
+      dataColumn._width = parseInt(dataColumn.width || autoWidth);
+      totalWidth += dataColumn._width;
+      return dataColumn;
+    });
 
-        this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
-        this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
+    this._updateData('tableWidth', tableWidth);
+  },
+  _initWatchers() {
+    this.$watch('show', this._onShowChange);
+    this.$watch('source', this._onSouceChange);
+    this.$watch('columns', this._onColumnsChange);
+    this.$watch('scrollYBar', this._onScrollYBarChange);
+    this.$watch('parentWidth', this._onParentWidthChange);
 
-        this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
-        window.addEventListener('resize', this._onWindowResize);
+    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-        this._watchWidthChange();
-    },
-    _getScrollParentNode: function() {
-        var data = this.data;
-        if(data.scrollParentNode) {
-            return data.scrollParentNode;
-        }
-        if(data.scrollParent) {
-            return data.scrollParentNode = document.querySelector(data.scrollParent) || window;
-        }
-        return data.scrollParentNode = window;
-    },
-    _updateHeaders: function() {
-        var columns = this.data.columns;
-        if(!columns) {
-            return;
-        }
-        this.data.headers = u.getHeaders(columns);
-    },
-    _onShowChange: function(newVal) {
-        var self = this;
-        if(newVal) {
-            setTimeout(function() {
-                self._updateViewWidth();
-            }, 100)
-        }
-    },
-    _updateViewWidth: function() {
-        if(this.$refs.table) {
-            this._updateData('viewWidth', this.$refs.table.offsetWidth);
-        }
-    },
-    _onParentWidthChange: function(newVal, oldVal) {
-        if(newVal == undefined || oldVal == undefined) {
-            return;
-        }
-        oldVal = oldVal || this.data.tableWidth;
-        var ratio = newVal / oldVal;
-        this._updateTableWidth(ratio);
-    },
-    _onSouceChange: function() {
-        var self = this;
-        setTimeout(function() {
-            self._updateSticky();
-        }, 500)
-    },
-    _onWinodwScroll: function() {
-        if(!this.$refs || !this._isShow()) {
-            return;
-        }
-        this._updateSticky();
-    },
-    _updateSticky: function() {
-        var data = this.data;
-        if(!data.stickyHeader && !data.stickyFooter) {
-            return;
-        }
+    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
+    this._getScrollParentNode().addEventListener(
+      'scroll',
+      this._onWinodwScroll,
+    );
 
-        var tableWrapOffset = this._getTableWrapOffset();
+    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
+    window.addEventListener('resize', this._onWindowResize);
 
-        if(data.stickyHeader && tableWrapOffset) {
-            this._updateStickyHeaderStatus(tableWrapOffset);
-        }
+    this._watchWidthChange();
+  },
+  _getScrollParentNode() {
+    const data = this.data;
+    if (data.scrollParentNode) {
+      return data.scrollParentNode;
+    }
+    if (data.scrollParent) {
+      return (data.scrollParentNode =
+        document.querySelector(data.scrollParent) || window);
+    }
+    return (data.scrollParentNode = window);
+  },
+  _updateHeaders() {
+    const columns = this.data.columns;
+    if (!columns) {
+      return;
+    }
+    this.data.headers = u.getHeaders(columns);
+  },
+  _onShowChange(newVal) {
+    const self = this;
+    if (newVal) {
+      setTimeout(() => {
+        self._updateViewWidth();
+      }, 100);
+    }
+  },
+  _updateViewWidth() {
+    if (this.$refs.table) {
+      this._updateData('viewWidth', this.$refs.table.offsetWidth);
+    }
+  },
+  _onParentWidthChange(newVal, oldVal) {
+    if (newVal == undefined || oldVal == undefined) {
+      return;
+    }
+    oldVal = oldVal || this.data.tableWidth;
+    const ratio = newVal / oldVal;
+    this._updateTableWidth(ratio);
+  },
+  _onSouceChange() {
+    const self = this;
+    setTimeout(() => {
+      self._updateSticky();
+    }, 500);
+  },
+  _onWinodwScroll() {
+    if (!this.$refs || !this._isShow()) {
+      return;
+    }
+    this._updateSticky();
+  },
+  _updateSticky() {
+    const data = this.data;
+    if (!data.stickyHeader && !data.stickyFooter) {
+      return;
+    }
 
-        if(data.stickyFooter && tableWrapOffset) {
-            this._updateStickyFooterStatus(tableWrapOffset);
-        }
-    },
-    _getTableWrapOffset: function() {
-        var scrollParentNode = this._getScrollParentNode();
-        var parentRect = {
-            top: 0
-        };
-        var scrollTop;
-        if(scrollParentNode !== window) {
-            scrollTop = scrollParentNode.scrollTop;
-            parentRect = scrollParentNode.getBoundingClientRect();
+    const tableWrapOffset = this._getTableWrapOffset();
+
+    if (data.stickyHeader && tableWrapOffset) {
+      this._updateStickyHeaderStatus(tableWrapOffset);
+    }
+
+    if (data.stickyFooter && tableWrapOffset) {
+      this._updateStickyFooterStatus(tableWrapOffset);
+    }
+  },
+  _getTableWrapOffset() {
+    const scrollParentNode = this._getScrollParentNode();
+    let parentRect = {
+      top: 0,
+    };
+    let scrollTop;
+    if (scrollParentNode !== window) {
+      scrollTop = scrollParentNode.scrollTop;
+      parentRect = scrollParentNode.getBoundingClientRect();
+    } else {
+      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+    const tableRect = this.$refs.tableWrap.getBoundingClientRect();
+
+    const tableWrapOffset = {
+      top: tableRect.top + scrollTop - parentRect.top,
+      bottom: tableRect.bottom + scrollTop - parentRect.top,
+    };
+
+    return tableWrapOffset;
+  },
+  _updateStickyHeaderStatus(tableWrapOffset) {
+    const headerHeight = this._getHeaderHeight();
+
+    const scrollParentNode = this._getScrollParentNode();
+    let scrollY = 0;
+    if (scrollParentNode !== window) {
+      scrollY = scrollParentNode.scrollTop;
+    } else {
+      scrollY = window.scrollY;
+    }
+
+    let stickyActive = false;
+
+    if (
+      scrollY + headerHeight > tableWrapOffset.bottom ||
+      scrollY < tableWrapOffset.top
+    ) {
+      stickyActive = false;
+    } else if (scrollY > tableWrapOffset.top) {
+      stickyActive = true;
+    }
+
+    this.data.stickyHeaderActive = stickyActive;
+  },
+  _updateStickyFooterStatus(tableWrapOffset) {
+    const headerHeight = this._getHeaderHeight();
+    const footerHeight = this._getFooterHeight();
+
+    let scrollY = 0;
+    let innerHeight = 0;
+    const scrollParentNode = this._getScrollParentNode();
+    if (scrollParentNode !== window) {
+      scrollY = scrollParentNode.scrollTop;
+      innerHeight = scrollParentNode.clientHeight;
+    } else {
+      scrollY = window.scrollY;
+      innerHeight = window.innerHeight;
+    }
+
+    const scrollYBottom = scrollY + innerHeight;
+    let stickyActive = false;
+
+    if (
+      scrollYBottom > tableWrapOffset.bottom + footerHeight ||
+      scrollYBottom < tableWrapOffset.top + headerHeight + 20
+    ) {
+      stickyActive = false;
+    } else {
+      stickyActive = true;
+    }
+
+    this.data.stickyFooterActive = stickyActive;
+  },
+  _watchWidthChange() {
+    const self = this;
+    this.data._quickTimer = setInterval(() => {
+      if (!self._isShow()) {
+        return;
+      }
+      self._updateContainerWidth();
+      self._updateScrollBar();
+    }, 50);
+    this.data._slowTimer = setInterval(() => {
+      if (!self._isShow()) {
+        return;
+      }
+      self._updateTableWidth();
+    }, 200);
+  },
+  _updateContainerWidth(init) {
+    const data = this.data;
+    let width = data.width;
+    if (init && width) {
+      data._defaultWidth = width;
+      return;
+    }
+
+    const parentStyle = window.getComputedStyle(
+      this.$refs.tableWrap.parentElement,
+    );
+    const parentPadding =
+      u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
+    const parentWidth = u.getNum(parentStyle.width);
+    width = parentWidth - parentPadding;
+
+    data.parentWidth = width;
+    data._defaultWidth = width;
+  },
+  _updateScrollBar() {
+    const data = this.data;
+    const tableWrapEle = this.$refs.bodyWrap;
+    const tableEle = this.$refs.table;
+    if (!tableWrapEle || !tableEle) {
+      return;
+    }
+    const yBarWidth = Math.abs(
+      tableWrapEle.offsetWidth - tableWrapEle.clientWidth,
+    );
+    const tableWrapEleXBarWidth = Math.abs(
+      tableWrapEle.offsetHeight - tableWrapEle.clientHeight,
+    );
+    const tableEleXBarWidth = Math.abs(
+      tableEle.offsetHeight - tableEle.clientHeight,
+    );
+    const xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
+
+    this._updateData('scrollYBar', yBarWidth);
+    this._updateData('scrollXBar', xBarWidth);
+  },
+  _onScrollYBarChange(newVal, oldVal) {
+    if (oldVal === undefined) {
+      return;
+    }
+    this._updateTableWidth();
+  },
+  _onColumnsChange(newVal) {
+    if (newVal) {
+      this._updateDataColumn();
+      this._updateTableWidth();
+      this._updateHeaders();
+    }
+  },
+  _updateDataColumn() {
+    this.$update('_dataColumns', u.getLeaves(this.data.columns));
+  },
+  _getHeaderHeight() {
+    const headerHeight = u.getElementHeight(this.$refs.headerWrap);
+    this._updateData('headerHeight', headerHeight);
+    return headerHeight;
+  },
+  _getFooterHeight() {
+    const footerHeight = u.getElementHeight(this.$refs.footerWrap);
+    this._updateData('footerHeight', footerHeight);
+    return footerHeight;
+  },
+  _updateTableWidth(ratio) {
+    const data = this.data;
+    const _dataColumns = data._dataColumns;
+    if (!_dataColumns) {
+      return;
+    }
+    ratio = ratio || 1;
+    let newTableWidth = 0;
+    let fixedCol = false;
+    let fixedTableWidth = 0;
+    let fixedColRight = false;
+    let fixedTableWidthRight = 0;
+
+    _dataColumns.forEach((column) => {
+      // 计算表格宽度
+      newTableWidth += column._width;
+
+      // 更新列宽
+      if (!column._width) {
+        column._width = column.width || 100;
+      }
+
+      if (ratio !== 1) {
+        column._width = Math.floor(column._width * ratio);
+      }
+
+      // 计算固定列的总宽度
+      if (column._width && column.fixed) {
+        if (column.fixed === 'right') {
+          fixedColRight = true;
+          fixedTableWidthRight += column._width;
         } else {
-            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          fixedCol = true;
+          fixedTableWidth += column._width;
         }
+      }
+    });
 
-        var tableRect = this.$refs.tableWrap.getBoundingClientRect();
+    data.fixedCol = fixedCol;
+    data.fixedTableWidth = fixedTableWidth;
+    data.fixedColRight = fixedColRight;
+    data.fixedTableWidthRight = fixedTableWidthRight;
 
-        var tableWrapOffset = {
-            top: tableRect.top + scrollTop - parentRect.top,
-            bottom: tableRect.bottom + scrollTop - parentRect.top
-        };
+    data.tableWidth = newTableWidth;
 
-        return tableWrapOffset;
-    },
-    _updateStickyHeaderStatus: function(tableWrapOffset) {
-        var headerHeight = this._getHeaderHeight();
+    if (newTableWidth <= data._defaultWidth) {
+      data.width = newTableWidth;
+    } else {
+      data.width = data._defaultWidth;
+    }
+    this.$update();
+  },
+  _onWindowResize() {
+    if (!this.$refs || !this._isShow()) {
+      return;
+    }
+    this.$update('viewWidth', this.$refs.table.offsetWidth);
+  },
+  _onBodyScroll(host) {
+    if (!this._isShow()) {
+      return;
+    }
+    const $refs = this.$refs;
 
-        var scrollParentNode = this._getScrollParentNode();
-        var scrollY = 0;
-        if(scrollParentNode !== window) {
-            scrollY = scrollParentNode.scrollTop;
-        } else {
-            scrollY = window.scrollY;
-        }
-
-        var stickyActive = false;
-
-        if(scrollY + headerHeight > tableWrapOffset.bottom
-            || scrollY < tableWrapOffset.top
-        ) {
-            stickyActive = false;
-        } else if(scrollY > tableWrapOffset.top) {
-            stickyActive = true;
-        }
-
-        this.data.stickyHeaderActive = stickyActive;
-    },
-    _updateStickyFooterStatus: function(tableWrapOffset) {
-        var headerHeight = this._getHeaderHeight();
-        var footerHeight = this._getFooterHeight();
-
-        var scrollY = 0;
-        var innerHeight = 0;
-        var scrollParentNode = this._getScrollParentNode();
-        if(scrollParentNode !== window) {
-            scrollY = scrollParentNode.scrollTop;
-            innerHeight = scrollParentNode.clientHeight;
-        } else {
-            scrollY = window.scrollY;
-            innerHeight = window.innerHeight;
-        }
-
-        var scrollYBottom = scrollY + innerHeight;
-        var stickyActive = false;
-
-        if(scrollYBottom > tableWrapOffset.bottom + footerHeight
-            || scrollYBottom < tableWrapOffset.top + headerHeight + 20
-        ) {
-            stickyActive = false;
-        } else {
-            stickyActive = true;
-        }
-
-        this.data.stickyFooterActive = stickyActive;
-    },
-    _watchWidthChange: function() {
-        var self = this;
-        this.data._quickTimer = setInterval(function() {
-            if(!self._isShow()) {
-                return;
-            }
-            self._updateContainerWidth();
-            self._updateScrollBar();
-        }, 50);
-        this.data._slowTimer = setInterval(function() {
-            if(!self._isShow()) {
-                return;
-            }
-            self._updateTableWidth();
-        }, 200);
-    },
-    _updateContainerWidth: function(init) {
-        var data = this.data;
-        var width = data.width;
-        if(init && width) {
-            data._defaultWidth = width;
-            return;
-        }
-
-        var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-        var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
-        var parentWidth = u.getNum(parentStyle.width);
-        width = parentWidth - parentPadding;
-
-        data.parentWidth = width;
-        data._defaultWidth = width;
-    },
-    _updateScrollBar: function() {
-        var data = this.data;
-        var tableWrapEle = this.$refs.bodyWrap;
-        var tableEle = this.$refs.table;
-        if(!tableWrapEle || !tableEle) {
-            return;
-        }
-        var yBarWidth = Math.abs(tableWrapEle.offsetWidth - tableWrapEle.clientWidth);
-        var tableWrapEleXBarWidth = Math.abs(tableWrapEle.offsetHeight - tableWrapEle.clientHeight);
-        var tableEleXBarWidth = Math.abs(tableEle.offsetHeight - tableEle.clientHeight);
-        var xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
-
-        this._updateData('scrollYBar', yBarWidth);
-        this._updateData('scrollXBar', xBarWidth);
-    },
-    _onScrollYBarChange: function(newVal, oldVal) {
-        if(oldVal === undefined) {
-            return;
-        }
-        this._updateTableWidth();
-    },
-    _onColumnsChange: function(newVal) {
-        if(newVal) {
-            this._updateDataColumn();
-            this._updateTableWidth();
-            this._updateHeaders();
-        }
-    },
-    _updateDataColumn: function() {
-        this.$update('_dataColumns', u.getLeaves(this.data.columns));
-    },
-    _getHeaderHeight: function() {
-        var headerHeight = u.getElementHeight(this.$refs.headerWrap);
-        this._updateData('headerHeight', headerHeight);
-        return headerHeight;
-    },
-    _getFooterHeight: function() {
-        var footerHeight = u.getElementHeight(this.$refs.footerWrap);
-        this._updateData('footerHeight', footerHeight);
-        return footerHeight;
-    },
-    _updateTableWidth: function(ratio) {
-        var data = this.data;
-        var _dataColumns = data._dataColumns;
-        if(!_dataColumns) {
-            return;
-        }
-        ratio = ratio || 1;
-        var newTableWidth = 0;
-        var fixedCol = false;
-        var fixedTableWidth = 0;
-        var fixedColRight = false;
-        var fixedTableWidthRight = 0;
-
-        _dataColumns.forEach(function(column) {
-            // 计算表格宽度
-            newTableWidth += column._width;
-
-            // 更新列宽
-            if(!column._width) {
-                column._width = column.width || 100;
-            }
-
-            if(ratio !== 1) {
-                column._width = Math.floor(column._width * ratio);
-            }
-
-            // 计算固定列的总宽度
-            if(column._width && column.fixed) {
-                if(column.fixed === 'right') {
-                    fixedColRight = true;
-                    fixedTableWidthRight += column._width;
-                } else {
-                    fixedCol = true;
-                    fixedTableWidth += column._width;
-                }
-            }
-        });
-
-        data.fixedCol = fixedCol;
-        data.fixedTableWidth = fixedTableWidth;
-        data.fixedColRight = fixedColRight;
-        data.fixedTableWidthRight = fixedTableWidthRight;
-
-        data.tableWidth = newTableWidth;
-
-        if(newTableWidth <= data._defaultWidth) {
-            data.width = newTableWidth;
-        } else {
-            data.width = data._defaultWidth;
-        }
-        this.$update();
-    },
-    _onWindowResize: function() {
-        if(!this.$refs || !this._isShow()) {
-            return;
-        }
-        this.$update('viewWidth', this.$refs.table.offsetWidth);
-    },
-    _onBodyScroll: function(host) {
-        if(!this._isShow()) {
-            return;
-        }
-        var $refs = this.$refs;
-
-        u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
-        u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
-        u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
-        u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
-    },
-    _onSort: function(e) {
-        /**
+    u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+    u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
+    u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
+    u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
+  },
+  _onSort(e) {
+    /**
          * @event sort 排序事件
          * @property {object} sender 事件来源
          * @property {boolean} asc 是否升序
@@ -451,101 +467,106 @@ var KLTable = Component.extend({
          * @property {string} key 排序字段
          * @property {object} sorting 排序设置对象
          */
-        this.$emit('sort', e);
-    },
-    _onCustomEvent: function(e) {
-        this.$emit(e.type, _.extend({
-            sender: this,
-            custom: true
-        }, e.args));
-    },
-    _onItemCheckChange: function(e) {
-        /**
+    this.$emit('sort', e);
+  },
+  _onCustomEvent(e) {
+    this.$emit(
+      e.type,
+      _.extend(
+        {
+          sender: this,
+          custom: true,
+        },
+        e.args,
+      ),
+    );
+  },
+  _onItemCheckChange(e) {
+    /**
          * @event checkchange 多选事件
          * @property {object} sender 事件来源
          * @property {boolean} checked 是否选中
          * @property {object} item 操作对象
          * @property {object} checkedEvent 多选事件对象源
          */
-        this.$emit('checkchange', {
-            sender: this,
-            item: e.item,
-            checked: e.checked,
-            checkedEvent: e.event
-        });
-    },
-    emitEvent: function(type) {
-        var args = [].slice.call(arguments, 1);
-        /**
+    this.$emit('checkchange', {
+      sender: this,
+      item: e.item,
+      checked: e.checked,
+      checkedEvent: e.event,
+    });
+  },
+  emitEvent(type) {
+    const args = [].slice.call(arguments, 1);
+    /**
          * @event [type] 自定义的操作事件
          * @property {object} sender 事件来源
          * @property {boolean} custom 自定义事件标识
          * @property {array} param 自定义事件所带的参数
          */
-        this.$emit(type, {
-            custom: true,
-            sender: this,
-            param: args
-        });
-    },
-    _onExpand: function(e) {
-        this.$emit('expand', {
-            sender: this,
-            expand: e.expand,
-            item: e.item,
-            itemIndex: e.itemIndex,
-            column: e.column
-        });
-    },
-    _onPaging: function(e) {
-        /**
+    this.$emit(type, {
+      custom: true,
+      sender: this,
+      param: args,
+    });
+  },
+  _onExpand(e) {
+    this.$emit('expand', {
+      sender: this,
+      expand: e.expand,
+      item: e.item,
+      itemIndex: e.itemIndex,
+      column: e.column,
+    });
+  },
+  _onPaging(e) {
+    /**
          * @event paging 分页事件
          * @property {object} sender 事件来源
          * @property {number} current 事件来源
          * @property {object} paging 分页对象
          */
-        this.$emit('paging', {
-            sender: this,
-            current: e.current,
-            paging: this.data.paging
-        });
-    },
-    _onFixedExpand: function(e) {
-        this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
-    },
-    _isShow: function() {
-        return this.data.show;
-    },
-    _updateData: function(key, val) {
-        if(this.data[key] !== val) {
-            this.$update(key, val);
-        }
-    },
-    destroy: function() {
-        this.removeEventListener();
-        this.supr();
-    },
-    removeEventListener: function() {
-        clearInterval(this.data._quickTimer);
-        clearInterval(this.data._slowTimer);
-        window.document.removeEventListener('scroll', this._onWinodwScroll);
-        window.removeEventListener('resize', this._onWindowResize);
+    this.$emit('paging', {
+      sender: this,
+      current: e.current,
+      paging: this.data.paging,
+    });
+  },
+  _onFixedExpand(e) {
+    this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+  },
+  _isShow() {
+    return this.data.show;
+  },
+  _updateData(key, val) {
+    if (this.data[key] !== val) {
+      this.$update(key, val);
     }
+  },
+  destroy() {
+    this.removeEventListener();
+    this.supr();
+  },
+  removeEventListener() {
+    clearInterval(this.data._quickTimer);
+    clearInterval(this.data._slowTimer);
+    window.document.removeEventListener('scroll', this._onWinodwScroll);
+    window.removeEventListener('resize', this._onWindowResize);
+  },
 })
-.component('table-header', TableHeader)
-.component('table-body', TableBody)
+  .component('table-header', TableHeader)
+  .component('table-body', TableBody);
 
-var oldFilterFunc = KLTable.filter;
+const oldFilterFunc = KLTable.filter;
 
-KLTable.filter = function() {
-    var args = [].slice.call(arguments, 0);
-    TableHeader.filter.apply(TableHeader, args);
-    TableBody.filter.apply(TableBody, args);
-    // FIXME:
-    // KLTableCol.filter.apply(KLTableCol, args);
-    // KLTableTemplate.filter.apply(KLTableTemplate, args);
-    oldFilterFunc.apply(KLTable, args);
+KLTable.filter = function () {
+  const args = [].slice.call(arguments, 0);
+  TableHeader.filter(...args);
+  TableBody.filter(...args);
+  // FIXME:
+  // KLTableCol.filter.apply(KLTableCol, args);
+  // KLTableTemplate.filter.apply(KLTableTemplate, args);
+  oldFilterFunc.apply(KLTable, args);
 };
 
 module.exports = KLTable;
-

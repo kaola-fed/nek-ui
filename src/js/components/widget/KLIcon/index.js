@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLIcon
@@ -20,23 +18,23 @@ var _ = require('../../../ui-base/_');
  * @param {string}          [options.data.fontSize]                  => 设置图标胆小
  * @param {string}          [options.data.color]                  => 设置图标颜色
  */
-var KLIcon = Component.extend({
-    name: 'kl-icon',
-    template: template,
-    /**
+const KLIcon = Component.extend({
+  name: 'kl-icon',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            type: '',
-            fontSize: '',
-            color: ''
-        });
-        this.supr();
-    },
-    onClick: function (e) {
-        this.$emit('click', e);
-    }
+  config() {
+    _.extend(this.data, {
+      type: '',
+      fontSize: '',
+      color: '',
+    });
+    this.supr();
+  },
+  onClick(e) {
+    this.$emit('click', e);
+  },
 });
 
 module.exports = KLIcon;

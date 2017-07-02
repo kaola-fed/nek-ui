@@ -5,15 +5,15 @@
  * ------------------------------------------------------------
  */
 
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var Validation = require('../../../util/validation');
-var validationMixin = require('../../../util/validationMixin');
-var inputRules = require('./common/rule.js');
-var inputFilters = require('./common/filter.js');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
+const inputRules = require('./common/rule.js');
+const inputFilters = require('./common/filter.js');
 
-var bowser = require('bowser');
+const bowser = require('bowser');
 
 /**
  * @class KLInput
@@ -40,183 +40,198 @@ var bowser = require('bowser');
  * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
  * @param {number}          [options.data.width]              => 组件宽度
  */
-var KLInput = Component.extend({
-    name: 'kl-input',
-    template: template,
-    /**
+const KLInput = Component.extend({
+  name: 'kl-input',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            hideTip: false,
-            value: '',
-            type: 'char',
-            placeholder: '',
-            state: '',
-            maxlength: undefined,
-            unit: '',
-            rules: [],
-            autofocus: false,
-            _eltIE9: bowser.msie && bowser.version <= 9
-        });
-        this.rules({
-            required: false,
-            byteLen: this.data.type === 'char',
-            isEmail: this.data.type === 'email',
-            isURL: this.data.type === 'url',
-            isInt: this.data.type === 'int',
-            isFloat: this.data.type === 'float',
-            message: ''
-        });
+  config() {
+    _.extend(this.data, {
+      hideTip: false,
+      value: '',
+      type: 'char',
+      placeholder: '',
+      state: '',
+      maxlength: undefined,
+      unit: '',
+      rules: [],
+      autofocus: false,
+      _eltIE9: bowser.msie && bowser.version <= 9,
+    });
+    this.rules({
+      required: false,
+      byteLen: this.data.type === 'char',
+      isEmail: this.data.type === 'email',
+      isURL: this.data.type === 'url',
+      isInt: this.data.type === 'int',
+      isFloat: this.data.type === 'float',
+      message: '',
+    });
 
-        this.supr();
+    this.supr();
 
-        this.initValidation();
-    },
-    init: function() {
-        this.$watch('required', function(value) {
-            if (value) {
-                this.addRule('required');
-            } else {
-                this.data.rules = this.data.rules.filter(function(rule) {
-                    return rule.type !== 'isRequired';
-                });
-            }
-        });
-    },
-    /**
-     * @override 
+    this.initValidation();
+  },
+  init() {
+    this.$watch('required', function (value) {
+      if (value) {
+        this.addRule('required');
+      } else {
+        this.data.rules = this.data.rules.filter(
+          rule => rule.type !== 'isRequired',
+        );
+      }
+    });
+  },
+  /**
+     * @override
      */
-    rules: function(ruleAttris) {
-        this.supr(ruleAttris);
-        var self = this;
-        ['required', 'isEmail', 'isURL', 'isFloat', 'isInt', 'byteLen'].forEach(function(name) {
-            self.addRule(name);
-        });
-    },
-    /**
+  rules(ruleAttris) {
+    this.supr(ruleAttris);
+    const self = this;
+    [
+      'required',
+      'isEmail',
+      'isURL',
+      'isFloat',
+      'isInt',
+      'byteLen',
+    ].forEach((name) => {
+      self.addRule(name);
+    });
+  },
+  /**
      * @protected
      */
-    addRule: function(name) {
-        var min = this.data.min, 
-            max = this.data.max,
-            message = this.data.message,
-            rules = this.data.rules;
+  addRule(name) {
+    let min = this.data.min,
+      max = this.data.max,
+      message = this.data.message,
+      rules = this.data.rules;
 
-        if (name === 'required') {
-            message = message || this.$trans('PLEASE_INPUT');
-        }
+    if (name === 'required') {
+      message = message || this.$trans('PLEASE_INPUT');
+    }
 
-        if (!this.data[name]) { return; }
-        var rule = inputRules[name];
-        if (typeof rule === 'function') {
-            rules.push(rule(min, max, message));
-        } else {
-            var ruleCopy = _.extend({}, rule);
-            message && (ruleCopy.message = message);
-            rules.push(ruleCopy);
-        }
-    },
-    /**
+    if (!this.data[name]) {
+      return;
+    }
+    const rule = inputRules[name];
+    if (typeof rule === 'function') {
+      rules.push(rule(min, max, message));
+    } else {
+      const ruleCopy = _.extend({}, rule);
+      message && (ruleCopy.message = message);
+      rules.push(ruleCopy);
+    }
+  },
+  /**
      * @method validate() 根据`rules`验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
-    validate: function(on) {
-        var value = (this.data.value || this.data.value == 0) ? (this.data.value + '') : '';
-        var rules = this.data.rules;
+  validate(on) {
+    const value =
+      this.data.value || this.data.value == 0 ? `${this.data.value}` : '';
+    let rules = this.data.rules;
 
-        var PRIORITY = {
-            'keyup': 2,
-            'blur': 1,
-            'submit': 0,
-            '': 0
-        }
+    const PRIORITY = {
+      keyup: 2,
+      blur: 1,
+      submit: 0,
+      '': 0,
+    };
 
-        on = on || '';
-        rules = rules.filter(function(rule) {
-            return (rule.on || '').indexOf(on) >= 0;
-        });
+    on = on || '';
+    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
 
-        var result = Validation.validate(value, rules);
-        if(result.firstRule
-            && !(result.firstRule.silentOn === true || (typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)))
-                this.data.tip = result.firstRule.message;
-        else
-            this.data.tip = '';
+    const result = Validation.validate(value, rules);
+    if (
+      result.firstRule &&
+      !(
+        result.firstRule.silentOn === true ||
+        (typeof result.firstRule.silentOn === 'string' &&
+          result.firstRule.silentOn.indexOf(on) >= 0)
+      )
+    ) {
+      this.data.tip = result.firstRule.message;
+    } else this.data.tip = '';
 
-        // @TODO
-        if(!result.success)
-            this.data.state = 'error';
-        // else if(PRIORITY[on] <= PRIORITY['blur'])
-        //     this.data.state = 'success';
-        else
-            this.data.state = '';
+    // @TODO
+    if (!result.success) this.data.state = 'error';
+    else {
+      // else if(PRIORITY[on] <= PRIORITY['blur'])
+      //     this.data.state = 'success';
+      this.data.state = '';
+    }
 
-        this.$emit('validate', {
-            sender: this,
-            on: on,
-            result: result
-        });
+    this.$emit('validate', {
+      sender: this,
+      on,
+      result,
+    });
 
-        return result;
-    },
+    return result;
+  },
 
-    /**
+  /**
      * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
      **/
-    __valueFilter: function(value) {
-        var type = this.data.type;
+  __valueFilter(value) {
+    const type = this.data.type;
 
-        if (type != 'char') value = (value + '').trim();
-        value = (inputFilters[type] || inputFilters['default'])(value, this.data.decimalDigits);
-        return value;
-    },
-    _onKeyUp: function($event) {
-        this.validate('keyup');
-        this.$emit('keyup', $event);
-    },
-    _onBlur: function($event) {
-        this.validate('blur');
-        this.$emit('blur', $event);
-    },
-    _onFocus: function ($event) {
-        this.$emit('focus', $event);
-    },
-    _onChange: function($event) {
-        this.validate('change');
-        this.$emit('change', $event);
-    },
-    _onInput: function($event) {
-        this.validate('input');
-        this.$emit('input', $event);
-    },
-    _onSearch: function($event) {
-        this.$emit('search', $event);
-    },
+    if (type != 'char') value = `${value}`.trim();
+    value = (inputFilters[type] || inputFilters.default)(
+      value,
+      this.data.decimalDigits,
+    );
+    return value;
+  },
+  _onKeyUp($event) {
+    this.validate('keyup');
+    this.$emit('keyup', $event);
+  },
+  _onBlur($event) {
+    this.validate('blur');
+    this.$emit('blur', $event);
+  },
+  _onFocus($event) {
+    this.$emit('focus', $event);
+  },
+  _onChange($event) {
+    this.validate('change');
+    this.$emit('change', $event);
+  },
+  _onInput($event) {
+    this.validate('input');
+    this.$emit('input', $event);
+  },
+  _onSearch($event) {
+    this.$emit('search', $event);
+  },
 });
 
-KLInput.filter('type', function(val) {
-    if (['int', 'float'].indexOf(val) != -1) {
-        /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
-        return 'text';
-    } else if (val == 'password') {
-        return 'password';
-    } else {
-        return 'text';
-    }
+KLInput.filter('type', (val) => {
+  if (['int', 'float'].indexOf(val) != -1) {
+    /* 这里不能是number, 因为number的话, 输入++++123这种获取到的值是空 */
+    return 'text';
+  } else if (val == 'password') {
+    return 'password';
+  }
+  return 'text';
 });
 
 KLInput.filter({
-    'valueFilter': {
-        get: function(val) {
-            return this.__valueFilter(val);
-        },
-        set: function(val) {
-            return this.__valueFilter(val);
-        }
-    }
+  valueFilter: {
+    get(val) {
+      return this.__valueFilter(val);
+    },
+    set(val) {
+      return this.__valueFilter(val);
+    },
+  },
 });
 
 KLInput.use(validationMixin);

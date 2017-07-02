@@ -4,11 +4,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var _ = require('../../../ui-base/_');
-var template = require('./index.html');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const template = require('./index.html');
 
 /**
  * @class KLRow
@@ -21,10 +19,10 @@ var template = require('./index.html');
  * @param {string}          [options.data.wrap='wrap']          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
  * @param {number}          [options.data.gutter='0']           => 栅格间隔
  */
-var KLRow = Component.extend({
+const KLRow = Component.extend({
   name: 'kl-row',
-  template: template,
-  config: function (data) {
+  template,
+  config(data) {
     this.defaults({
       type: '',
       justify: 'start',
@@ -37,14 +35,14 @@ var KLRow = Component.extend({
   },
 });
 
-KLRow.directive('gutter', function(ele, value) {
-  this.$watch(value, function(gutter) {
+KLRow.directive('gutter', function (ele, value) {
+  this.$watch(value, (gutter) => {
     if (gutter) {
-      var margin = '-' + (gutter/2) + 'px';
+      const margin = `-${gutter / 2}px`;
       ele.style.marginLeft = margin;
       ele.style.marginRight = margin;
     }
-  })
+  });
 });
 
 module.exports = KLRow;

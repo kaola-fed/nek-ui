@@ -5,7 +5,7 @@
  * ------------------------------------------------------------
  */
 
-var Component = require('../../../ui-base/component');
+const Component = require('../../../ui-base/component');
 
 /**
  * @class UIGroup
@@ -13,17 +13,17 @@ var Component = require('../../../ui-base/component');
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.class]              => 补充class
  */
-var UIGroup = Component.extend({
-    name: 'ui.group',
-    template: '<span class="u-group {class}">{#inc this.$body}</span>',
-    /**
+const UIGroup = Component.extend({
+  name: 'ui.group',
+  template: '<span class="u-group {class}">{#inc this.$body}</span>',
+  /**
      * @protected
      */
-    config: function() {
-        this.defaults({});
+  config() {
+    this.defaults({});
 
-        this.supr();
-    }
+    this.supr();
+  },
 });
 
 module.exports = UIGroup;

@@ -4,11 +4,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../../ui-base/component');
-var _ = require('../../../../ui-base/_');
-var KLTabs = require('../index');
+const Component = require('../../../../ui-base/component');
+const _ = require('../../../../ui-base/_');
+const KLTabs = require('../index');
 
 /**
  * @class KLTab
@@ -17,35 +15,36 @@ var KLTabs = require('../index');
  * @param {object}        [options.data.title='']             => 标题
  * @param {string}        [options.data.key=null]             => key 标识
  */
-var KLTab = Component.extend({
-    name: 'kl-tab',
-    template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
-    /**
+const KLTab = Component.extend({
+  name: 'kl-tab',
+  template:
+    '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            title: ''
-        });
-        this.supr();
+  config() {
+    _.extend(this.data, {
+      title: '',
+    });
+    this.supr();
 
-        if(this.$outer && this.$outer instanceof KLTabs)
-            this.$outer.data.tabs.push(this);
+    if (this.$outer && this.$outer instanceof KLTabs) {
+      this.$outer.data.tabs.push(this);
+    }
 
-        if(!this.$outer.data.selected)
-            this.$outer.data.selected = this;
+    if (!this.$outer.data.selected) this.$outer.data.selected = this;
 
-        this._setDefaultTab();
-    },
+    this._setDefaultTab();
+  },
 
-    _setDefaultTab: function() {
-        var defaultKey = this.$outer.data.defaultKey,
-            key = this.data.key;
+  _setDefaultTab() {
+    let defaultKey = this.$outer.data.defaultKey,
+      key = this.data.key;
 
-        if (!!defaultKey && !!key && defaultKey + '' === key + '') {
-            this.$outer.data.selected = this;
-        }
-    },
+    if (!!defaultKey && !!key && `${defaultKey}` === `${key}`) {
+      this.$outer.data.selected = this;
+    }
+  },
 });
 
 module.exports = KLTab;

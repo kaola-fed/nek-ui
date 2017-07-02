@@ -5,13 +5,11 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const dom = require('regularjs').dom;
 
-var dom = require('regularjs').dom;
-
-var Component = require('../../../ui-base/component');
-var _ = require('../../../ui-base/_');
-var alignment = require('./alignment');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const alignment = require('./alignment');
 
 /**
  * @class Trigger
@@ -23,56 +21,70 @@ var alignment = require('./alignment');
  * @param {boolean}         [options.data.destroyOnHide=false]    => hide时是否destroy浮层
  * @param {boolean}         [options.data.hideWhenScroll=false]   => 页面滚动时, 是否去除popover;
  */
-var Trigger = Component.extend({
+const Trigger = Component.extend({
   name: 'trigger',
-  template: '<alignment placement="{placement}" ref="alignment">{#inc this.$body}</alignment>',
-  config: function (data) {
+  template:
+    '<alignment placement="{placement}" ref="alignment">{#inc this.$body}</alignment>',
+  config(data) {
     this.defaults({
       action: 'mouseEnter',
-      getInstance: function() {},
+      getInstance() {},
       placement: 'top',
       destroyOnHide: false,
-      hideWhenScroll: false
+      hideWhenScroll: false,
     });
 
     this.supr(data);
   },
-  init: function() {
-    var self = this;
-    var element = dom.element(this),
-        action  = this.data.action;
+  init() {
+    const self = this;
+    let element = dom.element(this),
+      action = this.data.action;
 
     if (action == 'click') {
-      dom.on(element, 'click', function(e) { self.toggle(); });
-      dom.on(document.body, 'click', function(e) {
-        var target = e.target;
+      dom.on(element, 'click', (e) => {
+        self.toggle();
+      });
+      dom.on(document.body, 'click', (e) => {
+        const target = e.target;
         if (!_.dom.contains(element, target) && self.data.isShow) {
           self.toggle(false);
         }
       });
     }
     if (action == 'mouseEnter') {
-      dom.on(element, 'mouseenter', function() { self.toggle(true); });
-      dom.on(element, 'mouseleave', function() { self.toggle(false); });
+      dom.on(element, 'mouseenter', () => {
+        self.toggle(true);
+      });
+      dom.on(element, 'mouseleave', () => {
+        self.toggle(false);
+      });
     }
     if (action == 'focus') {
-      dom.on(element, 'focus', function() { self.toggle(true); });
-      dom.on(element, 'blur', function() { self.toggle(false); });
+      dom.on(element, 'focus', () => {
+        self.toggle(true);
+      });
+      dom.on(element, 'blur', () => {
+        self.toggle(false);
+      });
     }
 
-    window.addEventListener('scroll', function() {
-      var isShow = self.data.isShow;
-      if (isShow && self.data.hideWhenScroll) {
-        self.toggle(false);
-      }
-    }, true);
+    window.addEventListener(
+      'scroll',
+      () => {
+        const isShow = self.data.isShow;
+        if (isShow && self.data.hideWhenScroll) {
+          self.toggle(false);
+        }
+      },
+      true,
+    );
   },
-  updateInstance: function(isShow) {
-
-    var instance = this.data.getInstance(),
-        element = instance.getElement(),
-        $align = this.$refs.alignment,
-        destroyOnHide = this.data.destroyOnHide;
+  updateInstance(isShow) {
+    let instance = this.data.getInstance(),
+      element = instance.getElement(),
+      $align = this.$refs.alignment,
+      destroyOnHide = this.data.destroyOnHide;
 
     if (instance != this.data.instance) {
       this.data.instance = instance;
@@ -92,11 +104,12 @@ var Trigger = Component.extend({
       }
     }
   },
-  toggle: function(isShow) {
-    this.data.isShow = typeof isShow == 'undefined' ? !this.data.isShow : isShow;
+  toggle(isShow) {
+    this.data.isShow =
+      typeof isShow === 'undefined' ? !this.data.isShow : isShow;
     this.updateInstance(this.data.isShow);
     this.$update();
-  }
+  },
 });
 
 module.exports = Trigger;

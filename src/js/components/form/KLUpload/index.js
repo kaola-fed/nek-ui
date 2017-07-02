@@ -3,14 +3,13 @@
  *  kl-upload 上传
  *  ------------------------------
  */
-'use strict';
 
-var Component = require('../../../ui-base/component');
-var _ = require('../../../ui-base/_');
-var UploadList = require('./components/UploadList');
-var UploadCard = require('./components/UploadCard');
-var Config = require('./config');
-var tpl = require('./index.html');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const UploadList = require('./components/UploadList');
+const UploadCard = require('./components/UploadCard');
+const Config = require('./config');
+const tpl = require('./index.html');
 
 /**
  * @class KLUpload
@@ -32,52 +31,52 @@ var tpl = require('./index.html');
  * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
  */
-var KLUpload = Component.extend({
-    name: 'kl-upload',
-    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-    config: function(data) {
-        _.extend(data, {
-            action: '',
-            name: 'file',
-            multiple: false,
-            drag: false,
-            accept: '*',
-            listType: 'list',
-            fileList: [],
-            data: {},
-            numLimit: 10,
-            numPerline: 5,
-            maxSize: Config.sizeMap.GB,
-            deletable: true,
-            encType: 'multipart/form-data'
-        });
-        
-        this.supr(data);
-    },
-    
-    init: function(data) {
-        this.preProcess(data);
-        this.initUploadInst(data);
-        this.supr(data);
-    },
-    
-    preProcess: function(data) {
-        if (typeof data.maxSize === 'number') {
-            data.maxSize += '';
-        }
-    },
+const KLUpload = Component.extend({
+  name: 'kl-upload',
+  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+  config(data) {
+    _.extend(data, {
+      action: '',
+      name: 'file',
+      multiple: false,
+      drag: false,
+      accept: '*',
+      listType: 'list',
+      fileList: [],
+      data: {},
+      numLimit: 10,
+      numPerline: 5,
+      maxSize: Config.sizeMap.GB,
+      deletable: true,
+      encType: 'multipart/form-data',
+    });
 
-    initUploadInst: function(data) {
-        var uploadNode = this.$refs['m-upload'],
-            typeMap = {
-                list: UploadList,
-                card: UploadCard
-            };
-        
-        new typeMap[data.listType]({
-            data: data
-        }).$inject(uploadNode);
+    this.supr(data);
+  },
+
+  init(data) {
+    this.preProcess(data);
+    this.initUploadInst(data);
+    this.supr(data);
+  },
+
+  preProcess(data) {
+    if (typeof data.maxSize === 'number') {
+      data.maxSize += '';
     }
+  },
+
+  initUploadInst(data) {
+    let uploadNode = this.$refs['m-upload'],
+      typeMap = {
+        list: UploadList,
+        card: UploadCard,
+      };
+
+    new typeMap[data.listType]({
+      data,
+    }).$inject(uploadNode);
+  },
 });
 
 module.exports = KLUpload;

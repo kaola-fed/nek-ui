@@ -3,11 +3,10 @@
  *  upload.base 上传基础类
  *  ------------------------------
  */
-'use strict';
 
-var Component = require('../../../../../ui-base/component');
-var _ = require('../../../../../ui-base/_');
-var Config = require('../../config');
+const Component = require('../../../../../ui-base/component');
+const _ = require('../../../../../ui-base/_');
+const Config = require('../../config');
 
 /**
  * @class UploadBase
@@ -29,211 +28,209 @@ var Config = require('../../config');
  * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
  */
-var UploadBase = Component.extend({
-    name: 'upload-list',
-    config: function(data) {
-        _.extend(data, {
-            action: '',
-            name: 'file',
-            multiple: false,
-            drag: false,
-            accept: '*',
-            listType: 'list',
-            fileList: [],
-            data: {},
-            numLimit: 10,
-            numPerline: 5,
-            maxSize: Config.sizeMap.GB,
-            deletable: true,
-            encType: 'multipart/form-data'
-        });
-        
-        _.extend(data, {
-            fileUnitList: [],
-            fileDeletedList: [],
-            fileUnitWidth: 50,
-            fileUnitMargin: 25
-        });
-        
-        this.supr(data);
-    },
-    
-    init: function(data) {
-        this.initUploadedFileUnits();
-        this.supr(data);
-    },
+const UploadBase = Component.extend({
+  name: 'upload-list',
+  config(data) {
+    _.extend(data, {
+      action: '',
+      name: 'file',
+      multiple: false,
+      drag: false,
+      accept: '*',
+      listType: 'list',
+      fileList: [],
+      data: {},
+      numLimit: 10,
+      numPerline: 5,
+      maxSize: Config.sizeMap.GB,
+      deletable: true,
+      encType: 'multipart/form-data',
+    });
 
-    initUploadedFileUnits: function() {
-        var self = this,
-            data = this.data;
-        
-        if (data.fileList.length > 0) {
-            var fileList = data.fileList.splice(0);
-            fileList.forEach(function(file) {
-                var fileunit = self.createFileUnit({
-                    file: file,
-                    options: {},
-                    deletable: data.deletable
-                });
-                
-                fileunit.flag = 'ORIGINAL';
+    _.extend(data, {
+      fileUnitList: [],
+      fileDeletedList: [],
+      fileUnitWidth: 50,
+      fileUnitMargin: 25,
+    });
 
-                data.fileUnitList.push({
-                    inst: fileunit
-                });
-            });
+    this.supr(data);
+  },
 
-            this.updateFileList();
-        }
-    },
-    
-    updateFileList: function() {
-        var self = this,
-            data = this.data,
-            filesWrapper = data.filesWrapper,
-            fileList = data.fileList,
-            fileDeletedList = data.fileDeletedList,
-            fileUnitList;
+  init(data) {
+    this.initUploadedFileUnits();
+    this.supr(data);
+  },
 
-        fileUnitList = data.fileUnitList = data.fileUnitList.filter(function(item) {
-            var inst = item.inst,
-                flag = inst.flag,
-                file = inst.file,
-                destroyed = inst.destroyed;
+  initUploadedFileUnits() {
+    let self = this,
+      data = this.data;
 
-            // item.inst = {};
-            
-            if (flag === 'DELETED') {
-                file.flag = 'DELETED';
-                fileDeletedList.push(file);
-                return false;
-            }
-            return !destroyed;
+    if (data.fileList.length > 0) {
+      const fileList = data.fileList.splice(0);
+      fileList.forEach((file) => {
+        const fileunit = self.createFileUnit({
+          file,
+          options: {},
+          deletable: data.deletable,
         });
 
-        filesWrapper.innerHTML = '';
-        fileUnitList.forEach(function(item, index) {
-            var wrapper = item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
-            item.inst.$inject(wrapper);
+        fileunit.flag = 'ORIGINAL';
+
+        data.fileUnitList.push({
+          inst: fileunit,
         });
+      });
 
-        fileList.splice(0);
-        fileUnitList.forEach(function(item) {
-            var inst = item.inst,
-                file = inst.data.file || {};
-            
-            fileList.push({
-                name: file.name,
-                url: file.url,
-                flag: Config.flagMap[inst.flag]
-            });
-        });
-        
-        fileDeletedList.forEach(function(file) {
-            fileList.push({
-                name: file && file.name,
-                url: file && file.url,
-                flag: file && Config.flagMap[file.flag]
-            });
-        });
-    },
-    
-    fileDialogOpen: function() {
-        this.$refs.file && this.$refs.file.click();
-    },
-    
-    setOptions: function(data) {
-        data = data || {};
-        
-        return {
-            url: data.action
-        };
-    },
-
-    preCheck: function(file) {
-        var preCheckInfo = '';
-        if (!this.isAcceptedFileSize(file)) {
-            preCheckInfo = this.$trans('FILE_TOO_LARGE');
-        }
-        if (!this.isAcceptedFileType(file)) {
-            preCheckInfo = this.$trans('FILE_TYPE_ERROR');
-        }
-        return preCheckInfo;
-    },
-    
-    isAcceptedFileType: function(file) {
-        var data = this.data,
-            accept = data.accept,
-            type = this.getFileType(file).toLowerCase(),
-            isValid = false;
-
-        accept.split(',').forEach(function(cond) {
-            if ('*' === cond) {
-                isValid = true;
-            } else if (/image\/.*/.test(cond)) {
-                isValid = isValid || type === 'image';
-            } else if (/audio\/.*/.test(cond)) {
-                isValid = isValid || type === 'audio';
-            } else if (/video\/.*/.test(cond)) {
-                isValid = isValid || type === 'video';
-            } else {
-                isValid = isValid || type === Config.typeMap[cond];
-            }
-        });
-
-        return isValid;
-    },
-
-    getFileType: function(file) {
-        var type = file.type || '',
-            name = file.name || '';
-
-        if (/image\/.*/.test(type)
-            || /jpg|gif|jpeg|png/i.test(name)
-        ) {
-            return 'IMAGE';
-        } else if (/zip|rar|gz/i.test(name)) {
-            return 'ZIP';
-        } else if (/document|sheet|powerpoint|msword/.test(type)
-                || /doc|xlsx|ppt/i.test(name)
-        ) {
-            return 'DOC';
-        } else if (/video\/.*/.test(type)
-                || /mp4|mkv|rmvb/i.test(name)
-        ) {
-            return 'VIDEO';
-        } else if (/audio\/.*/.test(type)
-                || /mp3/i.test(name)
-        ) {
-            return 'AUDIO';
-        } else if (/text\/plain/.test(type)) {
-            return 'TEXT';
-        } else if (/text\/html/.test(type)) {
-            return 'HTML';
-        } else if (/application\/pdf/.test(type)) {
-            return 'PDF';
-        } else if (/application\/javascript/.test(type)) {
-            return 'JS';
-        }
-
-        return 'UNKNOWN';
-    },
-
-    isAcceptedFileSize: function(file) {
-        var data = this.data,
-            maxSize = data.maxSize,
-            fileSize = file.size;
-        
-        var patterns = maxSize.match(/(\d+)(\D+)?/i);
-        var size = patterns[1];
-        var unit = patterns[2];
-
-        if (unit) {
-            size *= Config.sizeMap[unit.toUpperCase()];
-        }
-
-        return size >= fileSize;
+      this.updateFileList();
     }
+  },
+
+  updateFileList() {
+    let self = this,
+      data = this.data,
+      filesWrapper = data.filesWrapper,
+      fileList = data.fileList,
+      fileDeletedList = data.fileDeletedList,
+      fileUnitList;
+
+    fileUnitList = data.fileUnitList = data.fileUnitList.filter((item) => {
+      let inst = item.inst,
+        flag = inst.flag,
+        file = inst.file,
+        destroyed = inst.destroyed;
+
+      // item.inst = {};
+
+      if (flag === 'DELETED') {
+        file.flag = 'DELETED';
+        fileDeletedList.push(file);
+        return false;
+      }
+      return !destroyed;
+    });
+
+    filesWrapper.innerHTML = '';
+    fileUnitList.forEach((item, index) => {
+      const wrapper = (item.wrapper = self.createFileUnitWrapper(
+        filesWrapper,
+        index,
+      ));
+      item.inst.$inject(wrapper);
+    });
+
+    fileList.splice(0);
+    fileUnitList.forEach((item) => {
+      let inst = item.inst,
+        file = inst.data.file || {};
+
+      fileList.push({
+        name: file.name,
+        url: file.url,
+        flag: Config.flagMap[inst.flag],
+      });
+    });
+
+    fileDeletedList.forEach((file) => {
+      fileList.push({
+        name: file && file.name,
+        url: file && file.url,
+        flag: file && Config.flagMap[file.flag],
+      });
+    });
+  },
+
+  fileDialogOpen() {
+    this.$refs.file && this.$refs.file.click();
+  },
+
+  setOptions(data) {
+    data = data || {};
+
+    return {
+      url: data.action,
+    };
+  },
+
+  preCheck(file) {
+    let preCheckInfo = '';
+    if (!this.isAcceptedFileSize(file)) {
+      preCheckInfo = this.$trans('FILE_TOO_LARGE');
+    }
+    if (!this.isAcceptedFileType(file)) {
+      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
+    }
+    return preCheckInfo;
+  },
+
+  isAcceptedFileType(file) {
+    let data = this.data,
+      accept = data.accept,
+      type = this.getFileType(file).toLowerCase(),
+      isValid = false;
+
+    accept.split(',').forEach((cond) => {
+      if (cond === '*') {
+        isValid = true;
+      } else if (/image\/.*/.test(cond)) {
+        isValid = isValid || type === 'image';
+      } else if (/audio\/.*/.test(cond)) {
+        isValid = isValid || type === 'audio';
+      } else if (/video\/.*/.test(cond)) {
+        isValid = isValid || type === 'video';
+      } else {
+        isValid = isValid || type === Config.typeMap[cond];
+      }
+    });
+
+    return isValid;
+  },
+
+  getFileType(file) {
+    let type = file.type || '',
+      name = file.name || '';
+
+    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+      return 'IMAGE';
+    } else if (/zip|rar|gz/i.test(name)) {
+      return 'ZIP';
+    } else if (
+      /document|sheet|powerpoint|msword/.test(type) ||
+      /doc|xlsx|ppt/i.test(name)
+    ) {
+      return 'DOC';
+    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+      return 'VIDEO';
+    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+      return 'AUDIO';
+    } else if (/text\/plain/.test(type)) {
+      return 'TEXT';
+    } else if (/text\/html/.test(type)) {
+      return 'HTML';
+    } else if (/application\/pdf/.test(type)) {
+      return 'PDF';
+    } else if (/application\/javascript/.test(type)) {
+      return 'JS';
+    }
+
+    return 'UNKNOWN';
+  },
+
+  isAcceptedFileSize(file) {
+    let data = this.data,
+      maxSize = data.maxSize,
+      fileSize = file.size;
+
+    const patterns = maxSize.match(/(\d+)(\D+)?/i);
+    let size = patterns[1];
+    const unit = patterns[2];
+
+    if (unit) {
+      size *= Config.sizeMap[unit.toUpperCase()];
+    }
+
+    return size >= fileSize;
+  },
 });
 
 module.exports = UploadBase;

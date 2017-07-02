@@ -5,14 +5,12 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const dom = require('regularjs').dom;
 
-var dom = require('regularjs').dom;
-
-var Component = require("../../../ui-base/component");
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var trigger = require('../../layout/alignment/trigger');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const trigger = require('../../layout/alignment/trigger');
 
 /**
  * @class KLPopConfirm
@@ -25,37 +23,37 @@ var trigger = require('../../layout/alignment/trigger');
  * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
  * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
  */
-var KLPopConfirm = Component.extend({
+const KLPopConfirm = Component.extend({
   name: 'kl-pop-confirm',
-  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
-  config: function (data) {
+  template:
+    '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
+  config(data) {
     this.defaults({
-      placement: 'top'
+      placement: 'top',
     });
 
     this.supr(data);
   },
-  destroy: function() {
+  destroy() {
     if (this.data.instance) {
       this.data.instance.destroy();
     }
     this.supr();
   },
-  getInstance: function() {
-    var self = this;
+  getInstance() {
+    const self = this;
     if (!this.data.instance) {
-      var instance = new PopUp({ data: this.data });
+      const instance = new PopUp({ data: this.data });
 
-      instance.$on('ok', function(data) {
+      instance.$on('ok', (data) => {
         if (self.events && self.events.ok) {
           self.$emit('ok', data);
         } else {
           self.data.instance.destroy();
         }
-
       });
 
-      instance.$on('cancel', function(data) {
+      instance.$on('cancel', (data) => {
         if (self.events && self.events.cancel) {
           self.$emit('cancel', data);
         } else {
@@ -63,7 +61,7 @@ var KLPopConfirm = Component.extend({
         }
       });
 
-      instance.$on('destroy', function() {
+      instance.$on('destroy', () => {
         self.$refs.trigger.data.isShow = false;
         self.data.instance = null;
       });
@@ -71,31 +69,33 @@ var KLPopConfirm = Component.extend({
       this.data.instance = instance;
     }
     return this.data.instance;
-  }
+  },
 });
 
 var PopUp = Component.extend({
-  template: template,
-  config: function (data) {
+  template,
+  config(data) {
     this.defaults({
       isShow: true,
       content: '',
-      contentTemplate: ''
+      contentTemplate: '',
     });
     this.supr(data);
   },
-  init: function () {
+  init() {
     if (this.$root == this) {
       this.$inject(document.body);
     }
     this.data.element = dom.element(this);
-    dom.on(this.data.element, 'click', function(e) { e.stopPropagation(); });
+    dom.on(this.data.element, 'click', (e) => {
+      e.stopPropagation();
+    });
   },
-  getElement: function () {
+  getElement() {
     return this.data.element;
   },
-  ok: function () {
-    var $validation = this.$refs.validation;
+  ok() {
+    const $validation = this.$refs.validation;
     if (!$validation || $validation.validate().success) {
       /**
        * @event ok 确定时触发
@@ -104,11 +104,11 @@ var PopUp = Component.extend({
        */
       this.$emit('ok', {
         sender: this,
-        data: this.data
+        data: this.data,
       });
     }
   },
-  cancel: function () {
+  cancel() {
     /**
      * @event cancel 取消时触发
      * @property {object} sender 事件发送对象
@@ -116,10 +116,9 @@ var PopUp = Component.extend({
      */
     this.$emit('cancel', {
       sender: this,
-      data: this.data
+      data: this.data,
     });
   },
 });
 
 module.exports = KLPopConfirm;
-

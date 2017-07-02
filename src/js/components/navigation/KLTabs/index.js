@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLTab
@@ -31,55 +29,54 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}       [options.data.visible=true]         => 是否显示
  * @param {string}        [options.data.class]                => 补充class
  */
-var KLTabs = Component.extend({
-    name: 'kl-tabs',
-    template: template,
-    /**
+const KLTabs = Component.extend({
+  name: 'kl-tabs',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            tabs: [],
-            selected: undefined,
-            titleTemplate: null
-        });
-        this.supr();
+  config() {
+    _.extend(this.data, {
+      tabs: [],
+      selected: undefined,
+      titleTemplate: null,
+    });
+    this.supr();
 
-        this.$watch('selected', function(newValue, oldValue) {
-            /**
+    this.$watch('selected', function (newValue, oldValue) {
+      /**
              * @event change 选项卡改变时触发
              * @property {object} sender 事件发送对象
              * @property {object} selected 改变后的选项卡
              */
-            this.$emit('change', {
-                sender: this,
-                selected: newValue,
-                key: newValue.data.key
-            });
-        });
-    },
-    /**
+      this.$emit('change', {
+        sender: this,
+        selected: newValue,
+        key: newValue.data.key,
+      });
+    });
+  },
+  /**
      * @method select(item) 选择某一项
      * @public
      * @param  {object} item 选择项
      * @return {void}
      */
-    select: function(item) {
-        if(this.data.readonly || this.data.disabled || item.data.disabled)
-            return;
+  select(item) {
+    if (this.data.readonly || this.data.disabled || item.data.disabled) return;
 
-        this.data.selected = item;
-        /**
+    this.data.selected = item;
+    /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择卡
          */
-        this.$emit('select', {
-            sender: this,
-            selected: item,
-            key: item.data.key
-        });
-    }
+    this.$emit('select', {
+      sender: this,
+      selected: item,
+      key: item.data.key,
+    });
+  },
 });
 
 module.exports = KLTabs;

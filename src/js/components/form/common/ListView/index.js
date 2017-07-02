@@ -1,15 +1,13 @@
-    /**
+/**
  * ------------------------------------------------------------
  * ListView  列表视图
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var SourceComponent = require('../../../../ui-base/sourceComponent');
-var template = require('./index.html');
-var _ = require('../../../../ui-base/_');
+const SourceComponent = require('../../../../ui-base/sourceComponent');
+const template = require('./index.html');
+const _ = require('../../../../ui-base/_');
 
 /**
  * @class ListView
@@ -29,45 +27,50 @@ var _ = require('../../../../ui-base/_');
  * @param {string}      [options.data.class]                        => 补充class
  * @param {object}      [options.service]                           @=> 数据服务
  */
-var ListView = SourceComponent.extend({
-    name: 'list-view',
-    template: template,
-    /**
+const ListView = SourceComponent.extend({
+  name: 'list-view',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            // @inherited source: [],
-            selected: null,
-            itemTemplate: null,
-            multiple: false
-        });
-        this.supr();
-    },
-    /**
+  config() {
+    _.extend(this.data, {
+      // @inherited source: [],
+      selected: null,
+      itemTemplate: null,
+      multiple: false,
+    });
+    this.supr();
+  },
+  /**
      * @method select(item) 选择某一项
      * @public
      * @param  {object} item 选择项
      * @return {void}
      */
-    select: function(item) {
-        if(this.data.readonly || this.data.disabled || item.disabled || item.divider)
-            return;
+  select(item) {
+    if (
+      this.data.readonly ||
+      this.data.disabled ||
+      item.disabled ||
+      item.divider
+    ) {
+      return;
+    }
 
-        if(this.data.multiple)
-            return item.selected = !item.selected;
+    if (this.data.multiple) return (item.selected = !item.selected);
 
-        this.data.selected = item;
-        /**
+    this.data.selected = item;
+    /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择项
          */
-        this.$emit('select', {
-            sender: this,
-            selected: item
-        });
-    }
+    this.$emit('select', {
+      sender: this,
+      selected: item,
+    });
+  },
 });
 
 module.exports = ListView;

@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class Gotop
@@ -19,29 +17,28 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}       [options.data.visible=true]             => 是否显示
  * @param {string}        [options.data.class]                    => 补充class
  */
-var Gotop = Component.extend({
-    name: 'gotop',
-    template: template,
-    /**
+const Gotop = Component.extend({
+  name: 'gotop',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            position: 'bottomright'
-        });
-        this.supr();
-    },
-    /**
+  config() {
+    _.extend(this.data, {
+      position: 'bottomright',
+    });
+    this.supr();
+  },
+  /**
      * @method gotop() 回到顶部
      * @public
      * @return {void}
      */
-    gotop: function() {
-        if(this.data.disabled)
-            return;
+  gotop() {
+    if (this.data.disabled) return;
 
-        document.body.scrollTop = 0;
-    }
+    document.body.scrollTop = 0;
+  },
 });
 
 module.exports = Gotop;

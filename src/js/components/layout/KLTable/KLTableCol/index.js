@@ -1,8 +1,6 @@
-'use strict';
-
-var Component = require('../../../../ui-base/component');
-var KLTableTemplate = require('../KLTableTemplate');
-var KLTable = require('../index');
+const Component = require('../../../../ui-base/component');
+const KLTableTemplate = require('../KLTableTemplate');
+const KLTable = require('../index');
 
 /**
  * @class KLTableCol
@@ -25,60 +23,61 @@ var KLTable = require('../index');
  * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
  */
 var KLTableCol = Component.extend({
-    name: 'kl-table-col',
-    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-    config: function() {
-        this.defaults({
-            _innerColumns: [],
-            colSpan: 1
-        });
-    },
-    init: function() {
-        this._register();
-    },
-    _register: function() {
-        var outer = this.$outer;
-        if(outer instanceof KLTable) {
-            this._register2Table();
-        } else if(outer instanceof KLTableCol) {
-            this._register2TableCol();
-        }
-    },
-    _register2Table: function() {
-        var _outer = this.$outer;
-        this._push2Columns(_outer.data.columns);
-    },
-    _register2TableCol: function() {
-        var _outer = this.$outer;
-        this._push2Columns(_outer.data._innerColumns);
-    },
-    _push2Columns: function(columns) {
-        var data = this.data;
-        columns && columns.push({
-            name: data.name,
-            key: data.key,
-            type: data.type,
-            width: data.width,
-            tip: data.tip,
-            tdClass: data.tdClass,
-            thClass: data.thClass,
-            sortable: data.sortable,
-            expandable: data.expandable,
-            children: data._innerColumns,
-            align: data.align,
-            fixed: data.fixed,
-
-            filter: data.filter,
-            template: data._template || data.template,
-            formatter: data.formatter,
-            format: data.format,
-            headerTemplate: data._headerTemplate || data.headerTemplate,
-            headerFormatter: data.headerFormatter,
-            headerFormat: data.headerFormat,
-            expandTemplate: data._expandTemplate,
-        });
+  name: 'kl-table-col',
+  template:
+    '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+  config() {
+    this.defaults({
+      _innerColumns: [],
+      colSpan: 1,
+    });
+  },
+  init() {
+    this._register();
+  },
+  _register() {
+    const outer = this.$outer;
+    if (outer instanceof KLTable) {
+      this._register2Table();
+    } else if (outer instanceof KLTableCol) {
+      this._register2TableCol();
     }
-})
-.component('kl-table-tempalte', KLTableTemplate);
+  },
+  _register2Table() {
+    const _outer = this.$outer;
+    this._push2Columns(_outer.data.columns);
+  },
+  _register2TableCol() {
+    const _outer = this.$outer;
+    this._push2Columns(_outer.data._innerColumns);
+  },
+  _push2Columns(columns) {
+    const data = this.data;
+    columns &&
+      columns.push({
+        name: data.name,
+        key: data.key,
+        type: data.type,
+        width: data.width,
+        tip: data.tip,
+        tdClass: data.tdClass,
+        thClass: data.thClass,
+        sortable: data.sortable,
+        expandable: data.expandable,
+        children: data._innerColumns,
+        align: data.align,
+        fixed: data.fixed,
+
+        filter: data.filter,
+        template: data._template || data.template,
+        formatter: data.formatter,
+        format: data.format,
+        headerTemplate: data._headerTemplate || data.headerTemplate,
+        headerFormatter: data.headerFormatter,
+        headerFormat: data.headerFormat,
+        expandTemplate: data._expandTemplate,
+      });
+  },
+}).component('kl-table-tempalte', KLTableTemplate);
 
 module.exports = KLTableCol;

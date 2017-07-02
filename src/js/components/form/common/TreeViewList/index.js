@@ -5,132 +5,128 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const SourceComponent = require('../../../../ui-base/sourceComponent');
+const template = require('./index.html');
+const _ = require('../../../../ui-base/_');
 
-var SourceComponent = require('../../../../ui-base/sourceComponent');
-var template = require('./index.html');
-var _ = require('../../../../ui-base/_');
-
-var KLCheck = require('../../KLCheck');
+const KLCheck = require('../../KLCheck');
 
 /**
  * @class TreeViewList
  * @extend SourceComponent
  * @private
  */
-var TreeViewList = SourceComponent.extend({
-    name: 'tree-view-list',
-    template: template,
-    /**
+const TreeViewList = SourceComponent.extend({
+  name: 'tree-view-list',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            // @inherited source: [],
-            itemTemplate: null,
-            visible: false,
-            multiple: false
-        });
-        this.supr();
+  config() {
+    _.extend(this.data, {
+      // @inherited source: [],
+      itemTemplate: null,
+      visible: false,
+      multiple: false,
+    });
+    this.supr();
 
-        this.$ancestor = this.$parent.$ancestor;
-        this.service = this.$ancestor.service;
-        this.data.itemTemplate = this.$ancestor.data.itemTemplate;
-        this.data.hierarchical = this.$ancestor.data.hierarchical;
+    this.$ancestor = this.$parent.$ancestor;
+    this.service = this.$ancestor.service;
+    this.data.itemTemplate = this.$ancestor.data.itemTemplate;
+    this.data.hierarchical = this.$ancestor.data.hierarchical;
 
-        this.$watch('visible', function(newValue) {
-            if(!this.data.hierarchical)
-                return;
+    this.$watch('visible', function (newValue) {
+      if (!this.data.hierarchical) return;
 
-            if(!newValue || this.$parent.name !== 'treeViewList')
-                return;
+      if (!newValue || this.$parent.name !== 'treeViewList') return;
 
-            this.$updateSource(function() {
-                this.data.hierarchical = false;
-            });
-        });
-    },
-    /**
+      this.$updateSource(function () {
+        this.data.hierarchical = false;
+      });
+    });
+  },
+  /**
      * @override
      */
-    getParams: function() {
-        if(this.data.parent)
-            return _.extend({parentId: this.data.parent.id}, this.$ancestor.getParams());
-    },
-    /**
+  getParams() {
+    if (this.data.parent) {
+      return _.extend(
+        { parentId: this.data.parent.id },
+        this.$ancestor.getParams(),
+      );
+    }
+  },
+  /**
      * @method $updateSource() 从service中更新数据源
      * @public
      * @deprecated
      * @return {SourceComponent} this
      */
-    $updateSource: function() {
-        var self = this;
-        this.service.getList(this.getParams(), function(result) {
-            // 给每个节点item添加parent
-            result.forEach(function(item) {
-                item.parent = self.data.parent;
-            });
+  $updateSource() {
+    const self = this;
+    this.service.getList(this.getParams(), function (result) {
+      // 给每个节点item添加parent
+      result.forEach((item) => {
+        item.parent = self.data.parent;
+      });
 
-            self.$update('source', result);
+      self.$update('source', result);
 
-            self.$emit('updateSource', {
-                sender: this,
-                result: result
-            });
-        });
-        return this;
-    },
-    /**
+      self.$emit('updateSource', {
+        sender: this,
+        result,
+      });
+    });
+    return this;
+  },
+  /**
      * @note 移交$ancestor处理
      */
-    select: function() {
-        this.$ancestor.select.apply(this.$ancestor, arguments);
-    },
-    /**
+  select() {
+    this.$ancestor.select.apply(this.$ancestor, arguments);
+  },
+  /**
      * @note 移给$ancestor处理
      */
-    toggle: function() {
-        this.$ancestor.toggle.apply(this.$ancestor, arguments);
-    },
-    check: function() {
-        this._setSelected({});
-    },
-    _setSelected: function(event) {
-        var self = this;
-        setTimeout(function() {
-            self.$emit('setselected', event);
-        }, 0);
-    },
-    /**
+  toggle() {
+    this.$ancestor.toggle.apply(this.$ancestor, arguments);
+  },
+  check() {
+    this._setSelected({});
+  },
+  _setSelected(event) {
+    const self = this;
+    setTimeout(() => {
+      self.$emit('setselected', event);
+    }, 0);
+  },
+  /**
      * @private
      */
-    _onItemCheckedChange: function($event, item) {
-        var checked = $event.checked;
-        item.checked = checked;
-        if(checked !== null && item[this.data.childKey]) {
-            item[this.data.childKey].forEach(function(child) {
-                child.checked = checked;
-            });
-        }
-
-        var parent = this.data.parent;
-        if(parent && parent.checked !== item.checked) {
-            var checkedCount = 0;
-            parent[this.data.childKey].forEach(function(child) {
-                if(child.checked)
-                    checkedCount++;
-                else if(child.checked === null)
-                    checkedCount += 0.5;
-            });
-
-            if(checkedCount === 0)
-                parent.checked = false;
-            else if(checkedCount === parent[this.data.childKey].length)
-                parent.checked = true;
-            else
-                parent.checked = null;
-        }
+  _onItemCheckedChange($event, item) {
+    const checked = $event.checked;
+    item.checked = checked;
+    if (checked !== null && item[this.data.childKey]) {
+      item[this.data.childKey].forEach((child) => {
+        child.checked = checked;
+      });
     }
+
+    const parent = this.data.parent;
+    if (parent && parent.checked !== item.checked) {
+      let checkedCount = 0;
+      parent[this.data.childKey].forEach((child) => {
+        if (child.checked) checkedCount++;
+        else if (child.checked === null) checkedCount += 0.5;
+      });
+
+      if (checkedCount === 0) parent.checked = false;
+      else if (checkedCount === parent[this.data.childKey].length) {
+        parent.checked = true;
+      } else parent.checked = null;
+    }
+  },
 });
 
 module.exports = TreeViewList;

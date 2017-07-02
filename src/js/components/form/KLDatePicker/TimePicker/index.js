@@ -5,10 +5,10 @@
  * ------------------------------------------------------------
  */
 
-var Component = require('../../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../../ui-base/_');
-var NumberInput = require('../NumberInput');
+const Component = require('../../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../../ui-base/_');
+const NumberInput = require('../NumberInput');
 
 /**
  * @class TimePicker
@@ -25,38 +25,38 @@ var NumberInput = require('../NumberInput');
  */
 var TimePicker = Component.extend({
   name: 'time-picker',
-  template: template,
+  template,
   /**
    * @protected
    */
-  config: function() {
+  config() {
     _.extend(this.data, {
       time: '00:00:00',
       hour: 0,
       minute: 0,
-      seconds:0,
+      seconds: 0,
       minTime: '00:00:00',
       maxTime: '23:59:59',
-      autofocus: false
+      autofocus: false,
     });
     this.supr();
-    
-    this.$watch('time', function(newValue, oldValue) {
-      if(oldValue === undefined) { return; }
-      
-      if(!newValue)
-        throw new TypeError('Invalid Time');
-      
+
+    this.$watch('time', function (newValue, oldValue) {
+      if (oldValue === undefined) {
+        return;
+      }
+
+      if (!newValue) throw new TypeError('Invalid Time');
+
       // 如果超出时间范围，则设置为范围边界的时间
-      var isOutOfRange = this.isOutOfRange(newValue);
-      if(isOutOfRange)
-        return this.data.time = isOutOfRange;
-      
-      var time = newValue.split(':');
+      const isOutOfRange = this.isOutOfRange(newValue);
+      if (isOutOfRange) return (this.data.time = isOutOfRange);
+
+      const time = newValue.split(':');
       this.data.hour = +time[0];
       this.data.minute = +time[1];
       this.data.seconds = +time[2];
-      
+
       /**
        * @event change 时间改变时触发
        * @property {object} sender 事件发送对象
@@ -64,30 +64,31 @@ var TimePicker = Component.extend({
        */
       this.$emit('change', {
         sender: this,
-        time: newValue
+        time: newValue,
       });
     });
-    
-    this.$watch(['hour', 'minute','seconds'], function(hour, minute,seconds) {
+
+    this.$watch(['hour', 'minute', 'seconds'], function (hour, minute, seconds) {
       hour += '';
       minute += '';
       seconds += '';
-      this.data.time = (hour.length > 1 ? hour : '0' + hour) + ':' + (minute.length > 1 ? minute : '0' + minute)+":" +(seconds.length > 1 ? seconds : '0' + seconds);
+      this.data.time = `${hour.length > 1 ? hour : `0${hour}`}:${minute.length >
+      1
+        ? minute
+        : `0${minute}`}:${seconds.length > 1 ? seconds : `0${seconds}`}`;
     });
-    
-    this.$watch(['minTime', 'maxTime'], function(minTime, maxTime) {
-      if(!minTime)
-        throw new TypeError('Invalid Time');
-      if(!maxTime)
-        throw new TypeError('Invalid Time');
-      
-      if(minTime > maxTime)
+
+    this.$watch(['minTime', 'maxTime'], function (minTime, maxTime) {
+      if (!minTime) throw new TypeError('Invalid Time');
+      if (!maxTime) throw new TypeError('Invalid Time');
+
+      if (minTime > maxTime) {
         throw new TimePicker.TimeRangeError(minTime, maxTime);
-      
+      }
+
       // 如果超出时间范围，则设置为范围边界的时间
-      var isOutOfRange = this.isOutOfRange(this.data.time);
-      if(isOutOfRange)
-        this.data.time = isOutOfRange;
+      const isOutOfRange = this.isOutOfRange(this.data.time);
+      if (isOutOfRange) this.data.time = isOutOfRange;
     });
   },
   /**
@@ -96,19 +97,22 @@ var TimePicker = Component.extend({
    * @param {Time} time 待测的时间
    * @return {boolean|Time} time 如果没有超出时间范围，则返回false；如果超出时间范围，则返回范围边界的时间
    */
-  isOutOfRange: function(time) {
-    var minTime = this.data.minTime;
-    var maxTime = this.data.maxTime;
-    
+  isOutOfRange(time) {
+    const minTime = this.data.minTime;
+    const maxTime = this.data.maxTime;
+
     // minTime && time < minTime && minTime，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的时间
-    return (minTime && time < minTime && minTime) || (maxTime && time > maxTime && maxTime);
-  }
+    return (
+      (minTime && time < minTime && minTime) ||
+      (maxTime && time > maxTime && maxTime)
+    );
+  },
 });
 
-var TimeRangeError = function(minTime, maxTime) {
+const TimeRangeError = function (minTime, maxTime) {
   this.name = 'TimeRangeError';
-  this.message = 'Wrong Time Range where `minTime` is ' + minTime + ' and `maxTime` is ' + maxTime + '!';
-}
+  this.message = `Wrong Time Range where \`minTime\` is ${minTime} and \`maxTime\` is ${maxTime}!`;
+};
 
 TimeRangeError.prototype = Object.create(Error.prototype);
 TimePicker.TimeRangeError = TimeRangeError.prototype.constructor = TimeRangeError;

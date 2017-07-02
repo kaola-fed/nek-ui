@@ -1,15 +1,13 @@
 /**
  * ------------------------------------------------------------
- * KLSubMenu 
+ * KLSubMenu
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../../ui-base/component');
-var template = require('./index.html');
-var RootMenuMixin = require('../mixins/rootMenu');
+const Component = require('../../../../ui-base/component');
+const template = require('./index.html');
+const RootMenuMixin = require('../mixins/rootMenu');
 
 /**
  * @class KLSubMenu
@@ -20,13 +18,13 @@ var RootMenuMixin = require('../mixins/rootMenu');
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.titleTemplate]            => 标题文案模板
  */
-var KLSubMenu = Component.extend({
+const KLSubMenu = Component.extend({
   name: 'kl-menu-sub',
-  template: template,
+  template,
   /**
    * @protected
    */
-  config: function() {
+  config() {
     this.defaults({
       class: '',
       title: '',
@@ -35,22 +33,22 @@ var KLSubMenu = Component.extend({
     this.supr();
   },
   computed: {
-    'active': function() {
+    active() {
       if (!this.data.rootMenu) return;
       return this.data.rootMenu.openedMenus.indexOf(this) > -1;
     },
   },
-  init: function() {
+  init() {
     this.initRootMenu();
 
     if (this.data.defaultOpen) {
-     this.data.rootMenu.openedMenus.push(this);
+      this.data.rootMenu.openedMenus.push(this);
     }
   },
-  toggle: function() {
+  toggle() {
     this.data.rootMenu.$emit('submenu-click', this);
     this.$emit('click', this);
-  }
+  },
 });
 
 KLSubMenu.use(RootMenuMixin);

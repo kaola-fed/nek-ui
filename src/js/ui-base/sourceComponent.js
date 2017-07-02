@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('./component');
-var _ = require('./_');
-var Ajax = require('./ajax');
+const Component = require('./component');
+const _ = require('./_');
+const Ajax = require('./ajax');
 
 /**
  * @class SourceComponent
@@ -23,70 +21,68 @@ var Ajax = require('./ajax');
  * @param {string}          [options.data.class]               => 补充class
  * @param {object}          [options.service]                 @=> 数据服务
  */
-var SourceComponent = Component.extend({
-    service: null,
-    /**
+const SourceComponent = Component.extend({
+  service: null,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            source: [],
-            updateAuto: true
-        });
+  config() {
+    _.extend(this.data, {
+      source: [],
+      updateAuto: true,
+    });
 
-        if(this.data.service)
-            this.service = this.data.service;
+    if (this.data.service) this.service = this.data.service;
 
-        if(this.service && this.data.updateAuto)
-            this.$updateSource();
+    if (this.service && this.data.updateAuto) this.$updateSource();
 
-        this.supr();
-    },
-    request: function (options) {
-        var self = this;
-        var data = this.data;
-        var oldError = options.error,
-            oldSuccess = options.success,
-            oldComplete = options.complete;
-        data.loading = true;
+    this.supr();
+  },
+  request(options) {
+    const self = this;
+    const data = this.data;
+    let oldError = options.error,
+      oldSuccess = options.success,
+      oldComplete = options.complete;
+    data.loading = true;
 
-        options.success = function (data) {
-            oldSuccess && oldSuccess(data);
-            self.$update('loading', false);
-        };
-        options.error = function (data) {
-            oldError && oldError(data);
-            self.$update('loading', false);
-        };
+    options.success = function (data) {
+      oldSuccess && oldSuccess(data);
+      self.$update('loading', false);
+    };
+    options.error = function (data) {
+      oldError && oldError(data);
+      self.$update('loading', false);
+    };
 
-        options.complete = function (data) {
-            oldComplete && oldComplete(data);
-            self.$update('loading', false);
-        };
-        Ajax.request(options)
-    },
-    /**
+    options.complete = function (data) {
+      oldComplete && oldComplete(data);
+      self.$update('loading', false);
+    };
+    Ajax.request(options);
+  },
+  /**
      * @method getParams 返回请求时需要的参数
      * @protected
      * @deprecated
      * @return {object} object
      */
-    getParams: function() {
-        return {};
-    },
-    /**
+  getParams() {
+    return {};
+  },
+  /**
      * @method $updateSource() 从service中更新数据源
      * @public
      * @deprecated
      * @return {SourceComponent} this
      */
-    $updateSource: function() {
-        var self = this;
-        this.service.getList.call(this, this.getParams(), function(result) {
-            self.$update('source', result);
-        });
-        return this;
-    }
+  $updateSource() {
+    const self = this;
+    this.service.getList.call(this, this.getParams(), (result) => {
+      self.$update('source', result);
+    });
+    return this;
+  },
 });
 
 module.exports = SourceComponent;

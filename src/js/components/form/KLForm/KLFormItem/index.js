@@ -1,11 +1,9 @@
-'use strict';
+const _ = require('../../../../ui-base/_');
+const Validation = require('../../../../util/validation');
+const validationMixin = require('../../../../util/validationMixin');
+const KLTooltip = require('../../../widget/KLTooltip');
 
-var _ = require('../../../../ui-base/_');
-var Validation = require('../../../../util/validation');
-var validationMixin = require('../../../../util/validationMixin');
-var KLTooltip = require('../../../widget/KLTooltip');
-
-var template = require('./index.html');
+const template = require('./index.html');
 
 /**
  * @class KLFormItem
@@ -25,77 +23,85 @@ var template = require('./index.html');
    * @param {string}        [options.data.layout='']          => 排列方式: 默认(横着排)/vertical/inline;
    * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
  */
-var KLFormItem = Validation.extend({
-    name: 'kl-form-item',
-    template: template,
-    config: function (data) {
-        _.extend(data, {
-            textAlign: 'right',
-            labelCols: '',
-            labelLineHeight: 'lg'
-        });
-        this.supr(data);
+const KLFormItem = Validation.extend({
+  name: 'kl-form-item',
+  template,
+  config(data) {
+    _.extend(data, {
+      textAlign: 'right',
+      labelCols: '',
+      labelLineHeight: 'lg',
+    });
+    this.supr(data);
 
-        this.initValidation();
-    },
-    init: function() {
-        var parentValidator = this._parentValidator;
-        this.$watch('this.controls.length', function(newValue, oldValue) {
-            /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
-            if (oldValue === undefined) { return; }
-            if (parentValidator && parentValidator.initSelectorSource) {
-                parentValidator.initSelectorSource();
-            }
-        });
-
-        this.$watch('required', function() {
-            this.initValidateRule();
-        });
-    },
-    initValidateRule: function() {
-        if (!this.controls.length) { return; }
-
-        var self = this;
-        var controls = this.controls || [],
-            message = this.data.message;
-        controls.forEach(function($component) {
-          if (self.data.required) {
-            $component.data.required = true;
-            $component.data.message = $component.data.message || message;
-            $component.$update();
-          } else {
-            $component.$update('required', false);
-          }
-        });
-    }
-});
-
-KLFormItem.directive('cols', function(ele, cols) {
-    this.$watch(cols, function(ncols) {
-      ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
-      if (ncols) {
-        ele.classList.add('g-col', 'g-col-' + ncols);
+    this.initValidation();
+  },
+  init() {
+    const parentValidator = this._parentValidator;
+    this.$watch('this.controls.length', (newValue, oldValue) => {
+      /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
+      if (oldValue === undefined) {
+        return;
+      }
+      if (parentValidator && parentValidator.initSelectorSource) {
+        parentValidator.initSelectorSource();
       }
     });
-});
 
-KLFormItem.directive('size', function(ele, size) {
-    this.$watch(size, function(newValue, oldValue) {
-        if (!newValue) { return; }
-
-        if (parseInt(newValue)) {
-            ele.style.width = parseInt(newValue) + 'px';
-        } else {
-            ele.style.width = '';
-            ele.classList.remove(oldValue);
-            ele.classList.add(`formitem_tt-${newValue}`);
-        }
+    this.$watch('required', function () {
+      this.initValidateRule();
     });
+  },
+  initValidateRule() {
+    if (!this.controls.length) {
+      return;
+    }
+
+    const self = this;
+    let controls = this.controls || [],
+      message = this.data.message;
+    controls.forEach(($component) => {
+      if (self.data.required) {
+        $component.data.required = true;
+        $component.data.message = $component.data.message || message;
+        $component.$update();
+      } else {
+        $component.$update('required', false);
+      }
+    });
+  },
 });
 
-KLFormItem.directive('lineHeight', function(ele, lineHeight) {
-  this.$watch(lineHeight, function(newValue, oldValue) {
-    if (!newValue) { return; }
+KLFormItem.directive('cols', function (ele, cols) {
+  this.$watch(cols, (ncols) => {
+    ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
+    if (ncols) {
+      ele.classList.add('g-col', `g-col-${ncols}`);
+    }
+  });
+});
+
+KLFormItem.directive('size', function (ele, size) {
+  this.$watch(size, (newValue, oldValue) => {
+    if (!newValue) {
+      return;
+    }
+
+    if (parseInt(newValue)) {
+      ele.style.width = `${parseInt(newValue)}px`;
+    } else {
+      ele.style.width = '';
+      ele.classList.remove(oldValue);
+      ele.classList.add(`formitem_tt-${newValue}`);
+    }
+  });
+});
+
+KLFormItem.directive('lineHeight', function (ele, lineHeight) {
+  this.$watch(lineHeight, (newValue, oldValue) => {
+    if (!newValue) {
+      return;
+    }
 
     if (!isNaN(newValue)) {
       ele.style.lineHeight = newValue;

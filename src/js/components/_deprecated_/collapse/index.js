@@ -5,13 +5,11 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-
-var Panel = require('../panel');
+const Panel = require('../panel');
 
 /**
  * @class Collapse
@@ -22,19 +20,19 @@ var Panel = require('../panel');
  * @param {boolean}           [options.data.visible=true]         => 是否显示
  * @param {string}            [options.data.class]                => 补充class
  */
-var Collapse = Component.extend({
-    name: 'collapse',
-    template: template,
-    /**
+const Collapse = Component.extend({
+  name: 'collapse',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            panels: [],
-            accordion: false
-        });
-        this.supr();
-    }
+  config() {
+    _.extend(this.data, {
+      panels: [],
+      accordion: false,
+    });
+    this.supr();
+  },
 });
 
 module.exports = Collapse;

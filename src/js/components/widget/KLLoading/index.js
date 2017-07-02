@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLLoading
@@ -19,59 +17,56 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]              => 补充class
  */
-var KLLoading = Component.extend({
-    name: 'kl-loading',
-    template: template,
-    /**
+const KLLoading = Component.extend({
+  name: 'kl-loading',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            'static': false,
-            visible: false
-        });
-        this.supr();
-    },
-    /**
+  config() {
+    _.extend(this.data, {
+      static: false,
+      visible: false,
+    });
+    this.supr();
+  },
+  /**
      * @protected
      */
-    init: function() {
-        this.supr();
-        // 证明不是内嵌组件
-        if(this.$root === this)
-            this.$inject(document.body);
-    },
-    /**
+  init() {
+    this.supr();
+    // 证明不是内嵌组件
+    if (this.$root === this) this.$inject(document.body);
+  },
+  /**
      * @method show() 显示组件
      * @public
      * @return {void}
      */
-    show: function() {
-        if(this.data.disabled)
-            return;
+  show() {
+    if (this.data.disabled) return;
 
-        this.data.visible = true;
-        this.$update();
-    },
-    /**
+    this.data.visible = true;
+    this.$update();
+  },
+  /**
      * @method show() 隐藏组件
      * @public
      * @return {void}
      */
-    hide: function() {
-        if(this.data.disabled)
-            return;
+  hide() {
+    if (this.data.disabled) return;
 
-        this.data.visible = false;
-        this.$update();
-    }
+    this.data.visible = false;
+    this.$update();
+  },
 });
 
 /**
  * 直接初始化一个实例
  * @type {Loading}
  */
-var loading = new KLLoading();
+const loading = new KLLoading();
 KLLoading.loading = loading;
 
 /**
@@ -80,9 +75,9 @@ KLLoading.loading = loading;
  * @public
  * @return {void}
  */
-KLLoading.show = function() {
-    loading.show();
-}
+KLLoading.show = function () {
+  loading.show();
+};
 
 /**
  * @method hide() 隐藏加载中
@@ -90,8 +85,8 @@ KLLoading.show = function() {
  * @public
  * @return {void}
  */
-KLLoading.hide = function() {
-    loading.hide();
-}
+KLLoading.hide = function () {
+  loading.hide();
+};
 
 module.exports = KLLoading;

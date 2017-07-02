@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var Panel = require('../panel');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const Panel = require('../panel');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class Panel
@@ -17,14 +15,14 @@ var _ = require('../../../ui-base/_');
  * @param {object}            [options.data]                = 绑定属性
  * @param {boolean}           [options.data.foot=false]     => true: 放在panel_ft的位置; false: 放在头部位置;
  */
-var PanelTool = Component.extend({
+const PanelTool = Component.extend({
   name: 'panel.tool',
   /**
    * @protected
    */
-  config: function() {
+  config() {
     _.extend(this.data, {
-      foot: false
+      foot: false,
     });
     this.supr();
 
@@ -35,7 +33,7 @@ var PanelTool = Component.extend({
         this.$outer.$tools = this;
       }
     }
-  }
+  },
 });
 
 module.exports = PanelTool;

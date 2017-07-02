@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLSteps
@@ -19,38 +17,38 @@ var _ = require('../../../ui-base/_');
  * @param {string}      [options.data.current=null]   <=> 当前状态
  * @param {boolean}     [options.data.size=false]     =>  当前尺寸
  */
-var KLSteps = Component.extend({
-    name: 'kl-steps',
-    template: template,
-    /**
+const KLSteps = Component.extend({
+  name: 'kl-steps',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            steps: [],
-            current: 0,
-            size: '',
-            currentIndex: 0
-        });
-        this.supr();
-    },
-    init: function () {
-        this.supr();
-        this.$watch('current', function(newValue, oldValue) {
-            this.juedgeFinishedItem();
-        });
-    },
-    juedgeFinishedItem: function () {
-        var data = this.data;
-        var current = data.current;
-        var steps = data.steps;
+  config() {
+    _.extend(this.data, {
+      steps: [],
+      current: 0,
+      size: '',
+      currentIndex: 0,
+    });
+    this.supr();
+  },
+  init() {
+    this.supr();
+    this.$watch('current', function (newValue, oldValue) {
+      this.juedgeFinishedItem();
+    });
+  },
+  juedgeFinishedItem() {
+    const data = this.data;
+    const current = data.current;
+    const steps = data.steps;
 
-        steps.forEach(function(item, index) {
-            if (item.status == current) {
-                data.currentIndex = index;
-            }
-        })
-    }
+    steps.forEach((item, index) => {
+      if (item.status == current) {
+        data.currentIndex = index;
+      }
+    });
+  },
 });
 
 module.exports = KLSteps;

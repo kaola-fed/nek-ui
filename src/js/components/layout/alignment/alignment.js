@@ -5,14 +5,12 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const dom = require('regularjs').dom;
+const domAlign = require('dom-align');
 
-var dom = require('regularjs').dom;
-var domAlign = require('dom-align');
-
-var Component = require('../../../ui-base/component');
-var _ = require('../../../ui-base/_');
-var placement = require('./placement');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const placement = require('./placement');
 
 /**
  * @class Alignment
@@ -20,41 +18,51 @@ var placement = require('./placement');
  * @param {object}            [options.data]                        = 绑定属性
  * @param {string}            [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  */
-var Alignment = Component.extend({
+const Alignment = Component.extend({
   name: 'alignment',
   template: '{#inc this.$body}',
-  config: function (data) {
+  config(data) {
     this.defaults({
-      placement: 'top'
+      placement: 'top',
     });
 
     this.supr(data);
   },
-  init:function() {
+  init() {
     this.data.target = dom.element(this);
-    var self = this;
+    const self = this;
 
-    dom.on(window, 'resize', _.debounce(function() {
-      self.reAlign();
-    }, 50));
+    dom.on(
+      window,
+      'resize',
+      _.debounce(() => {
+        self.reAlign();
+      }, 50),
+    );
   },
-  reAlign: function(src) {
+  reAlign(src) {
     var target = this.data.target,
       src = src || this.data.src,
       align = placement[this.data.placement];
 
-    if (src) { this.data.src = src; }
-    if (!src || !target) { return; }
+    if (src) {
+      this.data.src = src;
+    }
+    if (!src || !target) {
+      return;
+    }
 
-    if (src.style.display == 'none') { return; }
-    
+    if (src.style.display == 'none') {
+      return;
+    }
+
     domAlign(src, target, {
       points: align.points,
       offset: align.offset,
       targetOffset: align.targetOffset,
-      overflow: align.overflow
+      overflow: align.overflow,
     });
-  }
+  },
 });
 
 module.exports = Alignment;

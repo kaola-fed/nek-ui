@@ -18,52 +18,51 @@ const _ = require('../../../ui-base/_');
  * @param {string}            [options.data.class]                => 补充class
  */
 const KLMask = Component.extend({
-    name: 'kl-mask',
-    template: template,
-    /**
+  name: 'kl-mask',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            closable: true
-        });
-        this.supr();
-    },
-    /**
+  config() {
+    _.extend(this.data, {
+      closable: true,
+    });
+    this.supr();
+  },
+  /**
      * @protected
      */
-    init: function() {
-        this.supr();
+  init() {
+    this.supr();
 
-        // 如果不是内嵌组件，则嵌入到document.body中
-        if(this.$root === this)
-            this.$inject(document.body);
-    },
-    /**
+    // 如果不是内嵌组件，则嵌入到document.body中
+    if (this.$root === this) this.$inject(document.body);
+  },
+  /**
      * @protected
      */
-    _handleClick: function(e) {
-        if (/m-mask/.test(e.target.className)) {
-            if (this.data.closable) this.close();
-        }
-    },
-    /**
+  _handleClick(e) {
+    if (/m-mask/.test(e.target.className)) {
+      if (this.data.closable) this.close();
+    }
+  },
+  /**
      * @method close(data) 关闭遮罩
      * @public
      * @param  {object} data 额外数据
      * @return {void}
      */
-    close: function(data) {
-        /**
+  close(data) {
+    /**
          * @event close 关闭遮罩时触发
          * @property {object} data 额外数据
          */
-        this.$emit('close', {
-            sender: this,
-            data: data
-        });
-        this.destroy();
-    }
+    this.$emit('close', {
+      sender: this,
+      data,
+    });
+    this.destroy();
+  },
 });
 
 module.exports = KLMask;

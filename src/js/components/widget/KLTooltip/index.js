@@ -5,14 +5,12 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const dom = require('regularjs').dom;
 
-var dom = require('regularjs').dom;
-
-var Component = require("../../../ui-base/component");
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var trigger = require('../../layout/alignment/trigger');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const trigger = require('../../layout/alignment/trigger');
 
 /**
  * @class KLTooltip
@@ -21,58 +19,61 @@ var trigger = require('../../layout/alignment/trigger');
  * @param {string}          [options.data.tip]              => 文字提示
  * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  */
-var KLTooltip = Component.extend({
-    name: 'kl-tooltip',
-    template: '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
-    config: function (data) {
-        this.defaults({
-          tip: '',
-          placement: 'top'
-        });
+const KLTooltip = Component.extend({
+  name: 'kl-tooltip',
+  template:
+    '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
+  config(data) {
+    this.defaults({
+      tip: '',
+      placement: 'top',
+    });
 
-        this.supr(data);
-    },
-    destroy: function() {
-        if (this.data.instance) {
-            this.data.instance.destroy();
-        }
-        this.supr();
-    },
-    getInstance: function() {
-      var self = this;
-      var tip = this.data.tip,
-          placement = this.data.placement;
-      if (!this.data.instance) {
-        var instance = new TipPopUp({
-          data: {tip: tip, placement: placement}
-        });
-
-        instance.$on('destroy', function() {
-          self.$refs.trigger.data.isShow = false;
-          self.data.instance = null;
-        });
-
-        this.data.instance = instance;
-      }
-      return this.data.instance;
+    this.supr(data);
+  },
+  destroy() {
+    if (this.data.instance) {
+      this.data.instance.destroy();
     }
+    this.supr();
+  },
+  getInstance() {
+    const self = this;
+    let tip = this.data.tip,
+      placement = this.data.placement;
+    if (!this.data.instance) {
+      const instance = new TipPopUp({
+        data: { tip, placement },
+      });
+
+      instance.$on('destroy', () => {
+        self.$refs.trigger.data.isShow = false;
+        self.data.instance = null;
+      });
+
+      this.data.instance = instance;
+    }
+    return this.data.instance;
+  },
 });
 
 var TipPopUp = Component.extend({
-  template: template,
-  config: function(data) {
+  template,
+  config(data) {
     this.defaults({
-      isShow: true
+      isShow: true,
     });
     this.supr(data);
   },
-  init: function() {
-    if(this.$root == this){
+  init() {
+    if (this.$root == this) {
       this.$inject(document.body);
     }
     this.data.element = dom.element(this);
   },
-  getElement: function() { return this.data.element; }
+  getElement() {
+    return this.data.element;
+  },
 });
 
 module.exports = KLTooltip;

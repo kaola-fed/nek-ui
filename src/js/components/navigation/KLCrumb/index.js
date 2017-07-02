@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLCrumb
@@ -20,19 +18,19 @@ var _ = require('../../../ui-base/_');
  * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
  * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
  */
-var KLCrumb = Component.extend({
-    name: 'kl-crumb',
-    template: template,
-    /**
+const KLCrumb = Component.extend({
+  name: 'kl-crumb',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            separator: '/',
-            crumbArr: []
-        });
-        this.supr();
-    }
+  config() {
+    _.extend(this.data, {
+      separator: '/',
+      crumbArr: [],
+    });
+    this.supr();
+  },
 });
 
 module.exports = KLCrumb;

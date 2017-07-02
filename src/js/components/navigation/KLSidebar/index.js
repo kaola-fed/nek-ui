@@ -1,15 +1,13 @@
 /**
  * ------------------------------------------------------------
- * KLSidebar 
+ * KLSidebar
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var KLMenu = require('../KLMenu');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const KLMenu = require('../KLMenu');
 
 /**
  * @class KLSidebar
@@ -26,13 +24,13 @@ var KLMenu = require('../KLMenu');
  * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
  * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
  */
-var KLSidebar = Component.extend({
+const KLSidebar = Component.extend({
   name: 'kl-sidebar',
-  template: template,
+  template,
   /**
    * @protected
    */
-  config: function() {
+  config() {
     this.defaults({
       class: '',
       uniqueOpened: true,
@@ -48,7 +46,7 @@ var KLSidebar = Component.extend({
 
     this.supr();
   },
-  initBodyEl: function() {
+  initBodyEl() {
     if (this.data.bodyEl) {
       this.data.$bodyEl = document.getElementById(this.data.bodyEl);
       if (this.data.$bodyEl) {
@@ -56,18 +54,18 @@ var KLSidebar = Component.extend({
       }
     }
   },
-  toggle: function() {
+  toggle() {
     this.initBodyEl();
 
     this.data.active = !this.data.active;
     if (this.data.$bodyEl) {
-      this.data.$bodyEl.style.left = this.data.active? '180px' : '0';
+      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
     }
   },
 });
 
-KLSidebar.directive('top', function(ele, value) {
-  this.$watch(value, function(top) {
+KLSidebar.directive('top', function (ele, value) {
+  this.$watch(value, (top) => {
     ele.style.top = top;
   });
 });

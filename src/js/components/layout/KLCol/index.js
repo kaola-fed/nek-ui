@@ -4,12 +4,10 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var _ = require('../../../ui-base/_');
-var template = require('./index.html');
-var KLRow = require('../KLRow');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const template = require('./index.html');
+const KLRow = require('../KLRow');
 
 /**
  * @class KLCol
@@ -19,24 +17,24 @@ var KLRow = require('../KLRow');
  * @param {number}          [options.data.span='']              => 栅格占据的列数
  * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
  */
-var KLCol = Component.extend({
+const KLCol = Component.extend({
   name: 'kl-col',
-  template: template,
-  config: function (data) {
+  template,
+  config(data) {
     this.defaults({
       span: '',
       offset: '',
       gutter: 0,
     });
 
-    var $outer = this;
+    let $outer = this;
     do {
       if ($outer.$outer) {
         $outer = $outer.$outer;
       } else if ($outer.$parent) {
         $outer = $outer.$parent;
       }
-    } while(!($outer instanceof KLRow) && ($outer.$outer || $outer.$parent));
+    } while (!($outer instanceof KLRow) && ($outer.$outer || $outer.$parent));
 
     if ($outer && $outer instanceof KLRow) {
       this.data.gutter = $outer.data.gutter;
@@ -46,14 +44,14 @@ var KLCol = Component.extend({
   },
 });
 
-KLCol.directive('gutter', function(ele, value) {
-  this.$watch(value, function(gutter) {
+KLCol.directive('gutter', function (ele, value) {
+  this.$watch(value, (gutter) => {
     if (gutter) {
-      var padding = gutter/2 + 'px';
+      const padding = `${gutter / 2}px`;
       ele.style.paddingLeft = padding;
       ele.style.paddingRight = padding;
     }
-  })
+  });
 });
 
 module.exports = KLCol;

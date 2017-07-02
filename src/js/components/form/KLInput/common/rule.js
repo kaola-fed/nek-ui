@@ -1,14 +1,15 @@
-var _ = require('../../../../ui-base/_');
+const _ = require('../../../../ui-base/_');
 
-function stringBytes(c){
-  var n=c.length,s;
-  var len=0;
-  for(var i=0; i <n;i++){
-   s=c.charCodeAt(i);
-   while( s > 0 ){
+function stringBytes(c) {
+  let n = c.length,
+    s;
+  let len = 0;
+  for (let i = 0; i < n; i++) {
+    s = c.charCodeAt(i);
+    while (s > 0) {
       len++;
-      s = s >> 8;
-   }
+      s >>= 8;
+    }
   }
   return len;
 }
@@ -18,26 +19,37 @@ function isNumeric(n) {
 }
 
 module.exports = {
-  required: {type:'isRequired', message: _.$trans('PLEASE_INPUT')},
-  isEmail: {type:'isEmail', message: _.$trans('FORMAT_ERROR')},
-  isURL: {type:'isURL', message: _.$trans('FORMAT_ERROR')},
-  isInt: function(min, max, message) {
-    min = isNumeric(min) ? min/1 : -Infinity;
-    max = isNumeric(max) ? max/1 : Infinity;
-    return {type:'isInt', message:message || _.$trans('VALUE_ERROR'), options:{min:min, max:max}};
+  required: { type: 'isRequired', message: _.$trans('PLEASE_INPUT') },
+  isEmail: { type: 'isEmail', message: _.$trans('FORMAT_ERROR') },
+  isURL: { type: 'isURL', message: _.$trans('FORMAT_ERROR') },
+  isInt(min, max, message) {
+    min = isNumeric(min) ? min / 1 : -Infinity;
+    max = isNumeric(max) ? max / 1 : Infinity;
+    return {
+      type: 'isInt',
+      message: message || _.$trans('VALUE_ERROR'),
+      options: { min, max },
+    };
   },
-  isFloat: function(min, max, message) {
-    min = isNumeric(min) ? min/1 : -Infinity;
-    max = isNumeric(max) ? max/1 : Infinity;
-    return {type:'isFloat', message:message || _.$trans('VALUE_ERROR'), options:{min:min, max:max}};
+  isFloat(min, max, message) {
+    min = isNumeric(min) ? min / 1 : -Infinity;
+    max = isNumeric(max) ? max / 1 : Infinity;
+    return {
+      type: 'isFloat',
+      message: message || _.$trans('VALUE_ERROR'),
+      options: { min, max },
+    };
   },
-  byteLen: function(min, max, message) {
-    min = isNumeric(min) ? min/1 : 0;
-    max = isNumeric(max) ? max/1 : Infinity;
-    return {message:message || _.$trans('LENGTH_ERROR'), method: function(value) {
-      value = value || '';
-      var len = stringBytes(value);
-      return len >= min && len <= max;
-    }};
-  }
+  byteLen(min, max, message) {
+    min = isNumeric(min) ? min / 1 : 0;
+    max = isNumeric(max) ? max / 1 : Infinity;
+    return {
+      message: message || _.$trans('LENGTH_ERROR'),
+      method(value) {
+        value = value || '';
+        const len = stringBytes(value);
+        return len >= min && len <= max;
+      },
+    };
+  },
 };

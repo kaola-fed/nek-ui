@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLProgress
@@ -24,23 +22,23 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}             [options.data.visible=true]       => 是否显示
  * @param {string}              [options.data.class]              => 补充class
  */
-var KLProgress = Component.extend({
-    name: 'kl-progress',
-    template: template,
-    /**
+const KLProgress = Component.extend({
+  name: 'kl-progress',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            percent: 36,
-            text: true,
-            size: null,
-            state: null,
-            striped: false,
-            active: false
-        });
-        this.supr();
-    }
+  config() {
+    _.extend(this.data, {
+      percent: 36,
+      text: true,
+      size: null,
+      state: null,
+      striped: false,
+      active: false,
+    });
+    this.supr();
+  },
 });
 
 module.exports = KLProgress;

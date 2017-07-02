@@ -5,14 +5,12 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Dropdown = require('../../form/common/Dropdown');
-var Validation = require('../../../util/validation');
-var validationMixin = require('../../../util/validationMixin');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var Treeview = require('../../form/common/TreeView');
+const Dropdown = require('../../form/common/Dropdown');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const Treeview = require('../../form/common/TreeView');
 
 /**
  * @class TreeSelect
@@ -39,37 +37,37 @@ var Treeview = require('../../form/common/TreeView');
  */
 
 // TODO: value 数据回显
-var TreeSelect = Dropdown.extend({
-    name: 'tree.select',
-    template: template,
-    config: function(data) {
-        _.extend(this.data, {
-            // @inherited source: [],
-            // @inherited open: false,
-            multiple: false,
-            value: null,
-            selected: null,
-            separator: ',',
-            placeholder: this.$trans('PLEASE_SELECT'),
-            key: 'id',
-            nameKey: 'name',
-            childKey: 'children',
-            hierarchical: false,
-            updateAuto: false
-        });
-        this.supr();
+const TreeSelect = Dropdown.extend({
+  name: 'tree.select',
+  template,
+  config(data) {
+    _.extend(this.data, {
+      // @inherited source: [],
+      // @inherited open: false,
+      multiple: false,
+      value: null,
+      selected: null,
+      separator: ',',
+      placeholder: this.$trans('PLEASE_SELECT'),
+      key: 'id',
+      nameKey: 'name',
+      childKey: 'children',
+      hierarchical: false,
+      updateAuto: false,
+    });
+    this.supr();
 
-        this.initValidation();
+    this.initValidation();
+  },
+  computed: {
+    phShow(data) {
+      if (!data.selected) return data.placeholder;
+      if (Array.isArray(data.selected)) {
+        return data.selected.map(d => d[data.nameKey]).join(data.separator);
+      }
+      return data.selected[data.nameKey];
     },
-    computed: {
-        phShow: function(data) {
-            if (!data.selected) return data.placeholder;
-            if (Array.isArray(data.selected)) return data.selected.map(function(d) {
-                return d[data.nameKey];
-            }).join(data.separator);
-            return data.selected[data.nameKey];
-        }
-    }
+  },
 });
 
 TreeSelect.use(validationMixin);

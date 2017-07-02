@@ -5,13 +5,11 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var validator = require('validator');
-var bowser = require('bowser');
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const validator = require('validator');
+const bowser = require('bowser');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLButton
@@ -30,7 +28,7 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.disabled=false] => 禁止按钮
  * @param {boolean}     [options.data.class=false]    => 样式扩展
  */
-var actionIcons= {
+const actionIcons = {
   /* 查看 */
   view: 'eye',
   /* 发送 */
@@ -68,58 +66,57 @@ var actionIcons= {
   /* 链接 */
   link: 'link',
   /* 单行添加 */
-  plus: 'plus'
+  plus: 'plus',
 };
 
+const KLButton = Component.extend({
+  name: 'kl-button',
+  template,
+  config() {
+    _.extend(this.data, {
+      title: this.$trans('CONFIRM'),
+      type: 'default',
+      size: 'normal',
+      icon: '',
+      loading: false,
+      disabled: false,
+      actionIcons,
+      target: '_self',
+    });
+    this.supr();
+  },
 
-var KLButton = Component.extend({
-    name: 'kl-button',
-    template: template,
-    config: function() {
-        _.extend(this.data, {
-            title: this.$trans('CONFIRM'),
-            type: 'default',
-            size: 'normal',
-            icon: '',
-            loading: false,
-            disabled: false,
-            actionIcons: actionIcons,
-            target: '_self'
-        });
-        this.supr();
-    },
-
-    init: function() {
-        this.supr();
-        this.$watch('download', function(url) {
-            if (validator.isURL(url)) {
-                if (bowser.chrome) {
-                    var a = document.createElement('a');
-                    a.href = url;
-                    a.download = url;
-                    a.click();
-                } else {
-                    location.href = url;
-                }
-                this.data.download = '';
-            }
-        });
-    },
-
-    onClick: function(e) {
-        var loading = this.data.loading;
-        if (!loading) {
-            this.$emit('click', {
-                sender: this,
-                e: e
-            });
+  init() {
+    this.supr();
+    this.$watch('download', function (url) {
+      if (validator.isURL(url)) {
+        if (bowser.chrome) {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = url;
+          a.click();
+        } else {
+          location.href = url;
         }
-        return !!this.data.link;
-    },
+        this.data.download = '';
+      }
+    });
+  },
 
-    onMouseUp: function (e) {
-        e.target.blur();
+  onClick(e) {
+    const loading = this.data.loading;
+    if (!loading) {
+      this.$emit('click', {
+        sender: this,
+        e,
+      });
     }
+    return !!this.data.link;
+  },
+
+  onMouseUp(e) {
+    e.target.blur();
+  },
 });
 
 module.exports = KLButton;

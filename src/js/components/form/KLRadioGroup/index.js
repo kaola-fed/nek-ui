@@ -5,13 +5,11 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var SourceComponent = require('../../../ui-base/sourceComponent');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var Validation = require('../../../util/validation');
-var validationMixin = require('../../../util/validationMixin');
+const SourceComponent = require('../../../ui-base/sourceComponent');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class KLRadioGroup
@@ -33,117 +31,118 @@ var validationMixin = require('../../../util/validationMixin');
  * @param {string}        [options.data.class]            => 补充class
  * @param {object}        [options.service]               @=> 数据服务
  */
-var KLRadioGroup = SourceComponent.extend({
-    name: 'kl-radio-group',
-    template: template,
-    /**
+const KLRadioGroup = SourceComponent.extend({
+  name: 'kl-radio-group',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            // @inherited source: [],
-            hideTip: false,
-            selected: null,
-            _radioGroupId: new Date(),
-            required: false,
-            nameKey: 'name',
-            key: 'id',
+  config() {
+    _.extend(this.data, {
+      // @inherited source: [],
+      hideTip: false,
+      selected: null,
+      _radioGroupId: new Date(),
+      required: false,
+      nameKey: 'name',
+      key: 'id',
+    });
+    this.supr();
+
+    this.initValidation();
+
+    this.$watch('value', function (newValue) {
+      const data = this.data;
+      const source = data.source;
+      if (newValue === undefined || newValue === null) return;
+      if (source) {
+        const key = data.key;
+        source.forEach((item) => {
+          if (item[key] === 0 && newValue === '') {
+            return false;
+          } else if (newValue == item[key]) {
+            data.selected = item;
+          }
         });
-        this.supr();
+      }
+    });
 
-        this.initValidation();
+    this.$watch('source', function (source) {
+      if (!source || !(source instanceof Array)) {
+        return console.error('source of radio.group is not an array');
+      }
 
-        this.$watch('value', function(newValue) {
-            var data = this.data;
-            var source = data.source;
-            if (newValue === undefined || newValue === null) return;
-            if (source) {
-                var key = data.key;
-                source.forEach(function(item) {
-                    if (item[key] === 0 && newValue === "") {
-                        return false;
-                    } else if (newValue == item[key]) {
-                        data.selected = item;
-                    }
-                });
-            }
+      if (source) {
+        let data = this.data,
+          key = data.key,
+          value = data.value;
+        source.forEach((item) => {
+          if (item[key] === 0 && value === '') {
+            return false;
+          } else if (value == item[key]) {
+            data.selected = item;
+          }
         });
-
-        this.$watch('source', function(source) {
-            if (!source || !(source instanceof Array)) { return console.error('source of radio.group is not an array'); }
-
-            if (source) {
-                var data = this.data,
-                    key = data.key,
-                    value = data.value;
-                source.forEach(function(item) {
-                    if (item[key] === 0 && value === "") {
-                        return false;
-                    } else if (value == item[key]) {
-                        data.selected = item;
-                    }
-                });
-            }
-        });
-    },
-    /**
+      }
+    });
+  },
+  /**
      * @method select(item) 选择某一
      * @public
      * @param  {object} item 选择
      * @return {void}
      */
-    select: function(item) {
-        if(this.data.readonly || this.data.disabled)
-            return;
+  select(item) {
+    if (this.data.readonly || this.data.disabled) return;
 
-        var data = this.data;
-        var key = data.key;
-        var nameKey = data.nameKey;
-        var value = item[key];
-        data.value = value === undefined ? item[nameKey] : value;
+    const data = this.data;
+    const key = data.key;
+    const nameKey = data.nameKey;
+    const value = item[key];
+    data.value = value === undefined ? item[nameKey] : value;
 
-        data.selected = item;
-        /**
+    data.selected = item;
+    /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择
          */
-        this.$emit('select', {
-            sender: this,
-            selected: item
-        });
+    this.$emit('select', {
+      sender: this,
+      selected: item,
+    });
 
-        this.data.tip && this.validate();
-    },
-    /**
+    this.data.tip && this.validate();
+  },
+  /**
      * @method validate() 根据required验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
-    validate: function(on) {
-        var data = this.data,
-            result = { success: true, message: '' },
-            selected = data.selected;
+  validate(on) {
+    let data = this.data,
+      result = { success: true, message: '' },
+      selected = data.selected;
 
-        if (data.required && !selected) {
-            result.success = false;
-            result.message = this.data.message || this.$trans('PLEASE_SELECT');
-            this.data.state = 'error';
-        } else {
-            result.success = true;
-            result.message = '';
-            this.data.state = '';
-        }
-        this.data.tip = result.message;
+    if (data.required && !selected) {
+      result.success = false;
+      result.message = this.data.message || this.$trans('PLEASE_SELECT');
+      this.data.state = 'error';
+    } else {
+      result.success = true;
+      result.message = '';
+      this.data.state = '';
+    }
+    this.data.tip = result.message;
 
-        this.$emit('validate', {
-            sender: this,
-            on: on,
-            result: result
-        });
+    this.$emit('validate', {
+      sender: this,
+      on,
+      result,
+    });
 
-        return result;
-    },
+    return result;
+  },
 });
 
 KLRadioGroup.use(validationMixin);

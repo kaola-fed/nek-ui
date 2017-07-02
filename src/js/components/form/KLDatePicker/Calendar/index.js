@@ -5,16 +5,15 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
+const Component = require('../../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../../ui-base/_');
 
-var Component = require('../../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../../ui-base/_');
+const bowser = require('bowser');
+const moment = require('moment');
+const polyfill = require('../../../../ui-base/polyfill');
 
-var bowser = require('bowser');
-var moment = require('moment');
-var polyfill = require('../../../../ui-base/polyfill');
-var MS_OF_DAY = 24*3600*1000;
+const MS_OF_DAY = 24 * 3600 * 1000;
 
 /**
  * @class Calendar
@@ -29,224 +28,235 @@ var MS_OF_DAY = 24*3600*1000;
  * @param {string}        [options.data.class]            => 补充class
  */
 var Calendar = Component.extend({
-    name: 'calendar',
-    template: template,
-    /**
+  name: 'calendar',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            date: null,
-            minDate: null,
-            maxDate: null,
-            _days: []
-        });
-        this.supr();
+  config() {
+    _.extend(this.data, {
+      date: null,
+      minDate: null,
+      maxDate: null,
+      _days: [],
+    });
+    this.supr();
 
-        this.$watch('date', function(newValue, oldValue) {
-            // 字符类型自动转为日期类型
-            if(typeof newValue === 'string') {
-                if(bowser.msie && bowser.version <= 9)
-                    return this.data.date = polyfill.StringDate(newValue);
-                return this.data.date = newValue ? new Date(newValue) : new Date();
-            } else if(typeof newValue === 'number') {
-                return this.data.date = new Date(newValue);
-            }
+    this.$watch('date', function (newValue, oldValue) {
+      // 字符类型自动转为日期类型
+      if (typeof newValue === 'string') {
+        if (bowser.msie && bowser.version <= 9) {
+          return (this.data.date = polyfill.StringDate(newValue));
+        }
+        return (this.data.date = newValue ? new Date(newValue) : new Date());
+      } else if (typeof newValue === 'number') {
+        return (this.data.date = new Date(newValue));
+      }
 
-            // 如果newValue为空， 则自动转到今天
-            if(!newValue)
-                return this.data.date = new Date((new Date/MS_OF_DAY>>0)*MS_OF_DAY);
+      // 如果newValue为空， 则自动转到今天
+      if (!newValue) {
+        return (this.data.date = new Date(
+          ((new Date() / MS_OF_DAY) >> 0) * MS_OF_DAY,
+        ));
+      }
 
-            if(newValue == 'Invalid Date')
-                throw new TypeError('Invalid Date');
+      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
 
-            // 如果超出日期范围，则设置为范围边界的日期
-            var isOutOfRange = this.isOutOfRange(newValue);
-            if(isOutOfRange) {
-                this.data.date = isOutOfRange;
+      // 如果超出日期范围，则设置为范围边界的日期
+      const isOutOfRange = this.isOutOfRange(newValue);
+      if (isOutOfRange) {
+        this.data.date = isOutOfRange;
 
-                // 防止第二次刷新同月
-                this._update();
-                return;
-            }
+        // 防止第二次刷新同月
+        this._update();
+        return;
+      }
 
-            if(!oldValue || !oldValue.getFullYear)
-                this._update();
-            else if(newValue.getFullYear() !== oldValue.getFullYear() || newValue.getMonth() !== oldValue.getMonth())
-                this._update();
+      if (!oldValue || !oldValue.getFullYear) this._update();
+      else if (
+        newValue.getFullYear() !== oldValue.getFullYear() ||
+        newValue.getMonth() !== oldValue.getMonth()
+      ) {
+        this._update();
+      }
 
-            /**
+      /**
              * @event change 日期改变时触发
              * @property {object} sender 事件发送对象
              * @property {object} date 改变后的日期
              */
-            this.$emit('change', {
-                sender: this,
-                date: newValue
-            });
-        });
+      this.$emit('change', {
+        sender: this,
+        date: newValue,
+      });
+    });
 
-        this.$watch('minDate', function(newValue, oldValue) {
-            if(!newValue)
-                return;
+    this.$watch('minDate', function (newValue, oldValue) {
+      if (!newValue) return;
 
-            if(typeof newValue === 'string') {
-                if(bowser.msie && bowser.version <= 9)
-                    return this.data.date = polyfill.StringDate(newValue);
-                return this.data.minDate = new Date(newValue);
-            }
+      if (typeof newValue === 'string') {
+        if (bowser.msie && bowser.version <= 9) {
+          return (this.data.date = polyfill.StringDate(newValue));
+        }
+        return (this.data.minDate = new Date(newValue));
+      }
 
-            if(newValue == 'Invalid Date')
-                throw new TypeError('Invalid Date');
-        });
+      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+    });
 
-        this.$watch('maxDate', function(newValue, oldValue) {
-            if(!newValue)
-                return;
+    this.$watch('maxDate', function (newValue, oldValue) {
+      if (!newValue) return;
 
-            if(typeof newValue === 'string') {
-                if(bowser.msie && bowser.version <= 9)
-                    return this.data.date = polyfill.StringDate(newValue);
-                return this.data.maxDate = new Date(newValue);
-            }
+      if (typeof newValue === 'string') {
+        if (bowser.msie && bowser.version <= 9) {
+          return (this.data.date = polyfill.StringDate(newValue));
+        }
+        return (this.data.maxDate = new Date(newValue));
+      }
 
-            if(newValue == 'Invalid Date')
-                throw new TypeError('Invalid Date');
-        });
+      if (newValue == 'Invalid Date') throw new TypeError('Invalid Date');
+    });
 
-        this.$watch(['minDate', 'maxDate'], function(minDate, maxDate) {
-            if(!(minDate && minDate instanceof Date || maxDate && maxDate instanceof Date))
-                return;
+    this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
+      if (
+        !(
+          (minDate && minDate instanceof Date) ||
+          (maxDate && maxDate instanceof Date)
+        )
+      ) {
+        return;
+      }
 
-            if(minDate && maxDate)
-                if(minDate/MS_OF_DAY>>0 > maxDate/MS_OF_DAY>>0)
-                    throw new Calendar.DateRangeError(minDate, maxDate);
+      if (minDate && maxDate) {
+        if ((minDate / MS_OF_DAY) >> 0 > (maxDate / MS_OF_DAY) >> 0) {
+          throw new Calendar.DateRangeError(minDate, maxDate);
+        }
+      }
 
-            // 如果超出日期范围，则设置为范围边界的日期
-            var isOutOfRange = this.isOutOfRange(this.data.date);
-            if(isOutOfRange)
-                this.data.date = isOutOfRange;
-        });
-    },
-    /**
+      // 如果超出日期范围，则设置为范围边界的日期
+      const isOutOfRange = this.isOutOfRange(this.data.date);
+      if (isOutOfRange) this.data.date = isOutOfRange;
+    });
+  },
+  /**
      * @method _update() 日期改变后更新日历
      * @private
      * @return {void}
      */
-    _update: function() {
-        this.data._days = [];
+  _update() {
+    this.data._days = [];
 
-        var date = this.data.date;
-        var month = date.getMonth();
-        var mfirst = new Date(date); mfirst.setDate(1);
-        var mfirstTime = +mfirst;
-        var nfirst = new Date(mfirst); nfirst.setMonth(month + 1); nfirst.setDate(1);
-        var nfirstTime = +nfirst;
-        var lastTime = nfirstTime + ((7 - nfirst.getDay())%7 - 1)*MS_OF_DAY;
-        var num = - mfirst.getDay();
-        var tmpTime, tmp;
-        do {
-            tmpTime = mfirstTime + (num++)*MS_OF_DAY;
-            tmp = new Date(tmpTime);
-            this.data._days.push(tmp);
-        } while(tmpTime < lastTime);
-    },
-    /**
+    const date = this.data.date;
+    const month = date.getMonth();
+    const mfirst = new Date(date);
+    mfirst.setDate(1);
+    const mfirstTime = +mfirst;
+    const nfirst = new Date(mfirst);
+    nfirst.setMonth(month + 1);
+    nfirst.setDate(1);
+    const nfirstTime = +nfirst;
+    const lastTime = nfirstTime + ((7 - nfirst.getDay()) % 7 - 1) * MS_OF_DAY;
+    let num = -mfirst.getDay();
+    let tmpTime,
+      tmp;
+    do {
+      tmpTime = mfirstTime + num++ * MS_OF_DAY;
+      tmp = new Date(tmpTime);
+      this.data._days.push(tmp);
+    } while (tmpTime < lastTime);
+  },
+  /**
      * @method addYear(year) 调整年份
      * @public
      * @param  {number} [year=0] 加/减的年份
      * @return {Date} date 计算后的日期
      */
-    addYear: function(year) {
-        if(this.data.readonly || this.data.disabled || !year)
-            return;
+  addYear(year) {
+    if (this.data.readonly || this.data.disabled || !year) return;
 
-        if(isNaN(year))
-            throw new TypeError(year + ' is not a number!');
+    if (isNaN(year)) throw new TypeError(`${year} is not a number!`);
 
-        var date = new Date(this.data.date);
-        var oldMonth = date.getMonth();
-        date.setFullYear(date.getFullYear() + year);
-        if(date.getMonth() != oldMonth)
-            date.setDate(0);
+    const date = new Date(this.data.date);
+    const oldMonth = date.getMonth();
+    date.setFullYear(date.getFullYear() + year);
+    if (date.getMonth() != oldMonth) date.setDate(0);
 
-        return this.data.date = date;
-    },
-    /**
+    return (this.data.date = date);
+  },
+  /**
      * @method addMonth(month) 调整月份
      * @public
      * @param  {number} [month=0] 加/减的月份
      * @return {Date} date 计算后的日期
      */
-    addMonth: function(month) {
-        if(this.data.readonly || this.data.disabled || !month)
-            return;
+  addMonth(month) {
+    if (this.data.readonly || this.data.disabled || !month) return;
 
-        if(isNaN(month))
-            throw new TypeError(month + ' is not a number!');
+    if (isNaN(month)) throw new TypeError(`${month} is not a number!`);
 
-        var date = new Date(this.data.date);
-        var correctMonth = date.getMonth() + month;
-        date.setMonth(correctMonth);
-        // 如果跳月，则置为上一个月
-        if((date.getMonth() - correctMonth)%12)
-            date.setDate(0);
+    const date = new Date(this.data.date);
+    const correctMonth = date.getMonth() + month;
+    date.setMonth(correctMonth);
+    // 如果跳月，则置为上一个月
+    if ((date.getMonth() - correctMonth) % 12) date.setDate(0);
 
-        return this.data.date = date;
-    },
-    /**
+    return (this.data.date = date);
+  },
+  /**
      * @method select(date) 选择一个日期
      * @public
      * @param  {Date} date 选择的日期
      * @return {void}
      */
-    select: function(date) {
-        if(this.data.readonly || this.data.disabled || this.isOutOfRange(date))
-            return;
+  select(date) {
+    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
+      return;
+    }
 
-        this.data.date = new Date(date);
+    this.data.date = new Date(date);
 
-        /**
+    /**
          * @event select 选择某一个日期时触发
          * @property {object} sender 事件发送对象
          * @property {object} date 当前选择的日期
          */
-        this.$emit('select', {
-            sender: this,
-            date: date
-        });
-    },
-    /**
+    this.$emit('select', {
+      sender: this,
+      date,
+    });
+  },
+  /**
      * @method goToday() 回到今天
      * @public
      * @return {void}
      */
-    goToday: function() {
-        if(this.data.readonly || this.data.disabled)
-            return;
+  goToday() {
+    if (this.data.readonly || this.data.disabled) return;
 
-        this.data.date = new Date((new Date/MS_OF_DAY>>0)*MS_OF_DAY);
-    },
-    /**
+    this.data.date = new Date(((new Date() / MS_OF_DAY) >> 0) * MS_OF_DAY);
+  },
+  /**
      * @method isOutOfRange(date) 是否超出规定的日期范围
      * @public
      * @param {Date} date 待测的日期
      * @return {boolean|Date} date 如果没有超出日期范围，则返回false；如果超出日期范围，则返回范围边界的日期
      */
-    isOutOfRange: function(date) {
-        var minDate = this.data.minDate;
-        var maxDate = this.data.maxDate;
+  isOutOfRange(date) {
+    const minDate = this.data.minDate;
+    const maxDate = this.data.maxDate;
 
-        // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
-        return (minDate && moment(date).isBefore(minDate, 'day') && minDate)
-            || (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate);
-    }
+    // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
+    return (
+      (minDate && moment(date).isBefore(minDate, 'day') && minDate) ||
+      (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate)
+    );
+  },
 });
 
-var DateRangeError = function(minDate, maxDate) {
-    this.name = 'DateRangeError';
-    this.message = 'Wrong Date Range where `minDate` is ' + minDate + ' and `maxDate` is ' + maxDate + '!';
-}
+const DateRangeError = function (minDate, maxDate) {
+  this.name = 'DateRangeError';
+  this.message = `Wrong Date Range where \`minDate\` is ${minDate} and \`maxDate\` is ${maxDate}!`;
+};
 DateRangeError.prototype = Object.create(RangeError.prototype);
 Calendar.DateRangeError = DateRangeError.prototype.constructor = DateRangeError;
 

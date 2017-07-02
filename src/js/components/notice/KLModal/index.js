@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLModal
@@ -30,84 +28,83 @@ var _ = require('../../../ui-base/_');
  * @param {number}            [options.data.minHeight]            => 内容区域最小高度
  * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
  */
-var KLModal = Component.extend({
-    name: 'kl-modal',
-    template: template,
-    /**
+const KLModal = Component.extend({
+  name: 'kl-modal',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            title: this.$trans('NOTICE'),
-            content: '',
-            okButton: true,
-            with: 400,
-            cancelButton: false,
-            noClose: false,
-            okDisabled: false,
-            cancelDisabled: false,
-            hasFooter: true,
-            isCanClose: true,
-        });
-        this.supr();
-    },
-    /**
+  config() {
+    _.extend(this.data, {
+      title: this.$trans('NOTICE'),
+      content: '',
+      okButton: true,
+      with: 400,
+      cancelButton: false,
+      noClose: false,
+      okDisabled: false,
+      cancelDisabled: false,
+      hasFooter: true,
+      isCanClose: true,
+    });
+    this.supr();
+  },
+  /**
      * @protected
      */
-    init: function() {
-        this.supr();
+  init() {
+    this.supr();
 
-        // 如果不是内嵌组件，则嵌入到document.body中
-        if(this.$root === this)
-            this.$inject(document.body);
-    },
-    /**
+    // 如果不是内嵌组件，则嵌入到document.body中
+    if (this.$root === this) this.$inject(document.body);
+  },
+  /**
      * @method close(result) 关闭对话框
      * @public
      * @param  {boolean} result 点击确定还是取消
      * @return {void}
      */
-    close: function(result, event) {
-        /**
+  close(result, event) {
+    /**
          * @event close 关闭对话框时触发
          * @property {boolean} result 点击了确定还是取消
          */
-        this.$emit('close', {
-            result: result
-        });
-        result ? this.ok(event) : this.cancel();
-    },
-    /**
+    this.$emit('close', {
+      result,
+    });
+    result ? this.ok(event) : this.cancel();
+  },
+  /**
      * @method ok() 确定对话框
      * @public
      * @return {void}
      */
-    ok: function(event) {
-        /**
+  ok(event) {
+    /**
          * @event ok 确定对话框时触发
          */
-        this.$emit('ok', event);
-        !this.data.noClose && this.destroy();
-    },
-    /**
+    this.$emit('ok', event);
+    !this.data.noClose && this.destroy();
+  },
+  /**
      * @method cancel() 取消对话框
      * @public
      * @return {void}
      */
-    cancel: function() {
-        /**
+  cancel() {
+    /**
          * @event cancel 取消对话框时触发
          */
-        this.$emit('cancel');
-        this.destroy();
-    },
-    _onDragStart: function($event) {
-        var dialog = $event.proxy;
-        dialog.style.left = dialog.offsetLeft + 'px';
-        dialog.style.top = dialog.offsetTop + 'px';
-        dialog.style.zIndex = '1000';
-        dialog.style.position = 'absolute';
-    }
+    this.$emit('cancel');
+    this.destroy();
+  },
+  _onDragStart($event) {
+    const dialog = $event.proxy;
+    dialog.style.left = `${dialog.offsetLeft}px`;
+    dialog.style.top = `${dialog.offsetTop}px`;
+    dialog.style.zIndex = '1000';
+    dialog.style.position = 'absolute';
+  },
 });
 
 /**
@@ -118,17 +115,17 @@ var KLModal = Component.extend({
  * @param  {string} [title=提示] 对话框标题
  * @return {Modal} modal 返回该对话框
  */
-KLModal.alert = function(content, title, okButton) {
-    var modal = new this({
-        data: {
-            content: content,
-            title: title,
-            okButton: okButton
-        }
-    });
+KLModal.alert = function (content, title, okButton) {
+  const modal = new this({
+    data: {
+      content,
+      title,
+      okButton,
+    },
+  });
 
-    return modal;
-}
+  return modal;
+};
 
 /**
  * @method confirm(content[,title]) 弹出一个confirm对话框
@@ -138,18 +135,18 @@ KLModal.alert = function(content, title, okButton) {
  * @param  {string} [title=提示] 对话框标题
  * @return {Modal} modal 返回该对话框
  */
-KLModal.confirm = function(content, title, okButton, cancelButton) {
-    var modal = new this({
-        data: {
-            content: content,
-            title: title,
-            okButton: okButton,
-            cancelButton: cancelButton || true
-        }
-    });
+KLModal.confirm = function (content, title, okButton, cancelButton) {
+  const modal = new this({
+    data: {
+      content,
+      title,
+      okButton,
+      cancelButton: cancelButton || true,
+    },
+  });
 
-    return modal;
-}
+  return modal;
+};
 
 // var oldExtend = Modal.extend;
 // Modal.extend = function() {

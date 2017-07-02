@@ -5,13 +5,11 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Dropdown = require('../../form/common/dropdown');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
-var Validation = require('../../../util/validation');
-var validationMixin = require('../../../util/validationMixin');
+const Dropdown = require('../../form/common/dropdown');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
 
 /**
  * @class Suggest
@@ -40,198 +38,201 @@ var validationMixin = require('../../../util/validationMixin');
  * @param {string}        [options.data.class]                 => 补充class
  * @param {object}        [options.service]                       @=> 数据服务
  */
-var Suggest = Dropdown.extend({
-    name: 'suggest',
-    template: template,
-    /**
+const Suggest = Dropdown.extend({
+  name: 'suggest',
+  template,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            // @inherited source: [],
-            // @inherited open: false,
-            hideTip: false,
-            selected: null,
-            value: '',
-            id: '',
-            key: 'id',
-            nameKey: 'name',
-            placeholder: this.$trans('PLEASE_SELECT'),
-            maxlength: undefined,
-            startLength: 0,
-            delay: 300,
-            matchType: 'all',
-            strict: false,
-            autofocus: false,
-            required: false
-        });
-        this.supr();
+  config() {
+    _.extend(this.data, {
+      // @inherited source: [],
+      // @inherited open: false,
+      hideTip: false,
+      selected: null,
+      value: '',
+      id: '',
+      key: 'id',
+      nameKey: 'name',
+      placeholder: this.$trans('PLEASE_SELECT'),
+      maxlength: undefined,
+      startLength: 0,
+      delay: 300,
+      matchType: 'all',
+      strict: false,
+      autofocus: false,
+      required: false,
+    });
+    this.supr();
 
-        this.initValidation();
+    this.initValidation();
 
-        this.$watch('id', function(id) {
-            var source = this.data.source || [],
-                key = this.data.key,
-                nameKey = this.data.nameKey;
+    this.$watch('id', function (id) {
+      let source = this.data.source || [],
+        key = this.data.key,
+        nameKey = this.data.nameKey;
 
-            var crt = source.find(function(item) { return item[key] == id; });
-            this.$update('value', crt ? crt[nameKey] : '');
-        });
-    },
-    /**
+      const crt = source.find(item => item[key] == id);
+      this.$update('value', crt ? crt[nameKey] : '');
+    });
+  },
+  /**
      * @protected
      */
-    init: function() {
-        var id = this.data.id,
-            source = this.data.source;
+  init() {
+    let id = this.data.id,
+      source = this.data.source;
 
-        if (id && source) {
-            var selected = source.filter(function(item) {
-                return item[this.data.key] == id;
-            })[0];
-            if (selected) {
-                this.data.selected = selected;
-                this.data.value = selected[this.data.nameKey];
-            }
-        }
-    },
-    /**
+    if (id && source) {
+      const selected = source.filter(function (item) {
+        return item[this.data.key] == id;
+      })[0];
+      if (selected) {
+        this.data.selected = selected;
+        this.data.value = selected[this.data.nameKey];
+      }
+    }
+  },
+  /**
      * @method select(item) 选择某一项
      * @public
      * @param  {object} item 选择项
      * @return {void}
      */
-    select: function(item) {
-        if(this.data.readonly || this.data.disabled || item.disabled || item.divider) {
-            this.$emit('select', {
-              sender: this,
-              selected: item,
-              disabled: true
-            });
-            return;
-        }
+  select(item) {
+    if (
+      this.data.readonly ||
+      this.data.disabled ||
+      item.disabled ||
+      item.divider
+    ) {
+      this.$emit('select', {
+        sender: this,
+        selected: item,
+        disabled: true,
+      });
+      return;
+    }
 
-        this.data.selected = item;
-        this.data.value = item[this.data.nameKey];
-        this.data.id = item[this.data.key];
+    this.data.selected = item;
+    this.data.value = item[this.data.nameKey];
+    this.data.id = item[this.data.key];
 
-        /**
+    /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择项
          */
-        this.$emit('select', {
-            sender: this,
-            selected: item
-        });
-        this.toggle(false);
-    },
-    /**
+    this.$emit('select', {
+      sender: this,
+      selected: item,
+    });
+    this.toggle(false);
+  },
+  /**
      * @method toggle(open) 展开/收起
      * @public
      * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
      * @return {void}
      */
-    toggle: function(open, _isInput) {
-        if(this.data.readonly || this.data.disabled)
-            return;
+  toggle(open, _isInput) {
+    if (this.data.readonly || this.data.disabled) return;
 
-        if(open === undefined)
-            open = !this.data.open;
-        this.data.open = open;
+    if (open === undefined) open = !this.data.open;
+    this.data.open = open;
 
-        var index = Dropdown.opens.indexOf(this);
-        if(open && index < 0)
-            Dropdown.opens.push(this);
-        else if(!open && index >= 0) {
-            Dropdown.opens.splice(index, 1);
+    const index = Dropdown.opens.indexOf(this);
+    if (open && index < 0) Dropdown.opens.push(this);
+    else if (!open && index >= 0) {
+      Dropdown.opens.splice(index, 1);
 
-            if(!_isInput && this.data.strict)
-               this.data.value = this.data.selected ? this.data.selected[this.data.nameKey] : '';
-        }
+      if (!_isInput && this.data.strict) {
+        this.data.value = this.data.selected
+          ? this.data.selected[this.data.nameKey]
+          : '';
+      }
+    }
 
-        /**
+    /**
          * @event toggle  展开/收起时触发
          * @property {object} sender 事件发送对象
          * @property {object} open 展开/收起状态
          */
-        this.$emit('toggle', {
-            sender: this,
-            open: open
-        });
-    },
-    /**
+    this.$emit('toggle', {
+      sender: this,
+      open,
+    });
+  },
+  /**
      * @private
      */
-    _onInput: function($event) {
-        var value = this.data.value || '';
+  _onInput($event) {
+    const value = this.data.value || '';
 
-        if(value.length >= this.data.startLength) {
-            this.toggle(true);
-            if(this.service)
-                this.$updateSource();
-        } else
-            this.toggle(false, true);
-    },
-    /**
+    if (value.length >= this.data.startLength) {
+      this.toggle(true);
+      if (this.service) this.$updateSource();
+    } else this.toggle(false, true);
+  },
+  /**
      * @private
      */
-    _onBlur: function($event) {
-
-    },
-    /**
+  _onBlur($event) {},
+  /**
      * @private
      */
-    getParams: function() {
-        return {value: this.data.value};
-    },
-    /**
+  getParams() {
+    return { value: this.data.value };
+  },
+  /**
      * @private
      */
-    filter: function(item) {
-        var value = this.data.value;
+  filter(item) {
+    const value = this.data.value;
 
-        if(!value && this.data.startLength)
-            return false;
+    if (!value && this.data.startLength) return false;
 
-        if(this.data.matchType === 'all')
-            return item[this.data.nameKey].indexOf(value) >= 0;
-        else if(this.data.matchType === 'startLength')
-            return item[this.data.nameKey].slice(0, value.length) === value;
-        else if(this.data.matchType === 'end')
-            return item[this.data.nameKey].slice(-value.length) === value;
-    },
-    /**
+    if (this.data.matchType === 'all') {
+      return item[this.data.nameKey].indexOf(value) >= 0;
+    } else if (this.data.matchType === 'startLength') {
+      return item[this.data.nameKey].slice(0, value.length) === value;
+    } else if (this.data.matchType === 'end') {
+      return item[this.data.nameKey].slice(-value.length) === value;
+    }
+  },
+  /**
      * @method validate() 根据验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
-    validate: function(on) {
-        if (!this.data.required) { return {success:true}; }
-
-        var result = { success: true, message: '' },
-            value = this.data.value,
-            value = (typeof value == 'undefined') ? '' : value + '';
-
-        if (!value.length) {
-            result.success = false;
-            result.message = this.data.message || this.$trans('PLEASE_SELECT');
-            this.data.state = 'error';
-        } else {
-            result.success = true;
-            result.message = '';
-            this.data.state = '';
-        }
-        this.data.tip = result.message;
-
-        this.$emit('validate', {
-            sender: this,
-            on: on,
-            result: result
-        });
-
-        return result;
+  validate(on) {
+    if (!this.data.required) {
+      return { success: true };
     }
+
+    var result = { success: true, message: '' },
+      value = this.data.value,
+      value = typeof value === 'undefined' ? '' : `${value}`;
+
+    if (!value.length) {
+      result.success = false;
+      result.message = this.data.message || this.$trans('PLEASE_SELECT');
+      this.data.state = 'error';
+    } else {
+      result.success = true;
+      result.message = '';
+      this.data.state = '';
+    }
+    this.data.tip = result.message;
+
+    this.$emit('validate', {
+      sender: this,
+      on,
+      result,
+    });
+
+    return result;
+  },
 });
 
 Suggest.use(validationMixin);

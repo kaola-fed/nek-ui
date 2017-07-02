@@ -5,11 +5,9 @@
  * ------------------------------------------------------------
  */
 
-'use strict';
-
-var Component = require('../../../ui-base/component');
-var template = require('./index.html');
-var _ = require('../../../ui-base/_');
+const Component = require('../../../ui-base/component');
+const template = require('./index.html');
+const _ = require('../../../ui-base/_');
 
 /**
  * @class KLCard
@@ -20,23 +18,22 @@ var _ = require('../../../ui-base/_');
  * @param {boolean}          [options.data.isShowBtLine]          => 控制展示title下发的横线，默认不展示出来
  * @param {boolean}          [options.data.isIndent]              => 控制子模块的title是否缩进
  */
-var KLCard = Component.extend({
-    name: 'kl-card',
-    template: template,
-    $tools: null,
-    /**
+const KLCard = Component.extend({
+  name: 'kl-card',
+  template,
+  $tools: null,
+  /**
      * @protected
      */
-    config: function() {
-        _.extend(this.data, {
-            title: '',
-            isShowLine: true,
-            isShowBtLine: false,
-            isIndent: true,
-        });
-        this.supr();
-
-    }
+  config() {
+    _.extend(this.data, {
+      title: '',
+      isShowLine: true,
+      isShowBtLine: false,
+      isIndent: true,
+    });
+    this.supr();
+  },
 });
 
 module.exports = KLCard;
