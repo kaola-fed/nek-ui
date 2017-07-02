@@ -9,8 +9,6 @@
 
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
-var KLMenuItem = require('./KLMenuItem');
-var KLSubMenu = require('./KLSubMenu');
 
 /**
  * @class Menu
@@ -62,8 +60,6 @@ var KLMenu = Component.extend({
       this.openedMenus.push(submenu);
     }
   },
-})
-.component('kl-menu-item', KLMenuItem)
-.component('kl-sub-menu', KLSubMenu);
+});
 
 module.exports = KLMenu;

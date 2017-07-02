@@ -2,8 +2,6 @@
 
 var TableHeader = require('./TableHeader');
 var TableBody = require('./TableBody');
-var KLTableCol = require('./KLTableCol');
-var KLTableTemplate = require('./KLTableTemplate');
 var _ = require('../../../ui-base/_');
 var u = require('./utils');
 
@@ -532,8 +530,6 @@ var KLTable = Component.extend({
 })
 .component('table-header', TableHeader)
 .component('table-body', TableBody)
-.component('kl-table-col', KLTableCol)
-.component('kl-table-template', KLTableTemplate);
 
 var oldFilterFunc = KLTable.filter;
 
@@ -541,8 +537,9 @@ KLTable.filter = function() {
     var args = [].slice.call(arguments, 0);
     TableHeader.filter.apply(TableHeader, args);
     TableBody.filter.apply(TableBody, args);
-    KLTableCol.filter.apply(KLTableCol, args);
-    KLTableTemplate.filter.apply(KLTableTemplate, args);
+    // FIXME:
+    // KLTableCol.filter.apply(KLTableCol, args);
+    // KLTableTemplate.filter.apply(KLTableTemplate, args);
     oldFilterFunc.apply(KLTable, args);
 };
 

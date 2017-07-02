@@ -4,7 +4,6 @@ var _ = require('../../../ui-base/_');
 var ajax = require('../../../ui-base/ajax');
 var Validation = require('../../../util/validation');
 var ValidationMixin = require('../../../util/validationMixin');
-var KLFormItem = require('./KLFormItem');
 
 var template = require('./index.html');
 
@@ -129,7 +128,7 @@ var KLForm = Validation.extend({
         window.NEKSelects[key] = _.clone(source);
         $selectItem.$update();
     }
-}).component('kl-form-item', KLFormItem);
+});
 
 KLForm.use(ValidationMixin);
 

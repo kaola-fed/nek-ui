@@ -2,6 +2,7 @@
 
 var Component = require('../../../../ui-base/component');
 var KLTableTemplate = require('../KLTableTemplate');
+var KLTable = require('../index');
 
 /**
  * @class KLTableCol
@@ -36,10 +37,10 @@ var KLTableCol = Component.extend({
         this._register();
     },
     _register: function() {
-        var outerName = this.$outer.name;
-        if(outerName === 'kl-table') {
+        var outer = this.$outer;
+        if(outer instanceof KLTable) {
             this._register2Table();
-        } else if(outerName === 'kl-table-col') {
+        } else if(outer instanceof KLTableCol) {
             this._register2TableCol();
         }
     },

@@ -10,6 +10,7 @@
 var Component = require('../../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../../ui-base/_');
+var KLCrumb = require('../index');
 
 /**
  * @class KLCrumbItem     
@@ -29,7 +30,7 @@ var KLCrumbItem = Component.extend({
         });
         this.supr();
 
-        if (this.$outer && this.$outer.name === 'kl-crumb') {
+        if (this.$outer && this.$outer instanceof KLCrumb) {
             this.$outer.data.crumbArr.push(this);
         }
     }

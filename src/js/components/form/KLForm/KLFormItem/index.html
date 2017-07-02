@@ -4,7 +4,7 @@
   <label class="formitem_tt" cols="{labelCols}" size="{labelSize}" lineHeight="{labelLineHeight}" style="text-align:{textAlign}">
     {#if title}
       <span class="formitem_rqr" r-hide="{!required}">&#42;</span>{title}
-      {#if tip}<tooltip tip="{tip}"><i class="u-icon u-icon-warning formitem_info"></i></tooltip>{/if}
+      {#if tip}<kl-tooltip tip="{tip}"><i class="u-icon u-icon-warning formitem_info"></i></kl-tooltip>{/if}
     {#else}
       {#inc titleTemplate}
     {/if}

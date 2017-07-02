@@ -18,6 +18,7 @@ const Components = {
     KLMultiSelect : require('./components/form/KLMultiSelect'),
     KLButton : require('./components/form/KLButton'),
     KLForm : require('./components/form/KLForm'),
+    KLFormItem: require('./components/form/KLForm/KLFormItem'),
     KLInput : require('./components/form/KLInput'),
     KLSelect : require('./components/form/KLSelect'),
     KLText : require('./components/form/KLText'),
@@ -27,10 +28,14 @@ const Components = {
     // Navigation
     KLSidebar : require('./components/navigation/KLSidebar'),
     KLMenu : require('./components/navigation/KLMenu'),
+    KLMenuItem : require('./components/navigation/KLMenu/KLMenuItem'),
+    KLSubMenu : require('./components/navigation/KLMenu/KLSubMenu'),
     KLPager : require('./components/navigation/KLPager'),
     KLTabs : require('./components/navigation/KLTabs'),
+    KLTab : require('./components/navigation/KLTabs/KLTab'),
     KLSteps : require('./components/navigation/KLSteps'),
     KLCrumb : require('./components/navigation/KLCrumb'),
+    KLCrumbItem : require('./components/navigation/KLCrumb/KLCrumbItem'),
 
     // Notice
     KLModal : require('./components/notice/KLModal'),
@@ -47,9 +52,12 @@ const Components = {
 
     // Layout
     KLTable : require('./components/layout/KLTable'),
+    KLTableCol : require('./components/layout/KLTable/KLTableCol'),
+    KLTableTemplate : require('./components/layout/KLTable/KLTableTemplate'),
     KLRow: require('./components/layout/KLRow'),
     KLCol: require('./components/layout/KLCol'),
     KLCard : require('./components/layout/KLCard'),
+    KLCardTools : require('./components/layout/KLCard/KLCardTools'),
 };
 
 backward(Components);

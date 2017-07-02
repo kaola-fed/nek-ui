@@ -1,3 +1,5 @@
+var KLMenu = require('../index');
+
 module.exports = function(Component) {
   Component.implement({
     initRootMenu: function() {
@@ -7,9 +9,9 @@ module.exports = function(Component) {
           $outer = $outer.$outer;
         } else if ($outer.$parent) {
           $outer = $outer.$parent;
-        }} while(($outer.__proto__.name !== 'kl-menu') && ($outer.$outer || $outer.$parent));
+        }} while(!($outer instanceof KLMenu) && ($outer.$outer || $outer.$parent));
 
-      if ($outer && $outer.__proto__.name === 'kl-menu') {
+      if ($outer && $outer instanceof KLMenu) {
         this.data.rootMenu = $outer;
       }
     }

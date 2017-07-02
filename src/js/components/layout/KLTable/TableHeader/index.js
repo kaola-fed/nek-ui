@@ -1,6 +1,5 @@
 'use strict';
 
-var KLTableTemplate = require('../KLTableTemplate');
 var templates = require('../THElements');
 
 var Component = require('../../../../ui-base/component');
@@ -215,7 +214,5 @@ var TableHeader = Component.extend({
         return '';
     }
 });
-
-TableHeader.component('kl-table-template', KLTableTemplate);
 
 module.exports = TableHeader;

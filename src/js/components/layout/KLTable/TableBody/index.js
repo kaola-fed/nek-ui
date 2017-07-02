@@ -1,7 +1,5 @@
 'use strict';
 
-var KLTableCol = require('../KLTableCol');
-var KLTableTemplate = require('../KLTableTemplate');
 var _ = require('../utils');
 
 var Component = require('../../../../ui-base/component');
@@ -118,9 +116,6 @@ var TableBody = Component.extend({
 .filter('expandSign', function(item) {
     return item.expand ? '-' : '+';
 });
-
-TableBody.component('kl-table-col', KLTableCol);
-TableBody.component('kl-table-template', KLTableTemplate);
 
 module.exports = TableBody;
 

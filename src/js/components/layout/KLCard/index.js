@@ -10,7 +10,6 @@
 var Component = require('../../../ui-base/component');
 var template = require('./index.html');
 var _ = require('../../../ui-base/_');
-var KLCardTools = require('./KLCardTools');
 
 /**
  * @class KLCard
@@ -38,6 +37,6 @@ var KLCard = Component.extend({
         this.supr();
 
     }
-}).component('kl-card-tools', KLCardTools);
+});
 
 module.exports = KLCard;

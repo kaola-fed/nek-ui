@@ -9,6 +9,7 @@
 
 var Component = require('../../../../ui-base/component');
 var _ = require('../../../../ui-base/_');
+var KLCard = require('../index');
 
 /**
  * @class KLCardTools
@@ -26,7 +27,7 @@ var KLCardTools = Component.extend({
         });
         this.supr();
 
-        if (this.$outer && this.$outer.name === 'kl-card') {
+        if (this.$outer && this.$outer instanceof KLCard) {
             this.$outer.$tools = this;
         }
     }
