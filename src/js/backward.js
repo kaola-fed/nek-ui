@@ -48,7 +48,7 @@ module.exports = function(Components) {
         // 注册组件旧别名
         Components[alias.oldObj] = Components[alias.newObj].extend({ name: alias.oldName });
 
-        注册子组件旧别名
+        // 注册子组件旧别名
         (alias.children || []).forEach(function(sub) {
             const subComponent = Components[alias.newObj]._components[sub.newName];
             Components[alias.oldObj].component(sub.oldName, subComponent);
