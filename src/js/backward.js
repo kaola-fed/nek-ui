@@ -94,7 +94,7 @@ module.exports = function (Components) {
     Dropdown: Dropdown.extend({ name: 'dropdown' }),
 
     // 废弃组件
-    SelectGroup: require('./components/_deprecated_/tree.select'),
+    SelectGroup: require('./components/_deprecated_/select.group'),
     Suggest: require('./components/_deprecated_/tree.select'),
     TreeSelect: require('./components/_deprecated_/tree.select'),
     Uploader: require('./components/_deprecated_/uploader'),
