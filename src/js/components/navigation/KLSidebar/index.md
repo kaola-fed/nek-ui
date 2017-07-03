@@ -3,8 +3,11 @@ title: 菜单栏
 ---
 
 ## 代码演示
+KLSidebar只是对KLMenu的进一步封装,如果无法满足需求,可直接使用KLMenu组件
 
 ### 基本形式
+
+通过设置open属性,可以高亮当前选中的菜单
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -61,7 +64,8 @@ var component = new NEKUI.Component({
          open: true,
          children: [{
            title: '二级菜单A',
-           url: '/'
+           url: '/',
+           open: true
          },{
            title: '二级菜单B',
            url: '/'
