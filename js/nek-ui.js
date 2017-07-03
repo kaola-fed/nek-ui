@@ -27126,8 +27126,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	  initFormItem: function initFormItem() {
+	    var controls = this.controls;
 	    var _data = this.data,
-	        controls = _data.controls,
 	        labelSize = _data.labelSize,
 	        labelLineHeight = _data.labelLineHeight;
 
