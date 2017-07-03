@@ -8,13 +8,11 @@
 const Dropdown = require('../common/Dropdown');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-const Validation = require('../../../util/validation');
+require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
-const util = require('./common/util');
+require('./common/util');
 const Multiple = require('./plugins/multiple');
 const PrivateMethod = require('./plugins/private.method');
-const KLTooltip = require('../../widget/KLTooltip');
-const KLCheck = require('../KLCheck');
 
 /**
  * @class KLSelect
@@ -146,7 +144,7 @@ const KLSelect = Dropdown.extend({
       }
     });
 
-    this.$watch('source', function (newValue, oldValue) {
+    this.$watch('source', function (newValue) {
       if (newValue === undefined) {
         return (data.selected = undefined);
       }
@@ -158,34 +156,34 @@ const KLSelect = Dropdown.extend({
       const key = data.key;
       const nameKey = data.nameKey;
       const value = data.value;
-      let itemHandleFn = function (value) {
-        return value;
+      let itemHandleFn = function (_value) {
+        return _value;
       };
       if (newValue.length) {
         if (
           typeof newValue[0] === 'string' ||
           typeof newValue[0] === 'number'
         ) {
-          itemHandleFn = function (value) {
+          itemHandleFn = function (_value) {
             const item = {};
-            item[key] = value;
-            item[nameKey] = value;
+            item[key] = _value;
+            item[nameKey] = _value;
             return item;
           };
         } else if (!newValue[0].hasOwnProperty(key)) {
-          itemHandleFn = function (value) {
-            if (!value.hasOwnProperty('divider')) {
-              value[key] = value[nameKey];
+          itemHandleFn = function (_value) {
+            if (!_value.hasOwnProperty('divider')) {
+              _value[key] = _value[nameKey];
             }
-            return value;
+            return _value;
           };
         } else if (!newValue[0].hasOwnProperty(nameKey)) {
-          itemHandleFn = function (value) {
-            value[nameKey] = value[key];
-            return value;
+          itemHandleFn = function (_value) {
+            _value[nameKey] = _value[key];
+            return _value;
           };
         }
-        newValue = data.source = newValue.map(value => itemHandleFn(value));
+        data.source = newValue.map(_value => itemHandleFn(_value));
       }
 
       if (data.multiple) {
@@ -206,7 +204,7 @@ const KLSelect = Dropdown.extend({
         }
       } else {
         if (value !== undefined && value !== null) {
-          data.selected = newValue.find(item => item[key] == value, this);
+          data.selected = newValue.find(item => item[key] === value, this);
         } else if (data.selected && newValue.indexOf(data.selected) < 0) {
           data.selected = undefined;
         }
@@ -225,7 +223,8 @@ const KLSelect = Dropdown.extend({
       if (this.hasOwnProperty('__canSearch')) {
         canSearch = this.__canSearch;
       } else {
-        canSearch = this.__canSearch = data.canSearch;
+        canSearch = this.__canSearch;
+        this.__canSearch = data.canSearch;
       }
       data.canSearch =
         canSearch === true ||
@@ -251,8 +250,8 @@ const KLSelect = Dropdown.extend({
         return;
       }
       try {
-        newValue = Number(newValue);
-        if (isNaN(newValue)) {
+        const _newValue = Number(newValue);
+        if (isNaN(_newValue)) {
           console.error(this.$trans('LIMIT_ERROR'));
         }
       } catch (e) {
@@ -335,8 +334,8 @@ const KLSelect = Dropdown.extend({
   validate(on) {
     const data = this.data;
 
-    let result = { success: true, message: '' },
-      value = this.data.value;
+    const result = { success: true, message: '' };
+    let value = this.data.value;
 
     value = typeof value === 'undefined' ? '' : `${value}`;
     if (data.required && !value.length) {

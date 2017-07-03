@@ -6,12 +6,10 @@
  */
 
 const Dropdown = require('../common/Dropdown');
-const Validation = require('../../../util/validation');
+require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-const KLCheck = require('../KLCheck');
-const KLInput = require('../KLInput');
 
 /**
  * @class KLMultiSelect
@@ -55,7 +53,7 @@ const KLMultiSelect = Dropdown.extend({
     data.tree = [data._source, [], [], [], [], [], [], [], [], []];
     data.search = ['', '', '', '', '', '', '', '', '', ''];
     data.empty = [];
-    this.$watch('source', function (newValue, oldValue) {
+    this.$watch('source', function (newValue) {
       if (!(newValue instanceof Array)) {
         throw new TypeError('`source` is not an Array!');
       }
@@ -76,7 +74,6 @@ const KLMultiSelect = Dropdown.extend({
           sender: this,
           value: newValue,
           key: data.key,
-          value: data.value,
         });
         if (data.source && data.source.length) {
           this.validate();
@@ -92,7 +89,7 @@ const KLMultiSelect = Dropdown.extend({
     const data = this.data;
     if (data.value !== null && data.value !== undefined) {
       const _list = data.value.toString().split(data.separator);
-      var _checkedItem = function (list) {
+      const _checkedItem = function (list) {
         list.map((item2) => {
           if (item2[data.childKey] && item2[data.childKey].length) {
             _checkedItem(item2[data.childKey]);
@@ -104,9 +101,10 @@ const KLMultiSelect = Dropdown.extend({
           } else {
             item2[data.checkKey] = false;
           }
+          return '';
         });
       };
-      var _checkedSelf = function (list) {
+      const _checkedSelf = function (list) {
         list.map((item) => {
           if (item[data.childKey] && item[data.childKey].length) {
             _checkedSelf(item[data.childKey]);
@@ -122,6 +120,7 @@ const KLMultiSelect = Dropdown.extend({
             } else {
               item[data.checkKey] = false;
             }
+            return '';
           }
         });
       };
@@ -136,7 +135,7 @@ const KLMultiSelect = Dropdown.extend({
     const data = this.data;
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
-    for (var i = level; i < level + 2; i++) {
+    for (let i = level; i < level + 2; i += 1) {
       data.tree[i].forEach((item) => {
         item.active = false;
       });
@@ -145,7 +144,7 @@ const KLMultiSelect = Dropdown.extend({
     cate.active = true;
 
     // 将下一级后面的都置空
-    for (i = level + 2; i < data.tree.length; i++) {
+    for (let i = level + 2; i < data.tree.length; i += 1) {
       data.tree[i] = {};
     }
 
@@ -168,17 +167,17 @@ const KLMultiSelect = Dropdown.extend({
     }
   },
   checkCate(cate, level, checked) {
-    checked = !checked;
+    const _checked = !checked;
     const data = this.data;
-    cate[data.checkKey] = checked;
-    this.setCheck(cate[data.childKey], checked);
+    cate[data.checkKey] = _checked;
+    this.setCheck(cate[data.childKey], _checked);
 
-    for (let i = level - 1; i >= 0; i--) {
+    for (let i = level - 1; i >= 0; i -= 1) {
       data.tree[i].forEach((item) => {
         if (item.active) {
           let checkedCount = 0;
           item[data.childKey].forEach((child) => {
-            if (child.checked) checkedCount++;
+            if (child.checked) checkedCount += 1;
             else if (child.checked === null) checkedCount += 0.5;
           });
 
@@ -200,7 +199,7 @@ const KLMultiSelect = Dropdown.extend({
     const data = this.data;
     data.selected = [];
     const _value = [];
-    var _getChecked = function (list) {
+    const _getChecked = function (list) {
       list.map((item) => {
         if (item[data.childKey] && item[data.childKey].length) {
           _getChecked(item[data.childKey]);
@@ -208,6 +207,7 @@ const KLMultiSelect = Dropdown.extend({
           _value.push(item[data.key].toString());
           data.selected.push(item);
         }
+        return '';
       });
     };
     _getChecked(data._source);
@@ -244,8 +244,8 @@ const KLMultiSelect = Dropdown.extend({
   validate(on) {
     const data = this.data;
 
-    let result = { success: true, message: '' },
-      value = this.data.value;
+    const result = { success: true, message: '' };
+    let value = this.data.value;
 
     value = typeof value === 'undefined' ? '' : `${value}`;
     if (data.required && !value.length) {
@@ -271,10 +271,10 @@ const KLMultiSelect = Dropdown.extend({
   const data = this.data;
   let target = [];
   if (category && category.filter) {
-    target = category.filter((item, index) => {
+    target = category.filter((item) => {
       if (!item[data.nameKey]) return true;
       return (
-        item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1
+        item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) !== -1
       );
     });
   }
