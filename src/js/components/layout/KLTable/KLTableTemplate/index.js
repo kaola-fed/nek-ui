@@ -1,5 +1,4 @@
 const Component = require('../../../../ui-base/component');
-const _ = require('../utils');
 
 /**
  * @class KLTableTemplate
@@ -31,7 +30,8 @@ const matchList = [
   },
 ];
 
-const decodeChar = function (str) {
+const decodeChar = function (_str) {
+  let str = _str;
   matchList.forEach((item) => {
     str = str.replace(item.reg, item.glyph);
   });

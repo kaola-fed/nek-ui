@@ -22,7 +22,7 @@ const KLTable = require('../index');
  * @param {string}      [options.data.headerTemplate]   => 列表头模版
  * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
  */
-var KLTableCol = Component.extend({
+const KLTableCol = Component.extend({
   name: 'kl-table-col',
   template:
     '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',

@@ -21,14 +21,13 @@ _.fillWithZero = function (val, len) {
   return `${val}`;
 };
 
-_.throttle = function (fn, delay) {
+_.throttle = function (fn, _delay) {
   const self = this;
   let last = null;
   const timer = null;
-  delay = delay || 100;
-  return function () {
+  const delay = _delay || 100;
+  return function (...args) {
     const now = +new Date();
-    const args = [].slice.call(arguments, 0);
 
     clearTimeout(timer);
     if (now - last > delay) {
@@ -43,10 +42,10 @@ _.throttle = function (fn, delay) {
   };
 };
 
-_.convertBeginEnd = function (str) {
+_.convertBeginEnd = function (_str) {
   const BEGIN = Regular._BEGIN_;
   const END = Regular._END_;
-  str = `${str}`;
+  let str = `${_str}`;
   if (BEGIN && BEGIN !== '{') {
     str = str.replace(/{/g, BEGIN);
   }
@@ -60,9 +59,9 @@ const hasChildren = function (root) {
   return root.children && root.children.length > 0;
 };
 
-_.getHeaders = function (columns) {
+_.getHeaders = function (_columns) {
   const headers = [];
-  var extractHeaders = function (columns, depth) {
+  const extractHeaders = function (columns, depth) {
     columns.forEach((column) => {
       if (hasChildren(column)) {
         column._dataColumn = extractHeaders(column.children, depth + 1);
@@ -75,10 +74,11 @@ _.getHeaders = function (columns) {
         column.childrenDepth =
           1 +
           column.children.reduce(
-            (previous, current) =>
+            (previous, current) => (
               current.childrenDepth > previous
                 ? current.childrenDepth
-                : previous,
+                : previous
+            ),
             -1,
           );
         column.headerColSpan = column.children.reduce(
@@ -92,13 +92,13 @@ _.getHeaders = function (columns) {
       headers[depth].push(column);
     });
   };
-  extractHeaders(columns, 0);
+  extractHeaders(_columns, 0);
   return headers;
 };
 
 _.getLeaves = function (tree) {
   const res = [];
-  var extractLeaves = function (root) {
+  const extractLeaves = function (root) {
     if (root.forEach) {
       return root.forEach((item) => {
         if (hasChildren(item)) {
@@ -113,9 +113,11 @@ _.getLeaves = function (tree) {
   return res;
 };
 
-const getNum = (_.getNum = function (str) {
+const getNum = function (str) {
   return +`${str}`.split('px')[0];
-});
+};
+
+_.getNum = getNum;
 
 _.setElementValue = function (ele, prop, val) {
   if (ele) {
