@@ -1166,7 +1166,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, { oldObj: 'Progress', newObj: 'KLProgress', oldName: 'progress' }, { oldObj: 'Tooltip', newObj: 'KLTooltip', oldName: 'tooltip' }, {
 	  oldObj: 'LocaleProvider',
 	  newObj: 'KLLocaleProvider',
-	  oldName: 'locale.provider'
+	  oldName: 'locale.provider',
+	  staticMethods: ['translate']
 	}, { oldObj: 'UITable', newObj: 'KLTable', oldName: 'ui.table' }, { oldObj: 'TableCol', newObj: 'KLTableCol', oldName: 'table.col' }, {
 	  oldObj: 'TableTemplate',
 	  newObj: 'KLTableTemplate',
@@ -1179,6 +1180,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Components[alias.oldObj] = Components[alias.newObj].extend({
 	      name: alias.oldName
 	    });
+	    // 静态方法
 	    (alias.staticMethods || []).forEach(function (_static) {
 	      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
 	    });
