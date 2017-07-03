@@ -16,7 +16,7 @@ const template = require('./index.html');
  * @param {string}          [options.data.justify='start']      => flex 布局下的水平排列方式
  * @param {string}          [options.data.align='top']          => flex 布局下的垂直排列方式
  * @param {string}          [options.data.wrap='wrap']          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
- * @param {number}          [options.data.gutter='0']           => 栅格间隔
+ * @param {number}          [options.data.gutter='40']           => 栅格间隔
  */
 const KLRow = Component.extend({
   name: 'kl-row',
@@ -26,7 +26,7 @@ const KLRow = Component.extend({
       type: '',
       justify: 'start',
       align: 'top',
-      gutter: 0,
+      gutter: 40,
       wrap: 'wrap',
     });
 

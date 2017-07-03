@@ -23,7 +23,7 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 0,
+      gutter: 40,
     });
 
     let $outer = this;
