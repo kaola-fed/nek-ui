@@ -1,7 +1,4 @@
-const templates = require('../THElements');
-
 const Component = require('../../../../ui-base/component');
-const _ = require('../utils');
 const tpl = require('./index.html');
 
 const HEADER_MIN_WIDTH = 30;
@@ -11,7 +8,7 @@ const hasChildren = function (column) {
   return column.children && column.children.length > 0;
 };
 
-var setColumnWidth = function (column, width) {
+const setColumnWidth = function (column, width) {
   const children = column.children;
   if (hasChildren(column)) {
     setColumnWidth(children[children.length - 1], width);
@@ -20,7 +17,7 @@ var setColumnWidth = function (column, width) {
   column._width = Math.max(width, HEADER_MIN_WIDTH);
 };
 
-var getColumnWidth = function (column) {
+const getColumnWidth = function (column) {
   const ret = {
     width: 0,
     lastLeafWidth: 0,
@@ -52,8 +49,9 @@ const TableHeader = Component.extend({
     fixedWidth: {
       get() {
         return this.data.headers.reduce(
-          (previous, current) =>
-            current.fixed ? previous + current._width : previous,
+          (previous, current) => (
+            current.fixed ? previous + current._width : previous
+          ),
           0,
         );
       },
@@ -101,7 +99,6 @@ const TableHeader = Component.extend({
   },
   _onMouseDown(e, header, headerIndex, headerTrIndex) {
     const data = this.data;
-    const self = this;
     if (!data._ok2ResizeCol) {
       return;
     }
@@ -135,7 +132,7 @@ const TableHeader = Component.extend({
       }
     };
 
-    var onMouseUp = function (_e) {
+    const onMouseUp = function (_e) {
       _e.preventDefault();
       resizeProxy.style.visibility = 'hidden';
 
@@ -176,7 +173,7 @@ const TableHeader = Component.extend({
     const rect = target.getBoundingClientRect();
     return (
       rect.width > 12 &&
-      rect.right - event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD
+      rect.right - e.event.pageX < SHOULD_ENABLE_RESIZE_THRESHOLD
     );
   },
   _enableResize() {
@@ -193,8 +190,7 @@ const TableHeader = Component.extend({
   _getFormat(header) {
     return _parseFormat(header.headerFormat);
   },
-  emitEvent(type) {
-    const args = [].slice.call(arguments, 1);
+  emitEvent(type, ...args) {
     this.$emit('customevent', {
       type,
       sender: this,
@@ -203,9 +199,8 @@ const TableHeader = Component.extend({
       },
     });
   },
-  emit() {
-    const args = [].slice.call(arguments, 0);
-    this.$parent.$emit.apply(this.$parent, args);
+  emit(...args) {
+    this.$parent.$emit.call(this.$parent, ...args);
   },
 }).filter('sortingClass', function (header) {
   const data = this.data;

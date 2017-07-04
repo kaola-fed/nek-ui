@@ -1,5 +1,3 @@
-const _ = require('../utils');
-
 const Component = require('../../../../ui-base/component');
 const tpl = require('./index.html');
 const templates = require('../TDElements');
@@ -48,7 +46,7 @@ const TableBody = Component.extend({
   },
   _updateSubTrHeight(item, itemIndex) {
     const self = this;
-    var timer = setInterval(() => {
+    const timer = setInterval(() => {
       const tdElement = self.$refs[`td${itemIndex}`];
       if (tdElement && item._expandHeight !== tdElement.clientHeight) {
         item._expandHeight = tdElement.clientHeight;
@@ -77,15 +75,13 @@ const TableBody = Component.extend({
     const format = column.format;
     return _parseFormat(format);
   },
-  _filter(column, val) {
-    const args = [].slice.call(arguments, 1);
+  _filter(column, val, ...args) {
     if (column.filter && typeof column.filter === 'function') {
-      return column.filter.apply(this, args);
+      return column.filter.call(this, val, ...args);
     }
     return val;
   },
-  emitEvent(type) {
-    const args = [].slice.call(arguments, 1);
+  emitEvent(type, ...args) {
     this.$emit('customevent', {
       type,
       sender: this,
@@ -94,9 +90,8 @@ const TableBody = Component.extend({
       },
     });
   },
-  emit() {
-    const args = [].slice.call(arguments, 0);
-    this.$parent.$emit.apply(this.$parent, args);
+  emit(...args) {
+    this.$parent.$emit.call(this.$parent, ...args);
   },
   _onTrHover($event, item) {
     item._hover = true;
