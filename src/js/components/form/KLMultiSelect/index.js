@@ -20,6 +20,7 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.key=id]                   => 数据项的键
  * @param {string}          [options.data.nameKey=name]             => 数据项的name键
  * @param {string}          [options.data.childKey=children]        => 数据子项的键
+ * @param {string}          [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
@@ -27,7 +28,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
  * @param {boolean}         [options.data.visible=true]             => 是否显示
- * @param {string}          [options.data.class]                 => 补充class
+ * @param {string}          [options.data.class]                    => 补充class
  */
 
 const KLMultiSelect = Dropdown.extend({
@@ -48,6 +49,7 @@ const KLMultiSelect = Dropdown.extend({
       checkKey: 'checked',
       hierarchical: false,
       updateAuto: false,
+      onlyChild: true,
     });
     data._source = _.clone(data.source || []);
     data.tree = [data._source, [], [], [], [], [], [], [], [], []];
@@ -59,17 +61,21 @@ const KLMultiSelect = Dropdown.extend({
       }
       data._source = _.clone(data.source || []);
       data.tree[0] = data._source;
-      this.initSelected();
+      if (data._source && data._source.length) {
+        this.initSelected();
+      }
       this.$update();
     });
     this.$watch('value', function (newValue, oldValue) {
-      this.initSelected();
+      if (data._source && data._source.length) {
+        this.initSelected();
+      }
       if (oldValue !== null && oldValue !== undefined) {
         /**
-                 * @event value 改变时触发
-                 * @property {object} sender 事件发送对象
-                 * @property {object} value 当前 value 的值
-                 */
+         * @event value 改变时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} value 当前 value 的值
+         */
         this.$emit('change', {
           sender: this,
           value: newValue,
@@ -85,6 +91,11 @@ const KLMultiSelect = Dropdown.extend({
 
     this.initValidation();
   },
+  toggle(open, e) {
+    e && e.stopPropagation();
+    this.supr(open);
+  },
+  // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
   initSelected() {
     const data = this.data;
     if (data.value !== null && data.value !== undefined) {
@@ -93,6 +104,13 @@ const KLMultiSelect = Dropdown.extend({
         list.map((item2) => {
           if (item2[data.childKey] && item2[data.childKey].length) {
             _checkedItem(item2[data.childKey]);
+            if (!data.multiple && !data.onlyChild) {
+              if (_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
+                item2[data.checkKey] = true;
+              } else {
+                item2[data.checkKey] = false;
+              }
+            }
           } else if (
             _list.indexOf((item2[data.key].toString() || '').toString()) > -1 ||
             _list.indexOf(item2[data.key].toString()) > -1
@@ -101,7 +119,7 @@ const KLMultiSelect = Dropdown.extend({
           } else {
             item2[data.checkKey] = false;
           }
-          return '';
+          return undefined;
         });
       };
       const _checkedSelf = function (list) {
@@ -120,18 +138,22 @@ const KLMultiSelect = Dropdown.extend({
             } else {
               item[data.checkKey] = false;
             }
-            return '';
           }
+          return undefined;
         });
       };
       _checkedItem(data._source);
-      _checkedSelf(data._source);
+      if (data.multiple) {
+        _checkedSelf(data._source);
+      }
       this.watchValue();
     } else {
       data.value = '';
     }
+    this.$update();
   },
-  viewCate(cate, level) {
+  viewCate(cate, level, show, e) {
+    e && e.stopPropagation();
     const data = this.data;
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
@@ -149,8 +171,8 @@ const KLMultiSelect = Dropdown.extend({
     }
 
     if (
-      !data.multiple &&
-      !(cate[data.childKey] && cate[data.childKey].length)
+      !show &&
+      (!data.multiple && (!(cate[data.childKey] && cate[data.childKey].length) || (!data.onlyChild)))
     ) {
       data.value = cate[data.key].toString();
       data.selected = [cate];
@@ -203,11 +225,15 @@ const KLMultiSelect = Dropdown.extend({
       list.map((item) => {
         if (item[data.childKey] && item[data.childKey].length) {
           _getChecked(item[data.childKey]);
+          if (item[data.checkKey] && !data.multiple && !data.onlyChild) {
+            _value.push(item[data.key].toString());
+            data.selected.push(item);
+          }
         } else if (item[data.checkKey]) {
           _value.push(item[data.key].toString());
           data.selected.push(item);
         }
-        return '';
+        return undefined;
       });
     };
     _getChecked(data._source);
@@ -216,6 +242,7 @@ const KLMultiSelect = Dropdown.extend({
     } else {
       data.value = '';
     }
+    this.$update();
   },
   // 循环设置类目及其子类目的check状态
   setCheck(category, value) {

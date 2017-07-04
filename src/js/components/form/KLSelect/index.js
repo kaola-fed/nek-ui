@@ -10,7 +10,6 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
-require('./common/util');
 const Multiple = require('./plugins/multiple');
 const PrivateMethod = require('./plugins/private.method');
 
@@ -223,8 +222,8 @@ const KLSelect = Dropdown.extend({
       if (this.hasOwnProperty('__canSearch')) {
         canSearch = this.__canSearch;
       } else {
-        canSearch = this.__canSearch;
         this.__canSearch = data.canSearch;
+        canSearch = this.__canSearch;
       }
       data.canSearch =
         canSearch === true ||
