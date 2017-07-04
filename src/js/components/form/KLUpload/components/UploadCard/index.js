@@ -15,7 +15,7 @@ const tpl = require('./index.html');
  * @extend UploadBase
  */
 
-var UploadCard = UploadBase.extend({
+const UploadCard = UploadBase.extend({
   name: 'upload-card',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
@@ -34,14 +34,14 @@ var UploadCard = UploadBase.extend({
   },
 
   initFilesZone() {
-    let data = this.data,
-      numPerline = data.numPerline,
-      fileUnitWidth = data.fileUnitWidth,
-      fileUnitMargin = data.fileUnitMargin;
+    const data = this.data;
+    const numPerline = data.numPerline;
+    const fileUnitWidth = data.fileUnitWidth;
+    const fileUnitMargin = data.fileUnitMargin;
 
     data.filesWrapper = this.$refs.fileswrapper;
     data.fileUnitListWidth =
-      fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
+      (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
   },
 
   onDragEnter(e) {
@@ -69,8 +69,8 @@ var UploadCard = UploadBase.extend({
   },
 
   fileSelect() {
-    let inputNode = this.$refs.file,
-      files = inputNode.files;
+    const inputNode = this.$refs.file;
+    const files = inputNode.files;
 
     this.handleFiles(files);
 
@@ -78,36 +78,34 @@ var UploadCard = UploadBase.extend({
   },
 
   handleFiles(files) {
-    let data = this.data,
-      index = 0,
-      len = files.length,
-      file,
-      fileunit,
-      options;
+    const data = this.data;
+    const len = files.length;
+    let index = 0;
+    let file;
+    let fileunit;
 
     this.toggle(false);
 
-    options = this.setOptions(data);
+    const options = this.setOptions(data);
 
     data.preCheckInfo = '';
 
-    for (; index < len; index++) {
+    for (; index < len; index += 1) {
       if (data.fileUnitList.length < data.numLimit) {
         file = files[index];
         data.preCheckInfo = this.preCheck(file);
-        if (data.preCheckInfo) {
-          continue;
+        if (!data.preCheckInfo) {
+          fileunit = this.createFileUnit({
+            file,
+            options,
+            deletable: data.deletable,
+          });
+          fileunit.flag = 'ADDED';
+          data.fileUnitList.push({
+            inst: fileunit,
+          });
+          this.updateFilesZone();
         }
-        fileunit = this.createFileUnit({
-          file,
-          options,
-          deletable: data.deletable,
-        });
-        fileunit.flag = 'ADDED';
-        data.fileUnitList.push({
-          inst: fileunit,
-        });
-        this.updateFilesZone();
       }
     }
 
@@ -115,16 +113,16 @@ var UploadCard = UploadBase.extend({
   },
 
   updateFilesZone() {
-    let data = this.data,
-      filesZone = this.$refs.fileszone,
-      entryWrapper = this.$refs.entrywrapper,
-      inputWrapper = this.$refs.inputwrapper;
+    const data = this.data;
+    const filesZone = this.$refs.fileszone;
+    const entryWrapper = this.$refs.entrywrapper;
+    const inputWrapper = this.$refs.inputwrapper;
 
     if (data.fileUnitList.length < data.numLimit) {
       filesZone.style.width = '125px';
       entryWrapper.style['margin-right'] = '20px';
       inputWrapper.style.display = 'inline-block';
-    } else if (data.fileUnitList.length == data.numLimit) {
+    } else if (data.fileUnitList.length === data.numLimit) {
       filesZone.style.width = '50px';
       entryWrapper.style['margin-right'] = '0';
       inputWrapper.style.display = 'none';
@@ -132,9 +130,9 @@ var UploadCard = UploadBase.extend({
   },
 
   createFileUnit(data) {
-    let self = this,
-      imagePreview = this.$refs.imagepreview,
-      fileunit = new FileUnit({ data });
+    const self = this;
+    const imagePreviewWrapper = this.$refs.imagepreview;
+    const fileunit = new FileUnit({ data });
 
     fileunit.$on('preview', previewCb);
 
@@ -158,7 +156,7 @@ var UploadCard = UploadBase.extend({
 
       const preview = createImagePreview(imgList);
 
-      preview.$inject(imagePreview);
+      preview.$inject(imagePreviewWrapper);
     }
 
     function createImagePreview(imgFileList) {
@@ -185,8 +183,8 @@ var UploadCard = UploadBase.extend({
       });
 
       imagePreview.$on('delete', (imgInfo) => {
-        let index = imgInfo.index,
-          imgInst = imgFileList[index];
+        const index = imgInfo.index;
+        const imgInst = imgFileList[index];
 
         if (imgInst) {
           imgInst.$emit('delete');
@@ -194,7 +192,7 @@ var UploadCard = UploadBase.extend({
       });
 
       imagePreview.$on('$destroy', () => {
-        imgFileList = null;
+        imgFileList.splice(0);
       });
 
       return imagePreview;
@@ -203,10 +201,9 @@ var UploadCard = UploadBase.extend({
     fileunit.$on('progress', progressCb);
 
     function progressCb(info) {
-      let data = self.data,
-        curInst = this,
-        curIndex = -1,
-        lastIndex = -1;
+      const curInst = this;
+      let curIndex = -1;
+      let lastIndex = -1;
 
       self.data.fileUnitList.forEach((item, index) => {
         if (item.inst.data.status === 'uploading') {
@@ -217,9 +214,9 @@ var UploadCard = UploadBase.extend({
         }
       });
 
-      if (curIndex >= lastIndex && data.status != 'failed') {
-        data.status = 'uploading';
-        data.progress = info.progress;
+      if (curIndex >= lastIndex && self.data.status !== 'failed') {
+        self.data.status = 'uploading';
+        self.data.progress = info.progress;
         self.$update();
       }
     }
@@ -290,10 +287,10 @@ var UploadCard = UploadBase.extend({
   },
 
   setFileUnitWrapperStyle(wrapper, index) {
-    let data = this.data,
-      numPerline = data.numPerline,
-      fileUnitWidth = data.fileUnitWidth,
-      fileUnitMargin = data.fileUnitMargin;
+    const data = this.data;
+    const numPerline = data.numPerline;
+    const fileUnitWidth = data.fileUnitWidth;
+    const fileUnitMargin = data.fileUnitMargin;
 
     wrapper.className = 'u-fileitem';
     wrapper.style.display = 'inline-block';
@@ -305,18 +302,17 @@ var UploadCard = UploadBase.extend({
   },
 
   uploadFiles() {
-    let data = this.data,
-      fileUnitList = data.fileUnitList;
+    const data = this.data;
+    const fileUnitList = data.fileUnitList;
 
     data.status = 'uploaded';
     data.info = '';
 
     fileUnitList.forEach((item) => {
-      let inst = item.inst,
-        data = inst.data;
+      const inst = item.inst;
 
-      if (data.status === 'failed') {
-        inst.uploadFile(data.file);
+      if (inst.data.status === 'failed') {
+        inst.uploadFile(inst.data.file);
       }
     });
   },
@@ -326,16 +322,17 @@ var UploadCard = UploadBase.extend({
 
     const data = this.data;
     if (typeof open === 'undefined') {
-      open = !data.open;
+      data.open = !data.open;
+    } else {
+      data.open = open;
     }
-    data.open = open;
 
-    this.setPosition(!open);
+    this.setPosition(!data.open);
 
     const index = UploadCard.opens.indexOf(this);
-    if (open && index < 0) {
+    if (data.open && index < 0) {
       UploadCard.opens.push(this);
-    } else if (!open && index >= 0) {
+    } else if (!data.open && index >= 0) {
       UploadCard.opens.splice(index, 1);
     }
   },
@@ -394,7 +391,7 @@ var UploadCard = UploadBase.extend({
 
     // show at central
     let horizontal = 'left';
-    const offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
+    const offsetWidth = (filesWrapperCoors.width / 2) - (filesEntryCoors.width / 2);
     const isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
     const isHorizontalRightEdge =
       filesEntryCoors.right + offsetWidth > viewWidth;
@@ -420,11 +417,12 @@ var UploadCard = UploadBase.extend({
   },
 });
 
-const opens = (UploadCard.opens = []);
+UploadCard.opens = [];
+const opens = UploadCard.opens;
 document.addEventListener(
   'click',
   (e) => {
-    for (let len = opens.length, i = len - 1; i >= 0; i--) {
+    for (let len = opens.length, i = len - 1; i >= 0; i -= 1) {
       let close = true;
 
       const upload = opens[i];
@@ -432,7 +430,7 @@ document.addEventListener(
       let iterator = e.target;
 
       while (iterator) {
-        if (uploadElement == iterator) {
+        if (uploadElement === iterator) {
           close = false;
           break;
         }

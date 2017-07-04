@@ -63,8 +63,8 @@ const UploadBase = Component.extend({
   },
 
   initUploadedFileUnits() {
-    let self = this,
-      data = this.data;
+    const self = this;
+    const data = this.data;
 
     if (data.fileList.length > 0) {
       const fileList = data.fileList.splice(0);
@@ -87,18 +87,17 @@ const UploadBase = Component.extend({
   },
 
   updateFileList() {
-    let self = this,
-      data = this.data,
-      filesWrapper = data.filesWrapper,
-      fileList = data.fileList,
-      fileDeletedList = data.fileDeletedList,
-      fileUnitList;
+    const self = this;
+    const data = this.data;
+    const filesWrapper = data.filesWrapper;
+    const fileList = data.fileList;
+    const fileDeletedList = data.fileDeletedList;
 
-    fileUnitList = data.fileUnitList = data.fileUnitList.filter((item) => {
-      let inst = item.inst,
-        flag = inst.flag,
-        file = inst.file,
-        destroyed = inst.destroyed;
+    data.fileUnitList = data.fileUnitList.filter((item) => {
+      const inst = item.inst;
+      const flag = inst.flag;
+      const file = inst.file;
+      const destroyed = inst.destroyed;
 
       // item.inst = {};
 
@@ -111,18 +110,20 @@ const UploadBase = Component.extend({
     });
 
     filesWrapper.innerHTML = '';
+
+    const fileUnitList = data.fileUnitList;
     fileUnitList.forEach((item, index) => {
-      const wrapper = (item.wrapper = self.createFileUnitWrapper(
+      item.wrapper = self.createFileUnitWrapper(
         filesWrapper,
         index,
-      ));
-      item.inst.$inject(wrapper);
+      );
+      item.inst.$inject(item.wrapper);
     });
 
     fileList.splice(0);
     fileUnitList.forEach((item) => {
-      let inst = item.inst,
-        file = inst.data.file || {};
+      const inst = item.inst;
+      const file = inst.data.file || {};
 
       fileList.push({
         name: file.name,
@@ -144,11 +145,11 @@ const UploadBase = Component.extend({
     this.$refs.file && this.$refs.file.click();
   },
 
-  setOptions(data) {
-    data = data || {};
+  setOptions(options) {
+    const opts = options || {};
 
     return {
-      url: data.action,
+      url: opts.action,
     };
   },
 
@@ -164,10 +165,10 @@ const UploadBase = Component.extend({
   },
 
   isAcceptedFileType(file) {
-    let data = this.data,
-      accept = data.accept,
-      type = this.getFileType(file).toLowerCase(),
-      isValid = false;
+    const data = this.data;
+    const accept = data.accept;
+    const type = this.getFileType(file).toLowerCase();
+    let isValid = false;
 
     accept.split(',').forEach((cond) => {
       if (cond === '*') {
@@ -187,8 +188,8 @@ const UploadBase = Component.extend({
   },
 
   getFileType(file) {
-    let type = file.type || '',
-      name = file.name || '';
+    const type = file.type || '';
+    const name = file.name || '';
 
     if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
       return 'IMAGE';
@@ -217,9 +218,9 @@ const UploadBase = Component.extend({
   },
 
   isAcceptedFileSize(file) {
-    let data = this.data,
-      maxSize = data.maxSize,
-      fileSize = file.size;
+    const data = this.data;
+    const maxSize = data.maxSize;
+    const fileSize = file.size;
 
     const patterns = maxSize.match(/(\d+)(\D+)?/i);
     let size = patterns[1];

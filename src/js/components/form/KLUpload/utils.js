@@ -5,12 +5,13 @@ const defaults = {
   async: true,
 };
 
-function upload(url, data, options) {
+function upload(url, src, options) {
   const fd = new FormData();
+  let data = src;
 
-  if (data instanceof File) {
+  if (src instanceof File) {
     data = {
-      file: data,
+      file: src,
     };
   }
 
@@ -22,14 +23,13 @@ function upload(url, data, options) {
 
   options.url = url;
   options.data = fd;
-  options = _.extend(defaults, options, true);
 
-  return ajax(options);
+  return ajax(_.extend(defaults, options, true));
 }
 
 function ajax(options) {
-  let xhr = new XMLHttpRequest(),
-    headers = options.headers || {};
+  const xhr = new XMLHttpRequest();
+  const headers = options.headers || {};
 
   xhr.open(options.type, options.url, options.async);
 
