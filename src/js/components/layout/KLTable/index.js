@@ -54,7 +54,7 @@ const KLTable = Component.extend({
     bodyHeight: {
       get() {
         const data = this.data;
-        if (data.height != undefined && data.headerHeight != undefined) {
+        if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
           return +data.height - data.headerHeight;
         }
       },
@@ -122,7 +122,7 @@ const KLTable = Component.extend({
     const customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
       const width = parseInt(current.width);
       if (width) {
-        customWidthCount++;
+        customWidthCount += 1;
         return previous + width;
       }
       return previous;
@@ -135,10 +135,8 @@ const KLTable = Component.extend({
     );
     autoWidth = autoWidth > 0 ? autoWidth : 100;
 
-    let totalWidth = 0;
     _dataColumns.forEach((dataColumn) => {
       dataColumn._width = parseInt(dataColumn.width || autoWidth);
-      totalWidth += dataColumn._width;
       return dataColumn;
     });
 
@@ -196,11 +194,11 @@ const KLTable = Component.extend({
     }
   },
   _onParentWidthChange(newVal, oldVal) {
-    if (newVal == undefined || oldVal == undefined) {
+    if (newVal === undefined || oldVal === undefined) {
       return;
     }
-    oldVal = oldVal || this.data.tableWidth;
-    const ratio = newVal / oldVal;
+    const _oldVal = oldVal || this.data.tableWidth;
+    const ratio = newVal / _oldVal;
     this._updateTableWidth(ratio);
   },
   _onSouceChange() {
@@ -247,8 +245,8 @@ const KLTable = Component.extend({
     const tableRect = this.$refs.tableWrap.getBoundingClientRect();
 
     const tableWrapOffset = {
-      top: tableRect.top + scrollTop - parentRect.top,
-      bottom: tableRect.bottom + scrollTop - parentRect.top,
+      top: (tableRect.top + scrollTop) - parentRect.top,
+      bottom: (tableRect.bottom + scrollTop) - parentRect.top,
     };
 
     return tableWrapOffset;
@@ -342,7 +340,6 @@ const KLTable = Component.extend({
     data._defaultWidth = width;
   },
   _updateScrollBar() {
-    const data = this.data;
     const tableWrapEle = this.$refs.bodyWrap;
     const tableEle = this.$refs.table;
     if (!tableWrapEle || !tableEle) {
@@ -388,13 +385,13 @@ const KLTable = Component.extend({
     this._updateData('footerHeight', footerHeight);
     return footerHeight;
   },
-  _updateTableWidth(ratio) {
+  _updateTableWidth(_ratio) {
     const data = this.data;
     const _dataColumns = data._dataColumns;
     if (!_dataColumns) {
       return;
     }
-    ratio = ratio || 1;
+    const ratio = _ratio || 1;
     let newTableWidth = 0;
     let fixedCol = false;
     let fixedTableWidth = 0;
@@ -496,8 +493,7 @@ const KLTable = Component.extend({
       checkedEvent: e.event,
     });
   },
-  emitEvent(type) {
-    const args = [].slice.call(arguments, 1);
+  emitEvent(type, ...args) {
     /**
          * @event [type] 自定义的操作事件
          * @property {object} sender 事件来源
@@ -559,13 +555,10 @@ const KLTable = Component.extend({
 
 const oldFilterFunc = KLTable.filter;
 
-KLTable.filter = function () {
-  const args = [].slice.call(arguments, 0);
+KLTable.filter = function (...args) {
+  // const args = [].slice.call(arguments, 0);
   TableHeader.filter(...args);
   TableBody.filter(...args);
-  // FIXME:
-  // KLTableCol.filter.apply(KLTableCol, args);
-  // KLTableTemplate.filter.apply(KLTableTemplate, args);
   oldFilterFunc.apply(KLTable, args);
 };
 

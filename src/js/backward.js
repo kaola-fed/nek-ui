@@ -62,6 +62,9 @@ const aliasList = [
     oldObj: 'LocaleProvider',
     newObj: 'KLLocaleProvider',
     oldName: 'locale.provider',
+    staticMethods: [
+      'translate',
+    ],
   },
   { oldObj: 'UITable', newObj: 'KLTable', oldName: 'ui.table' },
   { oldObj: 'TableCol', newObj: 'KLTableCol', oldName: 'table.col' },
@@ -82,6 +85,7 @@ module.exports = function (Components) {
     Components[alias.oldObj] = Components[alias.newObj].extend({
       name: alias.oldName,
     });
+    // 静态方法
     (alias.staticMethods || []).forEach((_static) => {
       Components[alias.oldObj][_static] = Components[alias.newObj][_static];
     });
