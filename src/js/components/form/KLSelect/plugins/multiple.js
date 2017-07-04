@@ -6,7 +6,6 @@
 
 const util = require('../common/util');
 
-('use strict');
 module.exports = function Multiple(Component) {
   Component.implement({
     selectAll(isSelected) {
@@ -26,11 +25,11 @@ module.exports = function Multiple(Component) {
     },
     backSearchValue(event, selected, searchValue) {
       const isBackSpaceKeyCode = 8;
-      if (event.which == isBackSpaceKeyCode && !searchValue.trim()) {
+      if (event.which === isBackSpaceKeyCode && !searchValue.trim()) {
         this.removeSelected(selected, selected.length - 1, event);
       }
     },
-    searchClick() {
+    searchClick(event) {
       event && event.stopPropagation();
       this.toggle(true);
       this.searchInputFocus();

@@ -31,7 +31,7 @@ const selectUtil = {
         value = selected.length
           ? selected.reduce((prev, next, index) => {
             let nextValue = next[key];
-            if (index != selected.length - 1) {
+            if (index !== selected.length - 1) {
               nextValue += separator;
             }
             return prev + nextValue;
