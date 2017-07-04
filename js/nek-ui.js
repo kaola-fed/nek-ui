@@ -27466,6 +27466,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (oldValue === undefined && !(Array.isArray(data.source) && data.source.length)) {
 	        return;
 	      }
+	      // 多选下，同步数据且初始加载，selected设置默认[]不触发value同步,
+	      // 否则会丢失value默认值
+	      if (oldValue === undefined && data.multiple && Array.isArray(newValue) && newValue.length == 0) {
+	        return;
+	      }
 	      data.value = this.getValue();
 	      if (!newValue && data.multiple) {
 	        data.selected = [];
