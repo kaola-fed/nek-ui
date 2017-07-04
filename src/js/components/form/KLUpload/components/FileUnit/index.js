@@ -51,8 +51,8 @@ const FileUnit = Component.extend({
   },
 
   getFileType(file) {
-    let type = file.type || '',
-      name = file.name || '';
+    const type = file.type || '';
+    const name = file.name || '';
 
     if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
       return 'IMAGE';
@@ -81,8 +81,8 @@ const FileUnit = Component.extend({
   },
 
   uploadFile(file) {
-    let self = this,
-      data = this.data;
+    const self = this;
+    const data = this.data;
 
     data.info = '';
 
@@ -95,7 +95,7 @@ const FileUnit = Component.extend({
         },
         onprogress(e) {
           data.status = 'uploading';
-          data.progress = `${parseInt(e.loaded / e.total * 100)}%`;
+          data.progress = `${parseInt((e.loaded / e.total) * 100)}%`;
           self.$update();
           self.$emit('progress', { progress: data.progress });
         },
@@ -127,8 +127,8 @@ const FileUnit = Component.extend({
   },
 
   onDelete() {
-    let self = this,
-      data = this.data;
+    const self = this;
+    const data = this.data;
 
     if (data.delConfirm) {
       const modal = new KLModal({

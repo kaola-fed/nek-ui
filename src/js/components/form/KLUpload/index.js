@@ -67,11 +67,11 @@ const KLUpload = Component.extend({
   },
 
   initUploadInst(data) {
-    let uploadNode = this.$refs['m-upload'],
-      typeMap = {
-        list: UploadList,
-        card: UploadCard,
-      };
+    const uploadNode = this.$refs['m-upload'];
+    const typeMap = {
+      list: UploadList,
+      card: UploadCard,
+    };
 
     new typeMap[data.listType]({
       data,

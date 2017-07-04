@@ -10,7 +10,7 @@
 	            <kl-icon fontSize=12 type="angle_down" class="f-fr"/>
 	            {/if}
 	            {#if open && canSearch}
-	                <input disabled={disabled} type="text" class="u-search-input input" r-autofocus
+	                <input disabled={disabled} type="text" class="input u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
 	            {#else}
 	                <span>{selected?selected[nameKey]:placeholder}</span>
@@ -24,7 +24,7 @@
 	            {/if}
 	            {#if open && canSearch}
 	            <div>
-		            <input disabled={disabled} type="text" class="u-search-input searchInput1 input" ref="input"
+		            <input disabled={disabled} type="text" class="input u-search-input searchInput1" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
 		            <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
 	            </div>

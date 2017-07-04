@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div class="m-thumbnail-panel">
-            <div class="u-image-name">{imgList[curIndex].name}</div>
+            <div class="u-image-name" title={imgList[curIndex].name}>{imgList[curIndex].name}</div>
             <ul class="m-image-list">
                 {#list imgList as img}
                     <li class="m-image-item" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>

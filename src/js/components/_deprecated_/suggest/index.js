@@ -5,7 +5,7 @@
  * ------------------------------------------------------------
  */
 
-const Dropdown = require('../../form/common/dropdown');
+const Dropdown = require('../../form/common/Dropdown');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const Validation = require('../../../util/validation');
