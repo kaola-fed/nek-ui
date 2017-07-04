@@ -5273,6 +5273,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	font-size:16px;
 	color:#fff;
 	text-align:center;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
 }
 .m-image-preview .m-panel-wrapper .m-thumbnail-panel .m-image-list{
 	margin:15px auto;
@@ -5362,6 +5365,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	content:"";
 	display:inline-block;
 	height:100%;
+	vertical-align:middle;
+}
+.m-image-preview .m-panel-wrapper .m-virtual-zone .m-image-wrapper img{
+	max-width:100%;
+	max-height:100%;
 	vertical-align:middle;
 }
 .m-upload ul{
@@ -5639,6 +5647,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	margin-top:4px;
 	font-size:12px;
 	color:#f86b6b;
+}
+.m-upload{
+	line-height:1.6;
 }
 .m-upload ul{
 	margin:0;
