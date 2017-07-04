@@ -27689,7 +27689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      // 多选下，同步数据且初始加载，selected设置默认[]不触发value同步,
 	      // 否则会丢失value默认值
-	      if (oldValue === undefined && data.multiple && Array.isArray(newValue) && newValue.length == 0) {
+	      if (oldValue === undefined && data.multiple && Array.isArray(newValue) && newValue.length === 0) {
 	        return;
 	      }
 	      data.value = this.getValue();
