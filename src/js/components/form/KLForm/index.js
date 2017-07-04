@@ -40,8 +40,8 @@ const KLForm = Validation.extend({
     });
   },
   initFormItem() {
+    const controls = this.controls;
     const {
-      controls,
       labelSize,
       labelLineHeight,
     } = this.data;
