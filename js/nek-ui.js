@@ -88,48 +88,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLDatePicker: __webpack_require__(217),
 	  KLRadioGroup: __webpack_require__(340),
 	  KLMultiSelect: __webpack_require__(342),
-	  KLButton: __webpack_require__(348),
-	  KLForm: __webpack_require__(350),
-	  KLFormItem: __webpack_require__(352),
+	  KLButton: __webpack_require__(344),
+	  KLForm: __webpack_require__(346),
+	  KLFormItem: __webpack_require__(348),
 	  KLInput: __webpack_require__(69),
-	  KLSelect: __webpack_require__(354),
-	  KLText: __webpack_require__(373),
-	  KLTextArea: __webpack_require__(375),
-	  KLUpload: __webpack_require__(377),
+	  KLSelect: __webpack_require__(350),
+	  KLText: __webpack_require__(355),
+	  KLTextArea: __webpack_require__(357),
+	  KLUpload: __webpack_require__(359),
 
 	  // Navigation
-	  KLSidebar: __webpack_require__(392),
-	  KLMenu: __webpack_require__(394),
-	  KLMenuItem: __webpack_require__(396),
-	  KLSubMenu: __webpack_require__(399),
-	  KLPager: __webpack_require__(401),
-	  KLTabs: __webpack_require__(403),
-	  KLTab: __webpack_require__(405),
-	  KLSteps: __webpack_require__(406),
-	  KLCrumb: __webpack_require__(408),
-	  KLCrumbItem: __webpack_require__(410),
+	  KLSidebar: __webpack_require__(374),
+	  KLMenu: __webpack_require__(376),
+	  KLMenuItem: __webpack_require__(378),
+	  KLSubMenu: __webpack_require__(381),
+	  KLPager: __webpack_require__(383),
+	  KLTabs: __webpack_require__(385),
+	  KLTab: __webpack_require__(387),
+	  KLSteps: __webpack_require__(388),
+	  KLCrumb: __webpack_require__(390),
+	  KLCrumbItem: __webpack_require__(392),
 
 	  // Notice
-	  KLModal: __webpack_require__(382),
-	  KLMask: __webpack_require__(412),
-	  KLNotify: __webpack_require__(414),
-	  KLPopConfirm: __webpack_require__(416),
+	  KLModal: __webpack_require__(364),
+	  KLMask: __webpack_require__(394),
+	  KLNotify: __webpack_require__(396),
+	  KLPopConfirm: __webpack_require__(398),
 
 	  // Widget
-	  KLProgress: __webpack_require__(418),
-	  KLLoading: __webpack_require__(420),
-	  KLTooltip: __webpack_require__(359),
-	  KLIcon: __webpack_require__(422),
-	  KLLocaleProvider: __webpack_require__(424),
+	  KLProgress: __webpack_require__(412),
+	  KLLoading: __webpack_require__(414),
+	  KLTooltip: __webpack_require__(416),
+	  KLIcon: __webpack_require__(418),
+	  KLLocaleProvider: __webpack_require__(420),
 
 	  // Layout
-	  KLTable: __webpack_require__(425),
-	  KLTableCol: __webpack_require__(436),
-	  KLTableTemplate: __webpack_require__(437),
-	  KLRow: __webpack_require__(438),
-	  KLCol: __webpack_require__(440),
-	  KLCard: __webpack_require__(442),
-	  KLCardTools: __webpack_require__(444)
+	  KLTable: __webpack_require__(421),
+	  KLTableCol: __webpack_require__(432),
+	  KLTableTemplate: __webpack_require__(433),
+	  KLRow: __webpack_require__(434),
+	  KLCol: __webpack_require__(436),
+	  KLCard: __webpack_require__(438),
+	  KLCardTools: __webpack_require__(440)
 	};
 
 	backward(Components);
@@ -26856,12 +26856,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _defineProperty2 = __webpack_require__(343);
-
-	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	/**
 	 * ------------------------------------------------------------
 	 * KLMultiSelect 树型选择
@@ -26870,12 +26864,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Dropdown = __webpack_require__(178);
-	var Validation = __webpack_require__(104);
+	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var template = __webpack_require__(347);
+	var template = __webpack_require__(343);
 	var _ = __webpack_require__(72);
-	var KLCheck = __webpack_require__(213);
-	var KLInput = __webpack_require__(69);
 
 	/**
 	 * @class KLMultiSelect
@@ -26886,6 +26878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.key=id]                   => 数据项的键
 	 * @param {string}          [options.data.nameKey=name]             => 数据项的name键
 	 * @param {string}          [options.data.childKey=children]        => 数据子项的键
+	 * @param {string}          [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
 	 * @param {string}          [options.data.value=null]               <=> 当前选择值
 	 * @param {object}          [options.data.selected=null]            <=> 当前选择项
 	 * @param {string}          [options.data.separator=,]              => 多选时value分隔符
@@ -26893,7 +26886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}         [options.data.multiple=false]           => 是否多选
 	 * @param {boolean}         [options.data.disabled=false]           => 是否禁用
 	 * @param {boolean}         [options.data.visible=true]             => 是否显示
-	 * @param {string}          [options.data.class]                 => 补充class
+	 * @param {string}          [options.data.class]                    => 补充class
 	 */
 
 	var KLMultiSelect = Dropdown.extend({
@@ -26913,34 +26906,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	      childKey: 'children',
 	      checkKey: 'checked',
 	      hierarchical: false,
-	      updateAuto: false
+	      updateAuto: false,
+	      onlyChild: true
 	    });
 	    data._source = _.clone(data.source || []);
 	    data.tree = [data._source, [], [], [], [], [], [], [], [], []];
 	    data.search = ['', '', '', '', '', '', '', '', '', ''];
 	    data.empty = [];
-	    this.$watch('source', function (newValue, oldValue) {
+	    this.$watch('source', function (newValue) {
 	      if (!(newValue instanceof Array)) {
 	        throw new TypeError('`source` is not an Array!');
 	      }
 	      data._source = _.clone(data.source || []);
 	      data.tree[0] = data._source;
-	      this.initSelected();
+	      if (data._source && data._source.length) {
+	        this.initSelected();
+	      }
 	      this.$update();
 	    });
 	    this.$watch('value', function (newValue, oldValue) {
-	      this.initSelected();
+	      if (data._source && data._source.length) {
+	        this.initSelected();
+	      }
 	      if (oldValue !== null && oldValue !== undefined) {
 	        /**
-	                 * @event value 改变时触发
-	                 * @property {object} sender 事件发送对象
-	                 * @property {object} value 当前 value 的值
-	                 */
-	        this.$emit('change', (0, _defineProperty3.default)({
+	         * @event value 改变时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} value 当前 value 的值
+	         */
+	        this.$emit('change', {
 	          sender: this,
 	          value: newValue,
 	          key: data.key
-	        }, 'value', data.value));
+	        });
 	        if (data.source && data.source.length) {
 	          this.validate();
 	        }
@@ -26951,6 +26949,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
+	  toggle: function toggle(open, e) {
+	    e && e.stopPropagation();
+	    this.supr(open);
+	  },
+
+	  // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
 	  initSelected: function initSelected() {
 	    var data = this.data;
 	    if (data.value !== null && data.value !== undefined) {
@@ -26959,11 +26963,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        list.map(function (item2) {
 	          if (item2[data.childKey] && item2[data.childKey].length) {
 	            _checkedItem(item2[data.childKey]);
+	            if (!data.multiple && !data.onlyChild) {
+	              if (_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
+	                item2[data.checkKey] = true;
+	              } else {
+	                item2[data.checkKey] = false;
+	              }
+	            }
 	          } else if (_list.indexOf((item2[data.key].toString() || '').toString()) > -1 || _list.indexOf(item2[data.key].toString()) > -1) {
 	            item2[data.checkKey] = true;
 	          } else {
 	            item2[data.checkKey] = false;
 	          }
+	          return undefined;
 	        });
 	      };
 	      var _checkedSelf = function _checkedSelf(list) {
@@ -26982,20 +26994,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	              item[data.checkKey] = false;
 	            }
 	          }
+	          return undefined;
 	        });
 	      };
 	      _checkedItem(data._source);
-	      _checkedSelf(data._source);
+	      if (data.multiple) {
+	        _checkedSelf(data._source);
+	      }
 	      this.watchValue();
 	    } else {
 	      data.value = '';
 	    }
+	    this.$update();
 	  },
-	  viewCate: function viewCate(cate, level) {
+	  viewCate: function viewCate(cate, level, show, e) {
+	    e && e.stopPropagation();
 	    var data = this.data;
 	    data.tree[level + 1] = cate[data.childKey] || [];
 	    // 将本级和下一级的active都置为false
-	    for (var i = level; i < level + 2; i++) {
+	    for (var i = level; i < level + 2; i += 1) {
 	      data.tree[i].forEach(function (item) {
 	        item.active = false;
 	      });
@@ -27004,11 +27021,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    cate.active = true;
 
 	    // 将下一级后面的都置空
-	    for (i = level + 2; i < data.tree.length; i++) {
-	      data.tree[i] = {};
+	    for (var _i = level + 2; _i < data.tree.length; _i += 1) {
+	      data.tree[_i] = {};
 	    }
 
-	    if (!data.multiple && !(cate[data.childKey] && cate[data.childKey].length)) {
+	    if (!show && !data.multiple && (!(cate[data.childKey] && cate[data.childKey].length) || !data.onlyChild)) {
 	      data.value = cate[data.key].toString();
 	      data.selected = [cate];
 	      data.open = false;
@@ -27024,17 +27041,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  checkCate: function checkCate(cate, level, checked) {
-	    checked = !checked;
+	    var _checked = !checked;
 	    var data = this.data;
-	    cate[data.checkKey] = checked;
-	    this.setCheck(cate[data.childKey], checked);
+	    cate[data.checkKey] = _checked;
+	    this.setCheck(cate[data.childKey], _checked);
 
-	    for (var i = level - 1; i >= 0; i--) {
+	    for (var i = level - 1; i >= 0; i -= 1) {
 	      data.tree[i].forEach(function (item) {
 	        if (item.active) {
 	          var checkedCount = 0;
 	          item[data.childKey].forEach(function (child) {
-	            if (child.checked) checkedCount++;else if (child.checked === null) checkedCount += 0.5;
+	            if (child.checked) checkedCount += 1;else if (child.checked === null) checkedCount += 0.5;
 	          });
 
 	          if (checkedCount === 0) item.checked = false;else if (checkedCount === item[data.childKey].length) {
@@ -27059,10 +27076,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      list.map(function (item) {
 	        if (item[data.childKey] && item[data.childKey].length) {
 	          _getChecked(item[data.childKey]);
+	          if (item[data.checkKey] && !data.multiple && !data.onlyChild) {
+	            _value.push(item[data.key].toString());
+	            data.selected.push(item);
+	          }
 	        } else if (item[data.checkKey]) {
 	          _value.push(item[data.key].toString());
 	          data.selected.push(item);
 	        }
+	        return undefined;
 	      });
 	    };
 	    _getChecked(data._source);
@@ -27071,6 +27093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      data.value = '';
 	    }
+	    this.$update();
 	  },
 
 	  // 循环设置类目及其子类目的check状态
@@ -27098,8 +27121,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate(on) {
 	    var data = this.data;
 
-	    var result = { success: true, message: '' },
-	        value = this.data.value;
+	    var result = { success: true, message: '' };
+	    var value = this.data.value;
 
 	    value = typeof value === 'undefined' ? '' : '' + value;
 	    if (data.required && !value.length) {
@@ -27125,9 +27148,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var data = this.data;
 	  var target = [];
 	  if (category && category.filter) {
-	    target = category.filter(function (item, index) {
+	    target = category.filter(function (item) {
 	      if (!item[data.nameKey]) return true;
-	      return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) != -1;
+	      return item[data.nameKey].toUpperCase().indexOf(search.toUpperCase()) !== -1;
 	    });
 	  }
 	  if (target.length) {
@@ -27143,65 +27166,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 343 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _defineProperty = __webpack_require__(344);
-
-	var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function (obj, key, value) {
-	  if (key in obj) {
-	    (0, _defineProperty2.default)(obj, key, {
-	      value: value,
-	      enumerable: true,
-	      configurable: true,
-	      writable: true
-	    });
-	  } else {
-	    obj[key] = value;
-	  }
-
-	  return obj;
-	};
+	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#list selected as item}\n        <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n\t\t\t<i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n        </span>\n        {/list}\n        {#if !open}\n        <kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\" on-click={this.toggle(!open, $event)}/>\n        {/if}\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul>\n                <kl-input value={search[level]}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}>&gt;</span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 344 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(345), __esModule: true };
-
-/***/ }),
-/* 345 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(346);
-	var $Object = __webpack_require__(6).Object;
-	module.exports = function defineProperty(it, key, desc){
-	  return $Object.defineProperty(it, key, desc);
-	};
-
-/***/ }),
-/* 346 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var $export = __webpack_require__(4);
-	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(14), 'Object', {defineProperty: __webpack_require__(10).f});
-
-/***/ }),
-/* 347 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        {#list selected as item}\n        <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n\t\t\t<i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n        </span>\n        {/list}\n        {#if !open}\n        <kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\"/>\n        {/if}\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul>\n                <kl-input value={search[level]}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\">&gt;</span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
-
-/***/ }),
-/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27216,7 +27186,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var validator = __webpack_require__(105);
 	var bowser = __webpack_require__(173);
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(349);
+	var template = __webpack_require__(345);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -27327,13 +27297,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLButton;
 
 /***/ }),
-/* 349 */
+/* 345 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}"
 
 /***/ }),
-/* 350 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27343,7 +27313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var ValidationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(351);
+	var template = __webpack_require__(347);
 
 	/**
 	 * @class UIForm
@@ -27480,13 +27450,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLForm;
 
 /***/ }),
-/* 351 */
+/* 347 */
 /***/ (function(module, exports) {
 
 	module.exports = "<form class=\"m-form f-row f-cb {class}\" r-class=\"{{'inline':!!inline}}\">\n\t{#inc this.$body}\n</form>"
 
 /***/ }),
-/* 352 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27495,7 +27465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(353);
+	var template = __webpack_require__(349);
 
 	/**
 	 * @class KLFormItem
@@ -27610,13 +27580,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLFormItem;
 
 /***/ }),
-/* 353 */
+/* 349 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-formitem u-formitem-{layout} {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || titleTemplate}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n    {#if title}\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>{title}\n      {#if tip}<kl-tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></kl-tooltip>{/if}\n    {#else}\n      {#inc titleTemplate}\n    {/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if descTemplate}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc descTemplate}\n      </div>\n    {/if}\n  </span>\n</div>\n"
 
 /***/ }),
-/* 354 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27629,15 +27599,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Dropdown = __webpack_require__(178);
-	var template = __webpack_require__(355);
+	var template = __webpack_require__(351);
 	var _ = __webpack_require__(72);
-	var Validation = __webpack_require__(104);
+	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var util = __webpack_require__(356);
-	var Multiple = __webpack_require__(357);
-	var PrivateMethod = __webpack_require__(358);
-	var KLTooltip = __webpack_require__(359);
-	var KLCheck = __webpack_require__(213);
+	var Multiple = __webpack_require__(352);
+	var PrivateMethod = __webpack_require__(354);
 
 	/**
 	 * @class KLSelect
@@ -27767,7 +27734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    this.$watch('source', function (newValue, oldValue) {
+	    this.$watch('source', function (newValue) {
 	      if (newValue === undefined) {
 	        return data.selected = undefined;
 	      }
@@ -27779,32 +27746,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var key = data.key;
 	      var nameKey = data.nameKey;
 	      var value = data.value;
-	      var itemHandleFn = function itemHandleFn(value) {
-	        return value;
+	      var itemHandleFn = function itemHandleFn(_value) {
+	        return _value;
 	      };
 	      if (newValue.length) {
 	        if (typeof newValue[0] === 'string' || typeof newValue[0] === 'number') {
-	          itemHandleFn = function itemHandleFn(value) {
+	          itemHandleFn = function itemHandleFn(_value) {
 	            var item = {};
-	            item[key] = value;
-	            item[nameKey] = value;
+	            item[key] = _value;
+	            item[nameKey] = _value;
 	            return item;
 	          };
 	        } else if (!newValue[0].hasOwnProperty(key)) {
-	          itemHandleFn = function itemHandleFn(value) {
-	            if (!value.hasOwnProperty('divider')) {
-	              value[key] = value[nameKey];
+	          itemHandleFn = function itemHandleFn(_value) {
+	            if (!_value.hasOwnProperty('divider')) {
+	              _value[key] = _value[nameKey];
 	            }
-	            return value;
+	            return _value;
 	          };
 	        } else if (!newValue[0].hasOwnProperty(nameKey)) {
-	          itemHandleFn = function itemHandleFn(value) {
-	            value[nameKey] = value[key];
-	            return value;
+	          itemHandleFn = function itemHandleFn(_value) {
+	            _value[nameKey] = _value[key];
+	            return _value;
 	          };
 	        }
-	        newValue = data.source = newValue.map(function (value) {
-	          return itemHandleFn(value);
+	        data.source = newValue.map(function (_value) {
+	          return itemHandleFn(_value);
 	        });
 	      }
 
@@ -27822,7 +27789,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        if (value !== undefined && value !== null) {
 	          data.selected = newValue.find(function (item) {
-	            return item[key] == value;
+	            return item[key] === value;
 	          }, this);
 	        } else if (data.selected && newValue.indexOf(data.selected) < 0) {
 	          data.selected = undefined;
@@ -27842,7 +27809,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (this.hasOwnProperty('__canSearch')) {
 	        canSearch = this.__canSearch;
 	      } else {
-	        canSearch = this.__canSearch = data.canSearch;
+	        this.__canSearch = data.canSearch;
+	        canSearch = this.__canSearch;
 	      }
 	      data.canSearch = canSearch === true || Array.isArray(newValue) && newValue.length > 20 && canSearch !== false;
 	    });
@@ -27864,8 +27832,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return;
 	      }
 	      try {
-	        newValue = Number(newValue);
-	        if (isNaN(newValue)) {
+	        var _newValue = Number(newValue);
+	        if (isNaN(_newValue)) {
 	          console.error(this.$trans('LIMIT_ERROR'));
 	        }
 	      } catch (e) {
@@ -27942,8 +27910,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate(on) {
 	    var data = this.data;
 
-	    var result = { success: true, message: '' },
-	        value = this.data.value;
+	    var result = { success: true, message: '' };
+	    var value = this.data.value;
 
 	    value = typeof value === 'undefined' ? '' : '' + value;
 	    if (data.required && !value.length) {
@@ -27970,67 +27938,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSelect;
 
 /***/ }),
-/* 355 */
+/* 351 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"input u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t            {#if !open}\n\t            <kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\"/>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\n\t\t            <kl-icon type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t            {#if !open}\n\t\t\t\t\t<kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\" />\n\t            {/if}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t\t\t\t{#if !open}\n\t            <kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\"/>\n\t            {/if}\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"input u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t\t\t\t{#if !open}\n\t\t\t\t\t<kl-icon fontSize=12 type=\"angle_down\" class=\"f-fr\" />\n\t            {/if}\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\n\t\t            <kl-icon type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
-/* 356 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * kl-select  util
-	 * ------------------------------------------------------------
-	 */
-
-	var selectUtil = {
-	  /**
-	     * 设置对应的key为value
-	     * @param target   目标对象
-	     * @param key      需要设置的key
-	     * @param value    设置的值
-	     */
-	  clearDataToNUll: function clearDataToNUll(target, key, value) {
-	    target[key] = value || '';
-	  },
-
-	  /**
-	     * 根据是否多选获取selected中key对应的字段并返回
-	     * @param data          组件data
-	     * @param valueFn       非多选时获取selected中key对应值的函数
-	     * @param nullValue     未获取到key对应值时的默认值
-	     * @param separator     多选时拼接key对应的字段的分隔符
-	     * @param key           获取值的key
-	     * @returns {string}    最终返回值
-	     */
-	  getSelectedTextByKey: function getSelectedTextByKey(data, valueFn, nullValue, separator, key) {
-	    var selected = data.selected;
-	    var value = '';
-	    if (selected) {
-	      if (data.multiple) {
-	        value = selected.length ? selected.reduce(function (prev, next, index) {
-	          var nextValue = next[key];
-	          if (index != selected.length - 1) {
-	            nextValue += separator;
-	          }
-	          return prev + nextValue;
-	        }, '') : nullValue;
-	      } else {
-	        value = valueFn(selected);
-	      }
-	    }
-	    return value;
-	  }
-	};
-
-		module.exports = selectUtil;
-
-/***/ }),
-/* 357 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28041,9 +27955,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(356);
+	var util = __webpack_require__(353);
 
-	'use strict';
 	module.exports = function Multiple(Component) {
 	  Component.implement({
 	    selectAll: function selectAll(isSelected) {
@@ -28063,11 +27976,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    backSearchValue: function backSearchValue(event, selected, searchValue) {
 	      var isBackSpaceKeyCode = 8;
-	      if (event.which == isBackSpaceKeyCode && !searchValue.trim()) {
+	      if (event.which === isBackSpaceKeyCode && !searchValue.trim()) {
 	        this.removeSelected(selected, selected.length - 1, event);
 	      }
 	    },
-	    searchClick: function searchClick() {
+	    searchClick: function searchClick(event) {
 	      event && event.stopPropagation();
 	      this.toggle(true);
 	      this.searchInputFocus();
@@ -28105,7 +28018,61 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 358 */
+/* 353 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * kl-select  util
+	 * ------------------------------------------------------------
+	 */
+
+	var selectUtil = {
+	  /**
+	     * 设置对应的key为value
+	     * @param target   目标对象
+	     * @param key      需要设置的key
+	     * @param value    设置的值
+	     */
+	  clearDataToNUll: function clearDataToNUll(target, key, value) {
+	    target[key] = value || '';
+	  },
+
+	  /**
+	     * 根据是否多选获取selected中key对应的字段并返回
+	     * @param data          组件data
+	     * @param valueFn       非多选时获取selected中key对应值的函数
+	     * @param nullValue     未获取到key对应值时的默认值
+	     * @param separator     多选时拼接key对应的字段的分隔符
+	     * @param key           获取值的key
+	     * @returns {string}    最终返回值
+	     */
+	  getSelectedTextByKey: function getSelectedTextByKey(data, valueFn, nullValue, separator, key) {
+	    var selected = data.selected;
+	    var value = '';
+	    if (selected) {
+	      if (data.multiple) {
+	        value = selected.length ? selected.reduce(function (prev, next, index) {
+	          var nextValue = next[key];
+	          if (index !== selected.length - 1) {
+	            nextValue += separator;
+	          }
+	          return prev + nextValue;
+	        }, '') : nullValue;
+	      } else {
+	        value = valueFn(selected);
+	      }
+	    }
+	    return value;
+	  }
+	};
+
+		module.exports = selectUtil;
+
+/***/ }),
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28122,7 +28089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(356);
+	var util = __webpack_require__(353);
 
 	module.exports = function PrivateMethod(Component) {
 	  Component.implement({
@@ -28212,14 +28179,3090 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 359 */
+/* 355 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
-	 * KLTooltip     提示
+	 * KLText  文本
+	 * @author   Cody Chan<int64ago@gmail.com>
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(356);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLText
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.text=文本]      <=> 内容
+	 * @param {string}      [options.data.size]           => 大小
+	 * @param {boolean}     [options.data.isBold=false]   => 是否加粗
+	 * @param {string}      [options.data.align]          => 左右对齐方式
+	 * @param {string}      [options.data.vertical]       => 上下对齐方式
+	 * @param {string}      [options.data.type=default]   => 文本样式
+	 */
+	var KLText = Component.extend({
+	  name: 'kl-text',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      text: '--',
+	      // default/primary/info/success/warning/error
+	      type: 'default',
+	      // xs/sm/lg/xl
+	      size: '',
+	      isBold: false,
+	      // tal/tac/tar/taj
+	      align: '',
+	      // vat/vam/vab
+	      vertical: '',
+	      /* eslint no-script-url: 0 */
+	      url: 'javascript:;',
+	      target: ''
+	    });
+	    this.supr();
+	  },
+	  onClick: function onClick(e) {
+	    this.$emit('click', e);
+	  }
+	});
+
+		module.exports = KLText;
+
+/***/ }),
+/* 356 */
+/***/ (function(module, exports) {
+
+	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>\n    {text}\n</a>"
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLTextArea   输入扩展
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(358);
+	var _ = __webpack_require__(72);
+	var Validation = __webpack_require__(104);
+	var validationMixin = __webpack_require__(170);
+
+	var bowser = __webpack_require__(173);
+
+	/**
+	 * @class KLTextArea
+	 * @extend Component
+	 * @param {object}        [options.data]                    = 绑定属性
+	 * @param {string}        [options.data.value]              <=> 文本框的值
+	 * @param {string}        [options.data.placeholder]         => 占位符
+	 * @param {string}        [options.data.state]              <=> 文本框的状态
+	 * @param {number}        [options.data.maxlength]          => 文本框的最大长度
+	 * @param {object[]}      [options.data.rules=[]]           => 验证规则
+	 * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
+	 * @param {number}        [options.data.height=120]         => 高度
+	 * @param {boolean}       [options.data.required=false]     => 是否必填
+	 * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+	 * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
+	 * @param {boolean}       [options.data.readonly=false]     => 是否只读
+	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
+	 * @param {boolean}       [options.data.visible=true]       => 是否显示
+	 * @param {string}        [options.data.class]              => 补充class
+	 * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
+	 * @param {number}        [options.data.width]              => 组件宽度
+	 */
+	var KLTextArea = Component.extend({
+	  name: 'kl-textarea',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      hideTip: false,
+	      value: '',
+	      placeholder: '',
+	      state: '',
+	      maxlength: undefined,
+	      height: 120,
+	      rules: [],
+	      autofocus: false,
+	      _eltIE9: bowser.msie && bowser.version <= 9,
+	      required: false
+	    });
+
+	    this.supr();
+
+	    this.initValidation();
+	  },
+	  init: function init() {
+	    this.$watch('required', function (value) {
+	      var rules = this.data.rules;
+	      var message = this.data.message || this.$trans('PLEASE_INPUT');
+	      if (value) {
+	        rules.push({ type: 'isRequired', message: message });
+	      } else {
+	        this.data.rules = rules.filter(function (rule) {
+	          return rule.type !== 'isRequired';
+	        });
+	      }
+	    });
+	  },
+
+	  /**
+	     * @method validate() 根据`rules`验证组件的值是否正确
+	     * @public
+	     * @return {object} result 结果
+	     */
+	  validate: function validate() {
+	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+	    var value = this.data.value;
+	    var rules = this.data.rules;
+
+	    rules = rules.filter(function (rule) {
+	      return (rule.on || '').indexOf(on) >= 0;
+	    });
+
+	    var result = Validation.validate(value, rules);
+	    if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) {
+	      this.data.tip = result.firstRule.message;
+	    } else this.data.tip = '';
+
+	    // @TODO
+	    if (!result.success) this.data.state = 'error';else {
+	      this.data.state = '';
+	    }
+
+	    this.$emit('validate', {
+	      sender: this,
+	      on: on,
+	      result: result
+	    });
+
+	    return result;
+	  },
+	  _onKeyUp: function _onKeyUp($event) {
+	    this.validate('keyup');
+	    this.$emit('keyup', $event);
+	  },
+	  _onBlur: function _onBlur($event) {
+	    this.validate('blur');
+	    this.$emit('blur', $event);
+	  }
+	});
+
+	KLTextArea.use(validationMixin);
+	module.exports = KLTextArea;
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports) {
+
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  kl-upload 上传
+	 *  ------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var UploadList = __webpack_require__(360);
+	var UploadCard = __webpack_require__(371);
+	var Config = __webpack_require__(367);
+	var tpl = __webpack_require__(373);
+
+	/**
+	 * @class KLUpload
+	 * @extend Component
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+	 *                                                             name: 文件名称
+	 *                                                             url: 文件的路径
+	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+	 */
+	var KLUpload = Component.extend({
+	  name: 'kl-upload',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      action: '',
+	      name: 'file',
+	      multiple: false,
+	      drag: false,
+	      accept: '*',
+	      listType: 'list',
+	      fileList: [],
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
+	      maxSize: Config.sizeMap.GB,
+	      deletable: true,
+	      encType: 'multipart/form-data'
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.preProcess(data);
+	    this.initUploadInst(data);
+	    this.supr(data);
+	  },
+	  preProcess: function preProcess(data) {
+	    if (typeof data.maxSize === 'number') {
+	      data.maxSize += '';
+	    }
+	  },
+	  initUploadInst: function initUploadInst(data) {
+	    var uploadNode = this.$refs['m-upload'];
+	    var typeMap = {
+	      list: UploadList,
+	      card: UploadCard
+	    };
+
+	    new typeMap[data.listType]({
+	      data: data
+	    }).$inject(uploadNode);
+	  }
+	});
+
+		module.exports = KLUpload;
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  UploadList 上传
+	 *  ------------------------------
+	 */
+
+	var FileUnit = __webpack_require__(361);
+	var UploadBase = __webpack_require__(366);
+	var ImagePreview = __webpack_require__(368);
+	var tpl = __webpack_require__(370);
+
+	/**
+	 * @class UploadList
+	 * @extend UploadBase
+	 */
+	var UploadList = UploadBase.extend({
+	  name: 'upload-list',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initFilesWrapper();
+	    this.supr(data);
+	  },
+	  initFilesWrapper: function initFilesWrapper() {
+	    var data = this.data;
+	    data.inputWrapper = this.$refs.inputwrapper;
+	    data.filesWrapper = this.$refs.fileswrapper;
+	    data.filesWrapper.appendChild(data.inputWrapper);
+	    data.inputWrapper.style.display = 'inline-block';
+	  },
+	  onDragEnter: function onDragEnter(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragOver: function onDragOver(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDrop: function onDrop(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+
+	    if (!this.data.drag) {
+	      return;
+	    }
+
+	    var dt = e.event && e.event.dataTransfer;
+	    var files = dt.files;
+
+	    this.handleFiles(files);
+	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file;
+	    var files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
+	  },
+	  handleFiles: function handleFiles(files) {
+	    var data = this.data;
+	    var len = files.length;
+	    var index = 0;
+	    var file = void 0;
+	    var fileunit = void 0;
+
+	    var options = this.setOptions(data);
+
+	    data.preCheckInfo = '';
+
+	    for (; index < len; index += 1) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (!data.preCheckInfo) {
+	          fileunit = this.createFileUnit({
+	            file: file,
+	            options: options,
+	            deletable: data.deletable
+	          });
+	          fileunit.flag = 'ADDED';
+	          data.fileUnitList.push({
+	            inst: fileunit
+	          });
+	        }
+	      }
+	    }
+
+	    this.updateFileList();
+	  },
+	  createFileUnit: function createFileUnit(data) {
+	    var self = this;
+	    var imagePreviewWrapper = this.$refs.imagepreview;
+	    var fileunit = new FileUnit({ data: data });
+
+	    fileunit.$on('preview', function () {
+	      var current = this;
+
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
+	      }
+
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
+
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreviewWrapper);
+	    });
+
+	    function createImagePreview(imgFileList) {
+	      function findHelper(img) {
+	        return img.current;
+	      }
+	      var curIndex = imgFileList.findIndex(findHelper);
+
+	      function mapHelper(img) {
+	        delete img.current;
+	        return {
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
+	        };
+	      }
+	      var imgList = imgFileList.map(mapHelper);
+
+	      var imagePreview = new ImagePreview({
+	        data: {
+	          imgList: imgList,
+	          curIndex: curIndex
+	        }
+	      });
+
+	      imagePreview.$on('delete', function (imgInfo) {
+	        var index = imgInfo.index;
+	        var imgInst = imgFileList[index];
+
+	        if (imgInst) {
+	          imgInst.$emit('delete');
+	        }
+	      });
+
+	      imagePreview.$on('$destroy', function () {
+	        imgFileList.splice(0);
+	      });
+
+	      return imagePreview;
+	    }
+
+	    fileunit.$on('onload', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('success', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      this.destroyed = true;
+	      self.updateFileList();
+	    });
+
+	    return fileunit;
+	  },
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.appendInputWrapper();
+	    this.$update();
+	  },
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
+	  },
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
+	    }
+	  },
+	  appendInputWrapper: function appendInputWrapper() {
+	    var data = this.data;
+	    var inputWrapper = data.inputWrapper;
+	    var filesWrapper = data.filesWrapper;
+	    var numPerline = data.numPerline;
+	    var numLimit = data.numLimit;
+	    var fileUnitMargin = data.fileUnitMargin;
+	    var length = data.fileUnitList.length;
+
+	    if (length < numLimit) {
+	      filesWrapper.appendChild(inputWrapper);
+
+	      if (length % numPerline) {
+	        inputWrapper.style.marginLeft = fileUnitMargin + 'px';
+	      } else {
+	        inputWrapper.style.marginLeft = '0';
+	      }
+	    }
+	  }
+	});
+
+		module.exports = UploadList;
+
+/***/ }),
+/* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  FileUnit
+	 *  ------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var tpl = __webpack_require__(362);
+	var upload = __webpack_require__(363);
+	var KLModal = __webpack_require__(364);
+
+	var FileUnit = Component.extend({
+	  name: 'file-unit',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      file: {},
+	      options: {}
+	    });
+
+	    _.extend(data, {
+	      info: '',
+	      status: '',
+	      deletable: true,
+	      delConfirm: false
+	    });
+
+	    this.initData(data);
+
+	    this.supr(data);
+	  },
+	  initData: function initData(data) {
+	    var file = data.file;
+	    data.name = this.getFileName(file);
+	    data.type = this.getFileType(file);
+
+	    // for initial uploaded files
+	    if (file.url) {
+	      data.src = file.url;
+	      data.status = 'uploaded';
+	    } else {
+	      data.src = window.URL.createObjectURL(file);
+	      this.uploadFile(file);
+	    }
+	  },
+	  getFileName: function getFileName(file) {
+	    return file.name;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '';
+	    var name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  uploadFile: function uploadFile(file) {
+	    var self = this;
+	    var data = this.data;
+
+	    data.info = '';
+
+	    var options = {
+	      upload: {
+	        onload: function onload(e) {
+	          data.progress = '100%';
+	          self.$update();
+	          self.$emit('success', { progress: data.progress, info: e });
+	        },
+	        onprogress: function onprogress(e) {
+	          data.status = 'uploading';
+	          data.progress = parseInt(e.loaded / e.total * 100) + '%';
+	          self.$update();
+	          self.$emit('progress', { progress: data.progress });
+	        }
+	      },
+	      onload: function onload(e) {
+	        var target = e.target;
+	        if (target.status === 200) {
+	          var response = JSON.parse(target.responseText);
+	          self.data.file.url = response.url;
+	          self.data.status = 'uploaded';
+	          self.data.info = '';
+	        } else {
+	          data.status = 'failed';
+	          data.info = self.$trans('UPLOAD_FAIL');
+	        }
+	        self.$update();
+	        self.$emit('onload', { info: e });
+	      },
+	      onerror: function onerror(e) {
+	        data.status = 'failed';
+	        data.info = self.$trans('UPLOAD_FAIL');
+	        self.$update();
+	        self.$emit('error', { info: e });
+	      }
+	    };
+
+	    options = _.extend(options, data.options);
+	    upload(options.url, file, options);
+	  },
+	  onDelete: function onDelete() {
+	    var self = this;
+	    var data = this.data;
+
+	    if (data.delConfirm) {
+	      var modal = new KLModal({
+	        data: {
+	          content: this.$trans('DELETE_CONFIRM') + data.name + '?'
+	        }
+	      });
+	      modal.$on('ok', function () {
+	        self.$emit('delete');
+	      });
+	    } else {
+	      self.$emit('delete');
+	    }
+	  },
+	  onPreview: function onPreview() {
+	    this.$emit('preview');
+	  }
+	});
+
+		module.exports = FileUnit;
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'IMAGE'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={src}/>\n            </div>\n        {#elseif type === 'ZIP'}\n            <span class=\"u-txt\">ZIP</span>\n        {#elseif type === 'UNKNOWN'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type}</span>\n        {/if}\n        <div class=\"m-delete\" r-hide={!deletable} on-click={this.onDelete()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'failed'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'uploaded'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={name}>{name}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(72);
+
+	var defaults = {
+	  type: 'POST',
+	  async: true
+	};
+
+	function upload(url, src, options) {
+	  var fd = new FormData();
+	  var data = src;
+
+	  if (src instanceof File) {
+	    data = {
+	      file: src
+	    };
+	  }
+
+	  for (var key in data) {
+	    if (data.hasOwnProperty(key)) {
+	      fd.append(key, data[key]);
+	    }
+	  }
+
+	  options.url = url;
+	  options.data = fd;
+
+	  return ajax(_.extend(defaults, options, true));
+	}
+
+	function ajax(options) {
+	  var xhr = new XMLHttpRequest();
+	  var headers = options.headers || {};
+
+	  xhr.open(options.type, options.url, options.async);
+
+	  for (var key in headers) {
+	    if (headers.hasOwnProperty(key)) {
+	      xhr.setRequestHeader(key, headers[key]);
+	    }
+	  }
+
+	  var noop = function noop() {};
+	  var onerror = options.onerror || noop;
+
+	  var onload = options.onload || noop;
+
+	  var onprogress = options.onprogress || noop;
+
+	  xhr.addEventListener('load', onload);
+	  xhr.addEventListener('error', onerror);
+	  xhr.addEventListener('progress', onprogress);
+
+	  if (options.upload) {
+	    var onuploadLoad = options.upload.onload || noop;
+
+	    var onuploadProgress = options.upload.onprogress || noop;
+
+	    xhr.upload.addEventListener('load', onuploadLoad);
+	    xhr.upload.addEventListener('progress', onuploadProgress);
+	  }
+
+	  xhr.send(options.data);
+	}
+
+	module.exports = upload;
+
+/***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLModal     模态对话框
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(365);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLModal
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
+	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
+	 * @param {string}            [options.data.content]              => 对话框内容
+	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
+	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
+	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
+	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
+	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
+	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
+	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
+	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
+	 * @param {string}            [options.data.class]                => 补充class
+	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
+	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
+	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
+	 */
+	var KLModal = Component.extend({
+	  name: 'kl-modal',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: this.$trans('NOTICE'),
+	      content: '',
+	      okButton: true,
+	      with: 400,
+	      cancelButton: false,
+	      noClose: false,
+	      okDisabled: false,
+	      cancelDisabled: false,
+	      hasFooter: true,
+	      isCanClose: true
+	    });
+	    this.supr();
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @method close(result) 关闭对话框
+	     * @public
+	     * @param  {boolean} result 点击确定还是取消
+	     * @return {void}
+	     */
+	  close: function close(result, event) {
+	    /**
+	         * @event close 关闭对话框时触发
+	         * @property {boolean} result 点击了确定还是取消
+	         */
+	    this.$emit('close', {
+	      result: result
+	    });
+	    result ? this.ok(event) : this.cancel();
+	  },
+
+	  /**
+	     * @method ok() 确定对话框
+	     * @public
+	     * @return {void}
+	     */
+	  ok: function ok(event) {
+	    /**
+	         * @event ok 确定对话框时触发
+	         */
+	    this.$emit('ok', event);
+	    !this.data.noClose && this.destroy();
+	  },
+
+	  /**
+	     * @method cancel() 取消对话框
+	     * @public
+	     * @return {void}
+	     */
+	  cancel: function cancel() {
+	    /**
+	         * @event cancel 取消对话框时触发
+	         */
+	    this.$emit('cancel');
+	    this.destroy();
+	  },
+	  _onDragStart: function _onDragStart($event) {
+	    var dialog = $event.proxy;
+	    dialog.style.left = dialog.offsetLeft + 'px';
+	    dialog.style.top = dialog.offsetTop + 'px';
+	    dialog.style.zIndex = '1000';
+	    dialog.style.position = 'absolute';
+	  }
+	});
+
+	/**
+	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	KLModal.alert = function (content, title, okButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton
+	    }
+	  });
+
+	  return modal;
+	};
+
+	/**
+	 * @method confirm(content[,title]) 弹出一个confirm对话框
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	KLModal.confirm = function (content, title, okButton, cancelButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton,
+	      cancelButton: cancelButton || true
+	    }
+	  });
+
+	  return modal;
+	};
+
+	// var oldExtend = Modal.extend;
+	// Modal.extend = function() {
+	//     var extended = oldExtend.apply(this, arguments);
+	//     extended.alert = this.alert;
+	//     extended.confirm = this.confirm;
+	//     return extended;
+	// }
+
+	module.exports = KLModal;
+
+/***/ }),
+/* 365 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  upload.base 上传基础类
+	 *  ------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var Config = __webpack_require__(367);
+
+	/**
+	 * @class UploadBase
+	 * @extend Component
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+	 *                                                             name: 文件名称
+	 *                                                             url: 文件的路径
+	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+	 */
+	var UploadBase = Component.extend({
+	  name: 'upload-list',
+	  config: function config(data) {
+	    _.extend(data, {
+	      action: '',
+	      name: 'file',
+	      multiple: false,
+	      drag: false,
+	      accept: '*',
+	      listType: 'list',
+	      fileList: [],
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
+	      maxSize: Config.sizeMap.GB,
+	      deletable: true,
+	      encType: 'multipart/form-data'
+	    });
+
+	    _.extend(data, {
+	      fileUnitList: [],
+	      fileDeletedList: [],
+	      fileUnitWidth: 50,
+	      fileUnitMargin: 25
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initUploadedFileUnits();
+	    this.supr(data);
+	  },
+	  initUploadedFileUnits: function initUploadedFileUnits() {
+	    var self = this;
+	    var data = this.data;
+
+	    if (data.fileList.length > 0) {
+	      var fileList = data.fileList.splice(0);
+	      fileList.forEach(function (file) {
+	        var fileunit = self.createFileUnit({
+	          file: file,
+	          options: {},
+	          deletable: data.deletable
+	        });
+
+	        fileunit.flag = 'ORIGINAL';
+
+	        data.fileUnitList.push({
+	          inst: fileunit
+	        });
+	      });
+
+	      this.updateFileList();
+	    }
+	  },
+	  updateFileList: function updateFileList() {
+	    var self = this;
+	    var data = this.data;
+	    var filesWrapper = data.filesWrapper;
+	    var fileList = data.fileList;
+	    var fileDeletedList = data.fileDeletedList;
+
+	    data.fileUnitList = data.fileUnitList.filter(function (item) {
+	      var inst = item.inst;
+	      var flag = inst.flag;
+	      var file = inst.file;
+	      var destroyed = inst.destroyed;
+
+	      // item.inst = {};
+
+	      if (flag === 'DELETED') {
+	        file.flag = 'DELETED';
+	        fileDeletedList.push(file);
+	        return false;
+	      }
+	      return !destroyed;
+	    });
+
+	    filesWrapper.innerHTML = '';
+
+	    var fileUnitList = data.fileUnitList;
+	    fileUnitList.forEach(function (item, index) {
+	      item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
+	      item.inst.$inject(item.wrapper);
+	    });
+
+	    fileList.splice(0);
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst;
+	      var file = inst.data.file || {};
+
+	      fileList.push({
+	        name: file.name,
+	        url: file.url,
+	        flag: Config.flagMap[inst.flag]
+	      });
+	    });
+
+	    fileDeletedList.forEach(function (file) {
+	      fileList.push({
+	        name: file && file.name,
+	        url: file && file.url,
+	        flag: file && Config.flagMap[file.flag]
+	      });
+	    });
+	  },
+	  fileDialogOpen: function fileDialogOpen() {
+	    this.$refs.file && this.$refs.file.click();
+	  },
+	  setOptions: function setOptions(options) {
+	    var opts = options || {};
+
+	    return {
+	      url: opts.action
+	    };
+	  },
+	  preCheck: function preCheck(file) {
+	    var preCheckInfo = '';
+	    if (!this.isAcceptedFileSize(file)) {
+	      preCheckInfo = this.$trans('FILE_TOO_LARGE');
+	    }
+	    if (!this.isAcceptedFileType(file)) {
+	      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
+	    }
+	    return preCheckInfo;
+	  },
+	  isAcceptedFileType: function isAcceptedFileType(file) {
+	    var data = this.data;
+	    var accept = data.accept;
+	    var type = this.getFileType(file).toLowerCase();
+	    var isValid = false;
+
+	    accept.split(',').forEach(function (cond) {
+	      if (cond === '*') {
+	        isValid = true;
+	      } else if (/image\/.*/.test(cond)) {
+	        isValid = isValid || type === 'image';
+	      } else if (/audio\/.*/.test(cond)) {
+	        isValid = isValid || type === 'audio';
+	      } else if (/video\/.*/.test(cond)) {
+	        isValid = isValid || type === 'video';
+	      } else {
+	        isValid = isValid || type === Config.typeMap[cond];
+	      }
+	    });
+
+	    return isValid;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '';
+	    var name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  isAcceptedFileSize: function isAcceptedFileSize(file) {
+	    var data = this.data;
+	    var maxSize = data.maxSize;
+	    var fileSize = file.size;
+
+	    var patterns = maxSize.match(/(\d+)(\D+)?/i);
+	    var size = patterns[1];
+	    var unit = patterns[2];
+
+	    if (unit) {
+	      size *= Config.sizeMap[unit.toUpperCase()];
+	    }
+
+	    return size >= fileSize;
+	  }
+	});
+
+		module.exports = UploadBase;
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * common config
+	 */
+
+	var sizeMap = {
+	  K: '1024',
+	  KB: '1024',
+	  M: '1048576', // 1024 * 1024
+	  MB: '1048576', // 1024 * 1024
+	  G: '1073741824', // 1024 * 1024 * 1024
+	  GB: '1073741824' // 1024 * 1024 * 1024
+	};
+
+	var typeMap = {
+	  '.jpg': 'image',
+	  '.jpeg': 'image',
+	  '.gif': 'image',
+	  '.png': 'image',
+	  '.zip': 'zip',
+	  '.rar': 'zip',
+	  '.gz': 'zip',
+	  '.doc': 'doc',
+	  '.xlsx': 'doc',
+	  '.ppt': 'doc',
+	  '.mp4': 'video',
+	  '.mkv': 'video',
+	  '.rmvb': 'video',
+	  '.avi': 'video',
+	  '.mp3': 'audio',
+	  '.pdf': 'pdf',
+	  '.js': 'js',
+	  '.html': 'html',
+	  '.txt': 'text'
+	};
+
+	var flagMap = {
+	  ADDED: 0,
+	  ORIGINAL: 1,
+	  DELETED: 2
+	};
+
+	module.exports = {
+	  sizeMap: sizeMap,
+	  typeMap: typeMap,
+	  flagMap: flagMap
+		};
+
+/***/ }),
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  image preview
+	 *  ------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLModal = __webpack_require__(364);
+	var tpl = __webpack_require__(369);
+
+	var ImagePreview = Component.extend({
+	  name: 'image-preview',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      imgList: [],
+	      curIndex: 0,
+	      uploaded: true
+	    });
+
+	    _.extend(data, {
+	      showVirtual: false,
+	      virtualInfo: {
+	        rotate: 0,
+	        scale: 1,
+	        translateX: 0,
+	        translateY: 0,
+	        mouseDownX: 0,
+	        mouseDownY: 0,
+	        dragTarget: null
+	      },
+	      opList: [{
+	        name: 'zoomIn',
+	        icon: 'zoomin',
+	        fnName: 'zoomIn'
+	      }, {
+	        name: 'zoomOut',
+	        icon: 'zoomout',
+	        fnName: 'zoomOut'
+	      }, {
+	        name: 'rezoom',
+	        icon: 'rezoom',
+	        fnName: 'rezoom'
+	      }, {
+	        name: 'rotate',
+	        icon: 'rotate_right',
+	        fnName: 'rotate'
+	      }, {
+	        name: 'delete',
+	        icon: 'delete',
+	        fnName: 'onDel'
+	      }]
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.supr(data);
+	  },
+	  onClose: function onClose() {
+	    this.destroy();
+	  },
+	  onPrev: function onPrev() {
+	    var data = this.data;
+	    var length = data.imgList.length;
+	    var toIndex = length - 1;
+
+	    if (data.curIndex > 0) {
+	      data.curIndex -= 1;
+	      toIndex = data.curIndex;
+	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  onNext: function onNext() {
+	    var data = this.data;
+	    var length = data.imgList.length;
+	    var toIndex = 0;
+
+	    if (data.curIndex < length - 1) {
+	      data.curIndex += 1;
+	      toIndex = data.curIndex;
+	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  setCurrentTo: function setCurrentTo(toIndex) {
+	    var data = this.data;
+	    var refs = this.$refs;
+	    var curIndex = data.curIndex;
+
+	    data.showVirtual = false;
+	    data.virtualInfo.scale = 1;
+	    data.virtualInfo.rotate = 0;
+	    data.virtualInfo.translateX = 0;
+	    data.virtualInfo.translateY = 0;
+
+	    refs['full-' + curIndex].style.opacity = 0;
+	    refs['full-' + toIndex].style.opacity = 1;
+
+	    this.data.curIndex = toIndex;
+	  },
+	  zoomIn: function zoomIn() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var step = this.getZoomInStep();
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale += step;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  zoomOut: function zoomOut() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var step = this.getZoomOutStep();
+	    var translateStepInfo = this.getTranslateStep(step);
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale -= step;
+	    virtualInfo.translateX -= translateStepInfo.xStep;
+	    virtualInfo.translateY -= translateStepInfo.yStep;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  rezoom: function rezoom() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale = 1;
+	    virtualInfo.translateX = 0;
+	    virtualInfo.translateY = 0;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  getZoomInStep: function getZoomInStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+	    var step = this.getScaleStep();
+
+	    if (scale <= 0.1) {
+	      return 0.1;
+	    }
+
+	    return step;
+	  },
+	  getZoomOutStep: function getZoomOutStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+	    var step = this.getScaleStep();
+
+	    if (scale >= 10) {
+	      return 1;
+	    }
+
+	    return step;
+	  },
+	  getScaleStep: function getScaleStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+
+	    if (scale > 0.1 && scale < 1.5) {
+	      return 0.1;
+	    } else if (scale >= 1.5 && scale < 4) {
+	      return 0.5;
+	    } else if (scale >= 4 && scale < 10) {
+	      return 1;
+	    }
+
+	    return 0;
+	  },
+	  getTranslateStep: function getTranslateStep(scaleStep) {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+
+	    var totalSteps = (scale - 1) * 10;
+	    var translateX = virtualInfo.translateX;
+	    var translateY = virtualInfo.translateY;
+
+	    return {
+	      xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
+	      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
+	    };
+	  },
+	  rotate: function rotate() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var img = this.$refs.virtualimage;
+
+	    data.showVirtual = true;
+	    virtualInfo.rotate += 90;
+
+	    img.style.transform = this.genTransform();
+	  },
+	  genTransform: function genTransform() {
+	    var virtualInfo = this.data.virtualInfo;
+	    return 'translateX(' + virtualInfo.translateX + 'px)' + (' translateY(' + virtualInfo.translateY + 'px)') + (' rotate(' + virtualInfo.rotate + 'deg)') + (' scale(' + virtualInfo.scale + ')');
+	  },
+	  onDel: function onDel(index) {
+	    var self = this;
+	    var data = this.data;
+	    var imgList = data.imgList;
+	    var img = imgList[index];
+
+	    var modal = new KLModal({
+	      data: {
+	        content: this.$trans('DELETE_CONFIRM') + img.name + '?'
+	      }
+	    });
+	    modal.$on('ok', function () {
+	      imgList = data.imgList.splice(index, 1);
+
+	      if (!imgList[index]) {
+	        data.curIndex = 0;
+	      }
+	      self.$emit('delete', {
+	        name: img.name,
+	        index: index
+	      });
+	      self.$update();
+	    });
+	  },
+	  onMouseDown: function onMouseDown(e) {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    virtualInfo.mouseDownX = e.pageX;
+	    virtualInfo.mouseDownY = e.pageY;
+	    virtualInfo.dragTarget = e.origin;
+	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+	  },
+	  onMouseMove: function onMouseMove(e) {
+	    var data = this.data;
+	    var virtualImg = this.$refs.virtualimage;
+	    var virtualInfo = data.virtualInfo;
+	    var originX = virtualInfo.mouseDownX;
+	    var originY = virtualInfo.mouseDownY;
+	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+
+	    var boundary = virtualInfo.dragBoundary;
+	    if (virtualInfo.dragTarget) {
+	      var translateX = e.pageX - originX;
+	      var translateY = e.pageY - originY;
+
+	      if (translateX > boundary.maxTranslateX) {
+	        translateX = boundary.maxTranslateX;
+	      } else if (translateX < boundary.minTranslateX) {
+	        translateX = boundary.minTranslateX;
+	      }
+
+	      if (translateY > boundary.maxTranslateY) {
+	        translateY = boundary.maxTranslateY;
+	      } else if (translateY < boundary.minTranslateY) {
+	        translateY = boundary.minTranslateY;
+	      }
+
+	      virtualInfo.translateX += translateX;
+	      virtualInfo.translateY += translateY;
+	      virtualInfo.mouseDownX = e.pageX;
+	      virtualInfo.mouseDownY = e.pageY;
+	      virtualImg.style.transform = this.genTransform();
+	    }
+	  },
+	  onMouseUp: function onMouseUp() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    if (virtualInfo.dragTarget) {
+	      virtualInfo.mouseDownX = 0;
+	      virtualInfo.mouseDownY = 0;
+	      virtualInfo.dragTarget = null;
+	    }
+	  },
+	  onMouseWheel: function onMouseWheel(e) {
+	    if (e.wheelDelta > 0) {
+	      this.zoomIn();
+	    } else if (e.wheelDelta < 0) {
+	      this.zoomOut();
+	    }
+	  },
+	  getMaxMinTranslateValue: function getMaxMinTranslateValue() {
+	    var virtualImg = this.$refs.virtualimage;
+	    var virtualZone = this.$refs.virtualzone;
+
+	    var virtualImgRect = virtualImg.getBoundingClientRect();
+	    var virtualZoneRect = virtualZone.getBoundingClientRect();
+	    var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
+	    var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
+	    var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
+	    var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
+
+	    return {
+	      maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
+	      maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
+	      minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
+	      minTranslateY: minDeltaY < 0 ? minDeltaY : 0
+	    };
+	  }
+	});
+
+		module.exports = ImagePreview;
+
+/***/ }),
+/* 369 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'delete'}\n                            <a class=\"u-download\" href={imgList[curIndex].src} download={imgList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imgList[curIndex].src} alt={imgList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imgList[curIndex].name}>{imgList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+/* 370 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <li ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()} r-hide={true}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n            <div class=\"u-input-info\">{preCheckInfo}</div>\n        {/if}\n    </li>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 371 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  UploadCard 上传
+	 *  ------------------------------
+	 */
+
+	var _ = __webpack_require__(72);
+	var FileUnit = __webpack_require__(361);
+	var UploadBase = __webpack_require__(366);
+	var ImagePreview = __webpack_require__(368);
+	var tpl = __webpack_require__(372);
+
+	/**
+	 * @class UploadCard
+	 * @extend UploadBase
+	 */
+
+	var UploadCard = UploadBase.extend({
+	  name: 'upload-card',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      status: 'uploaded',
+	      info: '',
+	      fileUnitListPadding: 22
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initFilesZone();
+	    this.supr(data);
+	  },
+	  initFilesZone: function initFilesZone() {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
+	    data.filesWrapper = this.$refs.fileswrapper;
+	    data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
+	  },
+	  onDragEnter: function onDragEnter(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragOver: function onDragOver(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDrop: function onDrop(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+
+	    if (!this.data.drag) {
+	      return;
+	    }
+
+	    var dt = e.event && e.event.dataTransfer;
+	    var files = dt.files;
+
+	    this.handleFiles(files);
+	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file;
+	    var files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
+	  },
+	  handleFiles: function handleFiles(files) {
+	    var data = this.data;
+	    var len = files.length;
+	    var index = 0;
+	    var file = void 0;
+	    var fileunit = void 0;
+
+	    this.toggle(false);
+
+	    var options = this.setOptions(data);
+
+	    data.preCheckInfo = '';
+
+	    for (; index < len; index += 1) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (!data.preCheckInfo) {
+	          fileunit = this.createFileUnit({
+	            file: file,
+	            options: options,
+	            deletable: data.deletable
+	          });
+	          fileunit.flag = 'ADDED';
+	          data.fileUnitList.push({
+	            inst: fileunit
+	          });
+	          this.updateFilesZone();
+	        }
+	      }
+	    }
+
+	    this.updateFileList();
+	  },
+	  updateFilesZone: function updateFilesZone() {
+	    var data = this.data;
+	    var filesZone = this.$refs.fileszone;
+	    var entryWrapper = this.$refs.entrywrapper;
+	    var inputWrapper = this.$refs.inputwrapper;
+
+	    if (data.fileUnitList.length < data.numLimit) {
+	      filesZone.style.width = '125px';
+	      entryWrapper.style['margin-right'] = '20px';
+	      inputWrapper.style.display = 'inline-block';
+	    } else if (data.fileUnitList.length === data.numLimit) {
+	      filesZone.style.width = '50px';
+	      entryWrapper.style['margin-right'] = '0';
+	      inputWrapper.style.display = 'none';
+	    }
+	  },
+	  createFileUnit: function createFileUnit(data) {
+	    var self = this;
+	    var imagePreviewWrapper = this.$refs.imagepreview;
+	    var fileunit = new FileUnit({ data: data });
+
+	    fileunit.$on('preview', previewCb);
+
+	    function previewCb() {
+	      var current = this;
+
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
+	      }
+
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
+
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreviewWrapper);
+	    }
+
+	    function createImagePreview(imgFileList) {
+	      function findHelper(img) {
+	        return img.current;
+	      }
+	      var curIndex = imgFileList.findIndex(findHelper);
+
+	      function mapHelper(img) {
+	        delete img.current;
+	        return {
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
+	        };
+	      }
+	      var imgList = imgFileList.map(mapHelper);
+
+	      var imagePreview = new ImagePreview({
+	        data: {
+	          imgList: imgList,
+	          curIndex: curIndex
+	        }
+	      });
+
+	      imagePreview.$on('delete', function (imgInfo) {
+	        var index = imgInfo.index;
+	        var imgInst = imgFileList[index];
+
+	        if (imgInst) {
+	          imgInst.$emit('delete');
+	        }
+	      });
+
+	      imagePreview.$on('$destroy', function () {
+	        imgFileList.splice(0);
+	      });
+
+	      return imagePreview;
+	    }
+
+	    fileunit.$on('progress', progressCb);
+
+	    function progressCb(info) {
+	      var curInst = this;
+	      var curIndex = -1;
+	      var lastIndex = -1;
+
+	      self.data.fileUnitList.forEach(function (item, index) {
+	        if (item.inst.data.status === 'uploading') {
+	          lastIndex = index;
+	        }
+	        if (item.inst === curInst) {
+	          curIndex = index;
+	        }
+	      });
+
+	      if (curIndex >= lastIndex && self.data.status !== 'failed') {
+	        self.data.status = 'uploading';
+	        self.data.progress = info.progress;
+	        self.$update();
+	      }
+	    }
+
+	    fileunit.$on('onload', successCb);
+	    // fileunit.$on('success', successCb);
+
+	    function successCb() {
+	      var allUploaded = true;
+	      var hasFailed = false;
+	      self.data.fileUnitList.forEach(function (item) {
+	        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+	        hasFailed = hasFailed || item.inst.data.status === 'failed';
+	      });
+	      if (allUploaded) {
+	        self.data.status = 'uploaded';
+	      } else if (hasFailed) {
+	        self.data.status = 'failed';
+	      }
+	      self.$update();
+	      self.updateFileList();
+	    }
+
+	    fileunit.$on('error', function () {
+	      self.data.status = 'failed';
+	      self.data.info = self.$trans('UPLOAD_FAIL');
+	      self.$update();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      self.toggle(false);
+	      this.destroyed = true;
+	      this.$off('preview', previewCb);
+	      this.$off('onload', successCb);
+	      self.updateFileList();
+	      self.updateFilesZone();
+	      resetStatus();
+	    });
+
+	    function resetStatus() {
+	      successCb();
+	    }
+
+	    return fileunit;
+	  },
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.$update();
+	  },
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
+	  },
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
+	    }
+	  },
+	  uploadFiles: function uploadFiles() {
+	    var data = this.data;
+	    var fileUnitList = data.fileUnitList;
+
+	    data.status = 'uploaded';
+	    data.info = '';
+
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst;
+
+	      if (inst.data.status === 'failed') {
+	        inst.uploadFile(inst.data.file);
+	      }
+	    });
+	  },
+	  toggle: function toggle(open, e) {
+	    e && e.stopPropagation();
+
+	    var data = this.data;
+	    if (typeof open === 'undefined') {
+	      data.open = !data.open;
+	    } else {
+	      data.open = open;
+	    }
+
+	    this.setPosition(!data.open);
+
+	    var index = UploadCard.opens.indexOf(this);
+	    if (data.open && index < 0) {
+	      UploadCard.opens.push(this);
+	    } else if (!data.open && index >= 0) {
+	      UploadCard.opens.splice(index, 1);
+	    }
+	  },
+	  setPosition: function setPosition(hidden) {
+	    var filesBanner = this.$refs.filesbanner;
+	    var filesWrapper = this.$refs.fileswrapper;
+	    if (hidden) {
+	      filesBanner.style.left = '-9999px';
+	      filesWrapper.style.left = '-9999px';
+	      return;
+	    }
+	    this.setVerticalPosition();
+	    this.setHorizontalPosition();
+	  },
+	  setVerticalPosition: function setVerticalPosition() {
+	    var filesEntry = this.$refs.filesentry;
+	    var filesEntryCoors = filesEntry.getBoundingClientRect();
+	    var filesWrapper = this.$refs.fileswrapper;
+	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	    var viewHeight = document.documentElement.clientHeight;
+
+	    // show at vertical bottom side
+	    var vertical = 'bottom';
+	    // show at vertical top side
+	    var isVerticalTopSide = filesEntryCoors.top - filesWrapperCoors.height > 0;
+	    var isVerticalBottomSide = filesEntryCoors.bottom + filesWrapperCoors.height < viewHeight;
+	    if (isVerticalTopSide && !isVerticalBottomSide) {
+	      vertical = 'top';
+	    }
+
+	    if (vertical === 'bottom') {
+	      this.data.isTopBanner = false;
+	      filesWrapper.style.top = '53px';
+	      filesWrapper.style.bottom = 'auto';
+	      filesWrapper.style.boxShadow = 'auto';
+	      filesWrapper.style.boxShadow = '0 2px 3px 0 rgba(0,0,0,0.1)';
+	    } else {
+	      this.data.isTopBanner = true;
+	      filesWrapper.style.top = 'auto';
+	      filesWrapper.style.bottom = '53px';
+	      filesWrapper.style.boxShadow = '0 -2px 3px 0 rgba(0,0,0,0.1)';
+	    }
+	  },
+	  setHorizontalPosition: function setHorizontalPosition() {
+	    var filesEntry = this.$refs.filesentry;
+	    var filesEntryCoors = filesEntry.getBoundingClientRect();
+	    var filesBanner = this.$refs.filesbanner;
+	    var filesWrapper = this.$refs.fileswrapper;
+	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
+	    var viewWidth = document.documentElement.clientWidth;
+
+	    // show at central
+	    var horizontal = 'left';
+	    var offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
+	    var isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
+	    var isHorizontalRightEdge = filesEntryCoors.right + offsetWidth > viewWidth;
+	    if (isHorizontalRightEdge) {
+	      horizontal = 'right';
+	    }
+	    var isHorizontalCenter = !isHorizontalLeftEdge && !isHorizontalRightEdge;
+	    if (isHorizontalCenter) {
+	      horizontal = 'central';
+	    }
+
+	    if (horizontal === 'left') {
+	      filesWrapper.style.left = '0';
+	      filesWrapper.style.right = 'auto';
+	    } else if (horizontal === 'right') {
+	      filesWrapper.style.left = 'auto';
+	      filesWrapper.style.right = '0';
+	    } else if (horizontal === 'central') {
+	      filesWrapper.style.left = '-' + offsetWidth + 'px';
+	    }
+
+	    filesBanner.style.left = '20px';
+	  }
+	});
+
+	UploadCard.opens = [];
+	var opens = UploadCard.opens;
+	document.addEventListener('click', function (e) {
+	  for (var len = opens.length, i = len - 1; i >= 0; i -= 1) {
+	    var close = true;
+
+	    var upload = opens[i];
+	    var uploadElement = upload.$refs.element;
+	    var iterator = e.target;
+
+	    while (iterator) {
+	      if (uploadElement === iterator) {
+	        close = false;
+	        break;
+	      }
+	      iterator = iterator.parentElement;
+	    }
+
+	    if (close) {
+	      upload.toggle(false, e);
+	      upload.$update();
+	    }
+	  }
+	}, false);
+
+		module.exports = UploadCard;
+
+/***/ }),
+/* 372 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'IMAGE'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.src}\n                             alt={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.name}/>\n                    </div>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}\n                    <span class=\"u-txt\">ZIP</span>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'failed'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>重试</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 373 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div ref=\"m-upload\"></div>\n"
+
+/***/ }),
+/* 374 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSidebar
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(375);
+
+	/**
+	 * @class KLSidebar
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {array}         [options.data.menus]                    => 菜单数组
+	 * @param {string}        [options.data.top='60px']               => 菜单style top的值
+	 * @param {boolean}       [options.data.active=true]              => 默认是否收起
+	 * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
+	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
+	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
+	 * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
+	 * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
+	 * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
+	 */
+	var KLSidebar = Component.extend({
+	  name: 'kl-sidebar',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true,
+	      menus: [],
+	      titleKey: 'title',
+	      urlKey: 'url',
+	      pageKey: 'title',
+	      childrenKey: 'children',
+	      top: '60px',
+	      active: true,
+	      bodyEl: ''
+	    });
+
+	    this.supr();
+	  },
+	  initBodyEl: function initBodyEl() {
+	    if (this.data.bodyEl) {
+	      this.data.$bodyEl = document.getElementById(this.data.bodyEl);
+	      if (this.data.$bodyEl) {
+	        this.data.$bodyEl.style.transition = 'left .3s';
+	      }
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.initBodyEl();
+
+	    this.data.active = !this.data.active;
+	    if (this.data.$bodyEl) {
+	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+	    }
+	  }
+	});
+
+	KLSidebar.directive('top', function (ele, value) {
+	  this.$watch(value, function (top) {
+	    ele.style.top = top;
+	  });
+	});
+
+	module.exports = KLSidebar;
+
+/***/ }),
+/* 375 */
+/***/ (function(module, exports) {
+
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+
+/***/ }),
+/* 376 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLMenu      两级菜单
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(377);
+
+	/**
+	 * @class Menu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+	 */
+	var KLMenu = Component.extend({
+	  name: 'kl-menu',
+	  template: template,
+	  openedMenus: [],
+	  currentItem: null,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      uniqueOpened: true
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.$on('submenu-click', function (submenu) {
+	      var isOpened = this.openedMenus.indexOf(submenu) !== -1;
+	      if (isOpened) {
+	        this.closeMenu(submenu);
+	        this.$emit('close', submenu);
+	      } else {
+	        this.openMenu(submenu);
+	        this.$emit('open', submenu);
+	      }
+	    });
+
+	    this.$on('menuitem-click', function (menuitem) {
+	      this.currentItem = menuitem;
+	    });
+	  },
+	  closeMenu: function closeMenu(submenu) {
+	    this.openedMenus.splice(this.openedMenus.indexOf(submenu), 1);
+	  },
+	  openMenu: function openMenu(submenu) {
+	    var openedMenus = this.openedMenus;
+	    if (openedMenus.indexOf(submenu) !== -1) return;
+	    if (this.data.uniqueOpened) {
+	      this.openedMenus = [].concat(submenu);
+	    } else {
+	      this.openedMenus.push(submenu);
+	    }
+	  }
+	});
+
+		module.exports = KLMenu;
+
+/***/ }),
+/* 377 */
+/***/ (function(module, exports) {
+
+	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLMenuItem
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(379);
+	var RootMenuMixin = __webpack_require__(380);
+
+	/**
+	 * @class KLMenuItem
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.url]                      => 跳转链接
+	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
+	 */
+	var KLMenuItem = Component.extend({
+	  name: 'kl-menu-item',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      active: false,
+	      url: ''
+	    });
+
+	    this.supr();
+	  },
+
+	  computed: {
+	    active: function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.currentItem === this;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
+
+	    if (this.data.isCurrent) {
+	      this.data.rootMenu.currentItem = this;
+	    }
+	  },
+	  goto: function goto(e) {
+	    e.stopPropagation();
+	    this.data.rootMenu.$emit('menuitem-click', this);
+	    if (this.data.url) {
+	      location.href = this.data.url;
+	    }
+	  }
+	});
+
+	KLMenuItem.use(RootMenuMixin);
+	module.exports = KLMenuItem;
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports) {
+
+	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var KLMenu = __webpack_require__(376);
+
+	module.exports = function (Component) {
+	  Component.implement({
+	    initRootMenu: function initRootMenu() {
+	      var $outer = this;
+	      do {
+	        if ($outer.$outer) {
+	          $outer = $outer.$outer;
+	        } else if ($outer.$parent) {
+	          $outer = $outer.$parent;
+	        }
+	      } while (!($outer instanceof KLMenu) && ($outer.$outer || $outer.$parent));
+
+	      if ($outer && $outer instanceof KLMenu) {
+	        this.data.rootMenu = $outer;
+	      }
+	    }
+	  });
+		};
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSubMenu
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(382);
+	var RootMenuMixin = __webpack_require__(380);
+
+	/**
+	 * @class KLSubMenu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
+	 */
+	var KLSubMenu = Component.extend({
+	  name: 'kl-menu-sub',
+	  template: template,
+	  /**
+	   * @protected
+	   */
+	  config: function config() {
+	    this.defaults({
+	      class: '',
+	      title: '',
+	      titleTemplate: ''
+	    });
+	    this.supr();
+	  },
+
+	  computed: {
+	    active: function active() {
+	      if (!this.data.rootMenu) return;
+	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
+	    }
+	  },
+	  init: function init() {
+	    this.initRootMenu();
+
+	    if (this.data.defaultOpen) {
+	      this.data.rootMenu.openedMenus.push(this);
+	    }
+	  },
+	  toggle: function toggle() {
+	    this.data.rootMenu.$emit('submenu-click', this);
+	    this.$emit('click', this);
+	  }
+	});
+
+	KLSubMenu.use(RootMenuMixin);
+
+	module.exports = KLSubMenu;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports) {
+
+	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
+
+/***/ }),
+/* 383 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLPager     分页
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(384);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLPager
+	 * @extend Component
+	 * @param {object}        [options.data]                  = 绑定属性
+	 * @param {number}        [options.data.current=1]        <=> 当前页
+	 * @param {number}        [options.data.total=0]          => 总页数
+	 * @param {number}        [options.data.sumTotal=0]       => 总个数
+	 * @param {number}        [options.data.pageSize=20]      => 每页个数
+	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
+	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
+	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
+	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
+	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
+	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
+	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+	 * @param {boolean}       [options.data.visible=true]     => 是否显示
+	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
+	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
+	 * @param {string}        [options.data.class]            => 补充class
+	 */
+	var KLPager = Component.extend({
+	  name: 'kl-pager',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    var _this = this;
+
+	    _.extend(this.data, {
+	      current: 1,
+	      total: '',
+	      sumTotal: '',
+	      pageSize: '',
+	      position: 'center',
+	      middle: 5,
+	      side: 2,
+	      _start: 1,
+	      _end: 5,
+	      step: 5,
+	      maxPageSize: 50,
+	      pageSizeList: [],
+	      isEllipsis: false
+	    });
+	    this.supr();
+
+	    this._setPageSizeList();
+
+	    this.$watch(['current', 'total'], function (_current, _total) {
+	      var current = +_current;
+	      var total = +_total;
+	      this.data.current = current;
+	      this.data.total = total;
+	      var show = Math.floor(this.data.middle / 2);
+	      var side = this.data.side;
+
+	      this.data._start = current - show;
+	      this.data._end = current + show;
+	      if (this.data._start < side + 1) this.data._start = side + 1;
+	      if (this.data._end > total - side) this.data._end = total - side;
+	      if (current - this.data._start < show) {
+	        this.data._end += this.data._start - current + show;
+	      }
+	      if (this.data._end - current < show) {
+	        this.data._start += this.data._end - current - show;
+	      }
+	    });
+
+	    this.$watch(['middle', 'side'], function (middle, side) {
+	      this.data.middle = +middle;
+	      this.data.side = +side;
+	    });
+
+	    this.$watch('pageSize', function (val, oldVal) {
+	      if (!oldVal) return;
+	      this.initTotal();
+	      this.select(1);
+	    });
+
+	    this.$watch('sumTotal', function () {
+	      _this.initTotal();
+	    });
+	  },
+	  initTotal: function initTotal() {
+	    if (this.data.pageSize) {
+	      this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
+	    }
+
+	    if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
+	      console.error('Pager组件需要传pageSize');
+	    }
+	  },
+	  _setPageSizeList: function _setPageSizeList() {
+	    var _data = this.data,
+	        step = _data.step,
+	        maxPageSize = _data.maxPageSize;
+
+	    for (var i = 1; i * step <= maxPageSize; i += 1) {
+	      this.data.pageSizeList.push({
+	        id: i * step,
+	        name: i * step + this.$trans('ITEM_PAGE')
+	      });
+	    }
+	  },
+
+
+	  /**
+	     * @method select(page) 选择某一页
+	     * @public
+	     * @param  {object} page 选择页
+	     * @return {void}
+	     */
+	  select: function select(page) {
+	    if (this.data.readonly || this.data.disabled) return;
+
+	    if (page < 1) return;
+	    if (page > this.data.total) return;
+
+	    this.data.current = page;
+	    /**
+	         * @event select 选择某一页时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} current 当前选择页
+	         */
+	    this.$update();
+	    this.$emit('select', {
+	      sender: this,
+	      current: this.data.current
+	    });
+	  },
+	  enter: function enter(ev) {
+	    if (ev.which === 13) {
+	      // ENTER key
+	      ev.preventDefault();
+	      this.goto();
+	    }
+	  },
+	  goto: function goto() {
+	    var data = this.data;
+	    if (!data.pageNo && data.pageNo / 1 !== 0) return;
+	    if (data.pageNo > data.total) {
+	      data.pageNo = data.total;
+	    } else if (data.pageNo < 1) {
+	      data.pageNo = 1;
+	    }
+	    this.select(this.data.pageNo);
+	  }
+	});
+
+		module.exports = KLPager;
+
+/***/ }),
+/* 384 */
+/***/ (function(module, exports) {
+
+	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
+
+/***/ }),
+/* 385 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLTabs       选项卡
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(386);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLTab
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.title='']             => 标题
+	 * @param {string}        [options.data.key=null]             => key 标识
+	 */
+
+	/**
+	 * @class KLTabs
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
+	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
+	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
+	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
+	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
+	 * @param {boolean}       [options.data.visible=true]         => 是否显示
+	 * @param {string}        [options.data.class]                => 补充class
+	 */
+	var KLTabs = Component.extend({
+	  name: 'kl-tabs',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    var _this = this;
+
+	    _.extend(this.data, {
+	      tabs: [],
+	      selected: undefined,
+	      titleTemplate: null
+	    });
+	    this.supr();
+
+	    this.$watch('selected', function (newValue) {
+	      /**
+	             * @event change 选项卡改变时触发
+	             * @property {object} sender 事件发送对象
+	             * @property {object} selected 改变后的选项卡
+	             */
+	      _this.$emit('change', {
+	        sender: _this,
+	        selected: newValue,
+	        key: newValue.data.key
+	      });
+	    });
+	  },
+
+	  /**
+	     * @method select(item) 选择某一项
+	     * @public
+	     * @param  {object} item 选择项
+	     * @return {void}
+	     */
+	  select: function select(item) {
+	    if (this.data.readonly || this.data.disabled || item.data.disabled) return;
+
+	    this.data.selected = item;
+	    /**
+	         * @event select 选择某一项时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} selected 当前选择卡
+	         */
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item,
+	      key: item.data.key
+	    });
+	  }
+	});
+
+		module.exports = KLTabs;
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
+
+/***/ }),
+/* 387 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLTab       子选项卡
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLTabs = __webpack_require__(385);
+
+	/**
+	 * @class KLTab
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {object}        [options.data.title='']             => 标题
+	 * @param {string}        [options.data.key=null]             => key 标识
+	 */
+	var KLTab = Component.extend({
+	  name: 'kl-tab',
+	  template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: ''
+	    });
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLTabs) {
+	      this.$outer.data.tabs.push(this);
+	    }
+
+	    if (!this.$outer.data.selected) this.$outer.data.selected = this;
+
+	    this._setDefaultTab();
+	  },
+	  _setDefaultTab: function _setDefaultTab() {
+	    var defaultKey = this.$outer.data.defaultKey;
+	    var key = this.data.key;
+
+	    if (!!defaultKey && !!key && '' + defaultKey === '' + key) {
+	      this.$outer.data.selected = this;
+	    }
+	  }
+	});
+
+		module.exports = KLTab;
+
+/***/ }),
+/* 388 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSteps     步骤条
+	 * @author   ziane(zianecui@gmail.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(389);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLSteps
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {object}      [options.data.steps=null]     <=> 类似于kl-select的source
+	 * @param {string}      [options.data.current=null]   <=> 当前状态
+	 * @param {boolean}     [options.data.size=false]     =>  当前尺寸
+	 */
+	var KLSteps = Component.extend({
+	  name: 'kl-steps',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      steps: [],
+	      current: 0,
+	      size: '',
+	      currentIndex: 0
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    var _this = this;
+
+	    this.supr();
+	    this.$watch('current', function () {
+	      _this.juedgeFinishedItem();
+	    });
+	  },
+	  juedgeFinishedItem: function juedgeFinishedItem() {
+	    var data = this.data;
+	    var current = data.current;
+	    var steps = data.steps;
+
+	    steps.forEach(function (item, index) {
+	      if (item.status / 1 === current / 1) {
+	        data.currentIndex = index;
+	      }
+	    });
+	  }
+	});
+
+		module.exports = KLSteps;
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
+
+/***/ }),
+/* 390 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLCrumb     面包屑
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(391);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLCrumb
+	 * @extend Component
+	 * @param {object}          [options.data]                     = 绑定属性
+	 * @param {string}          [options.data.class]               => 补充class
+	 * @param {string}          [options.data.separator]           => 分隔符，支持模板
+	 * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
+	 * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
+	 */
+	var KLCrumb = Component.extend({
+	  name: 'kl-crumb',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      separator: '/',
+	      crumbArr: []
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = KLCrumb;
+
+/***/ }),
+/* 391 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
+
+/***/ }),
+/* 392 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLCrumbItem     面包屑里的每一项
+	 * @author   zianecui@gmail.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(393);
+	var _ = __webpack_require__(72);
+	var KLCrumb = __webpack_require__(390);
+
+	/**
+	 * @class KLCrumbItem
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.content]            => 内容模板
+	 * @param {string}          [options.data.class]              => 补充class
+	 * @param {string}          [options.data.href]                => 传入的链接
+	 */
+	var KLCrumbItem = Component.extend({
+	  name: 'kl-crumb-item',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLCrumb) {
+	      this.$outer.data.crumbArr.push(this);
+	    }
+	  }
+	});
+
+		module.exports = KLCrumbItem;
+
+/***/ }),
+/* 393 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
+
+/***/ }),
+/* 394 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLMask     遮罩
+	 * @author  Cody
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(395);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLMask
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性
+	 * @param {string}            [options.data.content]              => 内容模板
+	 * @param {boolean}           [options.data.closable=true]       => 点击空白区域关闭
+	 * @param {string}            [options.data.class]                => 补充class
+	 */
+	var KLMask = Component.extend({
+	  name: 'kl-mask',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      closable: true
+	    });
+	    this.supr();
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  _handleClick: function _handleClick(e) {
+	    if (/m-mask/.test(e.target.className)) {
+	      if (this.data.closable) this.close();
+	    }
+	  },
+
+	  /**
+	     * @method close(data) 关闭遮罩
+	     * @public
+	     * @param  {object} data 额外数据
+	     * @return {void}
+	     */
+	  close: function close(data) {
+	    /**
+	         * @event close 关闭遮罩时触发
+	         * @property {object} data 额外数据
+	         */
+	    this.$emit('close', {
+	      sender: this,
+	      data: data
+	    });
+	    this.destroy();
+	  }
+	});
+
+		module.exports = KLMask;
+
+/***/ }),
+/* 395 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
+
+/***/ }),
+/* 396 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLNotify    通知
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(397);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLNotify
+	 * @extend Component
+	 * @param {object}      [options.data]                      = 绑定属性
+	 * @param {string}      [options.data.position=topcenter]   => 通知的位置，可选参数：`topcenter`、`topleft`、`topright`、`bottomcenter`、`bottomleft`、`bottomright`、`static`
+	 * @param {number}      [options.data.duration=2000]        => 每条消息默认的停留毫秒数，如果为0，则表示消息常驻不消失。
+	 * @param {boolean}     [options.data.single=false]         => 是否始终显示一条
+	 * @param {boolean}     [options.data.visible=true]         => 是否显示
+	 * @param {string}      [options.data.class]                => 补充class
+	 */
+	var KLNotify = Component.extend({
+	  name: 'kl-notify',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      messages: [],
+	      position: 'topcenter',
+	      duration: 2000,
+	      single: false
+	    });
+	    this.supr();
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @method show(text[,state][,duration]) 弹出一个消息
+	     * @public
+	     * @param  {string} [text] 消息内容
+	     * @param  {string} [state=null] 消息状态，可选参数：`info`、`success`、`warning`、`error`
+	     * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	     * @return {void}
+	     */
+	  show: function show(text, state, duration) {
+	    var self = this;
+	    var message = {
+	      text: text,
+	      state: state,
+	      duration: duration >= 0 ? +duration : +this.data.duration
+	    };
+	    var messages = this.data.messages;
+
+	    if (this.data.single && messages[0]) {
+	      message = _.extend(messages[0], message, true);
+	      message.counter += 1;
+	    } else {
+	      messages.unshift(message);
+	      message.counter = 0;
+	    }
+
+	    this.$update();
+
+	    if (message.duration) {
+	      setTimeout(function () {
+	        if (!message.counter) self.close(message);else message.counter -= 1;
+	      }, message.duration);
+	    }
+
+	    /**
+	         * @event show 弹出一个消息时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} message 弹出的消息对象
+	         */
+	    this.$emit('show', {
+	      sender: this,
+	      message: message
+	    });
+	  },
+
+	  /**
+	     * @method close(message) 关闭某条消息
+	     * @public
+	     * @param  {object} message 需要关闭的消息对象
+	     * @return {void}
+	     */
+	  close: function close(message) {
+	    var index = this.data.messages.indexOf(message);
+	    if (index < 0) return;
+	    this.data.messages.splice(index, 1);
+	    this.$update();
+
+	    /**
+	         * @event close 关闭某条消息时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} message 关闭了的消息对象
+	         */
+	    this.$emit('close', {
+	      sender: this,
+	      message: message
+	    });
+	  },
+
+	  /**
+	     * @method closeAll() 关闭所有消息
+	     * @public
+	     * @return {void}
+	     */
+	  closeAll: function closeAll() {
+	    this.data.messages = [];
+	    this.$update();
+	  }
+	});
+
+	var STATES = ['success', 'warning', 'info', 'error'];
+	/**
+	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
+	 * @public
+	 * @param  {string} [text] 消息内容
+	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 * @return {void}
+	 */
+	STATES.forEach(function (state) {
+	  KLNotify.prototype[state] = function (text, duration) {
+	    this.show(text, state, duration);
+	  };
+	});
+
+	/**
+	 * 直接初始化一个实例
+	 * @state {Notify}
+	 */
+	var notify = new KLNotify();
+	KLNotify.notify = notify;
+
+	var METHODS = ['show', 'close', 'closeAll', 'success', 'warning', 'info', 'error'];
+	KLNotify.METHODS = METHODS;
+	/**
+	 * @method show(text[,state][,duration]) 弹出一个消息
+	 * @static
+	 * @public
+	 * @param  {string} [text] 消息内容
+	 * @param  {string} [state] 消息状态，可选参数：`info`、`success`、`warning`、`error`
+	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 * @return {void}
+	 */
+	/**
+	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
+	 * @static
+	 * @public
+	 * @param  {string} [text] 消息内容
+	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 * @return {void}
+	 */
+	/**
+	 * @method close(message) 关闭某条消息
+	 * @static
+	 * @public
+	 * @param  {object} message 需要关闭的消息对象
+	 * @return {void}
+	 */
+	/**
+	 * @method closeAll() 关闭所有消息
+	 * @static
+	 * @public
+	 * @return {void}
+	 */
+	METHODS.forEach(function (method) {
+	  KLNotify[method] = notify[method].bind(notify);
+	});
+
+	module.exports = KLNotify;
+
+/***/ }),
+/* 397 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
+
+/***/ }),
+/* 398 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLPopConfirm 气泡弹框
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
@@ -28227,14 +31270,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(360);
-	__webpack_require__(361);
+	var template = __webpack_require__(399);
+	__webpack_require__(400);
 
-	var TipPopUp = Component.extend({
+	var PopUp = Component.extend({
 	  template: template,
 	  config: function config(data) {
 	    this.defaults({
-	      isShow: true
+	      isShow: true,
+	      content: '',
+	      contentTemplate: ''
 	    });
 	    this.supr(data);
 	  },
@@ -28243,25 +31288,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.$inject(document.body);
 	    }
 	    this.data.element = dom.element(this);
+	    dom.on(this.data.element, 'click', function (e) {
+	      e.stopPropagation();
+	    });
 	  },
 	  getElement: function getElement() {
 	    return this.data.element;
+	  },
+	  ok: function ok() {
+	    var $validation = this.$refs.validation;
+	    if (!$validation || $validation.validate().success) {
+	      /**
+	       * @event ok 确定时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} data popConfirm组件的数据
+	       */
+	      this.$emit('ok', {
+	        sender: this,
+	        data: this.data
+	      });
+	    }
+	  },
+	  cancel: function cancel() {
+	    /**
+	     * @event cancel 取消时触发
+	     * @property {object} sender 事件发送对象
+	     * @property {object} data popConfirm组件的数据
+	     */
+	    this.$emit('cancel', {
+	      sender: this,
+	      data: this.data
+	    });
 	  }
 	});
 
 	/**
-	 * @class KLTooltip
+	 * @class KLPopConfirm
 	 * @extend Component
-	 * @param {object}          [options.data]                  = 绑定属性
-	 * @param {string}          [options.data.tip]              => 文字提示
-	 * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+	 * @param {object}        [options.data]                        = 绑定属性
+	 * @param {string}        [options.data.content]                => 弹窗中的文本内容
+	 * @param {string}        [options.data.contentTemplate]        => 弹窗中的模板内容,回调中会将PopConfirm的data返回;
+	 * @param {string}        [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+	 * @param {string}        [options.data.okText=确定]             => ok按钮文案
+	 * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
+	 * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
 	 */
-	var KLTooltip = Component.extend({
-	  name: 'kl-tooltip',
-	  template: '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
+	var KLPopConfirm = Component.extend({
+	  name: 'kl-pop-confirm',
+	  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
 	  config: function config(data) {
 	    this.defaults({
-	      tip: '',
 	      placement: 'top'
 	    });
 
@@ -28275,13 +31351,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getInstance: function getInstance() {
 	    var self = this;
-	    var _data = this.data,
-	        tip = _data.tip,
-	        placement = _data.placement;
-
 	    if (!this.data.instance) {
-	      var instance = new TipPopUp({
-	        data: { tip: tip, placement: placement }
+	      var instance = new PopUp({ data: this.data });
+
+	      instance.$on('ok', function (data) {
+	        if (self.events && self.events.ok) {
+	          self.$emit('ok', data);
+	        } else {
+	          self.data.instance.destroy();
+	        }
+	      });
+
+	      instance.$on('cancel', function (data) {
+	        if (self.events && self.events.cancel) {
+	          self.$emit('cancel', data);
+	        } else {
+	          self.data.instance.destroy();
+	        }
 	      });
 
 	      instance.$on('destroy', function () {
@@ -28295,16 +31381,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-		module.exports = KLTooltip;
+		module.exports = KLPopConfirm;
 
 /***/ }),
-/* 360 */
+/* 399 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
+	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 361 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28320,7 +31406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	__webpack_require__(362);
+	__webpack_require__(401);
 
 	/**
 	 * @class Trigger
@@ -28421,7 +31507,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ }),
-/* 362 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28434,11 +31520,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var dom = __webpack_require__(71).dom;
-	var domAlign = __webpack_require__(363);
+	var domAlign = __webpack_require__(402);
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var placement = __webpack_require__(372);
+	var placement = __webpack_require__(411);
 
 	/**
 	 * @class Alignment
@@ -28492,7 +31578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ }),
-/* 363 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28501,31 +31587,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(364);
+	var _utils = __webpack_require__(403);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(366);
+	var _getOffsetParent = __webpack_require__(405);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(367);
+	var _getVisibleRectForElement = __webpack_require__(406);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(368);
+	var _adjustForViewport = __webpack_require__(407);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(369);
+	var _getRegion = __webpack_require__(408);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(370);
+	var _getElFuturePos = __webpack_require__(409);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	var _getAlignOffset = __webpack_require__(371);
+	var _getAlignOffset = __webpack_require__(410);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -28770,7 +31856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 364 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28781,7 +31867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(365);
+	var _propertyUtils = __webpack_require__(404);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -29346,7 +32432,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 365 */
+/* 404 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29461,7 +32547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 366 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29470,7 +32556,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(364);
+	var _utils = __webpack_require__(403);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -29522,7 +32608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 367 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29531,11 +32617,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(364);
+	var _utils = __webpack_require__(403);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(366);
+	var _getOffsetParent = __webpack_require__(405);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -29603,7 +32689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 368 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29612,7 +32698,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(364);
+	var _utils = __webpack_require__(403);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -29663,7 +32749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 369 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29672,7 +32758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(364);
+	var _utils = __webpack_require__(403);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -29704,7 +32790,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 370 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29713,7 +32799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(371);
+	var _getAlignOffset = __webpack_require__(410);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -29745,7 +32831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 371 */
+/* 410 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29790,7 +32876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 372 */
+/* 411 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29876,3218 +32962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 373 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLText  文本
-	 * @author   Cody Chan<int64ago@gmail.com>
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(374);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLText
-	 * @extend Component
-	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {string}      [options.data.text=文本]      <=> 内容
-	 * @param {string}      [options.data.size]           => 大小
-	 * @param {boolean}     [options.data.isBold=false]   => 是否加粗
-	 * @param {string}      [options.data.align]          => 左右对齐方式
-	 * @param {string}      [options.data.vertical]       => 上下对齐方式
-	 * @param {string}      [options.data.type=default]   => 文本样式
-	 */
-	var KLText = Component.extend({
-	  name: 'kl-text',
-	  template: template,
-	  config: function config() {
-	    _.extend(this.data, {
-	      text: '--',
-	      // default/primary/info/success/warning/error
-	      type: 'default',
-	      // xs/sm/lg/xl
-	      size: '',
-	      isBold: false,
-	      // tal/tac/tar/taj
-	      align: '',
-	      // vat/vam/vab
-	      vertical: '',
-	      /* eslint no-script-url: 0 */
-	      url: 'javascript:;',
-	      target: ''
-	    });
-	    this.supr();
-	  },
-	  onClick: function onClick(e) {
-	    this.$emit('click', e);
-	  }
-	});
-
-		module.exports = KLText;
-
-/***/ }),
-/* 374 */
-/***/ (function(module, exports) {
-
-	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>\n    {text}\n</a>"
-
-/***/ }),
-/* 375 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLTextArea   输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(376);
-	var _ = __webpack_require__(72);
-	var Validation = __webpack_require__(104);
-	var validationMixin = __webpack_require__(170);
-
-	var bowser = __webpack_require__(173);
-
-	/**
-	 * @class KLTextArea
-	 * @extend Component
-	 * @param {object}        [options.data]                    = 绑定属性
-	 * @param {string}        [options.data.value]              <=> 文本框的值
-	 * @param {string}        [options.data.placeholder]         => 占位符
-	 * @param {string}        [options.data.state]              <=> 文本框的状态
-	 * @param {number}        [options.data.maxlength]          => 文本框的最大长度
-	 * @param {object[]}      [options.data.rules=[]]           => 验证规则
-	 * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
-	 * @param {number}        [options.data.height=120]         => 高度
-	 * @param {boolean}       [options.data.required=false]     => 是否必填
-	 * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
-	 * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
-	 * @param {boolean}       [options.data.readonly=false]     => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]       => 是否显示
-	 * @param {string}        [options.data.class]              => 补充class
-	 * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
-	 * @param {number}        [options.data.width]              => 组件宽度
-	 */
-	var KLTextArea = Component.extend({
-	  name: 'kl-textarea',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      hideTip: false,
-	      value: '',
-	      placeholder: '',
-	      state: '',
-	      maxlength: undefined,
-	      height: 120,
-	      rules: [],
-	      autofocus: false,
-	      _eltIE9: bowser.msie && bowser.version <= 9,
-	      required: false
-	    });
-
-	    this.supr();
-
-	    this.initValidation();
-	  },
-	  init: function init() {
-	    this.$watch('required', function (value) {
-	      var rules = this.data.rules;
-	      var message = this.data.message || this.$trans('PLEASE_INPUT');
-	      if (value) {
-	        rules.push({ type: 'isRequired', message: message });
-	      } else {
-	        this.data.rules = rules.filter(function (rule) {
-	          return rule.type !== 'isRequired';
-	        });
-	      }
-	    });
-	  },
-
-	  /**
-	     * @method validate() 根据`rules`验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
-	  validate: function validate() {
-	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-	    var value = this.data.value;
-	    var rules = this.data.rules;
-
-	    rules = rules.filter(function (rule) {
-	      return (rule.on || '').indexOf(on) >= 0;
-	    });
-
-	    var result = Validation.validate(value, rules);
-	    if (result.firstRule && !(result.firstRule.silentOn === true || typeof result.firstRule.silentOn === 'string' && result.firstRule.silentOn.indexOf(on) >= 0)) {
-	      this.data.tip = result.firstRule.message;
-	    } else this.data.tip = '';
-
-	    // @TODO
-	    if (!result.success) this.data.state = 'error';else {
-	      this.data.state = '';
-	    }
-
-	    this.$emit('validate', {
-	      sender: this,
-	      on: on,
-	      result: result
-	    });
-
-	    return result;
-	  },
-	  _onKeyUp: function _onKeyUp($event) {
-	    this.validate('keyup');
-	    this.$emit('keyup', $event);
-	  },
-	  _onBlur: function _onBlur($event) {
-	    this.validate('blur');
-	    this.$emit('blur', $event);
-	  }
-	});
-
-	KLTextArea.use(validationMixin);
-	module.exports = KLTextArea;
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports) {
-
-	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
-
-/***/ }),
-/* 377 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  kl-upload 上传
-	 *  ------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var UploadList = __webpack_require__(378);
-	var UploadCard = __webpack_require__(389);
-	var Config = __webpack_require__(385);
-	var tpl = __webpack_require__(391);
-
-	/**
-	 * @class KLUpload
-	 * @extend Component
-	 * @param {object}         [options.data]                  = 绑定属性
-	 * @param {string}         [options.data.action]           => 必选，上传地址
-	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
-	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
-	 *                                                             name: 文件名称
-	 *                                                             url: 文件的路径
-	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
-	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
-	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
-	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
-	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
-	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
-	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
-	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
-	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
-	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
-	 */
-	var KLUpload = Component.extend({
-	  name: 'kl-upload',
-	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  config: function config(data) {
-	    _.extend(data, {
-	      action: '',
-	      name: 'file',
-	      multiple: false,
-	      drag: false,
-	      accept: '*',
-	      listType: 'list',
-	      fileList: [],
-	      data: {},
-	      numLimit: 10,
-	      numPerline: 5,
-	      maxSize: Config.sizeMap.GB,
-	      deletable: true,
-	      encType: 'multipart/form-data'
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init(data) {
-	    this.preProcess(data);
-	    this.initUploadInst(data);
-	    this.supr(data);
-	  },
-	  preProcess: function preProcess(data) {
-	    if (typeof data.maxSize === 'number') {
-	      data.maxSize += '';
-	    }
-	  },
-	  initUploadInst: function initUploadInst(data) {
-	    var uploadNode = this.$refs['m-upload'];
-	    var typeMap = {
-	      list: UploadList,
-	      card: UploadCard
-	    };
-
-	    new typeMap[data.listType]({
-	      data: data
-	    }).$inject(uploadNode);
-	  }
-	});
-
-		module.exports = KLUpload;
-
-/***/ }),
-/* 378 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  UploadList 上传
-	 *  ------------------------------
-	 */
-
-	var FileUnit = __webpack_require__(379);
-	var UploadBase = __webpack_require__(384);
-	var ImagePreview = __webpack_require__(386);
-	var tpl = __webpack_require__(388);
-
-	/**
-	 * @class UploadList
-	 * @extend UploadBase
-	 */
-	var UploadList = UploadBase.extend({
-	  name: 'upload-list',
-	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  config: function config(data) {
-	    this.supr(data);
-	  },
-	  init: function init(data) {
-	    this.initFilesWrapper();
-	    this.supr(data);
-	  },
-	  initFilesWrapper: function initFilesWrapper() {
-	    var data = this.data;
-	    data.inputWrapper = this.$refs.inputwrapper;
-	    data.filesWrapper = this.$refs.fileswrapper;
-	    data.filesWrapper.appendChild(data.inputWrapper);
-	    data.inputWrapper.style.display = 'inline-block';
-	  },
-	  onDragEnter: function onDragEnter(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	  },
-	  onDragOver: function onDragOver(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	  },
-	  onDrop: function onDrop(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-
-	    if (!this.data.drag) {
-	      return;
-	    }
-
-	    var dt = e.event && e.event.dataTransfer;
-	    var files = dt.files;
-
-	    this.handleFiles(files);
-	  },
-	  fileSelect: function fileSelect() {
-	    var inputNode = this.$refs.file;
-	    var files = inputNode.files;
-
-	    this.handleFiles(files);
-
-	    inputNode.value = '';
-	  },
-	  handleFiles: function handleFiles(files) {
-	    var data = this.data;
-	    var len = files.length;
-	    var index = 0;
-	    var file = void 0;
-	    var fileunit = void 0;
-
-	    var options = this.setOptions(data);
-
-	    data.preCheckInfo = '';
-
-	    for (; index < len; index += 1) {
-	      if (data.fileUnitList.length < data.numLimit) {
-	        file = files[index];
-	        data.preCheckInfo = this.preCheck(file);
-	        if (!data.preCheckInfo) {
-	          fileunit = this.createFileUnit({
-	            file: file,
-	            options: options,
-	            deletable: data.deletable
-	          });
-	          fileunit.flag = 'ADDED';
-	          data.fileUnitList.push({
-	            inst: fileunit
-	          });
-	        }
-	      }
-	    }
-
-	    this.updateFileList();
-	  },
-	  createFileUnit: function createFileUnit(data) {
-	    var self = this;
-	    var imagePreviewWrapper = this.$refs.imagepreview;
-	    var fileunit = new FileUnit({ data: data });
-
-	    fileunit.$on('preview', function () {
-	      var current = this;
-
-	      function filterImgFile(file) {
-	        return file.inst.data.type === 'IMAGE';
-	      }
-
-	      function mapHelper(img) {
-	        if (current === img.inst) {
-	          img.inst.current = true;
-	        }
-	        return img.inst;
-	      }
-
-	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
-
-	      var preview = createImagePreview(imgList);
-
-	      preview.$inject(imagePreviewWrapper);
-	    });
-
-	    function createImagePreview(imgFileList) {
-	      function findHelper(img) {
-	        return img.current;
-	      }
-	      var curIndex = imgFileList.findIndex(findHelper);
-
-	      function mapHelper(img) {
-	        delete img.current;
-	        return {
-	          src: img.data.src,
-	          name: img.data.name,
-	          status: img.data.status
-	        };
-	      }
-	      var imgList = imgFileList.map(mapHelper);
-
-	      var imagePreview = new ImagePreview({
-	        data: {
-	          imgList: imgList,
-	          curIndex: curIndex
-	        }
-	      });
-
-	      imagePreview.$on('delete', function (imgInfo) {
-	        var index = imgInfo.index;
-	        var imgInst = imgFileList[index];
-
-	        if (imgInst) {
-	          imgInst.$emit('delete');
-	        }
-	      });
-
-	      imagePreview.$on('$destroy', function () {
-	        imgFileList.splice(0);
-	      });
-
-	      return imagePreview;
-	    }
-
-	    fileunit.$on('onload', function () {
-	      self.updateFileList();
-	    });
-
-	    fileunit.$on('success', function () {
-	      self.updateFileList();
-	    });
-
-	    fileunit.$on('delete', function () {
-	      if (this.flag === 'ORIGINAL') {
-	        this.flag = 'DELETED';
-	        this.file = this.data.file;
-	      }
-	      this.destroy();
-	    });
-
-	    fileunit.$on('$destroy', function () {
-	      this.destroyed = true;
-	      self.updateFileList();
-	    });
-
-	    return fileunit;
-	  },
-	  updateFileList: function updateFileList() {
-	    this.supr();
-	    this.appendInputWrapper();
-	    this.$update();
-	  },
-	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
-	    var wrapper = document.createElement('li');
-
-	    parent.appendChild(wrapper);
-
-	    this.setFileUnitWrapperStyle(wrapper, index);
-
-	    return wrapper;
-	  },
-	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
-	    var data = this.data;
-	    var numPerline = data.numPerline;
-	    var fileUnitWidth = data.fileUnitWidth;
-	    var fileUnitMargin = data.fileUnitMargin;
-
-	    wrapper.className = 'u-fileitem';
-	    wrapper.style.display = 'inline-block';
-	    wrapper.style.width = fileUnitWidth + 'px';
-
-	    if (index && index % numPerline) {
-	      wrapper.style.marginLeft = fileUnitMargin + 'px';
-	    }
-	  },
-	  appendInputWrapper: function appendInputWrapper() {
-	    var data = this.data;
-	    var inputWrapper = data.inputWrapper;
-	    var filesWrapper = data.filesWrapper;
-	    var numPerline = data.numPerline;
-	    var numLimit = data.numLimit;
-	    var fileUnitMargin = data.fileUnitMargin;
-	    var length = data.fileUnitList.length;
-
-	    if (length < numLimit) {
-	      filesWrapper.appendChild(inputWrapper);
-
-	      if (length % numPerline) {
-	        inputWrapper.style.marginLeft = fileUnitMargin + 'px';
-	      } else {
-	        inputWrapper.style.marginLeft = '0';
-	      }
-	    }
-	  }
-	});
-
-		module.exports = UploadList;
-
-/***/ }),
-/* 379 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  FileUnit
-	 *  ------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(380);
-	var upload = __webpack_require__(381);
-	var KLModal = __webpack_require__(382);
-
-	var FileUnit = Component.extend({
-	  name: 'file-unit',
-	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  config: function config(data) {
-	    _.extend(data, {
-	      file: {},
-	      options: {}
-	    });
-
-	    _.extend(data, {
-	      info: '',
-	      status: '',
-	      deletable: true,
-	      delConfirm: false
-	    });
-
-	    this.initData(data);
-
-	    this.supr(data);
-	  },
-	  initData: function initData(data) {
-	    var file = data.file;
-	    data.name = this.getFileName(file);
-	    data.type = this.getFileType(file);
-
-	    // for initial uploaded files
-	    if (file.url) {
-	      data.src = file.url;
-	      data.status = 'uploaded';
-	    } else {
-	      data.src = window.URL.createObjectURL(file);
-	      this.uploadFile(file);
-	    }
-	  },
-	  getFileName: function getFileName(file) {
-	    return file.name;
-	  },
-	  getFileType: function getFileType(file) {
-	    var type = file.type || '';
-	    var name = file.name || '';
-
-	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-	      return 'IMAGE';
-	    } else if (/zip|rar|gz/i.test(name)) {
-	      return 'ZIP';
-	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
-	      return 'DOC';
-	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-	      return 'VIDEO';
-	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-	      return 'AUDIO';
-	    } else if (/text\/plain/.test(type)) {
-	      return 'TEXT';
-	    } else if (/text\/html/.test(type)) {
-	      return 'HTML';
-	    } else if (/application\/pdf/.test(type)) {
-	      return 'PDF';
-	    } else if (/application\/javascript/.test(type)) {
-	      return 'JS';
-	    }
-
-	    return 'UNKNOWN';
-	  },
-	  uploadFile: function uploadFile(file) {
-	    var self = this;
-	    var data = this.data;
-
-	    data.info = '';
-
-	    var options = {
-	      upload: {
-	        onload: function onload(e) {
-	          data.progress = '100%';
-	          self.$update();
-	          self.$emit('success', { progress: data.progress, info: e });
-	        },
-	        onprogress: function onprogress(e) {
-	          data.status = 'uploading';
-	          data.progress = parseInt(e.loaded / e.total * 100) + '%';
-	          self.$update();
-	          self.$emit('progress', { progress: data.progress });
-	        }
-	      },
-	      onload: function onload(e) {
-	        var target = e.target;
-	        if (target.status === 200) {
-	          var response = JSON.parse(target.responseText);
-	          self.data.file.url = response.url;
-	          self.data.status = 'uploaded';
-	          self.data.info = '';
-	        } else {
-	          data.status = 'failed';
-	          data.info = self.$trans('UPLOAD_FAIL');
-	        }
-	        self.$update();
-	        self.$emit('onload', { info: e });
-	      },
-	      onerror: function onerror(e) {
-	        data.status = 'failed';
-	        data.info = self.$trans('UPLOAD_FAIL');
-	        self.$update();
-	        self.$emit('error', { info: e });
-	      }
-	    };
-
-	    options = _.extend(options, data.options);
-	    upload(options.url, file, options);
-	  },
-	  onDelete: function onDelete() {
-	    var self = this;
-	    var data = this.data;
-
-	    if (data.delConfirm) {
-	      var modal = new KLModal({
-	        data: {
-	          content: this.$trans('DELETE_CONFIRM') + data.name + '?'
-	        }
-	      });
-	      modal.$on('ok', function () {
-	        self.$emit('delete');
-	      });
-	    } else {
-	      self.$emit('delete');
-	    }
-	  },
-	  onPreview: function onPreview() {
-	    this.$emit('preview');
-	  }
-	});
-
-		module.exports = FileUnit;
-
-/***/ }),
-/* 380 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'IMAGE'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={src}/>\n            </div>\n        {#elseif type === 'ZIP'}\n            <span class=\"u-txt\">ZIP</span>\n        {#elseif type === 'UNKNOWN'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type}</span>\n        {/if}\n        <div class=\"m-delete\" r-hide={!deletable} on-click={this.onDelete()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'failed'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'uploaded'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={name}>{name}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
-
-/***/ }),
-/* 381 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(72);
-
-	var defaults = {
-	  type: 'POST',
-	  async: true
-	};
-
-	function upload(url, src, options) {
-	  var fd = new FormData();
-	  var data = src;
-
-	  if (src instanceof File) {
-	    data = {
-	      file: src
-	    };
-	  }
-
-	  for (var key in data) {
-	    if (data.hasOwnProperty(key)) {
-	      fd.append(key, data[key]);
-	    }
-	  }
-
-	  options.url = url;
-	  options.data = fd;
-
-	  return ajax(_.extend(defaults, options, true));
-	}
-
-	function ajax(options) {
-	  var xhr = new XMLHttpRequest();
-	  var headers = options.headers || {};
-
-	  xhr.open(options.type, options.url, options.async);
-
-	  for (var key in headers) {
-	    if (headers.hasOwnProperty(key)) {
-	      xhr.setRequestHeader(key, headers[key]);
-	    }
-	  }
-
-	  var noop = function noop() {};
-	  var onerror = options.onerror || noop;
-
-	  var onload = options.onload || noop;
-
-	  var onprogress = options.onprogress || noop;
-
-	  xhr.addEventListener('load', onload);
-	  xhr.addEventListener('error', onerror);
-	  xhr.addEventListener('progress', onprogress);
-
-	  if (options.upload) {
-	    var onuploadLoad = options.upload.onload || noop;
-
-	    var onuploadProgress = options.upload.onprogress || noop;
-
-	    xhr.upload.addEventListener('load', onuploadLoad);
-	    xhr.upload.addEventListener('progress', onuploadProgress);
-	  }
-
-	  xhr.send(options.data);
-	}
-
-	module.exports = upload;
-
-/***/ }),
-/* 382 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLModal     模态对话框
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(383);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLModal
-	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
-	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
-	 * @param {string}            [options.data.content]              => 对话框内容
-	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
-	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
-	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
-	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
-	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
-	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
-	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
-	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
-	 * @param {string}            [options.data.class]                => 补充class
-	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
-	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
-	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
-	 */
-	var KLModal = Component.extend({
-	  name: 'kl-modal',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      title: this.$trans('NOTICE'),
-	      content: '',
-	      okButton: true,
-	      with: 400,
-	      cancelButton: false,
-	      noClose: false,
-	      okDisabled: false,
-	      cancelDisabled: false,
-	      hasFooter: true,
-	      isCanClose: true
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @method close(result) 关闭对话框
-	     * @public
-	     * @param  {boolean} result 点击确定还是取消
-	     * @return {void}
-	     */
-	  close: function close(result, event) {
-	    /**
-	         * @event close 关闭对话框时触发
-	         * @property {boolean} result 点击了确定还是取消
-	         */
-	    this.$emit('close', {
-	      result: result
-	    });
-	    result ? this.ok(event) : this.cancel();
-	  },
-
-	  /**
-	     * @method ok() 确定对话框
-	     * @public
-	     * @return {void}
-	     */
-	  ok: function ok(event) {
-	    /**
-	         * @event ok 确定对话框时触发
-	         */
-	    this.$emit('ok', event);
-	    !this.data.noClose && this.destroy();
-	  },
-
-	  /**
-	     * @method cancel() 取消对话框
-	     * @public
-	     * @return {void}
-	     */
-	  cancel: function cancel() {
-	    /**
-	         * @event cancel 取消对话框时触发
-	         */
-	    this.$emit('cancel');
-	    this.destroy();
-	  },
-	  _onDragStart: function _onDragStart($event) {
-	    var dialog = $event.proxy;
-	    dialog.style.left = dialog.offsetLeft + 'px';
-	    dialog.style.top = dialog.offsetTop + 'px';
-	    dialog.style.zIndex = '1000';
-	    dialog.style.position = 'absolute';
-	  }
-	});
-
-	/**
-	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	KLModal.alert = function (content, title, okButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton
-	    }
-	  });
-
-	  return modal;
-	};
-
-	/**
-	 * @method confirm(content[,title]) 弹出一个confirm对话框
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	KLModal.confirm = function (content, title, okButton, cancelButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton,
-	      cancelButton: cancelButton || true
-	    }
-	  });
-
-	  return modal;
-	};
-
-	// var oldExtend = Modal.extend;
-	// Modal.extend = function() {
-	//     var extended = oldExtend.apply(this, arguments);
-	//     extended.alert = this.alert;
-	//     extended.confirm = this.confirm;
-	//     return extended;
-	// }
-
-	module.exports = KLModal;
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
-/* 384 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  upload.base 上传基础类
-	 *  ------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var Config = __webpack_require__(385);
-
-	/**
-	 * @class UploadBase
-	 * @extend Component
-	 * @param {object}         [options.data]                  = 绑定属性
-	 * @param {string}         [options.data.action]           => 必选，上传地址
-	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
-	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
-	 *                                                             name: 文件名称
-	 *                                                             url: 文件的路径
-	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
-	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
-	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
-	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
-	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
-	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
-	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
-	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
-	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
-	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
-	 */
-	var UploadBase = Component.extend({
-	  name: 'upload-list',
-	  config: function config(data) {
-	    _.extend(data, {
-	      action: '',
-	      name: 'file',
-	      multiple: false,
-	      drag: false,
-	      accept: '*',
-	      listType: 'list',
-	      fileList: [],
-	      data: {},
-	      numLimit: 10,
-	      numPerline: 5,
-	      maxSize: Config.sizeMap.GB,
-	      deletable: true,
-	      encType: 'multipart/form-data'
-	    });
-
-	    _.extend(data, {
-	      fileUnitList: [],
-	      fileDeletedList: [],
-	      fileUnitWidth: 50,
-	      fileUnitMargin: 25
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init(data) {
-	    this.initUploadedFileUnits();
-	    this.supr(data);
-	  },
-	  initUploadedFileUnits: function initUploadedFileUnits() {
-	    var self = this;
-	    var data = this.data;
-
-	    if (data.fileList.length > 0) {
-	      var fileList = data.fileList.splice(0);
-	      fileList.forEach(function (file) {
-	        var fileunit = self.createFileUnit({
-	          file: file,
-	          options: {},
-	          deletable: data.deletable
-	        });
-
-	        fileunit.flag = 'ORIGINAL';
-
-	        data.fileUnitList.push({
-	          inst: fileunit
-	        });
-	      });
-
-	      this.updateFileList();
-	    }
-	  },
-	  updateFileList: function updateFileList() {
-	    var self = this;
-	    var data = this.data;
-	    var filesWrapper = data.filesWrapper;
-	    var fileList = data.fileList;
-	    var fileDeletedList = data.fileDeletedList;
-
-	    data.fileUnitList = data.fileUnitList.filter(function (item) {
-	      var inst = item.inst;
-	      var flag = inst.flag;
-	      var file = inst.file;
-	      var destroyed = inst.destroyed;
-
-	      // item.inst = {};
-
-	      if (flag === 'DELETED') {
-	        file.flag = 'DELETED';
-	        fileDeletedList.push(file);
-	        return false;
-	      }
-	      return !destroyed;
-	    });
-
-	    filesWrapper.innerHTML = '';
-
-	    var fileUnitList = data.fileUnitList;
-	    fileUnitList.forEach(function (item, index) {
-	      item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
-	      item.inst.$inject(item.wrapper);
-	    });
-
-	    fileList.splice(0);
-	    fileUnitList.forEach(function (item) {
-	      var inst = item.inst;
-	      var file = inst.data.file || {};
-
-	      fileList.push({
-	        name: file.name,
-	        url: file.url,
-	        flag: Config.flagMap[inst.flag]
-	      });
-	    });
-
-	    fileDeletedList.forEach(function (file) {
-	      fileList.push({
-	        name: file && file.name,
-	        url: file && file.url,
-	        flag: file && Config.flagMap[file.flag]
-	      });
-	    });
-	  },
-	  fileDialogOpen: function fileDialogOpen() {
-	    this.$refs.file && this.$refs.file.click();
-	  },
-	  setOptions: function setOptions(options) {
-	    var opts = options || {};
-
-	    return {
-	      url: opts.action
-	    };
-	  },
-	  preCheck: function preCheck(file) {
-	    var preCheckInfo = '';
-	    if (!this.isAcceptedFileSize(file)) {
-	      preCheckInfo = this.$trans('FILE_TOO_LARGE');
-	    }
-	    if (!this.isAcceptedFileType(file)) {
-	      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
-	    }
-	    return preCheckInfo;
-	  },
-	  isAcceptedFileType: function isAcceptedFileType(file) {
-	    var data = this.data;
-	    var accept = data.accept;
-	    var type = this.getFileType(file).toLowerCase();
-	    var isValid = false;
-
-	    accept.split(',').forEach(function (cond) {
-	      if (cond === '*') {
-	        isValid = true;
-	      } else if (/image\/.*/.test(cond)) {
-	        isValid = isValid || type === 'image';
-	      } else if (/audio\/.*/.test(cond)) {
-	        isValid = isValid || type === 'audio';
-	      } else if (/video\/.*/.test(cond)) {
-	        isValid = isValid || type === 'video';
-	      } else {
-	        isValid = isValid || type === Config.typeMap[cond];
-	      }
-	    });
-
-	    return isValid;
-	  },
-	  getFileType: function getFileType(file) {
-	    var type = file.type || '';
-	    var name = file.name || '';
-
-	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-	      return 'IMAGE';
-	    } else if (/zip|rar|gz/i.test(name)) {
-	      return 'ZIP';
-	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
-	      return 'DOC';
-	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-	      return 'VIDEO';
-	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-	      return 'AUDIO';
-	    } else if (/text\/plain/.test(type)) {
-	      return 'TEXT';
-	    } else if (/text\/html/.test(type)) {
-	      return 'HTML';
-	    } else if (/application\/pdf/.test(type)) {
-	      return 'PDF';
-	    } else if (/application\/javascript/.test(type)) {
-	      return 'JS';
-	    }
-
-	    return 'UNKNOWN';
-	  },
-	  isAcceptedFileSize: function isAcceptedFileSize(file) {
-	    var data = this.data;
-	    var maxSize = data.maxSize;
-	    var fileSize = file.size;
-
-	    var patterns = maxSize.match(/(\d+)(\D+)?/i);
-	    var size = patterns[1];
-	    var unit = patterns[2];
-
-	    if (unit) {
-	      size *= Config.sizeMap[unit.toUpperCase()];
-	    }
-
-	    return size >= fileSize;
-	  }
-	});
-
-		module.exports = UploadBase;
-
-/***/ }),
-/* 385 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * common config
-	 */
-
-	var sizeMap = {
-	  K: '1024',
-	  KB: '1024',
-	  M: '1048576', // 1024 * 1024
-	  MB: '1048576', // 1024 * 1024
-	  G: '1073741824', // 1024 * 1024 * 1024
-	  GB: '1073741824' // 1024 * 1024 * 1024
-	};
-
-	var typeMap = {
-	  '.jpg': 'image',
-	  '.jpeg': 'image',
-	  '.gif': 'image',
-	  '.png': 'image',
-	  '.zip': 'zip',
-	  '.rar': 'zip',
-	  '.gz': 'zip',
-	  '.doc': 'doc',
-	  '.xlsx': 'doc',
-	  '.ppt': 'doc',
-	  '.mp4': 'video',
-	  '.mkv': 'video',
-	  '.rmvb': 'video',
-	  '.avi': 'video',
-	  '.mp3': 'audio',
-	  '.pdf': 'pdf',
-	  '.js': 'js',
-	  '.html': 'html',
-	  '.txt': 'text'
-	};
-
-	var flagMap = {
-	  ADDED: 0,
-	  ORIGINAL: 1,
-	  DELETED: 2
-	};
-
-	module.exports = {
-	  sizeMap: sizeMap,
-	  typeMap: typeMap,
-	  flagMap: flagMap
-		};
-
-/***/ }),
-/* 386 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  image preview
-	 *  ------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(382);
-	var tpl = __webpack_require__(387);
-
-	var ImagePreview = Component.extend({
-	  name: 'image-preview',
-	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  config: function config(data) {
-	    _.extend(data, {
-	      imgList: [],
-	      curIndex: 0,
-	      uploaded: true
-	    });
-
-	    _.extend(data, {
-	      showVirtual: false,
-	      virtualInfo: {
-	        rotate: 0,
-	        scale: 1,
-	        translateX: 0,
-	        translateY: 0,
-	        mouseDownX: 0,
-	        mouseDownY: 0,
-	        dragTarget: null
-	      },
-	      opList: [{
-	        name: 'zoomIn',
-	        icon: 'zoomin',
-	        fnName: 'zoomIn'
-	      }, {
-	        name: 'zoomOut',
-	        icon: 'zoomout',
-	        fnName: 'zoomOut'
-	      }, {
-	        name: 'rezoom',
-	        icon: 'rezoom',
-	        fnName: 'rezoom'
-	      }, {
-	        name: 'rotate',
-	        icon: 'rotate_right',
-	        fnName: 'rotate'
-	      }, {
-	        name: 'delete',
-	        icon: 'delete',
-	        fnName: 'onDel'
-	      }]
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init(data) {
-	    this.supr(data);
-	  },
-	  onClose: function onClose() {
-	    this.destroy();
-	  },
-	  onPrev: function onPrev() {
-	    var data = this.data;
-	    var length = data.imgList.length;
-	    var toIndex = length - 1;
-
-	    if (data.curIndex > 0) {
-	      data.curIndex -= 1;
-	      toIndex = data.curIndex;
-	    }
-
-	    this.setCurrentTo(toIndex);
-	  },
-	  onNext: function onNext() {
-	    var data = this.data;
-	    var length = data.imgList.length;
-	    var toIndex = 0;
-
-	    if (data.curIndex < length - 1) {
-	      data.curIndex += 1;
-	      toIndex = data.curIndex;
-	    }
-
-	    this.setCurrentTo(toIndex);
-	  },
-	  setCurrentTo: function setCurrentTo(toIndex) {
-	    var data = this.data;
-	    var refs = this.$refs;
-	    var curIndex = data.curIndex;
-
-	    data.showVirtual = false;
-	    data.virtualInfo.scale = 1;
-	    data.virtualInfo.rotate = 0;
-	    data.virtualInfo.translateX = 0;
-	    data.virtualInfo.translateY = 0;
-
-	    refs['full-' + curIndex].style.opacity = 0;
-	    refs['full-' + toIndex].style.opacity = 1;
-
-	    this.data.curIndex = toIndex;
-	  },
-	  zoomIn: function zoomIn() {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-	    var step = this.getZoomInStep();
-
-	    data.showVirtual = true;
-
-	    virtualInfo.scale += step;
-
-	    this.$refs.virtualimage.style.transform = this.genTransform();
-	  },
-	  zoomOut: function zoomOut() {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-	    var step = this.getZoomOutStep();
-	    var translateStepInfo = this.getTranslateStep(step);
-
-	    data.showVirtual = true;
-
-	    virtualInfo.scale -= step;
-	    virtualInfo.translateX -= translateStepInfo.xStep;
-	    virtualInfo.translateY -= translateStepInfo.yStep;
-
-	    this.$refs.virtualimage.style.transform = this.genTransform();
-	  },
-	  rezoom: function rezoom() {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-
-	    data.showVirtual = true;
-
-	    virtualInfo.scale = 1;
-	    virtualInfo.translateX = 0;
-	    virtualInfo.translateY = 0;
-
-	    this.$refs.virtualimage.style.transform = this.genTransform();
-	  },
-	  getZoomInStep: function getZoomInStep() {
-	    var virtualInfo = this.data.virtualInfo;
-	    var scale = +virtualInfo.scale.toFixed(1);
-	    var step = this.getScaleStep();
-
-	    if (scale <= 0.1) {
-	      return 0.1;
-	    }
-
-	    return step;
-	  },
-	  getZoomOutStep: function getZoomOutStep() {
-	    var virtualInfo = this.data.virtualInfo;
-	    var scale = +virtualInfo.scale.toFixed(1);
-	    var step = this.getScaleStep();
-
-	    if (scale >= 10) {
-	      return 1;
-	    }
-
-	    return step;
-	  },
-	  getScaleStep: function getScaleStep() {
-	    var virtualInfo = this.data.virtualInfo;
-	    var scale = +virtualInfo.scale.toFixed(1);
-
-	    if (scale > 0.1 && scale < 1.5) {
-	      return 0.1;
-	    } else if (scale >= 1.5 && scale < 4) {
-	      return 0.5;
-	    } else if (scale >= 4 && scale < 10) {
-	      return 1;
-	    }
-
-	    return 0;
-	  },
-	  getTranslateStep: function getTranslateStep(scaleStep) {
-	    var virtualInfo = this.data.virtualInfo;
-	    var scale = +virtualInfo.scale.toFixed(1);
-
-	    var totalSteps = (scale - 1) * 10;
-	    var translateX = virtualInfo.translateX;
-	    var translateY = virtualInfo.translateY;
-
-	    return {
-	      xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
-	      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
-	    };
-	  },
-	  rotate: function rotate() {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-	    var img = this.$refs.virtualimage;
-
-	    data.showVirtual = true;
-	    virtualInfo.rotate += 90;
-
-	    img.style.transform = this.genTransform();
-	  },
-	  genTransform: function genTransform() {
-	    var virtualInfo = this.data.virtualInfo;
-	    return 'translateX(' + virtualInfo.translateX + 'px)' + (' translateY(' + virtualInfo.translateY + 'px)') + (' rotate(' + virtualInfo.rotate + 'deg)') + (' scale(' + virtualInfo.scale + ')');
-	  },
-	  onDel: function onDel(index) {
-	    var self = this;
-	    var data = this.data;
-	    var imgList = data.imgList;
-	    var img = imgList[index];
-
-	    var modal = new KLModal({
-	      data: {
-	        content: this.$trans('DELETE_CONFIRM') + img.name + '?'
-	      }
-	    });
-	    modal.$on('ok', function () {
-	      imgList = data.imgList.splice(index, 1);
-
-	      if (!imgList[index]) {
-	        data.curIndex = 0;
-	      }
-	      self.$emit('delete', {
-	        name: img.name,
-	        index: index
-	      });
-	      self.$update();
-	    });
-	  },
-	  onMouseDown: function onMouseDown(e) {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-
-	    virtualInfo.mouseDownX = e.pageX;
-	    virtualInfo.mouseDownY = e.pageY;
-	    virtualInfo.dragTarget = e.origin;
-	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
-	  },
-	  onMouseMove: function onMouseMove(e) {
-	    var data = this.data;
-	    var virtualImg = this.$refs.virtualimage;
-	    var virtualInfo = data.virtualInfo;
-	    var originX = virtualInfo.mouseDownX;
-	    var originY = virtualInfo.mouseDownY;
-	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
-
-	    var boundary = virtualInfo.dragBoundary;
-	    if (virtualInfo.dragTarget) {
-	      var translateX = e.pageX - originX;
-	      var translateY = e.pageY - originY;
-
-	      if (translateX > boundary.maxTranslateX) {
-	        translateX = boundary.maxTranslateX;
-	      } else if (translateX < boundary.minTranslateX) {
-	        translateX = boundary.minTranslateX;
-	      }
-
-	      if (translateY > boundary.maxTranslateY) {
-	        translateY = boundary.maxTranslateY;
-	      } else if (translateY < boundary.minTranslateY) {
-	        translateY = boundary.minTranslateY;
-	      }
-
-	      virtualInfo.translateX += translateX;
-	      virtualInfo.translateY += translateY;
-	      virtualInfo.mouseDownX = e.pageX;
-	      virtualInfo.mouseDownY = e.pageY;
-	      virtualImg.style.transform = this.genTransform();
-	    }
-	  },
-	  onMouseUp: function onMouseUp() {
-	    var data = this.data;
-	    var virtualInfo = data.virtualInfo;
-
-	    if (virtualInfo.dragTarget) {
-	      virtualInfo.mouseDownX = 0;
-	      virtualInfo.mouseDownY = 0;
-	      virtualInfo.dragTarget = null;
-	    }
-	  },
-	  onMouseWheel: function onMouseWheel(e) {
-	    if (e.wheelDelta > 0) {
-	      this.zoomIn();
-	    } else if (e.wheelDelta < 0) {
-	      this.zoomOut();
-	    }
-	  },
-	  getMaxMinTranslateValue: function getMaxMinTranslateValue() {
-	    var virtualImg = this.$refs.virtualimage;
-	    var virtualZone = this.$refs.virtualzone;
-
-	    var virtualImgRect = virtualImg.getBoundingClientRect();
-	    var virtualZoneRect = virtualZone.getBoundingClientRect();
-	    var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
-	    var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
-	    var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
-	    var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
-
-	    return {
-	      maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
-	      maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
-	      minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
-	      minTranslateY: minDeltaY < 0 ? minDeltaY : 0
-	    };
-	  }
-	});
-
-		module.exports = ImagePreview;
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'delete'}\n                            <a class=\"u-download\" href={imgList[curIndex].src} download={imgList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imgList[curIndex].src} alt={imgList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imgList[curIndex].name}>{imgList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
-
-/***/ }),
-/* 388 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <li ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()} r-hide={true}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n            <div class=\"u-input-info\">{preCheckInfo}</div>\n        {/if}\n    </li>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
-
-/***/ }),
-/* 389 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 *  ------------------------------
-	 *  UploadCard 上传
-	 *  ------------------------------
-	 */
-
-	var _ = __webpack_require__(72);
-	var FileUnit = __webpack_require__(379);
-	var UploadBase = __webpack_require__(384);
-	var ImagePreview = __webpack_require__(386);
-	var tpl = __webpack_require__(390);
-
-	/**
-	 * @class UploadCard
-	 * @extend UploadBase
-	 */
-
-	var UploadCard = UploadBase.extend({
-	  name: 'upload-card',
-	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  config: function config(data) {
-	    _.extend(data, {
-	      status: 'uploaded',
-	      info: '',
-	      fileUnitListPadding: 22
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init(data) {
-	    this.initFilesZone();
-	    this.supr(data);
-	  },
-	  initFilesZone: function initFilesZone() {
-	    var data = this.data;
-	    var numPerline = data.numPerline;
-	    var fileUnitWidth = data.fileUnitWidth;
-	    var fileUnitMargin = data.fileUnitMargin;
-
-	    data.filesWrapper = this.$refs.fileswrapper;
-	    data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
-	  },
-	  onDragEnter: function onDragEnter(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	  },
-	  onDragOver: function onDragOver(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-	  },
-	  onDrop: function onDrop(e) {
-	    e.stopPropagation();
-	    e.preventDefault();
-
-	    if (!this.data.drag) {
-	      return;
-	    }
-
-	    var dt = e.event && e.event.dataTransfer;
-	    var files = dt.files;
-
-	    this.handleFiles(files);
-	  },
-	  fileSelect: function fileSelect() {
-	    var inputNode = this.$refs.file;
-	    var files = inputNode.files;
-
-	    this.handleFiles(files);
-
-	    inputNode.value = '';
-	  },
-	  handleFiles: function handleFiles(files) {
-	    var data = this.data;
-	    var len = files.length;
-	    var index = 0;
-	    var file = void 0;
-	    var fileunit = void 0;
-
-	    this.toggle(false);
-
-	    var options = this.setOptions(data);
-
-	    data.preCheckInfo = '';
-
-	    for (; index < len; index += 1) {
-	      if (data.fileUnitList.length < data.numLimit) {
-	        file = files[index];
-	        data.preCheckInfo = this.preCheck(file);
-	        if (!data.preCheckInfo) {
-	          fileunit = this.createFileUnit({
-	            file: file,
-	            options: options,
-	            deletable: data.deletable
-	          });
-	          fileunit.flag = 'ADDED';
-	          data.fileUnitList.push({
-	            inst: fileunit
-	          });
-	          this.updateFilesZone();
-	        }
-	      }
-	    }
-
-	    this.updateFileList();
-	  },
-	  updateFilesZone: function updateFilesZone() {
-	    var data = this.data;
-	    var filesZone = this.$refs.fileszone;
-	    var entryWrapper = this.$refs.entrywrapper;
-	    var inputWrapper = this.$refs.inputwrapper;
-
-	    if (data.fileUnitList.length < data.numLimit) {
-	      filesZone.style.width = '125px';
-	      entryWrapper.style['margin-right'] = '20px';
-	      inputWrapper.style.display = 'inline-block';
-	    } else if (data.fileUnitList.length === data.numLimit) {
-	      filesZone.style.width = '50px';
-	      entryWrapper.style['margin-right'] = '0';
-	      inputWrapper.style.display = 'none';
-	    }
-	  },
-	  createFileUnit: function createFileUnit(data) {
-	    var self = this;
-	    var imagePreviewWrapper = this.$refs.imagepreview;
-	    var fileunit = new FileUnit({ data: data });
-
-	    fileunit.$on('preview', previewCb);
-
-	    function previewCb() {
-	      var current = this;
-
-	      function filterImgFile(file) {
-	        return file.inst.data.type === 'IMAGE';
-	      }
-
-	      function mapHelper(img) {
-	        if (current === img.inst) {
-	          img.inst.current = true;
-	        }
-	        return img.inst;
-	      }
-
-	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
-
-	      var preview = createImagePreview(imgList);
-
-	      preview.$inject(imagePreviewWrapper);
-	    }
-
-	    function createImagePreview(imgFileList) {
-	      function findHelper(img) {
-	        return img.current;
-	      }
-	      var curIndex = imgFileList.findIndex(findHelper);
-
-	      function mapHelper(img) {
-	        delete img.current;
-	        return {
-	          src: img.data.src,
-	          name: img.data.name,
-	          status: img.data.status
-	        };
-	      }
-	      var imgList = imgFileList.map(mapHelper);
-
-	      var imagePreview = new ImagePreview({
-	        data: {
-	          imgList: imgList,
-	          curIndex: curIndex
-	        }
-	      });
-
-	      imagePreview.$on('delete', function (imgInfo) {
-	        var index = imgInfo.index;
-	        var imgInst = imgFileList[index];
-
-	        if (imgInst) {
-	          imgInst.$emit('delete');
-	        }
-	      });
-
-	      imagePreview.$on('$destroy', function () {
-	        imgFileList.splice(0);
-	      });
-
-	      return imagePreview;
-	    }
-
-	    fileunit.$on('progress', progressCb);
-
-	    function progressCb(info) {
-	      var curInst = this;
-	      var curIndex = -1;
-	      var lastIndex = -1;
-
-	      self.data.fileUnitList.forEach(function (item, index) {
-	        if (item.inst.data.status === 'uploading') {
-	          lastIndex = index;
-	        }
-	        if (item.inst === curInst) {
-	          curIndex = index;
-	        }
-	      });
-
-	      if (curIndex >= lastIndex && self.data.status !== 'failed') {
-	        self.data.status = 'uploading';
-	        self.data.progress = info.progress;
-	        self.$update();
-	      }
-	    }
-
-	    fileunit.$on('onload', successCb);
-	    // fileunit.$on('success', successCb);
-
-	    function successCb() {
-	      var allUploaded = true;
-	      var hasFailed = false;
-	      self.data.fileUnitList.forEach(function (item) {
-	        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-	        hasFailed = hasFailed || item.inst.data.status === 'failed';
-	      });
-	      if (allUploaded) {
-	        self.data.status = 'uploaded';
-	      } else if (hasFailed) {
-	        self.data.status = 'failed';
-	      }
-	      self.$update();
-	      self.updateFileList();
-	    }
-
-	    fileunit.$on('error', function () {
-	      self.data.status = 'failed';
-	      self.data.info = self.$trans('UPLOAD_FAIL');
-	      self.$update();
-	    });
-
-	    fileunit.$on('delete', function () {
-	      if (this.flag === 'ORIGINAL') {
-	        this.flag = 'DELETED';
-	        this.file = this.data.file;
-	      }
-	      this.destroy();
-	    });
-
-	    fileunit.$on('$destroy', function () {
-	      self.toggle(false);
-	      this.destroyed = true;
-	      this.$off('preview', previewCb);
-	      this.$off('onload', successCb);
-	      self.updateFileList();
-	      self.updateFilesZone();
-	      resetStatus();
-	    });
-
-	    function resetStatus() {
-	      successCb();
-	    }
-
-	    return fileunit;
-	  },
-	  updateFileList: function updateFileList() {
-	    this.supr();
-	    this.$update();
-	  },
-	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
-	    var wrapper = document.createElement('li');
-
-	    parent.appendChild(wrapper);
-
-	    this.setFileUnitWrapperStyle(wrapper, index);
-
-	    return wrapper;
-	  },
-	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
-	    var data = this.data;
-	    var numPerline = data.numPerline;
-	    var fileUnitWidth = data.fileUnitWidth;
-	    var fileUnitMargin = data.fileUnitMargin;
-
-	    wrapper.className = 'u-fileitem';
-	    wrapper.style.display = 'inline-block';
-	    wrapper.style.width = fileUnitWidth + 'px';
-
-	    if (index && index % numPerline) {
-	      wrapper.style.marginLeft = fileUnitMargin + 'px';
-	    }
-	  },
-	  uploadFiles: function uploadFiles() {
-	    var data = this.data;
-	    var fileUnitList = data.fileUnitList;
-
-	    data.status = 'uploaded';
-	    data.info = '';
-
-	    fileUnitList.forEach(function (item) {
-	      var inst = item.inst;
-
-	      if (inst.data.status === 'failed') {
-	        inst.uploadFile(inst.data.file);
-	      }
-	    });
-	  },
-	  toggle: function toggle(open, e) {
-	    e && e.stopPropagation();
-
-	    var data = this.data;
-	    if (typeof open === 'undefined') {
-	      data.open = !data.open;
-	    } else {
-	      data.open = open;
-	    }
-
-	    this.setPosition(!data.open);
-
-	    var index = UploadCard.opens.indexOf(this);
-	    if (data.open && index < 0) {
-	      UploadCard.opens.push(this);
-	    } else if (!data.open && index >= 0) {
-	      UploadCard.opens.splice(index, 1);
-	    }
-	  },
-	  setPosition: function setPosition(hidden) {
-	    var filesBanner = this.$refs.filesbanner;
-	    var filesWrapper = this.$refs.fileswrapper;
-	    if (hidden) {
-	      filesBanner.style.left = '-9999px';
-	      filesWrapper.style.left = '-9999px';
-	      return;
-	    }
-	    this.setVerticalPosition();
-	    this.setHorizontalPosition();
-	  },
-	  setVerticalPosition: function setVerticalPosition() {
-	    var filesEntry = this.$refs.filesentry;
-	    var filesEntryCoors = filesEntry.getBoundingClientRect();
-	    var filesWrapper = this.$refs.fileswrapper;
-	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
-	    var viewHeight = document.documentElement.clientHeight;
-
-	    // show at vertical bottom side
-	    var vertical = 'bottom';
-	    // show at vertical top side
-	    var isVerticalTopSide = filesEntryCoors.top - filesWrapperCoors.height > 0;
-	    var isVerticalBottomSide = filesEntryCoors.bottom + filesWrapperCoors.height < viewHeight;
-	    if (isVerticalTopSide && !isVerticalBottomSide) {
-	      vertical = 'top';
-	    }
-
-	    if (vertical === 'bottom') {
-	      this.data.isTopBanner = false;
-	      filesWrapper.style.top = '53px';
-	      filesWrapper.style.bottom = 'auto';
-	      filesWrapper.style.boxShadow = 'auto';
-	      filesWrapper.style.boxShadow = '0 2px 3px 0 rgba(0,0,0,0.1)';
-	    } else {
-	      this.data.isTopBanner = true;
-	      filesWrapper.style.top = 'auto';
-	      filesWrapper.style.bottom = '53px';
-	      filesWrapper.style.boxShadow = '0 -2px 3px 0 rgba(0,0,0,0.1)';
-	    }
-	  },
-	  setHorizontalPosition: function setHorizontalPosition() {
-	    var filesEntry = this.$refs.filesentry;
-	    var filesEntryCoors = filesEntry.getBoundingClientRect();
-	    var filesBanner = this.$refs.filesbanner;
-	    var filesWrapper = this.$refs.fileswrapper;
-	    var filesWrapperCoors = filesWrapper.getBoundingClientRect();
-	    var viewWidth = document.documentElement.clientWidth;
-
-	    // show at central
-	    var horizontal = 'left';
-	    var offsetWidth = filesWrapperCoors.width / 2 - filesEntryCoors.width / 2;
-	    var isHorizontalLeftEdge = filesEntryCoors.left - offsetWidth < 0;
-	    var isHorizontalRightEdge = filesEntryCoors.right + offsetWidth > viewWidth;
-	    if (isHorizontalRightEdge) {
-	      horizontal = 'right';
-	    }
-	    var isHorizontalCenter = !isHorizontalLeftEdge && !isHorizontalRightEdge;
-	    if (isHorizontalCenter) {
-	      horizontal = 'central';
-	    }
-
-	    if (horizontal === 'left') {
-	      filesWrapper.style.left = '0';
-	      filesWrapper.style.right = 'auto';
-	    } else if (horizontal === 'right') {
-	      filesWrapper.style.left = 'auto';
-	      filesWrapper.style.right = '0';
-	    } else if (horizontal === 'central') {
-	      filesWrapper.style.left = '-' + offsetWidth + 'px';
-	    }
-
-	    filesBanner.style.left = '20px';
-	  }
-	});
-
-	UploadCard.opens = [];
-	var opens = UploadCard.opens;
-	document.addEventListener('click', function (e) {
-	  for (var len = opens.length, i = len - 1; i >= 0; i -= 1) {
-	    var close = true;
-
-	    var upload = opens[i];
-	    var uploadElement = upload.$refs.element;
-	    var iterator = e.target;
-
-	    while (iterator) {
-	      if (uploadElement === iterator) {
-	        close = false;
-	        break;
-	      }
-	      iterator = iterator.parentElement;
-	    }
-
-	    if (close) {
-	      upload.toggle(false, e);
-	      upload.$update();
-	    }
-	  }
-	}, false);
-
-		module.exports = UploadCard;
-
-/***/ }),
-/* 390 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'IMAGE'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.src}\n                             alt={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.name}/>\n                    </div>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}\n                    <span class=\"u-txt\">ZIP</span>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'failed'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>重试</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
-
-/***/ }),
-/* 391 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div ref=\"m-upload\"></div>\n"
-
-/***/ }),
-/* 392 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLSidebar
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(393);
-
-	/**
-	 * @class KLSidebar
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {array}         [options.data.menus]                    => 菜单数组
-	 * @param {string}        [options.data.top='60px']               => 菜单style top的值
-	 * @param {boolean}       [options.data.active=true]              => 默认是否收起
-	 * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
-	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
-	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
-	 * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
-	 * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
-	 * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
-	 */
-	var KLSidebar = Component.extend({
-	  name: 'kl-sidebar',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      uniqueOpened: true,
-	      menus: [],
-	      titleKey: 'title',
-	      urlKey: 'url',
-	      pageKey: 'title',
-	      childrenKey: 'children',
-	      top: '60px',
-	      active: true,
-	      bodyEl: ''
-	    });
-
-	    this.supr();
-	  },
-	  initBodyEl: function initBodyEl() {
-	    if (this.data.bodyEl) {
-	      this.data.$bodyEl = document.getElementById(this.data.bodyEl);
-	      if (this.data.$bodyEl) {
-	        this.data.$bodyEl.style.transition = 'left .3s';
-	      }
-	    }
-	  },
-	  toggle: function toggle() {
-	    this.initBodyEl();
-
-	    this.data.active = !this.data.active;
-	    if (this.data.$bodyEl) {
-	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
-	    }
-	  }
-	});
-
-	KLSidebar.directive('top', function (ele, value) {
-	  this.$watch(value, function (top) {
-	    ele.style.top = top;
-	  });
-	});
-
-	module.exports = KLSidebar;
-
-/***/ }),
-/* 393 */
-/***/ (function(module, exports) {
-
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
-
-/***/ }),
-/* 394 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLMenu      两级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(395);
-
-	/**
-	 * @class Menu
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
-	 */
-	var KLMenu = Component.extend({
-	  name: 'kl-menu',
-	  template: template,
-	  openedMenus: [],
-	  currentItem: null,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      uniqueOpened: true
-	    });
-	    this.supr();
-	  },
-	  init: function init() {
-	    this.$on('submenu-click', function (submenu) {
-	      var isOpened = this.openedMenus.indexOf(submenu) !== -1;
-	      if (isOpened) {
-	        this.closeMenu(submenu);
-	        this.$emit('close', submenu);
-	      } else {
-	        this.openMenu(submenu);
-	        this.$emit('open', submenu);
-	      }
-	    });
-
-	    this.$on('menuitem-click', function (menuitem) {
-	      this.currentItem = menuitem;
-	    });
-	  },
-	  closeMenu: function closeMenu(submenu) {
-	    this.openedMenus.splice(this.openedMenus.indexOf(submenu), 1);
-	  },
-	  openMenu: function openMenu(submenu) {
-	    var openedMenus = this.openedMenus;
-	    if (openedMenus.indexOf(submenu) !== -1) return;
-	    if (this.data.uniqueOpened) {
-	      this.openedMenus = [].concat(submenu);
-	    } else {
-	      this.openedMenus.push(submenu);
-	    }
-	  }
-	});
-
-		module.exports = KLMenu;
-
-/***/ }),
-/* 395 */
-/***/ (function(module, exports) {
-
-	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
-
-/***/ }),
-/* 396 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLMenuItem
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(397);
-	var RootMenuMixin = __webpack_require__(398);
-
-	/**
-	 * @class KLMenuItem
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {string}        [options.data.title]                    => 标题文案
-	 * @param {string}        [options.data.url]                      => 跳转链接
-	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
-	 */
-	var KLMenuItem = Component.extend({
-	  name: 'kl-menu-item',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      title: '',
-	      active: false,
-	      url: ''
-	    });
-
-	    this.supr();
-	  },
-
-	  computed: {
-	    active: function active() {
-	      if (!this.data.rootMenu) return;
-	      return this.data.rootMenu.currentItem === this;
-	    }
-	  },
-	  init: function init() {
-	    this.initRootMenu();
-
-	    if (this.data.isCurrent) {
-	      this.data.rootMenu.currentItem = this;
-	    }
-	  },
-	  goto: function goto(e) {
-	    e.stopPropagation();
-	    this.data.rootMenu.$emit('menuitem-click', this);
-	    if (this.data.url) {
-	      location.href = this.data.url;
-	    }
-	  }
-	});
-
-	KLMenuItem.use(RootMenuMixin);
-	module.exports = KLMenuItem;
-
-/***/ }),
-/* 397 */
-/***/ (function(module, exports) {
-
-	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
-
-/***/ }),
-/* 398 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var KLMenu = __webpack_require__(394);
-
-	module.exports = function (Component) {
-	  Component.implement({
-	    initRootMenu: function initRootMenu() {
-	      var $outer = this;
-	      do {
-	        if ($outer.$outer) {
-	          $outer = $outer.$outer;
-	        } else if ($outer.$parent) {
-	          $outer = $outer.$parent;
-	        }
-	      } while (!($outer instanceof KLMenu) && ($outer.$outer || $outer.$parent));
-
-	      if ($outer && $outer instanceof KLMenu) {
-	        this.data.rootMenu = $outer;
-	      }
-	    }
-	  });
-		};
-
-/***/ }),
-/* 399 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLSubMenu
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(400);
-	var RootMenuMixin = __webpack_require__(398);
-
-	/**
-	 * @class KLSubMenu
-	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
-	 * @param {string}        [options.data.class]                    => 补充class
-	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
-	 * @param {string}        [options.data.title]                    => 标题文案
-	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
-	 */
-	var KLSubMenu = Component.extend({
-	  name: 'kl-menu-sub',
-	  template: template,
-	  /**
-	   * @protected
-	   */
-	  config: function config() {
-	    this.defaults({
-	      class: '',
-	      title: '',
-	      titleTemplate: ''
-	    });
-	    this.supr();
-	  },
-
-	  computed: {
-	    active: function active() {
-	      if (!this.data.rootMenu) return;
-	      return this.data.rootMenu.openedMenus.indexOf(this) > -1;
-	    }
-	  },
-	  init: function init() {
-	    this.initRootMenu();
-
-	    if (this.data.defaultOpen) {
-	      this.data.rootMenu.openedMenus.push(this);
-	    }
-	  },
-	  toggle: function toggle() {
-	    this.data.rootMenu.$emit('submenu-click', this);
-	    this.$emit('click', this);
-	  }
-	});
-
-	KLSubMenu.use(RootMenuMixin);
-
-	module.exports = KLSubMenu;
-
-/***/ }),
-/* 400 */
-/***/ (function(module, exports) {
-
-	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
-
-/***/ }),
-/* 401 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLPager     分页
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(402);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLPager
-	 * @extend Component
-	 * @param {object}        [options.data]                  = 绑定属性
-	 * @param {number}        [options.data.current=1]        <=> 当前页
-	 * @param {number}        [options.data.total=0]          => 总页数
-	 * @param {number}        [options.data.sumTotal=0]       => 总个数
-	 * @param {number}        [options.data.pageSize=20]      => 每页个数
-	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
-	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
-	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
-	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
-	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
-	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]     => 是否显示
-	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
-	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
-	 * @param {string}        [options.data.class]            => 补充class
-	 */
-	var KLPager = Component.extend({
-	  name: 'kl-pager',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    var _this = this;
-
-	    _.extend(this.data, {
-	      current: 1,
-	      total: '',
-	      sumTotal: '',
-	      pageSize: '',
-	      position: 'center',
-	      middle: 5,
-	      side: 2,
-	      _start: 1,
-	      _end: 5,
-	      step: 5,
-	      maxPageSize: 50,
-	      pageSizeList: [],
-	      isEllipsis: false
-	    });
-	    this.supr();
-
-	    this._setPageSizeList();
-
-	    this.$watch(['current', 'total'], function (_current, _total) {
-	      var current = +_current;
-	      var total = +_total;
-	      this.data.current = current;
-	      this.data.total = total;
-	      var show = Math.floor(this.data.middle / 2);
-	      var side = this.data.side;
-
-	      this.data._start = current - show;
-	      this.data._end = current + show;
-	      if (this.data._start < side + 1) this.data._start = side + 1;
-	      if (this.data._end > total - side) this.data._end = total - side;
-	      if (current - this.data._start < show) {
-	        this.data._end += this.data._start - current + show;
-	      }
-	      if (this.data._end - current < show) {
-	        this.data._start += this.data._end - current - show;
-	      }
-	    });
-
-	    this.$watch(['middle', 'side'], function (middle, side) {
-	      this.data.middle = +middle;
-	      this.data.side = +side;
-	    });
-
-	    this.$watch('pageSize', function (val, oldVal) {
-	      if (!oldVal) return;
-	      this.initTotal();
-	      this.select(1);
-	    });
-
-	    this.$watch('sumTotal', function () {
-	      _this.initTotal();
-	    });
-	  },
-	  initTotal: function initTotal() {
-	    if (this.data.pageSize) {
-	      this.data.total = Math.ceil(this.data.sumTotal / this.data.pageSize);
-	    }
-
-	    if ((!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize) {
-	      console.error('Pager组件需要传pageSize');
-	    }
-	  },
-	  _setPageSizeList: function _setPageSizeList() {
-	    var _data = this.data,
-	        step = _data.step,
-	        maxPageSize = _data.maxPageSize;
-
-	    for (var i = 1; i * step <= maxPageSize; i += 1) {
-	      this.data.pageSizeList.push({
-	        id: i * step,
-	        name: i * step + this.$trans('ITEM_PAGE')
-	      });
-	    }
-	  },
-
-
-	  /**
-	     * @method select(page) 选择某一页
-	     * @public
-	     * @param  {object} page 选择页
-	     * @return {void}
-	     */
-	  select: function select(page) {
-	    if (this.data.readonly || this.data.disabled) return;
-
-	    if (page < 1) return;
-	    if (page > this.data.total) return;
-
-	    this.data.current = page;
-	    /**
-	         * @event select 选择某一页时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} current 当前选择页
-	         */
-	    this.$update();
-	    this.$emit('select', {
-	      sender: this,
-	      current: this.data.current
-	    });
-	  },
-	  enter: function enter(ev) {
-	    if (ev.which === 13) {
-	      // ENTER key
-	      ev.preventDefault();
-	      this.goto();
-	    }
-	  },
-	  goto: function goto() {
-	    var data = this.data;
-	    if (!data.pageNo && data.pageNo / 1 !== 0) return;
-	    if (data.pageNo > data.total) {
-	      data.pageNo = data.total;
-	    } else if (data.pageNo < 1) {
-	      data.pageNo = 1;
-	    }
-	    this.select(this.data.pageNo);
-	  }
-	});
-
-		module.exports = KLPager;
-
-/***/ }),
-/* 402 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
-
-/***/ }),
-/* 403 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLTabs       选项卡
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(404);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLTab
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.title='']             => 标题
-	 * @param {string}        [options.data.key=null]             => key 标识
-	 */
-
-	/**
-	 * @class KLTabs
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
-	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
-	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
-	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]         => 是否显示
-	 * @param {string}        [options.data.class]                => 补充class
-	 */
-	var KLTabs = Component.extend({
-	  name: 'kl-tabs',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    var _this = this;
-
-	    _.extend(this.data, {
-	      tabs: [],
-	      selected: undefined,
-	      titleTemplate: null
-	    });
-	    this.supr();
-
-	    this.$watch('selected', function (newValue) {
-	      /**
-	             * @event change 选项卡改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 改变后的选项卡
-	             */
-	      _this.$emit('change', {
-	        sender: _this,
-	        selected: newValue,
-	        key: newValue.data.key
-	      });
-	    });
-	  },
-
-	  /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
-	  select: function select(item) {
-	    if (this.data.readonly || this.data.disabled || item.data.disabled) return;
-
-	    this.data.selected = item;
-	    /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择卡
-	         */
-	    this.$emit('select', {
-	      sender: this,
-	      selected: item,
-	      key: item.data.key
-	    });
-	  }
-	});
-
-		module.exports = KLTabs;
-
-/***/ }),
-/* 404 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
-
-/***/ }),
-/* 405 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLTab       子选项卡
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var KLTabs = __webpack_require__(403);
-
-	/**
-	 * @class KLTab
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.title='']             => 标题
-	 * @param {string}        [options.data.key=null]             => key 标识
-	 */
-	var KLTab = Component.extend({
-	  name: 'kl-tab',
-	  template: '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      title: ''
-	    });
-	    this.supr();
-
-	    if (this.$outer && this.$outer instanceof KLTabs) {
-	      this.$outer.data.tabs.push(this);
-	    }
-
-	    if (!this.$outer.data.selected) this.$outer.data.selected = this;
-
-	    this._setDefaultTab();
-	  },
-	  _setDefaultTab: function _setDefaultTab() {
-	    var defaultKey = this.$outer.data.defaultKey;
-	    var key = this.data.key;
-
-	    if (!!defaultKey && !!key && '' + defaultKey === '' + key) {
-	      this.$outer.data.selected = this;
-	    }
-	  }
-	});
-
-		module.exports = KLTab;
-
-/***/ }),
-/* 406 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLSteps     步骤条
-	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(407);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLSteps
-	 * @extend Component
-	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {object}      [options.data.steps=null]     <=> 类似于kl-select的source
-	 * @param {string}      [options.data.current=null]   <=> 当前状态
-	 * @param {boolean}     [options.data.size=false]     =>  当前尺寸
-	 */
-	var KLSteps = Component.extend({
-	  name: 'kl-steps',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      steps: [],
-	      current: 0,
-	      size: '',
-	      currentIndex: 0
-	    });
-	    this.supr();
-	  },
-	  init: function init() {
-	    var _this = this;
-
-	    this.supr();
-	    this.$watch('current', function () {
-	      _this.juedgeFinishedItem();
-	    });
-	  },
-	  juedgeFinishedItem: function juedgeFinishedItem() {
-	    var data = this.data;
-	    var current = data.current;
-	    var steps = data.steps;
-
-	    steps.forEach(function (item, index) {
-	      if (item.status / 1 === current / 1) {
-	        data.currentIndex = index;
-	      }
-	    });
-	  }
-	});
-
-		module.exports = KLSteps;
-
-/***/ }),
-/* 407 */
-/***/ (function(module, exports) {
-
-	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
-
-/***/ }),
-/* 408 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLCrumb     面包屑
-	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(409);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLCrumb
-	 * @extend Component
-	 * @param {object}          [options.data]                     = 绑定属性
-	 * @param {string}          [options.data.class]               => 补充class
-	 * @param {string}          [options.data.separator]           => 分隔符，支持模板
-	 * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
-	 * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
-	 */
-	var KLCrumb = Component.extend({
-	  name: 'kl-crumb',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      separator: '/',
-	      crumbArr: []
-	    });
-	    this.supr();
-	  }
-	});
-
-		module.exports = KLCrumb;
-
-/***/ }),
-/* 409 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
-
-/***/ }),
-/* 410 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLCrumbItem     面包屑里的每一项
-	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(411);
-	var _ = __webpack_require__(72);
-	var KLCrumb = __webpack_require__(408);
-
-	/**
-	 * @class KLCrumbItem
-	 * @extend Component
-	 * @param {object}          [options.data]                    = 绑定属性
-	 * @param {string}          [options.data.content]            => 内容模板
-	 * @param {string}          [options.data.class]              => 补充class
-	 * @param {string}          [options.data.href]                => 传入的链接
-	 */
-	var KLCrumbItem = Component.extend({
-	  name: 'kl-crumb-item',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {});
-	    this.supr();
-
-	    if (this.$outer && this.$outer instanceof KLCrumb) {
-	      this.$outer.data.crumbArr.push(this);
-	    }
-	  }
-	});
-
-		module.exports = KLCrumbItem;
-
-/***/ }),
-/* 411 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
 /* 412 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLMask     遮罩
-	 * @author  Cody
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(413);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLMask
-	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性
-	 * @param {string}            [options.data.content]              => 内容模板
-	 * @param {boolean}           [options.data.closable=true]       => 点击空白区域关闭
-	 * @param {string}            [options.data.class]                => 补充class
-	 */
-	var KLMask = Component.extend({
-	  name: 'kl-mask',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      closable: true
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  _handleClick: function _handleClick(e) {
-	    if (/m-mask/.test(e.target.className)) {
-	      if (this.data.closable) this.close();
-	    }
-	  },
-
-	  /**
-	     * @method close(data) 关闭遮罩
-	     * @public
-	     * @param  {object} data 额外数据
-	     * @return {void}
-	     */
-	  close: function close(data) {
-	    /**
-	         * @event close 关闭遮罩时触发
-	         * @property {object} data 额外数据
-	         */
-	    this.$emit('close', {
-	      sender: this,
-	      data: data
-	    });
-	    this.destroy();
-	  }
-	});
-
-		module.exports = KLMask;
-
-/***/ }),
-/* 413 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
-
-/***/ }),
-/* 414 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLNotify    通知
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(415);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLNotify
-	 * @extend Component
-	 * @param {object}      [options.data]                      = 绑定属性
-	 * @param {string}      [options.data.position=topcenter]   => 通知的位置，可选参数：`topcenter`、`topleft`、`topright`、`bottomcenter`、`bottomleft`、`bottomright`、`static`
-	 * @param {number}      [options.data.duration=2000]        => 每条消息默认的停留毫秒数，如果为0，则表示消息常驻不消失。
-	 * @param {boolean}     [options.data.single=false]         => 是否始终显示一条
-	 * @param {boolean}     [options.data.visible=true]         => 是否显示
-	 * @param {string}      [options.data.class]                => 补充class
-	 */
-	var KLNotify = Component.extend({
-	  name: 'kl-notify',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      messages: [],
-	      position: 'topcenter',
-	      duration: 2000,
-	      single: false
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @method show(text[,state][,duration]) 弹出一个消息
-	     * @public
-	     * @param  {string} [text] 消息内容
-	     * @param  {string} [state=null] 消息状态，可选参数：`info`、`success`、`warning`、`error`
-	     * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	     * @return {void}
-	     */
-	  show: function show(text, state, duration) {
-	    var self = this;
-	    var message = {
-	      text: text,
-	      state: state,
-	      duration: duration >= 0 ? +duration : +this.data.duration
-	    };
-	    var messages = this.data.messages;
-
-	    if (this.data.single && messages[0]) {
-	      message = _.extend(messages[0], message, true);
-	      message.counter += 1;
-	    } else {
-	      messages.unshift(message);
-	      message.counter = 0;
-	    }
-
-	    this.$update();
-
-	    if (message.duration) {
-	      setTimeout(function () {
-	        if (!message.counter) self.close(message);else message.counter -= 1;
-	      }, message.duration);
-	    }
-
-	    /**
-	         * @event show 弹出一个消息时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} message 弹出的消息对象
-	         */
-	    this.$emit('show', {
-	      sender: this,
-	      message: message
-	    });
-	  },
-
-	  /**
-	     * @method close(message) 关闭某条消息
-	     * @public
-	     * @param  {object} message 需要关闭的消息对象
-	     * @return {void}
-	     */
-	  close: function close(message) {
-	    var index = this.data.messages.indexOf(message);
-	    if (index < 0) return;
-	    this.data.messages.splice(index, 1);
-	    this.$update();
-
-	    /**
-	         * @event close 关闭某条消息时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} message 关闭了的消息对象
-	         */
-	    this.$emit('close', {
-	      sender: this,
-	      message: message
-	    });
-	  },
-
-	  /**
-	     * @method closeAll() 关闭所有消息
-	     * @public
-	     * @return {void}
-	     */
-	  closeAll: function closeAll() {
-	    this.data.messages = [];
-	    this.$update();
-	  }
-	});
-
-	var STATES = ['success', 'warning', 'info', 'error'];
-	/**
-	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
-	 */
-	STATES.forEach(function (state) {
-	  KLNotify.prototype[state] = function (text, duration) {
-	    this.show(text, state, duration);
-	  };
-	});
-
-	/**
-	 * 直接初始化一个实例
-	 * @state {Notify}
-	 */
-	var notify = new KLNotify();
-	KLNotify.notify = notify;
-
-	var METHODS = ['show', 'close', 'closeAll', 'success', 'warning', 'info', 'error'];
-	KLNotify.METHODS = METHODS;
-	/**
-	 * @method show(text[,state][,duration]) 弹出一个消息
-	 * @static
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {string} [state] 消息状态，可选参数：`info`、`success`、`warning`、`error`
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
-	 */
-	/**
-	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
-	 * @static
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
-	 */
-	/**
-	 * @method close(message) 关闭某条消息
-	 * @static
-	 * @public
-	 * @param  {object} message 需要关闭的消息对象
-	 * @return {void}
-	 */
-	/**
-	 * @method closeAll() 关闭所有消息
-	 * @static
-	 * @public
-	 * @return {void}
-	 */
-	METHODS.forEach(function (method) {
-	  KLNotify[method] = notify[method].bind(notify);
-	});
-
-	module.exports = KLNotify;
-
-/***/ }),
-/* 415 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
-
-/***/ }),
-/* 416 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLPopConfirm 气泡弹框
-	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var dom = __webpack_require__(71).dom;
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(417);
-	__webpack_require__(361);
-
-	var PopUp = Component.extend({
-	  template: template,
-	  config: function config(data) {
-	    this.defaults({
-	      isShow: true,
-	      content: '',
-	      contentTemplate: ''
-	    });
-	    this.supr(data);
-	  },
-	  init: function init() {
-	    if (this.$root === this) {
-	      this.$inject(document.body);
-	    }
-	    this.data.element = dom.element(this);
-	    dom.on(this.data.element, 'click', function (e) {
-	      e.stopPropagation();
-	    });
-	  },
-	  getElement: function getElement() {
-	    return this.data.element;
-	  },
-	  ok: function ok() {
-	    var $validation = this.$refs.validation;
-	    if (!$validation || $validation.validate().success) {
-	      /**
-	       * @event ok 确定时触发
-	       * @property {object} sender 事件发送对象
-	       * @property {object} data popConfirm组件的数据
-	       */
-	      this.$emit('ok', {
-	        sender: this,
-	        data: this.data
-	      });
-	    }
-	  },
-	  cancel: function cancel() {
-	    /**
-	     * @event cancel 取消时触发
-	     * @property {object} sender 事件发送对象
-	     * @property {object} data popConfirm组件的数据
-	     */
-	    this.$emit('cancel', {
-	      sender: this,
-	      data: this.data
-	    });
-	  }
-	});
-
-	/**
-	 * @class KLPopConfirm
-	 * @extend Component
-	 * @param {object}        [options.data]                        = 绑定属性
-	 * @param {string}        [options.data.content]                => 弹窗中的文本内容
-	 * @param {string}        [options.data.contentTemplate]        => 弹窗中的模板内容,回调中会将PopConfirm的data返回;
-	 * @param {string}        [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
-	 * @param {string}        [options.data.okText=确定]             => ok按钮文案
-	 * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
-	 * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
-	 */
-	var KLPopConfirm = Component.extend({
-	  name: 'kl-pop-confirm',
-	  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
-	  config: function config(data) {
-	    this.defaults({
-	      placement: 'top'
-	    });
-
-	    this.supr(data);
-	  },
-	  destroy: function destroy() {
-	    if (this.data.instance) {
-	      this.data.instance.destroy();
-	    }
-	    this.supr();
-	  },
-	  getInstance: function getInstance() {
-	    var self = this;
-	    if (!this.data.instance) {
-	      var instance = new PopUp({ data: this.data });
-
-	      instance.$on('ok', function (data) {
-	        if (self.events && self.events.ok) {
-	          self.$emit('ok', data);
-	        } else {
-	          self.data.instance.destroy();
-	        }
-	      });
-
-	      instance.$on('cancel', function (data) {
-	        if (self.events && self.events.cancel) {
-	          self.$emit('cancel', data);
-	        } else {
-	          self.data.instance.destroy();
-	        }
-	      });
-
-	      instance.$on('destroy', function () {
-	        self.$refs.trigger.data.isShow = false;
-	        self.data.instance = null;
-	      });
-
-	      this.data.instance = instance;
-	    }
-	    return this.data.instance;
-	  }
-	});
-
-		module.exports = KLPopConfirm;
-
-/***/ }),
-/* 417 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
-
-/***/ }),
-/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33100,7 +32975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(419);
+	var template = __webpack_require__(413);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -33138,13 +33013,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLProgress;
 
 /***/ }),
-/* 419 */
+/* 413 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 420 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33157,7 +33032,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(421);
+	var template = __webpack_require__(415);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -33246,13 +33121,105 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLLoading;
 
 /***/ }),
-/* 421 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 422 */
+/* 416 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLTooltip     提示
+	 * @author   ziane(zianecui@gmail.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var dom = __webpack_require__(71).dom;
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(417);
+	__webpack_require__(400);
+
+	var TipPopUp = Component.extend({
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      isShow: true
+	    });
+	    this.supr(data);
+	  },
+	  init: function init() {
+	    if (this.$root === this) {
+	      this.$inject(document.body);
+	    }
+	    this.data.element = dom.element(this);
+	  },
+	  getElement: function getElement() {
+	    return this.data.element;
+	  }
+	});
+
+	/**
+	 * @class KLTooltip
+	 * @extend Component
+	 * @param {object}          [options.data]                  = 绑定属性
+	 * @param {string}          [options.data.tip]              => 文字提示
+	 * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+	 */
+	var KLTooltip = Component.extend({
+	  name: 'kl-tooltip',
+	  template: '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
+	  config: function config(data) {
+	    this.defaults({
+	      tip: '',
+	      placement: 'top'
+	    });
+
+	    this.supr(data);
+	  },
+	  destroy: function destroy() {
+	    if (this.data.instance) {
+	      this.data.instance.destroy();
+	    }
+	    this.supr();
+	  },
+	  getInstance: function getInstance() {
+	    var self = this;
+	    var _data = this.data,
+	        tip = _data.tip,
+	        placement = _data.placement;
+
+	    if (!this.data.instance) {
+	      var instance = new TipPopUp({
+	        data: { tip: tip, placement: placement }
+	      });
+
+	      instance.$on('destroy', function () {
+	        self.$refs.trigger.data.isShow = false;
+	        self.data.instance = null;
+	      });
+
+	      this.data.instance = instance;
+	    }
+	    return this.data.instance;
+	  }
+	});
+
+		module.exports = KLTooltip;
+
+/***/ }),
+/* 417 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
+
+/***/ }),
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33265,7 +33232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(423);
+	var template = __webpack_require__(419);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -33299,13 +33266,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 423 */
+/* 419 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 424 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33411,18 +33378,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLLocaleProvider;
 
 /***/ }),
-/* 425 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(426);
-	var TableBody = __webpack_require__(428);
+	var TableHeader = __webpack_require__(422);
+	var TableBody = __webpack_require__(424);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(431);
+	var u = __webpack_require__(427);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(435);
+	var tpl = __webpack_require__(431);
 
 	/**
 	 * @class KLTable
@@ -33961,13 +33928,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 426 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(427);
+	var tpl = __webpack_require__(423);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -34185,20 +34152,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 427 */
+/* 423 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
-/* 428 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(429);
-	var templates = __webpack_require__(430);
+	var tpl = __webpack_require__(425);
+	var templates = __webpack_require__(426);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -34325,23 +34292,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 429 */
+/* 425 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 430 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(431);
+	var _ = __webpack_require__(427);
 
 	var tplMap = {
-	  default: __webpack_require__(432),
-	  progress: __webpack_require__(433),
-	  check: __webpack_require__(434)
+	  default: __webpack_require__(428),
+	  progress: __webpack_require__(429),
+	  check: __webpack_require__(430)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -34349,7 +34316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 431 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34484,38 +34451,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 432 */
+/* 428 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n{/if}\n"
 
 /***/ }),
-/* 433 */
+/* 429 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 434 */
+/* 430 */
 /***/ (function(module, exports) {
 
 	module.exports = "<kl-check\n    name={item[column.key] | placeholder}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 435 */
+/* 431 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 436 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var KLTableTemplate = __webpack_require__(437);
-	var KLTable = __webpack_require__(425);
+	var KLTableTemplate = __webpack_require__(433);
+	var KLTable = __webpack_require__(421);
 
 	/**
 	 * @class KLTableCol
@@ -34596,7 +34563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 437 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34682,7 +34649,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 438 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34694,7 +34661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(439);
+	var template = __webpack_require__(435);
 
 	/**
 	 * @class KLRow
@@ -34736,13 +34703,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 439 */
+/* 435 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 440 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34754,8 +34721,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(441);
-	var KLRow = __webpack_require__(438);
+	var template = __webpack_require__(437);
+	var KLRow = __webpack_require__(434);
 
 	/**
 	 * @class KLCol
@@ -34805,13 +34772,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 441 */
+/* 437 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 442 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34824,7 +34791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(443);
+	var template = __webpack_require__(439);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34857,13 +34824,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 443 */
+/* 439 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 444 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34877,7 +34844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(442);
+	var KLCard = __webpack_require__(438);
 
 	/**
 	 * @class KLCardTools
