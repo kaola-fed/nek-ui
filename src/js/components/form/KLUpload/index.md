@@ -84,7 +84,26 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' file-list={list}></kl-upload>
+<kl-upload action='http://localhost:3000/upload' file-list={list}></kl-upload>
+<kl-form ref="form">
+    <kl-form-item title="用户名" cols=6 row required>
+        <kl-select required message="请选择用户名" />
+    </kl-form-item>
+    <kl-form-item title="密码" cols=6 row required message="请输入密码">
+        <kl-input type="password" />
+    </kl-form-item>
+    <kl-button title="验证" on-click={this.validate()} />
+</kl-form>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    validate: function() {
+        var $form = this.$refs.form;
+        return $form.validate().success;
+    }
+});
 ```
 
 ```javascript
@@ -101,8 +120,8 @@ var component = new NEKUI.Component({
                 url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
             },
             {
-                name: 'app-2dcode.jpeg',
-                url: 'http://mm.bst.126.net/images/index/2dcode-app.jpg'
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
             }
         ]
     }
