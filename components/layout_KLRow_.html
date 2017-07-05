@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>栅格布局 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="栅格布局 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs">        <script src="/vendor/regular.js"></script>
+        <script src="/js/nek-ui.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+            
+                
+                <li>
+                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+                </li>
+            
+                
+                    
+                        <li><h3>布局</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/layout_KLCard_.html" class="sidebar-link">卡片 KLCard</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_KLRow_.html" class="sidebar-link current">栅格布局 KLRow</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_KLTable_.html" class="sidebar-link">表格 KLTable</a>
+                </li>
+            
+                
+                    
+                        <li><h3>表单</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/form_KLButton_.html" class="sidebar-link">按钮 KLButton</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLCheck_.html" class="sidebar-link">复选框 KLCheck</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLCheckGroup_.html" class="sidebar-link">复选组 KLCheckGroup</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLDatePicker_.html" class="sidebar-link">日期选择 KLDatePicker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLForm_.html" class="sidebar-link">表单 KLForm</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLInput_.html" class="sidebar-link">输入框 KLInput</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLMultiSelect_.html" class="sidebar-link">多级选择 KLMultiSelect</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLRadioGroup_.html" class="sidebar-link">单选组 KLRadioGroup</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLSelect_.html" class="sidebar-link">下拉选择 KLSelect</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLText_.html" class="sidebar-link">展示文本 KLText</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLTextArea_.html" class="sidebar-link">文本输入 KLTextArea</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLUpload_.html" class="sidebar-link">上传组件 KLUpload</a>
+                </li>
+            
+                
+                    
+                        <li><h3>通知</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/notice_KLMask_.html" class="sidebar-link">遮罩 KLMask</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLModal_.html" class="sidebar-link">模态框 KLModal</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLNotify_.html" class="sidebar-link">通知 KLNotify</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLPopConfirm_.html" class="sidebar-link">确认提示 KLPopConfirm</a>
+                </li>
+            
+                
+                    
+                        <li><h3>导航</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link">两级菜单 KLMenu</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLPager_.html" class="sidebar-link">分页 KLPager</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link">菜单栏 KLSidebar</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLSteps_.html" class="sidebar-link">步骤 KLSteps</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLTabs_.html" class="sidebar-link">选项卡 KLTabs</a>
+                </li>
+            
+                
+                    
+                        <li><h3>其它</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/widget_KLBadge_.html" class="sidebar-link">徽标 KLBadge</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLIcon_.html" class="sidebar-link">图标 KLIcon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLocaleProvider_.html" class="sidebar-link">国际化 KLLocaleProvider</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLProgress_.html" class="sidebar-link">进度条 KLProgress</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLTooltip_.html" class="sidebar-link">文字提示 KLTooltip</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar">
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example">
+    <style>
+        .u-gridContent {
+            min-height: 36px;
+        }
+        .u-gridContent-1 {
+            background: #99a9bf;
+        }
+        .u-gridContent-2 {
+            background: #e5e9f2;
+        }
+        .u-gridContent-3 {
+            background: #d3dce6;
+        }
+        .f-mb10 {
+            margin-bottom: 10px;
+        }
+    </style>
+</div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="布局模式Flex"><a href="#布局模式Flex" class="headerlink" title="布局模式Flex"></a>布局模式Flex</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span> <span class="attr">type</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-mb10 u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="列间距Gutter"><a href="#列间距Gutter" class="headerlink" title="列间距Gutter"></a>列间距Gutter</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span> <span class="attr">gutter</span>=<span class="string">10</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="列偏移Offset"><a href="#列偏移Offset" class="headerlink" title="列偏移Offset"></a>列偏移Offset</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span> <span class="attr">gutter</span>=<span class="string">10</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span> <span class="attr">offset</span>=<span class="string">3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#KLRow">KLRow</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<h2 id="klrow-">KLRow 栅格布局-行</h2>
+</dd>
+</dl>
+
+<p><a name="KLRow"></a></p>
+<h2 id="KLRow"><a href="#KLRow" class="headerlink" title="KLRow"></a>KLRow</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLRow_new"></a></p>
+<h3 id="new-KLRow"><a href="#new-KLRow" class="headerlink" title="new KLRow()"></a>new KLRow()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 绑定数据</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+<tr>
+<td>[options.data.type]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
+<td>=&gt; 布局模式，可选 flex，现代浏览器下有效</td>
+</tr>
+<tr>
+<td>[options.data.justify]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;start&#x27;&quot;</code></td>
+<td>=&gt; flex 布局下的水平排列方式</td>
+</tr>
+<tr>
+<td>[options.data.align]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;top&#x27;&quot;</code></td>
+<td>=&gt; flex 布局下的垂直排列方式</td>
+</tr>
+<tr>
+<td>[options.data.wrap]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;wrap&#x27;&quot;</code></td>
+<td>=&gt; flex布局下的换行显示方式,wrap/nowrap/wrap-reverse</td>
+</tr>
+<tr>
+<td>[options.data.gutter]</td>
+<td><code>number</code></td>
+<td><code>&#x27;40&#x27;</code></td>
+<td>=&gt; 栅格间隔</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<h2 id="KLRow-栅格布局-行"><a href="#KLRow-栅格布局-行" class="headerlink" title="KLRow 栅格布局-行"></a>KLRow 栅格布局-行</h2><p><strong>Kind</strong>: global constant  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-row>
+    <kl-col span=12>
+        <div class="u-gridContent u-gridContent-1"></div>
+    </kl-col>
+</kl-row>
+<kl-row>
+    <kl-col span=6>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+</kl-row>
+<kl-row>
+    <kl-col span=4>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=4>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+    <kl-col span=4>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+</kl-row>
+<kl-row>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=2>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+</kl-row>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-row type="flex">
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-3"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-3"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="f-mb10 u-gridContent u-gridContent-3"></div>
+    </kl-col>
+</kl-row>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-row gutter=10>
+    <kl-col span=6>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=6>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+</kl-row>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-row gutter=10>
+    <kl-col span=6>
+        <div class="u-gridContent u-gridContent-2"></div>
+    </kl-col>
+    <kl-col span=2 offset=3>
+        <div class="u-gridContent u-gridContent-3"></div>
+    </kl-col>
+</kl-row>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+    <div class="guide-links">
+      
+        <span>← <a href="/components/layout_KLCard_.html">卡片</a></span>
+      
+      
+        <span style="float:right"><a href="/components/layout_KLTable_.html">表格</a> →</span>
+      
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+</div>
+
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

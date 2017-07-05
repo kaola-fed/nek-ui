@@ -86,6 +86,13 @@
                     
                 
                 <li>
+                    <a href="/components/layout_KLRow_.html" class="sidebar-link">栅格布局 KLRow</a>
+                </li>
+            
+                
+                    
+                
+                <li>
                     <a href="/components/layout_KLTable_.html" class="sidebar-link">表格 KLTable</a>
                 </li>
             
@@ -299,7 +306,18 @@
 
 
 <div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:180px;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">kl-menu</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-menu-sub</span> <span class="attr">title</span>=<span class="string">"第一级菜单"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-menu-item</span> <span class="attr">title</span>=<span class="string">"二级菜单A"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-menu-item</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-menu-item</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span>二级菜单B<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-menu-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-menu-sub</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-menu-sub</span> <span class="attr">title</span>=<span class="string">"第一级菜单"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-menu-item</span> <span class="attr">title</span>=<span class="string">"二级菜单A"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-menu-item</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-menu-item</span>&gt;</span>二级菜单B<span class="tag">&lt;/<span class="name">kl-menu-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-menu-sub</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-menu-sub</span> <span class="attr">titleTemplate</span>=<span class="string">"&lt;a&gt;第三级菜单&lt;/a&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-menu-sub</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">kl-menu</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="通过配置数据渲染菜单"><a href="#通过配置数据渲染菜单" class="headerlink" title="通过配置数据渲染菜单"></a>通过配置数据渲染菜单</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width:180px;"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">kl-menu</span> <span class="attr">uniqueOpened</span>=<span class="string">"&#123;uniqueOpened&#125;"</span>&gt;</span></div><div class="line">    &#123;#list menus as menu&#125;</div><div class="line">    &#123;#if menu.children &amp;&amp; menu.children.length&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-menu-sub</span> <span class="attr">title</span>=<span class="string">"&#123;menu.title&#125;"</span> <span class="attr">defaultOpen</span>=<span class="string">"&#123;menu.open&#125;"</span>&gt;</span></div><div class="line">      &#123;#list menu.children as page&#125;</div><div class="line">      <span class="tag">&lt;<span class="name">kl-menu-item</span> <span class="attr">isCurrent</span>=<span class="string">"&#123;page.open&#125;"</span> <span class="attr">url</span>=<span class="string">"&#123;page.url&#125;"</span>&gt;</span>&#123;page.title&#125;<span class="tag">&lt;/<span class="name">kl-menu-item</span>&gt;</span></div><div class="line">      &#123;/list&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">kl-menu-sub</span>&gt;</span></div><div class="line">    &#123;#else&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-menu-sub</span> <span class="attr">titleTemplate</span>=<span class="string">"&lt;a href='&#123;menu.url&#125;'&gt;&#123;menu.title&#125;&lt;/a&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-menu-sub</span>&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line">    &#123;/list&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">kl-menu</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">menus</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单A'</span>,</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;, &#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单B'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#Menu">Menu</a></dt>
 <dd></dd>
 </dl>
@@ -350,6 +368,84 @@
 <p><strong>Kind</strong>: global constant  </p>
 <h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div style="width:180px;">
+  <kl-menu>
+    <kl-menu-sub title="第一级菜单">
+      <kl-menu-item title="二级菜单A"></kl-menu-item>
+      <kl-menu-item><a href="/">二级菜单B</a></kl-menu-item>
+    </kl-menu-sub>
+    <kl-menu-sub title="第一级菜单">
+      <kl-menu-item title="二级菜单A"></kl-menu-item>
+      <kl-menu-item>二级菜单B</kl-menu-item>
+    </kl-menu-sub>
+    <kl-menu-sub titleTemplate="<a>第三级菜单</a>"></kl-menu-sub>
+  </kl-menu>
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<div style="width:180px;">
+  <kl-menu uniqueOpened="{uniqueOpened}">
+    {#list menus as menu}
+    {#if menu.children && menu.children.length}
+    <kl-menu-sub title="{menu.title}" defaultOpen="{menu.open}">
+      {#list menu.children as page}
+      <kl-menu-item isCurrent="{page.open}" url="{page.url}">{page.title}</kl-menu-item>
+      {/list}
+    </kl-menu-sub>
+    {#else}
+    <kl-menu-sub titleTemplate="<a href='{menu.url}'>{menu.title}</a>"></kl-menu-sub>
+    {/if}
+    {/list}
+  </kl-menu>
+</div>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        menus: [{
+         title: '一级菜单A',
+         open: true,
+         children: [{
+           open: true,
+           title: '二级菜单A',
+           url: '/'
+         },{
+           title: '二级菜单B',
+           url: '/'
+         }]
+       }, {
+         title: '一级菜单B',
+         children: [{
+           title: '二级菜单A',
+           url: '/'
+         },{
+           title: '二级菜单B',
+           url: '/'
+         }]
+       }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
     <div class="guide-links">
       
