@@ -19,6 +19,7 @@ before_script:
 - git config --global user.email 'kaolabot@163.com'
 
 script:
+- npm run lint
 - gulp dist
 - gulp gen-doc
 

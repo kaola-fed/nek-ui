@@ -26,10 +26,11 @@ const UploadList = UploadBase.extend({
   },
 
   initFilesWrapper() {
-    const inputWrapper = (this.data.inputWrapper = this.$refs.inputwrapper);
-    const filesWrapper = (this.data.filesWrapper = this.$refs.fileswrapper);
-    filesWrapper.appendChild(inputWrapper);
-    inputWrapper.style.display = 'inline-block';
+    const data = this.data;
+    data.inputWrapper = this.$refs.inputwrapper;
+    data.filesWrapper = this.$refs.fileswrapper;
+    data.filesWrapper.appendChild(data.inputWrapper);
+    data.inputWrapper.style.display = 'inline-block';
   },
 
   onDragEnter(e) {
@@ -57,8 +58,8 @@ const UploadList = UploadBase.extend({
   },
 
   fileSelect() {
-    let inputNode = this.$refs.file,
-      files = inputNode.files;
+    const inputNode = this.$refs.file;
+    const files = inputNode.files;
 
     this.handleFiles(files);
 
@@ -66,33 +67,31 @@ const UploadList = UploadBase.extend({
   },
 
   handleFiles(files) {
-    let data = this.data,
-      index = 0,
-      len = files.length,
-      file,
-      fileunit,
-      options;
+    const data = this.data;
+    const len = files.length;
+    let index = 0;
+    let file;
+    let fileunit;
 
-    options = this.setOptions(data);
+    const options = this.setOptions(data);
 
     data.preCheckInfo = '';
 
-    for (; index < len; index++) {
+    for (; index < len; index += 1) {
       if (data.fileUnitList.length < data.numLimit) {
         file = files[index];
         data.preCheckInfo = this.preCheck(file);
-        if (data.preCheckInfo) {
-          continue;
+        if (!data.preCheckInfo) {
+          fileunit = this.createFileUnit({
+            file,
+            options,
+            deletable: data.deletable,
+          });
+          fileunit.flag = 'ADDED';
+          data.fileUnitList.push({
+            inst: fileunit,
+          });
         }
-        fileunit = this.createFileUnit({
-          file,
-          options,
-          deletable: data.deletable,
-        });
-        fileunit.flag = 'ADDED';
-        data.fileUnitList.push({
-          inst: fileunit,
-        });
       }
     }
 
@@ -100,9 +99,9 @@ const UploadList = UploadBase.extend({
   },
 
   createFileUnit(data) {
-    let self = this,
-      imagePreview = this.$refs.imagepreview,
-      fileunit = new FileUnit({ data });
+    const self = this;
+    const imagePreviewWrapper = this.$refs.imagepreview;
+    const fileunit = new FileUnit({ data });
 
     fileunit.$on('preview', function () {
       const current = this;
@@ -124,7 +123,7 @@ const UploadList = UploadBase.extend({
 
       const preview = createImagePreview(imgList);
 
-      preview.$inject(imagePreview);
+      preview.$inject(imagePreviewWrapper);
     });
 
     function createImagePreview(imgFileList) {
@@ -151,8 +150,8 @@ const UploadList = UploadBase.extend({
       });
 
       imagePreview.$on('delete', (imgInfo) => {
-        let index = imgInfo.index,
-          imgInst = imgFileList[index];
+        const index = imgInfo.index;
+        const imgInst = imgFileList[index];
 
         if (imgInst) {
           imgInst.$emit('delete');
@@ -160,7 +159,7 @@ const UploadList = UploadBase.extend({
       });
 
       imagePreview.$on('$destroy', () => {
-        imgFileList = null;
+        imgFileList.splice(0);
       });
 
       return imagePreview;
@@ -207,10 +206,10 @@ const UploadList = UploadBase.extend({
   },
 
   setFileUnitWrapperStyle(wrapper, index) {
-    let data = this.data,
-      numPerline = data.numPerline,
-      fileUnitWidth = data.fileUnitWidth,
-      fileUnitMargin = data.fileUnitMargin;
+    const data = this.data;
+    const numPerline = data.numPerline;
+    const fileUnitWidth = data.fileUnitWidth;
+    const fileUnitMargin = data.fileUnitMargin;
 
     wrapper.className = 'u-fileitem';
     wrapper.style.display = 'inline-block';
@@ -222,13 +221,13 @@ const UploadList = UploadBase.extend({
   },
 
   appendInputWrapper() {
-    let data = this.data,
-      inputWrapper = data.inputWrapper,
-      filesWrapper = data.filesWrapper,
-      numPerline = data.numPerline,
-      numLimit = data.numLimit,
-      fileUnitMargin = data.fileUnitMargin,
-      length = data.fileUnitList.length;
+    const data = this.data;
+    const inputWrapper = data.inputWrapper;
+    const filesWrapper = data.filesWrapper;
+    const numPerline = data.numPerline;
+    const numLimit = data.numLimit;
+    const fileUnitMargin = data.fileUnitMargin;
+    const length = data.fileUnitList.length;
 
     if (length < numLimit) {
       filesWrapper.appendChild(inputWrapper);

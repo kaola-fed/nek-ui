@@ -99,7 +99,7 @@ module.exports = function (Components) {
 
     // 废弃组件
     SelectGroup: require('./components/_deprecated_/select.group'),
-    Suggest: require('./components/_deprecated_/tree.select'),
+    Suggest: require('./components/_deprecated_/suggest'),
     TreeSelect: require('./components/_deprecated_/tree.select'),
     Uploader: require('./components/_deprecated_/uploader'),
     UIGroup: require('./components/_deprecated_/ui.group'),

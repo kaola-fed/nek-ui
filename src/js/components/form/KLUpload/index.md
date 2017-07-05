@@ -84,7 +84,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' file-list={list}></kl-upload>
+<kl-upload action='http://localhost:3000/upload' file-list={list}></kl-upload>
 ```
 
 ```javascript
@@ -101,8 +101,8 @@ var component = new NEKUI.Component({
                 url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
             },
             {
-                name: 'app-2dcode.jpeg',
-                url: 'http://mm.bst.126.net/images/index/2dcode-app.jpg'
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
             }
         ]
     }

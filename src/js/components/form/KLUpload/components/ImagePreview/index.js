@@ -68,33 +68,33 @@ const ImagePreview = Component.extend({
     this.destroy();
   },
   onPrev() {
-    let data = this.data,
-      curIndex = data.curIndex,
-      length = data.imgList.length,
-      toIndex = length - 1;
+    const data = this.data;
+    const length = data.imgList.length;
+    let toIndex = length - 1;
 
-    if (curIndex > 0) {
-      toIndex = --data.curIndex;
+    if (data.curIndex > 0) {
+      data.curIndex -= 1;
+      toIndex = data.curIndex;
     }
 
     this.setCurrentTo(toIndex);
   },
   onNext() {
-    let data = this.data,
-      curIndex = data.curIndex,
-      length = data.imgList.length,
-      toIndex = 0;
+    const data = this.data;
+    const length = data.imgList.length;
+    let toIndex = 0;
 
-    if (curIndex < length - 1) {
-      toIndex = ++data.curIndex;
+    if (data.curIndex < length - 1) {
+      data.curIndex += 1;
+      toIndex = data.curIndex;
     }
 
     this.setCurrentTo(toIndex);
   },
   setCurrentTo(toIndex) {
-    let data = this.data,
-      refs = this.$refs,
-      curIndex = data.curIndex;
+    const data = this.data;
+    const refs = this.$refs;
+    const curIndex = data.curIndex;
 
     data.showVirtual = false;
     data.virtualInfo.scale = 1;
@@ -108,9 +108,9 @@ const ImagePreview = Component.extend({
     this.data.curIndex = toIndex;
   },
   zoomIn() {
-    let data = this.data,
-      virtualInfo = data.virtualInfo,
-      step = this.getZoomInStep();
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
+    const step = this.getZoomInStep();
 
     data.showVirtual = true;
 
@@ -119,10 +119,10 @@ const ImagePreview = Component.extend({
     this.$refs.virtualimage.style.transform = this.genTransform();
   },
   zoomOut() {
-    let data = this.data,
-      virtualInfo = data.virtualInfo,
-      step = this.getZoomOutStep(),
-      translateStepInfo = this.getTranslateStep(step);
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
+    const step = this.getZoomOutStep();
+    const translateStepInfo = this.getTranslateStep(step);
 
     data.showVirtual = true;
 
@@ -133,8 +133,8 @@ const ImagePreview = Component.extend({
     this.$refs.virtualimage.style.transform = this.genTransform();
   },
   rezoom() {
-    let data = this.data,
-      virtualInfo = data.virtualInfo;
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
 
     data.showVirtual = true;
 
@@ -145,9 +145,9 @@ const ImagePreview = Component.extend({
     this.$refs.virtualimage.style.transform = this.genTransform();
   },
   getZoomInStep() {
-    let virtualInfo = this.data.virtualInfo,
-      scale = +virtualInfo.scale.toFixed(1),
-      step = this.getScaleStep();
+    const virtualInfo = this.data.virtualInfo;
+    const scale = +virtualInfo.scale.toFixed(1);
+    const step = this.getScaleStep();
 
     if (scale <= 0.1) {
       return 0.1;
@@ -156,9 +156,9 @@ const ImagePreview = Component.extend({
     return step;
   },
   getZoomOutStep() {
-    let virtualInfo = this.data.virtualInfo,
-      scale = +virtualInfo.scale.toFixed(1),
-      step = this.getScaleStep();
+    const virtualInfo = this.data.virtualInfo;
+    const scale = +virtualInfo.scale.toFixed(1);
+    const step = this.getScaleStep();
 
     if (scale >= 10) {
       return 1;
@@ -167,8 +167,8 @@ const ImagePreview = Component.extend({
     return step;
   },
   getScaleStep() {
-    let virtualInfo = this.data.virtualInfo,
-      scale = +virtualInfo.scale.toFixed(1);
+    const virtualInfo = this.data.virtualInfo;
+    const scale = +virtualInfo.scale.toFixed(1);
 
     if (scale > 0.1 && scale < 1.5) {
       return 0.1;
@@ -181,22 +181,22 @@ const ImagePreview = Component.extend({
     return 0;
   },
   getTranslateStep(scaleStep) {
-    let virtualInfo = this.data.virtualInfo,
-      scale = +virtualInfo.scale.toFixed(1);
+    const virtualInfo = this.data.virtualInfo;
+    const scale = +virtualInfo.scale.toFixed(1);
 
     const totalSteps = (scale - 1) * 10;
     const translateX = virtualInfo.translateX;
     const translateY = virtualInfo.translateY;
 
     return {
-      xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
-      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0,
+      xStep: totalSteps ? (translateX / totalSteps) * scaleStep * 10 : 0,
+      yStep: totalSteps ? (translateY / totalSteps) * scaleStep * 10 : 0,
     };
   },
   rotate() {
-    let data = this.data,
-      virtualInfo = data.virtualInfo,
-      img = this.$refs.virtualimage;
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
+    const img = this.$refs.virtualimage;
 
     data.showVirtual = true;
     virtualInfo.rotate += 90;
@@ -213,10 +213,10 @@ const ImagePreview = Component.extend({
     );
   },
   onDel(index) {
-    let self = this,
-      data = this.data,
-      imgList = data.imgList,
-      img = imgList[index];
+    const self = this;
+    const data = this.data;
+    let imgList = data.imgList;
+    const img = imgList[index];
 
     const modal = new KLModal({
       data: {
@@ -237,8 +237,8 @@ const ImagePreview = Component.extend({
     });
   },
   onMouseDown(e) {
-    let data = this.data,
-      virtualInfo = data.virtualInfo;
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
 
     virtualInfo.mouseDownX = e.pageX;
     virtualInfo.mouseDownY = e.pageY;
@@ -246,29 +246,29 @@ const ImagePreview = Component.extend({
     virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
   },
   onMouseMove(e) {
-    let data = this.data,
-      virtualImg = this.$refs.virtualimage,
-      virtualInfo = data.virtualInfo,
-      originX = virtualInfo.mouseDownX,
-      originY = virtualInfo.mouseDownY,
-      boundary = (virtualInfo.dragBoundary = this.getMaxMinTranslateValue());
+    const data = this.data;
+    const virtualImg = this.$refs.virtualimage;
+    const virtualInfo = data.virtualInfo;
+    const originX = virtualInfo.mouseDownX;
+    const originY = virtualInfo.mouseDownY;
+    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
 
+    const boundary = virtualInfo.dragBoundary;
     if (virtualInfo.dragTarget) {
       let translateX = e.pageX - originX;
       let translateY = e.pageY - originY;
-      translateX =
-        translateX > boundary.maxTranslateX
-          ? boundary.maxTranslateX
-          : translateX < boundary.minTranslateX
-            ? boundary.minTranslateX
-            : translateX;
 
-      translateY =
-        translateY > boundary.maxTranslateY
-          ? boundary.maxTranslateY
-          : translateY < boundary.minTranslateY
-            ? boundary.minTranslateY
-            : translateY;
+      if (translateX > boundary.maxTranslateX) {
+        translateX = boundary.maxTranslateX;
+      } else if (translateX < boundary.minTranslateX) {
+        translateX = boundary.minTranslateX;
+      }
+
+      if (translateY > boundary.maxTranslateY) {
+        translateY = boundary.maxTranslateY;
+      } else if (translateY < boundary.minTranslateY) {
+        translateY = boundary.minTranslateY;
+      }
 
       virtualInfo.translateX += translateX;
       virtualInfo.translateY += translateY;
@@ -278,8 +278,8 @@ const ImagePreview = Component.extend({
     }
   },
   onMouseUp() {
-    let data = this.data,
-      virtualInfo = data.virtualInfo;
+    const data = this.data;
+    const virtualInfo = data.virtualInfo;
 
     if (virtualInfo.dragTarget) {
       virtualInfo.mouseDownX = 0;
@@ -295,8 +295,8 @@ const ImagePreview = Component.extend({
     }
   },
   getMaxMinTranslateValue() {
-    let virtualImg = this.$refs.virtualimage,
-      virtualZone = this.$refs.virtualzone;
+    const virtualImg = this.$refs.virtualimage;
+    const virtualZone = this.$refs.virtualzone;
 
     const virtualImgRect = virtualImg.getBoundingClientRect();
     const virtualZoneRect = virtualZone.getBoundingClientRect();
