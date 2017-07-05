@@ -85,25 +85,6 @@ title: 上传组件
 
 ```xml
 <kl-upload action='http://localhost:3000/upload' file-list={list}></kl-upload>
-<kl-form ref="form">
-    <kl-form-item title="用户名" cols=6 row required>
-        <kl-select required message="请选择用户名" />
-    </kl-form-item>
-    <kl-form-item title="密码" cols=6 row required message="请输入密码">
-        <kl-input type="password" />
-    </kl-form-item>
-    <kl-button title="验证" on-click={this.validate()} />
-</kl-form>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    validate: function() {
-        var $form = this.$refs.form;
-        return $form.validate().success;
-    }
-});
 ```
 
 ```javascript
