@@ -1,11 +1,9 @@
-# nek-ui <sup>[WIP]</sup>
+# regUI<sup>[WIP]</sup>
 UI components based on [RegularJS][regularjs]
 
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-[=> Documents <=](https://nek-ui.kaolafed.com)
+[=> Documents <=](https://xxyj.github.io/components/)
 
-[=> CodePen <=](http://codepen.io/int64ago/pen/WRmzPV)
 
 ### Usage
 
