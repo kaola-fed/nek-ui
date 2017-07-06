@@ -105,7 +105,7 @@ const KLInput = Component.extend({
      * @protected
      */
   addRule(name) {
-    const { min, max, _message, rules } = this.data;
+    const { min, max, message: _message, rules } = this.data;
 
     let message = _message;
     if (name === 'required') {

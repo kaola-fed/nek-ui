@@ -74,7 +74,8 @@ const KLCheckGroup = SourceComponent.extend({
       if (newValue === undefined || newValue === null) return;
 
       if (source) {
-        const { key, separator, value = '' } = this.data;
+        const { key, separator } = this.data;
+        const value = newValue || '';
         const values = value.split(separator);
         source.forEach((item) => {
           if (values.indexOf(`${item[key]}`) !== -1) {
