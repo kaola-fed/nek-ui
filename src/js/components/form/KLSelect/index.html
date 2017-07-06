@@ -25,7 +25,7 @@
 	            {#if open && canSearch}
 	            <div>
 		            <input disabled={disabled} type="text" class="input u-search-input searchInput1" ref="input"
-		                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>
+		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
 		            <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
 	            </div>
 	            {/if}

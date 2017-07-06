@@ -18,7 +18,7 @@
 	    }
 	}
 	.cateWrap {
-		width: 412px;
+		max-width: 412px;
 		overflow-x: auto;
 		white-space: nowrap;
 		position: absolute;
