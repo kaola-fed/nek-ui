@@ -1,16 +1,16 @@
 {
-    "name": "nek-ui",
+    "name": "regUI",
     "description": "UI components based on RegularJS",
     "version": "0.6.0-beta.4",
-    "main": "./dist/js/nek-ui.js",
-    "homepage": "https://nek-ui.kaolafed.com/",
+    "main": "./dist/js/regUI.js",
+    "homepage": "https://regUI.kaolafed.com/",
     "license": "MIT",
     "files": [
         "dist"
     ],
     "keywords": [
         "regular",
-        "nek",
+        "regUI",
         "component",
         "ui"
     ],

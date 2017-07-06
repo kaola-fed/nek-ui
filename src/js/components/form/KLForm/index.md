@@ -18,12 +18,12 @@ required写在kl-form-item上和写在表单元素上验证效果是一样的, �
     <kl-form-item title="密码" cols=6 row required message="请输入密码">
         <kl-input type="password" />
     </kl-form-item>
-    <kl-button title="验证" on-click={this.validate()} />
+    <xx-button title="验证" on-click={this.validate()} />
 </kl-form>
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     validate: function() {
         var $form = this.$refs.form;
@@ -52,7 +52,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {}
 });
@@ -76,7 +76,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         api: {
@@ -105,7 +105,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         api: {

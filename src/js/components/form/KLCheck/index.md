@@ -41,7 +41,7 @@ title: 复选框
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         test: null

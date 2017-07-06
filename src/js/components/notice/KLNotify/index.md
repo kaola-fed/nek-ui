@@ -1,3 +1,4 @@
+
 ---
 title: 通知
 ---
@@ -16,10 +17,10 @@ title: 通知
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        NEKUI.KLNotify.show('This is a message.');
+        REGUI.KLNotify.show('This is a message.');
     }
 });
 ```
@@ -38,10 +39,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function(state) {
-        NEKUI.KLNotify[state](state + ' message.', state);
+        REGUI.KLNotify[state](state + ' message.', state);
     }
 });
 ```
@@ -62,16 +63,16 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     config: function() {
         this.notifies = [
-            new NEKUI.KLNotify({data: {position: 'topcenter'} }),
-            new NEKUI.KLNotify({data: {position: 'topleft'} }),
-            new NEKUI.KLNotify({data: {position: 'topright'} }),
-            new NEKUI.KLNotify({data: {position: 'bottomcenter'} }),
-            new NEKUI.KLNotify({data: {position: 'bottomleft'} }),
-            new NEKUI.KLNotify({data: {position: 'bottomright'} })
+            new REGUI.KLNotify({data: {position: 'topcenter'} }),
+            new REGUI.KLNotify({data: {position: 'topleft'} }),
+            new REGUI.KLNotify({data: {position: 'topright'} }),
+            new REGUI.KLNotify({data: {position: 'bottomcenter'} }),
+            new REGUI.KLNotify({data: {position: 'bottomleft'} }),
+            new REGUI.KLNotify({data: {position: 'bottomright'} })
         ];
     },
     show: function(index) {
@@ -95,7 +96,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
         this.$refs.notify.show('Static notify.');
@@ -119,10 +120,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function(duration) {
-        NEKUI.KLNotify.show('Duration: ' + duration + ' ms.', null, duration);
+        REGUI.KLNotify.show('Duration: ' + duration + ' ms.', null, duration);
     }
 });
 ```
@@ -143,10 +144,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     config: function() {
-        this.notify = new NEKUI.KLNotify({data: {single: true} });
+        this.notify = new REGUI.KLNotify({data: {single: true} });
     },
     number: 1,
     show: function(state) {

@@ -14,7 +14,7 @@ title: 步骤
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         steps: [{
@@ -51,7 +51,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         steps: [{

@@ -18,10 +18,10 @@ title: 模态框
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        var modal = new NEKUI.KLModal({
+        var modal = new REGUI.KLModal({
             data: {
                 lang: 'en-US',
                 content: 'Modal内容'
@@ -42,10 +42,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        var modal = new NEKUI.KLModal({
+        var modal = new REGUI.KLModal({
             data: {
                 lang: 'en-US',
                 okDisabled: true,
@@ -69,10 +69,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        var modal = new NEKUI.KLModal({
+        var modal = new REGUI.KLModal({
             data: {
                 lang: 'en-US',
                 hasFooter: false,
@@ -94,10 +94,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        var modal = new NEKUI.KLModal({
+        var modal = new REGUI.KLModal({
             data: {
                 lang: 'en-US',
                 isCanClose: false,
@@ -119,10 +119,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        NEKUI.KLModal.alert('Alert内容');
+        REGUI.KLModal.alert('Alert内容');
     }
 });
 ```
@@ -138,10 +138,10 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        NEKUI.KLModal.confirm('Confirm内容');
+        REGUI.KLModal.confirm('Confirm内容');
     }
 });
 ```

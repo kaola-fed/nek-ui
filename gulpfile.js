@@ -53,7 +53,7 @@ gulp.task('dist-css', () => {
                 pathes: ['./node_modules'],
                 importCSS: true,
             }))
-            .pipe(rename(`nek-ui.${theme}.css`))
+            .pipe(rename(`regUI.${theme}.css`))
             .pipe(gulp.dest('./dist/css'))
             .pipe(rename({
                 suffix: '.min',

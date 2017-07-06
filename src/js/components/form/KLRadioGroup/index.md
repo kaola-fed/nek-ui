@@ -14,7 +14,7 @@ title: 单选组
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -42,7 +42,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -71,7 +71,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -97,7 +97,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -123,11 +123,11 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
-            NEKUI.ajax.request({
+            REGUI.ajax.request({
                 url: '../data/list.json',
                 method: 'get',
                 type: 'json',
@@ -150,7 +150,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [

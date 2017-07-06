@@ -40,7 +40,7 @@ title: 日期选择
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         date1: 1481287269287,
@@ -73,7 +73,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         minDate: new Date(+new Date + 2*24*3600*1000),

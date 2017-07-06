@@ -14,10 +14,10 @@ title: 遮罩
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     show: function() {
-        var modal = new NEKUI.KLMask({
+        var modal = new REGUI.KLMask({
             data: {
                 content: '<h1>Mask 标题</h1><p>Mask 内容</p>'
             }

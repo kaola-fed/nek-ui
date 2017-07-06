@@ -14,7 +14,7 @@ title: 确认提示
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template
 });
 ```
@@ -32,7 +32,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     onok: function() {
         console.log(123);
@@ -53,7 +53,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     config: function() {
         this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
@@ -73,29 +73,29 @@ var component = new NEKUI.Component({
 
 ```xml
 <div class="g-row">
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="top"><kl-button title="top" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="topLeft"><kl-button title="topLeft" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="topRight"><kl-button title="topRight" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="top"><xx-button title="top" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="topLeft"><xx-button title="topLeft" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="topRight"><xx-button title="topRight" /></kl-pop-confirm>
 </div>
 <div class="g-row">
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="left"><kl-button title="left" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="leftTop"><kl-button title="leftTop" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="leftBottom"><kl-button title="leftBottom" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="left"><xx-button title="left" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="leftTop"><xx-button title="leftTop" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="leftBottom"><xx-button title="leftBottom" /></kl-pop-confirm>
 </div>
 <div class="g-row">
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="right"><kl-button title="right" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="rightTop"><kl-button title="rightTop" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="rightBottom"><kl-button title="rightBottom" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="right"><xx-button title="right" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="rightTop"><xx-button title="rightTop" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="rightBottom"><xx-button title="rightBottom" /></kl-pop-confirm>
 </div>
 <div class="g-row">
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="bottom"><kl-button title="bottom" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="bottomLeft"><kl-button title="bottomLeft" /></kl-pop-confirm>
-    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="bottomRight"><kl-button title="bottomRight" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="bottom"><xx-button title="bottom" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="bottomLeft"><xx-button title="bottomLeft" /></kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="bottomRight"><xx-button title="bottomRight" /></kl-pop-confirm>
 </div>
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template
 });
 ```

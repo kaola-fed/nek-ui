@@ -17,7 +17,7 @@ title: 表格
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -51,7 +51,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -90,7 +90,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -129,7 +129,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -176,7 +176,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -220,7 +220,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -254,7 +254,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -289,7 +289,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -315,7 +315,7 @@ var component = new NEKUI.Component({
 通过 `kl-table-template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
 自定义模版中可以通过 `emit` 的方法向上抛出事件。
 
-要在模版中使用自定义的 `filter` 则需要将其先注册到 `NEKUI.KLTable` 上。
+要在模版中使用自定义的 `filter` 则需要将其先注册到 `REGUI.KLTable` 上。
 
 注意：
 1. 内嵌形式的模版需要在每行的两端加上 `{'`、`'}` ，否则模版字符串的插值会无法传递给模版组件，
@@ -340,16 +340,16 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var anchor = NEKUI.Component.extend({
+var anchor = REGUI.Component.extend({
     name: 'anchor',
     template: '<a>&nbsp;anchor</a>',
 });
 
-NEKUI.KLTable.filter('txtFilter', function(val) {
+REGUI.KLTable.filter('txtFilter', function(val) {
     return val + '*';
 });
 
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -392,7 +392,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -430,7 +430,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -472,7 +472,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -519,7 +519,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     computed: {
         checkAllStatus: {
@@ -589,7 +589,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -661,7 +661,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -684,7 +684,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         table: {
@@ -726,7 +726,7 @@ Regular.config({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         count: 0,

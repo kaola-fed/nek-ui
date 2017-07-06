@@ -1,7 +1,6 @@
 /**
  * ------------------------------------------------------------
- * KLButton  按钮
- * @author   Cody Chan<int64ago@gmail.com>
+ * xxButton  按钮
  * ------------------------------------------------------------
  */
 
@@ -12,7 +11,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
 /**
- * @class KLButton
+ * @class xxButton
  * @extend Component
  * @param {object}      [options.data]                => 绑定属性
  * @param {string}      [options.data.title=确定]      => 按钮标题
@@ -69,8 +68,8 @@ const actionIcons = {
     plus: 'plus',
 };
 
-const KLButton = Component.extend({
-    name: 'kl-button',
+const xxButton = Component.extend({
+    name: 'xx-button',
     template,
     config() {
         _.extend(this.data, {
@@ -119,4 +118,4 @@ const KLButton = Component.extend({
     },
 });
 
-module.exports = KLButton;
+module.exports = xxButton;

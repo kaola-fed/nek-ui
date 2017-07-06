@@ -55,7 +55,7 @@ title: 输入框
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     onSearch: function(json) {
         console.log(json);
@@ -93,7 +93,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         rules: [

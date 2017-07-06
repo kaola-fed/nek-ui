@@ -41,7 +41,7 @@ title: 菜单栏
 <div class="demo-main">
     <div class="demo-head">
         <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
-        NEKUI系统
+        REGUI系统
     </div>
     <kl-sidebar menus={menus} bodyEl="j-body" />
     <div id="j-body" class="demo-body">
@@ -53,7 +53,7 @@ title: 菜单栏
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         menus: [{

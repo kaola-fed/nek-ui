@@ -9,20 +9,20 @@ UI components based on [RegularJS][regularjs]
 
  - For browser:
  ```
- //unpkg.com/nek-ui/dist/css/nek-ui.default.min.css
- //unpkg.com/nek-ui/dist/vendor/regular.min.js
- //unpkg.com/nek-ui/dist/js/nek-ui.min.js
+ //unpkg.com/regUI/dist/css/regUI.default.min.css
+ //unpkg.com/regUI/dist/vendor/regular.min.js
+ //unpkg.com/regUI/dist/js/regUI.min.js
  ```
 
  - For Node:
  ```
- npm i regularjs@0.4.3 nek-ui -S
+ npm i regularjs@0.4.3 regUI -S
 
- const NEKUI = require('nek-ui');
+ const REGUI = require('regUI');
 
  ```
 
-### Development ([GUIDE](https://github.com/kaola-fed/nek-ui/issues/2))
+### Development ([GUIDE](https://github.com/kaola-fed/regUI/issues/2))
 
  - `cd doc && npm i`
  - `cd .. && npm i`
@@ -42,11 +42,11 @@ MIT
 
  [regularjs]: https://github.com/regularjs/regular
 
- [npm-url]: https://npmjs.org/package/nek-ui
- [npm-image]: https://img.shields.io/npm/v/nek-ui.svg
+ [npm-url]: https://npmjs.org/package/regUI
+ [npm-image]: https://img.shields.io/npm/v/regUI.svg
 
- [travis-url]: https://travis-ci.org/kaola-fed/nek-ui
- [travis-image]: https://img.shields.io/travis/kaola-fed/nek-ui.svg
+ [travis-url]: https://travis-ci.org/kaola-fed/regUI
+ [travis-image]: https://img.shields.io/travis/kaola-fed/regUI.svg
 
- [license-url]: https://github.com/kaola-fed/nek-ui/blob/master/LICENSE
- [license-image]: https://img.shields.io/github/license/kaola-fed/nek-ui.svg
+ [license-url]: https://github.com/kaola-fed/regUI/blob/master/LICENSE
+ [license-image]: https://img.shields.io/github/license/kaola-fed/regUI.svg

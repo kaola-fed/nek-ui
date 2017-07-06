@@ -32,51 +32,51 @@ const tpl = require('./index.html');
  * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
  */
 const KLUpload = Component.extend({
-  name: 'kl-upload',
-  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-  config(data) {
-    _.extend(data, {
-      action: '',
-      name: 'file',
-      multiple: false,
-      drag: false,
-      accept: '*',
-      listType: 'list',
-      fileList: [],
-      data: {},
-      numLimit: 10,
-      numPerline: 5,
-      maxSize: Config.sizeMap.GB,
-      deletable: true,
-      encType: 'multipart/form-data',
-    });
+    name: 'kl-upload',
+    template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+    config(data) {
+        _.extend(data, {
+            action: '',
+            name: 'file',
+            multiple: false,
+            drag: false,
+            accept: '*',
+            listType: 'list',
+            fileList: [],
+            data: {},
+            numLimit: 10,
+            numPerline: 5,
+            maxSize: Config.sizeMap.GB,
+            deletable: true,
+            encType: 'multipart/form-data',
+        });
 
-    this.supr(data);
-  },
+        this.supr(data);
+    },
 
-  init(data) {
-    this.preProcess(data);
-    this.initUploadInst(data);
-    this.supr(data);
-  },
+    init(data) {
+        this.preProcess(data);
+        this.initUploadInst(data);
+        this.supr(data);
+    },
 
-  preProcess(data) {
-    if (typeof data.maxSize === 'number') {
-      data.maxSize += '';
-    }
-  },
+    preProcess(data) {
+        if (typeof data.maxSize === 'number') {
+            data.maxSize += '';
+        }
+    },
 
-  initUploadInst(data) {
-    const uploadNode = this.$refs['m-upload'];
-    const typeMap = {
-      list: UploadList,
-      card: UploadCard,
-    };
+    initUploadInst(data) {
+        const uploadNode = this.$refs['m-upload'];
+        const typeMap = {
+            list: UploadList,
+            card: UploadCard,
+        };
 
-    new typeMap[data.listType]({
-      data,
-    }).$inject(uploadNode);
-  },
+        new typeMap[data.listType]({
+            data,
+        }).$inject(uploadNode);
+    },
 });
 
 module.exports = KLUpload;

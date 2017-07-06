@@ -741,7 +741,7 @@ title: 图标
 <kl-icon fontSize=20 type="home2" on-click={this.copy($event)} />
 ```
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     copy: function(e) {
         var type = e.target.className.trim();
@@ -755,7 +755,7 @@ var component = new NEKUI.Component({
         copyFrom.select();
         document.execCommand('copy');
         body.removeChild(copyFrom);
-        NEKUI.KLNotify.success(text + '复制成功')
+        REGUI.KLNotify.success(text + '复制成功')
     }
 });
 ```

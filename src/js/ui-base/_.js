@@ -266,9 +266,9 @@ _.dom.fireEvent = function (node, eventName) {
 };
 
 _.$trans = function (key, self) {
-  const $NEKUI = window.$NEKUI || {};
+  const $REGUI = window.$REGUI || {};
   return (
-    language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || ''
+    language[$REGUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || ''
   );
 };
 

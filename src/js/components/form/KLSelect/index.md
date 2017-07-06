@@ -14,7 +14,7 @@ title: 下拉选择
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -67,7 +67,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -101,7 +101,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -130,7 +130,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -163,7 +163,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -186,7 +186,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     service: {
         getList: function(params, success) {
@@ -215,7 +215,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -243,7 +243,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         source: [
@@ -263,15 +263,15 @@ var component = new NEKUI.Component({
 
 ```xml
 <div class=g-row>
-    <kl-button title="是否多选" on-click={this.toggleMultiple(multiple)}/>
+    <xx-button title="是否多选" on-click={this.toggleMultiple(multiple)}/>
     {multiple?'true:可多选':'false:不可多选'}
 </div>
 <div class=g-row>
-    <kl-button title="是否有全选" on-click={this.toggleCanSelectAll(canSelectAll)}/>
+    <xx-button title="是否有全选" on-click={this.toggleCanSelectAll(canSelectAll)}/>
     {canSelectAll?'true:有':'false:无'}
 </div>
 <div class=g-row>
-    <kl-button title="是否选中关闭" on-click={this.toggleSelectedClose(selectedClose)}/>
+    <xx-button title="是否选中关闭" on-click={this.toggleSelectedClose(selectedClose)}/>
     {canSelectAll?'true:有':'false:无'}
 </div>
 <div class=g-row>
@@ -285,11 +285,11 @@ var component = new NEKUI.Component({
     <kl-input value={limit}/>
 </div>
 <div class=g-row>
-    <kl-button title="是否可搜索" on-click={this.toggleCanSearch(canSearch)}/>
+    <xx-button title="是否可搜索" on-click={this.toggleCanSearch(canSearch)}/>
     {canSearch?'true:可搜索':'false:不可搜索'}
 </div>
 <div class=g-row>
-    <kl-button title="区分大小写" on-click={this.toggleSensitive(isCaseSensitive)}/>
+    <xx-button title="区分大小写" on-click={this.toggleSensitive(isCaseSensitive)}/>
     {isCaseSensitive?'true:区分大小写':'false:不区分大小写'}
 </div>
 <kl-select source={source} multiple={multiple} canSearch={canSearch}
@@ -303,7 +303,7 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
-var component = new NEKUI.Component({
+var component = new REGUI.Component({
     template: template,
     data: {
         multiple: true,

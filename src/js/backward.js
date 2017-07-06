@@ -12,7 +12,7 @@ const aliasList = [
   { oldObj: 'DatePicker', newObj: 'KLDatePicker', oldName: 'date.picker' },
   { oldObj: 'RadioGroup', newObj: 'KLRadioGroup', oldName: 'radio.group' },
   { oldObj: 'MultiSelect', newObj: 'KLMultiSelect', oldName: 'multi.select' },
-  { oldObj: 'UIButton', newObj: 'KLButton', oldName: 'ui.button' },
+  { oldObj: 'UIButton', newObj: 'xxButton', oldName: 'ui.button' },
   { oldObj: 'UIForm', newObj: 'KLForm', oldName: 'ui.form' },
   { oldObj: 'FormItem', newObj: 'KLFormItem', oldName: 'form.item' },
   { oldObj: 'UIInput', newObj: 'KLInput', oldName: 'ui.input' },

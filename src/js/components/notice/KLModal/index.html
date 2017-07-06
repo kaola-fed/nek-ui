@@ -17,10 +17,10 @@
 	            {#inc @(footerTemplate)}
 	        {#else}
 		        {#if okButton}
-                    <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
+                    <xx-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
 		        {/if}
 		        {#if cancelButton && isCanClose}
-		            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
+		            <xx-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
                     on-click={this.close(false)} disabled={cancelDisabled} />
 		        {/if}
 	        {/if}
