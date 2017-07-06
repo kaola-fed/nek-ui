@@ -33168,6 +33168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}          [options.data]                  = 绑定属性
 	 * @param {string}          [options.data.tip]              => 文字提示
+	 * @param {string}          [options.data.class]              => 增加class
 	 * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
 	 */
 	var KLTooltip = Component.extend({
@@ -33215,7 +33216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 417 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
+	module.exports = "<div class=\"u-tooltip {placement} animated {class}\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{#inc tip}</p>\n</div>"
 
 /***/ }),
 /* 418 */
