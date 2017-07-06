@@ -1481,7 +1481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _data = this.data,
 	        min = _data.min,
 	        max = _data.max,
-	        _message = _data._message,
+	        _message = _data.message,
 	        rules = _data.rules;
 
 
@@ -10009,10 +10009,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (source) {
 	        var _data2 = this.data,
 	            key = _data2.key,
-	            separator = _data2.separator,
-	            _data2$value = _data2.value,
-	            value = _data2$value === undefined ? '' : _data2$value;
+	            separator = _data2.separator;
 
+	        var value = newValue || '';
 	        var values = value.split(separator);
 	        source.forEach(function (item) {
 	          if (values.indexOf('' + item[key]) !== -1) {
