@@ -2131,9 +2131,12 @@
 .u-icon-calendar:before {
   content: "\e91a";
 }
+
+//check组件半选状态单独使用了content的值，修改这个需要警惕
 .u-icon-line:before {
   content: "\e91b";
 }
+
 .u-icon-upload:before {
   content: "\e91c";
 }
