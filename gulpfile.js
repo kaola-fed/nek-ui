@@ -106,7 +106,8 @@ gulp.task('default', function(done) {
 gulp.task('server', ['default'], function() {
     browserSync.init({
         server: {
-            baseDir: ['./doc/public', './dist']
+            baseDir: ['./doc/public', './dist'],
+            index: 'components/index.html'
         },
         browser: 'default',
         ghostMode: false,
