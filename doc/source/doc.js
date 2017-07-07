@@ -35,7 +35,7 @@ const getDemoCode = (demo) => {
     const jsMatch = /(```javascript)([\s\S]*?)(```)/g.exec(demo);
     return {
         rgl: rglMatch ? rglMatch[3] : '',
-        js: jsMatch ? jsMatch[2] : 'var component = new REGUI.Component({template: template});',
+        js: jsMatch ? jsMatch[2] : 'var component = new JRUI.Component({template: template});',
     };
 };
 
@@ -52,7 +52,7 @@ const injectComponents = (md) => {
     demos.forEach((demo) => {
         demosScript += `
     (function(index) {
-      var template = REGUI._.multiline(function(){/*
+      var template = JRUI._.multiline(function(){/*
       ${demo.rgl}
       */});
       ${demo.js}

@@ -3,9 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: regUI
-description: "UI components for NEK based on RegularJS"
-author: Cody Chan
+title: JR
+description: "UI components for JR based on RegularJS"
 
 # Writing
 highlight:
@@ -14,16 +13,15 @@ highlight:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-# url: https://regUI.kaolafed.com
-# root: /regUI
+# root: /JR
 # 指定生成的目录
-# public_dir: public/regUI
+# public_dir: public/JR
 root: /
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: regUI
+theme: JR
 
 marked:
   gfm: true

@@ -1,4 +1,4 @@
-# regUI<sup>[WIP]</sup>
+# JR<sup>[WIP]</sup>
 UI components based on [RegularJS][regularjs]
 
 
@@ -9,20 +9,20 @@ UI components based on [RegularJS][regularjs]
 
  - For browser:
  ```
- //unpkg.com/regUI/dist/css/regUI.default.min.css
- //unpkg.com/regUI/dist/vendor/regular.min.js
- //unpkg.com/regUI/dist/js/regUI.min.js
+ //unpkg.com/JR/dist/css/JR.default.min.css
+ //unpkg.com/JR/dist/vendor/regular.min.js
+ //unpkg.com/JR/dist/js/JR.min.js
  ```
 
  - For Node:
  ```
- npm i regularjs@0.4.3 regUI -S
+ npm i regularjs@0.4.3 JR -S
 
- const REGUI = require('regUI');
+ const JRUI = require('JR');
 
  ```
 
-### Development ([GUIDE](https://github.com/kaola-fed/regUI/issues/2))
+### Development ([GUIDE](https://github.com/kaola-fed/JR/issues/2))
 
  - `cd doc && npm i`
  - `cd .. && npm i`
@@ -42,11 +42,11 @@ MIT
 
  [regularjs]: https://github.com/regularjs/regular
 
- [npm-url]: https://npmjs.org/package/regUI
- [npm-image]: https://img.shields.io/npm/v/regUI.svg
+ [npm-url]: https://npmjs.org/package/JR
+ [npm-image]: https://img.shields.io/npm/v/JR.svg
 
- [travis-url]: https://travis-ci.org/kaola-fed/regUI
- [travis-image]: https://img.shields.io/travis/kaola-fed/regUI.svg
+ [travis-url]: https://travis-ci.org/kaola-fed/JR
+ [travis-image]: https://img.shields.io/travis/kaola-fed/JR.svg
 
- [license-url]: https://github.com/kaola-fed/regUI/blob/master/LICENSE
- [license-image]: https://img.shields.io/github/license/kaola-fed/regUI.svg
+ [license-url]: https://github.com/kaola-fed/JR/blob/master/LICENSE
+ [license-image]: https://img.shields.io/github/license/kaola-fed/JR.svg

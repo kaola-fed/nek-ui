@@ -56,7 +56,7 @@ gulp.task('dist-css', function() {
                 pathes: ['./node_modules'],
                 importCSS: true
             }))
-            .pipe(rename('regUI.' + theme + '.css'))
+            .pipe(rename('JR.' + theme + '.css'))
             .pipe(gulp.dest('./dist/css'))
             .pipe(rename({
                 suffix: '.min'

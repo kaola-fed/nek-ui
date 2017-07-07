@@ -2,8 +2,8 @@ const webpack = require('webpack');
 
 module.exports = {
   output: {
-    filename: 'regUI.js',
-    library: 'REGUI',
+    filename: 'JR.js',
+    library: 'JRUI',
     libraryTarget: 'umd',
   },
   externals: {
@@ -37,7 +37,7 @@ module.exports = {
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: 'regUI.js.map',
+      filename: 'JR.js.map',
       columns: false,
     }),
   ],

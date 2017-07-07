@@ -266,9 +266,9 @@ _.dom.fireEvent = function (node, eventName) {
 };
 
 _.$trans = function (key, self) {
-  const $REGUI = window.$REGUI || {};
+  const $JRUI = window.$JRUI || {};
   return (
-    language[$REGUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || ''
+    language[$JRUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || ''
   );
 };
 
