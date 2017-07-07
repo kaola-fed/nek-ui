@@ -1,0 +1,9 @@
+{#if this._isArray(item[column.key])} {#list item[column.key] as value by value_index}
+<div class="u-progress-wrap">
+    <jr-progress percent={value} /> {#if !column.hideProressValue}<span>{value}</span>{/if}
+</div>
+{/list} {#else}
+<div class="u-progress-wrap">
+    <jr-progress percent={item[column.key]} /> {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}
+</div>
+{/if}

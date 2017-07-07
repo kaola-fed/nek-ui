@@ -1,0 +1,17 @@
+<div class="m-popconfirm {placement}">
+	<div class="arrow"></div>
+	<div class="inner">
+		<div class="body">
+			{#if contentTemplate}
+			{#inc @(contentTemplate)}
+			{#else}
+			<span class="u-icon u-icon-info-circle u-text u-text-warning"></span>
+			{content}
+			{/if}
+		</div>
+		<div class="foot">
+			<button class="u-btn u-btn-sm" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>
+			<button class="u-btn u-btn-sm u-btn-primary" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>
+		</div>
+	</div>
+</div>

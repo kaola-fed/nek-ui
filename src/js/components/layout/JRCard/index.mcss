@@ -1,0 +1,66 @@
+.m-card {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 3px 0 rgba(34,52,73,0.10);
+    border: 1px solid rgba(34,52,73,0.10);
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: #333333;
+    .card_hd {
+        display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+        display: -moz-box; /* 老版本语法: Firefox (buggy) */
+        display: -ms-flexbox; /* 混合版本语法: IE 10 */
+        display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+        display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+        -webkit-box-align: center;
+        -moz-align-items: center;
+        -webkit-align-items: center;
+        align-items: center;
+        margin-bottom: 12px;
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .line {
+            display: inline-block;
+            background: #333;
+            width: 3px;
+            height: 15px;
+            margin-right: 8px;
+        }
+        .operate {
+            flex: 1;
+            text-align: right;
+            margin-right: 40px;
+        }
+    }
+    .btLine{
+        background: #ddd;
+        height: 1px;
+        margin-bottom: 8px;
+    }
+}
+
+.m-card {
+    .m-card {
+        box-shadow: none;
+        border-radius: initial;
+        border: none;
+        padding: 0 40px;
+        .card_hd {
+            margin-bottom: 8px;
+            .line {
+                height: 13px;
+            }
+            .title {
+                font-size: 14px;
+            }
+            .operate {
+                margin-right: 0;
+            }
+        }
+    }
+    .m-card-indent{
+        padding: 0 40px;
+    }
+}

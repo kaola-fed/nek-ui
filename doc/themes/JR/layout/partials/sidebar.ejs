@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <ul class="main-menu">
+        <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            <% var pages = site.pages.find({type: type}).sort('order') %>
+                <% pages.forEach(function (p, i) { %>
+                    <% if (type === 'components' && p.cate) { %>
+                        <% if (i === 0 || pages.data[i-1].cate !== p.cate) { %>
+                            <li>
+                                <h3>
+                                    <%- p.cate %>
+                                </h3>
+                            </li>
+                            <% } %>
+                                <% } %>
+                                    <li>
+                                        <a href="/<%- p.path %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_beta ? ' beta' : '' %><%- p.is_new ? ' new' : '' %>">
+                                            <%- p.title %>
+                                                <%- p.name %>
+                                        </a>
+                                    </li>
+                                    <% }) %>
+        </ul>
+    </div>
+</div>

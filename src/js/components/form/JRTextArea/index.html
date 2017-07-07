@@ -1,0 +1,10 @@
+<label class="u-textarea {size} {class}" r-hide={!visible} r-width="{width}">
+    <textarea spellcheck="false" class="textarea textarea-{state} textarea-{width}"
+        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
+        r-model={value}
+        style="height: {height}px"
+        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change" ></textarea>
+    {#if maxlength && value}<span class="textarea_len">{value.length}/{maxlength}</span>{/if}
+    {#if _eltIE9 && !value}<span class="textarea_placeholder">{placeholder}</span>{/if}
+    {#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+</label>

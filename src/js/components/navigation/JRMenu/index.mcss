@@ -1,0 +1,14 @@
+.m-menu {
+    height: 100%;
+    overflow-y: auto;
+    background: #fff;
+    border-right: 1px solid #E1E6ED;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #333;
+
+    a {
+        color: #333;
+    }
+}

@@ -1,0 +1,82 @@
+.u-multi {
+	::-webkit-scrollbar {
+	    width: 6px;
+	    height: 8px;
+	    background-color: #fff;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 3px;
+	    background-color: #dadada;
+	}
+	.dropdown_hd {
+		max-height: 84px;
+	    overflow-y: auto;
+	    .selectedTagMore {
+	        overflow: hidden;
+	        text-overflow: ellipsis;
+	        max-width: 150px;
+	    }
+	}
+	.cateWrap {
+		width: 412px;
+		overflow-x: auto;
+		white-space: nowrap;
+		position: absolute;
+        background-color: #fff;
+        font-size: 0;
+	    ul, li {
+	        list-style-type: none;
+	    }
+	    ::-webkit-scrollbar {
+		    width: 6px;
+		    background-color: #fff;
+		}
+		::-webkit-scrollbar-thumb {
+			border-radius: 3px;
+		    background-color: #dadada;
+		}
+		ul {
+			width: 136px;
+		    border-bottom: 1px solid #eee;
+		    border-left: 1px solid #eee;
+		    margin: 0;
+		    height: 260px;
+		    padding: 0;
+		    overflow-y: auto;
+			overflow-x: hidden;
+            font-size: 14px;
+		    display: inline-block;
+		    &:last-child { border-right: 1px solid #eee; }
+		}
+		li {
+			height: 32px;
+		    overflow: hidden;
+		    line-height: 32px;
+		    word-wrap: normal;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    padding-right: 15px;
+		    position: relative;
+		    &:hover { background-color: #F6F9FC; }
+		}
+		.u-input, .input_wrap {
+			height: 32px;
+		}
+		.u-check {
+			margin-left: 13px;
+		    width: 15px;
+		}
+		.more {
+			position: absolute;
+			text-align: center;
+			width: 30px;
+			right: 0;
+		}
+		.cateName {
+			padding-left: 15px;
+		}
+		.active {
+			background-color: #F6F9FC;
+		}
+	}
+}
