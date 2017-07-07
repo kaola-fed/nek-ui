@@ -5363,6 +5363,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	margin:50px auto 25px;
 	text-align:center;
 	cursor:-webkit-grab;
+	transition:all 0.3s ease-in-out;
 }
 .m-image-preview .m-panel-wrapper .m-virtual-zone .m-image-wrapper:before{
 	content:"";
