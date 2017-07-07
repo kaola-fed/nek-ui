@@ -6836,7 +6836,7 @@ html.z-modal,html.z-modal body{
 }
 .u-popover,.m-popconfirm,.u-tooltip{
 	position:absolute;
-	z-index:100;
+	z-index:2000;
 	font-size:12px;
 	line-height:1.5;
 }
@@ -7156,7 +7156,7 @@ a.u-badge{
 }
 .u-popover,.u-tooltip{
 	position:absolute;
-	z-index:100;
+	z-index:2000;
 	font-size:12px;
 	line-height:1.5;
 }
