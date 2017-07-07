@@ -83,7 +83,7 @@ const KLTable = Component.extend({
     setTimeout(() => {
       data.headerHeight = refs.headerWrap.offsetHeight;
 
-      self._updateContainerWidth(INIT);
+      self._updateParentWidth(INIT);
       self._updateViewWidth();
       self._initTableWidth();
       self._getHeaderHeight();
@@ -137,13 +137,10 @@ const KLTable = Component.extend({
 
     this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
-    this._getScrollParentNode().addEventListener(
-      'scroll',
-      this._onWinodwScroll,
-    );
+    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 300);
+    this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
 
-    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
+    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 300);
     window.addEventListener('resize', this._onWindowResize);
 
     this._watchWidthChange();
@@ -310,11 +307,11 @@ const KLTable = Component.extend({
       if (!self._isShow()) {
         return;
       }
-      self._updateContainerWidth();
+      self._updateParentWidth();
       self._updateScrollBar();
     }, 200);
   },
-  _updateContainerWidth(init) {
+  _updateParentWidth(init) {
     const data = this.data;
     let width = data.width;
     if (init && width) {
@@ -331,9 +328,6 @@ const KLTable = Component.extend({
     width = parentWidth - parentPadding;
 
     this._updateData('parentWidth', width);
-    if (init) {
-      this._updateData('_defaultWidth', width);
-    }
   },
   _updateScrollBar() {
     const tableWrapEle = this.$refs.bodyWrap;
@@ -387,6 +381,7 @@ const KLTable = Component.extend({
     if (!_dataColumns) {
       return;
     }
+    console.log(_ratio);
     const ratio = _ratio || 1;
     let newTableWidth = 0;
     let fixedCol = false;
@@ -400,7 +395,8 @@ const KLTable = Component.extend({
         column._width = column.width || 100;
       }
 
-      if (ratio !== 1) {
+      // 没有指定宽度的按比例缩放宽度
+      if (ratio !== 1 && !column.width) {
         column._width = Math.floor(column._width * ratio);
       }
 
@@ -425,17 +421,18 @@ const KLTable = Component.extend({
     this._updateData('fixedTableWidthRight', fixedTableWidthRight);
     this._updateData('tableWidth', newTableWidth);
 
-    if (newTableWidth <= data._defaultWidth) {
-      this._updateData('width', newTableWidth);
-    } else {
-      this._updateData('width', data._defaultWidth);
+    if (data._defaultWidth) {
+      newTableWidth = Math.min(newTableWidth, data._defaultWidth);
     }
+    newTableWidth = Math.min(newTableWidth, data.parentWidth);
+    this._updateData('width', newTableWidth);
   },
   _onWindowResize() {
     if (!this.$refs || !this._isShow()) {
       return;
     }
     this.$update('viewWidth', this.$refs.table.offsetWidth);
+    this._updateParentWidth();
     this._updateTableWidth();
   },
   _onBodyScroll(host) {
