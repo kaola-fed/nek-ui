@@ -8,7 +8,7 @@ order: 0
 
 ## JR
 
-JR 是一个基于 Regularjs 的组件库，主要fork来源是[nek](https://github.com/kaola-fed/nek-ui)，由于某些业务的不适用，所以重新建一个组件库
+[JR](https://github.com/xxyj/JRUI) 是一个基于 Regularjs 的组件库，主要fork来源是[nek](https://github.com/kaola-fed/nek-ui)，由于某些业务的不适用，所以重新建一个组件库
 
 ### 引入 JR(暂时未实现)
 
