@@ -24,12 +24,13 @@ UI components based on [RegularJS][regularjs]
 
  ```
 
-### Development ([GUIDE](https://github.com/kaola-fed/nek-ui/issues/2))
+### Development
 
  - `cd doc && npm i`
  - `cd .. && npm i`
  - `npm run dev`
 
+ :memo: For more in [WIKI](https://github.com/kaola-fed/nek-ui/wiki)
 
 ### Reference
 

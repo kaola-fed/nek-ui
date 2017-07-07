@@ -14,7 +14,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address'></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload'></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -24,7 +24,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' list-type="card"></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' list-type="card"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -34,7 +34,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' multiple={true}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' multiple={true}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -44,7 +44,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' list-type="card" multiple={true}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' list-type="card" multiple={true}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -54,7 +54,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' file-list={list} accept=".jpg,.zip,video/*,audio/*"></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} accept=".jpg,.zip,video/*,audio/*"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -64,7 +64,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' max-size="830M"></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' max-size="830M"></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -74,7 +74,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='your_upload_address' multiple={true} num-limit={15} num-perline={4}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' multiple={true} num-limit={15} num-perline={4}></kl-upload>
 ```
 <!-- demo_end -->
 
@@ -84,7 +84,7 @@ title: 上传组件
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='http://localhost:3000/upload' file-list={list}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list}></kl-upload>
 ```
 
 ```javascript
