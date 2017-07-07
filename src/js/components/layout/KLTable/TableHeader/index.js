@@ -45,18 +45,6 @@ const _parseFormat = function (str) {
 
 const TableHeader = Component.extend({
   template: tpl,
-  computed: {
-    fixedWidth: {
-      get() {
-        return this.data.headers.reduce(
-          (previous, current) => (
-            current.fixed ? previous + current._width : previous
-          ),
-          0,
-        );
-      },
-    },
-  },
   config(data) {
     this.defaults({
       type: '',
@@ -143,6 +131,10 @@ const TableHeader = Component.extend({
         headerWidth - (widthInfo.width - widthInfo.lastLeafWidth),
       );
 
+      self.$emit('columnresize', {
+        sender: self,
+      });
+
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
 
@@ -178,11 +170,11 @@ const TableHeader = Component.extend({
   },
   _enableResize() {
     document.body.style.cursor = 'col-resize';
-    this.$update('_ok2ResizeCol', true);
+    this.data._ok2ResizeCol = true;
   },
   _disableResize() {
     document.body.style.cursor = '';
-    this.$update('_ok2ResizeCol', false);
+    this.data._ok2ResizeCol = false;
   },
   _getFormatter(header, headers) {
     return header.headerFormatter.call(this, header, headers) || '';

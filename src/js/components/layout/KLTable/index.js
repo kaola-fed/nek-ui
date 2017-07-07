@@ -50,26 +50,6 @@ const tpl = require('./index.html');
 const KLTable = Component.extend({
   name: 'kl-table',
   template: tpl,
-  computed: {
-    bodyHeight: {
-      get() {
-        const data = this.data;
-        if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
-          return +data.height - data.headerHeight;
-        }
-      },
-      set(val) {
-        return (this.data.bodyHeight = val);
-      },
-    },
-    fixedRight: {
-      get() {
-        const data = this.data;
-        const fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-        return fixedRight > 0 ? fixedRight : 0;
-      },
-    },
-  },
   config(data) {
     this.defaults({
       stickyHeaderOffset: 0,
@@ -107,6 +87,9 @@ const KLTable = Component.extend({
       self._updateViewWidth();
       self._initTableWidth();
       self._getHeaderHeight();
+      setTimeout(() => {
+        self._updateTableWidth();
+      }, 100);
       data.initFinished = true;
     }, 50);
   },
@@ -148,6 +131,9 @@ const KLTable = Component.extend({
     this.$watch('columns', this._onColumnsChange);
     this.$watch('scrollYBar', this._onScrollYBarChange);
     this.$watch('parentWidth', this._onParentWidthChange);
+    this.$watch('tableWidth', this._onTableWidthChange);
+    this.$watch('headerHeight', this._updateBodyHeight);
+    this.$watch('height', this._updateBodyHeight);
 
     this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
@@ -178,7 +164,17 @@ const KLTable = Component.extend({
     if (!columns) {
       return;
     }
-    this.data.headers = u.getHeaders(columns);
+    const headers = u.getHeaders(columns);
+    this._updateFixedWidth(headers);
+    this._updateData('headers', headers);
+  },
+  _updateFixedWidth(headers) {
+    this.data.fixedWidth = headers.reduce(
+      (previous, current) => (
+        current.fixed ? previous + current._width : previous
+      ),
+      0,
+    );
   },
   _onShowChange(newVal) {
     const self = this;
@@ -200,6 +196,10 @@ const KLTable = Component.extend({
     const _oldVal = oldVal || this.data.tableWidth;
     const ratio = newVal / _oldVal;
     this._updateTableWidth(ratio);
+    this._updateFixedRight();
+  },
+  _onTableWidthChange() {
+    this._updateFixedRight();
   },
   _onSouceChange() {
     const self = this;
@@ -273,7 +273,7 @@ const KLTable = Component.extend({
       stickyActive = true;
     }
 
-    this.data.stickyHeaderActive = stickyActive;
+    this._updateData('stickyHeaderActive', stickyActive);
   },
   _updateStickyFooterStatus(tableWrapOffset) {
     const headerHeight = this._getHeaderHeight();
@@ -302,7 +302,7 @@ const KLTable = Component.extend({
       stickyActive = true;
     }
 
-    this.data.stickyFooterActive = stickyActive;
+    this._updateData('stickyFooterActive', stickyActive);
   },
   _watchWidthChange() {
     const self = this;
@@ -312,12 +312,6 @@ const KLTable = Component.extend({
       }
       self._updateContainerWidth();
       self._updateScrollBar();
-    }, 50);
-    this.data._slowTimer = setInterval(() => {
-      if (!self._isShow()) {
-        return;
-      }
-      self._updateTableWidth();
     }, 200);
   },
   _updateContainerWidth(init) {
@@ -336,8 +330,10 @@ const KLTable = Component.extend({
     const parentWidth = u.getNum(parentStyle.width);
     width = parentWidth - parentPadding;
 
-    data.parentWidth = width;
-    data._defaultWidth = width;
+    this._updateData('parentWidth', width);
+    if (init) {
+      this._updateData('_defaultWidth', width);
+    }
   },
   _updateScrollBar() {
     const tableWrapEle = this.$refs.bodyWrap;
@@ -399,9 +395,6 @@ const KLTable = Component.extend({
     let fixedTableWidthRight = 0;
 
     _dataColumns.forEach((column) => {
-      // 计算表格宽度
-      newTableWidth += column._width;
-
       // 更新列宽
       if (!column._width) {
         column._width = column.width || 100;
@@ -410,6 +403,9 @@ const KLTable = Component.extend({
       if (ratio !== 1) {
         column._width = Math.floor(column._width * ratio);
       }
+
+      // 计算表格宽度
+      newTableWidth += column._width;
 
       // 计算固定列的总宽度
       if (column._width && column.fixed) {
@@ -423,25 +419,24 @@ const KLTable = Component.extend({
       }
     });
 
-    data.fixedCol = fixedCol;
-    data.fixedTableWidth = fixedTableWidth;
-    data.fixedColRight = fixedColRight;
-    data.fixedTableWidthRight = fixedTableWidthRight;
-
-    data.tableWidth = newTableWidth;
+    this._updateData('fixedCol', fixedCol);
+    this._updateData('fixedTableWidth', fixedTableWidth);
+    this._updateData('fixedColRight', fixedColRight);
+    this._updateData('fixedTableWidthRight', fixedTableWidthRight);
+    this._updateData('tableWidth', newTableWidth);
 
     if (newTableWidth <= data._defaultWidth) {
-      data.width = newTableWidth;
+      this._updateData('width', newTableWidth);
     } else {
-      data.width = data._defaultWidth;
+      this._updateData('width', data._defaultWidth);
     }
-    this.$update();
   },
   _onWindowResize() {
     if (!this.$refs || !this._isShow()) {
       return;
     }
     this.$update('viewWidth', this.$refs.table.offsetWidth);
+    this._updateTableWidth();
   },
   _onBodyScroll(host) {
     if (!this._isShow()) {
@@ -493,6 +488,17 @@ const KLTable = Component.extend({
       checkedEvent: e.event,
     });
   },
+  _updateFixedRight() {
+    const data = this.data;
+    const fixedRight = Math.floor(data.parentWidth - data.tableWidth);
+    this._updateData('fixedRight', fixedRight > 0 ? fixedRight : 0);
+  },
+  _updateBodyHeight() {
+    const data = this.data;
+    if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
+      this._updateData('bodyHeight', +data.height - data.headerHeight);
+    }
+  },
   emitEvent(type, ...args) {
     /**
          * @event [type] 自定义的操作事件
@@ -531,6 +537,17 @@ const KLTable = Component.extend({
   _onFixedExpand(e) {
     this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
   },
+  _onColumnResize() {
+    this._updateTableWidth();
+    this._forceRender();
+  },
+  _forceRender() {
+    const strip = this.data.strip;
+    this.$update('strip', !strip);
+    setTimeout(() => {
+      this.$update('strip', strip);
+    }, 50);
+  },
   _isShow() {
     return this.data.show;
   },
@@ -545,7 +562,6 @@ const KLTable = Component.extend({
   },
   removeEventListener() {
     clearInterval(this.data._quickTimer);
-    clearInterval(this.data._slowTimer);
     window.document.removeEventListener('scroll', this._onWinodwScroll);
     window.removeEventListener('resize', this._onWindowResize);
   },
@@ -556,7 +572,6 @@ const KLTable = Component.extend({
 const oldFilterFunc = KLTable.filter;
 
 KLTable.filter = function (...args) {
-  // const args = [].slice.call(arguments, 0);
   TableHeader.filter(...args);
   TableBody.filter(...args);
   oldFilterFunc.apply(KLTable, args);

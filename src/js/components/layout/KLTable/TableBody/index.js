@@ -41,8 +41,9 @@ const TableBody = Component.extend({
   _expandTr(item, itemIndex, column) {
     item._expanddingColumn = column;
     item.expand = !item.expand;
-
-    this._updateSubTrHeight(item, itemIndex);
+    if (column.expandable) {
+      this._updateSubTrHeight(item, itemIndex);
+    }
   },
   _updateSubTrHeight(item, itemIndex) {
     const self = this;
@@ -93,10 +94,10 @@ const TableBody = Component.extend({
   emit(...args) {
     this.$parent.$emit.call(this.$parent, ...args);
   },
-  _onTrHover($event, item) {
+  _onTrHover(e, item) {
     item._hover = true;
   },
-  _onTrBlur($event, item) {
+  _onTrBlur(e, item) {
     item._hover = false;
   },
 })

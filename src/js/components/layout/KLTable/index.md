@@ -327,7 +327,9 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
+<kl-table
+    source={table.source}
+    on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)} >
     <kl-table-col name="title" key="title">
         <kl-table-template type="header">
             {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emit("headerclick", header)}>I am && {header.name}</a>'}
@@ -352,8 +354,9 @@ NEKUI.KLTable.filter('txtFilter', function(val) {
 var component = new NEKUI.Component({
     template: template,
     data: {
+        count: 0,
         table: {
-            source: []
+            source: [],
         },
         tdTpl: '<a on-click={this.emit("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
     },
@@ -379,7 +382,7 @@ var component = new NEKUI.Component({
 
 ### 自定义行样式
 
-通过设置 `item.trClass` 或 `item.trStyle` 修改每一行的样式。
+通过设置 `item.rowClass` 或 `item.rowStyle` 修改每一行的样式。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -407,7 +410,7 @@ var component = new NEKUI.Component({
                 title: 'test' + i,
                 col1: '' + i,
                 value: 10 * i,
-                trStyle: 'background-color:' + colors[i]
+                rowStyle: 'background-color:' + colors[i]
             });
         }
     }
@@ -424,7 +427,11 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
-    <kl-table-col name="title" key="title" sortable/>
+    <kl-table-col name="title" key="title" customKey="sort_title" sortable >
+        <kl-table-template>
+            123
+        </kl-table-template>
+    </kl-table-col>
     <kl-table-col name="value" key="value" sortable/>
 </kl-table>
 ```
@@ -580,7 +587,7 @@ var component = new NEKUI.Component({
 ```xml
 <kl-table
     fixedHeader
-    columns={kl-table-columns}
+    columns={table.columns}
     sorting={table.sorting}
     paging={table.paging}
     source={table.source}
@@ -611,6 +618,7 @@ var component = new NEKUI.Component({
                             name: 'col1.2',
                             key: 'value',
                             format: '{item.value} %',
+                            custom: 'sortField',
                             sortable: true
                         },
                         {
