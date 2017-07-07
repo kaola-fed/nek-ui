@@ -12,7 +12,7 @@
         <ul style="padding:0">
             <% site.posts.sort('date', -1).limit(10).each(function (post) { %>
                 <li>
-                    <a href="/<%- post.path %>" class="sidebar-link<%- page.title === post.title ? ' current' : '' %>">
+                    <a href="/JR/<%- post.path %>" class="sidebar-link<%- page.title === post.title ? ' current' : '' %>">
                         <%- post.title %>
                     </a>
                 </li>

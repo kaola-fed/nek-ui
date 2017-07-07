@@ -99,15 +99,25 @@ gulp.task('reload', function() {
     reload();
 });
 
+gulp.task('source-copy', function(done) {
+    return all(
+        gulp.src('./dist/js/JR.min.js').pipe(gulp.dest('./doc/public/JR/js')),
+        gulp.src('./dist/css/JR.default.min.css').pipe(gulp.dest('./doc/public/JR/css')),
+        gulp.src('./dist/fonts/**').pipe(gulp.dest('./doc/public/JR/fonts')),
+        gulp.src('./dist/vendor/regular.min.js').pipe(gulp.dest('./doc/public/JR/vendor'))
+    );
+})
+
 gulp.task('default', function(done) {
-    sequence('dist', 'gen-doc', 'reload', done);
+    sequence('dist', 'gen-doc', 'source-copy', 'reload', done);
 });
 
 gulp.task('server', ['default'], function() {
     browserSync.init({
         server: {
-            baseDir: ['./doc/public', './dist'],
-            index: 'components/index.html'
+            // baseDir: ['./doc/public', './dist'],
+            baseDir: './doc/public',
+            index: 'JR/components/index.html'
         },
         browser: 'default',
         ghostMode: false,
