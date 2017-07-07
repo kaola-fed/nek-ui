@@ -28,7 +28,8 @@
                         rowspan="{headers.length - headerTr_index - header.childrenDepth}"
                         on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}
                         on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}
-                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>
+                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}
+                        >
                         <div class="th_content f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>

@@ -1,7 +1,6 @@
 <div class="m-ui-table-wrap "
     ref="tableWrap"
     r-hide={!show}>
-
     <!-- 读取内嵌模版 -->
     <div ref="bodyContainer" style="display: none" >
         {#include this.$body}
@@ -48,6 +47,7 @@
                 scrollYBar={scrollYBar}
                 align={align}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -120,6 +120,7 @@
                 scrollYBar={scrollYBar}
                 align={align}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -131,6 +132,7 @@
         <div ref="bodyWrapFixed"
             class="ui_table_body"
             r-style={{
+                width: fixedTableWidth + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table-body
@@ -181,6 +183,7 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
             r-style={{
+                width: fixedTableWidthRight + 'px',
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}
             >
@@ -198,6 +201,7 @@
                 align={align}
                 marginLeft={tableWidth - fixedTableWidthRight}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -209,6 +213,7 @@
         <div ref="bodyWrapFixedRight"
             class="ui_table_body"
             r-style={{
+                width: fixedTableWidthRight + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table-body ref="tableBodyFixedRight"
@@ -265,7 +270,6 @@
         step={paging.step}
         maxPageSize={paging.maxPageSize}
         disabled={paging.disabled}
-        visible={paging.visible}
         middle={paging.middle}
         side={paging.side}
         current={paging.current}
