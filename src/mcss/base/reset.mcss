@@ -25,12 +25,14 @@ body {
 a {
     text-decoration: none;
     cursor: pointer;
+    display: inline-block;
+    color: #333;
     // - Remove the gray background color from active links in IE 10.
     background: transparent;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 // - Improves readability when focused and also mouse hovered in all browsers.
@@ -45,6 +47,11 @@ a:focus {
 // ========================================================================
 
 h1, h2, h3, h4, h5, h6 {}
+
+h2{
+    color: #333;
+    font-size: 20px;
+}
 
 $hx-extend_size = ($number, $font-size, $line-height_ = null) {
     h#{$number} {
