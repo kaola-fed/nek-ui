@@ -71,6 +71,7 @@ const KLTable = Component.extend({
     this.supr(data);
 
     this._initWatchers();
+    this.data._defaultWidth = this.data.width;
   },
   init() {
     this._initTable();
@@ -79,11 +80,10 @@ const KLTable = Component.extend({
     const self = this;
     const data = this.data;
     const refs = this.$refs;
-    const INIT = 1;
     setTimeout(() => {
       data.headerHeight = refs.headerWrap.offsetHeight;
 
-      self._updateParentWidth(INIT);
+      self._updateParentWidth();
       self._updateViewWidth();
       self._initTableWidth();
       self._getHeaderHeight();
@@ -102,7 +102,7 @@ const KLTable = Component.extend({
 
     const tableWidth = data.parentWidth;
     let customWidthCount = 0;
-    const customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
+    data._customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
       const width = parseInt(current.width);
       if (width) {
         customWidthCount += 1;
@@ -113,7 +113,7 @@ const KLTable = Component.extend({
 
     const tableViewWidth = tableWidth - data.scrollYBar;
     let autoWidth = Math.floor(
-      (tableViewWidth - customColumnWidthTotal) /
+      (tableViewWidth - data._customColumnWidthTotal) /
         (_dataColumns.length - customWidthCount),
     );
     autoWidth = autoWidth > 0 ? autoWidth : 100;
@@ -190,8 +190,13 @@ const KLTable = Component.extend({
     if (newVal === undefined || oldVal === undefined) {
       return;
     }
+    const _newVal = newVal;
     const _oldVal = oldVal || this.data.tableWidth;
-    const ratio = newVal / _oldVal;
+    const customColumnWidthTotal = this.data._customColumnWidthTotal;
+    let ratio = 0;
+    if (_newVal !== 0 && _oldVal !== 0) {
+      ratio = (_newVal - customColumnWidthTotal) / (_oldVal - customColumnWidthTotal);
+    }
     this._updateTableWidth(ratio);
     this._updateFixedRight();
   },
@@ -256,17 +261,18 @@ const KLTable = Component.extend({
     if (scrollParentNode !== window) {
       scrollY = scrollParentNode.scrollTop;
     } else {
-      scrollY = window.scrollY;
+      scrollY = window.pageYOffset || document.documentElement.scrollTop;
     }
 
     let stickyActive = false;
+    const stickyHeaderOffset = +this.data.stickyHeaderOffset;
 
     if (
-      scrollY + headerHeight > tableWrapOffset.bottom ||
-      scrollY < tableWrapOffset.top
+      scrollY + stickyHeaderOffset + headerHeight > tableWrapOffset.bottom ||
+      scrollY + stickyHeaderOffset < tableWrapOffset.top
     ) {
       stickyActive = false;
-    } else if (scrollY > tableWrapOffset.top) {
+    } else {
       stickyActive = true;
     }
 
@@ -290,9 +296,11 @@ const KLTable = Component.extend({
     const scrollYBottom = scrollY + innerHeight;
     let stickyActive = false;
 
+    const stickyFooterOffset = +this.data.stickyFooterOffset;
+
     if (
-      scrollYBottom > tableWrapOffset.bottom + footerHeight ||
-      scrollYBottom < tableWrapOffset.top + headerHeight + 20
+      scrollYBottom > tableWrapOffset.bottom + footerHeight + stickyFooterOffset ||
+      scrollYBottom < tableWrapOffset.top + headerHeight + 20 + stickyFooterOffset
     ) {
       stickyActive = false;
     } else {
@@ -311,20 +319,16 @@ const KLTable = Component.extend({
       self._updateScrollBar();
     }, 200);
   },
-  _updateParentWidth(init) {
+  _updateParentWidth() {
     const data = this.data;
     let width = data.width;
-    if (init && width) {
-      data._defaultWidth = width;
-      return;
-    }
 
     const parentStyle = window.getComputedStyle(
       this.$refs.tableWrap.parentElement,
     );
     const parentPadding =
       u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
-    const parentWidth = u.getNum(parentStyle.width);
+    const parentWidth = this.$refs.tableWrap.parentElement.clientWidth;
     width = parentWidth - parentPadding;
 
     this._updateData('parentWidth', width);
@@ -381,7 +385,6 @@ const KLTable = Component.extend({
     if (!_dataColumns) {
       return;
     }
-    console.log(_ratio);
     const ratio = _ratio || 1;
     let newTableWidth = 0;
     let fixedCol = false;

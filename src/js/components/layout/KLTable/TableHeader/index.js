@@ -39,6 +39,11 @@ const getColumnWidth = function (column) {
   return ret;
 };
 
+const getLeftLeavesWidth = function (column) {
+  const info = getColumnWidth(column);
+  return info.width - info.lastLeafWidth;
+};
+
 const _parseFormat = function (str) {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
@@ -54,6 +59,8 @@ const TableHeader = Component.extend({
       config: {},
     });
     this.supr(data);
+    this.$table = this.$parent;
+    this.$tableData = this.$parent.data;
   },
   _onHeaderClick(header, headerIndex) {
     if (!header.sortable) {
@@ -125,10 +132,10 @@ const TableHeader = Component.extend({
       resizeProxy.style.visibility = 'hidden';
 
       const headerWidth = _e.pageX - headerLeft;
-      const widthInfo = getColumnWidth(header);
+      const leftLeavesWidth = getLeftLeavesWidth(header);
       setColumnWidth(
         header,
-        headerWidth - (widthInfo.width - widthInfo.lastLeafWidth),
+        headerWidth - leftLeavesWidth,
       );
 
       self.$emit('columnresize', {

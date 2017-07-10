@@ -314,6 +314,7 @@ var component = new NEKUI.Component({
 
 通过 `kl-table-template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
 自定义模版中可以通过 `emit` 的方法向上抛出事件。
+如果模版直接写在`kl-table`当中，这部分模版会被作为footer模版进行渲染。这部分模版不需要进行特殊的字符串处理，并可以直接进行数据绑定。
 
 要在模版中使用自定义的 `filter` 则需要将其先注册到 `NEKUI.KLTable` 上。
 
@@ -328,6 +329,7 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table
+    stickyFooter
     source={table.source}
     on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)} >
     <kl-table-col name="title" key="title">
@@ -338,6 +340,12 @@ var component = new NEKUI.Component({
         <kl-table-template template={tdTpl} />
     </kl-table-col>
     <kl-table-col name="value" key="value" />
+
+    <kl-pager
+        pageSize={pageSize}
+        current={current}
+        sumTotal={sumTotal}
+    />
 </kl-table>
 ```
 
@@ -358,9 +366,16 @@ var component = new NEKUI.Component({
         table: {
             source: [],
         },
+        pageSize:15,
+        current:1,
+        sumTotal:100,
         tdTpl: '<a on-click={this.emit("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
     },
     init: function() {
+        this.$watch('current', function(newVal) {
+            console.log(newVal);
+        });
+
         this.data.table.source = [];
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
@@ -721,7 +736,7 @@ Regular.config({
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 
-如有需要获取外部的数据，则需要通过 `this.$parent.data` 去获取。
+如有需要获取外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -738,8 +753,8 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         count: 0,
-        thTpl: '{header.name + " :" + this.$parent.data.count}',
-        tdTpl: '{item.title + " :" + this.$parent.data.count}',
+        thTpl: '{header.name + " :" + this.$tableData.count}',
+        tdTpl: '{item.title + " :" + this.$table.data.count}',
         table: {
             source: []
         }
@@ -761,3 +776,4 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+

@@ -1,11 +1,6 @@
 <div class="m-ui-table-wrap "
     ref="tableWrap"
     r-hide={!show}>
-    <!-- 读取内嵌模版 -->
-    <div ref="bodyContainer" style="display: none" >
-        {#include this.$body}
-    </div>
-
     <!-- 列表拖动标尺 -->
     <div ref="resizeProxy" class="u-resize-proxy" />
 
@@ -263,6 +258,10 @@
         <div r-style={{ width: tableWidth + 'px' }} />
     </div>
     {/if}
+
+    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->
+    {#include this.$body}
+
     {#if paging}
     <kl-pager
         position={paging.position || 'right'}

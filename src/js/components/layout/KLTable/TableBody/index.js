@@ -17,6 +17,8 @@ const TableBody = Component.extend({
       config: {},
     });
     this.supr(data);
+    this.$table = this.$parent;
+    this.$tableData = this.$parent.data;
   },
   _onExpand(item, itemIndex, column) {
     if (!this.data.fixedCol) {
