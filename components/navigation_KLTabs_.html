@@ -309,7 +309,12 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-tabs</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span>&gt;</span>Content4<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-tabs</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-tabs</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span>&gt;</span><span class="tag">&lt;<span class="name">kl-input</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-tabs</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="每次切换-Tab-时重新渲染"><a href="#每次切换-Tab-时重新渲染" class="headerlink" title="每次切换 Tab 时重新渲染"></a>每次切换 Tab 时重新渲染</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-tabs</span> <span class="attr">fresh</span>=<span class="string">&#123;true&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab1"</span>&gt;</span>Content1<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab2"</span>&gt;</span>Content2<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab3"</span>&gt;</span>Content3<span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-tab</span> <span class="attr">title</span>=<span class="string">"Tab4"</span>&gt;</span><span class="tag">&lt;<span class="name">kl-input</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-tab</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-tabs</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -447,6 +452,12 @@
 <td>=&gt; 默认显示对应 key 的 Tab</td>
 </tr>
 <tr>
+<td>[options.data.refresh]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 切换 Tab 是否重新渲染</td>
+</tr>
+<tr>
 <td>[options.data.readonly]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -552,7 +563,22 @@ var index = 0;
     <kl-tab title="Tab1">Content1</kl-tab>
     <kl-tab title="Tab2">Content2</kl-tab>
     <kl-tab title="Tab3">Content3</kl-tab>
-    <kl-tab title="Tab4">Content4</kl-tab>
+    <kl-tab title="Tab4"><kl-input /></kl-tab>
+</kl-tabs>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-tabs fresh={true}>
+    <kl-tab title="Tab1">Content1</kl-tab>
+    <kl-tab title="Tab2">Content2</kl-tab>
+    <kl-tab title="Tab3">Content3</kl-tab>
+    <kl-tab title="Tab4"><kl-input /></kl-tab>
 </kl-tabs>
 
       */});
