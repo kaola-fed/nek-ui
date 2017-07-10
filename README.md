@@ -1,20 +1,20 @@
-# JR<sup>[WIP]</sup>
+# JR
 UI components based on [RegularJS][regularjs]
 
 
-[=> Documents <=](https://xxyj.github.io/components/)
+[=> Documents <=](https://xxyj.github.io/JR/components/)
 
 
 ### Usage
 
  - For browser:
  ```
- //unpkg.com/JR/dist/css/JR.default.min.css
- //unpkg.com/JR/dist/vendor/regular.min.js
- //unpkg.com/JR/dist/js/JR.min.js
+ //dist/css/JR.default.min.css
+ //dist/vendor/regular.min.js
+ //dist/js/JR.min.js
  ```
 
- - For Node:
+ - For Node(暂未实现):
  ```
  npm i regularjs@0.4.3 JR -S
 
@@ -22,16 +22,11 @@ UI components based on [RegularJS][regularjs]
 
  ```
 
-### Development ([GUIDE](https://github.com/kaola-fed/JR/issues/2))
-
- - `cd doc && npm i`
- - `cd .. && npm i`
- - `npm run dev`
 
 
 ### Reference
 
- - [Regular UI](https://regular-ui.github.io/) - forked from
+ - [nek](https://regular-ui.github.io/) - forked from
  - [Vue](https://cn.vuejs.org/) - docs style
  - [Ant Design](https://ant.design/) - ideas
  - [Element](http://element.eleme.io) - ideas
