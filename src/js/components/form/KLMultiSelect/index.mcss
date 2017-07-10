@@ -58,6 +58,11 @@
 		    padding-right: 15px;
 		    position: relative;
 		    &:hover { background-color: #F6F9FC; }
+			.onlyChild {
+				background-color: #fff;
+				font-size: 12px;
+				&:hover { background-color: #ddd; }
+			}
 		}
 		.u-input, .input_wrap {
 			height: 32px;

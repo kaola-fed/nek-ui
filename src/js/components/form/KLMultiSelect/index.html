@@ -23,7 +23,7 @@
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></kl-check>
                     {/if}
                     <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="more" {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}>&gt;</span>{/if}
+                    {#if cate[childKey] && cate[childKey].length}<span class="more" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
                 </li>
                 {/if}
                 {/list}

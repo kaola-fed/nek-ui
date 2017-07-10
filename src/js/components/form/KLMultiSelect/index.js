@@ -1,6 +1,6 @@
 /**
  * ------------------------------------------------------------
- * KLMultiSelect 树型选择
+ * KLMultiSelect 多级选择
  * @author   lilang
  * ------------------------------------------------------------
  */
@@ -50,6 +50,7 @@ const KLMultiSelect = Dropdown.extend({
       hierarchical: false,
       updateAuto: false,
       onlyChild: true,
+      LI_WEITH: 137,
     });
     data._source = _.clone(data.source || []);
     data.tree = [data._source, [], [], [], [], [], [], [], [], []];
@@ -155,6 +156,14 @@ const KLMultiSelect = Dropdown.extend({
   viewCate(cate, level, show, e) {
     e && e.stopPropagation();
     const data = this.data;
+    for (let i = 0; i < data.tree.length; i += 1) {
+      if (!data.tree[i].length) {
+        if (i - 2 > level) {
+          this.scroll(level);
+        }
+        break;
+      }
+    }
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
     for (let i = level; i < level + 2; i += 1) {
@@ -167,7 +176,7 @@ const KLMultiSelect = Dropdown.extend({
 
     // 将下一级后面的都置空
     for (let i = level + 2; i < data.tree.length; i += 1) {
-      data.tree[i] = {};
+      data.tree[i] = [];
     }
 
     if (
@@ -187,6 +196,30 @@ const KLMultiSelect = Dropdown.extend({
         selected: cate,
       });
     }
+    setTimeout(() => {
+      this.scroll(level);
+    }, 0);
+  },
+  scroll(level) {
+    const data = this.data;
+    const target = document.getElementsByClassName('cateWrap')[0];
+    const startWidth = target.scrollLeft;
+    const WIDTH = (level - 1) * data.LI_WEITH;
+    const TIME = 500;
+    let start = null;
+    const frameFunc = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (func) {
+      window.setTimeout(func, 1000 / 45);
+    };
+    function step(timestamp) {
+      if (start === null) start = timestamp;
+      const progress = timestamp - start;
+      target.scrollLeft = startWidth + (parseFloat(progress / TIME) * (WIDTH - startWidth));
+      if (progress < TIME) {
+        frameFunc(step);
+      }
+    }
+    frameFunc(step);
+    this.$update();
   },
   checkCate(cate, level, checked) {
     const _checked = !checked;

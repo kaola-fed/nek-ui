@@ -10,7 +10,7 @@ title: 多级选择
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select source={source1} value={value} on-select={this.selected($event)} />
+<kl-multi-select source={source} value={value} on-select={this.selected($event)} />
 选择的是：{value}
 ```
 
@@ -41,8 +41,7 @@ var component = new NEKUI.Component({
                 {name: '节点3.2', id: 32}
             ]}
         ],
-        value: '',
-        source1: [{id:0,name:'aaa'},{id:1,name:'bbb'}]
+        value: ''
     },
     selected: function(event) {
         console.log(event);
