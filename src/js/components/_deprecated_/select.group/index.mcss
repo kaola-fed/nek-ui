@@ -6,6 +6,7 @@
     .u-select {
         .dropdown_hd  {
             border-color: #333;
+            color:#333;
         }
     }
 }

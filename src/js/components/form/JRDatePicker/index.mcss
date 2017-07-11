@@ -16,7 +16,7 @@
         }
     }
     .btn-area{
-        border-top:1px solid #aaa;
+        border-top:1px solid #eee;
         overflow:hidden;
         margin-top:10px;
         .btns {

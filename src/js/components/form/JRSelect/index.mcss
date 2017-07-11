@@ -16,7 +16,7 @@
         $box-sizing: border-box;
         cursor: pointer;
         @extend .f-toe;
-
+        color:#333;
         min-height: $u-formctrl_height;
         line-height: $u-formctrl_height - 2;
         padding: 0 index($u-formctrl_padding, 1);
@@ -31,6 +31,7 @@
             float: right;
             width: auto;
             line-height: inherit;
+            color: #999;
         }
 
         .u-select-errorIcon {
@@ -132,6 +133,7 @@
     .dropdown_hd{
         min-height: 24px;
         line-height: 22px;
+        color:#333;
     }
 
     .m-listview >li{
