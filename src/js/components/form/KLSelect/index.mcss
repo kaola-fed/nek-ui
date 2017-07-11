@@ -24,7 +24,6 @@
         color: $u-formctrl_color;
         $border: $u-formctrl_border;
         $border-radius: $border-radius-base;
-        font-size: 12px;
         overflow-y: auto;
 
         .u-icon {
@@ -36,6 +35,24 @@
         .u-select-errorIcon {
             position: relative;
             top: -28px;
+        }
+
+        .hoverShow {
+            display: none;
+        }
+
+        &:hover {
+            .hoverShow {
+                display: inline-block;
+            }
+            .hoverHide {
+                display: none;
+            }
+        }
+
+        span {
+            float: left;
+            font-size: 12px;
         }
     }
 

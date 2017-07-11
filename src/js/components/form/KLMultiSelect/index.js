@@ -156,14 +156,6 @@ const KLMultiSelect = Dropdown.extend({
   viewCate(cate, level, show, e) {
     e && e.stopPropagation();
     const data = this.data;
-    for (let i = 0; i < data.tree.length; i += 1) {
-      if (!data.tree[i].length) {
-        if (i - 2 > level) {
-          this.scroll(level);
-        }
-        break;
-      }
-    }
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
     for (let i = level; i < level + 2; i += 1) {
@@ -205,7 +197,7 @@ const KLMultiSelect = Dropdown.extend({
     const target = document.getElementsByClassName('cateWrap')[0];
     const startWidth = target.scrollLeft;
     const WIDTH = (level - 1) * data.LI_WEITH;
-    const TIME = 500;
+    const TIME = 300;
     let start = null;
     const frameFunc = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (func) {
       window.setTimeout(func, 1000 / 45);

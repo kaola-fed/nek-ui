@@ -11,6 +11,10 @@
 	.dropdown_hd {
 		max-height: 84px;
 	    overflow-y: auto;
+		.selected-tag {
+			height: 18px;
+			line-height: 18px;
+		}
 	    .selectedTagMore {
 	        overflow: hidden;
 	        text-overflow: ellipsis;

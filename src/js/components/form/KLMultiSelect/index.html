@@ -14,7 +14,7 @@
         <div class="cateWrap">
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
-            <ul>
+            <ul r-animation="on: leave; class: animated fadeOutX fast;">
                 <kl-input value={search[level]}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}

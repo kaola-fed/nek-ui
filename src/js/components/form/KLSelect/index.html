@@ -7,8 +7,11 @@
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
 				{#if !open}
-	            <kl-icon fontSize=12 type="angle_down" class="f-fr"/>
+	            <kl-icon fontSize=12 type="angle_down" class="f-fr hoverHide"/>
 	            {/if}
+				{#if clearable}
+				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr hoverShow"/>
+				{/if}
 	            {#if open && canSearch}
 	                <input disabled={disabled} type="text" class="input u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
