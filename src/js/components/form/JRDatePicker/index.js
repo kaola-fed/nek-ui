@@ -1,7 +1,6 @@
 /**
  * ------------------------------------------------------------
  * JRDatePicker 日期选择
- * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
 
@@ -60,7 +59,6 @@ const JRDatePicker = Dropdown.extend({
             open: false,
         });
         this.supr();
-
         this.$watch('date', function (newValue) {
             // 字符类型自动转为日期类型
             if (typeof newValue === 'string') {
@@ -154,20 +152,50 @@ const JRDatePicker = Dropdown.extend({
         this.initValidation();
     },
     /**
+     * @method toggle(open) 展开/收起
+     * @public
+     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
+     * @return {void}
+     */
+    toggle(_open) {
+        if (this.data.disabled) return;
+        let open = _open;
+        if (open === undefined) open = !this.data.open;
+        this.data.open = open;
+
+        // 根据状态在Dropdown.opens列表中添加/删除管理项
+        const index = Dropdown.opens.indexOf(this);
+        if (open && index < 0) Dropdown.opens.push(this);
+        else if (!open && index >= 0) Dropdown.opens.splice(index, 1);
+        if (this.data.date && open) {
+            this.data.date.setMilliseconds(0);
+            this.data._date = new Date(this.data.date);
+            this.data._time = filter.format(this.data.date, 'HH:mm:ss');
+        }
+        /**
+         * @event toggle  展开/收起时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} open 展开/收起状态
+         */
+        this.$emit('toggle', {
+            sender: this,
+            open,
+        });
+    },
+    /**
      * @method select(date) 选择一个日期
      * @public
      * @param  {Date} date 选择的日期
      * @return {void}
      */
-    select(date, time) {
+    select(date, time, flag) {
         if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
             return;
         }
-        this._onDateTimeChange(date, time);
-
-        this._onOk();
-
-        // this.toggle(false);
+        if (flag || !this.data.showTime) {
+            this._onDateTimeChange(date, time);
+            this._onOk();
+        }
     },
     /**
      * 关闭
@@ -246,8 +274,7 @@ const JRDatePicker = Dropdown.extend({
         const result = date ?
             Validation.validate(date.toString(), [
                 { type: 'isDate', message: '请填写' },
-            ]) :
-            { success: false };
+            ]) : { success: false };
         if (data.required && !result.success) {
             result.success = false;
             result.message = this.data.message || '请填写';

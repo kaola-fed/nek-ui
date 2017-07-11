@@ -1,5 +1,6 @@
 ---
 title: 日期选择
+is_beta: true
 ---
 
 ## 代码演示

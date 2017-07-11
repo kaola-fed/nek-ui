@@ -1,5 +1,6 @@
 ---
 title: 下拉选择
+is_beta: true
 ---
 
 ## 代码演示

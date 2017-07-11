@@ -1,6 +1,5 @@
 // Name:            DatePicker
 // Description:     日期选择
-// Author:          sensen(rainforest92@126.com)
 // ========================================================================
 
 
@@ -8,12 +7,22 @@
 // Extends:
 // ========================================================================
 .u-datetimepicker {
+    .date-area{
+        width:270px;
+    }
     .input {
         &-error {
             border-color: $u-formctrl-error-border;
         }
     }
-    .btns {
-        margin-top: 10px;
+    .btn-area{
+        border-top:1px solid #aaa;
+        overflow:hidden;
+        margin-top:10px;
+        .btns {
+        margin: 10px 25px 10px;
+        float:right;
     }
+    }
+    
 }
