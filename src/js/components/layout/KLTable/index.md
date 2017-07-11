@@ -477,6 +477,8 @@ var component = new NEKUI.Component({
 
 ### 多选
 
+通过 `enableCheckAll`
+
 <!-- demo_start -->
 <div class="m-example"></div>
 
@@ -662,7 +664,7 @@ Regular.config({
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 
-如有需要获取外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
+如有需要取得外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
 
 <!-- demo_start -->
 <div class="m-example"></div>

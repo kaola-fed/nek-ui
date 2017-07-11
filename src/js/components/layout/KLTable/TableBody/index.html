@@ -35,9 +35,7 @@
                 r-style={{
                     'text-align': column.align || align
                 }}
-                r-class={{
-                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)
-                }}>
+            >
                 <div class="tb_bd_td_div ">
                     {#if column.template}
                         {#include @(column.template)}
