@@ -49,7 +49,7 @@
                         {#include this._getTypeTemplate(column)}
                     {#else}
                     <!-- deafult template -->
-                        <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>
+                        <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>
                     {/if}
                     {#if column.expandable}
                     <span class="u-expand-sign f-cursor-pointer"

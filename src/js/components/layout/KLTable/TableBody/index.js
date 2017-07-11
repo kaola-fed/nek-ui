@@ -103,9 +103,12 @@ const TableBody = Component.extend({
     item._hover = false;
   },
 })
-  .filter('placeholder', (val) => {
+  .filter('placeholder', (val, column, self) => {
     if (val === null || val === undefined) {
-      return '-';
+      if (column && column.placeholder !== undefined) {
+        return column.placeholder;
+      }
+      return self.data.placeholder;
     }
     return val;
   })

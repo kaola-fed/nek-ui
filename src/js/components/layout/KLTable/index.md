@@ -29,7 +29,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -38,15 +37,20 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 无条纹
+### 显示配置项
+
+1. 无条纹：`strip={false}`
+2. 占位符：默认`placeholder="-"`
+3. 对齐：默认 `align="center"`
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<kl-table strip={false} source={table.source} >
+<kl-table strip={false} source={table.source} placeholder="*" align="left">
     <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="key" key="key" />
+    <kl-table-col name="value" key="value" placeholder="-" align="right"/>
 </kl-table>
 ```
 
@@ -63,48 +67,7 @@ var component = new NEKUI.Component({
             this.data.table.source = [];
             for(var i = 0; i < 3; ++i) {
                 this.data.table.source.push({
-                    title: 'test' + i,
-                    col1: '' + i,
-                    value: 10 * i
-                });
-            }
-            this.$update();
-        }.bind(this), 200);
-    }
-});
-```
-<!-- demo_end -->
-
-### 对齐方式
-
-默认 `align="center"`
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
-<kl-table strip={false} source={table.source} align="left">
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" align="right"/>
-</kl-table>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        table: {
-            source: []
-        }
-    },
-    init: function() {
-        setTimeout(function() {
-            this.data.table.source = [];
-            for(var i = 0; i < 3; ++i) {
-                this.data.table.source.push({
-                    title: 'test' + i,
-                    col1: '' + i,
-                    value: 10 * i
+                    title: 'test' + i
                 });
             }
             this.$update();
@@ -142,7 +105,6 @@ var component = new NEKUI.Component({
             for(var i = 0; i < 3; ++i) {
                 this.data.table.source.push({
                     title: 'test' + i,
-                    col1: '' + i,
                     value: 10 * i
                 });
             }
@@ -232,7 +194,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -266,7 +227,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -380,7 +340,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -423,7 +382,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 5; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i,
                 rowStyle: 'background-color:' + colors[i]
             });
@@ -442,11 +400,7 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
-    <kl-table-col name="title" key="title" customKey="sort_title" sortable >
-        <kl-table-template>
-            123
-        </kl-table-template>
-    </kl-table-col>
+    <kl-table-col name="title" key="title" customKey="sort_title" sortable />
     <kl-table-col name="value" key="value" sortable/>
 </kl-table>
 ```
@@ -468,7 +422,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -511,7 +464,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -529,13 +481,9 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-check
-    name="全选"
-    checked={checkAllStatus}
-/>
-
 <kl-table source={table.source} on-checkchange={this.onCheck($event)}>
-    <kl-table-col name="title" key="title" type="check" />
+    <kl-table-col placeholder="" type="check" enableCheckAll  />
+    <kl-table-col name="title" key="title" type="check"/>
     <kl-table-col name="value" key="value" />
 </kl-table>
 ```
@@ -543,27 +491,6 @@ var component = new NEKUI.Component({
 ```javascript
 var component = new NEKUI.Component({
     template: template,
-    computed: {
-        checkAllStatus: {
-            get: function() {
-                var checkedList = this.data.table.source.filter(function(item) {
-                    return item._checked;
-                });
-
-                return checkedList.length === this.data.table.source.length ? true :
-                                                    checkedList.length > 0 ? null :
-                                                                            false;
-
-            },
-            set: function(val) {
-                if(val !== null) {
-                    this.data.table.source.forEach(function(item) {
-                        item._checked = !!val;
-                    });
-                }
-            }
-        }
-    },
     data: {
         table: {
             source: []
@@ -574,7 +501,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }

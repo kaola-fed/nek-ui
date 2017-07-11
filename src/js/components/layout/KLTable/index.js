@@ -36,6 +36,7 @@ const tpl = require('./index.html');
  * @param {string}      [options.data.children]         => 子表头
  * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
  * @param {string}      [optiosn.data.align='']         => 列文字对齐
+ * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
 
  * @param {string}      [options.data.template]         => 列内容模版
  */
@@ -50,6 +51,32 @@ const tpl = require('./index.html');
 const KLTable = Component.extend({
   name: 'kl-table',
   template: tpl,
+  computed: {
+    checkAll: {
+      get() {
+        if (!this.data.source) {
+          return false;
+        }
+        const checkedList = this.data.source.filter(item => (item._checked));
+        if (checkedList.length === this.data.source.length) {
+          return true;
+        } else if (checkedList.length > 0) {
+          return null;
+        }
+        return false;
+      },
+      set(val) {
+        if (!this.data.source) {
+          return val;
+        }
+        if (val !== null) {
+          this.data.source.forEach((item) => {
+            item._checked = !!val;
+          });
+        }
+      },
+    },
+  },
   config(data) {
     this.defaults({
       stickyHeaderOffset: 0,
@@ -66,6 +93,8 @@ const KLTable = Component.extend({
       sorting: {},
       config: {},
       align: 'center',
+      placeholder: '-',
+      checkAll: false,
       initFinished: false,
     });
     this.supr(data);
@@ -481,11 +510,14 @@ const KLTable = Component.extend({
          * @property {object} item 操作对象
          * @property {object} checkedEvent 多选事件对象源
          */
-    this.$emit('checkchange', {
-      sender: this,
-      item: e.item,
-      checked: e.checked,
-      checkedEvent: e.event,
+    setTimeout(() => {
+      this.$emit('checkchange', {
+        sender: this,
+        item: e.item,
+        checked: e.checked,
+        checkedEvent: e.event,
+        checkAll: this.data.checkAll,
+      });
     });
   },
   _updateFixedRight() {

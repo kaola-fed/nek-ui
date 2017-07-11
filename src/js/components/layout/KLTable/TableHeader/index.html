@@ -57,6 +57,9 @@
                                             <i class="u-icon u-icon-2 {header | sortingClass}"/>
                                         </i>
                                     {/if}
+                                    {#if header.type === 'check' && header.enableCheckAll}
+                                        <kl-check name={header.name} checked={checkAll} />
+                                    {/if}
                                 </span>
                             {/if}
                         </div>

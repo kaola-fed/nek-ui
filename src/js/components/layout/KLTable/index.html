@@ -40,7 +40,9 @@
                 source={source}
                 sorting={sorting}
                 scrollYBar={scrollYBar}
+                checkAll={checkAll}
                 align={align}
+                placeholder={placeholder}
                 on-customevent={this._onCustomEvent($event)}
                 on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
@@ -74,6 +76,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onExpand($event)}/>
@@ -114,6 +117,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-customevent={this._onCustomEvent($event)}
                 on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
@@ -144,6 +148,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -194,6 +199,8 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                checkAll={checkAll}
+                placeholder={placeholder}
                 marginLeft={tableWidth - fixedTableWidthRight}
                 on-customevent={this._onCustomEvent($event)}
                 on-columnresize={this._onColumnResize($event)}
@@ -225,6 +232,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
