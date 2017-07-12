@@ -322,8 +322,9 @@ NEKUI.KLTable.filter('txtFilter', function(val) {
 var component = new NEKUI.Component({
     template: template,
     data: {
+        count: 0,
         table: {
-            source: []
+            source: [],
         },
         pageSize:15,
         current:1,
@@ -355,7 +356,7 @@ var component = new NEKUI.Component({
 
 ### 自定义行样式
 
-通过设置 `item.trClass` 或 `item.trStyle` 修改每一行的样式。
+通过设置 `item.rowClass` 或 `item.rowStyle` 修改每一行的样式。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -382,7 +383,7 @@ var component = new NEKUI.Component({
             this.data.table.source.push({
                 title: 'test' + i,
                 value: 10 * i,
-                trStyle: 'background-color:' + colors[i]
+                rowStyle: 'background-color:' + colors[i]
             });
         }
     }
@@ -529,7 +530,7 @@ var component = new NEKUI.Component({
 ```xml
 <kl-table
     fixedHeader
-    columns={kl-table-columns}
+    columns={table.columns}
     sorting={table.sorting}
     paging={table.paging}
     source={table.source}
@@ -560,6 +561,7 @@ var component = new NEKUI.Component({
                             name: 'col1.2',
                             key: 'value',
                             format: '{item.value} %',
+                            custom: 'sortField',
                             sortable: true
                         },
                         {
