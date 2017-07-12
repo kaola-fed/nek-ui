@@ -6,9 +6,7 @@
 				 z-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
-				{#if !open}
-	            <kl-icon fontSize=12 type="angle_down" class="f-fr hoverHide"/>
-	            {/if}
+	            <kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr {clearable ? 'hoverHide' : ''}"/>
 				{#if clearable}
 				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr hoverShow"/>
 				{/if}
@@ -22,9 +20,7 @@
 	    {#else}
 	        <div class="dropdown_hd"
 	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
-				{#if !open}
-					<kl-icon fontSize=12 type="angle_down" class="f-fr" />
-	            {/if}
+					<kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr" />
 	            {#if open && canSearch}
 	            <div>
 		            <input disabled={disabled} type="text" class="input u-search-input searchInput1" ref="input"

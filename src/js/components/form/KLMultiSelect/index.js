@@ -24,6 +24,9 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
+ * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
+ * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置
+ * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
@@ -50,6 +53,9 @@ const KLMultiSelect = Dropdown.extend({
       hierarchical: false,
       updateAuto: false,
       onlyChild: true,
+      pathString: '>',
+      placement: 'top',
+      showPath: false,
       LI_WEITH: 137,
     });
     data._source = _.clone(data.source || []);
@@ -92,8 +98,7 @@ const KLMultiSelect = Dropdown.extend({
 
     this.initValidation();
   },
-  toggle(open, e) {
-    e && e.stopPropagation();
+  toggle(open) {
     this.supr(open);
   },
   // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
@@ -171,11 +176,29 @@ const KLMultiSelect = Dropdown.extend({
       data.tree[i] = [];
     }
 
+    // 处理路径逻辑
+    let path = '';
+    data.tree.map((item, index) => {
+      if (index <= level) {
+        item.map((item2) => {
+          if (item2.active) {
+            path += item2.name + data.pathString;
+          }
+          return undefined;
+        });
+      }
+      return undefined;
+    });
+    path = path.substring(0, path.lastIndexOf(data.pathString));
+
     if (
       !show &&
       (!data.multiple && (!(cate[data.childKey] && cate[data.childKey].length) || (!data.onlyChild)))
     ) {
       data.value = cate[data.key].toString();
+      if (data.showPath && !data.multiple) {
+        cate.path = path;
+      }
       data.selected = [cate];
       data.open = false;
       /**
