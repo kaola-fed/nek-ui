@@ -337,8 +337,7 @@ const KLSelect = Dropdown.extend({
     this.select(undefined);
     this.data.open = false;
   },
-  toggle(open, e) {
-    e && e.stopPropagation();
+  toggle(open) {
     const data = this.data;
     data.canSearch && this.clearSearchValue();
     this.supr(open);
