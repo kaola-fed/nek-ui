@@ -4565,13 +4565,17 @@ input.u-check:disabled,input.u-radio:disabled{
 	max-height:84px;
 	overflow-y:auto;
 }
+.u-multi .dropdown_hd .selected-tag{
+	height:18px;
+	line-height:18px;
+}
 .u-multi .dropdown_hd .selectedTagMore{
 	overflow:hidden;
 	text-overflow:ellipsis;
 	max-width:150px;
 }
 .u-multi .cateWrap{
-	width:412px;
+	max-width:412px;
 	overflow-x:auto;
 	white-space:nowrap;
 	position:absolute;
@@ -4616,6 +4620,13 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-multi .cateWrap li:hover{
 	background-color:#f6f9fc;
+}
+.u-multi .cateWrap li .onlyChild{
+	background-color:#fff;
+	font-size:12px;
+}
+.u-multi .cateWrap li .onlyChild:hover{
+	background-color:#ddd;
 }
 .u-multi .cateWrap .u-input,.u-multi .cateWrap .input_wrap{
 	height:32px;
@@ -4712,7 +4723,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	border:1px solid #ddd;
 	-moz-border-radius:2px;
 	border-radius:2px;
-	font-size:12px;
 	overflow-y:auto;
 }
 .u-select .dropdown_hd .u-icon{
@@ -4723,6 +4733,19 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-select .dropdown_hd .u-select-errorIcon{
 	position:relative;
 	top:-28px;
+}
+.u-select .dropdown_hd .hoverShow{
+	display:none;
+}
+.u-select .dropdown_hd:hover .hoverShow{
+	display:inline-block;
+}
+.u-select .dropdown_hd:hover .hoverHide{
+	display:none;
+}
+.u-select .dropdown_hd span{
+	float:left;
+	font-size:12px;
 }
 .u-select .selected-tag{
 	position:relative;
