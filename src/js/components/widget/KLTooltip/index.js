@@ -35,6 +35,7 @@ const TipPopUp = Component.extend({
  * @extend Component
  * @param {object}          [options.data]                  = 绑定属性
  * @param {string}          [options.data.tip]              => 文字提示
+ * @param {string}          [options.data.class]              => 增加class
  * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
  */
 const KLTooltip = Component.extend({
