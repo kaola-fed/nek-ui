@@ -1,4 +1,5 @@
 const Component = require('../../../../ui-base/component');
+const _ = require('../../../../ui-base/_');
 const KLTableTemplate = require('../KLTableTemplate');
 const KLTable = require('../index');
 
@@ -26,10 +27,11 @@ const KLTableCol = Component.extend({
   name: 'kl-table-col',
   template:
     '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-  config() {
+  config(data) {
     this.defaults({
       _innerColumns: [],
       colSpan: 1,
+      custom: data,
     });
   },
   init() {
@@ -54,7 +56,7 @@ const KLTableCol = Component.extend({
   _push2Columns(columns) {
     const data = this.data;
     columns &&
-      columns.push({
+      columns.push(_.extend({
         name: data.name,
         key: data.key,
         type: data.type,
@@ -76,7 +78,7 @@ const KLTableCol = Component.extend({
         headerFormatter: data.headerFormatter,
         headerFormat: data.headerFormat,
         expandTemplate: data._expandTemplate,
-      });
+      }, data.custom));
   },
 }).component('kl-table-tempalte', KLTableTemplate);
 
