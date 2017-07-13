@@ -41,7 +41,6 @@ const Calendar = Component.extend({
             _days: [],
         });
         this.supr();
-
         this.$watch('date', function (newValue, oldValue) {
             // 字符类型自动转为日期类型
             if (typeof newValue === 'string') {
@@ -61,7 +60,13 @@ const Calendar = Component.extend({
                 ));
             }
 
-            if (newValue === 'Invalid Date') throw new TypeError('Invalid Date');
+            if (newValue === 'Invalid Date') {
+                if (oldValue) {
+                    this.data.date = new Date();
+                }
+                return;
+                // throw new TypeError('Invalid Date');
+            }
 
             // 如果超出日期范围，则设置为范围边界的日期
             const isOutOfRange = this.isOutOfRange(newValue);

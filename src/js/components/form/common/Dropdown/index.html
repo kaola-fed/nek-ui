@@ -1,10 +1,7 @@
 <div class="u-dropdown {class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" z-dis={disabled} on-click={this.toggle()}>
-        {#if this.$body}
-            {#inc this.$body}
-        {#else}
-            <a class="u-btn" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class="u-icon u-icon-caret-down"></i></a>
-        {/if}
+        {#if this.$body} {#inc this.$body} {#else}
+        <a class="u-btn" title={title || this.$trans( 'DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class="u-icon u-icon-caret-down"></i></a> {/if}
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">

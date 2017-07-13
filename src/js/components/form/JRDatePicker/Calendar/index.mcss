@@ -65,7 +65,7 @@
 // Varibles:
 // ========================================================================
 
-$u-calendar_item_width = 32px;
+$u-calendar_item_width = 35px;
 $u-calendar_item_height = 30px;
 
 

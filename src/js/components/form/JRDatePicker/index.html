@@ -17,6 +17,7 @@
                 <time-picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)} />
                 <div class='btn-area'>
                     <jr-button class="btns" type="primary" on-click={this.select(_date,_time,true)} title="确定" size="sm" />
+                    <jr-button class="btns" style="margin-right:5px" type="default" on-click={this._onClose()} title="取消" size="sm" />
                 </div>
                 {/if}
             </calendar>

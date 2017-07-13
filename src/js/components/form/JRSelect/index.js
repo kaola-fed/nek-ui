@@ -324,8 +324,8 @@ const JRSelect = Dropdown.extend({
             }
             this.toggle(false);
         },
-        clearContent() {
-            // e && e.stopPropagation();
+        clearContent(e) {
+            e && e.stopPropagation();
             this.data.searchValue = '';
         },
         toggle(open) {

@@ -14,7 +14,7 @@ UI components based on [RegularJS][regularjs]
  //dist/js/JR.min.js
  ```
 
- - For Node(暂未实现):
+ - For Node(lose):
  ```
  npm i regularjs@0.4.3 JR -S
 
@@ -23,6 +23,9 @@ UI components based on [RegularJS][regularjs]
  ```
 
 
+### sinppets
+   ##vscode##
+ >File > Preferences (Code > Preferences on Mac) > Snippets，选择 HTML，把 [snippets.json](snippet/vscode/snippets.json) 内容拷贝进去
 
 ### Reference
 
