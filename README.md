@@ -24,9 +24,9 @@ UI components based on [RegularJS][regularjs]
 
 
 ### sinppets(代码片段)
-   ## vscode ##
- File > Preferences (Code > Preferences on Mac) > Snippets，选择 HTML，把 [snippets.json](snippet/vscode/snippets.json) 内容拷贝进去
-   ## atom，subline，textmate ##
+- vscode
+File > Preferences (Code > Preferences on Mac) > Snippets，选择 HTML，把 [snippets.json](snippet/vscode/snippets.json) 内容拷贝进去
+- atom，subline，textmate
  其他编辑器可以基于[vscode](snippet/vscode/snippets.json)，使用[node-atomizr](https://github.com/idleberg/node-atomizr) 进行转换  
 
 ### Reference
