@@ -106,13 +106,18 @@ gulp.task('source-copy', function(done) {
         gulp.src('./dist/fonts/**').pipe(gulp.dest('./doc/public/JR/fonts')),
         gulp.src('./dist/vendor/regular.min.js').pipe(gulp.dest('./doc/public/JR/vendor'))
     );
-})
-
-gulp.task('default', function(done) {
-    sequence('dist', 'gen-doc', 'source-copy', 'reload', done);
 });
 
-gulp.task('server', ['default'], function() {
+// 代码片段拷贝
+gulp.task('snippet-copy', function(){
+    return gulp.src('./snippet/**').pipe(gulp.dest('./dist/snippet'));
+});
+
+gulp.task('default', function (done) {
+    sequence('dist', 'gen-doc', 'source-copy', 'snippet-copy', 'reload', done);
+});
+
+gulp.task('server', ['default'], function () {
     browserSync.init({
         server: {
             // baseDir: ['./doc/public', './dist'],

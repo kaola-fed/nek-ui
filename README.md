@@ -34,7 +34,7 @@ File > Preferences (Code > Preferences on Mac) > Snippets，选择 HTML，把 [s
 
 ### Reference
 
- - [nek](https://regular-ui.github.io/) - forked from
+ - [nek](https://github.com/kaola-fed/nek-ui) - forked from
  - [Vue](https://cn.vuejs.org/) - docs style
  - [Ant Design](https://ant.design/) - ideas
  - [Element](http://element.eleme.io) - ideas

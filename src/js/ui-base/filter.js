@@ -29,9 +29,8 @@ exports.format = (function () {
     if (!_value) {
       return '';
     }
-    const format = _format || 'yyyy-MM-dd HH:mm';
+    const format = _format || 'yyyy-MM-dd HH:mm:ss';
     const value = new Date(_value);
-
     return format.replace(
       trunk,
       capture => (maps[capture] ? maps[capture](value) : ''),
