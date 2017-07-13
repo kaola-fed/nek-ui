@@ -1,7 +1,7 @@
 <div class="u-dropdown u-select u-select-{state} u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open, $event)}>
         {#list selected as item}
-        {#if showPath}
+        {#if showPath && placement}
         <kl-tooltip tip={item.path} placement={placement}>
             <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
                 <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>

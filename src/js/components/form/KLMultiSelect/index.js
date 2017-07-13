@@ -25,7 +25,7 @@ const _ = require('../../../ui-base/_');
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
  * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
- * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置
+ * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，如果填 false 则不展示 tooltip，但是还是会抛出该数据
  * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
@@ -177,19 +177,21 @@ const KLMultiSelect = Dropdown.extend({
     }
 
     // 处理路径逻辑
-    let path = '';
+    const pathArray = [];
+    let path = [];
     data.tree.map((item, index) => {
       if (index <= level) {
         item.map((item2) => {
           if (item2.active) {
-            path += item2.name + data.pathString;
+            pathArray.push(item2);
+            path.push(item2[data.nameKey]);
           }
           return undefined;
         });
       }
       return undefined;
     });
-    path = path.substring(0, path.lastIndexOf(data.pathString));
+    path = path.join(data.pathString);
 
     if (
       !show &&
@@ -198,6 +200,7 @@ const KLMultiSelect = Dropdown.extend({
       data.value = cate[data.key].toString();
       if (data.showPath && !data.multiple) {
         cate.path = path;
+        cate.pathArray = pathArray;
       }
       data.selected = [cate];
       data.open = false;

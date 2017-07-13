@@ -51,7 +51,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 ### 展示路径
-#### 路径的值是 selected.path
+#### 选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -90,7 +90,7 @@ var component = new NEKUI.Component({
         ],
         value: '',
         showPath: true,
-        placement: 'top',
+        placement: false,
         pathString: '>'
     },
     selected: function(event) {

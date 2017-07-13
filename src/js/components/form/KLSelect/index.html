@@ -10,12 +10,13 @@
 				{#if clearable}
 				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr hoverShow"/>
 				{/if}
-	            {#if open && canSearch}
-	                <input disabled={disabled} type="text" class="input u-search-input" r-autofocus
-	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
-	            {#else}
-	                <span>{selected?selected[nameKey]:placeholder}</span>
-	            {/if}
+				{#if open && canSearch}
+				<input disabled={disabled} type="text" class="input u-search-input" r-autofocus
+						placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
+				{/if}
+				<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，
+					如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->
+				<span r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
@@ -25,7 +26,7 @@
 	            <div>
 		            <input disabled={disabled} type="text" class="input u-search-input searchInput1" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
-		            <kl-icon type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
+		            <kl-icon fontSize=12 type="error" on-click={this.clearContent($event)} class="u-select-errorIcon"/>
 	            </div>
 	            {/if}
 	            {#list selected as item}
