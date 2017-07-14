@@ -106,7 +106,7 @@ $m-tabs-vertical_hd_li_width = 120px;
             //border-color: $m-tabs_hd_border;
             //$box-shadow: 0 -3px $brand-primary;
             //padding-bottom: $border-width-base;
-            border-top: 3px solid #D9244E;
+            border-top: 3px solid $brand-primary;
             height: 32px;
             line-height: 28px;
         }
