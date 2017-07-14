@@ -11,7 +11,7 @@
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type}</span>
         {/if}
-        <div class="m-delete" r-hide={!deletable} on-click={this.onDelete()}><i class="u-icon u-icon-error"></i></div>
+        <div class="m-delete" r-hide={readonly} on-click={this.onDelete()}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">
             {#if status === 'failed'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>

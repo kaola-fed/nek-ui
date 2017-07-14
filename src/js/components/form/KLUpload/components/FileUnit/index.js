@@ -22,7 +22,7 @@ const FileUnit = Component.extend({
     _.extend(data, {
       info: '',
       status: '',
-      deletable: true,
+      readonly: false,
       delConfirm: false,
     });
 

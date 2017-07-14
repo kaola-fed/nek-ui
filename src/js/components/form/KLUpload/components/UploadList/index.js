@@ -6,7 +6,7 @@
 
 const FileUnit = require('../FileUnit');
 const UploadBase = require('../UploadBase');
-const ImagePreview = require('../ImagePreview');
+const KLImagePreview = require('../KLImagePreview');
 const tpl = require('./index.html');
 
 /**
@@ -85,7 +85,7 @@ const UploadList = UploadBase.extend({
           fileunit = this.createFileUnit({
             file,
             options,
-            deletable: data.deletable,
+            readonly: data.readonly
           });
           fileunit.flag = 'ADDED';
           data.fileUnitList.push({
@@ -142,7 +142,7 @@ const UploadList = UploadBase.extend({
       }
       const imgList = imgFileList.map(mapHelper);
 
-      const imagePreview = new ImagePreview({
+      const imagePreview = new KLImagePreview({
         data: {
           imgList,
           curIndex,

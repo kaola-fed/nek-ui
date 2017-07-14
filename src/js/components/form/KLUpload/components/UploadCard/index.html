@@ -37,7 +37,7 @@
             </div>
             <div class="m-entry-info">{info}</div>
         </div>
-        <div ref="inputwrapper" class="u-input-wrapper" on-click={this.fileDialogOpen()}>
+        <div ref="inputwrapper" class="u-input-wrapper" r-hide={readonly} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}

@@ -1,6 +1,6 @@
 /**
  *  ------------------------------
- *  image preview
+ *  KLImagePreview 图片预览
  *  ------------------------------
  */
 
@@ -9,8 +9,21 @@ const _ = require('../../../../../ui-base/_');
 const KLModal = require('../../../../notice/KLModal');
 const tpl = require('./index.html');
 
-const ImagePreview = Component.extend({
-  name: 'image-preview',
+/**
+ * @class KLImagePreview
+ * @extend Component
+ * @param {object}         [options.data]                  = 绑定属性
+ * @param {string}         [options.data.action]           => 必选，上传地址
+ * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+ *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+ *                                                             name: 文件名称
+ *                                                             url: 文件的路径
+ *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+ * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+ */
+
+const KLImagePreview = Component.extend({
+  name: 'kl-image-preview',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     _.extend(data, {
@@ -314,4 +327,4 @@ const ImagePreview = Component.extend({
   },
 });
 
-module.exports = ImagePreview;
+module.exports = KLImagePreview;

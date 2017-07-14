@@ -29,7 +29,8 @@ const tpl = require('./index.html');
  * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
  * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
  * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
- * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+ * @param {boolean}        [options.data.readonly]         => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
+ *                                                             默认false，允许上传和删除图片
  */
 const KLUpload = Component.extend({
   name: 'kl-upload',
@@ -47,7 +48,7 @@ const KLUpload = Component.extend({
       numLimit: 10,
       numPerline: 5,
       maxSize: Config.sizeMap.GB,
-      deletable: true,
+      readonly: false,
       encType: 'multipart/form-data',
     });
 

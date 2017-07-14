@@ -2,12 +2,11 @@
     <ul ref="fileswrapper" class="m-filelist" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>
     <form method="POST" action={url} target="iframe{_id}" enctype={encType} ref="form">
         <input type="file" name={name} ref="file" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>
-
         {#list Object.keys(data) as key}
             <input type="hidden" name={key} value={data[key]}>
         {/list}
     </form>
-    <li ref="inputwrapper" class="u-input-wrapper" on-click={this.fileDialogOpen()} r-hide={true}>
+    <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly} on-click={this.fileDialogOpen()}>
         {#if this.$body}
             {#inc this.$body}
         {#else}
