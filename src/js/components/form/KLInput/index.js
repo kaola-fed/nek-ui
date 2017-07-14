@@ -130,6 +130,14 @@ const KLInput = Component.extend({
      * @return {object} result 结果
      */
   validate(on = '') {
+    const { readonly, disabled } = this.data;
+    // 如果是readonly或者disabled状态, 无需验证
+    if (readonly || disabled) {
+      return {
+        success: true
+      }
+    }
+
     const value =
       this.data.value || this.data.value === 0 ? `${this.data.value}` : '';
     let rules = this.data.rules;

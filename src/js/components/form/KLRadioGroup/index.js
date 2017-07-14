@@ -125,6 +125,13 @@ const KLRadioGroup = SourceComponent.extend({
     const result = { success: true, message: '' };
     const selected = data.selected;
 
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true
+      }
+    }
+
     if (data.required && !selected) {
       result.success = false;
       result.message = this.data.message || this.$trans('PLEASE_SELECT');

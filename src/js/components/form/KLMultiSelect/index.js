@@ -271,6 +271,13 @@ const KLMultiSelect = Dropdown.extend({
   validate(on) {
     const data = this.data;
 
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true
+      }
+    }
+
     const result = { success: true, message: '' };
     let value = this.data.value;
 
