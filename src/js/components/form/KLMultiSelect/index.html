@@ -21,12 +21,12 @@
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
             <ul r-animation="on: leave; class: animated fadeOutX fast;">
-                <kl-input value={search[level]}></kl-input>
+                <kl-input value={search[level]}  readonly={readonly}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}
                 <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
-                	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])} ></kl-check>
+                	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
                     <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
                     {#if cate[childKey] && cate[childKey].length}<span class="more" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
@@ -42,5 +42,5 @@
         </div>
     </div>
     {/if}
-    {#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>
+{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}

@@ -162,6 +162,9 @@ const KLMultiSelect = Dropdown.extend({
   viewCate(cate, level, show, e) {
     e && e.stopPropagation();
     const data = this.data;
+    if(data.disabled || data.readonly) {
+      return;
+    }
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
     for (let i = level; i < level + 2; i += 1) {
@@ -243,6 +246,9 @@ const KLMultiSelect = Dropdown.extend({
   checkCate(cate, level, checked) {
     const _checked = !checked;
     const data = this.data;
+    if(data.disabled || data.readonly) {
+      return;
+    }
     cate[data.checkKey] = _checked;
     this.setCheck(cate[data.childKey], _checked);
 
@@ -309,6 +315,9 @@ const KLMultiSelect = Dropdown.extend({
   // 删除某一项
   delete(event, item) {
     event && event.stopPropagation();
+    if(data.disabled || data.readonly) {
+      return;
+    }
     this.toggle(true);
     const data = this.data;
     const _list = data.value.toString().split(data.separator);

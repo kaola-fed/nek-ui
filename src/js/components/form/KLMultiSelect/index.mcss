@@ -89,3 +89,11 @@
 		}
 	}
 }
+.u-multi.z-dis {
+	.dropdown_hd {
+        cursor: not-allowed;
+        background: $u-formctrl-disabled_background;
+        $border: $u-formctrl-disabled_border;
+        color: $u-formctrl-disabled_color;
+    }
+}
