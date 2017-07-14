@@ -1,4 +1,4 @@
-<div class="u-dropdown u-select u-select-{state} u-multi u-multi{class}" z-dis={disabled} r-hide={!visible} ref="element">
+<div class="u-dropdown u-select u-select-{state} u-multi u-multi{class}" r-width={width} z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open, $event)}>
         {#list selected as item}
         {#if showPath && placement}

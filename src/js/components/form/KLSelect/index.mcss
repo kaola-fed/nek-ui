@@ -74,6 +74,9 @@
         &:last-child{
             margin-bottom: 6px;
         }
+        .z-dis {
+            cursor: not-allowed;
+        }
     }
 
     .selectedTagMore {
