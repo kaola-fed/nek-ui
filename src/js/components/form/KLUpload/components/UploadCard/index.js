@@ -65,8 +65,7 @@ const UploadCard = UploadBase.extend({
         if (!data.preCheckInfo) {
           fileunit = this.createFileUnit({
             file,
-            options,
-            readonly: data.readonly
+            options
           });
           fileunit.flag = 'ADDED';
           data.fileUnitList.push({

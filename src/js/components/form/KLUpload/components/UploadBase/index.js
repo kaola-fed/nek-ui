@@ -67,11 +67,11 @@ const UploadBase = Component.extend({
 
     if (data.fileList.length > 0) {
       const fileList = data.fileList.splice(0);
+      const options = this.setOptions(data);
       fileList.forEach((file) => {
         const fileunit = self.createFileUnit({
           file,
-          options: {},
-          readonly: data.readonly
+          options
         });
 
         fileunit.flag = 'ORIGINAL';
@@ -183,6 +183,8 @@ const UploadBase = Component.extend({
 
     return {
       url: opts.action,
+      name: opts.name,
+      readonly: opts.readonly
     };
   },
 
