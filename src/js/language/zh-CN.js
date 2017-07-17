@@ -35,6 +35,6 @@ module.exports = {
   DOWNLOAD_FILE: '下载',
   UPLOAD_FAIL: '上传失败',
   UNKNOWN: '未知',
-  DELETE_CONFIRM: '确认删除',
+  REMOVE_CONFIRM: '确认删除',
   LIMIT_ERROR: 'limit 应该为数字',
 };

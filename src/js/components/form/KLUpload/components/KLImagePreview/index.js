@@ -65,7 +65,7 @@ const KLImagePreview = Component.extend({
           fnName: 'rotate',
         },
         {
-          name: 'delete',
+          name: 'remove',
           icon: 'delete',
           fnName: 'onDel',
         },
@@ -233,7 +233,7 @@ const KLImagePreview = Component.extend({
 
     const modal = new KLModal({
       data: {
-        content: `${this.$trans('DELETE_CONFIRM') + img.name}?`,
+        content: `${this.$trans('REMOVE_CONFIRM') + img.name}?`,
       },
     });
     modal.$on('ok', () => {
@@ -242,7 +242,7 @@ const KLImagePreview = Component.extend({
       if (!imgList[index]) {
         data.curIndex = 0;
       }
-      self.$emit('delete', {
+      self.$emit('remove', {
         name: img.name,
         index,
       });

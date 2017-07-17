@@ -149,12 +149,12 @@ const UploadCard = UploadBase.extend({
         },
       });
 
-      imagePreview.$on('delete', (imgInfo) => {
+      imagePreview.$on('remove', (imgInfo) => {
         const index = imgInfo.index;
         const imgInst = imgFileList[index];
 
         if (imgInst) {
-          imgInst.$emit('delete');
+          imgInst.$emit('remove');
         }
       });
 
@@ -186,12 +186,17 @@ const UploadCard = UploadBase.extend({
         self.data.progress = info.progress;
         self.$update();
       }
+      self.$emit(
+        'progress',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
     }
 
-    fileunit.$on('onload', successCb);
-    // fileunit.$on('success', successCb);
+    fileunit.$on('success', successCb);
 
-    function successCb() {
+    function successCb(info) {
       let allUploaded = true;
       let hasFailed = false;
       self.data.fileUnitList.forEach((item) => {
@@ -205,27 +210,45 @@ const UploadCard = UploadBase.extend({
       }
       self.$update();
       self.updateFileList();
+      self.$emit(
+        'success',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
     }
 
-    fileunit.$on('error', () => {
+    fileunit.$on('error', (info) => {
       self.data.status = 'failed';
       self.data.info = self.$trans('UPLOAD_FAIL');
       self.$update();
+      self.$emit(
+        'error',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
     });
 
-    fileunit.$on('delete', function () {
+    fileunit.$on('remove', function (info) {
       if (this.flag === 'ORIGINAL') {
         this.flag = 'DELETED';
         this.file = this.data.file;
       }
-      this.destroy();
+      self.$emit(
+        'remove',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
+      self.destroy();
     });
 
     fileunit.$on('$destroy', function () {
       self.toggle(false);
       this.destroyed = true;
       this.$off('preview', previewCb);
-      this.$off('onload', successCb);
+      this.$off('success', successCb);
       self.updateFileList();
       self.updateFilesZone();
       resetStatus();

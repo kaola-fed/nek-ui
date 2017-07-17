@@ -14,7 +14,7 @@
             <ul class="m-btn-group">
                 {#list opList as op}
                     <li class="m-btn-item" r-style={{"margin-right": op.name === 'zoomIn' ? '30px' : 0}}>
-                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'delete'}
+                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'remove'}
                             <a class="u-download" href={imgList[curIndex].src} download={imgList[curIndex].name}><i class="u-icon u-icon-export"></i></a>
                         {#elseif op.name === 'zoomIn'}
                             <i class="u-icon u-icon-{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)}></i>

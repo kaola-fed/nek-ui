@@ -88,37 +88,62 @@ const FileUnit = Component.extend({
 
     let options = {
       upload: {
-        onload(e) {
-          data.progress = '100%';
-          self.$update();
-          self.$emit('success', { progress: data.progress, info: e });
-        },
         onprogress(e) {
           data.status = 'uploading';
           data.progress = `${parseInt((e.loaded / e.total) * 100)}%`;
           self.$update();
-          self.$emit('progress', { progress: data.progress });
-        },
+          
+          const emitItem = {
+            sender: self,
+            event: e,
+            progress: data.progress,
+            file: file,
+            status: data.status
+          };
+          
+          self.$emit('progress', emitItem);
+        }
       },
       onload(e) {
         const target = e.target;
-        if (target.status === 200) {
+        const status = target.status;
+        data.progress = '100%';
+        const emitItem = {
+          sender: self,
+          event: e,
+          progress: data.progress,
+          file: file
+        };
+        
+        if ((status >= 200 && status < 300) || status == 304) {
           const response = JSON.parse(target.responseText);
-          self.data.file.url = response.url;
-          self.data.status = 'uploaded';
-          self.data.info = '';
+          data.file.url = response.url;
+          data.status = 'uploaded';
+          data.info = '';
+          emitItem.status = data.status;
+          self.$emit('success', emitItem);
         } else {
           data.status = 'failed';
           data.info = self.$trans('UPLOAD_FAIL');
+          emitItem.status = data.status;
+          self.$emit('error', emitItem);
         }
+        
         self.$update();
-        self.$emit('onload', { info: e });
       },
       onerror(e) {
         data.status = 'failed';
         data.info = self.$trans('UPLOAD_FAIL');
         self.$update();
-        self.$emit('error', { info: e });
+
+        const emitItem = {
+          sender: self,
+          event: e,
+          progress: data.progress,
+          file: file,
+          status: data.status
+        };
+        self.$emit('error', emitItem);
       },
     };
 
@@ -126,27 +151,40 @@ const FileUnit = Component.extend({
     upload(options.url, file, options);
   },
 
-  onDelete() {
+  onRemove(e) {
     const self = this;
     const data = this.data;
+    const emitItem = {
+      sender: this,
+      event: e,
+      file: data.file,
+      status: data.status
+    };
 
     if (data.delConfirm) {
       const modal = new KLModal({
         data: {
-          content: `${this.$trans('DELETE_CONFIRM') + data.name}?`,
+          content: `${this.$trans('REMOVE_CONFIRM') + data.name}?`,
         },
       });
       modal.$on('ok', () => {
-        self.$emit('delete');
+        self.$emit('remove', emitItem);
       });
     } else {
-      self.$emit('delete');
+      self.$emit('remove', emitItem);
     }
   },
 
-  onPreview() {
-    this.$emit('preview');
-  },
+  onPreview(e) {
+    const data = this.data;
+    const emitItem = {
+      sender: this,
+      event: e,
+      file: data.file,
+      status: data.status
+    };
+    this.$emit('preview', emitItem);
+  }
 });
 
 module.exports = FileUnit;

@@ -27,7 +27,7 @@ const Config = require('../../config');
  * @param {number}    [options.data.num-perline]   => 可选，每行展示的文件个数，默认每行展示5个
  * @param {number}    [options.data.max-size]      => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}   [options.data.readonly]      => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
- *                                                             默认false，允许上传和删除图片
+ *                                                     默认false，允许上传和删除图片
  */
 const UploadBase = Component.extend({
   config(data) {

@@ -120,12 +120,12 @@ const UploadList = UploadBase.extend({
         },
       });
 
-      imagePreview.$on('delete', (imgInfo) => {
+      imagePreview.$on('remove', (imgInfo) => {
         const index = imgInfo.index;
         const imgInst = imgFileList[index];
 
         if (imgInst) {
-          imgInst.$emit('delete');
+          imgInst.$emit('remove');
         }
       });
 
@@ -136,19 +136,46 @@ const UploadList = UploadBase.extend({
       return imagePreview;
     }
 
-    fileunit.$on('onload', () => {
+    fileunit.$on('success', (info) => {
       self.updateFileList();
+      self.$emit(
+        'success',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
+    });
+    
+    fileunit.$on('progress', function (info) {
+       self.$emit(
+         'progress',
+         _.extend(info, {
+           fileList: self.data.fileList
+         })
+       );
+    });
+    
+    fileunit.$on('error', function (info) {
+      self.updateFileList();
+      self.$emit(
+        'error',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
     });
 
-    fileunit.$on('success', () => {
-      self.updateFileList();
-    });
-
-    fileunit.$on('delete', function () {
+    fileunit.$on('remove', function (info) {
       if (this.flag === 'ORIGINAL') {
         this.flag = 'DELETED';
         this.file = this.data.file;
       }
+      self.$emit(
+        'remove',
+        _.extend(info, {
+          fileList: self.data.fileList
+        })
+      );
       this.destroy();
     });
 
