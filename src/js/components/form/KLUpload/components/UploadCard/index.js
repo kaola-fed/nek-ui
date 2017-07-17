@@ -19,62 +19,30 @@ const UploadCard = UploadBase.extend({
   name: 'upload-card',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
+    this.supr(data);
+    
     _.extend(data, {
       status: 'uploaded',
       info: '',
-      fileUnitListPadding: 22,
+      fileUnitWidth: 50,
+      fileUnitMargin: 25,
+      fileUnitListPadding: 22
     });
-
-    this.supr(data);
   },
 
   init(data) {
-    this.initFilesZone();
+    this.initFilesZone(data);
+    
     this.supr(data);
   },
 
-  initFilesZone() {
-    const data = this.data;
+  initFilesZone(data) {
     const numPerline = data.numPerline;
     const fileUnitWidth = data.fileUnitWidth;
     const fileUnitMargin = data.fileUnitMargin;
 
     data.filesWrapper = this.$refs.fileswrapper;
-    data.fileUnitListWidth =
-      (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
-  },
-
-  onDragEnter(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDragOver(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDrop(e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (!this.data.drag) {
-      return;
-    }
-
-    const dt = e.event && e.event.dataTransfer;
-    const files = dt.files;
-
-    this.handleFiles(files);
-  },
-
-  fileSelect() {
-    const inputNode = this.$refs.file;
-    const files = inputNode.files;
-
-    this.handleFiles(files);
-
-    inputNode.value = '';
+    data.fileUnitListWidth = (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
   },
 
   handleFiles(files) {

@@ -4,6 +4,7 @@
  *  ------------------------------
  */
 
+const _ = require('../../../../../ui-base/_');
 const FileUnit = require('../FileUnit');
 const UploadBase = require('../UploadBase');
 const KLImagePreview = require('../KLImagePreview');
@@ -18,52 +19,23 @@ const UploadList = UploadBase.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     this.supr(data);
+    
+    _.extend(data, {
+      fileUnitWidth: 50,
+      fileUnitMargin: 25
+    });
   },
 
   init(data) {
-    this.initFilesWrapper();
+    this.initFilesWrapper(data);
+    
     this.supr(data);
   },
 
-  initFilesWrapper() {
-    const data = this.data;
+  initFilesWrapper(data) {
     data.inputWrapper = this.$refs.inputwrapper;
     data.filesWrapper = this.$refs.fileswrapper;
     data.filesWrapper.appendChild(data.inputWrapper);
-    data.inputWrapper.style.display = 'inline-block';
-  },
-
-  onDragEnter(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDragOver(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDrop(e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (!this.data.drag) {
-      return;
-    }
-
-    const dt = e.event && e.event.dataTransfer;
-    const files = dt.files;
-
-    this.handleFiles(files);
-  },
-
-  fileSelect() {
-    const inputNode = this.$refs.file;
-    const files = inputNode.files;
-
-    this.handleFiles(files);
-
-    inputNode.value = '';
   },
 
   handleFiles(files) {

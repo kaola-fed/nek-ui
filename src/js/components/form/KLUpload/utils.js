@@ -8,14 +8,13 @@ const defaults = {
 function upload(url, src, options) {
   const fd = new FormData();
   let data = src;
+  let name = options.name || 'file';
 
   if (src instanceof File) {
-    data = {
-      file: src,
-    };
+    data[name] = src;
   }
 
-  for (const key in data) {
+  for (let key in data) {
     if (data.hasOwnProperty(key)) {
       fd.append(key, data[key]);
     }
@@ -33,7 +32,7 @@ function ajax(options) {
 
   xhr.open(options.type, options.url, options.async);
 
-  for (const key in headers) {
+  for (let key in headers) {
     if (headers.hasOwnProperty(key)) {
       xhr.setRequestHeader(key, headers[key]);
     }
@@ -41,22 +40,19 @@ function ajax(options) {
 
   const noop = function () {};
   const onerror = options.onerror || noop;
+  const onDownloadLoad = options.onload || noop;
+  const onDownloadProgress = options.onprogress || noop;
 
-  const onload = options.onload || noop;
-
-  const onprogress = options.onprogress || noop;
-
-  xhr.addEventListener('load', onload);
+  xhr.addEventListener('load', onDownloadLoad);
   xhr.addEventListener('error', onerror);
-  xhr.addEventListener('progress', onprogress);
+  xhr.addEventListener('progress', onDownloadProgress);
 
   if (options.upload) {
-    const onuploadLoad = options.upload.onload || noop;
+    const onUploadLoad = options.upload.onload || noop;
+    const onUploadProgress = options.upload.onprogress || noop;
 
-    const onuploadProgress = options.upload.onprogress || noop;
-
-    xhr.upload.addEventListener('load', onuploadLoad);
-    xhr.upload.addEventListener('progress', onuploadProgress);
+    xhr.upload.addEventListener('load', onUploadLoad);
+    xhr.upload.addEventListener('progress', onUploadProgress);
   }
 
   xhr.send(options.data);
