@@ -42,8 +42,8 @@ const UploadBase = Component.extend({
       listType: 'list',
       fileList: [],
       data: {},
-      numLimit: 10,
-      numPerline: 5,
+      numLimit: Infinity,
+      numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
       encType: 'multipart/form-data'

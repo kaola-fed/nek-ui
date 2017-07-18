@@ -22,6 +22,7 @@ const FileUnit = Component.extend({
     _.extend(data, {
       info: '',
       status: '',
+      progress: '0%',
       readonly: false,
       delConfirm: false,
     });
@@ -90,7 +91,7 @@ const FileUnit = Component.extend({
       upload: {
         onprogress(e) {
           data.status = 'uploading';
-          data.progress = `${parseInt((e.loaded / e.total) * 100)}%`;
+          data.progress = `${parseInt((e.loaded / e.total || 0) * 100)}%`;
           self.$update();
           
           const emitItem = {

@@ -22,8 +22,10 @@ const UploadList = UploadBase.extend({
     
     _.extend(data, {
       fileUnitWidth: 50,
-      fileUnitMargin: 25
+      fileUnitMargin: 25,
+      fileWrapperWidth: '100%'
     });
+
   },
 
   init(data) {
@@ -36,6 +38,16 @@ const UploadList = UploadBase.extend({
     data.inputWrapper = this.$refs.inputwrapper;
     data.filesWrapper = this.$refs.fileswrapper;
     data.filesWrapper.appendChild(data.inputWrapper);
+    this.initFileWrapperStyle(data);
+  },
+  
+  initFileWrapperStyle: function(data) {
+    const fileUnitWidth = data.fileUnitWidth;
+    const numPerline = data.numPerline;
+    const fileUnitMargin = data.fileUnitMargin;
+    if (isFinite(numPerline)) {
+      data.fileWrapperWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px';
+    }
   },
 
   handleFiles(files) {
@@ -213,8 +225,9 @@ const UploadList = UploadBase.extend({
     wrapper.style.display = 'inline-block';
     wrapper.style.width = `${fileUnitWidth}px`;
 
-    if (index && index % numPerline) {
-      wrapper.style.marginLeft = `${fileUnitMargin}px`;
+    wrapper.style.marginRight = `${fileUnitMargin}px`;
+    if (index && isFinite(numPerline) && (index + 1) % numPerline == 0) {
+      wrapper.style.marginRight = '0';
     }
   },
 
@@ -231,9 +244,9 @@ const UploadList = UploadBase.extend({
       filesWrapper.appendChild(inputWrapper);
 
       if (length % numPerline) {
-        inputWrapper.style.marginLeft = `${fileUnitMargin}px`;
+        inputWrapper.style.marginRight = '0';
       } else {
-        inputWrapper.style.marginLeft = '0';
+        inputWrapper.style.marginRight = `${fileUnitMargin}px`;
       }
     }
   },
