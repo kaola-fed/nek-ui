@@ -1,7 +1,7 @@
 <li class="m-subMenu {class}" r-class={ {'active': active} } on-click={this.toggle($event)}>
   <div class="head">
     {#if icon}
-       <img src='icon' class="subItem-icon"/>
+       <img src='{icon}' class="subItem-icon"/>
     {#else}
       <span class="head_arrow u-icon u-icon-angle-down" r-class={ {'isOpen':active} }></span>   
     {/if }

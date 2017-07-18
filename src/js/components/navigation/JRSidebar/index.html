@@ -1,8 +1,7 @@
-<aside class="m-sidebar {class}" r-class={ {'active':active } } top="{top}">
+<aside class="m-sidebar {class}" r-class={ { 'active':active } } top="{top}">
   <div class="sidebar_menus">
     <jr-menu uniqueOpened="{uniqueOpened}">
-      {#list menus as menu}
-      {#if menu[childrenKey] && menu[childrenKey].length}
+      {#list menus as menu} {#if menu[childrenKey] && menu[childrenKey].length}
       <jr-menu-sub icon='{menu.icon}' title="{menu[titleKey]}" defaultOpen="{menu.open}">
         {#list menu[childrenKey] as page}
         <jr-menu-item isCurrent="{page.open}" module="{page[moduleKey]}" url="{page[urlKey]}">{page[pageKey]}</jr-menu-item>
@@ -10,16 +9,15 @@
       </jr-menu-sub>
       {#else}
       <jr-menu-sub titleTemplate="<a href='{menu[urlKey]}'>{menu[titleKey]}</a>"></jr-menu-sub>
-      {/if}
-      {/list}
+      {/if} {/list}
     </jr-menu>
   </div>
 
+  {#if showRetract}
   <div class="sidebar_slideBtn" on-click="{this.toggle($event)}">
     {#if active}
-    <i class="u-icon u-icon-chevron_left"></i>
-    {#else}
-    <i class="u-icon u-icon-chevron_right"></i>
-    {/if}
+    <i class="u-icon u-icon-chevron_left"></i> {#else}
+    <i class="u-icon u-icon-chevron_right"></i> {/if}
   </div>
+  {/if}
 </aside>

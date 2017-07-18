@@ -15,6 +15,7 @@ const template = require('./index.html');
  * @param {string}        [options.data.class]                    => 补充class
  * @param {array}         [options.data.menus]                    => 菜单数组
  * @param {string}        [options.data.top='60px']               => 菜单style top的值
+ * @param {boolean}       [options.data.showRetract=true]         => 是否显示收起项
  * @param {boolean}       [options.data.active=true]              => 默认是否收起
  * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
  * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
@@ -36,6 +37,7 @@ const JRSidebar = Component.extend({
     this.defaults({
       class: '',
       uniqueOpened: true,
+      showRetract: true,
       menus: [],
       titleKey: 'title',
       urlKey: 'url',
@@ -60,7 +62,7 @@ const JRSidebar = Component.extend({
     this.initBodyEl();
     this.data.active = !this.data.active;
     if (this.data.$bodyEl) {
-      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+      this.data.$bodyEl.style.left = this.data.active ? '200px' : '0';
     }
   },
   /**

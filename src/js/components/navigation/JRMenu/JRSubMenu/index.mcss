@@ -1,6 +1,6 @@
 .m-subMenu {
     position: relative;
-    border-bottom: 1px solid #DFEAF3;
+    border-bottom: 1px solid #dbdbdb;
     cursor: pointer;
     color:#999;
     .subItem-icon{
@@ -41,7 +41,7 @@
     }
 
     &.active {
-        background: #F6F9FC;
+        // background: #F6F9FC;
         padding-bottom: 5px;
     }
 }

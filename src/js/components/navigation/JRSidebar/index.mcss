@@ -10,12 +10,12 @@
 
 .m-sidebar {
     position: absolute;
-    left: -181px;
+    left: -200px;
     bottom: 0;
-    width: 181px;
+    width: 200px;
     overflow: visible;
     background: #fff;
-    border-right: 1px solid #E1E6ED;
+    /*border-right: 1px solid #E1E6ED;*/
     transition: left .3s;
 
     &.active {
@@ -31,7 +31,7 @@
         display: flex;
         position: absolute;
         top: 50%;
-        left: 180px;
+        left: 200px;
         width: 10px;
         height: 50px;
         font-size: 10px;

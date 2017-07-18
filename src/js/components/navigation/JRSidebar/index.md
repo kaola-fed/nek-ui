@@ -30,7 +30,7 @@ is_beta: true
     }
     .demo-body {
         position: absolute;
-        left: 180px;
+        left: 200px;
         top: 60px;
         bottom: 0;
         right: 0;
