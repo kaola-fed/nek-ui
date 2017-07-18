@@ -1,20 +1,20 @@
 .m-menuItem {
    position: relative;
-   padding: 8px 0 8px 54px;
-   line-height: 1em;
+   line-height: 30px;
+   height:30px;
+   font-size:14px;
+   padding-left:50px;
    transition: all .3s ease-in;
-
+   color:#333;
    &:hover {
-     text-decoration: underline;
-     font-weight: bold;
+      background:#eee;
    }
-
    &.active {
-      color: #D9244E;
+      color: #fff;
+      background:$brand-primary;
       font-weight: bold;
-
-      a { color: #D9244E; }
-      &:before {
+      a { color: #fff; }
+      /*&:before {
         position: absolute;
         width: 2px;
         height: 10px;
@@ -22,7 +22,7 @@
         content: '';
         top: 8px;
         left: 48px;
-      }
+      }*/
    }
 
    &:first-child {

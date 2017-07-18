@@ -14,6 +14,7 @@ const template = require('./index.html');
  * @param {object}        [options.data]                          = 绑定属性
  * @param {string}        [options.data.class]                    => 补充class
  * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+ * @param {number}        [options.data.width]                    => 菜单宽度
  */
 const JRMenu = Component.extend({
   name: 'jr-menu',
@@ -26,6 +27,7 @@ const JRMenu = Component.extend({
   config() {
     this.defaults({
       class: '',
+      width: 200,
       uniqueOpened: true,
     });
     this.supr();

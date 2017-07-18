@@ -1,4 +1,7 @@
 <li class="m-menuItem {class}" r-class={ {'active': active} } on-click={this.goto($event)}>
+  {#if icon}
+      <img src='{icon}' class="item-icon"/>
+  {/if }
   {#if title}
     {title}
   {#else}

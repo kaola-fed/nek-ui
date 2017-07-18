@@ -2,27 +2,32 @@
     position: relative;
     border-bottom: 1px solid #DFEAF3;
     cursor: pointer;
-
+    color:#999;
+    .subItem-icon{
+        display: inline-block;
+        margin-right: 5px;
+    }
     .head {
         position: relative;
-        padding: 15px 0 15px 47px;
+        padding: 15px 0 5px 20px;
         font-size: 14px;
         transition: all .4s ease;
-        &:hover .head_title, &:hover a {
+        /*&:hover .head_title, &:hover a {
             text-decoration:underline;
             font-weight:bold;
-        }
+        }*/
 
         .head_arrow {
-            position: absolute;
-            top: 15px;
-            left: 28px;
             font-size: 14px;
             transition: all .4s ease;
             transform: rotate(0);
-
+            margin-right:10px;
             &.isOpen {
                 transform: rotate(180deg);
+            }
+            &.right{
+                position:absolute;
+                right:10px;
             }
         }
     }

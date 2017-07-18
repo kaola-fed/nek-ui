@@ -1,5 +1,6 @@
 ---
 title: 菜单栏
+is_beta: true
 ---
 
 ## 代码演示
@@ -40,42 +41,58 @@ title: 菜单栏
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
         JRUI系统
     </div>
-    <jr-sidebar menus={menus} bodyEl="j-body" />
+    <jr-sidebar uniqueOpened={uniqueOpened} menus={menus} bodyEl="j-body" ref='slider'/>
     <div id="j-body" class="demo-body">
-        <ui.card title="标题">
+        <jr-card title="标题">
             content
-        </ui.card>
+        </jr-card>
     </div>
 </div>
+ <div>
+     <jr-button class='primary' on-click={this.toggle()} title='{title}'/>
+     <jr-button class='primary' on-click={this.selecteItem('#A')} title='菜单A'/>
+     <jr-button class='primary' on-click={this.selecteItem('#B')} title='菜单B'/>
+     <jr-button class='primary' on-click={this.selecteItem('#C')} title='菜单C'/>
+     <jr-button class='primary' on-click={this.selecteItem('#D')} title='菜单D'/>
+ </div>
 ```
 
 ```javascript
 var component = new JRUI.Component({
     template: template,
     data: {
+        uniqueOpened:true,
+        title:'不收起其他菜单',
         menus: [{
          title: '一级菜单A',
          open: true,
          children: [{
            title: '二级菜单A',
-           url: '/'
+           url: '#A'
          },{
            title: '二级菜单B',
-           url: '/'
+           open:true,
+           url: '#B'
          }]
        }, {
          title: '一级菜单B',
          children: [{
-           title: '二级菜单A',
-           url: '/'
+           title: '二级菜单C',
+           url: '#C'
          },{
-           title: '二级菜单B',
-           url: '/'
+           title: '二级菜单D',
+           url: '#D'
          }]
        }]
+    },
+    selecteItem(item){
+       this.$refs.slider.selecteItem(item)
+    },
+    toggle(){
+        this.data.uniqueOpened=!this.data.uniqueOpened;
+        this.data.title=this.data.uniqueOpened ? '不收起其他菜单':'收起其他菜单';
     }
 });
 ```

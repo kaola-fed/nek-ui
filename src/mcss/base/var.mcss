@@ -91,7 +91,7 @@ $u-formctrl_border = #ddd;
 
 $u-formctrl-focus_background = $u-formctrl_background;
 $u-formctrl-focus_color = $u-formctrl_color;
-$u-formctrl-focus_border = $brand-focus;
+$u-formctrl-focus_border = $brand-primary;
 
 $u-formctrl-disabled_background = #eee;
 $u-formctrl-disabled_color = #999;
@@ -99,8 +99,7 @@ $u-formctrl-disabled_border = $u-formctrl_border;
 
 $u-formctrl_placeholder_color = #999;
 
-$u-formctrl-error-border = #F48080;
-
+$u-formctrl-error-border = $brand-error;
 
 
 /* Form Control Item */

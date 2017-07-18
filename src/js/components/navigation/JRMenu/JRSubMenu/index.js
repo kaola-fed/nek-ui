@@ -17,6 +17,7 @@ const RootMenuMixin = require('../mixins/rootMenu');
  * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.titleTemplate]            => 标题文案模板
+ * @param {boolean}       [options.data.icon]                     => 菜单前面的icon,默认不显示
  */
 const JRSubMenu = Component.extend({
   name: 'jr-menu-sub',
@@ -30,6 +31,16 @@ const JRSubMenu = Component.extend({
       title: '',
       titleTemplate: '',
     });
+    this.$watch('defaultOpen', (defaultOpen) => {
+      if (defaultOpen) {
+        const menus = this.data.rootMenu.openedMenus;
+        if (menus.indexOf(this) > -1) {
+          menus.splice(menus.indexOf(this), 1);
+        }
+        this.data.active = true;
+        this.toggle();
+      }
+    });
     this.supr();
   },
   computed: {
@@ -40,10 +51,9 @@ const JRSubMenu = Component.extend({
   },
   init() {
     this.initRootMenu();
-
-    if (this.data.defaultOpen) {
-      this.data.rootMenu.openedMenus.push(this);
-    }
+    //  if (this.data.defaultOpen) {
+    //    this.data.rootMenu.openedMenus.push(this);
+    //  }
   },
   toggle() {
     this.data.rootMenu.$emit('submenu-click', this);

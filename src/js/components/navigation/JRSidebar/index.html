@@ -3,9 +3,9 @@
     <jr-menu uniqueOpened="{uniqueOpened}">
       {#list menus as menu}
       {#if menu[childrenKey] && menu[childrenKey].length}
-      <jr-menu-sub title="{menu[titleKey]}" defaultOpen="{menu.open}">
+      <jr-menu-sub icon='{menu.icon}' title="{menu[titleKey]}" defaultOpen="{menu.open}">
         {#list menu[childrenKey] as page}
-        <jr-menu-item isCurrent="{page.open}" url="{page[urlKey]}">{page[pageKey]}</jr-menu-item>
+        <jr-menu-item isCurrent="{page.open}" module="{page[moduleKey]}" url="{page[urlKey]}">{page[pageKey]}</jr-menu-item>
         {/list}
       </jr-menu-sub>
       {#else}
