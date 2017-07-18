@@ -44,11 +44,14 @@ const KLUpload = Component.extend({
       accept: '*',
       listType: 'list',
       fileList: [],
-      data: {},
       numLimit: Infinity,
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
+      imageWidth: Infinity,
+      imageHeight: Infinity,
+      imageScale: '',
+      data: {},
       encType: 'multipart/form-data',
     });
 

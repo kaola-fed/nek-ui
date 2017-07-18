@@ -37,4 +37,7 @@ module.exports = {
   UNKNOWN: 'UNKNOWN',
   REMOVE_CONFIRM: 'Are you sure to remove',
   LIMIT_ERROR: 'the limit should be a number',
+  IMAGE_WIDTH_ERROR: 'width error',
+  IMAGE_HEIGHT_ERROR: 'height error',
+  IMAGE_SCALE_ERROR: 'scale error'
 };

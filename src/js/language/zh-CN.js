@@ -37,4 +37,7 @@ module.exports = {
   UNKNOWN: '未知',
   REMOVE_CONFIRM: '确认删除',
   LIMIT_ERROR: 'limit 应该为数字',
+  IMAGE_WIDTH_ERROR: '宽度错误',
+  IMAGE_HEIGHT_ERROR: '高度错误',
+  IMAGE_SCALE_ERROR: '比例错误'
 };

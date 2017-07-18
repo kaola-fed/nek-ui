@@ -41,11 +41,14 @@ const UploadBase = Component.extend({
       accept: '*',
       listType: 'list',
       fileList: [],
-      data: {},
       numLimit: Infinity,
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
+      imageWidth: Infinity,
+      imageHeight: Infinity,
+      imageScale: '',
+      data: {},
       encType: 'multipart/form-data'
     });
 
@@ -184,7 +187,10 @@ const UploadBase = Component.extend({
     return {
       url: opts.action,
       name: opts.name,
-      readonly: opts.readonly
+      readonly: opts.readonly,
+      imageWidth: opts.imageWidth,
+      imageHeight: opts.imageHeight,
+      imageScale: opts.imageScale
     };
   },
 
@@ -196,6 +202,7 @@ const UploadBase = Component.extend({
     if (!this.isAcceptedFileType(file)) {
       preCheckInfo = this.$trans('FILE_TYPE_ERROR');
     }
+    
     return preCheckInfo;
   },
 
@@ -266,7 +273,7 @@ const UploadBase = Component.extend({
     }
 
     return size >= fileSize;
-  },
+  }
 });
 
 module.exports = UploadBase;

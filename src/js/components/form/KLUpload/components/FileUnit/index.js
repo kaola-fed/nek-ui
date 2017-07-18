@@ -23,13 +23,15 @@ const FileUnit = Component.extend({
       info: '',
       status: '',
       progress: '0%',
-      readonly: false,
       delConfirm: false,
     });
 
     this.initData(data);
 
     this.supr(data);
+  },
+  
+  init: function(data) {
   },
 
   initData(data) {
@@ -147,9 +149,15 @@ const FileUnit = Component.extend({
         self.$emit('error', emitItem);
       },
     };
+    
 
     options = _.extend(options, data.options);
-    upload(options.url, file, options);
+    
+    if (data.type.toLowerCase() === 'image') {
+      this.uploadImage(file, options);
+    } else {
+      upload(options.url, file, options);
+    }
   },
 
   onRemove(e) {
@@ -185,6 +193,46 @@ const FileUnit = Component.extend({
       status: data.status
     };
     this.$emit('preview', emitItem);
+  },
+
+  uploadImage: function(file, options) {
+    const self = this;
+    const data = this.data;
+    const imageWidth = options.imageWidth;
+    const imageHeight = options.imageHeight;
+    const imageScale = options.imageScale;
+    const type = data.type.toLowerCase();
+
+    const img = new Image();
+    img.onload = function() {
+      const width = img.width;
+      const height = img.height;
+      if (isFinite(imageWidth) && imageWidth !== width) {
+        data.info = self.$trans('IMAGE_WIDTH_ERROR');
+      }
+      if (isFinite(imageHeight) && imageHeight !== height) {
+        data.info = self.$trans('IMAGE_HEIGHT_ERROR');
+      }
+      if (!!imageScale) {
+        const scaleList = imageScale.split(':');
+        const scaleW = scaleList[0];
+        const scaleH = scaleList[1];
+        if (Math.abs(width / height - scaleW / scaleH) > 0.01) {
+          data.info = self.$trans('IMAGE_SCALE_ERROR');
+        }
+      }
+      
+      if (!data.info) {
+        upload(options.url, file, options);
+      } else {
+        window.setTimeout(function() {
+          self.destroy();
+        }, 1000);
+      }
+      
+      self.$update();
+    };
+    img.src = data.src;
   }
 });
 
