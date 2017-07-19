@@ -6,6 +6,7 @@
 
 const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
+const utils = require('../../utils');
 const Config = require('../../config');
 
 /**
@@ -54,24 +55,63 @@ const UploadBase = Component.extend({
 
     _.extend(data, {
       fileUnitList: [],
-      fileDeletedList: [],
+    });
+    
+    this.initWatchers();
+    this.initUploadedFileUnits();
+  },
+  
+  initWatchers: function() {
+    const self = this;
+    const data = this.data;
+    
+    function filterDeleted(file) {
+      return file.flag !== Config.flagMap['DELETED'];
+    }
+    
+    this.$watch('fileList', function(newVal, oldVal) {
+      if (oldVal !== undefined) {
+        newVal.filter(filterDeleted).forEach(function(file, index) {
+          if (!file.uid) {
+            const options = self.setOptions(data);
+            const uid = utils.genUid();
+            file.uid = uid;
+            file.flag = Config.flagMap['ADDED'];
+            const fileunit = self.createFileUnit({
+              file,
+              options
+            });
+
+            fileunit.flag = 'ADDED';
+
+            data.fileUnitList.splice(index, index, {
+              inst: fileunit,
+              uid: uid
+            });
+            
+            setTimeout(self.updateFileList.bind(self), 0);
+          }
+        });
+      }
     });
   },
 
   init(data) {
     this.supr(data);
-    
-    this.initUploadedFileUnits();
   },
 
   initUploadedFileUnits() {
     const self = this;
     const data = this.data;
+    const fileList = data.fileList;
+    const fileUnitList = data.fileUnitList;
 
     if (data.fileList.length > 0) {
-      const fileList = data.fileList.splice(0);
       const options = this.setOptions(data);
       fileList.forEach((file) => {
+        let uid = utils.genUid();
+        file.uid = uid;
+        file.flag = Config.flagMap['ORIGINAL'];
         const fileunit = self.createFileUnit({
           file,
           options
@@ -79,68 +119,74 @@ const UploadBase = Component.extend({
 
         fileunit.flag = 'ORIGINAL';
 
-        data.fileUnitList.push({
-          inst: fileunit
+        fileUnitList.push({
+          inst: fileunit,
+          uid: uid
         });
       });
-
-      this.updateFileList();
+      
+      setTimeout(this.updateFileList.bind(this), 0);
     }
+  },
+
+  fileListToFileUnitList() {
+
+  },
+  
+  updateList() {
+    this.updateFileUnitList();
+    setTimeout(this.updateFileList.bind(this), 0);
+  },
+  
+  updateFileUnitList() {
+    const data = this.data;
+    const fileList = data.fileList;
+    const fileUnitList = data.fileUnitList;
+    
+    for (var index = fileUnitList.length - 1; index >= 0; index--) {
+      let fu = fileUnitList[index];
+      let fuUid = fu.uid;
+      let fuInst = fu.inst;
+      let fuFlag = fuInst.flag;
+      let fuFile = fuInst.data.file;
+      let destroyed = fuInst.destroyed;
+      let fileIndex = fileList.findIndex(function(file) {
+        return fuUid == file.uid;
+      });
+
+      if (fileIndex === -1) {
+        fileList.push({
+          name: fuFile.name,
+          url: fuFile.url,
+          flag: Config.flagMap[fuFlag],
+          uid: fuUid
+        });
+      } else {
+        if (fuFlag === 'DELETED') {
+          fileList[fileIndex].flag = Config.flagMap['DELETED'];
+          fileUnitList.splice(index, 1);
+        } else if (destroyed) {
+          fileUnitList.splice(index, 1);
+          fileList.splice(fileIndex, 1);
+        }
+      }
+    }
+    
+    this.$update();
   },
 
   updateFileList() {
     const self = this;
     const data = this.data;
     const filesWrapper = data.filesWrapper;
-    const fileList = data.fileList;
-    const fileDeletedList = data.fileDeletedList;
-
-    data.fileUnitList = data.fileUnitList.filter((item) => {
-      const inst = item.inst;
-      const flag = inst.flag;
-      const file = inst.file;
-      const destroyed = inst.destroyed;
-
-      // item.inst = {};
-
-      if (flag === 'DELETED') {
-        file.flag = 'DELETED';
-        fileDeletedList.push(file);
-        return false;
-      }
-      return !destroyed;
-    });
-
-    filesWrapper.innerHTML = '';
-
     const fileUnitList = data.fileUnitList;
+    
     fileUnitList.forEach((item, index) => {
-      item.wrapper = self.createFileUnitWrapper(
-        filesWrapper,
-        index,
-      );
+      item.wrapper = self.$refs['fileunit' + index];
       item.inst.$inject(item.wrapper);
     });
 
-    fileList.splice(0);
-    fileUnitList.forEach((item) => {
-      const inst = item.inst;
-      const file = inst.data.file || {};
-
-      fileList.push({
-        name: file.name,
-        url: file.url,
-        flag: Config.flagMap[inst.flag],
-      });
-    });
-
-    fileDeletedList.forEach((file) => {
-      fileList.push({
-        name: file && file.name,
-        url: file && file.url,
-        flag: file && Config.flagMap[file.flag],
-      });
-    });
+    this.$update();
   },
 
   fileDialogOpen() {

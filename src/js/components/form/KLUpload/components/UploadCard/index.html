@@ -33,7 +33,14 @@
                 <span class="u-info">{fileUnitList.length}</span>
                 <span ref="filesbanner" class="u-banner" r-class={{'top': isTopBanner}}></span>
                 <ul ref="fileswrapper" class="m-filelist" on-click={this.toggle(true, $event)}
-                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>
+                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>
+                    {#list fileUnitList as fileunit}
+                        <li ref="fileunit{fileunit_index}" class="u-fileitem"
+                            r-style={{
+                                "margin-left": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + "px" : "auto"
+                            }}></li>
+                    {/list}
+                </ul>
             </div>
             <div class="m-entry-info">{info}</div>
         </div>

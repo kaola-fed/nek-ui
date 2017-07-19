@@ -1,5 +1,15 @@
 const _ = require('../../../ui-base/_');
 
+function genUid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4();
+}
+
 const defaults = {
   type: 'POST',
   async: true,
@@ -58,4 +68,7 @@ function ajax(options) {
   xhr.send(options.data);
 }
 
-module.exports = upload;
+module.exports = {
+  upload,
+  genUid
+};

@@ -5,6 +5,7 @@
  */
 
 const _ = require('../../../../../ui-base/_');
+const utils = require('../../utils');
 const FileUnit = require('../FileUnit');
 const UploadBase = require('../UploadBase');
 const KLImagePreview = require('../KLImagePreview');
@@ -76,13 +77,14 @@ const UploadCard = UploadBase.extend({
           fileunit.flag = 'ADDED';
           data.fileUnitList.push({
             inst: fileunit,
+            uid: utils.genUid()
           });
           this.updateFilesZone();
         }
       }
     }
 
-    this.updateFileList();
+    this.updateList();
   },
 
   updateFilesZone() {
@@ -104,7 +106,6 @@ const UploadCard = UploadBase.extend({
 
   createFileUnit(data) {
     const self = this;
-    const imagePreviewWrapper = this.$refs.imagepreview;
     const fileunit = new FileUnit({ data });
 
     fileunit.$on('preview', previewCb);
@@ -116,7 +117,7 @@ const UploadCard = UploadBase.extend({
         return file.inst.data.type === 'IMAGE';
       }
 
-      function mapHelper(img) {
+      function mapCurrentFlag(img) {
         if (current === img.inst) {
           img.inst.current = true;
         }
@@ -125,11 +126,11 @@ const UploadCard = UploadBase.extend({
 
       const imgList = self.data.fileUnitList
         .filter(filterImgFile)
-        .map(mapHelper);
+        .map(mapCurrentFlag);
 
       const preview = createImagePreview(imgList);
 
-      preview.$inject(imagePreviewWrapper);
+      preview.$inject(self.$refs.imagepreview);
     }
 
     function createImagePreview(imgFileList) {
@@ -215,7 +216,7 @@ const UploadCard = UploadBase.extend({
         self.data.status = 'failed';
       }
       self.$update();
-      self.updateFileList();
+      self.updateList();
       self.$emit(
         'success',
         _.extend(info, {
@@ -255,7 +256,7 @@ const UploadCard = UploadBase.extend({
       this.destroyed = true;
       this.$off('preview', previewCb);
       this.$off('success', successCb);
-      self.updateFileList();
+      self.updateList();
       self.updateFilesZone();
       resetStatus();
     });
@@ -273,40 +274,9 @@ const UploadCard = UploadBase.extend({
         self.data.status = 'failed';
       }
       self.$update();
-      self.updateFileList();
     }
 
     return fileunit;
-  },
-
-  updateFileList() {
-    this.supr();
-    this.$update();
-  },
-
-  createFileUnitWrapper(parent, index) {
-    const wrapper = document.createElement('li');
-
-    parent.appendChild(wrapper);
-
-    this.setFileUnitWrapperStyle(wrapper, index);
-
-    return wrapper;
-  },
-
-  setFileUnitWrapperStyle(wrapper, index) {
-    const data = this.data;
-    const numPerline = data.numPerline;
-    const fileUnitWidth = data.fileUnitWidth;
-    const fileUnitMargin = data.fileUnitMargin;
-
-    wrapper.className = 'u-fileitem';
-    wrapper.style.display = 'inline-block';
-    wrapper.style.width = `${fileUnitWidth}px`;
-
-    if (index && index % numPerline) {
-      wrapper.style.marginLeft = `${fileUnitMargin}px`;
-    }
   },
 
   uploadFiles() {

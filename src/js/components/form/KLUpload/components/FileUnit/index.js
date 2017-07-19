@@ -7,7 +7,7 @@
 const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
-const upload = require('../../utils');
+const utils = require('../../utils');
 const KLModal = require('../../../../notice/KLModal');
 
 const FileUnit = Component.extend({
@@ -88,6 +88,7 @@ const FileUnit = Component.extend({
     const data = this.data;
 
     data.info = '';
+    data.status = 'uploading';
 
     let options = {
       upload: {
@@ -149,15 +150,16 @@ const FileUnit = Component.extend({
         self.$emit('error', emitItem);
       },
     };
-    
 
     options = _.extend(options, data.options);
     
     if (data.type.toLowerCase() === 'image') {
       this.uploadImage(file, options);
     } else {
-      upload(options.url, file, options);
+      utils.upload(options.url, file, options);
     }
+    
+    this.$update();
   },
 
   onRemove(e) {
@@ -223,7 +225,7 @@ const FileUnit = Component.extend({
       }
       
       if (!data.info) {
-        upload(options.url, file, options);
+        utils.upload(options.url, file, options);
       } else {
         window.setTimeout(function() {
           self.destroy();

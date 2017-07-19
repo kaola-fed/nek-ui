@@ -5,6 +5,7 @@
  */
 
 const _ = require('../../../../../ui-base/_');
+const utils = require('../../utils');
 const FileUnit = require('../FileUnit');
 const UploadBase = require('../UploadBase');
 const KLImagePreview = require('../KLImagePreview');
@@ -37,7 +38,7 @@ const UploadList = UploadBase.extend({
   initFilesWrapper(data) {
     data.inputWrapper = this.$refs.inputwrapper;
     data.filesWrapper = this.$refs.fileswrapper;
-    data.filesWrapper.appendChild(data.inputWrapper);
+    // data.filesWrapper.appendChild(data.inputWrapper);
     this.initFileWrapperStyle(data);
   },
   
@@ -73,17 +74,17 @@ const UploadList = UploadBase.extend({
           fileunit.flag = 'ADDED';
           data.fileUnitList.push({
             inst: fileunit,
+            uid: utils.genUid()
           });
         }
       }
     }
 
-    this.updateFileList();
+    this.updateList();
   },
 
   createFileUnit(data) {
     const self = this;
-    const imagePreviewWrapper = this.$refs.imagepreview;
     const fileunit = new FileUnit({ data });
 
     fileunit.$on('preview', function () {
@@ -93,7 +94,7 @@ const UploadList = UploadBase.extend({
         return file.inst.data.type === 'IMAGE';
       }
 
-      function mapHelper(img) {
+      function mapCurrentFlag(img) {
         if (current === img.inst) {
           img.inst.current = true;
         }
@@ -102,11 +103,11 @@ const UploadList = UploadBase.extend({
 
       const imgList = self.data.fileUnitList
         .filter(filterImgFile)
-        .map(mapHelper);
+        .map(mapCurrentFlag);
 
       const preview = createImagePreview(imgList);
 
-      preview.$inject(imagePreviewWrapper);
+      preview.$inject(self.$refs.imagepreview);
     });
 
     function createImagePreview(imgFileList) {
@@ -149,7 +150,7 @@ const UploadList = UploadBase.extend({
     }
 
     fileunit.$on('success', (info) => {
-      self.updateFileList();
+      self.updateList();
       self.$emit(
         'success',
         _.extend(info, {
@@ -168,7 +169,7 @@ const UploadList = UploadBase.extend({
     });
     
     fileunit.$on('error', function (info) {
-      self.updateFileList();
+      self.updateList();
       self.$emit(
         'error',
         _.extend(info, {
@@ -193,63 +194,11 @@ const UploadList = UploadBase.extend({
 
     fileunit.$on('$destroy', function () {
       this.destroyed = true;
-      self.updateFileList();
+      self.updateList();
     });
 
     return fileunit;
-  },
-
-  updateFileList() {
-    this.supr();
-    this.appendInputWrapper();
-    this.$update();
-  },
-
-  createFileUnitWrapper(parent, index) {
-    const wrapper = document.createElement('li');
-
-    parent.appendChild(wrapper);
-
-    this.setFileUnitWrapperStyle(wrapper, index);
-
-    return wrapper;
-  },
-
-  setFileUnitWrapperStyle(wrapper, index) {
-    const data = this.data;
-    const numPerline = data.numPerline;
-    const fileUnitWidth = data.fileUnitWidth;
-    const fileUnitMargin = data.fileUnitMargin;
-
-    wrapper.className = 'u-fileitem';
-    wrapper.style.display = 'inline-block';
-    wrapper.style.width = `${fileUnitWidth}px`;
-
-    wrapper.style.marginRight = `${fileUnitMargin}px`;
-    if (index && isFinite(numPerline) && (index + 1) % numPerline == 0) {
-      wrapper.style.marginRight = '0';
-    }
-  },
-
-  appendInputWrapper() {
-    const data = this.data;
-    const inputWrapper = data.inputWrapper;
-    const filesWrapper = data.filesWrapper;
-    const numPerline = data.numPerline;
-    const numLimit = data.numLimit;
-    const fileUnitMargin = data.fileUnitMargin;
-    const length = data.fileUnitList.length;
-
-    if (length < numLimit) {
-      filesWrapper.appendChild(inputWrapper);
-
-      if (length % numPerline) {
-        inputWrapper.style.marginRight = '0';
-      } else {
-        inputWrapper.style.marginRight = `${fileUnitMargin}px`;
-      }
-    }
-  },
+  }
 });
 
 module.exports = UploadList;
