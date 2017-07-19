@@ -40,8 +40,8 @@ const JRDatePicker = Dropdown.extend({
   name: 'jr-date-picker',
   template,
   /**
-     * @protected
-     */
+   * @protected
+   */
   config() {
     _.extend(this.data, {
       // @inherited source: [],
@@ -87,10 +87,10 @@ const JRDatePicker = Dropdown.extend({
       }
 
       /**
-             * @event change 日期时间改变时触发
-             * @property {object} sender 事件发送对象
-             * @property {object} date 改变后的日期时间
-             */
+       * @event change 日期时间改变时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} date 改变后的日期时间
+       */
       this.$emit('change', {
         sender: this,
         date: newValue,
@@ -132,10 +132,8 @@ const JRDatePicker = Dropdown.extend({
     });
 
     this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-      if (
-        !((minDate && minDate instanceof Date) ||
-          (maxDate && maxDate instanceof Date))
-      ) {
+      if (!((minDate && minDate instanceof Date) ||
+          (maxDate && maxDate instanceof Date))) {
         return;
       }
 
@@ -153,11 +151,11 @@ const JRDatePicker = Dropdown.extend({
     this.initValidation();
   },
   /**
-     * @method toggle(open) 展开/收起
-     * @public
-     * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
-     * @return {void}
-     */
+   * @method toggle(open) 展开/收起
+   * @public
+   * @param  {boolean} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
+   * @return {void}
+   */
   toggle(_open) {
     if (this.data.disabled) return;
     let open = _open;
@@ -176,21 +174,21 @@ const JRDatePicker = Dropdown.extend({
       this.data._time = filter.format(this.data.date, 'HH:mm:ss');
     }
     /**
-         * @event toggle  展开/收起时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} open 展开/收起状态
-         */
+     * @event toggle  展开/收起时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} open 展开/收起状态
+     */
     this.$emit('toggle', {
       sender: this,
       open,
     });
   },
   /**
-     * @method select(date) 选择一个日期
-     * @public
-     * @param  {Date} date 选择的日期
-     * @return {void}
-     */
+   * @method select(date) 选择一个日期
+   * @public
+   * @param  {Date} date 选择的日期
+   * @return {void}
+   */
   select(date, time, flag) {
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
       return;
@@ -201,9 +199,9 @@ const JRDatePicker = Dropdown.extend({
     }
   },
   /**
-     * 关闭
-     * @private
-     */
+   * 关闭
+   * @private
+   */
   _onClose() {
     this.toggle(false);
   },
@@ -212,10 +210,10 @@ const JRDatePicker = Dropdown.extend({
     this.data.date = filter.format(this.date, format);
     this.data.time = this.time;
     /**
-         * @event select 选择某一项时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} date 当前选择项
-         */
+     * @event select 选择某一项时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} date 当前选择项
+     */
     this.$emit('select', {
       sender: this,
       date: this.data.date,
@@ -224,10 +222,10 @@ const JRDatePicker = Dropdown.extend({
     this.toggle(false);
   },
   /**
-     * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
-     * @private
-     * @return {void}
-     */
+   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
+   * @private
+   * @return {void}
+   */
   _onDateTimeChange(date, _time) {
     this.time = _time || '00:00:00';
     // this.data.time
@@ -238,31 +236,31 @@ const JRDatePicker = Dropdown.extend({
     this.date.setSeconds(time[2]);
   },
   /**
-     * @method _onInput($event) 输入日期
-     * @private
-     * @param  {object} $event
-     * @return {void}
-     */
+   * @method _onInput($event) 输入日期
+   * @private
+   * @param  {object} $event
+   * @return {void}
+   */
   _onInput($event) {
     let value = $event.target.value;
     value = value.replace(new RegExp(/-/gm), '/');
     const date = value ? new Date(value) : null;
     const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
     if (date === null || date.toString() === 'Invalid Date') {
-      $event.target.value = this.data.date
-        ? filter.format(this.data.date, format)
-        : filter.format(new Date(), format);
+      $event.target.value = this.data.date ?
+        filter.format(this.data.date, format) :
+        filter.format(new Date(), format);
     } else {
       $event.target.value = filter.format(date, format);
     }
     this.data.date = $event.target.value;
   },
   /**
-     * @method isOutOfRange(date) 是否超出规定的日期时间范围
-     * @public
-     * @param {Date} date 待测的日期时间
-     * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
-     */
+   * @method isOutOfRange(date) 是否超出规定的日期时间范围
+   * @public
+   * @param {Date} date 待测的日期时间
+   * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
+   */
   isOutOfRange(date) {
     const minDate = this.data.minDate;
     const maxDate = this.data.maxDate;
@@ -277,11 +275,14 @@ const JRDatePicker = Dropdown.extend({
     const data = this.data;
     const date = data.date || '';
 
-    const result = date
-      ? Validation.validate(date.toString(), [
-          { type: 'isDate', message: '请填写' },
-        ])
-      : { success: false };
+    const result = date ?
+      Validation.validate(date.toString(), [{
+        type: 'isDate',
+        message: '请填写',
+      }]) :
+      {
+        success: false,
+      };
     if (data.required && !result.success) {
       result.success = false;
       result.message = this.data.message || '请填写';

@@ -93,3 +93,13 @@ exports['r-width'] = function (elem, value) {
     }
   });
 };
+exports['r-height'] = function (elem, value) {
+  this.$watch(value, (newValue) => {
+    if (parseInt(newValue)) {
+      elem.style.height = `${parseInt(newValue)}px`;
+      elem.style.lineHeight = `${parseInt(newValue)}px`;
+      elem.style.display = 'inline-block';
+    }
+  });
+};
+

@@ -22,7 +22,7 @@
     .calendar_item.z-sel {}
 
     .calendar_item.z-muted {
-        color:#333;
+        color:#999;
     }
 
     .calendar_item.z-dis {

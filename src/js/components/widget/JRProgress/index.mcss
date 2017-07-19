@@ -12,10 +12,11 @@
     // $box-sizing
     /* 1 */
     overflow: hidden;
-
+    $border-radius:100px;
     .progress_bar {
         width: 0;
         height: 100%;
+        $border-radius:100px;
         float: left;
         text-align: center;
     }
@@ -67,7 +68,7 @@ $u-progress-striped = ($background-size = 30px) {
 ///////////////////////////////
 .u-progress {
     $line-height: 20px;
-    background: $background-base;
+    background: #e4e8f1;
 
     .progress_bar {
         background: $brand-primary; // #00a8e6;
@@ -89,7 +90,7 @@ $u-progress-extend_size(xl, 40px);
 
 
 
-// Color Extends:       `u-progress-success`, `u-progress-warning`, `u-progress-error`
+// Color Extends:      `u-progress-info`, `u-progress-success`, `u-progress-warning`, `u-progress-error`
 // ========================================================================
 
 $u-progress_bar-extend_color(info, $brand-info);
