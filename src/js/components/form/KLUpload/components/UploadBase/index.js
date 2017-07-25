@@ -193,6 +193,7 @@ const UploadBase = Component.extend({
     const data = this.data;
     const fileList = data.fileList;
     const fileUnitList = data.fileUnitList;
+    const newFileList = [];
     
     for (var index = fileUnitList.length - 1; index >= 0; index--) {
       let fu = fileUnitList[index];
@@ -206,7 +207,7 @@ const UploadBase = Component.extend({
       });
 
       if (fileIndex === -1) {
-        fileList.push({
+        newFileList.push({
           name: fuFile.name,
           url: fuFile.url,
           flag: Config.flagMap[fuFlag],
@@ -222,6 +223,8 @@ const UploadBase = Component.extend({
         }
       }
     }
+    
+    [].push.apply(fileList, newFileList.reverse());
     
     this.$update();
   },

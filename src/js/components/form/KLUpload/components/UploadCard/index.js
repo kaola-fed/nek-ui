@@ -215,7 +215,6 @@ const UploadCard = UploadBase.extend({
       } else if (hasFailed) {
         self.data.status = 'failed';
       }
-      self.$update();
       self.updateList();
       self.$emit(
         'success',
@@ -228,7 +227,7 @@ const UploadCard = UploadBase.extend({
     fileunit.$on('error', (info) => {
       self.data.status = 'failed';
       self.data.info = self.$trans('UPLOAD_FAIL');
-      self.$update();
+      self.updateList();
       self.$emit(
         'error',
         _.extend(info, {
