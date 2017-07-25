@@ -1,9 +1,19 @@
 <div class="m-tabs {class}" z-dis={disabled} r-hide={!visible}>
-    <ul class="tabs_hd">
-        {#list tabs as item}
-        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>
-        {/list}
-    </ul>
+    <div class="tabs-scroll {scrollable ? 'scrollable' : ''}">
+        <span class="nav-prev" on-click={this.prev()} r-hide={!scrollable}>
+            <i class="u-icon u-icon-chevron-left"></i>
+        </span>
+        <span class="nav-next" on-click={this.next()} r-hide={!scrollable}>
+            <i class="u-icon u-icon-chevron-right"></i>
+        </span>
+        <div ref="wrap" class="nav-scroll">
+            <ul ref="nav" class="tabs_hd" r-style={navStyle}>
+                {#list tabs as item}
+                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>
+                {/list}
+            </ul>
+        </div>
+    </div>
     <div class="tabs_bd">
         {#inc this.$body}
     </div>

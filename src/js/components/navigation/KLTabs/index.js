@@ -40,6 +40,8 @@ const KLTabs = Component.extend({
       tabs: [],
       selected: undefined,
       titleTemplate: null,
+      offset: 0,
+      navStyle: {}
     });
     this.supr();
 
@@ -55,6 +57,81 @@ const KLTabs = Component.extend({
         key: newValue.data.key,
       });
     });
+  },
+  init: function(){
+    this.supr();
+    this._update = this.update.bind(this);
+    window.addEventListener('resize', this._update);
+    this.update();
+  },
+  events: {
+    $init: function(){
+      var self = this;
+      setTimeout(function(){
+        self.update();
+      }, 10);
+    }
+  },
+  update: function(){
+    var wrap = this.$refs.wrap;
+    var nav = this.$refs.nav;
+    if(!wrap || !nav){
+      return false;
+    }
+    var wrapWidth = wrap.offsetWidth;
+    var navWidth = nav.scrollWidth;
+    var currentOffset = this.data.offset;
+    if(wrapWidth < navWidth){
+      this.data.scrollable = this.data.scrollable || {};
+      this.data.scrollable.prev = currentOffset;
+      this.data.scrollable.next = currentOffset + wrapWidth < navWidth;
+      if(navWidth - currentOffset < wrapWidth) {
+          this.setOffset(navWidth - wrapWidth);
+        }
+    }else{
+      this.data.scrollable = false;
+    }
+    this.$update();
+  },
+  setOffset: function(offset){
+    this.data.offset = offset;
+    var transform = 'translateX(-' + this.data.offset + 'px)';
+    var navStyle = this.data.navStyle;
+    navStyle.transform = transform;
+    navStyle.msTransform = transform;
+    navStyle.webkitTransform = transform;
+    this.update();
+  },
+  prev: function(){
+    if(!this.data.scrollable || !this.data.scrollable.prev){
+      return;
+    }
+    var wrap = this.$refs.wrap;
+    var currentOffset = this.data.offset;
+    if(!wrap || !currentOffset){
+      return;
+    }
+    var wrapWidth = wrap.offsetWidth;
+    var newOffset = currentOffset > wrapWidth ? currentOffset - wrapWidth : 0;
+    this.setOffset(newOffset);
+  },
+  next: function(){
+    if(!this.data.scrollable || !this.data.scrollable.next){
+      return;
+    }
+    var wrap = this.$refs.wrap;
+    var nav = this.$refs.nav;
+    if(!wrap || !nav){
+      return;
+    }
+    var navWidth = nav.scrollWidth;
+    var wrapWidth = wrap.offsetWidth;
+    var currentOffset = this.data.offset;
+    if(navWidth - currentOffset <= wrapWidth){
+      return;
+    }
+    var newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
+    this.setOffset(newOffset);
   },
   /**
      * @method select(item) 选择某一项
@@ -77,6 +154,10 @@ const KLTabs = Component.extend({
       key: item.data.key,
     });
   },
+  destroy: function(){
+    this.supr();
+    window.removeEventListener('resize', this._update);
+  }
 });
 
 module.exports = KLTabs;
