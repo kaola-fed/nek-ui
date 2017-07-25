@@ -71,28 +71,79 @@ const UploadBase = Component.extend({
     
     this.$watch('fileList', function(newVal, oldVal) {
       if (oldVal !== undefined) {
-        newVal.filter(filterDeleted).forEach(function(file, index) {
-          if (!file.uid) {
-            const options = self.setOptions(data);
-            const uid = utils.genUid();
-            file.uid = uid;
-            file.flag = Config.flagMap['ADDED'];
-            const fileunit = self.createFileUnit({
-              file,
-              options
-            });
-
-            fileunit.flag = 'ADDED';
-
-            data.fileUnitList.splice(index, index, {
-              inst: fileunit,
-              uid: uid
-            });
-            
-            setTimeout(self.updateFileList.bind(self), 0);
-          }
-        });
+        if (newVal.length >= oldVal.length) {
+          self.extendFileList(newVal);
+        } else {
+          self.reduceFileList(newVal, oldVal);
+        }
       }
+    }, true);
+  },
+  
+  extendFileList: function(fileList) {
+    const self = this;
+    const data = this.data;
+
+    function filterDeleted(file) {
+      return file.flag !== Config.flagMap['DELETED'];
+    }
+    
+    fileList.filter(filterDeleted).forEach(function(file, index) {
+      if (!file.uid) {
+        const options = self.setOptions(data);
+        const uid = utils.genUid();
+        file.uid = uid;
+        file.flag = Config.flagMap['ADDED'];
+        const fileunit = self.createFileUnit({
+          file,
+          options
+        });
+
+        fileunit.flag = 'ADDED';
+
+        data.fileUnitList.splice(index, index, {
+          inst: fileunit,
+          uid: uid
+        });
+
+        setTimeout(self.updateFileList.bind(self), 0);
+      }
+    });
+  },
+  
+  reduceFileList: function(deletedFileList, srcFileList) {
+    const self = this;
+    const data = this.data;
+
+    function filterDeleted(file, srcIndex) {
+      const index = deletedFileList.findIndex(function(item) {
+        let isEqual = item.name === file.name && item.url === file.url;
+        if (item.uid && file.uid) {
+          isEqual = isEqual && item.uid === file.uid;
+        }
+        return isEqual;
+      });
+      
+      if (index === -1 && (file.flag === Config.flagMap['ORIGINAL'] || file.flag === Config.flagMap['DELETED'])) {
+        file.flag = Config.flagMap['DELETED'];
+        data.fileList.splice(srcIndex, 0, file);
+      }
+      
+      return index === -1;
+    }
+
+    srcFileList.filter(filterDeleted).forEach(function(file, index) {
+      if (file.uid) {
+        let visualIndex = data.fileUnitList.findIndex(function(item) {
+          return item.uid === file.uid;
+        });
+        
+        if (visualIndex !== -1) {
+          data.fileUnitList.splice(visualIndex, 1);
+        }
+      }
+      
+      setTimeout(self.updateFileList.bind(self), 0);
     });
   },
 
