@@ -9,6 +9,7 @@ const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
 const utils = require('../../utils');
 const KLModal = require('../../../../notice/KLModal');
+const Config = require('../../config');
 
 const FileUnit = Component.extend({
   name: 'file-unit',
@@ -56,31 +57,17 @@ const FileUnit = Component.extend({
   getFileType(file) {
     const type = file.type || '';
     const name = file.name || '';
+    const typeMap = Config.typeMap;
+    let typeStr = 'UNKNOWN';
 
-    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-      return 'IMAGE';
-    } else if (/zip|rar|gz/i.test(name)) {
-      return 'ZIP';
-    } else if (
-      /document|sheet|powerpoint|msword/.test(type) ||
-      /doc|xlsx|ppt/i.test(name)
-    ) {
-      return 'DOC';
-    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-      return 'VIDEO';
-    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-      return 'AUDIO';
-    } else if (/text\/plain/.test(type)) {
-      return 'TEXT';
-    } else if (/text\/html/.test(type)) {
-      return 'HTML';
-    } else if (/application\/pdf/.test(type)) {
-      return 'PDF';
-    } else if (/application\/javascript/.test(type)) {
-      return 'JS';
-    }
+    Object.keys(typeMap).forEach(function(key) {
+      const reg = new RegExp(key + '$');
+      if (reg.test(type) || !type && reg.test(name)) {
+        typeStr = typeMap[key];
+      }
+    });
 
-    return 'UNKNOWN';
+    return typeStr.toUpperCase();
   },
 
   uploadFile(file) {

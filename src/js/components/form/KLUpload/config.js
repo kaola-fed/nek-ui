@@ -12,25 +12,35 @@ const sizeMap = {
 };
 
 const typeMap = {
+  'image/*': 'image',
   '.jpg': 'image',
   '.jpeg': 'image',
   '.gif': 'image',
   '.png': 'image',
   '.zip': 'zip',
-  '.rar': 'zip',
-  '.gz': 'zip',
+  '.rar': 'rar',
+  '.gz': 'gz',
+  'document': 'doc',
+  'sheet': 'doc', 
+  'powerpoint': 'doc',
+  'msword': 'doc',
   '.doc': 'doc',
   '.xlsx': 'doc',
   '.ppt': 'doc',
+  'video/*': 'video',
   '.mp4': 'video',
   '.mkv': 'video',
   '.rmvb': 'video',
   '.avi': 'video',
+  'audio/*': 'audio',
   '.mp3': 'audio',
+  'application/pdf': 'pdf',
   '.pdf': 'pdf',
+  'application/javascript': 'js',
   '.js': 'js',
   '.html': 'html',
   '.txt': 'text',
+  '.json': 'json'
 };
 
 const flagMap = {
