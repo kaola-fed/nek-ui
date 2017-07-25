@@ -1,21 +1,27 @@
 /* Brand Colors */
+//主题的文字颜色
 $brand-default =                        #fff;
-$brand-default-dark =                   #e5e5e5;
-$brand-default-darker =                 #adadad;
+//基本色，常用组件的背景颜色，边框色
 $brand-primary =                        #f85137;
+//基本色的hover颜色
 $brand-primary-darker =                 #ee8176;
+//提示色
 $brand-info =                           #54A8F7;
 $brand-info-lighter =                   #65b1f8;
 $brand-info-darker =                    #00acd6;
+//成功色
 $brand-success =                        #6EBC40;
 $brand-success-lighter =                #7dc353;
 $brand-success-darker =                 #63a93a;
+//告警色
 $brand-warning =                        #FFB539;
 $brand-warning-lighter =                #ffbc4d;
 $brand-warning-darker =                 #e08e0b;
+//错误色
 $brand-error =                          #F48080;
 $brand-error-lighter =                  #f58d8d;
 $brand-error-darker =                   #dc7373;
+//副色调（次此处与主色调一样）
 $brand-secondary =                      $brand-primary;
 $brand-secondary-darker =               $brand-primary-darker;
 $panel-header =                         #fff;

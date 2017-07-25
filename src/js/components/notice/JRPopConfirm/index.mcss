@@ -6,7 +6,7 @@ $fontSize = 12px;
 $lineHeight = 1.5;
 
 .u-popover {
-   position:absolute; z-index:100; font-size:$fontSize; line-height:$lineHeight;
+   position:absolute; z-index:2000; font-size:$fontSize; line-height:$lineHeight;
    .arrow, .arrow:after {
        position:absolute; width:0; height:0;
        border-color:transparent; border-style:solid;

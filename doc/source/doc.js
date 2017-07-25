@@ -18,7 +18,8 @@ const CATES = [
     { cate: 'form', name: '表单', startOrder: 200 },
     { cate: 'notice', name: '通知', startOrder: 300 },
     { cate: 'navigation', name: '导航', startOrder: 400 },
-    { cate: 'widget', name: '其它', startOrder: 500 },
+    { cate: 'drag', name: '拖拽相关', startOrder: 500 },
+    { cate: 'widget', name: '其它', startOrder: 600 },
 ];
 
 const DOC_PATH = __dirname;
