@@ -52,22 +52,20 @@ const UploadList = UploadBase.extend({
   },
 
   handleFiles(files) {
+    const self = this;
     const data = this.data;
-    const len = files.length;
-    let index = 0;
-    let file;
     let fileunit;
 
     const options = this.setOptions(data);
 
     data.preCheckInfo = '';
 
-    for (; index < len; index += 1) {
+    files = [].slice.call(files);
+    files.forEach(function(file) {
       if (data.fileUnitList.length < data.numLimit) {
-        file = files[index];
-        data.preCheckInfo = this.preCheck(file);
+        data.preCheckInfo = self.preCheck(file);
         if (!data.preCheckInfo) {
-          fileunit = this.createFileUnit({
+          fileunit = self.createFileUnit({
             file,
             options
           });
@@ -78,7 +76,7 @@ const UploadList = UploadBase.extend({
           });
         }
       }
-    }
+    });
 
     this.updateList();
   },

@@ -57,6 +57,8 @@ const UploadBase = Component.extend({
       fileUnitList: [],
     });
     
+    // new Promise();
+    
     this.initWatchers();
     this.initUploadedFileUnits();
   },
