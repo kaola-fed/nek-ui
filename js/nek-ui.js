@@ -30701,7 +30701,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _.extend(this.data, {
 	      tabs: [],
 	      selected: undefined,
-	      titleTemplate: null
+	      titleTemplate: null,
+	      offset: 0,
+	      navStyle: {}
 	    });
 	    this.supr();
 
@@ -30717,6 +30719,81 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: newValue.data.key
 	      });
 	    });
+	  },
+	  init: function init() {
+	    this.supr();
+	    this._update = this.update.bind(this);
+	    window.addEventListener('resize', this._update);
+	  },
+
+	  events: {
+	    $init: function $init() {
+	      var self = this;
+	      setTimeout(function () {
+	        self.update();
+	      }, 10);
+	    }
+	  },
+	  update: function update() {
+	    var wrap = this.$refs.wrap;
+	    var nav = this.$refs.nav;
+	    if (!wrap || !nav) {
+	      return false;
+	    }
+	    var wrapWidth = wrap.offsetWidth;
+	    var navWidth = nav.scrollWidth;
+	    var currentOffset = this.data.offset;
+	    if (wrapWidth < navWidth) {
+	      this.data.scrollable = this.data.scrollable || {};
+	      this.data.scrollable.prev = currentOffset;
+	      this.data.scrollable.next = currentOffset + wrapWidth < navWidth;
+	      if (navWidth - currentOffset < wrapWidth) {
+	        this.setOffset(navWidth - wrapWidth);
+	      }
+	    } else {
+	      this.data.scrollable = false;
+	    }
+	    this.$update();
+	  },
+	  setOffset: function setOffset(offset) {
+	    this.data.offset = offset;
+	    var transform = 'translateX(-' + this.data.offset + 'px)';
+	    var navStyle = this.data.navStyle;
+	    navStyle.transform = transform;
+	    navStyle.msTransform = transform;
+	    navStyle.webkitTransform = transform;
+	    this.update();
+	  },
+	  prev: function prev() {
+	    if (!this.data.scrollable || !this.data.scrollable.prev) {
+	      return;
+	    }
+	    var wrap = this.$refs.wrap;
+	    var currentOffset = this.data.offset;
+	    if (!wrap || !currentOffset) {
+	      return;
+	    }
+	    var wrapWidth = wrap.offsetWidth;
+	    var newOffset = currentOffset > wrapWidth ? currentOffset - wrapWidth : 0;
+	    this.setOffset(newOffset);
+	  },
+	  next: function next() {
+	    if (!this.data.scrollable || !this.data.scrollable.next) {
+	      return;
+	    }
+	    var wrap = this.$refs.wrap;
+	    var nav = this.$refs.nav;
+	    if (!wrap || !nav) {
+	      return;
+	    }
+	    var navWidth = nav.scrollWidth;
+	    var wrapWidth = wrap.offsetWidth;
+	    var currentOffset = this.data.offset;
+	    if (navWidth - currentOffset <= wrapWidth) {
+	      return;
+	    }
+	    var newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : navWidth - wrapWidth;
+	    this.setOffset(newOffset);
 	  },
 
 	  /**
@@ -30739,6 +30816,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      selected: item,
 	      key: item.data.key
 	    });
+	  },
+	  destroy: function destroy() {
+	    this.supr();
+	    window.removeEventListener('resize', this._update);
 	  }
 	});
 
@@ -30748,7 +30829,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 386 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
+	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"tabs-scroll {scrollable ? 'scrollable' : ''}\">\n        {#if scrollable}\n        <span class=\"nav-prev\" on-click={this.prev()}>\n            <i class=\"u-icon u-icon-chevron-left\"></i>\n        </span>\n        <span class=\"nav-next\" on-click={this.next()}>\n            <i class=\"u-icon u-icon-chevron-right\"></i>\n        </span>\n        {/if}\n        <div ref=\"wrap\" class=\"nav-scroll\">\n            <ul ref=\"nav\" class=\"tabs_hd\" r-style={navStyle}>\n                {#list tabs as item}\n                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
 /* 387 */

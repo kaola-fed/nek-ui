@@ -4157,7 +4157,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-check-block{
 	display:block;
-	width:100%;
+	margin-bottom:10px;
 }
 .u-input.sm{
 	padding:5px 10px;
@@ -6554,12 +6554,43 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-steps-sm .itemMain .mainDescription{
 	font-size:12px;
 }
+.m-tabs .tabs-scroll{
+	position:relative;
+	overflow:hidden;
+}
+.m-tabs .tabs-scroll.scrollable{
+	padding:0 15px;
+}
+.m-tabs .tabs-scroll .nav-prev,.m-tabs .tabs-scroll .nav-next{
+	position:absolute;
+	cursor:pointer;
+	line-height:32px;
+	font-size:12px;
+}
+.m-tabs .tabs-scroll .nav-prev{
+	left:0;
+}
+.m-tabs .tabs-scroll .nav-next{
+	right:0;
+}
+.m-tabs .nav-scroll{
+	overflow:hidden;
+}
+.m-tabs .tabs_hd{
+	display:inline-block;
+	transition:transform 0.3s;
+	white-space:nowrap;
+}
 .m-tabs .tabs_hd >li{
-	float:left;
+	position:relative;
+	display:inline-block;
 	cursor:pointer;
 }
 .m-tabs .tabs_hd >li.z-dis{
 	cursor:not-allowed;
+}
+.m-tabs .tabs_hd >li.arrow-left,.m-tabs .tabs_hd >li.arrow-right{
+	width:20px;
 }
 .m-tabs .tabs_bd{
 	clear:both;
