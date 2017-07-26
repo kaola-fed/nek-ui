@@ -450,10 +450,7 @@ const UploadBase = Component.extend({
     return {
       url: opts.action,
       name: opts.name,
-      readonly: opts.readonly,
-      imageWidth: opts.imageWidth,
-      imageHeight: opts.imageHeight,
-      imageScale: opts.imageScale
+      readonly: opts.readonly
     };
   },
 
