@@ -68,7 +68,7 @@ const UploadBase = Component.extend({
     });
     
     this.initWatchers();
-    this.initUploadedFileUnits();
+    this.initUploadedFileUnitList();
   },
   
   initWatchers: function() {
@@ -104,19 +104,10 @@ const UploadBase = Component.extend({
         const uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ADDED'];
-        const fileunit = self.createFileUnit({
-          file,
-          options
-        });
+        const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
+        data.fileUnitList.splice(index, index, { inst: fileunit, uid: uid });
 
-        fileunit.flag = 'ADDED';
-
-        data.fileUnitList.splice(index, index, {
-          inst: fileunit,
-          uid: uid
-        });
-
-        setTimeout(self.updateFileList.bind(self), 0);
+        setTimeout(self.updateFileListView.bind(self), 0);
       }
     });
   },
@@ -153,7 +144,7 @@ const UploadBase = Component.extend({
         }
       }
       
-      setTimeout(self.updateFileList.bind(self), 0);
+      setTimeout(self.updateFileListView.bind(self), 0);
     });
   },
 
@@ -161,7 +152,7 @@ const UploadBase = Component.extend({
     this.supr(data);
   },
 
-  initUploadedFileUnits() {
+  initUploadedFileUnitList() {
     const self = this;
     const data = this.data;
     const fileList = data.fileList;
@@ -173,33 +164,20 @@ const UploadBase = Component.extend({
         let uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ORIGINAL'];
-        const fileunit = self.createFileUnit({
-          file,
-          options
-        });
-
-        fileunit.flag = 'ORIGINAL';
-
-        fileUnitList.push({
-          inst: fileunit,
-          uid: uid
-        });
+        const fileunit = self.createFileUnit({ file, options }, { flag: 'ORIGINAL' });
+        fileUnitList.push({ inst: fileunit, uid: uid });
       });
       
-      setTimeout(this.updateFileList.bind(this), 0);
+      setTimeout(this.updateFileListView.bind(this), 0);
     }
   },
 
-  fileListToFileUnitList() {
-
-  },
-  
   updateList() {
-    this.updateFileUnitList();
-    setTimeout(this.updateFileList.bind(this), 0);
+    this.updateFileList();
+    setTimeout(this.updateFileListView.bind(this), 0);
   },
   
-  updateFileUnitList() {
+  updateFileList() {
     const data = this.data;
     const fileList = data.fileList;
     const fileUnitList = data.fileUnitList;
@@ -239,7 +217,7 @@ const UploadBase = Component.extend({
     this.$update();
   },
 
-  updateFileList() {
+  updateFileListView() {
     const self = this;
     const data = this.data;
     const filesWrapper = data.filesWrapper;
@@ -294,7 +272,6 @@ const UploadBase = Component.extend({
   handleFiles(files) {
     const self = this;
     const data = this.data;
-    let fileunit;
 
     const options = this.setOptions(data);
 
@@ -305,12 +282,8 @@ const UploadBase = Component.extend({
       if (data.fileUnitList.length < data.numLimit) {
         data.preCheckInfo = self.preCheck(file);
         if (!data.preCheckInfo) {
-          fileunit = self.createFileUnit({ file, options });
-          fileunit.flag = 'ADDED';
-          data.fileUnitList.push({
-            inst: fileunit,
-            uid: utils.genUid()
-          });
+          const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
+          data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
         }
       }
     });
@@ -318,11 +291,12 @@ const UploadBase = Component.extend({
     this.updateList();
   },
   
-  createFileUnit(data) {
+  createFileUnit(data, options) {
     const self = this;
     const fileunit = new FileUnit({ data });
 
     this.addFileUnitHandler(fileunit);
+    this.setFileUnitProperty(fileunit, options);
 
     return fileunit;
   },
@@ -348,6 +322,13 @@ const UploadBase = Component.extend({
         handlerFnName = handler.replace(/\$/, '');
       }
       fileunit.$off(handler);
+    });
+  },
+  
+  setFileUnitProperty(fileunit, options) {
+    options = options || [];
+    Object.keys(options).forEach(function(key) {
+      fileunit[key] = options[key];
     });
   },
   

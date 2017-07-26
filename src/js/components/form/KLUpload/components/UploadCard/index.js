@@ -53,11 +53,10 @@ const UploadCard = UploadBase.extend({
   },
 
   handleFiles(files) {
+    this.toggle(false);
+    
     const self = this;
     const data = this.data;
-    let fileunit;
-
-    this.toggle(false);
 
     const options = this.setOptions(data);
 
@@ -68,13 +67,8 @@ const UploadCard = UploadBase.extend({
       if (data.fileUnitList.length < data.numLimit) {
         data.preCheckInfo = self.preCheck(file);
         if (!data.preCheckInfo) {
-          fileunit = self.createFileUnit({ file, options });
-          fileunit.flag = 'ADDED';
-          
-          data.fileUnitList.push({
-            inst: fileunit,
-            uid: utils.genUid()
-          });
+          const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED' });
+          data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
           self.updateFilesZone();
         }
       }
@@ -82,7 +76,7 @@ const UploadCard = UploadBase.extend({
 
     this.updateList();
   },
-    
+  
   onProgress(info) {
     const curInst = info.sender;
     const data = this.data;

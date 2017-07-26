@@ -47,33 +47,6 @@ const UploadList = UploadBase.extend({
     if (isFinite(numPerline)) {
       data.fileWrapperWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px';
     }
-  },
-
-  handleFiles(files) {
-    const self = this;
-    const data = this.data;
-    let fileunit;
-
-    const options = this.setOptions(data);
-
-    data.preCheckInfo = '';
-
-    files = [].slice.call(files);
-    files.forEach(function(file) {
-      if (data.fileUnitList.length < data.numLimit) {
-        data.preCheckInfo = self.preCheck(file);
-        if (!data.preCheckInfo) {
-          fileunit = self.createFileUnit({ file, options });
-          fileunit.flag = 'ADDED';
-          data.fileUnitList.push({
-            inst: fileunit,
-            uid: utils.genUid()
-          });
-        }
-      }
-    });
-
-    this.updateList();
   }
 });
 
