@@ -1,11 +1,13 @@
 <div class="m-tabs {class}" z-dis={disabled} r-hide={!visible}>
     <div class="tabs-scroll {scrollable ? 'scrollable' : ''}">
-        <span class="nav-prev" on-click={this.prev()} r-hide={!scrollable}>
+        {#if scrollable}
+        <span class="nav-prev" on-click={this.prev()}>
             <i class="u-icon u-icon-chevron-left"></i>
         </span>
-        <span class="nav-next" on-click={this.next()} r-hide={!scrollable}>
+        <span class="nav-next" on-click={this.next()}>
             <i class="u-icon u-icon-chevron-right"></i>
         </span>
+        {/if}
         <div ref="wrap" class="nav-scroll">
             <ul ref="nav" class="tabs_hd" r-style={navStyle}>
                 {#list tabs as item}

@@ -62,7 +62,6 @@ const KLTabs = Component.extend({
     this.supr();
     this._update = this.update.bind(this);
     window.addEventListener('resize', this._update);
-    this.update();
   },
   events: {
     $init: function(){
