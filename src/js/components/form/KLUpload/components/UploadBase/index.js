@@ -345,11 +345,11 @@ const UploadBase = Component.extend({
       return img.inst;
     }
 
-    const imgList = this.data.fileUnitList
+    const imageList = this.data.fileUnitList
       .filter(filterImgFile)
       .map(mapCurrentFlag);
 
-    const preview = createImagePreview(imgList);
+    const preview = createImagePreview(imageList);
 
     preview.$inject(this.$refs.imagepreview);
 
@@ -369,10 +369,10 @@ const UploadBase = Component.extend({
         };
       }
 
-      const imgList = imgFileList.map(mapHelper);
+      const imageList = imgFileList.map(mapHelper);
       const imagePreview = new KLImagePreview({
         data: {
-          imgList,
+          imageList,
           curIndex,
         },
       });

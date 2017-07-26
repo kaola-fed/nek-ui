@@ -5,7 +5,6 @@
  */
 
 const _ = require('../../../../../ui-base/_');
-const utils = require('../../utils');
 const UploadBase = require('../UploadBase');
 const tpl = require('./index.html');
 

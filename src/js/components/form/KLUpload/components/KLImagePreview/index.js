@@ -12,14 +12,11 @@ const tpl = require('./index.html');
 /**
  * @class KLImagePreview
  * @extend Component
- * @param {object}         [options.data]                  = 绑定属性
- * @param {string}         [options.data.action]           => 必选，上传地址
- * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
- *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
- *                                                             name: 文件名称
- *                                                             url: 文件的路径
- *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
- * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+ * @param {object}     [options.data]               = 绑定属性
+ * @param {array}      [options.data.image-list]    => 必选，图片文件列表, 其中每个文件项包含下面的字段:
+ *                                                     name: 图片文件名称
+ *                                                     src: 图片文件的路径
+ * @param {number}     [options.data.cur-index=0]   => 必选，当前图片文件的索引, 默认第一项为当前项
  */
 
 const KLImagePreview = Component.extend({
@@ -27,7 +24,7 @@ const KLImagePreview = Component.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     _.extend(data, {
-      imgList: [],
+      imageList: [],
       curIndex: 0,
       uploaded: true,
     });
@@ -87,7 +84,7 @@ const KLImagePreview = Component.extend({
   },
   onPrev() {
     const data = this.data;
-    const length = data.imgList.length;
+    const length = data.imageList.length;
     let toIndex = length - 1;
 
     if (data.curIndex > 0) {
@@ -99,7 +96,7 @@ const KLImagePreview = Component.extend({
   },
   onNext() {
     const data = this.data;
-    const length = data.imgList.length;
+    const length = data.imageList.length;
     let toIndex = 0;
 
     if (data.curIndex < length - 1) {
@@ -244,8 +241,8 @@ const KLImagePreview = Component.extend({
   onDel(index) {
     const self = this;
     const data = this.data;
-    let imgList = data.imgList;
-    const img = imgList[index];
+    let imageList = data.imageList;
+    const img = imageList[index];
 
     const modal = new KLModal({
       data: {
@@ -253,9 +250,9 @@ const KLImagePreview = Component.extend({
       },
     });
     modal.$on('ok', () => {
-      imgList = data.imgList.splice(index, 1);
+      imageList = data.imageList.splice(index, 1);
 
-      if (!imgList[index]) {
+      if (!imageList[index]) {
         data.curIndex = 0;
       }
       self.$emit('remove', {
