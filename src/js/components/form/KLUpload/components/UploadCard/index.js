@@ -65,12 +65,16 @@ const UploadCard = UploadBase.extend({
     files = [].slice.call(files);
     files.forEach(function(file) {
       if (data.fileUnitList.length < data.numLimit) {
-        data.preCheckInfo = self.preCheck(file);
-        if (!data.preCheckInfo) {
-          const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED' });
-          data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
-          self.updateFilesZone();
-        }
+        const checker = self.preCheck(file);
+        checker.then(function(preCheckInfo) {
+          data.preCheckInfo = preCheckInfo;
+          self.$update();
+          if (!data.preCheckInfo) {
+            const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
+            data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
+            self.updateFilesZone();
+          }
+        }); 
       }
     });
 

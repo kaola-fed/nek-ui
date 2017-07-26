@@ -61,12 +61,6 @@ const UploadBase = Component.extend({
       ]
     });
     
-    var promise = new Promise(function(resolve) {
-      setTimeout(function() {
-        resolve(1);
-      }, 100);
-    });
-    
     this.initWatchers();
     this.initUploadedFileUnitList();
   },
@@ -280,11 +274,15 @@ const UploadBase = Component.extend({
     files = [].slice.call(files);
     files.forEach(function(file) {
       if (data.fileUnitList.length < data.numLimit) {
-        data.preCheckInfo = self.preCheck(file);
-        if (!data.preCheckInfo) {
-          const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
-          data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
-        }
+        const checker = self.preCheck(file);
+        checker.then(function(preCheckInfo) {
+          data.preCheckInfo = preCheckInfo;
+          self.$update();
+          if (!data.preCheckInfo) {
+            const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
+            data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
+          }
+        }); 
       }
     });
 
@@ -460,17 +458,73 @@ const UploadBase = Component.extend({
   },
 
   preCheck(file) {
-    let preCheckInfo = '';
-    if (!this.isAcceptedFileSize(file)) {
-      preCheckInfo = this.$trans('FILE_TOO_LARGE');
-    }
-    if (!this.isAcceptedFileType(file)) {
-      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
-    }
+    const self = this;
+    const onPass = function(resolve) {
+      let preCheckInfo = '';
+      if (!self.isAcceptedFileSize(file)) {
+        preCheckInfo = self.$trans('FILE_TOO_LARGE');
+        return resolve(preCheckInfo);
+      }
+      if (!self.isAcceptedFileType(file)) {
+        preCheckInfo = self.$trans('FILE_TYPE_ERROR');
+        return resolve(preCheckInfo);
+      }
+      
+      const imageChecker = self.preCheckImage(file);
+      imageChecker && imageChecker.then(function(imageCheckInfo) {
+        return resolve(imageCheckInfo);
+      });
+    };
     
-    return preCheckInfo;
+    const onError = function(reject) {};
+    
+    return new Promise(onPass, onError);
   },
+  
+  preCheckImage(file) {
+    const self = this;
+    const data = this.data;
+    const type = this.getFileType(file).toLowerCase();
+    
+    if (type === 'image') {
+      const imageWidth = data.imageWidth;
+      const imageHeight = data.imageHeight;
+      const imageScale = data.imageScale;
+      
+      const onResolve = function(resolve) {
+        const img = new Image();
+        img.onload = function() {
+          window.URL.revokeObjectURL(img.src);
+          const width = img.width;
+          const height = img.height;
+          let checkInfo = '';
+          if (isFinite(imageWidth) && imageWidth !== width) {
+            checkInfo = self.$trans('IMAGE_WIDTH_ERROR');
+          }
+          if (isFinite(imageHeight) && imageHeight !== height) {
+            checkInfo = self.$trans('IMAGE_HEIGHT_ERROR');
+          }
+          if (!!imageScale) {
+            const scaleList = imageScale.split(':');
+            const scaleW = scaleList[0];
+            const scaleH = scaleList[1];
+            if (Math.abs(width / height - scaleW / scaleH) > 0.01) {
+              checkInfo = self.$trans('IMAGE_SCALE_ERROR');
+            }
+          }
+          
+          resolve(checkInfo);
+        }
 
+        img.src = window.URL.createObjectURL(file);
+      };
+      
+      const onReject = function(reject) {};
+      
+      return new Promise(onResolve, onReject);
+    }
+  },
+  
   isAcceptedFileType(file) {
     const data = this.data;
     const accept = data.accept;
