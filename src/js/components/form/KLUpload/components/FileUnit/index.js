@@ -222,6 +222,12 @@ const FileUnit = Component.extend({
       self.$update();
     };
     img.src = data.src;
+  },
+  destroy() {
+    this.$emit('$destroy', {
+      sender: this
+    });
+    this.supr();
   }
 });
 

@@ -8,6 +8,7 @@ const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
 const utils = require('../../utils');
 const Config = require('../../config');
+const FileUnit = require('../FileUnit');
 
 /**
  * @class UploadBase
@@ -55,9 +56,16 @@ const UploadBase = Component.extend({
 
     _.extend(data, {
       fileUnitList: [],
+      fileUnitHandlerList: [
+        'preview', 'progress', 'success', 'error', 'remove', '$destroy'
+      ]
     });
     
-    // new Promise();
+    var promise = new Promise(function(resolve) {
+      setTimeout(function() {
+        resolve(1);
+      }, 100);
+    });
     
     this.initWatchers();
     this.initUploadedFileUnits();
@@ -281,6 +289,180 @@ const UploadBase = Component.extend({
     const files = dt.files;
 
     this.handleFiles(files);
+  },
+  
+  handleFiles(files) {
+    const self = this;
+    const data = this.data;
+    let fileunit;
+
+    const options = this.setOptions(data);
+
+    data.preCheckInfo = '';
+
+    files = [].slice.call(files);
+    files.forEach(function(file) {
+      if (data.fileUnitList.length < data.numLimit) {
+        data.preCheckInfo = self.preCheck(file);
+        if (!data.preCheckInfo) {
+          fileunit = self.createFileUnit({ file, options });
+          fileunit.flag = 'ADDED';
+          data.fileUnitList.push({
+            inst: fileunit,
+            uid: utils.genUid()
+          });
+        }
+      }
+    });
+
+    this.updateList();
+  },
+  
+  createFileUnit(data) {
+    const self = this;
+    const fileunit = new FileUnit({ data });
+
+    this.addFileUnitHandler(fileunit);
+
+    return fileunit;
+  },
+
+  addFileUnitHandler(fileunit) {
+    const self = this;
+    const handlerList = this.data.fileUnitHandlerList;
+    handlerList.forEach(function(handler) {
+      let handlerFnName = handler;
+      if (/\$/.test(handler)) {
+        handlerFnName = handler.replace(/\$/, '');
+      }
+      fileunit.$on(handler, self['on' + utils.camelize(handlerFnName)].bind(self));
+    });
+  },
+
+  removeFileUnitHandler(fileunit) {
+    const self = this;
+    const handlerList = this.data.fileUnitHandlerList;
+    handlerList.forEach(function(handler) {
+      let handlerFnName = handler;
+      if (/\$/.test(handler)) {
+        handlerFnName = handler.replace(/\$/, '');
+      }
+      fileunit.$off(handler);
+    });
+  },
+  
+  onPreview(info) {
+    const current = info.sender;
+
+    function filterImgFile(file) {
+      return file.inst.data.type === 'IMAGE';
+    }
+
+    function mapCurrentFlag(img) {
+      if (current === img.inst) {
+        img.inst.current = true;
+      }
+      return img.inst;
+    }
+
+    const imgList = this.data.fileUnitList
+      .filter(filterImgFile)
+      .map(mapCurrentFlag);
+
+    const preview = createImagePreview(imgList);
+
+    preview.$inject(this.$refs.imagepreview);
+
+    function createImagePreview(imgFileList) {
+      function findHelper(img) {
+        return img.current;
+      }
+
+      const curIndex = imgFileList.findIndex(findHelper);
+
+      function mapHelper(img) {
+        delete img.current;
+        return {
+          src: img.data.src,
+          name: img.data.name,
+          status: img.data.status,
+        };
+      }
+
+      const imgList = imgFileList.map(mapHelper);
+      const imagePreview = new KLImagePreview({
+        data: {
+          imgList,
+          curIndex,
+        },
+      });
+
+      imagePreview.$on('remove', (imgInfo) => {
+        const index = imgInfo.index;
+      const imgInst = imgFileList[index];
+
+      if (imgInst) {
+        imgInst.$emit('remove');
+      }
+    });
+
+      imagePreview.$on('$destroy', () => {
+        imgFileList.splice(0);
+    });
+
+      return imagePreview;
+    }
+  },
+
+  onProgress(info) {
+    this.$emit(
+      'progress',
+      _.extend(info, {
+        fileList: this.data.fileList
+      })
+    );
+  },
+
+  onSuccess(info) {
+    this.updateList();
+    this.$emit(
+      'success',
+      _.extend(info, {
+        fileList: this.data.fileList
+      })
+    );
+  },
+
+  onError(info) {
+    this.updateList();
+    this.$emit(
+      'error',
+      _.extend(info, {
+        fileList: this.data.fileList
+      })
+    );
+  },
+
+  onRemove(info) {
+    var inst = info.sender;
+    if (inst.flag === 'ORIGINAL') {
+      inst.flag = 'DELETED';
+      inst.file = inst.data.file;
+    }
+    this.$emit(
+        'remove',
+        _.extend(info, {
+          fileList: this.data.fileList
+        })
+    );
+    inst.destroy();
+  },
+
+  onDestroy(info){
+    const inst = info.sender;
+    inst.destroyed = true;
+    this.removeFileUnitHandler(inst);
+    this.updateList();
   },
 
   setOptions(options) {

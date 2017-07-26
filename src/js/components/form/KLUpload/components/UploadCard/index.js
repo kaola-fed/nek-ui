@@ -68,11 +68,9 @@ const UploadCard = UploadBase.extend({
       if (data.fileUnitList.length < data.numLimit) {
         data.preCheckInfo = self.preCheck(file);
         if (!data.preCheckInfo) {
-          fileunit = self.createFileUnit({
-            file,
-            options
-          });
+          fileunit = self.createFileUnit({ file, options });
           fileunit.flag = 'ADDED';
+          
           data.fileUnitList.push({
             inst: fileunit,
             uid: utils.genUid()
@@ -83,6 +81,85 @@ const UploadCard = UploadBase.extend({
     });
 
     this.updateList();
+  },
+    
+  onProgress(info) {
+    const curInst = info.sender;
+    const data = this.data;
+    let curIndex = -1;
+    let lastIndex = -1;
+
+    data.fileUnitList.forEach((item, index) => {
+      if (item.inst.data.status === 'uploading') {
+        lastIndex = index;
+      }
+  
+      if (item.inst === curInst) {
+        curIndex = index;
+      }
+    });
+
+    if (curIndex >= lastIndex && data.status !== 'failed') {
+      data.status = 'uploading';
+      data.progress = info.progress;
+      this.$update();
+    }
+  
+    this.supr(info);
+  },
+
+  onSuccess(info) {
+    const data = this.data;
+    let allUploaded = true;
+    let hasFailed = false;
+    data.fileUnitList.forEach((item) => {
+      allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+      hasFailed = hasFailed || item.inst.data.status === 'failed';
+    });
+  
+    if (allUploaded) {
+      data.status = 'uploaded';
+    } else if (hasFailed) {
+      data.status = 'failed';
+    }
+
+    this.supr(info);
+  },
+  
+  onError(info) {
+    const data = this.data;
+    data.status = 'failed';
+    data.info = this.$trans('UPLOAD_FAIL');
+
+    this.supr(info);
+  },
+
+  onDestroy(info){
+    const self = this;
+    const inst = info.sender;
+    self.toggle(false);
+    inst.destroyed = true;
+    self.removeFileUnitHandler(inst);
+    self.updateList();
+    self.updateFilesZone();
+    resetStatus();
+  
+    function resetStatus() {
+      let allUploaded = true;
+      let hasFailed = false;
+      self.data.fileUnitList.forEach((item) => {
+        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+        hasFailed = hasFailed || item.inst.data.status === 'failed';
+      });
+      
+      if (allUploaded) {
+        self.data.status = 'uploaded';
+      } else if (hasFailed) {
+        self.data.status = 'failed';
+      }
+      
+      self.$update();
+    }
   },
 
   updateFilesZone() {
@@ -100,180 +177,6 @@ const UploadCard = UploadBase.extend({
       entryWrapper.style['margin-right'] = '0';
       inputWrapper.style.display = 'none';
     }
-  },
-
-  createFileUnit(data) {
-    const self = this;
-    const fileunit = new FileUnit({ data });
-
-    fileunit.$on('preview', previewCb);
-
-    function previewCb() {
-      const current = this;
-
-      function filterImgFile(file) {
-        return file.inst.data.type === 'IMAGE';
-      }
-
-      function mapCurrentFlag(img) {
-        if (current === img.inst) {
-          img.inst.current = true;
-        }
-        return img.inst;
-      }
-
-      const imgList = self.data.fileUnitList
-        .filter(filterImgFile)
-        .map(mapCurrentFlag);
-
-      const preview = createImagePreview(imgList);
-
-      preview.$inject(self.$refs.imagepreview);
-    }
-
-    function createImagePreview(imgFileList) {
-      function findHelper(img) {
-        return img.current;
-      }
-      const curIndex = imgFileList.findIndex(findHelper);
-
-      function mapHelper(img) {
-        delete img.current;
-        return {
-          src: img.data.src,
-          name: img.data.name,
-          status: img.data.status,
-        };
-      }
-      const imgList = imgFileList.map(mapHelper);
-
-      const imagePreview = new KLImagePreview({
-        data: {
-          imgList,
-          curIndex,
-        },
-      });
-
-      imagePreview.$on('remove', (imgInfo) => {
-        const index = imgInfo.index;
-        const imgInst = imgFileList[index];
-
-        if (imgInst) {
-          imgInst.$emit('remove');
-        }
-      });
-
-      imagePreview.$on('$destroy', () => {
-        imgFileList.splice(0);
-      });
-
-      return imagePreview;
-    }
-
-    fileunit.$on('progress', progressCb);
-
-    function progressCb(info) {
-      const curInst = this;
-      let curIndex = -1;
-      let lastIndex = -1;
-
-      self.data.fileUnitList.forEach((item, index) => {
-        if (item.inst.data.status === 'uploading') {
-          lastIndex = index;
-        }
-        if (item.inst === curInst) {
-          curIndex = index;
-        }
-      });
-
-      if (curIndex >= lastIndex && self.data.status !== 'failed') {
-        self.data.status = 'uploading';
-        self.data.progress = info.progress;
-        self.$update();
-      }
-      self.$emit(
-        'progress',
-        _.extend(info, {
-          fileList: self.data.fileList
-        })
-      );
-    }
-
-    fileunit.$on('success', successCb);
-
-    function successCb(info) {
-      let allUploaded = true;
-      let hasFailed = false;
-      self.data.fileUnitList.forEach((item) => {
-        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-        hasFailed = hasFailed || item.inst.data.status === 'failed';
-      });
-      if (allUploaded) {
-        self.data.status = 'uploaded';
-      } else if (hasFailed) {
-        self.data.status = 'failed';
-      }
-      self.updateList();
-      self.$emit(
-        'success',
-        _.extend(info, {
-          fileList: self.data.fileList
-        })
-      );
-    }
-
-    fileunit.$on('error', (info) => {
-      self.data.status = 'failed';
-      self.data.info = self.$trans('UPLOAD_FAIL');
-      self.updateList();
-      self.$emit(
-        'error',
-        _.extend(info, {
-          fileList: self.data.fileList
-        })
-      );
-    });
-
-    fileunit.$on('remove', function (info) {
-      if (this.flag === 'ORIGINAL') {
-        this.flag = 'DELETED';
-        this.file = this.data.file;
-      }
-      self.$emit(
-        'remove',
-        _.extend(info, {
-          fileList: self.data.fileList
-        })
-      );
-      this.destroy();
-    });
-
-    fileunit.$on('$destroy', function () {
-      self.toggle(false);
-      this.destroyed = true;
-      this.$off('preview', previewCb);
-      this.$off('success', successCb);
-      self.updateList();
-      self.updateFilesZone();
-      resetStatus();
-    });
-
-    function resetStatus() {
-      let allUploaded = true;
-      let hasFailed = false;
-      self.data.fileUnitList.forEach((item) => {
-        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-        hasFailed = hasFailed || item.inst.data.status === 'failed';
-      });
-      if (allUploaded) {
-        self.data.status = 'uploaded';
-      } else if (hasFailed) {
-        self.data.status = 'failed';
-      }
-      self.$update();
-    }
-
-    return fileunit;
   },
 
   uploadFiles() {

@@ -10,6 +10,10 @@ function genUid() {
       s4() + '-' + s4() + s4() + s4();
 }
 
+function camelize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const defaults = {
   type: 'POST',
   async: true,
@@ -70,5 +74,6 @@ function ajax(options) {
 
 module.exports = {
   upload,
-  genUid
+  genUid,
+  camelize
 };
