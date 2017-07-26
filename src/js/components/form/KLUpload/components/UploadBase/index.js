@@ -9,6 +9,7 @@ const _ = require('../../../../../ui-base/_');
 const utils = require('../../utils');
 const Config = require('../../config');
 const FileUnit = require('../FileUnit');
+const KLImagePreview = require('../KLImagePreview');
 
 /**
  * @class UploadBase
@@ -437,7 +438,7 @@ const UploadBase = Component.extend({
     inst.destroy();
   },
 
-  onDestroy(info){
+  onDestroy(info) {
     const inst = info.sender;
     inst.destroyed = true;
     this.removeFileUnitHandler(inst);

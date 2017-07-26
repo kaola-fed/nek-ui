@@ -6,9 +6,7 @@
 
 const _ = require('../../../../../ui-base/_');
 const utils = require('../../utils');
-const FileUnit = require('../FileUnit');
 const UploadBase = require('../UploadBase');
-const KLImagePreview = require('../KLImagePreview');
 const tpl = require('./index.html');
 
 /**
