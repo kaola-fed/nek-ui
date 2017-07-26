@@ -6567,6 +6567,10 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:32px;
 	font-size:12px;
 }
+.m-tabs .tabs-scroll .nav-prev.disabled,.m-tabs .tabs-scroll .nav-next.disabled{
+	color:#ccc;
+	cursor:not-allowed;
+}
 .m-tabs .tabs-scroll .nav-prev{
 	left:0;
 }
