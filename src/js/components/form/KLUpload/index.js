@@ -93,6 +93,39 @@ const KLUpload = Component.extend({
         
     uploadInst.$inject(uploadNode);
   },
+  
+  validate(on = '') {
+    const value = this.data.fileList;
+    let rules = this.data.rules;
+
+    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
+
+    const result = Validation.validate(value, rules);
+    if (
+        result.firstRule &&
+        !(
+            result.firstRule.silentOn === true ||
+            (typeof result.firstRule.silentOn === 'string' &&
+            result.firstRule.silentOn.indexOf(on) >= 0)
+        )
+    ) {
+      this.data.tip = result.firstRule.message;
+    } else this.data.tip = '';
+
+    // @TODO
+    if (!result.success) this.data.state = 'error';
+    else {
+      this.data.state = '';
+    }
+
+    this.$emit('validate', {
+      sender: this,
+      on,
+      result,
+    });
+
+    return result;
+  }
 });
 
 module.exports = KLUpload;
