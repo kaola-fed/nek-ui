@@ -84,7 +84,7 @@ const KLTabs = Component.extend({
     if(wrapWidth < navWidth){
       this.data.scrollable = this.data.scrollable || {};
       this.data.scrollable.prev = currentOffset;
-      this.data.scrollable.next = currentOffset + wrapWidth < navWidth;
+      this.data.scrollable.next = (currentOffset + wrapWidth) < navWidth;
       if(navWidth - currentOffset < wrapWidth) {
           this.setOffset(navWidth - wrapWidth);
         }
