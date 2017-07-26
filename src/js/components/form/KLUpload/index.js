@@ -37,8 +37,9 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.image-height]   => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600 
  * @param {string}     [options.data.image-scale]    => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
  * @param {boolean}    [options.data.readonly]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
- *
- * 
+ */
+
+/**
  * @class KLImagePreview
  * @extend Component
  * @param {object}     [options.data]                = 绑定属性
@@ -46,7 +47,6 @@ const tpl = require('./index.html');
  *                                                       name: 图片文件名称
  *                                                       src: 图片文件的路径
  * @param {number}     [options.data.cur-index=0]    => 必选，当前图片文件的索引, 默认第一项为当前项
- * 
  */
 const KLUpload = Component.extend({
   name: 'kl-upload',
