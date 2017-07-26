@@ -23,6 +23,10 @@
             line-height: 32px;
             font-size: 12px;
         }
+        .nav-prev.disabled, .nav-next.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
         .nav-prev {
             left: 0;
         }

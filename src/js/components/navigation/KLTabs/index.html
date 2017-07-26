@@ -1,10 +1,10 @@
 <div class="m-tabs {class}" z-dis={disabled} r-hide={!visible}>
     <div class="tabs-scroll {scrollable ? 'scrollable' : ''}">
         {#if scrollable}
-        <span class="nav-prev" on-click={this.prev()}>
+        <span class="nav-prev {scrollable.prev ? '' : 'disabled'}" on-click={this.prev()}>
             <i class="u-icon u-icon-chevron-left"></i>
         </span>
-        <span class="nav-next" on-click={this.next()}>
+        <span class="nav-next {scrollable.next ? '' : 'disabled'}" on-click={this.next()}>
             <i class="u-icon u-icon-chevron-right"></i>
         </span>
         {/if}
