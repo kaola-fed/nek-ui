@@ -144,7 +144,7 @@
             }
             .m-btn-group {
                 position: relative;
-                width: 300px;
+                width: 350px;
                 height: 50px;
                 margin: 0 auto;
                 background: rgba(0,0,0,0.6);

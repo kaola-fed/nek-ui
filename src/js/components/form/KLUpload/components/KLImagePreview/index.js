@@ -60,9 +60,14 @@ const KLImagePreview = Component.extend({
           fnName: 'rezoom',
         },
         {
-          name: 'rotate',
+          name: 'rotate_left',
+          icon: 'rotate_left',
+          fnName: 'rotateLeft',
+        },
+        {
+          name: 'rotate_right',
           icon: 'rotate_right',
-          fnName: 'rotate',
+          fnName: 'rotateRight',
         },
         {
           name: 'remove',
@@ -206,13 +211,24 @@ const KLImagePreview = Component.extend({
       yStep: totalSteps ? (translateY / totalSteps) * scaleStep * 10 : 0,
     };
   },
-  rotate() {
+  rotateLeft() {
+    this.rotate('left');
+  },
+  rotateRight() {
+    this.rotate('right');
+  },
+  rotate(dir) {
     const data = this.data;
     const virtualInfo = data.virtualInfo;
     const img = this.$refs.virtualimage;
 
     data.showVirtual = true;
-    virtualInfo.rotate += 90;
+
+    if (dir === 'right') {
+      virtualInfo.rotate += 90;
+    } else if (dir === 'left') {
+      virtualInfo.rotate -= 90;
+    }
 
     img.style.transform = this.genTransform();
   },
