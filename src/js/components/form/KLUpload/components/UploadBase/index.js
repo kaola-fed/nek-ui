@@ -107,7 +107,7 @@ const UploadBase = Component.extend({
         const uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ADDED'];
-        const fileunit = { file, flag: 'ADDED', uid };
+        const fileunit = { name: file.name, url: file.url, flag: 'ADDED', uid };
         data.fileUnitList.splice(index, index, fileunit);
       }
     });
@@ -163,7 +163,7 @@ const UploadBase = Component.extend({
         let uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ORIGINAL'];
-        const fileunit = { file, flag: 'ORIGINAL', uid };
+        const fileunit = { name: file.name, url: file.url, flag: 'ORIGINAL', uid };
         fileUnitList.push(fileunit);
       });
     }
@@ -181,11 +181,10 @@ const UploadBase = Component.extend({
     const newFileList = [];
     
     for (var index = fileUnitList.length - 1; index >= 0; index--) {
-      let fu = fileUnitList[index];
-      let uid = fu.uid;
-      let flag = fu.flag;
-      let file = fu.file;
-      let destroyed = fu.destroyed;
+      let file = fileUnitList[index];
+      let uid = file.uid;
+      let flag = file.flag;
+      let destroyed = file.destroyed;
       let fileIndex = fileList.findIndex(function(file) {
         return uid == file.uid;
       });
@@ -281,33 +280,14 @@ const UploadBase = Component.extend({
           data.preCheckInfo = preCheckInfo;
           // self.$update();
           if (!data.preCheckInfo) {
-            const fileunit = {
-              file,
-              flag: 'ADDED',
-              uid: utils.genUid()
-            };
+            file.flag = 'ADDED';
+            file.uid = utils.genUid();
+            const fileunit = file;
             data.fileUnitList.push(fileunit);
             self.$update();
           }
         }); 
       }
-    });
-  },
-  
-  createFileUnit(data, options) {
-    const self = this;
-    const fileunit = new FileUnit({ data });
-
-    this.addFileUnitHandler(fileunit);
-    this.setFileUnitProperty(fileunit, options);
-
-    return fileunit;
-  },
-
-  setFileUnitProperty(fileunit, options) {
-    options = options || [];
-    Object.keys(options).forEach(function(key) {
-      fileunit[key] = options[key];
     });
   },
   
@@ -404,10 +384,11 @@ const UploadBase = Component.extend({
   },
 
   onRemove(info) {
-    var inst = info.sender;
-    if (inst.flag === 'ORIGINAL') {
-      inst.flag = 'DELETED';
-      inst.file = inst.data.file;
+    const inst = info.sender;
+    const file = info.file;
+    file.destroyed = true;
+    if (file.flag === 'ORIGINAL') {
+      file.flag = 'DELETED';
     }
     this.$emit(
         'remove',
@@ -416,15 +397,7 @@ const UploadBase = Component.extend({
         })
     );
     inst.destroy();
-  },
-
-  onDestroy(info) {
-    const inst = info.sender;
-    if (inst) {
-      inst.destroyed = true;
-      inst.$off('destroy');
-      this.updateList();
-    }
+    this.updateList();
   },
 
   setOptions(options) {

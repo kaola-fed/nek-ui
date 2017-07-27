@@ -168,11 +168,6 @@ const KLUpload = Component.extend({
     });
 
     return result;
-  },
-  
-  $update() {
-    this.data.uploadInst.$update();
-    this.supr();
   }
 })
   .component('upload-list', UploadList)

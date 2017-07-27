@@ -6,7 +6,7 @@
                     "margin-right": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? "0" : fileUnitMargin + "px"
                 }}>
                   <file-unit ref="fileunit{fileunit_index}"
-                      file={fileunit.file}
+                      file={fileunit}
                       url={action}
                       name={name}
                       readonly={readonly}
@@ -15,8 +15,7 @@
                       on-progress={this.onProgress($event)}
                       on-success={this.onSuccess($event)}
                       on-error={this.onError($event)}
-                      on-remove={this.onRemove($event)}
-                      on-destroy={this.onDestroy($event)}/>
+                      on-remove={this.onRemove($event)}/>
             </li>
         {/list}
         <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>

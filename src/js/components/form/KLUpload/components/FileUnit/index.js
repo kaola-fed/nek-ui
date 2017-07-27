@@ -180,12 +180,12 @@ const FileUnit = Component.extend({
     this.$emit('preview', emitItem);
   },
 
-  destroy() {
-    this.$emit('$destroy', {
-      sender: this
-    });
-    this.supr();
-  }
+  // destroy() {
+  //   this.$emit('$destroy', {
+  //     sender: this
+  //   });
+  //   this.supr();
+  // }
 });
 
 module.exports = FileUnit;
