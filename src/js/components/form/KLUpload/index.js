@@ -10,6 +10,7 @@ const Config = require('./config');
 const Component = require('../../../ui-base/component');
 const UploadList = require('./components/UploadList');
 const UploadCard = require('./components/UploadCard');
+const validationMixin = require('../../../util/validationMixin');
 const tpl = require('./index.html');
 
 /**
@@ -73,6 +74,8 @@ const KLUpload = Component.extend({
       encType: 'multipart/form-data',
     });
 
+    this.initValidation();
+    
     this.supr(data);
   },
 
@@ -185,5 +188,7 @@ const KLUpload = Component.extend({
     this.supr();
   }
 });
+
+KLUpload.use(validationMixin);
 
 module.exports = KLUpload;
