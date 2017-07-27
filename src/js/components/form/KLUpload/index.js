@@ -8,6 +8,7 @@ const _ = require('../../../ui-base/_');
 const utils = require('./utils');
 const Config = require('./config');
 const Component = require('../../../ui-base/component');
+const UploadBase = require('./components/UploadBase');
 const UploadList = require('./components/UploadList');
 const UploadCard = require('./components/UploadCard');
 const validationMixin = require('../../../util/validationMixin');
@@ -76,14 +77,14 @@ const KLUpload = Component.extend({
       encType: 'multipart/form-data',
     });
 
+    this.preProcess(data);
     this.initValidation();
     
     this.supr(data);
   },
 
   init(data) {
-    this.preProcess(data);
-    this.initUploadInst(data);
+    this.addUploadHandler();
     this.supr(data);
   },
 
@@ -93,25 +94,9 @@ const KLUpload = Component.extend({
     }
   },
 
-  initUploadInst(data) {
+  addUploadHandler() {
     const self = this;
-    const uploadNode = this.$refs['m-upload'];
-    const uploadTypeMap = {
-      list: UploadList,
-      card: UploadCard,
-    };
-    
-    const uploadInst = new uploadTypeMap[data.listType]({ data });
-    
-    this.data.uploadInst = uploadInst;
-    
-    this.addUploadHandler(uploadInst);
-    
-    uploadInst.$inject(uploadNode);
-  },
-  
-  addUploadHandler(uploadInst) {
-    const self = this;
+    const uploadInst = this.$refs.upload;
     const handlerList = ['success', 'progress', 'error', 'remove'];
     handlerList.forEach(function(handler) {
       let handlerFnName = handler;
@@ -189,7 +174,9 @@ const KLUpload = Component.extend({
     this.data.uploadInst.$update();
     this.supr();
   }
-});
+})
+  .component('upload-list', UploadList)
+  .component('upload-card', UploadCard);
 
 KLUpload.use(validationMixin);
 

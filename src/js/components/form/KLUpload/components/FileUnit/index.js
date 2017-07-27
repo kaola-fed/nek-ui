@@ -12,12 +12,14 @@ const KLModal = require('../../../../notice/KLModal');
 const Config = require('../../config');
 
 const FileUnit = Component.extend({
-  name: 'file-unit',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     _.extend(data, {
       file: {},
-      options: {},
+      url: '',
+      name: '',
+      readyonly: false,
+      data: {}
     });
 
     _.extend(data, {
@@ -34,7 +36,7 @@ const FileUnit = Component.extend({
   
   initData(data) {
     const file = data.file;
-    data.name = this.getFileName(file);
+    data.filename = this.getFileName(file);
     data.type = this.getFileType(file);
 
     // for initial uploaded files
@@ -53,13 +55,13 @@ const FileUnit = Component.extend({
 
   getFileType(file) {
     const type = file.type || '';
-    const name = file.name || '';
+    const filename = file.name || '';
     const typeMap = Config.typeMap;
     let typeStr = 'UNKNOWN';
 
     Object.keys(typeMap).forEach(function(key) {
       const reg = new RegExp(key + '$');
-      if (reg.test(type) || !type && reg.test(name)) {
+      if (reg.test(type) || !type && reg.test(filename)) {
         typeStr = typeMap[key];
       }
     });
@@ -135,9 +137,10 @@ const FileUnit = Component.extend({
       },
     };
 
-    options = _.extend(options, data.options);
+    options.name = data.name;
+    options.data = data.data;
     
-    utils.upload(options.url, file, options);
+    utils.upload(data.url, file, options);
     
     this.$update();
   },
@@ -155,7 +158,7 @@ const FileUnit = Component.extend({
     if (data.delConfirm) {
       const modal = new KLModal({
         data: {
-          content: `${this.$trans('REMOVE_CONFIRM') + data.name}?`,
+          content: `${this.$trans('REMOVE_CONFIRM') + data.filename}?`,
         },
       });
       modal.$on('ok', () => {

@@ -13,7 +13,6 @@ const tpl = require('./index.html');
  * @extend UploadBase
  */
 const UploadList = UploadBase.extend({
-  name: 'upload-list',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     this.supr(data);

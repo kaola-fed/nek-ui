@@ -15,7 +15,6 @@ const tpl = require('./index.html');
  */
 
 const UploadCard = UploadBase.extend({
-  name: 'upload-card',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     this.supr(data);

@@ -11,7 +11,7 @@
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type}</span>
         {/if}
-        <div class="m-remove" r-hide={options.readonly} on-click={this.onRemove()}><i class="u-icon u-icon-error"></i></div>
+        <div class="m-remove" r-hide={readonly} on-click={this.onRemove()}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">
             {#if status === 'failed'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>
@@ -28,11 +28,11 @@
                 </span>
             {#elseif status === 'uploaded'}
                 <span class="u-uploaded">
-                    <a class="u-uploaded-zone" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
+                    <a class="u-uploaded-zone" href={src} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
                 </span>
             {/if}
         </div>
     </div>
-    <div class="m-name" title={name}>{name}</div>
+    <div class="m-name" title={filename}>{filename}</div>
     <div class="m-info">{info}</div>
 </div>
