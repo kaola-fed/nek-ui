@@ -32,9 +32,6 @@ const FileUnit = Component.extend({
     this.supr(data);
   },
   
-  init: function(data) {
-  },
-
   initData(data) {
     const file = data.file;
     data.name = this.getFileName(file);

@@ -25,8 +25,11 @@ function upload(url, src, options) {
   let name = options.name || 'file';
 
   if (src instanceof File) {
+    data = {};
     data[name] = src;
   }
+  
+  data = _.extend(data, options.data);
 
   for (let key in data) {
     if (data.hasOwnProperty(key)) {

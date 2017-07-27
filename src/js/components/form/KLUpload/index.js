@@ -25,6 +25,7 @@ const tpl = require('./index.html');
  *                                                       flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
  * @param {string}     [options.data.name]           => 可选，上传的文件字段名, 默认为'file'
  * @param {boolean}    [options.data.multiple]       => 可选，是否支持多选, 可选值true/false，默认false单选
+ * @param {object}     [options.data.data]           => 可选，上传时附带的额外参数
  * @param {boolean}    [options.data.drag]           => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
  * @param {string}     [options.data.accept]         => 可选，接受上传的文件类型, 同input的accept属性
  * @param {string}     [options.data.list-type]      => 可选，上传组件的展示形式, 可选值list/card，默认list
@@ -57,6 +58,7 @@ const KLUpload = Component.extend({
     _.extend(data, {
       action: '',
       name: 'file',
+      data: {},
       multiple: false,
       drag: false,
       accept: '*',
