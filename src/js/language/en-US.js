@@ -39,5 +39,8 @@ module.exports = {
   LIMIT_ERROR: 'the limit should be a number',
   IMAGE_WIDTH_ERROR: 'width error',
   IMAGE_HEIGHT_ERROR: 'height error',
-  IMAGE_SCALE_ERROR: 'scale error'
+  IMAGE_SCALE_ERROR: 'scale error',
+  PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
+  UNIT: '',
+  FILE: 'file'
 };
