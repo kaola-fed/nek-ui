@@ -62,7 +62,7 @@ const UploadCard = UploadBase.extend({
 
     files = [].slice.call(files);
     files.forEach(function(file) {
-      if (data.fileUnitList.length < data.numLimit) {
+      if (data.fileUnitList.length < data.numMax) {
         const checker = self.preCheck(file);
         checker.then(function(preCheckInfo) {
           data.preCheckInfo = preCheckInfo;
@@ -164,11 +164,11 @@ const UploadCard = UploadBase.extend({
     const entryWrapper = this.$refs.entrywrapper;
     const inputWrapper = this.$refs.inputwrapper;
 
-    if (data.fileUnitList.length < data.numLimit) {
+    if (data.fileUnitList.length < data.numMax) {
       filesZone.style.width = '125px';
       entryWrapper.style['margin-right'] = '20px';
       inputWrapper.style.display = 'inline-block';
-    } else if (data.fileUnitList.length === data.numLimit) {
+    } else if (data.fileUnitList.length === data.numMax) {
       filesZone.style.width = '50px';
       entryWrapper.style['margin-right'] = '0';
       inputWrapper.style.display = 'none';

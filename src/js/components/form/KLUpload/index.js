@@ -27,7 +27,8 @@ const tpl = require('./index.html');
  * @param {boolean}    [options.data.drag]           => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
  * @param {string}     [options.data.accept]         => 可选，接受上传的文件类型, 同input的accept属性
  * @param {string}     [options.data.list-type]      => 可选，上传组件的展示形式, 可选值list/card，默认list
- * @param {number}     [options.data.num-limit]      => 可选，最大允许上传文件的个数，默认无限制
+ * @param {number}     [options.data.num-min]        => 可选，指定的至少上传的文件个数，默认无限制
+ * @param {number}     [options.data.num-max]        => 可选，最大允许上传文件的个数，默认无限制
  * @param {number}     [options.data.num-perline]    => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
  *                                                       对于表单形式，默认每行展示5个
  * @param {number}     [options.data.max-size]       => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
@@ -60,7 +61,8 @@ const KLUpload = Component.extend({
       accept: '*',
       listType: 'list',
       fileList: [],
-      numLimit: Infinity,
+      numMin: -Infinity,
+      numMax: Infinity,
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
@@ -95,7 +97,9 @@ const KLUpload = Component.extend({
     };
     
     const uploadInst = new uploadTypeMap[data.listType]({ data });
-
+    
+    this.data.uploadInst = uploadInst;
+    
     this.addUploadHandler(uploadInst);
     
     uploadInst.$inject(uploadNode);
@@ -159,36 +163,26 @@ const KLUpload = Component.extend({
   },
   
   validate(on = '') {
-    const value = this.data.fileList;
-    let rules = this.data.rules;
-
-    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
-
-    const result = Validation.validate(value, rules);
-    if (
-        result.firstRule &&
-        !(
-            result.firstRule.silentOn === true ||
-            (typeof result.firstRule.silentOn === 'string' &&
-            result.firstRule.silentOn.indexOf(on) >= 0)
-        )
-    ) {
-      this.data.tip = result.firstRule.message;
-    } else this.data.tip = '';
-
-    // @TODO
-    if (!result.success) this.data.state = 'error';
-    else {
-      this.data.state = '';
+    const data = this.data;
+    const result = { success: true, message: '' };
+    
+    if (data.fileList.length < data.numMin) {
+      result.success = false;
+      result.message = this.$trans('PLEASE_UPLOAD_ATLEAST') + data.numMin + this.$trans('UNIT') + this.$trans('FILE');
+      this.data.state = 'error';
     }
 
     this.$emit('validate', {
       sender: this,
-      on,
       result,
     });
 
     return result;
+  },
+  
+  $update() {
+    this.data.uploadInst.$update();
+    this.supr();
   }
 });
 
