@@ -108,7 +108,6 @@ $m-tabs-vertical_hd_li_width = 120px;
     $border-radius: 3px;
 
     .tabs_hd {
-        margin-left: -1px;
 
         > li {
             padding: 0 $m-tabs_hd_li_padding-horizontal;
