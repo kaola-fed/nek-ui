@@ -33,7 +33,7 @@ const _ = {
   },
   clone(obj) {
     return JSON.parse(JSON.stringify(obj));
-  },
+  }
 };
 
 _.throttle = function (fn, delay) {

@@ -41,11 +41,58 @@ const Component = Regular.extend({
   defaults(data) {
     this.data = Object.assign(data, this.data);
   },
+  init() {
+    this.supr();
+  },
   /**
      * @protected
      */
   rules(attris) {
     this.data = Object.assign(attris, this.data);
+  },
+  _validate(on, value, Validation) {
+    const data = this.data;
+    let rules = [];
+    if (Array.isArray(data.rules)) {
+      rules = [].concat.call(data.defaultRules || [], data.rules);
+    } else if (typeof data.rules === 'function') {
+      const _rule = [{
+        type: 'method',
+        method: data.rules,
+      }];
+      rules = [].concat.call(data.defaultRules || [], _rule);
+    } else if (typeof data.rules === 'object') {
+      rules = [].concat.call(data.defaultRules || [], [data.rules]);
+    } else {
+      rules = [].concat.call(data.defaultRules || []);
+    }
+    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
+    const result = Validation.validate(value, rules);
+    data.tip = this.showTip(on, result) ? result.firstRule.message : '';
+
+    // @TODO
+    data.state = result.success ? '' : 'error';
+
+    this.$emit('validate', {
+      sender: this,
+      on,
+      result,
+    });
+
+    return result;
+  },
+  showTip(on, result) {
+    if (
+      result.firstRule &&
+      !(
+        result.firstRule.silentOn === true ||
+        (typeof result.firstRule.silentOn === 'string' &&
+          result.firstRule.silentOn.indexOf(on) >= 0)
+      )
+    ) {
+      return true;
+    }
+    return false;
   },
   /**
      * @protected
@@ -60,7 +107,6 @@ const Component = Regular.extend({
 })
   .filter(filter)
   .directive(directive);
-
 animation.install(Regular);
 
 module.exports = Component;

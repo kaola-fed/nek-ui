@@ -55,6 +55,7 @@ const KLInput = Component.extend({
       state: '',
       maxlength: undefined,
       unit: '',
+      defaultRules: [],
       rules: [],
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
@@ -78,7 +79,7 @@ const KLInput = Component.extend({
       if (value) {
         this.addRule('required');
       } else {
-        this.data.rules = this.data.rules.filter(
+        this.data.defaultRules = this.data.defaultRules.filter(
           rule => rule.type !== 'isRequired',
         );
       }
@@ -105,7 +106,7 @@ const KLInput = Component.extend({
      * @protected
      */
   addRule(name) {
-    const { min, max, message: _message, rules } = this.data;
+    const { min, max, message: _message, defaultRules } = this.data;
 
     let message = _message;
     if (name === 'required') {
@@ -117,11 +118,11 @@ const KLInput = Component.extend({
     }
     const rule = inputRules[name];
     if (typeof rule === 'function') {
-      rules.push(rule(min, max, message));
+      defaultRules.push(rule(min, max, message));
     } else {
       const ruleCopy = _.extend({}, rule);
       message && (ruleCopy.message = message);
-      rules.push(ruleCopy);
+      defaultRules.push(ruleCopy);
     }
   },
   /**
@@ -132,41 +133,13 @@ const KLInput = Component.extend({
   validate(on = '') {
     const value =
       this.data.value || this.data.value === 0 ? `${this.data.value}` : '';
-    let rules = this.data.rules;
-
-    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
-
-    const result = Validation.validate(value, rules);
-    if (
-      result.firstRule &&
-      !(
-        result.firstRule.silentOn === true ||
-        (typeof result.firstRule.silentOn === 'string' &&
-          result.firstRule.silentOn.indexOf(on) >= 0)
-      )
-    ) {
-      this.data.tip = result.firstRule.message;
-    } else this.data.tip = '';
-
-    // @TODO
-    if (!result.success) this.data.state = 'error';
-    else {
-      this.data.state = '';
-    }
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+    return this._validate(on, value, Validation);
   },
 
   /**
      * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
-     **/
+     * */
   __valueFilter(_value) {
     const type = this.data.type;
 
