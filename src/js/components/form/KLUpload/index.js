@@ -37,6 +37,7 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.max-size]       => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}    [options.data.readonly]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
  *                                                       默认false，允许上传和删除图片
+ * @param {boolean}    [options.data.hideTip=false]  => 是否显示校验错误信息，默认false显示
  * @param {number}     [options.data.image-width]    => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
  * @param {number}     [options.data.image-height]   => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600 
  * @param {string}     [options.data.image-scale]    => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
@@ -70,6 +71,7 @@ const KLUpload = Component.extend({
       numPerline: Infinity,
       maxSize: Config.sizeMap.GB,
       readonly: false,
+      hideTip: false,
       imageWidth: Infinity,
       imageHeight: Infinity,
       imageScale: '',
@@ -83,17 +85,25 @@ const KLUpload = Component.extend({
     this.supr(data);
   },
 
-  init(data) {
-    this.addUploadHandler();
-    this.supr(data);
-  },
-
   preProcess(data) {
     if (typeof data.maxSize === 'number') {
       data.maxSize += '';
     }
   },
 
+  init(data) {
+    this.initWatcher();
+    this.addUploadHandler();
+    this.supr(data);
+  },
+
+  initWatcher() {
+    const self = this;
+    this.$watch('fileList', function() {
+      self.data.tip = '';
+    });
+  },
+  
   addUploadHandler() {
     const self = this;
     const uploadInst = this.$refs.upload;
@@ -162,6 +172,8 @@ const KLUpload = Component.extend({
       this.data.state = 'error';
     }
 
+    data.tip = result.message;
+    
     this.$emit('validate', {
       sender: this,
       result,

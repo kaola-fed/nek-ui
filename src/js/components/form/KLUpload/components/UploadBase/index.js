@@ -89,8 +89,6 @@ const UploadBase = Component.extend({
         }
       }
     }, true);
-    
-    // this.$watch('fileUnitList', );
   },
   
   extendFileList: function(fileList) {
