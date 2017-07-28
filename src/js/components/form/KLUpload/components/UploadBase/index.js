@@ -298,17 +298,17 @@ const UploadBase = Component.extend({
   },
   
   onPreview(info) {
-    const current = info.sender;
+    const current = info.file;
 
     function filterImgFile(file) {
-      return file.inst.data.type === 'IMAGE';
+      return file.type === 'image';
     }
 
     function mapCurrentFlag(img) {
-      if (current === img.inst) {
-        img.inst.current = true;
+      if (current === img) {
+        img.current = true;
       }
-      return img.inst;
+      return img;
     }
 
     const imageList = this.data.fileUnitList
@@ -329,9 +329,9 @@ const UploadBase = Component.extend({
       function mapHelper(img) {
         delete img.current;
         return {
-          src: img.data.src,
-          name: img.data.name,
-          status: img.data.status,
+          src: img.url,
+          name: img.name,
+          status: img.status
         };
       }
 
@@ -345,16 +345,16 @@ const UploadBase = Component.extend({
 
       imagePreview.$on('remove', (imgInfo) => {
         const index = imgInfo.index;
-      const imgInst = imgFileList[index];
+        const imgInst = imgFileList[index];
 
-      if (imgInst) {
-        imgInst.$emit('remove');
-      }
-    });
+        if (imgInst) {
+          imgInst.$emit('remove');
+        }
+      });
 
       imagePreview.$on('$destroy', () => {
         imgFileList.splice(0);
-    });
+      });
 
       return imagePreview;
     }

@@ -26,7 +26,7 @@ const KLImagePreview = Component.extend({
     _.extend(data, {
       imageList: [],
       curIndex: 0,
-      uploaded: true,
+      status: 'ready'
     });
 
     _.extend(data, {
