@@ -16,11 +16,39 @@ const tpl = require('./index.html');
 
 const UploadCard = UploadBase.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+  computed: {
+    entryFileInfo: {
+      get: function() {
+        const lastFileUnit = this.data.fileUnitList.slice(-1)[0];
+        return {
+          name: lastFileUnit && lastFileUnit.name || '',
+          type: lastFileUnit && lastFileUnit.type || '',
+          src: lastFileUnit && lastFileUnit.url || ''
+        };
+      }
+    },
+    
+    fileUnitListWidth: {
+      get: function() {
+        const data = this.data;
+        const fileUnitWidth = data.fileUnitWidth;
+        const fileUnitMargin = data.fileUnitMargin;
+        let numPerline = data.numPerline;
+
+        if (!isFinite(numPerline)) {
+          data.numPerline = 5;
+          numPerline = data.numPerline;
+        }
+
+        return (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
+      }
+    }
+  },
   config(data) {
     this.supr(data);
     
     _.extend(data, {
-      status: 'uploaded',
+      status: 'success',
       info: '',
       numPerline: 5,
       fileUnitWidth: 50,
@@ -28,7 +56,7 @@ const UploadCard = UploadBase.extend({
       fileUnitListPadding: 22
     });
   },
-
+  
   init(data) {
     this.initFilesZone(data);
     
@@ -36,17 +64,7 @@ const UploadCard = UploadBase.extend({
   },
 
   initFilesZone(data) {
-    const fileUnitWidth = data.fileUnitWidth;
-    const fileUnitMargin = data.fileUnitMargin;
-    let numPerline = data.numPerline;
-
-    if (!isFinite(numPerline)) {
-      data.numPerline = 5;
-      numPerline = data.numPerline;
-    }
-    
     data.filesWrapper = this.$refs.fileswrapper;
-    data.fileUnitListWidth = (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
   },
 
   handleFiles(files) {
@@ -67,9 +85,18 @@ const UploadCard = UploadBase.extend({
           data.preCheckInfo = preCheckInfo;
           self.$update();
           if (!data.preCheckInfo) {
-            const fileunit = self.createFileUnit({ file, options }, { flag: 'ADDED'});
-            data.fileUnitList.push({ inst: fileunit, uid: utils.genUid() });
+            const fileunit = {
+              rawFile: file,
+              name: file.name,
+              url: window.URL.createObjectURL(file),
+              type: self.getFileType(file),
+              flag: 'ADDED',
+              uid: utils.genUid(),
+              status: 'ready'
+            };
+            data.fileUnitList.push(fileunit);
             self.updateFilesZone();
+            self.$update();
           }
         }); 
       }
@@ -79,22 +106,22 @@ const UploadCard = UploadBase.extend({
   },
   
   onProgress(info) {
-    const curInst = info.sender;
+    const curFile = info.file;
     const data = this.data;
     let curIndex = -1;
     let lastIndex = -1;
 
     data.fileUnitList.forEach((item, index) => {
-      if (item.inst.data.status === 'uploading') {
+      if (item.status === 'uploading') {
         lastIndex = index;
       }
   
-      if (item.inst === curInst) {
+      if (item.rawFile === curFile) {
         curIndex = index;
       }
     });
 
-    if (curIndex >= lastIndex && data.status !== 'failed') {
+    if (curIndex >= lastIndex && data.status !== 'fail') {
       data.status = 'uploading';
       data.progress = info.progress;
       this.$update();
@@ -108,14 +135,14 @@ const UploadCard = UploadBase.extend({
     let allUploaded = true;
     let hasFailed = false;
     data.fileUnitList.forEach((item) => {
-      allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-      hasFailed = hasFailed || item.inst.data.status === 'failed';
+      allUploaded = allUploaded && item.status === 'success';
+      hasFailed = hasFailed || item.status === 'fail';
     });
   
     if (allUploaded) {
-      data.status = 'uploaded';
+      data.status = 'success';
     } else if (hasFailed) {
-      data.status = 'failed';
+      data.status = 'fail';
     }
 
     this.supr(info);
@@ -123,40 +150,52 @@ const UploadCard = UploadBase.extend({
   
   onError(info) {
     const data = this.data;
-    data.status = 'failed';
+    data.status = 'fail';
     data.info = this.$trans('UPLOAD_FAIL');
 
     this.supr(info);
   },
 
-  onDestroy(info){
+  onRemove(info) {
     const self = this;
     const inst = info.sender;
+    const file = info.file;
     self.toggle(false);
-    inst.destroyed = true;
-    self.removeFileUnitHandler(inst);
+    file.destroyed = true;
+    
+    if (file.flag === 'ORIGINAL') {
+      file.flag = 'DELETED';
+    }
+    inst.destroy();
     self.updateList();
+    this.$emit(
+        'remove',
+        _.extend(info, {
+          fileList: this.data.fileList
+        })
+    );
+    
     self.updateFilesZone();
     resetStatus();
-  
+
     function resetStatus() {
       let allUploaded = true;
       let hasFailed = false;
       self.data.fileUnitList.forEach((item) => {
-        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-        hasFailed = hasFailed || item.inst.data.status === 'failed';
+        allUploaded = allUploaded && item.status === 'success';
+        hasFailed = hasFailed || item.status === 'fail';
       });
-      
+
       if (allUploaded) {
-        self.data.status = 'uploaded';
+        self.data.status = 'success';
       } else if (hasFailed) {
-        self.data.status = 'failed';
+        self.data.status = 'fail';
       }
-      
+
       self.$update();
     }
   },
-
+  
   updateFilesZone() {
     const data = this.data;
     const filesZone = this.$refs.fileszone;
@@ -178,13 +217,11 @@ const UploadCard = UploadBase.extend({
     const data = this.data;
     const fileUnitList = data.fileUnitList;
 
-    data.status = 'uploaded';
+    data.status = 'success';
     data.info = '';
 
     fileUnitList.forEach((item) => {
-      const inst = item.inst;
-
-      if (inst.data.status === 'failed') {
+      if (item.status === 'fail') {
         inst.uploadFile(inst.data.file);
       }
     });

@@ -16,9 +16,10 @@ const FileUnit = Component.extend({
   config(data) {
     _.extend(data, {
       file: {},
+      action: '',
       url: '',
       name: '',
-      readyonly: false,
+      readonly: false,
       data: {}
     });
 
@@ -36,40 +37,16 @@ const FileUnit = Component.extend({
   
   initData(data) {
     const file = data.file;
-    data.filename = this.getFileName(file);
-    data.type = this.getFileType(file);
+    data.filename = file.name;
+    data.type = file.type;
 
     // for initial uploaded files
-    if (file.url) {
-      data.src = file.url;
-      data.status = 'uploaded';
-    } else {
-      data.src = window.URL.createObjectURL(file);
-      this.uploadFile(file);
+    if (data.status === 'ready') {
+      this.uploadFile(file.rawFile);
     }
   },
 
-  getFileName(file) {
-    return file.name;
-  },
-
-  getFileType(file) {
-    const type = file.type || '';
-    const filename = file.name || '';
-    const typeMap = Config.typeMap;
-    let typeStr = 'UNKNOWN';
-
-    Object.keys(typeMap).forEach(function(key) {
-      const reg = new RegExp(key + '$');
-      if (reg.test(type) || !type && reg.test(filename)) {
-        typeStr = typeMap[key];
-      }
-    });
-
-    return typeStr.toUpperCase();
-  },
-
-  uploadFile(file) {
+  uploadFile(rawFile) {
     const self = this;
     const data = this.data;
 
@@ -87,7 +64,7 @@ const FileUnit = Component.extend({
             sender: self,
             event: e,
             progress: data.progress,
-            file: file,
+            file: data.file,
             status: data.status
           };
           
@@ -102,27 +79,29 @@ const FileUnit = Component.extend({
           sender: self,
           event: e,
           progress: data.progress,
-          file: file
+          file: data.file
         };
         
         if ((status >= 200 && status < 300) || status == 304) {
           const response = JSON.parse(target.responseText);
-          data.file.url = response.url;
-          data.status = 'uploaded';
+          // data.url = response.url;
+          data.status = 'success';
           data.info = '';
+          self.$update();
+          
           emitItem.status = data.status;
           self.$emit('success', emitItem);
         } else {
-          data.status = 'failed';
+          data.status = 'fail';
           data.info = self.$trans('UPLOAD_FAIL');
+          self.$update();
+          
           emitItem.status = data.status;
           self.$emit('error', emitItem);
         }
-        
-        self.$update();
       },
       onerror(e) {
-        data.status = 'failed';
+        data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');
         self.$update();
 
@@ -130,7 +109,7 @@ const FileUnit = Component.extend({
           sender: self,
           event: e,
           progress: data.progress,
-          file: file,
+          file: data.file,
           status: data.status
         };
         self.$emit('error', emitItem);
@@ -140,7 +119,7 @@ const FileUnit = Component.extend({
     options.name = data.name;
     options.data = data.data;
     
-    utils.upload(data.url, file, options);
+    utils.upload(data.action, rawFile, options);
     
     this.$update();
   },
@@ -178,14 +157,7 @@ const FileUnit = Component.extend({
       status: data.status
     };
     this.$emit('preview', emitItem);
-  },
-
-  // destroy() {
-  //   this.$emit('$destroy', {
-  //     sender: this
-  //   });
-  //   this.supr();
-  // }
+  }
 });
 
 module.exports = FileUnit;

@@ -1,14 +1,19 @@
 <div class="m-upload">
-    <ul ref="fileswrapper" class="m-filelist" r-style={{width: fileWrapperWidth}}>
+    <ul ref="fileswrapper" class="m-filelist"
+        r-style={{
+            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'
+        }}>
         {#list fileUnitList as fileunit}
             <li class="u-fileitem"
                 r-style={{
                     "margin-right": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? "0" : fileUnitMargin + "px"
                 }}>
-                  <file-unit ref="fileunit{fileunit_index}"
+                  <file-unit
                       file={fileunit}
-                      url={action}
+                      action={action}
+                      url={fileunit.url}
                       name={name}
+                      status={fileunit.status}
                       readonly={readonly}
                       data={data}
                       on-preview={this.onPreview($event)}

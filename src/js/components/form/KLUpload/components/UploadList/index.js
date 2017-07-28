@@ -18,32 +18,20 @@ const UploadList = UploadBase.extend({
     this.supr(data);
     
     _.extend(data, {
+      numPerline: Infinity,
       fileUnitWidth: 50,
       fileUnitMargin: 25,
-      fileWrapperWidth: '100%'
     });
-
   },
 
   init(data) {
-    this.initFilesWrapper(data);
-    
+    this.initData(data);
     this.supr(data);
   },
 
-  initFilesWrapper(data) {
+  initData(data) {
     data.inputWrapper = this.$refs.inputwrapper;
     data.filesWrapper = this.$refs.fileswrapper;
-    this.initFileWrapperStyle(data);
-  },
-  
-  initFileWrapperStyle: function(data) {
-    const fileUnitWidth = data.fileUnitWidth;
-    const numPerline = data.numPerline;
-    const fileUnitMargin = data.fileUnitMargin;
-    if (isFinite(numPerline)) {
-      data.fileWrapperWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px';
-    }
   }
 });
 

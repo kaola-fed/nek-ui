@@ -107,7 +107,15 @@ const UploadBase = Component.extend({
         const uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ADDED'];
-        const fileunit = { name: file.name, url: file.url, flag: 'ADDED', uid };
+        const type = self.getFileType(file);
+        const fileunit = {
+          name: file.name,
+          url: file.url,
+          type: self.getFileType(file),
+          flag: 'ADDED',
+          uid: file.uid,
+          status: 'success'
+        };
         data.fileUnitList.splice(index, index, fileunit);
       }
     });
@@ -163,14 +171,22 @@ const UploadBase = Component.extend({
         let uid = utils.genUid();
         file.uid = uid;
         file.flag = Config.flagMap['ORIGINAL'];
-        const fileunit = { name: file.name, url: file.url, flag: 'ORIGINAL', uid };
+        const fileunit = {
+          name: file.name,
+          url: file.url,
+          type: self.getFileType(file),
+          flag: 'ORIGINAL',
+          uid: file.uid,
+          status: 'success'
+        };
         fileUnitList.push(fileunit);
       });
     }
   },
 
   updateList() {
-    setTimeout((function() { this.updateFileList(); }).bind(this), 0);
+    // setTimeout((function() { this.updateFileList(); }).bind(this), 0);
+    this.updateFileList();
   },
   
   updateFileList() {
@@ -209,20 +225,6 @@ const UploadBase = Component.extend({
     
     [].push.apply(fileList, newFileList.reverse());
     
-    this.$update();
-  },
-
-  updateFileListView() {
-    const self = this;
-    const data = this.data;
-    const filesWrapper = data.filesWrapper;
-    const fileUnitList = data.fileUnitList;
-    
-    fileUnitList.forEach((item, index) => {
-      item.wrapper = self.$refs['fileunit' + index];
-      item.inst.$inject(item.wrapper);
-    });
-
     this.$update();
   },
 
@@ -280,9 +282,15 @@ const UploadBase = Component.extend({
           data.preCheckInfo = preCheckInfo;
           // self.$update();
           if (!data.preCheckInfo) {
-            file.flag = 'ADDED';
-            file.uid = utils.genUid();
-            const fileunit = file;
+            const fileunit = {
+              rawFile: file,
+              name: file.name,
+              url: window.URL.createObjectURL(file),
+              type: self.getFileType(file),
+              flag: 'ADDED',
+              uid: utils.genUid(),
+              status: 'ready'
+            };
             data.fileUnitList.push(fileunit);
             self.$update();
           }
@@ -390,14 +398,15 @@ const UploadBase = Component.extend({
     if (file.flag === 'ORIGINAL') {
       file.flag = 'DELETED';
     }
+    inst.destroy();
+    this.updateList();
+    
     this.$emit(
         'remove',
         _.extend(info, {
           fileList: this.data.fileList
         })
     );
-    inst.destroy();
-    this.updateList();
   },
 
   setOptions(options) {
@@ -506,7 +515,7 @@ const UploadBase = Component.extend({
     const type = file.type || '';
     const name = file.name || '';
     const typeMap = Config.typeMap;
-    let typeStr = 'UNKNOWN';
+    let typeStr = 'unknown';
 
     Object.keys(typeMap).forEach(function(key) {
       const reg = new RegExp(key + '$');
