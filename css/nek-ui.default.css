@@ -4157,7 +4157,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-check-block{
 	display:block;
-	margin-bottom:10px;
+	width:100%;
 }
 .u-input.sm{
 	padding:5px 10px;
