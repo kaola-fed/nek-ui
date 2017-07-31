@@ -9,11 +9,44 @@
 // ========================================================================
 
 .m-tabs {
+    .tabs-scroll {
+        position: relative;
+        overflow: hidden;
+    }
+    .tabs-scroll.scrollable {
+        padding: 0 15px;
+    }
+    .tabs-scroll {
+        .nav-prev, .nav-next {
+            position: absolute;
+            cursor: pointer;
+            line-height: 32px;
+            font-size: 12px;
+        }
+        .nav-prev.disabled, .nav-next.disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+        .nav-prev {
+            left: 0;
+        }
+        .nav-next {
+            right: 0;
+        }
+    }
+    .nav-scroll{
+        overflow: hidden;
+    }
+
     .tabs_hd {
         @extend .f-lsn;
+        display: inline-block;
+        transition: transform 0.3s;
+        white-space: nowrap;
 
         > li {
-            float: left;
+            position: relative;
+            display: inline-block;
             cursor: pointer;
         }
 
@@ -25,6 +58,10 @@
 
         > li.z-dis {
             cursor: not-allowed;
+        }
+
+        >li.arrow-left, >li.arrow-right{
+            width: 20px;
         }
     }
 
