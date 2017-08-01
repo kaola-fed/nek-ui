@@ -278,7 +278,7 @@ const UploadBase = Component.extend({
         const checker = self.preCheck(file);
         checker.then(function(preCheckInfo) {
           data.preCheckInfo = preCheckInfo;
-          // self.$update();
+          self.$update();
           if (!data.preCheckInfo) {
             const fileunit = {
               rawFile: file,
@@ -421,7 +421,9 @@ const UploadBase = Component.extend({
   preCheck(file) {
     const self = this;
     const onPass = function(resolve) {
+      const type = self.getFileType(file).toLowerCase();
       let preCheckInfo = '';
+      
       if (!self.isAcceptedFileSize(file)) {
         preCheckInfo = self.$trans('FILE_TOO_LARGE');
         return resolve(preCheckInfo);
@@ -430,11 +432,15 @@ const UploadBase = Component.extend({
         preCheckInfo = self.$trans('FILE_TYPE_ERROR');
         return resolve(preCheckInfo);
       }
-      
-      const imageChecker = self.preCheckImage(file);
-      imageChecker && imageChecker.then(function(imageCheckInfo) {
-        return resolve(imageCheckInfo);
-      });
+
+      if (type === 'image') {
+        const imageChecker = self.preCheckImage(file);
+        imageChecker && imageChecker.then(function (imageCheckInfo) {
+          return resolve(imageCheckInfo);
+        });
+      } else {
+        return resolve(preCheckInfo);
+      }
     };
     
     const onError = function(reject) {};
