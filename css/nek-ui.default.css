@@ -399,7 +399,7 @@ html{
 	-ms-text-size-adjust:100%;
 }
 body{
-	font:12px/1.6 "Helvetica Neue","Helvetica","Arial","PingFang SC","Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif;
+	font:12px/1.6 PingFangTC-Regular,Microsoft YaHei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
 	background:#fff;
 	color:#333;
 }
@@ -6242,13 +6242,19 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-menuItem:first-child:before{
 	top:0;
 }
+.m-menuItem:last-child{
+	margin-bottom:5px;
+}
 .m-subMenu{
 	position:relative;
+	display:block;
 	border-bottom:1px solid #dfeaf3;
 	cursor:pointer;
 }
 .m-subMenu .head{
 	position:relative;
+	display:flex;
+	align-items:center;
 	padding:15px 0 15px 47px;
 	font-size:14px;
 	transition:all 0.4s ease;
@@ -6259,14 +6265,19 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-subMenu .head .head_arrow{
 	position:absolute;
-	top:15px;
-	left:28px;
+	right:10px;
 	font-size:14px;
 	transition:all 0.4s ease;
 	transform:rotate(0);
 }
 .m-subMenu .head .head_arrow.isOpen{
-	transform:rotate(180deg);
+	transform:rotate(90deg);
+}
+.m-subMenu .head .head_icon{
+	position:absolute;
+	left:20px;
+	color:#333;
+	font-size:16px;
 }
 .m-subMenu .menuItems{
 	position:relative;
@@ -6277,7 +6288,6 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-subMenu.active{
 	background:#f6f9fc;
-	padding-bottom:5px;
 }
 .collapse-transition{
 	transition:0.3s height ease-in-out,0.3s padding-top ease-in-out,0.3s padding-bottom ease-in-out;

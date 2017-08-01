@@ -30229,7 +30229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 375 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 376 */
@@ -30431,6 +30431,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                          = 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
+	 * @param {string}        [options.data.url='']                   => 如果一级菜单需要链接,可配置url属性
+	 * @param {string}        [options.data.iconClass='']             => 菜单文字前的icon
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
 	 */
@@ -30444,6 +30446,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.defaults({
 	      class: '',
 	      title: '',
+	      href: '',
+	      iconClass: '',
 	      titleTemplate: ''
 	    });
 	    this.supr();
@@ -30476,7 +30480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 382 */
 /***/ (function(module, exports) {
 
-	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
+	module.exports = "{#if url}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } href=\"{url}\">\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <ul class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
 /* 383 */
