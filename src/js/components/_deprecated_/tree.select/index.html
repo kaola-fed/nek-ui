@@ -4,7 +4,7 @@
         <span>{phShow}</span>
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+    <div class="dropdown_bd {dir}" ref="dropdown" r-animation="on: enter; class: animated fadeInY{dir} fast; on: leave; class: animated fadeOutY{dir} fast;">
         <tree-view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />
     </div>
     {/if}

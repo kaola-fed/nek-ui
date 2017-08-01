@@ -4,8 +4,8 @@
         <a class="u-btn" title={title || this.$trans( 'DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class="u-icon u-icon-caret-down"></i></a> {/if}
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <ul class="m-listview">
+    <div  class="dropdown_bd {dir}"  ref="dropdown" r-animation="on: enter; class: animated fadeInY{dir} fast; on: leave; class: animated fadeOutY{dir} fast;">
+        <ul class="m-listview {dir}">
             {#list source as item}
             <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>
             {/list}

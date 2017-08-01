@@ -58,7 +58,21 @@ const JRDatePicker = Dropdown.extend({
       showTime: false,
       open: false,
     });
-    this.supr();
+    this.$watch('open', (open) => {
+      if (!open || !this.$refs.dropdown) {
+        return '';
+      }
+      if (
+        this.$refs.element.getBoundingClientRect().bottom +
+          this.$refs.dropdown.offsetHeight >
+        window.innerHeight
+      ) {
+        this.data.dir = 'up';
+      } else {
+        this.data.dir = 'down';
+      }
+      this.$update();
+    });
     this.$watch('date', function (newValue) {
       // 字符类型自动转为日期类型
       if (typeof newValue === 'string') {
@@ -132,8 +146,10 @@ const JRDatePicker = Dropdown.extend({
     });
 
     this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-      if (!((minDate && minDate instanceof Date) ||
-          (maxDate && maxDate instanceof Date))) {
+      if (
+        !((minDate && minDate instanceof Date) ||
+          (maxDate && maxDate instanceof Date))
+      ) {
         return;
       }
 
@@ -247,9 +263,9 @@ const JRDatePicker = Dropdown.extend({
     const date = value ? new Date(value) : null;
     const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
     if (date === null || date.toString() === 'Invalid Date') {
-      $event.target.value = this.data.date ?
-        filter.format(this.data.date, format) :
-        filter.format(new Date(), format);
+      $event.target.value = this.data.date
+        ? filter.format(this.data.date, format)
+        : filter.format(new Date(), format);
     } else {
       $event.target.value = filter.format(date, format);
     }
@@ -275,14 +291,16 @@ const JRDatePicker = Dropdown.extend({
     const data = this.data;
     const date = data.date || '';
 
-    const result = date ?
-      Validation.validate(date.toString(), [{
-        type: 'isDate',
-        message: '请填写',
-      }]) :
-      {
-        success: false,
-      };
+    const result = date
+      ? Validation.validate(date.toString(), [
+          {
+            type: 'isDate',
+            message: '请填写',
+          },
+        ])
+      : {
+          success: false,
+        };
     if (data.required && !result.success) {
       result.success = false;
       result.message = this.data.message || '请填写';

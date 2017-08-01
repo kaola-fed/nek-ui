@@ -38,9 +38,9 @@
 	        </div>
 	    {/if}
 	    {#if open}
-	    <div class="dropdown_bd"
-	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-	        <ul class="m-listview">
+	    <div class="dropdown_bd {dir}" ref="dropdown"
+	         r-animation="on: enter; class: animated fadeInY{dir} fast; on: leave; class: animated fadeOutY{dir} fast;">
+	        <ul class="m-listview {dir}">
 	            {#if placeholder}
 	                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
 	                    {placeholder}

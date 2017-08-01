@@ -16,7 +16,6 @@
         position: absolute;
         z-index: 1;
         width: 100%;
-        top: 100%;
         line-height:normal;
         .m-listview {
             > li > a {
@@ -27,6 +26,12 @@
         .u-check,
         .check_box{
             margin-bottom: 0;
+        }
+        &.down{
+            top: 100%;
+        }
+        &.up{
+            bottom: 100%;
         }
     }
 }

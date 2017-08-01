@@ -280,6 +280,23 @@ $-generate(fadeOutY, ($prefix, $offset = 30px){
   100% {opacity: 0; #{$prefix}transform: translateY($offset); }
 });
 
+$-generate(fadeInYup, ($prefix, $offset = 30px){
+  0% {opacity: 0; #{$prefix}transform: translateY($offset); }
+  100% {opacity: 1; #{$prefix}transform: translateY(0); }
+});
+$-generate(fadeOutYup, ($prefix, $offset = 30px){
+  0% {opacity: 1; #{$prefix}transform: translateY(0); }
+  100% {opacity: 0; #{$prefix}transform: translateY($offset); }
+});
+$-generate(fadeInYdown, ($prefix, $offset = 30px){
+  0% {opacity: 0; #{$prefix}transform: translateY($offset); }
+  100% {opacity: 1; #{$prefix}transform: translateY(0); }
+});
+$-generate(fadeOutYdown, ($prefix, $offset = 30px){
+  0% {opacity: 1; #{$prefix}transform: translateY(0); }
+  100% {opacity: 0; #{$prefix}transform: translateY($offset); }
+});
+
 
 // $bounce($height)
 // ------------------
@@ -344,7 +361,11 @@ $bounceIn();
 $bounceOut();
 $fadeInX();
 $fadeInY(-5px);
+$fadeInYup(5px);
+$fadeInYdown(-5px);
 $fadeOutY(-5px);
+$fadeOutYup(5px);
+$fadeOutYdown(-5px);
 $pulse();
 
 .animated {

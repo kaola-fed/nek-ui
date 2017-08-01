@@ -45,6 +45,14 @@
     color: $u-formctrl_color;
     $border: #eee;
     border-top: none;
+    &.down{
+        border-top:none;
+        border-bottom:1px solid #eee;
+    }
+    &.up{
+         border-bottom:none;
+         border-top:1px solid #eee;
+    }
     > li {
         font-size: 12px;
         color: #333333;
