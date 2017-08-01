@@ -1,6 +1,6 @@
 ---
-title: 拖拽
-is_new: 移动
+title: 移动
+is_new: true
 ---
 
 ## 示例
