@@ -1,6 +1,9 @@
-<li class="m-subMenu {class}" r-class={ {'active': active} } on-click={this.toggle($event)}>
+{#if url}
+<a class="m-subMenu {class}" r-class={ {'active': active} } href="{url}">
   <div class="head">
-    <span class="head_arrow u-icon u-icon-angle-down" r-class={ {'isOpen':active} }></span>
+    {#if iconClass}
+    <span class="head_icon {iconClass}"></span>
+    {/if}
     <span class="head_title">
       {#if title}
         {title}
@@ -9,7 +12,28 @@
       {/if}
     </span>
   </div>
-  <ul class="menuItems" r-hide="!active" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
+</a>
+{#else}
+<li class="m-subMenu {class}" r-class={ {'active': active} } on-click={this.toggle($event)}>
+  <div class="head">
+    {#if iconClass}
+    <span class="head_icon {iconClass}"></span>
+    {/if}
+    <span class="head_title">
+      {#if title}
+        {title}
+      {#elseif titleTemplate}
+        {#inc titleTemplate}
+      {/if}
+    </span>
+    {#if this.$body}
+      <span class="head_arrow u-icon u-icon-angle-right" r-class={ {'isOpen':active} }></span>
+    {/if}
+  </div>
+  {#if active}
+  <ul class="menuItems" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
     {#inc this.$body}
   </ul>
+  {/if}
 </li>
+{/if}
