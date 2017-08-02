@@ -1,1 +1,49 @@
-<div ref="m-upload"></div>
+<div ref="m-upload">
+    {#if listType === 'list'}
+        <upload-list ref="upload"
+            action={action}
+            name={name}
+            data={data}
+            multiple={multiple}
+            drag={drag}
+            accept={accept}
+            listType={listType}
+            fileList={fileList}
+            numMin={numMin}
+            numMax={numMax}
+            numPerline={numPerline}
+            maxSize={maxSize}
+            readonly={readonly}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            imageScale={imageScale}
+            data={data}
+            encType={encType}/>
+    {#elseif listType === 'card'}
+        <upload-card ref="upload"
+            action={action}
+            name={name}
+            data={data}
+            multiple={multiple}
+            drag={drag}
+            accept={accept}
+            listType={listType}
+            fileList={fileList}
+            numMin={numMin}
+            numMax={numMax}
+            numPerline={numPerline}
+            maxSize={maxSize}
+            readonly={readonly}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            imageScale={imageScale}
+            data={data}
+            encType={encType}/>
+    {/if}
+</div>
+{#if tip && !hideTip}
+    <span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
+        <i class="u-icon u-icon-{state}"></i>
+        <span class="tip">{tip}</span>
+    </span>
+{/if}

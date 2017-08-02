@@ -1,19 +1,17 @@
 <div class="m-file-unit">
     <div class="m-content">
-        {#if type === 'IMAGE'}
+        {#if type === 'image'}
             <div class="m-img-wrapper" on-click={this.onPreview()}>
-                <img class="u-img" src={src}/>
+                <img class="u-img" src={url}/>
             </div>
-        {#elseif type === 'ZIP'}
-            <span class="u-txt">ZIP</span>
-        {#elseif type === 'UNKNOWN'}
+        {#elseif type === 'unknown'}
             <span class="u-txt">{this.$trans('UNKNOWN')}</span>
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
-            <span class="u-txt">{type}</span>
+            <span class="u-txt">{type.toUpperCase()}</span>
         {/if}
-        <div class="m-delete" r-hide={!deletable} on-click={this.onDelete()}><i class="u-icon u-icon-error"></i></div>
+        <div class="m-remove" r-hide={readonly} on-click={this.onRemove()}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">
-            {#if status === 'failed'}
+            {#if status === 'fail'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>
                     <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
                 </span>
@@ -26,13 +24,13 @@
                         </span>
                     </span>
                 </span>
-            {#elseif status === 'uploaded'}
+            {#elseif status === 'success'}
                 <span class="u-uploaded">
-                    <a class="u-uploaded-zone" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
+                    <a class="u-uploaded-zone" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
                 </span>
             {/if}
         </div>
     </div>
-    <div class="m-name" title={name}>{name}</div>
+    <div class="m-name" title={filename}>{filename}</div>
     <div class="m-info">{info}</div>
 </div>
