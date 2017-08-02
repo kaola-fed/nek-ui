@@ -4,9 +4,9 @@
  *  ------------------------------
  */
 
-const Component = require('../../../../../ui-base/component');
-const _ = require('../../../../../ui-base/_');
-const KLModal = require('../../../../notice/KLModal');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const KLModal = require('../../notice/KLModal');
 const tpl = require('./index.html');
 
 /**
@@ -26,7 +26,7 @@ const KLImagePreview = Component.extend({
     _.extend(data, {
       imageList: [],
       curIndex: 0,
-      delConfirm: false
+      delConfirm: false,
     });
 
     _.extend(data, {
@@ -241,7 +241,7 @@ const KLImagePreview = Component.extend({
   onDel(index) {
     const self = this;
     const data = this.data;
-    let imageList = data.imageList;
+    const imageList = data.imageList;
     const image = imageList[index];
 
     if (data.delConfirm) {
@@ -257,7 +257,7 @@ const KLImagePreview = Component.extend({
       self.removeImage(index);
     }
   },
-  removeImage: function(index) {
+  removeImage(index) {
     const data = this.data;
     const imageList = data.imageList;
     const image = imageList.splice(index, 1);

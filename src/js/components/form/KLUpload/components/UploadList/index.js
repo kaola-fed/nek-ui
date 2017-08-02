@@ -16,7 +16,7 @@ const UploadList = UploadBase.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     this.supr(data);
-    
+
     _.extend(data, {
       numPerline: Infinity,
       fileUnitWidth: 50,
@@ -32,7 +32,7 @@ const UploadList = UploadBase.extend({
   initData(data) {
     data.inputWrapper = this.$refs.inputwrapper;
     data.filesWrapper = this.$refs.fileswrapper;
-  }
+  },
 });
 
 module.exports = UploadList;

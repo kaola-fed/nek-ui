@@ -18,18 +18,18 @@ const UploadCard = UploadBase.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   computed: {
     entryFileInfo: {
-      get: function() {
+      get() {
         const lastFileUnit = this.data.fileUnitList.slice(-1)[0];
         return {
-          name: lastFileUnit && lastFileUnit.name || '',
-          type: lastFileUnit && lastFileUnit.type || '',
-          src: lastFileUnit && lastFileUnit.url || ''
+          name: (lastFileUnit && lastFileUnit.name) || '',
+          type: (lastFileUnit && lastFileUnit.type) || '',
+          src: (lastFileUnit && lastFileUnit.url) || '',
         };
-      }
+      },
     },
-    
+
     fileUnitListWidth: {
-      get: function() {
+      get() {
         const data = this.data;
         const fileUnitWidth = data.fileUnitWidth;
         const fileUnitMargin = data.fileUnitMargin;
@@ -41,25 +41,25 @@ const UploadCard = UploadBase.extend({
         }
 
         return (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
-      }
-    }
+      },
+    },
   },
   config(data) {
     this.supr(data);
-    
+
     _.extend(data, {
       status: 'success',
       info: '',
       numPerline: 5,
       fileUnitWidth: 50,
       fileUnitMargin: 25,
-      fileUnitListPadding: 22
+      fileUnitListPadding: 22,
     });
   },
-  
+
   init(data) {
     this.initFilesZone(data);
-    
+
     this.supr(data);
   },
 
@@ -69,19 +69,17 @@ const UploadCard = UploadBase.extend({
 
   handleFiles(files) {
     this.toggle(false);
-    
+
     const self = this;
     const data = this.data;
 
-    const options = this.setOptions(data);
-
     data.preCheckInfo = '';
 
-    files = [].slice.call(files);
-    files.forEach(function(file) {
+    const fileList = [].slice.call(files);
+    fileList.forEach((file) => {
       if (data.fileUnitList.length < data.numMax) {
         const checker = self.preCheck(file);
-        checker.then(function(preCheckInfo) {
+        checker.then((preCheckInfo) => {
           data.preCheckInfo = preCheckInfo;
           self.$update();
           if (!data.preCheckInfo) {
@@ -92,19 +90,19 @@ const UploadCard = UploadBase.extend({
               type: self.getFileType(file),
               flag: 'ADDED',
               uid: utils.genUid(),
-              status: 'ready'
+              status: 'ready',
             };
             data.fileUnitList.push(fileunit);
             self.updateFilesZone();
             self.$update();
           }
-        }); 
+        });
       }
     });
 
     this.updateList();
   },
-  
+
   onProgress(info) {
     const curFile = info.file;
     const data = this.data;
@@ -115,7 +113,7 @@ const UploadCard = UploadBase.extend({
       if (item.status === 'uploading') {
         lastIndex = index;
       }
-  
+
       if (item.rawFile === curFile) {
         curIndex = index;
       }
@@ -126,7 +124,7 @@ const UploadCard = UploadBase.extend({
       data.progress = info.progress;
       this.$update();
     }
-  
+
     this.supr(info);
   },
 
@@ -138,7 +136,7 @@ const UploadCard = UploadBase.extend({
       allUploaded = allUploaded && item.status === 'success';
       hasFailed = hasFailed || item.status === 'fail';
     });
-  
+
     if (allUploaded) {
       data.status = 'success';
     } else if (hasFailed) {
@@ -147,7 +145,7 @@ const UploadCard = UploadBase.extend({
 
     this.supr(info);
   },
-  
+
   onError(info) {
     const data = this.data;
     data.status = 'fail';
@@ -162,7 +160,7 @@ const UploadCard = UploadBase.extend({
     const file = info.file;
     self.toggle(false);
     file.destroyed = true;
-    
+
     if (file.flag === 'ORIGINAL') {
       file.flag = 'DELETED';
     }
@@ -171,10 +169,10 @@ const UploadCard = UploadBase.extend({
     this.$emit(
         'remove',
         _.extend(info, {
-          fileList: this.data.fileList
-        })
+          fileList: this.data.fileList,
+        }),
     );
-    
+
     self.updateFilesZone();
     resetStatus();
 
@@ -195,7 +193,7 @@ const UploadCard = UploadBase.extend({
       self.$update();
     }
   },
-  
+
   updateFilesZone() {
     const data = this.data;
     const filesZone = this.$refs.fileszone;
@@ -214,15 +212,22 @@ const UploadCard = UploadBase.extend({
   },
 
   uploadFiles() {
+    const self = this;
     const data = this.data;
     const fileUnitList = data.fileUnitList;
 
     data.status = 'success';
     data.info = '';
 
-    fileUnitList.forEach((item) => {
+    fileUnitList.forEach((item, index) => {
       if (item.status === 'fail') {
-        inst.uploadFile(inst.data.file);
+        const fileunit = self.$refs[`fileunit${index}`];
+        if (fileunit) {
+          const file = fileunit.data.file;
+          if (file.rawFile) {
+            fileunit.uploadFile(file.rawFile);
+          }
+        }
       }
     });
   },

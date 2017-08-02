@@ -9,7 +9,6 @@ const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
 const utils = require('../../utils');
 const KLModal = require('../../../../notice/KLModal');
-const Config = require('../../config');
 
 const FileUnit = Component.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -20,7 +19,7 @@ const FileUnit = Component.extend({
       url: '',
       name: '',
       readonly: false,
-      data: {}
+      data: {},
     });
 
     _.extend(data, {
@@ -34,7 +33,7 @@ const FileUnit = Component.extend({
 
     this.supr(data);
   },
-  
+
   initData(data) {
     const file = data.file;
     data.filename = file.name;
@@ -53,23 +52,23 @@ const FileUnit = Component.extend({
     data.info = '';
     data.status = 'uploading';
 
-    let options = {
+    const options = {
       upload: {
         onprogress(e) {
           data.status = 'uploading';
           data.progress = `${parseInt((e.loaded / e.total || 0) * 100)}%`;
           self.$update();
-          
+
           const emitItem = {
             sender: self,
             event: e,
             progress: data.progress,
             file: data.file,
-            status: data.status
+            status: data.status,
           };
-          
+
           self.$emit('progress', emitItem);
-        }
+        },
       },
       onload(e) {
         const target = e.target;
@@ -79,23 +78,23 @@ const FileUnit = Component.extend({
           sender: self,
           event: e,
           progress: data.progress,
-          file: data.file
+          file: data.file,
         };
-        
-        if ((status >= 200 && status < 300) || status == 304) {
+
+        if ((status >= 200 && status < 300) || status === 304) {
           const response = JSON.parse(target.responseText);
-          // data.url = response.url;
+          data.url = response.url;
           data.status = 'success';
           data.info = '';
           self.$update();
-          
+
           emitItem.status = data.status;
           self.$emit('success', emitItem);
         } else {
           data.status = 'fail';
           data.info = self.$trans('UPLOAD_FAIL');
           self.$update();
-          
+
           emitItem.status = data.status;
           self.$emit('error', emitItem);
         }
@@ -110,7 +109,7 @@ const FileUnit = Component.extend({
           event: e,
           progress: data.progress,
           file: data.file,
-          status: data.status
+          status: data.status,
         };
         self.$emit('error', emitItem);
       },
@@ -118,9 +117,9 @@ const FileUnit = Component.extend({
 
     options.name = data.name;
     options.data = data.data;
-    
+
     utils.upload(data.action, rawFile, options);
-    
+
     this.$update();
   },
 
@@ -131,7 +130,7 @@ const FileUnit = Component.extend({
       sender: this,
       event: e,
       file: data.file,
-      status: data.status
+      status: data.status,
     };
 
     if (data.delConfirm) {
@@ -154,10 +153,10 @@ const FileUnit = Component.extend({
       sender: this,
       event: e,
       file: data.file,
-      status: data.status
+      status: data.status,
     };
     this.$emit('preview', emitItem);
-  }
+  },
 });
 
 module.exports = FileUnit;

@@ -6,8 +6,7 @@ function genUid() {
       .toString(16)
       .substring(1);
   }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-      s4() + '-' + s4() + s4() + s4();
+  return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
 }
 
 function camelize(str) {
@@ -22,16 +21,17 @@ const defaults = {
 function upload(url, src, options) {
   const fd = new FormData();
   let data = src;
-  let name = options.name || 'file';
+  const name = options.name || 'file';
 
   if (src instanceof File) {
     data = {};
     data[name] = src;
   }
-  
+
   data = _.extend(data, options.data);
 
-  for (let key in data) {
+  let key;
+  for (key in data) {
     if (data.hasOwnProperty(key)) {
       fd.append(key, data[key]);
     }
@@ -49,7 +49,8 @@ function ajax(options) {
 
   xhr.open(options.type, options.url, options.async);
 
-  for (let key in headers) {
+  let key;
+  for (key in headers) {
     if (headers.hasOwnProperty(key)) {
       xhr.setRequestHeader(key, headers[key]);
     }
@@ -78,5 +79,5 @@ function ajax(options) {
 module.exports = {
   upload,
   genUid,
-  camelize
+  camelize,
 };
