@@ -35704,6 +35704,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _keys = __webpack_require__(79);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(84);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCol 栅格布局-列
@@ -35721,6 +35731,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.class]                  => 补充class
 	 * @param {number}          [options.data.span='']              => 栅格占据的列数
 	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 * @param {number/object}   [options.data.xs='']                => <768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.sm='']                => ≥768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.md='']                => ≥992 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.lg='']                => ≥1200 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
 	 */
 	var KLCol = Component.extend({
 	  name: 'kl-col',
@@ -35729,7 +35743,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.defaults({
 	      span: '',
 	      offset: '',
-	      gutter: 40
+	      gutter: 40,
+	      xs: '',
+	      sm: '',
+	      md: '',
+	      lg: ''
 	    });
 
 	    var $outer = this;
@@ -35759,13 +35777,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	});
 
+	KLCol.directive('mediaSize', function (ele) {
+	  var self = this;
+	  ['xs', 'sm', 'md', 'lg'].forEach(function (size) {
+	    if (parseInt(self.data[size])) {
+	      ele.classList.add('g-col-' + size + '-' + self.data[size]);
+	    } else if ((0, _typeof3.default)(self.data[size]) === 'object') {
+	      var props = self.data[size];
+	      (0, _keys2.default)(props).forEach(function (prop) {
+	        ele.classList.add(prop !== 'span' ? 'g-col-' + size + '-' + prop + '-' + props[prop] : 'g-col-' + size + '-' + props[prop]);
+	      });
+	    }
+	  });
+	});
+
 	module.exports = KLCol;
 
 /***/ }),
 /* 451 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
+	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
 /* 452 */

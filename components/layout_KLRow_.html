@@ -353,6 +353,11 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span> <span class="attr">gutter</span>=<span class="string">10</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">2</span> <span class="attr">offset</span>=<span class="string">3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">xs</span>=<span class="string">"&#123;&#123;span:1,offset:0&#125;&#125;"</span> <span class="attr">sm</span>=<span class="string">"&#123;&#123;span:3,offset:0&#125;&#125;"</span> <span class="attr">md</span>=<span class="string">"&#123;&#123;span:4,offset:0&#125;&#125;"</span> <span class="attr">lg</span>=<span class="string">"&#123;&#123;span:5,offset:0&#125;&#125;"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">xs</span>=<span class="string">"1"</span> <span class="attr">sm</span>=<span class="string">"3"</span> <span class="attr">md</span>=<span class="string">"3"</span> <span class="attr">lg</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">xs</span>=<span class="string">"4"</span> <span class="attr">sm</span>=<span class="string">"3"</span> <span class="attr">md</span>=<span class="string">"3"</span> <span class="attr">lg</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">xs</span>=<span class="string">"6"</span> <span class="attr">sm</span>=<span class="string">"3"</span> <span class="attr">md</span>=<span class="string">"2"</span> <span class="attr">lg</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-gridContent u-gridContent-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#KLRow">KLRow</a></dt>
 <dd></dd>
@@ -537,6 +542,21 @@ var index = 0;
     <kl-col span=2 offset=3>
         <div class="u-gridContent u-gridContent-3"></div>
     </kl-col>
+</kl-row>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-row>
+    <kl-col xs="{{span:1,offset:0}}" sm="{{span:3,offset:0}}" md="{{span:4,offset:0}}" lg="{{span:5,offset:0}}"><div class="u-gridContent u-gridContent-3"></div></kl-col>
+    <kl-col xs="1" sm="3" md="3" lg="2"><div class="u-gridContent u-gridContent-2"></div></kl-col>
+    <kl-col xs="4" sm="3" md="3" lg="2"><div class="u-gridContent u-gridContent-3"></div></kl-col>
+    <kl-col xs="6" sm="3" md="2" lg="3"><div class="u-gridContent u-gridContent-2"></div></kl-col>
 </kl-row>
 
       */});
