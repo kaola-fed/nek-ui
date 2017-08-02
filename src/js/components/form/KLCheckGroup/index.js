@@ -5,9 +5,12 @@
  * ------------------------------------------------------------
  */
 
+const _ = require('../../../ui-base/_');
 const SourceComponent = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
+const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLCheckGroup
@@ -49,10 +52,35 @@ const KLCheckGroup = SourceComponent.extend({
       key: 'id',
       value: '',
       separator: ',',
+      required: false,
+      defaultRules: [],
     });
     this.supr();
 
     this.initValidation();
+    this.data.defaultRules.push({
+      type: 'method',
+      method(value, rule) {
+        const min = rule.data.min;
+        const max = rule.data.max;
+        const valueArr = ''.split.call(value || '', ',');
+        const len = _.isEmpty(value) ? 0 : valueArr.length;
+        if (len < min || len > max) {
+          return `请选择[${min},${max}]个选项`;
+        }
+        return true;
+      },
+      data: this.data,
+    });
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.noEmpty);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'no-empty',
+        );
+      }
+    });
   },
   init() {
     this.$watch('source', function (source) {
@@ -92,32 +120,9 @@ const KLCheckGroup = SourceComponent.extend({
      * @public
      * @return {object} result 结果
      */
-  validate() {
-    const source = this.data.source;
-    const result = { success: true, message: '' };
-    const required = this.data.required;
-    const min = this.data.min ? this.data.min : required / 1;
-    const max = this.data.max;
-    const checked = source.filter(item => !!item.checked);
-    const len = checked.length;
-
-    if (len < min || len > max) {
-      result.success = false;
-      result.message = this.data.message || `请选择(${min},${max}]个选项`;
-      this.data.state = 'error';
-    } else {
-      result.success = true;
-      result.message = '';
-      this.data.state = '';
-    }
-    this.data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      result,
-    });
-
-    return result;
+  validate(on = '') {
+    const value = this.data.value;
+    return this._validate(on, value, Validation);
   },
   /**
      * method _onCheck() 点击check时,改变对应的value值

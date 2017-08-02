@@ -85,9 +85,11 @@ Validation.validate = function (value, rules) {
 
     rule.callback && rule.callback(value, rule);
 
-    if (!rule.success && result.success) {
+    // rule为函数时，可以直接返回字符串作为message
+    if (!(typeof rule.success === 'boolean' && rule.success === true) && result.success) {
       result.success = false;
       result.firstRule = rule;
+      rule.message = rule.message || rule.success;
       // @deprecated
       result.message = rule.message;
     }

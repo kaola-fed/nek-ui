@@ -10,6 +10,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLCheck
@@ -33,13 +34,14 @@ const KLCheck = Component.extend({
   config() {
     _.extend(this.data, {
       name: '',
-      defaultRules: [],
       rules: [],
       tip: false,
       hideTip: false,
       state: '',
       checked: false,
       block: false,
+      required: false,
+      defaultRules: [],
     });
     this.supr();
     this.initValidation();
@@ -55,6 +57,15 @@ const KLCheck = Component.extend({
         sender: this,
         checked: newValue,
       });
+    });
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.checkRequired);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'check-required',
+        );
+      }
     });
   },
   validate(on = '') {

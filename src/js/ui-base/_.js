@@ -272,4 +272,11 @@ _.$trans = function (key, self) {
   );
 };
 
+_.isEmpty = function(value){
+  if(value == undefined || value == null || value == '' || (typeof value == 'number' && isNaN(value))){
+    return true;
+  }
+  return false;
+}
+
 module.exports = _;
