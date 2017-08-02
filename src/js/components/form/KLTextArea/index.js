@@ -79,8 +79,8 @@ const KLTextArea = Component.extend({
     // 如果是readonly或者disabled状态, 无需验证
     if (data.readonly || data.disabled) {
       return {
-        success: true
-      }
+        success: true,
+      };
     }
 
     const value = data.value;

@@ -134,8 +134,8 @@ const KLInput = Component.extend({
     // 如果是readonly或者disabled状态, 无需验证
     if (readonly || disabled) {
       return {
-        success: true
-      }
+        success: true,
+      };
     }
 
     const value =
@@ -174,7 +174,7 @@ const KLInput = Component.extend({
   /**
      * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
-     **/
+     * */
   __valueFilter(_value) {
     const type = this.data.type;
 
