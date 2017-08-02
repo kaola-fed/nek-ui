@@ -75,7 +75,7 @@ $u-check_box_size = 13px;
 
 .u-check-block {
     display: block;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 
