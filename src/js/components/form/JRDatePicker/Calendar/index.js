@@ -37,6 +37,7 @@ const Calendar = Component.extend({
         _.extend(this.data, {
             date: null,
             minDate: null,
+            visible: true,
             maxDate: null,
             _days: [],
         });

@@ -35,6 +35,7 @@ const TimePicker = Component.extend({
       hour: 0,
       minute: 0,
       seconds: 0,
+      visible: true,
       minTime: '00:00:00',
       maxTime: '23:59:59',
       autofocus: false,

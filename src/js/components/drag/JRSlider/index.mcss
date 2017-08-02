@@ -1,0 +1,61 @@
+// Name:            slider
+// Description:     滑块
+// Author:          xiongxu
+// ========================================================================
+// Component:       `u-slider`
+// ========================================================================
+.u-slider {
+    position: relative;
+    height: 6px;
+    padding: 9px 0;
+    display:inline-block;
+    .slider_track {
+        height: 100%;
+        background: #e4e8f1;
+        position:relative;
+        border-radius:3px;
+    }
+    .slider_trail {
+        float: left;
+        height: 100%;
+        border-radius:3px;
+        background: $brand-primary;
+    }
+
+    .slider_handle {
+        $box-sizing: border-box;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin-left: -7px;
+        width: 14px;
+        height: 24px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+    }
+    .step-point{
+        position:absolute;
+        top:0px;
+        height:100%;
+        width:4px;
+        background:#ff0000;
+    }
+    .u-range-min,.u-range-max{
+        position:absolute;
+        top:100%;
+    }
+    .u-range-min{
+        left:0px
+    }
+    .u-range-max{
+        right:0px;
+    }
+    
+}
+.u-show-value {
+        margin-left:15px;
+        width:100px;
+        display:inline-block;
+        vertical-align: text-bottom;
+    }

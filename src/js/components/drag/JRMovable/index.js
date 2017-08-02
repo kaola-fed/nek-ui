@@ -129,8 +129,8 @@ const JRMovable = Draggable.extend({
     grid.y && (next.top = Math.round(next.top / grid.y) * grid.y);
 
     // 轴向约束
-    if (this.data.axis === 'x') next.left = params.startLeft;
-    if (this.data.axis === 'y') next.top = params.startTop;
+    if (this.data.axis === 'y') next.left = params.startLeft;
+    if (this.data.axis === 'x') next.top = params.startTop;
 
     return next;
   },

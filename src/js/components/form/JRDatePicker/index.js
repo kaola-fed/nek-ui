@@ -54,6 +54,7 @@ const JRDatePicker = Dropdown.extend({
       _date: undefined,
       _time: undefined,
       autofocus: false,
+      visible: true,
       required: false,
       showTime: false,
       open: false,

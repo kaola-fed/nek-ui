@@ -47,7 +47,7 @@ const Components = {
   JRDraggable: require('./components/drag/JRDraggable'),
   JRDroppable: require('./components/drag/JRDroppable'),
   JRMovable: require('./components/drag/JRMovable'),
-
+  JRSlider: require('./components/drag/JRSlider'),
   // Widget
   JRProgress: require('./components/widget/JRProgress'),
   JRLoading: require('./components/widget/JRLoading'),

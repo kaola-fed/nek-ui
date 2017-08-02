@@ -1,0 +1,29 @@
+{#if axis === 'x'}
+<jr-movable  disabled={readonly || disabled} proxy={this.$refs.handle} axis="x" grid={ _grid } range="offsetParent" rangeMode="center"
+    on-dragstart={this._onDragStart($event)} on-drag={this._onDrag($event)}>
+    <div style='width:{width}px;height:{height}px' class="u-slider{class}" z-dis={disabled} r-hide={!visible} on-mousedown={this._onMouseDown($event)}>
+        <div class="slider_track">
+            {#list pointArr as item}
+            <div class="step-point" style='left:{item}%'></div>
+            {/list}
+            <div class="slider_trail" style="width: {percent}%"></div>
+        </div>
+        <div class="slider_handle" ref="handle" style="left: {percent}%"></div>
+        <div class="u-range-min">{min}</div>
+        <div class="u-range-max">{max}</div>
+    </div>
+    <div class="u-show-value">
+        <number-input min="{min}" step={step} max="{max}" value={value} readonly={readonly} disabled={disabled} />
+    </div>
+</jr-movable>
+{#else}
+<jr-movable disabled={readonly || disabled} proxy={this.$refs.handle} axis="y" grid={ _grid } range="offsetParent" rangeMode="center"
+    on-dragstart={this._onDragStart($event)} on-drag={this._onDrag($event)}>
+    <div class="u-slider {class}" z-dis={disabled} r-hide={!visible} on-mousedown={this._onMouseDown($event)}>
+        <div class="slider_track">
+            <div class="slider_trail" style="bottom:0px;height: {100-percent}%"></div>
+        </div>
+        <div class="slider_handle" ref="handle" style="bottom:0px;top: {100-percent}%"></div>
+    </div>
+</jr-movable>
+{/if}
