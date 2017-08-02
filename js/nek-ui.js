@@ -98,38 +98,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLUpload: __webpack_require__(359),
 
 	  // Navigation
-	  KLSidebar: __webpack_require__(388),
-	  KLMenu: __webpack_require__(390),
-	  KLMenuItem: __webpack_require__(392),
-	  KLSubMenu: __webpack_require__(395),
-	  KLPager: __webpack_require__(397),
-	  KLTabs: __webpack_require__(399),
-	  KLTab: __webpack_require__(401),
-	  KLSteps: __webpack_require__(403),
-	  KLCrumb: __webpack_require__(405),
-	  KLCrumbItem: __webpack_require__(407),
+	  KLSidebar: __webpack_require__(374),
+	  KLMenu: __webpack_require__(376),
+	  KLMenuItem: __webpack_require__(378),
+	  KLSubMenu: __webpack_require__(381),
+	  KLPager: __webpack_require__(383),
+	  KLTabs: __webpack_require__(385),
+	  KLTab: __webpack_require__(387),
+	  KLSteps: __webpack_require__(389),
+	  KLCrumb: __webpack_require__(391),
+	  KLCrumbItem: __webpack_require__(393),
 
 	  // Notice
-	  KLModal: __webpack_require__(380),
-	  KLMask: __webpack_require__(409),
-	  KLNotify: __webpack_require__(411),
-	  KLPopConfirm: __webpack_require__(413),
+	  KLModal: __webpack_require__(364),
+	  KLMask: __webpack_require__(395),
+	  KLNotify: __webpack_require__(397),
+	  KLPopConfirm: __webpack_require__(399),
 
 	  // Widget
-	  KLProgress: __webpack_require__(427),
-	  KLLoading: __webpack_require__(429),
-	  KLTooltip: __webpack_require__(431),
-	  KLIcon: __webpack_require__(433),
-	  KLLocaleProvider: __webpack_require__(435),
+	  KLProgress: __webpack_require__(413),
+	  KLLoading: __webpack_require__(415),
+	  KLTooltip: __webpack_require__(417),
+	  KLIcon: __webpack_require__(419),
+	  KLLocaleProvider: __webpack_require__(421),
 
 	  // Layout
-	  KLTable: __webpack_require__(436),
-	  KLTableCol: __webpack_require__(446),
-	  KLTableTemplate: __webpack_require__(447),
-	  KLRow: __webpack_require__(448),
-	  KLCol: __webpack_require__(450),
-	  KLCard: __webpack_require__(452),
-	  KLCardTools: __webpack_require__(454)
+	  KLTable: __webpack_require__(422),
+	  KLTableCol: __webpack_require__(432),
+	  KLTableTemplate: __webpack_require__(433),
+	  KLRow: __webpack_require__(434),
+	  KLCol: __webpack_require__(436),
+	  KLCard: __webpack_require__(438),
+	  KLCardTools: __webpack_require__(440)
 	};
 
 	backward(Components);
@@ -2029,14 +2029,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DOWNLOAD_FILE: '下载',
 	  UPLOAD_FAIL: '上传失败',
 	  UNKNOWN: '未知',
-	  REMOVE_CONFIRM: '确认删除',
-	  LIMIT_ERROR: 'limit 应该为数字',
-	  IMAGE_WIDTH_ERROR: '宽度错误',
-	  IMAGE_HEIGHT_ERROR: '高度错误',
-	  IMAGE_SCALE_ERROR: '比例错误',
-	  PLEASE_UPLOAD_ATLEAST: '请至少上传',
-	  UNIT: '个',
-	  FILE: '文件'
+	  DELETE_CONFIRM: '确认删除',
+	  LIMIT_ERROR: 'limit 应该为数字'
 		};
 
 /***/ }),
@@ -2082,14 +2076,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DOWNLOAD_FILE: '',
 	  UPLOAD_FAIL: 'Fail',
 	  UNKNOWN: 'UNKNOWN',
-	  REMOVE_CONFIRM: 'Are you sure to remove',
-	  LIMIT_ERROR: 'the limit should be a number',
-	  IMAGE_WIDTH_ERROR: 'width error',
-	  IMAGE_HEIGHT_ERROR: 'height error',
-	  IMAGE_SCALE_ERROR: 'scale error',
-	  PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
-	  UNIT: '',
-	  FILE: 'file'
+	  DELETE_CONFIRM: 'Are you sure to delete',
+	  LIMIT_ERROR: 'the limit should be a number'
 		};
 
 /***/ }),
@@ -27594,7 +27582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 349 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-formitem u-formitem-{layout} {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || titleTemplate}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n      {#if title}\n        {title}\n      {#else}\n        {#inc titleTemplate}\n      {/if}\n      {#if tip}<kl-tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></kl-tooltip>{/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if descTemplate}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc descTemplate}\n      </div>\n    {/if}\n  </span>\n</div>\n"
+	module.exports = "<div class=\"u-formitem u-formitem-{layout} {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || titleTemplate}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n    {#if title}\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>{title}\n      {#if tip}<kl-tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></kl-tooltip>{/if}\n    {#else}\n      {#inc titleTemplate}\n    {/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if descTemplate}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc descTemplate}\n      </div>\n    {/if}\n  </span>\n</div>\n"
 
 /***/ }),
 /* 350 */
@@ -28395,44 +28383,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  ------------------------------
 	 */
 
-	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
 	var Component = __webpack_require__(70);
-	var UploadList = __webpack_require__(362);
-	var UploadCard = __webpack_require__(385);
-	var validationMixin = __webpack_require__(170);
-	var tpl = __webpack_require__(387);
+	var _ = __webpack_require__(72);
+	var UploadList = __webpack_require__(360);
+	var UploadCard = __webpack_require__(371);
+	var Config = __webpack_require__(367);
+	var tpl = __webpack_require__(373);
 
 	/**
 	 * @class KLUpload
 	 * @extend Component
-	 * @param {object}     [options.data]                      = 绑定属性
-	 * @param {string}     [options.data.action]               => 必选，上传地址
-	 * @param {array}      [options.data.file-list]            => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
 	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
 	 *                                                             name: 文件名称
 	 *                                                             url: 文件的路径
 	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
-	 * @param {string}     [options.data.name=file]            => 可选，上传的文件字段名, 默认为'file'
-	 * @param {boolean}    [options.data.multiple=false]       => 可选，是否支持多选, 可选值true/false，默认false单选
-	 * @param {object}     [options.data.data]                 => 可选，上传时附带的额外参数
-	 * @param {boolean}    [options.data.drag=false]           => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
-	 * @param {string}     [options.data.accept=*]             => 可选，接受上传的文件类型, 同input的accept属性
-	 * @param {string}     [options.data.list-type=list]       => 可选，上传组件的展示形式, 可选值list/card，默认list
-	 * @param {number}     [options.data.num-min=-Infinity]    => 可选，指定的至少上传的文件个数，默认无限制
-	 * @param {number}     [options.data.num-max=Infinity]     => 可选，最大允许上传文件的个数，默认无限制
-	 * @param {number}     [options.data.num-perline]          => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
-	 *                                                             对于表单形式，默认每行展示5个
-	 * @param {number}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
-	 * @param {boolean}    [options.data.readonly=false]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
-	 *                                                             默认false，允许上传和删除图片
-	 * @param {boolean}    [options.data.hideTip=false]        => 是否显示校验错误信息，默认false显示
-	 * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
-	 * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
-	 * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
 	 */
-
 	var KLUpload = Component.extend({
 	  name: 'kl-upload',
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -28440,27 +28417,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _.extend(data, {
 	      action: '',
 	      name: 'file',
-	      data: {},
 	      multiple: false,
 	      drag: false,
 	      accept: '*',
 	      listType: 'list',
 	      fileList: [],
-	      numMin: -Infinity,
-	      numMax: Infinity,
-	      numPerline: Infinity,
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
 	      maxSize: Config.sizeMap.GB,
-	      readonly: false,
-	      hideTip: false,
-	      imageWidth: Infinity,
-	      imageHeight: Infinity,
-	      imageScale: '',
+	      deletable: true,
 	      encType: 'multipart/form-data'
 	    });
 
+	    this.supr(data);
+	  },
+	  init: function init(data) {
 	    this.preProcess(data);
-	    this.initValidation();
-
+	    this.initUploadInst(data);
 	    this.supr(data);
 	  },
 	  preProcess: function preProcess(data) {
@@ -28468,248 +28442,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      data.maxSize += '';
 	    }
 	  },
-	  init: function init(data) {
-	    this.initWatcher();
-	    this.addUploadHandler();
-	    this.supr(data);
-	  },
-	  initWatcher: function initWatcher() {
-	    var self = this;
-	    this.$watch('fileList', function () {
-	      self.data.tip = '';
-	    });
-	  },
-	  addUploadHandler: function addUploadHandler() {
-	    var self = this;
-	    var uploadInst = this.$refs.upload;
-	    var handlerList = ['success', 'progress', 'error', 'remove'];
-	    handlerList.forEach(function (handler) {
-	      var handlerFnName = handler;
-	      uploadInst.$on(handler, self['on' + utils.camelize(handlerFnName)].bind(self));
-	    });
-	  },
-	  onSuccess: function onSuccess(info) {
-	    /**
-	     * @event success 文件上传成功回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
-	     */
-	    this.$emit('success', info);
-	  },
-	  onProgress: function onProgress(info) {
-	    /**
-	     * @event progress 文件上传进度回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
-	     */
-	    this.$emit('progress', info);
-	  },
-	  onError: function onError(info) {
-	    /**
-	     * @event error 文件上传失败回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
-	     */
-	    this.$emit('error', info);
-	  },
-	  onRemove: function onRemove(info) {
-	    /**
-	     * @event remove 上传文件删除回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
-	     */
-	    this.$emit('remove', info);
-	  },
-	  validate: function validate() {
-	    var data = this.data;
-	    var result = { success: true, message: '' };
+	  initUploadInst: function initUploadInst(data) {
+	    var uploadNode = this.$refs['m-upload'];
+	    var typeMap = {
+	      list: UploadList,
+	      card: UploadCard
+	    };
 
-	    if (data.fileList.length < data.numMin) {
-	      result.success = false;
-	      result.message = this.$trans('PLEASE_UPLOAD_ATLEAST') + data.numMin + this.$trans('UNIT') + this.$trans('FILE');
-	      this.data.state = 'error';
-	    }
-
-	    data.tip = result.message;
-
-	    this.$emit('validate', {
-	      sender: this,
-	      result: result
-	    });
-
-	    return result;
+	    new typeMap[data.listType]({
+	      data: data
+	    }).$inject(uploadNode);
 	  }
-	}).component('upload-list', UploadList).component('upload-card', UploadCard);
+	});
 
-	KLUpload.use(validationMixin);
-
-	module.exports = KLUpload;
+		module.exports = KLUpload;
 
 /***/ }),
 /* 360 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(72);
-
-	function genUid() {
-	  function s4() {
-	    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-	  }
-	  return '' + s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-	}
-
-	function camelize(str) {
-	  return str.charAt(0).toUpperCase() + str.slice(1);
-	}
-
-	var defaults = {
-	  type: 'POST',
-	  async: true
-	};
-
-	function upload(url, src, options) {
-	  var fd = new FormData();
-	  var data = src;
-	  var name = options.name || 'file';
-
-	  if (src instanceof File) {
-	    data = {};
-	    data[name] = src;
-	  }
-
-	  data = _.extend(data, options.data);
-
-	  var key = void 0;
-	  for (key in data) {
-	    if (data.hasOwnProperty(key)) {
-	      fd.append(key, data[key]);
-	    }
-	  }
-
-	  options.url = url;
-	  options.data = fd;
-
-	  return ajax(_.extend(defaults, options, true));
-	}
-
-	function ajax(options) {
-	  var xhr = new XMLHttpRequest();
-	  var headers = options.headers || {};
-
-	  xhr.open(options.type, options.url, options.async);
-
-	  var key = void 0;
-	  for (key in headers) {
-	    if (headers.hasOwnProperty(key)) {
-	      xhr.setRequestHeader(key, headers[key]);
-	    }
-	  }
-
-	  var noop = function noop() {};
-	  var onerror = options.onerror || noop;
-	  var onDownloadLoad = options.onload || noop;
-	  var onDownloadProgress = options.onprogress || noop;
-
-	  xhr.addEventListener('load', onDownloadLoad);
-	  xhr.addEventListener('error', onerror);
-	  xhr.addEventListener('progress', onDownloadProgress);
-
-	  if (options.upload) {
-	    var onUploadLoad = options.upload.onload || noop;
-	    var onUploadProgress = options.upload.onprogress || noop;
-
-	    xhr.upload.addEventListener('load', onUploadLoad);
-	    xhr.upload.addEventListener('progress', onUploadProgress);
-	  }
-
-	  xhr.send(options.data);
-	}
-
-	module.exports = {
-	  upload: upload,
-	  genUid: genUid,
-	  camelize: camelize
-		};
-
-/***/ }),
-/* 361 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	/**
-	 * common config
-	 */
-
-	var sizeMap = {
-	  K: '1024',
-	  KB: '1024',
-	  M: '1048576', // 1024 * 1024
-	  MB: '1048576', // 1024 * 1024
-	  G: '1073741824', // 1024 * 1024 * 1024
-	  GB: '1073741824' // 1024 * 1024 * 1024
-	};
-
-	var typeMap = {
-	  'image/*': 'image',
-	  '.jpg': 'image',
-	  '.jpeg': 'image',
-	  '.gif': 'image',
-	  '.png': 'image',
-	  '.zip': 'zip',
-	  '.rar': 'rar',
-	  '.gz': 'gz',
-	  document: 'doc',
-	  sheet: 'doc',
-	  powerpoint: 'doc',
-	  msword: 'doc',
-	  '.doc': 'doc',
-	  '.xlsx': 'doc',
-	  '.ppt': 'doc',
-	  'video/*': 'video',
-	  '.mp4': 'video',
-	  '.mkv': 'video',
-	  '.rmvb': 'video',
-	  '.avi': 'video',
-	  'audio/*': 'audio',
-	  '.mp3': 'audio',
-	  'application/pdf': 'pdf',
-	  '.pdf': 'pdf',
-	  'application/javascript': 'js',
-	  '.js': 'js',
-	  '.html': 'html',
-	  '.txt': 'text',
-	  '.json': 'json'
-	};
-
-	var flagMap = {
-	  ADDED: 0,
-	  ORIGINAL: 1,
-	  DELETED: 2
-	};
-
-	module.exports = {
-	  sizeMap: sizeMap,
-	  typeMap: typeMap,
-	  flagMap: flagMap
-		};
-
-/***/ }),
-/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28720,275 +28469,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *  ------------------------------
 	 */
 
-	var _ = __webpack_require__(72);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(384);
+	var FileUnit = __webpack_require__(361);
+	var UploadBase = __webpack_require__(366);
+	var ImagePreview = __webpack_require__(368);
+	var tpl = __webpack_require__(370);
 
 	/**
 	 * @class UploadList
 	 * @extend UploadBase
 	 */
 	var UploadList = UploadBase.extend({
+	  name: 'upload-list',
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
 	  config: function config(data) {
 	    this.supr(data);
-
-	    _.extend(data, {
-	      numPerline: Infinity,
-	      fileUnitWidth: 50,
-	      fileUnitMargin: 25
-	    });
 	  },
 	  init: function init(data) {
-	    this.initData(data);
+	    this.initFilesWrapper();
 	    this.supr(data);
 	  },
-	  initData: function initData(data) {
+	  initFilesWrapper: function initFilesWrapper() {
+	    var data = this.data;
 	    data.inputWrapper = this.$refs.inputwrapper;
 	    data.filesWrapper = this.$refs.fileswrapper;
-	  }
-	});
-
-		module.exports = UploadList;
-
-/***/ }),
-/* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _keys = __webpack_require__(79);
-
-	var _keys2 = _interopRequireDefault(_keys);
-
-	var _promise = __webpack_require__(364);
-
-	var _promise2 = _interopRequireDefault(_promise);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	/**
-	 *  ------------------------------
-	 *  upload.base 上传基础类
-	 *  ------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
-	var FileUnit = __webpack_require__(378);
-	var KLImagePreview = __webpack_require__(382);
-
-	/**
-	 * @class UploadBase
-	 * @extend Component
-	 * @param {object}     [options.data]                = 绑定属性
-	 * @param {string}     [options.data.action]         => 必选，上传地址
-	 * @param {array}      [options.data.file-list]      => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
-	 *                                                       都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
-	 *                                                       name: 文件名称
-	 *                                                       url: 文件的路径
-	 *                                                       flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
-	 * @param {string}     [options.data.name]           => 可选，上传的文件字段名, 默认为'file'
-	 * @param {boolean}    [options.data.multiple]       => 可选，是否支持多选, 可选值true/false，默认false单选
-	 * @param {object}     [options.data.data]           => 可选，上传时附带的额外参数
-	 * @param {boolean}    [options.data.drag]           => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
-	 * @param {string}     [options.data.accept]         => 可选，接受上传的文件类型, 同input的accept属性
-	 * @param {string}     [options.data.list-type]      => 可选，上传组件的展示形式, 可选值list/card，默认list
-	 * @param {number}     [options.data.num-min]        => 可选，指定的至少上传的文件个数，默认无限制
-	 * @param {number}     [options.data.num-max]        => 可选，最大允许上传文件的个数，默认无限制
-	 * @param {number}     [options.data.num-perline]    => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
-	 *                                                       对于表单形式，默认每行展示5个
-	 * @param {number}     [options.data.max-size]       => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
-	 * @param {boolean}    [options.data.readonly]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
-	 *                                                       默认false，允许上传和删除图片
-	 * @param {number}     [options.data.image-width]    => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
-	 * @param {number}     [options.data.image-height]   => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
-	 * @param {string}     [options.data.image-scale]    => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
-	 * @param {boolean}    [options.data.readonly]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
-	 */
-	var UploadBase = Component.extend({
-	  config: function config(data) {
-	    this.supr(data);
-
-	    _.extend(data, {
-	      action: '',
-	      name: 'file',
-	      multiple: false,
-	      data: {},
-	      drag: false,
-	      accept: '*',
-	      listType: 'list',
-	      fileList: [],
-	      numMin: -Infinity,
-	      numMax: Infinity,
-	      numPerline: Infinity,
-	      maxSize: Config.sizeMap.GB,
-	      readonly: false,
-	      imageWidth: Infinity,
-	      imageHeight: Infinity,
-	      imageScale: '',
-	      encType: 'multipart/form-data'
-	    });
-
-	    _.extend(data, {
-	      fileUnitList: []
-	    });
-
-	    this.initWatchers();
-	    this.initUploadedFileUnitList();
-	  },
-	  initWatchers: function initWatchers() {
-	    var self = this;
-
-	    this.$watch('fileList', function (newVal, oldVal) {
-	      if (oldVal !== undefined) {
-	        if (newVal.length >= oldVal.length) {
-	          self.extendFileList(newVal);
-	        } else {
-	          self.reduceFileList(newVal, oldVal);
-	        }
-	      }
-	    }, true);
-	  },
-	  extendFileList: function extendFileList(fileList) {
-	    var self = this;
-	    var data = this.data;
-
-	    function filterDeleted(file) {
-	      return file.flag !== Config.flagMap.DELETED;
-	    }
-
-	    fileList.filter(filterDeleted).forEach(function (file, index) {
-	      if (!file.uid) {
-	        var uid = utils.genUid();
-	        file.uid = uid;
-	        file.flag = Config.flagMap.ADDED;
-	        var fileunit = {
-	          name: file.name,
-	          url: file.url,
-	          type: self.getFileType(file),
-	          flag: 'ADDED',
-	          uid: file.uid,
-	          status: 'success'
-	        };
-	        data.fileUnitList.splice(index, index, fileunit);
-	      }
-	    });
-	  },
-	  reduceFileList: function reduceFileList(deletedFileList, srcFileList) {
-	    var data = this.data;
-
-	    function filterDeleted(file, srcIndex) {
-	      var index = deletedFileList.findIndex(function (item) {
-	        var isEqual = item.name === file.name && item.url === file.url;
-	        if (item.uid && file.uid) {
-	          isEqual = isEqual && item.uid === file.uid;
-	        }
-	        return isEqual;
-	      });
-
-	      if (index === -1 && (file.flag === Config.flagMap.ORIGINAL || file.flag === Config.flagMap.DELETED)) {
-	        file.flag = Config.flagMap.DELETED;
-	        data.fileList.splice(srcIndex, 0, file);
-	      }
-
-	      return index === -1;
-	    }
-
-	    srcFileList.filter(filterDeleted).forEach(function (file) {
-	      if (file.uid) {
-	        var visualIndex = data.fileUnitList.findIndex(function (item) {
-	          return item.uid === file.uid;
-	        });
-
-	        if (visualIndex !== -1) {
-	          data.fileUnitList.splice(visualIndex, 1);
-	        }
-	      }
-	    });
-	  },
-	  init: function init(data) {
-	    this.supr(data);
-	  },
-	  initUploadedFileUnitList: function initUploadedFileUnitList() {
-	    var self = this;
-	    var data = this.data;
-	    var fileList = data.fileList;
-	    var fileUnitList = data.fileUnitList;
-
-	    if (data.fileList.length > 0) {
-	      fileList.forEach(function (file) {
-	        var uid = utils.genUid();
-	        file.uid = uid;
-	        file.flag = Config.flagMap.ORIGINAL;
-	        var fileunit = {
-	          name: file.name,
-	          url: file.url,
-	          type: self.getFileType(file),
-	          flag: 'ORIGINAL',
-	          uid: file.uid,
-	          status: 'success'
-	        };
-	        fileUnitList.push(fileunit);
-	      });
-	    }
-	  },
-	  updateList: function updateList() {
-	    // setTimeout((function() { this.updateFileList(); }).bind(this), 0);
-	    this.updateFileList();
-	  },
-	  updateFileList: function updateFileList() {
-	    var data = this.data;
-	    var fileList = data.fileList;
-	    var fileUnitList = data.fileUnitList;
-	    var newFileList = [];
-
-	    var _loop = function _loop(index) {
-	      var file = fileUnitList[index];
-	      var uid = file.uid;
-	      var flag = file.flag;
-	      var destroyed = file.destroyed;
-	      var fileIndex = fileList.findIndex(function (item) {
-	        return uid === item.uid;
-	      });
-
-	      if (fileIndex === -1) {
-	        newFileList.push({
-	          name: file.name,
-	          url: file.url,
-	          flag: Config.flagMap[flag],
-	          uid: uid
-	        });
-	      } else if (flag === 'DELETED') {
-	        fileList[fileIndex].flag = Config.flagMap.DELETED;
-	        fileUnitList.splice(index, 1);
-	      } else if (destroyed) {
-	        fileList.splice(fileIndex, 1);
-	        fileUnitList.splice(index, 1);
-	      }
-	    };
-
-	    for (var index = fileUnitList.length - 1; index >= 0; index -= 1) {
-	      _loop(index);
-	    }
-
-	    [].push.apply(fileList, newFileList.reverse());
-
-	    this.$update();
-	  },
-	  fileDialogOpen: function fileDialogOpen() {
-	    var inputNode = this.$refs.file;
-	    inputNode && inputNode.click();
-	  },
-	  fileSelect: function fileSelect() {
-	    var inputNode = this.$refs.file;
-	    var files = inputNode.files;
-
-	    this.handleFiles(files);
-
-	    inputNode.value = '';
+	    data.filesWrapper.appendChild(data.inputWrapper);
+	    data.inputWrapper.style.display = 'inline-block';
 	  },
 	  onDragEnter: function onDragEnter(e) {
 	    e.stopPropagation();
@@ -29011,86 +28516,100 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.handleFiles(files);
 	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file;
+	    var files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
+	  },
 	  handleFiles: function handleFiles(files) {
-	    var self = this;
 	    var data = this.data;
+	    var len = files.length;
+	    var index = 0;
+	    var file = void 0;
+	    var fileunit = void 0;
+
+	    var options = this.setOptions(data);
 
 	    data.preCheckInfo = '';
 
-	    var fileList = [].slice.call(files);
-	    fileList.forEach(function (file) {
-	      if (data.fileUnitList.length < data.numMax) {
-	        var checker = self.preCheck(file);
-	        checker.then(function (preCheckInfo) {
-	          data.preCheckInfo = preCheckInfo;
-	          self.$update();
-	          if (!data.preCheckInfo) {
-	            var fileunit = {
-	              rawFile: file,
-	              name: file.name,
-	              url: window.URL.createObjectURL(file),
-	              type: self.getFileType(file),
-	              flag: 'ADDED',
-	              uid: utils.genUid(),
-	              status: 'ready'
-	            };
-	            data.fileUnitList.push(fileunit);
-	            self.$update();
-	          }
-	        });
+	    for (; index < len; index += 1) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (!data.preCheckInfo) {
+	          fileunit = this.createFileUnit({
+	            file: file,
+	            options: options,
+	            deletable: data.deletable
+	          });
+	          fileunit.flag = 'ADDED';
+	          data.fileUnitList.push({
+	            inst: fileunit
+	          });
+	        }
 	      }
-	    });
+	    }
+
+	    this.updateFileList();
 	  },
-	  onPreview: function onPreview(info) {
-	    var current = info.file;
+	  createFileUnit: function createFileUnit(data) {
+	    var self = this;
+	    var imagePreviewWrapper = this.$refs.imagepreview;
+	    var fileunit = new FileUnit({ data: data });
 
-	    function filterImgFile(file) {
-	      return file.type === 'image';
-	    }
+	    fileunit.$on('preview', function () {
+	      var current = this;
 
-	    function mapCurrentFlag(img) {
-	      if (current === img) {
-	        img.current = true;
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
 	      }
-	      return img;
-	    }
 
-	    var imageList = this.data.fileUnitList.filter(filterImgFile).map(mapCurrentFlag);
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
 
-	    var preview = createImagePreview(imageList);
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
 
-	    preview.$inject(this.$refs.imagepreview);
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreviewWrapper);
+	    });
 
 	    function createImagePreview(imgFileList) {
 	      function findHelper(img) {
 	        return img.current;
 	      }
-
 	      var curIndex = imgFileList.findIndex(findHelper);
 
 	      function mapHelper(img) {
 	        delete img.current;
 	        return {
-	          src: img.url,
-	          name: img.name,
-	          status: img.status
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
 	        };
 	      }
+	      var imgList = imgFileList.map(mapHelper);
 
-	      imageList = imgFileList.map(mapHelper);
-	      var imagePreview = new KLImagePreview({
+	      var imagePreview = new ImagePreview({
 	        data: {
-	          imageList: imageList,
+	          imgList: imgList,
 	          curIndex: curIndex
 	        }
 	      });
 
-	      imagePreview.$on('remove', function (imgInfo) {
+	      imagePreview.$on('delete', function (imgInfo) {
 	        var index = imgInfo.index;
 	        var imgInst = imgFileList[index];
 
 	        if (imgInst) {
-	          imgInst.$emit('remove');
+	          imgInst.$emit('delete');
 	        }
 	      });
 
@@ -29100,812 +28619,83 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return imagePreview;
 	    }
+
+	    fileunit.$on('onload', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('success', function () {
+	      self.updateFileList();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      this.destroyed = true;
+	      self.updateFileList();
+	    });
+
+	    return fileunit;
 	  },
-	  onProgress: function onProgress(info) {
-	    this.$emit('progress', _.extend(info, {
-	      fileList: this.data.fileList
-	    }));
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.appendInputWrapper();
+	    this.$update();
 	  },
-	  onSuccess: function onSuccess(info) {
-	    this.updateList();
-	    this.$emit('success', _.extend(info, {
-	      fileList: this.data.fileList
-	    }));
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
 	  },
-	  onError: function onError(info) {
-	    this.updateList();
-	    this.$emit('error', _.extend(info, {
-	      fileList: this.data.fileList
-	    }));
-	  },
-	  onRemove: function onRemove(info) {
-	    var inst = info.sender;
-	    var file = info.file;
-	    file.destroyed = true;
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
 	    }
-	    inst.destroy();
-	    this.updateList();
-
-	    this.$emit('remove', _.extend(info, {
-	      fileList: this.data.fileList
-	    }));
 	  },
-	  setOptions: function setOptions(options) {
-	    var opts = options || {};
+	  appendInputWrapper: function appendInputWrapper() {
+	    var data = this.data;
+	    var inputWrapper = data.inputWrapper;
+	    var filesWrapper = data.filesWrapper;
+	    var numPerline = data.numPerline;
+	    var numLimit = data.numLimit;
+	    var fileUnitMargin = data.fileUnitMargin;
+	    var length = data.fileUnitList.length;
 
-	    return {
-	      url: opts.action,
-	      name: opts.name,
-	      readonly: opts.readonly,
-	      data: opts.data
-	    };
-	  },
-	  preCheck: function preCheck(file) {
-	    var self = this;
-	    var onPass = function onPass(resolve) {
-	      var type = self.getFileType(file).toLowerCase();
-	      var preCheckInfo = '';
+	    if (length < numLimit) {
+	      filesWrapper.appendChild(inputWrapper);
 
-	      if (!self.isAcceptedFileSize(file)) {
-	        preCheckInfo = self.$trans('FILE_TOO_LARGE');
-	        return resolve(preCheckInfo);
-	      }
-	      if (!self.isAcceptedFileType(file)) {
-	        preCheckInfo = self.$trans('FILE_TYPE_ERROR');
-	        return resolve(preCheckInfo);
-	      }
-
-	      if (type === 'image') {
-	        var imageChecker = self.preCheckImage(file);
-	        imageChecker && imageChecker.then(function (imageCheckInfo) {
-	          return resolve(imageCheckInfo);
-	        });
+	      if (length % numPerline) {
+	        inputWrapper.style.marginLeft = fileUnitMargin + 'px';
 	      } else {
-	        return resolve(preCheckInfo);
+	        inputWrapper.style.marginLeft = '0';
 	      }
-	    };
-
-	    var onError = function onError() {};
-
-	    return new _promise2.default(onPass, onError);
-	  },
-	  preCheckImage: function preCheckImage(file) {
-	    var self = this;
-	    var data = this.data;
-	    var type = this.getFileType(file).toLowerCase();
-
-	    if (type === 'image') {
-	      var imageWidth = data.imageWidth;
-	      var imageHeight = data.imageHeight;
-	      var imageScale = data.imageScale;
-
-	      var onResolve = function onResolve(resolve) {
-	        var img = new window.Image();
-	        img.onload = function () {
-	          window.URL.revokeObjectURL(img.src);
-	          var width = img.width;
-	          var height = img.height;
-	          var checkInfo = '';
-	          if (isFinite(imageWidth) && imageWidth !== width) {
-	            checkInfo = self.$trans('IMAGE_WIDTH_ERROR');
-	          }
-	          if (isFinite(imageHeight) && imageHeight !== height) {
-	            checkInfo = self.$trans('IMAGE_HEIGHT_ERROR');
-	          }
-	          if (imageScale) {
-	            var scaleList = imageScale.split(':');
-	            var scaleW = scaleList[0];
-	            var scaleH = scaleList[1];
-	            if (Math.abs(width / height - scaleW / scaleH) > 0.01) {
-	              checkInfo = self.$trans('IMAGE_SCALE_ERROR');
-	            }
-	          }
-
-	          resolve(checkInfo);
-	        };
-
-	        img.src = window.URL.createObjectURL(file);
-	      };
-
-	      var onReject = function onReject() {};
-
-	      return new _promise2.default(onResolve, onReject);
 	    }
-	  },
-	  isAcceptedFileType: function isAcceptedFileType(file) {
-	    var data = this.data;
-	    var accept = data.accept;
-	    var type = this.getFileType(file).toLowerCase();
-	    var isValid = false;
-
-	    accept.split(',').forEach(function (cond) {
-	      if (cond === '*') {
-	        isValid = true;
-	      } else if (/image\/.*/.test(cond)) {
-	        isValid = isValid || type === 'image';
-	      } else if (/audio\/.*/.test(cond)) {
-	        isValid = isValid || type === 'audio';
-	      } else if (/video\/.*/.test(cond)) {
-	        isValid = isValid || type === 'video';
-	      } else {
-	        isValid = isValid || type === Config.typeMap[cond];
-	      }
-	    });
-
-	    return isValid;
-	  },
-	  getFileType: function getFileType(file) {
-	    var type = file.type || '';
-	    var name = file.name || '';
-	    var typeMap = Config.typeMap;
-	    var typeStr = 'unknown';
-
-	    (0, _keys2.default)(typeMap).forEach(function (key) {
-	      var reg = new RegExp(key + '$');
-	      if (reg.test(type) || !type && reg.test(name)) {
-	        typeStr = typeMap[key];
-	      }
-	    });
-
-	    return typeStr;
-	  },
-	  isAcceptedFileSize: function isAcceptedFileSize(file) {
-	    var data = this.data;
-	    var maxSize = data.maxSize;
-	    var fileSize = file.size;
-
-	    var patterns = maxSize.match(/(\d+)(\D+)?/i);
-	    var size = patterns[1];
-	    var unit = patterns[2];
-
-	    if (unit) {
-	      size *= Config.sizeMap[unit.toUpperCase()];
-	    }
-
-	    return size >= fileSize;
-	  }
-	}).component('file-unit', FileUnit);
-
-		module.exports = UploadBase;
-
-/***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(365), __esModule: true };
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(99);
-	__webpack_require__(54);
-	__webpack_require__(38);
-	__webpack_require__(366);
-	module.exports = __webpack_require__(6).Promise;
-
-/***/ }),
-/* 366 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var LIBRARY            = __webpack_require__(44)
-	  , global             = __webpack_require__(5)
-	  , ctx                = __webpack_require__(7)
-	  , classof            = __webpack_require__(58)
-	  , $export            = __webpack_require__(4)
-	  , isObject           = __webpack_require__(12)
-	  , aFunction          = __webpack_require__(8)
-	  , anInstance         = __webpack_require__(367)
-	  , forOf              = __webpack_require__(368)
-	  , speciesConstructor = __webpack_require__(371)
-	  , task               = __webpack_require__(372).set
-	  , microtask          = __webpack_require__(374)()
-	  , PROMISE            = 'Promise'
-	  , TypeError          = global.TypeError
-	  , process            = global.process
-	  , $Promise           = global[PROMISE]
-	  , process            = global.process
-	  , isNode             = classof(process) == 'process'
-	  , empty              = function(){ /* empty */ }
-	  , Internal, GenericPromiseCapability, Wrapper;
-
-	var USE_NATIVE = !!function(){
-	  try {
-	    // correct subclassing with @@species support
-	    var promise     = $Promise.resolve(1)
-	      , FakePromise = (promise.constructor = {})[__webpack_require__(51)('species')] = function(exec){ exec(empty, empty); };
-	    // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-	    return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
-	  } catch(e){ /* empty */ }
-	}();
-
-	// helpers
-	var sameConstructor = function(a, b){
-	  // with library wrapper special case
-	  return a === b || a === $Promise && b === Wrapper;
-	};
-	var isThenable = function(it){
-	  var then;
-	  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
-	};
-	var newPromiseCapability = function(C){
-	  return sameConstructor($Promise, C)
-	    ? new PromiseCapability(C)
-	    : new GenericPromiseCapability(C);
-	};
-	var PromiseCapability = GenericPromiseCapability = function(C){
-	  var resolve, reject;
-	  this.promise = new C(function($$resolve, $$reject){
-	    if(resolve !== undefined || reject !== undefined)throw TypeError('Bad Promise constructor');
-	    resolve = $$resolve;
-	    reject  = $$reject;
-	  });
-	  this.resolve = aFunction(resolve);
-	  this.reject  = aFunction(reject);
-	};
-	var perform = function(exec){
-	  try {
-	    exec();
-	  } catch(e){
-	    return {error: e};
-	  }
-	};
-	var notify = function(promise, isReject){
-	  if(promise._n)return;
-	  promise._n = true;
-	  var chain = promise._c;
-	  microtask(function(){
-	    var value = promise._v
-	      , ok    = promise._s == 1
-	      , i     = 0;
-	    var run = function(reaction){
-	      var handler = ok ? reaction.ok : reaction.fail
-	        , resolve = reaction.resolve
-	        , reject  = reaction.reject
-	        , domain  = reaction.domain
-	        , result, then;
-	      try {
-	        if(handler){
-	          if(!ok){
-	            if(promise._h == 2)onHandleUnhandled(promise);
-	            promise._h = 1;
-	          }
-	          if(handler === true)result = value;
-	          else {
-	            if(domain)domain.enter();
-	            result = handler(value);
-	            if(domain)domain.exit();
-	          }
-	          if(result === reaction.promise){
-	            reject(TypeError('Promise-chain cycle'));
-	          } else if(then = isThenable(result)){
-	            then.call(result, resolve, reject);
-	          } else resolve(result);
-	        } else reject(value);
-	      } catch(e){
-	        reject(e);
-	      }
-	    };
-	    while(chain.length > i)run(chain[i++]); // variable length - can't use forEach
-	    promise._c = [];
-	    promise._n = false;
-	    if(isReject && !promise._h)onUnhandled(promise);
-	  });
-	};
-	var onUnhandled = function(promise){
-	  task.call(global, function(){
-	    var value = promise._v
-	      , abrupt, handler, console;
-	    if(isUnhandled(promise)){
-	      abrupt = perform(function(){
-	        if(isNode){
-	          process.emit('unhandledRejection', value, promise);
-	        } else if(handler = global.onunhandledrejection){
-	          handler({promise: promise, reason: value});
-	        } else if((console = global.console) && console.error){
-	          console.error('Unhandled promise rejection', value);
-	        }
-	      });
-	      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
-	      promise._h = isNode || isUnhandled(promise) ? 2 : 1;
-	    } promise._a = undefined;
-	    if(abrupt)throw abrupt.error;
-	  });
-	};
-	var isUnhandled = function(promise){
-	  if(promise._h == 1)return false;
-	  var chain = promise._a || promise._c
-	    , i     = 0
-	    , reaction;
-	  while(chain.length > i){
-	    reaction = chain[i++];
-	    if(reaction.fail || !isUnhandled(reaction.promise))return false;
-	  } return true;
-	};
-	var onHandleUnhandled = function(promise){
-	  task.call(global, function(){
-	    var handler;
-	    if(isNode){
-	      process.emit('rejectionHandled', promise);
-	    } else if(handler = global.onrejectionhandled){
-	      handler({promise: promise, reason: promise._v});
-	    }
-	  });
-	};
-	var $reject = function(value){
-	  var promise = this;
-	  if(promise._d)return;
-	  promise._d = true;
-	  promise = promise._w || promise; // unwrap
-	  promise._v = value;
-	  promise._s = 2;
-	  if(!promise._a)promise._a = promise._c.slice();
-	  notify(promise, true);
-	};
-	var $resolve = function(value){
-	  var promise = this
-	    , then;
-	  if(promise._d)return;
-	  promise._d = true;
-	  promise = promise._w || promise; // unwrap
-	  try {
-	    if(promise === value)throw TypeError("Promise can't be resolved itself");
-	    if(then = isThenable(value)){
-	      microtask(function(){
-	        var wrapper = {_w: promise, _d: false}; // wrap
-	        try {
-	          then.call(value, ctx($resolve, wrapper, 1), ctx($reject, wrapper, 1));
-	        } catch(e){
-	          $reject.call(wrapper, e);
-	        }
-	      });
-	    } else {
-	      promise._v = value;
-	      promise._s = 1;
-	      notify(promise, false);
-	    }
-	  } catch(e){
-	    $reject.call({_w: promise, _d: false}, e); // wrap
-	  }
-	};
-
-	// constructor polyfill
-	if(!USE_NATIVE){
-	  // 25.4.3.1 Promise(executor)
-	  $Promise = function Promise(executor){
-	    anInstance(this, $Promise, PROMISE, '_h');
-	    aFunction(executor);
-	    Internal.call(this);
-	    try {
-	      executor(ctx($resolve, this, 1), ctx($reject, this, 1));
-	    } catch(err){
-	      $reject.call(this, err);
-	    }
-	  };
-	  Internal = function Promise(executor){
-	    this._c = [];             // <- awaiting reactions
-	    this._a = undefined;      // <- checked in isUnhandled reactions
-	    this._s = 0;              // <- state
-	    this._d = false;          // <- done
-	    this._v = undefined;      // <- value
-	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
-	    this._n = false;          // <- notify
-	  };
-	  Internal.prototype = __webpack_require__(375)($Promise.prototype, {
-	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
-	    then: function then(onFulfilled, onRejected){
-	      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
-	      reaction.ok     = typeof onFulfilled == 'function' ? onFulfilled : true;
-	      reaction.fail   = typeof onRejected == 'function' && onRejected;
-	      reaction.domain = isNode ? process.domain : undefined;
-	      this._c.push(reaction);
-	      if(this._a)this._a.push(reaction);
-	      if(this._s)notify(this, false);
-	      return reaction.promise;
-	    },
-	    // 25.4.5.1 Promise.prototype.catch(onRejected)
-	    'catch': function(onRejected){
-	      return this.then(undefined, onRejected);
-	    }
-	  });
-	  PromiseCapability = function(){
-	    var promise  = new Internal;
-	    this.promise = promise;
-	    this.resolve = ctx($resolve, promise, 1);
-	    this.reject  = ctx($reject, promise, 1);
-	  };
-	}
-
-	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
-	__webpack_require__(50)($Promise, PROMISE);
-	__webpack_require__(376)(PROMISE);
-	Wrapper = __webpack_require__(6)[PROMISE];
-
-	// statics
-	$export($export.S + $export.F * !USE_NATIVE, PROMISE, {
-	  // 25.4.4.5 Promise.reject(r)
-	  reject: function reject(r){
-	    var capability = newPromiseCapability(this)
-	      , $$reject   = capability.reject;
-	    $$reject(r);
-	    return capability.promise;
-	  }
-	});
-	$export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
-	  // 25.4.4.6 Promise.resolve(x)
-	  resolve: function resolve(x){
-	    // instanceof instead of internal slot check because we should fix it without replacement native Promise core
-	    if(x instanceof $Promise && sameConstructor(x.constructor, this))return x;
-	    var capability = newPromiseCapability(this)
-	      , $$resolve  = capability.resolve;
-	    $$resolve(x);
-	    return capability.promise;
-	  }
-	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(377)(function(iter){
-	  $Promise.all(iter)['catch'](empty);
-	})), PROMISE, {
-	  // 25.4.4.1 Promise.all(iterable)
-	  all: function all(iterable){
-	    var C          = this
-	      , capability = newPromiseCapability(C)
-	      , resolve    = capability.resolve
-	      , reject     = capability.reject;
-	    var abrupt = perform(function(){
-	      var values    = []
-	        , index     = 0
-	        , remaining = 1;
-	      forOf(iterable, false, function(promise){
-	        var $index        = index++
-	          , alreadyCalled = false;
-	        values.push(undefined);
-	        remaining++;
-	        C.resolve(promise).then(function(value){
-	          if(alreadyCalled)return;
-	          alreadyCalled  = true;
-	          values[$index] = value;
-	          --remaining || resolve(values);
-	        }, reject);
-	      });
-	      --remaining || resolve(values);
-	    });
-	    if(abrupt)reject(abrupt.error);
-	    return capability.promise;
-	  },
-	  // 25.4.4.4 Promise.race(iterable)
-	  race: function race(iterable){
-	    var C          = this
-	      , capability = newPromiseCapability(C)
-	      , reject     = capability.reject;
-	    var abrupt = perform(function(){
-	      forOf(iterable, false, function(promise){
-	        C.resolve(promise).then(capability.resolve, reject);
-	      });
-	    });
-	    if(abrupt)reject(abrupt.error);
-	    return capability.promise;
 	  }
 	});
 
-/***/ }),
-/* 367 */
-/***/ (function(module, exports) {
-
-	module.exports = function(it, Constructor, name, forbiddenField){
-	  if(!(it instanceof Constructor) || (forbiddenField !== undefined && forbiddenField in it)){
-	    throw TypeError(name + ': incorrect invocation!');
-	  } return it;
-	};
+		module.exports = UploadList;
 
 /***/ }),
-/* 368 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var ctx         = __webpack_require__(7)
-	  , call        = __webpack_require__(369)
-	  , isArrayIter = __webpack_require__(370)
-	  , anObject    = __webpack_require__(11)
-	  , toLength    = __webpack_require__(28)
-	  , getIterFn   = __webpack_require__(57)
-	  , BREAK       = {}
-	  , RETURN      = {};
-	var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
-	  var iterFn = ITERATOR ? function(){ return iterable; } : getIterFn(iterable)
-	    , f      = ctx(fn, that, entries ? 2 : 1)
-	    , index  = 0
-	    , length, step, iterator, result;
-	  if(typeof iterFn != 'function')throw TypeError(iterable + ' is not iterable!');
-	  // fast case for arrays with default iterator
-	  if(isArrayIter(iterFn))for(length = toLength(iterable.length); length > index; index++){
-	    result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
-	    if(result === BREAK || result === RETURN)return result;
-	  } else for(iterator = iterFn.call(iterable); !(step = iterator.next()).done; ){
-	    result = call(iterator, f, step.value, entries);
-	    if(result === BREAK || result === RETURN)return result;
-	  }
-	};
-	exports.BREAK  = BREAK;
-	exports.RETURN = RETURN;
-
-/***/ }),
-/* 369 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// call something on iterator step with safe closing on error
-	var anObject = __webpack_require__(11);
-	module.exports = function(iterator, fn, value, entries){
-	  try {
-	    return entries ? fn(anObject(value)[0], value[1]) : fn(value);
-	  // 7.4.6 IteratorClose(iterator, completion)
-	  } catch(e){
-	    var ret = iterator['return'];
-	    if(ret !== undefined)anObject(ret.call(iterator));
-	    throw e;
-	  }
-	};
-
-/***/ }),
-/* 370 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// check on default Array iterator
-	var Iterators  = __webpack_require__(42)
-	  , ITERATOR   = __webpack_require__(51)('iterator')
-	  , ArrayProto = Array.prototype;
-
-	module.exports = function(it){
-	  return it !== undefined && (Iterators.Array === it || ArrayProto[ITERATOR] === it);
-	};
-
-/***/ }),
-/* 371 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
-	var anObject  = __webpack_require__(11)
-	  , aFunction = __webpack_require__(8)
-	  , SPECIES   = __webpack_require__(51)('species');
-	module.exports = function(O, D){
-	  var C = anObject(O).constructor, S;
-	  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
-	};
-
-/***/ }),
-/* 372 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var ctx                = __webpack_require__(7)
-	  , invoke             = __webpack_require__(373)
-	  , html               = __webpack_require__(49)
-	  , cel                = __webpack_require__(16)
-	  , global             = __webpack_require__(5)
-	  , process            = global.process
-	  , setTask            = global.setImmediate
-	  , clearTask          = global.clearImmediate
-	  , MessageChannel     = global.MessageChannel
-	  , counter            = 0
-	  , queue              = {}
-	  , ONREADYSTATECHANGE = 'onreadystatechange'
-	  , defer, channel, port;
-	var run = function(){
-	  var id = +this;
-	  if(queue.hasOwnProperty(id)){
-	    var fn = queue[id];
-	    delete queue[id];
-	    fn();
-	  }
-	};
-	var listener = function(event){
-	  run.call(event.data);
-	};
-	// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-	if(!setTask || !clearTask){
-	  setTask = function setImmediate(fn){
-	    var args = [], i = 1;
-	    while(arguments.length > i)args.push(arguments[i++]);
-	    queue[++counter] = function(){
-	      invoke(typeof fn == 'function' ? fn : Function(fn), args);
-	    };
-	    defer(counter);
-	    return counter;
-	  };
-	  clearTask = function clearImmediate(id){
-	    delete queue[id];
-	  };
-	  // Node.js 0.8-
-	  if(__webpack_require__(25)(process) == 'process'){
-	    defer = function(id){
-	      process.nextTick(ctx(run, id, 1));
-	    };
-	  // Browsers with MessageChannel, includes WebWorkers
-	  } else if(MessageChannel){
-	    channel = new MessageChannel;
-	    port    = channel.port2;
-	    channel.port1.onmessage = listener;
-	    defer = ctx(port.postMessage, port, 1);
-	  // Browsers with postMessage, skip WebWorkers
-	  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-	  } else if(global.addEventListener && typeof postMessage == 'function' && !global.importScripts){
-	    defer = function(id){
-	      global.postMessage(id + '', '*');
-	    };
-	    global.addEventListener('message', listener, false);
-	  // IE8-
-	  } else if(ONREADYSTATECHANGE in cel('script')){
-	    defer = function(id){
-	      html.appendChild(cel('script'))[ONREADYSTATECHANGE] = function(){
-	        html.removeChild(this);
-	        run.call(id);
-	      };
-	    };
-	  // Rest old browsers
-	  } else {
-	    defer = function(id){
-	      setTimeout(ctx(run, id, 1), 0);
-	    };
-	  }
-	}
-	module.exports = {
-	  set:   setTask,
-	  clear: clearTask
-	};
-
-/***/ }),
-/* 373 */
-/***/ (function(module, exports) {
-
-	// fast apply, http://jsperf.lnkit.com/fast-apply/5
-	module.exports = function(fn, args, that){
-	  var un = that === undefined;
-	  switch(args.length){
-	    case 0: return un ? fn()
-	                      : fn.call(that);
-	    case 1: return un ? fn(args[0])
-	                      : fn.call(that, args[0]);
-	    case 2: return un ? fn(args[0], args[1])
-	                      : fn.call(that, args[0], args[1]);
-	    case 3: return un ? fn(args[0], args[1], args[2])
-	                      : fn.call(that, args[0], args[1], args[2]);
-	    case 4: return un ? fn(args[0], args[1], args[2], args[3])
-	                      : fn.call(that, args[0], args[1], args[2], args[3]);
-	  } return              fn.apply(that, args);
-	};
-
-/***/ }),
-/* 374 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(5)
-	  , macrotask = __webpack_require__(372).set
-	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
-	  , process   = global.process
-	  , Promise   = global.Promise
-	  , isNode    = __webpack_require__(25)(process) == 'process';
-
-	module.exports = function(){
-	  var head, last, notify;
-
-	  var flush = function(){
-	    var parent, fn;
-	    if(isNode && (parent = process.domain))parent.exit();
-	    while(head){
-	      fn   = head.fn;
-	      head = head.next;
-	      try {
-	        fn();
-	      } catch(e){
-	        if(head)notify();
-	        else last = undefined;
-	        throw e;
-	      }
-	    } last = undefined;
-	    if(parent)parent.enter();
-	  };
-
-	  // Node.js
-	  if(isNode){
-	    notify = function(){
-	      process.nextTick(flush);
-	    };
-	  // browsers with MutationObserver
-	  } else if(Observer){
-	    var toggle = true
-	      , node   = document.createTextNode('');
-	    new Observer(flush).observe(node, {characterData: true}); // eslint-disable-line no-new
-	    notify = function(){
-	      node.data = toggle = !toggle;
-	    };
-	  // environments with maybe non-completely correct, but existent Promise
-	  } else if(Promise && Promise.resolve){
-	    var promise = Promise.resolve();
-	    notify = function(){
-	      promise.then(flush);
-	    };
-	  // for other environments - macrotask based on:
-	  // - setImmediate
-	  // - MessageChannel
-	  // - window.postMessag
-	  // - onreadystatechange
-	  // - setTimeout
-	  } else {
-	    notify = function(){
-	      // strange IE + webpack dev server bug - use .call(global)
-	      macrotask.call(global, flush);
-	    };
-	  }
-
-	  return function(fn){
-	    var task = {fn: fn, next: undefined};
-	    if(last)last.next = task;
-	    if(!head){
-	      head = task;
-	      notify();
-	    } last = task;
-	  };
-	};
-
-/***/ }),
-/* 375 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var hide = __webpack_require__(9);
-	module.exports = function(target, src, safe){
-	  for(var key in src){
-	    if(safe && target[key])target[key] = src[key];
-	    else hide(target, key, src[key]);
-	  } return target;
-	};
-
-/***/ }),
-/* 376 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var global      = __webpack_require__(5)
-	  , core        = __webpack_require__(6)
-	  , dP          = __webpack_require__(10)
-	  , DESCRIPTORS = __webpack_require__(14)
-	  , SPECIES     = __webpack_require__(51)('species');
-
-	module.exports = function(KEY){
-	  var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
-	  if(DESCRIPTORS && C && !C[SPECIES])dP.f(C, SPECIES, {
-	    configurable: true,
-	    get: function(){ return this; }
-	  });
-	};
-
-/***/ }),
-/* 377 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var ITERATOR     = __webpack_require__(51)('iterator')
-	  , SAFE_CLOSING = false;
-
-	try {
-	  var riter = [7][ITERATOR]();
-	  riter['return'] = function(){ SAFE_CLOSING = true; };
-	  Array.from(riter, function(){ throw 2; });
-	} catch(e){ /* empty */ }
-
-	module.exports = function(exec, skipClosing){
-	  if(!skipClosing && !SAFE_CLOSING)return false;
-	  var safe = false;
-	  try {
-	    var arr  = [7]
-	      , iter = arr[ITERATOR]();
-	    iter.next = function(){ return {done: safe = true}; };
-	    arr[ITERATOR] = function(){ return iter; };
-	    exec(arr);
-	  } catch(e){ /* empty */ }
-	  return safe;
-	};
-
-/***/ }),
-/* 378 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29918,26 +28708,23 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(379);
-	var utils = __webpack_require__(360);
-	var KLModal = __webpack_require__(380);
+	var tpl = __webpack_require__(362);
+	var upload = __webpack_require__(363);
+	var KLModal = __webpack_require__(364);
 
 	var FileUnit = Component.extend({
+	  name: 'file-unit',
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
 	  config: function config(data) {
 	    _.extend(data, {
 	      file: {},
-	      action: '',
-	      url: '',
-	      name: '',
-	      readonly: false,
-	      data: {}
+	      options: {}
 	    });
 
 	    _.extend(data, {
 	      info: '',
 	      status: '',
-	      progress: '0%',
+	      deletable: true,
 	      delConfirm: false
 	    });
 
@@ -29947,136 +28734,196 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  initData: function initData(data) {
 	    var file = data.file;
-	    data.filename = file.name;
-	    data.type = file.type;
+	    data.name = this.getFileName(file);
+	    data.type = this.getFileType(file);
 
 	    // for initial uploaded files
-	    if (data.status === 'ready') {
-	      this.uploadFile(file.rawFile);
+	    if (file.url) {
+	      data.src = file.url;
+	      data.status = 'uploaded';
+	    } else {
+	      data.src = window.URL.createObjectURL(file);
+	      this.uploadFile(file);
 	    }
 	  },
-	  uploadFile: function uploadFile(rawFile) {
+	  getFileName: function getFileName(file) {
+	    return file.name;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '';
+	    var name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  uploadFile: function uploadFile(file) {
 	    var self = this;
 	    var data = this.data;
 
 	    data.info = '';
-	    data.status = 'uploading';
 
 	    var options = {
 	      upload: {
+	        onload: function onload(e) {
+	          data.progress = '100%';
+	          self.$update();
+	          self.$emit('success', { progress: data.progress, info: e });
+	        },
 	        onprogress: function onprogress(e) {
 	          data.status = 'uploading';
-	          data.progress = parseInt((e.loaded / e.total || 0) * 100) + '%';
+	          data.progress = parseInt(e.loaded / e.total * 100) + '%';
 	          self.$update();
-
-	          var emitItem = {
-	            sender: self,
-	            event: e,
-	            progress: data.progress,
-	            file: data.file,
-	            status: data.status
-	          };
-
-	          self.$emit('progress', emitItem);
+	          self.$emit('progress', { progress: data.progress });
 	        }
 	      },
 	      onload: function onload(e) {
 	        var target = e.target;
-	        var status = target.status;
-	        data.progress = '100%';
-	        var emitItem = {
-	          sender: self,
-	          event: e,
-	          progress: data.progress,
-	          file: data.file
-	        };
-
-	        if (status >= 200 && status < 300 || status === 304) {
+	        if (target.status === 200) {
 	          var response = JSON.parse(target.responseText);
-	          data.url = response.url;
-	          data.status = 'success';
-	          data.info = '';
-	          self.$update();
-
-	          emitItem.status = data.status;
-	          self.$emit('success', emitItem);
+	          self.data.file.url = response.url;
+	          self.data.status = 'uploaded';
+	          self.data.info = '';
 	        } else {
-	          data.status = 'fail';
+	          data.status = 'failed';
 	          data.info = self.$trans('UPLOAD_FAIL');
-	          self.$update();
-
-	          emitItem.status = data.status;
-	          self.$emit('error', emitItem);
 	        }
+	        self.$update();
+	        self.$emit('onload', { info: e });
 	      },
 	      onerror: function onerror(e) {
-	        data.status = 'fail';
+	        data.status = 'failed';
 	        data.info = self.$trans('UPLOAD_FAIL');
 	        self.$update();
-
-	        var emitItem = {
-	          sender: self,
-	          event: e,
-	          progress: data.progress,
-	          file: data.file,
-	          status: data.status
-	        };
-	        self.$emit('error', emitItem);
+	        self.$emit('error', { info: e });
 	      }
 	    };
 
-	    options.name = data.name;
-	    options.data = data.data;
-
-	    utils.upload(data.action, rawFile, options);
-
-	    this.$update();
+	    options = _.extend(options, data.options);
+	    upload(options.url, file, options);
 	  },
-	  onRemove: function onRemove(e) {
+	  onDelete: function onDelete() {
 	    var self = this;
 	    var data = this.data;
-	    var emitItem = {
-	      sender: this,
-	      event: e,
-	      file: data.file,
-	      status: data.status
-	    };
 
 	    if (data.delConfirm) {
 	      var modal = new KLModal({
 	        data: {
-	          content: this.$trans('REMOVE_CONFIRM') + data.filename + '?'
+	          content: this.$trans('DELETE_CONFIRM') + data.name + '?'
 	        }
 	      });
 	      modal.$on('ok', function () {
-	        self.$emit('remove', emitItem);
+	        self.$emit('delete');
 	      });
 	    } else {
-	      self.$emit('remove', emitItem);
+	      self.$emit('delete');
 	    }
 	  },
-	  onPreview: function onPreview(e) {
-	    var data = this.data;
-	    var emitItem = {
-	      sender: this,
-	      event: e,
-	      file: data.file,
-	      status: data.status
-	    };
-	    this.$emit('preview', emitItem);
+	  onPreview: function onPreview() {
+	    this.$emit('preview');
 	  }
 	});
 
 		module.exports = FileUnit;
 
 /***/ }),
-/* 379 */
+/* 362 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'IMAGE'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={src}/>\n            </div>\n        {#elseif type === 'ZIP'}\n            <span class=\"u-txt\">ZIP</span>\n        {#elseif type === 'UNKNOWN'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type}</span>\n        {/if}\n        <div class=\"m-delete\" r-hide={!deletable} on-click={this.onDelete()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'failed'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'uploaded'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={src} download={name}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={name}>{name}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
-/* 380 */
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(72);
+
+	var defaults = {
+	  type: 'POST',
+	  async: true
+	};
+
+	function upload(url, src, options) {
+	  var fd = new FormData();
+	  var data = src;
+
+	  if (src instanceof File) {
+	    data = {
+	      file: src
+	    };
+	  }
+
+	  for (var key in data) {
+	    if (data.hasOwnProperty(key)) {
+	      fd.append(key, data[key]);
+	    }
+	  }
+
+	  options.url = url;
+	  options.data = fd;
+
+	  return ajax(_.extend(defaults, options, true));
+	}
+
+	function ajax(options) {
+	  var xhr = new XMLHttpRequest();
+	  var headers = options.headers || {};
+
+	  xhr.open(options.type, options.url, options.async);
+
+	  for (var key in headers) {
+	    if (headers.hasOwnProperty(key)) {
+	      xhr.setRequestHeader(key, headers[key]);
+	    }
+	  }
+
+	  var noop = function noop() {};
+	  var onerror = options.onerror || noop;
+
+	  var onload = options.onload || noop;
+
+	  var onprogress = options.onprogress || noop;
+
+	  xhr.addEventListener('load', onload);
+	  xhr.addEventListener('error', onerror);
+	  xhr.addEventListener('progress', onprogress);
+
+	  if (options.upload) {
+	    var onuploadLoad = options.upload.onload || noop;
+
+	    var onuploadProgress = options.upload.onprogress || noop;
+
+	    xhr.upload.addEventListener('load', onuploadLoad);
+	    xhr.upload.addEventListener('progress', onuploadProgress);
+	  }
+
+	  xhr.send(options.data);
+	}
+
+	module.exports = upload;
+
+/***/ }),
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30089,7 +28936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(381);
+	var template = __webpack_require__(365);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -30246,46 +29093,318 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLModal;
 
 /***/ }),
-/* 381 */
+/* 365 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 382 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
 	 *  ------------------------------
-	 *  KLImagePreview 图片预览
+	 *  upload.base 上传基础类
 	 *  ------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(380);
-	var tpl = __webpack_require__(383);
+	var Config = __webpack_require__(367);
 
 	/**
-	 * @class KLImagePreview
+	 * @class UploadBase
 	 * @extend Component
-	 * @param {object}     [options.data]               = 绑定属性
-	 * @param {array}      [options.data.image-list]    => 必选，图片文件列表, 其中每个文件项包含下面的字段:
-	 *                                                     name: 图片文件名称
-	 *                                                     src: 图片文件的路径
-	 * @param {number}     [options.data.cur-index=0]   => 必选，当前图片文件的索引, 默认第一项为当前项
+	 * @param {object}         [options.data]                  = 绑定属性
+	 * @param {string}         [options.data.action]           => 必选，上传地址
+	 * @param {array}          [options.data.file-list]        => 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，
+	 *                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:
+	 *                                                             name: 文件名称
+	 *                                                             url: 文件的路径
+	 *                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
+	 * @param {string}         [options.data.name]             => 可选，上传的文件字段名, 默认为'file'
+	 * @param {boolean}        [options.data.multiple]         => 可选，是否支持多选, 可选值true/false，默认false单选
+	 * @param {boolean}        [options.data.drag]             => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
+	 * @param {string}         [options.data.accept]           => 可选，接受上传的文件类型, 同input的accept属性
+	 * @param {string}         [options.data.list-type]        => 可选，上传组件的展示形式, 可选值list/card，默认list
+	 * @param {number}         [options.data.num-limit]        => 可选，最大允许上传文件的个数，默认10个
+	 * @param {number}         [options.data.num-perline]      => 可选，每行展示的文件个数，默认每行展示5个
+	 * @param {number}         [options.data.max-size]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {boolean}        [options.data.deletable]        => 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除
+	 */
+	var UploadBase = Component.extend({
+	  name: 'upload-list',
+	  config: function config(data) {
+	    _.extend(data, {
+	      action: '',
+	      name: 'file',
+	      multiple: false,
+	      drag: false,
+	      accept: '*',
+	      listType: 'list',
+	      fileList: [],
+	      data: {},
+	      numLimit: 10,
+	      numPerline: 5,
+	      maxSize: Config.sizeMap.GB,
+	      deletable: true,
+	      encType: 'multipart/form-data'
+	    });
+
+	    _.extend(data, {
+	      fileUnitList: [],
+	      fileDeletedList: [],
+	      fileUnitWidth: 50,
+	      fileUnitMargin: 25
+	    });
+
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.initUploadedFileUnits();
+	    this.supr(data);
+	  },
+	  initUploadedFileUnits: function initUploadedFileUnits() {
+	    var self = this;
+	    var data = this.data;
+
+	    if (data.fileList.length > 0) {
+	      var fileList = data.fileList.splice(0);
+	      fileList.forEach(function (file) {
+	        var fileunit = self.createFileUnit({
+	          file: file,
+	          options: {},
+	          deletable: data.deletable
+	        });
+
+	        fileunit.flag = 'ORIGINAL';
+
+	        data.fileUnitList.push({
+	          inst: fileunit
+	        });
+	      });
+
+	      this.updateFileList();
+	    }
+	  },
+	  updateFileList: function updateFileList() {
+	    var self = this;
+	    var data = this.data;
+	    var filesWrapper = data.filesWrapper;
+	    var fileList = data.fileList;
+	    var fileDeletedList = data.fileDeletedList;
+
+	    data.fileUnitList = data.fileUnitList.filter(function (item) {
+	      var inst = item.inst;
+	      var flag = inst.flag;
+	      var file = inst.file;
+	      var destroyed = inst.destroyed;
+
+	      // item.inst = {};
+
+	      if (flag === 'DELETED') {
+	        file.flag = 'DELETED';
+	        fileDeletedList.push(file);
+	        return false;
+	      }
+	      return !destroyed;
+	    });
+
+	    filesWrapper.innerHTML = '';
+
+	    var fileUnitList = data.fileUnitList;
+	    fileUnitList.forEach(function (item, index) {
+	      item.wrapper = self.createFileUnitWrapper(filesWrapper, index);
+	      item.inst.$inject(item.wrapper);
+	    });
+
+	    fileList.splice(0);
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst;
+	      var file = inst.data.file || {};
+
+	      fileList.push({
+	        name: file.name,
+	        url: file.url,
+	        flag: Config.flagMap[inst.flag]
+	      });
+	    });
+
+	    fileDeletedList.forEach(function (file) {
+	      fileList.push({
+	        name: file && file.name,
+	        url: file && file.url,
+	        flag: file && Config.flagMap[file.flag]
+	      });
+	    });
+	  },
+	  fileDialogOpen: function fileDialogOpen() {
+	    this.$refs.file && this.$refs.file.click();
+	  },
+	  setOptions: function setOptions(options) {
+	    var opts = options || {};
+
+	    return {
+	      url: opts.action
+	    };
+	  },
+	  preCheck: function preCheck(file) {
+	    var preCheckInfo = '';
+	    if (!this.isAcceptedFileSize(file)) {
+	      preCheckInfo = this.$trans('FILE_TOO_LARGE');
+	    }
+	    if (!this.isAcceptedFileType(file)) {
+	      preCheckInfo = this.$trans('FILE_TYPE_ERROR');
+	    }
+	    return preCheckInfo;
+	  },
+	  isAcceptedFileType: function isAcceptedFileType(file) {
+	    var data = this.data;
+	    var accept = data.accept;
+	    var type = this.getFileType(file).toLowerCase();
+	    var isValid = false;
+
+	    accept.split(',').forEach(function (cond) {
+	      if (cond === '*') {
+	        isValid = true;
+	      } else if (/image\/.*/.test(cond)) {
+	        isValid = isValid || type === 'image';
+	      } else if (/audio\/.*/.test(cond)) {
+	        isValid = isValid || type === 'audio';
+	      } else if (/video\/.*/.test(cond)) {
+	        isValid = isValid || type === 'video';
+	      } else {
+	        isValid = isValid || type === Config.typeMap[cond];
+	      }
+	    });
+
+	    return isValid;
+	  },
+	  getFileType: function getFileType(file) {
+	    var type = file.type || '';
+	    var name = file.name || '';
+
+	    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
+	      return 'IMAGE';
+	    } else if (/zip|rar|gz/i.test(name)) {
+	      return 'ZIP';
+	    } else if (/document|sheet|powerpoint|msword/.test(type) || /doc|xlsx|ppt/i.test(name)) {
+	      return 'DOC';
+	    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
+	      return 'VIDEO';
+	    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
+	      return 'AUDIO';
+	    } else if (/text\/plain/.test(type)) {
+	      return 'TEXT';
+	    } else if (/text\/html/.test(type)) {
+	      return 'HTML';
+	    } else if (/application\/pdf/.test(type)) {
+	      return 'PDF';
+	    } else if (/application\/javascript/.test(type)) {
+	      return 'JS';
+	    }
+
+	    return 'UNKNOWN';
+	  },
+	  isAcceptedFileSize: function isAcceptedFileSize(file) {
+	    var data = this.data;
+	    var maxSize = data.maxSize;
+	    var fileSize = file.size;
+
+	    var patterns = maxSize.match(/(\d+)(\D+)?/i);
+	    var size = patterns[1];
+	    var unit = patterns[2];
+
+	    if (unit) {
+	      size *= Config.sizeMap[unit.toUpperCase()];
+	    }
+
+	    return size >= fileSize;
+	  }
+	});
+
+		module.exports = UploadBase;
+
+/***/ }),
+/* 367 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	/**
+	 * common config
 	 */
 
-	var KLImagePreview = Component.extend({
-	  name: 'kl-image-preview',
+	var sizeMap = {
+	  K: '1024',
+	  KB: '1024',
+	  M: '1048576', // 1024 * 1024
+	  MB: '1048576', // 1024 * 1024
+	  G: '1073741824', // 1024 * 1024 * 1024
+	  GB: '1073741824' // 1024 * 1024 * 1024
+	};
+
+	var typeMap = {
+	  '.jpg': 'image',
+	  '.jpeg': 'image',
+	  '.gif': 'image',
+	  '.png': 'image',
+	  '.zip': 'zip',
+	  '.rar': 'zip',
+	  '.gz': 'zip',
+	  '.doc': 'doc',
+	  '.xlsx': 'doc',
+	  '.ppt': 'doc',
+	  '.mp4': 'video',
+	  '.mkv': 'video',
+	  '.rmvb': 'video',
+	  '.avi': 'video',
+	  '.mp3': 'audio',
+	  '.pdf': 'pdf',
+	  '.js': 'js',
+	  '.html': 'html',
+	  '.txt': 'text'
+	};
+
+	var flagMap = {
+	  ADDED: 0,
+	  ORIGINAL: 1,
+	  DELETED: 2
+	};
+
+	module.exports = {
+	  sizeMap: sizeMap,
+	  typeMap: typeMap,
+	  flagMap: flagMap
+		};
+
+/***/ }),
+/* 368 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 *  ------------------------------
+	 *  image preview
+	 *  ------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLModal = __webpack_require__(364);
+	var tpl = __webpack_require__(369);
+
+	var ImagePreview = Component.extend({
+	  name: 'image-preview',
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
 	  config: function config(data) {
 	    _.extend(data, {
-	      imageList: [],
+	      imgList: [],
 	      curIndex: 0,
-	      delConfirm: false
+	      uploaded: true
 	    });
 
 	    _.extend(data, {
@@ -30312,15 +29431,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        icon: 'rezoom',
 	        fnName: 'rezoom'
 	      }, {
-	        name: 'rotate_left',
-	        icon: 'rotate_left',
-	        fnName: 'rotateLeft'
-	      }, {
-	        name: 'rotate_right',
+	        name: 'rotate',
 	        icon: 'rotate_right',
-	        fnName: 'rotateRight'
+	        fnName: 'rotate'
 	      }, {
-	        name: 'remove',
+	        name: 'delete',
 	        icon: 'delete',
 	        fnName: 'onDel'
 	      }]
@@ -30336,7 +29451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  onPrev: function onPrev() {
 	    var data = this.data;
-	    var length = data.imageList.length;
+	    var length = data.imgList.length;
 	    var toIndex = length - 1;
 
 	    if (data.curIndex > 0) {
@@ -30348,7 +29463,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  onNext: function onNext() {
 	    var data = this.data;
-	    var length = data.imageList.length;
+	    var length = data.imgList.length;
 	    var toIndex = 0;
 
 	    if (data.curIndex < length - 1) {
@@ -30460,26 +29575,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
 	    };
 	  },
-	  rotateLeft: function rotateLeft() {
-	    this.rotate('left');
-	  },
-	  rotateRight: function rotateRight() {
-	    this.rotate('right');
-	  },
-	  rotate: function rotate(dir) {
+	  rotate: function rotate() {
 	    var data = this.data;
 	    var virtualInfo = data.virtualInfo;
-	    var image = this.$refs.virtualimage;
+	    var img = this.$refs.virtualimage;
 
 	    data.showVirtual = true;
+	    virtualInfo.rotate += 90;
 
-	    if (dir === 'right') {
-	      virtualInfo.rotate += 90;
-	    } else if (dir === 'left') {
-	      virtualInfo.rotate -= 90;
-	    }
-
-	    image.style.transform = this.genTransform();
+	    img.style.transform = this.genTransform();
 	  },
 	  genTransform: function genTransform() {
 	    var virtualInfo = this.data.virtualInfo;
@@ -30488,35 +29592,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onDel: function onDel(index) {
 	    var self = this;
 	    var data = this.data;
-	    var imageList = data.imageList;
-	    var image = imageList[index];
+	    var imgList = data.imgList;
+	    var img = imgList[index];
 
-	    if (data.delConfirm) {
-	      var modal = new KLModal({
-	        data: {
-	          content: this.$trans('REMOVE_CONFIRM') + image.name + '?'
-	        }
-	      });
-	      modal.$on('ok', function () {
-	        self.removeImage(index);
-	      });
-	    } else {
-	      self.removeImage(index);
-	    }
-	  },
-	  removeImage: function removeImage(index) {
-	    var data = this.data;
-	    var imageList = data.imageList;
-	    var image = imageList.splice(index, 1);
-
-	    if (!imageList[index]) {
-	      data.curIndex = 0;
-	    }
-	    this.$emit('remove', {
-	      image: image,
-	      index: index
+	    var modal = new KLModal({
+	      data: {
+	        content: this.$trans('DELETE_CONFIRM') + img.name + '?'
+	      }
 	    });
-	    this.$update();
+	    modal.$on('ok', function () {
+	      imgList = data.imgList.splice(index, 1);
+
+	      if (!imgList[index]) {
+	        data.curIndex = 0;
+	      }
+	      self.$emit('delete', {
+	        name: img.name,
+	        index: index
+	      });
+	      self.$update();
+	    });
 	  },
 	  onMouseDown: function onMouseDown(e) {
 	    var data = this.data;
@@ -30596,22 +29691,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-		module.exports = KLImagePreview;
+		module.exports = ImagePreview;
 
 /***/ }),
-/* 383 */
+/* 369 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if imgList[curIndex].status === 'uploaded' && op.name === 'delete'}\n                            <a class=\"u-download\" href={imgList[curIndex].src} download={imgList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imgList[curIndex].src} alt={imgList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imgList[curIndex].name}>{imgList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imgList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
-/* 384 */
+/* 370 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <li ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()} r-hide={true}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n            <div class=\"u-input-info\">{preCheckInfo}</div>\n        {/if}\n    </li>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 385 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30623,9 +29718,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(386);
+	var FileUnit = __webpack_require__(361);
+	var UploadBase = __webpack_require__(366);
+	var ImagePreview = __webpack_require__(368);
+	var tpl = __webpack_require__(372);
 
 	/**
 	 * @class UploadCard
@@ -30633,173 +29729,92 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var UploadCard = UploadBase.extend({
+	  name: 'upload-card',
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
-	  computed: {
-	    entryFileInfo: {
-	      get: function get() {
-	        var lastFileUnit = this.data.fileUnitList.slice(-1)[0];
-	        return {
-	          name: lastFileUnit && lastFileUnit.name || '',
-	          type: lastFileUnit && lastFileUnit.type || '',
-	          src: lastFileUnit && lastFileUnit.url || ''
-	        };
-	      }
-	    },
-
-	    fileUnitListWidth: {
-	      get: function get() {
-	        var data = this.data;
-	        var fileUnitWidth = data.fileUnitWidth;
-	        var fileUnitMargin = data.fileUnitMargin;
-	        var numPerline = data.numPerline;
-
-	        if (!isFinite(numPerline)) {
-	          data.numPerline = 5;
-	          numPerline = data.numPerline;
-	        }
-
-	        return fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
-	      }
-	    }
-	  },
 	  config: function config(data) {
-	    this.supr(data);
-
 	    _.extend(data, {
-	      status: 'success',
+	      status: 'uploaded',
 	      info: '',
-	      numPerline: 5,
-	      fileUnitWidth: 50,
-	      fileUnitMargin: 25,
 	      fileUnitListPadding: 22
 	    });
-	  },
-	  init: function init(data) {
-	    this.initFilesZone(data);
 
 	    this.supr(data);
 	  },
-	  initFilesZone: function initFilesZone(data) {
+	  init: function init(data) {
+	    this.initFilesZone();
+	    this.supr(data);
+	  },
+	  initFilesZone: function initFilesZone() {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
 	    data.filesWrapper = this.$refs.fileswrapper;
+	    data.fileUnitListWidth = fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1);
+	  },
+	  onDragEnter: function onDragEnter(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragOver: function onDragOver(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDrop: function onDrop(e) {
+	    e.stopPropagation();
+	    e.preventDefault();
+
+	    if (!this.data.drag) {
+	      return;
+	    }
+
+	    var dt = e.event && e.event.dataTransfer;
+	    var files = dt.files;
+
+	    this.handleFiles(files);
+	  },
+	  fileSelect: function fileSelect() {
+	    var inputNode = this.$refs.file;
+	    var files = inputNode.files;
+
+	    this.handleFiles(files);
+
+	    inputNode.value = '';
 	  },
 	  handleFiles: function handleFiles(files) {
+	    var data = this.data;
+	    var len = files.length;
+	    var index = 0;
+	    var file = void 0;
+	    var fileunit = void 0;
+
 	    this.toggle(false);
 
-	    var self = this;
-	    var data = this.data;
+	    var options = this.setOptions(data);
 
 	    data.preCheckInfo = '';
 
-	    var fileList = [].slice.call(files);
-	    fileList.forEach(function (file) {
-	      if (data.fileUnitList.length < data.numMax) {
-	        var checker = self.preCheck(file);
-	        checker.then(function (preCheckInfo) {
-	          data.preCheckInfo = preCheckInfo;
-	          self.$update();
-	          if (!data.preCheckInfo) {
-	            var fileunit = {
-	              rawFile: file,
-	              name: file.name,
-	              url: window.URL.createObjectURL(file),
-	              type: self.getFileType(file),
-	              flag: 'ADDED',
-	              uid: utils.genUid(),
-	              status: 'ready'
-	            };
-	            data.fileUnitList.push(fileunit);
-	            self.updateFilesZone();
-	            self.$update();
-	          }
-	        });
+	    for (; index < len; index += 1) {
+	      if (data.fileUnitList.length < data.numLimit) {
+	        file = files[index];
+	        data.preCheckInfo = this.preCheck(file);
+	        if (!data.preCheckInfo) {
+	          fileunit = this.createFileUnit({
+	            file: file,
+	            options: options,
+	            deletable: data.deletable
+	          });
+	          fileunit.flag = 'ADDED';
+	          data.fileUnitList.push({
+	            inst: fileunit
+	          });
+	          this.updateFilesZone();
+	        }
 	      }
-	    });
-
-	    this.updateList();
-	  },
-	  onProgress: function onProgress(info) {
-	    var curFile = info.file;
-	    var data = this.data;
-	    var curIndex = -1;
-	    var lastIndex = -1;
-
-	    data.fileUnitList.forEach(function (item, index) {
-	      if (item.status === 'uploading') {
-	        lastIndex = index;
-	      }
-
-	      if (item.rawFile === curFile) {
-	        curIndex = index;
-	      }
-	    });
-
-	    if (curIndex >= lastIndex && data.status !== 'fail') {
-	      data.status = 'uploading';
-	      data.progress = info.progress;
-	      this.$update();
 	    }
 
-	    this.supr(info);
-	  },
-	  onSuccess: function onSuccess(info) {
-	    var data = this.data;
-	    var allUploaded = true;
-	    var hasFailed = false;
-	    data.fileUnitList.forEach(function (item) {
-	      allUploaded = allUploaded && item.status === 'success';
-	      hasFailed = hasFailed || item.status === 'fail';
-	    });
-
-	    if (allUploaded) {
-	      data.status = 'success';
-	    } else if (hasFailed) {
-	      data.status = 'fail';
-	    }
-
-	    this.supr(info);
-	  },
-	  onError: function onError(info) {
-	    var data = this.data;
-	    data.status = 'fail';
-	    data.info = this.$trans('UPLOAD_FAIL');
-
-	    this.supr(info);
-	  },
-	  onRemove: function onRemove(info) {
-	    var self = this;
-	    var inst = info.sender;
-	    var file = info.file;
-	    self.toggle(false);
-	    file.destroyed = true;
-
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
-	    }
-	    inst.destroy();
-	    self.updateList();
-	    this.$emit('remove', _.extend(info, {
-	      fileList: this.data.fileList
-	    }));
-
-	    self.updateFilesZone();
-	    resetStatus();
-
-	    function resetStatus() {
-	      var allUploaded = true;
-	      var hasFailed = false;
-	      self.data.fileUnitList.forEach(function (item) {
-	        allUploaded = allUploaded && item.status === 'success';
-	        hasFailed = hasFailed || item.status === 'fail';
-	      });
-
-	      if (allUploaded) {
-	        self.data.status = 'success';
-	      } else if (hasFailed) {
-	        self.data.status = 'fail';
-	      }
-
-	      self.$update();
-	    }
+	    this.updateFileList();
 	  },
 	  updateFilesZone: function updateFilesZone() {
 	    var data = this.data;
@@ -30807,33 +29822,194 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var entryWrapper = this.$refs.entrywrapper;
 	    var inputWrapper = this.$refs.inputwrapper;
 
-	    if (data.fileUnitList.length < data.numMax) {
+	    if (data.fileUnitList.length < data.numLimit) {
 	      filesZone.style.width = '125px';
 	      entryWrapper.style['margin-right'] = '20px';
 	      inputWrapper.style.display = 'inline-block';
-	    } else if (data.fileUnitList.length === data.numMax) {
+	    } else if (data.fileUnitList.length === data.numLimit) {
 	      filesZone.style.width = '50px';
 	      entryWrapper.style['margin-right'] = '0';
 	      inputWrapper.style.display = 'none';
 	    }
 	  },
-	  uploadFiles: function uploadFiles() {
+	  createFileUnit: function createFileUnit(data) {
 	    var self = this;
+	    var imagePreviewWrapper = this.$refs.imagepreview;
+	    var fileunit = new FileUnit({ data: data });
+
+	    fileunit.$on('preview', previewCb);
+
+	    function previewCb() {
+	      var current = this;
+
+	      function filterImgFile(file) {
+	        return file.inst.data.type === 'IMAGE';
+	      }
+
+	      function mapHelper(img) {
+	        if (current === img.inst) {
+	          img.inst.current = true;
+	        }
+	        return img.inst;
+	      }
+
+	      var imgList = self.data.fileUnitList.filter(filterImgFile).map(mapHelper);
+
+	      var preview = createImagePreview(imgList);
+
+	      preview.$inject(imagePreviewWrapper);
+	    }
+
+	    function createImagePreview(imgFileList) {
+	      function findHelper(img) {
+	        return img.current;
+	      }
+	      var curIndex = imgFileList.findIndex(findHelper);
+
+	      function mapHelper(img) {
+	        delete img.current;
+	        return {
+	          src: img.data.src,
+	          name: img.data.name,
+	          status: img.data.status
+	        };
+	      }
+	      var imgList = imgFileList.map(mapHelper);
+
+	      var imagePreview = new ImagePreview({
+	        data: {
+	          imgList: imgList,
+	          curIndex: curIndex
+	        }
+	      });
+
+	      imagePreview.$on('delete', function (imgInfo) {
+	        var index = imgInfo.index;
+	        var imgInst = imgFileList[index];
+
+	        if (imgInst) {
+	          imgInst.$emit('delete');
+	        }
+	      });
+
+	      imagePreview.$on('$destroy', function () {
+	        imgFileList.splice(0);
+	      });
+
+	      return imagePreview;
+	    }
+
+	    fileunit.$on('progress', progressCb);
+
+	    function progressCb(info) {
+	      var curInst = this;
+	      var curIndex = -1;
+	      var lastIndex = -1;
+
+	      self.data.fileUnitList.forEach(function (item, index) {
+	        if (item.inst.data.status === 'uploading') {
+	          lastIndex = index;
+	        }
+	        if (item.inst === curInst) {
+	          curIndex = index;
+	        }
+	      });
+
+	      if (curIndex >= lastIndex && self.data.status !== 'failed') {
+	        self.data.status = 'uploading';
+	        self.data.progress = info.progress;
+	        self.$update();
+	      }
+	    }
+
+	    fileunit.$on('onload', successCb);
+	    // fileunit.$on('success', successCb);
+
+	    function successCb() {
+	      var allUploaded = true;
+	      var hasFailed = false;
+	      self.data.fileUnitList.forEach(function (item) {
+	        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
+	        hasFailed = hasFailed || item.inst.data.status === 'failed';
+	      });
+	      if (allUploaded) {
+	        self.data.status = 'uploaded';
+	      } else if (hasFailed) {
+	        self.data.status = 'failed';
+	      }
+	      self.$update();
+	      self.updateFileList();
+	    }
+
+	    fileunit.$on('error', function () {
+	      self.data.status = 'failed';
+	      self.data.info = self.$trans('UPLOAD_FAIL');
+	      self.$update();
+	    });
+
+	    fileunit.$on('delete', function () {
+	      if (this.flag === 'ORIGINAL') {
+	        this.flag = 'DELETED';
+	        this.file = this.data.file;
+	      }
+	      this.destroy();
+	    });
+
+	    fileunit.$on('$destroy', function () {
+	      self.toggle(false);
+	      this.destroyed = true;
+	      this.$off('preview', previewCb);
+	      this.$off('onload', successCb);
+	      self.updateFileList();
+	      self.updateFilesZone();
+	      resetStatus();
+	    });
+
+	    function resetStatus() {
+	      successCb();
+	    }
+
+	    return fileunit;
+	  },
+	  updateFileList: function updateFileList() {
+	    this.supr();
+	    this.$update();
+	  },
+	  createFileUnitWrapper: function createFileUnitWrapper(parent, index) {
+	    var wrapper = document.createElement('li');
+
+	    parent.appendChild(wrapper);
+
+	    this.setFileUnitWrapperStyle(wrapper, index);
+
+	    return wrapper;
+	  },
+	  setFileUnitWrapperStyle: function setFileUnitWrapperStyle(wrapper, index) {
+	    var data = this.data;
+	    var numPerline = data.numPerline;
+	    var fileUnitWidth = data.fileUnitWidth;
+	    var fileUnitMargin = data.fileUnitMargin;
+
+	    wrapper.className = 'u-fileitem';
+	    wrapper.style.display = 'inline-block';
+	    wrapper.style.width = fileUnitWidth + 'px';
+
+	    if (index && index % numPerline) {
+	      wrapper.style.marginLeft = fileUnitMargin + 'px';
+	    }
+	  },
+	  uploadFiles: function uploadFiles() {
 	    var data = this.data;
 	    var fileUnitList = data.fileUnitList;
 
-	    data.status = 'success';
+	    data.status = 'uploaded';
 	    data.info = '';
 
-	    fileUnitList.forEach(function (item, index) {
-	      if (item.status === 'fail') {
-	        var fileunit = self.$refs['fileunit' + index];
-	        if (fileunit) {
-	          var file = fileunit.data.file;
-	          if (file.rawFile) {
-	            fileunit.uploadFile(file.rawFile);
-	          }
-	        }
+	    fileUnitList.forEach(function (item) {
+	      var inst = item.inst;
+
+	      if (inst.data.status === 'failed') {
+	        inst.uploadFile(inst.data.file);
 	      }
 	    });
 	  },
@@ -30959,19 +30135,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadCard;
 
 /***/ }),
-/* 386 */
+/* 372 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'IMAGE'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.src}\n                             alt={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.name}/>\n                    </div>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}\n                    <span class=\"u-txt\">ZIP</span>\n                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'failed'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>重试</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 387 */
+/* 373 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ref=\"m-upload\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+	module.exports = "<div ref=\"m-upload\"></div>\n"
 
 /***/ }),
-/* 388 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30984,7 +30160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(389);
+	var template = __webpack_require__(375);
 
 	/**
 	 * @class KLSidebar
@@ -31050,13 +30226,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSidebar;
 
 /***/ }),
-/* 389 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
-/* 390 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31069,7 +30245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(391);
+	var template = __webpack_require__(377);
 
 	/**
 	 * @class Menu
@@ -31126,13 +30302,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMenu;
 
 /***/ }),
-/* 391 */
+/* 377 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
 
 /***/ }),
-/* 392 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31145,8 +30321,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(393);
-	var RootMenuMixin = __webpack_require__(394);
+	var template = __webpack_require__(379);
+	var RootMenuMixin = __webpack_require__(380);
 
 	/**
 	 * @class KLMenuItem
@@ -31200,18 +30376,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMenuItem;
 
 /***/ }),
-/* 393 */
+/* 379 */
 /***/ (function(module, exports) {
 
 	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
 
 /***/ }),
-/* 394 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var KLMenu = __webpack_require__(390);
+	var KLMenu = __webpack_require__(376);
 
 	module.exports = function (Component) {
 	  Component.implement({
@@ -31233,7 +30409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 395 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31246,8 +30422,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(396);
-	var RootMenuMixin = __webpack_require__(394);
+	var template = __webpack_require__(382);
+	var RootMenuMixin = __webpack_require__(380);
 
 	/**
 	 * @class KLSubMenu
@@ -31301,13 +30477,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSubMenu;
 
 /***/ }),
-/* 396 */
+/* 382 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if url}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } href=\"{url}\">\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <ul class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
-/* 397 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31320,7 +30496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(398);
+	var template = __webpack_require__(384);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31475,13 +30651,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPager;
 
 /***/ }),
-/* 398 */
+/* 384 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 399 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31494,7 +30670,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(400);
+	var template = __webpack_require__(386);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31655,13 +30831,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTabs;
 
 /***/ }),
-/* 400 */
+/* 386 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"tabs-scroll {scrollable ? 'scrollable' : ''}\">\n        {#if scrollable}\n        <span class=\"nav-prev {scrollable.prev ? '' : 'disabled'}\" on-click={this.prev()}>\n            <i class=\"u-icon u-icon-chevron-left\"></i>\n        </span>\n        <span class=\"nav-next {scrollable.next ? '' : 'disabled'}\" on-click={this.next()}>\n            <i class=\"u-icon u-icon-chevron-right\"></i>\n        </span>\n        {/if}\n        <div ref=\"wrap\" class=\"nav-scroll\">\n            <ul ref=\"nav\" class=\"tabs_hd\" r-style={navStyle}>\n                {#list tabs as item}\n                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 401 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31674,8 +30850,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var template = __webpack_require__(402);
-	var KLTabs = __webpack_require__(399);
+	var template = __webpack_require__(388);
+	var KLTabs = __webpack_require__(385);
 
 	/**
 	 * @class KLTab
@@ -31717,13 +30893,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTab;
 
 /***/ }),
-/* 402 */
+/* 388 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this.$outer.data.fresh}\n{#if this.$outer.data.selected === this}\n<div>{#inc this.$body}</div>\n{/if}\n{#else}\n<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>\n{/if}"
 
 /***/ }),
-/* 403 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31736,7 +30912,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(404);
+	var template = __webpack_require__(390);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31786,13 +30962,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSteps;
 
 /***/ }),
-/* 404 */
+/* 390 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 405 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31805,7 +30981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(406);
+	var template = __webpack_require__(392);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31835,13 +31011,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumb;
 
 /***/ }),
-/* 406 */
+/* 392 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 407 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31854,9 +31030,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(408);
+	var template = __webpack_require__(394);
 	var _ = __webpack_require__(72);
-	var KLCrumb = __webpack_require__(405);
+	var KLCrumb = __webpack_require__(391);
 
 	/**
 	 * @class KLCrumbItem
@@ -31885,13 +31061,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumbItem;
 
 /***/ }),
-/* 408 */
+/* 394 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc content || this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 409 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31904,7 +31080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(410);
+	var template = __webpack_require__(396);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31969,13 +31145,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMask;
 
 /***/ }),
-/* 410 */
+/* 396 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
 
 /***/ }),
-/* 411 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31988,7 +31164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(412);
+	var template = __webpack_require__(398);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32165,13 +31341,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLNotify;
 
 /***/ }),
-/* 412 */
+/* 398 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 413 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32186,8 +31362,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(414);
-	__webpack_require__(415);
+	var template = __webpack_require__(400);
+	__webpack_require__(401);
 
 	var PopUp = Component.extend({
 	  template: template,
@@ -32300,13 +31476,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPopConfirm;
 
 /***/ }),
-/* 414 */
+/* 400 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 415 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32322,7 +31498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	__webpack_require__(416);
+	__webpack_require__(402);
 
 	/**
 	 * @class Trigger
@@ -32423,7 +31599,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ }),
-/* 416 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32436,11 +31612,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var dom = __webpack_require__(71).dom;
-	var domAlign = __webpack_require__(417);
+	var domAlign = __webpack_require__(403);
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var placement = __webpack_require__(426);
+	var placement = __webpack_require__(412);
 
 	/**
 	 * @class Alignment
@@ -32494,7 +31670,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ }),
-/* 417 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32503,31 +31679,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(418);
+	var _utils = __webpack_require__(404);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(420);
+	var _getOffsetParent = __webpack_require__(406);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(421);
+	var _getVisibleRectForElement = __webpack_require__(407);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(422);
+	var _adjustForViewport = __webpack_require__(408);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(423);
+	var _getRegion = __webpack_require__(409);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(424);
+	var _getElFuturePos = __webpack_require__(410);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	var _getAlignOffset = __webpack_require__(425);
+	var _getAlignOffset = __webpack_require__(411);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -32772,7 +31948,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 418 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32783,7 +31959,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(419);
+	var _propertyUtils = __webpack_require__(405);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -33348,7 +32524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 419 */
+/* 405 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33463,7 +32639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 420 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33472,7 +32648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(418);
+	var _utils = __webpack_require__(404);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33524,7 +32700,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 421 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33533,11 +32709,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(418);
+	var _utils = __webpack_require__(404);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(420);
+	var _getOffsetParent = __webpack_require__(406);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -33605,7 +32781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 422 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33614,7 +32790,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(418);
+	var _utils = __webpack_require__(404);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33665,7 +32841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 423 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33674,7 +32850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(418);
+	var _utils = __webpack_require__(404);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33706,7 +32882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 424 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33715,7 +32891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(425);
+	var _getAlignOffset = __webpack_require__(411);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -33747,7 +32923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 425 */
+/* 411 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33792,7 +32968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 426 */
+/* 412 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33878,7 +33054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 427 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33891,7 +33067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(428);
+	var template = __webpack_require__(414);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -33929,13 +33105,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLProgress;
 
 /***/ }),
-/* 428 */
+/* 414 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 429 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33948,7 +33124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(430);
+	var template = __webpack_require__(416);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34037,13 +33213,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLLoading;
 
 /***/ }),
-/* 430 */
+/* 416 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 431 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34058,8 +33234,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(432);
-	__webpack_require__(415);
+	var template = __webpack_require__(418);
+	__webpack_require__(401);
 
 	var TipPopUp = Component.extend({
 	  template: template,
@@ -34130,13 +33306,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTooltip;
 
 /***/ }),
-/* 432 */
+/* 418 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-tooltip {placement} animated {class}\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{#inc tip}</p>\n</div>"
 
 /***/ }),
-/* 433 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34149,7 +33325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(434);
+	var template = __webpack_require__(420);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34183,13 +33359,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 434 */
+/* 420 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 435 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34295,18 +33471,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLLocaleProvider;
 
 /***/ }),
-/* 436 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(437);
-	var TableBody = __webpack_require__(439);
+	var TableHeader = __webpack_require__(423);
+	var TableBody = __webpack_require__(425);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(442);
+	var u = __webpack_require__(428);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(445);
+	var tpl = __webpack_require__(431);
 
 	/**
 	 * @class KLTable
@@ -34898,13 +34074,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 437 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(438);
+	var tpl = __webpack_require__(424);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -35124,20 +34300,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 438 */
+/* 424 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
-/* 439 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(440);
-	var templates = __webpack_require__(441);
+	var tpl = __webpack_require__(426);
+	var templates = __webpack_require__(427);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -35270,22 +34446,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 440 */
+/* 426 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static />&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass || column.columnClass}\"\n                style=\"{item.unitStyle || column.columnStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 441 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(442);
+	var _ = __webpack_require__(428);
 
 	var tplMap = {
-	  progress: __webpack_require__(443),
-	  check: __webpack_require__(444)
+	  progress: __webpack_require__(429),
+	  check: __webpack_require__(430)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -35293,7 +34469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 442 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35439,33 +34615,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 443 */
+/* 429 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 444 */
+/* 430 */
 /***/ (function(module, exports) {
 
-	module.exports = "<kl-check\n    name={item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
+	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 445 */
+/* 431 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 446 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLTableTemplate = __webpack_require__(447);
-	var KLTable = __webpack_require__(436);
+	var KLTableTemplate = __webpack_require__(433);
+	var KLTable = __webpack_require__(422);
 
 	/**
 	 * @class KLTableCol
@@ -35547,7 +34723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 447 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35633,7 +34809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 448 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35645,7 +34821,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(449);
+	var template = __webpack_require__(435);
 
 	/**
 	 * @class KLRow
@@ -35687,13 +34863,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 449 */
+/* 435 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 450 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35705,8 +34881,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(451);
-	var KLRow = __webpack_require__(448);
+	var template = __webpack_require__(437);
+	var KLRow = __webpack_require__(434);
 
 	/**
 	 * @class KLCol
@@ -35756,13 +34932,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 451 */
+/* 437 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 452 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35775,7 +34951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(453);
+	var template = __webpack_require__(439);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -35808,13 +34984,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 453 */
+/* 439 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 454 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35828,7 +35004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(452);
+	var KLCard = __webpack_require__(438);
 
 	/**
 	 * @class KLCardTools
