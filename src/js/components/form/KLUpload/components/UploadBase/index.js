@@ -9,7 +9,7 @@ const _ = require('../../../../../ui-base/_');
 const utils = require('../../utils');
 const Config = require('../../config');
 const FileUnit = require('../FileUnit');
-const KLImagePreview = require('../KLImagePreview');
+const KLImagePreview = require('../../../../widget/KLImagePreview');
 
 /**
  * @class UploadBase
@@ -42,7 +42,7 @@ const KLImagePreview = require('../KLImagePreview');
 const UploadBase = Component.extend({
   config(data) {
     this.supr(data);
-    
+
     _.extend(data, {
       action: '',
       name: 'file',
@@ -60,27 +60,21 @@ const UploadBase = Component.extend({
       imageWidth: Infinity,
       imageHeight: Infinity,
       imageScale: '',
-      data: {},
-      encType: 'multipart/form-data'
+      encType: 'multipart/form-data',
     });
 
     _.extend(data, {
-      fileUnitList: []
+      fileUnitList: [],
     });
-    
+
     this.initWatchers();
     this.initUploadedFileUnitList();
   },
-  
-  initWatchers: function() {
+
+  initWatchers() {
     const self = this;
-    const data = this.data;
-    
-    function filterDeleted(file) {
-      return file.flag !== Config.flagMap['DELETED'];
-    }
-    
-    this.$watch('fileList', function(newVal, oldVal) {
+
+    this.$watch('fileList', (newVal, oldVal) => {
       if (oldVal !== undefined) {
         if (newVal.length >= oldVal.length) {
           self.extendFileList(newVal);
@@ -89,65 +83,58 @@ const UploadBase = Component.extend({
         }
       }
     }, true);
-    
-    // this.$watch('fileUnitList', );
   },
-  
-  extendFileList: function(fileList) {
+
+  extendFileList(fileList) {
     const self = this;
     const data = this.data;
 
     function filterDeleted(file) {
-      return file.flag !== Config.flagMap['DELETED'];
+      return file.flag !== Config.flagMap.DELETED;
     }
-    
-    fileList.filter(filterDeleted).forEach(function(file, index) {
+
+    fileList.filter(filterDeleted).forEach((file, index) => {
       if (!file.uid) {
-        const options = self.setOptions(data);
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap['ADDED'];
-        const type = self.getFileType(file);
+        file.flag = Config.flagMap.ADDED;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
           flag: 'ADDED',
           uid: file.uid,
-          status: 'success'
+          status: 'success',
         };
         data.fileUnitList.splice(index, index, fileunit);
       }
     });
   },
-  
-  reduceFileList: function(deletedFileList, srcFileList) {
-    const self = this;
+
+  reduceFileList(deletedFileList, srcFileList) {
     const data = this.data;
 
     function filterDeleted(file, srcIndex) {
-      const index = deletedFileList.findIndex(function(item) {
+      const index = deletedFileList.findIndex((item) => {
         let isEqual = item.name === file.name && item.url === file.url;
         if (item.uid && file.uid) {
           isEqual = isEqual && item.uid === file.uid;
         }
         return isEqual;
       });
-      
-      if (index === -1 && (file.flag === Config.flagMap['ORIGINAL'] || file.flag === Config.flagMap['DELETED'])) {
-        file.flag = Config.flagMap['DELETED'];
+
+      if (index === -1 && (file.flag === Config.flagMap.ORIGINAL || file.flag === Config.flagMap.DELETED)) {
+        file.flag = Config.flagMap.DELETED;
         data.fileList.splice(srcIndex, 0, file);
       }
-      
+
       return index === -1;
     }
 
-    srcFileList.filter(filterDeleted).forEach(function(file, index) {
+    srcFileList.filter(filterDeleted).forEach((file) => {
       if (file.uid) {
-        let visualIndex = data.fileUnitList.findIndex(function(item) {
-          return item.uid === file.uid;
-        });
-        
+        const visualIndex = data.fileUnitList.findIndex(item => item.uid === file.uid);
+
         if (visualIndex !== -1) {
           data.fileUnitList.splice(visualIndex, 1);
         }
@@ -166,18 +153,17 @@ const UploadBase = Component.extend({
     const fileUnitList = data.fileUnitList;
 
     if (data.fileList.length > 0) {
-      const options = this.setOptions(data);
       fileList.forEach((file) => {
-        let uid = utils.genUid();
+        const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap['ORIGINAL'];
+        file.flag = Config.flagMap.ORIGINAL;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
           flag: 'ORIGINAL',
           uid: file.uid,
-          status: 'success'
+          status: 'success',
         };
         fileUnitList.push(fileunit);
       });
@@ -188,48 +174,43 @@ const UploadBase = Component.extend({
     // setTimeout((function() { this.updateFileList(); }).bind(this), 0);
     this.updateFileList();
   },
-  
+
   updateFileList() {
-    const self = this;
     const data = this.data;
     const fileList = data.fileList;
     const fileUnitList = data.fileUnitList;
     const newFileList = [];
-    
-    for (var index = fileUnitList.length - 1; index >= 0; index--) {
-      let file = fileUnitList[index];
-      let uid = file.uid;
-      let flag = file.flag;
-      let destroyed = file.destroyed;
-      let fileIndex = fileList.findIndex(function(file) {
-        return uid == file.uid;
-      });
+
+    for (let index = fileUnitList.length - 1; index >= 0; index -= 1) {
+      const file = fileUnitList[index];
+      const uid = file.uid;
+      const flag = file.flag;
+      const destroyed = file.destroyed;
+      const fileIndex = fileList.findIndex(item => uid === item.uid);
 
       if (fileIndex === -1) {
         newFileList.push({
           name: file.name,
           url: file.url,
           flag: Config.flagMap[flag],
-          uid
+          uid,
         });
-      } else {
-        if (flag === 'DELETED') {
-          fileList[fileIndex].flag = Config.flagMap['DELETED'];
-          fileUnitList.splice(index, 1);
-        } else if (destroyed) {
-          fileUnitList.splice(index, 1);
-          fileList.splice(fileIndex, 1);
-        }
+      } else if (flag === 'DELETED') {
+        fileList[fileIndex].flag = Config.flagMap.DELETED;
+        fileUnitList.splice(index, 1);
+      } else if (destroyed) {
+        fileList.splice(fileIndex, 1);
+        fileUnitList.splice(index, 1);
       }
     }
-    
+
     [].push.apply(fileList, newFileList.reverse());
-    
+
     this.$update();
   },
 
   fileDialogOpen() {
-    var inputNode = this.$refs.file;
+    const inputNode = this.$refs.file;
     inputNode && inputNode.click();
   },
 
@@ -265,22 +246,20 @@ const UploadBase = Component.extend({
 
     this.handleFiles(files);
   },
-  
+
   handleFiles(files) {
     const self = this;
     const data = this.data;
 
-    const options = this.setOptions(data);
-
     data.preCheckInfo = '';
 
-    files = [].slice.call(files);
-    files.forEach(function(file) {
+    const fileList = [].slice.call(files);
+    fileList.forEach((file) => {
       if (data.fileUnitList.length < data.numMax) {
         const checker = self.preCheck(file);
-        checker.then(function(preCheckInfo) {
+        checker.then((preCheckInfo) => {
           data.preCheckInfo = preCheckInfo;
-          // self.$update();
+          self.$update();
           if (!data.preCheckInfo) {
             const fileunit = {
               rawFile: file,
@@ -289,31 +268,31 @@ const UploadBase = Component.extend({
               type: self.getFileType(file),
               flag: 'ADDED',
               uid: utils.genUid(),
-              status: 'ready'
+              status: 'ready',
             };
             data.fileUnitList.push(fileunit);
             self.$update();
           }
-        }); 
+        });
       }
     });
   },
-  
+
   onPreview(info) {
-    const current = info.sender;
+    const current = info.file;
 
     function filterImgFile(file) {
-      return file.inst.data.type === 'IMAGE';
+      return file.type === 'image';
     }
 
     function mapCurrentFlag(img) {
-      if (current === img.inst) {
-        img.inst.current = true;
+      if (current === img) {
+        img.current = true;
       }
-      return img.inst;
+      return img;
     }
 
-    const imageList = this.data.fileUnitList
+    let imageList = this.data.fileUnitList
       .filter(filterImgFile)
       .map(mapCurrentFlag);
 
@@ -331,13 +310,13 @@ const UploadBase = Component.extend({
       function mapHelper(img) {
         delete img.current;
         return {
-          src: img.data.src,
-          name: img.data.name,
-          status: img.data.status,
+          src: img.url,
+          name: img.name,
+          status: img.status,
         };
       }
 
-      const imageList = imgFileList.map(mapHelper);
+      imageList = imgFileList.map(mapHelper);
       const imagePreview = new KLImagePreview({
         data: {
           imageList,
@@ -347,16 +326,16 @@ const UploadBase = Component.extend({
 
       imagePreview.$on('remove', (imgInfo) => {
         const index = imgInfo.index;
-      const imgInst = imgFileList[index];
+        const imgInst = imgFileList[index];
 
-      if (imgInst) {
-        imgInst.$emit('remove');
-      }
-    });
+        if (imgInst) {
+          imgInst.$emit('remove');
+        }
+      });
 
       imagePreview.$on('$destroy', () => {
         imgFileList.splice(0);
-    });
+      });
 
       return imagePreview;
     }
@@ -366,8 +345,8 @@ const UploadBase = Component.extend({
     this.$emit(
       'progress',
       _.extend(info, {
-        fileList: this.data.fileList
-      })
+        fileList: this.data.fileList,
+      }),
     );
   },
 
@@ -376,8 +355,8 @@ const UploadBase = Component.extend({
     this.$emit(
       'success',
       _.extend(info, {
-        fileList: this.data.fileList
-      })
+        fileList: this.data.fileList,
+      }),
     );
   },
 
@@ -386,8 +365,8 @@ const UploadBase = Component.extend({
     this.$emit(
       'error',
       _.extend(info, {
-        fileList: this.data.fileList
-      })
+        fileList: this.data.fileList,
+      }),
     );
   },
 
@@ -400,12 +379,12 @@ const UploadBase = Component.extend({
     }
     inst.destroy();
     this.updateList();
-    
+
     this.$emit(
         'remove',
         _.extend(info, {
-          fileList: this.data.fileList
-        })
+          fileList: this.data.fileList,
+        }),
     );
   },
 
@@ -416,14 +395,16 @@ const UploadBase = Component.extend({
       url: opts.action,
       name: opts.name,
       readonly: opts.readonly,
-      data: opts.data
+      data: opts.data,
     };
   },
 
   preCheck(file) {
     const self = this;
-    const onPass = function(resolve) {
+    const onPass = (resolve) => {
+      const type = self.getFileType(file).toLowerCase();
       let preCheckInfo = '';
+
       if (!self.isAcceptedFileSize(file)) {
         preCheckInfo = self.$trans('FILE_TOO_LARGE');
         return resolve(preCheckInfo);
@@ -432,31 +413,33 @@ const UploadBase = Component.extend({
         preCheckInfo = self.$trans('FILE_TYPE_ERROR');
         return resolve(preCheckInfo);
       }
-      
-      const imageChecker = self.preCheckImage(file);
-      imageChecker && imageChecker.then(function(imageCheckInfo) {
-        return resolve(imageCheckInfo);
-      });
+
+      if (type === 'image') {
+        const imageChecker = self.preCheckImage(file);
+        imageChecker && imageChecker.then(imageCheckInfo => resolve(imageCheckInfo));
+      } else {
+        return resolve(preCheckInfo);
+      }
     };
-    
-    const onError = function(reject) {};
-    
+
+    const onError = () => {};
+
     return new Promise(onPass, onError);
   },
-  
+
   preCheckImage(file) {
     const self = this;
     const data = this.data;
     const type = this.getFileType(file).toLowerCase();
-    
+
     if (type === 'image') {
       const imageWidth = data.imageWidth;
       const imageHeight = data.imageHeight;
       const imageScale = data.imageScale;
-      
-      const onResolve = function(resolve) {
-        const img = new Image();
-        img.onload = function() {
+
+      const onResolve = (resolve) => {
+        const img = new window.Image();
+        img.onload = () => {
           window.URL.revokeObjectURL(img.src);
           const width = img.width;
           const height = img.height;
@@ -467,27 +450,27 @@ const UploadBase = Component.extend({
           if (isFinite(imageHeight) && imageHeight !== height) {
             checkInfo = self.$trans('IMAGE_HEIGHT_ERROR');
           }
-          if (!!imageScale) {
+          if (imageScale) {
             const scaleList = imageScale.split(':');
             const scaleW = scaleList[0];
             const scaleH = scaleList[1];
-            if (Math.abs(width / height - scaleW / scaleH) > 0.01) {
+            if (Math.abs((width / height) - (scaleW / scaleH)) > 0.01) {
               checkInfo = self.$trans('IMAGE_SCALE_ERROR');
             }
           }
-          
+
           resolve(checkInfo);
-        }
+        };
 
         img.src = window.URL.createObjectURL(file);
       };
-      
-      const onReject = function(reject) {};
-      
+
+      const onReject = () => {};
+
       return new Promise(onResolve, onReject);
     }
   },
-  
+
   isAcceptedFileType(file) {
     const data = this.data;
     const accept = data.accept;
@@ -517,13 +500,13 @@ const UploadBase = Component.extend({
     const typeMap = Config.typeMap;
     let typeStr = 'unknown';
 
-    Object.keys(typeMap).forEach(function(key) {
-      const reg = new RegExp(key + '$');
-      if (reg.test(type) || !type && reg.test(name)) {
+    Object.keys(typeMap).forEach((key) => {
+      const reg = new RegExp(`${key}$`);
+      if (reg.test(type) || (!type && reg.test(name))) {
         typeStr = typeMap[key];
       }
     });
-    
+
     return typeStr;
   },
 
@@ -541,7 +524,7 @@ const UploadBase = Component.extend({
     }
 
     return size >= fileSize;
-  }
+  },
 })
   .component('file-unit', FileUnit);
 

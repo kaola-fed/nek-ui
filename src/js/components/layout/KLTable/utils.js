@@ -59,6 +59,17 @@ const hasChildren = function (root) {
   return root.children && root.children.length > 0;
 };
 
+const updateHeaderSpan = function (headers) {
+  const len = headers.length;
+  headers.forEach((row, rowIndex) => {
+    row.forEach((header) => {
+      header._headerColSpan = header._nodeWidth;
+      header._headerRowSpan = len - rowIndex - (header._nodeDepth - 1);
+    });
+  });
+  return headers;
+};
+
 _.getHeaders = function (_columns) {
   const headers = [];
   const extractHeaders = function (columns, depth) {
@@ -71,30 +82,31 @@ _.getHeaders = function (_columns) {
       }
       // 计算深度和宽度
       if (hasChildren(column)) {
-        column.childrenDepth =
+        column._nodeDepth =
           1 +
           column.children.reduce(
             (previous, current) => (
-              current.childrenDepth > previous
-                ? current.childrenDepth
+              current._nodeDepth > previous
+                ? current._nodeDepth
                 : previous
             ),
-            -1,
+            0,
           );
-        column.headerColSpan = column.children.reduce(
-          (previous, current) => previous + (current.headerColSpan || 0),
+        column._nodeWidth = column.children.reduce(
+          (previous, current) => previous + (current._nodeWidth || 0),
           0,
         );
       } else {
-        column.childrenDepth = 0;
-        column.headerColSpan = 1;
+        column._nodeDepth = 1;
+        column._nodeWidth = 1;
       }
       headers[depth].push(column);
     });
   };
   extractHeaders(_columns, 0);
-  return headers;
+  return updateHeaderSpan(headers);
 };
+
 
 _.getLeaves = function (tree) {
   const res = [];

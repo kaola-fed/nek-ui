@@ -29,7 +29,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -38,15 +37,20 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 无条纹
+### 显示配置项
+
+1. 无条纹：`strip={false}`
+2. 占位符：默认`placeholder="-"`
+3. 对齐：默认 `align="center"`
 
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<kl-table strip={false} source={table.source} >
+<kl-table strip={false} source={table.source} placeholder="*" align="left">
     <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="key" key="key" />
+    <kl-table-col name="value" key="value" placeholder="-" align="right"/>
 </kl-table>
 ```
 
@@ -63,48 +67,7 @@ var component = new NEKUI.Component({
             this.data.table.source = [];
             for(var i = 0; i < 3; ++i) {
                 this.data.table.source.push({
-                    title: 'test' + i,
-                    col1: '' + i,
-                    value: 10 * i
-                });
-            }
-            this.$update();
-        }.bind(this), 200);
-    }
-});
-```
-<!-- demo_end -->
-
-### 对齐方式
-
-默认 `align="center"`
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
-<kl-table strip={false} source={table.source} align="left">
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" align="right"/>
-</kl-table>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        table: {
-            source: []
-        }
-    },
-    init: function() {
-        setTimeout(function() {
-            this.data.table.source = [];
-            for(var i = 0; i < 3; ++i) {
-                this.data.table.source.push({
-                    title: 'test' + i,
-                    col1: '' + i,
-                    value: 10 * i
+                    title: 'test' + i
                 });
             }
             this.$update();
@@ -142,7 +105,6 @@ var component = new NEKUI.Component({
             for(var i = 0; i < 3; ++i) {
                 this.data.table.source.push({
                     title: 'test' + i,
-                    col1: '' + i,
                     value: 10 * i
                 });
             }
@@ -232,7 +194,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -266,7 +227,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -314,6 +274,7 @@ var component = new NEKUI.Component({
 
 通过 `kl-table-template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
 自定义模版中可以通过 `emit` 的方法向上抛出事件。
+如果模版直接写在`kl-table`当中，这部分模版会被作为footer模版进行渲染。这部分模版不需要进行特殊的字符串处理，并可以直接进行数据绑定。
 
 要在模版中使用自定义的 `filter` 则需要将其先注册到 `NEKUI.KLTable` 上。
 
@@ -327,7 +288,10 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table source={table.source} on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)}>
+<kl-table
+    stickyFooter
+    source={table.source}
+    on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)} >
     <kl-table-col name="title" key="title">
         <kl-table-template type="header">
             {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emit("headerclick", header)}>I am && {header.name}</a>'}
@@ -336,6 +300,12 @@ var component = new NEKUI.Component({
         <kl-table-template template={tdTpl} />
     </kl-table-col>
     <kl-table-col name="value" key="value" />
+
+    <kl-pager
+        pageSize={pageSize}
+        current={current}
+        sumTotal={sumTotal}
+    />
 </kl-table>
 ```
 
@@ -352,17 +322,24 @@ NEKUI.KLTable.filter('txtFilter', function(val) {
 var component = new NEKUI.Component({
     template: template,
     data: {
+        count: 0,
         table: {
-            source: []
+            source: [],
         },
+        pageSize:15,
+        current:1,
+        sumTotal:100,
         tdTpl: '<a on-click={this.emit("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
     },
     init: function() {
+        this.$watch('current', function(newVal) {
+            console.log(newVal);
+        });
+
         this.data.table.source = [];
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -379,7 +356,7 @@ var component = new NEKUI.Component({
 
 ### 自定义行样式
 
-通过设置 `item.trClass` 或 `item.trStyle` 修改每一行的样式。
+通过设置 `item.rowClass` 或 `item.rowStyle` 修改每一行的样式。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -405,9 +382,8 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 5; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i,
-                trStyle: 'background-color:' + colors[i]
+                rowStyle: 'background-color:' + colors[i]
             });
         }
     }
@@ -424,7 +400,7 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
-    <kl-table-col name="title" key="title" sortable/>
+    <kl-table-col name="title" key="title" customKey="sort_title" sortable />
     <kl-table-col name="value" key="value" sortable/>
 </kl-table>
 ```
@@ -446,7 +422,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -489,7 +464,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 20; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -503,17 +477,15 @@ var component = new NEKUI.Component({
 
 ### 多选
 
+通过 `enableCheckAll`
+
 <!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<kl-check
-    name="全选"
-    checked={checkAllStatus}
-/>
-
 <kl-table source={table.source} on-checkchange={this.onCheck($event)}>
-    <kl-table-col name="title" key="title" type="check" />
+    <kl-table-col placeholder="" type="check" enableCheckAll  />
+    <kl-table-col name="title" key="title" type="check"/>
     <kl-table-col name="value" key="value" />
 </kl-table>
 ```
@@ -521,27 +493,6 @@ var component = new NEKUI.Component({
 ```javascript
 var component = new NEKUI.Component({
     template: template,
-    computed: {
-        checkAllStatus: {
-            get: function() {
-                var checkedList = this.data.table.source.filter(function(item) {
-                    return item._checked;
-                });
-
-                return checkedList.length === this.data.table.source.length ? true :
-                                                    checkedList.length > 0 ? null :
-                                                                            false;
-
-            },
-            set: function(val) {
-                if(val !== null) {
-                    this.data.table.source.forEach(function(item) {
-                        item._checked = !!val;
-                    });
-                }
-            }
-        }
-    },
     data: {
         table: {
             source: []
@@ -552,7 +503,6 @@ var component = new NEKUI.Component({
         for(var i = 0; i < 3; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
-                col1: '' + i,
                 value: 10 * i
             });
         }
@@ -580,7 +530,7 @@ var component = new NEKUI.Component({
 ```xml
 <kl-table
     fixedHeader
-    columns={kl-table-columns}
+    columns={table.columns}
     sorting={table.sorting}
     paging={table.paging}
     source={table.source}
@@ -611,6 +561,7 @@ var component = new NEKUI.Component({
                             name: 'col1.2',
                             key: 'value',
                             format: '{item.value} %',
+                            custom: 'sortField',
                             sortable: true
                         },
                         {
@@ -713,7 +664,7 @@ Regular.config({
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 
-如有需要获取外部的数据，则需要通过 `this.$parent.data` 去获取。
+如有需要取得外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -730,8 +681,8 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         count: 0,
-        thTpl: '{header.name + " :" + this.$parent.data.count}',
-        tdTpl: '{item.title + " :" + this.$parent.data.count}',
+        thTpl: '{header.name + " :" + this.$tableData.count}',
+        tdTpl: '{item.title + " :" + this.$table.data.count}',
         table: {
             source: []
         }
@@ -753,3 +704,4 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+

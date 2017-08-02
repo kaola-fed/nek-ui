@@ -32,4 +32,8 @@
         top: 0;
      }
    }
+
+   &:last-child {
+     margin-bottom: 5px;
+   }
 }

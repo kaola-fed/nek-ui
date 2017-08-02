@@ -42,5 +42,5 @@ module.exports = {
   IMAGE_SCALE_ERROR: 'scale error',
   PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
   UNIT: '',
-  FILE: 'file'
+  FILE: 'file',
 };

@@ -20,10 +20,10 @@ const typeMap = {
   '.zip': 'zip',
   '.rar': 'rar',
   '.gz': 'gz',
-  'document': 'doc',
-  'sheet': 'doc', 
-  'powerpoint': 'doc',
-  'msword': 'doc',
+  document: 'doc',
+  sheet: 'doc',
+  powerpoint: 'doc',
+  msword: 'doc',
   '.doc': 'doc',
   '.xlsx': 'doc',
   '.ppt': 'doc',
@@ -40,7 +40,7 @@ const typeMap = {
   '.js': 'js',
   '.html': 'html',
   '.txt': 'text',
-  '.json': 'json'
+  '.json': 'json',
 };
 
 const flagMap = {

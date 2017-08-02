@@ -4,9 +4,9 @@
  *  ------------------------------
  */
 
-const Component = require('../../../../../ui-base/component');
-const _ = require('../../../../../ui-base/_');
-const KLModal = require('../../../../notice/KLModal');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const KLModal = require('../../notice/KLModal');
 const tpl = require('./index.html');
 
 /**
@@ -26,7 +26,7 @@ const KLImagePreview = Component.extend({
     _.extend(data, {
       imageList: [],
       curIndex: 0,
-      uploaded: true,
+      delConfirm: false,
     });
 
     _.extend(data, {
@@ -217,7 +217,7 @@ const KLImagePreview = Component.extend({
   rotate(dir) {
     const data = this.data;
     const virtualInfo = data.virtualInfo;
-    const img = this.$refs.virtualimage;
+    const image = this.$refs.virtualimage;
 
     data.showVirtual = true;
 
@@ -227,7 +227,7 @@ const KLImagePreview = Component.extend({
       virtualInfo.rotate -= 90;
     }
 
-    img.style.transform = this.genTransform();
+    image.style.transform = this.genTransform();
   },
   genTransform() {
     const virtualInfo = this.data.virtualInfo;
@@ -241,26 +241,35 @@ const KLImagePreview = Component.extend({
   onDel(index) {
     const self = this;
     const data = this.data;
-    let imageList = data.imageList;
-    const img = imageList[index];
+    const imageList = data.imageList;
+    const image = imageList[index];
 
-    const modal = new KLModal({
-      data: {
-        content: `${this.$trans('REMOVE_CONFIRM') + img.name}?`,
-      },
-    });
-    modal.$on('ok', () => {
-      imageList = data.imageList.splice(index, 1);
-
-      if (!imageList[index]) {
-        data.curIndex = 0;
-      }
-      self.$emit('remove', {
-        name: img.name,
-        index,
+    if (data.delConfirm) {
+      const modal = new KLModal({
+        data: {
+          content: `${this.$trans('REMOVE_CONFIRM') + image.name}?`,
+        },
       });
-      self.$update();
+      modal.$on('ok', () => {
+        self.removeImage(index);
+      });
+    } else {
+      self.removeImage(index);
+    }
+  },
+  removeImage(index) {
+    const data = this.data;
+    const imageList = data.imageList;
+    const image = imageList.splice(index, 1);
+
+    if (!imageList[index]) {
+      data.curIndex = 0;
+    }
+    this.$emit('remove', {
+      image,
+      index,
     });
+    this.$update();
   },
   onMouseDown(e) {
     const data = this.data;

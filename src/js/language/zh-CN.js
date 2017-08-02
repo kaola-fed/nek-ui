@@ -42,5 +42,5 @@ module.exports = {
   IMAGE_SCALE_ERROR: '比例错误',
   PLEASE_UPLOAD_ATLEAST: '请至少上传',
   UNIT: '个',
-  FILE: '文件'
+  FILE: '文件',
 };

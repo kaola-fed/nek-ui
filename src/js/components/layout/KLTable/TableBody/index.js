@@ -17,6 +17,8 @@ const TableBody = Component.extend({
       config: {},
     });
     this.supr(data);
+    this.$table = this.$parent;
+    this.$tableData = this.$parent.data;
   },
   _onExpand(item, itemIndex, column) {
     if (!this.data.fixedCol) {
@@ -41,8 +43,9 @@ const TableBody = Component.extend({
   _expandTr(item, itemIndex, column) {
     item._expanddingColumn = column;
     item.expand = !item.expand;
-
-    this._updateSubTrHeight(item, itemIndex);
+    if (column.expandable) {
+      this._updateSubTrHeight(item, itemIndex);
+    }
   },
   _updateSubTrHeight(item, itemIndex) {
     const self = this;
@@ -93,16 +96,19 @@ const TableBody = Component.extend({
   emit(...args) {
     this.$parent.$emit.call(this.$parent, ...args);
   },
-  _onTrHover($event, item) {
+  _onTrHover(e, item) {
     item._hover = true;
   },
-  _onTrBlur($event, item) {
+  _onTrBlur(e, item) {
     item._hover = false;
   },
 })
-  .filter('placeholder', (val) => {
+  .filter('placeholder', (val, column, self) => {
     if (val === null || val === undefined) {
-      return '-';
+      if (column && column.placeholder !== undefined) {
+        return column.placeholder;
+      }
+      return self.data.placeholder;
     }
     return val;
   })

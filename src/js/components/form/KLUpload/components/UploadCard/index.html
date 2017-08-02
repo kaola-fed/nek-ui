@@ -12,9 +12,9 @@
                     <span class="u-txt">{entryFileInfo.type.toUpperCase()}</span>
                 {/if}
                 <div class="m-status">
-                    {#if status === 'failed'}
+                    {#if status === 'fail'}
                         <span class="u-failed" on-click={this.uploadFiles()}>
-                            <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans['RETRY']}</span>
+                            <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
                         </span>
                     {#elseif status === 'uploading'}
                         <span class="u-uploading">
@@ -36,7 +36,7 @@
                             r-style={{
                                 "margin-left": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + "px" : "auto"
                             }}>
-                            <file-unit
+                            <file-unit ref="fileunit{fileunit_index}"
                                 file={fileunit}
                                 action={action}
                                 url={fileunit.url}
