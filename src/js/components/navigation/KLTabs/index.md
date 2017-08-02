@@ -14,7 +14,22 @@ title: 选项卡
     <kl-tab title="Tab1">Content1</kl-tab>
     <kl-tab title="Tab2">Content2</kl-tab>
     <kl-tab title="Tab3">Content3</kl-tab>
-    <kl-tab title="Tab4">Content4</kl-tab>
+    <kl-tab title="Tab4"><kl-input /></kl-tab>
+</kl-tabs>
+```
+<!-- demo_end -->
+
+### 每次切换 Tab 时重新渲染
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-tabs fresh={true}>
+    <kl-tab title="Tab1">Content1</kl-tab>
+    <kl-tab title="Tab2">Content2</kl-tab>
+    <kl-tab title="Tab3">Content3</kl-tab>
+    <kl-tab title="Tab4"><kl-input /></kl-tab>
 </kl-tabs>
 ```
 <!-- demo_end -->

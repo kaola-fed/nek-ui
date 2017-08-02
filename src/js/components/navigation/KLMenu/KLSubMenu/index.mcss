@@ -1,10 +1,13 @@
 .m-subMenu {
     position: relative;
+    display: block;
     border-bottom: 1px solid #DFEAF3;
     cursor: pointer;
 
     .head {
         position: relative;
+        display: flex;
+        align-items: center;
         padding: 15px 0 15px 47px;
         font-size: 14px;
         transition: all .4s ease;
@@ -15,15 +18,21 @@
 
         .head_arrow {
             position: absolute;
-            top: 15px;
-            left: 28px;
+            right: 10px;
             font-size: 14px;
             transition: all .4s ease;
             transform: rotate(0);
 
             &.isOpen {
-                transform: rotate(180deg);
+                transform: rotate(90deg);
             }
+        }
+
+        .head_icon {
+            position:absolute;
+            left: 20px;
+            color: #333;
+            font-size: 16px;
         }
     }
 
@@ -37,7 +46,6 @@
 
     &.active {
         background: #F6F9FC;
-        padding-bottom: 5px;
     }
 }
 
