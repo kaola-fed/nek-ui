@@ -312,19 +312,13 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="展示路径"><a href="#展示路径" class="headerlink" title="展示路径"></a>展示路径</h3><h4 id="选择时触发-on-select-事件，抛出当前选择项-selected，selected-path-就是当前项的路径字符串，pathArray-是路径数组，具体看控制台"><a href="#选择时触发-on-select-事件，抛出当前选择项-selected，selected-path-就是当前项的路径字符串，pathArray-是路径数组，具体看控制台" class="headerlink" title="选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组，具体看控制台"></a>选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组，具体看控制台</h4><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> <span class="attr">showPath</span>=<span class="string">&#123;showPath&#125;</span> <span class="attr">placement</span>=<span class="string">&#123;placement&#125;</span> <span class="attr">pathString</span>=<span class="string">&#123;pathString&#125;</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">showPath</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">placement</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">pathString</span>: <span class="string">'&gt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">'11'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="允许勾选非末级（仅支持单选场景）"><a href="#允许勾选非末级（仅支持单选场景）" class="headerlink" title="允许勾选非末级（仅支持单选场景）"></a>允许勾选非末级（仅支持单选场景）</h3><h4 id="选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头"><a href="#选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头" class="headerlink" title="选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头"></a>选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头</h4><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">showPath</span>=<span class="string">&#123;showPath&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> <span class="attr">onlyChild</span>=<span class="string">&#123;onlyChild&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">onlyChild</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">showPath</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> <span class="attr">onlyChild</span>=<span class="string">&#123;onlyChild&#125;</span> /&gt;</span></div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点1'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.1'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.2'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.1'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.1.2'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'节点1.2.1.3'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'节点1.2.2'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.3'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点1.4'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'节点3'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.1'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'节点3.2'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">onlyChild</span>: <span class="literal">false</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="多选"><a href="#多选" class="headerlink" title="多选"></a>多选</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -340,7 +334,7 @@
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Dropdown">Dropdown</a></dt>
 <dd><hr>
-<p>KLMultiSelect 多级选择</p>
+<p>KLMultiSelect 树型选择</p>
 </dd>
 </dl>
 
@@ -424,24 +418,6 @@
 <td>=&gt; 多选时value分隔符</td>
 </tr>
 <tr>
-<td>[options.data.showPath]</td>
-<td><code>string</code></td>
-<td><code>false</code></td>
-<td>=&gt; 单选时是否展示路径</td>
-</tr>
-<tr>
-<td>[options.data.placement]</td>
-<td><code>string</code></td>
-<td><code>&quot;top&quot;</code></td>
-<td>=&gt; 单选时展示路径的 tooltip 位置，如果填 false 则不展示 tooltip，但是还是会抛出该数据</td>
-</tr>
-<tr>
-<td>[options.data.pathString]</td>
-<td><code>string</code></td>
-<td><code>&quot;&#x27;&gt;&#x27;&quot;</code></td>
-<td>=&gt; 链接每一级路径的字符串，避免名字中包含该字符串</td>
-</tr>
-<tr>
 <td>[options.data.readonly]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -471,17 +447,11 @@
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
-<tr>
-<td>[options.data.width]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 组件宽度</td>
-</tr>
 </tbody>
 </table>
 <p><a name="Dropdown"></a></p>
 <h2 id="Dropdown"><a href="#Dropdown" class="headerlink" title="Dropdown"></a>Dropdown</h2><hr>
-<p>KLMultiSelect 多级选择</p>
+<p>KLMultiSelect 树型选择</p>
 <p><strong>Kind</strong>: global constant  </p>
 <h2 id="Author-lilang"><a href="#Author-lilang" class="headerlink" title="Author: lilang"></a><strong>Author:</strong> lilang</h2><p><a name="event_value 改变时触发"></a></p>
 <h2 id="“value-改变时触发”"><a href="#“value-改变时触发”" class="headerlink" title="“value 改变时触发”"></a>“value 改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
@@ -567,7 +537,7 @@ var component = new NEKUI.Component({
                 {name: '节点3.2', id: 32}
             ]}
         ],
-        value: ''
+        value: '11'
     },
     selected: function(event) {
         console.log(event);
@@ -580,7 +550,7 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-multi-select showPath={showPath} placement={placement} pathString={pathString} source={source} value={value} on-select={this.selected($event)} />
+<kl-multi-select source={source} value={value} on-select={this.selected($event)} onlyChild={onlyChild} />
 选择的是：{value}
 
       */});
@@ -612,55 +582,7 @@ var component = new NEKUI.Component({
             ]}
         ],
         value: '',
-        showPath: true,
-        placement: false,
-        pathString: '>'
-    },
-    selected: function(event) {
-        console.log(event);
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-multi-select source={source} showPath={showPath} value={value} on-select={this.selected($event)} onlyChild={onlyChild} />
-选择的是：{value}
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '节点1', id: 1, children: [
-                {name: '节点1.1', id: 11},
-                {name: '节点1.2', id: 12, children: [
-                    {name: '节点1.2.1', id: 121, children: [
-                        {name: '节点1.2.1.1', id: 1211, children: [
-                            {name: '节点1.2.1.1.1', id: 12111},
-                            {name: '节点1.2.1.1.2', id: 12112}
-                            ]},
-                        {name: '节点1.2.1.3', id: 1212},
-                        {name: '节点1.2.1.3', id: 1213}
-                        ]},
-                    {name: '节点1.2.2', id: 122}
-                ]},
-                {name: '节点1.3', id: 13},
-                {name: '节点1.4', id: 14},
-            ]},
-            {name: '节点2', id: 2},
-            {name: '节点3', id: 3, children: [
-                {name: '节点3.1', id: 31},
-                {name: '节点3.2', id: 32}
-            ]}
-        ],
-        value: '',
-        onlyChild: false,
-        showPath: true
+        onlyChild: false
     },
     selected: function(event) {
         console.log(event);
