@@ -154,7 +154,13 @@ const KLUpload = Component.extend({
     const data = this.data;
     const result = { success: true, message: '' };
 
-    if (data.fileList.length < data.numMin) {
+    function deletedFilter(file) {
+      return file.flag !== Config.flagMap.DELETED;
+    }
+
+    const filteredFileList = data.fileList.filter(deletedFilter);
+
+    if (filteredFileList.length < data.numMin) {
       result.success = false;
       result.message = this.$trans('PLEASE_UPLOAD_ATLEAST') + data.numMin + this.$trans('UNIT') + this.$trans('FILE');
       this.data.state = 'error';
