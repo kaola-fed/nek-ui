@@ -6,6 +6,7 @@
 
 const Component = require('../../../../ui-base/component');
 const _ = require('../../../../ui-base/_');
+const template = require('./index.html');
 const KLTabs = require('../index');
 
 /**
@@ -17,8 +18,7 @@ const KLTabs = require('../index');
  */
 const KLTab = Component.extend({
   name: 'kl-tab',
-  template:
-    '<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>',
+  template,
   /**
      * @protected
      */
