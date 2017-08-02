@@ -2,22 +2,19 @@
     <div class="m-files-zone" ref="fileszone">
         <div class="m-entry-wrapper" ref="entrywrapper" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>
             <div ref="filesentry" class="m-entry">
-                {#if fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'IMAGE'}
+                {#if entryFileInfo.type === 'image'}
                     <div class="m-img-wrapper">
-                        <img class="u-img" src={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.src}
-                             alt={fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.name}/>
+                        <img class="u-img" src={entryFileInfo.src} alt={entryFileInfo.name}/>
                     </div>
-                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'ZIP'}
-                    <span class="u-txt">ZIP</span>
-                {#elseif fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type === 'UNKNOWN'}
+                {#elseif entryFileInfo.type === 'unknown'}
                     <span class="u-txt">{this.$trans('UNKNOWN')}</span>
                 {#else} <!-- TEXT, DOC, JS, HTML -->
-                    <span class="u-txt">{fileUnitList[fileUnitList.length - 1] && fileUnitList[fileUnitList.length - 1].inst.data.type}</span>
+                    <span class="u-txt">{entryFileInfo.type.toUpperCase()}</span>
                 {/if}
                 <div class="m-status">
-                    {#if status === 'failed'}
+                    {#if status === 'fail'}
                         <span class="u-failed" on-click={this.uploadFiles()}>
-                            <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>重试</span>
+                            <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
                         </span>
                     {#elseif status === 'uploading'}
                         <span class="u-uploading">
@@ -33,11 +30,32 @@
                 <span class="u-info">{fileUnitList.length}</span>
                 <span ref="filesbanner" class="u-banner" r-class={{'top': isTopBanner}}></span>
                 <ul ref="fileswrapper" class="m-filelist" on-click={this.toggle(true, $event)}
-                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}></ul>
+                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>
+                    {#list fileUnitList as fileunit}
+                        <li class="u-fileitem"
+                            r-style={{
+                                "margin-left": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + "px" : "auto"
+                            }}>
+                            <file-unit ref="fileunit{fileunit_index}"
+                                file={fileunit}
+                                action={action}
+                                url={fileunit.url}
+                                name={name}
+                                status={fileunit.status}
+                                readonly={readonly}
+                                data={data}
+                                on-preview={this.onPreview($event)}
+                                on-progress={this.onProgress($event)}
+                                on-success={this.onSuccess($event)}
+                                on-error={this.onError($event)}
+                                on-remove={this.onRemove($event)}/>
+                        </li>
+                    {/list}
+                </ul>
             </div>
             <div class="m-entry-info">{info}</div>
         </div>
-        <div ref="inputwrapper" class="u-input-wrapper" on-click={this.fileDialogOpen()}>
+        <div ref="inputwrapper" class="u-input-wrapper" r-hide={readonly} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}

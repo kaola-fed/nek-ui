@@ -1,22 +1,32 @@
 /**
  *  ------------------------------
- *  image preview
+ *  KLImagePreview 图片预览
  *  ------------------------------
  */
 
-const Component = require('../../../../../ui-base/component');
-const _ = require('../../../../../ui-base/_');
-const KLModal = require('../../../../notice/KLModal');
+const Component = require('../../../ui-base/component');
+const _ = require('../../../ui-base/_');
+const KLModal = require('../../notice/KLModal');
 const tpl = require('./index.html');
 
-const ImagePreview = Component.extend({
-  name: 'image-preview',
+/**
+ * @class KLImagePreview
+ * @extend Component
+ * @param {object}     [options.data]               = 绑定属性
+ * @param {array}      [options.data.image-list]    => 必选，图片文件列表, 其中每个文件项包含下面的字段:
+ *                                                     name: 图片文件名称
+ *                                                     src: 图片文件的路径
+ * @param {number}     [options.data.cur-index=0]   => 必选，当前图片文件的索引, 默认第一项为当前项
+ */
+
+const KLImagePreview = Component.extend({
+  name: 'kl-image-preview',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     _.extend(data, {
-      imgList: [],
+      imageList: [],
       curIndex: 0,
-      uploaded: true,
+      delConfirm: false,
     });
 
     _.extend(data, {
@@ -47,12 +57,17 @@ const ImagePreview = Component.extend({
           fnName: 'rezoom',
         },
         {
-          name: 'rotate',
-          icon: 'rotate_right',
-          fnName: 'rotate',
+          name: 'rotate_left',
+          icon: 'rotate_left',
+          fnName: 'rotateLeft',
         },
         {
-          name: 'delete',
+          name: 'rotate_right',
+          icon: 'rotate_right',
+          fnName: 'rotateRight',
+        },
+        {
+          name: 'remove',
           icon: 'delete',
           fnName: 'onDel',
         },
@@ -69,7 +84,7 @@ const ImagePreview = Component.extend({
   },
   onPrev() {
     const data = this.data;
-    const length = data.imgList.length;
+    const length = data.imageList.length;
     let toIndex = length - 1;
 
     if (data.curIndex > 0) {
@@ -81,7 +96,7 @@ const ImagePreview = Component.extend({
   },
   onNext() {
     const data = this.data;
-    const length = data.imgList.length;
+    const length = data.imageList.length;
     let toIndex = 0;
 
     if (data.curIndex < length - 1) {
@@ -193,15 +208,26 @@ const ImagePreview = Component.extend({
       yStep: totalSteps ? (translateY / totalSteps) * scaleStep * 10 : 0,
     };
   },
-  rotate() {
+  rotateLeft() {
+    this.rotate('left');
+  },
+  rotateRight() {
+    this.rotate('right');
+  },
+  rotate(dir) {
     const data = this.data;
     const virtualInfo = data.virtualInfo;
-    const img = this.$refs.virtualimage;
+    const image = this.$refs.virtualimage;
 
     data.showVirtual = true;
-    virtualInfo.rotate += 90;
 
-    img.style.transform = this.genTransform();
+    if (dir === 'right') {
+      virtualInfo.rotate += 90;
+    } else if (dir === 'left') {
+      virtualInfo.rotate -= 90;
+    }
+
+    image.style.transform = this.genTransform();
   },
   genTransform() {
     const virtualInfo = this.data.virtualInfo;
@@ -215,26 +241,35 @@ const ImagePreview = Component.extend({
   onDel(index) {
     const self = this;
     const data = this.data;
-    let imgList = data.imgList;
-    const img = imgList[index];
+    const imageList = data.imageList;
+    const image = imageList[index];
 
-    const modal = new KLModal({
-      data: {
-        content: `${this.$trans('DELETE_CONFIRM') + img.name}?`,
-      },
-    });
-    modal.$on('ok', () => {
-      imgList = data.imgList.splice(index, 1);
-
-      if (!imgList[index]) {
-        data.curIndex = 0;
-      }
-      self.$emit('delete', {
-        name: img.name,
-        index,
+    if (data.delConfirm) {
+      const modal = new KLModal({
+        data: {
+          content: `${this.$trans('REMOVE_CONFIRM') + image.name}?`,
+        },
       });
-      self.$update();
+      modal.$on('ok', () => {
+        self.removeImage(index);
+      });
+    } else {
+      self.removeImage(index);
+    }
+  },
+  removeImage(index) {
+    const data = this.data;
+    const imageList = data.imageList;
+    const image = imageList.splice(index, 1);
+
+    if (!imageList[index]) {
+      data.curIndex = 0;
+    }
+    this.$emit('remove', {
+      image,
+      index,
     });
+    this.$update();
   },
   onMouseDown(e) {
     const data = this.data;
@@ -314,4 +349,4 @@ const ImagePreview = Component.extend({
   },
 });
 
-module.exports = ImagePreview;
+module.exports = KLImagePreview;

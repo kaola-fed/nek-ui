@@ -35,6 +35,12 @@ module.exports = {
   DOWNLOAD_FILE: '',
   UPLOAD_FAIL: 'Fail',
   UNKNOWN: 'UNKNOWN',
-  DELETE_CONFIRM: 'Are you sure to delete',
+  REMOVE_CONFIRM: 'Are you sure to remove',
   LIMIT_ERROR: 'the limit should be a number',
+  IMAGE_WIDTH_ERROR: 'width error',
+  IMAGE_HEIGHT_ERROR: 'height error',
+  IMAGE_SCALE_ERROR: 'scale error',
+  PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
+  UNIT: '',
+  FILE: 'file',
 };
