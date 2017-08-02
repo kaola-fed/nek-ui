@@ -7,7 +7,14 @@
     </ul>
   </div>
 <% } %>
-<div class="content <%- page.type ? page.type + ' with-sidebar' : '' %>">
+<div class="content <%- page.type ? page.type + ' with-sidebar' : '' %> <%- page.masonry ? ' j-masonry' : ''%>">
+    <% if(page.masonry) { %>
+        <style>
+            .grid-item {
+                width: 40%;
+            }
+        </style>
+    <% } %>
     <%- page.content %>
     <div class="guide-links">
       <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>

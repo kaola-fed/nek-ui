@@ -1,12 +1,13 @@
 ---
 title: 按钮
+masonry: true
 ---
 
 ## 代码演示
 
+<!-- demo_start -->
 ### 基本形式
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -36,9 +37,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 常用的button类型
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -70,9 +71,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 圆角的图标按钮
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -86,9 +87,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 图标按钮
-
 <!-- demo_start -->
+### 图标按钮
 <div class="m-example"></div>
 
 ```xml
@@ -102,9 +102,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 加载中的按钮
-
 <!-- demo_start -->
+### 加载中的按钮
 <div class="m-example"></div>
 
 ```xml
@@ -114,9 +113,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### buttonGroup
-
 <!-- demo_start -->
+### buttonGroup
 <div class="m-example"></div>
 
 ```xml
