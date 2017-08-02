@@ -35454,7 +35454,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 444 */
 /***/ (function(module, exports) {
 
-	module.exports = "<kl-check\n    name={item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
+	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
 /* 445 */
