@@ -19,7 +19,7 @@ module.exports = function Multiple(Component) {
     },
     removeSelected(selected, index, event) {
       event && event.stopPropagation();
-      if(selected[index].disabled) return;
+      if (selected[index].disabled) return;
       selected.splice(index, 1);
       this.toggle(true);
       this.searchInputFocus();
