@@ -41,6 +41,8 @@ const KLTabs = Component.extend({
       tabs: [],
       selected: undefined,
       titleTemplate: null,
+      offset: 0,
+      navStyle: {},
     });
     this.supr();
 
@@ -56,6 +58,80 @@ const KLTabs = Component.extend({
         key: newValue.data.key,
       });
     });
+  },
+  init() {
+    this.supr();
+    this._update = this.update.bind(this);
+    window.addEventListener('resize', this._update);
+  },
+  events: {
+    $init() {
+      const self = this;
+      setTimeout(() => {
+        self.update();
+      }, 10);
+    },
+  },
+  update() {
+    const wrap = this.$refs.wrap;
+    const nav = this.$refs.nav;
+    if (!wrap || !nav) {
+      return false;
+    }
+    const wrapWidth = wrap.offsetWidth;
+    const navWidth = nav.scrollWidth;
+    const currentOffset = this.data.offset;
+    if (wrapWidth < navWidth) {
+      this.data.scrollable = this.data.scrollable || {};
+      this.data.scrollable.prev = currentOffset;
+      this.data.scrollable.next = (currentOffset + wrapWidth) < navWidth;
+      if (navWidth - currentOffset < wrapWidth) {
+        this.setOffset(navWidth - wrapWidth);
+      }
+    } else {
+      this.data.scrollable = false;
+    }
+    this.$update();
+  },
+  setOffset(offset) {
+    this.data.offset = offset;
+    const transform = `translateX(-${this.data.offset}px)`;
+    const navStyle = this.data.navStyle;
+    navStyle.transform = transform;
+    navStyle.msTransform = transform;
+    navStyle.webkitTransform = transform;
+    this.update();
+  },
+  prev() {
+    if (!this.data.scrollable || !this.data.scrollable.prev) {
+      return;
+    }
+    const wrap = this.$refs.wrap;
+    const currentOffset = this.data.offset;
+    if (!wrap || !currentOffset) {
+      return;
+    }
+    const wrapWidth = wrap.offsetWidth;
+    const newOffset = currentOffset > wrapWidth ? currentOffset - wrapWidth : 0;
+    this.setOffset(newOffset);
+  },
+  next() {
+    if (!this.data.scrollable || !this.data.scrollable.next) {
+      return;
+    }
+    const wrap = this.$refs.wrap;
+    const nav = this.$refs.nav;
+    if (!wrap || !nav) {
+      return;
+    }
+    const navWidth = nav.scrollWidth;
+    const wrapWidth = wrap.offsetWidth;
+    const currentOffset = this.data.offset;
+    if (navWidth - currentOffset <= wrapWidth) {
+      return;
+    }
+    const newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
+    this.setOffset(newOffset);
   },
   /**
      * @method select(item) 选择某一项
@@ -77,6 +153,10 @@ const KLTabs = Component.extend({
       selected: item,
       key: item.data.key,
     });
+  },
+  destroy() {
+    this.supr();
+    window.removeEventListener('resize', this._update);
   },
 });
 
