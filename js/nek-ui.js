@@ -1510,16 +1510,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-	    var _data2 = this.data,
-	        readonly = _data2.readonly,
-	        disabled = _data2.disabled;
-	    // 如果是readonly或者disabled状态, 无需验证
-
-	    if (readonly || disabled) {
-	      return {
-	        success: true
-	      };
-	    }
 
 	    var value = this.data.value || this.data.value === 0 ? '' + this.data.value : '';
 	    var rules = this.data.rules;
@@ -1551,7 +1541,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	     * 1. type=char时,去除前后的空格;
 	     * 2. type=int/float时, 只能输入对应类型的数字;
-	     * */
+	     **/
 	  __valueFilter: function __valueFilter(_value) {
 	    var type = this.data.type;
 
@@ -10052,14 +10042,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return {object} result 结果
 	     */
 	  validate: function validate() {
-	    var data = this.data;
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
-
 	    var source = this.data.source;
 	    var result = { success: true, message: '' };
 	    var required = this.data.required;
@@ -10368,13 +10350,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate(on) {
 	    var data = this.data;
 	    var date = data.date || '';
-
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
 
 	    var result = date ? Validation.validate(date.toString(), [{ type: 'isDate', message: '请填写' }]) : { success: false };
 	    if (data.required && !result.success) {
@@ -26856,13 +26831,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var result = { success: true, message: '' };
 	    var selected = data.selected;
 
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
-
 	    if (data.required && !selected) {
 	      result.success = false;
 	      result.message = this.data.message || this.$trans('PLEASE_SELECT');
@@ -27163,13 +27131,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  validate: function validate(on) {
 	    var data = this.data;
-
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
 
 	    var result = { success: true, message: '' };
 	    var value = this.data.value;
@@ -27765,8 +27726,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var source = data.source;
 	      var key = data.key;
 	      if (newValue === undefined || newValue === null) {
-	        data.selected = newValue;
-	        return;
+	        return data.selected = newValue;
 	      }
 
 	      if (source) {
@@ -27787,8 +27747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.$watch('source', function (newValue) {
 	      if (newValue === undefined) {
-	        data.selected = undefined;
-	        return;
+	        return data.selected = undefined;
 	      }
 
 	      if (!(newValue instanceof Array)) {
@@ -27961,13 +27920,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  validate: function validate(on) {
 	    var data = this.data;
-
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
 
 	    var result = { success: true, message: '' };
 	    var value = this.data.value;
@@ -28387,16 +28339,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-	    var data = this.data;
-	    // 如果是readonly或者disabled状态, 无需验证
-	    if (data.readonly || data.disabled) {
-	      return {
-	        success: true
-	      };
-	    }
-
-	    var value = data.value;
-	    var rules = data.rules;
+	    var value = this.data.value;
+	    var rules = this.data.rules;
 
 	    rules = rules.filter(function (rule) {
 	      return (rule.on || '').indexOf(on) >= 0;
@@ -28437,7 +28381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 358 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 359 */
@@ -35760,6 +35704,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _keys = __webpack_require__(79);
+
+	var _keys2 = _interopRequireDefault(_keys);
+
+	var _typeof2 = __webpack_require__(84);
+
+	var _typeof3 = _interopRequireDefault(_typeof2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	/**
 	 * ------------------------------------------------------------
 	 * KLCol 栅格布局-列
@@ -35777,6 +35731,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.class]                  => 补充class
 	 * @param {number}          [options.data.span='']              => 栅格占据的列数
 	 * @param {number}          [options.data.offset='']            => 栅格左侧的间隔格数
+	 * @param {number/object}   [options.data.xs='']                => <768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.sm='']                => ≥768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.md='']                => ≥992 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.lg='']                => ≥1200 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
 	 */
 	var KLCol = Component.extend({
 	  name: 'kl-col',
@@ -35785,7 +35743,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.defaults({
 	      span: '',
 	      offset: '',
-	      gutter: 40
+	      gutter: 40,
+	      xs: '',
+	      sm: '',
+	      md: '',
+	      lg: ''
 	    });
 
 	    var $outer = this;
@@ -35815,13 +35777,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	});
 
+	KLCol.directive('mediaSize', function (ele) {
+	  var self = this;
+	  ['xs', 'sm', 'md', 'lg'].forEach(function (size) {
+	    if (parseInt(self.data[size])) {
+	      ele.classList.add('g-col-' + size + '-' + self.data[size]);
+	    } else if ((0, _typeof3.default)(self.data[size]) === 'object') {
+	      var props = self.data[size];
+	      (0, _keys2.default)(props).forEach(function (prop) {
+	        ele.classList.add(prop !== 'span' ? 'g-col-' + size + '-' + prop + '-' + props[prop] : 'g-col-' + size + '-' + props[prop]);
+	      });
+	    }
+	  });
+	});
+
 	module.exports = KLCol;
 
 /***/ }),
 /* 451 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
+	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
 /* 452 */
