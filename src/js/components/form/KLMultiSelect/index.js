@@ -6,10 +6,11 @@
  */
 
 const Dropdown = require('../common/Dropdown');
-require('../../../util/validation');
+const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLMultiSelect
@@ -50,11 +51,22 @@ const KLMultiSelect = Dropdown.extend({
       hierarchical: false,
       updateAuto: false,
       onlyChild: true,
+      required: false,
+      defaultRules: [],
     });
     data._source = _.clone(data.source || []);
     data.tree = [data._source, [], [], [], [], [], [], [], [], []];
     data.search = ['', '', '', '', '', '', '', '', '', ''];
     data.empty = [];
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.noEmpty);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'no-empty',
+        );
+      }
+    });
     this.$watch('source', function (newValue) {
       if (!(newValue instanceof Array)) {
         throw new TypeError('`source` is not an Array!');
@@ -268,31 +280,9 @@ const KLMultiSelect = Dropdown.extend({
     this.initSelected();
     this.watchValue();
   },
-  validate(on) {
-    const data = this.data;
-
-    const result = { success: true, message: '' };
-    let value = this.data.value;
-
-    value = typeof value === 'undefined' ? '' : `${value}`;
-    if (data.required && !value.length) {
-      result.success = false;
-      result.message = data.message || this.$trans('PLEASE_SELECT');
-      data.state = 'error';
-    } else {
-      result.success = true;
-      result.message = '';
-      data.state = '';
-    }
-    data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+  validate(on = '') {
+    const value = this.data.value;
+    return this._validate(on, value, Validation);
   },
 }).filter('search', function (category, search, level) {
   const data = this.data;

@@ -17,6 +17,7 @@ const polyfill = require('../../../ui-base/polyfill');
 
 const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLDatePicker
@@ -56,20 +57,34 @@ const KLDatePicker = Dropdown.extend({
       _time: undefined,
       autofocus: false,
       required: false,
+      defaultRules: [],
       showTime: false,
       open: false,
     });
     this.supr();
 
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.noEmpty);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'no-empty',
+        );
+      }
+    });
+
     this.$watch('date', function (newValue) {
       // 字符类型自动转为日期类型
       if (typeof newValue === 'string') {
         if (bowser.msie && bowser.version <= 9) {
-          return (this.data.date = polyfill.StringDate(newValue));
+          this.data.date = polyfill.StringDate(newValue);
+          return;
         }
-        return (this.data.date = newValue ? new Date(newValue) : new Date());
+        this.data.date = newValue ? new Date(newValue) : new Date();
+        return;
       } else if (typeof newValue === 'number') {
-        return (this.data.date = new Date(newValue));
+        this.data.date = new Date(newValue);
+        return;
       }
 
       if (newValue === 'Invalid Date' || newValue === 'NaN') {
@@ -79,7 +94,10 @@ const KLDatePicker = Dropdown.extend({
       // 如果不为空并且超出日期范围，则设置为范围边界的日期
       if (newValue) {
         const isOutOfRange = this.isOutOfRange(newValue);
-        if (isOutOfRange) return (this.data.date = isOutOfRange);
+        if (isOutOfRange) {
+          this.data.date = isOutOfRange;
+          return;
+        }
       }
 
       if (newValue) {
@@ -107,9 +125,11 @@ const KLDatePicker = Dropdown.extend({
 
       if (typeof newValue === 'string') {
         if (bowser.msie && bowser.version <= 9) {
-          return (this.data.date = polyfill.StringDate(newValue));
+          this.data.date = polyfill.StringDate(newValue);
+          return;
         }
-        return (this.data.minDate = new Date(newValue));
+        this.data.minDate = new Date(newValue);
+        return;
       }
 
       if (newValue === 'Invalid Date' || newValue === 'NaN') {
@@ -122,9 +142,11 @@ const KLDatePicker = Dropdown.extend({
 
       if (typeof newValue === 'string') {
         if (bowser.msie && bowser.version <= 9) {
-          return (this.data.date = polyfill.StringDate(newValue));
+          this.data.date = polyfill.StringDate(newValue);
+          return;
         }
-        return (this.data.maxDate = new Date(newValue));
+        this.data.maxDate = new Date(newValue);
+        return;
       }
 
       if (newValue === 'Invalid Date' || newValue === 'NaN') {
@@ -149,7 +171,9 @@ const KLDatePicker = Dropdown.extend({
       // 如果不为空并且超出日期范围，则设置为范围边界的日期
       if (this.data.date) {
         const isOutOfRange = this.isOutOfRange(this.data.date);
-        if (isOutOfRange) return (this.data.date = isOutOfRange);
+        if (isOutOfRange) {
+          this.data.date = isOutOfRange;
+        }
       }
     });
 
@@ -241,33 +265,9 @@ const KLDatePicker = Dropdown.extend({
       (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate)
     );
   },
-  validate(on) {
-    const data = this.data;
-    const date = data.date || '';
-
-    const result = date
-      ? Validation.validate(date.toString(), [
-          { type: 'isDate', message: '请填写' },
-      ])
-      : { success: false };
-    if (data.required && !result.success) {
-      result.success = false;
-      result.message = this.data.message || '请填写';
-      this.data.state = 'error';
-    } else {
-      result.success = true;
-      result.message = '';
-      this.data.state = '';
-    }
-    this.data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+  validate(on = '') {
+    const value = this.data.date || '';
+    return this._validate(on, value, Validation);
   },
 });
 
