@@ -9,10 +9,14 @@
     height: 6px;
     padding: 9px 0;
     display:inline-block;
+    .z-dis{
+        cursor:not-allowed
+    }
     .slider_track {
         height: 100%;
         background: #e4e8f1;
         position:relative;
+        overflow:hidden;
         border-radius:3px;
     }
     .slider_trail {
@@ -38,12 +42,16 @@
         position:absolute;
         top:0px;
         height:100%;
-        width:4px;
+        width:3px;
+        margin-left:-3px;
+        border-radius: 10px;    
         background:#ff0000;
     }
     .u-range-min,.u-range-max{
         position:absolute;
         top:100%;
+        font-size:12px;
+        color:#999;
     }
     .u-range-min{
         left:0px
@@ -55,7 +63,7 @@
 }
 .u-show-value {
         margin-left:15px;
-        width:100px;
+        width:80px;
         display:inline-block;
-        vertical-align: text-bottom;
+        vertical-align: bottom;
     }

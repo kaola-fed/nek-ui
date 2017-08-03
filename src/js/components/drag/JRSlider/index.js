@@ -16,12 +16,13 @@ require('../../form/JRDatePicker/NumberInput');
  * @param {number}                [options.data.max=100]               <=> 最大值
  * @param {number}                [options.data.width=250]             <=> 宽度
  * @param {number}                [options.data.height=10]             <=> 高度
- * @param {number}                [options.data.step=0]                <=> 间隔
- * @param {boolean}               [options.data.showStep=true]         <=> 是否显示间隔，step大于等于1的时候默认显示
+ * @param {number}                [options.data.step=1]                <=> 间隔
+ * @param {boolean}               [options.data.showStep=false]        <=> 是否显示间隔
+ * @param {boolean}               [options.data.showInput=false]       <=> 是否显示输入框
+ * @param {boolean}               [options.data.showTips=true]         => 是否显示tips
  * @param {boolean}               [options.data.readonly]              => 是否只读
  * @param {boolean}               [options.data.disabled]              => 是否禁用
  * @param {boolean}               [options.data.visible]               => 是否显示
- * @param {string}                [options.data.axis='x']              => 轴向约束，默认为x
  * @param {string}                [options.data.class]                 => 补充class
  */
 const JRSlider = Component.extend({
@@ -38,44 +39,43 @@ const JRSlider = Component.extend({
       max: 100,
       width: 250,
       height: 10,
-      axis: 'x',
-      step: 0,
+      step: 1,
       pointArr: [],
-      showStep: true,
+      showStep: false,
+      showInput: false,
+      showTips: true,
       _grid: {
         x: 0,
         y: 0,
       },
     });
+    this.data.height2 = this.data.height + 14;
     this.supr();
     this.getStepPoint();
     this.watch();
   },
 
   getStepPoint() {
-    if (!(this.data.showStep && +this.data.step > 1)) {
+    this.data.inputMax = this.data.max;
+    if (+this.data.step <= 1) {
       return;
     }
     this.data.pointArr = [];
     let c = this.data.min;
-    while (c < this.data.max) {
+    while (c <= this.data.max) {
       this.data.pointArr.push(
         100 * (c - this.data.min) / (this.data.max - this.data.min),
       );
       c += this.data.step;
     }
+    this.data.inputMax = c - this.data.step;
+    this.data.inputMaxLen = `${this.data.inputMax}`.length;
   },
   watch() {
     this.$watch('value', (value) => {
       const isOutOfRange = this.isOutOfRange(value);
       if (isOutOfRange) {
         this.data.value = isOutOfRange;
-      }
-      if (this.data.showStep && +this.data.step > 1) {
-        const ext = (value - this.data.min) % this.data.step;
-        this.data.value = ext > this.data.step / 2
-            ? value + this.data.step - ext
-            : value - ext;
       }
       this.$emit('change', {
         sender: this,
@@ -106,16 +106,28 @@ const JRSlider = Component.extend({
         if (this.data.step) {
           value = Math.round(value / this.data.step) * this.data.step;
         }
-        this.data.value = value;
+        this.data.value = Math.round(value);
       },
     },
   },
   isOutOfRange(value) {
     const min = +this.data.min;
     const max = +this.data.max;
-
-    // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期
-    return (value < min && min) || (value > max && max);
+    let backValue = value;
+    if (backValue < min) {
+      backValue = min;
+    }
+    if (backValue > max) {
+      backValue = max;
+    }
+    if (+this.data.step > 1) {
+      const ext = (backValue - min) % this.data.step;
+      backValue = ext > this.data.step / 2 &&
+        backValue + this.data.step - ext <= max
+        ? backValue + this.data.step - ext
+        : backValue - ext;
+    }
+    return backValue;
   },
   /**
      * @private
@@ -128,13 +140,16 @@ const JRSlider = Component.extend({
     const $parent = $handle.offsetParent;
     const dimension = dom.getDimension($parent, 'center');
     let percent = (e.clientX - dimension.left) / dimension.width * 100;
-    if (this.data.pointArr && this.data.showStep) {
+    console.log(percent);
+    const sp = this.data.step / 2 / (this.data.max - this.data.min) * 100;
+    if (this.data.pointArr && this.data.step > 1) {
       percent = this.data.pointArr.filter(
         item =>
-          (item < percent && item + this.data.step / 2 > percent) ||
-          (item > percent && item - this.data.step / 2 < percent),
+          (item < percent && item + sp > percent) ||
+          (item > percent && item - sp < percent),
       )[0];
     }
+    console.log(percent);
     this.$set('percent', percent);
   },
   /**
