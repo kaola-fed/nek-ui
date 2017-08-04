@@ -180,8 +180,49 @@ a.button
         border-left 4px solid transparent
         border-right 4px solid transparent
         border-top 5px solid #ccc
-
+.grid-item
+        width: auto;
+        border: 1px solid #E1E6EC;
+        margin: 20px 10px;
+        border-radius: 4px;
 .m-example
-    border 1px dashed #eee
-    margin 5px
-    padding 5px
+    padding: 10px 10px 30px 10px;
+.m-code 
+    .highlight
+        background-color: #fff;
+.m-demowrap
+    border-top: 1px solid #e1e6ec;
+    .m-iconLine
+        position: relative;
+        text-align: center;
+        color: #B2BFCF;
+        top: -10px;
+        .revert
+            transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            color: #E31436;
+            border: 1px solid #E31436;
+    .m-iconOuter
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        line-height: 20px;
+        border: 1px solid #B2BFCF;
+        border-radius: 9px;
+        background-color: #fff;
+        transition: transform 0.5s;
+        -ms-transition: transform 0.5s;
+        -webkit-transition: transform 0.5s;
+        -o-transition: transform 0.5s;
+        -moz-transition: transform 0.5s;
+        &:hover
+            color: #E31436;
+            border: 1px solid #E31436;
+    .m-codeBlock
+        overflow: hidden;
+    .wrap
+        height: 10px;
+         

@@ -4,9 +4,9 @@ title: 表格
 
 ## 代码演示
 
+<!-- demo_start -->
 ### 基本
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -37,13 +37,12 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 显示配置项
 
 1. 无条纹：`strip={false}`
 2. 占位符：默认`placeholder="-"`
 3. 对齐：默认 `align="center"`
-
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -77,11 +76,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 过滤器
 
 `filter` 接收一个 `function`，依次可以取得参数 `val`，`item`，`itemIndex`。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -118,9 +117,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 多级表头
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -160,13 +159,13 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 悬浮表头和底部
 
 控制表头和底部的悬浮需要对 `scroll` 事件进行监听，在默认的情况下，监听对象是 `window`，即页面的滚动。
 
 如果页面布局比较特殊，需要指定监听的对象，则可以通过 `scrollParent` 指定会发生滚动的容器，如 `scrollParent="#example"`。
 
-<!-- demo_start -->
 <div class="m-example" id="example"></div>
 
 ```xml
@@ -202,9 +201,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 表头固定在表格顶部
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -235,9 +234,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 固定列
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -270,6 +269,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 自定义模版与filter
 
 通过 `kl-table-template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
@@ -284,7 +284,6 @@ var component = new NEKUI.Component({
 
 `kl-table-col`上亦可以直接传入对应的模版属性， `template`，`headerTemplate`，`formatter`，`headerFormatter`，`format`，`headerFormat`。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -354,11 +353,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 自定义行样式
 
 通过设置 `item.rowClass` 或 `item.rowStyle` 修改每一行的样式。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -391,11 +390,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 排序
 
 没有实际的排序效果，请查看 console 打印的事件对象。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -433,10 +432,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 分页
 
 分页的配置参考 [分页 Pager](/components/navigation_pager_.html) 。
-<!-- demo_start -->
+
 <div class="m-example"></div>
 
 ```xml
@@ -475,11 +475,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 多选
 
 通过 `enableCheckAll`
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -514,6 +514,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 数据配置
 
 在进行数据配置时，模版的配置方式更为灵活。
@@ -524,7 +525,6 @@ var component = new NEKUI.Component({
 
 加上前缀 `header` 成为 `headerTemplate`，`headerFormat`，`headerFormatter`，可作为表头的模版。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -598,10 +598,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-
+<!-- demo_start -->
 ### 空数据
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -622,9 +621,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 加载中
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -645,28 +644,13 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 特殊
-
-由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
-
-为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
-
-```javascript
-Regular._BEGIN_ = '{{';
-Regular._END_ = '}}';
-Regular.config({
-    BEGIN: Regular._BEGIN_,
-    END: Regular._END_
-});
-```
-
+<!-- demo_start -->
 ### 模版中获取外部数据的方法
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 
 如有需要取得外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -704,4 +688,20 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 特殊
+
+由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
+
+为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
+
+
+```javascript
+Regular._BEGIN_ = '{{';
+Regular._END_ = '}}';
+Regular.config({
+    BEGIN: Regular._BEGIN_,
+    END: Regular._END_
+});
+```
 

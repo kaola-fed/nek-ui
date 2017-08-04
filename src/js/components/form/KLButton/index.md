@@ -1,12 +1,16 @@
 ---
 title: 按钮
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+
+### 基本形式
+
 <div class="m-example"></div>
 
 ```xml
@@ -34,11 +38,13 @@ var component = new NEKUI.Component({
     template: template
 });
 ```
+
 <!-- demo_end -->
+
+<!-- demo_start -->
 
 ### 常用的button类型
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -68,11 +74,13 @@ var component = new NEKUI.Component({
     <kl-button action="link" title="链接" link="http://www.baidu.com" />
 </div>
 ```
+
 <!-- demo_end -->
+
+<!-- demo_start -->
 
 ### 圆角的图标按钮
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -84,11 +92,13 @@ var component = new NEKUI.Component({
     <kl-button action="update" shape="circle" size="xl" />
 </div>
 ```
+
 <!-- demo_end -->
+
+<!-- demo_start -->
 
 ### 图标按钮
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -100,11 +110,13 @@ var component = new NEKUI.Component({
     <kl-button action="update" shape="icon" size="xl" />
 </div>
 ```
+
 <!-- demo_end -->
+
+<!-- demo_start -->
 
 ### 加载中的按钮
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -112,11 +124,13 @@ var component = new NEKUI.Component({
     <kl-button action="update" loading />
 </div>
 ```
+
 <!-- demo_end -->
+
+<!-- demo_start -->
 
 ### buttonGroup
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -127,4 +141,5 @@ var component = new NEKUI.Component({
     </div>
 </div>
 ```
+
 <!-- demo_end -->
