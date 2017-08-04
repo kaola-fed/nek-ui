@@ -4080,7 +4080,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	border-color:#4389e2;
 }
 .u-check{
-	display:inline-block;
 	cursor:pointer;
 	-webkit-user-select:none;
 	-moz-user-select:none;
@@ -4091,8 +4090,8 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:32px;
 }
 .u-check .check_box{
-	display:inline-block;
 	position:relative;
+	display:inline-block;
 	overflow:hidden;
 	text-align:center;
 	margin-right:8px;
