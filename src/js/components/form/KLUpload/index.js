@@ -10,6 +10,7 @@ const Config = require('./config');
 const Component = require('../../../ui-base/component');
 const UploadList = require('./components/UploadList');
 const UploadCard = require('./components/UploadCard');
+const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 const tpl = require('./index.html');
 
@@ -65,11 +66,32 @@ const KLUpload = Component.extend({
       imageHeight: Infinity,
       imageScale: '',
       encType: 'multipart/form-data',
+      required: false,
+      defaultRules: [],
     });
 
     this.preProcess(data);
     this.initValidation();
 
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push({
+          id: 'file-required',
+          type: 'method',
+          method(value, rule) {
+            const length = rule.sender.getActiveFileLength(value);
+            if (length === 0) {
+              return false;
+            }
+            return true;
+          },
+          sender: this,
+          message: _.$trans('PLEASE_UPLOAD_AT_ONE_LEAST'),
+        });
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(rule => rule.id !== 'file-required');
+      }
+    });
     this.supr(data);
   },
 
@@ -150,30 +172,13 @@ const KLUpload = Component.extend({
     this.$emit('remove', info);
   },
 
-  validate() {
-    const data = this.data;
-    const result = { success: true, message: '' };
+  validate(on = '') {
+    const value = this.data.fileList;
+    return this._validate(on, value, Validation);
+  },
 
-    function deletedFilter(file) {
-      return file.flag !== Config.flagMap.DELETED;
-    }
-
-    const filteredFileList = data.fileList.filter(deletedFilter);
-
-    if (filteredFileList.length < data.numMin) {
-      result.success = false;
-      result.message = this.$trans('PLEASE_UPLOAD_ATLEAST') + data.numMin + this.$trans('UNIT') + this.$trans('FILE');
-      this.data.state = 'error';
-    }
-
-    data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      result,
-    });
-
-    return result;
+  getActiveFileLength(fileList) {
+    return fileList.filter(file => file.flag !== Config.flagMap.DELETED).length;
   },
 })
   .component('upload-list', UploadList)

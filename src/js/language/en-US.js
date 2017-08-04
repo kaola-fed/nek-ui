@@ -43,4 +43,5 @@ module.exports = {
   PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
   UNIT: '',
   FILE: 'file',
+  PLEASE_UPLOAD_AT_ONE_LEAST: 'Please upload at least one file',
 };

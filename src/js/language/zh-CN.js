@@ -43,4 +43,5 @@ module.exports = {
   PLEASE_UPLOAD_ATLEAST: '请至少上传',
   UNIT: '个',
   FILE: '文件',
+  PLEASE_UPLOAD_AT_ONE_LEAST: '请至少上传1个文件',
 };
