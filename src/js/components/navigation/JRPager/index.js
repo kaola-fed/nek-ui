@@ -46,7 +46,7 @@ const JRPager = Component.extend({
       side: 2,
       _start: 1,
       _end: 5,
-      step: 5,
+      step: 10,
       maxPageSize: 50,
       pageSizeList: [],
       isEllipsis: false,
@@ -68,7 +68,7 @@ const JRPager = Component.extend({
       if (this.data._start < side + 1) this.data._start = side + 1;
       if (this.data._end > total - side) this.data._end = total - side;
       if (current - this.data._start < show) {
-        this.data._end += ((this.data._start - current) + show);
+        this.data._end += this.data._start - current + show;
       }
       if (this.data._end - current < show) {
         this.data._start += this.data._end - current - show;
@@ -81,9 +81,11 @@ const JRPager = Component.extend({
     });
 
     this.$watch('pageSize', function (val, oldVal) {
-      if (!oldVal) return;
-      this.initTotal();
-      this.select(1);
+      setTimeout(() => {
+        if (!oldVal) return;
+        this.initTotal();
+        this.select(1);
+      }, 0);
     });
 
     this.$watch('sumTotal', () => {
@@ -97,8 +99,7 @@ const JRPager = Component.extend({
     }
 
     if (
-      (!!this.data.sumTotal || this.data.sumTotal === 0) &&
-      !this.data.pageSize
+      (!!this.data.sumTotal || this.data.sumTotal === 0) && !this.data.pageSize
     ) {
       console.error('Pager组件需要传pageSize');
     }
@@ -109,7 +110,7 @@ const JRPager = Component.extend({
     for (let i = 1; i * step <= maxPageSize; i += 1) {
       this.data.pageSizeList.push({
         id: i * step,
-        name: (i * step) + this.$trans('ITEM_PAGE'),
+        name: i * step + this.$trans('ITEM_PAGE'),
       });
     }
   },
