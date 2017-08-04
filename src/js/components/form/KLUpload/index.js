@@ -73,26 +73,40 @@ const KLUpload = Component.extend({
     this.preProcess(data);
     this.initValidation();
 
+    this.data.defaultRules.push(this.createRule('minMax'));
     this.$watch('required', function (newValue) {
       if (newValue) {
-        this.data.defaultRules.push({
-          id: 'file-required',
-          type: 'method',
-          method(value, rule) {
-            const length = rule.sender.getActiveFileLength(value);
-            if (length === 0) {
-              return false;
-            }
-            return true;
-          },
-          sender: this,
-          message: _.$trans('PLEASE_UPLOAD_AT_ONE_LEAST'),
-        });
+        this.data.defaultRules.push(this.createRule('required'));
       } else {
-        this.data.defaultRules = this.data.defaultRules.filter(rule => rule.id !== 'file-required');
+        this.data.defaultRules = this.data.defaultRules.filter(rule => rule.id !== 'required');
       }
     });
     this.supr(data);
+  },
+
+  createRule(ruleType) {
+    const _rule = {
+      id: ruleType === 'required' ? 'required' : '',
+      type: 'method',
+      method(value, rule) {
+        const sender = rule.sender;
+        const data = sender.data;
+        const length = sender.getActiveFileLength(value);
+        const min = rule.ruleType === 'required' ? 1 : data.numMin;
+        const max = data.numMax;
+        if (length < min) {
+          return rule.$trans('PLEASE_UPLOAD_ATLEAST') + min + rule.$trans('UNIT') + rule.$trans('FILE');
+        }
+        if (length > max) {
+          return rule.$trans('PLEASE_UPLOAD_ATMOST') + max + rule.$trans('UNIT') + rule.$trans('FILE');
+        }
+        return true;
+      },
+      sender: this,
+      ruleType,
+      $trans: _.$trans,
+    };
+    return _rule;
   },
 
   preProcess(data) {
