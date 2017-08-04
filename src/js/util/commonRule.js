@@ -17,4 +17,9 @@ module.exports = {
     },
     message: _.$trans('PLEASE_SELECT'),
   },
+  isRequired: {
+    id: 'is-required',
+    type: 'isRequired',
+    message: _.$trans('PLEASE_INPUT'),
+  },
 };
