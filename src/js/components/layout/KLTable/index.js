@@ -115,6 +115,7 @@ const KLTable = Component.extend({
       self._updateParentWidth();
       self._updateViewWidth();
       self._initTableWidth();
+      self._updateSticky();
       self._getHeaderHeight();
       setTimeout(() => {
         self._updateTableWidth();
@@ -227,6 +228,7 @@ const KLTable = Component.extend({
       ratio = (_newVal - customColumnWidthTotal) / (_oldVal - customColumnWidthTotal);
     }
     this._updateTableWidth(ratio);
+    this._updateSticky();
     this._updateFixedRight();
   },
   _onTableWidthChange() {
@@ -246,6 +248,11 @@ const KLTable = Component.extend({
   },
   _updateSticky() {
     const data = this.data;
+    if (data.parentWidth === 0) {
+      data.stickyHeaderActive = false;
+      data.stickyFooterActive = false;
+      return;
+    }
     if (!data.stickyHeader && !data.stickyFooter) {
       return;
     }
