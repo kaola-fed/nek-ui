@@ -23,7 +23,7 @@
                       on-remove={this.onRemove($event)}/>
             </li>
         {/list}
-        <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>
+        <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}

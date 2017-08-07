@@ -33,7 +33,7 @@ const _ = {
   },
   clone(obj) {
     return JSON.parse(JSON.stringify(obj));
-  },
+  }
 };
 
 _.throttle = function (fn, delay) {
@@ -271,5 +271,12 @@ _.$trans = function (key, self) {
     language[$NEKUI.lang || (self ? self.data.lang : '') || 'zh-CN'][key] || ''
   );
 };
+
+_.isEmpty = function(value){
+  if(value == undefined || value == null || value == '' || (typeof value == 'number' && isNaN(value))){
+    return true;
+  }
+  return false;
+}
 
 module.exports = _;

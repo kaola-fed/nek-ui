@@ -8,7 +8,9 @@
 const SourceComponent = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
+const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLRadioGroup
@@ -43,6 +45,7 @@ const KLRadioGroup = SourceComponent.extend({
       selected: null,
       _radioGroupId: new Date(),
       required: false,
+      defaultRules: [],
       nameKey: 'name',
       key: 'id',
     });
@@ -50,6 +53,15 @@ const KLRadioGroup = SourceComponent.extend({
 
     this.initValidation();
 
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.noEmpty);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'no-empty',
+        );
+      }
+    });
     this.$watch('value', function (newValue) {
       const data = this.data;
       const source = data.source;
@@ -120,29 +132,9 @@ const KLRadioGroup = SourceComponent.extend({
      * @public
      * @return {object} result 结果
      */
-  validate(on) {
-    const data = this.data;
-    const result = { success: true, message: '' };
-    const selected = data.selected;
-
-    if (data.required && !selected) {
-      result.success = false;
-      result.message = this.data.message || this.$trans('PLEASE_SELECT');
-      this.data.state = 'error';
-    } else {
-      result.success = true;
-      result.message = '';
-      this.data.state = '';
-    }
-    this.data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+  validate(on = '') {
+    const value = this.data.selected;
+    return this._validate(on, value, Validation);
   },
 });
 

@@ -9,15 +9,14 @@
 $u-check_box_size = 13px;
 
 .u-check {
-    display:inline-block;
     cursor: pointer;
     $user-select: none;
     white-space:nowrap;
     font-size: 12px;
     line-height: 32px;
     .check_box {
-        display: inline-block;
         position: relative;
+        display: inline-block;
         overflow: hidden;
         text-align: center;
         margin-right: 8px;

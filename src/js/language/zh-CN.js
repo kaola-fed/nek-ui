@@ -41,6 +41,7 @@ module.exports = {
   IMAGE_HEIGHT_ERROR: '高度错误',
   IMAGE_SCALE_ERROR: '比例错误',
   PLEASE_UPLOAD_ATLEAST: '请至少上传',
+  PLEASE_UPLOAD_ATMOST: '请最多上传',
   UNIT: '个',
   FILE: '文件',
 };

@@ -8,10 +8,11 @@
 const Dropdown = require('../common/Dropdown');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-require('../../../util/validation');
+const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 const Multiple = require('./plugins/multiple');
 const PrivateMethod = require('./plugins/private.method');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLSelect
@@ -83,12 +84,22 @@ const KLSelect = Dropdown.extend({
 
       placeholder: this.$trans('PLEASE_SELECT'),
       required: false,
+      defaultRules: [],
     });
     if (data.multiple && !Array.isArray(data.selected)) {
       data.selected = data.selected ? [data.selected] : [];
     }
     this.supr();
 
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.noEmpty);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'no-empty',
+        );
+      }
+    });
     this.$watch('selected', function (newValue, oldValue) {
       // 因为存在source异步获取的情况 如果source长度为0表示source还未获取
       if (
@@ -126,7 +137,8 @@ const KLSelect = Dropdown.extend({
       const source = data.source;
       const key = data.key;
       if (newValue === undefined || newValue === null) {
-        return (data.selected = newValue);
+        data.selected = newValue;
+        return;
       }
 
       if (source) {
@@ -151,7 +163,8 @@ const KLSelect = Dropdown.extend({
 
     this.$watch('source', function (newValue) {
       if (newValue === undefined) {
-        return (data.selected = undefined);
+        data.selected = undefined;
+        return;
       }
 
       if (!(newValue instanceof Array)) {
@@ -336,31 +349,9 @@ const KLSelect = Dropdown.extend({
     data.canSearch && this.clearSearchValue();
     this.supr(open);
   },
-  validate(on) {
-    const data = this.data;
-
-    const result = { success: true, message: '' };
-    let value = this.data.value;
-
-    value = typeof value === 'undefined' ? '' : `${value}`;
-    if (data.required && !value.length) {
-      result.success = false;
-      result.message = data.message || this.$trans('PLEASE_SELECT');
-      data.state = 'error';
-    } else {
-      result.success = true;
-      result.message = '';
-      data.state = '';
-    }
-    data.tip = result.message;
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+  validate(on = '') {
+    const value = this.data.value;
+    return this._validate(on, value, Validation);
   },
 })
   .use(Multiple)

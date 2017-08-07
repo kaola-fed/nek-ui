@@ -10,6 +10,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 const bowser = require('bowser');
 
@@ -52,6 +53,7 @@ const KLTextArea = Component.extend({
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
       required: false,
+      defaultRules: [],
     });
 
     this.supr();
@@ -59,13 +61,11 @@ const KLTextArea = Component.extend({
     this.initValidation();
   },
   init() {
-    this.$watch('required', function (value) {
-      const rules = this.data.rules;
-      const message = this.data.message || this.$trans('PLEASE_INPUT');
-      if (value) {
-        rules.push({ type: 'isRequired', message });
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.isRequired);
       } else {
-        this.data.rules = rules.filter(rule => rule.type !== 'isRequired');
+        this.data.defaultRules = this.data.defaultRules.filter(rule => rule.id !== 'is-required');
       }
     });
   },
@@ -76,35 +76,7 @@ const KLTextArea = Component.extend({
      */
   validate(on = '') {
     const value = this.data.value;
-    let rules = this.data.rules;
-
-    rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
-
-    const result = Validation.validate(value, rules);
-    if (
-      result.firstRule &&
-      !(
-        result.firstRule.silentOn === true ||
-        (typeof result.firstRule.silentOn === 'string' &&
-          result.firstRule.silentOn.indexOf(on) >= 0)
-      )
-    ) {
-      this.data.tip = result.firstRule.message;
-    } else this.data.tip = '';
-
-    // @TODO
-    if (!result.success) this.data.state = 'error';
-    else {
-      this.data.state = '';
-    }
-
-    this.$emit('validate', {
-      sender: this,
-      on,
-      result,
-    });
-
-    return result;
+    return this._validate(on, value, Validation);
   },
   _onKeyUp($event) {
     this.validate('keyup');

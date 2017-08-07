@@ -8,6 +8,9 @@
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
+const Validation = require('../../../util/validation');
+const validationMixin = require('../../../util/validationMixin');
+const commonRule = require('../../../util/commonRule');
 
 /**
  * @class KLCheck
@@ -17,6 +20,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.checked=false]    <=> 多选按钮的选择状态。`false`表示未选，`true`表示已选，`null`表示半选。
  * @param {boolean}     [options.data.block=false]      => 是否以block方式显示
  * @param {boolean}     [options.data.readonly=false]   => 是否只读
+ * @param {boolean}     [options.data.hideTip=false]    => 是否显示校验错误信息
  * @param {boolean}     [options.data.disabled=false]   => 是否禁用
  * @param {boolean}     [options.data.visible=true]     => 是否显示
  * @param {string}      [options.data.class]            => 补充class
@@ -30,11 +34,17 @@ const KLCheck = Component.extend({
   config() {
     _.extend(this.data, {
       name: '',
+      rules: [],
+      tip: false,
+      hideTip: false,
+      state: '',
       checked: false,
       block: false,
+      required: false,
+      defaultRules: [],
     });
     this.supr();
-
+    this.initValidation();
     this.$watch('checked', function (newValue, oldValue) {
       if (oldValue === undefined) return;
 
@@ -48,6 +58,19 @@ const KLCheck = Component.extend({
         checked: newValue,
       });
     });
+    this.$watch('required', function (newValue) {
+      if (newValue) {
+        this.data.defaultRules.push(commonRule.checkRequired);
+      } else {
+        this.data.defaultRules = this.data.defaultRules.filter(
+          rule => rule.id !== 'check-required',
+        );
+      }
+    });
+  },
+  validate(on = '') {
+    const value = this.data.checked;
+    return this._validate(on, value, Validation);
   },
   /**
      * @method check(checked) 改变选中状态
@@ -56,6 +79,8 @@ const KLCheck = Component.extend({
      * @return {void}
      */
   check(_checked) {
+    this.data.state = '';
+    this.data.tip = '';
     if (this.data.readonly || this.data.disabled) return;
 
     let checked = _checked;
@@ -73,5 +98,6 @@ const KLCheck = Component.extend({
     });
   },
 });
+KLCheck.use(validationMixin);
 
 module.exports = KLCheck;

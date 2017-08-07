@@ -41,6 +41,7 @@ module.exports = {
   IMAGE_HEIGHT_ERROR: 'height error',
   IMAGE_SCALE_ERROR: 'scale error',
   PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
+  PLEASE_UPLOAD_ATMOST: 'Please upload at most',
   UNIT: '',
   FILE: 'file',
 };
