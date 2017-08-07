@@ -82,13 +82,13 @@ const TreeViewList = SourceComponent.extend({
      * @note 移交$ancestor处理
      */
   select(...args) {
-    this.$ancestor.select(args);
+    this.$ancestor.select(...args);
   },
   /**
      * @note 移给$ancestor处理
      */
   toggle(...args) {
-    this.$ancestor.toggle(args);
+    this.$ancestor.toggle(...args);
   },
   check() {
     this._setSelected({});
