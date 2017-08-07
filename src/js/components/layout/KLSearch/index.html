@@ -8,8 +8,8 @@
         <div class="f-fr">
             {#inc this.$footer.$body} 
             {#if isShowToggle}
-                <a href="javascript: void(0);" on-click={this.toggle()}>{toggleText}
-                    <i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
+                <a href="javascript: void(0);" on-click={this.toggle()}>
+                     {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
                 </a> 
             {/if}
         </div>
