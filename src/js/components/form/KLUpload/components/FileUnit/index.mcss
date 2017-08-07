@@ -137,7 +137,7 @@ $unit-length = 50;
                 }
             }
         }
-        .m-delete {
+        .m-remove {
             display: none;
             position: absolute;
             right: -6px;
@@ -152,7 +152,7 @@ $unit-length = 50;
             z-index: 5;
         }
         &:hover {
-            .m-delete {
+            .m-remove {
                 display: inline-block;
                 cursor: pointer;
             }
