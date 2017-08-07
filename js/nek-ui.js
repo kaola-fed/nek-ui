@@ -36010,7 +36010,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 456 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if this.$footer}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            {#inc this.$footer.$body} \n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>{toggleText}\n                    <i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if this.$footer}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            {#inc this.$footer.$body} \n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>\n                     {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 457 */
