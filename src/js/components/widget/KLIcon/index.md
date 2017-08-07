@@ -709,11 +709,12 @@ title: 图标
 <kl-icon fontSize=20 type="import" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="export" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="zoomin" on-click={this.copy($event)} />
-<kl-icon fontSize=20 type="rezoom" on-click={this.copy($event)} />
+<kl-icon fontSize=20 type="expand" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="delete" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="zoomout" on-click={this.copy($event)} />
-<kl-icon fontSize=20 type="rezoom2" on-click={this.copy($event)} />
+<kl-icon fontSize=20 type="rezoom" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="rotate_right" on-click={this.copy($event)} />
+<kl-icon fontSize=20 type="rotate_left" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="retry" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="warning" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="edit" on-click={this.copy($event)} />

@@ -9,8 +9,12 @@ $margin = 20;
             list-style: none;
         }
     }
-    .u-fileitem, u-input-wrapper {
+    .u-fileitem, .u-input-wrapper {
+        display: inline-block;
         vertical-align: top;
+    }
+    .u-fileitem {
+        width: $unit-length + px;
     }
     .m-files-zone {
        width: $unit-length * 2.5 + px;

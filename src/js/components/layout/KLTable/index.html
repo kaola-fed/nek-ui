@@ -1,12 +1,6 @@
 <div class="m-ui-table-wrap "
     ref="tableWrap"
     r-hide={!show}>
-
-    <!-- 读取内嵌模版 -->
-    <div ref="bodyContainer" style="display: none" >
-        {#include this.$body}
-    </div>
-
     <!-- 列表拖动标尺 -->
     <div ref="resizeProxy" class="u-resize-proxy" />
 
@@ -46,8 +40,11 @@
                 source={source}
                 sorting={sorting}
                 scrollYBar={scrollYBar}
+                checkAll={checkAll}
                 align={align}
+                placeholder={placeholder}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -79,6 +76,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onExpand($event)}/>
@@ -118,8 +116,11 @@
                 sorting={sorting}
                 source={source}
                 scrollYBar={scrollYBar}
+                checkAll={checkAll}
                 align={align}
+                placeholder={placeholder}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -131,6 +132,7 @@
         <div ref="bodyWrapFixed"
             class="ui_table_body"
             r-style={{
+                width: fixedTableWidth + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table-body
@@ -147,6 +149,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -181,6 +184,7 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
             r-style={{
+                width: fixedTableWidthRight + 'px',
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}
             >
@@ -196,8 +200,11 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                checkAll={checkAll}
+                placeholder={placeholder}
                 marginLeft={tableWidth - fixedTableWidthRight}
                 on-customevent={this._onCustomEvent($event)}
+                on-columnresize={this._onColumnResize($event)}
                 on-sort={this._onSort($event)}/>
         </div>
 
@@ -209,6 +216,7 @@
         <div ref="bodyWrapFixedRight"
             class="ui_table_body"
             r-style={{
+                width: fixedTableWidthRight + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
             }}>
             <table-body ref="tableBodyFixedRight"
@@ -225,6 +233,7 @@
                 source={source}
                 scrollYBar={scrollYBar}
                 align={align}
+                placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
                 on-customevent={this._onCustomEvent($event)}
                 on-expand={this._onFixedExpand($event)}/>
@@ -258,6 +267,10 @@
         <div r-style={{ width: tableWidth + 'px' }} />
     </div>
     {/if}
+
+    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->
+    {#include this.$body}
+
     {#if paging}
     <kl-pager
         position={paging.position || 'right'}
@@ -265,7 +278,6 @@
         step={paging.step}
         maxPageSize={paging.maxPageSize}
         disabled={paging.disabled}
-        visible={paging.visible}
         middle={paging.middle}
         side={paging.side}
         current={paging.current}

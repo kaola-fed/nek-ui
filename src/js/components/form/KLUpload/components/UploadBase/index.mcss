@@ -9,7 +9,7 @@
     .u-fileitem, u-input-wrapper {
         vertical-align: top;
     }
-    .u-input-wrapper {
+    .m-input-wrapper {
         display: inline-block;
         text-align: center;
         .u-input-btn {

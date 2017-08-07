@@ -16,19 +16,17 @@
     </colgroup>
 
     <thead class="tb_hd">
-        {#list headers as headerTr by headerTr_index}
+        {#list headers as headerRow by headerRow_index}
             <tr class="tb_hd_tr">
-                {#list headerTr as header by header_index}
-                    <th ref="table_th_{headerTr_index}_{header_index}"
+                {#list headerRow as header by header_index}
+                    <th ref="table_th_{headerRow_index}_{header_index}"
                         class="tb_hd_th {header.thClass}"
-                        r-class={{
-                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),
-                        }}
-                        colspan="{header.headerColSpan}"
-                        rowspan="{headers.length - headerTr_index - header.childrenDepth}"
-                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}
-                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}
-                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>
+                        colspan={header._headerColSpan}
+                        rowspan={header._headerRowSpan}
+                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}
+                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}
+                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}
+                        >
                         <div class="th_content f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
@@ -55,6 +53,9 @@
                                         <i class="u-icon u-icon-unsorted u-icon-1">
                                             <i class="u-icon u-icon-2 {header | sortingClass}"/>
                                         </i>
+                                    {/if}
+                                    {#if header.type === 'check' && header.enableCheckAll}
+                                        <kl-check name={header.name} checked={checkAll} />
                                     {/if}
                                 </span>
                             {/if}

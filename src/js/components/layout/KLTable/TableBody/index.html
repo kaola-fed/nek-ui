@@ -15,29 +15,27 @@
         {#if loading}
         <tr class="tb_bd_tr">
             <td class="tb_bd_td" colspan={_dataColumns.length}>
-                <kl-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...
+                <kl-loading visible={loading} static />&nbsp;{this.$trans('LOADING')}...
             </td>
         </tr>
 
         <!-- 内容 -->
         {#elseif source.length > 0}
         {#list source as item by item_index}
-        <tr class="tb_bd_tr {item.trClass}"
-            style="{item.trStyle || column.trStyle}"
+        <tr class="tb_bd_tr {item.rowClass || item.trClass}"
+            style="{item.rowStyle || item.trStyle}"
             r-class={{
                 'z-hover': item._hover
             }}
             on-mouseover={this._onTrHover($event, item)}
-            on-mouseout={this._onTrBlur($event, item)}>
+            on-mouseout={this._onTrBlur($event, item)} >
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {item.tdClass || column.tdClass}"
-                style="{item.tdStyle || column.tdStyle}"
+            <td class="tb_bd_td {item.unitClass || column.columnClass}"
+                style="{item.unitStyle || column.columnStyle}"
                 r-style={{
                     'text-align': column.align || align
                 }}
-                r-class={{
-                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)
-                }}>
+            >
                 <div class="tb_bd_td_div ">
                     {#if column.template}
                         {#include @(column.template)}
@@ -49,7 +47,7 @@
                         {#include this._getTypeTemplate(column)}
                     {#else}
                     <!-- deafult template -->
-                        <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>
+                        <span class="f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>
                     {/if}
                     {#if column.expandable}
                     <span class="u-expand-sign f-cursor-pointer"
