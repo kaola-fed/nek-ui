@@ -34,17 +34,14 @@ const KLSearch = Component.extend({
       showText: '展开',
       hideText: '收起',
       toggleText: '',
-      upOrDown: '',
     });
     this.data.toggleText = this.data.isShowMore ? this.data.hideText : this.data.showText;
-    this.data.upOrDown = this.data.isShowMore ? 'up' : 'down';
     this.supr();
   },
   toggle() {
-    const temp = this.data;
-    temp.isShowMore = !temp.isShowMore;
-    temp.toggleText = temp.toggleText === temp.showText ? temp.hideText : temp.showText;
-    temp.upOrDown = temp.upOrDown === 'down' ? 'up' : 'down';
+    const data = this.data;
+    data.isShowMore = !data.isShowMore;
+    data.toggleText = data.toggleText === data.showText ? data.hideText : data.showText;
   },
 });
 

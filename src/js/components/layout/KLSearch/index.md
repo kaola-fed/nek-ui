@@ -11,9 +11,31 @@ title: 筛选区
 
 ```xml
 <kl-search>
-    xxxxxxxxxx
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
     <kl-search-more>
-        更多
+        <kl-row>
+            <kl-col md="4" lg="4">
+                <kl-form-item labelSize="100" title="合同编号">
+                    <kl-input type="text"></kl-input>
+                </kl-form-item>
+            </kl-col>
+        </kl-row>
     </kl-search-more>
     <kl-search-footer>
         <kl-button type="secondary" title="查询"></kl-button>
@@ -30,7 +52,23 @@ title: 筛选区
 
 ```xml
 <kl-search isShowToggle={false}>
-    xxxxxxxxxx
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
     <kl-search-footer>
         <kl-button type="secondary" title="查询"></kl-button>
         <kl-button type="tertiary" title="重置"></kl-button>
@@ -46,9 +84,31 @@ title: 筛选区
 
 ```xml
 <kl-search showText="更多" hideText="隐藏">
-    xxxxxxxxxx
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
     <kl-search-more>
-        更多
+        <kl-row>
+            <kl-col md="4" lg="4">
+                <kl-form-item labelSize="100" title="合同编号">
+                    <kl-input type="text"></kl-input>
+                </kl-form-item>
+            </kl-col>
+        </kl-row>
     </kl-search-more>
     <kl-search-footer>
         <kl-button type="secondary" title="查询"></kl-button>

@@ -1,11 +1,17 @@
 <div class="{class}">
-    {#inc this.$body} {#if this.$more && isShowMore} {#inc this.$more.$body} {/if} {#if this.$footer}
+    {#inc this.$body} 
+    {#if this.$more && isShowMore} 
+        {#inc this.$more.$body} 
+    {/if} 
+    {#if this.$footer}
     <div class="f-cb">
         <div class="f-fr">
-            {#inc this.$footer.$body} {#if isShowToggle}
-            <a href="javascript: void(0);" on-click={this.toggle()}>{toggleText}
-                <i class="u-icon u-icon-angle-{upOrDown}"></i>
-            </a> {/if}
+            {#inc this.$footer.$body} 
+            {#if isShowToggle}
+                <a href="javascript: void(0);" on-click={this.toggle()}>{toggleText}
+                    <i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
+                </a> 
+            {/if}
         </div>
     </div>
     {/if}
