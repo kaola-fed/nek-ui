@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>面包屑 - nek-ui</title>
+        <title>筛选区 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="面包屑 - nek-ui">
+        <meta property="og:title" content="筛选区 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -95,7 +95,7 @@
                     
                 
                 <li>
-                    <a href="/components/layout_KLSearch_.html" class="sidebar-link">筛选区 KLSearch</a>
+                    <a href="/components/layout_KLSearch_.html" class="sidebar-link current">筛选区 KLSearch</a>
                 </li>
             
                 
@@ -227,7 +227,7 @@
                     
                 
                 <li>
-                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link current">面包屑 KLCrumb</a>
+                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
                 </li>
             
                 
@@ -325,22 +325,27 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第一级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第二级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第三级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span>&gt;</span>第四级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span>第五级目录<span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span>&gt;</span></div><div class="line">    xxxxxxxxxx</div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        更多</div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="基本形式（简版）"><a href="#基本形式（简版）" class="headerlink" title="基本形式（简版）"></a>基本形式（简版）</h3><!-- demo_start -->
+<h3 id="不显示“展开”切换开关"><a href="#不显示“展开”切换开关" class="headerlink" title="不显示“展开”切换开关"></a>不显示“展开”切换开关</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-crumb</span> <span class="attr">separator</span>=<span class="string">"/"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span>&gt;</span><span class="tag">&lt;<span class="name">kl-icon</span> <span class="attr">type</span>=<span class="string">"home2"</span> <span class="attr">color</span>=<span class="string">"#E31436"</span> /&gt;</span><span class="tag">&lt;/<span class="name">kl-crumb-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第一级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第二级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第三级目录"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第四级目录"</span> <span class="attr">href</span>=<span class="string">"http://www.kaola.com"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-crumb-item</span> <span class="attr">content</span>=<span class="string">"第五级目录"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-crumb</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">isShowToggle</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">    xxxxxxxxxx</div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="设置切换文字"><a href="#设置切换文字" class="headerlink" title="设置切换文字"></a>设置切换文字</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">showText</span>=<span class="string">"更多"</span> <span class="attr">hideText</span>=<span class="string">"隐藏"</span>&gt;</span></div><div class="line">    xxxxxxxxxx</div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        更多</div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLCrumb">KLCrumb</a></dt>
+<dt><a href="#KLSearch">KLSearch</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>KLCrumb     面包屑</p>
+<p>KLSearch     筛选区</p>
 </dd>
 </dl>
 
@@ -349,9 +354,9 @@
 <dd></dd>
 </dl>
 
-<p><a name="KLCrumb"></a></p>
-<h2 id="KLCrumb"><a href="#KLCrumb" class="headerlink" title="KLCrumb"></a>KLCrumb</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLCrumb_new"></a></p>
-<h3 id="new-KLCrumb"><a href="#new-KLCrumb" class="headerlink" title="new KLCrumb()"></a>new KLCrumb()</h3><table>
+<p><a name="KLSearch"></a></p>
+<h2 id="KLSearch"><a href="#KLSearch" class="headerlink" title="KLSearch"></a>KLSearch</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLSearch_new"></a></p>
+<h3 id="new-KLSearch"><a href="#new-KLSearch" class="headerlink" title="new KLSearch()"></a>new KLSearch()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -371,27 +376,32 @@
 <td>=&gt; 补充class</td>
 </tr>
 <tr>
-<td>[options.data.separator]</td>
-<td><code>string</code></td>
-<td>=&gt; 分隔符，支持模板</td>
+<td>[options.data.isShowMore]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 控制是否显示更多</td>
 </tr>
 <tr>
-<td>[options.data.class]</td>
-<td><code>string</code></td>
-<td>=&gt; kl-crumb-item的属性：补充class</td>
+<td>[options.data.isShowToggle]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 控制展示toggle文字，默认展示出来</td>
 </tr>
 <tr>
-<td>[options.data.href]</td>
+<td>[options.data.showText]</td>
 <td><code>string</code></td>
-<td>=&gt; kl-crumb-item的属性：传入的链接</td>
+<td>=&gt; 设置展开的文案，默认“展开”</td>
+</tr>
+<tr>
+<td>[options.data.hideText]</td>
+<td><code>string</code></td>
+<td>=&gt; 设置收起的文案，默认“收起”</td>
 </tr>
 </tbody>
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>KLCrumb     面包屑</p>
+<p>KLSearch     筛选区</p>
 <p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-zianecui-gmail-com"><a href="#Author-zianecui-gmail-com" class="headerlink" title="Author: zianecui@gmail.com"></a><strong>Author:</strong> zianecui@gmail.com</h2><p><a name="config"></a></p>
+<h2 id="Author-wangsong3635-outlook-com"><a href="#Author-wangsong3635-outlook-com" class="headerlink" title="Author: wangsong3635@outlook.com"></a><strong>Author:</strong> wangsong3635@outlook.com</h2><p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
@@ -400,14 +410,16 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-crumb separator="/">
-    <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
-    <kl-crumb-item>第一级目录</kl-crumb-item>
-    <kl-crumb-item>第二级目录</kl-crumb-item>
-    <kl-crumb-item>第三级目录</kl-crumb-item>
-    <kl-crumb-item href="http://www.kaola.com">第四级目录</kl-crumb-item>
-    <kl-crumb-item>第五级目录</kl-crumb-item>
-</kl-crumb>
+<kl-search>
+    xxxxxxxxxx
+    <kl-search-more>
+        更多
+    </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -417,14 +429,32 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-crumb separator="/">
-    <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
-    <kl-crumb-item content="第一级目录" />
-    <kl-crumb-item content="第二级目录" />
-    <kl-crumb-item content="第三级目录" />
-    <kl-crumb-item content="第四级目录" href="http://www.kaola.com" />
-    <kl-crumb-item content="第五级目录" />
-</kl-crumb>
+<kl-search isShowToggle={false}>
+    xxxxxxxxxx
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-search showText="更多" hideText="隐藏">
+    xxxxxxxxxx
+    <kl-search-more>
+        更多
+    </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -435,8 +465,10 @@ var index = 0;
 
     <div class="guide-links">
       
+        <span>← <a href="/components/layout_KLRow_.html">栅格布局</a></span>
       
-        <span style="float:right"><a href="/components/navigation_KLMenu_.html">两级菜单</a> →</span>
+      
+        <span style="float:right"><a href="/components/layout_KLTable_.html">表格</a> →</span>
       
     </div>
     <div class="footer">

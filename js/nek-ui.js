@@ -96,7 +96,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLText: __webpack_require__(355),
 	  KLTextArea: __webpack_require__(357),
 	  KLUpload: __webpack_require__(359),
-	  KLTreeView: __webpack_require__(190),
 
 	  // Navigation
 	  KLSidebar: __webpack_require__(388),
@@ -130,7 +129,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLRow: __webpack_require__(448),
 	  KLCol: __webpack_require__(450),
 	  KLCard: __webpack_require__(452),
-	  KLCardTools: __webpack_require__(454)
+	  KLCardTools: __webpack_require__(454),
+	  KLSearch: __webpack_require__(455),
+	  KLSearchMore: __webpack_require__(457),
+	  KLSearchFooter: __webpack_require__(458)
 	};
 
 	backward(Components);
@@ -8154,7 +8156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 189 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <kl-tree-view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <tree-view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 190 */
@@ -8198,7 +8200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}    [options.service]                       @=> 数据服务
 	 */
 	var TreeView = SourceComponent.extend({
-	  name: 'kl-tree-view',
+	  name: 'tree-view',
 	  template: template,
 	  /**
 	     * @protected
@@ -8245,7 +8247,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.data.multiple) return item.selected = !item.selected;
 
 	    this.data.selected = item;
-	    this.toggle(item);
 	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
@@ -8406,18 +8407,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @note 移交$ancestor处理
 	     */
 	  select: function select() {
-	    var _$ancestor;
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
 
-	    (_$ancestor = this.$ancestor).select.apply(_$ancestor, arguments);
+	    this.$ancestor.select(args);
 	  },
 
 	  /**
 	     * @note 移给$ancestor处理
 	     */
 	  toggle: function toggle() {
-	    var _$ancestor2;
+	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      args[_key2] = arguments[_key2];
+	    }
 
-	    (_$ancestor2 = this.$ancestor).toggle.apply(_$ancestor2, arguments);
+	    this.$ancestor.toggle(args);
 	  },
 	  check: function check() {
 	    this._setSelected({});
@@ -8461,7 +8466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 193 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
+	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree.view.list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
 
 /***/ }),
 /* 194 */
@@ -35947,6 +35952,150 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 		module.exports = KLCardTools;
+
+/***/ }),
+/* 455 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearch     筛选区
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(456);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLSearch
+	 * @extend Component
+	 * @param {object}          [options.data]                       = 绑定属性
+	 * @param {string}          [options.data.class]                 => 补充class
+	 * @param {boolean}          [options.data.isShowMore]           => 控制是否显示更多
+	 * @param {boolean}          [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
+	 * @param {string}          [options.data.showText]              => 设置展开的文案，默认“展开”
+	 * @param {string}          [options.data.hideText]              => 设置收起的文案，默认“收起”
+	 */
+	var KLSearch = Component.extend({
+	  name: 'kl-search',
+	  template: template,
+	  $more: null,
+	  $footer: null,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      isShowMore: false,
+	      isShowToggle: true,
+	      showText: '展开',
+	      hideText: '收起',
+	      toggleText: '',
+	      upOrDown: ''
+	    });
+	    this.data.toggleText = this.data.isShowMore ? this.data.hideText : this.data.showText;
+	    this.data.upOrDown = this.data.isShowMore ? 'up' : 'down';
+	    this.supr();
+	  },
+	  toggle: function toggle() {
+	    var temp = this.data;
+	    temp.isShowMore = !temp.isShowMore;
+	    temp.toggleText = temp.toggleText === temp.showText ? temp.hideText : temp.showText;
+	    temp.upOrDown = temp.upOrDown === 'down' ? 'up' : 'down';
+	  }
+	});
+
+		module.exports = KLSearch;
+
+/***/ }),
+/* 456 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} {#if this.$more && isShowMore} {#inc this.$more.$body} {/if} {#if this.$footer}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            {#inc this.$footer.$body} {#if isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()}>{toggleText}\n                <i class=\"u-icon u-icon-angle-{upOrDown}\"></i>\n            </a> {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
+
+/***/ }),
+/* 457 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearchMore     筛选区的更多区域
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLSearch = __webpack_require__(455);
+
+	/**
+	 * @class KLSearchMore
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var KLSearchMore = Component.extend({
+	  name: 'kl-search-more',
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLSearch) {
+	      this.$outer.$more = this;
+	    }
+	  }
+	});
+
+		module.exports = KLSearchMore;
+
+/***/ }),
+/* 458 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearchFooter     筛选区的操作区域
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLSearch = __webpack_require__(455);
+
+	/**
+	 * @class KLSearchFooter
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var KLSearchFooter = Component.extend({
+	  name: 'kl-search-footer',
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLSearch) {
+	      this.$outer.$footer = this;
+	    }
+	  }
+	});
+
+		module.exports = KLSearchFooter;
 
 /***/ })
 /******/ ])
