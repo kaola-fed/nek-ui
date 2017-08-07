@@ -130,7 +130,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLRow: __webpack_require__(448),
 	  KLCol: __webpack_require__(450),
 	  KLCard: __webpack_require__(452),
-	  KLCardTools: __webpack_require__(454)
+	  KLCardTools: __webpack_require__(454),
+	  KLSearch: __webpack_require__(455),
+	  KLSearchMore: __webpack_require__(457),
+	  KLSearchFooter: __webpack_require__(458)
 	};
 
 	backward(Components);
@@ -36003,6 +36006,147 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 		module.exports = KLCardTools;
+
+/***/ }),
+/* 455 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearch     筛选区
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(456);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLSearch
+	 * @extend Component
+	 * @param {object}          [options.data]                       = 绑定属性
+	 * @param {string}          [options.data.class]                 => 补充class
+	 * @param {boolean}          [options.data.isShowMore]           => 控制是否显示更多
+	 * @param {boolean}          [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
+	 * @param {string}          [options.data.showText]              => 设置展开的文案，默认“展开”
+	 * @param {string}          [options.data.hideText]              => 设置收起的文案，默认“收起”
+	 */
+	var KLSearch = Component.extend({
+	  name: 'kl-search',
+	  template: template,
+	  $more: null,
+	  $footer: null,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      isShowMore: false,
+	      isShowToggle: true,
+	      showText: '展开',
+	      hideText: '收起',
+	      toggleText: ''
+	    });
+	    this.data.toggleText = this.data.isShowMore ? this.data.hideText : this.data.showText;
+	    this.supr();
+	  },
+	  toggle: function toggle() {
+	    var data = this.data;
+	    data.isShowMore = !data.isShowMore;
+	    data.toggleText = data.toggleText === data.showText ? data.hideText : data.showText;
+	  }
+	});
+
+		module.exports = KLSearch;
+
+/***/ }),
+/* 456 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if this.$footer}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            {#inc this.$footer.$body} \n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>\n                     {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
+
+/***/ }),
+/* 457 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearchMore     筛选区的更多区域
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLSearch = __webpack_require__(455);
+
+	/**
+	 * @class KLSearchMore
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var KLSearchMore = Component.extend({
+	  name: 'kl-search-more',
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLSearch) {
+	      this.$outer.$more = this;
+	    }
+	  }
+	});
+
+		module.exports = KLSearchMore;
+
+/***/ }),
+/* 458 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLSearchFooter     筛选区的操作区域
+	 * @author   wangsong3635@outlook.com
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var _ = __webpack_require__(72);
+	var KLSearch = __webpack_require__(455);
+
+	/**
+	 * @class KLSearchFooter
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.class]              => 补充class
+	 */
+	var KLSearchFooter = Component.extend({
+	  name: 'kl-search-footer',
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {});
+	    this.supr();
+
+	    if (this.$outer && this.$outer instanceof KLSearch) {
+	      this.$outer.$footer = this;
+	    }
+	  }
+	});
+
+		module.exports = KLSearchFooter;
 
 /***/ })
 /******/ ])
