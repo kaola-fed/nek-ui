@@ -1511,6 +1511,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+	    var _data2 = this.data,
+	        readonly = _data2.readonly,
+	        disabled = _data2.disabled;
+	    // 如果是readonly或者disabled状态, 无需验证
+
+	    if (readonly || disabled) {
+	      return {
+	        success: true
+	      };
+	    }
 
 	    var value = this.data.value || this.data.value === 0 ? '' + this.data.value : '';
 	    var rules = this.data.rules;
@@ -1542,7 +1552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	     * 1. type=char时,去除前后的空格;
 	     * 2. type=int/float时, 只能输入对应类型的数字;
-	     **/
+	     * */
 	  __valueFilter: function __valueFilter(_value) {
 	    var type = this.data.type;
 
@@ -9928,7 +9938,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 214 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n  <div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}\n</label>"
+	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n<div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}</label>"
 
 /***/ }),
 /* 215 */
@@ -10040,6 +10050,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @return {object} result 结果
 	     */
 	  validate: function validate() {
+	    var data = this.data;
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
+
 	    var source = this.data.source;
 	    var result = { success: true, message: '' };
 	    var required = this.data.required;
@@ -10348,6 +10366,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate(on) {
 	    var data = this.data;
 	    var date = data.date || '';
+
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
 
 	    var result = date ? Validation.validate(date.toString(), [{ type: 'isDate', message: '请填写' }]) : { success: false };
 	    if (data.required && !result.success) {
@@ -26829,6 +26854,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var result = { success: true, message: '' };
 	    var selected = data.selected;
 
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
+
 	    if (data.required && !selected) {
 	      result.success = false;
 	      result.message = this.data.message || this.$trans('PLEASE_SELECT');
@@ -26857,7 +26889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 341 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div>{item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 342 */
@@ -27129,6 +27161,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  validate: function validate(on) {
 	    var data = this.data;
+
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
 
 	    var result = { success: true, message: '' };
 	    var value = this.data.value;
@@ -27574,8 +27613,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    if (parseInt(newValue)) {
-	      ele.style.lineHeight = parseInt(newValue) + 'px';
+	    if (!isNaN(newValue)) {
+	      ele.style.lineHeight = newValue;
 	    } else {
 	      ele.style.lineHeight = '';
 	      ele.classList.remove(oldValue);
@@ -27724,7 +27763,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var source = data.source;
 	      var key = data.key;
 	      if (newValue === undefined || newValue === null) {
-	        return data.selected = newValue;
+	        data.selected = newValue;
+	        return;
 	      }
 
 	      if (source) {
@@ -27745,7 +27785,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.$watch('source', function (newValue) {
 	      if (newValue === undefined) {
-	        return data.selected = undefined;
+	        data.selected = undefined;
+	        return;
 	      }
 
 	      if (!(newValue instanceof Array)) {
@@ -27918,6 +27959,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  validate: function validate(on) {
 	    var data = this.data;
+
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
 
 	    var result = { success: true, message: '' };
 	    var value = this.data.value;
@@ -28337,8 +28385,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-	    var value = this.data.value;
-	    var rules = this.data.rules;
+	    var data = this.data;
+	    // 如果是readonly或者disabled状态, 无需验证
+	    if (data.readonly || data.disabled) {
+	      return {
+	        success: true
+	      };
+	    }
+
+	    var value = data.value;
+	    var rules = data.rules;
 
 	    rules = rules.filter(function (rule) {
 	      return (rule.on || '').indexOf(on) >= 0;
