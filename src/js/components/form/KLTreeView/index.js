@@ -5,11 +5,11 @@
  * ------------------------------------------------------------
  */
 
-const SourceComponent = require('../../../../ui-base/sourceComponent');
+const SourceComponent = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
-const _ = require('../../../../ui-base/_');
+const _ = require('../../../ui-base/_');
 
-require('../TreeViewList');
+require('../common/TreeViewList');
 
 /**
  * @class TreeView
@@ -34,7 +34,7 @@ require('../TreeViewList');
  * @param {object}    [options.service]                       @=> 数据服务
  */
 const TreeView = SourceComponent.extend({
-  name: 'tree-view',
+  name: 'kl-tree-view',
   template,
   /**
      * @protected
@@ -81,6 +81,7 @@ const TreeView = SourceComponent.extend({
     if (this.data.multiple) return (item.selected = !item.selected);
 
     this.data.selected = item;
+    this.toggle(item);
     /**
          * @event select 选择某一项时触发
          * @property {object} sender 事件发送对象
