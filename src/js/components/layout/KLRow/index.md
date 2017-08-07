@@ -137,3 +137,18 @@ title: 栅格布局
 </kl-row>
 ```
 <!-- demo_end -->
+
+### 响应式布局
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-row>
+    <kl-col xs="{{span:1,offset:0}}" sm="{{span:3,offset:0}}" md="{{span:4,offset:0}}" lg="{{span:5,offset:0}}"><div class="u-gridContent u-gridContent-3"></div></kl-col>
+    <kl-col xs="1" sm="3" md="3" lg="2"><div class="u-gridContent u-gridContent-2"></div></kl-col>
+    <kl-col xs="4" sm="3" md="3" lg="2"><div class="u-gridContent u-gridContent-3"></div></kl-col>
+    <kl-col xs="6" sm="3" md="2" lg="3"><div class="u-gridContent u-gridContent-2"></div></kl-col>
+</kl-row>
+```
+<!-- demo_end -->
