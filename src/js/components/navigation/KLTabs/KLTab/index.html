@@ -1,0 +1,7 @@
+{#if this.$outer.data.fresh}
+{#if this.$outer.data.selected === this}
+<div>{#inc this.$body}</div>
+{/if}
+{#else}
+<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>
+{/if}

@@ -19,6 +19,8 @@ const tpl = require('./index.html');
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  * @param {array}             [options.data.columns]              => 列配置
  * @param {string}            [optiosn.data.align='center']       => 文字对齐
+ * @param {number}            [optiosn.data.defaultsColWidth=100] => 默认列宽
+ * @param {number}            [optiosn.data.minColWidth=30]       => 最小列宽
  */
 
 /**
@@ -96,6 +98,8 @@ const KLTable = Component.extend({
       placeholder: '-',
       checkAll: false,
       initFinished: false,
+      defaultsColWidth: 100,
+      minColWidth: 30,
     });
     this.supr(data);
 
@@ -115,6 +119,7 @@ const KLTable = Component.extend({
       self._updateParentWidth();
       self._updateViewWidth();
       self._initTableWidth();
+      self._updateSticky();
       self._getHeaderHeight();
       setTimeout(() => {
         self._updateTableWidth();
@@ -132,7 +137,7 @@ const KLTable = Component.extend({
     const tableWidth = data.parentWidth;
     let customWidthCount = 0;
     data._customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
-      const width = parseInt(current.width);
+      const width = Number((+current.width).toFixed(2));
       if (width) {
         customWidthCount += 1;
         return previous + width;
@@ -145,10 +150,10 @@ const KLTable = Component.extend({
       (tableViewWidth - data._customColumnWidthTotal) /
         (_dataColumns.length - customWidthCount),
     );
-    autoWidth = autoWidth > 0 ? autoWidth : 100;
+    autoWidth = autoWidth > 0 && autoWidth >= data.minColWidth ? autoWidth : data.defaultsColWidth;
 
     _dataColumns.forEach((dataColumn) => {
-      dataColumn._width = parseInt(dataColumn.width || autoWidth);
+      dataColumn._width = Number((+dataColumn.width || +autoWidth).toFixed(2));
       return dataColumn;
     });
 
@@ -166,10 +171,10 @@ const KLTable = Component.extend({
 
     this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 300);
+    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 300);
     this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
 
-    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 300);
+    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 50);
     window.addEventListener('resize', this._onWindowResize);
 
     this._watchWidthChange();
@@ -220,13 +225,16 @@ const KLTable = Component.extend({
       return;
     }
     const _newVal = newVal;
-    const _oldVal = oldVal || this.data.tableWidth;
-    const customColumnWidthTotal = this.data._customColumnWidthTotal;
+    const data = this.data;
+    const _oldVal = oldVal || data.tableWidth;
+    const customColumnWidthTotal = data._customColumnWidthTotal;
     let ratio = 0;
-    if (_newVal !== 0 && _oldVal !== 0) {
+    // 仅在可视宽度比表格主体宽时进行缩放
+    if (_newVal !== 0 && _oldVal !== 0 && data.tableWidth <= _oldVal && data.tableWidth <= _newVal) {
       ratio = (_newVal - customColumnWidthTotal) / (_oldVal - customColumnWidthTotal);
     }
     this._updateTableWidth(ratio);
+    this._updateSticky();
     this._updateFixedRight();
   },
   _onTableWidthChange() {
@@ -238,7 +246,7 @@ const KLTable = Component.extend({
       self._updateSticky();
     }, 500);
   },
-  _onWinodwScroll() {
+  _onWindowScroll() {
     if (!this.$refs || !this._isShow()) {
       return;
     }
@@ -246,6 +254,11 @@ const KLTable = Component.extend({
   },
   _updateSticky() {
     const data = this.data;
+    if (data.parentWidth === 0) {
+      data.stickyHeaderActive = false;
+      data.stickyFooterActive = false;
+      return;
+    }
     if (!data.stickyHeader && !data.stickyFooter) {
       return;
     }
@@ -424,12 +437,13 @@ const KLTable = Component.extend({
     _dataColumns.forEach((column) => {
       // 更新列宽
       if (!column._width) {
-        column._width = column.width || 100;
+        column._width = column.width || data.defaultsColWidth;
       }
 
       // 没有指定宽度的按比例缩放宽度
       if (ratio !== 1 && !column.width) {
-        column._width = Math.floor(column._width * ratio);
+        const expandedWidth = Number((column._width * ratio).toFixed(2));
+        column._width = expandedWidth > data.minColWidth ? expandedWidth : data.minColWidth;
       }
 
       // 计算表格宽度
@@ -447,6 +461,7 @@ const KLTable = Component.extend({
       }
     });
 
+
     this._updateData('fixedCol', fixedCol);
     this._updateData('fixedTableWidth', fixedTableWidth);
     this._updateData('fixedColRight', fixedColRight);
@@ -463,9 +478,8 @@ const KLTable = Component.extend({
     if (!this.$refs || !this._isShow()) {
       return;
     }
-    this.$update('viewWidth', this.$refs.table.offsetWidth);
+    this._updateViewWidth();
     this._updateParentWidth();
-    this._updateTableWidth();
   },
   _onBodyScroll(host) {
     if (!this._isShow()) {
@@ -594,7 +608,7 @@ const KLTable = Component.extend({
   },
   removeEventListener() {
     clearInterval(this.data._quickTimer);
-    window.document.removeEventListener('scroll', this._onWinodwScroll);
+    window.document.removeEventListener('scroll', this._onWindowScroll);
     window.removeEventListener('resize', this._onWindowResize);
   },
 })

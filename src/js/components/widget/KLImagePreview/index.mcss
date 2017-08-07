@@ -1,4 +1,18 @@
+$w = 1366;
+$h = 660;
+
+$px2w = ($px) {
+  @return $px / $w * 100%;
+}
+
+$px2h = ($px) {
+  @return $px / $h * 100%;
+}
+
 .m-image-preview {
+    ul {
+        padding: 0;
+    }
     position: fixed;
     top: 0;
     left: 0;
@@ -13,18 +27,18 @@
         right: 0;
         bottom: 0;
         margin: auto;
-        width: 1366px;
-        height: 660px;
+        width: $px2w(1366);
+        height: $px2h(660);
         box-shadow: 0px 0px 10px 0 rgba(0,0,0,0.5);
         .m-panel-close, .u-pre-btn, .u-next-btn {
             cursor: pointer;
         }
         .m-panel-close {
             position: absolute;
-            right: 13px;
-            top: 13px;
-            width: 24px;
-            height: 24px;
+            right: 26px;
+            top: 26px;
+            width: 26px;
+            height: 26px;
             background: #fff;
             box-shadow: 0 0 1px 0;
             border-radius: 100px;
@@ -61,7 +75,7 @@
                 position: absolute;
                 width: 55px;
                 height: 55px;
-                top: 275px;
+                top: $px2h(300);
                 border-radius: 100px;
                 background: rgba(0,0,0,0.6);
                 z-index: 5;
@@ -118,9 +132,9 @@
             }
             .m-image-list {
                 position: relative;
-                width: 500px;
-                height: 500px;
-                margin: 50px auto 25px;
+                width: $px2w(500 / 0.7);
+                height: $px2w(500 * $w / $h);
+                margin: $px2h(50) auto $px2h(25);
                 overflow: hidden;
                 .m-image-item {
                     position: absolute;
@@ -144,7 +158,7 @@
             }
             .m-btn-group {
                 position: relative;
-                width: 300px;
+                width: 350px;
                 height: 50px;
                 margin: 0 auto;
                 background: rgba(0,0,0,0.6);
@@ -160,7 +174,8 @@
                     position: relative;
                     display: inline-block;
                     width: 30px;
-                    height: 55%;
+                    height: 28px;
+                    line-height: 28px;
                     margin-left: 20px;
                     vertical-align: middle;
                     text-align: center;
@@ -174,7 +189,6 @@
                         position: absolute;
                         font-style: normal;
                         font-size: 14px;
-                        top: 4px;
                         right: -45px;
                         text-align: center;
                     }
@@ -196,7 +210,7 @@
             background: rgba(0,0,0,0.6);
             .u-image-name {
                 margin: 0 auto;
-                margin-top: 70px;
+                margin-top: $px2h(80);
                 height: 25px;
                 width: 90%;
                 font-size: 16px;
@@ -284,9 +298,9 @@
             transition: opacity 300ms;
             .m-image-wrapper {
                 position: relative;
-                width: 500px;
-                height: 500px;
-                margin: 50px auto 25px;
+                width: $px2w(500 / 0.7);
+                height: $px2h(500);
+                margin: $px2h(50) auto $px2h(25);
                 text-align: center;
                 cursor: -webkit-grab;
                 transition: all .3s ease-in-out;

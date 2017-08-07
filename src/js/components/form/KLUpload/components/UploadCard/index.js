@@ -5,9 +5,8 @@
  */
 
 const _ = require('../../../../../ui-base/_');
-const FileUnit = require('../FileUnit');
+const utils = require('../../utils');
 const UploadBase = require('../UploadBase');
-const ImagePreview = require('../ImagePreview');
 const tpl = require('./index.html');
 
 /**
@@ -16,100 +15,183 @@ const tpl = require('./index.html');
  */
 
 const UploadCard = UploadBase.extend({
-  name: 'upload-card',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+  computed: {
+    entryFileInfo: {
+      get() {
+        const lastFileUnit = this.data.fileUnitList.slice(-1)[0];
+        return {
+          name: (lastFileUnit && lastFileUnit.name) || '',
+          type: (lastFileUnit && lastFileUnit.type) || '',
+          src: (lastFileUnit && lastFileUnit.url) || '',
+        };
+      },
+    },
+
+    fileUnitListWidth: {
+      get() {
+        const data = this.data;
+        const fileUnitWidth = data.fileUnitWidth;
+        const fileUnitMargin = data.fileUnitMargin;
+        let numPerline = data.numPerline;
+
+        if (!isFinite(numPerline)) {
+          data.numPerline = 5;
+          numPerline = data.numPerline;
+        }
+
+        return (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
+      },
+    },
+  },
   config(data) {
+    this.supr(data);
+
     _.extend(data, {
-      status: 'uploaded',
+      status: 'success',
       info: '',
+      numPerline: 5,
+      fileUnitWidth: 50,
+      fileUnitMargin: 25,
       fileUnitListPadding: 22,
     });
-
-    this.supr(data);
   },
 
   init(data) {
-    this.initFilesZone();
+    this.initFilesZone(data);
+
     this.supr(data);
   },
 
-  initFilesZone() {
-    const data = this.data;
-    const numPerline = data.numPerline;
-    const fileUnitWidth = data.fileUnitWidth;
-    const fileUnitMargin = data.fileUnitMargin;
-
+  initFilesZone(data) {
     data.filesWrapper = this.$refs.fileswrapper;
-    data.fileUnitListWidth =
-      (fileUnitWidth * numPerline) + (fileUnitMargin * (numPerline - 1));
-  },
-
-  onDragEnter(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDragOver(e) {
-    e.stopPropagation();
-    e.preventDefault();
-  },
-
-  onDrop(e) {
-    e.stopPropagation();
-    e.preventDefault();
-
-    if (!this.data.drag) {
-      return;
-    }
-
-    const dt = e.event && e.event.dataTransfer;
-    const files = dt.files;
-
-    this.handleFiles(files);
-  },
-
-  fileSelect() {
-    const inputNode = this.$refs.file;
-    const files = inputNode.files;
-
-    this.handleFiles(files);
-
-    inputNode.value = '';
   },
 
   handleFiles(files) {
-    const data = this.data;
-    const len = files.length;
-    let index = 0;
-    let file;
-    let fileunit;
-
     this.toggle(false);
 
-    const options = this.setOptions(data);
+    const self = this;
+    const data = this.data;
 
     data.preCheckInfo = '';
 
-    for (; index < len; index += 1) {
-      if (data.fileUnitList.length < data.numLimit) {
-        file = files[index];
-        data.preCheckInfo = this.preCheck(file);
-        if (!data.preCheckInfo) {
-          fileunit = this.createFileUnit({
-            file,
-            options,
-            deletable: data.deletable,
-          });
-          fileunit.flag = 'ADDED';
-          data.fileUnitList.push({
-            inst: fileunit,
-          });
-          this.updateFilesZone();
-        }
+    const fileList = [].slice.call(files);
+    fileList.forEach((file) => {
+      if (data.fileUnitList.length < data.numMax) {
+        const checker = self.preCheck(file);
+        checker.then((preCheckInfo) => {
+          data.preCheckInfo = preCheckInfo;
+          self.$update();
+          if (!data.preCheckInfo) {
+            const fileunit = {
+              rawFile: file,
+              name: file.name,
+              url: window.URL.createObjectURL(file),
+              type: self.getFileType(file),
+              flag: 'ADDED',
+              uid: utils.genUid(),
+              status: 'ready',
+            };
+            data.fileUnitList.push(fileunit);
+            self.updateFilesZone();
+            self.$update();
+          }
+        });
       }
+    });
+
+    this.updateList();
+  },
+
+  onProgress(info) {
+    const curFile = info.file;
+    const data = this.data;
+    let curIndex = -1;
+    let lastIndex = -1;
+
+    data.fileUnitList.forEach((item, index) => {
+      if (item.status === 'uploading') {
+        lastIndex = index;
+      }
+
+      if (item.rawFile === curFile) {
+        curIndex = index;
+      }
+    });
+
+    if (curIndex >= lastIndex && data.status !== 'fail') {
+      data.status = 'uploading';
+      data.progress = info.progress;
+      this.$update();
     }
 
-    this.updateFileList();
+    this.supr(info);
+  },
+
+  onSuccess(info) {
+    const data = this.data;
+    let allUploaded = true;
+    let hasFailed = false;
+    data.fileUnitList.forEach((item) => {
+      allUploaded = allUploaded && item.status === 'success';
+      hasFailed = hasFailed || item.status === 'fail';
+    });
+
+    if (allUploaded) {
+      data.status = 'success';
+    } else if (hasFailed) {
+      data.status = 'fail';
+    }
+
+    this.supr(info);
+  },
+
+  onError(info) {
+    const data = this.data;
+    data.status = 'fail';
+    data.info = this.$trans('UPLOAD_FAIL');
+
+    this.supr(info);
+  },
+
+  onRemove(info) {
+    const self = this;
+    const inst = info.sender;
+    const file = info.file;
+    self.toggle(false);
+    file.destroyed = true;
+
+    if (file.flag === 'ORIGINAL') {
+      file.flag = 'DELETED';
+    }
+    inst.destroy();
+    self.updateList();
+    this.$emit(
+        'remove',
+        _.extend(info, {
+          fileList: this.data.fileList,
+        }),
+    );
+
+    self.updateFilesZone();
+    resetStatus();
+
+    function resetStatus() {
+      let allUploaded = true;
+      let hasFailed = false;
+      self.data.fileUnitList.forEach((item) => {
+        allUploaded = allUploaded && item.status === 'success';
+        hasFailed = hasFailed || item.status === 'fail';
+      });
+
+      if (allUploaded) {
+        self.data.status = 'success';
+      } else if (hasFailed) {
+        self.data.status = 'fail';
+      }
+
+      self.$update();
+    }
   },
 
   updateFilesZone() {
@@ -118,201 +200,34 @@ const UploadCard = UploadBase.extend({
     const entryWrapper = this.$refs.entrywrapper;
     const inputWrapper = this.$refs.inputwrapper;
 
-    if (data.fileUnitList.length < data.numLimit) {
+    if (data.fileUnitList.length < data.numMax) {
       filesZone.style.width = '125px';
       entryWrapper.style['margin-right'] = '20px';
       inputWrapper.style.display = 'inline-block';
-    } else if (data.fileUnitList.length === data.numLimit) {
+    } else if (data.fileUnitList.length === data.numMax) {
       filesZone.style.width = '50px';
       entryWrapper.style['margin-right'] = '0';
       inputWrapper.style.display = 'none';
     }
   },
 
-  createFileUnit(data) {
-    const self = this;
-    const imagePreviewWrapper = this.$refs.imagepreview;
-    const fileunit = new FileUnit({ data });
-
-    fileunit.$on('preview', previewCb);
-
-    function previewCb() {
-      const current = this;
-
-      function filterImgFile(file) {
-        return file.inst.data.type === 'IMAGE';
-      }
-
-      function mapHelper(img) {
-        if (current === img.inst) {
-          img.inst.current = true;
-        }
-        return img.inst;
-      }
-
-      const imgList = self.data.fileUnitList
-        .filter(filterImgFile)
-        .map(mapHelper);
-
-      const preview = createImagePreview(imgList);
-
-      preview.$inject(imagePreviewWrapper);
-    }
-
-    function createImagePreview(imgFileList) {
-      function findHelper(img) {
-        return img.current;
-      }
-      const curIndex = imgFileList.findIndex(findHelper);
-
-      function mapHelper(img) {
-        delete img.current;
-        return {
-          src: img.data.src,
-          name: img.data.name,
-          status: img.data.status,
-        };
-      }
-      const imgList = imgFileList.map(mapHelper);
-
-      const imagePreview = new ImagePreview({
-        data: {
-          imgList,
-          curIndex,
-        },
-      });
-
-      imagePreview.$on('delete', (imgInfo) => {
-        const index = imgInfo.index;
-        const imgInst = imgFileList[index];
-
-        if (imgInst) {
-          imgInst.$emit('delete');
-        }
-      });
-
-      imagePreview.$on('$destroy', () => {
-        imgFileList.splice(0);
-      });
-
-      return imagePreview;
-    }
-
-    fileunit.$on('progress', progressCb);
-
-    function progressCb(info) {
-      const curInst = this;
-      let curIndex = -1;
-      let lastIndex = -1;
-
-      self.data.fileUnitList.forEach((item, index) => {
-        if (item.inst.data.status === 'uploading') {
-          lastIndex = index;
-        }
-        if (item.inst === curInst) {
-          curIndex = index;
-        }
-      });
-
-      if (curIndex >= lastIndex && self.data.status !== 'failed') {
-        self.data.status = 'uploading';
-        self.data.progress = info.progress;
-        self.$update();
-      }
-    }
-
-    fileunit.$on('onload', successCb);
-    // fileunit.$on('success', successCb);
-
-    function successCb() {
-      let allUploaded = true;
-      let hasFailed = false;
-      self.data.fileUnitList.forEach((item) => {
-        allUploaded = allUploaded && item.inst.data.status === 'uploaded';
-        hasFailed = hasFailed || item.inst.data.status === 'failed';
-      });
-      if (allUploaded) {
-        self.data.status = 'uploaded';
-      } else if (hasFailed) {
-        self.data.status = 'failed';
-      }
-      self.$update();
-      self.updateFileList();
-    }
-
-    fileunit.$on('error', () => {
-      self.data.status = 'failed';
-      self.data.info = self.$trans('UPLOAD_FAIL');
-      self.$update();
-    });
-
-    fileunit.$on('delete', function () {
-      if (this.flag === 'ORIGINAL') {
-        this.flag = 'DELETED';
-        this.file = this.data.file;
-      }
-      this.destroy();
-    });
-
-    fileunit.$on('$destroy', function () {
-      self.toggle(false);
-      this.destroyed = true;
-      this.$off('preview', previewCb);
-      this.$off('onload', successCb);
-      self.updateFileList();
-      self.updateFilesZone();
-      resetStatus();
-    });
-
-    function resetStatus() {
-      successCb();
-    }
-
-    return fileunit;
-  },
-
-  updateFileList() {
-    this.supr();
-    this.$update();
-  },
-
-  createFileUnitWrapper(parent, index) {
-    const wrapper = document.createElement('li');
-
-    parent.appendChild(wrapper);
-
-    this.setFileUnitWrapperStyle(wrapper, index);
-
-    return wrapper;
-  },
-
-  setFileUnitWrapperStyle(wrapper, index) {
-    const data = this.data;
-    const numPerline = data.numPerline;
-    const fileUnitWidth = data.fileUnitWidth;
-    const fileUnitMargin = data.fileUnitMargin;
-
-    wrapper.className = 'u-fileitem';
-    wrapper.style.display = 'inline-block';
-    wrapper.style.width = `${fileUnitWidth}px`;
-
-    if (index && index % numPerline) {
-      wrapper.style.marginLeft = `${fileUnitMargin}px`;
-    }
-  },
-
   uploadFiles() {
+    const self = this;
     const data = this.data;
     const fileUnitList = data.fileUnitList;
 
-    data.status = 'uploaded';
+    data.status = 'success';
     data.info = '';
 
-    fileUnitList.forEach((item) => {
-      const inst = item.inst;
-
-      if (inst.data.status === 'failed') {
-        inst.uploadFile(inst.data.file);
+    fileUnitList.forEach((item, index) => {
+      if (item.status === 'fail') {
+        const fileunit = self.$refs[`fileunit${index}`];
+        if (fileunit) {
+          const file = fileunit.data.file;
+          if (file.rawFile) {
+            fileunit.uploadFile(file.rawFile);
+          }
+        }
       }
     });
   },
