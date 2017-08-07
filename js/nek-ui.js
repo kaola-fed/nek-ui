@@ -96,6 +96,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLText: __webpack_require__(355),
 	  KLTextArea: __webpack_require__(357),
 	  KLUpload: __webpack_require__(359),
+	  KLTreeView: __webpack_require__(190),
 
 	  // Navigation
 	  KLSidebar: __webpack_require__(388),
@@ -8153,7 +8154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 189 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <tree-view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-dropdown u-select {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open)}>\n        <i class=\"u-icon u-icon-caret-down\"></i>\n        <span>{phShow}</span>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <kl-tree-view key={key} separator={separator} nameKey={nameKey} childKey={childKey} source={source} selected={selected} value={value} multiple={multiple} hierarchical={hierarchical} service={service} on-select={this.select($event.selected)} />\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 190 */
@@ -8197,7 +8198,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}    [options.service]                       @=> 数据服务
 	 */
 	var TreeView = SourceComponent.extend({
-	  name: 'tree-view',
+	  name: 'kl-tree-view',
 	  template: template,
 	  /**
 	     * @protected
@@ -8244,6 +8245,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.data.multiple) return item.selected = !item.selected;
 
 	    this.data.selected = item;
+	    this.toggle(item);
 	    /**
 	         * @event select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
@@ -8404,22 +8406,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @note 移交$ancestor处理
 	     */
 	  select: function select() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _$ancestor;
 
-	    this.$ancestor.select(args);
+	    (_$ancestor = this.$ancestor).select.apply(_$ancestor, arguments);
 	  },
 
 	  /**
 	     * @note 移给$ancestor处理
 	     */
 	  toggle: function toggle() {
-	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	      args[_key2] = arguments[_key2];
-	    }
+	    var _$ancestor2;
 
-	    this.$ancestor.toggle(args);
+	    (_$ancestor2 = this.$ancestor).toggle.apply(_$ancestor2, arguments);
 	  },
 	  check: function check() {
 	    this._setSelected({});
@@ -8463,7 +8461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 193 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree.view.list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
+	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
 
 /***/ }),
 /* 194 */
@@ -9930,7 +9928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 214 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n  <div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}\n</label>"
+	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n<div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}</label>"
 
 /***/ }),
 /* 215 */
@@ -26859,7 +26857,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 341 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div>{item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 342 */
@@ -27576,8 +27574,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    if (parseInt(newValue)) {
-	      ele.style.lineHeight = parseInt(newValue) + 'px';
+	    if (!isNaN(newValue)) {
+	      ele.style.lineHeight = newValue;
 	    } else {
 	      ele.style.lineHeight = '';
 	      ele.classList.remove(oldValue);
@@ -28381,7 +28379,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 358 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea {size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 359 */
