@@ -3673,7 +3673,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	box-sizing:border-box;
 	background:none;
 	display:inline-block;
-	vertical-align:middle;
+	vertical-align:top;
 	text-align:center;
 	height:32px;
 	min-width:80px;
@@ -4039,7 +4039,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-btn-success .u-icon{
 	font-size:15px;
-	vertical-align:bottom;
+	vertical-align:top;
 	color:#9fe385;
 }
 .u-btn-success:hover,.u-btn-success:focus{
@@ -4055,7 +4055,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-btn-warning .u-icon{
 	font-size:15px;
-	vertical-align:bottom;
+	vertical-align:top;
 	color:#f78081;
 }
 .u-btn-warning:hover,.u-btn-warning:focus{
@@ -4071,7 +4071,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-btn-add .u-icon{
 	font-size:15px;
-	vertical-align:bottom;
+	vertical-align:top;
 	color:#e31436;
 }
 .u-btn-add:hover,.u-btn-add:focus{
@@ -4375,14 +4375,12 @@ input.u-check:disabled,input.u-radio:disabled{
 	vertical-align:middle;
 }
 .u-formitem .formitem_ct{
-	line-height:32px;
 	flex:1;
 	font-size:12px;
 }
 .u-formitem .formitem_desc{
 	display:inline-block;
 	vertical-align:top;
-	margin-left:8px;
 	color:#999;
 }
 .u-formitem .g-col:first-child{
