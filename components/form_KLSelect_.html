@@ -371,8 +371,8 @@
 <h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">clearable</span>=<span class="string">&#123;clearable&#125;</span> /&gt;</span> 当前选择项：&#123;selected ? selected.name : 'undefined'&#125;，当前选择值：&#123;value || 'undefined'&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'选项3'</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">clearable</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span> 当前选择项：&#123;selected ? selected.name : 'undefined'&#125;，当前选择值：&#123;value || 'undefined'&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'选项3'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
 <!-- demo_start -->
@@ -380,12 +380,6 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span></span></div><div class="line">    <span class="attr">on-toggle</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-toggle:</span>', '$<span class="attr">event.open:</span>', $<span class="attr">event.open</span>)&#125;</div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.selected:</span>', $<span class="attr">event.selected</span>)&#125;</div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event:</span>', $<span class="attr">event</span>)&#125; /&gt;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="带清空按钮"><a href="#带清空按钮" class="headerlink" title="带清空按钮"></a>带清空按钮</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">clearable</span>=<span class="string">&#123;clearable&#125;</span> <span class="attr">canSearch</span>=<span class="string">&#123;canSearch&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">clearable</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">canSearch</span>: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="综合示例"><a href="#综合示例" class="headerlink" title="综合示例"></a>综合示例</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -514,12 +508,6 @@
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>=&gt; 是否显示校验错误信息</td>
-</tr>
-<tr>
-<td>[options.data.clearable]</td>
-<td><code>string</code></td>
-<td><code>false</code></td>
-<td>=&gt; 单选时是否有清空按钮</td>
 </tr>
 <tr>
 <td>[options.data.required]</td>
@@ -897,7 +885,7 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-select source={source} selected={selected} value={value} clearable={clearable} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
+<kl-select source={source} selected={selected} value={value} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
 
       */});
       
@@ -908,8 +896,7 @@ var component = new NEKUI.Component({
             {id: 1, name: '选项1'},
             {id: 2, name: '选项2'},
             {id: 3, name: '选项3'}
-        ],
-        clearable: true
+        ]
     }
 });
 
@@ -934,29 +921,6 @@ var component = new NEKUI.Component({
             {name: '选项2'},
             {name: '选项3'}
         ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-select source={source} lang="en-US" clearable={clearable} canSearch={canSearch} />
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'}
-        ],
-        clearable: true,
-        canSearch: true
     }
 });
 
