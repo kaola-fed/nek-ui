@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>筛选区 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="筛选区 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs">        <script src="/vendor/regular.js"></script>
+        <script src="/js/nek-ui.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" class="nav-link" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" class="nav-link" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+            
+                
+                <li>
+                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+                </li>
+            
+                
+                    
+                        <li><h3>布局</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/layout_KLCard_.html" class="sidebar-link">卡片 KLCard</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_KLRow_.html" class="sidebar-link">栅格布局 KLRow</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_KLSearch_.html" class="sidebar-link current">筛选区 KLSearch</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/layout_KLTable_.html" class="sidebar-link">表格 KLTable</a>
+                </li>
+            
+                
+                    
+                        <li><h3>表单</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/form_KLButton_.html" class="sidebar-link">按钮 KLButton</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLCheck_.html" class="sidebar-link">复选框 KLCheck</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLCheckGroup_.html" class="sidebar-link">复选组 KLCheckGroup</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLDatePicker_.html" class="sidebar-link">日期选择 KLDatePicker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLForm_.html" class="sidebar-link">表单 KLForm</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLInput_.html" class="sidebar-link">输入框 KLInput</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLMultiSelect_.html" class="sidebar-link">多级选择 KLMultiSelect</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLRadioGroup_.html" class="sidebar-link">单选组 KLRadioGroup</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLSelect_.html" class="sidebar-link">下拉选择 KLSelect</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLText_.html" class="sidebar-link">展示文本 KLText</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLTextArea_.html" class="sidebar-link">文本输入 KLTextArea</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLTreeView_.html" class="sidebar-link">树型视图 KLTreeView</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/form_KLUpload_.html" class="sidebar-link">上传文件 KLUpload</a>
+                </li>
+            
+                
+                    
+                        <li><h3>通知</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/notice_KLMask_.html" class="sidebar-link">遮罩 KLMask</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLModal_.html" class="sidebar-link">模态框 KLModal</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLNotify_.html" class="sidebar-link">通知 KLNotify</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/notice_KLPopConfirm_.html" class="sidebar-link">确认提示 KLPopConfirm</a>
+                </li>
+            
+                
+                    
+                        <li><h3>导航</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link">两级菜单 KLMenu</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLPager_.html" class="sidebar-link">分页 KLPager</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link">菜单栏 KLSidebar</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLSteps_.html" class="sidebar-link">步骤 KLSteps</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/navigation_KLTabs_.html" class="sidebar-link">选项卡 KLTabs</a>
+                </li>
+            
+                
+                    
+                        <li><h3>其它</h3></li>
+                    
+                
+                <li>
+                    <a href="/components/widget_KLBadge_.html" class="sidebar-link">徽标 KLBadge</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLIcon_.html" class="sidebar-link">图标 KLIcon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLImagePreview_.html" class="sidebar-link">图片预览 KLImagePreview</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLLocaleProvider_.html" class="sidebar-link">国际化 KLLocaleProvider</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLProgress_.html" class="sidebar-link">进度条 KLProgress</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/components/widget_KLTooltip_.html" class="sidebar-link">文字提示 KLTooltip</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar">
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="不显示“展开”切换开关"><a href="#不显示“展开”切换开关" class="headerlink" title="不显示“展开”切换开关"></a>不显示“展开”切换开关</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">isShowToggle</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="设置切换文字"><a href="#设置切换文字" class="headerlink" title="设置切换文字"></a>设置切换文字</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">showText</span>=<span class="string">"更多"</span> <span class="attr">hideText</span>=<span class="string">"隐藏"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">md</span>=<span class="string">"4"</span> <span class="attr">lg</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#KLSearch">KLSearch</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>KLSearch     筛选区</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="KLSearch"></a></p>
+<h2 id="KLSearch"><a href="#KLSearch" class="headerlink" title="KLSearch"></a>KLSearch</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLSearch_new"></a></p>
+<h3 id="new-KLSearch"><a href="#new-KLSearch" class="headerlink" title="new KLSearch()"></a>new KLSearch()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td>=&gt; 补充class</td>
+</tr>
+<tr>
+<td>[options.data.isShowMore]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 控制是否显示更多</td>
+</tr>
+<tr>
+<td>[options.data.isShowToggle]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 控制展示toggle文字，默认展示出来</td>
+</tr>
+<tr>
+<td>[options.data.showText]</td>
+<td><code>string</code></td>
+<td>=&gt; 设置展开的文案，默认“展开”</td>
+</tr>
+<tr>
+<td>[options.data.hideText]</td>
+<td><code>string</code></td>
+<td>=&gt; 设置收起的文案，默认“收起”</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>KLSearch     筛选区</p>
+<p><strong>Kind</strong>: global constant  </p>
+<h2 id="Author-wangsong3635-outlook-com"><a href="#Author-wangsong3635-outlook-com" class="headerlink" title="Author: wangsong3635@outlook.com"></a><strong>Author:</strong> wangsong3635@outlook.com</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-search>
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+    <kl-search-more>
+        <kl-row>
+            <kl-col md="4" lg="4">
+                <kl-form-item labelSize="100" title="合同编号">
+                    <kl-input type="text"></kl-input>
+                </kl-form-item>
+            </kl-col>
+        </kl-row>
+    </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-search isShowToggle={false}>
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-search showText="更多" hideText="隐藏">
+    <kl-row>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col md="4" lg="4">
+            <kl-form-item labelSize="100" title="订单号">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+    <kl-search-more>
+        <kl-row>
+            <kl-col md="4" lg="4">
+                <kl-form-item labelSize="100" title="合同编号">
+                    <kl-input type="text"></kl-input>
+                </kl-form-item>
+            </kl-col>
+        </kl-row>
+    </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button type="tertiary" title="重置"></kl-button>
+    </kl-search-footer>
+</kl-search>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+    <div class="guide-links">
+      
+        <span>← <a href="/components/layout_KLRow_.html">栅格布局</a></span>
+      
+      
+        <span style="float:right"><a href="/components/layout_KLTable_.html">表格</a> →</span>
+      
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+</div>
+
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
