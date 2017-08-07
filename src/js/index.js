@@ -24,6 +24,7 @@ const Components = {
   KLText: require('./components/form/KLText'),
   KLTextArea: require('./components/form/KLTextArea'),
   KLUpload: require('./components/form/KLUpload'),
+  KLTreeView: require('./components/form/KLTreeView'),
 
   // Navigation
   KLSidebar: require('./components/navigation/KLSidebar'),
