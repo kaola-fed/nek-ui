@@ -245,6 +245,13 @@ const KLDatePicker = Dropdown.extend({
     const data = this.data;
     const date = data.date || '';
 
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true,
+      };
+    }
+
     const result = date
       ? Validation.validate(date.toString(), [
           { type: 'isDate', message: '请填写' },
