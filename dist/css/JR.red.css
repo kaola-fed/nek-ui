@@ -5089,6 +5089,49 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-select-sm .m-listview>li{
 	line-height:12px;
 }
+.u-switch{
+	display:inline-block;
+	position:relative;
+	font-size:14px;
+	line-height:22px;
+	height:22px;
+	vertical-align:middle;
+}
+.u-switch .u-switch-warp{
+	margin:0;
+	display:inline-block;
+	position:relative;
+	width:46px;
+	height:22px;
+	border:1px solid #bfcbd9;
+	outline:none;
+	border-radius:12px;
+	box-sizing:border-box;
+	background:#bfcbd9;
+	cursor:pointer;
+	transition:border-color 0.3s,background-color 0.3s;
+}
+.u-switch .u-switch-warp .u-switch-btn{
+	top:0;
+	left:0;
+	position:absolute;
+	border-radius:100%;
+	transition:transform 0.3s;
+	width:16px;
+	height:16px;
+	background-color:#fff;
+}
+.u-switch .u-switch-label{
+	position:absolute;
+	display:inline-block;
+	font-size:14px;
+	transition:0.2s;
+	width:46px;
+	height:22px;
+	left:0;
+	top:0;
+	cursor:pointer;
+}
 .u-text_unlink{
 	display:inline;
 	text-decoration:none;
