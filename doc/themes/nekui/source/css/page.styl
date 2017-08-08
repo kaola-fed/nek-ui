@@ -54,7 +54,7 @@
         z-index: -1
         &:after
             content "#"
-            color $green
+            color $theme
             position absolute
             left -0.7em
             bottom -2px
@@ -63,12 +63,12 @@
     figure
         margin 1.2em 0
     a
-        color $green
+        color $link
         font-weight 400
     blockquote
         margin 2em 0
         padding-left 20px
-        border-left 4px solid $green
+        border-left 4px solid $theme
         p
             font-weight 600
             margin-left 0
@@ -83,7 +83,7 @@
         td
             background-color: lighten($codebg, 60%)
         th
-            background-color: $green
+            background-color: $theme
             color: #fff
             text-align left
         tbody
@@ -122,11 +122,40 @@
 
 .guide-links
     margin-top 2em
-    height 1em
+    padding 2em 0
+    border-top 1px solid #e5e5e5
+    display flex
+    flex-direction column
+
+    .pager-left
+        align-self flex-start
+
+    .pager-right
+        align-self flex-end
+
+    .pager-btn
+        display flex
+
+        .icon
+            display inline-block
+            width 18px
+            height 18px
+            border-radius 50%
+            border 1px solid #ccc
+            background-position center center
+            background-repeat no-repeat
+            background-size 10px
+
+        .icon-left
+            background-image url(../images/pager-left.png)
+            margin-right 5px
+
+        .icon-right
+            background-image url(../images/pager-right.png)
+            margin-left 5px
 
 .footer
     color $light
-    margin-top 2em
     padding-top 2em
     border-top 1px solid #e5e5e5
     font-size .9em
@@ -162,7 +191,7 @@
     .nav-link
         padding-bottom 1px
         &:hover, &.current
-            border-bottom 2px solid $green
+            border-bottom 2px solid $theme
     #mobile-bar
         display block
     #main
