@@ -128,7 +128,8 @@ const KLSelect = Dropdown.extend({
       const source = data.source;
       const key = data.key;
       if (newValue === undefined || newValue === null) {
-        return (data.selected = newValue);
+        data.selected = newValue;
+        return;
       }
 
       if (source) {
@@ -153,7 +154,8 @@ const KLSelect = Dropdown.extend({
 
     this.$watch('source', function (newValue) {
       if (newValue === undefined) {
-        return (data.selected = undefined);
+        data.selected = undefined;
+        return;
       }
 
       if (!(newValue instanceof Array)) {
@@ -344,6 +346,13 @@ const KLSelect = Dropdown.extend({
   },
   validate(on) {
     const data = this.data;
+
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true,
+      };
+    }
 
     const result = { success: true, message: '' };
     let value = this.data.value;
