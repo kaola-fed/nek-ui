@@ -211,7 +211,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-select source={source} selected={selected} value={value} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
+<kl-select source={source} selected={selected} value={value} clearable={clearable} /> 当前选择项：{selected ? selected.name : 'undefined'}，当前选择值：{value || 'undefined'}
 ```
 
 ```javascript
@@ -222,7 +222,8 @@ var component = new NEKUI.Component({
             {id: 1, name: '选项1'},
             {id: 2, name: '选项2'},
             {id: 3, name: '选项3'}
-        ]
+        ],
+        clearable: true
     }
 });
 ```
@@ -251,6 +252,31 @@ var component = new NEKUI.Component({
             {name: '选项2'},
             {name: '选项3'}
         ]
+    }
+});
+```
+<!-- demo_end -->
+
+### 带清空按钮
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-select source={source} lang="en-US" clearable={clearable} canSearch={canSearch} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '选项1'},
+            {name: '选项2'},
+            {name: '选项3'}
+        ],
+        clearable: true,
+        canSearch: true
     }
 });
 ```

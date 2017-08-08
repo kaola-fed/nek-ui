@@ -10,7 +10,7 @@ const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-const Treeview = require('../../form/common/TreeView');
+const Treeview = require('../../form/KLTreeView');
 
 /**
  * @class TreeSelect
