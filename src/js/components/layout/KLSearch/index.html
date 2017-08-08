@@ -1,7 +1,10 @@
 <div class="{class}">
     {#inc this.$body} 
-    {#if this.$more && isShowMore} 
-        {#inc this.$more.$body} 
+    {#if this.$more && isShowMore}
+        <!--添加一层div，防止两个g-row样式并列导致marginTop--> 
+        <div>
+            {#inc this.$more.$body}
+        </div>
     {/if} 
     {#if isShowFooter}
     <div class="kl-search_ft">
