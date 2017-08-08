@@ -45,6 +45,6 @@ module.exports = {
   FILE: '文件',
   QUERY: '查询',
   RESET: '重置',
-  PACK_UP: '收起',
+  FOLD: '收起',
   UNFOLD: '展开',
 };

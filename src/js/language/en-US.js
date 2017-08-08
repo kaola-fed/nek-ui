@@ -45,6 +45,6 @@ module.exports = {
   FILE: 'file',
   QUERY: 'query',
   RESET: 'reset',
-  PACK_UP: 'pack_up',
+  FOLD: 'fold',
   UNFOLD: 'unfold',
 };

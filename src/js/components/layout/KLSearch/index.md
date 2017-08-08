@@ -104,7 +104,7 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search showText="更多" hideText="隐藏">
+<kl-search unfoldText="更多" foldText="隐藏">
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
