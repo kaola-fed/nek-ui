@@ -93,6 +93,14 @@ const KLCheckGroup = SourceComponent.extend({
      * @return {object} result 结果
      */
   validate() {
+    const data = this.data;
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true,
+      };
+    }
+
     const source = this.data.source;
     const result = { success: true, message: '' };
     const required = this.data.required;
