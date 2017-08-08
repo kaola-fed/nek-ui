@@ -132,8 +132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLCard: __webpack_require__(452),
 	  KLCardTools: __webpack_require__(454),
 	  KLSearch: __webpack_require__(455),
-	  KLSearchMore: __webpack_require__(457),
-	  KLSearchFooter: __webpack_require__(458)
+	  KLSearchMore: __webpack_require__(457)
 	};
 
 	backward(Components);
@@ -2050,7 +2049,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  IMAGE_SCALE_ERROR: '比例错误',
 	  PLEASE_UPLOAD_ATLEAST: '请至少上传',
 	  UNIT: '个',
-	  FILE: '文件'
+	  FILE: '文件',
+	  QUERY: '查询',
+	  RESET: '重置',
+	  PACK_UP: '收起',
+	  UNFOLD: '展开'
 		};
 
 /***/ }),
@@ -2103,7 +2106,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  IMAGE_SCALE_ERROR: 'scale error',
 	  PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
 	  UNIT: '',
-	  FILE: 'file'
+	  FILE: 'file',
+	  QUERY: 'query',
+	  RESET: 'reset',
+	  PACK_UP: 'pack_up',
+	  UNFOLD: 'unfold'
 		};
 
 /***/ }),
@@ -36086,7 +36093,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * ------------------------------------------------------------
 	 * KLSearch     筛选区
-	 * @author   wangsong3635@outlook.com
 	 * ------------------------------------------------------------
 	 */
 
@@ -36099,8 +36105,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}          [options.data]                       = 绑定属性
 	 * @param {string}          [options.data.class]                 => 补充class
-	 * @param {boolean}          [options.data.isShowMore]           => 控制是否显示更多
-	 * @param {boolean}          [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
+	 * @param {boolean}         [options.data.isShowFooter]         => 控制是否显示Footer
+	 * @param {boolean}         [options.data.isShowMore]           => 控制是否显示更多
+	 * @param {boolean}         [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
+	 * @param {string}          [options.data.queryText]              => 设置展开的文案，默认“查询”
+	 * @param {string}          [options.data.resetText]              => 设置展开的文案，默认“重置”
 	 * @param {string}          [options.data.showText]              => 设置展开的文案，默认“展开”
 	 * @param {string}          [options.data.hideText]              => 设置收起的文案，默认“收起”
 	 */
@@ -36108,25 +36117,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-search',
 	  template: template,
 	  $more: null,
-	  $footer: null,
 	  /**
 	     * @protected
 	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      isShowMore: false,
+	      isShowFooter: true,
 	      isShowToggle: true,
-	      showText: '展开',
-	      hideText: '收起',
-	      toggleText: ''
+	      queryText: this.$trans('QUERY'),
+	      resetText: this.$trans('RESET'),
+	      showText: this.$trans('UNFOLD'),
+	      hideText: this.$trans('PACK_UP'),
+	      toggleText: this.$trans('UNFOLD')
 	    });
-	    this.data.toggleText = this.data.isShowMore ? this.data.hideText : this.data.showText;
 	    this.supr();
 	  },
 	  toggle: function toggle() {
 	    var data = this.data;
 	    data.isShowMore = !data.isShowMore;
 	    data.toggleText = data.toggleText === data.showText ? data.hideText : data.showText;
+	  },
+	  query: function query() {
+	    this.$emit('query');
+	  },
+	  reset: function reset() {
+	    this.$emit('reset');
 	  }
 	});
 
@@ -36136,7 +36152,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 456 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if this.$footer}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            {#inc this.$footer.$body} \n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>\n                     {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if isShowFooter}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            <kl-button type=\"secondary\" title={queryText} on-click={this.query()}></kl-button>\n            <kl-button title={resetText} on-click={this.reset()}></kl-button>\n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>\n                     {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 457 */
@@ -36147,7 +36163,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * ------------------------------------------------------------
 	 * KLSearchMore     筛选区的更多区域
-	 * @author   wangsong3635@outlook.com
 	 * ------------------------------------------------------------
 	 */
 
@@ -36177,46 +36192,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 		module.exports = KLSearchMore;
-
-/***/ }),
-/* 458 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLSearchFooter     筛选区的操作区域
-	 * @author   wangsong3635@outlook.com
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var KLSearch = __webpack_require__(455);
-
-	/**
-	 * @class KLSearchFooter
-	 * @extend Component
-	 * @param {object}          [options.data]                    = 绑定属性
-	 * @param {string}          [options.data.class]              => 补充class
-	 */
-	var KLSearchFooter = Component.extend({
-	  name: 'kl-search-footer',
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {});
-	    this.supr();
-
-	    if (this.$outer && this.$outer instanceof KLSearch) {
-	      this.$outer.$footer = this;
-	    }
-	  }
-	});
-
-		module.exports = KLSearchFooter;
 
 /***/ })
 /******/ ])
