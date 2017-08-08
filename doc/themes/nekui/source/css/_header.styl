@@ -31,10 +31,14 @@ body.docs
         position relative
         margin 0 .6em
 
+        a:hover
+            color $theme
+
 .nav-link
     padding-bottom 3px
     &:hover, &.current
-        border-bottom 3px solid $green
+        color $theme
+        border-bottom 3px solid $theme
 
 .search-query
     height 30px
@@ -50,7 +54,7 @@ body.docs
     background-size 20px
     vertical-align middle !important
     &:focus
-        border-color $green
+        border-color $theme
 
 #logo
     display inline-block

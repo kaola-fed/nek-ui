@@ -24,23 +24,23 @@
              }
          </style>
      <% } %>
+
     <%- page.content %>
-    <div class="guide-links">
-      <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
-        <span class="pager-left">
-            <a href="<%- url_for(page.path) %>" class="pager-btn">
-                <span class="icon icon-left"></span><%- page.title %>
+
+    <% if (site.pages.find({ type: page.type }).length > 1) { %>
+        <div class="guide-links">
+          <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
+            <a href="<%- url_for(page.path) %>" class="pager pager-left">
+                <span class="icon icon-left"></span><span><%- page.title %></span>
             </a>
-        </span>
-      <% }) %>
-      <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
-        <span class="pager-right">
-            <a href="<%- url_for(page.path) %>" class="pager-btn">
-                <%- page.title %><span class="icon icon-right"></span>
+          <% }) %>
+          <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
+            <a href="<%- url_for(page.path) %>" class="pager pager-right">
+                <span><%- page.title %></span><span class="icon icon-right"></span>
             </a>
-        </span>
-      <% }) %>
-    </div>
+          <% }) %>
+        </div>
+    <% } %>
     <div class="footer">
       想让文档更完善？
       <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
