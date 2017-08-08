@@ -13,12 +13,12 @@ const _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}          [options.data]                       = 绑定属性
  * @param {string}          [options.data.class]                 => 补充class
- * @param {boolean}         [options.data.isShowFooter]         => 控制是否显示Footer
- * @param {boolean}         [options.data.isShowMore]           => 控制是否显示更多
- * @param {boolean}         [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
- * @param {string}          [options.data.queryText]              => 设置展开的文案，默认“查询”
- * @param {string}          [options.data.resetText]              => 设置展开的文案，默认“重置”
- * @param {string}          [options.data.unfoldText]              => 设置展开的文案，默认“展开”
+ * @param {boolean}         [options.data.isShowFooter]          => 控制是否显示Footer
+ * @param {boolean}         [options.data.isShowMore]            => 控制是否显示更多
+ * @param {boolean}         [options.data.isShowToggle]          => 控制展示toggle文字，默认展示出来
+ * @param {string}          [options.data.searchText]            => 设置展开的文案，默认“查询”
+ * @param {string}          [options.data.resetText]             => 设置展开的文案，默认“重置”
+ * @param {string}          [options.data.unfoldText]            => 设置展开的文案，默认“展开”
  * @param {string}          [options.data.foldText]              => 设置收起的文案，默认“收起”
  */
 const KLSearch = Component.extend({
@@ -33,7 +33,7 @@ const KLSearch = Component.extend({
       isShowMore: false,
       isShowFooter: true,
       isShowToggle: true,
-      queryText: this.$trans('QUERY'),
+      searchText: this.$trans('SEARCH'),
       resetText: this.$trans('RESET'),
       unfoldText: this.$trans('UNFOLD'),
       foldText: this.$trans('FOLD'),
@@ -47,8 +47,8 @@ const KLSearch = Component.extend({
     data.isShowMore = !data.isShowMore;
     data.toggleText = data.toggleText === data.unfoldText ? data.foldText : data.unfoldText;
   },
-  query() {
-    this.$emit('query');
+  search() {
+    this.$emit('search');
   },
   reset() {
     this.$emit('reset');
