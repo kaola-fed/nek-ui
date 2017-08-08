@@ -24,6 +24,7 @@ const Components = {
   JRText: require('./components/form/JRText'),
   JRTextArea: require('./components/form/JRTextArea'),
   JRUpload: require('./components/form/JRUpload'),
+  JRSwitch: require('./components/form/JRSwitch'),
 
   // Navigation
   JRSidebar: require('./components/navigation/JRSidebar'),

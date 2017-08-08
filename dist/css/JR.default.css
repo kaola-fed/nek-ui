@@ -5103,11 +5103,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	position:relative;
 	width:46px;
 	height:22px;
-	border:1px solid #bfcbd9;
 	outline:none;
 	border-radius:12px;
 	box-sizing:border-box;
-	background:#bfcbd9;
 	cursor:pointer;
 	transition:border-color 0.3s,background-color 0.3s;
 }
@@ -5119,18 +5117,36 @@ input.u-check:disabled,input.u-radio:disabled{
 	transition:transform 0.3s;
 	width:16px;
 	height:16px;
+	margin-top:2px;
 	background-color:#fff;
 }
 .u-switch .u-switch-label{
 	position:absolute;
 	display:inline-block;
+	display:none;
 	font-size:14px;
+	color:#fff;
 	transition:0.2s;
 	width:46px;
 	height:22px;
 	left:0;
 	top:0;
 	cursor:pointer;
+}
+.u-switch .u-switch-label.left span{
+	font-size:14px;
+	position:absolute;
+	display:inline-block;
+	left:10px;
+}
+.u-switch .u-switch-label.right span{
+	font-size:14px;
+	position:absolute;
+	display:inline-block;
+	right:10px;
+}
+.u-switch .u-switch-label.show{
+	display:inline-block;
 }
 .u-text_unlink{
 	display:inline;
