@@ -30,6 +30,7 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {string}            [options.data.nameKey=name]             => 数据项的name键
  * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
  * @param {boolean}           [options.data.hideTip=false]            => 是否显示校验错误信息
+ * @param {string}            [options.data.clearable=false]          => 单选时是否有清空按钮
  * @param {boolean}           [options.data.required=false]           => 是否必填
  * @param {boolean}           [options.data.readonly=false]           => 是否只读
  * @param {boolean}           [options.data.disabled=false]           => 是否禁用
@@ -83,6 +84,7 @@ const KLSelect = Dropdown.extend({
 
       placeholder: this.$trans('PLEASE_SELECT'),
       required: false,
+      clearable: false,
     });
     if (data.multiple && !Array.isArray(data.selected)) {
       data.selected = data.selected ? [data.selected] : [];
@@ -332,8 +334,12 @@ const KLSelect = Dropdown.extend({
     e && e.stopPropagation();
     this.data.searchValue = '';
   },
-  toggle(open, e) {
+  selectNone(e) {
     e && e.stopPropagation();
+    this.select(undefined);
+    this.data.open = false;
+  },
+  toggle(open) {
     const data = this.data;
     data.canSearch && this.clearSearchValue();
     this.supr(open);
