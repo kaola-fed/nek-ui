@@ -43,4 +43,8 @@ module.exports = {
   PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
   UNIT: '',
   FILE: 'file',
+  QUERY: 'query',
+  RESET: 'reset',
+  PACK_UP: 'pack_up',
+  UNFOLD: 'unfold',
 };
