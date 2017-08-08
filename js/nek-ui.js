@@ -9941,7 +9941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 214 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n<div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}</label>"
+	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n  <div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}\n</label>"
 
 /***/ }),
 /* 215 */
@@ -26892,7 +26892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 341 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div> {item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div>{item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 342 */
@@ -27616,8 +27616,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    if (!isNaN(newValue)) {
-	      ele.style.lineHeight = newValue;
+	    if (parseInt(newValue)) {
+	      ele.style.lineHeight = parseInt(newValue) + 'px';
 	    } else {
 	      ele.style.lineHeight = '';
 	      ele.classList.remove(oldValue);
