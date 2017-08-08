@@ -2050,7 +2050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  PLEASE_UPLOAD_ATLEAST: '请至少上传',
 	  UNIT: '个',
 	  FILE: '文件',
-	  QUERY: '查询',
+	  SEARCH: '查询',
 	  RESET: '重置',
 	  FOLD: '收起',
 	  UNFOLD: '展开'
@@ -2107,7 +2107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  PLEASE_UPLOAD_ATLEAST: 'Please upload at least',
 	  UNIT: '',
 	  FILE: 'file',
-	  QUERY: 'query',
+	  SEARCH: 'search',
 	  RESET: 'reset',
 	  FOLD: 'fold',
 	  UNFOLD: 'unfold'
@@ -36089,12 +36089,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}          [options.data]                       = 绑定属性
 	 * @param {string}          [options.data.class]                 => 补充class
-	 * @param {boolean}         [options.data.isShowFooter]         => 控制是否显示Footer
-	 * @param {boolean}         [options.data.isShowMore]           => 控制是否显示更多
-	 * @param {boolean}         [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
-	 * @param {string}          [options.data.queryText]              => 设置展开的文案，默认“查询”
-	 * @param {string}          [options.data.resetText]              => 设置展开的文案，默认“重置”
-	 * @param {string}          [options.data.unfoldText]              => 设置展开的文案，默认“展开”
+	 * @param {boolean}         [options.data.isShowFooter]          => 控制是否显示Footer
+	 * @param {boolean}         [options.data.isShowMore]            => 控制是否显示更多
+	 * @param {boolean}         [options.data.isShowToggle]          => 控制展示toggle文字，默认展示出来
+	 * @param {string}          [options.data.searchText]            => 设置展开的文案，默认“查询”
+	 * @param {string}          [options.data.resetText]             => 设置展开的文案，默认“重置”
+	 * @param {string}          [options.data.unfoldText]            => 设置展开的文案，默认“展开”
 	 * @param {string}          [options.data.foldText]              => 设置收起的文案，默认“收起”
 	 */
 	var KLSearch = Component.extend({
@@ -36109,7 +36109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      isShowMore: false,
 	      isShowFooter: true,
 	      isShowToggle: true,
-	      queryText: this.$trans('QUERY'),
+	      searchText: this.$trans('SEARCH'),
 	      resetText: this.$trans('RESET'),
 	      unfoldText: this.$trans('UNFOLD'),
 	      foldText: this.$trans('FOLD'),
@@ -36123,8 +36123,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.isShowMore = !data.isShowMore;
 	    data.toggleText = data.toggleText === data.unfoldText ? data.foldText : data.unfoldText;
 	  },
-	  query: function query() {
-	    this.$emit('query');
+	  search: function search() {
+	    this.$emit('search');
 	  },
 	  reset: function reset() {
 	    this.$emit('reset');
@@ -36137,7 +36137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 456 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if isShowFooter}\n    <div class=\"f-cb\">\n        <div class=\"f-fr\">\n            <kl-button type=\"secondary\" title={queryText} on-click={this.query()}></kl-button>\n            <kl-button title={resetText} on-click={this.reset()}></kl-button>\n            {#if isShowToggle}\n                <a href=\"javascript: void(0);\" on-click={this.toggle()}>\n                     {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n                </a> \n            {/if}\n        </div>\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 457 */

@@ -6319,6 +6319,14 @@ input.u-check:disabled,input.u-radio:disabled{
 .g-row + .g-row{
 	margin-top:10px;
 }
+.kl-search_ft{
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+}
+.kl-search_btn{
+	margin-right:10px;
+}
 .m-ui-table-wrap{
 	position:relative;
 }
