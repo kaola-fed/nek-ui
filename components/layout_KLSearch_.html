@@ -332,22 +332,17 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">on-query</span>=<span class="string">&#123;console.log(</span>"<span class="attr">query</span>")&#125; <span class="attr">on-reset</span>=<span class="string">&#123;console.log(</span>"<span class="attr">reset</span>")&#125;&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="不显示“展开”切换开关"><a href="#不显示“展开”切换开关" class="headerlink" title="不显示“展开”切换开关"></a>不显示“展开”切换开关</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">isShowToggle</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="不显示Footer"><a href="#不显示Footer" class="headerlink" title="不显示Footer"></a>不显示Footer</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">isShowFooter</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">isShowToggle</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="设置切换文字"><a href="#设置切换文字" class="headerlink" title="设置切换文字"></a>设置切换文字</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">showText</span>=<span class="string">"更多"</span> <span class="attr">hideText</span>=<span class="string">"隐藏"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"60"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-search</span> <span class="attr">showText</span>=<span class="string">"更多"</span> <span class="attr">hideText</span>=<span class="string">"隐藏"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"付款类型"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-more</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">labelSize</span>=<span class="string">"100"</span> <span class="attr">title</span>=<span class="string">"合同编号"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-more</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-search-footer</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"查询"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"重置"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-search-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-search</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#KLSearch">KLSearch</a></dt>
@@ -357,7 +352,7 @@
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<h2 id="klsearch-">KLSearch     筛选区</h2>
+<p>KLSearch     筛选区</p>
 </dd>
 </dl>
 
@@ -388,11 +383,6 @@
 <td>=&gt; 补充class</td>
 </tr>
 <tr>
-<td>[options.data.isShowFooter]</td>
-<td><code>boolean</code></td>
-<td>=&gt; 控制是否显示Footer</td>
-</tr>
-<tr>
 <td>[options.data.isShowMore]</td>
 <td><code>boolean</code></td>
 <td>=&gt; 控制是否显示更多</td>
@@ -401,16 +391,6 @@
 <td>[options.data.isShowToggle]</td>
 <td><code>boolean</code></td>
 <td>=&gt; 控制展示toggle文字，默认展示出来</td>
-</tr>
-<tr>
-<td>[options.data.queryText]</td>
-<td><code>string</code></td>
-<td>=&gt; 设置展开的文案，默认“查询”</td>
-</tr>
-<tr>
-<td>[options.data.resetText]</td>
-<td><code>string</code></td>
-<td>=&gt; 设置展开的文案，默认“重置”</td>
 </tr>
 <tr>
 <td>[options.data.showText]</td>
@@ -426,7 +406,9 @@
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<h2 id="KLSearch-筛选区"><a href="#KLSearch-筛选区" class="headerlink" title="KLSearch     筛选区"></a>KLSearch     筛选区</h2><p><strong>Kind</strong>: global constant<br><a name="config"></a></p>
+<p>KLSearch     筛选区</p>
+<p><strong>Kind</strong>: global constant  </p>
+<h2 id="Author-wangsong3635-outlook-com"><a href="#Author-wangsong3635-outlook-com" class="headerlink" title="Author: wangsong3635@outlook.com"></a><strong>Author:</strong> wangsong3635@outlook.com</h2><p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
@@ -435,20 +417,20 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-search on-query={console.log("query")} on-reset={console.log("reset")}>
+<kl-search>
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="付款类型">
+            <kl-form-item labelSize="100" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="支付方式">
+            <kl-form-item labelSize="100" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="订单号">
+            <kl-form-item labelSize="100" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
@@ -456,12 +438,16 @@ var index = 0;
     <kl-search-more>
         <kl-row>
             <kl-col span="4">
-                <kl-form-item labelSize="60" title="合同编号">
+                <kl-form-item labelSize="100" title="合同编号">
                     <kl-input type="text"></kl-input>
                 </kl-form-item>
             </kl-col>
         </kl-row>
     </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button title="重置"></kl-button>
+    </kl-search-footer>
 </kl-search>
 
       */});
@@ -475,50 +461,25 @@ var index = 0;
 <kl-search isShowToggle={false}>
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="付款类型">
+            <kl-form-item labelSize="100" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="支付方式">
+            <kl-form-item labelSize="100" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="订单号">
+            <kl-form-item labelSize="100" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
     </kl-row>
-</kl-search>
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-search isShowFooter={false}>
-    <kl-row>
-        <kl-col span="4">
-            <kl-form-item labelSize="60" title="付款类型">
-                <kl-input type="text"></kl-input>
-            </kl-form-item>
-        </kl-col>
-        <kl-col span="4">
-            <kl-form-item labelSize="60" title="支付方式">
-                <kl-input type="text"></kl-input>
-            </kl-form-item>
-        </kl-col>
-        <kl-col span="4">
-            <kl-form-item>
-                <kl-button type="secondary" title="查询"></kl-button>
-                <kl-button title="重置"></kl-button>
-            </kl-form-item>
-        </kl-col>
-    </kl-row>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button title="重置"></kl-button>
+    </kl-search-footer>
 </kl-search>
 
       */});
@@ -532,17 +493,17 @@ var index = 0;
 <kl-search showText="更多" hideText="隐藏">
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="付款类型">
+            <kl-form-item labelSize="100" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="支付方式">
+            <kl-form-item labelSize="100" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="60" title="订单号">
+            <kl-form-item labelSize="100" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
@@ -550,12 +511,16 @@ var index = 0;
     <kl-search-more>
         <kl-row>
             <kl-col span="4">
-                <kl-form-item labelSize="60" title="合同编号">
+                <kl-form-item labelSize="100" title="合同编号">
                     <kl-input type="text"></kl-input>
                 </kl-form-item>
             </kl-col>
         </kl-row>
     </kl-search-more>
+    <kl-search-footer>
+        <kl-button type="secondary" title="查询"></kl-button>
+        <kl-button title="重置"></kl-button>
+    </kl-search-footer>
 </kl-search>
 
       */});
