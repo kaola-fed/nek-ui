@@ -1,3 +1,4 @@
 src/js/components/_deprecated_
 doc/
+dist/
 gulpfile.js
