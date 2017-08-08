@@ -35,7 +35,7 @@
     }
 
     .formitem_ct{
-        line-height: 32px;
+        /*line-height: 32px;*/
         flex: 1;
         font-size: $font-size-base;
     }
@@ -43,7 +43,6 @@
     .formitem_desc {
         display: inline-block;
         vertical-align: top;
-        margin-left: 8px;
         color: #999;
     }
 

@@ -75,8 +75,16 @@ const KLTextArea = Component.extend({
      * @return {object} result 结果
      */
   validate(on = '') {
-    const value = this.data.value;
-    let rules = this.data.rules;
+    const data = this.data;
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true,
+      };
+    }
+
+    const value = data.value;
+    let rules = data.rules;
 
     rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
 
