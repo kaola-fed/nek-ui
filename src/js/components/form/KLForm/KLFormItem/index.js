@@ -102,8 +102,8 @@ KLFormItem.directive('lineHeight', function (ele, lineHeight) {
       return;
     }
 
-    if (!isNaN(newValue)) {
-      ele.style.lineHeight = newValue;
+    if (parseInt(newValue)) {
+      ele.style.lineHeight = `${parseInt(newValue)}px`;
     } else {
       ele.style.lineHeight = '';
       ele.classList.remove(oldValue);

@@ -11,6 +11,10 @@
 	.dropdown_hd {
 		max-height: 84px;
 	    overflow-y: auto;
+		.selected-tag {
+			height: 18px;
+			line-height: 18px;
+		}
 	    .selectedTagMore {
 	        overflow: hidden;
 	        text-overflow: ellipsis;
@@ -18,7 +22,7 @@
 	    }
 	}
 	.cateWrap {
-		width: 412px;
+		max-width: 412px;
 		overflow-x: auto;
 		white-space: nowrap;
 		position: absolute;
@@ -58,6 +62,11 @@
 		    padding-right: 15px;
 		    position: relative;
 		    &:hover { background-color: #F6F9FC; }
+			.onlyChild {
+				background-color: #fff;
+				font-size: 12px;
+				&:hover { background-color: #ddd; }
+			}
 		}
 		.u-input, .input_wrap {
 			height: 32px;
@@ -79,4 +88,12 @@
 			background-color: #F6F9FC;
 		}
 	}
+}
+.u-multi.z-dis {
+	.dropdown_hd {
+        cursor: not-allowed;
+        background: $u-formctrl-disabled_background;
+        $border: $u-formctrl-disabled_border;
+        color: $u-formctrl-disabled_color;
+    }
 }
