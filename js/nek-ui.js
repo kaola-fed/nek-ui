@@ -27220,12 +27220,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // 删除某一项
 	  delete: function _delete(event, item) {
-	    var data = this.data;
 	    event && event.stopPropagation();
 	    if (data.disabled || data.readonly) {
 	      return;
 	    }
 	    this.toggle(true);
+	    var data = this.data;
 	    var _list = data.value.toString().split(data.separator);
 	    _list.splice(_list.indexOf((item[data.key].toString() || '').toString()), 1);
 	    data.value = _list.join(data.separator);
@@ -36137,7 +36137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 456 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore} \n        {#inc this.$more.$body} \n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore}\n        <!--添加一层div，防止两个g-row样式并列导致marginTop--> \n        <div>\n            {#inc this.$more.$body}\n        </div>\n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 457 */
