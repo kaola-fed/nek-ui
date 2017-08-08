@@ -2052,7 +2052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  FILE: '文件',
 	  QUERY: '查询',
 	  RESET: '重置',
-	  PACK_UP: '收起',
+	  FOLD: '收起',
 	  UNFOLD: '展开'
 		};
 
@@ -2109,7 +2109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  FILE: 'file',
 	  QUERY: 'query',
 	  RESET: 'reset',
-	  PACK_UP: 'pack_up',
+	  FOLD: 'fold',
 	  UNFOLD: 'unfold'
 		};
 
@@ -36110,8 +36110,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}         [options.data.isShowToggle]         => 控制展示toggle文字，默认展示出来
 	 * @param {string}          [options.data.queryText]              => 设置展开的文案，默认“查询”
 	 * @param {string}          [options.data.resetText]              => 设置展开的文案，默认“重置”
-	 * @param {string}          [options.data.showText]              => 设置展开的文案，默认“展开”
-	 * @param {string}          [options.data.hideText]              => 设置收起的文案，默认“收起”
+	 * @param {string}          [options.data.unfoldText]              => 设置展开的文案，默认“展开”
+	 * @param {string}          [options.data.foldText]              => 设置收起的文案，默认“收起”
 	 */
 	var KLSearch = Component.extend({
 	  name: 'kl-search',
@@ -36127,16 +36127,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      isShowToggle: true,
 	      queryText: this.$trans('QUERY'),
 	      resetText: this.$trans('RESET'),
-	      showText: this.$trans('UNFOLD'),
-	      hideText: this.$trans('PACK_UP'),
+	      unfoldText: this.$trans('UNFOLD'),
+	      foldText: this.$trans('FOLD'),
 	      toggleText: this.$trans('UNFOLD')
 	    });
+	    this.data.toggleText = this.data.isShowMore ? this.data.foldText : this.data.unfoldText;
 	    this.supr();
 	  },
 	  toggle: function toggle() {
 	    var data = this.data;
 	    data.isShowMore = !data.isShowMore;
-	    data.toggleText = data.toggleText === data.showText ? data.hideText : data.showText;
+	    data.toggleText = data.toggleText === data.unfoldText ? data.foldText : data.unfoldText;
 	  },
 	  query: function query() {
 	    this.$emit('query');
