@@ -55,6 +55,7 @@ const Components = {
   JRTooltip: require('./components/widget/JRTooltip'),
   JRIcon: require('./components/widget/JRIcon'),
   JRLocaleProvider: require('./components/widget/JRLocaleProvider'),
+  JRImagePreview: require('./components/widget/JRImagePreview'),
 
   // Layout
   JRTable: require('./components/layout/JRTable'),

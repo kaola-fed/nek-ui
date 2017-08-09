@@ -127,15 +127,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  JRTooltip: __webpack_require__(425),
 	  JRIcon: __webpack_require__(427),
 	  JRLocaleProvider: __webpack_require__(429),
+	  JRImagePreview: __webpack_require__(430),
 
 	  // Layout
-	  JRTable: __webpack_require__(430),
-	  JRTableCol: __webpack_require__(441),
-	  JRTableTemplate: __webpack_require__(442),
-	  JRRow: __webpack_require__(443),
-	  JRCol: __webpack_require__(445),
-	  JRCard: __webpack_require__(447),
-	  JRCardTools: __webpack_require__(449)
+	  JRTable: __webpack_require__(432),
+	  JRTableCol: __webpack_require__(443),
+	  JRTableTemplate: __webpack_require__(444),
+	  JRRow: __webpack_require__(445),
+	  JRCol: __webpack_require__(447),
+	  JRCard: __webpack_require__(449),
+	  JRCardTools: __webpack_require__(451)
 	};
 
 	backward(Components);
@@ -34722,13 +34723,366 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(431);
-	var TableBody = __webpack_require__(433);
-	var _ = __webpack_require__(72);
-	var u = __webpack_require__(436);
+	/**
+	 *  ------------------------------
+	 *  JRImagePreview 图片预览
+	 *  ------------------------------
+	 */
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(440);
+	var _ = __webpack_require__(72);
+	var JRModal = __webpack_require__(364);
+	var tpl = __webpack_require__(431);
+
+	/**
+	 * @class JRImagePreview
+	 * @extend Component
+	 * @param {object}     [options.data]               = 绑定属性
+	 * @param {array}      [options.data.imageList]     => 必选，图片文件列表, 其中每个文件项包含下面的字段:
+	 *                                                     name: 图片文件名称
+	 *                                                     src: 图片文件的路径
+	 * @param {number}     [options.data.curIndex=0]    => 必选，当前图片文件的索引, 默认第一项为当前项
+	 */
+
+	var JRImagePreview = Component.extend({
+	  name: 'jr-image-preview',
+	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
+	  config: function config(data) {
+	    _.extend(data, {
+	      imageList: [],
+	      curIndex: 0,
+	      delConfirm: false
+	    });
+	    _.extend(data, {
+	      showVirtual: false,
+	      virtualInfo: {
+	        rotate: 0,
+	        scale: 1,
+	        translateX: 0,
+	        translateY: 0,
+	        mouseDownX: 0,
+	        mouseDownY: 0,
+	        dragTarget: null
+	      },
+	      opList: [{
+	        name: 'zoomIn',
+	        icon: 'zoomin',
+	        fnName: 'zoomIn'
+	      }, {
+	        name: 'zoomOut',
+	        icon: 'zoomout',
+	        fnName: 'zoomOut'
+	      }, {
+	        name: 'rezoom',
+	        icon: 'rezoom',
+	        fnName: 'rezoom'
+	      }, {
+	        name: 'rotate_left',
+	        icon: 'rotate_left',
+	        fnName: 'rotateLeft'
+	      }, {
+	        name: 'rotate_right',
+	        icon: 'rotate_right',
+	        fnName: 'rotateRight'
+	      }, {
+	        name: 'remove',
+	        icon: 'delete',
+	        fnName: 'onDel'
+	      }]
+	    });
+
+	    console.log(this.data.imageList);
+	    this.supr(data);
+	  },
+	  init: function init(data) {
+	    this.supr(data);
+	  },
+	  onClose: function onClose() {
+	    this.destroy();
+	  },
+	  onPrev: function onPrev() {
+	    var data = this.data;
+	    var length = data.imageList.length;
+	    var toIndex = length - 1;
+
+	    if (data.curIndex > 0) {
+	      data.curIndex -= 1;
+	      toIndex = data.curIndex;
+	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  onNext: function onNext() {
+	    var data = this.data;
+	    var length = data.imageList.length;
+	    var toIndex = 0;
+
+	    if (data.curIndex < length - 1) {
+	      data.curIndex += 1;
+	      toIndex = data.curIndex;
+	    }
+
+	    this.setCurrentTo(toIndex);
+	  },
+	  setCurrentTo: function setCurrentTo(toIndex) {
+	    var data = this.data;
+	    var refs = this.$refs;
+	    var curIndex = data.curIndex;
+
+	    data.showVirtual = false;
+	    data.virtualInfo.scale = 1;
+	    data.virtualInfo.rotate = 0;
+	    data.virtualInfo.translateX = 0;
+	    data.virtualInfo.translateY = 0;
+
+	    refs['full-' + curIndex].style.opacity = 0;
+	    refs['full-' + toIndex].style.opacity = 1;
+
+	    this.data.curIndex = toIndex;
+	  },
+	  zoomIn: function zoomIn() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var step = this.getZoomInStep();
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale += step;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  zoomOut: function zoomOut() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var step = this.getZoomOutStep();
+	    var translateStepInfo = this.getTranslateStep(step);
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale -= step;
+	    virtualInfo.translateX -= translateStepInfo.xStep;
+	    virtualInfo.translateY -= translateStepInfo.yStep;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  rezoom: function rezoom() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    data.showVirtual = true;
+
+	    virtualInfo.scale = 1;
+	    virtualInfo.translateX = 0;
+	    virtualInfo.translateY = 0;
+
+	    this.$refs.virtualimage.style.transform = this.genTransform();
+	  },
+	  getZoomInStep: function getZoomInStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+	    var step = this.getScaleStep();
+
+	    if (scale <= 0.1) {
+	      return 0.1;
+	    }
+
+	    return step;
+	  },
+	  getZoomOutStep: function getZoomOutStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+	    var step = this.getScaleStep();
+
+	    if (scale >= 10) {
+	      return 1;
+	    }
+
+	    return step;
+	  },
+	  getScaleStep: function getScaleStep() {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+
+	    if (scale > 0.1 && scale < 1.5) {
+	      return 0.1;
+	    } else if (scale >= 1.5 && scale < 4) {
+	      return 0.5;
+	    } else if (scale >= 4 && scale < 10) {
+	      return 1;
+	    }
+
+	    return 0;
+	  },
+	  getTranslateStep: function getTranslateStep(scaleStep) {
+	    var virtualInfo = this.data.virtualInfo;
+	    var scale = +virtualInfo.scale.toFixed(1);
+
+	    var totalSteps = (scale - 1) * 10;
+	    var translateX = virtualInfo.translateX;
+	    var translateY = virtualInfo.translateY;
+
+	    return {
+	      xStep: totalSteps ? translateX / totalSteps * scaleStep * 10 : 0,
+	      yStep: totalSteps ? translateY / totalSteps * scaleStep * 10 : 0
+	    };
+	  },
+	  rotateLeft: function rotateLeft() {
+	    this.rotate('left');
+	  },
+	  rotateRight: function rotateRight() {
+	    this.rotate('right');
+	  },
+	  rotate: function rotate(dir) {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+	    var image = this.$refs.virtualimage;
+
+	    data.showVirtual = true;
+
+	    if (dir === 'right') {
+	      virtualInfo.rotate += 90;
+	    } else if (dir === 'left') {
+	      virtualInfo.rotate -= 90;
+	    }
+
+	    image.style.transform = this.genTransform();
+	  },
+	  genTransform: function genTransform() {
+	    var virtualInfo = this.data.virtualInfo;
+	    return 'translateX(' + virtualInfo.translateX + 'px)' + (' translateY(' + virtualInfo.translateY + 'px)') + (' rotate(' + virtualInfo.rotate + 'deg)') + (' scale(' + virtualInfo.scale + ')');
+	  },
+	  onDel: function onDel(index) {
+	    var self = this;
+	    var data = this.data;
+	    var imageList = data.imageList;
+	    var image = imageList[index];
+
+	    if (data.delConfirm) {
+	      var modal = new JRModal({
+	        data: {
+	          content: this.$trans('REMOVE_CONFIRM') + image.name + '?'
+	        }
+	      });
+	      modal.$on('ok', function () {
+	        self.removeImage(index);
+	      });
+	    } else {
+	      self.removeImage(index);
+	    }
+	  },
+	  removeImage: function removeImage(index) {
+	    var data = this.data;
+	    var imageList = data.imageList;
+	    var image = imageList.splice(index, 1);
+
+	    if (!imageList[index]) {
+	      data.curIndex = 0;
+	    }
+	    this.$emit('remove', {
+	      image: image,
+	      index: index
+	    });
+	    this.$update();
+	  },
+	  onMouseDown: function onMouseDown(e) {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    virtualInfo.mouseDownX = e.pageX;
+	    virtualInfo.mouseDownY = e.pageY;
+	    virtualInfo.dragTarget = e.origin;
+	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+	  },
+	  onMouseMove: function onMouseMove(e) {
+	    var data = this.data;
+	    var virtualImg = this.$refs.virtualimage;
+	    var virtualInfo = data.virtualInfo;
+	    var originX = virtualInfo.mouseDownX;
+	    var originY = virtualInfo.mouseDownY;
+	    virtualInfo.dragBoundary = this.getMaxMinTranslateValue();
+
+	    var boundary = virtualInfo.dragBoundary;
+	    if (virtualInfo.dragTarget) {
+	      var translateX = e.pageX - originX;
+	      var translateY = e.pageY - originY;
+
+	      if (translateX > boundary.maxTranslateX) {
+	        translateX = boundary.maxTranslateX;
+	      } else if (translateX < boundary.minTranslateX) {
+	        translateX = boundary.minTranslateX;
+	      }
+
+	      if (translateY > boundary.maxTranslateY) {
+	        translateY = boundary.maxTranslateY;
+	      } else if (translateY < boundary.minTranslateY) {
+	        translateY = boundary.minTranslateY;
+	      }
+
+	      virtualInfo.translateX += translateX;
+	      virtualInfo.translateY += translateY;
+	      virtualInfo.mouseDownX = e.pageX;
+	      virtualInfo.mouseDownY = e.pageY;
+	      virtualImg.style.transform = this.genTransform();
+	    }
+	  },
+	  onMouseUp: function onMouseUp() {
+	    var data = this.data;
+	    var virtualInfo = data.virtualInfo;
+
+	    if (virtualInfo.dragTarget) {
+	      virtualInfo.mouseDownX = 0;
+	      virtualInfo.mouseDownY = 0;
+	      virtualInfo.dragTarget = null;
+	    }
+	  },
+	  onMouseWheel: function onMouseWheel(e) {
+	    if (e.wheelDelta > 0) {
+	      this.zoomIn();
+	    } else if (e.wheelDelta < 0) {
+	      this.zoomOut();
+	    }
+	  },
+	  getMaxMinTranslateValue: function getMaxMinTranslateValue() {
+	    var virtualImg = this.$refs.virtualimage;
+	    var virtualZone = this.$refs.virtualzone;
+
+	    var virtualImgRect = virtualImg.getBoundingClientRect();
+	    var virtualZoneRect = virtualZone.getBoundingClientRect();
+	    var maxDeltaX = virtualZoneRect.left - virtualImgRect.left;
+	    var maxDeltaY = virtualZoneRect.top - virtualImgRect.top;
+	    var minDeltaX = virtualZoneRect.right - virtualImgRect.right;
+	    var minDeltaY = virtualZoneRect.bottom - virtualImgRect.bottom;
+
+	    return {
+	      maxTranslateX: maxDeltaX > 0 ? maxDeltaX : 0,
+	      maxTranslateY: maxDeltaY > 0 ? maxDeltaY : 0,
+	      minTranslateX: minDeltaX < 0 ? minDeltaX : 0,
+	      minTranslateY: minDeltaY < 0 ? minDeltaY : 0
+	    };
+	  }
+	});
+
+		module.exports = JRImagePreview;
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var TableHeader = __webpack_require__(433);
+	var TableBody = __webpack_require__(435);
+	var _ = __webpack_require__(72);
+	var u = __webpack_require__(438);
+
+	var Component = __webpack_require__(70);
+	var tpl = __webpack_require__(442);
 
 	/**
 	 * @class JRTable
@@ -35267,13 +35621,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRTable;
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(432);
+	var tpl = __webpack_require__(434);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -35491,20 +35845,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <jr-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </jr-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(434);
-	var templates = __webpack_require__(435);
+	var tpl = __webpack_require__(436);
+	var templates = __webpack_require__(437);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -35631,23 +35985,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <jr-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 435 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(436);
+	var _ = __webpack_require__(438);
 
 	var tplMap = {
-	  default: __webpack_require__(437),
-	  progress: __webpack_require__(438),
-	  check: __webpack_require__(439)
+	  default: __webpack_require__(439),
+	  progress: __webpack_require__(440),
+	  check: __webpack_require__(441)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -35655,7 +36009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 436 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35790,38 +36144,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 437 */
+/* 439 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n{/if}\n"
 
 /***/ }),
-/* 438 */
+/* 440 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])} {#list item[column.key] as value by value_index}\n<div class=\"u-progress-wrap\">\n    <jr-progress percent={value} /> {#if !column.hideProressValue}<span>{value}</span>{/if}\n</div>\n{/list} {#else}\n<div class=\"u-progress-wrap\">\n    <jr-progress percent={item[column.key]} /> {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n</div>\n{/if}"
 
 /***/ }),
-/* 439 */
+/* 441 */
 /***/ (function(module, exports) {
 
 	module.exports = "<jr-check name={item[column.key] | placeholder} checked={item._checked} on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 440 */
+/* 442 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <jr-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 441 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var JRTableTemplate = __webpack_require__(442);
-	var JRTable = __webpack_require__(430);
+	var JRTableTemplate = __webpack_require__(444);
+	var JRTable = __webpack_require__(432);
 
 	/**
 	 * @class JRTableCol
@@ -35902,7 +36256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRTableCol;
 
 /***/ }),
-/* 442 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35988,7 +36342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRTableTemplate;
 
 /***/ }),
-/* 443 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36000,7 +36354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(444);
+	var template = __webpack_require__(446);
 
 	/**
 	 * @class JRRow
@@ -36042,13 +36396,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRRow;
 
 /***/ }),
-/* 444 */
+/* 446 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 445 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36060,8 +36414,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(446);
-	var JRRow = __webpack_require__(443);
+	var template = __webpack_require__(448);
+	var JRRow = __webpack_require__(445);
 
 	/**
 	 * @class JRCol
@@ -36111,13 +36465,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRCol;
 
 /***/ }),
-/* 446 */
+/* 448 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 447 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36130,7 +36484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(448);
+	var template = __webpack_require__(450);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -36163,13 +36517,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRCard;
 
 /***/ }),
-/* 448 */
+/* 450 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 449 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36183,7 +36537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var JRCard = __webpack_require__(447);
+	var JRCard = __webpack_require__(449);
 
 	/**
 	 * @class JRCardTools
