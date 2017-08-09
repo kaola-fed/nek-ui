@@ -38,26 +38,24 @@ const Dropdown = SourceComponent.extend({
       dir: 'down',
       open: false,
     });
-    // 每次展开的时候去计算下下拉框的位置
-    this.$watch('open', (open) => {
-      const self = this;
-      setTimeout(() => {
-        if (!open || !self.$refs.dropdown) {
-          return '';
-        }
-        if (
-          self.$refs.element.getBoundingClientRect().bottom +
-            self.$refs.dropdown.offsetHeight >
-          window.innerHeight
-        ) {
-          self.data.dir = 'up';
-        } else {
-          self.data.dir = 'down';
-        }
-        self.$update();
-      }, 0);
-    });
     this.supr();
+  },
+  computed: {
+    // 计算下下拉框的位置
+    dir: {
+      get() {
+        if (this.$refs.element && this.$refs.dropdown) {
+          return this.$refs.element.getBoundingClientRect().bottom +
+            this.$refs.dropdown.offsetHeight >
+            window.innerHeight
+            ? 'up'
+            : 'down';
+        }
+      },
+      set(value) {
+        this.data.dir = value;
+      },
+    },
   },
   /**
      * @method toggle(open) 展开/收起

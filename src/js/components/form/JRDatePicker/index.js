@@ -56,27 +56,13 @@ const JRDatePicker = Dropdown.extend({
       _time: undefined,
       autofocus: false,
       value: null,
+      dir: 'down',
       visible: true,
       required: false,
       showTime: false,
       open: false,
     });
     this.data.date = this.data.value ? this.data.value : this.data.date;
-    this.$watch('open', (open) => {
-      if (!open || !this.$refs.dropdown) {
-        return '';
-      }
-      if (
-        this.$refs.element.getBoundingClientRect().bottom +
-          this.$refs.dropdown.offsetHeight >
-        window.innerHeight
-      ) {
-        this.data.dir = 'up';
-      } else {
-        this.data.dir = 'down';
-      }
-      this.$update();
-    });
     this.$watch('date', function (newValue) {
       // 字符类型自动转为日期类型
       if (typeof newValue === 'string') {
@@ -169,6 +155,7 @@ const JRDatePicker = Dropdown.extend({
     });
 
     this.initValidation();
+    this.supr();
   },
   /**
    * @method toggle(open) 展开/收起
