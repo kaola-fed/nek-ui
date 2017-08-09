@@ -1,0 +1,9 @@
+<div class="u-switch {class}" style="width:{width}px" on-click={this.switch()}>
+	<div class="u-switch-warp" style="background:{open?onColor:offColor};border:1px solid {open?onColor:offColor};width:{width}px">
+		<div class="u-switch-btn" style="transform:translateX({open?(width-20):2}px)"></div>
+	</div>
+	{#if showText}
+	<div class="u-switch-label left" style="width:{width}px" r-class={{ 'show':open}}><span>{onText}</span></div>
+	<div class="u-switch-label right" style="width:{width}px" r-class={{ 'show':!open}}><span>{offText}</span></div>
+	{/if}
+</div>
