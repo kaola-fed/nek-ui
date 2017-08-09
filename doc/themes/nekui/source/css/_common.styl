@@ -39,7 +39,7 @@ h1, h2, h3, h4, strong
 code, pre
     font-family $code-font
     font-size $code-font-size
-    background-color $codebg
+    background-color #fff
     -webkit-font-smoothing initial
     -moz-osx-font-smoothing initial
 
@@ -49,6 +49,7 @@ code
     margin 0 2px
     border-radius 2px
     white-space nowrap
+    background-color rgba(255,255,255,0)
 
 em
     color $light
@@ -71,7 +72,7 @@ a.button
     overflow-x auto
     position relative
     padding 0
-    background-color $codebg
+    background-color #fff
     padding .8em .8em .4em
     line-height 1.1em
     border-radius $radius
@@ -182,14 +183,29 @@ a.button
         border-top 5px solid #ccc
 .grid-item
         width: auto;
-        border: 1px solid #E1E6EC;
-        margin: 20px 10px;
+        border: 1px solid #e1e6ec;
+        margin: 0px 0px 20px 22px;
         border-radius: 4px;
+        padding: 16px 24px;
+        font-family: PingFangTC-Regular;
+        font-size: 12px;
+        color: #999999;
+        em
+            padding-bottom: 8px;
+            color: #333;
+            display: block;
+            font-family: PingFangTC-Medium;
+            font-size: 12px;
+            line-height: 17px;
 .m-example
-    padding: 10px 10px 30px 10px;
+    padding: 8px 0px 20px;
 .m-code 
+    margin: 0px -24px;
     .highlight
         background-color: #fff;
+    figure
+        margin: 0px;
+        padding: 0em 0.8em;
 .m-demowrap
     border-top: 1px solid #e1e6ec;
     .m-iconLine
@@ -205,6 +221,11 @@ a.button
             -moz-transform: rotate(180deg);
             color: #E31436;
             border: 1px solid #E31436;
+    .m-copyCode
+        position:absolute;
+        top: 0px;
+        right: 20px;
+        z-index: 1;
     .m-iconOuter
         display: inline-block;
         width: 17px;
@@ -223,6 +244,7 @@ a.button
             border: 1px solid #E31436;
     .m-codeBlock
         overflow: hidden;
+        position: relative;
     .wrap
-        height: 10px;
+        height: 0px;
          

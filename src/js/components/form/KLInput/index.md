@@ -1,14 +1,17 @@
 ---
 title: 输入框
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
+
+<!-- demo_start -->
+*基本形式*
 
 大部分属性的用法与`<input>`一致。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -16,11 +19,11 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-### 表单项
+<!-- demo_start -->
+*表单项*
 
 在表单中使用
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -35,9 +38,9 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-### 单位
-
 <!-- demo_start -->
+*单位*
+
 <div class="m-example"></div>
 
 ```xml
@@ -45,9 +48,8 @@ title: 输入框
 ```
 <!-- demo_end -->
 
-### 搜索(打开console,查看输出)
-
 <!-- demo_start -->
+*搜索(打开console,查看输出)*
 <div class="m-example"></div>
 
 ```xml
@@ -64,9 +66,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### type=int/float, 固定输入小数位
-
 <!-- demo_start -->
+*type=int/float, 固定输入小数位*
+
 <div class="m-example"></div>
 
 ```xml
@@ -83,9 +85,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 验证
-
 <!-- demo_start -->
+*验证*
+
 <div class="m-example"></div>
 
 ```xml

@@ -1,7 +1,7 @@
 /**
  * ------------------------------------------------------------
  * KLCheckGroup 输入扩展
- * @author   sensen(rainforest92@126.com)
+ * @author   sensen <rainforest92@126.com>
  * ------------------------------------------------------------
  */
 
@@ -34,9 +34,6 @@ const validationMixin = require('../../../util/validationMixin');
 const KLCheckGroup = SourceComponent.extend({
   name: 'kl-check-group',
   template,
-  /**
-     * @protected
-     */
   config() {
     this.defaults({
       // @inherited source: [],

@@ -6,7 +6,7 @@
  *
  * author: Cody Chan <int64ago@gmail.com> 2017-02-08
  */
-
+/* eslint no-param-reassign: 0 */
 const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
@@ -69,7 +69,9 @@ const injectComponents = (md) => {
       gridItem.appendChild(codeDemo);
       var codeComponent = new DemoWrap({
           data: {
-              htmlTpl: codeDemo.innerHTML, 
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: \`${demo.rgl}\`,
+              jsCode: \`${demo.js}\`
           }
       });
       codeDemo.innerHTML = ''; 
@@ -77,7 +79,7 @@ const injectComponents = (md) => {
     })(index++);
     `;
   });
-  md = md.replace(/<!-- demo_start -->/gim, '<div class="grid-item">');
+  md = md.replace(/<!-- demo_start -->/gim, '<div class="grid-item" markdown="1">');
   md = md.replace(/<!-- demo_end -->/gim, '</div>');
   demosScript += '\n</script>\n{% endraw %}';
   return md + demosScript;
@@ -89,7 +91,7 @@ const injectAPI = (md, source) => {
     'no-cache': true,
     configure: path.join(__dirname, 'jsdoc.json'),
   });
-  return `${md}\n## API\n${docs}`;
+  return `${md}\n# API\n${docs}`;
 };
 
 const doc = (isDev, callback) => {

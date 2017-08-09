@@ -1,12 +1,14 @@
 ---
 title: 日期选择
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -21,9 +23,8 @@ title: 日期选择
 ```
 <!-- demo_end -->
 
-### 日期时间选择
-
 <!-- demo_start -->
+*日期时间选择*
 <div class="m-example"></div>
 
 ```xml
@@ -50,9 +51,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+*禁用组件*
 <div class="m-example"></div>
 
 ```xml
@@ -60,9 +60,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 日期范围
-
 <!-- demo_start -->
+*日期范围*
 <div class="m-example"></div>
 
 ```xml
@@ -83,9 +82,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 数据绑定
-
 <!-- demo_start -->
+*数据绑定*
 <div class="m-example"></div>
 
 ```xml
@@ -97,11 +95,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 事件
+<!-- demo_start -->
+*事件*
 
 请打开浏览器的控制台查看结果。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml

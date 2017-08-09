@@ -1,13 +1,17 @@
 ---
 title: 展示文本
+masonry: true
 ---
 
-### 大小扩展
+## 代码演示
+
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*大小扩展*
 <div class="m-example"></div>
 
-```html
+```xml
 <span class="u-text u-text-xs">超小号文本</span>
 <span class="u-text u-text-sm">小号文本</span>
 <span>正常文本</span>
@@ -16,12 +20,11 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-### 颜色扩展
-
 <!-- demo_start -->
+*颜色扩展*
 <div class="m-example"></div>
 
-```html
+```xml
 <span>Default</span>
 <span class="u-text u-text-primary">Primary</span>
 <span class="u-text u-text-success">Success</span>
@@ -32,22 +35,20 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-### 加粗
-
 <!-- demo_start -->
+*加粗*
 <div class="m-example"></div>
 
-```html
+```xml
 <div class="f-fwb">加粗文本</div>
 ```
-<!-- demo_start -->
-
-### 文本对齐
+<!-- demo_end -->
 
 <!-- demo_start -->
+*文本对齐*
 <div class="m-example"></div>
 
-```html
+```xml
 <div class="f-tal">左对齐</div>
 <div class="f-tac">居中对齐</div>
 <div class="f-tar">右对齐</div>
@@ -55,28 +56,22 @@ title: 展示文本
 ```
 <!-- demo_end -->
 
-### 垂直对齐
-
 <!-- demo_start -->
+*垂直对齐*
 <div class="m-example"></div>
 
-```html
+```xml
 <div class="f-vat">顶部对齐</div>
 <div class="f-vam">垂直居中</div>
 <div class="f-vab">底部对齐</div>
 ```
 <!-- demo_end -->
 
-*待完成……*
-
-### 文本省略和换行
-
 <!-- demo_start -->
+*文本省略和换行*
 <div class="m-example"></div>
 
-```html
+```xml
 <div class="f-toe" style="width:100px;">这是一段很长很长的文字</div>
 ```
 <!-- demo_end -->
-
-*待完成……*

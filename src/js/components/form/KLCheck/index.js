@@ -1,7 +1,7 @@
 /**
  * ------------------------------------------------------------
- * KLCheck   多选按钮
- * @author   sensen(rainforest92@126.com)
+ * KLCheck 多选按钮
+ * @author sensen <rainforest92@126.com>
  * ------------------------------------------------------------
  */
 
@@ -24,9 +24,6 @@ const _ = require('../../../ui-base/_');
 const KLCheck = Component.extend({
   name: 'kl-check',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       name: '',
@@ -39,10 +36,10 @@ const KLCheck = Component.extend({
       if (oldValue === undefined) return;
 
       /**
-             * @event change 选中状态改变时触发
-             * @property {object} sender 事件发送对象
-             * @property {object} date 改变后的选中状态
-             */
+         * @event change 选中状态改变时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} date 改变后的选中状态
+         */
       this.$emit('change', {
         sender: this,
         checked: newValue,
@@ -63,10 +60,10 @@ const KLCheck = Component.extend({
     this.data.checked = checked;
 
     /**
-         * @event check 改变选中状态时触发
-         * @property {object} sender 事件发送对象
-         * @property {boolean} checked 选中状态
-         */
+       * @event check 改变选中状态时触发
+       * @property {object} sender 事件发送对象
+       * @property {boolean} checked 选中状态
+       */
     this.$emit('check', {
       sender: this,
       checked,

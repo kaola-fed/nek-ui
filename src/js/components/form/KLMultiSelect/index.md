@@ -1,12 +1,14 @@
 ---
 title: 多级选择
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -50,10 +52,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 允许勾选非末级（仅支持单选场景）
-#### 选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头
-
 <!-- demo_start -->
+*允许勾选非末级（仅支持单选场景）*
+
+选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头
+
 <div class="m-example"></div>
 
 ```xml
@@ -98,10 +101,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-
-### 多选
-
 <!-- demo_start -->
+*多选*
 <div class="m-example"></div>
 
 ```xml

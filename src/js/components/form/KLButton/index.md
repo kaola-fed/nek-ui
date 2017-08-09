@@ -9,7 +9,7 @@ masonry: true
 
 <!-- demo_start -->
 
-### 基本形式
+*基本形式*
 
 <div class="m-example"></div>
 
@@ -43,7 +43,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-### 常用的button类型
+*常用的button类型*
 
 <div class="m-example"></div>
 
@@ -79,7 +79,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-### 圆角的图标按钮
+*圆角的图标按钮*
 
 <div class="m-example"></div>
 
@@ -97,7 +97,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-### 图标按钮
+*图标按钮*
 
 <div class="m-example"></div>
 
@@ -115,7 +115,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-### 加载中的按钮
+*加载中的按钮*
 
 <div class="m-example"></div>
 

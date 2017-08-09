@@ -1,16 +1,18 @@
 ---
 title: 上传文件
+masonry: true
 ---
 
 ## 代码演示
+
+<div id="grid-itemOuter"></div>
 
 ### 注
 
 目前该上传组件采用FormData向后台提交文件数据。
 
-### 基本展示形式（列表形式）, 用于表单上传
-
 <!-- demo_start -->
+*基本展示形式（列表形式）, 用于表单上传*
 <div class="m-example"></div>
 
 ```xml
@@ -18,9 +20,8 @@ title: 上传文件
 ```
 <!-- demo_end -->
 
-### 卡片展示形式，用于表格上传
-
 <!-- demo_start -->
+*卡片展示形式，用于表格上传*
 <div class="m-example"></div>
 
 ```xml
@@ -28,9 +29,8 @@ title: 上传文件
 ```
 <!-- demo_end -->
 
-### 基本展示形式，配置多选上传
-
 <!-- demo_start -->
+*基本展示形式，配置多选上传*
 <div class="m-example"></div>
 
 ```xml
@@ -38,9 +38,8 @@ title: 上传文件
 ```
 <!-- demo_end -->
 
-### 卡片展示形式，配置多选上传
-
 <!-- demo_start -->
+*卡片展示形式，配置多选上传*
 <div class="m-example"></div>
 
 ```xml
@@ -70,9 +69,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 文件类型限制
-
 <!-- demo_start -->
+*文件类型限制*
 <div class="m-example"></div>
 
 ```xml
@@ -80,9 +78,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 文件大小限制
-
 <!-- demo_start -->
+*文件大小限制*
 <div class="m-example"></div>
 
 ```xml
@@ -90,9 +87,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 每行展示文件个数和总文件个数限制
-
 <!-- demo_start -->
+*每行展示文件个数和总文件个数限制*
 <div class="m-example"></div>
 
 ```xml
@@ -100,9 +96,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 带有已上传文件的形式
-
 <!-- demo_start -->
+*带有已上传文件的形式*
 <div class="m-example"></div>
 
 ```xml
