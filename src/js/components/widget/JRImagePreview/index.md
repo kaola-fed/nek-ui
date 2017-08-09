@@ -1,5 +1,5 @@
 ---
-title: 图预览
+title: 图片预览
 is_beta: true
 ---
 
