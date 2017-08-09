@@ -27,20 +27,19 @@
 
     <%- page.content %>
 
-    <% if (site.pages.find({ type: page.type }).length > 1) { %>
-        <div class="guide-links">
-          <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
-            <a href="<%- url_for(page.path) %>" class="pager pager-left">
-                <span class="icon icon-left"></span><span><%- page.title %></span>
-            </a>
-          <% }) %>
-          <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
-            <a href="<%- url_for(page.path) %>" class="pager pager-right">
-                <span><%- page.title %></span><span class="icon icon-right"></span>
-            </a>
-          <% }) %>
-        </div>
-    <% } %>
+    <div class="guide-links">
+      <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
+        <a href="<%- url_for(page.path) %>" class="pager">
+            <span class="icon icon-left"></span><span><%- page.title %></span>
+        </a>
+      <% }) %>
+        <span class="placeholder"></span>
+      <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
+        <a href="<%- url_for(page.path) %>" class="pager">
+            <span><%- page.title %></span><span class="icon icon-right"></span>
+        </a>
+      <% }) %>
+    </div>
     <div class="footer">
       想让文档更完善？
       <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
