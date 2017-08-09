@@ -5101,7 +5101,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	margin:0;
 	display:inline-block;
 	position:relative;
-	width:46px;
 	height:22px;
 	outline:none;
 	border-radius:12px;
@@ -5127,7 +5126,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	font-size:14px;
 	color:#fff;
 	transition:0.2s;
-	width:46px;
 	height:22px;
 	left:0;
 	top:0;

@@ -30271,8 +30271,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}      [options.data.width=46]         => 组件宽度
 	 * @param {boolean}     [options.data.open=true]        => 默认打开
 	 * @param {boolean}     [options.data.showText=true]    => 是否显示开关的文字
-	 * @param {string}      [options.data.onText=on]      => 打开的title
-	 * @param {string}      [options.data.offText=off]    => 关闭的title
+	 * @param {string}      [options.data.onText=on]        => 打开的title
+	 * @param {string}      [options.data.offText=off]      => 关闭的title
 	 * @param {string}      [options.data.onColor]          => 打开的背景色，不建议白色，因为文字为白色
 	 * @param {string}      [options.data.offColor]         => 关闭的背景色，不建议白色，因为文字为白色
 	 * @param {boolean}     [options.data.disabled=false]   => 禁止按钮
@@ -30292,6 +30292,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onColor: '#13ce66',
 	      offColor: '#ff0000'
 	    });
+	    if (this.data.disabled) {
+	      this.data.onColor = '#999';
+	      this.data.offColor = '#999';
+	    }
 	    this.supr();
 	  },
 	  init: function init() {
@@ -30320,7 +30324,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 375 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-switch {class}\" style=\"width:{width}px\" on-click={this.switch()}>\n\t<div class=\"u-switch-warp\" style=\"background:{open?onColor:offColor};border:1px solid {open?onColor:offColor};width:{width}px\">\n\t\t<div class=\"u-switch-btn\" style=\"transform:translateX({open?(width-20):2}px)\" r-class={{ 'z-dis':disabled}}></div>\n\t</div>\n\t{#if showText}\n\t<div class=\"u-switch-label left\" style=\"width:{width}px\" r-class={{ 'show':open}}><span>{onText}</span></div>\n\t<div class=\"u-switch-label right\" style=\"width:{width}px\" r-class={{ 'show':!open}}><span>{offText}</span></div>\n\t{/if}\n</div>"
+	module.exports = "<div class=\"u-switch {class}\" style=\"width:{width}px\" on-click={this.switch()}>\n\t<div class=\"u-switch-warp\" style=\"background:{open?onColor:offColor};border:1px solid {open?onColor:offColor};width:{width}px\">\n\t\t<div class=\"u-switch-btn\" style=\"transform:translateX({open?(width-20):2}px)\"></div>\n\t</div>\n\t{#if showText}\n\t<div class=\"u-switch-label left\" style=\"width:{width}px\" r-class={{ 'show':open}}><span>{onText}</span></div>\n\t<div class=\"u-switch-label right\" style=\"width:{width}px\" r-class={{ 'show':!open}}><span>{offText}</span></div>\n\t{/if}\n</div>"
 
 /***/ }),
 /* 376 */
