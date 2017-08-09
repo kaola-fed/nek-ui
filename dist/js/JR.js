@@ -10172,6 +10172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Dropdown
 	 * @param {object}        [options.data] = 绑定属性
 	 * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
+	 * @param {object}        [options.data.value=null]       <=> 当前选择的日期时间(经过格式化，优先级高于date)
 	 * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
 	 * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
 	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
@@ -10206,11 +10207,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _date: undefined,
 	      _time: undefined,
 	      autofocus: false,
+	      value: null,
 	      visible: true,
 	      required: false,
 	      showTime: false,
 	      open: false
 	    });
+	    this.data.date = this.data.value ? this.data.value : this.data.date;
 	    this.$watch('open', function (open) {
 	      if (!open || !_this.$refs.dropdown) {
 	        return '';
@@ -10248,7 +10251,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.data._date = new Date(newValue);
 	        this.data._time = filter.format(newValue, 'HH:mm:ss');
 	      }
-
+	      var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
+	      this.data.value = filter.format(newValue, format);
 	      /**
 	       * @event change 日期时间改变时触发
 	       * @property {object} sender 事件发送对象
@@ -10256,9 +10260,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	       */
 	      this.$emit('change', {
 	        sender: this,
-	        date: newValue
+	        date: this.data.value
 	      });
-
 	      this.data.tip && this.validate();
 	    });
 

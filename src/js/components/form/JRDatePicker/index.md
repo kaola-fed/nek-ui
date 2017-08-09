@@ -31,13 +31,15 @@ is_beta: true
 <div class="f-cb">
 <jr-form>
     <jr-form-item cols=4>
-        <jr-date-picker showTime date={date1} />
+        <jr-date-picker value={date1} />
     </jr-form-item>
     <jr-form-item cols=4>
         <jr-date-picker showTime date={date2} />
     </jr-form-item>
 </jr-form>
 </div>
+1、{date1}<br>
+2、{date2}
 ```
 
 ```javascript
