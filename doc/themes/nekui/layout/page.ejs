@@ -24,13 +24,20 @@
              }
          </style>
      <% } %>
+
     <%- page.content %>
+
     <div class="guide-links">
       <% site.pages.find({ type: page.type, order: page.order - 1 }).each(function (page) { %>
-        <span>← <a href="<%- url_for(page.path) %>"><%- page.title %></a></span>
+        <a href="<%- url_for(page.path) %>" class="pager">
+            <span class="icon icon-left"></span><span><%- page.title %></span>
+        </a>
       <% }) %>
+        <span class="placeholder"></span>
       <% site.pages.find({ type: page.type, order: page.order + 1 }).each(function (page) { %>
-        <span style="float:right"><a href="<%- url_for(page.path) %>"><%- page.title %></a> →</span>
+        <a href="<%- url_for(page.path) %>" class="pager">
+            <span><%- page.title %></span><span class="icon icon-right"></span>
+        </a>
       <% }) %>
     </div>
     <div class="footer">
