@@ -1,9 +1,9 @@
-<div class="u-switch {class}" style="width:{width}px" on-click={this.switch()}>
-	<div class="u-switch-warp" style="background:{open?onColor:offColor};border:1px solid {open?onColor:offColor};width:{width}px">
-		<div class="u-switch-btn" style="transform:translateX({open?(width-20):2}px)"></div>
+<div class="u-switch {class}"  style="width:{width}px" on-click={this.switch()}>
+	<div class="u-switch-warp" r-class={{'notAllow':disabled}} style="background:{disabled?'#999':(open?onColor:offColor)};border:1px solid {disabled?'#999':(open?onColor:offColor)};width:{width}px">
+		<div class="u-switch-btn" r-class={{'notAllow':disabled}} style="transform:translateX({open?(width-20):2}px)"></div>
 	</div>
 	{#if showText}
-	<div class="u-switch-label left" style="width:{width}px" r-class={{ 'show':open}}><span>{onText}</span></div>
-	<div class="u-switch-label right" style="width:{width}px" r-class={{ 'show':!open}}><span>{offText}</span></div>
+	<div class="u-switch-label left" r-class={{'notAllow':disabled}} style="width:{width}px" r-class={{ 'show':open}}><span>{onText}</span></div>
+	<div class="u-switch-label right" r-class={{'notAllow':disabled}} style="width:{width}px" r-class={{ 'show':!open}}><span>{offText}</span></div>
 	{/if}
 </div>

@@ -30292,10 +30292,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onColor: '#13ce66',
 	      offColor: '#ff0000'
 	    });
-	    if (this.data.disabled) {
-	      this.data.onColor = '#999';
-	      this.data.offColor = '#999';
-	    }
 	    this.supr();
 	  },
 	  init: function init() {
@@ -30324,7 +30320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 375 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-switch {class}\" style=\"width:{width}px\" on-click={this.switch()}>\n\t<div class=\"u-switch-warp\" style=\"background:{open?onColor:offColor};border:1px solid {open?onColor:offColor};width:{width}px\">\n\t\t<div class=\"u-switch-btn\" style=\"transform:translateX({open?(width-20):2}px)\"></div>\n\t</div>\n\t{#if showText}\n\t<div class=\"u-switch-label left\" style=\"width:{width}px\" r-class={{ 'show':open}}><span>{onText}</span></div>\n\t<div class=\"u-switch-label right\" style=\"width:{width}px\" r-class={{ 'show':!open}}><span>{offText}</span></div>\n\t{/if}\n</div>"
+	module.exports = "<div class=\"u-switch {class}\"  style=\"width:{width}px\" on-click={this.switch()}>\n\t<div class=\"u-switch-warp\" r-class={{'notAllow':disabled}} style=\"background:{disabled?'#999':(open?onColor:offColor)};border:1px solid {disabled?'#999':(open?onColor:offColor)};width:{width}px\">\n\t\t<div class=\"u-switch-btn\" r-class={{'notAllow':disabled}} style=\"transform:translateX({open?(width-20):2}px)\"></div>\n\t</div>\n\t{#if showText}\n\t<div class=\"u-switch-label left\" r-class={{'notAllow':disabled}} style=\"width:{width}px\" r-class={{ 'show':open}}><span>{onText}</span></div>\n\t<div class=\"u-switch-label right\" r-class={{'notAllow':disabled}} style=\"width:{width}px\" r-class={{ 'show':!open}}><span>{offText}</span></div>\n\t{/if}\n</div>"
 
 /***/ }),
 /* 376 */

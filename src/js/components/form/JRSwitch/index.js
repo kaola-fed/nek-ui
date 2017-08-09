@@ -36,10 +36,6 @@ const JRSwitch = Component.extend({
       onColor: '#13ce66',
       offColor: '#ff0000',
     });
-    if (this.data.disabled) {
-      this.data.onColor = '#999';
-      this.data.offColor = '#999';
-    }
     this.supr();
   },
   init() {

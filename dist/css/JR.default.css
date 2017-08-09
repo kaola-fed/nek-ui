@@ -5097,6 +5097,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	height:22px;
 	vertical-align:middle;
 }
+.u-switch .notAllow{
+	cursor:not-allowed !important;
+}
 .u-switch .u-switch-warp{
 	margin:0;
 	display:inline-block;
