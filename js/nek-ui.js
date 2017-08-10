@@ -5843,7 +5843,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        this.$on('destroy', function () {
 	          var index = $outer.controls.indexOf(this);
-	          $outer.controls.splice(index, 1);
+	          if (index !== -1) {
+	            $outer.controls.splice(index, 1);
+	          }
 	        });
 	      }
 	    }
