@@ -43,7 +43,7 @@ module.exports = {
   PLEASE_UPLOAD_ATLEAST: '请至少上传',
   UNIT: '个',
   FILE: '文件',
-  QUERY: '查询',
+  SEARCH: '查询',
   RESET: '重置',
   FOLD: '收起',
   UNFOLD: '展开',

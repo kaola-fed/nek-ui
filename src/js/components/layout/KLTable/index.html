@@ -25,7 +25,7 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',
+                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : width == undefined ? 'auto' : width + 'px',
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}>
             <table-header

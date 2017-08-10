@@ -1,0 +1,8 @@
+.kl-search_ft {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.kl-search_btn {
+    margin-right: 10px;
+}
