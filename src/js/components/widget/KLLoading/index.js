@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLLoading   加载中
+ * @file KLLoading   加载中
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

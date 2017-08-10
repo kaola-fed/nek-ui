@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLCrumb     面包屑
+ * @file KLCrumb 面包屑
  * @author   zianecui@gmail.com
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

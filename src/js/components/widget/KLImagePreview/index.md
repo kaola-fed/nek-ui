@@ -1,12 +1,15 @@
 ---
 title: 图片预览
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml

@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLRadioGroup 输入扩展
+ * @file KLRadioGroup 输入扩展
  * @author   sensen<rainforest92@126.com>
- * ------------------------------------------------------------
  */
 
 const SourceComponent = require('../../../ui-base/sourceComponent');

@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLIcon     图标
+ * @file KLIcon     图标
  * @author   zianecui@gmail.com
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLText  文本
+ * @file KLText  文本
  * @author   Cody Chan<int64ago@gmail.com>
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

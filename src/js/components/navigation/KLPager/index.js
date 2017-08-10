@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLPager     分页
+ * @file KLPager     分页
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

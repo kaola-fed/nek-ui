@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLModal     模态对话框
+ * @filter KLModal     模态对话框
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

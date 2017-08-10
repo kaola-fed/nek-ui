@@ -50,6 +50,7 @@ const injectComponents = (md) => {
   if (demos.length === 0) return md;
   let demosScript = '\n{% raw %}\n<script>\nvar index = 0;\n';
   demos.forEach((demo) => {
+    const tempJs = demo.js.replace(/`/gim, '\\`');
     demosScript += `
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
@@ -71,7 +72,7 @@ const injectComponents = (md) => {
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: \`${demo.rgl}\`,
-              jsCode: \`${demo.js}\`
+              jsCode: \`${tempJs}\`
           }
       });
       codeDemo.innerHTML = ''; 

@@ -1,16 +1,19 @@
 ---
 title: 模态框
+masonry: true
 ---
+
+## 代码演示
 
 含有遮罩层的对话框，用于模拟浏览器的`alert`、`confirm`和`prompt`。
 
 模态对话框通过遮罩层来阻止用户的其他行为。
 
-## 代码演示
-
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -32,9 +35,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### Disable
-
 <!-- demo_start -->
+*Disable*
+
 <div class="m-example"></div>
 
 ```xml
@@ -59,9 +62,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 不显示 footer
-
 <!-- demo_start -->
+*不显示 footer*
+
 <div class="m-example"></div>
 
 ```xml
@@ -84,9 +87,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 禁止关闭
-
 <!-- demo_start -->
+*禁止关闭*
+
 <div class="m-example"></div>
 
 ```xml
@@ -109,9 +112,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### Alert
-
 <!-- demo_start -->
+*Alert*
+
 <div class="m-example"></div>
 
 ```xml
@@ -128,9 +131,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### Confirm
-
 <!-- demo_start -->
+*Confirm*
+
 <div class="m-example"></div>
 
 ```xml

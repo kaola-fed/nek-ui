@@ -1,3 +1,7 @@
+/**
+ * @file KLtable 表格
+ */
+
 const TableHeader = require('./TableHeader');
 const TableBody = require('./TableBody');
 const _ = require('../../../ui-base/_');
@@ -34,10 +38,9 @@ const tpl = require('./index.html');
  * @param {string}      [options.data.thClass]          => 表头样式
  * @param {boolean}     [options.data.sortable]         => 可排序
  * @param {string}      [options.data.children]         => 子表头
- * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+ * @param {boolean/string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
  * @param {string}      [optiosn.data.align='']         => 列文字对齐
  * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
-
  * @param {string}      [options.data.template]         => 列内容模版
  */
 
@@ -480,7 +483,7 @@ const KLTable = Component.extend({
   },
   _onSort(e) {
     /**
-         * @event sort 排序事件
+         * @event KLTable#sort 排序事件
          * @property {object} sender 事件来源
          * @property {boolean} asc 是否升序
          * @property {object} column 目标列
@@ -504,7 +507,7 @@ const KLTable = Component.extend({
   },
   _onItemCheckChange(e) {
     /**
-         * @event checkchange 多选事件
+         * @event cKLTable#heckchange 多选事件
          * @property {object} sender 事件来源
          * @property {boolean} checked 是否选中
          * @property {object} item 操作对象
@@ -533,7 +536,7 @@ const KLTable = Component.extend({
   },
   emitEvent(type, ...args) {
     /**
-         * @event type 自定义的操作事件
+         * @event KLTable#type 自定义的操作事件
          * @property {object} sender 事件来源
          * @property {boolean} custom 自定义事件标识
          * @property {array} param 自定义事件所带的参数
@@ -555,7 +558,7 @@ const KLTable = Component.extend({
   },
   _onPaging(e) {
     /**
-         * @event paging 分页事件
+         * @event KLTable#paging 分页事件
          * @property {object} sender 事件来源
          * @property {number} current 事件来源
          * @property {object} paging 分页对象

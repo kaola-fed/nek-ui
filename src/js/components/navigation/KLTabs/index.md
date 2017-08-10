@@ -4,9 +4,8 @@ title: 选项卡
 
 ## 代码演示
 
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -19,9 +18,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 每次切换 Tab 时重新渲染
-
 <!-- demo_start -->
+*每次切换 Tab 时重新渲染*
+
 <div class="m-example"></div>
 
 ```xml
@@ -34,9 +33,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 禁用某一项，禁用组件
-
 <!-- demo_start -->
+*禁用某一项，禁用组件*
+
 <div class="m-example"></div>
 
 ```xml
@@ -61,9 +60,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 居中
-
 <!-- demo_start -->
+*居中*
+
 <div class="m-example"></div>
 
 ```xml
@@ -76,9 +75,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 垂直居左
-
 <!-- demo_start -->
+*垂直居左*
+
 <div class="m-example"></div>
 
 ```xml
@@ -91,9 +90,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 垂直居右
-
 <!-- demo_start -->
+*垂直居右*
+
 <div class="m-example"></div>
 
 ```xml
@@ -106,9 +105,9 @@ title: 选项卡
 ```
 <!-- demo_end -->
 
-### 标题模板自定义
-
 <!-- demo_start -->
+*标题模板自定义*
+
 <div class="m-example"></div>
 
 ```xml
@@ -129,11 +128,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 事件
+<!-- demo_start -->
+*事件*
 
 请打开浏览器的控制台查看结果。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -160,11 +159,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 默认选中 Tab
+<!-- demo_start -->
+*默认选中 Tab*
 
 需要同时设置 `tabs` 的 `defaultKey` 和 `tab` 的 `key`
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml

@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLSidebar
+ * @file KLSidebar
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

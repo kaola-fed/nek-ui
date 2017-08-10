@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLDatePicker 日期选择
+ * @file KLDatePicker 日期选择
  * @author   sensen<rainforest92@126.com>
- * ------------------------------------------------------------
  */
 
 const Dropdown = require('../common/Dropdown');
@@ -90,7 +88,7 @@ const KLDatePicker = Dropdown.extend({
       }
 
       /**
-       * @event change 日期时间改变时触发
+       * @event KLDatePicker#change 日期时间改变时触发
        * @property {object} sender 事件发送对象
        * @property {object} date 改变后的日期时间
        */
@@ -156,7 +154,7 @@ const KLDatePicker = Dropdown.extend({
     this.initValidation();
   },
   /**
-   * @method select(date) 选择一个日期
+   * @method KLDatePicker#select(date) 选择一个日期
    * @public
    * @param  {Date} date 选择的日期
    * @return {void}
@@ -182,7 +180,7 @@ const KLDatePicker = Dropdown.extend({
     this.data.date = this.date;
     this.data.time = this.time;
     /**
-     * @event select 选择某一项时触发
+     * @event KLDatePicker#select 选择某一项时触发
      * @property {object} sender 事件发送对象
      * @property {object} date 当前选择项
      */
@@ -194,7 +192,7 @@ const KLDatePicker = Dropdown.extend({
     this.toggle(false);
   },
   /**
-   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
+   * @method KLDatePicker#_onDateTimeChange(date, time) 日期或时间改变后更新日期时间
    * @private
    * @return {void}
    */
@@ -208,7 +206,7 @@ const KLDatePicker = Dropdown.extend({
     this.date.setSeconds(time[2]);
   },
   /**
-   * @method _onInput($event) 输入日期
+   * @method KLDatePicker#_onInput($event) 输入日期
    * @private
    * @param  {object} $event
    * @return {void}
@@ -226,7 +224,7 @@ const KLDatePicker = Dropdown.extend({
     }
   },
   /**
-   * @method isOutOfRange(date) 是否超出规定的日期时间范围
+   * @method KLDatePicker#isOutOfRange(date) 是否超出规定的日期时间范围
    * @public
    * @param {Date} date 待测的日期时间
    * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间

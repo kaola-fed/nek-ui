@@ -1,15 +1,17 @@
 ---
 title: 菜单栏
+masonry: true
 ---
 
 ## 代码演示
 KLSidebar只是对KLMenu的进一步封装,如果无法满足需求,可直接使用KLMenu组件
 
-### 基本形式
-
-通过设置open属性,可以高亮当前选中的菜单
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
+通过设置open属性,可以高亮当前选中的菜单
 <div class="m-example"></div>
 <style>
     .m-example {

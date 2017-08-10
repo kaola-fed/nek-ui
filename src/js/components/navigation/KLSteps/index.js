@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLSteps     步骤条
+ * @file KLSteps     步骤条
  * @author   ziane(zianecui@gmail.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

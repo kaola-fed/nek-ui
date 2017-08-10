@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLNotify    通知
+ * @filter KLNotify    通知
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

@@ -6,9 +6,9 @@ title: 图标
 
 ## 代码演示
 
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -16,9 +16,9 @@ title: 图标
 ```
 <!-- demo_end -->
 
-### 设置icon大小和颜色
-
 <!-- demo_start -->
+*设置icon大小和颜色*
+
 <div class="m-example"></div>
 
 ```xml
@@ -26,9 +26,9 @@ title: 图标
 ```
 <!-- demo_end -->
 
-### 图标列表（点击图标按钮复制图标代码，下放代码请先忽视）
-
 <!-- demo_start -->
+*图标列表（点击图标按钮复制图标代码，下放代码请先忽视）*
+
 <div class="m-example"></div>
 
 ```xml

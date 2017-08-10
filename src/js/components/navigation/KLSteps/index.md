@@ -4,9 +4,8 @@ title: 步骤
 
 ## 代码演示
 
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -39,11 +38,10 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 迷你版
+<!-- demo_start -->
+*迷你版*
 
 在表单中使用
-
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml

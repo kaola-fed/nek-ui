@@ -1,12 +1,15 @@
 ---
 title: 两级菜单
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -26,9 +29,9 @@ title: 两级菜单
 ```
 <!-- demo_end -->
 
-### 通过配置数据渲染菜单
-
 <!-- demo_start -->
+*通过配置数据渲染菜单*
+
 <div class="m-example"></div>
 
 ```xml

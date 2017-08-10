@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLButton 按钮
+ * @file KLButton 按钮
  * @author Cody Chan <int64ago@gmail.com>
- * ------------------------------------------------------------
  */
 
 const validator = require('validator');

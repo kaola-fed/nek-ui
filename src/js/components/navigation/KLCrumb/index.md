@@ -4,9 +4,8 @@ title: 面包屑
 
 ## 代码演示
 
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -21,9 +20,8 @@ title: 面包屑
 ```
 <!-- demo_end -->
 
-### 基本形式（简版）
-
 <!-- demo_start -->
+*基本形式（简版）*
 <div class="m-example"></div>
 
 ```xml

@@ -6,7 +6,7 @@ const ValidationMixin = require('../../../util/validationMixin');
 const template = require('./index.html');
 
 /**
- * @class UIForm
+ * @class KLForm
  * @extend Validation
  * @param {object}      [options.data]                    = 绑定属性
  * @param {string}      [options.data.service]            => 全站异步获取source的接口地址
@@ -109,10 +109,10 @@ const KLForm = Validation.extend({
       self.__updateSource($formitem, key, source);
     });
     /**
-           * @event sourceCompleted kl-form自动获取sourceKey异步数据后触发
-           * @property {object} sender 事件发送对象
-           * @property {object} result 所有异步数据
-           */
+       * @event KLForm#sourceCompleted kl-form自动获取sourceKey异步数据后触发
+       * @property {object} sender 事件发送对象
+       * @property {object} result 所有异步数据
+       */
     this.$emit('sourceCompleted', {
       sender: this,
       result: window.NEKSelects,

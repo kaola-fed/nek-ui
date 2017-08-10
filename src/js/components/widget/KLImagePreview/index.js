@@ -1,7 +1,5 @@
 /**
- *  ------------------------------
- *  KLImagePreview 图片预览
- *  ------------------------------
+ * @file  KLImagePreview 图片预览
  */
 
 const Component = require('../../../ui-base/component');

@@ -1,12 +1,15 @@
 ---
 title: 卡片
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -18,9 +21,9 @@ title: 卡片
 ```
 <!-- demo_end -->
 
-### 子card前面不缩进
-
 <!-- demo_start -->
+*子card前面不缩进*
+
 <div class="m-example"></div>
 
 ```xml
@@ -31,9 +34,9 @@ title: 卡片
 ```
 <!-- demo_end -->
 
-### 嵌套多层
-
 <!-- demo_start -->
+*嵌套多层*
+
 <div class="m-example"></div>
 
 ```xml

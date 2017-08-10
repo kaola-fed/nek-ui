@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLPopConfirm 气泡弹框
+ * @file KLPopConfirm 气泡弹框
  * @author   ziane(zianecui@gmail.com)
- * ------------------------------------------------------------
  */
 
 const dom = require('regularjs').dom;

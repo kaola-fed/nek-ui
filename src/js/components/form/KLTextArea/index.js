@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLTextArea   输入扩展
+ * @file KLTextArea   输入扩展
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');

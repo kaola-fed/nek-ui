@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLCheckGroup 输入扩展
+ * @file KLCheckGroup 输入扩展
  * @author   sensen <rainforest92@126.com>
- * ------------------------------------------------------------
  */
 
 const SourceComponent = require('../../../ui-base/sourceComponent');
@@ -85,7 +83,7 @@ const KLCheckGroup = SourceComponent.extend({
     });
   },
   /**
-     * @method validate() 根据min, max验证组件的值是否正确
+     * @method KLCheckGroup#validate() 根据min, max验证组件的值是否正确
      * @public
      * @return {object} result 结果
      */
@@ -117,7 +115,7 @@ const KLCheckGroup = SourceComponent.extend({
     return result;
   },
   /**
-     * method _onCheck() 点击check时,改变对应的value值
+     * @method KLCheckGroup#_onCheck() 点击check时,改变对应的value值
      * @private
      */
   _onCheck(item) {

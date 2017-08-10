@@ -4,9 +4,9 @@ title: 分页
 
 ## 代码演示
 
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -14,9 +14,9 @@ title: 分页
 ```
 <!-- demo_end -->
 
-### 总条数展示设置一
-
 <!-- demo_start -->
+*总条数展示设置一*
+
 <div class="m-example"></div>
 
 ```xml
@@ -24,9 +24,9 @@ title: 分页
 ```
 <!-- demo_end -->
 
-### 总条数展示设置二
-
 <!-- demo_start -->
+*总条数展示设置二*
+
 <div class="m-example"></div>
 
 ```xml
@@ -34,9 +34,9 @@ title: 分页
 ```
 <!-- demo_end -->
 
-### 位置
-
 <!-- demo_start -->
+*位置*
+
 <div class="m-example"></div>
 
 ```xml
@@ -46,9 +46,9 @@ title: 分页
 ```
 <!-- demo_end -->
 
-### 显示数目
-
 <!-- demo_start -->
+*显示数目*
+
 <div class="m-example"></div>
 
 ```xml
@@ -56,9 +56,9 @@ title: 分页
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+*禁用组件*
+
 <div class="m-example"></div>
 
 ```xml

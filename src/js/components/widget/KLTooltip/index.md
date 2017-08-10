@@ -1,12 +1,15 @@
 ---
 title: 文字提示
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -20,9 +23,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 位置
-
 <!-- demo_start -->
+*位置*
+
 <div class="m-example"></div>
 
 ```xml
