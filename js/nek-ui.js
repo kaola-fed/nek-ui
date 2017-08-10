@@ -27222,12 +27222,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  // 删除某一项
 	  delete: function _delete(event, item) {
+	    var data = this.data;
 	    event && event.stopPropagation();
 	    if (data.disabled || data.readonly) {
 	      return;
 	    }
 	    this.toggle(true);
-	    var data = this.data;
 	    var _list = data.value.toString().split(data.separator);
 	    _list.splice(_list.indexOf((item[data.key].toString() || '').toString()), 1);
 	    data.value = _list.join(data.separator);
