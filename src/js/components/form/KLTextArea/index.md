@@ -1,14 +1,17 @@
 ---
 title: 文本输入
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
+
+<!-- demo_start -->
+*基本形式*
 
 大部分属性的用法与`<textarea>`一致。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -16,11 +19,11 @@ title: 文本输入
 ```
 <!-- demo_end -->
 
-### 表单项
+<!-- demo_start -->
+*表单项*
 
 在表单中使用
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -32,9 +35,8 @@ title: 文本输入
 ```
 <!-- demo_end -->
 
-### 验证
-
 <!-- demo_start -->
+*验证*
 <div class="m-example"></div>
 
 ```xml
@@ -54,9 +56,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 字数实时统计
-
 <!-- demo_start -->
+*字数实时统计*
 <div class="m-example"></div>
 
 ```xml

@@ -5,7 +5,7 @@ title: 表格
 ## 代码演示
 
 <!-- demo_start -->
-### 基本
+*基本*
 
 <div class="m-example"></div>
 
@@ -38,7 +38,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 显示配置项
+*显示配置项*
 
 1. 无条纹：`strip={false}`
 2. 占位符：默认`placeholder="-"`
@@ -77,7 +77,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 过滤器
+*过滤器*
 
 `filter` 接收一个 `function`，依次可以取得参数 `val`，`item`，`itemIndex`。
 
@@ -118,7 +118,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 多级表头
+*多级表头*
 
 <div class="m-example"></div>
 
@@ -160,7 +160,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 悬浮表头和底部
+*悬浮表头和底部*
 
 控制表头和底部的悬浮需要对 `scroll` 事件进行监听，在默认的情况下，监听对象是 `window`，即页面的滚动。
 
@@ -202,7 +202,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 表头固定在表格顶部
+*表头固定在表格顶部*
 
 <div class="m-example"></div>
 
@@ -235,7 +235,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 固定列
+*固定列*
 
 <div class="m-example"></div>
 
@@ -270,7 +270,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 自定义模版与filter
+*自定义模版与filter*
 
 通过 `kl-table-template` 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 `template` 属性。
 自定义模版中可以通过 `emit` 的方法向上抛出事件。
@@ -354,7 +354,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 自定义行样式
+*自定义行样式*
 
 通过设置 `item.rowClass` 或 `item.rowStyle` 修改每一行的样式。
 
@@ -391,7 +391,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 排序
+*排序*
 
 没有实际的排序效果，请查看 console 打印的事件对象。
 
@@ -433,7 +433,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 分页
+*分页*
 
 分页的配置参考 [分页 Pager](/components/navigation_pager_.html) 。
 
@@ -476,7 +476,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 多选
+*多选*
 
 通过 `enableCheckAll`
 
@@ -515,7 +515,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 数据配置
+*数据配置*
 
 在进行数据配置时，模版的配置方式更为灵活。
 
@@ -599,12 +599,12 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 空数据
+*空数据*
 
 <div class="m-example"></div>
 
 ```xml
-<kl-table width=700>
+<kl-table>
     <kl-table-col name="title" key="title" />
     <kl-table-col name="value" key="value" />
 </kl-table>
@@ -622,12 +622,12 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 加载中
+*加载中*
 
 <div class="m-example"></div>
 
 ```xml
-<kl-table width=700 loading={true}>
+<kl-table loading={true}>
     <kl-table-col name="title" key="title" />
     <kl-table-col name="value" key="value" />
 </kl-table>
@@ -645,7 +645,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 模版中获取外部数据的方法
+*模版中获取外部数据的方法*
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 

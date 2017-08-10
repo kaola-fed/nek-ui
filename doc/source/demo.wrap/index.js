@@ -8,14 +8,29 @@ const DemoWrap = Regular.extend({
   template: `
     <div class="m-demowrap">
         <div class="m-iconLine"> <div class="m-iconOuter" r-class="{ {'revert':showScript}}" on-click={this.toggle()}> <kl-icon type="angle-down" /> </div> </div>
-        <div r-html={htmlTpl} class="m-codeBlock" r-class="{ {'wrap': !showScript}}" ></div>
+        <div class="m-codeBlock" r-class="{ {'wrap': !showScript}}" >
+          <kl-button class="m-copyCode" type="tertiary" title="复制代码" on-click={this.copy($event)}></kl-button>
+          <div r-html={htmlTpl}></div>
+        </div>
     </div>`,
   name: 'demo-wrap',
   data: {
     htmlTpl: '',
     showScript: false,
+    htmlcode: '',
+    jsCode: '',
   },
   toggle() {
     this.data.showScript = !this.data.showScript;
+  },
+  copy($event) {
+    const copyForm = document.createElement('textarea');
+    copyForm.textContent = this.data.htmlCode + this.data.jsCode;
+    body = document.getElementsByTagName('body')[0];
+    body.appendChild(copyForm);
+    copyForm.select();
+    document.execCommand('copy');
+    body.removeChild(copyForm);
+    NEKUI.KLNotify.success('复制成功');
   },
 });

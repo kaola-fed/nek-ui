@@ -1,13 +1,15 @@
 ---
 title: 表单
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
-required写在kl-form-item上和写在表单元素上验证效果是一样的, 但是如果label要显示红色星号,kl-form-item上必须要有required属性
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
+required写在kl-form-item上和写在表单元素上验证效果是一样的, 但是如果label要显示红色星号,kl-form-item上必须要有required属性
 <div class="m-example"></div>
 
 ```xml
@@ -33,11 +35,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-## 代码演示
-
-### inline排列
-
 <!-- demo_start -->
+*inline排列*
 <div class="m-example"></div>
 
 ```xml
@@ -59,9 +58,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end --> 
 
-### 获取select数据接口
-
 <!-- demo_start -->
+*获取select数据接口*
 <div class="m-example"></div>
 
 ```xml
@@ -87,9 +85,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 验证示例
-
 <!-- demo_start -->
+*验证示例*
+
 如果不想使用Form标签
 <div class="m-example"></div>
 

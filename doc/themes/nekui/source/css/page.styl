@@ -11,6 +11,7 @@
     padding 2.2em 0
     max-width 1000px
     margin 0 auto
+    font-size 12px
     &.api
         > a:first-of-type > h2
             margin-top 0
@@ -36,6 +37,12 @@
         margin-left 20px
     h1
         margin 0 0 1em
+    > h1
+        font-family: PingFangTC-Medium;
+        font-size: 20px;
+        color: #333;
+        border-bottom: 1px solid #E1E6EC;
+        margin: 40px 0px;
     h2, h3
         &:before
             content ''
@@ -43,6 +50,20 @@
             margin-top -1 * $heading-link-padding-top
             height $heading-link-padding-top
             visibility hidden
+    a>h2
+        &:before
+            margin-top: 0px;
+            height: 0px;
+        z-index: -1;
+        font-family: PingFangTC-Medium;
+        font-size: 16px;
+        color: #333333;
+        line-height: 22px;
+        height: 22px;
+        border-left: 3px solid #333;
+        border-bottom: none;
+        padding: 0px 8px;
+        margin: 23px 0px;
     h2
         margin $h2-margin-top 0 .8em
         padding-bottom .7em
@@ -52,9 +73,11 @@
         margin $h3-margin-top 0 1.2em
         position relative
         z-index: -1
+        font-size: 12px;
+        margin: 0px 22px;
         &:after
             content "#"
-            color $theme
+            color $link
             position absolute
             left -0.7em
             bottom -2px
@@ -75,20 +98,28 @@
     iframe
         margin 1em 0
     > table
+        margin: 0px 22px;
         border 2px solid $white
         td, th
             line-height 1.6em
             padding .5em 1.4em
             border none
+        tr
+            &:nth-child(2n-1)
+                background: #fff;
+            &:nth-child(2n)
+                background: #f6f9fc;
         td
-            background-color: lighten($codebg, 60%)
+            border-bottom: 1px solid #ecf2f9;
         th
-            background-color: $theme
-            color: #fff
+            background-color: #eef1f4
+            border-bottom: 1px solid #ecf2f9;
+            color: #666666
             text-align left
-        tbody
-            code
-                background-color #efefef
+    > p
+        margin: 0px 22px;
+    > dl
+        margin: 0px 22px;
     p.tip
         padding 12px 24px 12px 30px
         margin 2em 0
@@ -119,7 +150,6 @@
 
         em
             color $medium
-
 .guide-links
     margin-top 2em
     border-top 1px solid #e5e5e5

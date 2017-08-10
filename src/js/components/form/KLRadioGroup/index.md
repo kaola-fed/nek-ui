@@ -1,12 +1,14 @@
 ---
 title: 单选组
+masonry: true
 ---
 
 ## 代码演示
 
-### 基本形式
+<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
+*基本形式*
 <div class="m-example"></div>
 
 ```xml
@@ -30,9 +32,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 数据绑定
-
 <!-- demo_start -->
+*数据绑定*
 <div class="m-example"></div>
 
 ```xml
@@ -55,11 +56,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 表单项
+<!-- demo_start -->
+*表单项*
 
 在表单中使用
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -87,9 +88,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+*禁用组件*
 <div class="m-example"></div>
 
 ```xml
@@ -113,9 +113,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 远程数据
-
 <!-- demo_start -->
+*远程数据*
 <div class="m-example"></div>
 
 ```xml
@@ -140,9 +139,8 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 多行
-
 <!-- demo_start -->
+*多行*
 <div class="m-example"></div>
 
 ```xml

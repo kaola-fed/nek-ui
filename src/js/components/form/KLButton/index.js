@@ -1,7 +1,7 @@
 /**
  * ------------------------------------------------------------
- * KLButton  按钮
- * @author   Cody Chan<int64ago@gmail.com>
+ * KLButton 按钮
+ * @author Cody Chan <int64ago@gmail.com>
  * ------------------------------------------------------------
  */
 

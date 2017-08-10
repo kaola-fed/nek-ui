@@ -533,7 +533,7 @@ const KLTable = Component.extend({
   },
   emitEvent(type, ...args) {
     /**
-         * @event [type] 自定义的操作事件
+         * @event type 自定义的操作事件
          * @property {object} sender 事件来源
          * @property {boolean} custom 自定义事件标识
          * @property {array} param 自定义事件所带的参数
