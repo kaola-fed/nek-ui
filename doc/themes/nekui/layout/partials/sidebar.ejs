@@ -15,9 +15,16 @@
                         path: p.path
                     })
                 } else if (p.cate !== pages.data[i - 1].cate) {
-                    // 首个不同的，作为分类标题
+                    // 首个不同的，添加分类标题
                     currIdx = menus.length
-                    menus.push({ display: p.cate, children: [] })
+                    menus.push({
+                        display: p.cate,
+                        children: [{
+                            display: p.title + (p.name ? ' ' + p.name : ''),
+                            title: p.title,
+                            path: p.path
+                        }]
+                    })
                 } else {
                     // 子列表
                     menus[currIdx].children.push({
