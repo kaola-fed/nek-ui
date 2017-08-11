@@ -4615,14 +4615,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	-moz-border-radius:2px;
 	border-radius:2px;
 	overflow-y:auto;
-	position:relative;
 }
 .u-select .dropdown_hd .u-icon{
 	float:right;
 	width:auto;
 	line-height:inherit;
-	position:absolute;
-	right:5px;
 }
 .u-select .dropdown_hd .u-select-errorIcon{
 	position:relative;
@@ -6766,9 +6763,6 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-pager .page_size .u-select .dropdown_hd{
 	width:80px;
-}
-.m-pager .page_size .u-select .dropdown_hd .u-icon{
-	position:static;
 }
 .m-pager .page_total{
 	display:inline-block;
