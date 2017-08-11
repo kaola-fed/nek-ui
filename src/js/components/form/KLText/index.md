@@ -3,10 +3,6 @@ title: 展示文本
 masonry: true
 ---
 
-## 代码演示
-
-<div id="grid-itemOuter"></div>
-
 <!-- demo_start -->
 *大小扩展*
 <div class="m-example"></div>

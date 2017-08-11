@@ -2,8 +2,6 @@
 title: 选项卡
 ---
 
-## 代码演示
-
 <!-- demo_start -->
 *基本形式*
 <div class="m-example"></div>

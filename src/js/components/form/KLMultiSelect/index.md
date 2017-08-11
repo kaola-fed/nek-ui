@@ -3,10 +3,6 @@ title: 多级选择
 masonry: true
 ---
 
-## 代码演示
-
-<div id="grid-itemOuter"></div>
-
 <!-- demo_start -->
 *基本形式*
 <div class="m-example"></div>

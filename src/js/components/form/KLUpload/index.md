@@ -3,10 +3,6 @@ title: 上传文件
 masonry: true
 ---
 
-## 代码演示
-
-<div id="grid-itemOuter"></div>
-
 ### 注
 
 目前该上传组件采用FormData向后台提交文件数据。

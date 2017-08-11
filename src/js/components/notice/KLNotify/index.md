@@ -3,11 +3,7 @@ title: 通知
 masonry: true
 ---
 
-## 代码演示
-
 创建显示消息的通知，并且能自动淡出。类似Android中的Toast。
-
-<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
 *基本形式*

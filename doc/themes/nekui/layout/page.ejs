@@ -25,6 +25,7 @@
          </style>
      <% } %>
 
+    <h2 id="pageName"><%= page.title ? page.title : '' %> <span><%= page.name ? page.name : '' %></span> </h2>
     <%- page.content %>
 
     <div class="guide-links">
@@ -50,7 +51,11 @@
        <script>
         //用来处理实例代码块，将其分为两列
         document.addEventListener('DOMContentLoaded', function() {
-          var gridOuter = document.getElementById('grid-itemOuter');
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
           if(!!gridOuter){
             var leftBlock = document.createElement('div');
             var rightBlock = document.createElement('div');

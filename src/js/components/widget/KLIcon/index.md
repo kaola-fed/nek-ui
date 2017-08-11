@@ -4,8 +4,6 @@ title: 图标
 
 使用字体图标，可以很方便地在任何位置放置矢量图形。本主题的部分字体图标由[Font Awesome](http://fortawesome.github.com/Font-Awesome)提供。
 
-## 代码演示
-
 <!-- demo_start -->
 *基本形式*
 

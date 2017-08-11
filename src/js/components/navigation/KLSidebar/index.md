@@ -3,10 +3,7 @@ title: 菜单栏
 masonry: true
 ---
 
-## 代码演示
 KLSidebar只是对KLMenu的进一步封装,如果无法满足需求,可直接使用KLMenu组件
-
-<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
 *基本形式*

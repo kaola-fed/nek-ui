@@ -2,14 +2,9 @@
 title: 模态框
 masonry: true
 ---
-
-## 代码演示
-
 含有遮罩层的对话框，用于模拟浏览器的`alert`、`confirm`和`prompt`。
 
 模态对话框通过遮罩层来阻止用户的其他行为。
-
-<div id="grid-itemOuter"></div>
 
 <!-- demo_start -->
 *基本形式*
