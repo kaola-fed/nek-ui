@@ -477,7 +477,7 @@ var component = new NEKUI.Component({
 
 ### 多选
 
-通过 `enableCheckAll`
+通过 `enableCheckAll` 使能全选按钮
 
 <!-- demo_start -->
 <div class="m-example"></div>
@@ -513,6 +513,55 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 隐藏列
+
+需要通过 `index` 指定顺序，否则会乱序。
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-table source={table.source} >
+    {#if col[0]}
+    <kl-table-col index=1 placeholder="" width=200 />
+    {/if}
+    {#if col[1]}
+    <kl-table-col index=2 name="title" key="title" width=200 />
+    {/if}
+    {#if col[2]}
+    <kl-table-col index=3 name="value" key="value" width=200 />
+    {/if}
+</kl-table>
+{#list [0,1,2] as index}
+<kl-button title={'col'+index} on-click={this.toggle(index)}/>
+{/list}
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        },
+        col: [1, 1, 1]
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                value: 10 * i
+            });
+        }
+    },
+    toggle: function(index) {
+        this.data.col[index] = !this.data.col[index];
+    }
+});
+```
+<
 
 ### 数据配置
 
@@ -704,4 +753,3 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
-
