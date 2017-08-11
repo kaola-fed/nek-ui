@@ -1,6 +1,8 @@
 /**
- * @file KLMultiSelect 树型选择
+ * ------------------------------------------------------------
+ * KLMultiSelect 多级选择
  * @author   lilang
+ * ------------------------------------------------------------
  */
 
 const Dropdown = require('../common/Dropdown');
@@ -22,11 +24,15 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
+ * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
+ * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，如果填 false 则不展示 tooltip，但是还是会抛出该数据
+ * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
  * @param {boolean}         [options.data.visible=true]             => 是否显示
  * @param {string}          [options.data.class]                    => 补充class
+ * @param {number}          [options.data.width]                    => 组件宽度
  */
 
 const KLMultiSelect = Dropdown.extend({
@@ -48,6 +54,10 @@ const KLMultiSelect = Dropdown.extend({
       hierarchical: false,
       updateAuto: false,
       onlyChild: true,
+      pathString: '>',
+      placement: 'top',
+      showPath: false,
+      LI_WEITH: 137,
     });
     data._source = _.clone(data.source || []);
     data.tree = [data._source, [], [], [], [], [], [], [], [], []];
@@ -89,8 +99,7 @@ const KLMultiSelect = Dropdown.extend({
 
     this.initValidation();
   },
-  toggle(open, e) {
-    e && e.stopPropagation();
+  toggle(open) {
     this.supr(open);
   },
   // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
@@ -153,6 +162,9 @@ const KLMultiSelect = Dropdown.extend({
   viewCate(cate, level, show, e) {
     e && e.stopPropagation();
     const data = this.data;
+    if (data.disabled || data.readonly) {
+      return;
+    }
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
     for (let i = level; i < level + 2; i += 1) {
@@ -165,14 +177,35 @@ const KLMultiSelect = Dropdown.extend({
 
     // 将下一级后面的都置空
     for (let i = level + 2; i < data.tree.length; i += 1) {
-      data.tree[i] = {};
+      data.tree[i] = [];
     }
+
+    // 处理路径逻辑
+    const pathArray = [];
+    let path = [];
+    data.tree.map((item, index) => {
+      if (index <= level) {
+        item.map((item2) => {
+          if (item2.active) {
+            pathArray.push(item2);
+            path.push(item2[data.nameKey]);
+          }
+          return undefined;
+        });
+      }
+      return undefined;
+    });
+    path = path.join(data.pathString);
 
     if (
       !show &&
       (!data.multiple && (!(cate[data.childKey] && cate[data.childKey].length) || (!data.onlyChild)))
     ) {
       data.value = cate[data.key].toString();
+      if (data.showPath && !data.multiple) {
+        cate.path = path;
+        cate.pathArray = pathArray;
+      }
       data.selected = [cate];
       data.open = false;
       /**
@@ -185,10 +218,37 @@ const KLMultiSelect = Dropdown.extend({
         selected: cate,
       });
     }
+    setTimeout(() => {
+      this.scroll(level);
+    }, 0);
+  },
+  scroll(level) {
+    const data = this.data;
+    const target = document.getElementsByClassName('cateWrap')[0];
+    const startWidth = target.scrollLeft;
+    const WIDTH = (level - 1) * data.LI_WEITH;
+    const TIME = 300;
+    let start = null;
+    const frameFunc = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (func) {
+      window.setTimeout(func, 1000 / 45);
+    };
+    function step(timestamp) {
+      if (start === null) start = timestamp;
+      const progress = timestamp - start;
+      target.scrollLeft = startWidth + (parseFloat(progress / TIME) * (WIDTH - startWidth));
+      if (progress < TIME) {
+        frameFunc(step);
+      }
+    }
+    frameFunc(step);
+    this.$update();
   },
   checkCate(cate, level, checked) {
     const _checked = !checked;
     const data = this.data;
+    if (data.disabled || data.readonly) {
+      return;
+    }
     cate[data.checkKey] = _checked;
     this.setCheck(cate[data.childKey], _checked);
 
@@ -255,6 +315,9 @@ const KLMultiSelect = Dropdown.extend({
   // 删除某一项
   delete(event, item) {
     event && event.stopPropagation();
+    if (data.disabled || data.readonly) {
+      return;
+    }
     this.toggle(true);
     const data = this.data;
     const _list = data.value.toString().split(data.separator);
@@ -268,6 +331,13 @@ const KLMultiSelect = Dropdown.extend({
   },
   validate(on) {
     const data = this.data;
+
+    // 如果是readonly或者disabled状态, 无需验证
+    if (data.readonly || data.disabled) {
+      return {
+        success: true,
+      };
+    }
 
     const result = { success: true, message: '' };
     let value = this.data.value;

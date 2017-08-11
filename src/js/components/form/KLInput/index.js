@@ -129,6 +129,14 @@ const KLInput = Component.extend({
      * @return {object} result 结果
      */
   validate(on = '') {
+    const { readonly, disabled } = this.data;
+    // 如果是readonly或者disabled状态, 无需验证
+    if (readonly || disabled) {
+      return {
+        success: true,
+      };
+    }
+
     const value =
       this.data.value || this.data.value === 0 ? `${this.data.value}` : '';
     let rules = this.data.rules;
@@ -165,7 +173,7 @@ const KLInput = Component.extend({
   /**
      * 1. type=char时,去除前后的空格;
      * 2. type=int/float时, 只能输入对应类型的数字;
-     **/
+     * */
   __valueFilter(_value) {
     const type = this.data.type;
 

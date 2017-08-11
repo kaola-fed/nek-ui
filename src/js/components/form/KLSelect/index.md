@@ -255,6 +255,31 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+*带清空按钮*
+
+<div class="m-example"></div>
+
+```xml
+<kl-select source={source} lang="en-US" clearable={clearable} canSearch={canSearch} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '选项1'},
+            {name: '选项2'},
+            {name: '选项3'}
+        ],
+        clearable: true,
+        canSearch: true
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 *综合示例*
 
 <div class="m-example"></div>

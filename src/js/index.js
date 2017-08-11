@@ -24,6 +24,7 @@ const Components = {
   KLText: require('./components/form/KLText'),
   KLTextArea: require('./components/form/KLTextArea'),
   KLUpload: require('./components/form/KLUpload'),
+  KLTreeView: require('./components/form/KLTreeView'),
 
   // Navigation
   KLSidebar: require('./components/navigation/KLSidebar'),
@@ -58,6 +59,9 @@ const Components = {
   KLCol: require('./components/layout/KLCol'),
   KLCard: require('./components/layout/KLCard'),
   KLCardTools: require('./components/layout/KLCard/KLCardTools'),
+  KLSearch: require('./components/layout/KLSearch'),
+  KLSearchMore: require('./components/layout/KLSearch/KLSearchMore'),
+  KLSearchFooter: require('./components/layout/KLSearch/KLSearchFooter'),
 };
 
 backward(Components);

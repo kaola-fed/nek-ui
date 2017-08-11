@@ -23,7 +23,8 @@
         "allowShortCircuit": true,
         "allowTernary": true
       }
-    ]
+    ],
+    "no-return-assign": 0,
   },
   "globals": {
     "window": true,
