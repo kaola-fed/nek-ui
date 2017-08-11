@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * TreeView  树型视图
+ * @file TreeView  树型视图
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const SourceComponent = require('../../../ui-base/sourceComponent');

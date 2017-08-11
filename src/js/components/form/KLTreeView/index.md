@@ -1,12 +1,11 @@
 ---
 title: 树型视图
+masonry: true
 ---
 
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -39,9 +38,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 禁用某一项，禁用组件
-
 <!-- demo_start -->
+*禁用某一项，禁用组件*
+
 <div class="m-example"></div>
 
 ```xml
@@ -80,10 +79,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-
-### 分隔线
-
 <!-- demo_start -->
+*分隔线*
+
 <div class="m-example"></div>
 
 ```xml

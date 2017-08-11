@@ -48,10 +48,11 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 展示路径
-#### 选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组，具体看控制台
-
 <!-- demo_start -->
+*展示路径*
+
+选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组，具体看控制台
+
 <div class="m-example"></div>
 
 ```xml

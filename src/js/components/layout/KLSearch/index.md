@@ -2,11 +2,9 @@
 title: 筛选区
 ---
 
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+*基本形式*
+
 <div class="m-example"></div>
 
 ```xml
@@ -45,9 +43,9 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
-### 不显示“展开”切换开关
-
 <!-- demo_start -->
+*不显示“展开”切换开关*
+
 <div class="m-example"></div>
 
 ```xml
@@ -77,9 +75,9 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
-### 设置切换文字
-
 <!-- demo_start -->
+*设置切换文字*
+
 <div class="m-example"></div>
 
 ```xml

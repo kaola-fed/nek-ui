@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLMultiSelect 多级选择
+ * @file KLMultiSelect 多级选择
  * @author   lilang
- * ------------------------------------------------------------
  */
 
 const Dropdown = require('../common/Dropdown');
