@@ -26,11 +26,14 @@
         $border: $u-formctrl_border;
         $border-radius: $border-radius-base;
         overflow-y: auto;
+        position: relative;
 
         .u-icon {
             float: right;
             width: auto;
             line-height: inherit;
+            position: absolute;
+            right: 5px;
         }
 
         .u-select-errorIcon {

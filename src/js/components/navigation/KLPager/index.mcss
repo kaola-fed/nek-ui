@@ -82,6 +82,9 @@ $m-pager_li_a_size = 24px;
             width: 81px;
             .dropdown_hd {
                 width: 80px;
+                .u-icon {
+                    position: static;
+                }
             }
         }
     }
