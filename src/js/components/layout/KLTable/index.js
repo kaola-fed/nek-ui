@@ -169,7 +169,7 @@ const KLTable = Component.extend({
 
     this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 300);
+    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
     this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
 
     this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 50);
