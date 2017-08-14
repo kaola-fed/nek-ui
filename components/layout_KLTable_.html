@@ -416,20 +416,13 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span> <span class="attr">stickyFooter</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">paging</span>=<span class="string">&#123;table.paging&#125;</span> <span class="attr">on-paging</span>=<span class="string">&#123;this.onPaging($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: [],</div><div class="line">            <span class="attr">paging</span>: &#123;</div><div class="line">                <span class="attr">pageSize</span>: <span class="number">10</span>,</div><div class="line">                <span class="attr">sumTotal</span>: <span class="number">100</span>,</div><div class="line">                <span class="attr">current</span>: <span class="number">1</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPaging</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="多选"><a href="#多选" class="headerlink" title="多选"></a>多选</h3><p>通过 <code>enableCheckAll</code> 使能全选按钮</p>
+<h3 id="多选"><a href="#多选" class="headerlink" title="多选"></a>多选</h3><p>通过 <code>enableCheckAll</code></p>
 <!-- demo_start -->
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">on-checkchange</span>=<span class="string">&#123;this.onCheck($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">placeholder</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">"check"</span> <span class="attr">enableCheckAll</span>  /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">type</span>=<span class="string">"check"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onCheck</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="隐藏列"><a href="#隐藏列" class="headerlink" title="隐藏列"></a>隐藏列</h3><p>需要通过 <code>index</code> 指定顺序，否则会乱序。</p>
-<!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    &#123;#if col[0]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">index</span>=<span class="string">1</span> <span class="attr">placeholder</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">200</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line">    &#123;#if col[1]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">index</span>=<span class="string">2</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">width</span>=<span class="string">200</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line">    &#123;#if col[2]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">index</span>=<span class="string">3</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> <span class="attr">width</span>=<span class="string">200</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div><div class="line">&#123;#list [0,1,2] as index&#125;</div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">&#123;</span>'<span class="attr">col</span>'+<span class="attr">index</span>&#125; <span class="attr">on-click</span>=<span class="string">&#123;this.toggle(index)&#125;/</span>&gt;</span></div><div class="line">&#123;/list&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">col</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toggle</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.col[index] = !<span class="keyword">this</span>.data.col[index];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>&lt;</p>
 <h3 id="数据配置"><a href="#数据配置" class="headerlink" title="数据配置"></a>数据配置</h3><p>在进行数据配置时，模版的配置方式更为灵活。</p>
 <ol>
 <li><code>template</code>，模版字符串；</li>
@@ -1292,20 +1285,14 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-table source={table.source} >
-    {#if col[0]}
-    <kl-table-col index=1 placeholder="" width=200 />
-    {/if}
-    {#if col[1]}
-    <kl-table-col index=2 name="title" key="title" width=200 />
-    {/if}
-    {#if col[2]}
-    <kl-table-col index=3 name="value" key="value" width=200 />
-    {/if}
-</kl-table>
-{#list [0,1,2] as index}
-<kl-button title={'col'+index} on-click={this.toggle(index)}/>
-{/list}
+<kl-table
+    fixedHeader
+    columns={table.columns}
+    sorting={table.sorting}
+    paging={table.paging}
+    source={table.source}
+    loading={loading}
+/>
 
       */});
       
@@ -1313,21 +1300,56 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
+            columns: [
+                {
+                    name: 'title',
+                    key: 'title',
+                    tip: 'tippppppp',
+                    width: 120,
+                    formatter: function(column, item) {
+                        return '<a>I\'m ' + item.title + '</a>';
+                    },
+                },
+                {
+                    name: 'col1',
+                    key: 'col1',
+                    children: [
+                        {
+                            name: 'col1.2',
+                            key: 'value',
+                            format: '{item.value} %',
+                            custom: 'sortField',
+                            sortable: true
+                        },
+                        {
+                            name: 'col1.3',
+                            key: 'col1',
+                            sortable: true
+                        }
+                    ]
+                }
+            ],
+            sorting: {
+                key: 'col1',
+                isAsc: 0
+            },
+            paging: {
+                pageSize: 10,
+                sumTotal: 100,
+                current: 1
+            },
             source: []
-        },
-        col: [1, 1, 1]
+        }
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
+        for(var i = 0; i < 5; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
+                col1: '' + i,
                 value: 10 * i
             });
         }
-    },
-    toggle: function(index) {
-        this.data.col[index] = !this.data.col[index];
     }
 });
 
