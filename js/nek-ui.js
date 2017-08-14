@@ -34612,7 +34612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-	    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 300);
+	    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
 	    this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
 
 	    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 50);
@@ -35679,7 +35679,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.defaults({
 	      _innerColumns: [],
 	      colSpan: 1,
-	      custom: data
+	      custom: data,
+	      columnData: {},
+	      outerColumns: []
 	    });
 	  },
 	  init: function init() {
@@ -35695,19 +35697,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _register2Table: function _register2Table() {
 	    var _outer = this.$outer;
+	    this.data.outerColumns = _outer.data.columns;
 	    this._push2Columns(_outer.data.columns);
 	  },
 	  _register2TableCol: function _register2TableCol() {
 	    var _outer = this.$outer;
+	    this.data.outerColumns = _outer.data._innerColumns;
 	    this._push2Columns(_outer.data._innerColumns);
 	  },
 	  _push2Columns: function _push2Columns(columns) {
 	    var data = this.data;
-	    columns && columns.push(_.extend({
+	    var index = +data.index;
+
+	    data.columnData = this.createColumnData(data);
+
+	    if (columns) {
+	      var insertIndex = -1;
+	      columns.some(function (item, i) {
+	        if (index < item.index) {
+	          insertIndex = i;
+	          return true;
+	        }
+	        return false;
+	      });
+	      if (insertIndex !== -1) {
+	        columns.splice(insertIndex, 0, data.columnData);
+	      } else {
+	        columns && columns.push(data.columnData);
+	      }
+	    }
+	  },
+	  createColumnData: function createColumnData(data) {
+	    return _.extend({
 	      name: data.name,
 	      key: data.key,
+	      index: +data.index,
 	      type: data.type,
-	      width: data.width,
+	      width: +data.width,
 	      tip: data.tip,
 	      tdClass: data.tdClass,
 	      thClass: data.thClass,
@@ -35725,7 +35751,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      headerFormatter: data.headerFormatter,
 	      headerFormat: data.headerFormat,
 	      expandTemplate: data._expandTemplate
-	    }, data.custom));
+	    }, data.custom);
+	  },
+	  destroy: function destroy() {
+	    var data = this.data;
+	    var index = data.outerColumns.indexOf(data.columnData);
+	    data.outerColumns.splice(index, 1);
+	    this.supr();
 	  }
 	}).component('kl-table-tempalte', KLTableTemplate);
 
