@@ -11,7 +11,6 @@ require('../common/TreeViewList');
 
 /**
  * @class TreeView
- * @extend SourceComponent
  * @param {object}    [options.data]                          = 绑定属性
  * @param {object[]}  [options.data.source=[]]                <=> 数据源
  * @param {string}    [options.data.source[].name]            => 每项的内容
@@ -34,9 +33,6 @@ require('../common/TreeViewList');
 const TreeView = SourceComponent.extend({
   name: 'kl-tree-view',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       // @inherited source: [],
@@ -60,12 +56,6 @@ const TreeView = SourceComponent.extend({
       this.data.value = newVal[key] || newVal[nameKey];
     });
   },
-  /**
-     * @method select(item) 选择某一项
-     * @public
-     * @param  {object} item 选择项
-     * @return {void}
-     */
   select(item) {
     if (
       this.data.readonly ||
@@ -81,22 +71,16 @@ const TreeView = SourceComponent.extend({
     this.data.selected = item;
     this.toggle(item);
     /**
-         * @event select 选择某一项时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} selected 当前选择项
-         */
+       * @event TreeView#select
+       * @description 选择某一项时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} selected 当前选择项
+       */
     this.$emit('select', {
       sender: this,
       selected: item,
     });
   },
-  /**
-     * @method toggle(item,open) 展开/收起某一项
-     * @public
-     * @param  {object} item 处理项
-     * @param  {object} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
-     * @return {void}
-     */
   toggle(item, _open) {
     if (
       this.data.readonly ||
@@ -112,20 +96,18 @@ const TreeView = SourceComponent.extend({
     item.open = open;
 
     /**
-         * @event toggle 展开或收起某一项时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} item 处理项
-         * @property {boolean} open 展开/收起状态
-         */
+       * @event TreeView#toggle
+       * @description 展开或收起某一项时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} item 处理项
+       * @property {boolean} open 展开/收起状态
+       */
     this.$emit('toggle', {
       sender: this,
       item,
       open,
     });
   },
-  /**
-     * @private
-     */
   _getSelected(source) {
     const self = this;
     if (!source) return [];

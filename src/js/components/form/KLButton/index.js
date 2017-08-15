@@ -11,7 +11,6 @@ const _ = require('../../../ui-base/_');
 
 /**
  * @class KLButton
- * @extend Component
  * @param {object}      [options.data]                = 绑定属性
  * @param {string}      [options.data.title=确定]      => 按钮标题
  * @param {string}      [options.data.type=default]   => 按钮样式, primary, default, info, success, warn, error
