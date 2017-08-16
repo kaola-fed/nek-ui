@@ -34549,7 +34549,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr(data);
 
-	    this._initWatchers();
 	    this.data._defaultWidth = this.data.width;
 	  },
 	  init: function init() {
@@ -34561,7 +34560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var refs = this.$refs;
 	    setTimeout(function () {
 	      data.headerHeight = refs.headerWrap.offsetHeight;
-
+	      self._initWatchers();
 	      self._updateParentWidth();
 	      self._initTableWidth();
 	      self._updateSticky();
