@@ -103,7 +103,7 @@ const KLTable = Component.extend({
     });
     this.supr(data);
 
-    this._initWatchers();
+
     this.data._defaultWidth = this.data.width;
   },
   init() {
@@ -115,7 +115,7 @@ const KLTable = Component.extend({
     const refs = this.$refs;
     setTimeout(() => {
       data.headerHeight = refs.headerWrap.offsetHeight;
-
+      self._initWatchers();
       self._updateParentWidth();
       self._initTableWidth();
       self._updateSticky();
