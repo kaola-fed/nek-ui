@@ -4286,6 +4286,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-formitem .formitem_ct{
 	flex:1;
+	min-width:0;
 	font-size:12px;
 }
 .u-formitem .formitem_desc{
@@ -6393,10 +6394,6 @@ input.u-check:disabled,input.u-radio:disabled{
 .m-ui-table .table_tb{
 	width:100%;
 	table-layout:fixed;
-}
-.m-ui-table .patch{
-	background:#eef1f4;
-	position:absolute;
 }
 .m-ui-table .tb_hd_th{
 	box-sizing:border-box;
