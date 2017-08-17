@@ -86,6 +86,7 @@ const KLTableCol = Component.extend({
       index: +data.index,
       type: data.type,
       width: +data.width,
+      minWidth: +data.minWidth,
       tip: data.tip,
       tdClass: data.tdClass,
       thClass: data.thClass,
