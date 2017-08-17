@@ -6645,7 +6645,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.$watch('time', function (newValue, oldValue) {
 	      if (oldValue === undefined) {
-	        this.updateHMS(this.data.time);
 	        return;
 	      }
 
@@ -6655,7 +6654,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var isOutOfRange = this.isOutOfRange(newValue);
 	      if (isOutOfRange) return this.data.time = isOutOfRange;
 
-	      this.updateHMS(newValue);
+	      var time = newValue.split(':');
+	      this.data.hour = +time[0];
+	      this.data.minute = +time[1];
+	      this.data.seconds = +time[2];
 
 	      /**
 	       * @event change 时间改变时触发
@@ -6690,12 +6692,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var isOutOfRange = this.isOutOfRange(this.data.time);
 	      if (isOutOfRange) this.data.time = isOutOfRange;
 	    });
-	  },
-	  updateHMS: function updateHMS(value) {
-	    var time = value.split(':');
-	    this.data.hour = +time[0];
-	    this.data.minute = +time[1];
-	    this.data.seconds = +time[2];
 	  },
 
 	  /**
@@ -10169,7 +10165,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data] = 绑定属性
 	 * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
 	 * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
-	 * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒
 	 * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
 	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
 	 * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
@@ -10198,7 +10193,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      maxDate: null,
 	      placeholder: this.$trans('PLEASE_SELECT'),
 	      date: null,
-	      defaultTime: null,
 	      _date: undefined,
 	      _time: undefined,
 	      autofocus: false,
@@ -10209,10 +10203,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr();
 
 	    this.$watch('date', function (newValue) {
-	      if (!newValue && this.data.defaultTime) {
-	        this.data._time = this.data.defaultTime;
-	      }
-
 	      // 字符类型自动转为日期类型
 	      if (typeof newValue === 'string') {
 	        if (bowser.msie && bowser.version <= 9) {
@@ -34559,7 +34549,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr(data);
 
-	    this._initWatchers();
 	    this.data._defaultWidth = this.data.width;
 	  },
 	  init: function init() {
@@ -34571,7 +34560,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var refs = this.$refs;
 	    setTimeout(function () {
 	      data.headerHeight = refs.headerWrap.offsetHeight;
-
+	      self._initWatchers();
 	      self._updateParentWidth();
 	      self._initTableWidth();
 	      self._updateSticky();
