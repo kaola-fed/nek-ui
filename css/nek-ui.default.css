@@ -4286,6 +4286,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-formitem .formitem_ct{
 	flex:1;
+	min-width:0;
 	font-size:12px;
 }
 .u-formitem .formitem_desc{
