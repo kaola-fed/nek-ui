@@ -34463,8 +34463,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
 	 * @param {array}             [options.data.columns]              => 列配置
 	 * @param {string}            [optiosn.data.align='center']       => 文字对齐
-	 * @param {number}            [optiosn.data.defaultsColWidth=100] => 默认列宽
-	 * @param {number}            [optiosn.data.minColWidth=30]       => 最小列宽
+	 * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
 	 */
 
 	/**
@@ -34476,6 +34475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.tip]              => 提示信息
 	 * @param {string}      [options.data.type]             => 列内容的预设类型
 	 * @param {string}      [options.data.width]            => 列宽
+	 * @param {number}      [optiosn.data.minWidth]         => 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置
 	 * @param {string}      [options.data.tdClass]          => 列内容样式
 	 * @param {string}      [options.data.thClass]          => 表头样式
 	 * @param {boolean}     [options.data.sortable]         => 可排序
@@ -34544,61 +34544,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      placeholder: '-',
 	      checkAll: false,
 	      initFinished: false,
-	      defaultsColWidth: 100,
-	      minColWidth: 30
+	      minColWidth: 50
 	    });
 	    this.supr(data);
-
-	    this.data._defaultWidth = this.data.width;
+	    this.data.minColWidth = +this.data.minColWidth;
+	    this.data._defaultWidth = +this.data.width;
 	  },
 	  init: function init() {
 	    this._initTable();
 	  },
 	  _initTable: function _initTable() {
 	    var self = this;
-	    var data = this.data;
-	    var refs = this.$refs;
 	    setTimeout(function () {
-	      data.headerHeight = refs.headerWrap.offsetHeight;
-	      self._initWatchers();
 	      self._updateParentWidth();
-	      self._initTableWidth();
 	      self._updateSticky();
 	      self._getHeaderHeight();
-	      setTimeout(function () {
-	        self._updateTableWidth();
-	      }, 100);
-	      data.initFinished = true;
-	    }, 50);
-	  },
-	  _initTableWidth: function _initTableWidth() {
-	    var data = this.data;
-	    var _dataColumns = data._dataColumns;
-	    if (!_dataColumns) {
-	      return;
-	    }
-
-	    var tableWidth = data.parentWidth;
-	    var customWidthCount = 0;
-	    data._customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
-	      var width = Number((+current.width).toFixed(2));
-	      if (width) {
-	        customWidthCount += 1;
-	        return previous + width;
-	      }
-	      return previous;
+	      self._updateTableWidth();
+	      self._initWatchers();
 	    }, 0);
-
-	    var tableViewWidth = tableWidth - data.scrollYBar;
-	    var autoWidth = Math.floor((tableViewWidth - data._customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
-	    autoWidth = autoWidth > 0 && autoWidth >= data.minColWidth ? autoWidth : data.defaultsColWidth;
-
-	    _dataColumns.forEach(function (dataColumn) {
-	      dataColumn._width = Number((+dataColumn.width || +autoWidth).toFixed(2));
-	      return dataColumn;
-	    });
-
-	    this._updateData('tableWidth', tableWidth);
 	  },
 	  _initWatchers: function _initWatchers() {
 	    this.$watch('source', this._onSouceChange);
@@ -34635,30 +34598,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    var headers = u.getHeaders(columns);
-	    this._updateFixedWidth(headers);
 	    this._updateData('headers', headers);
-	  },
-	  _updateFixedWidth: function _updateFixedWidth(headers) {
-	    this.data.fixedWidth = headers.reduce(function (previous, current) {
-	      return current.fixed ? previous + current._width : previous;
-	    }, 0);
 	  },
 	  _onParentWidthChange: function _onParentWidthChange(newVal, oldVal) {
 	    if (newVal === undefined || oldVal === undefined) {
 	      return;
 	    }
-	    var _newVal = newVal;
-	    var data = this.data;
-	    var _oldVal = oldVal || data.tableWidth;
-	    var customColumnWidthTotal = data._customColumnWidthTotal;
-	    var ratio = 0;
-	    // 仅在可视宽度比表格主体宽时进行缩放
-	    if (_newVal !== 0 && _oldVal !== 0 && data.tableWidth <= _oldVal && data.tableWidth <= _newVal) {
-	      ratio = (_newVal - customColumnWidthTotal) / (_oldVal - customColumnWidthTotal);
-	    }
-	    this._updateTableWidth(ratio);
+	    this._updateTableWidth();
 	    this._updateSticky();
 	    this._updateFixedRight();
+	    this._getHeaderHeight();
 	  },
 	  _onTableWidthChange: function _onTableWidthChange() {
 	    this._updateFixedRight();
@@ -34770,7 +34719,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _watchWidthChange: function _watchWidthChange() {
 	    var self = this;
-	    this.data._quickTimer = setInterval(function () {
+	    self.data._quickTimer = setInterval(function () {
 	      if (!self._isShow()) {
 	        return;
 	      }
@@ -34783,7 +34732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var width = data.width;
 
 	    var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-	    var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
+	    var parentPadding = u.getNum(parentStyle.paddingLeft) + u.getNum(parentStyle.paddingRight);
 	    var parentWidth = this.$refs.tableWrap.parentElement.clientWidth;
 	    width = parentWidth - parentPadding;
 
@@ -34829,57 +34778,87 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._updateData('footerHeight', footerHeight);
 	    return footerHeight;
 	  },
-	  _updateTableWidth: function _updateTableWidth(_ratio) {
+	  _updateTableWidth: function _updateTableWidth() {
 	    var data = this.data;
+	    var minColWidth = data.minColWidth;
+	    var parentWidth = data.parentWidth - (data.scrollYBar || 0);
 	    var _dataColumns = data._dataColumns;
 	    if (!_dataColumns) {
 	      return;
 	    }
-	    var ratio = _ratio || 1;
-	    var newTableWidth = 0;
-	    var fixedCol = false;
-	    var fixedTableWidth = 0;
-	    var fixedColRight = false;
-	    var fixedTableWidthRight = 0;
+	    var minTableWidth = _dataColumns.reduce(function (sum, column) {
+	      return sum + (column.width || column.minWidth || minColWidth);
+	    }, 0);
+	    if (parentWidth > minTableWidth) {
+	      var totalFlexWidth = parentWidth - minTableWidth;
+	      var flexColumns = _dataColumns.filter(function (column) {
+	        return !column.width;
+	      });
+	      var flexColumnsWidth = flexColumns.reduce(function (sum, column) {
+	        return sum + (column.minWidth || minColWidth);
+	      }, 0);
+	      var ratio = totalFlexWidth / flexColumnsWidth;
+	      var noneFirstColFlexWidth = 0;
 
-	    _dataColumns.forEach(function (column) {
-	      // 更新列宽
-	      if (!column._width) {
-	        column._width = column.width || data.defaultsColWidth;
+	      if (flexColumns.length > 0) {
+	        flexColumns.forEach(function (column, index) {
+	          if (index === 0) {
+	            return;
+	          }
+	          var flexWidth = Math.floor((column.minWidth || minColWidth) * ratio);
+	          column._width = flexWidth + (column.minWidth || minColWidth);
+	          noneFirstColFlexWidth += flexWidth;
+	        });
+	        flexColumns[0]._width = (flexColumns[0].minWidth || minColWidth) + (totalFlexWidth - noneFirstColFlexWidth);
 	      }
 
-	      // 没有指定宽度的按比例缩放宽度
-	      if (ratio !== 1 && !column.width) {
-	        var expandedWidth = Number((column._width * ratio).toFixed(2));
-	        column._width = expandedWidth > data.minColWidth ? expandedWidth : data.minColWidth;
-	      }
-
-	      // 计算表格宽度
-	      newTableWidth += column._width;
-
-	      // 计算固定列的总宽度
-	      if (column._width && column.fixed) {
-	        if (column.fixed === 'right') {
-	          fixedColRight = true;
-	          fixedTableWidthRight += column._width;
-	        } else {
-	          fixedCol = true;
-	          fixedTableWidth += column._width;
+	      var newTableWidth = _dataColumns.reduce(function (sum, column) {
+	        if (!column._width) {
+	          column._width = column.width || data.defaultsColWidth;
 	        }
+	        return sum + column._width;
+	      }, 0);
+
+	      this._updateData('tableWidth', newTableWidth);
+	    } else {
+	      var _newTableWidth = 0;
+	      _dataColumns.forEach(function (column) {
+	        column._width = column.width || column.minWidth || minColWidth;
+	        _newTableWidth += column._width;
+	      });
+	      this._updateData('tableWidth', _newTableWidth);
+	    }
+
+	    var newWidth = data.tableWidth;
+	    if (data._defaultWidth) {
+	      newWidth = Math.min(newWidth, data._defaultWidth);
+	    }
+	    newWidth = Math.min(newWidth, data.parentWidth);
+	    this._updateData('width', newWidth);
+	    this._updateFixedWidth();
+	  },
+	  _updateFixedWidth: function _updateFixedWidth() {
+	    var _dataColumns = this.data._dataColumns;
+	    var fixedTableWidth = _dataColumns.reduce(function (sum, current) {
+	      if (current.fixed === 'left' || current.fixed === true) {
+	        return sum + current._width;
 	      }
-	    });
+	      return sum;
+	    }, 0);
+	    var fixedCol = !!fixedTableWidth;
+
+	    var fixedTableWidthRight = _dataColumns.reduce(function (sum, current) {
+	      if (current.fixed === 'right') {
+	        return sum + current._width;
+	      }
+	      return sum;
+	    }, 0);
+	    var fixedColRight = !!fixedTableWidthRight;
 
 	    this._updateData('fixedCol', fixedCol);
 	    this._updateData('fixedTableWidth', fixedTableWidth);
 	    this._updateData('fixedColRight', fixedColRight);
 	    this._updateData('fixedTableWidthRight', fixedTableWidthRight);
-	    this._updateData('tableWidth', newTableWidth);
-
-	    if (data._defaultWidth) {
-	      newTableWidth = Math.min(newTableWidth, data._defaultWidth);
-	    }
-	    newTableWidth = Math.min(newTableWidth, data.parentWidth);
-	    this._updateData('width', newTableWidth);
 	  },
 	  _onWindowResize: function _onWindowResize() {
 	    if (!this.$refs || !this._isShow()) {
@@ -34991,6 +34970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onColumnResize: function _onColumnResize() {
 	    this._updateTableWidth();
+	    this._updateFixedWidth();
 	    this._forceRender();
 	  },
 	  _forceRender: function _forceRender() {
@@ -35057,7 +35037,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    setColumnWidth(children[children.length - 1], width);
 	    return;
 	  }
-	  column._width = Math.max(width, HEADER_MIN_WIDTH);
+	  column.width = Math.max(width, HEADER_MIN_WIDTH);
+	  column._width = column.width;
 	};
 
 	var getColumnWidth = function getColumnWidth(column) {
@@ -35265,7 +35246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 438 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBar && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: scrollYBar + 'px',\n                width: scrollYBar + 'px',\n            }}\n        />\n    {/if}\n</table>\n"
 
 /***/ }),
 /* 439 */
@@ -35733,6 +35714,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      index: +data.index,
 	      type: data.type,
 	      width: +data.width,
+	      minWidth: +data.minWidth,
 	      tip: data.tip,
 	      tdClass: data.tdClass,
 	      thClass: data.thClass,
