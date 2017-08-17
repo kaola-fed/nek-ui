@@ -6762,6 +6762,10 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-pager .page_size .u-select{
 	display:inline-block;
+	width:81px;
+}
+.m-pager .page_size .u-select .dropdown_hd{
+	width:80px;
 }
 .m-pager .page_size .u-select .dropdown_hd .u-icon{
 	position:static;
