@@ -34,9 +34,9 @@
         vertical-align: middle;
     }
 
-    .formitem_ct{
-        /*line-height: 32px;*/
+    .formitem_ct {
         flex: 1;
+        min-width: 0;
         font-size: $font-size-base;
     }
 
