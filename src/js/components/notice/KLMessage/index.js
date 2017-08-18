@@ -12,7 +12,7 @@ const _ = require('../../../ui-base/_');
  * @class KLMessage
  * @extend Component
  * @param {object}      [options.data]                      = 绑定属性
- * @param {string}      [options.data.type]                 => 消息位置，可选参数：`success`、`warning`、`info`、`error`
+ * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
  * @param {string}      [options.data.class]                => 补充class
  */
 
