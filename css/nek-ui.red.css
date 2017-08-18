@@ -3266,7 +3266,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-message{
 	*zoom:1;
-	padding:6px 15px;
+	padding:14px 55px;
 	background:#fff;
 	color:#777;
 	border:1px solid #ddd;
@@ -7249,7 +7249,6 @@ html.z-modal,html.z-modal body{
 }
 .m-notify .u-message{
 	margin-bottom:10px;
-	padding:14px 55px;
 	text-align:center;
 }
 .m-notify .u-message:hover .message_close{
