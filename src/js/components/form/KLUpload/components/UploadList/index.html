@@ -16,6 +16,8 @@
                       status={fileunit.status}
                       readonly={readonly}
                       data={data}
+                      beforeOnLoad={beforeOnLoad}
+                      beforeOnError={beforeOnError}
                       on-preview={this.onPreview($event)}
                       on-progress={this.onProgress($event)}
                       on-success={this.onSuccess($event)}
