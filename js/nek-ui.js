@@ -10169,7 +10169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data] = 绑定属性
 	 * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
 	 * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
-	 * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒
+	 * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒, 格式为字符串"hh:mm:ss"
 	 * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
 	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
 	 * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
