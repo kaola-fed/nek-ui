@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>遮罩 - nek-ui</title>
+        <title>消息 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="遮罩 - nek-ui">
+        <meta property="og:title" content="消息 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
 
@@ -204,14 +204,14 @@
                     
                 
                 <li>
-                    <a href="/components/notice_KLMask_.html" class="sidebar-link current">遮罩 KLMask</a>
+                    <a href="/components/notice_KLMask_.html" class="sidebar-link">遮罩 KLMask</a>
                 </li>
             
                 
                     
                 
                 <li>
-                    <a href="/components/notice_KLMessage_.html" class="sidebar-link">消息 KLMessage</a>
+                    <a href="/components/notice_KLMessage_.html" class="sidebar-link current">消息 KLMessage</a>
                 </li>
             
                 
@@ -339,18 +339,17 @@
     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Mask<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLMask(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'&lt;h1&gt;Mask 标题&lt;/h1&gt;&lt;p&gt;Mask 内容&lt;/p&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    this is a message</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    Success</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    Warning</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    Info</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    Error</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLMask">KLMask</a></dt>
+<dt><a href="#KLMessage">KLMessage</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>KLMask     遮罩</p>
+<h2 id="klmessage-">KLMessage    消息</h2>
 </dd>
 </dl>
 
@@ -359,25 +358,15 @@
 <dd></dd>
 <dt><a href="#init">init()</a></dt>
 <dd></dd>
-<dt><a href="#_handleClick">_handleClick()</a></dt>
-<dd></dd>
-<dt><a href="#close(data) 关闭遮罩">close(data) 关闭遮罩(data)</a> ⇒ <code>void</code></dt>
-<dd></dd>
 </dl>
 
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_close 关闭遮罩时触发">“close 关闭遮罩时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="KLMask"></a></p>
-<h2 id="KLMask"><a href="#KLMask" class="headerlink" title="KLMask"></a>KLMask</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLMask_new"></a></p>
-<h3 id="new-KLMask"><a href="#new-KLMask" class="headerlink" title="new KLMask()"></a>new KLMask()</h3><table>
+<p><a name="KLMessage"></a></p>
+<h2 id="KLMessage"><a href="#KLMessage" class="headerlink" title="KLMessage"></a>KLMessage</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLMessage_new"></a></p>
+<h3 id="new-KLMessage"><a href="#new-KLMessage" class="headerlink" title="new KLMessage()"></a>new KLMessage()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -385,72 +374,25 @@
 <tr>
 <td>[options.data]</td>
 <td><code>object</code></td>
-<td></td>
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.content]</td>
+<td>[options.data.type]</td>
 <td><code>string</code></td>
-<td></td>
-<td>=&gt; 内容模板</td>
-</tr>
-<tr>
-<td>[options.data.closable]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 点击空白区域关闭</td>
+<td>=&gt; 消息位置，可选参数：<code>success</code>、<code>warning</code>、<code>info</code>、<code>error</code></td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
-<td></td>
 <td>=&gt; 补充class</td>
 </tr>
 </tbody>
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>KLMask     遮罩</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-Cody"><a href="#Author-Cody" class="headerlink" title="Author: Cody"></a><strong>Author:</strong> Cody</h2><p><a name="config"></a></p>
+<h2 id="KLMessage-消息"><a href="#KLMessage-消息" class="headerlink" title="KLMessage    消息"></a>KLMessage    消息</h2><p><strong>Kind</strong>: global constant<br><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
-<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="_handleClick"></a></p>
-<h2 id="handleClick"><a href="#handleClick" class="headerlink" title="_handleClick()"></a>_handleClick()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="close(data) 关闭遮罩"></a></p>
-<h2 id="close-data-关闭遮罩-data-⇒-void"><a href="#close-data-关闭遮罩-data-⇒-void" class="headerlink" title="close(data) 关闭遮罩(data) ⇒ void"></a>close(data) 关闭遮罩(data) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td><code>object</code></td>
-<td>额外数据</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_close 关闭遮罩时触发"></a></p>
-<h2 id="“close-关闭遮罩时触发”"><a href="#“close-关闭遮罩时触发”" class="headerlink" title="“close 关闭遮罩时触发”"></a>“close 关闭遮罩时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data</td>
-<td><code>object</code></td>
-<td>额外数据</td>
-</tr>
-</tbody>
-</table>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
 var index = 0;
@@ -458,21 +400,24 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-primary" on-click={this.show()}>Mask</button>
+<kl-message class="f-mb10">
+    this is a message
+</kl-message>
+<kl-message type="success" class="f-mb10">
+    Success
+</kl-message>
+<kl-message type="warning" class="f-mb10">
+    Warning
+</kl-message>
+<kl-message type="info" class="f-mb10">
+    Info
+</kl-message>
+<kl-message type="error" class="f-mb10">
+    Error
+</kl-message>
 
       */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    show: function() {
-        var modal = new NEKUI.KLMask({
-            data: {
-                content: '<h1>Mask 标题</h1><p>Mask 内容</p>'
-            }
-        });
-    }
-});
-
+      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -480,8 +425,10 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
+        <span>← <a href="/components/notice_KLMask_.html">遮罩</a></span>
       
-        <span style="float:right"><a href="/components/notice_KLMessage_.html">消息</a> →</span>
+      
+        <span style="float:right"><a href="/components/notice_KLModal_.html">模态框</a> →</span>
       
     </div>
     <div class="footer">
