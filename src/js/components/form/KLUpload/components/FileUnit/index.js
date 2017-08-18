@@ -84,7 +84,7 @@ const FileUnit = Component.extend({
         let result = true;
         let response = {};
         try {
-          response = JSON.parse(target.responseText);
+          response = JSON.parse(target.response);
         } catch (error) {
           console.log(error);
         }
