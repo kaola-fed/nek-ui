@@ -10,7 +10,7 @@
 
 .u-message {
     $clearfix();
-    padding: 14px 55px;
+    padding: 6px 15px;
     background: $background-base;
     color: #777;
     $border: $border-base;
