@@ -6395,6 +6395,10 @@ input.u-check:disabled,input.u-radio:disabled{
 	width:100%;
 	table-layout:fixed;
 }
+.m-ui-table .patch{
+	background:#eef1f4;
+	position:absolute;
+}
 .m-ui-table .tb_hd_th{
 	box-sizing:border-box;
 	background-color:#eef1f4;
