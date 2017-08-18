@@ -18,7 +18,9 @@
             imageHeight={imageHeight}
             imageScale={imageScale}
             data={data}
-            encType={encType}/>
+            encType={encType}
+            beforeOnLoad={beforeOnLoad}
+            beforeOnError={beforeOnError}/>
     {#elseif listType === 'card'}
         <upload-card ref="upload"
             action={action}
@@ -38,7 +40,9 @@
             imageHeight={imageHeight}
             imageScale={imageScale}
             data={data}
-            encType={encType}/>
+            encType={encType}
+            beforeOnLoad={beforeOnLoad}
+            beforeOnError={beforeOnError}/>
     {/if}
 </div>
 {#if tip && !hideTip}
