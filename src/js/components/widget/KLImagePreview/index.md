@@ -9,7 +9,10 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
+<kl-button title="打开图片预览" on-click={visible = true} />
+{#if visible}
 <kl-image-preview image-list={list} cur-index={1}></kl-image-preview>
+{/if}
 ```
 
 ```javascript
@@ -23,10 +26,11 @@ var component = new NEKUI.Component({
             },
             {
                 name: 'app-2dcode.jpg',
-                src: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+                src: '/images/logo.svg'
             }
         ],
-        curIndex: 1
+        curIndex: 1,
+        visible: false
     }
 });
 ```

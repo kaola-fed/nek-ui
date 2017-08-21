@@ -1,6 +1,5 @@
 ---
 title: 进度条
-masonry: true
 ---
 
 <!-- demo_start -->
@@ -31,9 +30,10 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-progress class="f-mb10" size="xs" percent=25 />
-<kl-progress class="f-mb10" size="sm" percent=50 />
-<kl-progress class="f-mb10" size="lg" percent=75 />
+<kl-progress class="f-mb10" size="xs" percent=20 />
+<kl-progress class="f-mb10" size="sm" percent=40 />
+<kl-progress class="f-mb10" percent=60 />
+<kl-progress class="f-mb10" size="lg" percent=80 />
 <kl-progress class="f-mb10" size="xl" percent=100 />
 ```
 
