@@ -64,33 +64,40 @@ const JRDatePicker = Dropdown.extend({
     });
     this.data.date = this.data.value ? this.data.value : this.data.date;
     this.$watch('date', function (newValue) {
-      // 字符类型自动转为日期类型
-      if (typeof newValue === 'string') {
-        if (bowser.msie && bowser.version <= 9) {
-          return (this.data.date = polyfill.StringDate(newValue));
+      if (newValue === '') {
+        this.data.value = '';
+      } else {
+        // 字符类型自动转为日期类型
+        if (typeof newValue === 'string') {
+          if (bowser.msie && bowser.version <= 9) {
+            return (this.data.date = polyfill.StringDate(newValue));
+          }
+          return (this.data.date = newValue ? new Date(newValue) : new Date());
+        } else if (typeof newValue === 'number') {
+          return (this.data.date = new Date(newValue));
         }
-        return (this.data.date = newValue ? new Date(newValue) : new Date());
-      } else if (typeof newValue === 'number') {
-        return (this.data.date = new Date(newValue));
+
+        if (newValue === 'Invalid Date' || newValue === 'NaN') {
+          throw new TypeError('Invalid Date');
+        }
+        // 如果不为空并且超出日期范围，则设置为范围边界的日期
+        if (newValue) {
+          const isOutOfRange = this.isOutOfRange(newValue);
+          if (isOutOfRange) return (this.data.date = isOutOfRange);
+        }
+
+        if (newValue) {
+          // this.data.date.setSeconds(0);
+          this.data.date.setMilliseconds(0);
+          this.data._date = new Date(newValue);
+          this.data._time = filter.format(newValue, 'HH:mm:ss');
+        }
+        const format = this.data.showTime
+          ? 'yyyy-MM-dd HH:mm:ss'
+          : 'yyyy-MM-dd';
+        this.data.value = filter.format(newValue, format);
       }
 
-      if (newValue === 'Invalid Date' || newValue === 'NaN') {
-        throw new TypeError('Invalid Date');
-      }
-      // 如果不为空并且超出日期范围，则设置为范围边界的日期
-      if (newValue) {
-        const isOutOfRange = this.isOutOfRange(newValue);
-        if (isOutOfRange) return (this.data.date = isOutOfRange);
-      }
-
-      if (newValue) {
-        // this.data.date.setSeconds(0);
-        this.data.date.setMilliseconds(0);
-        this.data._date = new Date(newValue);
-        this.data._time = filter.format(newValue, 'HH:mm:ss');
-      }
-      const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-      this.data.value = filter.format(newValue, format);
       /**
        * @event change 日期时间改变时触发
        * @property {object} sender 事件发送对象
@@ -206,6 +213,17 @@ const JRDatePicker = Dropdown.extend({
     }
   },
   /**
+   * @method current() 选择当前时间
+   * @public
+   * @return {void}
+   */
+  current() {
+    const now = new Date();
+    const date = filter.format(now, 'yyyy-MM-dd');
+    const time = filter.format(now, 'HH:mm:ss');
+    this.select(date, time, true);
+  },
+  /**
    * 关闭
    * @private
    */
@@ -250,15 +268,17 @@ const JRDatePicker = Dropdown.extend({
    */
   _onInput($event) {
     let value = $event.target.value;
-    value = value.replace(new RegExp(/-/gm), '/');
-    const date = value ? new Date(value) : null;
-    const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-    if (date === null || date.toString() === 'Invalid Date') {
-      $event.target.value = this.data.date
-        ? filter.format(this.data.date, format)
-        : filter.format(new Date(), format);
-    } else {
-      $event.target.value = filter.format(date, format);
+    if (value !== '') {
+      value = value.replace(new RegExp(/-/gm), '/');
+      const date = value ? new Date(value) : null;
+      const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
+      if (date === null || date.toString() === 'Invalid Date') {
+        $event.target.value = this.data.date
+          ? filter.format(this.data.date, format)
+          : filter.format(new Date(), format);
+      } else {
+        $event.target.value = filter.format(date, format);
+      }
     }
     this.data.date = $event.target.value;
   },

@@ -288,7 +288,7 @@ $hx-extend_size(5, 14px, 20px);
 $hx-extend_size(6, 12px, 18px);
 
 a {
-    color: $brand-info;
+    color: $brand-primary;
 }
 
 p {}

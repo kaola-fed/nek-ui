@@ -10210,33 +10210,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.data.date = this.data.value ? this.data.value : this.data.date;
 	    this.$watch('date', function (newValue) {
-	      // 字符类型自动转为日期类型
-	      if (typeof newValue === 'string') {
-	        if (bowser.msie && bowser.version <= 9) {
-	          return this.data.date = polyfill.StringDate(newValue);
+	      if (newValue === '') {
+	        this.data.value = '';
+	      } else {
+	        // 字符类型自动转为日期类型
+	        if (typeof newValue === 'string') {
+	          if (bowser.msie && bowser.version <= 9) {
+	            return this.data.date = polyfill.StringDate(newValue);
+	          }
+	          return this.data.date = newValue ? new Date(newValue) : new Date();
+	        } else if (typeof newValue === 'number') {
+	          return this.data.date = new Date(newValue);
 	        }
-	        return this.data.date = newValue ? new Date(newValue) : new Date();
-	      } else if (typeof newValue === 'number') {
-	        return this.data.date = new Date(newValue);
+
+	        if (newValue === 'Invalid Date' || newValue === 'NaN') {
+	          throw new TypeError('Invalid Date');
+	        }
+	        // 如果不为空并且超出日期范围，则设置为范围边界的日期
+	        if (newValue) {
+	          var isOutOfRange = this.isOutOfRange(newValue);
+	          if (isOutOfRange) return this.data.date = isOutOfRange;
+	        }
+
+	        if (newValue) {
+	          // this.data.date.setSeconds(0);
+	          this.data.date.setMilliseconds(0);
+	          this.data._date = new Date(newValue);
+	          this.data._time = filter.format(newValue, 'HH:mm:ss');
+	        }
+	        var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
+	        this.data.value = filter.format(newValue, format);
 	      }
 
-	      if (newValue === 'Invalid Date' || newValue === 'NaN') {
-	        throw new TypeError('Invalid Date');
-	      }
-	      // 如果不为空并且超出日期范围，则设置为范围边界的日期
-	      if (newValue) {
-	        var isOutOfRange = this.isOutOfRange(newValue);
-	        if (isOutOfRange) return this.data.date = isOutOfRange;
-	      }
-
-	      if (newValue) {
-	        // this.data.date.setSeconds(0);
-	        this.data.date.setMilliseconds(0);
-	        this.data._date = new Date(newValue);
-	        this.data._time = filter.format(newValue, 'HH:mm:ss');
-	      }
-	      var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-	      this.data.value = filter.format(newValue, format);
 	      /**
 	       * @event change 日期时间改变时触发
 	       * @property {object} sender 事件发送对象
@@ -10347,6 +10352,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
+	   * @method current() 选择当前时间
+	   * @public
+	   * @return {void}
+	   */
+	  current: function current() {
+	    var now = new Date();
+	    var date = filter.format(now, 'yyyy-MM-dd');
+	    var time = filter.format(now, 'HH:mm:ss');
+	    this.select(date, time, true);
+	  },
+
+	  /**
 	   * 关闭
 	   * @private
 	   */
@@ -10393,13 +10410,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  _onInput: function _onInput($event) {
 	    var value = $event.target.value;
-	    value = value.replace(new RegExp(/-/gm), '/');
-	    var date = value ? new Date(value) : null;
-	    var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-	    if (date === null || date.toString() === 'Invalid Date') {
-	      $event.target.value = this.data.date ? filter.format(this.data.date, format) : filter.format(new Date(), format);
-	    } else {
-	      $event.target.value = filter.format(date, format);
+	    if (value !== '') {
+	      value = value.replace(new RegExp(/-/gm), '/');
+	      var date = value ? new Date(value) : null;
+	      var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
+	      if (date === null || date.toString() === 'Invalid Date') {
+	        $event.target.value = this.data.date ? filter.format(this.data.date, format) : filter.format(new Date(), format);
+	      } else {
+	        $event.target.value = filter.format(date, format);
+	      }
 	    }
 	    this.data.date = $event.target.value;
 	  },
@@ -10455,7 +10474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 218 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n    <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n        <div class=\"dropdown_hd\">\n            {#if showTime}\n            <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label> {#else}\n            <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label> {/if}\n        </div>\n        <div class=\"dropdown_bd {dir}\" ref=\"dropdown\" r-hide={!open}>\n            <calendar lang={lang} class=\"date-area\" minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n                {#if showTime}\n                <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n                <div class='btn-area'>\n                    <jr-button class=\"btns\" type=\"primary\" on-click={this.select(_date,_time,true)} title=\"确定\" size=\"sm\" />\n                    <jr-button class=\"btns\" style=\"margin-right:5px\" type=\"default\" on-click={this._onClose()} title=\"取消\" size=\"sm\" />\n                </div>\n                {/if}\n            </calendar>\n        </div>\n    </div>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n    <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n        <div class=\"dropdown_hd\">\n            {#if showTime}\n            <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label> {#else}\n            <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label> {/if}\n        </div>\n        <div class=\"dropdown_bd {dir}\" ref=\"dropdown\" r-hide={!open}>\n            <calendar lang={lang} class=\"date-area\" minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n                {#if showTime}\n                <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n                <div class='btn-area'>\n                    <jr-button class=\"btns\" type=\"primary\" on-click={this.select(_date,_time,true)} title=\"确定\" size=\"sm\" />\n                    <jr-button class=\"btns\" style=\"margin-right:5px\" type=\"default\" on-click={this.current()} title=\"此刻\" size=\"sm\" />\n                </div>\n                {/if}\n            </calendar>\n        </div>\n    </div>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
 /* 219 */
