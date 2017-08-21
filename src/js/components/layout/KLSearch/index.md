@@ -47,7 +47,7 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search isShowToggle={false}>
+<kl-search>
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
@@ -69,7 +69,7 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
-### 不显示Footer
+### 不显示Footer（根据交互规范，一行没有填满的按钮要跟在后面）
 
 <!-- demo_start -->
 <div class="m-example"></div>

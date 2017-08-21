@@ -10,7 +10,7 @@
     <div class="kl-search_ft">
         <kl-button type="secondary" title={searchText} on-click={this.search()} class="kl-search_btn"></kl-button>
         <kl-button title={resetText} on-click={this.reset()}></kl-button>
-        {#if isShowToggle}
+        {#if this.$more && isShowToggle}
             <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">
                  {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
             </a> 
