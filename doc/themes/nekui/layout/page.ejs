@@ -99,12 +99,17 @@
             //在左右各自内部将dom按照id从小到大排序
             templeft.inner.sort(function(a,b){return a.id-b.id});
             tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
             //按照左右将grid-item列表分别放在左右两边
             var tempItemList = document.querySelectorAll('.grid-item');
             templeft.inner.forEach(function(item){
                 leftBlock.appendChild(tempItemList[item.id]);
             });
-             tempright.inner.forEach(function(item){
+            tempright.inner.forEach(function(item){
                 rightBlock.appendChild(tempItemList[item.id]);
             }); 
           }
