@@ -2,13 +2,13 @@
 title: 复选组
 masonry: true
 ---
-
 <!-- demo_start -->
 *基本形式*
 <div class="m-example"></div>
 
 ```xml
-<kl-check-group source={source} />
+<kl-check-group source={source} value={checkedValue} />
+<div>已选择的： {checkedValue}</div>
 ```
 
 ```javascript
@@ -16,12 +16,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -31,15 +29,18 @@ var component = new NEKUI.Component({
 <!-- demo_start -->
 *表单项*
 
-在表单中使用
-
 <div class="m-example"></div>
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-check-group source={source} />
-    </kl-form-item>
+    <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="跨境方式" hint="跨境方式">
+                <kl-check-group source={source} />
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+    
 </kl-form>
 ```
 
@@ -48,12 +49,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -73,12 +72,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -98,12 +95,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -124,7 +119,7 @@ var component = new NEKUI.Component({
     service: {
         getList: function(params, success) {
             NEKUI.ajax.request({
-                url: '../data/list.json',
+                url: '/data/KLCheckGroup.json',
                 method: 'get',
                 type: 'json',
                 data: params,
@@ -150,12 +145,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     },
     computed: {

@@ -8,7 +8,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group source={source} />
+<kl-radio-group source={source} on-select={console.log($event)} />
 ```
 
 ```javascript
@@ -16,12 +16,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -43,9 +41,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 11, name: '选项1'},
-            {id: 22, name: '选项2'},
-            {id: 33, name: '选项3'},
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
         ]
     }
 });
@@ -61,9 +60,13 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-radio-group source={source} />
-    </kl-form-item>
+    <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="跨境方式" hint="跨境方式">
+                <kl-radio-group source={source} />
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
 </kl-form>
 ```
 
@@ -72,12 +75,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -97,12 +98,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
@@ -123,7 +122,7 @@ var component = new NEKUI.Component({
     service: {
         getList: function(params, success) {
             NEKUI.ajax.request({
-                url: '../data/list.json',
+                url: '/data/KLRadioGroup.json',
                 method: 'get',
                 type: 'json',
                 data: params,
@@ -148,12 +147,10 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
