@@ -52,3 +52,2918 @@ var component = new Component();
     
 </script>
 {% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
+{% raw %}
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+
+      */});
+      
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板
+按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板
+
+目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。
+`,
+              jsCode: `
+var Component = NEKUI.Regular.extend({
+    template: template
+}).use(NEKUI.PathTool);
+var component = new Component();
+`
+          }
+      });
+      codeDemo.innerHTML = ''; 
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+</script>
+{% endraw %}
