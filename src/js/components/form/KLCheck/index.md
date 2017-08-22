@@ -8,7 +8,8 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="多选按钮" />
+<kl-check name="多选按钮" checked={isChecked} on-check={console.log($event)} on-change={console.log($event)}/>
+<div>checked: {isChecked}</div>
 ```
 <!-- demo_end -->
 
@@ -18,11 +19,16 @@ masonry: true
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-check name="多选按钮1" />
-        <kl-check name="多选按钮2" />
-    </kl-form-item>
+    <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="通知方式" hint="通知方式">
+                <kl-check name="邮件" checked={isEmail}/>
+                <kl-check name="短信" checked={isMsg}/>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
 </kl-form>
+<div>通知方式：{#if isEmail} 邮件 {/if} {#if isMsg} 短信 {/if} </div>
 ```
 <!-- demo_end -->
 
@@ -31,14 +37,15 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="半选状态" checked={test} />
+<kl-check name="半选状态" checked={isChecked} />
+<div>checked： {isChecked}</div>
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
-        test: null
+        isChecked: null
     }
 });
 ```
@@ -49,6 +56,6 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="多选按钮" disabled />
+<kl-check name="禁用多选按钮" disabled />
 ```
 <!-- demo_end -->
