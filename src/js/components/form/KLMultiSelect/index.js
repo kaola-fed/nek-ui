@@ -312,12 +312,12 @@ const KLMultiSelect = Dropdown.extend({
   },
   // 删除某一项
   delete(event, item) {
+    const data = this.data;
     event && event.stopPropagation();
     if (data.disabled || data.readonly) {
       return;
     }
     this.toggle(true);
-    const data = this.data;
     const _list = data.value.toString().split(data.separator);
     _list.splice(
       _list.indexOf((item[data.key].toString() || '').toString()),

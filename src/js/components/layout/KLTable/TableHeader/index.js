@@ -14,7 +14,8 @@ const setColumnWidth = function (column, width) {
     setColumnWidth(children[children.length - 1], width);
     return;
   }
-  column._width = Math.max(width, HEADER_MIN_WIDTH);
+  column.width = Math.max(width, HEADER_MIN_WIDTH);
+  column._width = column.width;
 };
 
 const getColumnWidth = function (column) {

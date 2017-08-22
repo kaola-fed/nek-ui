@@ -77,8 +77,12 @@ $orderIconColor = #666;
         width: 100%;
         table-layout: fixed;
     }
-
     .tb_hd {
+    }
+
+    .patch {
+        background: $headerGrey;
+        position: absolute;
     }
 
     .tb_hd_tr {
