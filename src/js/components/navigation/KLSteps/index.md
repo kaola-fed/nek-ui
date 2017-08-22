@@ -3,7 +3,7 @@ title: 步骤
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
@@ -39,7 +39,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*迷你版*
+### 迷你版
 
 在表单中使用
 <div class="m-example"></div>

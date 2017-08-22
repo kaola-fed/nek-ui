@@ -5,7 +5,7 @@ masonry: true
 
 <!-- demo_start -->
 
-*基本形式*
+### 基本形式
 
 <div class="m-example"></div>
 
@@ -35,7 +35,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-*通过函数控制*
+### 通过函数控制
 
 <div class="m-example"></div>
 
