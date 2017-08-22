@@ -4,7 +4,7 @@ masonry: true
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 
 <div class="m-example"></div>
 
@@ -22,7 +22,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*位置*
+### 位置
 
 <div class="m-example"></div>
 

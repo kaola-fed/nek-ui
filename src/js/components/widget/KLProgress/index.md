@@ -4,7 +4,7 @@ title: 进度条
 
 <!-- demo_start -->
 
-*基本形式*
+### 基本形式
 
 <div class="m-example"></div>
 
@@ -25,7 +25,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-*进度条尺寸*
+### 进度条尺寸
 
 <div class="m-example"></div>
 
@@ -47,7 +47,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-*进度条状态*
+### 进度条状态
 
 <div class="m-example"></div>
 
@@ -68,7 +68,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-*综合处理*
+### 综合处理
 
 <div class="m-example"></div>
 
