@@ -80,7 +80,7 @@ gulp.task('gen-doc', (cb) => {
   const hexo = new Hexo(path.join(__dirname, 'doc'), {
     dev: argv.dev,
   });
-  hexo.extend.filter.register('before_post_render', (data) => {
+  hexo.extend.filter.register('after_post_render', (data) => {
     let md = data.content;
     md = md.replace(/<!-- demo_start -->/gim, '<div class="grid-item" markdown="1">');
     md = md.replace(/<!-- demo_end -->/gim, '</div>');
