@@ -130,5 +130,5 @@ gulp.task('watch', ['server'], () => {
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*.md'], ['default-doc']);
+  gulp.watch(['./src/**/*'], ['default-doc']);
 });
