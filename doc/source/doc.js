@@ -106,6 +106,9 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
+      if (comp !== 'KLForm') {
+        return false;
+      }
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
