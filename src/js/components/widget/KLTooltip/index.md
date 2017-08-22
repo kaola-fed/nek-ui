@@ -9,7 +9,9 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-tooltip tip="基本的tooltip"><kl-button title="鼠标放上去,可以看到提示" /></kl-tooltip>
+<kl-tooltip tip="基本的tooltip">
+    <kl-button title="鼠标放上去,可以看到提示" />
+</kl-tooltip>
 ```
 
 ```javascript

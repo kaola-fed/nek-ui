@@ -7,13 +7,15 @@ title: 步骤
 <div class="m-example"></div>
 
 ```xml
-<kl-steps current=2 steps={steps} />
+<kl-button title="步骤+1" on-click={current = (current + 1) % steps.length}></kl-button>
+<kl-steps current={current} steps={steps} />
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
+        current: 0,
         steps: [{
             status: 0,
             title: '编辑',
