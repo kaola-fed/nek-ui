@@ -4032,7 +4032,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	display:inline-block;
 }
 .u-check.z-part .check_box .u-icon:before{
-	content:"\e91b";
+	content:"\e91c";
 }
 .u-check.z-dis{
 	cursor:not-allowed;
