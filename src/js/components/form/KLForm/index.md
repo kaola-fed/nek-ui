@@ -133,26 +133,6 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<p>vertical</p>
-<kl-form>
-    <kl-row>
-         <kl-col span=4>
-             <kl-form-item title="订单号" layout="vertical">
-                 <kl-input value="{billno}" placeholder="订单号" />
-             </kl-form-item>
-         </kl-col>
-         <kl-col span=4>
-             <kl-form-item title="支付方式" layout="vertical">
-                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
-             </kl-form-item>
-         </kl-col>
-         <kl-col span=4>
-             <kl-form-item title="商品名称" layout="vertical">
-                 <kl-input value="{goodsName}" placeholder="商品名称" />
-             </kl-form-item>
-         </kl-col>
-     </kl-row>
-</kl-form>
 <p>inline</p>
 <kl-form>
      <kl-row>
@@ -185,16 +165,38 @@ var component = new NEKUI.Component({
         </kl-col>
      </kl-row>
 </kl-form>
+<p>vertical</p>
+<kl-form>
+    <kl-row>
+         <kl-col span=4>
+             <kl-form-item title="订单号" layout="vertical">
+                 <kl-input value="{billno}" placeholder="订单号" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="支付方式" layout="vertical">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="商品名称" layout="vertical">
+                 <kl-input value="{goodsName}" placeholder="商品名称" />
+             </kl-form-item>
+         </kl-col>
+     </kl-row>
+</kl-form>
 ```
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 表单验证
+### 简单表单验证
+如果表单项是必填,则可以在`kl-form-item`上配置required属性,并通过message配置未填写时的提示文案; 除了最基本的必填校验外,各表单元素组件可以通过配置rules属性实现各种复杂的校验; 参见复杂表单验证
+
 <div class="m-example"></div>
 
 ```xml
 <kl-form labelSize="80px" ref="form">
-    <kl-form-item title="订单号" required>
+    <kl-form-item title="订单号" required message="请填写订单号">
         <kl-input value="{billno}" width="300px" placeholder="订单号" />
     </kl-form-item>
     <kl-form-item title="支付方式" required>
@@ -228,6 +230,64 @@ var component = new NEKUI.Component({
     this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
     this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }];
     this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+ },
+ validate: function() {
+    var $form = this.$refs.form;
+    return $form.validate().success;
+ }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 复杂表单验证
+每个表单元素都内置一些基本的校验属性, 如input设置type="email", 触发校验时就会校验用户输入的是否是合法的email地址;
+
+除内置的基本校验属性外, 每个表单元素组件都有一个rules属性, rules属性的基本格式是`{type: '',message: ''}`, type的可选值参见[validatorJS](https://github.com/chriso/validator.js/)
+
+如果需要自定义验证函数, 可配置`method`属性
+
+<div class="m-example"></div>
+
+```xml
+<kl-form labelSize="80px" ref="form">
+    <kl-form-item title="用户邮箱" required>
+        <kl-input type="email" value="{email}" width="300px" placeholder="用户邮箱" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" required descTemplate="输入的值中应包含pay">
+        <kl-input rules="{purchaseWayRule}" value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="国家" required tip="最多选择2个国家">
+        <kl-check-group source="{countryList}" min=1 max=2 />
+    </kl-form-item>
+    <kl-form-item title="备注" required descTemplate="最多输入10个字">
+       <kl-textarea rules="{remarkRule}" value="{remark}" width="300px" placeholder="备注" />
+    </kl-form-item>
+    <div style="padding-left:88px">
+        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+    </div>
+</kl-form>
+```
+
+```javascript
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
+    this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }, { id: 3, name: '英国' }];
+    this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+
+    this.data.purchaseWayRule = [{
+        message: '输入的值中应包含pay', method: function(value) {
+            return value.toLowerCase().indexOf('pay') != -1;
+        }
+    }];
+
+    this.data.remarkRule = [{
+        message: '最多输入10个字', method: function(value) {
+            return value.length <= 10;
+        }
+    }];
  },
  validate: function() {
     var $form = this.$refs.form;
