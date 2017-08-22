@@ -80,8 +80,6 @@ const injectComponents = (md) => {
     })(index++);
     `;
   });
-  md = md.replace(/<!-- demo_start -->/gim, '<div class="grid-item" markdown="1">');
-  md = md.replace(/<!-- demo_end -->/gim, '</div>');
   demosScript += '\n</script>\n{% endraw %}';
   return md + demosScript;
 };
@@ -106,6 +104,9 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
+      if (comp !== 'KLForm') {
+        return false;
+      }
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
