@@ -80,8 +80,6 @@ const injectComponents = (md) => {
     })(index++);
     `;
   });
-  md = md.replace(/<!-- demo_start -->/gim, '<div class="grid-item" markdown="1">');
-  md = md.replace(/<!-- demo_end -->/gim, '</div>');
   demosScript += '\n</script>\n{% endraw %}';
   return md + demosScript;
 };
