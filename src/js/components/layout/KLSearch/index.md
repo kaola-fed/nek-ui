@@ -8,20 +8,20 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search>
+<kl-search on-search={console.log("search")} on-reset={console.log("reset")}>
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="付款类型">
+            <kl-form-item labelSize="60" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="支付方式">
+            <kl-form-item labelSize="60" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="订单号">
+            <kl-form-item labelSize="60" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
@@ -29,16 +29,12 @@ title: 筛选区
     <kl-search-more>
         <kl-row>
             <kl-col span="4">
-                <kl-form-item labelSize="100" title="合同编号">
+                <kl-form-item labelSize="60" title="合同编号">
                     <kl-input type="text"></kl-input>
                 </kl-form-item>
             </kl-col>
         </kl-row>
     </kl-search-more>
-    <kl-search-footer>
-        <kl-button type="secondary" title="查询"></kl-button>
-        <kl-button title="重置"></kl-button>
-    </kl-search-footer>
 </kl-search>
 ```
 <!-- demo_end -->
@@ -52,25 +48,50 @@ title: 筛选区
 <kl-search isShowToggle={false}>
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="付款类型">
+            <kl-form-item labelSize="60" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="支付方式">
+            <kl-form-item labelSize="60" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="订单号">
+            <kl-form-item labelSize="60" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
     </kl-row>
-    <kl-search-footer>
-        <kl-button type="secondary" title="查询"></kl-button>
-        <kl-button title="重置"></kl-button>
-    </kl-search-footer>
+</kl-search>
+```
+<!-- demo_end -->
+
+### 不显示Footer
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-search isShowFooter={false}>
+    <kl-row>
+        <kl-col span="4">
+            <kl-form-item labelSize="60" title="付款类型">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col span="4">
+            <kl-form-item labelSize="60" title="支付方式">
+                <kl-input type="text"></kl-input>
+            </kl-form-item>
+        </kl-col>
+        <kl-col span="4">
+            <kl-form-item>
+                <kl-button type="secondary" title="查询"></kl-button>
+                <kl-button title="重置"></kl-button>
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
 </kl-search>
 ```
 <!-- demo_end -->
@@ -81,20 +102,20 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search showText="更多" hideText="隐藏">
+<kl-search unfoldText="更多" foldText="隐藏">
     <kl-row>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="付款类型">
+            <kl-form-item labelSize="60" title="付款类型">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="支付方式">
+            <kl-form-item labelSize="60" title="支付方式">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
-            <kl-form-item labelSize="100" title="订单号">
+            <kl-form-item labelSize="60" title="订单号">
                 <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
@@ -102,16 +123,12 @@ title: 筛选区
     <kl-search-more>
         <kl-row>
             <kl-col span="4">
-                <kl-form-item labelSize="100" title="合同编号">
+                <kl-form-item labelSize="60" title="合同编号">
                     <kl-input type="text"></kl-input>
                 </kl-form-item>
             </kl-col>
         </kl-row>
     </kl-search-more>
-    <kl-search-footer>
-        <kl-button type="secondary" title="查询"></kl-button>
-        <kl-button title="重置"></kl-button>
-    </kl-search-footer>
 </kl-search>
 ```
 <!-- demo_end -->

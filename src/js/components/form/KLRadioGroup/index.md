@@ -2,7 +2,6 @@
 title: 单选组
 masonry: true
 ---
-
 <!-- demo_start -->
 *基本形式*
 <div class="m-example"></div>

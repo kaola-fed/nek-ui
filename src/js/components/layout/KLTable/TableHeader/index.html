@@ -69,4 +69,14 @@
             </tr>
         {/list}
     </thead>
+    {#if scrollYBar && !fixedCol}
+        <div class="patch"
+            r-style={{
+                height: height + 'px',
+                top: 0,
+                right: scrollYBar + 'px',
+                width: scrollYBar + 'px',
+            }}
+        />
+    {/if}
 </table>

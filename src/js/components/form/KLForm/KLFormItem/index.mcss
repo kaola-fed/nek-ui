@@ -26,7 +26,7 @@
         &-xlg { width: $size-base * 28; max-width: $size-base * 28; }
 
         &-lh-sm { line-height: 1; }
-        &-lh-md { line-height: 1.3; }
+        &-lh-md { line-height: 1.6; }
         &-lh-lg { line-height: 2.5; }
     }
     .formitem_info {
@@ -34,9 +34,9 @@
         vertical-align: middle;
     }
 
-    .formitem_ct{
-        /*line-height: 32px;*/
+    .formitem_ct {
         flex: 1;
+        min-width: 0;
         font-size: $font-size-base;
     }
 

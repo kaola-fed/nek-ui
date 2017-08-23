@@ -3,17 +3,19 @@ title: 步骤
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
-<kl-steps current=2 steps={steps} />
+<kl-button title="步骤+1" on-click={current = (current + 1) % steps.length}></kl-button>
+<kl-steps current={current} steps={steps} />
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
+        current: 0,
         steps: [{
             status: 0,
             title: '编辑',
@@ -37,7 +39,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*迷你版*
+### 迷你版
 
 在表单中使用
 <div class="m-example"></div>

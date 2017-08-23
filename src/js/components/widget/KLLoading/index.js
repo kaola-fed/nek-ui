@@ -48,7 +48,7 @@ const KLLoading = Component.extend({
     this.$update();
   },
   /**
-     * @method show() 隐藏组件
+     * @method hide() 隐藏组件
      * @public
      * @return {void}
      */

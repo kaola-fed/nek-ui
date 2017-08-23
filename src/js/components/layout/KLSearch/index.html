@@ -1,18 +1,20 @@
 <div class="{class}">
     {#inc this.$body} 
-    {#if this.$more && isShowMore} 
-        {#inc this.$more.$body} 
-    {/if} 
-    {#if this.$footer}
-    <div class="f-cb">
-        <div class="f-fr">
-            {#inc this.$footer.$body} 
-            {#if isShowToggle}
-                <a href="javascript: void(0);" on-click={this.toggle()}>
-                     {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
-                </a> 
-            {/if}
+    {#if this.$more && isShowMore}
+        <!--添加一层div，防止两个g-row样式并列导致marginTop--> 
+        <div>
+            {#inc this.$more.$body}
         </div>
+    {/if} 
+    {#if isShowFooter}
+    <div class="kl-search_ft">
+        <kl-button type="secondary" title={searchText} on-click={this.search()} class="kl-search_btn"></kl-button>
+        <kl-button title={resetText} on-click={this.reset()}></kl-button>
+        {#if isShowToggle}
+            <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">
+                 {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
+            </a> 
+        {/if}
     </div>
     {/if}
 </div>

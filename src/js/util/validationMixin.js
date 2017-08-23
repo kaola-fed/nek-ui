@@ -21,7 +21,9 @@ module.exports = function (Component) {
 
         this.$on('destroy', function () {
           const index = $outer.controls.indexOf(this);
-          $outer.controls.splice(index, 1);
+          if (index !== -1) {
+            $outer.controls.splice(index, 1);
+          }
         });
       }
     },
