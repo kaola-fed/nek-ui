@@ -81,8 +81,18 @@ const FileUnit = Component.extend({
           file: data.file,
         };
 
-        if ((status >= 200 && status < 300) || status === 304) {
-          const response = JSON.parse(target.responseText);
+        let result = true;
+        let response = {};
+        try {
+          response = JSON.parse(target.response);
+        } catch (error) {
+          console.log(error);
+        }
+        if (self.data.beforeOnLoad) {
+          result = self.data.beforeOnLoad.call(self, response);
+        }
+        response.url = (result && result.url) || response.url;
+        if (status >= 200 && status < 400 && result) {
           data.url = response.url;
           data.status = 'success';
           data.info = '';
@@ -100,6 +110,9 @@ const FileUnit = Component.extend({
         }
       },
       onerror(e) {
+        if (self.data.beforeOnError) {
+          self.data.beforeOnError.call(self, e);
+        }
         data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');
         self.$update();

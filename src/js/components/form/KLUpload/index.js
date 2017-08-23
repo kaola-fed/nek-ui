@@ -63,6 +63,8 @@ const KLUpload = Component.extend({
       imageHeight: Infinity,
       imageScale: '',
       encType: 'multipart/form-data',
+      beforeOnLoad: null,
+      beforeOnError: null,
     });
 
     this.preProcess(data);

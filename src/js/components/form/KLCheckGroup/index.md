@@ -20,7 +20,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        checkedValue: '1'
     }
 });
 ```
@@ -33,14 +34,9 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-form>
-    <kl-row>
-        <kl-col span=12>
-            <kl-form-item title="跨境方式" hint="跨境方式">
-                <kl-check-group source={source} />
-            </kl-form-item>
-        </kl-col>
-    </kl-row>
-    
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-check-group source={source} value={checkedValue}/>
+    </kl-form-item>
 </kl-form>
 ```
 
@@ -53,7 +49,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        checkedValue: '2,3'
     }
 });
 ```
@@ -87,7 +84,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-check-group source={source} block />
+<kl-check-group source={source} value={checkedValue} block />
 ```
 
 ```javascript
@@ -99,7 +96,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        checkedValue: '1,4'
     }
 });
 ```
@@ -110,7 +108,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-check-group service={@(this.service)} />
+<kl-check-group service={@(this.service)} value={checkedValue}/>
 ```
 
 ```javascript
@@ -126,6 +124,9 @@ var component = new NEKUI.Component({
                 success: success
             });
         }
+    },
+    data: {
+        checkedValue: '3,4'
     }
 });
 ```

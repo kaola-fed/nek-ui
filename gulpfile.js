@@ -33,8 +33,7 @@ gulp.task('dist-copy', () => all(
     gulp.src([
       './node_modules/regularjs/dist/regular.min.js',
       './node_modules/regularjs/dist/regular.js',
-    ]).pipe(gulp.dest('./dist/vendor')),
-  ));
+    ]).pipe(gulp.dest('./dist/vendor'))));
 
 gulp.task('dist-js', () => gulp.src('./src/js/index.js')
     .pipe(webpack(webpackConfig))
@@ -130,5 +129,5 @@ gulp.task('watch', ['server'], () => {
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*.md'], ['default-doc']);
+  gulp.watch(['./src/**/*'], ['default-doc']);
 });
