@@ -65,7 +65,7 @@
     h2
         font-size: 16px;
         color: #333333;
-        padding: 0px 8px;
+        padding: 0px;
         border-left: 3px solid #333;
         height: 16px;
         line-height: 16px;
@@ -85,13 +85,14 @@
         &:before
             height: 100px;
         &:after
-            content "#"
-            color $link
+            content " "
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background: #0398ff;
             position absolute
-            left -0.7em
-            bottom 0
-            font-size 1.2em
-            font-weight bold
+            left -0.9em
+            bottom 9px;
     figure
         margin 1.2em 0
     a
@@ -285,6 +286,17 @@
             font-weight: bold;
         ul
             padding: 0 0 0 15px;
+.tag
+    display: inline-block;
+    margin-left: 10px;
+    padding-left: 10px;
+    font-size: 10px;
+    &-event
+      border-left: 1px solid #54a8f7;
+      color: #54a8f7;
+.paramTitle
+    color: #666!important;
+
 .m-example
     padding: 8px 0px 20px;
 .m-code 

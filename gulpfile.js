@@ -98,7 +98,6 @@ gulp.task('dist', (done) => {
   sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
 });
 
-
 gulp.task('reload', () => {
   reload();
 });
@@ -129,5 +128,5 @@ gulp.task('watch', ['server'], () => {
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*'], ['default-doc']);
+  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['default-doc']);
 });

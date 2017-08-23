@@ -84,10 +84,14 @@ const injectComponents = (md) => {
   return md + demosScript;
 };
 
+
+const partial = glob.sync(path.join(DOC_PATH, 'partials/**/*.hbs'));
+
 const injectAPI = (md, source) => {
   const docs = jsdoc2md.renderSync({
     source,
     'no-cache': true,
+    partial,
     configure: path.join(__dirname, 'jsdoc.json'),
   });
   return `${md}\n# API\n${docs}`;
