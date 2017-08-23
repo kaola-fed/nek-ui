@@ -372,6 +372,18 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="文件上传前的校验（文件格式限制为图片）"><a href="#文件上传前的校验（文件格式限制为图片）" class="headerlink" title="文件上传前的校验（文件格式限制为图片）"></a>文件上传前的校验（文件格式限制为图片）</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-upload</span>=<span class="string">&#123;this.beforeUpload&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeUpload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> pass = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> msg = <span class="string">''</span>;</div><div class="line">            <span class="keyword">if</span> (!<span class="regexp">/image\/.*/</span>.test(file.type)) &#123;</div><div class="line">                msg = <span class="string">'格式错误'</span>;</div><div class="line">            &#125;</div><div class="line">            resolve(msg);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> error = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(pass, error);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="文件删除前的确认"><a href="#文件删除前的确认" class="headerlink" title="文件删除前的确认"></a>文件删除前的确认</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-remove</span>=<span class="string">&#123;this.beforeRemove&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeRemove</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> file = item.file;</div><div class="line">        <span class="keyword">var</span> pass = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(<span class="string">'确认删除'</span> + file.name + <span class="string">'?'</span>);</div><div class="line">            modal.$on(<span class="string">'ok'</span>, () =&gt; resolve(<span class="literal">true</span>));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> error = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(pass, error);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#KLUpload">KLUpload</a></dt>
 <dd></dd>
@@ -514,6 +526,36 @@
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如’4:3’</td>
+</tr>
+<tr>
+<td>[options.data.klass]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 可选，组件最外层包裹元素样式扩展</td>
+</tr>
+<tr>
+<td>[options.data.beforeOnLoad]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，上传文件成功后的钩子</td>
+</tr>
+<tr>
+<td>[options.data.beforeOnError]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，上传文件失败后的钩子</td>
+</tr>
+<tr>
+<td>[options.data.before-upload]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，                                                             如果非空，则提示校验信息，并停止上传</td>
+</tr>
+<tr>
+<td>[options.data.before-remove]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件</td>
 </tr>
 </tbody>
 </table>
@@ -789,6 +831,88 @@ var component = new NEKUI.Component({
                 url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
             }
         ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} before-upload={this.beforeUpload}></kl-upload>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    },
+    beforeUpload: function(file) {
+        var pass = function(resolve) {
+            var msg = '';
+            if (!/image\/.*/.test(file.type)) {
+                msg = '格式错误';
+            }
+            resolve(msg);
+        };
+
+        var error = function() {};
+        return new Promise(pass, error);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} before-remove={this.beforeRemove}></kl-upload>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    },
+    beforeRemove: function(item) {
+        var file = item.file;
+        var pass = function(resolve) {
+            var modal = NEKUI.KLModal.confirm('确认删除' + file.name + '?');
+            modal.$on('ok', () => resolve(true));
+        };
+
+        var error = function() {};
+        return new Promise(pass, error);
     }
 });
 

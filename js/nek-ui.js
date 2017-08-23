@@ -111,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLCrumbItem: __webpack_require__(407),
 
 	  // Notice
-	  KLModal: __webpack_require__(380),
+	  KLModal: __webpack_require__(381),
 	  KLMask: __webpack_require__(409),
 	  KLNotify: __webpack_require__(411),
 	  KLPopConfirm: __webpack_require__(413),
@@ -28577,6 +28577,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
 	 * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
 	 * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
+	 * @param {string}     [options.data.klass]                => 可选，组件最外层包裹元素样式扩展
+	 * @param {function}   [options.data.beforeOnLoad]         => 可选，上传文件成功后的钩子
+	 * @param {function}   [options.data.beforeOnError]        => 可选，上传文件失败后的钩子
+	 * @param {function}   [options.data.before-upload]        => 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise
+	 *                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，
+	 *                                                             如果非空，则提示校验信息，并停止上传
+	 * @param {function}   [options.data.before-remove]        => 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者
+	 *                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件
 	 */
 
 	var KLUpload = Component.extend({
@@ -28601,9 +28609,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      imageWidth: Infinity,
 	      imageHeight: Infinity,
 	      imageScale: '',
+	      klass: '',
 	      encType: 'multipart/form-data',
 	      beforeOnLoad: null,
-	      beforeOnError: null
+	      beforeOnError: null,
+	      beforeUpload: null,
+	      beforeRemove: null
 	    });
 
 	    this.preProcess(data);
@@ -28932,7 +28943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var utils = __webpack_require__(360);
 	var Config = __webpack_require__(361);
 	var FileUnit = __webpack_require__(378);
-	var KLImagePreview = __webpack_require__(382);
+	var KLImagePreview = __webpack_require__(380);
 
 	/**
 	 * @class UploadBase
@@ -28983,7 +28994,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      imageWidth: Infinity,
 	      imageHeight: Infinity,
 	      imageScale: '',
-	      encType: 'multipart/form-data'
+	      encType: 'multipart/form-data',
+	      beforeOnLoad: null,
+	      beforeOnError: null,
+	      beforeUpload: null,
+	      beforeRemove: null
 	    });
 
 	    _.extend(data, {
@@ -29298,6 +29313,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  preCheck: function preCheck(file) {
 	    var self = this;
+	    var data = self.data;
+	    var beforeCheck = data.beforeUpload && data.beforeUpload(file);
+
 	    var onPass = function onPass(resolve) {
 	      var type = self.getFileType(file).toLowerCase();
 	      var preCheckInfo = '';
@@ -29323,7 +29341,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var onError = function onError() {};
 
-	    return new _promise2.default(onPass, onError);
+	    if (beforeCheck && beforeCheck.then) {
+	      return beforeCheck.then(function (checkInfo) {
+	        if (checkInfo === '') {
+	          return new _promise2.default(onPass, onError);
+	        }
+	        return _promise2.default.resolve(checkInfo);
+	      });
+	    } else if (beforeCheck === '') {
+	      return new _promise2.default(onPass, onError);
+	    }
+
+	    return _promise2.default.resolve(beforeCheck);
 	  },
 	  preCheckImage: function preCheckImage(file) {
 	    var self = this;
@@ -30074,7 +30103,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _ = __webpack_require__(72);
 	var tpl = __webpack_require__(379);
 	var utils = __webpack_require__(360);
-	var KLModal = __webpack_require__(380);
 
 	var FileUnit = Component.extend({
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -30208,18 +30236,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      file: data.file,
 	      status: data.status
 	    };
+	    var beforeRemove = data.beforeRemove && data.beforeRemove(emitItem);
 
-	    if (data.delConfirm) {
-	      var modal = new KLModal({
-	        data: {
-	          content: this.$trans('REMOVE_CONFIRM') + data.filename + '?'
+	    if (beforeRemove && beforeRemove.then) {
+	      beforeRemove.then(function (removeConfirm) {
+	        if (removeConfirm !== false) {
+	          self.$emit('remove', emitItem);
+	        } else {
+	          return removeConfirm;
 	        }
 	      });
-	      modal.$on('ok', function () {
-	        self.$emit('remove', emitItem);
-	      });
-	    } else {
+	    } else if (beforeRemove !== false) {
 	      self.$emit('remove', emitItem);
+	    } else {
+	      return beforeRemove;
 	    }
 	  },
 	  onPreview: function onPreview(e) {
@@ -30240,186 +30270,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 379 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 380 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLModal     模态对话框
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(381);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLModal
-	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
-	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
-	 * @param {string}            [options.data.content]              => 对话框内容
-	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
-	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
-	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
-	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
-	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
-	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
-	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
-	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
-	 * @param {string}            [options.data.class]                => 补充class
-	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
-	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
-	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
-	 */
-	var KLModal = Component.extend({
-	  name: 'kl-modal',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      title: this.$trans('NOTICE'),
-	      content: '',
-	      okButton: true,
-	      with: 400,
-	      cancelButton: false,
-	      noClose: false,
-	      okDisabled: false,
-	      cancelDisabled: false,
-	      hasFooter: true,
-	      isCanClose: true
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @method close(result) 关闭对话框
-	     * @public
-	     * @param  {boolean} result 点击确定还是取消
-	     * @return {void}
-	     */
-	  close: function close(result, event) {
-	    /**
-	         * @event close 关闭对话框时触发
-	         * @property {boolean} result 点击了确定还是取消
-	         */
-	    this.$emit('close', {
-	      result: result
-	    });
-	    result ? this.ok(event) : this.cancel();
-	  },
-
-	  /**
-	     * @method ok() 确定对话框
-	     * @public
-	     * @return {void}
-	     */
-	  ok: function ok(event) {
-	    /**
-	         * @event ok 确定对话框时触发
-	         */
-	    this.$emit('ok', event);
-	    !this.data.noClose && this.destroy();
-	  },
-
-	  /**
-	     * @method cancel() 取消对话框
-	     * @public
-	     * @return {void}
-	     */
-	  cancel: function cancel() {
-	    /**
-	         * @event cancel 取消对话框时触发
-	         */
-	    this.$emit('cancel');
-	    this.destroy();
-	  },
-	  _onDragStart: function _onDragStart($event) {
-	    var dialog = $event.proxy;
-	    dialog.style.left = dialog.offsetLeft + 'px';
-	    dialog.style.top = dialog.offsetTop + 'px';
-	    dialog.style.zIndex = '1000';
-	    dialog.style.position = 'absolute';
-	  }
-	});
-
-	/**
-	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	KLModal.alert = function (content, title, okButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton
-	    }
-	  });
-
-	  return modal;
-	};
-
-	/**
-	 * @method confirm(content[,title]) 弹出一个confirm对话框
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	KLModal.confirm = function (content, title, okButton, cancelButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton,
-	      cancelButton: cancelButton || true
-	    }
-	  });
-
-	  return modal;
-	};
-
-	// var oldExtend = Modal.extend;
-	// Modal.extend = function() {
-	//     var extended = oldExtend.apply(this, arguments);
-	//     extended.alert = this.alert;
-	//     extended.confirm = this.confirm;
-	//     return extended;
-	// }
-
-	module.exports = KLModal;
-
-/***/ }),
-/* 381 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
-/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30432,7 +30286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(380);
+	var KLModal = __webpack_require__(381);
 	var tpl = __webpack_require__(383);
 
 	/**
@@ -30766,6 +30620,182 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLImagePreview;
 
 /***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * KLModal     模态对话框
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(382);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLModal
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
+	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
+	 * @param {string}            [options.data.content]              => 对话框内容
+	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
+	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
+	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
+	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
+	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
+	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
+	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
+	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
+	 * @param {string}            [options.data.class]                => 补充class
+	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
+	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
+	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
+	 */
+	var KLModal = Component.extend({
+	  name: 'kl-modal',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: this.$trans('NOTICE'),
+	      content: '',
+	      okButton: true,
+	      with: 400,
+	      cancelButton: false,
+	      noClose: false,
+	      okDisabled: false,
+	      cancelDisabled: false,
+	      hasFooter: true,
+	      isCanClose: true
+	    });
+	    this.supr();
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @method close(result) 关闭对话框
+	     * @public
+	     * @param  {boolean} result 点击确定还是取消
+	     * @return {void}
+	     */
+	  close: function close(result, event) {
+	    /**
+	         * @event close 关闭对话框时触发
+	         * @property {boolean} result 点击了确定还是取消
+	         */
+	    this.$emit('close', {
+	      result: result
+	    });
+	    result ? this.ok(event) : this.cancel();
+	  },
+
+	  /**
+	     * @method ok() 确定对话框
+	     * @public
+	     * @return {void}
+	     */
+	  ok: function ok(event) {
+	    /**
+	         * @event ok 确定对话框时触发
+	         */
+	    this.$emit('ok', event);
+	    !this.data.noClose && this.destroy();
+	  },
+
+	  /**
+	     * @method cancel() 取消对话框
+	     * @public
+	     * @return {void}
+	     */
+	  cancel: function cancel() {
+	    /**
+	         * @event cancel 取消对话框时触发
+	         */
+	    this.$emit('cancel');
+	    this.destroy();
+	  },
+	  _onDragStart: function _onDragStart($event) {
+	    var dialog = $event.proxy;
+	    dialog.style.left = dialog.offsetLeft + 'px';
+	    dialog.style.top = dialog.offsetTop + 'px';
+	    dialog.style.zIndex = '1000';
+	    dialog.style.position = 'absolute';
+	  }
+	});
+
+	/**
+	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	KLModal.alert = function (content, title, okButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton
+	    }
+	  });
+
+	  return modal;
+	};
+
+	/**
+	 * @method confirm(content[,title]) 弹出一个confirm对话框
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	KLModal.confirm = function (content, title, okButton, cancelButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton,
+	      cancelButton: cancelButton || true
+	    }
+	  });
+
+	  return modal;
+	};
+
+	// var oldExtend = Modal.extend;
+	// Modal.extend = function() {
+	//     var extended = oldExtend.apply(this, arguments);
+	//     extended.alert = this.alert;
+	//     extended.confirm = this.confirm;
+	//     return extended;
+	// }
+
+	module.exports = KLModal;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
+
+/***/ }),
 /* 383 */
 /***/ (function(module, exports) {
 
@@ -30775,7 +30805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 384 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      beforeOnLoad={beforeOnLoad}\n                      beforeOnError={beforeOnError}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      beforeOnLoad={beforeOnLoad}\n                      beforeOnError={beforeOnError}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
 /* 385 */
@@ -31129,13 +31159,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 386 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                beforeOnLoad={beforeOnLoad}\n                                beforeOnError={beforeOnError}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                beforeOnLoad={beforeOnLoad}\n                                beforeOnError={beforeOnError}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
 /* 387 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ref=\"m-upload\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {klass}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
 /* 388 */
