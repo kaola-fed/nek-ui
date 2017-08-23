@@ -131,3 +131,89 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+### 文件上传前的校验（文件格式限制为图片）
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} before-upload={this.beforeUpload}></kl-upload>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    },
+    beforeUpload: function(file) {
+        var pass = function(resolve) {
+            var msg = '';
+            if (!/image\/.*/.test(file.type)) {
+                msg = '格式错误';
+            }
+            resolve(msg);
+        };
+
+        var error = function() {};
+        return new Promise(pass, error);
+    }
+});
+```
+<!-- demo_end -->
+
+### 文件删除前的确认
+
+<!-- demo_start -->
+<div class="m-example"></div>
+
+```xml
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} before-remove={this.beforeRemove}></kl-upload>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    },
+    beforeRemove: function(item) {
+        var file = item.file;
+        var pass = function(resolve) {
+            var modal = NEKUI.KLModal.confirm('确认删除' + file.name + '?');
+            modal.$on('ok', () => resolve(true));
+        };
+
+        var error = function() {};
+        return new Promise(pass, error);
+    }
+});
+```
+<!-- demo_end -->
