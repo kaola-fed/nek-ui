@@ -10,7 +10,7 @@ const DemoWrap = Regular.extend({
         <div class="m-iconLine"> <div class="m-iconOuter" r-class="{ {'revert':showScript}}" on-click={this.toggle()}> <kl-icon type="angle-down" /> </div> </div>
         <div class="m-codeBlock" r-class="{ {'wrap': !showScript}}" >
           <kl-button class="m-copyCode" type="tertiary" size="sm" title="复制代码" on-click={this.copy($event)}></kl-button>
-          <div r-html={htmlTpl}></div>
+          <div r-html={htmlTpl} class="figure-outer"></div>
         </div>
     </div>`,
   name: 'demo-wrap',

@@ -18,9 +18,6 @@ const _ = require('../../../ui-base/_');
 const KLSteps = Component.extend({
   name: 'kl-steps',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       steps: [],

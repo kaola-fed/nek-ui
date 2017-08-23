@@ -1,7 +1,17 @@
+/**
+ * @file KLLocaleProvider     国际化
+ */
 const Component = require('../../../ui-base/component');
 const ajax = require('../../../ui-base/ajax');
 const _ = require('../../../ui-base/_');
 
+/**
+ * @class KLLocaleProvider
+ * @extend Component
+ * @param {object}          [options.data]                       = 绑定属性
+ * @param {string}          [options.data.lang]                  => 设置语言，默认“cn”
+ * @param {string}          [options.data.api]                   => 设置获取语言包的url
+ */
 const KLLocaleProvider = Component.extend({
   name: 'kl-locale-provider',
   template: '{#if ready}{#inc this.$body}{/if}',
@@ -25,7 +35,10 @@ const KLLocaleProvider = Component.extend({
     });
   },
 });
-
+/**
+* @param {string}         [KLLocaleProvider.lang]     => 设置语言， 默认“cn”
+* @param {object}         [KLLocaleProvider.locale]   => 设置语言包
+*/
 KLLocaleProvider.lang = 'cn';
 KLLocaleProvider.locale = {};
 
@@ -85,7 +98,9 @@ KLLocaleProvider._interpolate = (key, args) => {
   }
   return !args ? val : KLLocaleProvider._format(val, args);
 };
-
+/**
+ * @public
+ */
 KLLocaleProvider.translate = (key, params) =>
   KLLocaleProvider._interpolate(key, params);
 

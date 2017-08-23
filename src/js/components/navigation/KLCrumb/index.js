@@ -19,9 +19,6 @@ const _ = require('../../../ui-base/_');
 const KLCrumb = Component.extend({
   name: 'kl-crumb',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       separator: '/',
