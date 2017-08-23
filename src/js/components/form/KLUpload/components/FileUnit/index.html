@@ -9,7 +9,7 @@
         {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type.toUpperCase()}</span>
         {/if}
-        <div class="m-remove" r-hide={readonly} on-click={this.onRemove()}><i class="u-icon u-icon-error"></i></div>
+        <div class="m-remove" r-hide={readonly} on-click={this.onRemove($event)}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">
             {#if status === 'fail'}
                 <span class="u-failed" on-click={this.uploadFile(file)}>
