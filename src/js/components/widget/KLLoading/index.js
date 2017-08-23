@@ -18,9 +18,6 @@ const _ = require('../../../ui-base/_');
 const KLLoading = Component.extend({
   name: 'kl-loading',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       static: false,
@@ -28,9 +25,6 @@ const KLLoading = Component.extend({
     });
     this.supr();
   },
-  /**
-     * @protected
-     */
   init() {
     this.supr();
     // 证明不是内嵌组件

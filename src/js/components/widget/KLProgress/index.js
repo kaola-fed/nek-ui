@@ -24,9 +24,6 @@ const _ = require('../../../ui-base/_');
 const KLProgress = Component.extend({
   name: 'kl-progress',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       percent: 36,
