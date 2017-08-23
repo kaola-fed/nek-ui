@@ -19,14 +19,10 @@ masonry: true
 
 ```xml
 <kl-form>
-    <kl-row>
-        <kl-col span=12>
-            <kl-form-item title="通知方式" hint="通知方式">
-                <kl-check name="邮件" checked={isEmail}/>
-                <kl-check name="短信" checked={isMsg}/>
-            </kl-form-item>
-        </kl-col>
-    </kl-row>
+    <kl-form-item title="通知方式" tip="通知方式">
+            <kl-check name="邮件" checked={isEmail}/>
+            <kl-check name="短信" checked={isMsg}/>
+    </kl-form-item>
 </kl-form>
 <div>通知方式：{#if isEmail} 邮件 {/if} {#if isMsg} 短信 {/if} </div>
 ```
@@ -48,6 +44,16 @@ var component = new NEKUI.Component({
         isChecked: null
     }
 });
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+*多行*
+<div class="m-example"></div>
+
+```xml
+<kl-check name="邮件" block />
+<kl-check name="短信" block />
 ```
 <!-- demo_end -->
 

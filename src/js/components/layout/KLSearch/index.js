@@ -1,6 +1,6 @@
 /**
  * @file KLSearch     筛选区
- * @author   wangsong3635@outlook.com\
+ * @author   wangsong3635@outlook.com
  */
 
 const Component = require('../../../ui-base/component');

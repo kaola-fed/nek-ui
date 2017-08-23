@@ -8,7 +8,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group source={source} on-select={console.log($event)} />
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
 ```
 
 ```javascript
@@ -20,7 +20,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        value: 2
     }
 });
 ```
@@ -45,7 +46,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 22},
             {name: '直邮', id: 33},
             {name: '保税', id: 44}
-        ]
+        ],
+        value: 3
     }
 });
 ```
@@ -60,13 +62,9 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-form>
-    <kl-row>
-        <kl-col span=12>
-            <kl-form-item title="跨境方式" hint="跨境方式">
-                <kl-radio-group source={source} />
-            </kl-form-item>
-        </kl-col>
-    </kl-row>
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
+    </kl-form-item>
 </kl-form>
 ```
 
@@ -79,7 +77,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        value: 1
     }
 });
 ```
@@ -113,7 +112,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group service={@(this.service)} />
+<kl-radio-group service={@(this.service)} value={value}/>
 ```
 
 ```javascript
@@ -129,6 +128,9 @@ var component = new NEKUI.Component({
                 success: success
             });
         }
+    },
+    data: {
+        value: 4
     }
 });
 ```
@@ -139,7 +141,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group source={source} block />
+<kl-radio-group source={source} value={value} block />
 ```
 
 ```javascript
@@ -151,7 +153,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        value: 2
     }
 });
 ```
