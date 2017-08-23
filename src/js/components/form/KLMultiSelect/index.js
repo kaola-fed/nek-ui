@@ -23,7 +23,7 @@ const _ = require('../../../ui-base/_');
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
  * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
- * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，如果填 false 则不展示 tooltip，但是还是会抛出该数据
+ * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
  * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
@@ -78,7 +78,7 @@ const KLMultiSelect = Dropdown.extend({
       }
       if (oldValue !== null && oldValue !== undefined) {
         /**
-         * @event value 改变时触发
+         * @event KLMultiSelect#value 改变时触发
          * @property {object} sender 事件发送对象
          * @property {object} value 当前 value 的值
          */
@@ -207,7 +207,7 @@ const KLMultiSelect = Dropdown.extend({
       data.selected = [cate];
       data.open = false;
       /**
-             * @event select 选择某一项时触发
+             * @event KLMultiSelect#select 选择某一项时触发
              * @property {object} sender 事件发送对象
              * @property {object} selected 当前选择项
              */

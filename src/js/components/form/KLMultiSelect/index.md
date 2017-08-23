@@ -4,12 +4,16 @@ masonry: true
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select source={source} value={value} on-select={this.selected($event)} />
-选择的是：{value}
+<kl-multi-select 
+    source={source} 
+    value={value} 
+    on-select={this.selected($event)}
+    />
+<p>选择的是：{value}</p>
 ```
 
 ```javascript
@@ -17,26 +21,26 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '节点1', id: 1, children: [
-                {name: '节点1.1', id: 11},
-                {name: '节点1.2', id: 12, children: [
-                    {name: '节点1.2.1', id: 121, children: [
-                        {name: '节点1.2.1.1', id: 1211, children: [
-                            {name: '节点1.2.1.1.1', id: 12111},
-                            {name: '节点1.2.1.1.2', id: 12112}
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
                             ]},
-                        {name: '节点1.2.1.3', id: 1212},
-                        {name: '节点1.2.1.3', id: 1213}
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
                         ]},
-                    {name: '节点1.2.2', id: 122}
+                    {name: '美赞臣', id: 122}
                 ]},
-                {name: '节点1.3', id: 13},
-                {name: '节点1.4', id: 14},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
             ]},
-            {name: '节点2', id: 2},
-            {name: '节点3', id: 3, children: [
-                {name: '节点3.1', id: 31},
-                {name: '节点3.2', id: 32}
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
             ]}
         ],
         value: ''
@@ -49,66 +53,23 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*展示路径*
+### 允许勾选非末级
 
-选择时触发 on-select 事件，抛出当前选择项 selected，selected.path 就是当前项的路径字符串，pathArray 是路径数组，具体看控制台
-
-<div class="m-example"></div>
-
-```xml
-<kl-multi-select showPath={showPath} placement={placement} pathString={pathString} source={source} value={value} on-select={this.selected($event)} />
-选择的是：{value}
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '节点1', id: 1, children: [
-                {name: '节点1.1', id: 11},
-                {name: '节点1.2', id: 12, children: [
-                    {name: '节点1.2.1', id: 121, children: [
-                        {name: '节点1.2.1.1', id: 1211, children: [
-                            {name: '节点1.2.1.1.1', id: 12111},
-                            {name: '节点1.2.1.1.2', id: 12112}
-                            ]},
-                        {name: '节点1.2.1.3', id: 1212},
-                        {name: '节点1.2.1.3', id: 1213}
-                        ]},
-                    {name: '节点1.2.2', id: 122}
-                ]},
-                {name: '节点1.3', id: 13},
-                {name: '节点1.4', id: 14},
-            ]},
-            {name: '节点2', id: 2},
-            {name: '节点3', id: 3, children: [
-                {name: '节点3.1', id: 31},
-                {name: '节点3.2', id: 32}
-            ]}
-        ],
-        value: '',
-        showPath: true,
-        placement: false,
-        pathString: '>'
-    },
-    selected: function(event) {
-        console.log(event);
-    }
-});
-```
-<!-- demo_end -->
-
-<!-- demo_start -->
-*允许勾选非末级（仅支持单选场景）*
+`onlyChild`控制是否允许勾选非末级（仅支持单选场景）
 
 选择非末级时点击文本，如果只是想展开下一级请点击右侧箭头
 
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select source={source} showPath={showPath} value={value} on-select={this.selected($event)} onlyChild={onlyChild} />
-选择的是：{value}
+<kl-multi-select 
+    source={source} 
+    showPath={showPath} 
+    value={value} 
+    on-select={this.selected($event)} 
+    onlyChild={onlyChild}
+    />
+<p>选择的是：{value}</p>
 ```
 
 ```javascript
@@ -116,29 +77,29 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '节点1', id: 1, children: [
-                {name: '节点1.1', id: 11},
-                {name: '节点1.2', id: 12, children: [
-                    {name: '节点1.2.1', id: 121, children: [
-                        {name: '节点1.2.1.1', id: 1211, children: [
-                            {name: '节点1.2.1.1.1', id: 12111},
-                            {name: '节点1.2.1.1.2', id: 12112}
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
                             ]},
-                        {name: '节点1.2.1.3', id: 1212},
-                        {name: '节点1.2.1.3', id: 1213}
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
                         ]},
-                    {name: '节点1.2.2', id: 122}
+                    {name: '美赞臣', id: 122}
                 ]},
-                {name: '节点1.3', id: 13},
-                {name: '节点1.4', id: 14},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
             ]},
-            {name: '节点2', id: 2},
-            {name: '节点3', id: 3, children: [
-                {name: '节点3.1', id: 31},
-                {name: '节点3.2', id: 32}
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
             ]}
         ],
-        value: '',
+        value: 1,
         onlyChild: false,
         showPath: true
     },
@@ -150,11 +111,143 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*多选*
+### selected, value和key
+
+`selected`表示当前选择项，`value`表示当前选择值。`key`表示数据项的键，默认为`'id'`。
+
+它们三者的关系如下：`selected[key] == value`。其中`selected`和`value`是联动的，当一项变化时会同时改变另一项。
+
+*注：`selected`不能用来赋初始值，`selected`属性的值可查看控制台
+
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select source={source} multiple={multiple} value={value}  on-select={this.selected($event)} on-change={this.change($event)}/>
+<kl-form>
+    <kl-form-item cols=4>
+        <kl-multi-select source={source} onlyChild={false} selected={selected} />
+    </kl-form-item>
+    <kl-form-item cols=4>
+        <kl-multi-select source={source} onlyChild={false} value={value} />
+    </kl-form-item>
+    <kl-form-item cols=4>
+        <kl-multi-select source={source} onlyChild={false} key="name" value="女士箱包" />
+    </kl-form-item>
+</kl-form>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
+                            ]},
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
+                        ]},
+                    {name: '美赞臣', id: 122}
+                ]},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
+            ]},
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
+            ]}
+        ],
+        value: 121
+    },
+    config: function() {
+        this.data.selected = {};
+    },
+    selected: function(event) {
+        console.log(this.data.selected);
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 展示路径
+
+`showPath`控制选择是否显示路径，若为`true`时selected.path 保存当前路径字符串，pathArray 是路径数组，具体看控制台。
+
+选择显示路径的情况下，路径可以提示文本的形式显示在所选项名称上，使用`placement`选择路径显示的方位，默认为`top`，此处设置为`bottom`。
+
+<div class="m-example"></div>
+
+```xml
+<kl-multi-select 
+    showPath={showPath} 
+    placement={placement} 
+    pathString={pathString} 
+    source={source} 
+    value={value}
+    on-select={this.selected($event)}
+    />
+<p>选择的是：{value}</p>
+<p>路径是: {path}</p>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
+                            ]},
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
+                        ]},
+                    {name: '美赞臣', id: 122}
+                ]},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
+            ]},
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
+            ]}
+        ],
+        value: '',
+        showPath: true,
+        placement: 'bottom',
+        pathString: '>'
+    },
+    selected: function(event) {
+        console.log(event);
+        this.data.path = event.selected.path;
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 多选
+<div class="m-example"></div>
+
+```xml
+<kl-multi-select 
+    source={source} 
+    multiple={multiple} 
+    value={value}  
+    on-select={this.selected($event)} 
+    on-change={this.change($event)}
+    />
 选择的是：{value}
 ```
 
@@ -163,29 +256,29 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '节点1', id: 1, children: [
-                {name: '节点1.1', id: 11},
-                {name: '节点1.2', id: 12, children: [
-                    {name: '节点1.2.1', id: 121, children: [
-                        {name: '节点1.2.1.1', id: 1211, children: [
-                            {name: '节点1.2.1.1.1', id: 12111},
-                            {name: '节点1.2.1.1.2', id: 12112}
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
                             ]},
-                        {name: '节点1.2.1.3', id: 1212},
-                        {name: '节点1.2.1.3', id: 1213}
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
                         ]},
-                    {name: '节点1.2.2', id: 122}
+                    {name: '美赞臣', id: 122}
                 ]},
-                {name: '节点1.3', id: 13},
-                {name: '节点1.4', id: 14},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
             ]},
-            {name: '节点2', id: 2},
-            {name: '节点3', id: 3, children: [
-                {name: '节点3.1', id: 31},
-                {name: '节点3.2', id: 32}
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
             ]}
         ],
-        value: '',
+        value: '12111,12112',
         multiple: true
     },
     selected: function(event) {

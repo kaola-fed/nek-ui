@@ -104,7 +104,7 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (comp !== 'KLForm') {
+      if (comp !== 'KLCrumb' && comp !== 'KLSelect' && comp !== 'KLMultiSelect' && comp !== 'KLTreeView') {
         return false;
       }
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
