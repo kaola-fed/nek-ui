@@ -75,7 +75,7 @@ const injectComponents = (md) => {
               jsCode: \`${tempJs}\`
           }
       });
-      codeDemo.innerHTML = ''; 
+      codeDemo.innerHTML = '';
       codeComponent.$inject(codeDemo);
     })(index++);
     `;
@@ -108,9 +108,10 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      // if (comp !== 'KLCrumb' && comp !== 'KLSelect' && comp !== 'KLMultiSelect' && comp !== 'KLTreeView') {
-      //   return false;
-      // }
+      if (comp !== 'KLSearch' && comp !== 'KLCheck' && comp !== 'KLCheckGroup' && comp !== 'KLRadioGroup' && comp !== 'KLLocaleProvider' && comp !== 'KLForm') {
+        return false;
+      }
+
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;

@@ -19,7 +19,7 @@ const bowser = require('bowser');
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.value]              <=> 文本框的值
- * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, email, url，char，password
+ * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, char，password （email, url暂未实现），
  * @param {string}          [options.data.placeholder]        => 占位符
  * @param {string}          [options.data.state]              <=> 文本框的状态
  * @param {number}          [options.data.maxlength]          => 文本框的最大长度
@@ -36,7 +36,7 @@ const bowser = require('bowser');
  * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
  * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
- * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
+ * @param {string}          [options.data.size]               => 组件大小, sm/md
  * @param {number}          [options.data.width]              => 组件宽度
  */
 const KLInput = Component.extend({

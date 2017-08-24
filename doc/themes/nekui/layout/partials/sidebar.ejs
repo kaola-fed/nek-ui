@@ -10,7 +10,7 @@
                 // 无分类
                 if (!p.cate) {
                     menus.push({
-                        display: p.title + (p.name ? ' ' + p.name : ''),
+                        display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                         title: p.title,
                         path: p.path
                     })
@@ -20,7 +20,7 @@
                     menus.push({
                         display: p.cate,
                         children: [{
-                            display: p.title + (p.name ? ' ' + p.name : ''),
+                            display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                             title: p.title,
                             path: p.path
                         }]
@@ -28,7 +28,7 @@
                 } else {
                     // 子列表
                     menus[currIdx].children.push({
-                        display: p.title + (p.name ? ' ' + p.name : ''),
+                        display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                         title: p.title,
                         path: p.path
                     })

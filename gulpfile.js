@@ -89,9 +89,13 @@ gulp.task('gen-doc', (cb) => {
 
   doc(argv.dev, () => {
     hexo.init().then(() => {
-      hexo.call('generate', {}, cb);
+      hexo.call('generate', { watch: true }, cb);
     });
   });
+});
+
+gulp.task('gen-easy-doc', (cb) => {
+  doc(argv.dev, cb);
 });
 
 gulp.task('dist', (done) => {
@@ -128,5 +132,5 @@ gulp.task('watch', ['server'], () => {
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['default-doc']);
+  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['easy-doc']);
 });

@@ -1,6 +1,10 @@
-{{#if scope}}
-{{#if (equal kind "event") ~}}
-<span class="tag tag-event">Event</span>
-{{/if~}}
-{{/if~}}
+{{#if scope}} 
+    {{#if (equal kind "event") ~}}
+    <span class="type-tag type-tag-event">Event</span>
+    {{else~}}
+        {{#if (equal scope "static") ~}}
+            <span class="type-tag type-tag-static">Static {{kindInThisContext}}</span>
+        {{/if}} 
+    {{/if~}} 
 
+{{/if~}}

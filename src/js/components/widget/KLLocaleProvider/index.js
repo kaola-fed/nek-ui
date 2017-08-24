@@ -36,10 +36,16 @@ const KLLocaleProvider = Component.extend({
   },
 });
 /**
-* @param {string}         [KLLocaleProvider.lang]     => 设置语言， 默认“cn”
-* @param {object}         [KLLocaleProvider.locale]   => 设置语言包
+* @param {string} lang 语言种类
+* @static
 */
 KLLocaleProvider.lang = 'cn';
+
+/**
+ * @param {object} locale 语言包
+ * @static
+ */
+
 KLLocaleProvider.locale = {};
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
@@ -67,10 +73,6 @@ KLLocaleProvider._format = (str, ..._args) => {
     return result;
   });
 };
-
-/**
- * @private
- */
 KLLocaleProvider._interpolate = (key, args) => {
   const lang = KLLocaleProvider.lang;
   const map = KLLocaleProvider.locale[lang] || {};
@@ -99,9 +101,11 @@ KLLocaleProvider._interpolate = (key, args) => {
   return !args ? val : KLLocaleProvider._format(val, args);
 };
 /**
- * @public
+ * @param {string} key 翻译key值
+ * @static
  */
 KLLocaleProvider.translate = (key, params) =>
   KLLocaleProvider._interpolate(key, params);
 
 module.exports = KLLocaleProvider;
+

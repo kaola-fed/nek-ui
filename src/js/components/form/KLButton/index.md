@@ -5,137 +5,137 @@ masonry: true
 
 <!-- demo_start -->
 
-*基本形式*
+### 按钮类型
+主按钮、次按钮、弱按钮及不可点4种状态，主按钮在同一操作区只能出现一个
 
 <div class="m-example"></div>
 
 ```xml
-<div class=g-row>
-     <kl-button type="primary" title="primary" />
-     <kl-button type="secondary" title="secondary" />
-     <kl-button type="tertiary" title="tertiary" />
-     <kl-button type="info" title="info" />
-     <kl-button type="success" title="success" />
-     <kl-button type="warning" title="warn" />
-     <kl-button type="error" title="error" />
-</div>
-<div class=g-row>
-     <kl-button type="primary" title="primary" size="sm" />
-     <kl-button type="secondary" title="secondary" size="sm" />
-     <kl-button type="tertiary" title="tertiary" size="sm" />
-     <kl-button type="info" title="info" size="sm" />
-     <kl-button type="success" title="success" size="sm" />
-     <kl-button type="warning" title="warn" size="sm" />
-     <kl-button type="error" title="error" size="sm" />
- </div>
+<kl-button type="primary" title="主按钮" />
+<kl-button type="secondary" title="次按钮" />
+<kl-button title="弱按钮" />
+<kl-button disabled={true} title="不可点" />
 ```
+
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 按钮尺寸
+小按钮多用于表格中，kl-card中操作按钮也推荐使用小尺寸
+
+<div class="m-example"></div>
+
+```xml
+<kl-button type="primary" title="主按钮" size="sm" />
+<kl-button type="secondary" title="次按钮" size="sm" />
+<kl-button title="弱按钮" size="sm" />
+<kl-button disabled={true} title="不可点" size="sm" />
+```
+
+<!-- demo_end -->
+
+<!-- demo_start -->
+
+### 图标按钮
+按钮内含icon，主要用在表单外的操作按钮里
+
+<div class="m-example"></div>
+
+```xml
+<kl-row>
+    <kl-button action="add" title="添加" />
+    <kl-button action="reject" title="驳回" />
+    <kl-button action="pass" title="通过" />
+</kl-row>
+<kl-row>
+    <kl-button action="copy" title="复制" />
+    <kl-button action="download" title="下载" />
+    <kl-button action="upload" title="上传" />
+</kl-row>
+<kl-row>
+    <kl-button action="remove" title="删除" />
+    <kl-button action="search" title="查询" />
+</kl-row>
+```
+
+<!-- demo_end -->
+
+
+<!-- demo_start -->
+
+### 加载中的按钮
+
+<div class="m-example"></div>
+
+```xml
+<kl-button action="update" loading />
+```
+
+<!-- demo_end -->
+
+
+<!-- demo_start -->
+
+### 按钮下载文件
+列表中经常遇到导出的需求，通过一个异步请求返回一个下载链接，然后直接触发下载；可以通过设置按钮的download属性来实现
+
+<div class="m-example"></div>
+
+```xml
+<kl-button action="download" download={download} title="导出文件" on-click={this.download()} />
+```
+
 ```javascript
 var component = new NEKUI.Component({
-    template: template
+    template: template,
+    download: function() {
+        this.data.download = 'https://haitao.nos.netease.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
+    }
 });
 ```
 
 <!-- demo_end -->
 
-<!-- demo_start -->
 
-*常用的button类型*
+<!-- demo_start -->
+### 按钮与异步请求结合
+实际业务中推荐在全局改动一下异步请求的方法，传入一个btn参数，请求开始的时候设置btn为loading的状态，结束的时候还原回来。点击一下查看效果
 
 <div class="m-example"></div>
 
 ```xml
-<div class=g-row>
-    <kl-button action="view" title="查看" />
-    <kl-button action="undo" title="撤销" />
-    <kl-button action="cancel" title="取消" />
-    <kl-button action="remove" title="删除" />
-    <kl-button action="update" title="更新" />
-</div>
-<div class=g-row>
-    <kl-button action="submit" title="提交" />
-    <kl-button action="save" title="保存" />
-    <kl-button action="copy" title="复制" />
-    <kl-button action="pass" title="通过" />
-    <kl-button action="reject" title="驳回" />
-</div>
-<div class=g-row>
-    <kl-button action="backward" title="返回" />
-    <kl-button action="download" title="下载" />
-    <kl-button action="upload" title="上传" />
-    <kl-button action="search" title="查询" />
-    <kl-button action="edit" title="编辑" />
-</div>
-<div class=g-row>
-    <kl-button action="add" title="添加" />
-    <kl-button action="link" title="链接" link="http://www.baidu.com" />
-</div>
+<kl-button title="保存" on-click={this.save($event)} />
 ```
 
-<!-- demo_end -->
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    save: function(e) {
+        var url = '/example/api';
+        var opts = {
+            //传入btn
+            btn: e.sender
+        }
+        this.request(url, opts);
+    },
+    //模拟一个请求
+    request: function(url, opts) {
+        var btn = opts.btn;
+        var self = this;
 
-<!-- demo_start -->
+        //发送请求开始的时候设置按钮为loading状态
+        btn && btn.$update('loading', true);
+        self.$update('loading', true);
 
-*圆角的图标按钮*
-
-<div class="m-example"></div>
-
-```xml
-<div class=g-row>
-    <kl-button action="update" shape="circle" size="xs" />
-    <kl-button action="update" shape="circle" size="sm" />
-    <kl-button action="update" shape="circle" />
-    <kl-button action="update" shape="circle" size="lg" />
-    <kl-button action="update" shape="circle" size="xl" />
-</div>
-```
-
-<!-- demo_end -->
-
-<!-- demo_start -->
-
-*图标按钮*
-
-<div class="m-example"></div>
-
-```xml
-<div class=g-row>
-    <kl-button action="update" type="primary" shape="icon" size="xs" />
-    <kl-button action="update" type="info" shape="icon" size="sm" />
-    <kl-button action="update" type="error" shape="icon" />
-    <kl-button action="update" shape="icon" size="lg" />
-    <kl-button action="update" shape="icon" size="xl" />
-</div>
-```
-
-<!-- demo_end -->
-
-<!-- demo_start -->
-
-*加载中的按钮*
-
-<div class="m-example"></div>
-
-```xml
-<div class=g-row>
-    <kl-button action="update" loading />
-</div>
-```
-
-<!-- demo_end -->
-
-<!-- demo_start -->
-
-### buttonGroup
-
-<div class="m-example"></div>
-
-```xml
-<div class=g-row>
-    <div class="u-btngroup u-btngroup-horizontal">
-       <kl-button action="view" />
-       <kl-button action="edit" />
-    </div>
-</div>
+        //2s后成功返回
+        setTimeout(function() {
+            self.$update('loading', false);
+            btn && btn.$update('loading', false);
+            self.data.loading = false;
+            self.$update();
+        }, 2000)
+    }
+});
 ```
 
 <!-- demo_end -->

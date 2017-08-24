@@ -2,7 +2,7 @@
 title: 国际化
 ---
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
@@ -17,7 +17,7 @@ var component = new NEKUI.Component({
     template: template,
     data: {
     },
-    $t: translator,
+    $t: translator
 });
 ```
 <!-- demo_end -->
