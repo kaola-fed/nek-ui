@@ -114,7 +114,7 @@ gulp.task('default-doc', (done) => {
   sequence('gen-doc', 'reload', done);
 });
 
-gulp.task('server', ['default-doc'], () => {
+gulp.task('server', ['default'], () => {
   browserSync.init({
     server: {
       baseDir: ['./doc/public', './dist'],
@@ -128,7 +128,7 @@ gulp.task('server', ['default-doc'], () => {
 });
 
 gulp.task('watch', ['server'], () => {
-  gulp.watch(['./src/**/*'], ['default-doc']);
+  gulp.watch(['./src/**/*'], ['default']);
 });
 
 gulp.task('watch-doc', ['server'], () => {
