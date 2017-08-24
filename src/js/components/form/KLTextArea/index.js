@@ -17,11 +17,12 @@ const bowser = require('bowser');
  * @param {object}        [options.data]                    = 绑定属性
  * @param {string}        [options.data.value]              <=> 文本框的值
  * @param {string}        [options.data.placeholder]         => 占位符
- * @param {string}        [options.data.state]              <=> 文本框的状态
+ * @param {string}        [options.data.state]              <=> 文本框的状态(保留字段，暂无实现)
  * @param {number}        [options.data.maxlength]          => 文本框的最大长度
  * @param {object[]}      [options.data.rules=[]]           => 验证规则
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
  * @param {number}        [options.data.height=120]         => 高度
+ * @param {number}        [options.data.width]              => 组件宽度
  * @param {boolean}       [options.data.required=false]     => 是否必填
  * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
  * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
@@ -29,8 +30,6 @@ const bowser = require('bowser');
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]              => 补充class
- * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
- * @param {number}        [options.data.width]              => 组件宽度
  */
 const KLTextArea = Component.extend({
   name: 'kl-textarea',
