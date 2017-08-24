@@ -84,10 +84,14 @@ const injectComponents = (md) => {
   return md + demosScript;
 };
 
+
+const partial = glob.sync(path.join(DOC_PATH, 'partials/**/*.hbs'));
+
 const injectAPI = (md, source) => {
   const docs = jsdoc2md.renderSync({
     source,
     'no-cache': true,
+    partial,
     configure: path.join(__dirname, 'jsdoc.json'),
   });
   return `${md}\n# API\n${docs}`;
@@ -104,9 +108,9 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (comp !== 'KLCrumb' && comp !== 'KLSelect' && comp !== 'KLMultiSelect' && comp !== 'KLTreeView') {
-        return false;
-      }
+      // if (comp !== 'KLCrumb' && comp !== 'KLSelect' && comp !== 'KLMultiSelect' && comp !== 'KLTreeView') {
+      //   return false;
+      // }
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
