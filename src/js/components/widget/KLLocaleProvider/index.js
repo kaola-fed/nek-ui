@@ -36,12 +36,14 @@ const KLLocaleProvider = Component.extend({
   },
 });
 /**
-* @static  lang  设置语言包
+* @param {string} lang 语言种类
+* @static
 */
 KLLocaleProvider.lang = 'cn';
 
 /**
- * @static KLLocaleProvider#locale  设置语言包
+ * @param {object} locale 语言包
+ * @static
  */
 
 KLLocaleProvider.locale = {};
@@ -99,9 +101,11 @@ KLLocaleProvider._interpolate = (key, args) => {
   return !args ? val : KLLocaleProvider._format(val, args);
 };
 /**
- * @global KLLocaleProvider.translate   全局方法翻译
+ * @param {string} key 翻译key值
+ * @static
  */
 KLLocaleProvider.translate = (key, params) =>
   KLLocaleProvider._interpolate(key, params);
 
 module.exports = KLLocaleProvider;
+
