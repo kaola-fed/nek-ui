@@ -116,10 +116,12 @@ const KLTable = Component.extend({
     setTimeout(() => {
       self._updateParentWidth();
       self._updateSticky();
-      self._getHeaderHeight();
       self._updateTableWidth();
       self._initWatchers();
     }, 0);
+    setTimeout(() => {
+      self._getHeaderHeight();
+    }, 300);
   },
   _initWatchers() {
     this.$watch('source', this._onSouceChange);

@@ -75,6 +75,7 @@ $orderIconColor = #666;
 
     .table_tb {
         width: 100%;
+        position: relative;
         table-layout: fixed;
     }
     .tb_hd {
