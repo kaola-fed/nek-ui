@@ -1,9 +1,9 @@
 {{#if scope}} 
     {{#if (equal kind "event") ~}}
-    <span class="tag tag-event">Event</span>
+    <span class="type-tag type-tag-event">Event</span>
     {{else~}}
         {{#if (equal scope "static") ~}}
-            <span class="tag tag-static">Static {{kindInThisContext}}</span>
+            <span class="type-tag type-tag-static">Static {{kindInThisContext}}</span>
         {{/if}} 
     {{/if~}} 
 
