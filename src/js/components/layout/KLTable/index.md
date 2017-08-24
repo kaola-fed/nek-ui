@@ -561,7 +561,7 @@ var component = new NEKUI.Component({
     }
 });
 ```
-<
+
 
 ### 数据配置
 
