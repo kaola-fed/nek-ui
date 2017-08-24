@@ -4,7 +4,7 @@ masonry: true
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
@@ -14,7 +14,7 @@ masonry: true
 <!-- demo_end -->
 
 <!-- demo_start -->
-*在表单中使用*
+### 在表单中使用
 <div class="m-example"></div>
 
 ```xml
@@ -29,7 +29,7 @@ masonry: true
 <!-- demo_end -->
 
 <!-- demo_start -->
-*半选状态*
+### 半选状态
 <div class="m-example"></div>
 
 ```xml
@@ -48,7 +48,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*多行*
+### 多行
 <div class="m-example"></div>
 
 ```xml
@@ -58,7 +58,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-*禁用组件*
+### 禁用组件
 <div class="m-example"></div>
 
 ```xml

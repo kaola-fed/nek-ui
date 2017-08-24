@@ -3,7 +3,7 @@ title: 筛选区
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 
 <div class="m-example"></div>
 
@@ -40,7 +40,7 @@ title: 筛选区
 <!-- demo_end -->
 
 <!-- demo_start -->
-*不显示“展开”切换开关*
+### 不显示“展开”切换开关
 
 <div class="m-example"></div>
 
@@ -67,9 +67,8 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
-### 不显示Footer
-
 <!-- demo_start -->
+### 不显示Footer
 <div class="m-example"></div>
 
 ```xml
@@ -97,7 +96,7 @@ title: 筛选区
 <!-- demo_end -->
 
 <!-- demo_start -->
-*设置切换文字*
+### 设置切换文字
 
 <div class="m-example"></div>
 
