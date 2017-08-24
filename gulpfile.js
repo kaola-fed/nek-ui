@@ -89,9 +89,13 @@ gulp.task('gen-doc', (cb) => {
 
   doc(argv.dev, () => {
     hexo.init().then(() => {
-      hexo.call('generate', {}, cb);
+      hexo.call('generate', { watch: true }, cb);
     });
   });
+});
+
+gulp.task('gen-easy-doc', (cb) => {
+  doc(argv.dev, cb);
 });
 
 gulp.task('dist', (done) => {
@@ -110,7 +114,11 @@ gulp.task('default-doc', (done) => {
   sequence('gen-doc', 'reload', done);
 });
 
-gulp.task('server', ['default'], () => {
+gulp.task('easy-doc', (done) => {
+  sequence('gen-easy-doc', 'reload', done);
+});
+
+gulp.task('server', ['default-doc'], () => {
   browserSync.init({
     server: {
       baseDir: ['./doc/public', './dist'],
@@ -128,5 +136,5 @@ gulp.task('watch', ['server'], () => {
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['default-doc']);
+  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['easy-doc']);
 });
