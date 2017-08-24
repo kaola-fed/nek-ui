@@ -11,7 +11,7 @@ const _ = require('../../../ui-base/_');
  * @class KLTab
  * @extend Component
  * @param {object}        [options.data]                      = 绑定属性
- * @param {object}        [options.data.title='']             => 标题
+ * @param {string}        [options.data.title='']             => 标题
  * @param {string}        [options.data.key=null]             => key 标识
  */
 
@@ -22,7 +22,6 @@ const _ = require('../../../ui-base/_');
  * @param {object}        [options.data.selected=null]        <=> 当前选择卡
  * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
  * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
- * @param {boolean}       [options.data.refresh=false]        => 切换 Tab 是否重新渲染
  * @param {boolean}       [options.data.readonly=false]       => 是否只读
  * @param {boolean}       [options.data.disabled=false]       => 是否禁用
  * @param {boolean}       [options.data.visible=true]         => 是否显示
