@@ -9,34 +9,51 @@
 // ========================================================================
 
 .u-text {}
-.u-text_unlink{
+.u-text.u-text_unlink{
     display: inline;
     text-decoration: none;
     color: initial;
     cursor: default;
 }
-.u-text_unlink:hover{
+.u-text.u-text_unlink:hover{
     text-decoration: none;
 }
-
+.u-text.u-text-wb{
+    font-weight: bold;
+}
 
 // Size Extends:
 // ========================================================================
 
 $u-text-extend_size = ($name, $font-size, $line-height_ = null) {
-    .u-text-#{$name} {
+    .u-text.u-text-#{$name} {
         font-size: $font-size;
         @if($line-height_) {line-height: $line-height_;}
     }
 }
 
+// align Extends:
+// ========================================================================
+$u-text-extend_align = ($name, $align) {
+    .u-text.u-text-#{$name} {
+        text-align: $align;
+    }
+}
+
+// vertical Extends:
+// ========================================================================
+$u-text-extend_vertical = ($name, $vertical) {
+    .u-text.u-text-#{$name} {
+        vertical-align: $vertical;
+    }
+}
 
 
 // Color Extends:
 // ========================================================================
 
 $u-text-extend_color = ($name, $color) {
-    .u-text-#{$name} {
+    .u-text.u-text-#{$name} {
         color: $color;
     }
 }
@@ -50,6 +67,21 @@ $u-text-extend_size(xs, 10px, 12px);
 $u-text-extend_size(sm, 12px, 16px);
 $u-text-extend_size(lg, 20px, 24px);
 $u-text-extend_size(xl, 24px, 32px);
+
+
+//align Extends:
+// ========================================================================
+$u-text-extend_align(left, left);
+$u-text-extend_align(center,center);
+$u-text-extend_align(right, right);
+$u-text-extend_align(justify, justify);
+
+
+//vertical Extends:
+// ========================================================================
+$u-text-extend_vertical(top, top);
+$u-text-extend_vertical(middle, middle);
+$u-text-extend_vertical(bottom, bottom);
 
 
 
