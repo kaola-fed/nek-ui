@@ -14,7 +14,8 @@
         }}
         r-style={{
             height: fixedHeader ? 'auto' : height + 'px',
-            width: width == undefined ? 'auto' : width + 'px',
+            width: width == undefined ? 'auto' :
+                  tableWidth > width ? width: width + scrollYBar + 'px',
         }}
         on-scroll={this._onBodyScroll(this.$refs.table, $event)} >
 
@@ -25,7 +26,7 @@
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
-                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : width == undefined ? 'auto' : width + 'px',
+                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}>
             <table-header
