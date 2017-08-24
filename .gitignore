@@ -21,3 +21,5 @@ doc/source/components/*
 !doc/source/components/index.md
 
 dist.zip
+
+.history

@@ -13,13 +13,12 @@ const _ = require('../../../ui-base/_');
  * @class KLButton
  * @param {object}      [options.data]                = 绑定属性
  * @param {string}      [options.data.title=确定]      => 按钮标题
- * @param {string}      [options.data.type=default]   => 按钮样式, primary, default, info, success, warn, error
- * @param {string}      [options.data.size=normal]    => 按钮大小, xs, sm, lg, xl
+ * @param {string}      [options.data.type=default]   => 按钮样式, primary, secondary, default
+ * @param {string}      [options.data.size=normal]    => 按钮大小, sm
  * @param {string}      [options.data.icon]           => 按钮图标,action不能满足需求时使用;
  * @param {string}      [options.data.action]         => 按钮操作类型, 每种类型有对应的icon;
  * @param {string}      [options.data.link]           => 按钮的链接
  * @param {string}      [options.data.target=_self]   => 按钮链接的打开方式
- * @param {string}      [options.data.shape]          => circle, icon或者默认
  * @param {string}      [options.data.download]       => 下载链接
  * @param {boolean}     [options.data.loading=false]  => 是否正在加载
  * @param {boolean}     [options.data.disabled=false] => 禁止按钮
@@ -100,6 +99,11 @@ const KLButton = Component.extend({
     });
   },
 
+  /**
+   * @event 按钮点击事件
+   * @property {object} sender 事件发送对象
+   * @property {object} e event对象
+   */
   onClick(e) {
     const loading = this.data.loading;
     if (!loading) {

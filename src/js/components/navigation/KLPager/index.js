@@ -15,16 +15,12 @@ const _ = require('../../../ui-base/_');
  * @param {number}        [options.data.total=0]          => 总页数
  * @param {number}        [options.data.sumTotal=0]       => 总个数
  * @param {number}        [options.data.pageSize=20]      => 每页个数
- * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
  * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
  * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
  * @param {number}        [options.data.step=5]           => 每页条数选择步长
  * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
- * @param {boolean}       [options.data.readonly=false]   => 是否只读
- * @param {boolean}       [options.data.disabled=false]   => 是否禁用
- * @param {boolean}       [options.data.visible=true]     => 是否显示
- * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
- * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
+ * @param {boolean}       [options.data.isEllipsis=false] => 是否展示位总条数+
+ * @param {number}        [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
  * @param {string}        [options.data.class]            => 补充class
  */
 const KLPager = Component.extend({
