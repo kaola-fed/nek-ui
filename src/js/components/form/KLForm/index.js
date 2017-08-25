@@ -11,7 +11,7 @@ const template = require('./index.html');
  * @param {object}      [options.data]                    = 绑定属性
  * @param {string}      [options.data.service]            => 全站异步获取source的接口地址
  * @param {string}      [options.data.class]              => 扩展样式
- * @param {boolean}     [options.data.inline='']          => 如果true,kl-form-item按照inline-block排列
+ * @param {boolean}     [options.data.inline]          => 如果true,kl-form-item按照inline-block排列
  * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
  * @param {string|number} [options.data.labelSize]     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
  * @param {string|number} [options.data.labelLineHeight]  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
@@ -35,6 +35,7 @@ const template = require('./index.html');
  * @param {string}        [options.data.layout]          => 排列方式: 默认(横着排)/vertical/inline;
  * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
  */
+
 const KLForm = Validation.extend({
   name: 'kl-form',
   template,
@@ -150,6 +151,10 @@ const KLForm = Validation.extend({
   },
 });
 
+/**
+ * @method KLForm#validate() 验证所有表单组件
+ * @return {object} conclusion 结果说明
+ */
 KLForm.use(ValidationMixin);
 
 module.exports = KLForm;
