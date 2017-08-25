@@ -169,7 +169,10 @@ const UploadBase = Component.extend({
           uid: file.uid,
           status: 'success',
         };
-        fileUnitList.push(fileunit);
+
+        if (fileunit.flag !== Config.flagMap.DELETED) {
+          fileUnitList.push(fileunit);
+        }
       });
     }
   },
