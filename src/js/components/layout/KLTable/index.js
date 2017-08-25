@@ -37,14 +37,17 @@ const tpl = require('./index.html');
  * @param {string}      [options.data.type]             => 列内容的预设类型
  * @param {string}      [options.data.width]            => 列宽
  * @param {number}      [optiosn.data.minWidth]         => 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置
- * @param {string}      [options.data.tdClass]          => 列内容样式
- * @param {string}      [options.data.thClass]          => 表头样式
+ * @param {string}      [options.data.columnClass]      => 列内容样式
+ * @param {string}      [options.data.headerClass]      => 表头样式
  * @param {boolean}     [options.data.sortable]         => 可排序
  * @param {string}      [options.data.children]         => 子表头
- * @param {boolean/string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
- * @param {string}      [optiosn.data.align]         => 列文字对齐
- * @param {string}      [optiosn.data.placeholder=-]  => 列文字对齐
+ * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+ * @param {string}      [optiosn.data.align='']         => 列文字对齐
+ * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
+ *
  * @param {string}      [options.data.template]         => 列内容模版
+ * @param {string}      [options.data.headerTemplate]   => 列表头模版
+ * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
  */
 
 /**
@@ -121,7 +124,7 @@ const KLTable = Component.extend({
     }, 0);
     setTimeout(() => {
       self._getHeaderHeight();
-    }, 300);
+    }, 400);
   },
   _initWatchers() {
     this.$watch('source', this._onSouceChange);
