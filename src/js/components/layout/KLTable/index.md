@@ -561,7 +561,7 @@ var component = new NEKUI.Component({
     }
 });
 ```
-<
+<!-- demo_end -->
 
 ### 数据配置
 
@@ -578,7 +578,6 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table
-    fixedHeader
     columns={table.columns}
     sorting={table.sorting}
     paging={table.paging}
@@ -635,7 +634,7 @@ var component = new NEKUI.Component({
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 5; ++i) {
+        for(var i = 0; i < 4; ++i) {
             this.data.table.source.push({
                 title: 'test' + i,
                 col1: '' + i,
