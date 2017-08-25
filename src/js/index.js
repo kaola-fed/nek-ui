@@ -43,6 +43,7 @@ const Components = {
   KLMask: require('./components/notice/KLMask'),
   KLNotify: require('./components/notice/KLNotify'),
   KLPopConfirm: require('./components/notice/KLPopConfirm'),
+  KLMessage: require('./components/notice/KLMessage'),
 
   // Widget
   KLBadge: require('./components/widget/KLBadge'),
