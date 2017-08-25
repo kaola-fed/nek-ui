@@ -43,12 +43,15 @@ const Components = {
   KLMask: require('./components/notice/KLMask'),
   KLNotify: require('./components/notice/KLNotify'),
   KLPopConfirm: require('./components/notice/KLPopConfirm'),
+  KLMessage: require('./components/notice/KLMessage'),
 
   // Widget
+  KLBadge: require('./components/widget/KLBadge'),
   KLProgress: require('./components/widget/KLProgress'),
   KLLoading: require('./components/widget/KLLoading'),
   KLTooltip: require('./components/widget/KLTooltip'),
   KLIcon: require('./components/widget/KLIcon'),
+  KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
 
   // Layout

@@ -59,41 +59,58 @@ var component = new NEKUI.Component({
 ```
 
 ```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
             columns: [
                 {
-                    name: 'title',
-                    key: 'title',
-                    tip: 'tippppppp',
+                    name: '职位',
+                    key: 'job',
+                    tip: '所属部门的职位类别',
                     width: 120,
                     formatter: function(column, item) {
-                        return '<a>I\'m ' + item.title + '</a>';
+                        return '职位' + item.job;
                     },
                 },
                 {
-                    name: 'col1',
-                    key: 'col1',
+                    name: '用户信息',
                     children: [
                         {
-                            name: 'col1.2',
-                            key: 'value',
-                            format: '{item.value} %',
+                            name: '姓名',
+                            key: 'name',
+                            format: '姓名：{item.name}',
                             custom: 'sortField',
                             sortable: true
                         },
                         {
-                            name: 'col1.3',
-                            key: 'col1',
+                            name: '年龄',
+                            key: 'age',
                             sortable: true
                         }
                     ]
                 }
             ],
             sorting: {
-                key: 'col1',
+                key: 'name',
                 isAsc: 0
             },
             paging: {
@@ -101,17 +118,7 @@ var component = new NEKUI.Component({
                 sumTotal: 100,
                 current: 1
             },
-            source: []
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 5; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                col1: '' + i,
-                value: 10 * i
-            });
+            source: source
         }
     }
 });
@@ -119,7 +126,56 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 显示配置项
+### 多选
+
+通过 `enableCheckAll` 使能全选按钮
+
+<div class="m-example"></div>
+
+```xml
+<kl-table source={table.source} on-checkchange={this.onCheck($event)}>
+    <kl-table-col width=50 placeholder="" type="check" enableCheckAll  />
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" />
+</kl-table>
+```
+
+```javascript
+var source = [{
+    job: '前端开发',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端开发',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端开发',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端开发',
+    name: '小李',
+    age: 25,
+}];
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    },
+    onCheck: function(e) {
+        console.log(e);
+    }
+});
+```
+<!-- demo_end -->
+
+
+<!-- demo_start -->
+### 显示样式配置项
 
 1. 无条纹：`strip={false}`
 2. 占位符：默认`placeholder="-"`
@@ -129,30 +185,36 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table strip={false} source={table.source} placeholder="*" align="left">
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="key" key="key" />
-    <kl-table-col name="value" key="value" placeholder="-" align="right"/>
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="姓名" key="" />
+    <kl-table-col name="年龄" key="" placeholder="-" align="right"/>
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
+            source: source
         }
-    },
-    init: function() {
-        setTimeout(function() {
-            this.data.table.source = [];
-            for(var i = 0; i < 3; ++i) {
-                this.data.table.source.push({
-                    title: 'test' + i
-                });
-            }
-            this.$update();
-        }.bind(this), 200);
     }
 });
 ```
@@ -167,34 +229,53 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} >
-    <kl-table-col name="title" key="title" filter={this.titleFilter}/>
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="姓名" key="name" filter={this.filterName} />
+    <kl-table-col name="出生日期" key="birthday"  filter={this.filterTime} />
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    name: '小明',
+    birthday: 766108800000,
+}, {
+    name: '小红',
+    birthday: 766108800000,
+}, {
+    name: '小王',
+    birthday: 766108800000,
+}, {
+    name: '小李',
+    birthday: 766108800000,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
+            source: source
         }
     },
-    init: function() {
-        setTimeout(function() {
-            this.data.table.source = [];
-            for(var i = 0; i < 3; ++i) {
-                this.data.table.source.push({
-                    title: 'test' + i,
-                    value: 10 * i
-                });
-            }
-            this.$update();
-        }.bind(this), 200);
+    _fmtnmb: function(_number){
+        _number = parseInt(_number) || 0;
+        return ( _number < 10 ? '0' : '' ) + _number;
     },
-    titleFilter: function(val, item, itemIndex) {
-        return itemIndex + ': ' + val + ' *';
-    }
+    filterTime: function(val, item, itemIndex) {
+        if (!val) {
+                return '';
+        }
+        var _fmtnmb = function(_number){
+            _number = parseInt(_number) || 0;
+            return ( _number < 10 ? '0' : '' ) + _number;
+        };
+        var _time = new Date(val);
+        var _year = _time.getFullYear();
+        var _month = _fmtnmb( _time.getMonth() + 1 );
+        var _day = _fmtnmb( _time.getDate() );
+        return _year + '-' + _month + '-' + _day;
+    },
+    filterName: function(val, item, itemIndex) {
+        return itemIndex + ': ' + val;
+    },
 });
 ```
 <!-- demo_end -->
@@ -206,35 +287,49 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} >
-    <kl-table-col name="title" key="title" width="100" />
-    <kl-table-col name="col1">
-        <kl-table-col name="col1.1">
-            <kl-table-col name="col1.1.2" key="value" width="160" />
-            <kl-table-col name="col1.1.3" key="value2" width="160" />
+    <kl-table-col name="日期" key="date" />
+    <kl-table-col name="收货地址">
+        <kl-table-col name="姓名" key="name" />
+        <kl-table-col name="地址">
+            <kl-table-col name="省" key="province" />
+            <kl-table-col name="市" key="city" />
         </kl-table-col>
-        <kl-table-col name="col1.2" key="value" width="160" />
     </kl-table-col>
-    <kl-table-col name="value" key="value" width="200" />
+    <kl-table-col name="是否已支付" key="isPaid" />
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                col1: '' + i,
-                value: 10 * i,
-                value2: 'test'
-            });
+            source: source
         }
     }
 });
@@ -257,8 +352,9 @@ var component = new NEKUI.Component({
     stickyHeaderOffset=64
     stickyFooterOffset=0
     source={table.source} >
-    <kl-table-col name="title" key="title" width=500 />
-    <kl-table-col name="value" key="value" width=500 />
+    <kl-table-col name="工号" key="no" width=500 />
+    <kl-table-col name="职位" key="job" width=500 />
+    <kl-table-col name="联系电话" key="phone" width=500 />
 </kl-table>
 ```
 
@@ -272,10 +368,11 @@ var component = new NEKUI.Component({
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
+        for(var i = 0; i < 60; ++i) {
             this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
             });
         }
     }
@@ -290,8 +387,9 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table fixedHeader height=200 source={table.source}>
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="工号" key="no" />
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="联系电话" key="phone" />
 </kl-table>
 ```
 
@@ -305,10 +403,11 @@ var component = new NEKUI.Component({
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
+        for(var i = 0; i < 60; ++i) {
             this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
             });
         }
     }
@@ -324,9 +423,9 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table fixedHeader height=200 source={table.source}>
-    <kl-table-col name="title" key="title" fixed/>
-    <kl-table-col name="col1" key="col1" />
-    <kl-table-col name="value" key="value" fixed="right"/>
+    <kl-table-col name="工号" key="no" fixed />
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="联系电话" key="phone" fixed="right" />
 </kl-table>
 ```
 
@@ -340,11 +439,11 @@ var component = new NEKUI.Component({
     },
     init: function() {
         this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
+        for(var i = 0; i < 60; ++i) {
             this.data.table.source.push({
-                title: 'test' + i,
-                col1: '' + i,
-                value: 10 * i
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
             });
         }
     }
@@ -445,31 +544,42 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table stickyHeader source={table.source}>
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+<kl-table source={table.source}>
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="小明" key="name" />
+    <kl-table-col name="年龄" key="age" />
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    job: '前端开发',
+    name: '小明',
+    age: 20,
+    rowStyle: 'background-color:#FFBC07'
+}, {
+    job: '前端开发',
+    name: '小红',
+    age: 22,
+    rowStyle: 'background-color:#E89406'
+}, {
+    job: '后端开发',
+    name: '小王',
+    age: 20,
+    rowStyle: 'background-color:#FF8306'
+}, {
+    job: '后端开发',
+    name: '小李',
+    age: 25,
+    rowStyle: 'background-color:#E85706'
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
+            source: source
         }
     },
-    init: function() {
-        var colors = ['#FFBC07', '#E89406', '#FF8306', '#E85706', '#FF3B07'];
-        this.data.table.source = [];
-        for(var i = 0; i < 5; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i,
-                rowStyle: 'background-color:' + colors[i]
-            });
-        }
-    }
 });
 ```
 <!-- demo_end -->
@@ -483,30 +593,34 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
-    <kl-table-col name="title" key="title" customKey="sort_title" sortable />
-    <kl-table-col name="value" key="value" sortable/>
+    <kl-table-col name="姓名" key="name" customKey="sort_title" sortable />
+    <kl-table-col name="年龄" key="age" sortable/>
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    name: '小明',
+    age: 20,
+}, {
+    name: '小红',
+    age: 22,
+}, {
+    name: '小王',
+    age: 20,
+}, {
+    name: '小李',
+    age: 25,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: [],
+            source: source,
             sorting: {
-                key: 'title',
+                key: 'name',
                 isAsc: 0
             }
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
-            });
         }
     },
     onSort: function(e) {
@@ -525,31 +639,40 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table stickyFooter source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" />
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: [],
+            source: source,
             paging: {
                 pageSize: 10,
                 sumTotal: 100,
                 current: 1
             }
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 20; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
-            });
         }
     },
     onPaging: function(e) {
@@ -560,38 +683,50 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 多选
+### 分页
 
-通过 `enableCheckAll` 使能全选按钮
+分页的配置参考 [分页 Pager](/components/navigation_pager_.html) 。
 
 <div class="m-example"></div>
 
 ```xml
-<kl-table source={table.source} on-checkchange={this.onCheck($event)}>
-    <kl-table-col placeholder="" type="check" enableCheckAll  />
-    <kl-table-col name="title" key="title" type="check"/>
-    <kl-table-col name="value" key="value" />
+<kl-table source={table.source}>
+    <kl-table-col name="职位" key="job" />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" />
+    <kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
 </kl-table>
 ```
 
 ```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
-        }
+            source: source,
+        },
+        pageSize: 10,
+        sumTotal: 100,
+        current: 1
     },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
-            });
-        }
-    },
-    onCheck: function(e) {
+    onPaging: function(e) {
         console.log(e);
     }
 });
@@ -612,37 +747,47 @@ var component = new NEKUI.Component({
     <kl-table-col index=1 placeholder="" width=200 />
     {/if}
     {#if col[1]}
-    <kl-table-col index=2 name="title" key="title" width=200 />
+    <kl-table-col index=2 name="姓名" key="name" width=200 />
     {/if}
     {#if col[2]}
-    <kl-table-col index=3 name="value" key="value" width=200 />
+    <kl-table-col index=3 name="年龄" key="age" width=200 />
     {/if}
 </kl-table>
 {#list [0,1,2] as index}
-<kl-button title={'col'+index} on-click={this.toggle(index)}/>
+<kl-button title={isHideCol[index] ? '显示col' + index : '隐藏col' + index} on-click={this.toggle(index)}/>
 {/list}
 ```
 
 ```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
 var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
+            source: source
         },
-        col: [1, 1, 1]
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
-            });
-        }
+        col: [1, 1, 1],
+        isHideCol: [false, false, false]
     },
     toggle: function(index) {
         this.data.col[index] = !this.data.col[index];
+        this.data.isHideCol[index] = !this.data.isHideCol[index];
     }
 });
 ```
@@ -695,22 +840,6 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-<!-- demo_start -->
-### 特殊
-
-由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
-
-为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
-
-```javascript
-Regular._BEGIN_ = '{{';
-Regular._END_ = '}}';
-Regular.config({
-    BEGIN: Regular._BEGIN_,
-    END: Regular._END_
-});
-```
-<!-- demo_end -->
 
 <!-- demo_start -->
 ### 模版中获取外部数据的方法
@@ -753,6 +882,23 @@ var component = new NEKUI.Component({
             this.$update();
         }.bind(this), 1000);
     },
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 特殊
+
+由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 `Regular` 的插值符号进行修改时，需要进行特殊处理。
+
+为了向组件内部传递新修改的插值，需要在 `Regular` 下挂载两个新的属性 `_BEGIN_`， `_END_`。
+
+```
+Regular._BEGIN_ = '{{';
+Regular._END_ = '}}';
+Regular.config({
+    BEGIN: Regular._BEGIN_,
+    END: Regular._END_
 });
 ```
 <!-- demo_end -->

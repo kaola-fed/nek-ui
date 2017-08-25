@@ -15,8 +15,8 @@ const RootMenuMixin = require('../mixins/rootMenu');
  * @param {object}        [options.data]                          = 绑定属性
  * @param {string}        [options.data.class]                    => 补充class
  * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
- * @param {string}        [options.data.url='']                   => 如果一级菜单需要链接,可配置url属性
- * @param {string}        [options.data.iconClass='']             => 菜单文字前的icon
+ * @param {string}        [options.data.url]                   => 如果一级菜单需要链接,可配置url属性
+ * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.titleTemplate]            => 标题文案模板
  */
