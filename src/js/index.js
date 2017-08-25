@@ -45,6 +45,7 @@ const Components = {
   KLPopConfirm: require('./components/notice/KLPopConfirm'),
 
   // Widget
+  KLBadge: require('./components/widget/KLBadge'),
   KLProgress: require('./components/widget/KLProgress'),
   KLLoading: require('./components/widget/KLLoading'),
   KLTooltip: require('./components/widget/KLTooltip'),
