@@ -1,4 +1,4 @@
-<div ref="m-upload">
+<div ref="m-upload" class="m-upload-wrapper {klass}">
     {#if listType === 'list'}
         <upload-list ref="upload"
             action={action}
@@ -18,7 +18,11 @@
             imageHeight={imageHeight}
             imageScale={imageScale}
             data={data}
-            encType={encType}/>
+            encType={encType}
+            beforeOnLoad={beforeOnLoad}
+            beforeOnError={beforeOnError}
+            beforeUpload={beforeUpload}
+            beforeRemove={beforeRemove}/>
     {#elseif listType === 'card'}
         <upload-card ref="upload"
             action={action}
@@ -38,7 +42,11 @@
             imageHeight={imageHeight}
             imageScale={imageScale}
             data={data}
-            encType={encType}/>
+            encType={encType}
+            beforeOnLoad={beforeOnLoad}
+            beforeOnError={beforeOnError}
+            beforeUpload={beforeUpload}
+            beforeRemove={beforeRemove}/>
     {/if}
 </div>
 {#if tip && !hideTip}

@@ -53,7 +53,7 @@ $u-check_box_size = 13px;
         .u-icon {
             display: inline-block;
             &:before {
-                content: "\e91b";
+                content: "\e91c";
             }
         }
     }

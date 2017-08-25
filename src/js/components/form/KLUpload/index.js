@@ -40,6 +40,14 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
  * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
  * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
+ * @param {string}     [options.data.klass]                => 可选，组件最外层包裹元素样式扩展
+ * @param {function}   [options.data.beforeOnLoad]         => 可选，上传文件成功后的钩子
+ * @param {function}   [options.data.beforeOnError]        => 可选，上传文件失败后的钩子
+ * @param {function}   [options.data.before-upload]        => 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise
+ *                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，
+ *                                                             如果非空，则提示校验信息，并停止上传
+ * @param {function}   [options.data.before-remove]        => 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者
+ *                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件
  */
 
 const KLUpload = Component.extend({
@@ -64,7 +72,12 @@ const KLUpload = Component.extend({
       imageWidth: Infinity,
       imageHeight: Infinity,
       imageScale: '',
+      klass: '',
       encType: 'multipart/form-data',
+      beforeOnLoad: null,
+      beforeOnError: null,
+      beforeUpload: null,
+      beforeRemove: null,
     });
 
     this.preProcess(data);

@@ -43,6 +43,7 @@ const TimePicker = Component.extend({
 
     this.$watch('time', function (newValue, oldValue) {
       if (oldValue === undefined) {
+        this.updateHMS(this.data.time);
         return;
       }
 
@@ -52,10 +53,7 @@ const TimePicker = Component.extend({
       const isOutOfRange = this.isOutOfRange(newValue);
       if (isOutOfRange) return (this.data.time = isOutOfRange);
 
-      const time = newValue.split(':');
-      this.data.hour = +time[0];
-      this.data.minute = +time[1];
-      this.data.seconds = +time[2];
+      this.updateHMS(newValue);
 
       /**
        * @event change 时间改变时触发
@@ -93,6 +91,12 @@ const TimePicker = Component.extend({
       const isOutOfRange = this.isOutOfRange(this.data.time);
       if (isOutOfRange) this.data.time = isOutOfRange;
     });
+  },
+  updateHMS(value) {
+    const time = value.split(':');
+    this.data.hour = +time[0];
+    this.data.minute = +time[1];
+    this.data.seconds = +time[2];
   },
   /**
    * @method isOutOfRange(time) 是否超出规定的时间范围

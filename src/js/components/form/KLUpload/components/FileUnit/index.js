@@ -8,7 +8,6 @@ const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
 const utils = require('../../utils');
-const KLModal = require('../../../../notice/KLModal');
 
 const FileUnit = Component.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -81,8 +80,18 @@ const FileUnit = Component.extend({
           file: data.file,
         };
 
-        if ((status >= 200 && status < 300) || status === 304) {
-          const response = JSON.parse(target.responseText);
+        let result = true;
+        let response = {};
+        try {
+          response = JSON.parse(target.response);
+        } catch (error) {
+          console.log(error);
+        }
+        if (self.data.beforeOnLoad) {
+          result = self.data.beforeOnLoad.call(self, response);
+        }
+        response.url = (result && result.url) || response.url;
+        if (status >= 200 && status < 400 && result) {
           data.url = response.url;
           data.status = 'success';
           data.info = '';
@@ -100,6 +109,9 @@ const FileUnit = Component.extend({
         }
       },
       onerror(e) {
+        if (self.data.beforeOnError) {
+          self.data.beforeOnError.call(self, e);
+        }
         data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');
         self.$update();
@@ -132,18 +144,20 @@ const FileUnit = Component.extend({
       file: data.file,
       status: data.status,
     };
+    const beforeRemove = data.beforeRemove && data.beforeRemove(emitItem);
 
-    if (data.delConfirm) {
-      const modal = new KLModal({
-        data: {
-          content: `${this.$trans('REMOVE_CONFIRM') + data.filename}?`,
-        },
+    if (beforeRemove && beforeRemove.then) {
+      beforeRemove.then((removeConfirm) => {
+        if (removeConfirm !== false) {
+          self.$emit('remove', emitItem);
+        } else {
+          return removeConfirm;
+        }
       });
-      modal.$on('ok', () => {
-        self.$emit('remove', emitItem);
-      });
-    } else {
+    } else if (beforeRemove !== false) {
       self.$emit('remove', emitItem);
+    } else {
+      return beforeRemove;
     }
   },
 
