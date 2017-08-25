@@ -51,6 +51,7 @@ const Components = {
   KLLoading: require('./components/widget/KLLoading'),
   KLTooltip: require('./components/widget/KLTooltip'),
   KLIcon: require('./components/widget/KLIcon'),
+  KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
 
   // Layout
