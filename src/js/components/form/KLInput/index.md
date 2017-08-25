@@ -54,13 +54,13 @@ masonry: true
 ```xml
 <kl-form ref="form">
     <kl-form-item cols="12"   labelCols=4  title="用户名" tip="用户名的用途" required>
-        <kl-input type="char"  placeholder="请输入密码"  required />
+        <kl-input type="char"  placeholder="请输入用户名"  required />
     </kl-form-item>
     <kl-form-item cols="12" labelCols=4 title="密码" tip="密码的用途" required>
         <kl-input type="password"  placeholder="请输入密码"  required/>
     </kl-form-item>
     <kl-form-item cols="12" labelCols=4 title="年龄"  required>
-        <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入"  required/>
+        <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入年龄"  required/>
     </kl-form-item>
     <kl-form-item cols="12" labelCols=4 title=" " >
             <kl-button title="提交" on-click={this.validate()} />

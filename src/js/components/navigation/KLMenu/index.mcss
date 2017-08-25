@@ -8,7 +8,7 @@
     padding: 0;
     color: #333;
 
-    a {
+    .head_title a, .menuItems a, a.m-subMenu {
         color: #333;
     }
 }

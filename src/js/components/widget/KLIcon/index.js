@@ -13,7 +13,7 @@ const _ = require('../../../ui-base/_');
  * @param {object}          [options.data]                        = 绑定属性
  * @param {string}          [options.data.class]                  => 补充class
  * @param {string}          [options.data.type]                  => 补充class
- * @param {string}          [options.data.fontSize]                  => 设置图标胆小
+ * @param {string}          [options.data.fontSize]                  => 设置图标大小
  * @param {string}          [options.data.color]                  => 设置图标颜色
  */
 const KLIcon = Component.extend({

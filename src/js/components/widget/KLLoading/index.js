@@ -1,5 +1,6 @@
 /**
- * @file KLLoading   加载中
+ * @file KLLoading   加载中 不建议外部使用
+ * @deprecated
  * @author   sensen(rainforest92@126.com)
  */
 

@@ -12,10 +12,10 @@ const validationMixin = require('../../../util/validationMixin');
  * @extend SourceComponent
  * @param {object}    [options.data]                    = 绑定属性
  * @param {object[]}  [options.data.source=[]]          <=> 数据源
- * @param {string}    [options.data.value='']           <=> 选择的值,separator间隔的id值
+ * @param {string}    [options.data.value]           <=> 选择的值,separator间隔的id值
  * @param {string}    [options.data.source[].name=[]]   => 每项的内容
  * @param {string}    [options.data.key=id]             => 数据项的键
- * @param {string}    [options.data.separator=',']      => value的分割符号
+ * @param {string}    [options.data.separator=,]      => value的分割符号
  * @param {string}    [options.data.nameKey=name]       => 数据项的name键
  * @param {number}    [options.data.min]                => 最少选几项
  * @param {number}    [options.data.max]                => 最多选几项
@@ -82,11 +82,6 @@ const KLCheckGroup = SourceComponent.extend({
       }
     });
   },
-  /**
-     * @method KLCheckGroup#validate() 根据min, max验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate() {
     const data = this.data;
     // 如果是readonly或者disabled状态, 无需验证
@@ -114,7 +109,11 @@ const KLCheckGroup = SourceComponent.extend({
       this.data.state = '';
     }
     this.data.tip = result.message;
-
+    /**
+    * @event KLCheckGroup#validate 验证组件时触发
+    * @property {object} sender 事件发送对象
+    * @property {object} result 验证结果
+    */
     this.$emit('validate', {
       sender: this,
       result,
@@ -123,7 +122,7 @@ const KLCheckGroup = SourceComponent.extend({
     return result;
   },
   /**
-     * @method KLCheckGroup#_onCheck() 点击check时,改变对应的value值
+     * @method _onCheck() 点击check时,改变对应的value值
      * @private
      */
   _onCheck(item) {

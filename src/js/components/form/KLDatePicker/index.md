@@ -39,12 +39,12 @@ masonry: true
 </kl-row>
 <kl-row>
     <kl-col span=12>
-        <kl-text text="选择的日期为：{selectDate}"></kl-text>
+        <kl-text text="当前选择的日期为：{selectDate}"></kl-text>
     </kl-col>
 </kl-row>
 <kl-row>
     <kl-col span=12>
-        <kl-text text="选择的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}"></kl-text>
+        <kl-text text="格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}"></kl-text>
     </kl-col>
 </kl-row>
 ```

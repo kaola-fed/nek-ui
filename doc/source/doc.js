@@ -108,9 +108,10 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      // if (comp !== 'KLCard' && comp !== 'KLPager' && comp !== 'KLTable' && comp !== 'KLForm' && comp !== 'KLButton') {
-      //   return false;
-      // }
+      if (comp !== 'KLSearch' && comp !== 'KLCheck' && comp !== 'KLCheckGroup' && comp !== 'KLRadioGroup' && comp !== 'KLLocaleProvider' && comp !== 'KLModal') {
+        return false;
+      }
+
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;

@@ -44,12 +44,7 @@ const KLCheck = Component.extend({
       });
     });
   },
-  /**
-     * @method KLCheck#check(checked) 改变选中状态
-     * @public
-     * @param  {boolean} checked 选中状态。则在true/false之间切换。
-     * @return {void}
-     */
+
   check(_checked) {
     if (this.data.readonly || this.data.disabled) return;
 

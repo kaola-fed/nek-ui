@@ -1,7 +1,5 @@
 /**
- * ------------------------------------------------------------
- * KLSearch     筛选区
- * ------------------------------------------------------------
+ * @file KLSearch 筛选区
  */
 
 const Component = require('../../../ui-base/component');
@@ -25,9 +23,7 @@ const KLSearch = Component.extend({
   name: 'kl-search',
   template,
   $more: null,
-    /**
-       * @protected
-       */
+
   config() {
     _.extend(this.data, {
       isShowMore: false,
@@ -47,9 +43,15 @@ const KLSearch = Component.extend({
     data.isShowMore = !data.isShowMore;
     data.toggleText = data.toggleText === data.unfoldText ? data.foldText : data.unfoldText;
   },
+  /**
+  * @event KLSearch#search 点击查询时触发
+  */
   search() {
     this.$emit('search');
   },
+  /**
+  * @event KLSearch#reset 点击重置时触发
+  */
   reset() {
     this.$emit('reset');
   },

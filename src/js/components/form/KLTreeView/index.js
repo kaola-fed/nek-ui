@@ -71,8 +71,7 @@ const TreeView = SourceComponent.extend({
     this.data.selected = item;
     this.toggle(item);
     /**
-       * @event TreeView#select
-       * @description 选择某一项时触发
+       * @event TreeView#select 选择某一项时触发
        * @property {object} sender 事件发送对象
        * @property {object} selected 当前选择项
        */
@@ -96,8 +95,7 @@ const TreeView = SourceComponent.extend({
     item.open = open;
 
     /**
-       * @event TreeView#toggle
-       * @description 展开或收起某一项时触发
+       * @event TreeView#toggle 展开或收起某一项时触发
        * @property {object} sender 事件发送对象
        * @property {object} item 处理项
        * @property {boolean} open 展开/收起状态

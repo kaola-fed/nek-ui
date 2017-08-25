@@ -31,9 +31,7 @@ const validationMixin = require('../../../util/validationMixin');
 const KLRadioGroup = SourceComponent.extend({
   name: 'kl-radio-group',
   template,
-  /**
-     * @protected
-     */
+
   config() {
     _.extend(this.data, {
       // @inherited source: [],
@@ -85,12 +83,6 @@ const KLRadioGroup = SourceComponent.extend({
       return undefined;
     });
   },
-  /**
-     * @method select(item) 选择某一
-     * @public
-     * @param  {object} item 选择
-     * @return {void}
-     */
   select(item) {
     if (this.data.readonly || this.data.disabled) return;
 
@@ -102,7 +94,7 @@ const KLRadioGroup = SourceComponent.extend({
 
     data.selected = item;
     /**
-         * @event select 选择某一项时触发
+         * @event KLRadioGroup#select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择
          */
@@ -113,11 +105,6 @@ const KLRadioGroup = SourceComponent.extend({
 
     this.data.tip && this.validate();
   },
-  /**
-     * @method validate() 根据required验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate(on) {
     const data = this.data;
     const result = { success: true, message: '' };
@@ -140,7 +127,11 @@ const KLRadioGroup = SourceComponent.extend({
       this.data.state = '';
     }
     this.data.tip = result.message;
-
+    /**
+         * @event KLRadilGroup#validate 选择某一项时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} result 验证结果
+         */
     this.$emit('validate', {
       sender: this,
       on,
