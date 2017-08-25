@@ -61,6 +61,10 @@ const UploadBase = Component.extend({
       imageHeight: Infinity,
       imageScale: '',
       encType: 'multipart/form-data',
+      beforeOnLoad: null,
+      beforeOnError: null,
+      beforeUpload: null,
+      beforeRemove: null,
     });
 
     _.extend(data, {
@@ -401,6 +405,9 @@ const UploadBase = Component.extend({
 
   preCheck(file) {
     const self = this;
+    const data = self.data;
+    const beforeCheck = data.beforeUpload && data.beforeUpload(file);
+
     const onPass = (resolve) => {
       const type = self.getFileType(file).toLowerCase();
       let preCheckInfo = '';
@@ -424,7 +431,18 @@ const UploadBase = Component.extend({
 
     const onError = () => {};
 
-    return new Promise(onPass, onError);
+    if (beforeCheck && beforeCheck.then) {
+      return beforeCheck.then((checkInfo) => {
+        if (checkInfo === '') {
+          return new Promise(onPass, onError);
+        }
+        return Promise.resolve(checkInfo);
+      });
+    } else if (beforeCheck === '') {
+      return new Promise(onPass, onError);
+    }
+
+    return Promise.resolve(beforeCheck);
   },
 
   preCheckImage(file) {
