@@ -408,7 +408,7 @@ const UploadBase = Component.extend({
     const data = self.data;
     const beforeCheck = data.beforeUpload && data.beforeUpload(file);
 
-    const onPass = (resolve) => {
+    const preFileCheck = (resolve) => {
       const type = self.getFileType(file).toLowerCase();
       let preCheckInfo = '';
 
@@ -429,17 +429,15 @@ const UploadBase = Component.extend({
       }
     };
 
-    const onError = () => {};
-
     if (beforeCheck && beforeCheck.then) {
       return beforeCheck.then((checkInfo) => {
         if (checkInfo === '') {
-          return new Promise(onPass, onError);
+          return new Promise(preFileCheck);
         }
         return Promise.resolve(checkInfo);
       });
     } else if (beforeCheck === '') {
-      return new Promise(onPass, onError);
+      return new Promise(preFileCheck);
     }
 
     return Promise.resolve(beforeCheck);
@@ -455,7 +453,7 @@ const UploadBase = Component.extend({
       const imageHeight = data.imageHeight;
       const imageScale = data.imageScale;
 
-      const onResolve = (resolve) => {
+      const preImageCheck = (resolve) => {
         const img = new window.Image();
         img.onload = () => {
           window.URL.revokeObjectURL(img.src);
@@ -483,9 +481,7 @@ const UploadBase = Component.extend({
         img.src = window.URL.createObjectURL(file);
       };
 
-      const onReject = () => {};
-
-      return new Promise(onResolve, onReject);
+      return new Promise(preImageCheck);
     }
   },
 
