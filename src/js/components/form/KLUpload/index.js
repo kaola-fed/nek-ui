@@ -38,6 +38,7 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
  * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
  * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
+ * @param {function}   [options.data.beforeOnLoad=NULL]    => 可选，用于上传成功和失败的校验，以及数据转换，详见demo基本形式
  */
 
 const KLUpload = Component.extend({
