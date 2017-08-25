@@ -4143,6 +4143,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-timepicker .u-input{
 	display:inline-block;
+	box-sizing:content-box;
 }
 .u-timepicker .u-numberinput .u-btn{
 	top:8px;
