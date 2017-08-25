@@ -43,11 +43,11 @@ card是可以嵌套多个的，多用于一个模块里面又有小的分类。
 
 ```xml
 <kl-card title="一级标题">
-一级标题下具体内容。。。
+    <p>一级标题下具体内容</p>
     <kl-card title="二级标题" isShowLine={false}>
-    二级标题下具体内容。。。
+        <p>二级标题下具体内容</p>
         <kl-card title="三级标题" isShowLine={false}>
-        三级标题下具体内容。。。
+            <p>三级标题下具体内容</p>
         </kl-card>
     </kl-card>
 </kl-card>

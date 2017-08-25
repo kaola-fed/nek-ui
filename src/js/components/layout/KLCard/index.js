@@ -22,7 +22,6 @@ const KLCard = Component.extend({
   name: 'kl-card',
   template,
   $tools: null,
-  /** @protected */
   config() {
     _.extend(this.data, {
       title: '',
