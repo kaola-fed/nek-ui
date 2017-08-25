@@ -89,7 +89,8 @@ gulp.task('gen-doc', (cb) => {
 
   doc(argv.dev, () => {
     hexo.init().then(() => {
-      hexo.call('generate', { watch: true }, cb);
+      const option = argv.dev ? { watch: true } : {};
+      hexo.call('generate', option, cb);
     });
   });
 });
@@ -112,6 +113,10 @@ gulp.task('default', (done) => {
 
 gulp.task('default-doc', (done) => {
   sequence('gen-doc', 'reload', done);
+});
+
+gulp.task('easy-doc', (done) => {
+  sequence('gen-easy-doc', 'reload', done);
 });
 
 gulp.task('server', ['default'], () => {
