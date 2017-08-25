@@ -31,7 +31,7 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.num-max=Infinity]     => 可选，最大允许上传文件的个数，默认无限制
  * @param {number}     [options.data.num-perline]          => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
  *                                                             对于表单形式，默认每行展示5个
- * @param {number}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+ * @param {string}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
  * @param {boolean}    [options.data.readonly=false]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
  *                                                             默认false，允许上传和删除图片
  * @param {boolean}    [options.data.hideTip=false]        => 是否显示校验错误信息，默认false显示
