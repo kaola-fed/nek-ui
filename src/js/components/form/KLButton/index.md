@@ -40,22 +40,21 @@ masonry: true
 按钮内含icon，主要用在表单外的操作按钮里
 
 <div class="m-example"></div>
+<style>
+    .doc-iconBtn {
+        margin: 0 5px 5px 0;
+    }
+</style>
 
 ```xml
-<kl-row>
-    <kl-button action="add" title="添加" />
-    <kl-button action="reject" title="驳回" />
-    <kl-button action="pass" title="通过" />
-</kl-row>
-<kl-row>
-    <kl-button action="copy" title="复制" />
-    <kl-button action="download" title="下载" />
-    <kl-button action="upload" title="上传" />
-</kl-row>
-<kl-row>
-    <kl-button action="remove" title="删除" />
-    <kl-button action="search" title="查询" />
-</kl-row>
+<kl-button action="add" title="添加" class="doc-iconBtn" />
+<kl-button action="reject" title="驳回" class="doc-iconBtn" />
+<kl-button action="pass" title="通过" class="doc-iconBtn" />
+<kl-button action="copy" title="复制" class="doc-iconBtn" />
+<kl-button action="download" title="下载" class="doc-iconBtn" />
+<kl-button action="upload" title="上传" class="doc-iconBtn" />
+<kl-button action="remove" title="删除" class="doc-iconBtn" />
+<kl-button action="search" title="查询" class="doc-iconBtn" />
 ```
 
 <!-- demo_end -->

@@ -98,9 +98,8 @@ const KLButton = Component.extend({
       }
     });
   },
-
   /**
-   * @event 按钮点击事件
+   * @event KLButton#click 按钮点击事件
    * @property {object} sender 事件发送对象
    * @property {object} e event对象
    */

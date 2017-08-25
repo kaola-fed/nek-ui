@@ -6,26 +6,18 @@ masonry: true
 <!-- demo_start -->
 ### 基本形式
 
-1. 目前该上传组件采用FormData向后台提交文件数据。
+* 目前该上传组件采用FormData向后台提交文件数据
+* 组件上传成功依赖的返回数据结构为`{name: 'xxx', url: 'xxx'}`, 通常和后端接口不一致，可以通过配置`beforeOnLoad`做一层数据转换
+* 可通过file-list指定初始值，格式为[Object], 其中Object结构如下
+```
+    {
+        name: '文件名称',
+        url: '文件的路径',
+        flag: '0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件'
+    }
+```
 
-2. 可通过file-list指定初始值，数据结构见js代码list
-
-3. 组件上传成功依赖的返回数据结构为{name: 'xxx', url: 'xxx'}, 通常和后端接口不一致，可以通过配置beforeOnLoad做一层数据转换,见js代码beforeOnLoad
-
-4. 组件下发数据file-list格式为[Object]，Object结构如下（与后端对接需要协商好）：
-
-    name: 文件名称
-    url: 文件的路径
-    flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
-
-    示例：
-        [{
-            name: 'kaola-logo.jpeg',
-            url: 'xxx',
-            flag: 0
-        }]
-
-5. action请使用后台上传接口，示例url为私人服务器。
+** 特别注意: 例子中使用的url为私人服务器, 请勿直接使用, 请使用自己后台的上传接口 **
 
 <div class="m-example"></div>
 
@@ -36,36 +28,23 @@ masonry: true
 var component = new NEKUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+            name: 'Game.jpg',
+            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+            name: 'Kaola.jpg',
+            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+            name: 'Music.jpg',
+            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     }
-    /*beforeOnLoad: function(json){
-        if(json.code == 200){
-            var data = json.data;
-            return {name: data.name, url: data.url};
-        }
-        return false;
-    }*/
 });
 ```
 <!-- demo_end -->
 
 <!-- demo_start -->
 ### 卡片展示形式，用于表格内上传
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -75,8 +54,6 @@ action请使用后台接口，示例url为私人服务器。
 
 <!-- demo_start -->
 ### 多选上传
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -86,8 +63,6 @@ action请使用后台接口，示例url为私人服务器。
 
 <!-- demo_start -->
 ### 文件类型限制
-
-action请使用后台接口，示例url为私人服务器。
 
 配置accept属性为文件后缀或[MIME_TYPE](https://www.iana.org/assignments/media-types/media-types.xhtml)
 <div class="m-example"></div>
@@ -99,8 +74,6 @@ action请使用后台接口，示例url为私人服务器。
 
 <!-- demo_start -->
 ### 文件大小限制
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -110,8 +83,6 @@ action请使用后台接口，示例url为私人服务器。
 
 <!-- demo_start -->
 ### 文件个数限制
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -130,20 +101,16 @@ action请使用后台接口，示例url为私人服务器。
 var component = new NEKUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     }
 });
 ```
@@ -151,8 +118,6 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 ### 只读模式
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -164,8 +129,14 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         list: [{
-            name: 'kaola-logo.jpeg',
-            url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -176,8 +147,6 @@ var component = new NEKUI.Component({
 ### 指定宽高或宽高比
 
 只作用于图片
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -189,8 +158,6 @@ action请使用后台接口，示例url为私人服务器。
 
 <!-- demo_start -->
 ### 拖拽上传
-
-action请使用后台接口，示例url为私人服务器。
 <div class="m-example"></div>
 
 ```xml
@@ -212,20 +179,16 @@ action请使用后台接口，示例url为私人服务器。
 var component = new NEKUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     },
     beforeUpload: function(file) {
         var fileTypeCheck = function(resolve) {
@@ -255,20 +218,16 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     },
     beforeRemove: function(item) {
         var file = item.file;

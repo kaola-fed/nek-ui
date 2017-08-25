@@ -24,5 +24,10 @@ title: 徽标
 
 ```xml
 <kl-badge text="circle" circle={true} />
+<kl-badge text="circle" circle={true} type="primary" />
+<kl-badge text="circle" circle={true} type="info" />
+<kl-badge text="circle" circle={true} type="success" />
+<kl-badge text="circle" circle={true} type="warning" />
+<kl-badge text="circle" circle={true} type="error" />
 ```
 <!-- demo_end -->

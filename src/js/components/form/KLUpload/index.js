@@ -115,48 +115,48 @@ const KLUpload = Component.extend({
 
   onSuccess(info) {
     /**
-     * @event success 文件上传成功回调函数
-     * @property {object} sender 当前上传文件的实例
-     * @property {object} file 当前上传的文件
-     * @property {array} fileList 所有展示的文件列表
-     * @property {string} status 上传的状态
-     * @property {string} progress 上传的进度
+     * @event KLUpload#success 文件上传成功回调函数
+     * @param {object} sender 当前上传文件的实例
+     * @param {object} file 当前上传的文件
+     * @param {array} fileList 所有展示的文件列表
+     * @param {string} status 上传的状态
+     * @param {string} progress 上传的进度
      */
     this.$emit('success', info);
   },
 
   onProgress(info) {
     /**
-     * @event progress 文件上传进度回调函数
-     * @property {object} sender 当前上传文件的实例
-     * @property {object} file 当前上传的文件
-     * @property {array} fileList 所有展示的文件列表
-     * @property {string} status 上传的状态
-     * @property {string} progress 上传的进度
+     * @event KLUpload#progress 文件上传进度回调函数
+     * @param {object} sender 当前上传文件的实例
+     * @param {object} file 当前上传的文件
+     * @param {array} fileList 所有展示的文件列表
+     * @param {string} status 上传的状态
+     * @param {string} progress 上传的进度
      */
     this.$emit('progress', info);
   },
 
   onError(info) {
     /**
-     * @event error 文件上传失败回调函数
-     * @property {object} sender 当前上传文件的实例
-     * @property {object} file 当前上传的文件
-     * @property {array} fileList 所有展示的文件列表
-     * @property {string} status 上传的状态
-     * @property {string} progress 上传的进度
+     * @event KLUpload#error 文件上传失败回调函数
+     * @param {object} sender 当前上传文件的实例
+     * @param {object} file 当前上传的文件
+     * @param {array} fileList 所有展示的文件列表
+     * @param {string} status 上传的状态
+     * @param {string} progress 上传的进度
      */
     this.$emit('error', info);
   },
 
   onRemove(info) {
     /**
-     * @event remove 上传文件删除回调函数
-     * @property {object} sender 当前上传文件的实例
-     * @property {object} file 当前上传的文件
-     * @property {array} fileList 所有展示的文件列表
-     * @property {string} status 上传的状态
-     * @property {string} progress 上传的进度
+     * @event KLUpload#remove 上传文件删除回调函数
+     * @param {object} sender 当前上传文件的实例
+     * @param {object} file 当前上传的文件
+     * @param {array} fileList 所有展示的文件列表
+     * @param {string} status 上传的状态
+     * @param {string} progress 上传的进度
      */
     this.$emit('remove', info);
   },
