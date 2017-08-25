@@ -101,12 +101,12 @@ const UploadBase = Component.extend({
       if (!file.uid) {
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap.ADDED;
+        file.flag = Config.flagMap.ORIGINAL;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
-          flag: 'ADDED',
+          flag: file.flag,
           uid: file.uid,
           status: 'success',
         };
