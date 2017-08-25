@@ -1,5 +1,6 @@
 ---
 title: 进度条
+masonry: true
 ---
 
 <!-- demo_start -->
@@ -68,47 +69,77 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 
-### 综合处理
+### 条纹与激活
+
+striped属性控制了进度条是否显示条纹；active属性控制了进度条的动画效果显示。
+
+仅当striped属性为true，并且active属性也为true时候，进度条才会显示动画。
 
 <div class="m-example"></div>
 
 ```xml
-<div class=g-row>
-    <kl-button title={striped ? '已显示条纹' : '已隐藏条纹'}
-               on-click={striped = !striped}/>
-    <kl-button title={active ? '已激活' : '未激活'}
-               on-click={active = !active}/>
-    <kl-button title={text ? '已显示百分比' : '已隐藏百分比'}
-               on-click={text = !text}/>
-    <kl-button title={visible ? '已显示进度条' : '已隐藏进度条'}
-               on-click={visible = !visible}/>
+<kl-progress percent=50 striped active />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template
+});
+```
+
+<!-- demo_end -->
+
+<!-- demo_start -->
+
+### 百分比文字显示
+
+text属性可以为Boolean或String类型。
+
+当类型为Boolean时，text属性控制了进度条上是否显示百分比；当类型为String时，进度条上将显示text的值。
+
+<div class="m-example"></div>
+
+```xml
+<div class="g-row">
+    <kl-input placeholder="输入显示在进度条上的文字" value={displayText} />
 </div>
-<div class=g-row>
-    进度条文字显示
-    <kl-input placeholder="输入显示文字" value={displayText} />
-</div>
-<div class=g-row>
-    补充class
-    <kl-input placeholder="输入自定义类名" value={customClass} />
-</div>
-<div class=g-row>
-    <kl-progress percent=50 class={customClass}
-                 striped={striped} active={active}
-                 text={displayText || text} visible={visible}
-    />
-</div>
+<kl-progress percent=50 text={displayText || true} />
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
-        striped: false,
-        active: false,
-        text: true,
-        visible: true,
-        displayText: '',
-        customClass: ''
+        displayText: ''
+    }
+});
+```
+
+<!-- demo_end -->
+
+<!-- demo_start -->
+
+### 显示与隐藏
+
+可以通过visible属性来控制进度条的显示与隐藏
+
+<div class="m-example"></div>
+
+```xml
+<kl-button
+    class="f-mb10"
+    title={visible ? '已显示进度条' : '已隐藏进度条'}
+    on-click={visible = !visible}
+/>
+
+<kl-progress percent=50 visible={visible} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        visible: true
     }
 });
 ```

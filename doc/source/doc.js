@@ -108,7 +108,7 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (comp !== 'KLSearch' && comp !== 'KLCheck' && comp !== 'KLCheckGroup' && comp !== 'KLRadioGroup' && comp !== 'KLLocaleProvider' && comp !== 'KLModal') {
+      if (!/^KL(Steps|ImagePreview|Progress|Tooltip)$/.test(comp)) {
         return false;
       }
 
