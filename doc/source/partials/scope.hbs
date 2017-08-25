@@ -4,9 +4,10 @@
     {{else~}}
         {{#if (equal scope "static") ~}}
             <span class="type-tag type-tag-static">static {{kindInThisContext}}</span>
-        {{/if}}
-        {{#if (equal kind "function") ~}}
-            <span class="type-tag type-tag-static">{{kindInThisContext}}</span>
+        {{else}}
+            {{#if (equal kind "function") ~}}
+                <span class="type-tag type-tag-static">{{kindInThisContext}}</span>
+            {{/if}}
         {{/if}}
     {{/if~}}
 {{/if~}}

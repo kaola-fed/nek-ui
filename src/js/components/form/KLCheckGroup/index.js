@@ -82,11 +82,6 @@ const KLCheckGroup = SourceComponent.extend({
       }
     });
   },
-  /**
-     * @method validate() 根据min, max验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate() {
     const data = this.data;
     // 如果是readonly或者disabled状态, 无需验证
