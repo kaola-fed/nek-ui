@@ -8,21 +8,9 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-row>
-    <kl-col span=12>
-        <kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" />
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=12>
-        <kl-text text="当前选择的日期为：{selectDate}"></kl-text>
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=12>
-        <kl-text text="格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}"></kl-text>
-    </kl-col>
-</kl-row>
+<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" />
+<p>当前选择的日期为：{selectDate}</p>
+<p>格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
 ```
 <!-- demo_end -->
 
@@ -31,22 +19,9 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-
-<kl-row>
-    <kl-col span=12>
-        <kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" showTime />
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=12>
-        <kl-text text="当前选择的日期为：{selectDate}"></kl-text>
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=12>
-        <kl-text text="格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}"></kl-text>
-    </kl-col>
-</kl-row>
+<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" showTime />
+<p>当前选择的日期为: {selectDate}</p>
+<p>格式化后的日期为: {selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
 ```
 
 ```javascript
@@ -75,7 +50,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-date-picker date="2017=10-10" readonly />
+<kl-date-picker date="2017-10-10" readonly />
 ```
 <!-- demo_end -->
 
@@ -85,27 +60,15 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-row>
-    <kl-col span=12>
-        控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间
-    </kl-col>
-</kl-row>
+<p>控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间</p>
+<kl-date-picker minDate="2017-03-01" maxDate="2017-12-30" />
+<p>选择时间范围：开始时间不能大于结束时间</p>
 <kl-row>
     <kl-col span=6>
-        <kl-date-picker minDate="2017-03-01" maxDate="2017-12-30" />
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=12>
-        选择时间范围：开始时间不能大于结束时间
-    </kl-col>
-</kl-row>
-<kl-row>
-    <kl-col span=6>
-        <kl-date-picker maxDate={endTime}  date={startTime} placeholder="开始时间"/>
+        <kl-date-picker maxDate={endTime} date={startTime} placeholder="开始时间"/>
     </kl-col>
     <kl-col span=6>
-        <kl-date-picker minDate="{startTime}"  date={endTime} placeholder="结束时间" />
+        <kl-date-picker minDate="{startTime}" date={endTime} placeholder="结束时间" />
     </kl-col>
 </kl-row>
 ```
@@ -126,11 +89,7 @@ var component = new NEKUI.Component({
         <kl-date-picker date={date} readonly disabled=true />
     </kl-col>
 </kl-row>
-<kl-row>
-    <kl-col span=12>
-        当前选择的日期为：{date | format: 'yyyy-MM-dd'}
-    </kl-col> 
-</kl-row>
+<p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
 ```
 <!-- demo_end -->
 
@@ -142,6 +101,7 @@ var component = new NEKUI.Component({
 * `change`： 当所学日期变换是触发的事件
 
 请打开浏览器的控制台查看结果。
+
 <div class="m-example"></div>
 
 ```xml
@@ -157,8 +117,8 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 ```xml
 <kl-form ref="form">
-    <kl-form-item title="开始时间" labelSize="70px" cols=10 required >
-        <kl-date-picker date={date}  />
+    <kl-form-item title="开始时间" labelSize="70px" required >
+        <kl-date-picker date={date} />
      </kl-form-item>
       <kl-button title="验证" on-click={this.validate()} />
 </kl-form>

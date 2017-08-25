@@ -42,9 +42,6 @@ const bowser = require('bowser');
 const KLInput = Component.extend({
   name: 'kl-input',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       hideTip: false,
@@ -83,9 +80,6 @@ const KLInput = Component.extend({
       }
     });
   },
-  /**
-     * @override
-     */
   rules(ruleAttris) {
     this.supr(ruleAttris);
     const self = this;
@@ -100,9 +94,6 @@ const KLInput = Component.extend({
       self.addRule(name);
     });
   },
-  /**
-     * @protected
-     */
   addRule(name) {
     const { min, max, message: _message, rules } = this.data;
 
@@ -123,11 +114,6 @@ const KLInput = Component.extend({
       rules.push(ruleCopy);
     }
   },
-  /**
-     * @method validate() 根据`rules`验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate(on = '') {
     const { readonly, disabled } = this.data;
     // 如果是readonly或者disabled状态, 无需验证
@@ -170,10 +156,7 @@ const KLInput = Component.extend({
     return result;
   },
 
-  /**
-     * 1. type=char时,去除前后的空格;
-     * 2. type=int/float时, 只能输入对应类型的数字;
-     * */
+  /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
   __valueFilter(_value) {
     const type = this.data.type;
 
@@ -205,6 +188,10 @@ const KLInput = Component.extend({
     this.$emit('input', $event);
   },
   _onSearch($event) {
+    /**
+     * @event KLInput#search 点击搜索图标时触发
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('search', $event);
   },
 });

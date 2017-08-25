@@ -4,22 +4,24 @@ masonry: true
 ---
 <!-- demo_start -->
 ### 基本形式
+通过配置`lang`与`api`属性, 并且将需要国际化的部分包裹在`kl-locale-provider`组件中, 即可实现语言的切换;
+例如以下文字是根据key值匹配显示出来的
+
 <div class="m-example"></div>
 
 ```xml
 <kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
-    <div>{this.$t("PLEASE_INPUT")}</div>
-    <div>{this.$t("PLEASE_SELECT")}</div>
-    <div>{this.$t('USERNAME')}</div>
-    <div>{this.$t('NOTIFY_METHOD')}</div>
+    <p>{this.$t("PLEASE_INPUT")}</p>
+    <p>{this.$t("PLEASE_SELECT")}</p>
+    <p>{this.$t('USERNAME')}</p>
+    <p>{this.$t('NOTIFY_METHOD')}</p>
 </kl-locale-provider>
 ```
 ```javascript
 var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
 var component = new NEKUI.Component({
     template: template,
-    data: {
-    },
+    data: {},
     $t: translator
 });
 ```

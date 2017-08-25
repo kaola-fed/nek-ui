@@ -24,7 +24,7 @@ const bowser = require('bowser');
  * @param {number}        [options.data.height=120]         => 高度
  * @param {number}        [options.data.width]              => 组件宽度
  * @param {boolean}       [options.data.required=false]     => 是否必填
- * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+ * @param {string}        [options.data.message]         => 必填校验失败提示的消息
  * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
@@ -34,9 +34,6 @@ const bowser = require('bowser');
 const KLTextArea = Component.extend({
   name: 'kl-textarea',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       hideTip: false,
@@ -66,11 +63,6 @@ const KLTextArea = Component.extend({
       }
     });
   },
-  /**
-     * @method validate() 根据`rules`验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate(on = '') {
     const data = this.data;
     // 如果是readonly或者disabled状态, 无需验证

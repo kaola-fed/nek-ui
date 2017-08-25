@@ -10,39 +10,34 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
- <kl-input  maxlength=6 placeholder="请输入" autofocus />
+ <kl-input maxlength=6 placeholder="请输入" autofocus />
 ```
 <!-- demo_end -->
 
 <!-- demo_start -->
 ### 大小控制
-通过设置`size`来控制输入框的大小
+可通过设置`size`来控制输入框的大小, 设置`width`来控制输入的宽度
 * `sm`: height=24px
 * `md`: height=32px
-
-通过设置`width`来控制输入的宽度，
 
 <div class="m-example"></div>
 
 ```xml
-<kl-row>
-    <kl-col span=12>
-        sm: <kl-input type="char" size="sm" placeholder="请输入"  />
-        md: <kl-input type="char" size="md" placeholder="请输入"  />
-      </kl-col>
-</kl-row>
- 
+sm：
+<kl-input size="sm" width="200px" placeholder="请输入"  />
+&emsp;md：
+<kl-input size="md" width="200px" placeholder="请输入"  />
 ```
 <!-- demo_end -->
 
 <!-- demo_start -->
 ### 单位
-通过指定`unit`来再输入框末尾加上单位
+通过指定`unit`可在输入框末尾加上单位
 <div class="m-example"></div>
 
 ```xml
-<label>速度：<kl-input value="340" unit="m/s" /></label>
-<label>体重：<kl-input value="50" unit="kg" /></label>
+速度：<kl-input value="340" unit="m/s" width="200px" />
+&emsp;体重：<kl-input value="50" unit="kg" width="200px" />
 ```
 <!-- demo_end -->
 
@@ -52,19 +47,17 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-form ref="form">
-    <kl-form-item cols="12"   labelCols=4  title="用户名" tip="用户名的用途" required>
-        <kl-input type="char"  placeholder="请输入用户名"  required />
+<kl-form ref="form" labelSize="100px">
+    <kl-form-item title="用户名" tip="请输入5-10位字母或者数字" required>
+        <kl-input type="char" placeholder="请输入用户名" />
     </kl-form-item>
-    <kl-form-item cols="12" labelCols=4 title="密码" tip="密码的用途" required>
-        <kl-input type="password"  placeholder="请输入密码"  required/>
+    <kl-form-item title="密码" tip="密码不能少于6位" required>
+        <kl-input type="password" placeholder="请输入密码" />
     </kl-form-item>
-    <kl-form-item cols="12" labelCols=4 title="年龄"  required>
-        <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入年龄"  required/>
+    <kl-form-item title="年龄" required>
+        <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入年龄" />
     </kl-form-item>
-    <kl-form-item cols="12" labelCols=4 title=" " >
-            <kl-button title="提交" on-click={this.validate()} />
-     </kl-form-item>
+    <kl-button type="secondary" title="提交" on-click={this.validate()} />
 </kl-form>
 ```
 
@@ -86,20 +79,14 @@ var component = new NEKUI.Component({
 * `int`: 整型数
 * `float`：浮点数，可设置`decimalDigits`值来指定可输入几位小数
 
-`maxlength`来控制输入的内容的长度
 <div class="m-example"></div>
 
 ```xml
-char:{char}
-<kl-input type="char" placeholder="请输入任何字符串" value={char} />char:{char}
-char50:{char}
-<kl-input type="char" placeholder="请输入50个字以内的任何字符串" maxlength=50 value={char} />
-int: {int}       
-<kl-input type="int" placeholder="输入整数"  value={int} required />
-float: {float}       
-<kl-input type="float" placeholder="请输入浮点数"  value={float} />
-float3: {float}       
-<kl-input type="float" placeholder="请输入3位小数的浮点数" decimalDigits=3 value={float3} />
+<kl-input class="f-mb10" type="char" placeholder="可输入任何字符串" value={char} />
+<kl-input class="f-mb10" type="char" placeholder="可输入50个字以内的任何字符串" maxlength=50 value={char} />
+<kl-input class="f-mb10" type="int" placeholder="可输入整数"  value={int} />
+<kl-input class="f-mb10" type="float" placeholder="可输入浮点数"  value={float} />
+<kl-input class="f-mb10" type="float" placeholder="可输入3位小数的浮点数" decimalDigits=3 value={float3} />
                 
 ```
 <!-- demo_end -->
@@ -111,7 +98,7 @@ float3: {float}
 <div class="m-example"></div>
 
 ```xml
-<label>速度：<kl-input width="smw" on-search={this.onSearch($event)} /></label>
+速度：<kl-input width="200px" on-search={this.onSearch($event)} />
 ```
 
 ```javascript

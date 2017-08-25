@@ -11,7 +11,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<label>备注：<kl-textarea  placeholder="请输入备注" /></label>
+<kl-textarea  placeholder="请输入备注" />
 ```
 <!-- demo_end -->
 
@@ -24,7 +24,7 @@ masonry: true
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="备注">
+    <kl-form-item title="备注">
         <kl-textarea placeholder="请输入备注" />
     </kl-form-item>
 </kl-form>
@@ -37,7 +37,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<label>邮箱：<kl-textarea rules={rules} placeholder="请输入邮箱" /></label>
+<kl-textarea rules={rules} placeholder="请输入邮箱, 失去焦点时验证" />
 ```
 
 ```javascript
@@ -59,7 +59,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<label>备注：<kl-textarea  maxlength=100 placeholder="请输入备注" /></label>
+<kl-textarea  maxlength=100 placeholder="请输入备注" />
 ```
 <!-- demo_end -->
 
@@ -69,7 +69,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-textarea  height=100  width=400  placeholder="请输入备注"/>
+<kl-textarea height=100 width=400 placeholder="请输入备注"/>
 ```
 <!-- demo_end -->
 
@@ -78,10 +78,9 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<label>
-最大长度{maxLength}字，已经输入了{(value || '').length}字
+<p>最大长度{maxLength}字，已经输入了{(value || '').length}字</p>
 <kl-textarea rules={rules} value={value} placeholder="请输入内容" />
-</label>
+
 ```
 
 ```javascript
