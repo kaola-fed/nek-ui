@@ -101,7 +101,7 @@ const UploadBase = Component.extend({
       if (!file.uid) {
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap.ORIGINAL;
+        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
         const fileunit = {
           name: file.name,
           url: file.url,
@@ -160,12 +160,12 @@ const UploadBase = Component.extend({
       fileList.forEach((file) => {
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap.ORIGINAL;
+        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
-          flag: 'ORIGINAL',
+          flag: file.flag,
           uid: file.uid,
           status: 'success',
         };
@@ -196,10 +196,10 @@ const UploadBase = Component.extend({
         newFileList.push({
           name: file.name,
           url: file.url,
-          flag: Config.flagMap[flag],
+          flag,
           uid,
         });
-      } else if (flag === 'DELETED') {
+      } else if (flag === Config.flagMap.DELETED) {
         fileList[fileIndex].flag = Config.flagMap.DELETED;
         fileUnitList.splice(index, 1);
       } else if (destroyed) {
@@ -270,7 +270,7 @@ const UploadBase = Component.extend({
               name: file.name,
               url: window.URL.createObjectURL(file),
               type: self.getFileType(file),
-              flag: 'ADDED',
+              flag: Config.flagMap.ADDED,
               uid: utils.genUid(),
               status: 'ready',
             };
@@ -378,8 +378,8 @@ const UploadBase = Component.extend({
     const inst = info.sender;
     const file = info.file;
     file.destroyed = true;
-    if (file.flag === 'ORIGINAL') {
-      file.flag = 'DELETED';
+    if (file.flag === Config.flagMap.ORIGINAL) {
+      file.flag = Config.flagMap.DELETED;
     }
     inst.destroy();
     this.updateList();

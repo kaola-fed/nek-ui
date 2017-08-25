@@ -70,7 +70,7 @@ const KLUpload = Component.extend({
       imageWidth: Infinity,
       imageHeight: Infinity,
       imageScale: '',
-      klass: '',
+      class: '',
       encType: 'multipart/form-data',
       beforeOnLoad: null,
       beforeOnError: null,

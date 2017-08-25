@@ -7,6 +7,7 @@
 const _ = require('../../../../../ui-base/_');
 const utils = require('../../utils');
 const UploadBase = require('../UploadBase');
+const Config = require('../../config');
 const tpl = require('./index.html');
 
 /**
@@ -88,7 +89,7 @@ const UploadCard = UploadBase.extend({
               name: file.name,
               url: window.URL.createObjectURL(file),
               type: self.getFileType(file),
-              flag: 'ADDED',
+              flag: Config.flagMap.ADDED,
               uid: utils.genUid(),
               status: 'ready',
             };
@@ -161,8 +162,8 @@ const UploadCard = UploadBase.extend({
     self.toggle(false);
     file.destroyed = true;
 
-    if (file.flag === 'ORIGINAL') {
-      file.flag = 'DELETED';
+    if (file.flag === Config.flagMap.ORIGINAL) {
+      file.flag = Config.flagMap.DELETED;
     }
     inst.destroy();
     self.updateList();
