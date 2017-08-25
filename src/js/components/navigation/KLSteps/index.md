@@ -45,7 +45,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-steps size="sm" current=2 steps={steps} />
+<kl-steps size="sm" current={current} steps={steps} />
 <kl-button title="下一步" on-click={current = (current + 1) % steps.length}></kl-button>
 ```
 
@@ -53,7 +53,7 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-        current: 0,
+        current: 2,
         steps: [{
             status: 0,
             title: '提交订单',
