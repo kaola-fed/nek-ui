@@ -1,13 +1,12 @@
-<div class="m-ui-table-wrap "
+<div class="m-kl-table-wrap "
     ref="tableWrap"
     r-hide={!show}>
     <!-- 列表拖动标尺 -->
     <div ref="resizeProxy" class="u-resize-proxy" />
 
     <!-- 表格主体 -->
-    <div
-        ref="table"
-        class="m-ui-table"
+    <div ref="table"
+        class="m-kl-table"
         r-class={{
             'fixed_header': fixedHeader,
             'strip': strip
@@ -15,12 +14,12 @@
         r-style={{
             height: fixedHeader ? 'auto' : height + 'px',
             width: width == undefined ? 'auto' :
-                  tableWidth > width ? width: width + scrollYBar + 'px',
+                  tableWidth > width ? width: width + scrollYBarWidth + 'px',
         }}
         on-scroll={this._onBodyScroll(this.$refs.table, $event)} >
 
         <div ref="headerWrap"
-            class="ui_table_header"
+            class="kl_table_header"
             r-class={{
                 'sticky_header': stickyHeader && stickyHeaderActive,
                 'f-overflow-hidden': stickyFooter
@@ -31,6 +30,7 @@
             }}>
             <table-header
                 ref="tableHeader"
+                stickyHeader={stickyHeader}
                 _dataColumns={_dataColumns}
                 headers={headers}
                 resizePorxy={this.$refs.resizeProxy}
@@ -40,7 +40,7 @@
                 columns={columns}
                 source={source}
                 sorting={sorting}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 checkAll={checkAll}
                 align={align}
                 placeholder={placeholder}
@@ -55,7 +55,7 @@
             }}/>
 
         <div ref="bodyWrap"
-            class="ui_table_body"
+            class="kl_table_body"
             r-class={{
                 'fixed_header': fixedHeader,
                 'f-overflow-hidden': stickyFooter
@@ -75,7 +75,7 @@
                 columns={columns}
                 sorting={sorting}
                 source={source}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 align={align}
                 placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
@@ -85,19 +85,19 @@
     </div>
 
     <!-- 左固定列 -->
-    {#if fixedCol }
-    <div ref="tableFixed"
-        class="m-ui-table m-ui-table-fixed"
+    {#if fixedColLeft }
+    <div ref="tableFixedLeft"
+        class="m-kl-table m-kl-table-fixed"
         r-class={{
-            'm-ui-table-hover': enableHover,
+            'm-kl-table-hover': enableHover,
             'strip': strip
         }}
         r-style={{
-            bottom: scrollXBar + 'px',
+            bottom: scrollXBarWidth + 'px',
             width: fixedTableWidth + 'px'
         }}>
-        <div ref="headerWrapFixed"
-            class="ui_table_header"
+        <div ref="headerWrapFixedLeft"
+            class="kl_table_header"
             r-class={{
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
@@ -106,7 +106,7 @@
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }} >
             <table-header
-                ref="tableHeaderFixed"
+                ref="tableHeaderFixedLeft"
                 _dataColumns={_dataColumns}
                 headers={headers}
                 fixedCol
@@ -116,7 +116,7 @@
                 columns={columns}
                 sorting={sorting}
                 source={source}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 checkAll={checkAll}
                 align={align}
                 placeholder={placeholder}
@@ -130,11 +130,11 @@
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
             }} />
 
-        <div ref="bodyWrapFixed"
-            class="ui_table_body"
+        <div ref="bodyWrapFixedLeft"
+            class="kl_table_body"
             r-style={{
                 width: fixedTableWidth + 'px',
-                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
+                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
             }}>
             <table-body
                 ref="tableBodyFixed"
@@ -148,7 +148,7 @@
                 columns={columns}
                 sorting={sorting}
                 source={source}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 align={align}
                 placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
@@ -161,26 +161,19 @@
 
     <!-- 右固定列 -->
     {#if fixedColRight }
-    <div class="ui_table_header_fiexd_right_gutter"
-        r-style={{
-            width: scrollYBar + 'px',
-            height: headerHeight + 'px',
-            right: fixedRight + 'px',
-            top: 0
-        }}/>
     <div ref="tableFixedRight"
-        class="m-ui-table m-ui-table-fixed m-ui-table-fixed-right"
+        class="m-kl-table m-kl-table-fixed m-kl-table-fixed-right"
         r-class={{
-            'm-ui-table-hover': enableHover,
+            'm-kl-table-hover': enableHover,
             'strip': strip
         }}
         r-style={{
-            bottom: scrollXBar + 'px',
-            right: fixedRight - 1 + scrollYBar + 'px',
+            bottom: scrollXBarWidth + 'px',
+            right: fixedTablePosRight + 'px',
             width: fixedTableWidthRight + 'px',
         }}>
-        <div ref="headerWrapFixedRight"
-            class="ui_table_header"
+        <div ref="headerWrapfixedTablePosRight"
+            class="kl_table_header"
             r-class={{
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
@@ -199,7 +192,7 @@
                 columns={columns}
                 sorting={sorting}
                 source={source}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 align={align}
                 checkAll={checkAll}
                 placeholder={placeholder}
@@ -215,10 +208,10 @@
             }} />
 
         <div ref="bodyWrapFixedRight"
-            class="ui_table_body"
+            class="kl_table_body"
             r-style={{
                 width: fixedTableWidthRight + 'px',
-                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'
+                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
             }}>
             <table-body ref="tableBodyFixedRight"
                 _dataColumns={_dataColumns}
@@ -232,7 +225,7 @@
                 columns={columns}
                 sorting={sorting}
                 source={source}
-                scrollYBar={scrollYBar}
+                scrollYBarWidth={scrollYBarWidth}
                 align={align}
                 placeholder={placeholder}
                 on-checkchange={this._onItemCheckChange($event)}
@@ -240,6 +233,13 @@
                 on-expand={this._onFixedExpand($event)}/>
         </div>
     </div>
+    <div class="kl_table_header_fiexd_right_gutter"
+        r-style={{
+            width: scrollYBarWidth + 'px',
+            height: headerHeight + 'px',
+            right: fixedTablePosRight - scrollYBarWidth + 'px',
+            top: 0
+        }}/>
     {/if}
 
 </div>
@@ -249,7 +249,7 @@
         height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0
     }}
 />
-<div class="m-ui-table-ft"
+<div class="m-kl-table-ft"
     ref="footerWrap"
     r-class={{
         'sticky_footer': stickyFooter && stickyFooterActive
