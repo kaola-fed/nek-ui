@@ -10,8 +10,8 @@
             <col width={_dataColumn._width}>
         {/list}
         <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->
-        {#if scrollYBar}
-            <col name="gutter" width={scrollYBar}>
+        {#if scrollYBarWidth}
+            <col name="gutter" width={scrollYBarWidth}>
         {/if}
     </colgroup>
 
@@ -63,20 +63,20 @@
                     </th>
                 {/list}
 
-                {#if scrollYBar}
+                {#if scrollYBarWidth && !fixedCol}
                     <th class="th_hd_gutter" />
                 {/if}
             </tr>
         {/list}
     </thead>
-    {#if scrollYBar && !fixedCol}
+    {#if scrollYBarWidth && !fixedCol}
         <div class="patch"
             r-style={{
                 height: height + 'px',
                 top: 0,
                 right: 0,
-                width: (scrollYBar-1) + 'px',
+                width: scrollYBarWidth + 'px',
             }}
-        />
+        ></div>
     {/if}
 </table>

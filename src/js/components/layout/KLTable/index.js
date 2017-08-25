@@ -91,8 +91,8 @@ const KLTable = Component.extend({
       scrollParentNode: null,
       strip: true,
       enableHover: true,
-      scrollYBar: 0,
-      scrollXBar: 0,
+      scrollYBarWidth: 0,
+      scrollXBarWidth: 0,
 
       show: true,
       columns: [],
@@ -126,7 +126,7 @@ const KLTable = Component.extend({
   _initWatchers() {
     this.$watch('source', this._onSouceChange);
     this.$watch('columns', this._onColumnsChange);
-    this.$watch('scrollYBar', this._onScrollYBarChange);
+    this.$watch('scrollYBarWidth', this._onScrollYBarChange);
     this.$watch('parentWidth', this._onParentWidthChange);
     this.$watch('tableWidth', this._onTableWidthChange);
     this.$watch('headerHeight', this._updateBodyHeight);
@@ -167,11 +167,11 @@ const KLTable = Component.extend({
     }
     this._updateTableWidth();
     this._updateSticky();
-    this._updateFixedRight();
+    this._updateFixedTablePosRight();
     this._getHeaderHeight();
   },
   _onTableWidthChange() {
-    this._updateFixedRight();
+    this._updateFixedTablePosRight();
   },
   _onSouceChange() {
     const self = this;
@@ -325,8 +325,8 @@ const KLTable = Component.extend({
     );
     const xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
 
-    this._updateData('scrollYBar', yBarWidth);
-    this._updateData('scrollXBar', xBarWidth);
+    this._updateData('scrollYBarWidth', yBarWidth);
+    this._updateData('scrollXBarWidth', xBarWidth);
   },
   _onScrollYBarChange(newVal, oldVal) {
     if (oldVal === undefined) {
@@ -357,7 +357,7 @@ const KLTable = Component.extend({
   _updateTableWidth() {
     const data = this.data;
     const minColWidth = data.minColWidth;
-    const parentWidth = data.parentWidth - (data.scrollYBar || 0);
+    const parentWidth = data.parentWidth - (data.scrollYBarWidth || 0);
     const _dataColumns = data._dataColumns;
     if (!_dataColumns) {
       return;
@@ -415,17 +415,17 @@ const KLTable = Component.extend({
       }
       return sum;
     }, 0);
-    const fixedCol = !!fixedTableWidth;
+    const fixedColLeft = !!fixedTableWidth;
 
     const fixedTableWidthRight = _dataColumns.reduce((sum, current) => {
       if (current.fixed === 'right') {
         return sum + current._width;
       }
       return sum;
-    }, 0);
+    }, 0) - 1;
     const fixedColRight = !!fixedTableWidthRight;
 
-    this._updateData('fixedCol', fixedCol);
+    this._updateData('fixedColLeft', fixedColLeft);
     this._updateData('fixedTableWidth', fixedTableWidth);
     this._updateData('fixedColRight', fixedColRight);
     this._updateData('fixedTableWidthRight', fixedTableWidthRight);
@@ -442,7 +442,7 @@ const KLTable = Component.extend({
     }
     const $refs = this.$refs;
 
-    u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+    u.setElementValue($refs.bodyWrapFixedLeft, 'scrollTop', host.scrollTop);
     u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
     u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
     u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
@@ -489,10 +489,10 @@ const KLTable = Component.extend({
       });
     });
   },
-  _updateFixedRight() {
+  _updateFixedTablePosRight() {
     const data = this.data;
-    const fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-    this._updateData('fixedRight', fixedRight > 0 ? fixedRight : 0);
+    const fixedTablePosRight = Math.floor(data.parentWidth - data.tableWidth);
+    this._updateData('fixedTablePosRight', fixedTablePosRight > 0 ? fixedTablePosRight : data.scrollYBarWidth);
   },
   _updateBodyHeight() {
     const data = this.data;
