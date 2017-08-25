@@ -27,11 +27,13 @@
             r-class={{
                 'z-hover': item._hover
             }}
-            on-mouseover={this._onTrHover($event, item)}
-            on-mouseout={this._onTrBlur($event, item)} >
+            on-click={this._onRowClick($event, item, item_index)}
+            on-mouseover={this._onRowHover($event, item)}
+            on-mouseout={this._onRowBlur($event, item)} >
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {item.unitClass || column.columnClass}"
-                style="{item.unitStyle || column.columnStyle}"
+            <td class="tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass}"
+                style="{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle}"
+                on-click={this._onUnitClick($event, item, item_index, column, column_index)}
                 r-style={{
                     'text-align': column.align || align
                 }}
@@ -62,14 +64,15 @@
 
         <!-- 下钻内容 -->
         {#if item.expand}
-        <tr class="tb_bd_tr td_bd_tr_nohover">
+        <tr class="tb_bd_tr td_bd_tr_expand">
             <td ref="td{item_index}"
                 r-style={{
                     height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'
                 }}
-                class="m-sub-protable-td {column.tdClass}"
                 colspan={_dataColumns.length}>
-                {#include item._expanddingColumn.expandTemplate}
+                {#if !fixedCol}
+                    {#include item._expanddingColumn.expandTemplate}
+                {/if}
             </td>
         </tr>
         {/if}

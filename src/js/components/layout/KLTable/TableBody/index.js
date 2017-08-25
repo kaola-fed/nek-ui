@@ -34,6 +34,9 @@ const TableBody = Component.extend({
     });
   },
   _onItemCheckChange(item, e) {
+    if (this.data.fixedCol) {
+      return;
+    }
     this.$emit('checkchange', {
       item,
       checked: e.checked,
@@ -96,11 +99,28 @@ const TableBody = Component.extend({
   emit(...args) {
     this.$parent.$emit.call(this.$parent, ...args);
   },
-  _onTrHover(e, item) {
+  _onRowHover(e, item) {
     item._hover = true;
   },
-  _onTrBlur(e, item) {
+  _onRowBlur(e, item) {
     item._hover = false;
+  },
+  _onRowClick(e, item, itemIndex) {
+    this.emit('rowclick', {
+      sender: this.$parent,
+      item,
+      itemIndex,
+    });
+  },
+  _onUnitClick(e, item, itemIndex, column, columnIndex) {
+    this.emit('unitclick', {
+      sender: this.$parent,
+      item,
+      itemIndex,
+      key: column.key,
+      column,
+      columnIndex,
+    });
   },
 })
   .filter('placeholder', (val, column, self) => {

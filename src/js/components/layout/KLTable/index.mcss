@@ -221,6 +221,14 @@ $orderIconColor = #666;
     }
 }
 
+.m-kl-table-fixed {
+    .tb_bd_tr {
+        &.td_bd_tr_expand {
+            visibility: hidden;
+        }
+    }
+}
+
 .m-kl-table-ft {
     padding: 10px 0;
     background: #fff;
