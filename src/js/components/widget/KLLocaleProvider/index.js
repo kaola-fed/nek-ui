@@ -34,6 +34,16 @@ const KLLocaleProvider = Component.extend({
       self.$emit('ready');
     });
   },
+  /**
+   * @method KLLocaleProvider#reload 切换语言，重新初始化
+   * @param {string} lang 设置语言
+   * @param {string} api 设置获取语言包的url
+   */
+  reload(lang, api) {
+    this.data.lang = lang;
+    this.data.api = api;
+    this._initLang();
+  },
 });
 /**
 * @param {string} lang 语言种类

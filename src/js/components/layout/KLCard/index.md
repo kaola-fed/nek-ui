@@ -43,11 +43,65 @@ card是可以嵌套多个的，多用于一个模块里面又有小的分类。
 
 ```xml
 <kl-card title="一级标题">
-一级标题下具体内容。。。
+    <kl-form labelSize="80px">
+            <kl-row>
+                <kl-col span=4>
+                    <kl-form-item title="订单号">
+                        <kl-input value="{billno}" placeholder="订单号" />
+                    </kl-form-item>
+                </kl-col>
+                <kl-col span=4>
+                    <kl-form-item title="支付方式">
+                        <kl-input value="{purchaseWay}" placeholder="支付方式" />
+                    </kl-form-item>
+                </kl-col>
+                <kl-col span=4>
+                    <kl-form-item title="商品名称">
+                        <kl-input value="{goodsName}" placeholder="商品名称" />
+                    </kl-form-item>
+                </kl-col>
+            </kl-row>
+        </kl-form>
     <kl-card title="二级标题" isShowLine={false}>
-    二级标题下具体内容。。。
+        <kl-form labelSize="80px">
+            <kl-row>
+                <kl-col span=4>
+                    <kl-form-item title="订单号">
+                        <kl-input value="{billno}" placeholder="订单号" />
+                    </kl-form-item>
+                </kl-col>
+                <kl-col span=4>
+                    <kl-form-item title="支付方式">
+                        <kl-input value="{purchaseWay}" placeholder="支付方式" />
+                    </kl-form-item>
+                </kl-col>
+                <kl-col span=4>
+                    <kl-form-item title="商品名称">
+                        <kl-input value="{goodsName}" placeholder="商品名称" />
+                    </kl-form-item>
+                </kl-col>
+            </kl-row>
+        </kl-form>
         <kl-card title="三级标题" isShowLine={false}>
-        三级标题下具体内容。。。
+            <kl-form labelSize="80px">
+                <kl-row>
+                    <kl-col span=4>
+                        <kl-form-item title="订单号">
+                            <kl-input value="{billno}" placeholder="订单号" />
+                        </kl-form-item>
+                    </kl-col>
+                    <kl-col span=4>
+                        <kl-form-item title="支付方式">
+                            <kl-input value="{purchaseWay}" placeholder="支付方式" />
+                        </kl-form-item>
+                    </kl-col>
+                    <kl-col span=4>
+                        <kl-form-item title="商品名称">
+                            <kl-input value="{goodsName}" placeholder="商品名称" />
+                        </kl-form-item>
+                    </kl-col>
+                </kl-row>
+            </kl-form>
         </kl-card>
     </kl-card>
 </kl-card>
@@ -63,8 +117,8 @@ card不设置title，仅仅使用它的布局样式，常用于列表页的表�
 ```xml
 <kl-card>
     <kl-table source={table.source}>
-        <kl-table-col name="title" key="title" width=150 />
-        <kl-table-col name="value" key="value" tip="I am tip"/>
+        <kl-table-col name="姓名" key="name" />
+        <kl-table-col name="年龄" key="age" />
     </kl-table>
 </kl-card>
 ```
@@ -74,16 +128,13 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         table: {
-            source: []
-        }
-    },
-    init: function() {
-        this.data.table.source = [];
-        for(var i = 0; i < 3; ++i) {
-            this.data.table.source.push({
-                title: 'test' + i,
-                value: 10 * i
-            });
+            source: [{
+                name: '小明',
+                age: 20
+            }, {
+                name: '小红',
+                age: 18
+            }]
         }
     }
 });

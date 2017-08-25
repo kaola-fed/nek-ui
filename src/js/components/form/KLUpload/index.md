@@ -228,15 +228,15 @@ var component = new NEKUI.Component({
         ]
     },
     beforeUpload: function(file) {
-        var pass = function(resolve) {
+        var fileTypeCheck = function(resolve) {
             var msg = '';
             if (!/image\/.*/.test(file.type)) {
                 msg = '格式错误';
             }
             resolve(msg);
         };
-        var error = function() {};
-        return new Promise(pass, error);
+
+        return new Promise(fileTypeCheck);
     }
 });
 ```
@@ -272,12 +272,12 @@ var component = new NEKUI.Component({
     },
     beforeRemove: function(item) {
         var file = item.file;
-        var pass = function(resolve) {
+        var removeConfirm = function(resolve) {
             var modal = NEKUI.KLModal.confirm('确认删除' + file.name + '?');
             modal.$on('ok', () => resolve(true));
         };
-        var error = function() {};
-        return new Promise(pass, error);
+
+        return new Promise(removeConfirm);
     }
 });
 ```
