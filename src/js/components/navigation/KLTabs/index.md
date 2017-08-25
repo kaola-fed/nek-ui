@@ -13,7 +13,7 @@ title: 选项卡
     <kl-tab title="Tab1">Content1</kl-tab>
     <kl-tab title="Tab2">Content2</kl-tab>
     <kl-tab title="Tab3">Content3</kl-tab>
-    <kl-tab title="Tab4"><kl-input /></kl-tab>
+    <kl-tab title="Tab4">Content4</kl-tab>
 </kl-tabs>
 ```
 <!-- demo_end -->
@@ -77,7 +77,7 @@ on-change中可以做重新渲染逻辑
     <kl-tab title="Tab1" key=0>Content1</kl-tab>
     <kl-tab title="Tab2" key=1>Content2</kl-tab>
     <kl-tab title="Tab3" key=2>Content3</kl-tab>
-    <kl-tab title="Tab4" key=3><kl-input /></kl-tab>
+    <kl-tab title="Tab4" key=3>Content4</kl-tab>
 </kl-tabs>
 ```
 
@@ -96,9 +96,9 @@ var component = new NEKUI.Component({
 <!-- demo_start -->
 ### 禁用某一项，禁用组件
 
-kl-tabs标签和kl-tab标签均可设置disabled属性，控制整个tabs禁用或某个tab禁用
+`kl-tabs`标签和`kl-tab`标签均可设置disabled属性，控制整个tabs禁用或某个tab禁用
 
-kl-tabs标签还可以设置visible属性，控制整个tabs显示或隐藏
+`kl-tabs`标签还可以设置visible属性，控制整个tabs显示或隐藏
 
 <div class="m-example"></div>
 

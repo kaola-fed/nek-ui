@@ -19,9 +19,6 @@ const _ = require('../../../ui-base/_');
 const KLIcon = Component.extend({
   name: 'kl-icon',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       type: '',

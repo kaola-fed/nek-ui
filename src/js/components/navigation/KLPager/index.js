@@ -26,9 +26,6 @@ const _ = require('../../../ui-base/_');
 const KLPager = Component.extend({
   name: 'kl-pager',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       current: 1,
@@ -107,13 +104,6 @@ const KLPager = Component.extend({
       });
     }
   },
-
-  /**
-     * @method select(page) 选择某一页
-     * @public
-     * @param  {object} page 选择页
-     * @return {void}
-     */
   select(page) {
     if (this.data.readonly || this.data.disabled) return;
 
@@ -122,10 +112,10 @@ const KLPager = Component.extend({
 
     this.data.current = page;
     /**
-         * @event select 选择某一页时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} current 当前选择页
-         */
+     * @event KLPager#select 选择某一页时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} current 当前选择页
+     */
     this.$update();
     this.$emit('select', {
       sender: this,

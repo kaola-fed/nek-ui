@@ -45,7 +45,7 @@ $u-badge-extend_color = ($name, $background) {
 
 .u-badge {
     padding: .2em .6em .3em;
-    font-size: 75%;
+    font-size: 11px;
     line-height: 1;
     background: #aaa;
     color: white;
