@@ -57,7 +57,7 @@ const KLNotify = Component.extend({
     }
 
     /**
-       * @event show 打开一条消息时触发
+       * @event KLNotify#show 打开一条消息时触发
         * @property {object} sender 事件发送对象
         * @property {object} message 弹出的消息对象
         */
@@ -73,7 +73,7 @@ const KLNotify = Component.extend({
     this.$update();
 
     /**
-         * @event close 关闭某条消息时触发
+         * @event KLNotify#close 关闭某条消息时触发
          * @property {object} sender 事件发送对象
          * @property {object} message 关闭了的消息对象
          */
@@ -109,36 +109,48 @@ const METHODS = [
   'error',
 ];
 KLNotify.METHODS = METHODS;
+
+
 /**
- * @method show(text[,state][,duration]) 弹出一个消息
  * @static
- * @public
- * @param  {string} [text] 消息内容
- * @param  {string} [state] 消息状态，可选参数：`info`、`success`、`warning`、`error`
- * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
- * @return {void}
+ * @param  {string} text 消息内容
+ * @param  {string} state 消息状态，可选参数：`info`、`success`、`warning`、`error`
+ * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
  */
+KLNotify.show = () => {};
 /**
- * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
  * @static
- * @public
- * @param  {string} [text] 消息内容
- * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
- * @return {void}
- */
-/**
- * @method close(message) 关闭某条消息
- * @static
- * @public
  * @param  {object} message 需要关闭的消息对象
- * @return {void}
  */
+KLNotify.close = () => {};
 /**
- * @method closeAll() 关闭所有消息
  * @static
- * @public
- * @return {void}
  */
+KLNotify.closeAll = () => {};
+/**
+ * @static
+ * @param  {string} text 消息内容
+ * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+ */
+KLNotify.success = () => {};
+/**
+ * @static
+ * @param  {string} text 消息内容
+ * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+ */
+KLNotify.warning = () => {};
+/**
+ * @static
+ * @param  {string} text 消息内容
+ * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+ */
+KLNotify.info = () => {};
+/**
+ * @static
+ * @param  {string} text 消息内容
+ * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+ */
+KLNotify.error = () => {};
 METHODS.forEach((method) => {
   KLNotify[method] = notify[method].bind(notify);
 });

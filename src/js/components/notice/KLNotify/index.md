@@ -67,17 +67,28 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-button type="tertiary" title="消息提示不自动关闭" on-click="{this.show(0)}" />  
-<kl-button type="tertiary" title="5秒后自动关闭" on-click="{this.show(5000)}" />  
+<kl-button type="tertiary" title="1秒后自动关闭" on-click="{this.show(1000)}" />  
 <kl-button type="tertiary" title="默认2秒" on-click="{this.show()}" />  
 ```
 
 ```javascript
+var Notify = null;
 var component = new NEKUI.Component({
     template: template,
     show: function(duration) { 
-        var Notify =  new NEKUI.KLNotify({data: {duration: duration} });
-        Notify.show('duration:' + (duration || '')); 
-    }
+        Notify =  new NEKUI.KLNotify({data: {duration: duration} });
+        var res = duration || (duration === 0 ? 0 : '2000');
+        Notify.show('duration:' + res); 
+        if(duration === 0) {
+             // 5秒后清除此Notify对象
+            setTimeout(function(Notify){
+                return function() {
+                     // close和closeAll方法在实例对象的原型链上
+                    Notify.closeAll();
+                }
+            }(Notify), 5000)
+        }
+    },
 });
 ```
 <!-- demo_end -->
@@ -103,7 +114,7 @@ var component = new NEKUI.Component({
     template: template,
     config: function() {
         // config中初始化notify，配置只显示一条消息
-        this.notify = new NEKUI.KLNotify({data: {single: true, duration: 0} });
+        this.notify = new NEKUI.KLNotify({data: {single: true, duration: 5000} });
     },
     number: 1,
     show: function(state) {
@@ -141,6 +152,7 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+
 <!-- demo_start -->
 
 ### 配置信息class
@@ -148,8 +160,8 @@ var component = new NEKUI.Component({
 
 <div class="m-example">
   <style>
-    .m-bg-notify-demo {
-        border: 1px solid red;
+    .m-bg-notify-demo .u-message{
+        color: #f00;
     }  
   </style>
 </div>
@@ -162,8 +174,8 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     show: function(visible) {
-       var Notify =  new NEKUI.KLNotify({data: {class: 'm-bg-notify-demo', duration: 0}});
-       Notify.show('设置红色边框');
+       var Notify =  new NEKUI.KLNotify({data: {class: 'm-bg-notify-demo', duration: 1000}});
+       Notify.show('设置红色字体');
     }
 });
 ```
@@ -176,7 +188,7 @@ var component = new NEKUI.Component({
 第三个参数`duration`消息展示时间，单位为ms，默认2秒，如果为0，则表示永不消失。*
 
 **同时消息提示时会派发`show`事件，可以通过`NEKUI.KLNotify.notify.$on('show', callback')`
-  监听，并且该事件一定要写在show方法调用之前**
+  监听，并且该事件一定要写在show方法调用之前,打开控制台，可以查看`$on`接收参数**
 
 <div class="m-example"></div>
 
@@ -191,9 +203,6 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     show: function(content, state, duration) {
-        NEKUI.KLNotify.notify.$on('show', function(evt){
-            alert('show方法调用成功!'); 
-        });
         NEKUI.KLNotify.show(content, state, duration);
     }
 });
@@ -223,7 +232,7 @@ var component = new NEKUI.Component({
             NEKUI.KLNotify.close(msg); 
         }, 2000);
         NEKUI.KLNotify.notify.$on('close', function(evt){
-            alert('evt对象的message属性：text【' + evt.message.text + '】;duration【' + evt.message.duration + '】;state【' + evt.message.state) + '】';
+            console.log(evt);
         });
         
     }
@@ -239,7 +248,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="closeAll" on-click="{this.show('2s后调用close方法')}" /> 
+<kl-button type="tertiary" title="closeAll" on-click="{this.show('2s后调用closeAll方法')}" /> 
 ```
 
 ```javascript

@@ -14,12 +14,6 @@ masonry: true
     <kl-button  type="tertiary" title="删除"></kl-button>
 </kl-pop-confirm>
 ```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
-```
 <!-- demo_end -->
 
 <!-- demo_start -->
@@ -34,11 +28,6 @@ var component = new NEKUI.Component({
 </kl-pop-confirm>
 ```
 
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
-```
 <!-- demo_end -->
 
 <!-- demo_start -->
@@ -59,11 +48,6 @@ var component = new NEKUI.Component({
 </kl-pop-confirm>
 ```
 
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
-```
 <!-- demo_end -->
 
 <!-- demo_start -->
@@ -121,11 +105,6 @@ var component = new NEKUI.Component({
 </div>
 ```
 
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
-```
 <!-- demo_end -->
 
 
@@ -145,11 +124,6 @@ var component = new NEKUI.Component({
     </kl-pop-confirm>
 ```
 
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
-```
 <!-- demo_end -->
 
 
@@ -163,12 +137,6 @@ var component = new NEKUI.Component({
 <kl-pop-confirm content="Are you sure delete this task?" cancelText="{'cancelText'}">
     <kl-button  type="tertiary" title="cancelText">cancelText</kl-button>
 </kl-pop-confirm>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
 ```
 <!-- demo_end -->
 
@@ -184,12 +152,6 @@ var component = new NEKUI.Component({
 <kl-pop-confirm content="Are you sure delete this task?" okText="{'okText'}">
     <kl-button  type="tertiary" title="okText"></kl-button>
 </kl-pop-confirm>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
 ```
 <!-- demo_end -->
 
@@ -251,7 +213,6 @@ var component = new NEKUI.Component({
         this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
     },
     reset: function(evt) {
-        evt.data.remark = '';
         // 手动关闭
         evt.sender.destroy();
     }

@@ -35,7 +35,7 @@ const PopUp = Component.extend({
     const $validation = this.$refs.validation;
     if (!$validation || $validation.validate().success) {
       /**
-       * @event ok 确定时触发
+       * @event KLPopConfirm#ok 确定时触发
        * @property {object} sender 事件发送对象
        * @property {object} data popConfirm组件的数据
        */
@@ -47,7 +47,7 @@ const PopUp = Component.extend({
   },
   cancel() {
     /**
-     * @event cancel 取消时触发
+     * @event KLPopConfirm#cancel 取消时触发
      * @property {object} sender 事件发送对象
      * @property {object} data popConfirm组件的数据
      */
