@@ -3,7 +3,7 @@ $header-height = 40px
 #header
     background-color #fff
     height: $heading-inner-height
-    padding $heading-padding-vertical 60px
+    padding $heading-padding-vertical 40px
     position relative
     z-index 2
 
@@ -31,10 +31,14 @@ body.docs
         position relative
         margin 0 .6em
 
+        a:hover
+            color $theme
+
 .nav-link
     padding-bottom 3px
     &:hover, &.current
-        border-bottom 3px solid $green
+        color $theme
+        border-bottom 3px solid $theme
 
 .search-query
     height 30px
@@ -50,15 +54,15 @@ body.docs
     background-size 20px
     vertical-align middle !important
     &:focus
-        border-color $green
+        border-color $theme
 
 #logo
     display inline-block
-    font-size 1.5em
     line-height $header-height
-    color $dark
     font-family $logo-font
     font-weight 500
+    font-size: 18px;
+    color: #333333;
     img
         vertical-align middle
         margin-right 6px
@@ -87,7 +91,7 @@ body.docs
         position absolute
         width 30px
         height 30px
-        background url(../images/logo.png) center center no-repeat
+        background url(../images/logo.svg) center center no-repeat
         top 5px
         left 50%
         margin-left -15px

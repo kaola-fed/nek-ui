@@ -2,33 +2,24 @@
 title: 图标
 ---
 
-使用字体图标，可以很方便地在任何位置放置矢量图形。本主题的部分字体图标由[Font Awesome](http://fortawesome.github.com/Font-Awesome)提供。
-
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+### 基本形式
+推荐使用`kl-icon`组件, 不要使用`nek-ui`内部的`icon class`
+
 <div class="m-example"></div>
 
 ```xml
 <kl-icon type="home2" />
-```
-<!-- demo_end -->
-
-### 设置icon大小和颜色
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
+<kl-icon type="home2" font-size="16" />
 <kl-icon type="home2" color="#E31436" fontSize="20" />
 ```
 <!-- demo_end -->
 
-### 图标列表（点击图标按钮复制图标代码，下放代码请先忽视）
-
 <!-- demo_start -->
+### 图标列表
+
+点击图标按钮复制图标代码，下方js代码请先忽视
+
 <div class="m-example"></div>
 
 ```xml
@@ -741,6 +732,7 @@ title: 图标
 <kl-icon fontSize=20 type="plus" on-click={this.copy($event)} />
 <kl-icon fontSize=20 type="home2" on-click={this.copy($event)} />
 ```
+
 ```javascript
 var component = new NEKUI.Component({
     template: template,
@@ -756,9 +748,8 @@ var component = new NEKUI.Component({
         copyFrom.select();
         document.execCommand('copy');
         body.removeChild(copyFrom);
-        NEKUI.KLNotify.success(text + '复制成功')
+        NEKUI.KLNotify.success('复制成功')
     }
 });
 ```
-
 <!-- demo_end -->

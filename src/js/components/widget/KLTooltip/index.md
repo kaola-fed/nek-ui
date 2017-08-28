@@ -1,16 +1,17 @@
 ---
 title: 文字提示
+masonry: true
 ---
 
-## 代码演示
-
+<!-- demo_start -->
 ### 基本形式
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
-<kl-tooltip tip="基本的tooltip"><kl-button title="鼠标放上去,可以看到提示" /></kl-tooltip>
+<kl-tooltip tip="基本的tooltip">
+    <kl-button title="鼠标放上去,可以看到提示" />
+</kl-tooltip>
 ```
 
 ```javascript
@@ -20,9 +21,9 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 位置
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml

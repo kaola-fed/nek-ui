@@ -21,9 +21,6 @@ const KLCrumb = require('../index');
 const KLCrumbItem = Component.extend({
   name: 'kl-crumb-item',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {});
     this.supr();

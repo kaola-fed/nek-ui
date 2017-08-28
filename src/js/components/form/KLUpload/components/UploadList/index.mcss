@@ -30,9 +30,11 @@ $margin = 25;
             font-size: 12px;
             cursor: pointer;
             .u-input-content {
+                position: relative;
                 display: inline-block;
                 width: 100%;
                 vertical-align: middle;
+                z-index: -1;
                 .u-icon {
                     display: inline-block;
                     width: 100%;
@@ -45,6 +47,10 @@ $margin = 25;
                 display: inline-block;
                 height: 100%;
                 vertical-align: middle;
+            }
+            &.dragover {
+                background-color: rgba(32, 159, 255, .06);
+                border: 1px dashed #20a0ff;
             }
         }
         .u-input-info {

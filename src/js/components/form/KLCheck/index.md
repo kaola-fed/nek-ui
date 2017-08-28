@@ -1,61 +1,67 @@
 ---
 title: 复选框
+masonry: true
 ---
 
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="多选按钮" />
+<kl-check name="多选按钮" checked={isChecked} on-check={console.log($event)} on-change={console.log($event)}/>
+<div>checked: {isChecked}</div>
 ```
 <!-- demo_end -->
 
-### 表单项
-
-在表单中使用
-
 <!-- demo_start -->
+### 在表单中使用
 <div class="m-example"></div>
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-check name="多选按钮1" />
-        <kl-check name="多选按钮2" />
+    <kl-form-item title="通知方式" tip="通知方式">
+            <kl-check name="邮件" checked={isEmail}/>
+            <kl-check name="短信" checked={isMsg}/>
     </kl-form-item>
 </kl-form>
+<div>通知方式：{#if isEmail} 邮件 {/if} {#if isMsg} 短信 {/if} </div>
 ```
 <!-- demo_end -->
 
-### 半选状态
-
 <!-- demo_start -->
+### 半选状态
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="半选状态" checked={test} />
+<kl-check name="半选状态" checked={isChecked} />
+<div>checked： {isChecked}</div>
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
-        test: null
+        isChecked: null
     }
 });
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+### 多行
 <div class="m-example"></div>
 
 ```xml
-<kl-check name="多选按钮" disabled />
+<kl-check name="邮件" block />
+<kl-check name="短信" block />
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 禁用组件
+<div class="m-example"></div>
+
+```xml
+<kl-check name="禁用多选按钮" disabled />
 ```
 <!-- demo_end -->

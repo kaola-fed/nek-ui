@@ -3,35 +3,55 @@
 .sidebar
     position absolute
     z-index 10
-    top $header-height
+    top $header-height + 1
     left 0
     bottom 0
-    padding $content-padding-top + 10px 0 $content-padding-top 60px
     width 260px
     margin-right 20px
     overflow-x hidden
     overflow-y auto
     -webkit-overflow-scrolling touch
     -ms-overflow-style none
+    border-right 1px $border-color solid
     h2
         margin-top .2em
     ul
         list-style-type none
         margin 0
         line-height 1.8em
-        padding-left 1em
+    .menu-root
+        padding-left 0
+        margin-left 0
+        &>li
+            box-sizing border-box
+            border-bottom 1px $border-color solid
+            background-color white
+        &>li.current
+            background-color #F6F9FC
+        .submenu-title
+            font-weight 700
+            padding 12px 0 11px 40px
+            font-size 14px
+            .u-icon
+                margin-left -14px
+                margin-right 8px
+                font-size 14px
+        .submenu
+            &>li
+                margin-bottom 15px
+                font-size 12px
+                span
+                    color: #999999
     .version-select
         vertical-align middle
         margin-left 5px
-    .menu-root
-        padding-left 0
     .menu-sub
         font-size .85em
     .sidebar-link
         color $light
         &.current
             font-weight 600
-            color $green
+            color $theme
         &.new
             &:after
                 content "NEW"
@@ -63,11 +83,11 @@
                 position relative
                 top -1px
         &:hover
-            border-bottom 2px solid $green
+            border-bottom 2px solid $theme
     .section-link
         &.active
             font-weight bold
-            color $green
+            color $theme
     .main-menu
         margin-bottom 20px
         display none
@@ -81,10 +101,10 @@
             width 125px
             display inline-block
     .become-backer
-        border 1px solid $green
+        border 1px solid $theme
         border-radius 2em
         display inline-block
-        color $green
+        color $theme
         font-size .8em
         width 125px
         padding 4px 0
@@ -94,6 +114,28 @@
         h4
             font-weight normal
             margin: 0
+
+@media screen and (min-width: 901px)
+    .sidebar
+        .menu-root
+            a:before
+                content: ''
+                display inline-block
+                width 2px
+                height 10px
+                background-color transparent
+            a:hover
+                color $theme
+                span
+                    color $theme
+            a:hover::before
+                background-color $theme
+            a.current
+                color $theme
+                span
+                    color $theme
+            a.current:before
+                background-color $theme
 
 @media screen and (max-width: 900px)
     .sidebar
@@ -117,3 +159,27 @@
         &.open
             -webkit-transform translate(0, 0)
             transform translate(0, 0)
+
+        .menu-root
+            li, li.current
+                background-color transparent
+                border-bottom 0
+                margin-bottom 20px
+            .submenu-title
+                padding 0
+                font-size 16px
+                .u-icon
+                    display none
+            a
+                border-bottom 2px transparent solid
+            a:hover
+                color $theme
+                border-bottom-color $theme
+                span
+                    color $theme
+
+            .submenu
+                margin-left -40px
+                &>li
+                    margin-bottom: 0
+                    font-size 14px

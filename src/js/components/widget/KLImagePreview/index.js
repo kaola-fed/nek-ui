@@ -1,7 +1,5 @@
 /**
- *  ------------------------------
- *  KLImagePreview 图片预览
- *  ------------------------------
+ * @file  KLImagePreview 图片预览
  */
 
 const Component = require('../../../ui-base/component');
@@ -78,6 +76,9 @@ const KLImagePreview = Component.extend({
   },
   init(data) {
     this.supr(data);
+
+    // 如果不是内嵌组件，则嵌入到document.body中
+    if (this.$root === this) this.$inject(document.body);
   },
   onClose() {
     this.destroy();

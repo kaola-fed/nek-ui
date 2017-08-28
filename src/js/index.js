@@ -40,16 +40,17 @@ const Components = {
 
   // Notice
   KLModal: require('./components/notice/KLModal'),
-  KLMask: require('./components/notice/KLMask'),
   KLNotify: require('./components/notice/KLNotify'),
   KLPopConfirm: require('./components/notice/KLPopConfirm'),
   KLMessage: require('./components/notice/KLMessage'),
 
   // Widget
+  KLBadge: require('./components/widget/KLBadge'),
   KLProgress: require('./components/widget/KLProgress'),
   KLLoading: require('./components/widget/KLLoading'),
   KLTooltip: require('./components/widget/KLTooltip'),
   KLIcon: require('./components/widget/KLIcon'),
+  KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
 
   // Layout
@@ -57,7 +58,7 @@ const Components = {
   KLTableCol: require('./components/layout/KLTable/KLTableCol'),
   KLTableTemplate: require('./components/layout/KLTable/KLTableTemplate'),
   KLRow: require('./components/layout/KLRow'),
-  KLCol: require('./components/layout/KLCol'),
+  KLCol: require('./components/layout/KLRow/KLCol'),
   KLCard: require('./components/layout/KLCard'),
   KLCardTools: require('./components/layout/KLCard/KLCardTools'),
   KLSearch: require('./components/layout/KLSearch'),

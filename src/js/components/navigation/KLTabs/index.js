@@ -1,21 +1,11 @@
 /**
- * ------------------------------------------------------------
- * KLTabs       选项卡
+ * @file KLTabs       选项卡
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
-
-/**
- * @class KLTab
- * @extend Component
- * @param {object}        [options.data]                      = 绑定属性
- * @param {object}        [options.data.title='']             => 标题
- * @param {string}        [options.data.key=null]             => key 标识
- */
 
 /**
  * @class KLTabs
@@ -24,18 +14,23 @@ const _ = require('../../../ui-base/_');
  * @param {object}        [options.data.selected=null]        <=> 当前选择卡
  * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
  * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
- * @param {boolean}       [options.data.refresh=false]        => 切换 Tab 是否重新渲染
  * @param {boolean}       [options.data.readonly=false]       => 是否只读
  * @param {boolean}       [options.data.disabled=false]       => 是否禁用
  * @param {boolean}       [options.data.visible=true]         => 是否显示
  * @param {string}        [options.data.class]                => 补充class
  */
+
+/**
+ * @class KLTab
+ * @extend Component
+ * @param {object}        [options.data]                      = 绑定属性
+ * @param {string}        [options.data.title]             => 标题
+ * @param {string}        [options.data.key=null]             => key 标识
+ */
+
 const KLTabs = Component.extend({
   name: 'kl-tabs',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       tabs: [],
@@ -48,10 +43,10 @@ const KLTabs = Component.extend({
 
     this.$watch('selected', (newValue) => {
       /**
-             * @event change 选项卡改变时触发
-             * @property {object} sender 事件发送对象
-             * @property {object} selected 改变后的选项卡
-             */
+       * @event KLTabs#change 选项卡改变时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} selected 改变后的选项卡
+       */
       this.$emit('change', {
         sender: this,
         selected: newValue,
@@ -133,21 +128,15 @@ const KLTabs = Component.extend({
     const newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
     this.setOffset(newOffset);
   },
-  /**
-     * @method select(item) 选择某一项
-     * @public
-     * @param  {object} item 选择项
-     * @return {void}
-     */
   select(item) {
     if (this.data.readonly || this.data.disabled || item.data.disabled) return;
 
     this.data.selected = item;
     /**
-         * @event select 选择某一项时触发
-         * @property {object} sender 事件发送对象
-         * @property {object} selected 当前选择卡
-         */
+     * @event KLTabs#select 选择某一项时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} selected 当前选择卡
+     */
     this.$emit('select', {
       sender: this,
       selected: item,

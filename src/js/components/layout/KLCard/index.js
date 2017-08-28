@@ -1,7 +1,7 @@
 /**
  * ------------------------------------------------------------
- * KLCard     卡片
- * @author   zianecui@gmail.com
+ * @file KLCard 卡片
+ * @author zianecui@gmail.com
  * ------------------------------------------------------------
  */
 
@@ -22,9 +22,6 @@ const KLCard = Component.extend({
   name: 'kl-card',
   template,
   $tools: null,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       title: '',

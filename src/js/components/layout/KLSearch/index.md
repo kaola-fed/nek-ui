@@ -2,11 +2,9 @@
 title: 筛选区
 ---
 
-## 代码演示
-
+<!-- demo_start -->
 ### 基本形式
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -41,9 +39,9 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 不显示“展开”切换开关
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -69,9 +67,8 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
-### 不显示Footer（根据交互规范，一行没有填满的按钮要跟在后面）
-
 <!-- demo_start -->
+### 不显示Footer（根据交互规范，一行没有填满的按钮要跟在后面）
 <div class="m-example"></div>
 
 ```xml
@@ -98,9 +95,9 @@ title: 筛选区
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 设置切换文字
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -108,17 +105,17 @@ title: 筛选区
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
-                <kl-input type="text"></kl-input>
+                <kl-input placeholder="付款类型" />
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="支付方式">
-                <kl-input type="text"></kl-input>
+                <kl-input placeholder="支付方式" />
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="订单号">
-                <kl-input type="text"></kl-input>
+                <kl-input placeholder="订单号" />
             </kl-form-item>
         </kl-col>
     </kl-row>
@@ -126,7 +123,7 @@ title: 筛选区
         <kl-row>
             <kl-col span="4">
                 <kl-form-item labelSize="60" title="合同编号">
-                    <kl-input type="text"></kl-input>
+                    <kl-input placeholder="合同编号" />
                 </kl-form-item>
             </kl-col>
         </kl-row>

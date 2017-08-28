@@ -5,14 +5,63 @@
     <div class="list">
         <ul class="menu-root">
             <% var pages = site.pages.find({type: type}).sort('order') %>
-            <% pages.forEach(function (p, i) { %>
-                <% if (type === 'components' && p.cate) { %>
-                    <% if (i === 0 || pages.data[i-1].cate !== p.cate) { %>
-                        <li><h3><%- p.cate %></h3></li>
+            <% var menus = [], currIdx = 0 %>
+            <% pages.forEach(function(p, i) {
+                // 无分类
+                if (!p.cate) {
+                    menus.push({
+                        display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
+                        title: p.title,
+                        path: p.path
+                    })
+                } else if (p.cate !== pages.data[i - 1].cate) {
+                    // 首个不同的，添加分类标题
+                    currIdx = menus.length
+                    menus.push({
+                        display: p.cate,
+                        children: [{
+                            display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
+                            title: p.title,
+                            path: p.path
+                        }]
+                    })
+                } else {
+                    // 子列表
+                    menus[currIdx].children.push({
+                        display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
+                        title: p.title,
+                        path: p.path
+                    })
+                }
+            }) %>
+
+            <% menus.forEach(function(m) {
+                var hadChild = m.children && m.children.length > 0;
+                var isActive = hadChild
+                        ? m.children.find(function(p) { return p.title === page.title })
+                        : m.title === page.title
+            %>
+                <li class="<%- isActive ? 'current' : ''%>">
+                    <div class="submenu-title">
+                        <% if (!hadChild && m.path) { %>
+                            <a href="<%- url_for(m.path) %>" class="<%- isActive ? 'current' : ''%>">
+                                <%- m.display %>
+                            </a>
+                        <% } else {%>
+                            <span class="u-icon u-icon-angle-down"></span><%- m.display %>
+                        <% } %>
+                    </div>
+                    <% if (hadChild) { %>
+                        <ul class="submenu">
+                            <% m.children.forEach(function(p) { %>
+                               <li>
+                                   <a href="<%- url_for(p.path) %>" class="<%- p.title === page.title ? 'current' : ''%>">
+                                       <%- p.display %>
+                                   </a>
+                               </li>
+                            <% }) %>
+                        </ul>
                     <% } %>
-                <% } %>
-                <li>
-                    <a href="/<%- p.path %>" class="sidebar-link<%- page.title === p.title ? ' current' : '' %><%- p.is_beta ? ' beta' : '' %><%- p.is_new ? ' new' : '' %>"><%- p.title %> <%- p.name %></a>
                 </li>
             <% }) %>
         </ul>

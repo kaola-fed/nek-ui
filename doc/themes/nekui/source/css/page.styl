@@ -3,14 +3,15 @@
 @import "_sidebar"
 
 #header
-    box-shadow 0 0 1px rgba(0,0,0,.25)
+    border-bottom 1px $border-color solid
     transition background-color .3s ease-in-out
 
 .content
     position relative
     padding 2.2em 0
-    max-width 800px
+    max-width 1400px
     margin 0 auto
+    font-size 12px
     &.api
         > a:first-of-type > h2
             margin-top 0
@@ -36,6 +37,11 @@
         margin-left 20px
     h1
         margin 0 0 1em
+    > h1
+        font-size: 20px;
+        color: #333;
+        border-bottom: 1px solid #E1E6EC;
+        margin: 40px 0px;
     h2, h3
         &:before
             content ''
@@ -43,52 +49,88 @@
             margin-top -1 * $heading-link-padding-top
             height $heading-link-padding-top
             visibility hidden
+    a>h2
+        &:before
+            margin-top: 0px;
+            height: 0px;
+        z-index: -1;
+        font-size: 16px;
+        color: #333333;
+        line-height: 22px;
+        height: 22px;
+        border-left: 3px solid #333;
+        border-bottom: none;
+        padding: 0px 8px;
+        margin: 23px 0px;
     h2
-        margin $h2-margin-top 0 .8em
-        padding-bottom .7em
-        border-bottom 1px solid $border
-        z-index: -1
+        font-size: 16px;
+        color: #333333;
+        padding: 0px 8px;
+        border-left: 3px solid #333;
+        height: 16px;
+        line-height: 16px;
+        z-index: -1;
+        &:before
+            margin-top 0px
+            height 0px
+        span
+            color #CCCCCC
+            font-weight normal
+            padding 0px 8px
     h3
-        margin $h3-margin-top 0 1.2em
         position relative
         z-index: -1
+        font-size: 12px;
+        margin: 0px 22px;
+        &:before
+            height: 100px;
         &:after
-            content "#"
-            color $green
+            content " "
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background: #0398ff;
             position absolute
-            left -0.7em
-            bottom -2px
-            font-size 1.2em
-            font-weight bold
+            left -0.9em
+            bottom 9px;
     figure
         margin 1.2em 0
     a
-        color $green
+        color $link
         font-weight 400
     blockquote
         margin 2em 0
         padding-left 20px
-        border-left 4px solid $green
+        border-left 4px solid $theme
         p
             font-weight 600
             margin-left 0
     iframe
         margin 1em 0
     > table
+        margin 10px
         border 2px solid $white
+        width 100%
         td, th
             line-height 1.6em
             padding .5em 1.4em
             border none
+        tr
+            &:nth-child(2n-1)
+                background: #fff;
+            &:nth-child(2n)
+                background: #f6f9fc;
         td
-            background-color: lighten($codebg, 60%)
+            border-bottom: 1px solid #ecf2f9;
         th
-            background-color: $green
-            color: #fff
+            background-color: #eef1f4
+            border-bottom: 1px solid #ecf2f9;
+            color: #666666
             text-align left
-        tbody
-            code
-                background-color #efefef
+    > p
+        margin: 0px 22px;
+    > dl
+        margin: 0px 22px;
     p.tip
         padding 12px 24px 12px 30px
         margin 2em 0
@@ -119,16 +161,45 @@
 
         em
             color $medium
+    > .m-example
+        padding 0px 22px
 
 .guide-links
     margin-top 2em
-    height 1em
+    border-top 1px solid #e5e5e5
+    display flex
+    font-size 14px
+
+    .placeholder
+        flex: 1
+
+    .pager
+        margin 2em 0
+
+        span
+            display inline-block
+            vertical-align middle
+
+        .icon
+            width 18px
+            height 18px
+            border-radius 50%
+            border 1px solid #ccc
+            background-position center center
+            background-repeat no-repeat
+            background-size 10px
+
+        .icon-left
+            background-image url(../images/arrow-left.png)
+            margin-right 5px
+
+        .icon-right
+            background-image url(../images/arrow-right.png)
+            margin-left 5px
 
 .footer
     color $light
-    margin-top 2em
     padding-top 2em
-    border-top 1px solid #e5e5e5
     font-size .9em
 
 #main.fix-sidebar
@@ -138,10 +209,12 @@
 @media screen and (min-width: 1590px)
     #header
         background-color rgba(255,255,255,.4)
-
+@media screen and (min-width: 1500px)
+    .content.with-sidebar
+        margin-left 270px
 @media screen and (max-width: 1500px)
     .content.with-sidebar
-        margin-left 280px
+        margin-left 250px
     #ad
         z-index 7
         position relative
@@ -162,7 +235,7 @@
     .nav-link
         padding-bottom 1px
         &:hover, &.current
-            border-bottom 2px solid $green
+            border-bottom 2px solid $theme
     #mobile-bar
         display block
     #main
@@ -192,3 +265,97 @@
             margin-left 0
     iframe
         margin: 0 !important
+
+.grid-item
+        width: auto;
+        border: 1px solid #e1e6ec;
+        margin: 0px 0px 20px 22px;
+        border-radius: 4px;
+        padding: 16px 24px;
+        font-family: PingFangTC-Regular;
+        font-size: 12px;
+        color: #666;
+        word-wrap: break-word;
+        h3
+            margin: 0;
+        em
+            padding-bottom: 8px;
+            color: #333;
+            display: block;
+            font-size: 14px;
+            line-height: 17px;
+            font-weight: bold;
+        ul
+            padding: 0 0 0 15px;
+.type-tag
+    display: inline-block;
+    margin-left: 10px;
+    padding-left: 10px;
+    font-size: 10px;
+    &-event
+      border-left: 1px solid #54a8f7;
+      color: #54a8f7;
+    &-static
+      border-left: 1px solid #54a8f7;
+      color: #54a8f7;
+.param-title
+    color: #666!important;
+
+.m-example
+    padding: 8px 0px 20px;
+.m-code 
+    margin: 0px -24px;
+    .highlight
+        background-color: #fff;
+    figure
+        margin: 0px;
+        padding: 0em 0.8em;
+.m-demowrap
+    border-top: 1px solid #e1e6ec;
+    .m-iconLine
+        position: relative;
+        text-align: center;
+        color: #B2BFCF;
+        top: -10px;
+        .revert
+            transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            -moz-transform: rotate(180deg);
+            color: #E31436;
+            border: 1px solid #E31436;
+    .m-copyCode
+        position:absolute;
+        top: 0px;
+        right: 20px;
+        z-index: 1;
+    .m-iconOuter
+        display: inline-block;
+        width: 17px;
+        height: 17px;
+        line-height: 18px;
+        border: 1px solid #B2BFCF;
+        border-radius: 9px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: transform 0.5s;
+        -ms-transition: transform 0.5s;
+        -webkit-transition: transform 0.5s;
+        -o-transition: transform 0.5s;
+        -moz-transition: transform 0.5s;
+        &:hover
+            color: #E31436;
+            border: 1px solid #E31436;
+    .m-codeBlock
+        overflow: hidden;
+        position: relative;
+        .figure-outer
+            margin-top: 10px;
+            .highlight
+                background-color #fff
+            code, pre
+                background-color #fff
+    .wrap
+        height: 0px;
+         

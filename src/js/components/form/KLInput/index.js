@@ -1,7 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLInput   输入扩展
- * @author   sensen(rainforest92@126.com)
+ * @file KLInput   输入扩展
+ * @author   sensen<rainforest92@126.com>
  * ------------------------------------------------------------
  */
 
@@ -20,7 +19,7 @@ const bowser = require('bowser');
  * @extend Component
  * @param {object}          [options.data]                    = 绑定属性
  * @param {string}          [options.data.value]              <=> 文本框的值
- * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, email, url，char，password
+ * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, char，password （email, url暂未实现），
  * @param {string}          [options.data.placeholder]        => 占位符
  * @param {string}          [options.data.state]              <=> 文本框的状态
  * @param {number}          [options.data.maxlength]          => 文本框的最大长度
@@ -37,15 +36,12 @@ const bowser = require('bowser');
  * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
  * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
- * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
+ * @param {string}          [options.data.size]               => 组件大小, sm/md
  * @param {number}          [options.data.width]              => 组件宽度
  */
 const KLInput = Component.extend({
   name: 'kl-input',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       hideTip: false,
@@ -84,9 +80,6 @@ const KLInput = Component.extend({
       }
     });
   },
-  /**
-     * @override
-     */
   rules(ruleAttris) {
     this.supr(ruleAttris);
     const self = this;
@@ -101,9 +94,6 @@ const KLInput = Component.extend({
       self.addRule(name);
     });
   },
-  /**
-     * @protected
-     */
   addRule(name) {
     const { min, max, message: _message, rules } = this.data;
 
@@ -124,11 +114,6 @@ const KLInput = Component.extend({
       rules.push(ruleCopy);
     }
   },
-  /**
-     * @method validate() 根据`rules`验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate(on = '') {
     const { readonly, disabled } = this.data;
     // 如果是readonly或者disabled状态, 无需验证
@@ -171,10 +156,7 @@ const KLInput = Component.extend({
     return result;
   },
 
-  /**
-     * 1. type=char时,去除前后的空格;
-     * 2. type=int/float时, 只能输入对应类型的数字;
-     * */
+  /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
   __valueFilter(_value) {
     const type = this.data.type;
 
@@ -206,6 +188,10 @@ const KLInput = Component.extend({
     this.$emit('input', $event);
   },
   _onSearch($event) {
+    /**
+     * @event KLInput#search 点击搜索图标时触发
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('search', $event);
   },
 });

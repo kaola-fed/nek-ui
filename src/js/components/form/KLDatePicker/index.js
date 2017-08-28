@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLDatePicker 日期选择
- * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
+ * @file KLDatePicker 日期选择
+ * @author   sensen<rainforest92@126.com>
  */
 
 const Dropdown = require('../common/Dropdown');
@@ -25,7 +23,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
  * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
  * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒, 格式为字符串"hh:mm:ss"
- * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
+ * @param {string}        [options.data.placeholder=请输入] => 文本框的占位文字
  * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
  * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
  * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
@@ -41,9 +39,6 @@ const validationMixin = require('../../../util/validationMixin');
 const KLDatePicker = Dropdown.extend({
   name: 'kl-date-picker',
   template,
-  /**
-   * @protected
-   */
   config() {
     _.extend(this.data, {
       // @inherited source: [],
@@ -96,7 +91,7 @@ const KLDatePicker = Dropdown.extend({
       }
 
       /**
-       * @event change 日期时间改变时触发
+       * @event KLDatePicker#change 日期时间改变时触发
        * @property {object} sender 事件发送对象
        * @property {object} date 改变后的日期时间
        */
@@ -161,12 +156,6 @@ const KLDatePicker = Dropdown.extend({
 
     this.initValidation();
   },
-  /**
-   * @method select(date) 选择一个日期
-   * @public
-   * @param  {Date} date 选择的日期
-   * @return {void}
-   */
   select(date, time) {
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
       return;
@@ -177,10 +166,6 @@ const KLDatePicker = Dropdown.extend({
 
     // this.toggle(false);
   },
-  /**
-   * 关闭
-   * @private
-   */
   _onClose() {
     this.toggle(false);
   },
@@ -188,7 +173,7 @@ const KLDatePicker = Dropdown.extend({
     this.data.date = this.date;
     this.data.time = this.time;
     /**
-     * @event select 选择某一项时触发
+     * @event KLDatePicker#select 选择某一项时触发
      * @property {object} sender 事件发送对象
      * @property {object} date 当前选择项
      */
@@ -199,11 +184,6 @@ const KLDatePicker = Dropdown.extend({
 
     this.toggle(false);
   },
-  /**
-   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
-   * @private
-   * @return {void}
-   */
   _onDateTimeChange(date, _time) {
     this.time = _time || '00:00:00';
     // this.data.time
@@ -213,12 +193,6 @@ const KLDatePicker = Dropdown.extend({
     this.date.setMinutes(time[1]);
     this.date.setSeconds(time[2]);
   },
-  /**
-   * @method _onInput($event) 输入日期
-   * @private
-   * @param  {object} $event
-   * @return {void}
-   */
   _onInput($event) {
     const value = $event.target.value;
     const date = value ? new Date(value) : null;
@@ -231,12 +205,6 @@ const KLDatePicker = Dropdown.extend({
       );
     }
   },
-  /**
-   * @method isOutOfRange(date) 是否超出规定的日期时间范围
-   * @public
-   * @param {Date} date 待测的日期时间
-   * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
-   */
   isOutOfRange(date) {
     const minDate = this.data.minDate;
     const maxDate = this.data.maxDate;

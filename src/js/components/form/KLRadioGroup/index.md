@@ -1,16 +1,13 @@
 ---
 title: 单选组
+masonry: true
 ---
-
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+### 基本形式
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group source={source} />
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
 ```
 
 ```javascript
@@ -18,21 +15,19 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 ```
 <!-- demo_end -->
 
-### 数据绑定
-
 <!-- demo_start -->
+### 数据绑定
 <div class="m-example"></div>
 
 ```xml
@@ -46,26 +41,26 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 11, name: '选项1'},
-            {id: 22, name: '选项2'},
-            {id: 33, name: '选项3'},
-        ]
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
+        ],
+        value: 3
     }
 });
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 表单项
 
-在表单中使用
-
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-radio-group source={source} />
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
     </kl-form-item>
 </kl-form>
 ```
@@ -75,21 +70,19 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 1
     }
 });
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+### 禁用组件
 <div class="m-example"></div>
 
 ```xml
@@ -101,25 +94,22 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
 ```
 <!-- demo_end -->
 
-### 远程数据
-
 <!-- demo_start -->
+### 远程数据
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group service={@(this.service)} />
+<kl-radio-group service={@(this.service)} value={value}/>
 ```
 
 ```javascript
@@ -128,25 +118,27 @@ var component = new NEKUI.Component({
     service: {
         getList: function(params, success) {
             NEKUI.ajax.request({
-                url: '../data/list.json',
+                url: '/data/KLRadioGroup.json',
                 method: 'get',
                 type: 'json',
                 data: params,
                 success: success
             });
         }
+    },
+    data: {
+        value: 4
     }
 });
 ```
 <!-- demo_end -->
 
-### 多行
-
 <!-- demo_start -->
+### 多行
 <div class="m-example"></div>
 
 ```xml
-<kl-radio-group source={source} block />
+<kl-radio-group source={source} value={value} block />
 ```
 
 ```javascript
@@ -154,13 +146,12 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 ```

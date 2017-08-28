@@ -1,6 +1,5 @@
 /**
- * ------------------------------------------------------------
- * KLProgress  进度条
+ * @file KLProgress  进度条
  * @author   sensen(rainforest92@126.com)
  * ------------------------------------------------------------
  */
@@ -25,9 +24,6 @@ const _ = require('../../../ui-base/_');
 const KLProgress = Component.extend({
   name: 'kl-progress',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       percent: 36,

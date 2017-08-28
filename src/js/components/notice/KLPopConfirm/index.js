@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLPopConfirm 气泡弹框
+ * @file KLPopConfirm 气泡弹框
  * @author   ziane(zianecui@gmail.com)
- * ------------------------------------------------------------
  */
 
 const dom = require('regularjs').dom;
@@ -37,7 +35,7 @@ const PopUp = Component.extend({
     const $validation = this.$refs.validation;
     if (!$validation || $validation.validate().success) {
       /**
-       * @event ok 确定时触发
+       * @event KLPopConfirm#ok 确定时触发
        * @property {object} sender 事件发送对象
        * @property {object} data popConfirm组件的数据
        */
@@ -49,7 +47,7 @@ const PopUp = Component.extend({
   },
   cancel() {
     /**
-     * @event cancel 取消时触发
+     * @event KLPopConfirm#cancel 取消时触发
      * @property {object} sender 事件发送对象
      * @property {object} data popConfirm组件的数据
      */
@@ -66,10 +64,10 @@ const PopUp = Component.extend({
  * @param {object}        [options.data]                        = 绑定属性
  * @param {string}        [options.data.content]                => 弹窗中的文本内容
  * @param {string}        [options.data.contentTemplate]        => 弹窗中的模板内容,回调中会将PopConfirm的data返回;
- * @param {string}        [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+ * @param {string}        [options.data.placement=top]          => tips展示出的位置：`top`、 `left`、 `right`、 `bottom`、 `topLeft`、 `topRight`、 `bottomLeft`、 `bottomRight`、 `leftTop`、 `leftBottom`、 `rightTop`、 `rightBottom`
  * @param {string}        [options.data.okText=确定]             => ok按钮文案
  * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
- * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
+ * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否隐藏`popover`
  */
 const KLPopConfirm = Component.extend({
   name: 'kl-pop-confirm',

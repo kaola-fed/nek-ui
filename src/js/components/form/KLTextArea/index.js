@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLTextArea   输入扩展
+ * @file KLTextArea   输入扩展
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');
@@ -19,27 +17,23 @@ const bowser = require('bowser');
  * @param {object}        [options.data]                    = 绑定属性
  * @param {string}        [options.data.value]              <=> 文本框的值
  * @param {string}        [options.data.placeholder]         => 占位符
- * @param {string}        [options.data.state]              <=> 文本框的状态
+ * @param {string}        [options.data.state]              <=> 文本框的状态(保留字段，暂无实现)
  * @param {number}        [options.data.maxlength]          => 文本框的最大长度
  * @param {object[]}      [options.data.rules=[]]           => 验证规则
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
  * @param {number}        [options.data.height=120]         => 高度
+ * @param {number}        [options.data.width]              => 组件宽度
  * @param {boolean}       [options.data.required=false]     => 是否必填
- * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+ * @param {string}        [options.data.message]         => 必填校验失败提示的消息
  * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]              => 补充class
- * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
- * @param {number}        [options.data.width]              => 组件宽度
  */
 const KLTextArea = Component.extend({
   name: 'kl-textarea',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       hideTip: false,
@@ -69,11 +63,6 @@ const KLTextArea = Component.extend({
       }
     });
   },
-  /**
-     * @method validate() 根据`rules`验证组件的值是否正确
-     * @public
-     * @return {object} result 结果
-     */
   validate(on = '') {
     const data = this.data;
     // 如果是readonly或者disabled状态, 无需验证

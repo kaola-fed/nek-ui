@@ -1,58 +1,42 @@
 ---
 title: 日期选择
+masonry: true
 ---
 
-## 代码演示
-
-### 基本形式
-
 <!-- demo_start -->
+### 日期选择
 <div class="m-example"></div>
 
 ```xml
-<kl-form>
-    <kl-form-item cols=6>
-        <kl-date-picker lang="en-US" />
-    </kl-form-item>
-    <kl-form-item cols=6>
-        <kl-date-picker date="2008-08-08" />
-    </kl-form-item>
-</kl-form>
+<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" />
+<p>当前选择的日期为：{selectDate}</p>
+<p>格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
 ```
 <!-- demo_end -->
 
-### 日期时间选择
-
 <!-- demo_start -->
+### 日期时间选择
 <div class="m-example"></div>
 
 ```xml
-<div class="f-cb">
-<kl-form>
-    <kl-form-item cols=4>
-        <kl-date-picker showTime date={date1} />
-    </kl-form-item>
-    <kl-form-item cols=4>
-        <kl-date-picker showTime date={date2} />
-    </kl-form-item>
-</kl-form>
-</div>
+<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" showTime />
+<p>当前选择的日期为: {selectDate}</p>
+<p>格式化后的日期为: {selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
-        date1: 1481287269287,
-        date2: '2016-12-09 09:03'
+        selectDate: null
     }
 });
 ```
 <!-- demo_end -->
 
-### 禁用组件
-
 <!-- demo_start -->
+### 禁用组件
+通过`disabled`属性来设置组件是否可用
 <div class="m-example"></div>
 
 ```xml
@@ -60,48 +44,64 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
-### 日期范围
-
 <!-- demo_start -->
+### 只可读组件
+通过`readonly`属性来设置组件是否值可读
 <div class="m-example"></div>
 
 ```xml
-<div class="f-cb">
-    <kl-date-picker minDate={minDate} maxDate={maxDate} class="g-col g-col-6" />
-    <kl-date-picker minDate="2008-08-08" maxDate="2008-08-16" class="g-col g-col-6" />
-</div>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        minDate: new Date(+new Date + 2*24*3600*1000),
-        maxDate: new Date(+new Date + 7*24*3600*1000)
-    }
-});
+<kl-date-picker date="2017-10-10" readonly />
 ```
 <!-- demo_end -->
 
-### 数据绑定
-
 <!-- demo_start -->
+### 日期范围
+通过指定`minDate` 和`maxDate`来控制日期选择范围
 <div class="m-example"></div>
 
 ```xml
-<div class="f-cb">
-    <kl-date-picker date={date} class="g-col g-col-6" />
-    <kl-date-picker date={date} class="g-col g-col-6" />
-</div>
+<p>控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间</p>
+<kl-date-picker minDate="2017-03-01" maxDate="2017-12-30" />
+<p>选择时间范围：开始时间不能大于结束时间</p>
+<kl-row>
+    <kl-col span=6>
+        <kl-date-picker maxDate={endTime} date={startTime} placeholder="开始时间"/>
+    </kl-col>
+    <kl-col span=6>
+        <kl-date-picker minDate="{startTime}" date={endTime} placeholder="结束时间" />
+    </kl-col>
+</kl-row>
+```
+
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 数据绑定
+通过`date`属性来进行数据绑定
+<div class="m-example"></div>
+
+```xml
+<kl-row>
+    <kl-col span=6>
+        <kl-date-picker date={date} />
+    </kl-col>
+    <kl-col span=6>
+        <kl-date-picker date={date} readonly disabled=true />
+    </kl-col>
+</kl-row>
 <p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 事件
+日期时间选择组件支持`toggle`、` select`和`change`事件
+* `toggle`： 组件展开或收起的时候触发的事件
+* `select`： 当选择日期的时候触发
+* `change`： 当所学日期变换是触发的事件
 
 请打开浏览器的控制台查看结果。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -109,5 +109,29 @@ var component = new NEKUI.Component({
     on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
     on-select={console.log('on-select:', '$event.date:', $event.date)}
     on-change={console.log('on-change:', '$event.date:', $event.date)} />
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 表单中使用
+<div class="m-example"></div>
+```xml
+<kl-form ref="form">
+    <kl-form-item title="开始时间" labelSize="70px" required >
+        <kl-date-picker date={date} />
+     </kl-form-item>
+      <kl-button title="验证" on-click={this.validate()} />
+</kl-form>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    validate: function() {
+        var $form = this.$refs.form;
+        return $form.validate().success;
+    }
+});
+
 ```
 <!-- demo_end -->

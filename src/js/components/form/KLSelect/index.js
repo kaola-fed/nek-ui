@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * Select2  选择扩展
+ * @file Select2  选择扩展
  * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
  */
 
 const Dropdown = require('../common/Dropdown');
@@ -25,7 +23,7 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {function}          [options.data.filter]                   => 如果传了该参数会对 source 数组的每一项 item 进行 filter(item) 返回 true 则显示，否则不显示
  * @param {boolean}           [options.data.source[].divider=false]   => 设置此项为分隔线
  * @param {object}            [options.data.selected]                 <=> 当前选择项
- * @param {string|number}     [options.data.value]                    <=> 当前选择值
+ * @param {string/number}     [options.data.value]                    <=> 当前选择值
  * @param {string}            [options.data.key=id]                   => 数据项的键
  * @param {string}            [options.data.nameKey=name]             => 数据项的name键
  * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
@@ -54,9 +52,6 @@ const PrivateMethod = require('./plugins/private.method');
 const KLSelect = Dropdown.extend({
   name: 'kl-select',
   template,
-  /**
-     * @protected
-     */
   config() {
     const data = this.data;
     _.extend(data, {
@@ -110,11 +105,11 @@ const KLSelect = Dropdown.extend({
         data.selected = [];
       }
       /**
-             * @event change 选择项改变时触发
+             * @event KLSelect#change 选择项改变时触发
              * @property {object} sender 事件发送对象
              * @property {object} selected 改变后的选择项
              * @property {string} key 数据项的键
-             * @property {string|number} value 改变后的选择值
+             * @property {string/number} value 改变后的选择值
              */
       this.$emit('change', {
         sender: this,
@@ -282,12 +277,6 @@ const KLSelect = Dropdown.extend({
 
     this.initValidation();
   },
-  /**
-     * @method select(item) 选择某一项
-     * @public
-     * @param  {object} item 选择项
-     * @return {void}
-     */
   select(item) {
     const data = this.data;
     const multiple = data.multiple;
@@ -313,7 +302,7 @@ const KLSelect = Dropdown.extend({
     }
 
     /**
-         * @event select 选择某一项时触发
+         * @event KLSelect#select 选择某一项时触发
          * @property {object} sender 事件发送对象
          * @property {object} selected 当前选择项
          */

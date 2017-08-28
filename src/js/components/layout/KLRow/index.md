@@ -2,11 +2,9 @@
 title: 栅格布局
 ---
 
-## 代码演示
-
+<!-- demo_start -->
 ### 基本形式
 
-<!-- demo_start -->
 <div class="m-example">
     <style>
         .u-gridContent {
@@ -75,9 +73,9 @@ title: 栅格布局
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 布局模式Flex
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -104,9 +102,9 @@ title: 栅格布局
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 列间距Gutter
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -121,9 +119,9 @@ title: 栅格布局
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 列偏移Offset
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -138,9 +136,9 @@ title: 栅格布局
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 响应式布局
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml

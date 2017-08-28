@@ -18,7 +18,6 @@
         background: $u-formctrl_background;
         $border-radius: $border-radius-base;
         border: 1px solid #EEEEEE;
-        line-height: $height-base;
         font-size: $font-size-sm;
         width: 100%;
         &:focus {

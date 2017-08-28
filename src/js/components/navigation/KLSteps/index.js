@@ -1,8 +1,6 @@
 /**
- * ------------------------------------------------------------
- * KLSteps     步骤条
+ * @file KLSteps     步骤条
  * @author   ziane(zianecui@gmail.com)
- * ------------------------------------------------------------
  */
 
 const Component = require('../../../ui-base/component');
@@ -20,9 +18,6 @@ const _ = require('../../../ui-base/_');
 const KLSteps = Component.extend({
   name: 'kl-steps',
   template,
-  /**
-     * @protected
-     */
   config() {
     _.extend(this.data, {
       steps: [],
