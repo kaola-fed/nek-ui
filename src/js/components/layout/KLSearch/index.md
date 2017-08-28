@@ -12,17 +12,17 @@ title: 筛选区
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
-                <kl-input placeholder="付款类型" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="支付方式">
-                <kl-input placeholder="支付方式" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="订单号">
-                <kl-input placeholder="订单号" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
     </kl-row>
@@ -30,7 +30,7 @@ title: 筛选区
         <kl-row>
             <kl-col span="4">
                 <kl-form-item labelSize="60" title="合同编号">
-                    <kl-input placeholder="合同编号" />
+                    <kl-input type="text"></kl-input>
                 </kl-form-item>
             </kl-col>
         </kl-row>
@@ -45,21 +45,21 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search isShowToggle={false}>
+<kl-search>
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
-                <kl-input placeholder="付款类型" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="支付方式">
-                <kl-input placeholder="支付方式" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="订单号">
-                <kl-input placeholder="订单号" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
     </kl-row>
@@ -68,7 +68,7 @@ title: 筛选区
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 不显示Footer
+### 不显示Footer（根据交互规范，一行没有填满的按钮要跟在后面）
 <div class="m-example"></div>
 
 ```xml
@@ -76,12 +76,12 @@ title: 筛选区
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
-                <kl-input placeholder="付款类型" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="支付方式">
-                <kl-input placeholder="支付方式" />
+                <kl-input type="text"></kl-input>
             </kl-form-item>
         </kl-col>
         <kl-col span="4">
