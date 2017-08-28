@@ -76,6 +76,9 @@ const KLImagePreview = Component.extend({
   },
   init(data) {
     this.supr(data);
+
+    // 如果不是内嵌组件，则嵌入到document.body中
+    if (this.$root === this) this.$inject(document.body);
   },
   onClose() {
     this.destroy();

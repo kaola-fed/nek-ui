@@ -108,9 +108,9 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (!/^KL(Notify|Form|Mask|Modal)$/.test(comp)) {
-        return false;
-      }
+      // if (!/^KL(Loading|Table|Row)$/.test(comp)) {
+      //   return false;
+      // }
 
       const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
       if (fs.existsSync(mdPath)) return true;
