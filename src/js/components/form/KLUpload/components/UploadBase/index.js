@@ -69,6 +69,7 @@ const UploadBase = Component.extend({
 
     _.extend(data, {
       fileUnitList: [],
+      dragover: false,
     });
 
     this.initWatchers();
@@ -236,11 +237,22 @@ const UploadBase = Component.extend({
   },
 
   onDragOver(e) {
+    this.data.dragover = true;
+    console.log(`over ${this.data.dragover}`);
+    e.stopPropagation();
+    e.preventDefault();
+  },
+
+  onDragLeave(e) {
+    this.data.dragover = false;
+    console.log(`leave ${this.data.dragover}`);
     e.stopPropagation();
     e.preventDefault();
   },
 
   onDrop(e) {
+    this.data.dragover = false;
+    console.log(`drop ${this.data.dragover}`);
     e.stopPropagation();
     e.preventDefault();
 
@@ -439,7 +451,7 @@ const UploadBase = Component.extend({
         }
         return Promise.resolve(checkInfo);
       });
-    } else if (beforeCheck === '') {
+    } else if (beforeCheck === '' || beforeCheck === null || beforeCheck === undefined) {
       return new Promise(preFileCheck);
     }
 

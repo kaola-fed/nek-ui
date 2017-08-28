@@ -88,6 +88,12 @@ const KLUpload = Component.extend({
     if (typeof data.maxSize === 'number') {
       data.maxSize += '';
     }
+    if (typeof data.imageWidth === 'string') {
+      data.imageWidth = parseInt(data.imageWidth);
+    }
+    if (typeof data.imageHeight === 'string') {
+      data.imageHeight = parseInt(data.imageHeight);
+    }
   },
 
   init(data) {

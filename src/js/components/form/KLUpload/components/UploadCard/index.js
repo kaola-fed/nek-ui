@@ -342,7 +342,7 @@ document.addEventListener(
       let close = true;
 
       const upload = opens[i];
-      const uploadElement = upload.$refs.element;
+      const uploadElement = upload.$refs && upload.$refs.element;
       let iterator = e.target;
 
       while (iterator) {
