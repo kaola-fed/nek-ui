@@ -64,10 +64,10 @@ const PopUp = Component.extend({
  * @param {object}        [options.data]                        = 绑定属性
  * @param {string}        [options.data.content]                => 弹窗中的文本内容
  * @param {string}        [options.data.contentTemplate]        => 弹窗中的模板内容,回调中会将PopConfirm的data返回;
- * @param {string}        [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+ * @param {string}        [options.data.placement=top]          => tips展示出的位置：`top`、 `left`、 `right`、 `bottom`、 `topLeft`、 `topRight`、 `bottomLeft`、 `bottomRight`、 `leftTop`、 `leftBottom`、 `rightTop`、 `rightBottom`
  * @param {string}        [options.data.okText=确定]             => ok按钮文案
  * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
- * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
+ * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否隐藏`popover`
  */
 const KLPopConfirm = Component.extend({
   name: 'kl-pop-confirm',

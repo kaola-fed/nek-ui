@@ -108,7 +108,7 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (!/^KL(Steps|ImagePreview|Progress|Tooltip)$/.test(comp)) {
+      if (!/^KL(Notify|Form|Mask|PopConfirm)$/.test(comp)) {
         return false;
       }
 
