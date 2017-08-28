@@ -557,21 +557,6 @@ var source = [{
     name: '小明',
     age: 20,
     rowStyle: 'background-color:#FFBC07'
-}, {
-    job: '前端开发',
-    name: '小红',
-    age: 22,
-    rowStyle: 'background-color:#E89406'
-}, {
-    job: '后端开发',
-    name: '小王',
-    age: 20,
-    rowStyle: 'background-color:#FF8306'
-}, {
-    job: '后端开发',
-    name: '小李',
-    age: 25,
-    rowStyle: 'background-color:#E85706'
 }];
 var component = new NEKUI.Component({
     template: template,
@@ -744,13 +729,13 @@ var component = new NEKUI.Component({
 ```xml
 <kl-table source={table.source} >
     {#if col[0]}
-    <kl-table-col index=1 placeholder="" width=200 />
+    <kl-table-col index=1 placeholder="" />
     {/if}
     {#if col[1]}
-    <kl-table-col index=2 name="姓名" key="name" width=200 />
+    <kl-table-col index=2 name="姓名" key="name" />
     {/if}
     {#if col[2]}
-    <kl-table-col index=3 name="年龄" key="age" width=200 />
+    <kl-table-col index=3 name="年龄" key="age" />
     {/if}
 </kl-table>
 {#list [0,1,2] as index}
@@ -800,7 +785,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table width=700>
+<kl-table>
     <kl-table-col name="title" key="title" />
     <kl-table-col name="value" key="value" />
 </kl-table>
@@ -823,7 +808,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table width=700 loading={true}>
+<kl-table loading={true}>
     <kl-table-col name="title" key="title" />
     <kl-table-col name="value" key="value" />
 </kl-table>
