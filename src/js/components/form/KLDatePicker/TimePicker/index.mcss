@@ -24,6 +24,7 @@
     }
     .u-input {
         display: inline-block;
+        box-sizing: content-box;
     }
     .u-numberinput {
         .u-btn  {
