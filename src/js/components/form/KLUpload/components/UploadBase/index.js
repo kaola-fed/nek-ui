@@ -451,7 +451,7 @@ const UploadBase = Component.extend({
         }
         return Promise.resolve(checkInfo);
       });
-    } else if (beforeCheck === '') {
+    } else if (beforeCheck === '' || beforeCheck === null || beforeCheck === undefined) {
       return new Promise(preFileCheck);
     }
 
