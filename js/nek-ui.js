@@ -83,57 +83,58 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Components = {
 	  // Form
-	  KLCheck: __webpack_require__(213),
-	  KLCheckGroup: __webpack_require__(215),
-	  KLDatePicker: __webpack_require__(217),
-	  KLRadioGroup: __webpack_require__(340),
-	  KLMultiSelect: __webpack_require__(342),
-	  KLButton: __webpack_require__(344),
-	  KLForm: __webpack_require__(346),
-	  KLFormItem: __webpack_require__(348),
+	  KLCheck: __webpack_require__(215),
+	  KLCheckGroup: __webpack_require__(217),
+	  KLDatePicker: __webpack_require__(219),
+	  KLRadioGroup: __webpack_require__(342),
+	  KLMultiSelect: __webpack_require__(344),
+	  KLButton: __webpack_require__(346),
+	  KLForm: __webpack_require__(348),
+	  KLFormItem: __webpack_require__(350),
 	  KLInput: __webpack_require__(69),
-	  KLSelect: __webpack_require__(350),
-	  KLText: __webpack_require__(355),
-	  KLTextArea: __webpack_require__(357),
-	  KLUpload: __webpack_require__(359),
+	  KLSelect: __webpack_require__(352),
+	  KLText: __webpack_require__(357),
+	  KLTextArea: __webpack_require__(359),
+	  KLUpload: __webpack_require__(361),
 	  KLTreeView: __webpack_require__(190),
 
 	  // Navigation
-	  KLSidebar: __webpack_require__(388),
-	  KLMenu: __webpack_require__(390),
-	  KLMenuItem: __webpack_require__(392),
-	  KLSubMenu: __webpack_require__(395),
-	  KLPager: __webpack_require__(397),
-	  KLTabs: __webpack_require__(399),
-	  KLTab: __webpack_require__(401),
-	  KLSteps: __webpack_require__(403),
-	  KLCrumb: __webpack_require__(405),
-	  KLCrumbItem: __webpack_require__(407),
+	  KLSidebar: __webpack_require__(390),
+	  KLMenu: __webpack_require__(392),
+	  KLMenuItem: __webpack_require__(394),
+	  KLSubMenu: __webpack_require__(397),
+	  KLPager: __webpack_require__(399),
+	  KLTabs: __webpack_require__(401),
+	  KLTab: __webpack_require__(403),
+	  KLSteps: __webpack_require__(405),
+	  KLCrumb: __webpack_require__(407),
+	  KLCrumbItem: __webpack_require__(409),
 
 	  // Notice
-	  KLModal: __webpack_require__(381),
-	  KLMask: __webpack_require__(409),
+	  KLModal: __webpack_require__(383),
 	  KLNotify: __webpack_require__(411),
 	  KLPopConfirm: __webpack_require__(413),
 	  KLMessage: __webpack_require__(427),
 
 	  // Widget
-	  KLProgress: __webpack_require__(429),
-	  KLLoading: __webpack_require__(431),
-	  KLTooltip: __webpack_require__(433),
-	  KLIcon: __webpack_require__(435),
-	  KLLocaleProvider: __webpack_require__(437),
+	  KLBadge: __webpack_require__(429),
+	  KLProgress: __webpack_require__(431),
+	  KLLoading: __webpack_require__(433),
+	  KLTooltip: __webpack_require__(435),
+	  KLIcon: __webpack_require__(437),
+	  KLImagePreview: __webpack_require__(382),
+	  KLLocaleProvider: __webpack_require__(439),
 
 	  // Layout
-	  KLTable: __webpack_require__(438),
-	  KLTableCol: __webpack_require__(448),
-	  KLTableTemplate: __webpack_require__(449),
-	  KLRow: __webpack_require__(450),
-	  KLCol: __webpack_require__(452),
-	  KLCard: __webpack_require__(454),
-	  KLCardTools: __webpack_require__(456),
-	  KLSearch: __webpack_require__(457),
-	  KLSearchMore: __webpack_require__(459)
+	  KLTable: __webpack_require__(440),
+	  KLTableCol: __webpack_require__(450),
+	  KLTableTemplate: __webpack_require__(451),
+	  KLRow: __webpack_require__(452),
+	  KLCol: __webpack_require__(454),
+	  KLCard: __webpack_require__(456),
+	  KLCardTools: __webpack_require__(458),
+	  KLSearch: __webpack_require__(459),
+	  KLSearchMore: __webpack_require__(461)
 	};
 
 	backward(Components);
@@ -1179,17 +1180,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}, { oldObj: 'Row', newObj: 'KLRow', oldName: 'ui.row' }, { oldObj: 'Col', newObj: 'KLCol', oldName: 'ui.col' }, { oldObj: 'Card', newObj: 'KLCard', oldName: 'ui.card' }, { oldObj: 'CardTools', newObj: 'KLCardTools', oldName: 'card.tools' }];
 
 	module.exports = function (Components) {
-	  // 别名组件
-	  aliasList.forEach(function (alias) {
-	    Components[alias.oldObj] = Components[alias.newObj].extend({
-	      name: alias.oldName
-	    });
-	    // 静态方法
-	    (alias.staticMethods || []).forEach(function (_static) {
-	      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
-	    });
-	  });
-
 	  (0, _assign2.default)(Components, {
 	    // 内部组件
 	    NumberInput: NumberInput.extend({ name: 'number.input' }),
@@ -1206,9 +1196,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Gotop: __webpack_require__(201),
 	    PathTool: __webpack_require__(203),
 	    Panel: __webpack_require__(199),
-	    PanelTool: __webpack_require__(212)
+	    PanelTool: __webpack_require__(212),
+	    KLMask: __webpack_require__(213)
 	  });
-		};
+
+	  // 别名组件
+	  aliasList.forEach(function (alias) {
+	    Components[alias.oldObj] = Components[alias.newObj].extend({
+	      name: alias.oldName
+	    });
+	    // 静态方法
+	    (alias.staticMethods || []).forEach(function (_static) {
+	      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
+	    });
+	  });
+	};
 
 /***/ }),
 /* 65 */
@@ -1381,9 +1383,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLInput   输入扩展
-	 * @author   sensen(rainforest92@126.com)
+	 * @file KLInput   输入扩展
+	 * @author   sensen<rainforest92@126.com>
 	 * ------------------------------------------------------------
 	 */
 
@@ -1402,7 +1403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}          [options.data]                    = 绑定属性
 	 * @param {string}          [options.data.value]              <=> 文本框的值
-	 * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, email, url，char，password
+	 * @param {string}          [options.data.type]               => 文本框的类型, 6种类型：int, float, char，password （email, url暂未实现），
 	 * @param {string}          [options.data.placeholder]        => 占位符
 	 * @param {string}          [options.data.state]              <=> 文本框的状态
 	 * @param {number}          [options.data.maxlength]          => 文本框的最大长度
@@ -1419,15 +1420,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
 	 * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
 	 * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
-	 * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
+	 * @param {string}          [options.data.size]               => 组件大小, sm/md
 	 * @param {number}          [options.data.width]              => 组件宽度
 	 */
 	var KLInput = Component.extend({
 	  name: 'kl-input',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      hideTip: false,
@@ -1466,10 +1464,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 	  },
-
-	  /**
-	     * @override
-	     */
 	  rules: function rules(ruleAttris) {
 	    this.supr(ruleAttris);
 	    var self = this;
@@ -1477,10 +1471,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      self.addRule(name);
 	    });
 	  },
-
-	  /**
-	     * @protected
-	     */
 	  addRule: function addRule(name) {
 	    var _data = this.data,
 	        min = _data.min,
@@ -1506,12 +1496,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      rules.push(ruleCopy);
 	    }
 	  },
-
-	  /**
-	     * @method validate() 根据`rules`验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 	    var _data2 = this.data,
@@ -1552,10 +1536,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 
-	  /**
-	     * 1. type=char时,去除前后的空格;
-	     * 2. type=int/float时, 只能输入对应类型的数字;
-	     * */
+	  /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
 	  __valueFilter: function __valueFilter(_value) {
 	    var type = this.data.type;
 
@@ -1584,6 +1565,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$emit('input', $event);
 	  },
 	  _onSearch: function _onSearch($event) {
+	    /**
+	     * @event KLInput#search 点击搜索图标时触发
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('search', $event);
 	  }
 	});
@@ -8190,10 +8175,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * TreeView  树型视图
+	 * @file TreeView  树型视图
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var SourceComponent = __webpack_require__(179);
@@ -8204,10 +8187,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * @class TreeView
-	 * @extend SourceComponent
 	 * @param {object}    [options.data]                          = 绑定属性
 	 * @param {object[]}  [options.data.source=[]]                <=> 数据源
 	 * @param {string}    [options.data.source[].name]            => 每项的内容
+	 * @param {string}    [options.data.key=id]                   => 数据项的键
+	 * @param {string}    [options.data.childKey=children]        => 数据子项的键
 	 * @param {boolean}   [options.data.source[].open=false]      => 此项为展开/收起状态
 	 * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
 	 * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
@@ -8215,26 +8199,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}    [options.data.value=null]               <=> 当前选择值
 	 * @param {object}    [options.data.selected=null]            <=> 当前选择项
 	 * @param {string}    [options.data.separator=,]              => 多选时value分隔符
-	 * @param {string}    [options.data.itemTemplate=null]        @=> 单项模板
 	 * @param {boolean}   [options.data.multiple=false]           => 是否多选
-	 * @param {boolean}   [options.data.hierarchical=false]       @=> 是否分级动态加载，需要service
 	 * @param {boolean}   [options.data.readonly=false]           => 是否只读
 	 * @param {boolean}   [options.data.disabled=false]           => 是否禁用
 	 * @param {boolean}   [options.data.visible=true]             => 是否显示
 	 * @param {string}    [options.data.class]                    => 补充class
-	 * @param {object}    [options.service]                       @=> 数据服务
 	 */
 	var TreeView = SourceComponent.extend({
 	  name: 'kl-tree-view',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      // @inherited source: [],
 	      key: 'id',
 	      nameKey: 'name',
+	      childKey: 'children',
 	      value: null,
 	      selected: null,
 	      multiple: false,
@@ -8257,13 +8236,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.data.value = newVal[key] || newVal[nameKey];
 	    });
 	  },
-
-	  /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
 	  select: function select(item) {
 	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
 	      return;
@@ -8274,23 +8246,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.data.selected = item;
 	    this.toggle(item);
 	    /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择项
-	         */
+	       * @event TreeView#select 选择某一项时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} selected 当前选择项
+	       */
 	    this.$emit('select', {
 	      sender: this,
 	      selected: item
 	    });
 	  },
-
-	  /**
-	     * @method toggle(item,open) 展开/收起某一项
-	     * @public
-	     * @param  {object} item 处理项
-	     * @param  {object} open 展开/收起状态。如果无此参数，则在两种状态之间切换。
-	     * @return {void}
-	     */
 	  toggle: function toggle(item, _open) {
 	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
 	      return;
@@ -8301,21 +8265,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    item.open = open;
 
 	    /**
-	         * @event toggle 展开或收起某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} item 处理项
-	         * @property {boolean} open 展开/收起状态
-	         */
+	       * @event TreeView#toggle 展开或收起某一项时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} item 处理项
+	       * @property {boolean} open 展开/收起状态
+	       */
 	    this.$emit('toggle', {
 	      sender: this,
 	      item: item,
 	      open: open
 	    });
 	  },
-
-	  /**
-	     * @private
-	     */
 	  _getSelected: function _getSelected(source) {
 	    var self = this;
 	    if (!source) return [];
@@ -9872,15 +9832,79 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(214);
+	var _ = __webpack_require__(72);
+
 	/**
-	 * ------------------------------------------------------------
-	 * KLCheck   多选按钮
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @class KLMask 已经与KLLoading合并, 请勿使用
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定数据
+	 * @param {string}            [options.data.content]              => 内容模板,纯文本或者html代码片段
+	 * @param {boolean}           [options.data.closable=true]       => 点击空白区域是否可关闭遮罩框，`true`是，`false`否
+	 * @param {string}            [options.data.class]                => 补充`class`
+	 */
+	var KLMask = Component.extend({
+	  name: 'kl-mask',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      closable: true
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+	  _handleClick: function _handleClick(e) {
+	    if (/m-mask/.test(e.target.className)) {
+	      if (this.data.closable) this.close();
+	    }
+	  },
+
+	  /**
+	     * @method close(data) 关闭遮罩
+	     * @public
+	     * @param  {object} data 额外数据
+	     * @return {void}
+	     */
+	  close: function close(data) {
+	    /**
+	         * @event close 关闭遮罩时触发
+	         * @property {object} data  {sender, data} 事件对象，包括额外数据和事件本身
+	         */
+	    this.$emit('close', {
+	      sender: this,
+	      data: data
+	    });
+	    this.destroy();
+	  }
+	});
+
+		module.exports = KLMask;
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
+
+/***/ }),
+/* 215 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLCheck 多选按钮
+	 * @author sensen <rainforest92@126.com>
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(214);
+	var template = __webpack_require__(216);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -9898,9 +9922,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLCheck = Component.extend({
 	  name: 'kl-check',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      name: '',
@@ -9913,23 +9934,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (oldValue === undefined) return;
 
 	      /**
-	             * @event change 选中状态改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} date 改变后的选中状态
-	             */
+	         * @event KLCheck#change 选中状态改变时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} date 改变后的选中状态
+	         */
 	      this.$emit('change', {
 	        sender: this,
 	        checked: newValue
 	      });
 	    });
 	  },
-
-	  /**
-	     * @method check(checked) 改变选中状态
-	     * @public
-	     * @param  {boolean} checked 选中状态。则在true/false之间切换。
-	     * @return {void}
-	     */
 	  check: function check(_checked) {
 	    if (this.data.readonly || this.data.disabled) return;
 
@@ -9938,10 +9952,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.data.checked = checked;
 
 	    /**
-	         * @event check 改变选中状态时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {boolean} checked 选中状态
-	         */
+	       * @event KLCheck#check 改变选中状态时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {boolean} checked 选中状态
+	       */
 	    this.$emit('check', {
 	      sender: this,
 	      checked: checked
@@ -9952,26 +9966,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCheck;
 
 /***/ }),
-/* 214 */
+/* 216 */
 /***/ (function(module, exports) {
 
 	module.exports = "<label class=\"u-check {class}\" z-chk={checked} z-dis={disabled}\n       r-class={ {'z-part': checked === null, 'u-check-block': block} } r-hide={!visible} title={name} on-click={this.check()}>\n  <div class=\"check_box\"><i class=\"u-icon u-icon-ok\"></i></div>{name}\n</label>"
 
 /***/ }),
-/* 215 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLCheckGroup 输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file KLCheckGroup 输入扩展
+	 * @author   sensen <rainforest92@126.com>
 	 */
 
 	var SourceComponent = __webpack_require__(179);
-	var template = __webpack_require__(216);
+	var template = __webpack_require__(218);
 	var validationMixin = __webpack_require__(170);
 
 	/**
@@ -9979,10 +9991,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend SourceComponent
 	 * @param {object}    [options.data]                    = 绑定属性
 	 * @param {object[]}  [options.data.source=[]]          <=> 数据源
-	 * @param {string}    [options.data.value='']           <=> 选择的值,separator间隔的id值
+	 * @param {string}    [options.data.value]           <=> 选择的值,separator间隔的id值
 	 * @param {string}    [options.data.source[].name=[]]   => 每项的内容
 	 * @param {string}    [options.data.key=id]             => 数据项的键
-	 * @param {string}    [options.data.separator=',']      => value的分割符号
+	 * @param {string}    [options.data.separator=,]      => value的分割符号
 	 * @param {string}    [options.data.nameKey=name]       => 数据项的name键
 	 * @param {number}    [options.data.min]                => 最少选几项
 	 * @param {number}    [options.data.max]                => 最多选几项
@@ -9999,9 +10011,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLCheckGroup = SourceComponent.extend({
 	  name: 'kl-check-group',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    this.defaults({
 	      // @inherited source: [],
@@ -10060,12 +10069,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 	  },
-
-	  /**
-	     * @method validate() 根据min, max验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
 	  validate: function validate() {
 	    var data = this.data;
 	    // 如果是readonly或者disabled状态, 无需验证
@@ -10095,7 +10098,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.data.state = '';
 	    }
 	    this.data.tip = result.message;
-
+	    /**
+	    * @event KLCheckGroup#validate 验证组件时触发
+	    * @property {object} sender 事件发送对象
+	    * @property {object} result 验证结果
+	    */
 	    this.$emit('validate', {
 	      sender: this,
 	      result: result
@@ -10105,7 +10112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	     * method _onCheck() 点击check时,改变对应的value值
+	     * @method _onCheck() 点击check时,改变对应的value值
 	     * @private
 	     */
 	  _onCheck: function _onCheck(item) {
@@ -10133,33 +10140,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCheckGroup;
 
 /***/ }),
-/* 216 */
+/* 218 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t        <kl-check name={item[nameKey]} checked={item.checked} disabled={disabled} block={block} on-check={this._onCheck(item)} />\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} aniamted\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
-/* 217 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLDatePicker 日期选择
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file KLDatePicker 日期选择
+	 * @author   sensen<rainforest92@126.com>
 	 */
 
 	var Dropdown = __webpack_require__(178);
-	var template = __webpack_require__(218);
+	var template = __webpack_require__(220);
 	var _ = __webpack_require__(72);
 
 	var filter = __webpack_require__(78);
-	var Calendar = __webpack_require__(219);
+	var Calendar = __webpack_require__(221);
 	var bowser = __webpack_require__(173);
-	var moment = __webpack_require__(221);
-	var polyfill = __webpack_require__(339);
+	var moment = __webpack_require__(223);
+	var polyfill = __webpack_require__(341);
 
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
@@ -10171,7 +10176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data.date=null]        <=> 当前选择的日期时间
 	 * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
 	 * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒, 格式为字符串"hh:mm:ss"
-	 * @param {string}        [options.data.placeholder='请输入'] => 文本框的占位文字
+	 * @param {string}        [options.data.placeholder=请输入] => 文本框的占位文字
 	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
 	 * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
 	 * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
@@ -10187,9 +10192,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLDatePicker = Dropdown.extend({
 	  name: 'kl-date-picker',
 	  template: template,
-	  /**
-	   * @protected
-	   */
 	  config: function config() {
 	    _.extend(this.data, {
 	      // @inherited source: [],
@@ -10242,7 +10244,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      /**
-	       * @event change 日期时间改变时触发
+	       * @event KLDatePicker#change 日期时间改变时触发
 	       * @property {object} sender 事件发送对象
 	       * @property {object} date 改变后的日期时间
 	       */
@@ -10302,13 +10304,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
-
-	  /**
-	   * @method select(date) 选择一个日期
-	   * @public
-	   * @param  {Date} date 选择的日期
-	   * @return {void}
-	   */
 	  select: function select(date, time) {
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
 	      return;
@@ -10319,11 +10314,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // this.toggle(false);
 	  },
-
-	  /**
-	   * 关闭
-	   * @private
-	   */
 	  _onClose: function _onClose() {
 	    this.toggle(false);
 	  },
@@ -10331,7 +10321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.data.date = this.date;
 	    this.data.time = this.time;
 	    /**
-	     * @event select 选择某一项时触发
+	     * @event KLDatePicker#select 选择某一项时触发
 	     * @property {object} sender 事件发送对象
 	     * @property {object} date 当前选择项
 	     */
@@ -10342,12 +10332,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.toggle(false);
 	  },
-
-	  /**
-	   * @method _onDateTimeChange(date, time) 日期或时间改变后更新日期时间
-	   * @private
-	   * @return {void}
-	   */
 	  _onDateTimeChange: function _onDateTimeChange(date, _time) {
 	    this.time = _time || '00:00:00';
 	    // this.data.time
@@ -10357,13 +10341,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.date.setMinutes(time[1]);
 	    this.date.setSeconds(time[2]);
 	  },
-
-	  /**
-	   * @method _onInput($event) 输入日期
-	   * @private
-	   * @param  {object} $event
-	   * @return {void}
-	   */
 	  _onInput: function _onInput($event) {
 	    var value = $event.target.value;
 	    var date = value ? new Date(value) : null;
@@ -10372,13 +10349,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
 	    }
 	  },
-
-	  /**
-	   * @method isOutOfRange(date) 是否超出规定的日期时间范围
-	   * @public
-	   * @param {Date} date 待测的日期时间
-	   * @return {boolean|Date} date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间
-	   */
 	  isOutOfRange: function isOutOfRange(date) {
 	    var minDate = this.data.minDate;
 	    var maxDate = this.data.maxDate;
@@ -10423,13 +10393,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLDatePicker;
 
 /***/ }),
-/* 218 */
+/* 220 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
-/* 219 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -10448,12 +10418,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(220);
+	var template = __webpack_require__(222);
 	var _ = __webpack_require__(72);
 
 	var bowser = __webpack_require__(173);
-	var moment = __webpack_require__(221);
-	var polyfill = __webpack_require__(339);
+	var moment = __webpack_require__(223);
+	var polyfill = __webpack_require__(341);
 
 	var MS_OF_DAY = 24 * 3600 * 1000;
 
@@ -10701,13 +10671,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Calendar;
 
 /***/ }),
-/* 220 */
+/* 222 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">{this.$trans('CAL_SUNDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_MONDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_TUESDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_WENSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_THURSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_FRIDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_SATURDAY')}</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 221 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -12539,7 +12509,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            module && module.exports) {
 	        try {
 	            oldLocale = globalLocale._abbr;
-	            __webpack_require__(223)("./" + name);
+	            __webpack_require__(225)("./" + name);
 	            // because defineLocale currently also sets the global locale, we
 	            // want to undo that for lazy loaded locales
 	            getSetGlobalLocale(oldLocale);
@@ -15174,10 +15144,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(222)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(224)(module)))
 
 /***/ }),
-/* 222 */
+/* 224 */
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -15193,240 +15163,240 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 223 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 224,
-		"./af.js": 224,
-		"./ar": 225,
-		"./ar-dz": 226,
-		"./ar-dz.js": 226,
-		"./ar-kw": 227,
-		"./ar-kw.js": 227,
-		"./ar-ly": 228,
-		"./ar-ly.js": 228,
-		"./ar-ma": 229,
-		"./ar-ma.js": 229,
-		"./ar-sa": 230,
-		"./ar-sa.js": 230,
-		"./ar-tn": 231,
-		"./ar-tn.js": 231,
-		"./ar.js": 225,
-		"./az": 232,
-		"./az.js": 232,
-		"./be": 233,
-		"./be.js": 233,
-		"./bg": 234,
-		"./bg.js": 234,
-		"./bn": 235,
-		"./bn.js": 235,
-		"./bo": 236,
-		"./bo.js": 236,
-		"./br": 237,
-		"./br.js": 237,
-		"./bs": 238,
-		"./bs.js": 238,
-		"./ca": 239,
-		"./ca.js": 239,
-		"./cs": 240,
-		"./cs.js": 240,
-		"./cv": 241,
-		"./cv.js": 241,
-		"./cy": 242,
-		"./cy.js": 242,
-		"./da": 243,
-		"./da.js": 243,
-		"./de": 244,
-		"./de-at": 245,
-		"./de-at.js": 245,
-		"./de-ch": 246,
-		"./de-ch.js": 246,
-		"./de.js": 244,
-		"./dv": 247,
-		"./dv.js": 247,
-		"./el": 248,
-		"./el.js": 248,
-		"./en-au": 249,
-		"./en-au.js": 249,
-		"./en-ca": 250,
-		"./en-ca.js": 250,
-		"./en-gb": 251,
-		"./en-gb.js": 251,
-		"./en-ie": 252,
-		"./en-ie.js": 252,
-		"./en-nz": 253,
-		"./en-nz.js": 253,
-		"./eo": 254,
-		"./eo.js": 254,
-		"./es": 255,
-		"./es-do": 256,
-		"./es-do.js": 256,
-		"./es.js": 255,
-		"./et": 257,
-		"./et.js": 257,
-		"./eu": 258,
-		"./eu.js": 258,
-		"./fa": 259,
-		"./fa.js": 259,
-		"./fi": 260,
-		"./fi.js": 260,
-		"./fo": 261,
-		"./fo.js": 261,
-		"./fr": 262,
-		"./fr-ca": 263,
-		"./fr-ca.js": 263,
-		"./fr-ch": 264,
-		"./fr-ch.js": 264,
-		"./fr.js": 262,
-		"./fy": 265,
-		"./fy.js": 265,
-		"./gd": 266,
-		"./gd.js": 266,
-		"./gl": 267,
-		"./gl.js": 267,
-		"./gom-latn": 268,
-		"./gom-latn.js": 268,
-		"./he": 269,
-		"./he.js": 269,
-		"./hi": 270,
-		"./hi.js": 270,
-		"./hr": 271,
-		"./hr.js": 271,
-		"./hu": 272,
-		"./hu.js": 272,
-		"./hy-am": 273,
-		"./hy-am.js": 273,
-		"./id": 274,
-		"./id.js": 274,
-		"./is": 275,
-		"./is.js": 275,
-		"./it": 276,
-		"./it.js": 276,
-		"./ja": 277,
-		"./ja.js": 277,
-		"./jv": 278,
-		"./jv.js": 278,
-		"./ka": 279,
-		"./ka.js": 279,
-		"./kk": 280,
-		"./kk.js": 280,
-		"./km": 281,
-		"./km.js": 281,
-		"./kn": 282,
-		"./kn.js": 282,
-		"./ko": 283,
-		"./ko.js": 283,
-		"./ky": 284,
-		"./ky.js": 284,
-		"./lb": 285,
-		"./lb.js": 285,
-		"./lo": 286,
-		"./lo.js": 286,
-		"./lt": 287,
-		"./lt.js": 287,
-		"./lv": 288,
-		"./lv.js": 288,
-		"./me": 289,
-		"./me.js": 289,
-		"./mi": 290,
-		"./mi.js": 290,
-		"./mk": 291,
-		"./mk.js": 291,
-		"./ml": 292,
-		"./ml.js": 292,
-		"./mr": 293,
-		"./mr.js": 293,
-		"./ms": 294,
-		"./ms-my": 295,
-		"./ms-my.js": 295,
-		"./ms.js": 294,
-		"./my": 296,
-		"./my.js": 296,
-		"./nb": 297,
-		"./nb.js": 297,
-		"./ne": 298,
-		"./ne.js": 298,
-		"./nl": 299,
-		"./nl-be": 300,
-		"./nl-be.js": 300,
-		"./nl.js": 299,
-		"./nn": 301,
-		"./nn.js": 301,
-		"./pa-in": 302,
-		"./pa-in.js": 302,
-		"./pl": 303,
-		"./pl.js": 303,
-		"./pt": 304,
-		"./pt-br": 305,
-		"./pt-br.js": 305,
-		"./pt.js": 304,
-		"./ro": 306,
-		"./ro.js": 306,
-		"./ru": 307,
-		"./ru.js": 307,
-		"./sd": 308,
-		"./sd.js": 308,
-		"./se": 309,
-		"./se.js": 309,
-		"./si": 310,
-		"./si.js": 310,
-		"./sk": 311,
-		"./sk.js": 311,
-		"./sl": 312,
-		"./sl.js": 312,
-		"./sq": 313,
-		"./sq.js": 313,
-		"./sr": 314,
-		"./sr-cyrl": 315,
-		"./sr-cyrl.js": 315,
-		"./sr.js": 314,
-		"./ss": 316,
-		"./ss.js": 316,
-		"./sv": 317,
-		"./sv.js": 317,
-		"./sw": 318,
-		"./sw.js": 318,
-		"./ta": 319,
-		"./ta.js": 319,
-		"./te": 320,
-		"./te.js": 320,
-		"./tet": 321,
-		"./tet.js": 321,
-		"./th": 322,
-		"./th.js": 322,
-		"./tl-ph": 323,
-		"./tl-ph.js": 323,
-		"./tlh": 324,
-		"./tlh.js": 324,
-		"./tr": 325,
-		"./tr.js": 325,
-		"./tzl": 326,
-		"./tzl.js": 326,
-		"./tzm": 327,
-		"./tzm-latn": 328,
-		"./tzm-latn.js": 328,
-		"./tzm.js": 327,
-		"./uk": 329,
-		"./uk.js": 329,
-		"./ur": 330,
-		"./ur.js": 330,
-		"./uz": 331,
-		"./uz-latn": 332,
-		"./uz-latn.js": 332,
-		"./uz.js": 331,
-		"./vi": 333,
-		"./vi.js": 333,
-		"./x-pseudo": 334,
-		"./x-pseudo.js": 334,
-		"./yo": 335,
-		"./yo.js": 335,
-		"./zh-cn": 336,
-		"./zh-cn.js": 336,
-		"./zh-hk": 337,
-		"./zh-hk.js": 337,
-		"./zh-tw": 338,
-		"./zh-tw.js": 338
+		"./af": 226,
+		"./af.js": 226,
+		"./ar": 227,
+		"./ar-dz": 228,
+		"./ar-dz.js": 228,
+		"./ar-kw": 229,
+		"./ar-kw.js": 229,
+		"./ar-ly": 230,
+		"./ar-ly.js": 230,
+		"./ar-ma": 231,
+		"./ar-ma.js": 231,
+		"./ar-sa": 232,
+		"./ar-sa.js": 232,
+		"./ar-tn": 233,
+		"./ar-tn.js": 233,
+		"./ar.js": 227,
+		"./az": 234,
+		"./az.js": 234,
+		"./be": 235,
+		"./be.js": 235,
+		"./bg": 236,
+		"./bg.js": 236,
+		"./bn": 237,
+		"./bn.js": 237,
+		"./bo": 238,
+		"./bo.js": 238,
+		"./br": 239,
+		"./br.js": 239,
+		"./bs": 240,
+		"./bs.js": 240,
+		"./ca": 241,
+		"./ca.js": 241,
+		"./cs": 242,
+		"./cs.js": 242,
+		"./cv": 243,
+		"./cv.js": 243,
+		"./cy": 244,
+		"./cy.js": 244,
+		"./da": 245,
+		"./da.js": 245,
+		"./de": 246,
+		"./de-at": 247,
+		"./de-at.js": 247,
+		"./de-ch": 248,
+		"./de-ch.js": 248,
+		"./de.js": 246,
+		"./dv": 249,
+		"./dv.js": 249,
+		"./el": 250,
+		"./el.js": 250,
+		"./en-au": 251,
+		"./en-au.js": 251,
+		"./en-ca": 252,
+		"./en-ca.js": 252,
+		"./en-gb": 253,
+		"./en-gb.js": 253,
+		"./en-ie": 254,
+		"./en-ie.js": 254,
+		"./en-nz": 255,
+		"./en-nz.js": 255,
+		"./eo": 256,
+		"./eo.js": 256,
+		"./es": 257,
+		"./es-do": 258,
+		"./es-do.js": 258,
+		"./es.js": 257,
+		"./et": 259,
+		"./et.js": 259,
+		"./eu": 260,
+		"./eu.js": 260,
+		"./fa": 261,
+		"./fa.js": 261,
+		"./fi": 262,
+		"./fi.js": 262,
+		"./fo": 263,
+		"./fo.js": 263,
+		"./fr": 264,
+		"./fr-ca": 265,
+		"./fr-ca.js": 265,
+		"./fr-ch": 266,
+		"./fr-ch.js": 266,
+		"./fr.js": 264,
+		"./fy": 267,
+		"./fy.js": 267,
+		"./gd": 268,
+		"./gd.js": 268,
+		"./gl": 269,
+		"./gl.js": 269,
+		"./gom-latn": 270,
+		"./gom-latn.js": 270,
+		"./he": 271,
+		"./he.js": 271,
+		"./hi": 272,
+		"./hi.js": 272,
+		"./hr": 273,
+		"./hr.js": 273,
+		"./hu": 274,
+		"./hu.js": 274,
+		"./hy-am": 275,
+		"./hy-am.js": 275,
+		"./id": 276,
+		"./id.js": 276,
+		"./is": 277,
+		"./is.js": 277,
+		"./it": 278,
+		"./it.js": 278,
+		"./ja": 279,
+		"./ja.js": 279,
+		"./jv": 280,
+		"./jv.js": 280,
+		"./ka": 281,
+		"./ka.js": 281,
+		"./kk": 282,
+		"./kk.js": 282,
+		"./km": 283,
+		"./km.js": 283,
+		"./kn": 284,
+		"./kn.js": 284,
+		"./ko": 285,
+		"./ko.js": 285,
+		"./ky": 286,
+		"./ky.js": 286,
+		"./lb": 287,
+		"./lb.js": 287,
+		"./lo": 288,
+		"./lo.js": 288,
+		"./lt": 289,
+		"./lt.js": 289,
+		"./lv": 290,
+		"./lv.js": 290,
+		"./me": 291,
+		"./me.js": 291,
+		"./mi": 292,
+		"./mi.js": 292,
+		"./mk": 293,
+		"./mk.js": 293,
+		"./ml": 294,
+		"./ml.js": 294,
+		"./mr": 295,
+		"./mr.js": 295,
+		"./ms": 296,
+		"./ms-my": 297,
+		"./ms-my.js": 297,
+		"./ms.js": 296,
+		"./my": 298,
+		"./my.js": 298,
+		"./nb": 299,
+		"./nb.js": 299,
+		"./ne": 300,
+		"./ne.js": 300,
+		"./nl": 301,
+		"./nl-be": 302,
+		"./nl-be.js": 302,
+		"./nl.js": 301,
+		"./nn": 303,
+		"./nn.js": 303,
+		"./pa-in": 304,
+		"./pa-in.js": 304,
+		"./pl": 305,
+		"./pl.js": 305,
+		"./pt": 306,
+		"./pt-br": 307,
+		"./pt-br.js": 307,
+		"./pt.js": 306,
+		"./ro": 308,
+		"./ro.js": 308,
+		"./ru": 309,
+		"./ru.js": 309,
+		"./sd": 310,
+		"./sd.js": 310,
+		"./se": 311,
+		"./se.js": 311,
+		"./si": 312,
+		"./si.js": 312,
+		"./sk": 313,
+		"./sk.js": 313,
+		"./sl": 314,
+		"./sl.js": 314,
+		"./sq": 315,
+		"./sq.js": 315,
+		"./sr": 316,
+		"./sr-cyrl": 317,
+		"./sr-cyrl.js": 317,
+		"./sr.js": 316,
+		"./ss": 318,
+		"./ss.js": 318,
+		"./sv": 319,
+		"./sv.js": 319,
+		"./sw": 320,
+		"./sw.js": 320,
+		"./ta": 321,
+		"./ta.js": 321,
+		"./te": 322,
+		"./te.js": 322,
+		"./tet": 323,
+		"./tet.js": 323,
+		"./th": 324,
+		"./th.js": 324,
+		"./tl-ph": 325,
+		"./tl-ph.js": 325,
+		"./tlh": 326,
+		"./tlh.js": 326,
+		"./tr": 327,
+		"./tr.js": 327,
+		"./tzl": 328,
+		"./tzl.js": 328,
+		"./tzm": 329,
+		"./tzm-latn": 330,
+		"./tzm-latn.js": 330,
+		"./tzm.js": 329,
+		"./uk": 331,
+		"./uk.js": 331,
+		"./ur": 332,
+		"./ur.js": 332,
+		"./uz": 333,
+		"./uz-latn": 334,
+		"./uz-latn.js": 334,
+		"./uz.js": 333,
+		"./vi": 335,
+		"./vi.js": 335,
+		"./x-pseudo": 336,
+		"./x-pseudo.js": 336,
+		"./yo": 337,
+		"./yo.js": 337,
+		"./zh-cn": 338,
+		"./zh-cn.js": 338,
+		"./zh-hk": 339,
+		"./zh-hk.js": 339,
+		"./zh-tw": 340,
+		"./zh-tw.js": 340
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -15439,11 +15409,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 223;
+	webpackContext.id = 225;
 
 
 /***/ }),
-/* 224 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15451,7 +15421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15521,7 +15491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 225 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15531,7 +15501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15668,7 +15638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 226 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15676,7 +15646,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15732,7 +15702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 227 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15740,7 +15710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nusret Parlak: https://github.com/nusretparlak
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15796,7 +15766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 228 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15804,7 +15774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ali Hmer: https://github.com/kikoanis
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15927,7 +15897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 229 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -15936,7 +15906,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -15992,7 +15962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 230 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16000,7 +15970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16102,7 +16072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 231 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16110,7 +16080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16166,7 +16136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 232 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16174,7 +16144,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16276,7 +16246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 233 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16286,7 +16256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16415,7 +16385,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 234 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16423,7 +16393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16510,7 +16480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 235 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16518,7 +16488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16634,7 +16604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 236 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16642,7 +16612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16758,7 +16728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 237 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16766,7 +16736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -16871,7 +16841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -16880,7 +16850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17019,7 +16989,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17027,7 +16997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17112,7 +17082,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17120,7 +17090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17289,7 +17259,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17297,7 +17267,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17357,7 +17327,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17366,7 +17336,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17443,7 +17413,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17451,7 +17421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17508,7 +17478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17518,7 +17488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17591,7 +17561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17602,7 +17572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17675,7 +17645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17683,7 +17653,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : sschueller : https://github.com/sschueller
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17758,7 +17728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17766,7 +17736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17863,7 +17833,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 248 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17871,7 +17841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -17968,7 +17938,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 249 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -17976,7 +17946,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18040,7 +18010,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 250 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18048,7 +18018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18108,7 +18078,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 251 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18116,7 +18086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18180,7 +18150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 252 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18188,7 +18158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18252,7 +18222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18260,7 +18230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18324,7 +18294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18334,7 +18304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! comment : miestasmia corrected the translation by colindean
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18402,7 +18372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18410,7 +18380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18490,14 +18460,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish (Dominican Republic) [es-do]
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18577,7 +18547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18586,7 +18556,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18662,7 +18632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18670,7 +18640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18733,7 +18703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 259 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18741,7 +18711,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18845,7 +18815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 260 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18853,7 +18823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18957,7 +18927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 261 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18965,7 +18935,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19022,7 +18992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 262 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19030,7 +19000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19110,7 +19080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 263 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19118,7 +19088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19189,7 +19159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 264 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19197,7 +19167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19272,7 +19242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 265 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19280,7 +19250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19352,7 +19322,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 266 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19360,7 +19330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19433,7 +19403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 267 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19441,7 +19411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19515,7 +19485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 268 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19523,7 +19493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : The Discoverer : https://github.com/WikiDiscoverer
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19642,7 +19612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 269 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19652,7 +19622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19746,7 +19716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 270 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19754,7 +19724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19875,7 +19845,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 271 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19883,7 +19853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20025,7 +19995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 272 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20033,7 +20003,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20139,7 +20109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 273 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20147,7 +20117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20239,7 +20209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 274 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20248,7 +20218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20327,7 +20297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 275 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20335,7 +20305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20459,7 +20429,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 276 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20468,7 +20438,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20534,7 +20504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 277 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20542,7 +20512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20619,7 +20589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 278 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20628,7 +20598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20707,7 +20677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 279 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20715,7 +20685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20801,7 +20771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 280 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20809,7 +20779,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20893,7 +20863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 281 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20901,7 +20871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20956,7 +20926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 282 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20964,7 +20934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rajeev Naik : https://github.com/rajeevnaikte
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21087,7 +21057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 283 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21096,7 +21066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21161,7 +21131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 284 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21169,7 +21139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21254,7 +21224,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 285 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21263,7 +21233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21396,7 +21366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 286 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21404,7 +21374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21471,7 +21441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 287 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21479,7 +21449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21593,7 +21563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 288 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21602,7 +21572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21695,7 +21665,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 289 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21703,7 +21673,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21811,7 +21781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 290 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21819,7 +21789,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21880,7 +21850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 291 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21888,7 +21858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21975,7 +21945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 292 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21983,7 +21953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22061,7 +22031,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 293 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22070,7 +22040,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22225,7 +22195,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 294 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22233,7 +22203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22312,7 +22282,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 295 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22321,7 +22291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22400,7 +22370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 296 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22410,7 +22380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22501,7 +22471,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 297 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22510,7 +22480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22569,7 +22539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 298 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22577,7 +22547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22697,7 +22667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 299 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22706,7 +22676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22790,7 +22760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 300 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22799,7 +22769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22883,7 +22853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 301 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22891,7 +22861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22948,7 +22918,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 302 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22956,7 +22926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23077,7 +23047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 303 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23085,7 +23055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23189,7 +23159,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 304 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23197,7 +23167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23259,7 +23229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 305 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23267,7 +23237,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23325,7 +23295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 306 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23334,7 +23304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23405,7 +23375,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 307 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23415,7 +23385,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23593,7 +23563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 308 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23601,7 +23571,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Narain Sagar : https://github.com/narainsagar
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23696,7 +23666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 309 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23704,7 +23674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23762,7 +23732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 310 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23770,7 +23740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23838,7 +23808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 311 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23847,7 +23817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23993,7 +23963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 312 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24001,7 +23971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24160,7 +24130,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 313 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24170,7 +24140,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24235,7 +24205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 314 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24243,7 +24213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24350,7 +24320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 315 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24358,7 +24328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24465,7 +24435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 316 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24473,7 +24443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24559,7 +24529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 317 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24567,7 +24537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24633,7 +24603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 318 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24641,7 +24611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24697,7 +24667,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 319 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24705,7 +24675,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24832,7 +24802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 320 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24840,7 +24810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24926,7 +24896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 321 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24935,7 +24905,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24999,7 +24969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 322 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25007,7 +24977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25071,7 +25041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 323 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25079,7 +25049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25138,7 +25108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 324 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25146,7 +25116,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25263,7 +25233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 325 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25272,7 +25242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25358,7 +25328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 326 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25367,7 +25337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25454,7 +25424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 327 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25462,7 +25432,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25517,7 +25487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 328 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25525,7 +25495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25580,7 +25550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 329 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25589,7 +25559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25736,7 +25706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 330 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25745,7 +25715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zack : https://github.com/ZackVision
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25840,7 +25810,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 331 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25848,7 +25818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25903,7 +25873,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 332 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25911,7 +25881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rasulbek Mirzayev : github.com/Rasulbeeek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25966,7 +25936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 333 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25974,7 +25944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26050,7 +26020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 334 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26058,7 +26028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26123,7 +26093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 335 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26131,7 +26101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26188,7 +26158,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 336 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26197,7 +26167,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26304,7 +26274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 337 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26314,7 +26284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Konstantin : https://github.com/skfd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26414,7 +26384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 338 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26423,7 +26393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Lam : https://github.com/hehachris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(221)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26523,7 +26493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 339 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26741,20 +26711,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 340 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLRadioGroup 输入扩展
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file KLRadioGroup 输入扩展
+	 * @author   sensen<rainforest92@126.com>
 	 */
 
 	var SourceComponent = __webpack_require__(179);
-	var template = __webpack_require__(341);
+	var template = __webpack_require__(343);
 	var _ = __webpack_require__(72);
 	var validationMixin = __webpack_require__(170);
 
@@ -26781,9 +26749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLRadioGroup = SourceComponent.extend({
 	  name: 'kl-radio-group',
 	  template: template,
-	  /**
-	     * @protected
-	     */
+
 	  config: function config() {
 	    _.extend(this.data, {
 	      // @inherited source: [],
@@ -26837,13 +26803,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return undefined;
 	    });
 	  },
-
-	  /**
-	     * @method select(item) 选择某一
-	     * @public
-	     * @param  {object} item 选择
-	     * @return {void}
-	     */
 	  select: function select(item) {
 	    if (this.data.readonly || this.data.disabled) return;
 
@@ -26855,7 +26814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    data.selected = item;
 	    /**
-	         * @event select 选择某一项时触发
+	         * @event KLRadioGroup#select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择
 	         */
@@ -26866,12 +26825,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.data.tip && this.validate();
 	  },
-
-	  /**
-	     * @method validate() 根据required验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
 	  validate: function validate(on) {
 	    var data = this.data;
 	    var result = { success: true, message: '' };
@@ -26894,7 +26847,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.data.state = '';
 	    }
 	    this.data.tip = result.message;
-
+	    /**
+	         * @event KLRadilGroup#validate 选择某一项时触发
+	         * @property {object} sender 事件发送对象
+	         * @property {object} result 验证结果
+	         */
 	    this.$emit('validate', {
 	      sender: this,
 	      on: on,
@@ -26909,28 +26866,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRadioGroup;
 
 /***/ }),
-/* 341 */
+/* 343 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div>{item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
-/* 342 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLMultiSelect 多级选择
+	 * @file KLMultiSelect 多级选择
 	 * @author   lilang
-	 * ------------------------------------------------------------
 	 */
 
 	var Dropdown = __webpack_require__(178);
 	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var template = __webpack_require__(343);
+	var template = __webpack_require__(345);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -26947,7 +26902,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}          [options.data.selected=null]            <=> 当前选择项
 	 * @param {string}          [options.data.separator=,]              => 多选时value分隔符
 	 * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
-	 * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，如果填 false 则不展示 tooltip，但是还是会抛出该数据
+	 * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
 	 * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
 	 * @param {boolean}         [options.data.readonly=false]           => 是否只读
 	 * @param {boolean}         [options.data.multiple=false]           => 是否多选
@@ -27002,7 +26957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      if (oldValue !== null && oldValue !== undefined) {
 	        /**
-	         * @event value 改变时触发
+	         * @event KLMultiSelect#value 改变时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} value 当前 value 的值
 	         */
@@ -27127,7 +27082,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      data.selected = [cate];
 	      data.open = false;
 	      /**
-	             * @event select 选择某一项时触发
+	             * @event KLMultiSelect#select 选择某一项时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} selected 当前选择项
 	             */
@@ -27299,42 +27254,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMultiSelect;
 
 /***/ }),
-/* 343 */
+/* 345 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#list selected as item}\n        {#if showPath && placement}\n        <kl-tooltip tip={item.path} placement={placement}>\n            <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n                <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n            </span>\n        </kl-tooltip>\n        {#else}\n        <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n            <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n        </span>\n        {/if}\n        {/list}\n        <kl-icon fontSize=20 type=\"{open ? 'angle-up' : 'angle-down'}\" class=\"f-fr\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
-/* 344 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLButton  按钮
-	 * @author   Cody Chan<int64ago@gmail.com>
-	 * ------------------------------------------------------------
+	 * @file KLButton 按钮
+	 * @author Cody Chan <int64ago@gmail.com>
 	 */
 
 	var validator = __webpack_require__(105);
 	var bowser = __webpack_require__(173);
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(345);
+	var template = __webpack_require__(347);
 	var _ = __webpack_require__(72);
 
 	/**
 	 * @class KLButton
-	 * @extend Component
 	 * @param {object}      [options.data]                = 绑定属性
 	 * @param {string}      [options.data.title=确定]      => 按钮标题
-	 * @param {string}      [options.data.type=default]   => 按钮样式, primary, default, info, success, warn, error
-	 * @param {string}      [options.data.size=normal]    => 按钮大小, xs, sm, lg, xl
+	 * @param {string}      [options.data.type=default]   => 按钮样式, primary, secondary, default
+	 * @param {string}      [options.data.size=normal]    => 按钮大小, sm
 	 * @param {string}      [options.data.icon]           => 按钮图标,action不能满足需求时使用;
 	 * @param {string}      [options.data.action]         => 按钮操作类型, 每种类型有对应的icon;
 	 * @param {string}      [options.data.link]           => 按钮的链接
 	 * @param {string}      [options.data.target=_self]   => 按钮链接的打开方式
-	 * @param {string}      [options.data.shape]          => circle, icon或者默认
 	 * @param {string}      [options.data.download]       => 下载链接
 	 * @param {boolean}     [options.data.loading=false]  => 是否正在加载
 	 * @param {boolean}     [options.data.disabled=false] => 禁止按钮
@@ -27413,6 +27364,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 	  },
+
+	  /**
+	   * @event KLButton#click 按钮点击事件
+	   * @property {object} sender 事件发送对象
+	   * @property {object} e event对象
+	   */
 	  onClick: function onClick(e) {
 	    var loading = this.data.loading;
 	    if (!loading) {
@@ -27431,13 +27388,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLButton;
 
 /***/ }),
-/* 345 */
+/* 347 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}"
 
 /***/ }),
-/* 346 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27447,19 +27404,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var ValidationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(347);
+	var template = __webpack_require__(349);
 
 	/**
-	 * @class UIForm
+	 * @class KLForm
 	 * @extend Validation
 	 * @param {object}      [options.data]                    = 绑定属性
 	 * @param {string}      [options.data.service]            => 全站异步获取source的接口地址
 	 * @param {string}      [options.data.class]              => 扩展样式
-	 * @param {boolean}     [options.data.inline='']          => 如果true,kl-form-item按照inline-block排列
+	 * @param {boolean}     [options.data.inline]          => 如果true,kl-form-item按照inline-block排列
 	 * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
-	 * @param {string|number} [options.data.labelSize='']     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
-	 * @param {string|number} [options.data.labelLineHeight='']  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
+	 * @param {string|number} [options.data.labelSize]     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
+	 * @param {string|number} [options.data.labelLineHeight]  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
 	 */
+
+	/**
+	 * @class KLFormItem
+	 * @extend Validation
+	 * @param {object}        [options.data]                    = 绑定属性
+	 * @param {string}        [options.data.title]              => label显示的文字
+	 * @param {string}        [options.data.titleTemplate]      => title 模板
+	 * @param {string}        [options.data.descTemplate]       => 说明区块模板
+	 * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
+	 * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
+	 * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
+	 * @param {string}        [options.data.labelLineHeight=lg] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.3), lg(值:2.5)
+	 * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
+	 * @param {boolean}       [options.data.required=false]     => 是否必选项
+	 * @param {string}        [options.data.tip]                => 字段说明
+	 * @param {string}        [options.data.class]              => 样式扩展
+	 * @param {string}        [options.data.layout]          => 排列方式: 默认(横着排)/vertical/inline;
+	 * @param {string}        [options.data.sourceKey]          => 异步获取下拉列表接口的索引值
+	 */
+
 	var KLForm = Validation.extend({
 	  name: 'kl-form',
 	  template: template,
@@ -27557,10 +27534,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      self.__updateSource($formitem, key, source);
 	    });
 	    /**
-	           * @event sourceCompleted kl-form自动获取sourceKey异步数据后触发
-	           * @property {object} sender 事件发送对象
-	           * @property {object} result 所有异步数据
-	           */
+	       * @event KLForm#sourceCompleted kl-form自动获取sourceKey异步数据后触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} result 所有异步数据
+	       */
 	    this.$emit('sourceCompleted', {
 	      sender: this,
 	      result: window.NEKSelects
@@ -27579,18 +27556,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
+	/**
+	 * @method KLForm#validate() 验证所有表单组件
+	 * @return {object} conclusion 结果说明
+	 */
 	KLForm.use(ValidationMixin);
 
 	module.exports = KLForm;
 
 /***/ }),
-/* 347 */
+/* 349 */
 /***/ (function(module, exports) {
 
 	module.exports = "<form class=\"m-form f-row f-cb {class}\" r-class=\"{{'inline':!!inline}}\">\n\t{#inc this.$body}\n</form>"
 
 /***/ }),
-/* 348 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27599,7 +27580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(349);
+	var template = __webpack_require__(351);
 
 	/**
 	 * @class KLFormItem
@@ -27714,31 +27695,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLFormItem;
 
 /***/ }),
-/* 349 */
+/* 351 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-formitem u-formitem-{layout} {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || titleTemplate}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n      {#if title}\n        {title}\n      {#else}\n        {#inc titleTemplate}\n      {/if}\n      {#if tip}<kl-tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></kl-tooltip>{/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if descTemplate}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc descTemplate}\n      </div>\n    {/if}\n  </span>\n</div>\n"
 
 /***/ }),
-/* 350 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * Select2  选择扩展
+	 * @file Select2  选择扩展
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Dropdown = __webpack_require__(178);
-	var template = __webpack_require__(351);
+	var template = __webpack_require__(353);
 	var _ = __webpack_require__(72);
 	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var Multiple = __webpack_require__(352);
-	var PrivateMethod = __webpack_require__(354);
+	var Multiple = __webpack_require__(354);
+	var PrivateMethod = __webpack_require__(356);
 
 	/**
 	 * @class KLSelect
@@ -27752,7 +27731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {function}          [options.data.filter]                   => 如果传了该参数会对 source 数组的每一项 item 进行 filter(item) 返回 true 则显示，否则不显示
 	 * @param {boolean}           [options.data.source[].divider=false]   => 设置此项为分隔线
 	 * @param {object}            [options.data.selected]                 <=> 当前选择项
-	 * @param {string|number}     [options.data.value]                    <=> 当前选择值
+	 * @param {string/number}     [options.data.value]                    <=> 当前选择值
 	 * @param {string}            [options.data.key=id]                   => 数据项的键
 	 * @param {string}            [options.data.nameKey=name]             => 数据项的name键
 	 * @param {string}            [options.data.placeholder=请选择]        => 默认项的文字，如果`placeholder`为空并且没有选择项时，将会自动选中第一项。
@@ -27781,9 +27760,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLSelect = Dropdown.extend({
 	  name: 'kl-select',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    var data = this.data;
 	    _.extend(data, {
@@ -27833,11 +27809,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        data.selected = [];
 	      }
 	      /**
-	             * @event change 选择项改变时触发
+	             * @event KLSelect#change 选择项改变时触发
 	             * @property {object} sender 事件发送对象
 	             * @property {object} selected 改变后的选择项
 	             * @property {string} key 数据项的键
-	             * @property {string|number} value 改变后的选择值
+	             * @property {string/number} value 改变后的选择值
 	             */
 	      this.$emit('change', {
 	        sender: this,
@@ -27990,13 +27966,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
-
-	  /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
 	  select: function select(item) {
 	    var data = this.data;
 	    var multiple = data.multiple;
@@ -28018,7 +27987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
-	         * @event select 选择某一项时触发
+	         * @event KLSelect#select 选择某一项时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} selected 当前选择项
 	         */
@@ -28087,13 +28056,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSelect;
 
 /***/ }),
-/* 351 */
+/* 353 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr {clearable ? 'hoverHide' : ''}\"/>\n\t\t\t\t{#if clearable}\n\t\t\t\t<kl-icon fontSize=12 type=\"error\" on-click={this.selectNone($event)} class=\"f-fr hoverShow\"/>\n\t\t\t\t{/if}\n\t\t\t\t{#if open && canSearch}\n\t\t\t\t<input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input\" r-autofocus\n\t\t\t\t\t\tplaceholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t\t\t\t{/if}\n\t\t\t\t<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，\n\t\t\t\t\t如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->\n\t\t\t\t<span r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t\t\t\t\t<kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr\" />\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>\n\t\t            <kl-icon fontSize=12 type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
-/* 352 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28104,7 +28073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(353);
+	var util = __webpack_require__(355);
 
 	module.exports = function Multiple(Component) {
 	  Component.implement({
@@ -28168,7 +28137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 353 */
+/* 355 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28222,7 +28191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = selectUtil;
 
 /***/ }),
-/* 354 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28239,7 +28208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(353);
+	var util = __webpack_require__(355);
 
 	module.exports = function PrivateMethod(Component) {
 	  Component.implement({
@@ -28329,20 +28298,18 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 355 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLText  文本
+	 * @file KLText  文本
 	 * @author   Cody Chan<int64ago@gmail.com>
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(356);
+	var template = __webpack_require__(358);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -28350,11 +28317,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}      [options.data]                = 绑定属性
 	 * @param {string}      [options.data.text=文本]      <=> 内容
-	 * @param {string}      [options.data.size]           => 大小
-	 * @param {boolean}     [options.data.isBold=false]   => 是否加粗
-	 * @param {string}      [options.data.align]          => 左右对齐方式
-	 * @param {string}      [options.data.vertical]       => 上下对齐方式
-	 * @param {string}      [options.data.type=default]   => 文本样式
+	 * @param {string}      [options.data.size]           => text大小 取值：xs、sm、lg、xl
+	 * @param {boolean}     [options.data.isBold=false]   => 是否加粗 取值：true-加粗 、false-不加粗
+	 * @param {string}      [options.data.align]          => 左右对齐方式 取值：left、center、right
+	 * @param {string}      [options.data.vertical]       => 上下对齐方式 取值：top、middle、bottom
+	 * @param {string}      [options.data.type=default]   => 文本样式 取值：default、primary、success、warning、error、inverse、muted
+	 * @param {string}      [options.dara.class]          => 自定义class
+	 * @param {string}      [options.data.url=javascript:;] =>连接的url 值为“javascript:”表示非链接文本
+	 * @param {string}      [options.data.target]        => a标签的target属性 取值：_blank、_self、_parent、_top
 	 */
 	var KLText = Component.extend({
 	  name: 'kl-text',
@@ -28385,26 +28355,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLText;
 
 /***/ }),
-/* 356 */
+/* 358 */
 /***/ (function(module, exports) {
 
-	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} f-{align} f-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'f-fwb': isBold,'u-text_unlink': url == 'javascript:;'}}>\n    {text}\n</a>"
+	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} u-text-{align} u-text-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'u-text_unlink': url == 'javascript:;','u-text-wb': isBold}}>\n    {text}\n</a>"
 
 /***/ }),
-/* 357 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLTextArea   输入扩展
+	 * @file KLTextArea   输入扩展
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(358);
+	var template = __webpack_require__(360);
 	var _ = __webpack_require__(72);
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
@@ -28417,27 +28385,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                    = 绑定属性
 	 * @param {string}        [options.data.value]              <=> 文本框的值
 	 * @param {string}        [options.data.placeholder]         => 占位符
-	 * @param {string}        [options.data.state]              <=> 文本框的状态
+	 * @param {string}        [options.data.state]              <=> 文本框的状态(保留字段，暂无实现)
 	 * @param {number}        [options.data.maxlength]          => 文本框的最大长度
 	 * @param {object[]}      [options.data.rules=[]]           => 验证规则
 	 * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
 	 * @param {number}        [options.data.height=120]         => 高度
+	 * @param {number}        [options.data.width]              => 组件宽度
 	 * @param {boolean}       [options.data.required=false]     => 是否必填
-	 * @param {string}        [options.data.message='']         => 必填校验失败提示的消息
+	 * @param {string}        [options.data.message]         => 必填校验失败提示的消息
 	 * @param {boolean}       [options.data.hideTip=false]      => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.readonly=false]     => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]       => 是否显示
 	 * @param {string}        [options.data.class]              => 补充class
-	 * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
-	 * @param {number}        [options.data.width]              => 组件宽度
 	 */
 	var KLTextArea = Component.extend({
 	  name: 'kl-textarea',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      hideTip: false,
@@ -28469,12 +28433,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 	  },
-
-	  /**
-	     * @method validate() 根据`rules`验证组件的值是否正确
-	     * @public
-	     * @return {object} result 结果
-	     */
 	  validate: function validate() {
 	    var on = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
@@ -28525,31 +28483,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTextArea;
 
 /***/ }),
-/* 358 */
+/* 360 */
 /***/ (function(module, exports) {
 
 	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
-/* 359 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 *  ------------------------------
-	 *  kl-upload 上传
-	 *  ------------------------------
+	 * @file kl-upload 上传
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
 	var Component = __webpack_require__(70);
-	var UploadList = __webpack_require__(362);
-	var UploadCard = __webpack_require__(385);
+	var UploadList = __webpack_require__(364);
+	var UploadCard = __webpack_require__(387);
 	var validationMixin = __webpack_require__(170);
-	var tpl = __webpack_require__(387);
+	var tpl = __webpack_require__(389);
 
 	/**
 	 * @class KLUpload
@@ -28571,16 +28527,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}     [options.data.num-max=Infinity]     => 可选，最大允许上传文件的个数，默认无限制
 	 * @param {number}     [options.data.num-perline]          => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
 	 *                                                             对于表单形式，默认每行展示5个
-	 * @param {number}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {string}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
 	 * @param {boolean}    [options.data.readonly=false]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
 	 *                                                             默认false，允许上传和删除图片
 	 * @param {boolean}    [options.data.hideTip=false]        => 是否显示校验错误信息，默认false显示
 	 * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
 	 * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
 	 * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
-	 * @param {string}     [options.data.klass]                => 可选，组件最外层包裹元素样式扩展
-	 * @param {function}   [options.data.beforeOnLoad]         => 可选，上传文件成功后的钩子
-	 * @param {function}   [options.data.beforeOnError]        => 可选，上传文件失败后的钩子
+	 * @param {string}     [options.data.class]                => 可选，组件最外层包裹元素样式扩展
+	 * @param {function}   [options.data.beforeOnLoad=NULL]    => 可选，Http status介于200-300时触发，用于response.code校验决定成功或失败，以及数据转换，详见demo基本形式
+	 * @param {function}   [options.data.beforeOnError=NULL]   => 可选，Http status非200-300时触发，http状态失败的钩子
 	 * @param {function}   [options.data.before-upload]        => 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise
 	 *                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，
 	 *                                                             如果非空，则提示校验信息，并停止上传
@@ -28610,7 +28566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      imageWidth: Infinity,
 	      imageHeight: Infinity,
 	      imageScale: '',
-	      klass: '',
+	      class: '',
 	      encType: 'multipart/form-data',
 	      beforeOnLoad: null,
 	      beforeOnError: null,
@@ -28626,6 +28582,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  preProcess: function preProcess(data) {
 	    if (typeof data.maxSize === 'number') {
 	      data.maxSize += '';
+	    }
+	    if (typeof data.imageWidth === 'string') {
+	      data.imageWidth = parseInt(data.imageWidth);
+	    }
+	    if (typeof data.imageHeight === 'string') {
+	      data.imageHeight = parseInt(data.imageHeight);
 	    }
 	  },
 	  init: function init(data) {
@@ -28650,45 +28612,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  onSuccess: function onSuccess(info) {
 	    /**
-	     * @event success 文件上传成功回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event KLUpload#success 文件上传成功回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('success', info);
 	  },
 	  onProgress: function onProgress(info) {
 	    /**
-	     * @event progress 文件上传进度回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event KLUpload#progress 文件上传进度回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('progress', info);
 	  },
 	  onError: function onError(info) {
 	    /**
-	     * @event error 文件上传失败回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event KLUpload#error 文件上传失败回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('error', info);
 	  },
 	  onRemove: function onRemove(info) {
 	    /**
-	     * @event remove 上传文件删除回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event KLUpload#remove 上传文件删除回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('remove', info);
 	  },
@@ -28724,7 +28686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLUpload;
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28812,7 +28774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28875,7 +28837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28887,8 +28849,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(384);
+	var UploadBase = __webpack_require__(365);
+	var tpl = __webpack_require__(386);
 
 	/**
 	 * @class UploadList
@@ -28918,7 +28880,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadList;
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28927,7 +28889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _promise = __webpack_require__(364);
+	var _promise = __webpack_require__(366);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
@@ -28941,10 +28903,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
-	var FileUnit = __webpack_require__(378);
-	var KLImagePreview = __webpack_require__(380);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
+	var FileUnit = __webpack_require__(380);
+	var KLImagePreview = __webpack_require__(382);
 
 	/**
 	 * @class UploadBase
@@ -29003,7 +28965,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 
 	    _.extend(data, {
-	      fileUnitList: []
+	      fileUnitList: [],
+	      dragover: false
 	    });
 
 	    this.initWatchers();
@@ -29034,12 +28997,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!file.uid) {
 	        var uid = utils.genUid();
 	        file.uid = uid;
-	        file.flag = Config.flagMap.ADDED;
+	        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
 	        var fileunit = {
 	          name: file.name,
 	          url: file.url,
 	          type: self.getFileType(file),
-	          flag: 'ADDED',
+	          flag: file.flag,
 	          uid: file.uid,
 	          status: 'success'
 	        };
@@ -29092,16 +29055,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      fileList.forEach(function (file) {
 	        var uid = utils.genUid();
 	        file.uid = uid;
-	        file.flag = Config.flagMap.ORIGINAL;
+	        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
 	        var fileunit = {
 	          name: file.name,
 	          url: file.url,
 	          type: self.getFileType(file),
-	          flag: 'ORIGINAL',
+	          flag: file.flag,
 	          uid: file.uid,
 	          status: 'success'
 	        };
-	        fileUnitList.push(fileunit);
+
+	        if (fileunit.flag !== Config.flagMap.DELETED) {
+	          fileUnitList.push(fileunit);
+	        }
 	      });
 	    }
 	  },
@@ -29128,10 +29094,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        newFileList.push({
 	          name: file.name,
 	          url: file.url,
-	          flag: Config.flagMap[flag],
+	          flag: flag,
 	          uid: uid
 	        });
-	      } else if (flag === 'DELETED') {
+	      } else if (flag === Config.flagMap.DELETED) {
 	        fileList[fileIndex].flag = Config.flagMap.DELETED;
 	        fileUnitList.splice(index, 1);
 	      } else if (destroyed) {
@@ -29165,10 +29131,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    e.preventDefault();
 	  },
 	  onDragOver: function onDragOver(e) {
+	    this.data.dragover = true;
+	    console.log('over ' + this.data.dragover);
+	    e.stopPropagation();
+	    e.preventDefault();
+	  },
+	  onDragLeave: function onDragLeave(e) {
+	    this.data.dragover = false;
+	    console.log('leave ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 	  },
 	  onDrop: function onDrop(e) {
+	    this.data.dragover = false;
+	    console.log('drop ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 
@@ -29200,7 +29176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              name: file.name,
 	              url: window.URL.createObjectURL(file),
 	              type: self.getFileType(file),
-	              flag: 'ADDED',
+	              flag: Config.flagMap.ADDED,
 	              uid: utils.genUid(),
 	              status: 'ready'
 	            };
@@ -29292,8 +29268,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var inst = info.sender;
 	    var file = info.file;
 	    file.destroyed = true;
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
+	    if (file.flag === Config.flagMap.ORIGINAL) {
+	      file.flag = Config.flagMap.DELETED;
 	    }
 	    inst.destroy();
 	    this.updateList();
@@ -29317,7 +29293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var data = self.data;
 	    var beforeCheck = data.beforeUpload && data.beforeUpload(file);
 
-	    var onPass = function onPass(resolve) {
+	    var preFileCheck = function preFileCheck(resolve) {
 	      var type = self.getFileType(file).toLowerCase();
 	      var preCheckInfo = '';
 
@@ -29340,17 +29316,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    };
 
-	    var onError = function onError() {};
-
 	    if (beforeCheck && beforeCheck.then) {
 	      return beforeCheck.then(function (checkInfo) {
 	        if (checkInfo === '') {
-	          return new _promise2.default(onPass, onError);
+	          return new _promise2.default(preFileCheck);
 	        }
 	        return _promise2.default.resolve(checkInfo);
 	      });
-	    } else if (beforeCheck === '') {
-	      return new _promise2.default(onPass, onError);
+	    } else if (beforeCheck === '' || beforeCheck === null || beforeCheck === undefined) {
+	      return new _promise2.default(preFileCheck);
 	    }
 
 	    return _promise2.default.resolve(beforeCheck);
@@ -29365,7 +29339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var imageHeight = data.imageHeight;
 	      var imageScale = data.imageScale;
 
-	      var onResolve = function onResolve(resolve) {
+	      var preImageCheck = function preImageCheck(resolve) {
 	        var img = new window.Image();
 	        img.onload = function () {
 	          window.URL.revokeObjectURL(img.src);
@@ -29393,9 +29367,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        img.src = window.URL.createObjectURL(file);
 	      };
 
-	      var onReject = function onReject() {};
-
-	      return new _promise2.default(onResolve, onReject);
+	      return new _promise2.default(preImageCheck);
 	    }
 	  },
 	  isAcceptedFileType: function isAcceptedFileType(file) {
@@ -29455,23 +29427,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadBase;
 
 /***/ }),
-/* 364 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(365), __esModule: true };
+	module.exports = { "default": __webpack_require__(367), __esModule: true };
 
 /***/ }),
-/* 365 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(99);
 	__webpack_require__(54);
 	__webpack_require__(38);
-	__webpack_require__(366);
+	__webpack_require__(368);
 	module.exports = __webpack_require__(6).Promise;
 
 /***/ }),
-/* 366 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29482,11 +29454,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , $export            = __webpack_require__(4)
 	  , isObject           = __webpack_require__(12)
 	  , aFunction          = __webpack_require__(8)
-	  , anInstance         = __webpack_require__(367)
-	  , forOf              = __webpack_require__(368)
-	  , speciesConstructor = __webpack_require__(371)
-	  , task               = __webpack_require__(372).set
-	  , microtask          = __webpack_require__(374)()
+	  , anInstance         = __webpack_require__(369)
+	  , forOf              = __webpack_require__(370)
+	  , speciesConstructor = __webpack_require__(373)
+	  , task               = __webpack_require__(374).set
+	  , microtask          = __webpack_require__(376)()
 	  , PROMISE            = 'Promise'
 	  , TypeError          = global.TypeError
 	  , process            = global.process
@@ -29678,7 +29650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false;          // <- notify
 	  };
-	  Internal.prototype = __webpack_require__(375)($Promise.prototype, {
+	  Internal.prototype = __webpack_require__(377)($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -29705,7 +29677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 	__webpack_require__(50)($Promise, PROMISE);
-	__webpack_require__(376)(PROMISE);
+	__webpack_require__(378)(PROMISE);
 	Wrapper = __webpack_require__(6)[PROMISE];
 
 	// statics
@@ -29729,7 +29701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return capability.promise;
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(377)(function(iter){
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(379)(function(iter){
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -29775,7 +29747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 367 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it, Constructor, name, forbiddenField){
@@ -29785,12 +29757,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(7)
-	  , call        = __webpack_require__(369)
-	  , isArrayIter = __webpack_require__(370)
+	  , call        = __webpack_require__(371)
+	  , isArrayIter = __webpack_require__(372)
 	  , anObject    = __webpack_require__(11)
 	  , toLength    = __webpack_require__(28)
 	  , getIterFn   = __webpack_require__(57)
@@ -29815,7 +29787,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.RETURN = RETURN;
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -29832,7 +29804,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
@@ -29845,7 +29817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -29858,11 +29830,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx                = __webpack_require__(7)
-	  , invoke             = __webpack_require__(373)
+	  , invoke             = __webpack_require__(375)
 	  , html               = __webpack_require__(49)
 	  , cel                = __webpack_require__(16)
 	  , global             = __webpack_require__(5)
@@ -29938,7 +29910,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -29959,11 +29931,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(5)
-	  , macrotask = __webpack_require__(372).set
+	  , macrotask = __webpack_require__(374).set
 	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
 	  , process   = global.process
 	  , Promise   = global.Promise
@@ -30032,7 +30004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var hide = __webpack_require__(9);
@@ -30044,7 +30016,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30063,7 +30035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ITERATOR     = __webpack_require__(51)('iterator')
@@ -30089,7 +30061,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30102,8 +30074,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(379);
-	var utils = __webpack_require__(360);
+	var tpl = __webpack_require__(381);
+	var utils = __webpack_require__(362);
 
 	var FileUnit = Component.extend({
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -30268,27 +30240,25 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FileUnit;
 
 /***/ }),
-/* 379 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
-/* 380 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 *  ------------------------------
-	 *  KLImagePreview 图片预览
-	 *  ------------------------------
+	 * @file  KLImagePreview 图片预览
 	 */
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(381);
-	var tpl = __webpack_require__(383);
+	var KLModal = __webpack_require__(383);
+	var tpl = __webpack_require__(385);
 
 	/**
 	 * @class KLImagePreview
@@ -30352,6 +30322,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  init: function init(data) {
 	    this.supr(data);
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
 	  },
 	  onClose: function onClose() {
 	    this.destroy();
@@ -30621,36 +30594,35 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLImagePreview;
 
 /***/ }),
-/* 381 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	/**
-	 * ------------------------------------------------------------
-	 * KLModal     模态对话框
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
+	//
+	// /**
+	//  * @filter  KLModal     模态对话框
+	//  * @author  sensen(rainforest92@126.com)
+	//  */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(382);
+	var template = __webpack_require__(384);
 	var _ = __webpack_require__(72);
 
 	/**
 	 * @class KLModal
 	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
-	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
+	 * @param {object}            [options.data]                      = 绑定属性
+	 * @param {string}            [options.data.title=提示]            => 对话框标题
 	 * @param {string}            [options.data.content]              => 对话框内容
 	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
 	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
-	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
-	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
+	 * @param {boolean}           [options.data.okDisabled=false]     => Disable 确认按钮
+	 * @param {boolean}           [options.data.cancelDisabled=false] => Disable 取消按钮
 	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
 	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
-	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
-	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
+	 * @param {string/boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
+	 * @param {string/boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
 	 * @param {string}            [options.data.class]                => 补充class
 	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
 	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
@@ -30659,9 +30631,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLModal = Component.extend({
 	  name: 'kl-modal',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      title: this.$trans('NOTICE'),
@@ -30677,10 +30646,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr();
 	  },
-
-	  /**
-	     * @protected
-	     */
 	  init: function init() {
 	    this.supr();
 
@@ -30689,15 +30654,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	     * @method close(result) 关闭对话框
-	     * @public
+	     * @method KLModal#close(result) 关闭对话框
 	     * @param  {boolean} result 点击确定还是取消
 	     * @return {void}
 	     */
 	  close: function close(result, event) {
 	    /**
-	         * @event close 关闭对话框时触发
-	         * @property {boolean} result 点击了确定还是取消
+	         * @event KLModal#close  关闭对话框时触发
+	         * @property {boolean} result 点击事件按钮，确定/取消
 	         */
 	    this.$emit('close', {
 	      result: result
@@ -30706,26 +30670,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	     * @method ok() 确定对话框
-	     * @public
+	     * @method KLModal#ok() 确定对话框
 	     * @return {void}
 	     */
 	  ok: function ok(event) {
 	    /**
-	         * @event ok 确定对话框时触发
+	         * @event KLModal#ok 确定对话框时触发
 	         */
 	    this.$emit('ok', event);
 	    !this.data.noClose && this.destroy();
 	  },
 
 	  /**
-	     * @method cancel() 取消对话框
-	     * @public
+	     * @method KLModal#cancel() 取消对话框
 	     * @return {void}
 	     */
 	  cancel: function cancel() {
 	    /**
-	         * @event cancel 取消对话框时触发
+	         * @event KLModal#cancel 取消对话框时触发
 	         */
 	    this.$emit('cancel');
 	    this.destroy();
@@ -30740,12 +30702,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	/**
-	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
 	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
+	 * @param  {string} content 对话框内容
+	 * @param  {string} title=提示 对话框标题
 	 */
 	KLModal.alert = function (content, title, okButton) {
 	  var modal = new this({
@@ -30760,12 +30719,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	/**
-	 * @method confirm(content[,title]) 弹出一个confirm对话框
 	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
+	 * @param  {string} content 对话框内容
+	 * @param  {string} title=提示 对话框标题
 	 */
 	KLModal.confirm = function (content, title, okButton, cancelButton) {
 	  var modal = new this({
@@ -30780,36 +30736,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return modal;
 	};
 
-	// var oldExtend = Modal.extend;
-	// Modal.extend = function() {
-	//     var extended = oldExtend.apply(this, arguments);
-	//     extended.alert = this.alert;
-	//     extended.confirm = this.confirm;
-	//     return extended;
-	// }
-
 	module.exports = KLModal;
-
-/***/ }),
-/* 382 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
-/* 383 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 /* 384 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      beforeOnLoad={beforeOnLoad}\n                      beforeOnError={beforeOnError}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 385 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      beforeOnLoad={beforeOnLoad}\n                      beforeOnError={beforeOnError}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30821,9 +30769,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(386);
+	var utils = __webpack_require__(362);
+	var UploadBase = __webpack_require__(365);
+	var Config = __webpack_require__(363);
+	var tpl = __webpack_require__(388);
 
 	/**
 	 * @class UploadCard
@@ -30901,7 +30850,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              name: file.name,
 	              url: window.URL.createObjectURL(file),
 	              type: self.getFileType(file),
-	              flag: 'ADDED',
+	              flag: Config.flagMap.ADDED,
 	              uid: utils.genUid(),
 	              status: 'ready'
 	            };
@@ -30970,8 +30919,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    self.toggle(false);
 	    file.destroyed = true;
 
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
+	    if (file.flag === Config.flagMap.ORIGINAL) {
+	      file.flag = Config.flagMap.DELETED;
 	    }
 	    inst.destroy();
 	    self.updateList();
@@ -31136,7 +31085,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var close = true;
 
 	    var upload = opens[i];
-	    var uploadElement = upload.$refs.element;
+	    var uploadElement = upload.$refs && upload.$refs.element;
 	    var iterator = e.target;
 
 	    while (iterator) {
@@ -31157,54 +31106,49 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadCard;
 
 /***/ }),
-/* 386 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                beforeOnLoad={beforeOnLoad}\n                                beforeOnError={beforeOnError}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {klass}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
-
-/***/ }),
 /* 388 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                beforeOnLoad={beforeOnLoad}\n                                beforeOnError={beforeOnError}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+
+/***/ }),
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLSidebar
+	 * @file KLSidebar
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(389);
+	var template = __webpack_require__(391);
 
 	/**
 	 * @class KLSidebar
 	 * @extend Component
-	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {object}        [options.data]                          => 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {array}         [options.data.menus]                    => 菜单数组
-	 * @param {string}        [options.data.top='60px']               => 菜单style top的值
+	 * @param {string}        [options.data.top=60px]               => 菜单style top的值
 	 * @param {boolean}       [options.data.active=true]              => 默认是否收起
-	 * @param {string}        [options.data.bodyEl='']                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
+	 * @param {string}        [options.data.bodyEl]                => 主内容区body元素的id,当菜单收起时,拉伸bodyEl
 	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
 	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
-	 * @param {string}        [options.data.urlKey="url"]             => 菜单结构中的链接key名
-	 * @param {string}        [options.data.pageKey="title"]          => 二级菜单的字段key名
-	 * @param {string}        [options.data.childrenKey="children"]   => 一级菜单对象下二级菜单数组的key名
+	 * @param {string}        [options.data.urlKey=url]             => 菜单结构中的链接key名
+	 * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
+	 * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
 	 */
 	var KLSidebar = Component.extend({
 	  name: 'kl-sidebar',
 	  template: template,
-	  /**
-	   * @protected
-	   */
 	  config: function config() {
 	    this.defaults({
 	      class: '',
@@ -31248,42 +31192,59 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSidebar;
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports) {
 
 	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
-/* 390 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLMenu      两级菜单
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file KLMenu      导航菜单
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(391);
+	var template = __webpack_require__(393);
 
 	/**
-	 * @class Menu
+	 * @class KLMenu
 	 * @extend Component
 	 * @param {object}        [options.data]                          = 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
 	 */
+
+	/**
+	 * @class KLSubMenu
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
+	 * @param {string}        [options.data.url]                   => 如果一级菜单需要链接,可配置url属性
+	 * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
+	 */
+
+	/**
+	 * @class KLMenuItem
+	 * @extend Component
+	 * @param {object}        [options.data]                          = 绑定属性
+	 * @param {string}        [options.data.class]                    => 补充class
+	 * @param {string}        [options.data.title]                    => 标题文案
+	 * @param {string}        [options.data.url]                      => 跳转链接
+	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
+	 */
+
 	var KLMenu = Component.extend({
 	  name: 'kl-menu',
 	  template: template,
 	  openedMenus: [],
 	  currentItem: null,
-	  /**
-	   * @protected
-	   */
 	  config: function config() {
 	    this.defaults({
 	      class: '',
@@ -31324,13 +31285,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMenu;
 
 /***/ }),
-/* 391 */
+/* 393 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
 
 /***/ }),
-/* 392 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31343,8 +31304,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(393);
-	var RootMenuMixin = __webpack_require__(394);
+	var template = __webpack_require__(395);
+	var RootMenuMixin = __webpack_require__(396);
 
 	/**
 	 * @class KLMenuItem
@@ -31398,18 +31359,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMenuItem;
 
 /***/ }),
-/* 393 */
+/* 395 */
 /***/ (function(module, exports) {
 
 	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
 
 /***/ }),
-/* 394 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var KLMenu = __webpack_require__(390);
+	var KLMenu = __webpack_require__(392);
 
 	module.exports = function (Component) {
 	  Component.implement({
@@ -31431,7 +31392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 395 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31444,8 +31405,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(396);
-	var RootMenuMixin = __webpack_require__(394);
+	var template = __webpack_require__(398);
+	var RootMenuMixin = __webpack_require__(396);
 
 	/**
 	 * @class KLSubMenu
@@ -31453,8 +31414,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                          = 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
-	 * @param {string}        [options.data.url='']                   => 如果一级菜单需要链接,可配置url属性
-	 * @param {string}        [options.data.iconClass='']             => 菜单文字前的icon
+	 * @param {string}        [options.data.url]                   => 如果一级菜单需要链接,可配置url属性
+	 * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
 	 */
@@ -31499,26 +31460,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSubMenu;
 
 /***/ }),
-/* 396 */
+/* 398 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if url}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } href=\"{url}\">\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <ul class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
-/* 397 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLPager     分页
+	 * @file KLPager     分页
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(398);
+	var template = __webpack_require__(400);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31529,24 +31488,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}        [options.data.total=0]          => 总页数
 	 * @param {number}        [options.data.sumTotal=0]       => 总个数
 	 * @param {number}        [options.data.pageSize=20]      => 每页个数
-	 * @param {string}        [options.data.position=center]  => 分页的位置，可选参数：`center`、`left`、`right`
 	 * @param {number}        [options.data.middle=5]         => 当页数较多时，中间显示的页数
 	 * @param {number}        [options.data.side=2]           => 当页数较多时，两端显示的页数
 	 * @param {number}        [options.data.step=5]           => 每页条数选择步长
 	 * @param {number}        [options.data.maxPageSize=50]   => 最大可设置的每页条数
-	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
-	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]     => 是否显示
-	 * @param {boolean}       [options.data.isEllipsis=false]     => 是否展示位总条数+
-	 * @param {number}       [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
+	 * @param {boolean}       [options.data.isEllipsis=false] => 是否展示位总条数+
+	 * @param {number}        [options.data.maxTotal]         => 总条数超过maxTotal条数时，展示为maxTotal+条数
 	 * @param {string}        [options.data.class]            => 补充class
 	 */
 	var KLPager = Component.extend({
 	  name: 'kl-pager',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    var _this = this;
 
@@ -31625,14 +31577,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  },
-
-
-	  /**
-	     * @method select(page) 选择某一页
-	     * @public
-	     * @param  {object} page 选择页
-	     * @return {void}
-	     */
 	  select: function select(page) {
 	    if (this.data.readonly || this.data.disabled) return;
 
@@ -31641,10 +31585,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.data.current = page;
 	    /**
-	         * @event select 选择某一页时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} current 当前选择页
-	         */
+	     * @event KLPager#select 选择某一页时触发
+	     * @property {object} sender 事件发送对象
+	     * @property {object} current 当前选择页
+	     */
 	    this.$update();
 	    this.$emit('select', {
 	      sender: this,
@@ -31673,35 +31617,25 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPager;
 
 /***/ }),
-/* 398 */
+/* 400 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 399 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLTabs       选项卡
+	 * @file KLTabs       选项卡
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(400);
+	var template = __webpack_require__(402);
 	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLTab
-	 * @extend Component
-	 * @param {object}        [options.data]                      = 绑定属性
-	 * @param {object}        [options.data.title='']             => 标题
-	 * @param {string}        [options.data.key=null]             => key 标识
-	 */
 
 	/**
 	 * @class KLTabs
@@ -31710,18 +31644,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data.selected=null]        <=> 当前选择卡
 	 * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
 	 * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
-	 * @param {boolean}       [options.data.refresh=false]        => 切换 Tab 是否重新渲染
 	 * @param {boolean}       [options.data.readonly=false]       => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]       => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]         => 是否显示
 	 * @param {string}        [options.data.class]                => 补充class
 	 */
+
+	/**
+	 * @class KLTab
+	 * @extend Component
+	 * @param {object}        [options.data]                      = 绑定属性
+	 * @param {string}        [options.data.title]             => 标题
+	 * @param {string}        [options.data.key=null]             => key 标识
+	 */
+
 	var KLTabs = Component.extend({
 	  name: 'kl-tabs',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    var _this = this;
 
@@ -31736,10 +31675,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.$watch('selected', function (newValue) {
 	      /**
-	             * @event change 选项卡改变时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 改变后的选项卡
-	             */
+	       * @event KLTabs#change 选项卡改变时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} selected 改变后的选项卡
+	       */
 	      _this.$emit('change', {
 	        sender: _this,
 	        selected: newValue,
@@ -31822,22 +31761,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : navWidth - wrapWidth;
 	    this.setOffset(newOffset);
 	  },
-
-	  /**
-	     * @method select(item) 选择某一项
-	     * @public
-	     * @param  {object} item 选择项
-	     * @return {void}
-	     */
 	  select: function select(item) {
 	    if (this.data.readonly || this.data.disabled || item.data.disabled) return;
 
 	    this.data.selected = item;
 	    /**
-	         * @event select 选择某一项时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} selected 当前选择卡
-	         */
+	     * @event KLTabs#select 选择某一项时触发
+	     * @property {object} sender 事件发送对象
+	     * @property {object} selected 当前选择卡
+	     */
 	    this.$emit('select', {
 	      sender: this,
 	      selected: item,
@@ -31853,13 +31785,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTabs;
 
 /***/ }),
-/* 400 */
+/* 402 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"tabs-scroll {scrollable ? 'scrollable' : ''}\">\n        {#if scrollable}\n        <span class=\"nav-prev {scrollable.prev ? '' : 'disabled'}\" on-click={this.prev()}>\n            <i class=\"u-icon u-icon-chevron-left\"></i>\n        </span>\n        <span class=\"nav-next {scrollable.next ? '' : 'disabled'}\" on-click={this.next()}>\n            <i class=\"u-icon u-icon-chevron-right\"></i>\n        </span>\n        {/if}\n        <div ref=\"wrap\" class=\"nav-scroll\">\n            <ul ref=\"nav\" class=\"tabs_hd\" r-style={navStyle}>\n                {#list tabs as item}\n                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 401 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31872,8 +31804,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var template = __webpack_require__(402);
-	var KLTabs = __webpack_require__(399);
+	var template = __webpack_require__(404);
+	var KLTabs = __webpack_require__(401);
 
 	/**
 	 * @class KLTab
@@ -31915,26 +31847,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTab;
 
 /***/ }),
-/* 402 */
+/* 404 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this.$outer.data.fresh}\n{#if this.$outer.data.selected === this}\n<div>{#inc this.$body}</div>\n{/if}\n{#else}\n<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>\n{/if}"
 
 /***/ }),
-/* 403 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLSteps     步骤条
+	 * @file KLSteps     步骤条
 	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(404);
+	var template = __webpack_require__(406);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31948,9 +31878,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLSteps = Component.extend({
 	  name: 'kl-steps',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      steps: [],
@@ -31984,26 +31911,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSteps;
 
 /***/ }),
-/* 404 */
+/* 406 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 405 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLCrumb     面包屑
+	 * @file KLCrumb 面包屑
 	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(406);
+	var template = __webpack_require__(408);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32012,15 +31937,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}          [options.data]                     = 绑定属性
 	 * @param {string}          [options.data.class]               => 补充class
 	 * @param {string}          [options.data.separator]           => 分隔符，支持模板
-	 * @param {string}          [options.data.class]               => kl-crumb-item的属性：补充class
-	 * @param {string}          [options.data.href]                => kl-crumb-item的属性：传入的链接
+	 * @param {string}          [options.data.href]                => 传入的链接
 	 */
+
+	/**
+	 * @class KLCrumbItem
+	 * @extend Component
+	 * @param {object}          [options.data]                    = 绑定属性
+	 * @param {string}          [options.data.content]            => 内容模板
+	 * @param {string}          [options.data.class]              => 补充class
+	 * @param {string}          [options.data.href]                => 传入的链接
+	 */
+
 	var KLCrumb = Component.extend({
 	  name: 'kl-crumb',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      separator: '/',
@@ -32033,13 +31964,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumb;
 
 /***/ }),
-/* 406 */
+/* 408 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 407 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32052,9 +31983,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(408);
+	var template = __webpack_require__(410);
 	var _ = __webpack_require__(72);
-	var KLCrumb = __webpack_require__(405);
+	var KLCrumb = __webpack_require__(407);
 
 	/**
 	 * @class KLCrumbItem
@@ -32067,9 +31998,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLCrumbItem = Component.extend({
 	  name: 'kl-crumb-item',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {});
 	    this.supr();
@@ -32083,107 +32011,16 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumbItem;
 
 /***/ }),
-/* 408 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc content || this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
-
-/***/ }),
-/* 409 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLMask     遮罩
-	 * @author  Cody
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(410);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLMask
-	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性
-	 * @param {string}            [options.data.content]              => 内容模板
-	 * @param {boolean}           [options.data.closable=true]       => 点击空白区域关闭
-	 * @param {string}            [options.data.class]                => 补充class
-	 */
-	var KLMask = Component.extend({
-	  name: 'kl-mask',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      closable: true
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  _handleClick: function _handleClick(e) {
-	    if (/m-mask/.test(e.target.className)) {
-	      if (this.data.closable) this.close();
-	    }
-	  },
-
-	  /**
-	     * @method close(data) 关闭遮罩
-	     * @public
-	     * @param  {object} data 额外数据
-	     * @return {void}
-	     */
-	  close: function close(data) {
-	    /**
-	         * @event close 关闭遮罩时触发
-	         * @property {object} data 额外数据
-	         */
-	    this.$emit('close', {
-	      sender: this,
-	      data: data
-	    });
-	    this.destroy();
-	  }
-	});
-
-		module.exports = KLMask;
-
-/***/ }),
 /* 410 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
+	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc content || this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * KLNotify    通知
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
 
 	var Component = __webpack_require__(70);
 	var template = __webpack_require__(412);
@@ -32194,17 +32031,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}      [options.data]                      = 绑定属性
 	 * @param {string}      [options.data.position=topcenter]   => 通知的位置，可选参数：`topcenter`、`topleft`、`topright`、`bottomcenter`、`bottomleft`、`bottomright`、`static`
-	 * @param {number}      [options.data.duration=2000]        => 每条消息默认的停留毫秒数，如果为0，则表示消息常驻不消失。
-	 * @param {boolean}     [options.data.single=false]         => 是否始终显示一条
-	 * @param {boolean}     [options.data.visible=true]         => 是否显示
-	 * @param {string}      [options.data.class]                => 补充class
+	 * @param {number}      [options.data.duration=2000]        => 每条消息默认的停留毫秒数，如果为`0`，则表示消息常驻不消失，默认为`2秒`。
+	 * @param {boolean}     [options.data.single=false]         => 是否始终显示一条，`true`表示是，`false`表示否
+	 * @param {boolean}     [options.data.visible=true]         => 是否显示,`true`表示是、`false`表示否
+	 * @param {string}      [options.data.class]                => 补充`class`
 	 */
 	var KLNotify = Component.extend({
 	  name: 'kl-notify',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      messages: [],
@@ -32214,25 +32048,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr();
 	  },
-
-	  /**
-	     * @protected
-	     */
 	  init: function init() {
 	    this.supr();
 
 	    // 如果不是内嵌组件，则嵌入到document.body中
 	    if (this.$root === this) this.$inject(document.body);
 	  },
-
-	  /**
-	     * @method show(text[,state][,duration]) 弹出一个消息
-	     * @public
-	     * @param  {string} [text] 消息内容
-	     * @param  {string} [state=null] 消息状态，可选参数：`info`、`success`、`warning`、`error`
-	     * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	     * @return {void}
-	     */
 	  show: function show(text, state, duration) {
 	    var self = this;
 	    var message = {
@@ -32259,22 +32080,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
-	         * @event show 弹出一个消息时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {object} message 弹出的消息对象
-	         */
+	       * @event KLNotify#show 打开一条消息时触发
+	        * @property {object} sender 事件发送对象
+	        * @property {object} message 弹出的消息对象
+	        */
 	    this.$emit('show', {
 	      sender: this,
 	      message: message
 	    });
 	  },
-
-	  /**
-	     * @method close(message) 关闭某条消息
-	     * @public
-	     * @param  {object} message 需要关闭的消息对象
-	     * @return {void}
-	     */
 	  close: function close(message) {
 	    var index = this.data.messages.indexOf(message);
 	    if (index < 0) return;
@@ -32282,7 +32096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$update();
 
 	    /**
-	         * @event close 关闭某条消息时触发
+	         * @event KLNotify#close 关闭某条消息时触发
 	         * @property {object} sender 事件发送对象
 	         * @property {object} message 关闭了的消息对象
 	         */
@@ -32291,12 +32105,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      message: message
 	    });
 	  },
-
-	  /**
-	     * @method closeAll() 关闭所有消息
-	     * @public
-	     * @return {void}
-	     */
 	  closeAll: function closeAll() {
 	    this.data.messages = [];
 	    this.$update();
@@ -32304,58 +32112,59 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	var STATES = ['success', 'warning', 'info', 'error'];
-	/**
-	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
-	 */
+
 	STATES.forEach(function (state) {
 	  KLNotify.prototype[state] = function (text, duration) {
 	    this.show(text, state, duration);
 	  };
 	});
 
-	/**
-	 * 直接初始化一个实例
-	 * @state {Notify}
-	 */
 	var notify = new KLNotify();
 	KLNotify.notify = notify;
 
 	var METHODS = ['show', 'close', 'closeAll', 'success', 'warning', 'info', 'error'];
 	KLNotify.METHODS = METHODS;
+
 	/**
-	 * @method show(text[,state][,duration]) 弹出一个消息
 	 * @static
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {string} [state] 消息状态，可选参数：`info`、`success`、`warning`、`error`
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
+	 * @param  {string} text 消息内容
+	 * @param  {string} state 消息状态，可选参数：`info`、`success`、`warning`、`error`
+	 * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
 	 */
+	KLNotify.show = function () {};
 	/**
-	 * @method [info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。
 	 * @static
-	 * @public
-	 * @param  {string} [text] 消息内容
-	 * @param  {number} [duration=2000] 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
-	 * @return {void}
-	 */
-	/**
-	 * @method close(message) 关闭某条消息
-	 * @static
-	 * @public
 	 * @param  {object} message 需要关闭的消息对象
-	 * @return {void}
 	 */
+	KLNotify.close = function () {};
 	/**
-	 * @method closeAll() 关闭所有消息
 	 * @static
-	 * @public
-	 * @return {void}
 	 */
+	KLNotify.closeAll = function () {};
+	/**
+	 * @static
+	 * @param  {string} text 消息内容
+	 * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 */
+	KLNotify.success = function () {};
+	/**
+	 * @static
+	 * @param  {string} text 消息内容
+	 * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 */
+	KLNotify.warning = function () {};
+	/**
+	 * @static
+	 * @param  {string} text 消息内容
+	 * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 */
+	KLNotify.info = function () {};
+	/**
+	 * @static
+	 * @param  {string} text 消息内容
+	 * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
+	 */
+	KLNotify.error = function () {};
 	METHODS.forEach(function (method) {
 	  KLNotify[method] = notify[method].bind(notify);
 	});
@@ -32375,10 +32184,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLPopConfirm 气泡弹框
+	 * @file KLPopConfirm 气泡弹框
 	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var dom = __webpack_require__(71).dom;
@@ -32413,7 +32220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var $validation = this.$refs.validation;
 	    if (!$validation || $validation.validate().success) {
 	      /**
-	       * @event ok 确定时触发
+	       * @event KLPopConfirm#ok 确定时触发
 	       * @property {object} sender 事件发送对象
 	       * @property {object} data popConfirm组件的数据
 	       */
@@ -32425,7 +32232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  cancel: function cancel() {
 	    /**
-	     * @event cancel 取消时触发
+	     * @event KLPopConfirm#cancel 取消时触发
 	     * @property {object} sender 事件发送对象
 	     * @property {object} data popConfirm组件的数据
 	     */
@@ -32442,10 +32249,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                        = 绑定属性
 	 * @param {string}        [options.data.content]                => 弹窗中的文本内容
 	 * @param {string}        [options.data.contentTemplate]        => 弹窗中的模板内容,回调中会将PopConfirm的data返回;
-	 * @param {string}        [options.data.placement=top]          => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+	 * @param {string}        [options.data.placement=top]          => tips展示出的位置：`top`、 `left`、 `right`、 `bottom`、 `topLeft`、 `topRight`、 `bottomLeft`、 `bottomRight`、 `leftTop`、 `leftBottom`、 `rightTop`、 `rightBottom`
 	 * @param {string}        [options.data.okText=确定]             => ok按钮文案
 	 * @param {string}        [options.data.cancelText=取消]         => 取消按钮文案
-	 * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否影藏popover
+	 * @param {boolean}       [options.data.hideWhenScroll=false]   => window滚动时,是否隐藏`popover`
 	 */
 	var KLPopConfirm = Component.extend({
 	  name: 'kl-pop-confirm',
@@ -34081,12 +33888,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	/**
-	 * ------------------------------------------------------------
-	 * KLMessage    消息
-	 * ------------------------------------------------------------
-	 */
-
 	var Component = __webpack_require__(70);
 	var template = __webpack_require__(428);
 	var _ = __webpack_require__(72);
@@ -34096,25 +33897,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}      [options.data]                      = 绑定属性
 	 * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
-	 * @param {string}      [options.data.class]                => 补充class
+	 * @param {string}      [options.data.class]                => 补充`class`
 	 */
 
 	var KLMessage = Component.extend({
 	  name: 'kl-message',
 	  template: template,
-	  /**
-	   * @protected
-	   */
 	  config: function config() {
 	    _.extend(this.data, {
 	      type: ''
 	    });
 	    this.supr();
 	  },
-
-	  /**
-	   * @protected
-	   */
 	  init: function init() {
 	    this.supr();
 	  }
@@ -34134,14 +33928,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLProgress  进度条
-	 * @author   sensen(rainforest92@126.com)
+	 * @file KLBadge  文本
+	 * @author   Cody Chan<int64ago@gmail.com>
 	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
 	var template = __webpack_require__(430);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLBadge
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.text=--]        <=> 内容
+	 * @param {boolean}     [options.data.circle=false]   => 是否圆角
+	 * @param {string}      [options.data.type=default]   => 文本样式
+	 */
+	var KLBadge = Component.extend({
+	  name: 'kl-badge',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      text: '--',
+	      // default/primary/info/success/warning/error
+	      type: 'default',
+	      circle: false
+	    });
+	    this.supr();
+	  },
+	  onClick: function onClick(e) {
+	    this.$emit('click', e);
+	  }
+	});
+
+		module.exports = KLBadge;
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports) {
+
+	module.exports = "<span class=\"u-badge u-badge-{type} u-badge-{circle ? 'number' : ''}\">{text}</span>"
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLProgress  进度条
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(432);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34160,9 +34002,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var KLProgress = Component.extend({
 	  name: 'kl-progress',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      percent: 36,
@@ -34179,42 +34018,37 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLProgress;
 
 /***/ }),
-/* 430 */
+/* 432 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLLoading   加载中
+	 * @file KLLoading  加载中
 	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(432);
+	var template = __webpack_require__(434);
 	var _ = __webpack_require__(72);
 
 	/**
 	 * @class KLLoading
 	 * @param {object}        [options.data]                    = 绑定属性
 	 * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
-	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]       => 是否显示
+	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
+	 * @param {boolean}       [options.data.visible=false]      => 是否显示
 	 * @param {string}        [options.data.class]              => 补充class
 	 */
 	var KLLoading = Component.extend({
 	  name: 'kl-loading',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      static: false,
@@ -34222,10 +34056,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr();
 	  },
-
-	  /**
-	     * @protected
-	     */
 	  init: function init() {
 	    this.supr();
 	    // 证明不是内嵌组件
@@ -34233,8 +34063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	     * @method show() 显示组件
-	     * @public
+	     * @method KLLoading#show() 显示组件
 	     * @return {void}
 	     */
 	  show: function show() {
@@ -34245,8 +34074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	     * @method show() 隐藏组件
-	     * @public
+	     * @method KLLoading#hide() 隐藏组件
 	     * @return {void}
 	     */
 	  hide: function hide() {
@@ -34257,28 +34085,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	/**
-	 * 直接初始化一个实例
-	 * @type {Loading}
-	 */
 	var loading = new KLLoading();
+	/**
+	 * @param loading 内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例
+	 * @static
+	 */
 	KLLoading.loading = loading;
 
 	/**
-	 * @method show() 显示加载中
 	 * @static
-	 * @public
-	 * @return {void}
 	 */
 	KLLoading.show = function () {
 	  loading.show();
 	};
 
 	/**
-	 * @method hide() 隐藏加载中
 	 * @static
-	 * @public
-	 * @return {void}
 	 */
 	KLLoading.hide = function () {
 	  loading.hide();
@@ -34287,20 +34109,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLLoading;
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}\n  r-animation=\"on:enter;class:animated fadeIn; on:leave;class:animated fadeOut\">\n    <svg class=\"loading-circular\" viewBox=\"25 25 50 50\">\n      <circle class=\"loading-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n    </svg>\n    {#if this.$body}\n      {#inc this.$body}\n    {/if}\n</div>"
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLTooltip     提示
+	 * @file KLTooltip     提示
 	 * @author   ziane(zianecui@gmail.com)
 	 * ------------------------------------------------------------
 	 */
@@ -34308,7 +34129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(434);
+	var template = __webpack_require__(436);
 	__webpack_require__(415);
 
 	var TipPopUp = Component.extend({
@@ -34380,26 +34201,24 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTooltip;
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-tooltip {placement} animated {class}\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{#inc tip}</p>\n</div>"
 
 /***/ }),
-/* 435 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLIcon     图标
+	 * @file KLIcon     图标
 	 * @author   zianecui@gmail.com
-	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(436);
+	var template = __webpack_require__(438);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34408,15 +34227,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}          [options.data]                        = 绑定属性
 	 * @param {string}          [options.data.class]                  => 补充class
 	 * @param {string}          [options.data.type]                  => 补充class
-	 * @param {string}          [options.data.fontSize]                  => 设置图标胆小
+	 * @param {string}          [options.data.fontSize]                  => 设置图标大小
 	 * @param {string}          [options.data.color]                  => 设置图标颜色
 	 */
 	var KLIcon = Component.extend({
 	  name: 'kl-icon',
 	  template: template,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      type: '',
@@ -34433,13 +34249,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 436 */
+/* 438 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 437 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34450,10 +34266,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @file KLLocaleProvider     国际化
+	 */
 	var Component = __webpack_require__(70);
 	var ajax = __webpack_require__(180);
 	var _ = __webpack_require__(72);
 
+	/**
+	 * @class KLLocaleProvider
+	 * @extend Component
+	 * @param {object}          [options.data]                       = 绑定属性
+	 * @param {string}          [options.data.lang]                  => 设置语言，默认“cn”
+	 * @param {string}          [options.data.api]                   => 设置获取语言包的url
+	 */
 	var KLLocaleProvider = Component.extend({
 	  name: 'kl-locale-provider',
 	  template: '{#if ready}{#inc this.$body}{/if}',
@@ -34478,10 +34304,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      self.$emit('ready');
 	    });
+	  },
+
+	  /**
+	   * @method KLLocaleProvider#reload 切换语言，重新初始化
+	   * @param {string} lang 设置语言
+	   * @param {string} api 设置获取语言包的url
+	   */
+	  reload: function reload(lang, api) {
+	    this.data.lang = lang;
+	    this.data.api = api;
+	    this._initLang();
 	  }
 	});
-
+	/**
+	* @param {string} lang 语言种类
+	* @static
+	*/
 	KLLocaleProvider.lang = 'cn';
+
+	/**
+	 * @param {object} locale 语言包
+	 * @static
+	 */
+
 	KLLocaleProvider.locale = {};
 
 	var RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
@@ -34509,10 +34355,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return result;
 	  });
 	};
-
-	/**
-	 * @private
-	 */
 	KLLocaleProvider._interpolate = function (key, args) {
 	  var lang = KLLocaleProvider.lang;
 	  var map = KLLocaleProvider.locale[lang] || {};
@@ -34537,7 +34379,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	  return !args ? val : KLLocaleProvider._format(val, args);
 	};
-
+	/**
+	 * @param {string} key 翻译key值
+	 * @static
+	 */
 	KLLocaleProvider.translate = function (key, params) {
 	  return KLLocaleProvider._interpolate(key, params);
 	};
@@ -34545,18 +34390,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLLocaleProvider;
 
 /***/ }),
-/* 438 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(439);
-	var TableBody = __webpack_require__(441);
+	/**
+	 * @file KLtable 表格
+	 */
+
+	var TableHeader = __webpack_require__(441);
+	var TableBody = __webpack_require__(443);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(444);
+	var u = __webpack_require__(446);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(447);
+	var tpl = __webpack_require__(449);
 
 	/**
 	 * @class KLTable
@@ -34570,8 +34419,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
 	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
 	 * @param {array}             [options.data.columns]              => 列配置
-	 * @param {string}            [optiosn.data.align='center']       => 文字对齐
+	 * @param {string}            [optiosn.data.align=center]       => 文字对齐
 	 * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
+	 * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
 	 */
 
 	/**
@@ -34588,10 +34438,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.thClass]          => 表头样式
 	 * @param {boolean}     [options.data.sortable]         => 可排序
 	 * @param {string}      [options.data.children]         => 子表头
-	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
-	 * @param {string}      [optiosn.data.align='']         => 列文字对齐
-	 * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
-
+	 * @param {boolean/string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+	 * @param {string}      [optiosn.data.align]         => 列文字对齐
+	 * @param {string}      [optiosn.data.placeholder=-]  => 列文字对齐
 	 * @param {string}      [options.data.template]         => 列内容模版
 	 */
 
@@ -34599,7 +34448,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class KLTableTemplate
 	 * @extend Component
 	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {string}      [options.data.type="content"] => 模版类型, header, content
+	 * @param {string}      [options.data.type=content] => 模版类型, header, content
 	 */
 
 	var KLTable = Component.extend({
@@ -34987,7 +34836,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onSort: function _onSort(e) {
 	    /**
-	         * @event sort 排序事件
+	         * @event KLTable#sort 排序事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} asc 是否升序
 	         * @property {object} column 目标列
@@ -35007,7 +34856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _this = this;
 
 	    /**
-	         * @event checkchange 多选事件
+	         * @event cKLTable#heckchange 多选事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} checked 是否选中
 	         * @property {object} item 操作对象
@@ -35040,7 +34889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
-	         * @event [type] 自定义的操作事件
+	         * @event KLTable#type 自定义的操作事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} custom 自定义事件标识
 	         * @property {array} param 自定义事件所带的参数
@@ -35062,7 +34911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onPaging: function _onPaging(e) {
 	    /**
-	         * @event paging 分页事件
+	         * @event KLTable#paging 分页事件
 	         * @property {object} sender 事件来源
 	         * @property {number} current 事件来源
 	         * @property {object} paging 分页对象
@@ -35124,13 +34973,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 439 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(440);
+	var tpl = __webpack_require__(442);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -35351,20 +35200,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 440 */
+/* 442 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBar && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: scrollYBar + 'px',\n                width: scrollYBar + 'px',\n            }}\n        />\n    {/if}\n</table>\n"
 
 /***/ }),
-/* 441 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(442);
-	var templates = __webpack_require__(443);
+	var tpl = __webpack_require__(444);
+	var templates = __webpack_require__(445);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -35497,22 +35346,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 442 */
+/* 444 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static />&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass || column.columnClass}\"\n                style=\"{item.unitStyle || column.columnStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass || column.columnClass}\"\n                style=\"{item.unitStyle || column.columnStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 443 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(444);
+	var _ = __webpack_require__(446);
 
 	var tplMap = {
-	  progress: __webpack_require__(445),
-	  check: __webpack_require__(446)
+	  progress: __webpack_require__(447),
+	  check: __webpack_require__(448)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -35520,7 +35369,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 444 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35712,33 +35561,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 445 */
+/* 447 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 446 */
+/* 448 */
 /***/ (function(module, exports) {
 
 	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 447 */
+/* 449 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 448 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLTableTemplate = __webpack_require__(449);
-	var KLTable = __webpack_require__(438);
+	var KLTableTemplate = __webpack_require__(451);
+	var KLTable = __webpack_require__(440);
 
 	/**
 	 * @class KLTableCol
@@ -35853,7 +35702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 449 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35939,31 +35788,43 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 450 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLRow 栅格布局-行
-	 * ------------------------------------------------------------
+	 * @file KLRow 栅格布局-行
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(451);
+	var template = __webpack_require__(453);
 
 	/**
 	 * @class KLRow
 	 * @extend Component
 	 * @param {object}          [options.data]                        => 绑定数据
 	 * @param {string}          [options.data.class]                  => 补充class
-	 * @param {string}          [options.data.type='']              => 布局模式，可选 flex，现代浏览器下有效
-	 * @param {string}          [options.data.justify='start']      => flex 布局下的水平排列方式
-	 * @param {string}          [options.data.align='top']          => flex 布局下的垂直排列方式
-	 * @param {string}          [options.data.wrap='wrap']          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
-	 * @param {number}          [options.data.gutter='40']           => 栅格间隔
+	 * @param {string}          [options.data.type]              => 布局模式，可选 flex，现代浏览器下有效
+	 * @param {string}          [options.data.justify=start]      => flex 布局下的水平排列方式
+	 * @param {string}          [options.data.align=top]          => flex 布局下的垂直排列方式
+	 * @param {string}          [options.data.wrap=wrap]          => flex布局下的换行显示方式,wrap/nowrap/wrap-reverse
+	 * @param {number}          [options.data.gutter=40]           => 栅格间隔, 单位为px
 	 */
+
+	/**
+	 * @class KLCol
+	 * @extend Component
+	 * @param {object}          [options.data]                        => 绑定数据
+	 * @param {string}          [options.data.class]                  => 补充class
+	 * @param {number}          [options.data.span]              => 栅格占据的列数
+	 * @param {number}          [options.data.offset]            => 栅格左侧的间隔格数
+	 * @param {number/object}   [options.data.xs]                => <768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.sm]                => ≥768px 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.md]                => ≥992 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 * @param {number/object}   [options.data.lg]                => ≥1200 响应式栅格数或者栅格属性对象, number/object (例如： {span: 4, offset: 4})
+	 */
+
 	var KLRow = Component.extend({
 	  name: 'kl-row',
 	  template: template,
@@ -35993,13 +35854,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 451 */
+/* 453 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 452 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36021,8 +35882,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(453);
-	var KLRow = __webpack_require__(450);
+	var template = __webpack_require__(455);
+	var KLRow = __webpack_require__(452);
 
 	/**
 	 * @class KLCol
@@ -36094,26 +35955,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 453 */
+/* 455 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 454 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
 	 * ------------------------------------------------------------
-	 * KLCard     卡片
-	 * @author   zianecui@gmail.com
+	 * @file KLCard 卡片
+	 * @author zianecui@gmail.com
 	 * ------------------------------------------------------------
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(455);
+	var template = __webpack_require__(457);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -36129,9 +35990,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-card',
 	  template: template,
 	  $tools: null,
-	  /**
-	     * @protected
-	     */
 	  config: function config() {
 	    _.extend(this.data, {
 	      title: '',
@@ -36146,13 +36004,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 455 */
+/* 457 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    {#if title || this.$tools}\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {/if}\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 456 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36166,7 +36024,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(454);
+	var KLCard = __webpack_require__(456);
 
 	/**
 	 * @class KLCardTools
@@ -36192,19 +36050,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCardTools;
 
 /***/ }),
-/* 457 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLSearch     筛选区
-	 * ------------------------------------------------------------
+	 * @file KLSearch 筛选区
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(458);
+	var template = __webpack_require__(460);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -36224,9 +36080,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-search',
 	  template: template,
 	  $more: null,
-	  /**
-	     * @protected
-	     */
+
 	  config: function config() {
 	    _.extend(this.data, {
 	      isShowMore: false,
@@ -36246,9 +36100,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.isShowMore = !data.isShowMore;
 	    data.toggleText = data.toggleText === data.unfoldText ? data.foldText : data.unfoldText;
 	  },
+
+	  /**
+	  * @event KLSearch#search 点击查询时触发
+	  */
 	  search: function search() {
 	    this.$emit('search');
 	  },
+
+	  /**
+	  * @event KLSearch#reset 点击重置时触发
+	  */
 	  reset: function reset() {
 	    this.$emit('reset');
 	  }
@@ -36257,13 +36119,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSearch;
 
 /***/ }),
-/* 458 */
+/* 460 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore}\n        <!--添加一层div，防止两个g-row样式并列导致marginTop--> \n        <div>\n            {#inc this.$more.$body}\n        </div>\n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if this.$more && isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 459 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36276,7 +36138,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLSearch = __webpack_require__(457);
+	var KLSearch = __webpack_require__(459);
 
 	/**
 	 * @class KLSearchMore

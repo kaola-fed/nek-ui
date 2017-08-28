@@ -9,12 +9,13 @@
         <meta property="og:type" content="article">
         <meta property="og:title" content="单选组 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
-        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
-        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
         <!--  nek-ui -->
         <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
         <!-- main page styles -->
@@ -23,14 +24,15 @@
     </head>
     <body class="docs">        <script src="/vendor/regular.js"></script>
         <script src="/js/nek-ui.js"></script>
+        <script src="/demo.wrap/index.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
         <div id="header">
   <a id="logo" href="/">
-    <img src="/images/logo.png">
-    <span>nek-ui</span>
+    <img src="/images/logo.svg">
+    <span>考拉后台UI组件库</span>
   </a>
   <ul id="nav">
     <li><a href="/">首页</a></li>
@@ -70,264 +72,287 @@
         <ul class="menu-root">
             
             
-                
-                <li>
-                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+            
+
+            
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <a href="/components/index.html" class="">
+                                快速上手
+                            </a>
+                        
+                    </div>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>布局
+                        
+                    </div>
                     
-                        <li><h3>布局</h3></li>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/layout_KLCard_.html" class="">
+                                       卡片 <span>KLCard</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLRow_.html" class="">
+                                       栅格布局 <span>KLRow</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLSearch_.html" class="">
+                                       筛选区 <span>KLSearch</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLTable_.html" class="">
+                                       表格 <span>KLTable</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
                     
-                
-                <li>
-                    <a href="/components/layout_KLCard_.html" class="sidebar-link">卡片 KLCard</a>
                 </li>
             
-                
+                <li class="current">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>表单
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLRow_.html" class="sidebar-link">栅格布局 KLRow</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/form_KLButton_.html" class="">
+                                       按钮 <span>KLButton</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLCheck_.html" class="">
+                                       复选框 <span>KLCheck</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLCheckGroup_.html" class="">
+                                       复选组 <span>KLCheckGroup</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLDatePicker_.html" class="">
+                                       日期选择 <span>KLDatePicker</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLForm_.html" class="">
+                                       表单 <span>KLForm</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLInput_.html" class="">
+                                       输入框 <span>KLInput</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLMultiSelect_.html" class="">
+                                       多级选择 <span>KLMultiSelect</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLRadioGroup_.html" class="current">
+                                       单选组 <span>KLRadioGroup</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLSelect_.html" class="">
+                                       下拉选择 <span>KLSelect</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLText_.html" class="">
+                                       文本展示 <span>KLText</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLTextArea_.html" class="">
+                                       文本输入 <span>KLTextArea</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLTreeView_.html" class="">
+                                       树型视图 <span>KLTreeView</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLUpload_.html" class="">
+                                       上传文件 <span>KLUpload</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>通知
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLSearch_.html" class="sidebar-link">筛选区 KLSearch</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/notice_KLMessage_.html" class="">
+                                       消息 <span>KLMessage</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLModal_.html" class="">
+                                       模态框 <span>KLModal</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLNotify_.html" class="">
+                                       通知 <span>KLNotify</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLPopConfirm_.html" class="">
+                                       确认提示 <span>KLPopConfirm</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>导航
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLTable_.html" class="sidebar-link">表格 KLTable</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/navigation_KLCrumb_.html" class="">
+                                       面包屑 <span>KLCrumb</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLMenu_.html" class="">
+                                       导航菜单 <span>KLMenu</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLPager_.html" class="">
+                                       分页 <span>KLPager</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLSidebar_.html" class="">
+                                       菜单栏 <span>KLSidebar</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLSteps_.html" class="">
+                                       步骤 <span>KLSteps</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLTabs_.html" class="">
+                                       选项卡 <span>KLTabs</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>其它
+                        
+                    </div>
                     
-                        <li><h3>表单</h3></li>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/widget_KLBadge_.html" class="">
+                                       徽标 <span>KLBadge</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLIcon_.html" class="">
+                                       图标 <span>KLIcon</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLImagePreview_.html" class="">
+                                       图片预览 <span>KLImagePreview</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLLoading_.html" class="">
+                                       加载 <span>KLLoading</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLLocaleProvider_.html" class="">
+                                       国际化 <span>KLLocaleProvider</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLProgress_.html" class="">
+                                       进度条 <span>KLProgress</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLTooltip_.html" class="">
+                                       文字提示 <span>KLTooltip</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
                     
-                
-                <li>
-                    <a href="/components/form_KLButton_.html" class="sidebar-link">按钮 KLButton</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLCheck_.html" class="sidebar-link">复选框 KLCheck</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLCheckGroup_.html" class="sidebar-link">复选组 KLCheckGroup</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLDatePicker_.html" class="sidebar-link">日期选择 KLDatePicker</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLForm_.html" class="sidebar-link">表单 KLForm</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLInput_.html" class="sidebar-link">输入框 KLInput</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLMultiSelect_.html" class="sidebar-link">多级选择 KLMultiSelect</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLRadioGroup_.html" class="sidebar-link current">单选组 KLRadioGroup</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLSelect_.html" class="sidebar-link">下拉选择 KLSelect</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLText_.html" class="sidebar-link">展示文本 KLText</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLTextArea_.html" class="sidebar-link">文本输入 KLTextArea</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLTreeView_.html" class="sidebar-link">树型视图 KLTreeView</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLUpload_.html" class="sidebar-link">上传文件 KLUpload</a>
-                </li>
-            
-                
-                    
-                        <li><h3>通知</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/notice_KLMask_.html" class="sidebar-link">遮罩 KLMask</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLMessage_.html" class="sidebar-link">消息 KLMessage</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLModal_.html" class="sidebar-link">模态框 KLModal</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLNotify_.html" class="sidebar-link">通知 KLNotify</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLPopConfirm_.html" class="sidebar-link">确认提示 KLPopConfirm</a>
-                </li>
-            
-                
-                    
-                        <li><h3>导航</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link">两级菜单 KLMenu</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLPager_.html" class="sidebar-link">分页 KLPager</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link">菜单栏 KLSidebar</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLSteps_.html" class="sidebar-link">步骤 KLSteps</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLTabs_.html" class="sidebar-link">选项卡 KLTabs</a>
-                </li>
-            
-                
-                    
-                        <li><h3>其它</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/widget_KLBadge_.html" class="sidebar-link">徽标 KLBadge</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLIcon_.html" class="sidebar-link">图标 KLIcon</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLImagePreview_.html" class="sidebar-link">图片预览 KLImagePreview</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLLocaleProvider_.html" class="sidebar-link">国际化 KLLocaleProvider</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLProgress_.html" class="sidebar-link">进度条 KLProgress</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLTooltip_.html" class="sidebar-link">文字提示 KLTooltip</a>
                 </li>
             
         </ul>
@@ -335,73 +360,63 @@
 </div>
 
 
-<div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
-<div class="m-example"></div>
+<div class="content components with-sidebar  j-masonry">
+    
+         <style>
+             .grid-item{
+                 width: 50%;
+             } 
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+     
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
-<div class="m-example"></div>
+    <h2 id="pageName">单选组 <span>KLRadioGroup</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;console.log($event)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>value: &#123;value&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>selected: &#123;selected ? JSON.stringify(selected) : ''&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">11</span>, <span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">22</span>, <span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">33</span>, <span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
-<!-- demo_start -->
-<div class="m-example"></div>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">22</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">33</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">44</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">3</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
-<div class="m-example"></div>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"跨境方式"</span> <span class="attr">tip</span>=<span class="string">"跨境方式"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><!-- demo_start -->
-<div class="m-example"></div>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><!-- demo_start -->
-<div class="m-example"></div>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;/</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'/data/KLRadioGroup.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">value</span>: <span class="number">4</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLRadioGroup">KLRadioGroup</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#SourceComponent">SourceComponent</a></dt>
-<dd><hr>
-<p>KLRadioGroup 输入扩展</p>
-</dd>
-</dl>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#select(item) 选择某一">select(item) 选择某一(item)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#validate_new 根据required验证组件的值是否正确">validate() 根据required验证组件的值是否正确()</a> ⇒ <code>object</code></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="KLRadioGroup"></a></p>
-<h2 id="KLRadioGroup"><a href="#KLRadioGroup" class="headerlink" title="KLRadioGroup"></a>KLRadioGroup</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: SourceComponent<br><a name="new_KLRadioGroup_new"></a></p>
-<h3 id="new-KLRadioGroup"><a href="#new-KLRadioGroup" class="headerlink" title="new KLRadioGroup()"></a>new KLRadioGroup()</h3><table>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLRadioGroup"></a></p>
+<h2 id="KLRadioGroup"><a href="#KLRadioGroup" class="headerlink" title="KLRadioGroup"></a><span class="param-title">KLRadioGroup</span><a name="new_KLRadioGroup_new"></a></h2><h3 id="KLRadioGroup-1"><a href="#KLRadioGroup-1" class="headerlink" title="KLRadioGroup"></a><span class="param-title">KLRadioGroup</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -449,7 +464,8 @@
 </tr>
 <tr>
 <td>[options.data.value]</td>
-<td><code>number</code> &#124; <code>string</code></td>
+<td><code>number</code> \</td>
+<td><code>string</code></td>
 <td></td>
 <td>&lt;=&gt; 当前选择的值</td>
 </tr>
@@ -509,33 +525,8 @@
 </tr>
 </tbody>
 </table>
-<p><a name="SourceComponent"></a></p>
-<h2 id="SourceComponent"><a href="#SourceComponent" class="headerlink" title="SourceComponent"></a>SourceComponent</h2><hr>
-<p>KLRadioGroup 输入扩展</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(item) 选择某一"></a></p>
-<h2 id="select-item-选择某一-item-⇒-void"><a href="#select-item-选择某一-item-⇒-void" class="headerlink" title="select(item) 选择某一(item) ⇒ void"></a>select(item) 选择某一(item) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item</td>
-<td><code>object</code></td>
-<td>选择</td>
-</tr>
-</tbody>
-</table>
-<p><a name="validate_new 根据required验证组件的值是否正确"></a></p>
-<h2 id="validate-根据required验证组件的值是否正确-⇒-object"><a href="#validate-根据required验证组件的值是否正确-⇒-object" class="headerlink" title="validate() 根据required验证组件的值是否正确() ⇒ object"></a>validate() 根据required验证组件的值是否正确() ⇒ <code>object</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>object</code> - result 结果<br><strong>Access:</strong> public<br><a name="event_select 选择某一项时触发"></a></p>
-<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
+<p><a name="KLRadioGroup+event_select 选择某一项时触发"></a></p>
+<h3 id="select-选择某一项时触发Event"><a href="#select-选择某一项时触发Event" class="headerlink" title="select 选择某一项时触发Event"></a><span class="param-title">select 选择某一项时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -563,7 +554,7 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-radio-group source={source} />
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
 
       */});
       
@@ -571,17 +562,50 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
@@ -597,22 +621,60 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 11, name: '选项1'},
-            {id: 22, name: '选项2'},
-            {id: 33, name: '选项3'},
-        ]
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
+        ],
+        value: 3
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} value={value} selected={selected} />
+<div>value: {value}</div>
+<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
+        ],
+        value: 3
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
 <kl-form>
-    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
-        <kl-radio-group source={source} />
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
     </kl-form-item>
 </kl-form>
 
@@ -622,17 +684,54 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 1
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form>
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
+    </kl-form-item>
+</kl-form>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 1
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
@@ -646,23 +745,54 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
         ]
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} disabled />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ]
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-radio-group service={@(this.service)} />
+<kl-radio-group service={@(this.service)} value={value}/>
 
       */});
       
@@ -671,23 +801,65 @@ var component = new NEKUI.Component({
     service: {
         getList: function(params, success) {
             NEKUI.ajax.request({
-                url: '../data/list.json',
+                url: '/data/KLRadioGroup.json',
                 method: 'get',
                 type: 'json',
                 data: params,
                 success: success
             });
         }
+    },
+    data: {
+        value: 4
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group service={@(this.service)} value={value}/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    service: {
+        getList: function(params, success) {
+            NEKUI.ajax.request({
+                url: '/data/KLRadioGroup.json',
+                method: 'get',
+                type: 'json',
+                data: params,
+                success: success
+            });
+        }
+    },
+    data: {
+        value: 4
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-radio-group source={source} block />
+<kl-radio-group source={source} value={value} block />
 
       */});
       
@@ -695,27 +867,66 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} value={value} block />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
 </script>
 
+
     <div class="guide-links">
       
-        <span>← <a href="/components/form_KLMultiSelect_.html">多级选择</a></span>
+        <a href="/components/form_KLMultiSelect_.html" class="pager">
+            <span class="icon icon-left"></span><span>多级选择</span>
+        </a>
       
+        <span class="placeholder"></span>
       
-        <span style="float:right"><a href="/components/form_KLSelect_.html">下拉选择</a> →</span>
+        <a href="/components/form_KLSelect_.html" class="pager">
+            <span>下拉选择</span><span class="icon icon-right"></span>
+        </a>
       
     </div>
     <div class="footer">
@@ -724,6 +935,76 @@ var component = new NEKUI.Component({
         来 GitHub 提个 PR 吧！
       </a>
     </div>
+     
+       <script>
+        //用来处理实例代码块，将其分为两列
+        document.addEventListener('DOMContentLoaded', function() {
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
+          if(!!gridOuter){
+            var leftBlock = document.createElement('div');
+            var rightBlock = document.createElement('div');
+            leftBlock.className = 'm-leftBlock';
+            rightBlock.className = 'm-rightBlock';
+            gridOuter.appendChild(leftBlock);
+            gridOuter.appendChild(rightBlock);
+
+            var itemList = document.getElementsByClassName('grid-item');
+            var tempList = [];
+            //获取每个grid-item的高度
+            for(var i=0;i<itemList.length;i++){
+                var temp = {
+                  id: i,
+                  height: itemList[i].clientHeight+2
+                }
+                tempList.push(temp);
+                itemList[i].style.width = 'auto';
+            }
+            //高度从大到小排序
+            tempList.sort(function(a,b){return b.height-a.height});
+            //通过高度计算dom应该放置在左右那边
+            var templeft = {
+              height: 0,
+              inner:[]
+            };
+            var tempright = {
+              height: 0,
+              inner: []
+            };
+            tempList.forEach(function(item){
+              if(templeft.height <= tempright.height){
+                templeft.inner.push(item);
+                //加上元素高度及其marginTop
+                templeft.height = templeft.height + item.height+ 20;
+              }else{
+                tempright.inner.push(item);
+                tempright.height = tempright.height + item.height+ 20;
+              }
+            });
+            //在左右各自内部将dom按照id从小到大排序
+            templeft.inner.sort(function(a,b){return a.id-b.id});
+            tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
+            //按照左右将grid-item列表分别放在左右两边
+            var tempItemList = document.querySelectorAll('.grid-item');
+            templeft.inner.forEach(function(item){
+                leftBlock.appendChild(tempItemList[item.id]);
+            });
+            tempright.inner.forEach(function(item){
+                rightBlock.appendChild(tempItemList[item.id]);
+            }); 
+          }
+        });
+      </script>
+      
+     
 </div>
 
             </div>

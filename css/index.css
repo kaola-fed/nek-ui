@@ -87,7 +87,7 @@ pre .xml .cdata {
   opacity: 0.5;
 }
 body {
-  font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'STHeitiSC-Light', 'Microsoft YaHei', Arial, sans-serif;
+  font-family: 'PingFangTC-Regular', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'STHeitiSC-Light', 'Microsoft YaHei', Arial, sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -145,6 +145,7 @@ code {
   margin: 0 2px;
   border-radius: 2px;
   white-space: nowrap;
+  background-color: rgba(255,255,255,0);
 }
 em {
   color: #7f8c8d;
@@ -284,7 +285,7 @@ a.button.white {
   display: block;
 }
 #nav .nav-dropdown a:hover {
-  color: #31995e;
+  color: #e31436;
 }
 #nav .arrow {
   display: inline-block;
@@ -298,15 +299,10 @@ a.button.white {
   border-right: 4px solid transparent;
   border-top: 5px solid #ccc;
 }
-.m-example {
-  border: 1px dashed #eee;
-  margin: 5px;
-  padding: 5px;
-}
 #header {
   background-color: #fff;
   height: $heading-inner-height;
-  padding: 10px 60px;
+  padding: 10px 40px;
   position: relative;
   z-index: 2;
 }
@@ -336,12 +332,16 @@ body.docs #nav {
   position: relative;
   margin: 0 0.6em;
 }
+#nav li a:hover {
+  color: #e31436;
+}
 .nav-link {
   padding-bottom: 3px;
 }
 .nav-link:hover,
 .nav-link.current {
-  border-bottom: 3px solid #31995e;
+  color: #e31436;
+  border-bottom: 3px solid #e31436;
 }
 .search-query {
   height: 30px;
@@ -358,15 +358,15 @@ body.docs #nav {
   vertical-align: middle !important;
 }
 .search-query:focus {
-  border-color: #31995e;
+  border-color: #e31436;
 }
 #logo {
   display: inline-block;
-  font-size: 1.5em;
   line-height: 40px;
-  color: #2c3e50;
-  font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'PingFangTC-Regular', 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
+  font-size: 18px;
+  color: #333;
 }
 #logo img {
   vertical-align: middle;
@@ -398,7 +398,7 @@ body.docs #nav {
   position: absolute;
   width: 30px;
   height: 30px;
-  background: url("../images/logo.png") center center no-repeat;
+  background: url("../images/logo.svg") center center no-repeat;
   top: 5px;
   left: 50%;
   margin-left: -15px;
@@ -407,16 +407,16 @@ body.docs #nav {
 .sidebar {
   position: absolute;
   z-index: 10;
-  top: 61px;
+  top: 62px;
   left: 0;
   bottom: 0;
-  padding: 40px 0 30px 60px;
   width: 260px;
   margin-right: 20px;
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
+  border-right: 1px #e3e8ed solid;
 }
 .sidebar h2 {
   margin-top: 0.2em;
@@ -425,14 +425,39 @@ body.docs #nav {
   list-style-type: none;
   margin: 0;
   line-height: 1.8em;
-  padding-left: 1em;
+}
+.sidebar .menu-root {
+  padding-left: 0;
+  margin-left: 0;
+}
+.sidebar .menu-root>li {
+  box-sizing: border-box;
+  border-bottom: 1px #e3e8ed solid;
+  background-color: #fff;
+}
+.sidebar .menu-root>li.current {
+  background-color: #f6f9fc;
+}
+.sidebar .menu-root .submenu-title {
+  font-weight: 700;
+  padding: 12px 0 11px 40px;
+  font-size: 14px;
+}
+.sidebar .menu-root .submenu-title .u-icon {
+  margin-left: -14px;
+  margin-right: 8px;
+  font-size: 14px;
+}
+.sidebar .menu-root .submenu>li {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.sidebar .menu-root .submenu>li span {
+  color: #999;
 }
 .sidebar .version-select {
   vertical-align: middle;
   margin-left: 5px;
-}
-.sidebar .menu-root {
-  padding-left: 0;
 }
 .sidebar .menu-sub {
   font-size: 0.85em;
@@ -442,7 +467,7 @@ body.docs #nav {
 }
 .sidebar .sidebar-link.current {
   font-weight: 600;
-  color: #31995e;
+  color: #e31436;
 }
 .sidebar .sidebar-link.new:after {
   content: "NEW";
@@ -475,11 +500,11 @@ body.docs #nav {
   top: -1px;
 }
 .sidebar .sidebar-link:hover {
-  border-bottom: 2px solid #31995e;
+  border-bottom: 2px solid #e31436;
 }
 .sidebar .section-link.active {
   font-weight: bold;
-  color: #31995e;
+  color: #e31436;
 }
 .sidebar .main-menu {
   margin-bottom: 20px;
@@ -499,10 +524,10 @@ body.docs #nav {
   display: inline-block;
 }
 .sidebar .become-backer {
-  border: 1px solid #31995e;
+  border: 1px solid #e31436;
   border-radius: 2em;
   display: inline-block;
-  color: #31995e;
+  color: #e31436;
   font-size: 0.8em;
   width: 125px;
   padding: 4px 0;
@@ -512,6 +537,33 @@ body.docs #nav {
 .sidebar .nav-dropdown h4 {
   font-weight: normal;
   margin: 0;
+}
+@media screen and (min-width: 901px) {
+  .sidebar .menu-root a:before {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 10px;
+    background-color: transparent;
+  }
+  .sidebar .menu-root a:hover {
+    color: #e31436;
+  }
+  .sidebar .menu-root a:hover span {
+    color: #e31436;
+  }
+  .sidebar .menu-root a:hover::before {
+    background-color: #e31436;
+  }
+  .sidebar .menu-root a.current {
+    color: #e31436;
+  }
+  .sidebar .menu-root a.current span {
+    color: #e31436;
+  }
+  .sidebar .menu-root a.current:before {
+    background-color: #e31436;
+  }
 }
 @media screen and (max-width: 900px) {
   .sidebar {
@@ -538,6 +590,36 @@ body.docs #nav {
   .sidebar.open {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
+  }
+  .sidebar .menu-root li,
+  .sidebar .menu-root li.current {
+    background-color: transparent;
+    border-bottom: 0;
+    margin-bottom: 20px;
+  }
+  .sidebar .menu-root .submenu-title {
+    padding: 0;
+    font-size: 16px;
+  }
+  .sidebar .menu-root .submenu-title .u-icon {
+    display: none;
+  }
+  .sidebar .menu-root a {
+    border-bottom: 2px transparent solid;
+  }
+  .sidebar .menu-root a:hover {
+    color: #e31436;
+    border-bottom-color: #e31436;
+  }
+  .sidebar .menu-root a:hover span {
+    color: #e31436;
+  }
+  .sidebar .menu-root .submenu {
+    margin-left: -40px;
+  }
+  .sidebar .menu-root .submenu>li {
+    margin-bottom: 0;
+    font-size: 14px;
   }
 }
 #logo span {
@@ -588,7 +670,7 @@ body.docs #nav {
   line-height: normal;
 }
 #hero h2 {
-  font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'PingFangTC-Regular', 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500;
   font-size: 2.4em;
   margin: 0 0 10px;

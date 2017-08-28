@@ -9,12 +9,13 @@
         <meta property="og:type" content="article">
         <meta property="og:title" content="分页 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
-        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
-        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
         <!--  nek-ui -->
         <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
         <!-- main page styles -->
@@ -23,14 +24,15 @@
     </head>
     <body class="docs">        <script src="/vendor/regular.js"></script>
         <script src="/js/nek-ui.js"></script>
+        <script src="/demo.wrap/index.js"></script>
         <div id="mobile-bar" >
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
         <div id="header">
   <a id="logo" href="/">
-    <img src="/images/logo.png">
-    <span>nek-ui</span>
+    <img src="/images/logo.svg">
+    <span>考拉后台UI组件库</span>
   </a>
   <ul id="nav">
     <li><a href="/">首页</a></li>
@@ -70,264 +72,287 @@
         <ul class="menu-root">
             
             
-                
-                <li>
-                    <a href="/components/index.html" class="sidebar-link">快速上手 </a>
+            
+
+            
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <a href="/components/index.html" class="">
+                                快速上手
+                            </a>
+                        
+                    </div>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>布局
+                        
+                    </div>
                     
-                        <li><h3>布局</h3></li>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/layout_KLCard_.html" class="">
+                                       卡片 <span>KLCard</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLRow_.html" class="">
+                                       栅格布局 <span>KLRow</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLSearch_.html" class="">
+                                       筛选区 <span>KLSearch</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/layout_KLTable_.html" class="">
+                                       表格 <span>KLTable</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
                     
-                
-                <li>
-                    <a href="/components/layout_KLCard_.html" class="sidebar-link">卡片 KLCard</a>
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>表单
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLRow_.html" class="sidebar-link">栅格布局 KLRow</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/form_KLButton_.html" class="">
+                                       按钮 <span>KLButton</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLCheck_.html" class="">
+                                       复选框 <span>KLCheck</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLCheckGroup_.html" class="">
+                                       复选组 <span>KLCheckGroup</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLDatePicker_.html" class="">
+                                       日期选择 <span>KLDatePicker</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLForm_.html" class="">
+                                       表单 <span>KLForm</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLInput_.html" class="">
+                                       输入框 <span>KLInput</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLMultiSelect_.html" class="">
+                                       多级选择 <span>KLMultiSelect</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLRadioGroup_.html" class="">
+                                       单选组 <span>KLRadioGroup</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLSelect_.html" class="">
+                                       下拉选择 <span>KLSelect</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLText_.html" class="">
+                                       文本展示 <span>KLText</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLTextArea_.html" class="">
+                                       文本输入 <span>KLTextArea</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLTreeView_.html" class="">
+                                       树型视图 <span>KLTreeView</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/form_KLUpload_.html" class="">
+                                       上传文件 <span>KLUpload</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>通知
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLSearch_.html" class="sidebar-link">筛选区 KLSearch</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/notice_KLMessage_.html" class="">
+                                       消息 <span>KLMessage</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLModal_.html" class="">
+                                       模态框 <span>KLModal</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLNotify_.html" class="">
+                                       通知 <span>KLNotify</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/notice_KLPopConfirm_.html" class="">
+                                       确认提示 <span>KLPopConfirm</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="current">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>导航
+                        
+                    </div>
                     
-                
-                <li>
-                    <a href="/components/layout_KLTable_.html" class="sidebar-link">表格 KLTable</a>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/navigation_KLCrumb_.html" class="">
+                                       面包屑 <span>KLCrumb</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLMenu_.html" class="">
+                                       导航菜单 <span>KLMenu</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLPager_.html" class="current">
+                                       分页 <span>KLPager</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLSidebar_.html" class="">
+                                       菜单栏 <span>KLSidebar</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLSteps_.html" class="">
+                                       步骤 <span>KLSteps</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/navigation_KLTabs_.html" class="">
+                                       选项卡 <span>KLTabs</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
+                    
                 </li>
             
-                
+                <li class="">
+                    <div class="submenu-title">
+                        
+                            <span class="u-icon u-icon-angle-down"></span>其它
+                        
+                    </div>
                     
-                        <li><h3>表单</h3></li>
+                        <ul class="submenu">
+                            
+                               <li>
+                                   <a href="/components/widget_KLBadge_.html" class="">
+                                       徽标 <span>KLBadge</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLIcon_.html" class="">
+                                       图标 <span>KLIcon</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLImagePreview_.html" class="">
+                                       图片预览 <span>KLImagePreview</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLLoading_.html" class="">
+                                       加载 <span>KLLoading</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLLocaleProvider_.html" class="">
+                                       国际化 <span>KLLocaleProvider</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLProgress_.html" class="">
+                                       进度条 <span>KLProgress</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
+                                   <a href="/components/widget_KLTooltip_.html" class="">
+                                       文字提示 <span>KLTooltip</span>
+                                   </a>
+                               </li>
+                            
+                        </ul>
                     
-                
-                <li>
-                    <a href="/components/form_KLButton_.html" class="sidebar-link">按钮 KLButton</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLCheck_.html" class="sidebar-link">复选框 KLCheck</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLCheckGroup_.html" class="sidebar-link">复选组 KLCheckGroup</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLDatePicker_.html" class="sidebar-link">日期选择 KLDatePicker</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLForm_.html" class="sidebar-link">表单 KLForm</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLInput_.html" class="sidebar-link">输入框 KLInput</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLMultiSelect_.html" class="sidebar-link">多级选择 KLMultiSelect</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLRadioGroup_.html" class="sidebar-link">单选组 KLRadioGroup</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLSelect_.html" class="sidebar-link">下拉选择 KLSelect</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLText_.html" class="sidebar-link">展示文本 KLText</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLTextArea_.html" class="sidebar-link">文本输入 KLTextArea</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLTreeView_.html" class="sidebar-link">树型视图 KLTreeView</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/form_KLUpload_.html" class="sidebar-link">上传文件 KLUpload</a>
-                </li>
-            
-                
-                    
-                        <li><h3>通知</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/notice_KLMask_.html" class="sidebar-link">遮罩 KLMask</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLMessage_.html" class="sidebar-link">消息 KLMessage</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLModal_.html" class="sidebar-link">模态框 KLModal</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLNotify_.html" class="sidebar-link">通知 KLNotify</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/notice_KLPopConfirm_.html" class="sidebar-link">确认提示 KLPopConfirm</a>
-                </li>
-            
-                
-                    
-                        <li><h3>导航</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLCrumb_.html" class="sidebar-link">面包屑 KLCrumb</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLMenu_.html" class="sidebar-link">两级菜单 KLMenu</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLPager_.html" class="sidebar-link current">分页 KLPager</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLSidebar_.html" class="sidebar-link">菜单栏 KLSidebar</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLSteps_.html" class="sidebar-link">步骤 KLSteps</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/navigation_KLTabs_.html" class="sidebar-link">选项卡 KLTabs</a>
-                </li>
-            
-                
-                    
-                        <li><h3>其它</h3></li>
-                    
-                
-                <li>
-                    <a href="/components/widget_KLBadge_.html" class="sidebar-link">徽标 KLBadge</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLIcon_.html" class="sidebar-link">图标 KLIcon</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLImagePreview_.html" class="sidebar-link">图片预览 KLImagePreview</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLLoading_.html" class="sidebar-link">加载中 KLLoading</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLLocaleProvider_.html" class="sidebar-link">国际化 KLLocaleProvider</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLProgress_.html" class="sidebar-link">进度条 KLProgress</a>
-                </li>
-            
-                
-                    
-                
-                <li>
-                    <a href="/components/widget_KLTooltip_.html" class="sidebar-link">文字提示 KLTooltip</a>
                 </li>
             
         </ul>
@@ -335,64 +360,51 @@
 </div>
 
 
-<div class="content components with-sidebar">
-    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="content components with-sidebar ">
+    
+
+    <h2 id="pageName">分页 <span>KLPager</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>跳至多少页，支持输入后，按回车键触发哦！</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="总条数展示设置一"><a href="#总条数展示设置一" class="headerlink" title="总条数展示设置一"></a>总条数展示设置一</h3><!-- demo_start -->
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">200</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="不展示pageSize下拉或者总条数"><a href="#不展示pageSize下拉或者总条数" class="headerlink" title="不展示pageSize下拉或者总条数"></a>不展示pageSize下拉或者总条数</h3><p>只要不设置pageSize或sumTotal即可，但是需要单独传入每页的条数<code>total</code>, <code>total</code>的值是<code>Math.ceil(sumTotal/pageSize)</code></p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="总条数展示设置二"><a href="#总条数展示设置二" class="headerlink" title="总条数展示设置二"></a>总条数展示设置二</h3><!-- demo_start -->
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">total</span>=<span class="string">&#123;Math.ceil(sumTotal/pageSize)&#125;</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">pager</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">100</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="总条数展示场景一"><a href="#总条数展示场景一" class="headerlink" title="总条数展示场景一"></a>总条数展示场景一</h3><p>如果总条数有200多条，后端只返回200，通过设置<code>isEllipsis</code>使总条数展示位200+</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">maxTotal</span>=<span class="string">100</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;3&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;200&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;5&#125;</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="总条数展示场景二"><a href="#总条数展示场景二" class="headerlink" title="总条数展示场景二"></a>总条数展示场景二</h3><p>总条数特别多的时候，可以设置一个最大值x，超过这个值的时候页面展示位x+</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"left"</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"center"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"right"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h3><!-- demo_start -->
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;3&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;2000000&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;20&#125;</span> <span class="attr">maxTotal</span>=<span class="string">&#123;2000&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="翻页器展示形式-一般不需要设置"><a href="#翻页器展示形式-一般不需要设置" class="headerlink" title="翻页器展示形式(一般不需要设置)"></a>翻页器展示形式(一般不需要设置)</h3><p>可以设置翻页器展示的形式，设置两端显示的按钮数以及中间展示的按钮数量</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">middle</span>=<span class="string">3</span> <span class="attr">side</span>=<span class="string">1</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">pageSize</span>=<span class="string">&#123;5&#125;</span> <span class="attr">current</span>=<span class="string">&#123;6&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;100&#125;</span> <span class="attr">middle</span>=<span class="string">&#123;3&#125;</span> <span class="attr">side</span>=<span class="string">&#123;1&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="实际业务中推荐做法"><a href="#实际业务中推荐做法" class="headerlink" title="实际业务中推荐做法"></a>实际业务中推荐做法</h3><p>通过watch <code>pageSize</code> 和 <code>current</code>的值来请求列表数据，不推荐使用pager的select事件来处理；</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#KLPager">KLPager</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#Component">Component</a></dt>
-<dd><hr>
-<p>KLPager     分页</p>
-</dd>
-</dl>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#select(page) 选择某一页">select(page) 选择某一页(page)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_select 选择某一页时触发">“select 选择某一页时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="KLPager"></a></p>
-<h2 id="KLPager"><a href="#KLPager" class="headerlink" title="KLPager"></a>KLPager</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLPager_new"></a></p>
-<h3 id="new-KLPager"><a href="#new-KLPager" class="headerlink" title="new KLPager()"></a>new KLPager()</h3><table>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">watchedAttr</span>: [<span class="string">'current'</span>, <span class="string">'pageSize'</span>],</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">200</span>;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.$watch(<span class="keyword">this</span>.watchedAttr, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.__getList();</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">__getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'更新列表数据'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLPager"></a></p>
+<h2 id="KLPager"><a href="#KLPager" class="headerlink" title="KLPager"></a><span class="param-title">KLPager</span><a name="new_KLPager_new"></a></h2><h3 id="KLPager-1"><a href="#KLPager-1" class="headerlink" title="KLPager"></a><span class="param-title">KLPager</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -433,12 +445,6 @@
 <td>=&gt; 每页个数</td>
 </tr>
 <tr>
-<td>[options.data.position]</td>
-<td><code>string</code></td>
-<td><code>&quot;center&quot;</code></td>
-<td>=&gt; 分页的位置，可选参数：<code>center</code>、<code>left</code>、<code>right</code></td>
-</tr>
-<tr>
 <td>[options.data.middle]</td>
 <td><code>number</code></td>
 <td><code>5</code></td>
@@ -463,24 +469,6 @@
 <td>=&gt; 最大可设置的每页条数</td>
 </tr>
 <tr>
-<td>[options.data.readonly]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否只读</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
 <td>[options.data.isEllipsis]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -500,32 +488,8 @@
 </tr>
 </tbody>
 </table>
-<p><a name="Component"></a></p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>KLPager     分页</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(page) 选择某一页"></a></p>
-<h2 id="select-page-选择某一页-page-⇒-void"><a href="#select-page-选择某一页-page-⇒-void" class="headerlink" title="select(page) 选择某一页(page) ⇒ void"></a>select(page) 选择某一页(page) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>page</td>
-<td><code>object</code></td>
-<td>选择页</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_select 选择某一页时触发"></a></p>
-<h2 id="“select-选择某一页时触发”"><a href="#“select-选择某一页时触发”" class="headerlink" title="“select 选择某一页时触发”"></a>“select 选择某一页时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
+<p><a name="KLPager+event_select 选择某一页时触发"></a></p>
+<h3 id="select-选择某一页时触发Event"><a href="#select-选择某一页时触发Event" class="headerlink" title="select 选择某一页时触发Event"></a><span class="param-title">select 选择某一页时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -553,73 +517,273 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager current=3 sumTotal=200 pageSize=5 />
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
 
       */});
-      var component = new NEKUI.Component({template: template});
+      
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager current=3 sumTotal=200 pageSize=5 isEllipsis={true} />
+ <pager total={Math.ceil(sumTotal/pageSize)} current={current}></pager>
 
       */});
-      var component = new NEKUI.Component({template: template});
+      
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 100;
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+ <pager total={Math.ceil(sumTotal/pageSize)} current={current}></pager>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 100;
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager current=3 sumTotal=200 pageSize=5 maxTotal=100 />
+<kl-pager current={3} sumTotal={200} pageSize={5} isEllipsis={true} />
 
       */});
       var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={3} sumTotal={200} pageSize={5} isEllipsis={true} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager pageSize=20 current=6 total=11 position="left" lang="en-US" />
-<kl-pager pageSize=20 current=6 total=11 position="center" />
-<kl-pager current=6 total=11 position="right" />
+<kl-pager current={3} sumTotal={2000000} pageSize={20} maxTotal={2000} />
 
       */});
       var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={3} sumTotal={2000000} pageSize={20} maxTotal={2000} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager current=6 total=11 middle=3 side=1 />
+<kl-pager pageSize={5} current={6} sumTotal={100} middle={3} side={1} />
 
       */});
       var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager pageSize={5} current={6} sumTotal={100} middle={3} side={1} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-pager current=6 total=11 disabled />
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
 
       */});
-      var component = new NEKUI.Component({template: template});
+      
+var component = new NEKUI.Component({
+    template: template,
+    watchedAttr: ['current', 'pageSize'],
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+
+        this.$watch(this.watchedAttr, function() {
+            this.__getList();
+        });
+    },
+    __getList: function() {
+        console.log('更新列表数据');
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    watchedAttr: ['current', 'pageSize'],
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+
+        this.$watch(this.watchedAttr, function() {
+            this.__getList();
+        });
+    },
+    __getList: function() {
+        console.log('更新列表数据');
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
     })(index++);
     
 </script>
 
+
     <div class="guide-links">
       
-        <span>← <a href="/components/navigation_KLMenu_.html">两级菜单</a></span>
+        <a href="/components/navigation_KLMenu_.html" class="pager">
+            <span class="icon icon-left"></span><span>导航菜单</span>
+        </a>
       
+        <span class="placeholder"></span>
       
-        <span style="float:right"><a href="/components/navigation_KLSidebar_.html">菜单栏</a> →</span>
+        <a href="/components/navigation_KLSidebar_.html" class="pager">
+            <span>菜单栏</span><span class="icon icon-right"></span>
+        </a>
       
     </div>
     <div class="footer">
@@ -628,6 +792,8 @@ var index = 0;
         来 GitHub 提个 PR 吧！
       </a>
     </div>
+      
+     
 </div>
 
             </div>
