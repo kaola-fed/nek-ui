@@ -40,7 +40,6 @@ const Components = {
 
   // Notice
   KLModal: require('./components/notice/KLModal'),
-  KLMask: require('./components/notice/KLMask'),
   KLNotify: require('./components/notice/KLNotify'),
   KLPopConfirm: require('./components/notice/KLPopConfirm'),
   KLMessage: require('./components/notice/KLMessage'),
@@ -59,7 +58,7 @@ const Components = {
   KLTableCol: require('./components/layout/KLTable/KLTableCol'),
   KLTableTemplate: require('./components/layout/KLTable/KLTableTemplate'),
   KLRow: require('./components/layout/KLRow'),
-  KLCol: require('./components/layout/KLCol'),
+  KLCol: require('./components/layout/KLRow/KLCol'),
   KLCard: require('./components/layout/KLCard'),
   KLCardTools: require('./components/layout/KLCard/KLCardTools'),
   KLSearch: require('./components/layout/KLSearch'),

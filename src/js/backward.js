@@ -80,17 +80,6 @@ const aliasList = [
 ];
 
 module.exports = function (Components) {
-  // 别名组件
-  aliasList.forEach((alias) => {
-    Components[alias.oldObj] = Components[alias.newObj].extend({
-      name: alias.oldName,
-    });
-    // 静态方法
-    (alias.staticMethods || []).forEach((_static) => {
-      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
-    });
-  });
-
   Object.assign(Components, {
     // 内部组件
     NumberInput: NumberInput.extend({ name: 'number.input' }),
@@ -108,5 +97,17 @@ module.exports = function (Components) {
     PathTool: require('./tools/path.tool'),
     Panel: require('./components/_deprecated_/panel'),
     PanelTool: require('./components/_deprecated_/panel.tool'),
+    KLMask: require('./components/_deprecated_/KLMask'),
+  });
+
+  // 别名组件
+  aliasList.forEach((alias) => {
+    Components[alias.oldObj] = Components[alias.newObj].extend({
+      name: alias.oldName,
+    });
+    // 静态方法
+    (alias.staticMethods || []).forEach((_static) => {
+      Components[alias.oldObj][_static] = Components[alias.newObj][_static];
+    });
   });
 };

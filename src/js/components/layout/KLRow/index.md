@@ -3,7 +3,7 @@ title: 栅格布局
 ---
 
 <!-- demo_start -->
-*基本形式*
+### 基本形式
 
 <div class="m-example">
     <style>
@@ -74,7 +74,7 @@ title: 栅格布局
 <!-- demo_end -->
 
 <!-- demo_start -->
-*布局模式Flex*
+### 布局模式Flex
 
 <div class="m-example"></div>
 
@@ -103,7 +103,7 @@ title: 栅格布局
 <!-- demo_end -->
 
 <!-- demo_start -->
-*列间距Gutter*
+### 列间距Gutter
 
 <div class="m-example"></div>
 
@@ -120,7 +120,7 @@ title: 栅格布局
 <!-- demo_end -->
 
 <!-- demo_start -->
-*列偏移Offset*
+### 列偏移Offset
 
 <div class="m-example"></div>
 
@@ -137,7 +137,7 @@ title: 栅格布局
 <!-- demo_end -->
 
 <!-- demo_start -->
-*响应式布局*
+### 响应式布局
 
 <div class="m-example"></div>
 

@@ -4,7 +4,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
 /**
- * @class KLMask
+ * @class KLMask 已经与KLLoading合并, 请勿使用
  * @extend Component
  * @param {object}            [options.data]                      = 绑定数据
  * @param {string}            [options.data.content]              => 内容模板,纯文本或者html代码片段

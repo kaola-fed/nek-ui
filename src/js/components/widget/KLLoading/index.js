@@ -1,6 +1,5 @@
 /**
- * @file KLLoading   加载中 不建议外部使用
- * @deprecated
+ * @file KLLoading  加载中
  * @author   sensen(rainforest92@126.com)
  */
 
@@ -12,7 +11,7 @@ const _ = require('../../../ui-base/_');
  * @class KLLoading
  * @param {object}        [options.data]                    = 绑定属性
  * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
- * @param {boolean}       [options.data.disabled=false]     => 是否禁用
+ * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
  * @param {boolean}       [options.data.visible=false]      => 是否显示
  * @param {string}        [options.data.class]              => 补充class
  */
@@ -32,8 +31,7 @@ const KLLoading = Component.extend({
     if (this.$root === this) this.$inject(document.body);
   },
   /**
-     * @method show() 显示组件
-     * @public
+     * @method KLLoading#show() 显示组件
      * @return {void}
      */
   show() {
@@ -43,8 +41,7 @@ const KLLoading = Component.extend({
     this.$update();
   },
   /**
-     * @method hide() 隐藏组件
-     * @public
+     * @method KLLoading#hide() 隐藏组件
      * @return {void}
      */
   hide() {
@@ -55,28 +52,23 @@ const KLLoading = Component.extend({
   },
 });
 
-/**
- * 直接初始化一个实例
- * @type {Loading}
- */
+
 const loading = new KLLoading();
+/**
+ * @param loading 内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例
+ * @static
+ */
 KLLoading.loading = loading;
 
 /**
- * @method show() 显示加载中
  * @static
- * @public
- * @return {void}
  */
 KLLoading.show = function () {
   loading.show();
 };
 
 /**
- * @method hide() 隐藏加载中
  * @static
- * @public
- * @return {void}
  */
 KLLoading.hide = function () {
   loading.hide();

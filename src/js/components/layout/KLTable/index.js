@@ -22,8 +22,9 @@ const tpl = require('./index.html');
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  * @param {array}             [options.data.columns]              => 列配置
- * @param {string}            [optiosn.data.align='center']       => 文字对齐
+ * @param {string}            [optiosn.data.align=center]       => 文字对齐
  * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
+ * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
  */
 
 /**
@@ -41,8 +42,8 @@ const tpl = require('./index.html');
  * @param {boolean}     [options.data.sortable]         => 可排序
  * @param {string}      [options.data.children]         => 子表头
  * @param {boolean/string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
- * @param {string}      [optiosn.data.align='']         => 列文字对齐
- * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
+ * @param {string}      [optiosn.data.align]         => 列文字对齐
+ * @param {string}      [optiosn.data.placeholder=-]  => 列文字对齐
  * @param {string}      [options.data.template]         => 列内容模版
  */
 
@@ -50,7 +51,7 @@ const tpl = require('./index.html');
  * @class KLTableTemplate
  * @extend Component
  * @param {object}      [options.data]                = 绑定属性
- * @param {string}      [options.data.type="content"] => 模版类型, header, content
+ * @param {string}      [options.data.type=content] => 模版类型, header, content
  */
 
 const KLTable = Component.extend({

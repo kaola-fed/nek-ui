@@ -15,7 +15,9 @@
         {#if loading}
         <tr class="tb_bd_tr">
             <td class="tb_bd_td" colspan={_dataColumns.length}>
-                <kl-loading visible={loading} static />&nbsp;{this.$trans('LOADING')}...
+                <kl-loading visible={loading} static>
+                  <p>{this.$trans('LOADING')}</p>
+                </kl-loading>
             </td>
         </tr>
 
