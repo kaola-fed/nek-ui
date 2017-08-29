@@ -70,6 +70,7 @@ const UploadBase = Component.extend({
     _.extend(data, {
       fileUnitList: [],
       dragover: false,
+      dragenterCount: 0,
     });
 
     this.initWatchers();
@@ -232,27 +233,30 @@ const UploadBase = Component.extend({
   },
 
   onDragEnter(e) {
+    const data = this.data;
     e.stopPropagation();
     e.preventDefault();
+    data.dragover = true;
+    data.dragenterCount += 1;
   },
 
   onDragOver(e) {
-    this.data.dragover = true;
-    console.log(`over ${this.data.dragover}`);
     e.stopPropagation();
     e.preventDefault();
   },
 
   onDragLeave(e) {
-    this.data.dragover = false;
-    console.log(`leave ${this.data.dragover}`);
+    const data = this.data;
     e.stopPropagation();
     e.preventDefault();
+    data.dragenterCount -= 1;
+    if (data.dragenterCount === 0) {
+      data.dragover = false;
+    }
   },
 
   onDrop(e) {
     this.data.dragover = false;
-    console.log(`drop ${this.data.dragover}`);
     e.stopPropagation();
     e.preventDefault();
 
@@ -279,7 +283,7 @@ const UploadBase = Component.extend({
         checker.then((preCheckInfo) => {
           data.preCheckInfo = preCheckInfo;
           self.$update();
-          if (!data.preCheckInfo) {
+          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
             const fileunit = {
               rawFile: file,
               name: file.name,
