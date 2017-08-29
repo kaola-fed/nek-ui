@@ -161,15 +161,18 @@ const KLDatePicker = Dropdown.extend({
       return;
     }
     this._onDateTimeChange(date, time);
-
+  },
+  onConfirm() {
+    if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {
+      return;
+    }
     this._onOk();
-
-    // this.toggle(false);
   },
   _onClose() {
     this.toggle(false);
   },
   _onOk() {
+    this.date || this._onDateTimeChange(this.data._date);
     this.data.date = this.date;
     this.data.time = this.time;
     /**
@@ -196,7 +199,6 @@ const KLDatePicker = Dropdown.extend({
   _onInput($event) {
     const value = $event.target.value;
     const date = value ? new Date(value) : null;
-
     if (date !== 'Invalid Date') this.data.date = date;
     else {
       $event.target.value = filter.format(

@@ -16,4 +16,14 @@
     .btns {
         margin-top: 10px;
     }
+    .dropdown_ft {
+        display: flex;
+        padding: 4px 0 0;
+        margin-top: 4px;
+        justify-content: flex-end;
+        border-top: 1px solid #ddd;
+        a {
+            color: #333;
+        }
+    }
 }
