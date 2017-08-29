@@ -139,3 +139,6 @@ gulp.task('watch', ['server'], () => {
 gulp.task('watch-doc', ['server'], () => {
   gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['easy-doc']);
 });
+
+/* 把v0.5版本的文档copy到pulic目录下 */
+gulp.task('copy-oldDoc', () => gulp.src('./doc/v0.5/**').pipe(gulp.dest('./doc/public/v0.5')));

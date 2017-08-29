@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>联动选择 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="联动选择 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/v0.5/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="/v0.5/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/v0.5/css/page.css">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs">        <script src="/v0.5/vendor/regular.js"></script>
+        <script src="/v0.5/js/nek-ui.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/">首页</a></li>
+<li><a href="/v0.5/components/" class="nav-link current">组件</a></li>
+<li><a href="/v0.5/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/">首页</a></li>
+<li><a href="/v0.5/components/" class="nav-link current">组件</a></li>
+<li><a href="/v0.5/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+            
+                
+                <li>
+                    <a href="/v0.5/components/index.html" class="sidebar-link">快速上手 </a>
+                </li>
+            
+                
+                    
+                        <li><h3>布局</h3></li>
+                    
+                
+                <li>
+                    <a href="/v0.5/components/layout_card_.html" class="sidebar-link">卡片 card</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/layout_ui.table_.html" class="sidebar-link">表格 ui.table</a>
+                </li>
+            
+                
+                    
+                        <li><h3>表单</h3></li>
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_KLUpload_.html" class="sidebar-link new">上传组件 KLUpload</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_check_.html" class="sidebar-link">复选框 check</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_check.group_.html" class="sidebar-link">复选组 check.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_date.picker_.html" class="sidebar-link">日期选择 date.picker</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_form.item_.html" class="sidebar-link">表单项 form.item</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_multi.select_.html" class="sidebar-link">多级选择 multi.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_radio.group_.html" class="sidebar-link">单选组 radio.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_select.group_.html" class="sidebar-link current">联动选择 select.group</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.button_.html" class="sidebar-link">按钮 ui.button</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.form_.html" class="sidebar-link">表单 ui.form</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.input_.html" class="sidebar-link">输入框 ui.input</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.select_.html" class="sidebar-link">下拉选择 ui.select</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.text_.html" class="sidebar-link">展示文本 ui.text</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/form_ui.textarea_.html" class="sidebar-link">文本输入 ui.textarea</a>
+                </li>
+            
+                
+                    
+                        <li><h3>通知</h3></li>
+                    
+                
+                <li>
+                    <a href="/v0.5/components/notice_mask_.html" class="sidebar-link">遮罩 mask</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/notice_modal_.html" class="sidebar-link">模态框 modal</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/notice_notify_.html" class="sidebar-link">通知 notify</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/notice_pop.confirm_.html" class="sidebar-link">确认提示 pop.confirm</a>
+                </li>
+            
+                
+                    
+                        <li><h3>导航</h3></li>
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_KLCrumb_.html" class="sidebar-link new">面包屑 KLCrumb</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_menu_.html" class="sidebar-link">两级菜单 menu</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_pager_.html" class="sidebar-link">分页 pager</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_sidebar_.html" class="sidebar-link">菜单栏 sidebar</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_steps_.html" class="sidebar-link">步骤 steps</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/navigation_tabs_.html" class="sidebar-link">选项卡 tabs</a>
+                </li>
+            
+                
+                    
+                        <li><h3>其它</h3></li>
+                    
+                
+                <li>
+                    <a href="/v0.5/components/widget_KLIcon_.html" class="sidebar-link new">图标 KLIcon</a>
+                </li>
+            
+                
+                    
+                
+                <li>
+                    <a href="/v0.5/components/widget_tooltip_.html" class="sidebar-link">文字提示 tooltip</a>
+                </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar">
+    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ui.form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form.item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form.item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ui.form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> <span class="attr">disabled</span> /&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="设置默认项"><a href="#设置默认项" class="headerlink" title="设置默认项"></a>设置默认项</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> <span class="attr">placeholders</span>=<span class="string">&#123;[</span>'学科门类', '一级学科', '二级学科']&#125; /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><p><em>待完成……</em></p>
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> <span class="attr">on-select</span>=<span class="string">&#123;this._onSelect($event)&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前的选择项：&#123;selectedTexts&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前的选择值：&#123;selectedValues&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        selecteds: []</div><div class="line">    &#125;,</div><div class="line">    _onSelect: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.selectedTexts = $event.selecteds.map(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> item &amp;&amp; item.name;</div><div class="line">            &#125;).join(<span class="string">' &gt; '</span>);</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">0</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span></span></div><div class="line"><span class="tag">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event:</span>', $<span class="attr">event</span>)&#125;</span></div><div class="line"><span class="tag">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event:</span>', $<span class="attr">event</span>)&#125; /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'理学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'物理学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'理论物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'凝聚态物理'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'材料物理'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'数学'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'基础数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算数学'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'应用数学'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'化学'</span>&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'工学'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'计算机科学与技术'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机系统结构'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机软件与理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'计算机应用技术'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'软件工程'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'机械工程'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械制造及其自动化'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械电子工程'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'机械设计及理论'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'车辆工程'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="行政区（部分）示例"><a href="#行政区（部分）示例" class="headerlink" title="行政区（部分）示例"></a>行政区（部分）示例</h3><p>该示例可以进行省市区三级的选择，并且处理了直辖市少一级的问题。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select.group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">depth</span>=<span class="string">3</span> <span class="attr">on-select</span>=<span class="string">&#123;this._onSelect($event)&#125;</span> <span class="attr">ref</span>=<span class="string">"select.group"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    template: template,</div><div class="line">    data: &#123;</div><div class="line">        source: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'北京'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'北京'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'东城区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'西城区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'海淀区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'朝阳区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'丰台区'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'上海'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'上海'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'黄浦区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'浦东新区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'徐汇区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'长宁区'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'浙江'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'杭州'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'上城区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'下城区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'江干区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'西湖区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'滨江区'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'宁波'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'海曙区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'江东区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'江北区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'北仑区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'镇海区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'鄞州区'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'绍兴'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'越城区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'柯桥区'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'上虞区'</span>&#125;</div><div class="line">                ]&#125;</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'江苏'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'南京'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'苏州'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    _onSelect: <span class="function"><span class="keyword">function</span>(<span class="params">$event</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>($event.level === <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">var</span> selected = $event.selected;</div><div class="line">            <span class="keyword">if</span>(selected &amp;&amp; (selected.name === <span class="string">'北京'</span> || selected.name === <span class="string">'上海'</span>))</div><div class="line">                $event.sender.data.placeholders[<span class="number">1</span>] = <span class="string">''</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                $event.sender.data.placeholders[<span class="number">1</span>] = <span class="string">'请选择'</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#SelectGroup">SelectGroup</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#validate_new 根据required验证组件的值是否正确">validate() 根据required验证组件的值是否正确()</a> ⇒ <code>object</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 最后的选择项改变时触发">“change 最后的选择项改变时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="SelectGroup"></a></p>
+<h2 id="SelectGroup"><a href="#SelectGroup" class="headerlink" title="SelectGroup"></a>SelectGroup</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_SelectGroup_new"></a></p>
+<h3 id="new-SelectGroup"><a href="#new-SelectGroup" class="headerlink" title="new SelectGroup()"></a>new SelectGroup()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.source]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 数据源</td>
+</tr>
+<tr>
+<td>[options.data.source[].name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 每项的内容</td>
+</tr>
+<tr>
+<td>[options.data.source[].disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 禁用此项</td>
+</tr>
+<tr>
+<td>[options.data.source[].divider]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 设置此项为分隔线</td>
+</tr>
+<tr>
+<td>[options.data.depth]</td>
+<td><code>number</code></td>
+<td><code>1</code></td>
+<td>=&gt; 层级数</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 是否必填</td>
+</tr>
+<tr>
+<td>[options.data.selected]</td>
+<td><code>object</code></td>
+<td><code>[]</code></td>
+<td>&lt;=  最后的选择项</td>
+</tr>
+<tr>
+<td>[options.data.selecteds]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 所有的选择项</td>
+</tr>
+<tr>
+<td>[options.data.values]</td>
+<td><code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;number&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 所有的选择值</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的键</td>
+</tr>
+<tr>
+<td>[options.data.placeholders]</td>
+<td><code>Array.&lt;string&gt;</code></td>
+<td><code>[]</code></td>
+<td>=&gt; 默认项的文字</td>
+</tr>
+<tr>
+<td>[options.data.hideTip]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示校验错误信息</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+<tr>
+<td>[options.service]</td>
+<td><code>object</code></td>
+<td></td>
+<td>@=&gt; 数据服务</td>
+</tr>
+</tbody>
+</table>
+<p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="validate_new 根据required验证组件的值是否正确"></a></p>
+<h2 id="validate-根据required验证组件的值是否正确-⇒-object"><a href="#validate-根据required验证组件的值是否正确-⇒-object" class="headerlink" title="validate() 根据required验证组件的值是否正确() ⇒ object"></a>validate() 根据required验证组件的值是否正确() ⇒ <code>object</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>object</code> - result 结果<br><strong>Access:</strong> public<br><a name="event_change 最后的选择项改变时触发"></a></p>
+<h2 id="“change-最后的选择项改变时触发”"><a href="#“change-最后的选择项改变时触发”" class="headerlink" title="“change 最后的选择项改变时触发”"></a>“change 最后的选择项改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>selected</td>
+<td><code>object</code></td>
+<td>最后的选择项</td>
+</tr>
+<tr>
+<td>selecteds</td>
+<td><code>object</code></td>
+<td>所有的选择项</td>
+</tr>
+<tr>
+<td>key</td>
+<td><code>string</code></td>
+<td>数据项的键</td>
+</tr>
+<tr>
+<td>values</td>
+<td><code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;number&gt;</code></td>
+<td>所有的选择值</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_select 选择某一项时触发"></a></p>
+<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>selected</td>
+<td><code>object</code></td>
+<td>当前选择项</td>
+</tr>
+<tr>
+<td>level</td>
+<td><code>object</code></td>
+<td>当前选择的层级</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<select.group source={source} depth=3 />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<ui.form>
+    <form.item cols="12" title="用户名" hint="用户名的用途">
+        <select.group source={source} depth=3 />
+    </form.item>
+</ui.form>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<p><select.group source={source} depth=3 /></p>
+<p><select.group source={source} depth=3 disabled /></p>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', disabled: true, children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论', disabled: true},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程', disabled: true},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论', disabled: true},
+                    {name: '车辆工程', disabled: true}
+                ]}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<select.group source={source} depth=3 placeholders={['学科门类', '一级学科', '二级学科']} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<select.group source={source} depth=3 on-select={this._onSelect($event)} />
+<p>当前的选择项：{selectedTexts}</p>
+<p>当前的选择值：{selectedValues}</p>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ],
+        selecteds: []
+    },
+    _onSelect: function($event) {
+        setTimeout(function() {
+            this.data.selectedTexts = $event.selecteds.map(function(item) {
+                return item && item.name;
+            }).join(' > ');
+            this.$update();
+        }.bind(this), 0);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<select.group source={source} depth=3
+    on-select={console.log('on-select:', '$event:', $event)}
+    on-change={console.log('on-change:', '$event:', $event)} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '理学', children: [
+                {name: '物理学', children: [
+                    {name: '理论物理'},
+                    {name: '凝聚态物理'},
+                    {name: '材料物理'}
+                ]},
+                {name: '数学', children: [
+                    {name: '基础数学'},
+                    {name: '计算数学'},
+                    {name: '应用数学'}
+                ]},
+                {name: '化学'}
+            ]},
+            {name: '工学', children: [
+                {name: '计算机科学与技术', children: [
+                    {name: '计算机系统结构'},
+                    {name: '计算机软件与理论'},
+                    {name: '计算机应用技术'}
+                ]},
+                {name: '软件工程'},
+                {name: '机械工程', children: [
+                    {name: '机械制造及其自动化'},
+                    {name: '机械电子工程'},
+                    {name: '机械设计及理论'},
+                    {name: '车辆工程'}
+                ]}
+            ]}
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<select.group source={source} depth=3 on-select={this._onSelect($event)} ref="select.group" />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '北京', children: [
+                {name: '北京', children: [
+                    {name: '东城区'},
+                    {name: '西城区'},
+                    {name: '海淀区'},
+                    {name: '朝阳区'},
+                    {name: '丰台区'}
+                ]}
+            ]},
+            {name: '上海', children: [
+                {name: '上海', children: [
+                    {name: '黄浦区'},
+                    {name: '浦东新区'},
+                    {name: '徐汇区'},
+                    {name: '长宁区'}
+                ]}
+            ]},
+            {name: '浙江', children: [
+                {name: '杭州', children: [
+                    {name: '上城区'},
+                    {name: '下城区'},
+                    {name: '江干区'},
+                    {name: '西湖区'},
+                    {name: '滨江区'}
+                ]},
+                {name: '宁波', children: [
+                    {name: '海曙区'},
+                    {name: '江东区'},
+                    {name: '江北区'},
+                    {name: '北仑区'},
+                    {name: '镇海区'},
+                    {name: '鄞州区'}
+                ]},
+                {name: '绍兴', children: [
+                    {name: '越城区'},
+                    {name: '柯桥区'},
+                    {name: '上虞区'}
+                ]}
+            ]},
+            {name: '江苏', children: [
+                {name: '南京'},
+                {name: '苏州'}
+            ]}
+        ]
+    },
+    _onSelect: function($event) {
+        if($event.level === 0) {
+            var selected = $event.selected;
+            if(selected && (selected.name === '北京' || selected.name === '上海'))
+                $event.sender.data.placeholders[1] = '';
+            else
+                $event.sender.data.placeholders[1] = '请选择';
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+    <div class="guide-links">
+      
+        <span>← <a href="/components/form_radio.group_.html">单选组</a></span>
+      
+      
+        <span style="float:right"><a href="/components/form_ui.button_.html">按钮</a> →</span>
+      
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+</div>
+
+            </div>
+            <script src="/v0.5/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.5/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
