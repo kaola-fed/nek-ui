@@ -208,7 +208,7 @@ const KLSelect = Dropdown.extend({
         }
       } else {
         if (value !== undefined && value !== null) {
-          data.selected = newValue.find(item => item[key] === value, this);
+          data.selected = newValue.find(item => `${item[key]}` === `${value}`, this);
         } else if (data.selected && newValue.indexOf(data.selected) < 0) {
           data.selected = undefined;
         }
