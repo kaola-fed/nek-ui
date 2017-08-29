@@ -10309,15 +10309,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    this._onDateTimeChange(date, time);
-
+	  },
+	  onConfirm: function onConfirm() {
+	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {
+	      return;
+	    }
 	    this._onOk();
-
-	    // this.toggle(false);
 	  },
 	  _onClose: function _onClose() {
 	    this.toggle(false);
 	  },
 	  _onOk: function _onOk() {
+	    this.date || this._onDateTimeChange(this.data._date);
 	    this.data.date = this.date;
 	    this.data.time = this.time;
 	    /**
@@ -10344,7 +10347,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _onInput: function _onInput($event) {
 	    var value = $event.target.value;
 	    var date = value ? new Date(value) : null;
-
 	    if (date !== 'Invalid Date') this.data.date = date;else {
 	      $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
 	    }
@@ -10396,7 +10398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
@@ -10549,7 +10551,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	  _update: function _update() {
 	    this.data._days = [];
-
 	    var date = this.data.date;
 	    var month = date.getMonth();
 	    var mfirst = new Date(date);
@@ -10616,11 +10617,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param  {Date} date 选择的日期
 	     * @return {void}
 	     */
-	  select: function select(date) {
+	  select: function select(date, e) {
+	    e.stopPropagation();
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
 	      return;
 	    }
-
 	    this.data.date = new Date(date);
 
 	    /**
@@ -10674,7 +10675,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 222 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">{this.$trans('CAL_SUNDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_MONDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_TUESDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_WENSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_THURSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_FRIDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_SATURDAY')}</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
+	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">{this.$trans('CAL_SUNDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_MONDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_TUESDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_WENSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_THURSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_FRIDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_SATURDAY')}</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day, $event)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
 /* 223 */
