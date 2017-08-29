@@ -146,7 +146,6 @@ const Calendar = Component.extend({
      */
   _update() {
     this.data._days = [];
-
     const date = this.data.date;
     const month = date.getMonth();
     const mfirst = new Date(date);
@@ -210,11 +209,11 @@ const Calendar = Component.extend({
      * @param  {Date} date 选择的日期
      * @return {void}
      */
-  select(date) {
+  select(date, e) {
+    e.stopPropagation();
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
       return;
     }
-
     this.data.date = new Date(date);
 
     /**
