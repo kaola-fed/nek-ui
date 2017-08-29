@@ -10309,15 +10309,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    this._onDateTimeChange(date, time);
-
+	  },
+	  onConfirm: function onConfirm() {
+	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {
+	      return;
+	    }
 	    this._onOk();
-
-	    // this.toggle(false);
 	  },
 	  _onClose: function _onClose() {
 	    this.toggle(false);
 	  },
 	  _onOk: function _onOk() {
+	    this.date || this._onDateTimeChange(this.data._date);
 	    this.data.date = this.date;
 	    this.data.time = this.time;
 	    /**
@@ -10344,7 +10347,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _onInput: function _onInput($event) {
 	    var value = $event.target.value;
 	    var date = value ? new Date(value) : null;
-
 	    if (date !== 'Invalid Date') this.data.date = date;else {
 	      $event.target.value = filter.format(this.data.date, 'yyyy-MM-dd HH:mm:ss');
 	    }
@@ -10396,7 +10398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
@@ -10549,7 +10551,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	     */
 	  _update: function _update() {
 	    this.data._days = [];
-
 	    var date = this.data.date;
 	    var month = date.getMonth();
 	    var mfirst = new Date(date);
@@ -10616,11 +10617,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @param  {Date} date 选择的日期
 	     * @return {void}
 	     */
-	  select: function select(date) {
+	  select: function select(date, e) {
+	    e.stopPropagation();
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
 	      return;
 	    }
-
 	    this.data.date = new Date(date);
 
 	    /**
@@ -28966,8 +28967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    _.extend(data, {
 	      fileUnitList: [],
-	      dragover: false,
-	      dragenterCount: 0
+	      dragover: false
 	    });
 
 	    this.initWatchers();
@@ -29128,27 +29128,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    inputNode.value = '';
 	  },
 	  onDragEnter: function onDragEnter(e) {
-	    var data = this.data;
 	    e.stopPropagation();
 	    e.preventDefault();
-	    data.dragover = true;
-	    data.dragenterCount += 1;
 	  },
 	  onDragOver: function onDragOver(e) {
+	    this.data.dragover = true;
+	    console.log('over ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 	  },
 	  onDragLeave: function onDragLeave(e) {
-	    var data = this.data;
+	    this.data.dragover = false;
+	    console.log('leave ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
-	    data.dragenterCount -= 1;
-	    if (data.dragenterCount === 0) {
-	      data.dragover = false;
-	    }
 	  },
 	  onDrop: function onDrop(e) {
 	    this.data.dragover = false;
+	    console.log('drop ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 
@@ -29174,7 +29171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        checker.then(function (preCheckInfo) {
 	          data.preCheckInfo = preCheckInfo;
 	          self.$update();
-	          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
+	          if (!data.preCheckInfo) {
 	            var fileunit = {
 	              rawFile: file,
 	              name: file.name,

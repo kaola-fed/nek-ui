@@ -4116,6 +4116,16 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-datetimepicker .btns{
 	margin-top:10px;
 }
+.u-datetimepicker .dropdown_ft{
+	display:flex;
+	padding:4px 0 0;
+	margin-top:4px;
+	justify-content:flex-end;
+	border-top:1px solid #ddd;
+}
+.u-datetimepicker .dropdown_ft a{
+	color:#333;
+}
 .u-numberinput{
 	display:inline-block;
 	position:relative;
@@ -5324,9 +5334,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	cursor:pointer;
 }
 .m-upload .m-files-zone .u-input-wrapper .u-input-btn .u-input-content{
+	position:relative;
 	display:inline-block;
 	width:100%;
 	vertical-align:middle;
+	z-index:-1;
 }
 .m-upload .m-files-zone .u-input-wrapper .u-input-btn .u-input-content .u-icon{
 	display:inline-block;
@@ -5381,9 +5393,11 @@ input.u-check:disabled,input.u-radio:disabled{
 	cursor:pointer;
 }
 .m-upload .u-input-wrapper .u-input-btn .u-input-content{
+	position:relative;
 	display:inline-block;
 	width:100%;
 	vertical-align:middle;
+	z-index:-1;
 }
 .m-upload .u-input-wrapper .u-input-btn .u-input-content .u-icon{
 	display:inline-block;
