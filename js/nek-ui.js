@@ -28966,7 +28966,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    _.extend(data, {
 	      fileUnitList: [],
-	      dragover: false
+	      dragover: false,
+	      dragenterCount: 0
 	    });
 
 	    this.initWatchers();
@@ -29127,24 +29128,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    inputNode.value = '';
 	  },
 	  onDragEnter: function onDragEnter(e) {
+	    var data = this.data;
 	    e.stopPropagation();
 	    e.preventDefault();
+	    data.dragover = true;
+	    data.dragenterCount += 1;
 	  },
 	  onDragOver: function onDragOver(e) {
-	    this.data.dragover = true;
-	    console.log('over ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 	  },
 	  onDragLeave: function onDragLeave(e) {
-	    this.data.dragover = false;
-	    console.log('leave ' + this.data.dragover);
+	    var data = this.data;
 	    e.stopPropagation();
 	    e.preventDefault();
+	    data.dragenterCount -= 1;
+	    if (data.dragenterCount === 0) {
+	      data.dragover = false;
+	    }
 	  },
 	  onDrop: function onDrop(e) {
 	    this.data.dragover = false;
-	    console.log('drop ' + this.data.dragover);
 	    e.stopPropagation();
 	    e.preventDefault();
 
@@ -29170,7 +29174,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        checker.then(function (preCheckInfo) {
 	          data.preCheckInfo = preCheckInfo;
 	          self.$update();
-	          if (!data.preCheckInfo) {
+	          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
 	            var fileunit = {
 	              rawFile: file,
 	              name: file.name,
