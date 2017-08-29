@@ -215,11 +215,9 @@ $margin = 20;
                font-size: 12px;
                cursor: pointer;
                .u-input-content {
-                   position: relative;
                    display: inline-block;
                    width: 100%;
                    vertical-align: middle;
-                   z-index: -1;
                    .u-icon {
                        display: inline-block;
                        width: 100%;
