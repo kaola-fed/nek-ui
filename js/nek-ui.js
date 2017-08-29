@@ -27903,7 +27903,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        if (value !== undefined && value !== null) {
 	          data.selected = newValue.find(function (item) {
-	            return item[key] === value;
+	            return '' + item[key] === '' + value;
 	          }, this);
 	        } else if (data.selected && newValue.indexOf(data.selected) < 0) {
 	          data.selected = undefined;
