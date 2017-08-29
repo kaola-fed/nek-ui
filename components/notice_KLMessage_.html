@@ -635,9 +635,16 @@ var index = 0;
 
         <!-- fastclick -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script src="/js/scrollIntoView.min.js"></script>
         <script>
         document.addEventListener('DOMContentLoaded', function() {
-          FastClick.attach(document.body)
+          FastClick.attach(document.body);
+
+          scrollIntoView(document.querySelector('.sidebar .submenu a.current'), {
+            validTarget: function(target, parentsScrolled){
+                return parentsScrolled < 2 && target !== window && target.matches('.sidebar');
+            },
+          });
         }, false)
         </script>
     </body>
