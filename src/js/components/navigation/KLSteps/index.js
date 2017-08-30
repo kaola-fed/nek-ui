@@ -13,7 +13,7 @@ const _ = require('../../../ui-base/_');
  * @param {object}      [options.data]                = 绑定属性
  * @param {object}      [options.data.steps=null]     <=> 类似于kl-select的source
  * @param {string}      [options.data.current=null]   <=> 当前状态
- * @param {boolean}     [options.data.size=false]     =>  当前尺寸
+ * @param {string}      [options.data.size]           =>  当前尺寸
  */
 const KLSteps = Component.extend({
   name: 'kl-steps',
