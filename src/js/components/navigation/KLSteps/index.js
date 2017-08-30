@@ -10,10 +10,13 @@ const _ = require('../../../ui-base/_');
 /**
  * @class KLSteps
  * @extend Component
- * @param {object}      [options.data]                = 绑定属性
- * @param {object}      [options.data.steps=null]     <=> 类似于kl-select的source
- * @param {string}      [options.data.current=null]   <=> 当前状态
- * @param {boolean}     [options.data.size=false]     =>  当前尺寸
+ * @param {object}      [options.data]                        = 绑定属性
+ * @param {object[]}    [options.data.steps=null]             <=> 数据源
+ * @param {number}      [options.data.steps[].status]         => 状态id
+ * @param {string}      [options.data.steps[].title]          => 步骤标题
+ * @param {object[]}    [options.data.steps[].description]    => 步骤具体描述
+ * @param {number}      [options.data.current=0]              <=> 当前状态
+ * @param {string}      [options.data.size]                   =>  当前尺寸，sm
  */
 const KLSteps = Component.extend({
   name: 'kl-steps',

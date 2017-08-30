@@ -13,7 +13,7 @@ const _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}              [options.data]                    = 绑定属性
  * @param {number}              [options.data.percent=36]         => 百分比
- * @param {string|boolean}      [options.data.text=true]          => 在进度条中是否显示百分比。值为`string`时显示该段文字。
+ * @param {string/boolean}      [options.data.text=true]          => 在进度条中是否显示百分比。值为`string`时显示该段文字。
  * @param {string}              [options.data.size=null]          => 进度条的尺寸
  * @param {string}              [options.data.state=null]         => 进度条的状态
  * @param {boolean}             [options.data.striped=false]      => 是否显示条纹
