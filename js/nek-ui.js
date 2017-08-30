@@ -10177,8 +10177,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.showTime=false]   => 是否显示时间选择
 	 * @param {string}        [options.data.defaultTime=null]  => 首次默认的时分秒, 格式为字符串"hh:mm:ss"
 	 * @param {string}        [options.data.placeholder=请输入] => 文本框的占位文字
-	 * @param {Date|string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
-	 * @param {Date|string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
+	 * @param {Date/string}   [options.data.minDate=null]     => 最小日期时间，如果为空则不限制
+	 * @param {Date/string}   [options.data.maxDate=null]     => 最大日期时间，如果为空则不限制
 	 * @param {boolean}       [options.data.hideTip=false]    => 是否显示校验错误信息
 	 * @param {boolean}       [options.data.autofocus=false]  => 是否自动获得焦点
 	 * @param {boolean}       [options.data.required=false]   => 是否必填
@@ -26736,7 +26736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.key=id]           => 数据项的key键
 	 * @param {string}        [options.data.source[].name]    => 每项的内容
 	 * @param {object}        [options.data.selected]         <=> 当前选择的对象
-	 * @param {number|string} [options.data.value]            <=> 当前选择的值
+	 * @param {number/string} [options.data.value]            <=> 当前选择的值
 	 * @param {boolean}       [options.data.block=false]      => 多行显
 	 * @param {boolean}       [options.data.required=false]   => 是否必选
 	 * @param {string}        [options.data.message]          => 验证错误提示
@@ -27415,8 +27415,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.class]              => 扩展样式
 	 * @param {boolean}     [options.data.inline]          => 如果true,kl-form-item按照inline-block排列
 	 * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
-	 * @param {string|number} [options.data.labelSize]     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
-	 * @param {string|number} [options.data.labelLineHeight]  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
+	 * @param {string/number} [options.data.labelSize]     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
+	 * @param {string/number} [options.data.labelLineHeight]  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
 	 */
 
 	/**
@@ -27428,7 +27428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.descTemplate]       => 说明区块模板
 	 * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
 	 * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
-	 * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
+	 * @param {string/number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
 	 * @param {string}        [options.data.labelLineHeight=lg] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.3), lg(值:2.5)
 	 * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
 	 * @param {boolean}       [options.data.required=false]     => 是否必选项
