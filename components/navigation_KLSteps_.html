@@ -398,21 +398,39 @@
 </tr>
 <tr>
 <td>[options.data.steps]</td>
-<td><code>object</code></td>
+<td><code>Array.&lt;object&gt;</code></td>
 <td><code></code></td>
-<td>&lt;=&gt; 类似于kl-select的source</td>
+<td>&lt;=&gt; 数据源</td>
+</tr>
+<tr>
+<td>[options.data.steps[].status]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 状态id</td>
+</tr>
+<tr>
+<td>[options.data.steps[].title]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 步骤标题</td>
+</tr>
+<tr>
+<td>[options.data.steps[].description]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td></td>
+<td>=&gt; 步骤具体描述</td>
 </tr>
 <tr>
 <td>[options.data.current]</td>
-<td><code>string</code></td>
-<td><code>null</code></td>
+<td><code>number</code></td>
+<td><code>0</code></td>
 <td>&lt;=&gt; 当前状态</td>
 </tr>
 <tr>
 <td>[options.data.size]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt;  当前尺寸</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt;  当前尺寸，sm</td>
 </tr>
 </tbody>
 </table>
@@ -661,6 +679,18 @@ var component = new NEKUI.Component({
             },
           });
         }, false)
+        </script>
+
+        <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
+        <script>
+          (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:608636,hjsv:5};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+          })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
         </script>
     </body>
 </html>
