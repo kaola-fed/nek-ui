@@ -22,6 +22,10 @@ $orderIconColor = #666;
         z-index: 100;
         background: $resizeProxyColor;
     }
+    .expand_row {
+        position: absolute;
+        width: 100%;
+    }
 }
 
 .m-kl-table {
@@ -215,16 +219,20 @@ $orderIconColor = #666;
     }
 
     .u-expand-sign {
-        &:hover {
-            text-decoration: underline;
-        }
+        display: inline-block;
+        box-sizing: border-box;
+        height: 17px;
+        width: 17px;
+        border: 1px solid #ddd;
+        line-height: 13px;
+        vertical-align: middle;
     }
 }
 
 .m-kl-table-fixed {
     .tb_bd_tr {
         &.td_bd_tr_expand {
-            visibility: hidden;
+            //visibility: hidden;
         }
     }
 }

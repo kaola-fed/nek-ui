@@ -22,7 +22,7 @@ const tpl = require('./index.html');
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  * @param {array}             [options.data.columns]              => 列配置
- * @param {string}            [optiosn.data.align=center]       => 文字对齐
+ * @param {string}            [optiosn.data.align=center]         => 文字对齐
  * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
  * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
  */
@@ -43,7 +43,7 @@ const tpl = require('./index.html');
  * @param {string}      [options.data.children]         => 子表头
  * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
  * @param {string}      [optiosn.data.align='']         => 列文字对齐
- * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
+ * @param {string}      [optiosn.data.placeholder='-']  => 列文字占位符
  *
  * @param {string}      [options.data.template]         => 列内容模版
  * @param {string}      [options.data.headerTemplate]   => 列表头模版
@@ -110,6 +110,8 @@ const KLTable = Component.extend({
     this.supr(data);
     this.data.minColWidth = +this.data.minColWidth;
     this.data._defaultWidth = +this.data.width;
+    this.$table = this;
+    this.$tableData = this.data;
   },
   init() {
     this._initTable();
@@ -293,9 +295,36 @@ const KLTable = Component.extend({
       if (!self._isShow()) {
         return;
       }
+      self._getHeaderHeight();
       self._updateParentWidth();
       self._updateScrollBar();
+      self._updateExpandHeight();
     }, 200);
+  },
+  _updateExpandHeight() {
+    if (!this.data.source) {
+      return;
+    }
+    this.data.source.forEach((row, index) => {
+      const expandElement = this.$refs[`expand${index}`];
+      if (expandElement && row._expanddingColumn) {
+        row._expandHeight = expandElement.clientHeight;
+      }
+    });
+  },
+  _getExpandRowTop(index) {
+    const a = this.data.source.reduce((sum, row, rowIndex) => {
+      let newSum = sum;
+      if (rowIndex <= index) {
+        newSum += row._rowHeight;
+        if (rowIndex < index && row.expand) {
+          newSum += (row._expandHeight || 0);
+        }
+        return newSum;
+      }
+      return sum;
+    }, this.data.headerHeight);
+    return a;
   },
   _updateParentWidth() {
     const data = this.data;
@@ -517,6 +546,10 @@ const KLTable = Component.extend({
     });
   },
   _onExpand(e) {
+    setTimeout(() => {
+      this._updateExpandHeight();
+      this.$update();
+    }, 0);
     this.$emit('expand', {
       sender: this,
       expand: e.expand,

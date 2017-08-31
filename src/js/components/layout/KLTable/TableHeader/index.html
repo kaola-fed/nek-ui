@@ -3,7 +3,7 @@
     r-style={{
         'width': width == undefined ? 'auto' : width + 'px',
         'text-align': config.textAlign || 'center',
-        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''
+        'margin-left': fixedCol === 'right' ? '-'+marginLeft + 'px' : ''
     }}>
     <colgroup>
         {#list _dataColumns as _dataColumn by _dataColumn_index}

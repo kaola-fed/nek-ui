@@ -14,7 +14,7 @@
         r-style={{
             height: fixedHeader ? 'auto' : height + 'px',
             width: width == undefined ? 'auto' :
-                  tableWidth > width ? width: width + scrollYBarWidth + 'px',
+                  tableWidth > width ? width : width + scrollYBarWidth + 'px',
         }}
         on-scroll={this._onBodyScroll(this.$refs.table, $event)} >
 
@@ -102,7 +102,7 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
             r-style={{
-                width: fixedTableWidth + 'px',
+                width: fixedTableWidth,
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }} >
             <table-header
@@ -133,7 +133,7 @@
         <div ref="bodyWrapFixedLeft"
             class="kl_table_body"
             r-style={{
-                width: fixedTableWidth + 'px',
+                width: fixedTableWidth,
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
             }}>
             <table-body
@@ -210,7 +210,7 @@
         <div ref="bodyWrapFixedRight"
             class="kl_table_body"
             r-style={{
-                width: fixedTableWidthRight + 'px',
+                width: fixedTableWidthRight,
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
             }}>
             <table-body ref="tableBodyFixedRight"
@@ -241,6 +241,19 @@
             top: 0
         }}/>
     {/if}
+
+    {#list source as item by item_index}
+        {#if item.expand && item._expanddingColumn}
+            <div ref='expand{item_index}'
+              class="expand_row"
+              r-style={{
+                top: this._getExpandRowTop(item_index) + 'px',
+              }}
+            >
+                {#include item._expanddingColumn.expandTemplate}
+            </div>
+        {/if}
+    {/list}
 
 </div>
 

@@ -24,7 +24,8 @@
         <!-- 内容 -->
         {#elseif source.length > 0}
         {#list source as item by item_index}
-        <tr class="tb_bd_tr {item.rowClass || item.trClass}"
+        <tr ref="row{item_index}"
+            class="tb_bd_tr {item.rowClass || item.trClass}"
             style="{item.rowStyle || item.trStyle}"
             r-class={{
                 'z-hover': item._hover
@@ -66,15 +67,17 @@
 
         <!-- 下钻内容 -->
         {#if item.expand}
-        <tr class="tb_bd_tr td_bd_tr_expand">
-            <td ref="td{item_index}"
-                r-style={{
-                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'
-                }}
+        <tr class="tb_bd_tr td_bd_tr_expand"
+            r-style={{
+                height: item._expandHeight + 'px'
+            }}
+        >
+            <td
+                class="m-sub-protable-td {column.tdClass}"
                 colspan={_dataColumns.length}>
-                {#if !fixedCol}
-                    {#include item._expanddingColumn.expandTemplate}
-                {/if}
+                <!-- {#if !fixedCol} -->
+                    <!-- {#include item._expanddingColumn.expandTemplate} -->
+                <!-- {/if} -->
             </td>
         </tr>
         {/if}
