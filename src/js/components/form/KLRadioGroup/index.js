@@ -17,7 +17,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {string}        [options.data.key=id]           => 数据项的key键
  * @param {string}        [options.data.source[].name]    => 每项的内容
  * @param {object}        [options.data.selected]         <=> 当前选择的对象
- * @param {number|string} [options.data.value]            <=> 当前选择的值
+ * @param {number/string} [options.data.value]            <=> 当前选择的值
  * @param {boolean}       [options.data.block=false]      => 多行显
  * @param {boolean}       [options.data.required=false]   => 是否必选
  * @param {string}        [options.data.message]          => 验证错误提示
