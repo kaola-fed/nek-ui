@@ -1,6 +1,7 @@
 const Component = require('../../../../ui-base/component');
 const tpl = require('./index.html');
 const templates = require('../TDElements');
+const _ = require('../utils');
 
 const _parseFormat = function (str) {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -19,6 +20,22 @@ const TableBody = Component.extend({
     this.supr(data);
     this.$table = this.$parent;
     this.$tableData = this.$parent.data;
+    if (!this.data.fixedCol) {
+      setInterval(() => {
+        this._updateItemHeight();
+      }, 200);
+    }
+  },
+  _updateItemHeight() {
+    if (!this.data.source) {
+      return;
+    }
+    this.data.source.forEach((row, index) => {
+      const rowElement = this.$refs[`row${index}`];
+      if (rowElement) {
+        row._rowHeight = _.getElementHeight(rowElement);
+      }
+    });
   },
   _onExpand(item, itemIndex, column) {
     if (!this.data.fixedCol) {
@@ -34,6 +51,9 @@ const TableBody = Component.extend({
     });
   },
   _onItemCheckChange(item, e) {
+    if (this.data.fixedCol) {
+      return;
+    }
     this.$emit('checkchange', {
       item,
       checked: e.checked,
@@ -50,7 +70,7 @@ const TableBody = Component.extend({
   _updateSubTrHeight(item, itemIndex) {
     const self = this;
     const timer = setInterval(() => {
-      const tdElement = self.$refs[`td${itemIndex}`];
+      const tdElement = self.$refs[`expand${itemIndex}`];
       if (tdElement && item._expandHeight !== tdElement.clientHeight) {
         item._expandHeight = tdElement.clientHeight;
         self.$update();
@@ -96,11 +116,28 @@ const TableBody = Component.extend({
   emit(...args) {
     this.$parent.$emit.call(this.$parent, ...args);
   },
-  _onTrHover(e, item) {
+  _onRowHover(e, item) {
     item._hover = true;
   },
-  _onTrBlur(e, item) {
+  _onRowBlur(e, item) {
     item._hover = false;
+  },
+  _onRowClick(e, item, itemIndex) {
+    this.emit('rowclick', {
+      sender: this.$parent,
+      item,
+      itemIndex,
+    });
+  },
+  _onUnitClick(e, item, itemIndex, column, columnIndex) {
+    this.emit('unitclick', {
+      sender: this.$parent,
+      item,
+      itemIndex,
+      key: column.key,
+      column,
+      columnIndex,
+    });
   },
 })
   .filter('placeholder', (val, column, self) => {
