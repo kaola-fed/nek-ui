@@ -21,7 +21,7 @@ const TableBody = Component.extend({
     this.$table = this.$parent;
     this.$tableData = this.$parent.data;
     if (!this.data.fixedCol) {
-      setInterval(() => {
+      this.data.timer = setInterval(() => {
         this._updateItemHeight();
       }, 200);
     }
@@ -138,6 +138,12 @@ const TableBody = Component.extend({
       column,
       columnIndex,
     });
+  },
+  destroy() {
+    if (this.data.timer) {
+      clearInterval(this.data.timer);
+    }
+    this.supr();
   },
 })
   .filter('placeholder', (val, column, self) => {
