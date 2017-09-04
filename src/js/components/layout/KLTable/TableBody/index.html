@@ -1,6 +1,6 @@
 <table class="table_tb"
     r-style={{
-        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',
+        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',
         'text-align': config.textAlign || 'center',
         'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''
     }}>
@@ -24,16 +24,19 @@
         <!-- 内容 -->
         {#elseif source.length > 0}
         {#list source as item by item_index}
-        <tr class="tb_bd_tr {item.rowClass || item.trClass}"
+        <tr ref="row{item_index}"
+            class="tb_bd_tr {item.rowClass || item.trClass}"
             style="{item.rowStyle || item.trStyle}"
             r-class={{
                 'z-hover': item._hover
             }}
-            on-mouseover={this._onTrHover($event, item)}
-            on-mouseout={this._onTrBlur($event, item)} >
+            on-click={this._onRowClick($event, item, item_index)}
+            on-mouseover={this._onRowHover($event, item)}
+            on-mouseout={this._onRowBlur($event, item)} >
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {item.unitClass || column.columnClass}"
-                style="{item.unitStyle || column.columnStyle}"
+            <td class="tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass}"
+                style="{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle}"
+                on-click={this._onUnitClick($event, item, item_index, column, column_index)}
                 r-style={{
                     'text-align': column.align || align
                 }}
@@ -64,14 +67,17 @@
 
         <!-- 下钻内容 -->
         {#if item.expand}
-        <tr class="tb_bd_tr td_bd_tr_nohover">
-            <td ref="td{item_index}"
-                r-style={{
-                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'
-                }}
+        <tr class="tb_bd_tr td_bd_tr_expand"
+            r-style={{
+                height: item._expandHeight + 'px'
+            }}
+        >
+            <td
                 class="m-sub-protable-td {column.tdClass}"
                 colspan={_dataColumns.length}>
-                {#include item._expanddingColumn.expandTemplate}
+                <!-- {#if !fixedCol} -->
+                    <!-- {#include item._expanddingColumn.expandTemplate} -->
+                <!-- {/if} -->
             </td>
         </tr>
         {/if}
