@@ -4424,14 +4424,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	text-overflow:ellipsis;
 	max-width:150px;
 }
-.u-multi .dropdown_hd .angle-transform{
-	transform:rotate(180deg);
-}
-.u-multi .dropdown_hd i.angle{
-	transition:transform 0.5s;
-	line-height:20px;
-	margin-top:5px;
-}
 .u-multi .cateWrap{
 	max-width:412px;
 	overflow-x:auto;
@@ -7559,7 +7551,7 @@ a.u-badge{
 	right:0;
 	bottom:0;
 	background:rgba(0,0,0,0.9);
-	z-index:999;
+	z-index:1500;
 }
 .m-image-preview ul{
 	padding:0;

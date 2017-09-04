@@ -26905,7 +26905,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
 	 * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
 	 * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
-	 * @param {string}          [options.data.showPathName=false]       => 是否用 path 代替原来的 namekey 显示
 	 * @param {boolean}         [options.data.readonly=false]           => 是否只读
 	 * @param {boolean}         [options.data.multiple=false]           => 是否多选
 	 * @param {boolean}         [options.data.disabled=false]           => 是否禁用
@@ -26932,7 +26931,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      checkKey: 'checked',
 	      hierarchical: false,
 	      updateAuto: false,
-	      showPathName: false,
 	      onlyChild: true,
 	      pathString: '>',
 	      placement: 'top',
@@ -26948,7 +26946,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        throw new TypeError('`source` is not an Array!');
 	      }
 	      data._source = _.clone(data.source || []);
-	      this.addPath();
 	      data.tree[0] = data._source;
 	      if (data._source && data._source.length) {
 	        this.initSelected();
@@ -26982,20 +26979,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  toggle: function toggle(open) {
 	    this.supr(open);
-	  },
-
-	  // 处理 source ，给每一项添加 path
-	  addPath: function addPath() {
-	    var data = this.data;
-	    var dealPath = function dealPath(array, path) {
-	      array.forEach(function (item) {
-	        item.path = path ? path + data.pathString + item.name : item.name;
-	        if (item[data.childKey] && item[data.childKey].length) {
-	          dealPath(item[data.childKey], item.path);
-	        }
-	      });
-	    };
-	    dealPath(data._source, '');
 	  },
 
 	  // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
@@ -27275,7 +27258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 345 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#list selected as item}\n        {#if showPath && placement}\n        <kl-tooltip tip={item.path} placement={placement}>\n            <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n            </span>\n        </kl-tooltip>\n        {#else}\n        <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n            <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n        </span>\n        {/if}\n        {/list}\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#list selected as item}\n        {#if showPath && placement}\n        <kl-tooltip tip={item.path} placement={placement}>\n            <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n                <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n            </span>\n        </kl-tooltip>\n        {#else}\n        <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}\n            <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n        </span>\n        {/if}\n        {/list}\n        <kl-icon fontSize=20 type=\"{open ? 'angle-up' : 'angle-down'}\" class=\"f-fr\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 346 */
@@ -28016,8 +27999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (multiple) {
 	      this.searchInputFocus();
 	      if (!data.selectedClose && item) {
-	        // 选择之后不清空已输入的内容
-	        // data.canSearch && this.clearSearchValue();
+	        data.canSearch && this.clearSearchValue();
 	        return;
 	      }
 	    }
