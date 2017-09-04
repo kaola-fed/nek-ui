@@ -35286,7 +35286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$table = this.$parent;
 	    this.$tableData = this.$parent.data;
 	    if (!this.data.fixedCol) {
-	      setInterval(function () {
+	      this.data.timer = setInterval(function () {
 	        _this._updateItemHeight();
 	      }, 200);
 	    }
@@ -35421,6 +35421,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      column: column,
 	      columnIndex: columnIndex
 	    });
+	  },
+	  destroy: function destroy() {
+	    if (this.data.timer) {
+	      clearInterval(this.data.timer);
+	    }
+	    this.supr();
 	  }
 	}).filter('placeholder', function (val, column, self) {
 	  if (val === null || val === undefined) {
