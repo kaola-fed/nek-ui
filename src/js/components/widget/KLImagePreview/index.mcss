@@ -19,7 +19,7 @@ $px2h = ($px) {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 999;
+    z-index: 1500;
     .m-panel-wrapper {
         position: absolute;
         top: 0;
