@@ -488,6 +488,12 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">col</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="attr">isHideCol</span>: [<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toggle</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.col[index] = !<span class="keyword">this</span>.data.col[index];</div><div class="line">        <span class="keyword">this</span>.data.isHideCol[index] = !<span class="keyword">this</span>.data.isHideCol[index];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
+<h3 id="行展开"><a href="#行展开" class="headerlink" title="行展开"></a>行展开</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">key</span>=<span class="string">""</span> <span class="attr">placeholder</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">50</span> <span class="attr">fixed</span> <span class="attr">expandable</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-table-template</span> <span class="attr">type</span>=<span class="string">"expand"</span>&gt;</span></div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding: 10px; background: #eee"</span>&gt;</span>&#123;item.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>'&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-table-template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> <span class="attr">fixed</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> <span class="attr">fixed</span>=<span class="string">"right"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPaging</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
 <h3 id="空数据"><a href="#空数据" class="headerlink" title="空数据"></a>空数据</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -747,13 +753,13 @@
 <td>=&gt; 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置</td>
 </tr>
 <tr>
-<td>[options.data.tdClass]</td>
+<td>[options.data.columnClass]</td>
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 列内容样式</td>
 </tr>
 <tr>
-<td>[options.data.thClass]</td>
+<td>[options.data.headerClass]</td>
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 表头样式</td>
@@ -772,27 +778,40 @@
 </tr>
 <tr>
 <td>[options.data.fixed]</td>
-<td><code>boolean/string</code></td>
+<td><code>boolean</code> \</td>
+<td><code>string</code></td>
 <td></td>
 <td>=&gt; 列固定开关，默认left为做固定，right为右固定</td>
 </tr>
 <tr>
 <td>[optiosn.data.align]</td>
 <td><code>string</code></td>
-<td></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
 <td>=&gt; 列文字对齐</td>
 </tr>
 <tr>
 <td>[optiosn.data.placeholder]</td>
 <td><code>string</code></td>
-<td><code>&quot;-&quot;</code></td>
-<td>=&gt; 列文字对齐</td>
+<td><code>&quot;&#x27;-&#x27;&quot;</code></td>
+<td>=&gt; 列文字占位符</td>
 </tr>
 <tr>
 <td>[options.data.template]</td>
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 列内容模版</td>
+</tr>
+<tr>
+<td>[options.data.headerTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列表头模版</td>
+</tr>
+<tr>
+<td>[options.data.expandTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 下钻展开内容模版</td>
 </tr>
 </tbody>
 </table>
@@ -2377,6 +2396,113 @@ var component = new NEKUI.Component({
     toggle: function(index) {
         this.data.col[index] = !this.data.col[index];
         this.data.isHideCol[index] = !this.data.isHideCol[index];
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-table source={table.source}>
+    <kl-table-col name="" key="" placeholder="" width=50 fixed expandable>
+        <kl-table-template type="expand">
+            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+        </kl-table-template>
+    </kl-table-col>
+    <kl-table-col name="职位" key="job" fixed />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" fixed="right" />
+</kl-table>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-table source={table.source}>
+    <kl-table-col name="" key="" placeholder="" width=50 fixed expandable>
+        <kl-table-template type="expand">
+            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+        </kl-table-template>
+    </kl-table-col>
+    <kl-table-col name="职位" key="job" fixed />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" fixed="right" />
+</kl-table>
+`,
+              jsCode: `
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
     }
 });
 `
