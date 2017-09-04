@@ -3,17 +3,17 @@
         {#list selected as item}
         {#if showPath && placement}
         <kl-tooltip tip={item.path} placement={placement}>
-            <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
+            <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
                 <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
             </span>
         </kl-tooltip>
         {#else}
-        <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{item[nameKey]}
+        <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
             <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
         </span>
         {/if}
         {/list}
-        <kl-icon fontSize=20 type="{open ? 'angle-up' : 'angle-down'}" class="f-fr"/>
+        <kl-icon fontSize=20 type="angle-down" class="f-fr angle {open ? 'angle-transform' : ''}"/>
     </div>
     {#if open}
     <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
