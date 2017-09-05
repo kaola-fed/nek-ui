@@ -52,7 +52,6 @@ const KLGoTop = Component.extend({
      */
   gotop() {
     if (this.data.disabled) return;
-
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   },
