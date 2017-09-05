@@ -58,11 +58,10 @@ $u-gotop_size = 50px;
     $size: $u-gotop_size;
     line-height: $u-gotop_size;
     font-size: 24px;
-    background: #eee;
-    color: #f11010;
-    $opacity: 0.6;
+    background-color: rgba(64,64,64,.4);
+    color: #fff;
 }
 
 .u-gotop:hover {
-    $opacity: 0.9;
+   background-color: rgba(64,64,64,.6)
 }

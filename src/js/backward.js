@@ -93,7 +93,6 @@ module.exports = function (Components) {
     Uploader: require('./components/_deprecated_/uploader'),
     UIGroup: require('./components/_deprecated_/ui.group'),
     Collapse: require('./components/_deprecated_/collapse'),
-    Gotop: require('./components/_deprecated_/gotop'),
     PathTool: require('./tools/path.tool'),
     Panel: require('./components/_deprecated_/panel'),
     PanelTool: require('./components/_deprecated_/panel.tool'),
