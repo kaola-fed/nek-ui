@@ -35,11 +35,12 @@ const KLGoTop = Component.extend({
   },
   _scrollHandle() {
     const data = this.data;
-    if (document.body.scrollTop > 0 && !data.visible) {
+    const scrollTopHeight = window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop;
+    if (scrollTopHeight > 0 && !data.visible) {
       data.visible = true;
       this.$update();
     }
-    if (data.visible && document.body.scrollTop === 0) {
+    if (data.visible && scrollTopHeight === 0) {
       data.visible = false;
       this.$update();
     }
@@ -53,6 +54,7 @@ const KLGoTop = Component.extend({
     if (this.data.disabled) return;
 
     document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   },
 });
 
