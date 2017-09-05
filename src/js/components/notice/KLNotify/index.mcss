@@ -25,12 +25,12 @@ $m-notify_width = 260px;
     top: $m-notify_position;
     left: $m-notify_position;
     min-width: $m-notify_width;
-    max-width: 1000px;
+    max-width: 350px;
+    font-size: 12px;
 
     .u-message {
         margin-bottom: 10px;
-        padding: 14px 55px;
-        text-align: center;
+        padding: 10px 35px 10px 10px;
         &:hover .message_close {
             display: block;
         }
