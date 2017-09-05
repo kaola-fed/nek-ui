@@ -30,7 +30,7 @@ $m-notify_width = 260px;
 
     .u-message {
         margin-bottom: 10px;
-        padding: 10px 35px 10px 10px;
+        padding: 16px 35px 16px 20px;
         &:hover .message_close {
             display: block;
         }
