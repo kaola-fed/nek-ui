@@ -7307,7 +7307,7 @@ html.z-modal,html.z-modal body{
 }
 .m-notify .u-message{
 	margin-bottom:10px;
-	padding:10px 35px 10px 10px;
+	padding:16px 35px 16px 20px;
 }
 .m-notify .u-message:hover .message_close{
 	display:block;
