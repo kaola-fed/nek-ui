@@ -7147,6 +7147,8 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-message{
 	*zoom:1;
+	display:flex;
+	align-items:center;
 	padding:6px 15px;
 	background:#fff;
 	color:#777;
@@ -7176,32 +7178,32 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-message-info{
 	color:#fff;
-	background:#54a8f7;
-	border:1px solid #54a8f7;
+	background:#80bcf4;
+	border:1px solid #80bcf4;
 }
 .u-message-info .message_icon{
 	color:#fff;
 }
 .u-message-success{
 	color:#fff;
-	background:#6ebc40;
-	border:1px solid #6ebc40;
+	background:#89d280;
+	border:1px solid #89d280;
 }
 .u-message-success .message_icon{
 	color:#fff;
 }
 .u-message-warning{
 	color:#fff;
-	background:#ffb539;
-	border:1px solid #ffb539;
+	background:#f9bf65;
+	border:1px solid #f9bf65;
 }
 .u-message-warning .message_icon{
 	color:#fff;
 }
 .u-message-error{
 	color:#fff;
-	background:#f48080;
-	border:1px solid #f48080;
+	background:#f37373;
+	border:1px solid #f37373;
 }
 .u-message-error .message_icon{
 	color:#fff;
@@ -7300,12 +7302,12 @@ html.z-modal,html.z-modal body{
 	top:10px;
 	left:10px;
 	min-width:260px;
-	max-width:1000px;
+	max-width:350px;
+	font-size:12px;
 }
 .m-notify .u-message{
 	margin-bottom:10px;
-	padding:14px 55px;
-	text-align:center;
+	padding:10px 35px 10px 10px;
 }
 .m-notify .u-message:hover .message_close{
 	display:block;
