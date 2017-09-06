@@ -405,7 +405,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'营养辅食'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'奶粉'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'爱他美'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'1段'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'0-6个月'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'6-12个月'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'3段'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'5段'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'美赞臣'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'童装童鞋'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'宝宝用品'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'女士箱包'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'男士箱包'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">121</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.selected = &#123;&#125;;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.data.selected);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="展示路径"><a href="#展示路径" class="headerlink" title="展示路径"></a>展示路径</h3><p><code>showPath</code>控制选择是否显示路径，若为<code>true</code>时selected.path 保存当前路径字符串，pathArray 是路径数组，具体看控制台。</p>
+<h3 id="展示路径（单选）"><a href="#展示路径（单选）" class="headerlink" title="展示路径（单选）"></a>展示路径（单选）</h3><p><code>showPath</code>控制选择是否显示路径，若为<code>true</code>时selected.path 保存当前路径字符串，pathArray 是路径数组，具体看控制台。</p>
 <p>选择显示路径的情况下，路径可以提示文本的形式显示在所选项名称上，使用<code>placement</code>选择路径显示的方位，默认为<code>top</code>，此处设置为<code>bottom</code>。</p>
 <div class="m-example"></div>
 
@@ -417,6 +417,15 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> </span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> </div><div class="line">    <span class="attr">multiple</span>=<span class="string">&#123;multiple&#125;</span> </div><div class="line">    <span class="attr">value</span>=<span class="string">&#123;value&#125;</span>  </div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> </div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;this.change($event)&#125;</span></div><div class="line">    /&gt;</div><div class="line">选择的是：&#123;value&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'营养辅食'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'奶粉'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'爱他美'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'1段'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'0-6个月'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'6-12个月'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'3段'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'5段'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'美赞臣'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'童装童鞋'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'宝宝用品'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'女士箱包'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'男士箱包'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">'12111,12112'</span>,</div><div class="line">        <span class="attr">multiple</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'selected'</span>,event);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">change</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'change'</span>,event);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="展示路径（多选）"><a href="#展示路径（多选）" class="headerlink" title="展示路径（多选）"></a>展示路径（多选）</h3><p><code>showPath</code>控制选择是否显示路径，若为<code>true</code>时selected.path 保存当前路径字符串。</p>
+<p>选择显示路径的情况下，路径可以提示文本的形式显示在所选项名称上，使用<code>placement</code>选择路径显示的方位，默认为<code>top</code>，此处设置为<code>bottom</code>。</p>
+<p><code>showPathName</code> 控制是否直接替代 <code>name</code> 来展示</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> </span></div><div class="line">    <span class="attr">showPath</span>=<span class="string">&#123;showPath&#125;</span> </div><div class="line">    <span class="attr">placement</span>=<span class="string">&#123;placement&#125;</span> </div><div class="line">    <span class="attr">pathString</span>=<span class="string">&#123;pathString&#125;</span> </div><div class="line">    <span class="attr">showPathName</span>=<span class="string">&#123;showPathName&#125;</span> </div><div class="line">    <span class="attr">multiple</span>=<span class="string">&#123;multiple&#125;</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> </div><div class="line">    <span class="attr">value</span>=<span class="string">&#123;value&#125;</span></div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span></div><div class="line">    /&gt;</div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>路径是: &#123;path&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'营养辅食'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'奶粉'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'爱他美'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'1段'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'0-6个月'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'6-12个月'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'3段'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'5段'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'美赞臣'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'童装童鞋'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'宝宝用品'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'女士箱包'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'男士箱包'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">showPath</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">placement</span>: <span class="string">'bottom'</span>,</div><div class="line">        <span class="attr">showPathName</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">multiple</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">pathString</span>: <span class="string">'&gt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">        <span class="keyword">this</span>.data.path = event.selected.path;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLMultiSelect"></a></p>
 <h2 id="KLMultiSelect"><a href="#KLMultiSelect" class="headerlink" title="KLMultiSelect"></a><span class="param-title">KLMultiSelect</span><a name="new_KLMultiSelect_new"></a></h2><h3 id="KLMultiSelect-1"><a href="#KLMultiSelect-1" class="headerlink" title="KLMultiSelect"></a><span class="param-title">KLMultiSelect</span></h3><table>
@@ -467,7 +476,7 @@
 </tr>
 <tr>
 <td>[options.data.onlyChild]</td>
-<td><code>string</code></td>
+<td><code>boolean</code></td>
 <td><code>true</code></td>
 <td>=&gt; 在单选模式下，是否只允许选中末级</td>
 </tr>
@@ -491,7 +500,7 @@
 </tr>
 <tr>
 <td>[options.data.showPath]</td>
-<td><code>string</code></td>
+<td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>=&gt; 单选时是否展示路径</td>
 </tr>
@@ -506,6 +515,12 @@
 <td><code>string</code></td>
 <td><code>&quot;&#x27;&gt;&#x27;&quot;</code></td>
 <td>=&gt; 链接每一级路径的字符串，避免名字中包含该字符串</td>
+</tr>
+<tr>
+<td>[options.data.showPathName]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否用 path 代替原来的 namekey 显示</td>
 </tr>
 <tr>
 <td>[options.data.readonly]</td>
@@ -1171,6 +1186,137 @@ var component = new NEKUI.Component({
     },
     change: function(event) {
         console.log('change',event);
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-multi-select 
+    showPath={showPath} 
+    placement={placement} 
+    pathString={pathString} 
+    showPathName={showPathName} 
+    multiple={multiple}
+    source={source} 
+    value={value}
+    on-select={this.selected($event)}
+    />
+<p>选择的是：{value}</p>
+<p>路径是: {path}</p>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
+                            ]},
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
+                        ]},
+                    {name: '美赞臣', id: 122}
+                ]},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
+            ]},
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
+            ]}
+        ],
+        value: '',
+        showPath: true,
+        placement: 'bottom',
+        showPathName: true,
+        multiple: true,
+        pathString: '>'
+    },
+    selected: function(event) {
+        console.log(event);
+        this.data.path = event.selected.path;
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-multi-select 
+    showPath={showPath} 
+    placement={placement} 
+    pathString={pathString} 
+    showPathName={showPathName} 
+    multiple={multiple}
+    source={source} 
+    value={value}
+    on-select={this.selected($event)}
+    />
+<p>选择的是：{value}</p>
+<p>路径是: {path}</p>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, children: [
+                {name: '营养辅食', id: 11},
+                {name: '奶粉', id: 12, children: [
+                    {name: '爱他美', id: 121, children: [
+                        {name: '1段', id: 1211, children: [
+                            {name: '0-6个月', id: 12111},
+                            {name: '6-12个月', id: 12112}
+                            ]},
+                        {name: '3段', id: 1212},
+                        {name: '5段', id: 1213}
+                        ]},
+                    {name: '美赞臣', id: 122}
+                ]},
+                {name: '童装童鞋', id: 13},
+                {name: '宝宝用品', id: 14},
+            ]},
+            {name: '美容彩妆', id: 2},
+            {name: '服饰鞋包', id: 3, children: [
+                {name: '女士箱包', id: 31},
+                {name: '男士箱包', id: 32}
+            ]}
+        ],
+        value: '',
+        showPath: true,
+        placement: 'bottom',
+        showPathName: true,
+        multiple: true,
+        pathString: '>'
+    },
+    selected: function(event) {
+        console.log(event);
+        this.data.path = event.selected.path;
     }
 });
 `
