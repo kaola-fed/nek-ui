@@ -27,7 +27,7 @@ const template = require('./index.html');
  * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
  * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
  * @param {string/number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
- * @param {string}        [options.data.labelLineHeight=lg] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.3), lg(值:2.5)
+ * @param {string}        [options.data.labelLineHeight=lg] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)
  * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
  * @param {boolean}       [options.data.required=false]     => 是否必选项
  * @param {string}        [options.data.tip]                => 字段说明

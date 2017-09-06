@@ -10,6 +10,8 @@
 
 .u-message {
     $clearfix();
+    display: flex;
+    align-items: center;
     padding: 6px 15px;
     background: $background-base;
     color: #777;
@@ -54,7 +56,7 @@ $u-message-extend_color = ($name, $color) {
 // Color Extends:$u-message-extend_color = ($name, $color)
 // ========================================================================
 
-$u-message-extend_color(info, $brand-info);
-$u-message-extend_color(success, $brand-success);
-$u-message-extend_color(warning, $brand-warning);
-$u-message-extend_color(error, $brand-error);
+$u-message-extend_color(info, #80BCF4);
+$u-message-extend_color(success, #89D280);
+$u-message-extend_color(warning, #F9BF65);
+$u-message-extend_color(error, #F37373);
