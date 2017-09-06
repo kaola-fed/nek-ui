@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>分页 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="分页 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -253,7 +253,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>导航
@@ -275,7 +275,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/navigation_KLPager_.html" class="">
+                                   <a href="/components/navigation_KLPager_.html" class="current">
                                        分页 <span>KLPager</span>
                                    </a>
                                </li>
@@ -302,7 +302,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>其它
@@ -330,7 +330,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
@@ -365,21 +365,48 @@
 <div class="content components with-sidebar ">
     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">分页 <span>KLPager</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>跳至多少页，支持输入后，按回车键触发哦！</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">200</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
+<h3 id="不展示pageSize下拉或者总条数"><a href="#不展示pageSize下拉或者总条数" class="headerlink" title="不展示pageSize下拉或者总条数"></a>不展示pageSize下拉或者总条数</h3><p>只要不设置pageSize或sumTotal即可，但是需要单独传入每页的条数<code>total</code>, <code>total</code>的值是<code>Math.ceil(sumTotal/pageSize)</code></p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pager</span> <span class="attr">total</span>=<span class="string">&#123;Math.ceil(sumTotal/pageSize)&#125;</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">pager</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">100</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<div class="grid-item" markdown="1">
+<h3 id="总条数展示场景一"><a href="#总条数展示场景一" class="headerlink" title="总条数展示场景一"></a>总条数展示场景一</h3><p>如果总条数有200多条，后端只返回200，通过设置<code>isEllipsis</code>使总条数展示位200+</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;3&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;200&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;5&#125;</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="总条数展示场景二"><a href="#总条数展示场景二" class="headerlink" title="总条数展示场景二"></a>总条数展示场景二</h3><p>总条数特别多的时候，可以设置一个最大值x，超过这个值的时候页面展示位x+</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;3&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;2000000&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;20&#125;</span> <span class="attr">maxTotal</span>=<span class="string">&#123;2000&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="翻页器展示形式-一般不需要设置"><a href="#翻页器展示形式-一般不需要设置" class="headerlink" title="翻页器展示形式(一般不需要设置)"></a>翻页器展示形式(一般不需要设置)</h3><p>可以设置翻页器展示的形式，设置两端显示的按钮数以及中间展示的按钮数量</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">pageSize</span>=<span class="string">&#123;5&#125;</span> <span class="attr">current</span>=<span class="string">&#123;6&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;100&#125;</span> <span class="attr">middle</span>=<span class="string">&#123;3&#125;</span> <span class="attr">side</span>=<span class="string">&#123;1&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="实际业务中推荐做法"><a href="#实际业务中推荐做法" class="headerlink" title="实际业务中推荐做法"></a>实际业务中推荐做法</h3><p>通过watch <code>pageSize</code> 和 <code>current</code>的值来请求列表数据，不推荐使用pager的select事件来处理；</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pager</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">watchedAttr</span>: [<span class="string">'current'</span>, <span class="string">'pageSize'</span>],</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.current = <span class="number">3</span>;</div><div class="line">        data.pageSize = <span class="number">10</span>;</div><div class="line">        data.sumTotal = <span class="number">200</span>;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.$watch(<span class="keyword">this</span>.watchedAttr, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.__getList();</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">__getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'更新列表数据'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLPager"></a></p>
+<h2 id="KLPager"><a href="#KLPager" class="headerlink" title="KLPager"></a><span class="param-title">KLPager</span><a name="new_KLPager_new"></a></h2><h3 id="KLPager-1"><a href="#KLPager-1" class="headerlink" title="KLPager"></a><span class="param-title">KLPager</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -396,22 +423,64 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.static]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
+<td>[options.data.current]</td>
+<td><code>number</code></td>
+<td><code>1</code></td>
+<td>&lt;=&gt; 当前页</td>
 </tr>
 <tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
+<td>[options.data.total]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 总页数</td>
 </tr>
 <tr>
-<td>[options.data.visible]</td>
+<td>[options.data.sumTotal]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 总个数</td>
+</tr>
+<tr>
+<td>[options.data.pageSize]</td>
+<td><code>number</code></td>
+<td><code>20</code></td>
+<td>=&gt; 每页个数</td>
+</tr>
+<tr>
+<td>[options.data.middle]</td>
+<td><code>number</code></td>
+<td><code>5</code></td>
+<td>=&gt; 当页数较多时，中间显示的页数</td>
+</tr>
+<tr>
+<td>[options.data.side]</td>
+<td><code>number</code></td>
+<td><code>2</code></td>
+<td>=&gt; 当页数较多时，两端显示的页数</td>
+</tr>
+<tr>
+<td>[options.data.step]</td>
+<td><code>number</code></td>
+<td><code>5</code></td>
+<td>=&gt; 每页条数选择步长</td>
+</tr>
+<tr>
+<td>[options.data.maxPageSize]</td>
+<td><code>number</code></td>
+<td><code>50</code></td>
+<td>=&gt; 最大可设置的每页条数</td>
+</tr>
+<tr>
+<td>[options.data.isEllipsis]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否显示</td>
+<td>=&gt; 是否展示位总条数+</td>
+</tr>
+<tr>
+<td>[options.data.maxTotal]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 总条数超过maxTotal条数时，展示为maxTotal+条数</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
@@ -421,47 +490,45 @@
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
+<p><a name="KLPager+event_select 选择某一页时触发"></a></p>
+<h3 id="select-选择某一页时触发Event"><a href="#select-选择某一页时触发Event" class="headerlink" title="select 选择某一页时触发Event"></a><span class="param-title">select 选择某一页时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
 <tr>
-<th>Param</th>
+<th>Name</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>current</td>
+<td><code>object</code></td>
+<td>当前选择页</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
     }
 });
 
@@ -480,20 +547,15 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
     }
 });
 `
@@ -506,17 +568,16 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+ <pager total={Math.ceil(sumTotal/pageSize)} current={current}></pager>
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 100;
     }
 });
 
@@ -535,16 +596,173 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+ <pager total={Math.ceil(sumTotal/pageSize)} current={current}></pager>
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 100;
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-pager current={3} sumTotal={200} pageSize={5} isEllipsis={true} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={3} sumTotal={200} pageSize={5} isEllipsis={true} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-pager current={3} sumTotal={2000000} pageSize={20} maxTotal={2000} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={3} sumTotal={2000000} pageSize={20} maxTotal={2000} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-pager pageSize={5} current={6} sumTotal={100} middle={3} side={1} />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager pageSize={5} current={6} sumTotal={100} middle={3} side={1} />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    watchedAttr: ['current', 'pageSize'],
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+
+        this.$watch(this.watchedAttr, function() {
+            this.__getList();
+        });
+    },
+    __getList: function() {
+        console.log('更新列表数据');
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    watchedAttr: ['current', 'pageSize'],
+    config: function(data) {
+        data.current = 3;
+        data.pageSize = 10;
+        data.sumTotal = 200;
+
+        this.$watch(this.watchedAttr, function() {
+            this.__getList();
+        });
+    },
+    __getList: function() {
+        console.log('更新列表数据');
     }
 });
 `
@@ -559,14 +777,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/navigation_KLMenu_.html" class="pager">
+            <span class="icon icon-left"></span><span>导航菜单</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/navigation_KLSidebar_.html" class="pager">
+            <span>菜单栏</span><span class="icon icon-right"></span>
         </a>
       
     </div>

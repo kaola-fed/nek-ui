@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>菜单栏 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="菜单栏 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -253,7 +253,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>导航
@@ -281,7 +281,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/navigation_KLSidebar_.html" class="">
+                                   <a href="/components/navigation_KLSidebar_.html" class="current">
                                        菜单栏 <span>KLSidebar</span>
                                    </a>
                                </li>
@@ -302,7 +302,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>其它
@@ -330,7 +330,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
@@ -365,21 +365,44 @@
 <div class="content components with-sidebar ">
     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">菜单栏 <span>KLSidebar</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p><code>KLSidebar</code>只是对<code>KLMenu</code>的进一步封装,如果无法满足需求,可直接使用<code>KLMenu</code>组件; 除了<code>KLMenu</code>的功能外, 还增加菜单展开/收起的功能, 注意需要配置<code>bodyEl</code>属性</p>
+<p><div class="m-example"></div></p>
+<p><style>
+    .m-example {
+        font-family:Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+        overflow: hidden;
+        padding: 0;
+    }
+    .demo-main {
+        position:relative;
+        height: 500px;
+        background: #eaedf3;
+    }
+    .demo-head {
+        box-sizing: border-box;
+        height: 60px;
+        background: #22354a;
+        padding: 13px 30px;
+        font-size: 18px;
+        color: #fff;
+    }
+    .demo-body {
+        position: absolute;
+        left: 180px;
+        top: 60px;
+        bottom: 0;
+        right: 0;
+        padding: 10px 13px;
+    }
+    .grid-item .m-menu { padding: 0; }
+</style>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        考拉UI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">menus</span>: [&#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'首页'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-home'</span></div><div class="line">      &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'库存管理'</span>,</div><div class="line">       <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-inventory'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">title</span>: <span class="string">'商品实时数据'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'单据审核'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'财务管理'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-financial'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'对账管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'请款管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'统计数据'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-statistics'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'订单管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-order'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'消息管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-message'</span></div><div class="line">     &#125;]</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
-<div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLSidebar"></a></p>
+<h2 id="KLSidebar"><a href="#KLSidebar" class="headerlink" title="KLSidebar"></a><span class="param-title">KLSidebar</span><a name="new_KLSidebar_new"></a></h2><h3 id="KLSidebar-1"><a href="#KLSidebar-1" class="headerlink" title="KLSidebar"></a><span class="param-title">KLSidebar</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -393,25 +416,7 @@
 <td>[options.data]</td>
 <td><code>object</code></td>
 <td></td>
-<td>= 绑定属性</td>
-</tr>
-<tr>
-<td>[options.data.static]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示</td>
+<td>=&gt; 绑定属性</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
@@ -419,50 +424,120 @@
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
+<tr>
+<td>[options.data.menus]</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 菜单数组</td>
+</tr>
+<tr>
+<td>[options.data.top]</td>
+<td><code>string</code></td>
+<td><code>&quot;60px&quot;</code></td>
+<td>=&gt; 菜单style top的值</td>
+</tr>
+<tr>
+<td>[options.data.active]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 默认是否收起</td>
+</tr>
+<tr>
+<td>[options.data.bodyEl]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 主内容区body元素的id,当菜单收起时,拉伸bodyEl</td>
+</tr>
+<tr>
+<td>[options.data.uniqueOpened]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否只保持打开一个菜单</td>
+</tr>
+<tr>
+<td>[options.data.titleKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;title&quot;</code></td>
+<td>=&gt; 一级菜单的字段key名</td>
+</tr>
+<tr>
+<td>[options.data.urlKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;url&quot;</code></td>
+<td>=&gt; 菜单结构中的链接key名</td>
+</tr>
+<tr>
+<td>[options.data.pageKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;title&quot;</code></td>
+<td>=&gt; 二级菜单的字段key名</td>
+</tr>
+<tr>
+<td>[options.data.childrenKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;children&quot;</code></td>
+<td>=&gt; 一级菜单对象下二级菜单数组的key名</td>
+</tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
-</tr>
-</tbody>
-</table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+
+<div class="demo-main">
+    <div class="demo-head">
+        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
+        考拉UI系统
+    </div>
+    <kl-sidebar menus={menus} bodyEl="j-body" />
+    <div id="j-body" class="demo-body"></div>
+</div>
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/'
+       },{
+         title: '单据审核',
+         url: '/'
+       }]
+     }, {
+       title: '财务管理',
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         url: '/'
+       },{
+         title: '请款管理',
+         url: '/'
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -480,72 +555,56 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+
+<div class="demo-main">
+    <div class="demo-head">
+        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
+        考拉UI系统
+    </div>
+    <kl-sidebar menus={menus} bodyEl="j-body" />
+    <div id="j-body" class="demo-body"></div>
+</div>
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
-});
-`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
-`,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    }
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/'
+       },{
+         title: '单据审核',
+         url: '/'
+       }]
+     }, {
+       title: '财务管理',
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         url: '/'
+       },{
+         title: '请款管理',
+         url: '/'
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
 });
 `
           }
@@ -559,14 +618,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/navigation_KLPager_.html" class="pager">
+            <span class="icon icon-left"></span><span>分页</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/navigation_KLSteps_.html" class="pager">
+            <span>步骤</span><span class="icon icon-right"></span>
         </a>
       
     </div>

@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>国际化 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="国际化 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -330,13 +330,13 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLocaleProvider_.html" class="">
+                                   <a href="/components/widget_KLLocaleProvider_.html" class="current">
                                        国际化 <span>KLLocaleProvider</span>
                                    </a>
                                </li>
@@ -362,29 +362,45 @@
 </div>
 
 
-<div class="content components with-sidebar ">
+<div class="content components with-sidebar  j-masonry">
     
+         <style>
+             .grid-item{
+                 width: 50%;
+             } 
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">国际化 <span>KLLocaleProvider</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>通过配置<code>lang</code>与<code>api</code>属性, 并且将需要国际化的部分包裹在<code>kl-locale-provider</code>组件中, 即可实现语言的切换;
+例如以下文字是根据key值匹配显示出来的</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/zh-CN.json"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_INPUT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_SELECT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t('USERNAME')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t('NOTIFY_METHOD')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">$t</span>: translator</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/zh-CN.json"</span> <span class="attr">ref</span>=<span class="string">"locale_provider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;language&#125;</span> <span class="attr">value</span>=<span class="string">&#123;lang_value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.onSelect($event)&#125;</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('USERNAME')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"&#123;this.$t('PLEASE_INPUT')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('NOTIFY_METHOD')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;[this.$t(</span>"<span class="attr">EMAIL</span>"), <span class="attr">this.</span>$<span class="attr">t</span>("<span class="attr">TEL</span>")]&#125; <span class="attr">placeholder</span>=<span class="string">&#123;this.$t(</span>"<span class="attr">PLEASE_SELECT</span>")&#125;&gt;</span><span class="tag">&lt;/<span class="name">kl-select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.lang_value = <span class="string">"CN"</span></div><div class="line">        data.language = [</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">api</span>: <span class="string">"/data/language/en-US.json"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"CN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"中文"</span>,</div><div class="line">                    <span class="attr">api</span>: <span class="string">"/data/language/zh-CN.json"</span></div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">$t</span>: translator,</div><div class="line">    <span class="attr">onSelect</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.lang_value = item.selected.id;</div><div class="line">        <span class="keyword">this</span>.$refs.locale_provider.reload(item.selected.id, item.selected.api);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLocaleProvider"></a></p>
+<h2 id="KLLocaleProvider"><a href="#KLLocaleProvider" class="headerlink" title="KLLocaleProvider"></a><span class="param-title">KLLocaleProvider</span><a name="new_KLLocaleProvider_new"></a></h2><h3 id="KLLocaleProvider-1"><a href="#KLLocaleProvider-1" class="headerlink" title="KLLocaleProvider"></a><span class="param-title">KLLocaleProvider</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -392,77 +408,114 @@
 <tr>
 <td>[options.data]</td>
 <td><code>object</code></td>
-<td></td>
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.static]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
+<td>[options.data.lang]</td>
 <td><code>string</code></td>
-<td></td>
-<td>=&gt; 补充class</td>
+<td>=&gt; 设置语言，默认“cn”</td>
+</tr>
+<tr>
+<td>[options.data.api]</td>
+<td><code>string</code></td>
+<td>=&gt; 设置获取语言包的url</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
+<p><a name="KLLocaleProvider+reload 切换语言，重新初始化"></a></p>
+<h3 id="reload-切换语言，重新初始化method"><a href="#reload-切换语言，重新初始化method" class="headerlink" title=".reload 切换语言，重新初始化method"></a><span class="param-title">.reload 切换语言，重新初始化</span><span class="type-tag type-tag-static">method</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
+<td>lang</td>
+<td><code>string</code></td>
+<td>设置语言</td>
+</tr>
+<tr>
+<td>api</td>
+<td><code>string</code></td>
+<td>设置获取语言包的url</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+<p><a name="KLLocaleProvider.lang"></a></p>
+<h3 id="langstatic-property"><a href="#langstatic-property" class="headerlink" title=".langstatic property"></a><span class="param-title">.lang</span><span class="type-tag type-tag-static">static property</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lang</td>
+<td><code>string</code></td>
+<td>语言种类</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLLocaleProvider.locale"></a></p>
+<h3 id="localestatic-property"><a href="#localestatic-property" class="headerlink" title=".localestatic property"></a><span class="param-title">.locale</span><span class="type-tag type-tag-static">static property</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>locale</td>
+<td><code>object</code></td>
+<td>语言包</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLLocaleProvider.translate"></a></p>
+<h3 id="translatestatic-method"><a href="#translatestatic-method" class="headerlink" title=".translatestatic method"></a><span class="param-title">.translate</span><span class="type-tag type-tag-static">static method</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key</td>
+<td><code>string</code></td>
+<td>翻译key值</td>
+</tr>
+</tbody>
+</table>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
+    <p>{this.$t("PLEASE_INPUT")}</p>
+    <p>{this.$t("PLEASE_SELECT")}</p>
+    <p>{this.$t('USERNAME')}</p>
+    <p>{this.$t('NOTIFY_METHOD')}</p>
+</kl-locale-provider>
 
       */});
       
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
+    data: {},
+    $t: translator
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -480,21 +533,19 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
+    <p>{this.$t("PLEASE_INPUT")}</p>
+    <p>{this.$t("PLEASE_SELECT")}</p>
+    <p>{this.$t('USERNAME')}</p>
+    <p>{this.$t('NOTIFY_METHOD')}</p>
+</kl-locale-provider>
 `,
               jsCode: `
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
+    data: {},
+    $t: translator
 });
 `
           }
@@ -506,18 +557,47 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+
+<kl-locale-provider lang="CN" api="/data/language/zh-CN.json" ref="locale_provider">
+    <kl-form>
+        <kl-form-item title="">
+            <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+        </kl-form-item>
+        <kl-form-item title="{this.$t('USERNAME')}">
+            <kl-input type="text" placeholder="{this.$t('PLEASE_INPUT')}"></kl-input>
+        </kl-form-item>
+        <kl-form-item title="{this.$t('NOTIFY_METHOD')}">
+            <kl-select source={[this.$t("EMAIL"), this.$t("TEL")]} placeholder={this.$t("PLEASE_SELECT")}></kl-select>
+        </kl-form-item>
+    </kl-form>
+</kl-locale-provider>
 
       */});
       
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
-    }
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                    api: "/data/language/en-US.json"
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                    api: "/data/language/zh-CN.json"
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id, item.selected.api);
+    },
+
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -535,17 +615,46 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+
+<kl-locale-provider lang="CN" api="/data/language/zh-CN.json" ref="locale_provider">
+    <kl-form>
+        <kl-form-item title="">
+            <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+        </kl-form-item>
+        <kl-form-item title="{this.$t('USERNAME')}">
+            <kl-input type="text" placeholder="{this.$t('PLEASE_INPUT')}"></kl-input>
+        </kl-form-item>
+        <kl-form-item title="{this.$t('NOTIFY_METHOD')}">
+            <kl-select source={[this.$t("EMAIL"), this.$t("TEL")]} placeholder={this.$t("PLEASE_SELECT")}></kl-select>
+        </kl-form-item>
+    </kl-form>
+</kl-locale-provider>
 `,
               jsCode: `
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
 var component = new NEKUI.Component({
     template: template,
     config: function(data) {
-        data.visible = false;
-    }
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                    api: "/data/language/en-US.json"
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                    api: "/data/language/zh-CN.json"
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id, item.selected.api);
+    },
+
 });
 `
           }
@@ -559,14 +668,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/widget_KLLoading_.html" class="pager">
+            <span class="icon icon-left"></span><span>加载</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/widget_KLProgress_.html" class="pager">
+            <span>进度条</span><span class="icon icon-right"></span>
         </a>
       
     </div>
@@ -576,6 +685,74 @@ var component = new NEKUI.Component({
         来 GitHub 提个 PR 吧！
       </a>
     </div>
+     
+       <script>
+        //用来处理实例代码块，将其分为两列
+        document.addEventListener('DOMContentLoaded', function() {
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
+          if(!!gridOuter){
+            var leftBlock = document.createElement('div');
+            var rightBlock = document.createElement('div');
+            leftBlock.className = 'm-leftBlock';
+            rightBlock.className = 'm-rightBlock';
+            gridOuter.appendChild(leftBlock);
+            gridOuter.appendChild(rightBlock);
+
+            var itemList = document.getElementsByClassName('grid-item');
+            var tempList = [];
+            //获取每个grid-item的高度
+            for(var i=0;i<itemList.length;i++){
+                var temp = {
+                  id: i,
+                  height: itemList[i].clientHeight+2
+                }
+                tempList.push(temp);
+                itemList[i].style.width = 'auto';
+            }
+            //高度从大到小排序
+            tempList.sort(function(a,b){return b.height-a.height});
+            //通过高度计算dom应该放置在左右那边
+            var templeft = {
+              height: 0,
+              inner:[]
+            };
+            var tempright = {
+              height: 0,
+              inner: []
+            };
+            tempList.forEach(function(item){
+              if(templeft.height <= tempright.height){
+                templeft.inner.push(item);
+                //加上元素高度及其marginTop
+                templeft.height = templeft.height + item.height+ 20;
+              }else{
+                tempright.inner.push(item);
+                tempright.height = tempright.height + item.height+ 20;
+              }
+            });
+            //在左右各自内部将dom按照id从小到大排序
+            templeft.inner.sort(function(a,b){return a.id-b.id});
+            tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
+            //按照左右将grid-item列表分别放在左右两边
+            var tempItemList = document.querySelectorAll('.grid-item');
+            templeft.inner.forEach(function(item){
+                leftBlock.appendChild(tempItemList[item.id]);
+            });
+            tempright.inner.forEach(function(item){
+                rightBlock.appendChild(tempItemList[item.id]);
+            }); 
+          }
+        });
+      </script>
       
      
 </div>

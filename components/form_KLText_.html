@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>文本展示 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="文本展示 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -125,7 +125,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>表单
@@ -189,7 +189,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/form_KLText_.html" class="">
+                                   <a href="/components/form_KLText_.html" class="current">
                                        文本展示 <span>KLText</span>
                                    </a>
                                </li>
@@ -302,7 +302,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>其它
@@ -330,7 +330,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
@@ -362,24 +362,77 @@
 </div>
 
 
-<div class="content components with-sidebar ">
+<div class="content components with-sidebar  j-masonry">
     
+         <style>
+             .grid-item{
+                 width: 50%;
+             } 
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">文本展示 <span>KLText</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+<h3 id="大小扩展"><a href="#大小扩展" class="headerlink" title="大小扩展"></a>大小扩展</h3><p>通过设置<code>size</code>值控制文本字体大小</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：</div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">size</span>=<span class="string">"xs"</span> <span class="attr">text</span>=<span class="string">"超小号文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">size</span>=<span class="string">"sm"</span> <span class="attr">text</span>=<span class="string">"小号文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span>  <span class="attr">text</span>=<span class="string">"正常文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">size</span>=<span class="string">"lg"</span> <span class="attr">text</span>=<span class="string">"大号文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">size</span>=<span class="string">"xl"</span> <span class="attr">text</span>=<span class="string">"超大号文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
+<h3 id="类型扩展"><a href="#类型扩展" class="headerlink" title="类型扩展"></a>类型扩展</h3><p>通过设置<code>type</code>值控制文本显示不同类型</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：</div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"default"</span> <span class="attr">text</span>=<span class="string">"Default"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">text</span>=<span class="string">"Primary"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">text</span>=<span class="string">"Success"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">text</span>=<span class="string">"Warning"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">text</span>=<span class="string">"Error"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"inverse"</span> <span class="attr">text</span>=<span class="string">"Inverse"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">type</span>=<span class="string">"muted"</span> <span class="attr">text</span>=<span class="string">"Muted"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<div class="grid-item" markdown="1">
+<h3 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h3><p>通过设置<code>isBold</code>值控制文本字体是否加粗</p>
+<ul>
+<li><code>false</code>: 不加粗</li>
+<li><code>true</code>: 加粗</li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：</div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span>  <span class="attr">text</span>=<span class="string">"正常文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">isBold</span>=<span class="string">&#123;true&#125;</span> <span class="attr">text</span>=<span class="string">"加粗文本"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="水平对齐"><a href="#水平对齐" class="headerlink" title="水平对齐"></a>水平对齐</h3><p>通过指定<code>align</code>值来控制文字垂直方向的排列规则</p>
+<ul>
+<li><code>left</code>:左对齐</li>
+<li><code>center</code>: 居中对齐</li>
+<li><code>right</code>: 右对齐</li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：</div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">align</span>=<span class="string">"left"</span> <span class="attr">text</span>=<span class="string">"左对齐"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">align</span>=<span class="string">"center"</span> <span class="attr">text</span>=<span class="string">"居中对齐"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">align</span>=<span class="string">"right"</span> <span class="attr">text</span>=<span class="string">"右对齐"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h3><p>通过指定<code>vertical</code>值来控制文字垂直方向的排列规则</p>
+<ul>
+<li><code>top</code>:顶部对齐</li>
+<li><code>middle</code>: 垂直居中</li>
+<li><code>bottom</code>: 底部对齐</li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：</div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">vertical</span>=<span class="string">"top"</span> <span class="attr">text</span>=<span class="string">"顶部对齐"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">vertical</span>=<span class="string">"middle"</span> <span class="attr">text</span>=<span class="string">"垂直居中"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">vertical</span>=<span class="string">"bottom"</span> <span class="attr">text</span>=<span class="string">"底部对齐"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="链接显示"><a href="#链接显示" class="headerlink" title="链接显示"></a>链接显示</h3><p>通过设置<code>url</code>把文本变成链接显示</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">示例：<span class="tag">&lt;<span class="name">kl-text</span> <span class="attr">url</span>=<span class="string">"http://www.kaola.com"</span>  <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">text</span>=<span class="string">"跳转至考拉首页"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-text</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLText"></a></p>
+<h2 id="KLText"><a href="#KLText" class="headerlink" title="KLText"></a><span class="param-title">KLText</span><a name="new_KLText_new"></a></h2><h3 id="KLText-1"><a href="#KLText-1" class="headerlink" title="KLText"></a><span class="param-title">KLText</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -396,75 +449,77 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.static]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
+<td>[options.data.text]</td>
+<td><code>string</code></td>
+<td><code>&quot;文本&quot;</code></td>
+<td>&lt;=&gt; 内容</td>
 </tr>
 <tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
+<td>[options.data.size]</td>
 <td><code>string</code></td>
 <td></td>
-<td>=&gt; 补充class</td>
+<td>=&gt; text大小 取值：xs、sm、lg、xl</td>
+</tr>
+<tr>
+<td>[options.data.isBold]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否加粗 取值：true-加粗 、false-不加粗</td>
+</tr>
+<tr>
+<td>[options.data.align]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 左右对齐方式 取值：left、center、right</td>
+</tr>
+<tr>
+<td>[options.data.vertical]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 上下对齐方式 取值：top、middle、bottom</td>
+</tr>
+<tr>
+<td>[options.data.type]</td>
+<td><code>string</code></td>
+<td><code>&quot;default&quot;</code></td>
+<td>=&gt; 文本样式 取值：default、primary、success、warning、error、inverse、muted</td>
+</tr>
+<tr>
+<td>[options.dara.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 自定义class</td>
+</tr>
+<tr>
+<td>[options.data.url]</td>
+<td><code>string</code></td>
+<td><code>&quot;javascript:;&quot;</code></td>
+<td>=&gt;连接的url 值为“javascript:”表示非链接文本</td>
+</tr>
+<tr>
+<td>[options.data.target]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; a标签的target属性 取值：_blank、_self、_parent、_top</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
-</tr>
-</tbody>
-</table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+示例：
+<kl-text size="xs" text="超小号文本"></kl-text>
+<kl-text size="sm" text="小号文本"></kl-text>
+<kl-text  text="正常文本"></kl-text>
+<kl-text size="lg" text="大号文本"></kl-text>
+<kl-text size="xl" text="超大号文本"></kl-text>
 
       */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
-});
-
+      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
       var gridItem = document.querySelectorAll('.grid-item')[index];
       var codeDemo = document.createElement('div');
@@ -480,23 +535,14 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+示例：
+<kl-text size="xs" text="超小号文本"></kl-text>
+<kl-text size="sm" text="小号文本"></kl-text>
+<kl-text  text="正常文本"></kl-text>
+<kl-text size="lg" text="大号文本"></kl-text>
+<kl-text size="xl" text="超大号文本"></kl-text>
 `,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
-});
-`
+              jsCode: `var component = new NEKUI.Component({template: template});`
           }
       });
       codeDemo.innerHTML = '';
@@ -506,20 +552,17 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+示例：
+<kl-text type="default" text="Default"></kl-text>
+<kl-text type="primary" text="Primary"></kl-text>
+<kl-text type="success" text="Success"></kl-text>
+<kl-text type="warning" text="Warning"></kl-text>
+<kl-text type="error" text="Error"></kl-text>
+<kl-text type="inverse" text="Inverse"></kl-text>
+<kl-text type="muted" text="Muted"></kl-text>
 
       */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    }
-});
-
+      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
       var gridItem = document.querySelectorAll('.grid-item')[index];
       var codeDemo = document.createElement('div');
@@ -535,19 +578,156 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+示例：
+<kl-text type="default" text="Default"></kl-text>
+<kl-text type="primary" text="Primary"></kl-text>
+<kl-text type="success" text="Success"></kl-text>
+<kl-text type="warning" text="Warning"></kl-text>
+<kl-text type="error" text="Error"></kl-text>
+<kl-text type="inverse" text="Inverse"></kl-text>
+<kl-text type="muted" text="Muted"></kl-text>
 `,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    }
-});
-`
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+示例：
+<kl-text  text="正常文本"></kl-text>
+<kl-text isBold={true} text="加粗文本"></kl-text>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+示例：
+<kl-text  text="正常文本"></kl-text>
+<kl-text isBold={true} text="加粗文本"></kl-text>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+示例：
+<kl-text align="left" text="左对齐"></kl-text>
+<kl-text align="center" text="居中对齐"></kl-text>
+<kl-text align="right" text="右对齐"></kl-text>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+示例：
+<kl-text align="left" text="左对齐"></kl-text>
+<kl-text align="center" text="居中对齐"></kl-text>
+<kl-text align="right" text="右对齐"></kl-text>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+示例：
+<kl-text vertical="top" text="顶部对齐"></kl-text>
+<kl-text vertical="middle" text="垂直居中"></kl-text>
+<kl-text vertical="bottom" text="底部对齐"></kl-text>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+示例：
+<kl-text vertical="top" text="顶部对齐"></kl-text>
+<kl-text vertical="middle" text="垂直居中"></kl-text>
+<kl-text vertical="bottom" text="底部对齐"></kl-text>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+示例：<kl-text url="http://www.kaola.com"  target="_blank" text="跳转至考拉首页"></kl-text>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+示例：<kl-text url="http://www.kaola.com"  target="_blank" text="跳转至考拉首页"></kl-text>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
           }
       });
       codeDemo.innerHTML = '';
@@ -559,14 +739,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/form_KLSelect_.html" class="pager">
+            <span class="icon icon-left"></span><span>下拉选择</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/form_KLTextArea_.html" class="pager">
+            <span>文本输入</span><span class="icon icon-right"></span>
         </a>
       
     </div>
@@ -576,6 +756,74 @@ var component = new NEKUI.Component({
         来 GitHub 提个 PR 吧！
       </a>
     </div>
+     
+       <script>
+        //用来处理实例代码块，将其分为两列
+        document.addEventListener('DOMContentLoaded', function() {
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
+          if(!!gridOuter){
+            var leftBlock = document.createElement('div');
+            var rightBlock = document.createElement('div');
+            leftBlock.className = 'm-leftBlock';
+            rightBlock.className = 'm-rightBlock';
+            gridOuter.appendChild(leftBlock);
+            gridOuter.appendChild(rightBlock);
+
+            var itemList = document.getElementsByClassName('grid-item');
+            var tempList = [];
+            //获取每个grid-item的高度
+            for(var i=0;i<itemList.length;i++){
+                var temp = {
+                  id: i,
+                  height: itemList[i].clientHeight+2
+                }
+                tempList.push(temp);
+                itemList[i].style.width = 'auto';
+            }
+            //高度从大到小排序
+            tempList.sort(function(a,b){return b.height-a.height});
+            //通过高度计算dom应该放置在左右那边
+            var templeft = {
+              height: 0,
+              inner:[]
+            };
+            var tempright = {
+              height: 0,
+              inner: []
+            };
+            tempList.forEach(function(item){
+              if(templeft.height <= tempright.height){
+                templeft.inner.push(item);
+                //加上元素高度及其marginTop
+                templeft.height = templeft.height + item.height+ 20;
+              }else{
+                tempright.inner.push(item);
+                tempright.height = tempright.height + item.height+ 20;
+              }
+            });
+            //在左右各自内部将dom按照id从小到大排序
+            templeft.inner.sort(function(a,b){return a.id-b.id});
+            tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
+            //按照左右将grid-item列表分别放在左右两边
+            var tempItemList = document.querySelectorAll('.grid-item');
+            templeft.inner.forEach(function(item){
+                leftBlock.appendChild(tempItemList[item.id]);
+            });
+            tempright.inner.forEach(function(item){
+                rightBlock.appendChild(tempItemList[item.id]);
+            }); 
+          }
+        });
+      </script>
       
      
 </div>

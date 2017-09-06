@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>日期选择 - nek-ui</title>
+        <title>单选组 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="日期选择 - nek-ui">
+        <meta property="og:title" content="单选组 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -153,7 +153,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/form_KLDatePicker_.html" class="current">
+                                   <a href="/components/form_KLDatePicker_.html" class="">
                                        日期选择 <span>KLDatePicker</span>
                                    </a>
                                </li>
@@ -177,7 +177,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/form_KLRadioGroup_.html" class="">
+                                   <a href="/components/form_KLRadioGroup_.html" class="current">
                                        单选组 <span>KLRadioGroup</span>
                                    </a>
                                </li>
@@ -380,61 +380,45 @@
          </style>
      
 
-    <h2 id="pageName">日期选择 <span>KLDatePicker</span> </h2>
+    <h2 id="pageName">单选组 <span>KLRadioGroup</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="日期选择"><a href="#日期选择" class="headerlink" title="日期选择"></a>日期选择</h3><div class="m-example"></div>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">date</span>=<span class="string">&#123;selectDate&#125;</span> <span class="attr">placeholder</span>=<span class="string">"选择日期"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为：&#123;selectDate&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>格式化后的日期为：&#123;selectDate | format: 'yyyy-MM-dd HH:mm:ss'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;console.log($event)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><div class="m-example"></div>
+<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">date</span>=<span class="string">&#123;selectDate&#125;</span> <span class="attr">placeholder</span>=<span class="string">"选择日期"</span> <span class="attr">showTime</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为: &#123;selectDate&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>格式化后的日期为: &#123;selectDate | format: 'yyyy-MM-dd HH:mm:ss'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">selectDate</span>: <span class="literal">null</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>value: &#123;value&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>selected: &#123;selected ? JSON.stringify(selected) : ''&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">22</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">33</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">44</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">3</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><p>通过<code>disabled</code>属性来设置组件是否可用</p>
-<div class="m-example"></div>
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"跨境方式"</span> <span class="attr">tip</span>=<span class="string">"跨境方式"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="只可读组件"><a href="#只可读组件" class="headerlink" title="只可读组件"></a>只可读组件</h3><p>通过<code>readonly</code>属性来设置组件是否值可读</p>
-<div class="m-example"></div>
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">date</span>=<span class="string">"2017-10-10"</span> <span class="attr">readonly</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h3><p>通过指定<code>minDate</code> 和<code>maxDate</code>来控制日期选择范围</p>
-<div class="m-example"></div>
+<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">minDate</span>=<span class="string">"2017-03-01"</span> <span class="attr">maxDate</span>=<span class="string">"2017-12-30"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择时间范围：开始时间不能大于结束时间<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">maxDate</span>=<span class="string">&#123;endTime&#125;</span> <span class="attr">date</span>=<span class="string">&#123;startTime&#125;</span> <span class="attr">placeholder</span>=<span class="string">"开始时间"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">minDate</span>=<span class="string">"&#123;startTime&#125;"</span> <span class="attr">date</span>=<span class="string">&#123;endTime&#125;</span> <span class="attr">placeholder</span>=<span class="string">"结束时间"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;/</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            NEKUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'/data/KLRadioGroup.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">value</span>: <span class="number">4</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><p>通过<code>date</code>属性来进行数据绑定</p>
-<div class="m-example"></div>
+<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">readonly</span> <span class="attr">disabled</span>=<span class="string">true</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为：&#123;date | format: 'yyyy-MM-dd'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'一般贸易'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'海淘'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'直邮'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'保税'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
-<div class="grid-item" markdown="1">
-<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>日期时间选择组件支持<code>toggle</code>、<code>select</code>和<code>change</code>事件</p>
-<ul>
-<li><code>toggle</code>： 组件展开或收起的时候触发的事件</li>
-<li><code>select</code>： 当选择日期的时候触发</li>
-<li><code>change</code>： 当所学日期变换是触发的事件</li>
-</ul>
-<p>请打开浏览器的控制台查看结果。</p>
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span></span></div><div class="line">    <span class="attr">on-toggle</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-toggle:</span>', '$<span class="attr">event.open:</span>', $<span class="attr">event.open</span>)&#125;</div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125;</div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125; /&gt;</div></pre></td></tr></table></figure>
-</div>
-<div class="grid-item" markdown="1">
-<h3 id="表单中使用"><a href="#表单中使用" class="headerlink" title="表单中使用"></a>表单中使用</h3><p><div class="m-example"></div>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"开始时间"</span> <span class="attr">labelSize</span>=<span class="string">"70px"</span> <span class="attr">required</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> /&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"验证"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.validate()&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">        <span class="keyword">return</span> $form.validate().success;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLDatePicker"></a></p>
-<h2 id="KLDatePicker"><a href="#KLDatePicker" class="headerlink" title="KLDatePicker"></a><span class="param-title">KLDatePicker</span><a name="new_KLDatePicker_new"></a></h2><h3 id="KLDatePicker-1"><a href="#KLDatePicker-1" class="headerlink" title="KLDatePicker"></a><span class="param-title">KLDatePicker</span></h3><table>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLRadioGroup"></a></p>
+<h2 id="KLRadioGroup"><a href="#KLRadioGroup" class="headerlink" title="KLRadioGroup"></a><span class="param-title">KLRadioGroup</span><a name="new_KLRadioGroup_new"></a></h2><h3 id="KLRadioGroup-1"><a href="#KLRadioGroup-1" class="headerlink" title="KLRadioGroup"></a><span class="param-title">KLRadioGroup</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -451,58 +435,64 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.date]</td>
-<td><code>object</code></td>
-<td><code></code></td>
-<td>&lt;=&gt; 当前选择的日期时间</td>
+<td>[options.data.source]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 数据源</td>
 </tr>
 <tr>
-<td>[options.data.showTime]</td>
+<td>[options.data.nameKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;name&quot;</code></td>
+<td>=&gt; 数据项的name键</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的key键</td>
+</tr>
+<tr>
+<td>[options.data.source[].name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 每项的内容</td>
+</tr>
+<tr>
+<td>[options.data.selected]</td>
+<td><code>object</code></td>
+<td></td>
+<td>&lt;=&gt; 当前选择的对象</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>number/string</code></td>
+<td></td>
+<td>&lt;=&gt; 当前选择的值</td>
+</tr>
+<tr>
+<td>[options.data.block]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否显示时间选择</td>
+<td>=&gt; 多行显</td>
 </tr>
 <tr>
-<td>[options.data.defaultTime]</td>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必选</td>
+</tr>
+<tr>
+<td>[options.data.message]</td>
 <td><code>string</code></td>
-<td><code>null</code></td>
-<td>=&gt; 首次默认的时分秒, 格式为字符串”hh:mm:ss”</td>
-</tr>
-<tr>
-<td>[options.data.placeholder]</td>
-<td><code>string</code></td>
-<td><code>&quot;请输入&quot;</code></td>
-<td>=&gt; 文本框的占位文字</td>
-</tr>
-<tr>
-<td>[options.data.minDate]</td>
-<td><code>Date/string</code></td>
-<td><code></code></td>
-<td>=&gt; 最小日期时间，如果为空则不限制</td>
-</tr>
-<tr>
-<td>[options.data.maxDate]</td>
-<td><code>Date/string</code></td>
-<td><code></code></td>
-<td>=&gt; 最大日期时间，如果为空则不限制</td>
+<td></td>
+<td>=&gt; 验证错误提示</td>
 </tr>
 <tr>
 <td>[options.data.hideTip]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>=&gt; 是否显示校验错误信息</td>
-</tr>
-<tr>
-<td>[options.data.autofocus]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否自动获得焦点</td>
-</tr>
-<tr>
-<td>[options.data.required]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否必填</td>
 </tr>
 <tr>
 <td>[options.data.readonly]</td>
@@ -520,19 +510,7 @@
 <td>[options.data.visible]</td>
 <td><code>boolean</code></td>
 <td><code>true</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.size]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 组件大小, sm/md/lg</td>
-</tr>
-<tr>
-<td>[options.data.width]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 组件宽度</td>
+<td>=&gt; 是否显</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
@@ -540,31 +518,15 @@
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
-</tbody>
-</table>
-<p><a name="KLDatePicker+event_change 日期时间改变时触发"></a></p>
-<h3 id="change-日期时间改变时触发Event"><a href="#change-日期时间改变时触发Event" class="headerlink" title="change 日期时间改变时触发Event"></a><span class="param-title">change 日期时间改变时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
-<thead>
 <tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
+<td>[options.service]</td>
 <td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>date</td>
-<td><code>object</code></td>
-<td>改变后的日期时间</td>
+<td></td>
+<td>@=&gt; 数据服务</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLDatePicker+event_select 选择某一项时触发"></a></p>
+<p><a name="KLRadioGroup+event_select 选择某一项时触发"></a></p>
 <h3 id="select-选择某一项时触发Event"><a href="#select-选择某一项时触发Event" class="headerlink" title="select 选择某一项时触发Event"></a><span class="param-title">select 选择某一项时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
 <tr>
@@ -580,9 +542,9 @@
 <td>事件发送对象</td>
 </tr>
 <tr>
-<td>date</td>
+<td>selected</td>
 <td><code>object</code></td>
-<td>当前选择项</td>
+<td>当前选择</td>
 </tr>
 </tbody>
 </table>
@@ -593,51 +555,20 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" />
-<p>当前选择的日期为：{selectDate}</p>
-<p>格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" />
-<p>当前选择的日期为：{selectDate}</p>
-<p>格式化后的日期为：{selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
-`,
-              jsCode: `var component = new NEKUI.Component({template: template});`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" showTime />
-<p>当前选择的日期为: {selectDate}</p>
-<p>格式化后的日期为: {selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
     data: {
-        selectDate: null
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 
@@ -656,15 +587,19 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-date-picker lang="en-US" date={selectDate} placeholder="选择日期" showTime />
-<p>当前选择的日期为: {selectDate}</p>
-<p>格式化后的日期为: {selectDate | format: 'yyyy-MM-dd HH:mm:ss'}</p>
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
     data: {
-        selectDate: null
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
     }
 });
 `
@@ -677,10 +612,25 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-date-picker disabled />
+<kl-radio-group source={source} value={value} selected={selected} />
+<div>value: {value}</div>
+<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
 
       */});
-      var component = new NEKUI.Component({template: template});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
+        ],
+        value: 3
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
       var gridItem = document.querySelectorAll('.grid-item')[index];
       var codeDemo = document.createElement('div');
@@ -696,9 +646,24 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-date-picker disabled />
+<kl-radio-group source={source} value={value} selected={selected} />
+<div>value: {value}</div>
+<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
 `,
-              jsCode: `var component = new NEKUI.Component({template: template});`
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 11},
+            {name: '海淘', id: 22},
+            {name: '直邮', id: 33},
+            {name: '保税', id: 44}
+        ],
+        value: 3
+    }
+});
+`
           }
       });
       codeDemo.innerHTML = '';
@@ -708,189 +673,26 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-date-picker date="2017-10-10" readonly />
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-date-picker date="2017-10-10" readonly />
-`,
-              jsCode: `var component = new NEKUI.Component({template: template});`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<p>控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间</p>
-<kl-date-picker minDate="2017-03-01" maxDate="2017-12-30" />
-<p>选择时间范围：开始时间不能大于结束时间</p>
-<kl-row>
-    <kl-col span=6>
-        <kl-date-picker maxDate={endTime} date={startTime} placeholder="开始时间"/>
-    </kl-col>
-    <kl-col span=6>
-        <kl-date-picker minDate="{startTime}" date={endTime} placeholder="结束时间" />
-    </kl-col>
-</kl-row>
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<p>控制时间选择范围：如可选择2017-03-01 - 2017-12-30段内的时间</p>
-<kl-date-picker minDate="2017-03-01" maxDate="2017-12-30" />
-<p>选择时间范围：开始时间不能大于结束时间</p>
-<kl-row>
-    <kl-col span=6>
-        <kl-date-picker maxDate={endTime} date={startTime} placeholder="开始时间"/>
-    </kl-col>
-    <kl-col span=6>
-        <kl-date-picker minDate="{startTime}" date={endTime} placeholder="结束时间" />
-    </kl-col>
-</kl-row>
-`,
-              jsCode: `var component = new NEKUI.Component({template: template});`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-row>
-    <kl-col span=6>
-        <kl-date-picker date={date} />
-    </kl-col>
-    <kl-col span=6>
-        <kl-date-picker date={date} readonly disabled=true />
-    </kl-col>
-</kl-row>
-<p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-row>
-    <kl-col span=6>
-        <kl-date-picker date={date} />
-    </kl-col>
-    <kl-col span=6>
-        <kl-date-picker date={date} readonly disabled=true />
-    </kl-col>
-</kl-row>
-<p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
-`,
-              jsCode: `var component = new NEKUI.Component({template: template});`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-date-picker
-    on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
-    on-select={console.log('on-select:', '$event.date:', $event.date)}
-    on-change={console.log('on-change:', '$event.date:', $event.date)} />
-
-      */});
-      var component = new NEKUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-date-picker
-    on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
-    on-select={console.log('on-select:', '$event.date:', $event.date)}
-    on-change={console.log('on-change:', '$event.date:', $event.date)} />
-`,
-              jsCode: `var component = new NEKUI.Component({template: template});`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-form ref="form">
-    <kl-form-item title="开始时间" labelSize="70px" required >
-        <kl-date-picker date={date} />
-     </kl-form-item>
-      <kl-button title="验证" on-click={this.validate()} />
+<kl-form>
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
+    </kl-form-item>
 </kl-form>
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    validate: function() {
-        var $form = this.$refs.form;
-        return $form.validate().success;
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 1
     }
 });
-
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
       var gridItem = document.querySelectorAll('.grid-item')[index];
@@ -907,22 +709,204 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-form ref="form">
-    <kl-form-item title="开始时间" labelSize="70px" required >
-        <kl-date-picker date={date} />
-     </kl-form-item>
-      <kl-button title="验证" on-click={this.validate()} />
+<kl-form>
+    <kl-form-item title="跨境方式" tip="跨境方式">
+        <kl-radio-group source={source} value={value}/>
+    </kl-form-item>
 </kl-form>
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    validate: function() {
-        var $form = this.$refs.form;
-        return $form.validate().success;
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 1
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-radio-group source={source} disabled />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ]
     }
 });
 
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} disabled />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ]
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-radio-group service={@(this.service)} value={value}/>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    service: {
+        getList: function(params, success) {
+            NEKUI.ajax.request({
+                url: '/data/KLRadioGroup.json',
+                method: 'get',
+                type: 'json',
+                data: params,
+                success: success
+            });
+        }
+    },
+    data: {
+        value: 4
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group service={@(this.service)} value={value}/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    service: {
+        getList: function(params, success) {
+            NEKUI.ajax.request({
+                url: '/data/KLRadioGroup.json',
+                method: 'get',
+                type: 'json',
+                data: params,
+                success: success
+            });
+        }
+    },
+    data: {
+        value: 4
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-radio-group source={source} value={value} block />
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-radio-group source={source} value={value} block />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2
+    }
+});
 `
           }
       });
@@ -935,14 +919,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/form_KLCheckGroup_.html" class="pager">
-            <span class="icon icon-left"></span><span>复选组</span>
+        <a href="/components/form_KLMultiSelect_.html" class="pager">
+            <span class="icon icon-left"></span><span>多级选择</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/form_KLForm_.html" class="pager">
-            <span>表单</span><span class="icon icon-right"></span>
+        <a href="/components/form_KLSelect_.html" class="pager">
+            <span>下拉选择</span><span class="icon icon-right"></span>
         </a>
       
     </div>

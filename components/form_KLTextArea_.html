@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>文本输入 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="文本输入 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -125,7 +125,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>表单
@@ -195,7 +195,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/form_KLTextArea_.html" class="">
+                                   <a href="/components/form_KLTextArea_.html" class="current">
                                        文本输入 <span>KLTextArea</span>
                                    </a>
                                </li>
@@ -302,7 +302,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>其它
@@ -330,7 +330,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
@@ -362,24 +362,64 @@
 </div>
 
 
-<div class="content components with-sidebar ">
+<div class="content components with-sidebar  j-masonry">
     
+         <style>
+             .grid-item{
+                 width: 50%;
+             } 
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">文本输入 <span>KLTextArea</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>大部分属性的用法与<code>&lt;textarea&gt;</code>一致。</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-textarea</span>  <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span> /&gt;</span></div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
+<div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"备注"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<div class="grid-item" markdown="1">
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>通过指定<code>rules</code>规则对文本进行验证</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">placeholder</span>=<span class="string">"请输入邮箱, 失去焦点时验证"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isFilled'</span>, <span class="attr">on</span>: <span class="string">'blur'</span>, <span class="attr">message</span>: <span class="string">'请输入邮箱！'</span>&#125;,</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isEmail'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'请输入正确的邮箱！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="限制输入长度"><a href="#限制输入长度" class="headerlink" title="限制输入长度"></a>限制输入长度</h3><p>通过指定<code>maxlength</code>来限制输入内容长度</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-textarea</span>  <span class="attr">maxlength</span>=<span class="string">100</span> <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span> /&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="高宽设置"><a href="#高宽设置" class="headerlink" title="高宽设置"></a>高宽设置</h3><p>通过<code>height</code>和<code>width</code>设置输入框的高和宽</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">height</span>=<span class="string">100</span> <span class="attr">width</span>=<span class="string">400</span> <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span>/&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="字数实时统计"><a href="#字数实时统计" class="headerlink" title="字数实时统计"></a>字数实时统计</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>最大长度&#123;maxLength&#125;字，已经输入了&#123;(value || '').length&#125;字<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">placeholder</span>=<span class="string">"请输入内容"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">maxLength</span>: <span class="number">10</span>,</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> (text || <span class="string">''</span>).length &lt;= component.data.maxLength;</div><div class="line">            &#125;, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'字数超出限制！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLTextArea"></a></p>
+<h2 id="KLTextArea"><a href="#KLTextArea" class="headerlink" title="KLTextArea"></a><span class="param-title">KLTextArea</span><a name="new_KLTextArea_new"></a></h2><h3 id="KLTextArea-1"><a href="#KLTextArea-1" class="headerlink" title="KLTextArea"></a><span class="param-title">KLTextArea</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -396,21 +436,87 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.static]</td>
+<td>[options.data.value]</td>
+<td><code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 文本框的值</td>
+</tr>
+<tr>
+<td>[options.data.placeholder]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 占位符</td>
+</tr>
+<tr>
+<td>[options.data.state]</td>
+<td><code>string</code></td>
+<td></td>
+<td>&lt;=&gt; 文本框的状态(保留字段，暂无实现)</td>
+</tr>
+<tr>
+<td>[options.data.maxlength]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 文本框的最大长度</td>
+</tr>
+<tr>
+<td>[options.data.rules]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>=&gt; 验证规则</td>
+</tr>
+<tr>
+<td>[options.data.autofocus]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
+<td>=&gt; 是否自动获得焦点</td>
+</tr>
+<tr>
+<td>[options.data.height]</td>
+<td><code>number</code></td>
+<td><code>120</code></td>
+<td>=&gt; 高度</td>
+</tr>
+<tr>
+<td>[options.data.width]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 组件宽度</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必填</td>
+</tr>
+<tr>
+<td>[options.data.message]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 必填校验失败提示的消息</td>
+</tr>
+<tr>
+<td>[options.data.hideTip]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示校验错误信息</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
 </tr>
 <tr>
 <td>[options.data.disabled]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
+<td>=&gt; 是否禁用</td>
 </tr>
 <tr>
 <td>[options.data.visible]</td>
 <td><code>boolean</code></td>
-<td><code>false</code></td>
+<td><code>true</code></td>
 <td>=&gt; 是否显示</td>
 </tr>
 <tr>
@@ -421,47 +527,94 @@
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
-</tr>
-</tbody>
-</table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-textarea  placeholder="请输入备注" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-textarea  placeholder="请输入备注" />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-form>
+    <kl-form-item title="备注">
+        <kl-textarea placeholder="请输入备注" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form>
+    <kl-form-item title="备注">
+        <kl-textarea placeholder="请输入备注" />
+    </kl-form-item>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-textarea rules={rules} placeholder="请输入邮箱, 失去焦点时验证" />
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
+    data: {
+        rules: [
+            {type: 'isFilled', on: 'blur', message: '请输入邮箱！'},
+            {type: 'isEmail', on: 'keyup+blur', message: '请输入正确的邮箱！'}
+        ]
     }
 });
 
@@ -480,20 +633,16 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-textarea rules={rules} placeholder="请输入邮箱, 失去焦点时验证" />
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
+    data: {
+        rules: [
+            {type: 'isFilled', on: 'blur', message: '请输入邮箱！'},
+            {type: 'isEmail', on: 'keyup+blur', message: '请输入正确的邮箱！'}
+        ]
     }
 });
 `
@@ -506,17 +655,84 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+<kl-textarea  maxlength=100 placeholder="请输入备注" />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-textarea  maxlength=100 placeholder="请输入备注" />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-textarea height=100 width=400 placeholder="请输入备注"/>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-textarea height=100 width=400 placeholder="请输入备注"/>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<p>最大长度{maxLength}字，已经输入了{(value || '').length}字</p>
+<kl-textarea rules={rules} value={value} placeholder="请输入内容" />
+
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
+    data: {
+        maxLength: 10,
+        value: '',
+        rules: [
+            {method: function(text) {
+                return (text || '').length <= component.data.maxLength;
+            }, on: 'keyup+blur', message: '字数超出限制！'}
+        ]
     }
 });
 
@@ -535,16 +751,21 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+<p>最大长度{maxLength}字，已经输入了{(value || '').length}字</p>
+<kl-textarea rules={rules} value={value} placeholder="请输入内容" />
+
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
+    data: {
+        maxLength: 10,
+        value: '',
+        rules: [
+            {method: function(text) {
+                return (text || '').length <= component.data.maxLength;
+            }, on: 'keyup+blur', message: '字数超出限制！'}
+        ]
     }
 });
 `
@@ -559,14 +780,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/form_KLText_.html" class="pager">
+            <span class="icon icon-left"></span><span>文本展示</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/form_KLTreeView_.html" class="pager">
+            <span>树型视图</span><span class="icon icon-right"></span>
         </a>
       
     </div>
@@ -576,6 +797,74 @@ var component = new NEKUI.Component({
         来 GitHub 提个 PR 吧！
       </a>
     </div>
+     
+       <script>
+        //用来处理实例代码块，将其分为两列
+        document.addEventListener('DOMContentLoaded', function() {
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
+          if(!!gridOuter){
+            var leftBlock = document.createElement('div');
+            var rightBlock = document.createElement('div');
+            leftBlock.className = 'm-leftBlock';
+            rightBlock.className = 'm-rightBlock';
+            gridOuter.appendChild(leftBlock);
+            gridOuter.appendChild(rightBlock);
+
+            var itemList = document.getElementsByClassName('grid-item');
+            var tempList = [];
+            //获取每个grid-item的高度
+            for(var i=0;i<itemList.length;i++){
+                var temp = {
+                  id: i,
+                  height: itemList[i].clientHeight+2
+                }
+                tempList.push(temp);
+                itemList[i].style.width = 'auto';
+            }
+            //高度从大到小排序
+            tempList.sort(function(a,b){return b.height-a.height});
+            //通过高度计算dom应该放置在左右那边
+            var templeft = {
+              height: 0,
+              inner:[]
+            };
+            var tempright = {
+              height: 0,
+              inner: []
+            };
+            tempList.forEach(function(item){
+              if(templeft.height <= tempright.height){
+                templeft.inner.push(item);
+                //加上元素高度及其marginTop
+                templeft.height = templeft.height + item.height+ 20;
+              }else{
+                tempright.inner.push(item);
+                tempright.height = tempright.height + item.height+ 20;
+              }
+            });
+            //在左右各自内部将dom按照id从小到大排序
+            templeft.inner.sort(function(a,b){return a.id-b.id});
+            tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
+            //按照左右将grid-item列表分别放在左右两边
+            var tempItemList = document.querySelectorAll('.grid-item');
+            templeft.inner.forEach(function(item){
+                leftBlock.appendChild(tempItemList[item.id]);
+            });
+            tempright.inner.forEach(function(item){
+                rightBlock.appendChild(tempItemList[item.id]);
+            }); 
+          }
+        });
+      </script>
       
      
 </div>

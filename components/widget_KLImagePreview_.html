@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>加载 - nek-ui</title>
+        <title>图片预览 - nek-ui</title>
         <meta charset="utf-8">
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="加载 - nek-ui">
+        <meta property="og:title" content="图片预览 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -324,13 +324,13 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLImagePreview_.html" class="">
+                                   <a href="/components/widget_KLImagePreview_.html" class="current">
                                        图片预览 <span>KLImagePreview</span>
                                    </a>
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLLoading_.html" class="current">
+                                   <a href="/components/widget_KLLoading_.html" class="">
                                        加载 <span>KLLoading</span>
                                    </a>
                                </li>
@@ -365,21 +365,15 @@
 <div class="content components with-sidebar ">
     
 
-    <h2 id="pageName">加载 <span>KLLoading</span> </h2>
+    <h2 id="pageName">图片预览 <span>KLImagePreview</span> </h2>
     <div class="grid-item" markdown="1">
 <h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"打开图片预览"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.onPreviewClick()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
-<div class="grid-item" markdown="1">
-<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
-<h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLImagePreview"></a></p>
+<h2 id="KLImagePreview"><a href="#KLImagePreview" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span><a name="new_KLImagePreview_new"></a></h2><h3 id="KLImagePreview-1"><a href="#KLImagePreview-1" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -396,72 +390,47 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.static]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否嵌入文档流</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
-<td><code>string</code></td>
+<td>[options.data.image-list]</td>
+<td><code>array</code></td>
 <td></td>
-<td>=&gt; 补充class</td>
+<td>=&gt; 必选，图片文件列表, 其中每个文件项包含下面的字段:                                                     name: 图片文件名称                                                     src: 图片文件的路径</td>
+</tr>
+<tr>
+<td>[options.data.cur-index]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 必选，当前图片文件的索引, 默认第一项为当前项</td>
 </tr>
 </tbody>
 </table>
-<p><a name="KLLoading+show_new 显示组件"></a></p>
-<h3 id="show-显示组件method"><a href="#show-显示组件method" class="headerlink" title=".show() 显示组件method"></a><span class="param-title">.show() 显示组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading+hide_new 隐藏组件"></a></p>
-<h3 id="hide-隐藏组件method"><a href="#hide-隐藏组件method" class="headerlink" title=".hide() 隐藏组件method"></a><span class="param-title">.hide() 隐藏组件</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLLoading.loading"></a></p>
-<h3 id="loadingstatic-property"><a href="#loadingstatic-property" class="headerlink" title=".loadingstatic property"></a><span class="param-title">.loading</span><span class="type-tag type-tag-static">static property</span></h3><table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>loading</td>
-<td>内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例</td>
-</tr>
-</tbody>
-</table>
-<p><a name="KLLoading.show"></a></p>
-<h3 id="showstatic-method"><a href="#showstatic-method" class="headerlink" title=".showstatic method"></a><span class="param-title">.show</span><span class="type-tag type-tag-static">static method</span></h3><p><a name="KLLoading.hide"></a></p>
-<h3 id="hidestatic-method"><a href="#hidestatic-method" class="headerlink" title=".hidestatic method"></a><span class="param-title">.hide</span><span class="type-tag type-tag-static">static method</span></h3>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
+    onPreviewClick: function() {
+        const imageList = [{
+            name: 'Kaola.jpeg',
+            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+            name: 'Music.jpg',
+            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }];
+
+        new NEKUI.KLImagePreview({
+            data: {
+                imageList: imageList,
+                curIndex: 0
+            }
+        });
     }
 });
 
@@ -480,71 +449,26 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
-<kl-loading visible={visible} />
+<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    config: function(data) {
-        data.visible = false;
-    },
-    showLoading: function() {
-        this.data.visible = true;
-        setTimeout(function() {
-          this.$update('visible', false);
-        }.bind(this), 2000);
-    }
-});
-`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
+    onPreviewClick: function() {
+        const imageList = [{
+            name: 'Kaola.jpeg',
+            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+            name: 'Music.jpg',
+            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }];
 
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-button on-click="{visible = !visible}" title="{visible ? '隐藏加载' : '显示加载'}" />
-<p>
-    <kl-loading visible={visible} static />
-</p>
-`,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-        data.visible = false;
+        new NEKUI.KLImagePreview({
+            data: {
+                imageList: imageList,
+                curIndex: 0
+            }
+        });
     }
 });
 `
@@ -559,14 +483,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLImagePreview_.html" class="pager">
-            <span class="icon icon-left"></span><span>图片预览</span>
+        <a href="/components/widget_KLIcon_.html" class="pager">
+            <span class="icon icon-left"></span><span>图标</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLocaleProvider_.html" class="pager">
-            <span>国际化</span><span class="icon icon-right"></span>
+        <a href="/components/widget_KLLoading_.html" class="pager">
+            <span>加载</span><span class="icon icon-right"></span>
         </a>
       
     </div>
