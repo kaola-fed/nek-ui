@@ -22,7 +22,7 @@
         margin-top: 4px;
         justify-content: flex-end;
         border-top: 1px solid #ddd;
-        .u-btn-secondary {
+        .datetimepicker_confirmBtn {
             color: #e31436;
             background: #fff;
             border: 1px solid #e31436;
