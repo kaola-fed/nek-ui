@@ -18,14 +18,14 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.key=id]                   => 数据项的键
  * @param {string}          [options.data.nameKey=name]             => 数据项的name键
  * @param {string}          [options.data.childKey=children]        => 数据子项的键
- * @param {string}          [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
+ * @param {boolean}         [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
- * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
+ * @param {boolean}         [options.data.showPath=false]           => 单选时是否展示路径
  * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
  * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
- * @param {string}          [options.data.showPathName=false]       => 是否用 path 代替原来的 namekey 显示
+ * @param {boolean}         [options.data.showPathName=false]       => 是否用 path 代替原来的 namekey 显示
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
