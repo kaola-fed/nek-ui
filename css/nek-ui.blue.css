@@ -4123,8 +4123,10 @@ input.u-check:disabled,input.u-radio:disabled{
 	justify-content:flex-end;
 	border-top:1px solid #ddd;
 }
-.u-datetimepicker .dropdown_ft a{
-	color:#333;
+.u-datetimepicker .dropdown_ft .u-btn-secondary{
+	color:#e31436;
+	background:#fff;
+	border:1px solid #e31436;
 }
 .u-numberinput{
 	display:inline-block;
@@ -4423,14 +4425,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow:hidden;
 	text-overflow:ellipsis;
 	max-width:150px;
-}
-.u-multi .dropdown_hd .angle-transform{
-	transform:rotate(180deg);
-}
-.u-multi .dropdown_hd i.angle{
-	transition:transform 0.5s;
-	line-height:20px;
-	margin-top:5px;
 }
 .u-multi .cateWrap{
 	max-width:412px;
@@ -7918,7 +7912,7 @@ a.u-badge{
 	right:0;
 	-webkit-overflow-scrolling:touch;
 	touch-action:cross-slide-y pinch-zoom double-tap-zoom;
-	background:rgba(0,0,0,0.85);
+	background:rgba(0,0,0,0.3);
 }
 .u-loading-static{
 	position:static;
