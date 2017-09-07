@@ -21,6 +21,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}         [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
+ * @param {string}          [options.data.placeholder='']           => 默认提示
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
  * @param {boolean}         [options.data.showPath=false]           => 单选时是否展示路径
  * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
@@ -45,7 +46,7 @@ const KLMultiSelect = Dropdown.extend({
       value: null,
       selected: [],
       separator: ',',
-      placeholder: this.$trans('PLEASE_SELECT'),
+      placeholder: '',
       key: 'id',
       nameKey: 'name',
       childKey: 'children',

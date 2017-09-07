@@ -12,6 +12,7 @@ masonry: true
     source={source} 
     value={value} 
     on-select={this.selected($event)}
+    placeholder={placeholder}
     />
 <p>选择的是：{value}</p>
 ```
@@ -43,7 +44,8 @@ var component = new NEKUI.Component({
                 {name: '男士箱包', id: 32}
             ]}
         ],
-        value: ''
+        value: '',
+        placeholder: '请选择'
     },
     selected: function(event) {
         console.log(event);

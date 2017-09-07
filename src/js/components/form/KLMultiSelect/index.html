@@ -13,6 +13,7 @@
         </span>
         {/if}
         {/list}
+        <span r-hide={open || !placeholder || selected.length}>{placeholder}</span>
         <kl-icon fontSize=20 type="angle-down" class="f-fr angle {open ? 'angle-transform' : ''}"/>
     </div>
     {#if open}
