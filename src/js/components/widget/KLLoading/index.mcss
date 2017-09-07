@@ -81,7 +81,7 @@ $u-loading_z-index = 1050;
         right: 0;
         -webkit-overflow-scrolling: touch;
         touch-action: cross-slide-y pinch-zoom double-tap-zoom;
-        background: rgba(0,0,0,.85);
+        background: rgba(0,0,0,.3);
     }
 }
 

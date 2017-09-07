@@ -62,8 +62,9 @@ title: 消息
 <div class="m-example">
     <style>
         .m-bg-specical {
-            background: #000;
+            background: #ccc;
             color: #FFF;
+            border: none;
         }
     </style>
 </div>
