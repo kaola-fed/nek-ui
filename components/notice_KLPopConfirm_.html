@@ -365,11 +365,9 @@
 <div class="content components with-sidebar  j-masonry">
     
          <style>
-            @media all and (min-width: 1301px) {
-              .grid-item{
+             .grid-item{
                  width: 50%;
-              }        
-            }
+             } 
              #grid-itemOuter:after{
                 content: '';
                 display: block;
@@ -1032,7 +1030,6 @@ var component = new NEKUI.Component({
      
        <script>
         //用来处理实例代码块，将其分为两列
-        if(window.screen.width > 1300){
         document.addEventListener('DOMContentLoaded', function() {
           var content = document.getElementsByClassName('content')[0];
           var position = document.getElementById('pageName').nextSibling;
@@ -1097,7 +1094,6 @@ var component = new NEKUI.Component({
             }); 
           }
         });
-        }
       </script>
       
      

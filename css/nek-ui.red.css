@@ -4426,6 +4426,14 @@ input.u-check:disabled,input.u-radio:disabled{
 	text-overflow:ellipsis;
 	max-width:150px;
 }
+.u-multi .dropdown_hd .angle-transform{
+	transform:rotate(180deg);
+}
+.u-multi .dropdown_hd i.angle{
+	transition:transform 0.5s;
+	line-height:20px;
+	margin-top:5px;
+}
 .u-multi .cateWrap{
 	max-width:412px;
 	overflow-x:auto;
