@@ -10309,6 +10309,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    this._onDateTimeChange(date, time);
+	    if (!this.data.showTime) {
+	      this._onOk();
+	    }
 	  },
 	  onConfirm: function onConfirm() {
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {
@@ -10398,7 +10401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
@@ -34326,7 +34329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    KLLocaleProvider.lang = lang;
 	    ajax.get(api + '?lang=' + lang, function (json) {
-	      KLLocaleProvider.locale[lang] = json;
+	      KLLocaleProvider.locale[lang] = json[lang] || json;
 	      self.$update('ready', true);
 
 	      self.$emit('ready');
@@ -34336,11 +34339,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * @method KLLocaleProvider#reload 切换语言，重新初始化
 	   * @param {string} lang 设置语言
-	   * @param {string} api 设置获取语言包的url
 	   */
-	  reload: function reload(lang, api) {
+	  reload: function reload(lang) {
 	    this.data.lang = lang;
-	    this.data.api = api;
 	    this._initLang();
 	  }
 	});
@@ -34408,6 +34409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	/**
 	 * @param {string} key 翻译key值
+	 * @param {object} params 变量值
 	 * @static
 	 */
 	KLLocaleProvider.translate = function (key, params) {

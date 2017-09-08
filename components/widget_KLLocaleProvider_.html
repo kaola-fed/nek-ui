@@ -386,14 +386,29 @@
 例如以下文字是根据key值匹配显示出来的</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/zh-CN.json"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_INPUT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_SELECT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t('USERNAME')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t('NOTIFY_METHOD')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/lang.json"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_INPUT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("PLEASE_SELECT")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t('USERNAME')&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;,</div><div class="line">    <span class="attr">$t</span>: translator</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="变量占位符"><a href="#变量占位符" class="headerlink" title="变量占位符"></a>变量占位符</h3><p>变量命名可以使用数字、字母或下划线；变量使用%{}包裹，其中%可以省略。
+例如：%{x},也可以写成{x}</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/lang.json"</span> <span class="attr">ref</span>=<span class="string">"locale_provider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;language&#125;</span> <span class="attr">value</span>=<span class="string">&#123;lang_value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.onSelect($event)&#125;</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!--FORMAT的中文是：每月账单日为: &#123;x&#125;--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("FORMAT", &#123;x: 8&#125;)&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--GOODS_SHELF_LIFE_DESC的中文是：产品交付剩余保质期不少于商品明示保质期&#123;x&#125;/&#123;y&#125;--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("GOODS_SHELF_LIFE_DESC", &#123;x: 9, y: 1&#125;)&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>    </div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.lang_value = <span class="string">"CN"</span></div><div class="line">        data.language = [</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"EN"</span>,</div><div class="line">                &#125;,</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"CN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"中文"</span>,</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">$t</span>: translator,</div><div class="line">    <span class="attr">onSelect</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.lang_value = item.selected.id;</div><div class="line">        <span class="keyword">this</span>.$refs.locale_provider.reload(item.selected.id);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="组合使用"><a href="#组合使用" class="headerlink" title="组合使用"></a>组合使用</h3><p>使用@:KEY语法，可以在当前语句中引入KEY的国际化语言。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/lang.json"</span> <span class="attr">ref</span>=<span class="string">"locale_provider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;language&#125;</span> <span class="attr">value</span>=<span class="string">&#123;lang_value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.onSelect($event)&#125;</span> /&gt;</span></div><div class="line">    <span class="comment">&lt;!--FRAGMENT1的中文是：这是fragment1--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("FRAGMENT1")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--FRAGMENT2的中文是：这是fragment2，@:FRAGMENT1--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.$t("FRAGMENT2")&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span>    </div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.lang_value = <span class="string">"CN"</span></div><div class="line">        data.language = [</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"EN"</span>,</div><div class="line">                &#125;,</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"CN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"中文"</span>,</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">$t</span>: translator,</div><div class="line">    <span class="attr">onSelect</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.lang_value = item.selected.id;</div><div class="line">        <span class="keyword">this</span>.$refs.locale_provider.reload(item.selected.id);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/zh-CN.json"</span> <span class="attr">ref</span>=<span class="string">"locale_provider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;language&#125;</span> <span class="attr">value</span>=<span class="string">&#123;lang_value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.onSelect($event)&#125;</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('USERNAME')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"&#123;this.$t('PLEASE_INPUT')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('NOTIFY_METHOD')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;[this.$t(</span>"<span class="attr">EMAIL</span>"), <span class="attr">this.</span>$<span class="attr">t</span>("<span class="attr">TEL</span>")]&#125; <span class="attr">placeholder</span>=<span class="string">&#123;this.$t(</span>"<span class="attr">PLEASE_SELECT</span>")&#125;&gt;</span><span class="tag">&lt;/<span class="name">kl-select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.lang_value = <span class="string">"CN"</span></div><div class="line">        data.language = [</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">api</span>: <span class="string">"/data/language/en-US.json"</span></div><div class="line">                &#125;,</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"CN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"中文"</span>,</div><div class="line">                    <span class="attr">api</span>: <span class="string">"/data/language/zh-CN.json"</span></div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">$t</span>: translator,</div><div class="line">    <span class="attr">onSelect</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.lang_value = item.selected.id;</div><div class="line">        <span class="keyword">this</span>.$refs.locale_provider.reload(item.selected.id, item.selected.api);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">kl-locale-provider</span> <span class="attr">lang</span>=<span class="string">"CN"</span> <span class="attr">api</span>=<span class="string">"/data/language/lang.json"</span> <span class="attr">ref</span>=<span class="string">"locale_provider"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">""</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;language&#125;</span> <span class="attr">value</span>=<span class="string">&#123;lang_value&#125;</span> <span class="attr">on-select</span>=<span class="string">&#123;this.onSelect($event)&#125;</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('USERNAME')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"&#123;this.$t('PLEASE_INPUT')&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-input</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"&#123;this.$t('NOTIFY_METHOD')&#125;"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">source</span>=<span class="string">&#123;[this.$t(</span>"<span class="attr">EMAIL</span>"), <span class="attr">this.</span>$<span class="attr">t</span>("<span class="attr">TEL</span>")]&#125; <span class="attr">placeholder</span>=<span class="string">&#123;this.$t(</span>"<span class="attr">PLEASE_SELECT</span>")&#125;&gt;</span><span class="tag">&lt;/<span class="name">kl-select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-locale-provider</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> translator = <span class="built_in">window</span>.NEKUI ? NEKUI.KLLocaleProvider.translate : <span class="string">''</span>;</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.lang_value = <span class="string">"CN"</span></div><div class="line">        data.language = [</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"EN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"EN"</span>,</div><div class="line">                &#125;,</div><div class="line">                &#123;   </div><div class="line">                    <span class="attr">id</span>: <span class="string">"CN"</span>,</div><div class="line">                    <span class="attr">name</span>: <span class="string">"中文"</span>,</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">$t</span>: translator,</div><div class="line">    <span class="attr">onSelect</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.lang_value = item.selected.id;</div><div class="line">        <span class="keyword">this</span>.$refs.locale_provider.reload(item.selected.id);</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLocaleProvider"></a></p>
 <h2 id="KLLocaleProvider"><a href="#KLLocaleProvider" class="headerlink" title="KLLocaleProvider"></a><span class="param-title">KLLocaleProvider</span><a name="new_KLLocaleProvider_new"></a></h2><h3 id="KLLocaleProvider-1"><a href="#KLLocaleProvider-1" class="headerlink" title="KLLocaleProvider"></a><span class="param-title">KLLocaleProvider</span></h3><table>
@@ -436,11 +451,6 @@
 <td>lang</td>
 <td><code>string</code></td>
 <td>设置语言</td>
-</tr>
-<tr>
-<td>api</td>
-<td><code>string</code></td>
-<td>设置获取语言包的url</td>
 </tr>
 </tbody>
 </table>
@@ -493,6 +503,11 @@
 <td><code>string</code></td>
 <td>翻译key值</td>
 </tr>
+<tr>
+<td>params</td>
+<td><code>object</code></td>
+<td>变量值</td>
+</tr>
 </tbody>
 </table>
 
@@ -502,11 +517,10 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
+<kl-locale-provider lang="CN" api="/data/language/lang.json">
     <p>{this.$t("PLEASE_INPUT")}</p>
     <p>{this.$t("PLEASE_SELECT")}</p>
     <p>{this.$t('USERNAME')}</p>
-    <p>{this.$t('NOTIFY_METHOD')}</p>
 </kl-locale-provider>
 
       */});
@@ -533,11 +547,10 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
+<kl-locale-provider lang="CN" api="/data/language/lang.json">
     <p>{this.$t("PLEASE_INPUT")}</p>
     <p>{this.$t("PLEASE_SELECT")}</p>
     <p>{this.$t('USERNAME')}</p>
-    <p>{this.$t('NOTIFY_METHOD')}</p>
 </kl-locale-provider>
 `,
               jsCode: `
@@ -557,8 +570,186 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FORMAT的中文是：每月账单日为: {x}-->
+    <p>{this.$t("FORMAT", {x: 8})}</p>
+    <!--GOODS_SHELF_LIFE_DESC的中文是：产品交付剩余保质期不少于商品明示保质期{x}/{y}-->
+    <p>{this.$t("GOODS_SHELF_LIFE_DESC", {x: 9, y: 1})}</p>    
+</kl-locale-provider>
 
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json" ref="locale_provider">
+      */});
+      
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FORMAT的中文是：每月账单日为: {x}-->
+    <p>{this.$t("FORMAT", {x: 8})}</p>
+    <!--GOODS_SHELF_LIFE_DESC的中文是：产品交付剩余保质期不少于商品明示保质期{x}/{y}-->
+    <p>{this.$t("GOODS_SHELF_LIFE_DESC", {x: 9, y: 1})}</p>    
+</kl-locale-provider>
+`,
+              jsCode: `
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FRAGMENT1的中文是：这是fragment1-->
+    <p>{this.$t("FRAGMENT1")}</p>
+    <!--FRAGMENT2的中文是：这是fragment2，@:FRAGMENT1-->
+    <p>{this.$t("FRAGMENT2")}</p>    
+</kl-locale-provider>
+
+      */});
+      
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FRAGMENT1的中文是：这是fragment1-->
+    <p>{this.$t("FRAGMENT1")}</p>
+    <!--FRAGMENT2的中文是：这是fragment2，@:FRAGMENT1-->
+    <p>{this.$t("FRAGMENT2")}</p>    
+</kl-locale-provider>
+`,
+              jsCode: `
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
     <kl-form>
         <kl-form-item title="">
             <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
@@ -583,19 +774,17 @@ var component = new NEKUI.Component({
                 {   
                     id: "EN",
                     name: "EN",
-                    api: "/data/language/en-US.json"
                 },
                 {   
                     id: "CN",
                     name: "中文",
-                    api: "/data/language/zh-CN.json"
                 }
             ]
     },
     $t: translator,
     onSelect: function(item) {
         this.data.lang_value = item.selected.id;
-        this.$refs.locale_provider.reload(item.selected.id, item.selected.api);
+        this.$refs.locale_provider.reload(item.selected.id);
     },
 
 });
@@ -616,7 +805,7 @@ var component = new NEKUI.Component({
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
 
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json" ref="locale_provider">
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
     <kl-form>
         <kl-form-item title="">
             <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
@@ -640,19 +829,17 @@ var component = new NEKUI.Component({
                 {   
                     id: "EN",
                     name: "EN",
-                    api: "/data/language/en-US.json"
                 },
                 {   
                     id: "CN",
                     name: "中文",
-                    api: "/data/language/zh-CN.json"
                 }
             ]
     },
     $t: translator,
     onSelect: function(item) {
         this.data.lang_value = item.selected.id;
-        this.$refs.locale_provider.reload(item.selected.id, item.selected.api);
+        this.$refs.locale_provider.reload(item.selected.id);
     },
 
 });
