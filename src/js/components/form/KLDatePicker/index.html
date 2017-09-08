@@ -17,10 +17,10 @@
       <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
         {#if showTime}
         <time-picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)} />
-        {/if}
         <div class="dropdown_ft">
           <a class="u-btn u-btn-sm datetimepicker_confirmBtn" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>
         </div>
+        {/if}
       </calendar>
     </div>
   </div>
