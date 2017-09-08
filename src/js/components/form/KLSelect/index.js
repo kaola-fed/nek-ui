@@ -313,7 +313,8 @@ const KLSelect = Dropdown.extend({
     if (multiple) {
       this.searchInputFocus();
       if (!data.selectedClose && item) {
-        data.canSearch && this.clearSearchValue();
+        // 选择之后不清空已输入的内容
+        // data.canSearch && this.clearSearchValue();
         return;
       }
     }

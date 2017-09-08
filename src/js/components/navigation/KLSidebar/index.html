@@ -1,6 +1,6 @@
 <aside class="m-sidebar {class}" r-class={ {'active':active } } top="{top}">
   <div class="sidebar_menus">
-    <kl-menu uniqueOpened="{uniqueOpened}">
+    <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}">
       {#list menus as menu}
       {#if menu[childrenKey] && menu[childrenKey].length}
       <kl-menu-sub title="{menu[titleKey]}" defaultOpen="{menu.open}" iconClass="{menu.iconClass}">
