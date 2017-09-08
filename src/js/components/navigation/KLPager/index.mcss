@@ -79,6 +79,7 @@ $m-pager_li_a_size = 24px;
 
         .u-select{
             display: inline-block;
+            min-width: 75px;
             .dropdown_hd {
                 .u-icon {
                     position: static;
