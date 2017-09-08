@@ -365,9 +365,11 @@
 <div class="content components with-sidebar  j-masonry">
     
          <style>
-             .grid-item{
+            @media all and (min-width: 1301px) {
+              .grid-item{
                  width: 50%;
-             } 
+              }        
+            }
              #grid-itemOuter:after{
                 content: '';
                 display: block;
@@ -759,6 +761,7 @@ var index = 0;
      
        <script>
         //用来处理实例代码块，将其分为两列
+        if(window.screen.width > 1300){
         document.addEventListener('DOMContentLoaded', function() {
           var content = document.getElementsByClassName('content')[0];
           var position = document.getElementById('pageName').nextSibling;
@@ -823,6 +826,7 @@ var index = 0;
             }); 
           }
         });
+        }
       </script>
       
      
