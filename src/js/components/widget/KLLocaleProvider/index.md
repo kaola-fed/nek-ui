@@ -10,11 +10,10 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json">
+<kl-locale-provider lang="CN" api="/data/language/lang.json">
     <p>{this.$t("PLEASE_INPUT")}</p>
     <p>{this.$t("PLEASE_SELECT")}</p>
     <p>{this.$t('USERNAME')}</p>
-    <p>{this.$t('NOTIFY_METHOD')}</p>
 </kl-locale-provider>
 ```
 ```javascript
@@ -28,12 +27,93 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 变量占位符
+变量命名可以使用数字、字母或下划线；变量使用%{}包裹，其中%可以省略。
+例如：%{x},也可以写成{x}
+<div class="m-example"></div>
+
+```xml
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FORMAT的中文是：每月账单日为: {x}-->
+    <p>{this.$t("FORMAT", {x: 8})}</p>
+    <!--GOODS_SHELF_LIFE_DESC的中文是：产品交付剩余保质期不少于商品明示保质期{x}/{y}-->
+    <p>{this.$t("GOODS_SHELF_LIFE_DESC", {x: 9, y: 1})}</p>    
+</kl-locale-provider>
+```
+```javascript
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 组合使用
+使用@:KEY语法，可以在当前语句中引入KEY的国际化语言。
+<div class="m-example"></div>
+
+```xml
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
+    <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
+    <!--FRAGMENT1的中文是：这是fragment1-->
+    <p>{this.$t("FRAGMENT1")}</p>
+    <!--FRAGMENT2的中文是：这是fragment2，@:FRAGMENT1-->
+    <p>{this.$t("FRAGMENT2")}</p>    
+</kl-locale-provider>
+```
+```javascript
+var translator = window.NEKUI ? NEKUI.KLLocaleProvider.translate : '';
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+        data.lang_value = "CN"
+        data.language = [
+                {   
+                    id: "EN",
+                    name: "EN",
+                },
+                {   
+                    id: "CN",
+                    name: "中文",
+                }
+            ]
+    },
+    $t: translator,
+    onSelect: function(item) {
+        this.data.lang_value = item.selected.id;
+        this.$refs.locale_provider.reload(item.selected.id);
+    },
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### 表单项
 <div class="m-example"></div>
 
 ```xml
 
-<kl-locale-provider lang="CN" api="/data/language/zh-CN.json" ref="locale_provider">
+<kl-locale-provider lang="CN" api="/data/language/lang.json" ref="locale_provider">
     <kl-form>
         <kl-form-item title="">
             <kl-radio-group source={language} value={lang_value} on-select={this.onSelect($event)} />
@@ -57,19 +137,17 @@ var component = new NEKUI.Component({
                 {   
                     id: "EN",
                     name: "EN",
-                    api: "/data/language/en-US.json"
                 },
                 {   
                     id: "CN",
                     name: "中文",
-                    api: "/data/language/zh-CN.json"
                 }
             ]
     },
     $t: translator,
     onSelect: function(item) {
         this.data.lang_value = item.selected.id;
-        this.$refs.locale_provider.reload(item.selected.id, item.selected.api);
+        this.$refs.locale_provider.reload(item.selected.id);
     },
 
 });
