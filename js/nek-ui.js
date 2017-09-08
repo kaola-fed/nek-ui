@@ -10309,6 +10309,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    this._onDateTimeChange(date, time);
+	    if (!this.data.showTime) {
+	      this._onOk();
+	    }
 	  },
 	  onConfirm: function onConfirm() {
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {
@@ -10398,7 +10401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        {/if}\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
@@ -31204,20 +31207,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.data.$bodyEl) {
 	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
 	    }
-
-	    /**
-	     * @event KLSidebar#toggle 收缩菜单时触发
-	     * @property {boolean} active 展开还是收缩
-	     */
-	    this.$emit('toggle', this.data.active);
-	  },
-
-	  /**
-	   * @event KLSidebar#menuitem-click 选择某一页时触发
-	   * @property {object} menuitem 点击的menuItem实例
-	   */
-	  onMenuItemClick: function onMenuItemClick(e) {
-	    this.$emit('menuitem-click', e);
 	  }
 	});
 
@@ -31233,7 +31222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 392 */
@@ -31302,10 +31291,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
-	    /**
-	     * @event KLMenu#menuitem-click 选择某一页时触发
-	     * @property {object} menuitem 点击的menuItem实例
-	     */
 	    this.$on('menuitem-click', function (menuitem) {
 	      this.currentItem = menuitem;
 	    });
@@ -34344,7 +34329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    KLLocaleProvider.lang = lang;
 	    ajax.get(api + '?lang=' + lang, function (json) {
-	      KLLocaleProvider.locale[lang] = json;
+	      KLLocaleProvider.locale[lang] = json[lang] || json;
 	      self.$update('ready', true);
 
 	      self.$emit('ready');
@@ -34354,11 +34339,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * @method KLLocaleProvider#reload 切换语言，重新初始化
 	   * @param {string} lang 设置语言
-	   * @param {string} api 设置获取语言包的url
 	   */
-	  reload: function reload(lang, api) {
+	  reload: function reload(lang) {
 	    this.data.lang = lang;
-	    this.data.api = api;
 	    this._initLang();
 	  }
 	});
@@ -34426,6 +34409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	/**
 	 * @param {string} key 翻译key值
+	 * @param {object} params 变量值
 	 * @static
 	 */
 	KLLocaleProvider.translate = function (key, params) {

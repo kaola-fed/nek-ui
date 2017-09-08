@@ -98,6 +98,16 @@ body {
 body.docs {
   padding-top: 61px;
 }
+::-webkit-scrollbar {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border: solid whiteSmoke 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ccc;
+}
 @media screen and (max-width: 900px) {
   body.docs {
     padding-top: 0;
