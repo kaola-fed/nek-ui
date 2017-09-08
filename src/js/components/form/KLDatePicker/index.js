@@ -161,6 +161,9 @@ const KLDatePicker = Dropdown.extend({
       return;
     }
     this._onDateTimeChange(date, time);
+    if (!this.data.showTime) {
+      this._onOk();
+    }
   },
   onConfirm() {
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(this.date)) {

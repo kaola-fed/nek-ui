@@ -28,7 +28,7 @@ const KLLocaleProvider = Component.extend({
 
     KLLocaleProvider.lang = lang;
     ajax.get(`${api}?lang=${lang}`, (json) => {
-      KLLocaleProvider.locale[lang] = json;
+      KLLocaleProvider.locale[lang] = json[lang] || json;
       self.$update('ready', true);
 
       self.$emit('ready');
@@ -37,11 +37,9 @@ const KLLocaleProvider = Component.extend({
   /**
    * @method KLLocaleProvider#reload 切换语言，重新初始化
    * @param {string} lang 设置语言
-   * @param {string} api 设置获取语言包的url
    */
-  reload(lang, api) {
+  reload(lang) {
     this.data.lang = lang;
-    this.data.api = api;
     this._initLang();
   },
 });
@@ -112,6 +110,7 @@ KLLocaleProvider._interpolate = (key, args) => {
 };
 /**
  * @param {string} key 翻译key值
+ * @param {object} params 变量值
  * @static
  */
 KLLocaleProvider.translate = (key, params) =>
