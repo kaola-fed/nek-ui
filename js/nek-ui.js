@@ -31207,6 +31207,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.data.$bodyEl) {
 	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
 	    }
+
+	    /**
+	     * @event KLSidebar#toggle 收缩菜单时触发
+	     * @property {boolean} active 展开还是收缩
+	     */
+	    this.$emit('toggle', this.data.active);
+	  },
+
+	  /**
+	   * @event KLSidebar#menuitem-click 选择某一页时触发
+	   * @property {object} menuitem 点击的menuItem实例
+	   */
+	  onMenuItemClick: function onMenuItemClick(e) {
+	    this.$emit('menuitem-click', e);
 	  }
 	});
 
@@ -31222,7 +31236,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 392 */
@@ -31291,6 +31305,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    });
 
+	    /**
+	     * @event KLMenu#menuitem-click 选择某一页时触发
+	     * @property {object} menuitem 点击的menuItem实例
+	     */
 	    this.$on('menuitem-click', function (menuitem) {
 	      this.currentItem = menuitem;
 	    });

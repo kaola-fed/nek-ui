@@ -6786,6 +6786,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-pager .page_size .u-select{
 	display:inline-block;
+	min-width:75px;
 }
 .m-pager .page_size .u-select .dropdown_hd .u-icon{
 	position:static;
