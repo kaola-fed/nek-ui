@@ -365,11 +365,9 @@
 <div class="content components with-sidebar  j-masonry">
     
          <style>
-              @media all and (min-width: 1301px) {
-                .grid-item{
-                  width: 50%;
-                }        
-              }
+             .grid-item{
+                 width: 50%;
+             } 
              #grid-itemOuter:after{
                 content: '';
                 display: block;
@@ -927,78 +925,70 @@ var component = new NEKUI.Component({
      
        <script>
         //用来处理实例代码块，将其分为两列
-        var element2col = function(){
-          if(window.innerWidth > 1300){
-            var content = document.getElementsByClassName('content')[0];
-            var position = document.getElementById('pageName').nextSibling;
-            var gridOuter = document.createElement('div');
-            gridOuter.id = 'grid-itemOuter';
-            content.insertBefore(gridOuter,position);
-            if(!!gridOuter){
-              var leftBlock = document.createElement('div');
-              var rightBlock = document.createElement('div');
-              leftBlock.className = 'm-leftBlock';
-              rightBlock.className = 'm-rightBlock';
-              gridOuter.appendChild(leftBlock);
-              gridOuter.appendChild(rightBlock);
-
-              var itemList = document.getElementsByClassName('grid-item');
-              var tempList = [];
-              //获取每个grid-item的高度
-              for(var i=0;i<itemList.length;i++){
-                  var temp = {
-                    id: i,
-                    height: itemList[i].clientHeight+2
-                  }
-                  tempList.push(temp);
-                  itemList[i].style.width = 'auto';
-              }
-              //高度从大到小排序
-              tempList.sort(function(a,b){return b.height-a.height});
-              //通过高度计算dom应该放置在左右那边
-              var templeft = {
-                height: 0,
-                inner:[]
-              };
-              var tempright = {
-                height: 0,
-                inner: []
-              };
-              tempList.forEach(function(item){
-                if(templeft.height <= tempright.height){
-                  templeft.inner.push(item);
-                  //加上元素高度及其marginTop
-                  templeft.height = templeft.height + item.height+ 20;
-                }else{
-                  tempright.inner.push(item);
-                  tempright.height = tempright.height + item.height+ 20;
-                }
-              });
-              //在左右各自内部将dom按照id从小到大排序
-              templeft.inner.sort(function(a,b){return a.id-b.id});
-              tempright.inner.sort(function(a,b){return a.id-b.id});
-              if(tempright.inner[0].id == 0){
-                var tempinner = tempright.inner;
-                tempright.inner = templeft.inner;
-                templeft.inner = tempinner;
-              }
-              //按照左右将grid-item列表分别放在左右两边
-              var tempItemList = document.querySelectorAll('.grid-item');
-              templeft.inner.forEach(function(item){
-                  leftBlock.appendChild(tempItemList[item.id]);
-              });
-              tempright.inner.forEach(function(item){
-                  rightBlock.appendChild(tempItemList[item.id]);
-              }); 
-            }
-          }
-        }
         document.addEventListener('DOMContentLoaded', function() {
-          element2col();
+          var content = document.getElementsByClassName('content')[0];
+          var position = document.getElementById('pageName').nextSibling;
+          var gridOuter = document.createElement('div');
+          gridOuter.id = 'grid-itemOuter';
+          content.insertBefore(gridOuter,position);
+          if(!!gridOuter){
+            var leftBlock = document.createElement('div');
+            var rightBlock = document.createElement('div');
+            leftBlock.className = 'm-leftBlock';
+            rightBlock.className = 'm-rightBlock';
+            gridOuter.appendChild(leftBlock);
+            gridOuter.appendChild(rightBlock);
+
+            var itemList = document.getElementsByClassName('grid-item');
+            var tempList = [];
+            //获取每个grid-item的高度
+            for(var i=0;i<itemList.length;i++){
+                var temp = {
+                  id: i,
+                  height: itemList[i].clientHeight+2
+                }
+                tempList.push(temp);
+                itemList[i].style.width = 'auto';
+            }
+            //高度从大到小排序
+            tempList.sort(function(a,b){return b.height-a.height});
+            //通过高度计算dom应该放置在左右那边
+            var templeft = {
+              height: 0,
+              inner:[]
+            };
+            var tempright = {
+              height: 0,
+              inner: []
+            };
+            tempList.forEach(function(item){
+              if(templeft.height <= tempright.height){
+                templeft.inner.push(item);
+                //加上元素高度及其marginTop
+                templeft.height = templeft.height + item.height+ 20;
+              }else{
+                tempright.inner.push(item);
+                tempright.height = tempright.height + item.height+ 20;
+              }
+            });
+            //在左右各自内部将dom按照id从小到大排序
+            templeft.inner.sort(function(a,b){return a.id-b.id});
+            tempright.inner.sort(function(a,b){return a.id-b.id});
+            if(tempright.inner[0].id == 0){
+              var tempinner = tempright.inner;
+              tempright.inner = templeft.inner;
+              templeft.inner = tempinner;
+            }
+            //按照左右将grid-item列表分别放在左右两边
+            var tempItemList = document.querySelectorAll('.grid-item');
+            templeft.inner.forEach(function(item){
+                leftBlock.appendChild(tempItemList[item.id]);
+            });
+            tempright.inner.forEach(function(item){
+                rightBlock.appendChild(tempItemList[item.id]);
+            }); 
+          }
         });
-        window.onresize = function(){
-          location.reload();
-        };
       </script>
       
      
