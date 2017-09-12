@@ -3446,7 +3446,7 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-dropdown .dropdown_bd{
 	position:absolute;
-	z-index:1;
+	z-index:10;
 	width:100%;
 	top:100%;
 	line-height:normal;
@@ -4421,6 +4421,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	height:18px;
 	line-height:18px;
 }
+.u-multi .dropdown_hd .m-multi-placeholder{
+	color:#999;
+}
 .u-multi .dropdown_hd .selectedTagMore{
 	overflow:hidden;
 	text-overflow:ellipsis;
@@ -4599,6 +4602,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:inherit;
 	position:absolute;
 	right:5px;
+}
+.u-select .dropdown_hd .m-multi-placeholder{
+	color:#999;
 }
 .u-select .dropdown_hd .u-select-errorIcon{
 	position:relative;
