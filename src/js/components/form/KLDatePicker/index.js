@@ -175,7 +175,7 @@ const KLDatePicker = Dropdown.extend({
     this.toggle(false);
   },
   _onOk() {
-    this.date || this._onDateTimeChange(this.data._date);
+    this.date || this._onDateTimeChange(this.data._date, this.data._time);
     this.data.date = this.date;
     this.data.time = this.time;
     /**
