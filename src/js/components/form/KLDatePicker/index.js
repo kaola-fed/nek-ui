@@ -41,8 +41,8 @@ const KLDatePicker = Dropdown.extend({
   template,
   config() {
     _.extend(this.data, {
-      // @inherited source: [],
-      // @inherited open: false,
+            // @inherited source: [],
+            // @inherited open: false,
       hideTip: false,
       minDate: null,
       maxDate: null,
@@ -62,8 +62,11 @@ const KLDatePicker = Dropdown.extend({
       if (!newValue && this.data.defaultTime) {
         this.data._time = this.data.defaultTime;
       }
+      if (!newValue) {
+        return;
+      }
 
-      // 字符类型自动转为日期类型
+            // 字符类型自动转为日期类型
       if (typeof newValue === 'string') {
         if (bowser.msie && bowser.version <= 9) {
           return (this.data.date = polyfill.StringDate(newValue));
@@ -73,28 +76,28 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.date = new Date(newValue));
       }
 
-      if (newValue === 'Invalid Date' || newValue === 'NaN') {
+      if (!this.__isInvalidDate(newValue) || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
 
-      // 如果不为空并且超出日期范围，则设置为范围边界的日期
+            // 如果不为空并且超出日期范围，则设置为范围边界的日期
       if (newValue) {
         const isOutOfRange = this.isOutOfRange(newValue);
         if (isOutOfRange) return (this.data.date = isOutOfRange);
       }
 
       if (newValue) {
-        // this.data.date.setSeconds(0);
+                // this.data.date.setSeconds(0);
         this.data.date.setMilliseconds(0);
         this.data._date = new Date(newValue);
         this.data._time = filter.format(newValue, 'HH:mm:ss');
       }
 
-      /**
-       * @event KLDatePicker#change 日期时间改变时触发
-       * @property {object} sender 事件发送对象
-       * @property {object} date 改变后的日期时间
-       */
+            /**
+             * @event KLDatePicker#change 日期时间改变时触发
+             * @property {object} sender 事件发送对象
+             * @property {object} date 改变后的日期时间
+             */
       this.$emit('change', {
         sender: this,
         date: newValue,
@@ -113,7 +116,7 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.minDate = new Date(newValue));
       }
 
-      if (newValue === 'Invalid Date' || newValue === 'NaN') {
+      if (!this.__isInvalidDate(newValue) || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
     });
@@ -128,18 +131,16 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.maxDate = new Date(newValue));
       }
 
-      if (newValue === 'Invalid Date' || newValue === 'NaN') {
+      if (!this.__isInvalidDate(newValue) || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
     });
 
     this.$watch(['minDate', 'maxDate'], function (minDate, maxDate) {
-      if (
-        !(
-          (minDate && minDate instanceof Date) ||
-          (maxDate && maxDate instanceof Date)
-        )
-      ) {
+      if (!(
+                    (minDate && minDate instanceof Date) ||
+                    (maxDate && maxDate instanceof Date)
+                )) {
         return;
       }
 
@@ -147,7 +148,7 @@ const KLDatePicker = Dropdown.extend({
         throw new Calendar.DateRangeError(minDate, maxDate);
       }
 
-      // 如果不为空并且超出日期范围，则设置为范围边界的日期
+            // 如果不为空并且超出日期范围，则设置为范围边界的日期
       if (this.data.date) {
         const isOutOfRange = this.isOutOfRange(this.data.date);
         if (isOutOfRange) return (this.data.date = isOutOfRange);
@@ -178,11 +179,11 @@ const KLDatePicker = Dropdown.extend({
     this.date || this._onDateTimeChange(this.data._date);
     this.data.date = this.date;
     this.data.time = this.time;
-    /**
-     * @event KLDatePicker#select 选择某一项时触发
-     * @property {object} sender 事件发送对象
-     * @property {object} date 当前选择项
-     */
+        /**
+         * @event KLDatePicker#select 选择某一项时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} date 当前选择项
+         */
     this.$emit('select', {
       sender: this,
       date: this.data.date,
@@ -192,7 +193,7 @@ const KLDatePicker = Dropdown.extend({
   },
   _onDateTimeChange(date, _time) {
     this.time = _time || '00:00:00';
-    // this.data.time
+        // this.data.time
     this.date = new Date(date);
     const time = this.time.split(':');
     this.date.setHours(time[0]);
@@ -202,40 +203,40 @@ const KLDatePicker = Dropdown.extend({
   _onInput($event) {
     const value = $event.target.value;
     const date = value ? new Date(value) : null;
-    if (date !== 'Invalid Date') this.data.date = date;
-    else {
+    if (this.__isInvalidDate(date)) {
+      this.data.date = date;
+    } else {
       $event.target.value = filter.format(
-        this.data.date,
-        'yyyy-MM-dd HH:mm:ss',
-      );
+                this.data.date,
+                'yyyy-MM-dd HH:mm:ss',
+            );
     }
   },
   isOutOfRange(date) {
     const minDate = this.data.minDate;
     const maxDate = this.data.maxDate;
 
-    // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
+        // minDate && date < minDate && minDate，先判断是否为空，再判断是否超出范围，如果超出则返回范围边界的日期时间。
     return (
-      (minDate && moment(date).isBefore(minDate, 'day') && minDate) ||
-      (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate)
+            (minDate && moment(date).isBefore(minDate, 'day') && minDate) ||
+            (maxDate && moment(date).isAfter(maxDate, 'day') && maxDate)
     );
   },
   validate(on) {
     const data = this.data;
     const date = data.date || '';
 
-    // 如果是readonly或者disabled状态, 无需验证
+        // 如果是readonly或者disabled状态, 无需验证
     if (data.readonly || data.disabled) {
       return {
         success: true,
       };
     }
 
-    const result = date
-      ? Validation.validate(date.toString(), [
-          { type: 'isDate', message: '请填写' },
-      ])
-      : { success: false };
+    const result = date ?
+            Validation.validate(date.toString(), [
+                { type: 'isDate', message: '请填写' },
+            ]) : { success: false };
     if (data.required && !result.success) {
       result.success = false;
       result.message = this.data.message || '请填写';
@@ -254,6 +255,13 @@ const KLDatePicker = Dropdown.extend({
     });
 
     return result;
+  },
+
+    /**
+     * 判断是否为有效日期，true-有效
+     */
+  __isInvalidDate(date) {
+    return Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime());
   },
 });
 
