@@ -55,6 +55,19 @@ const KLSidebar = Component.extend({
     if (this.data.$bodyEl) {
       this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
     }
+
+    /**
+     * @event KLSidebar#toggle 收缩菜单时触发
+     * @property {boolean} active 展开还是收缩
+     */
+    this.$emit('toggle', this.data.active);
+  },
+  /**
+   * @event KLSidebar#menuitem-click 选择某一页时触发
+   * @property {object} menuitem 点击的menuItem实例
+   */
+  onMenuItemClick(e) {
+    this.$emit('menuitem-click', e);
   },
 });
 

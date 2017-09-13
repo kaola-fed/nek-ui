@@ -18,13 +18,17 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.key=id]                   => 数据项的键
  * @param {string}          [options.data.nameKey=name]             => 数据项的name键
  * @param {string}          [options.data.childKey=children]        => 数据子项的键
- * @param {string}          [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
+ * @param {boolean}         [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
+ * @param {string}          [options.data.rootValue=null]           <=> 模式2种的选择值(具体见文档 demo)
+ * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
+ * @param {string}          [options.data.placeholder='']           => 默认提示
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
- * @param {string}          [options.data.showPath=false]           => 单选时是否展示路径
+ * @param {boolean}         [options.data.showPath=false]           => 单选时是否展示路径
  * @param {string}          [options.data.placement=top]            => 单选时展示路径的 tooltip 位置，只有在showPath=true的时候生效，如果填 false 则不展示 tooltip
  * @param {string}          [options.data.pathString='>']           => 链接每一级路径的字符串，避免名字中包含该字符串
+ * @param {boolean}         [options.data.showPathName=false]       => 是否用 path 代替原来的 namekey 显示
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
@@ -42,15 +46,18 @@ const KLMultiSelect = Dropdown.extend({
       // @inherited open: false,
       multiple: false,
       value: null,
+      rootValue: null,
       selected: [],
+      rootSelected: [],
       separator: ',',
-      placeholder: this.$trans('PLEASE_SELECT'),
+      placeholder: '',
       key: 'id',
       nameKey: 'name',
       childKey: 'children',
       checkKey: 'checked',
       hierarchical: false,
       updateAuto: false,
+      showPathName: false,
       onlyChild: true,
       pathString: '>',
       placement: 'top',
@@ -66,9 +73,13 @@ const KLMultiSelect = Dropdown.extend({
         throw new TypeError('`source` is not an Array!');
       }
       data._source = _.clone(data.source || []);
+      this.addPath();
       data.tree[0] = data._source;
       if (data._source && data._source.length) {
         this.initSelected();
+        if (data.showRoot) {
+          this.initRootSelected();
+        }
       }
       this.$update();
     });
@@ -93,6 +104,25 @@ const KLMultiSelect = Dropdown.extend({
       }
       this.$update();
     });
+
+    this.$watch('rootValue', (newValue, oldValue) => {
+      if (data._source && data._source.length && data.showRoot) {
+        this.initRootSelected();
+      }
+      if (oldValue !== null && oldValue !== undefined) {
+        /**
+         * @event KLMultiSelect#rootValue 改变时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} value 当前 value 的值
+         */
+        this.$emit('rootChange', {
+          sender: this,
+          value: newValue,
+          key: data.key,
+        });
+      }
+      this.$update();
+    });
     this.supr();
 
     this.initValidation();
@@ -100,10 +130,23 @@ const KLMultiSelect = Dropdown.extend({
   toggle(open) {
     this.supr(open);
   },
+  // 处理 source ，给每一项添加 path
+  addPath() {
+    const data = this.data;
+    const dealPath = function (array, path) {
+      array.forEach((item) => {
+        item.path = path ? path + data.pathString + item.name : item.name;
+        if (item[data.childKey] && item[data.childKey].length) {
+          dealPath(item[data.childKey], item.path);
+        }
+      });
+    };
+    dealPath(data._source, '');
+  },
   // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
   initSelected() {
     const data = this.data;
-    if (data.value !== null && data.value !== undefined) {
+    if (data.value !== null && data.value !== undefined && data.value !== '') {
       const _list = data.value.toString().split(data.separator);
       const _checkedItem = function (list) {
         list.map((item2) => {
@@ -154,6 +197,30 @@ const KLMultiSelect = Dropdown.extend({
       this.watchValue();
     } else {
       data.value = '';
+    }
+    this.$update();
+  },
+  // 将 rootValue 转换成对应的 value
+  initRootSelected() {
+    const data = this.data;
+    const self = this;
+    if (data.rootValue !== undefined && data.rootValue !== null && data.rootValue !== '') {
+      const _list = data.rootValue.split(data.separator);
+      const _checkItem = function (list) {
+        list.map((item) => {
+          if (_list.indexOf(item[data.key].toString()) > -1) {
+            item.checked = true;
+            self.setCheck(item[data.childKey], true);
+          } else if (item[data.childKey] && item[data.childKey].length) {
+            _checkItem(item[data.childKey]);
+          }
+          return undefined;
+        });
+      };
+      _checkItem(data._source);
+      self.watchValue();
+    } else {
+      data.rootValue = '';
     }
     this.$update();
   },
@@ -272,11 +339,13 @@ const KLMultiSelect = Dropdown.extend({
     });
     this.watchValue();
   },
-  // 循环列表获取 value 值
+  // 循环列表获取 value 值和 rootValue 值
   watchValue() {
     const data = this.data;
     data.selected = [];
     const _value = [];
+    data.rootSelected = [];
+    const _rootValue = [];
     const _getChecked = function (list) {
       list.map((item) => {
         if (item[data.childKey] && item[data.childKey].length) {
@@ -292,11 +361,30 @@ const KLMultiSelect = Dropdown.extend({
         return undefined;
       });
     };
+    const _getRootChecked = function (list) {
+      list.map((item) => {
+        if (item.checked) {
+          _rootValue.push(item[data.key]).toString();
+          data.rootSelected.push(item);
+        } else if (item[data.childKey] && item[data.childKey].length) {
+          _getRootChecked(item[data.childKey]);
+        }
+        return undefined;
+      });
+    };
     _getChecked(data._source);
     if (_value.length) {
       data.value = _value.join([data.separator]);
     } else {
       data.value = '';
+    }
+    if (data.showRoot) {
+      _getRootChecked(data._source);
+      if (_rootValue.length) {
+        data.rootValue = _rootValue.join([data.separator]);
+      } else {
+        data.rootValue = '';
+      }
     }
     this.$update();
   },

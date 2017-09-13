@@ -15,11 +15,22 @@
 			height: 18px;
 			line-height: 18px;
 		}
+		.m-multi-placeholder {
+			color: #999;
+		}
 	    .selectedTagMore {
 	        overflow: hidden;
 	        text-overflow: ellipsis;
 	        max-width: 150px;
 	    }
+		.angle-transform {
+			transform: rotate(180deg);
+		}
+		i.angle {
+			transition: transform .5s;
+			line-height: 20px;
+			margin-top: 5px;
+		}
 	}
 	.cateWrap {
 		max-width: 412px;

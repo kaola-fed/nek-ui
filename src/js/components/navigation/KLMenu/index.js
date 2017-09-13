@@ -59,6 +59,10 @@ const KLMenu = Component.extend({
       }
     });
 
+    /**
+     * @event KLMenu#menuitem-click 选择某一页时触发
+     * @property {object} menuitem 点击的menuItem实例
+     */
     this.$on('menuitem-click', function (menuitem) {
       this.currentItem = menuitem;
     });
