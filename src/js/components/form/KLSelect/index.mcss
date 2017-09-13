@@ -36,6 +36,10 @@
             right: 5px;
         }
 
+        .m-multi-placeholder {
+            color: #999;
+        }
+
         .u-select-errorIcon {
             position: relative;
             top: -28px;

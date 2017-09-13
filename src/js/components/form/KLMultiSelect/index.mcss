@@ -15,6 +15,9 @@
 			height: 18px;
 			line-height: 18px;
 		}
+		.m-multi-placeholder {
+			color: #999;
+		}
 	    .selectedTagMore {
 	        overflow: hidden;
 	        text-overflow: ellipsis;
