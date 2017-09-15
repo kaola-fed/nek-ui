@@ -7,22 +7,25 @@
 const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
-const upload = require('../../utils');
+const utils = require('../../utils');
 const JRModal = require('../../../../notice/JRModal');
 
 const FileUnit = Component.extend({
-  name: 'file-unit',
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
   config(data) {
     _.extend(data, {
       file: {},
-      options: {},
+      action: '',
+      url: '',
+      name: '',
+      readonly: false,
+      data: {},
     });
 
     _.extend(data, {
       info: '',
       status: '',
-      deletable: true,
+      progress: '0%',
       delConfirm: false,
     });
 
@@ -33,119 +36,139 @@ const FileUnit = Component.extend({
 
   initData(data) {
     const file = data.file;
-    data.name = this.getFileName(file);
-    data.type = this.getFileType(file);
+    data.filename = file.name;
+    data.type = file.type;
 
     // for initial uploaded files
-    if (file.url) {
-      data.src = file.url;
-      data.status = 'uploaded';
-    } else {
-      data.src = window.URL.createObjectURL(file);
-      this.uploadFile(file);
+    if (data.status === 'ready') {
+      this.uploadFile(file.rawFile);
     }
   },
 
-  getFileName(file) {
-    return file.name;
-  },
-
-  getFileType(file) {
-    const type = file.type || '';
-    const name = file.name || '';
-
-    if (/image\/.*/.test(type) || /jpg|gif|jpeg|png/i.test(name)) {
-      return 'IMAGE';
-    } else if (/zip|rar|gz/i.test(name)) {
-      return 'ZIP';
-    } else if (
-      /document|sheet|powerpoint|msword/.test(type) ||
-      /doc|xlsx|ppt/i.test(name)
-    ) {
-      return 'DOC';
-    } else if (/video\/.*/.test(type) || /mp4|mkv|rmvb/i.test(name)) {
-      return 'VIDEO';
-    } else if (/audio\/.*/.test(type) || /mp3/i.test(name)) {
-      return 'AUDIO';
-    } else if (/text\/plain/.test(type)) {
-      return 'TEXT';
-    } else if (/text\/html/.test(type)) {
-      return 'HTML';
-    } else if (/application\/pdf/.test(type)) {
-      return 'PDF';
-    } else if (/application\/javascript/.test(type)) {
-      return 'JS';
-    }
-
-    return 'UNKNOWN';
-  },
-
-  uploadFile(file) {
+  uploadFile(rawFile) {
     const self = this;
     const data = this.data;
 
     data.info = '';
+    data.status = 'uploading';
 
-    let options = {
+    const options = {
       upload: {
-        onload(e) {
-          data.progress = '100%';
-          self.$update();
-          self.$emit('success', { progress: data.progress, info: e });
-        },
         onprogress(e) {
           data.status = 'uploading';
-          data.progress = `${parseInt((e.loaded / e.total) * 100)}%`;
+          data.progress = `${parseInt((e.loaded / e.total || 0) * 100)}%`;
           self.$update();
-          self.$emit('progress', { progress: data.progress });
+
+          const emitItem = {
+            sender: self,
+            event: e,
+            progress: data.progress,
+            file: data.file,
+            status: data.status,
+          };
+
+          self.$emit('progress', emitItem);
         },
       },
       onload(e) {
         const target = e.target;
-        if (target.status === 200) {
-          const response = JSON.parse(target.responseText);
-          self.data.file.url = response.url;
-          self.data.status = 'uploaded';
-          self.data.info = '';
-        } else {
-          data.status = 'failed';
-          data.info = self.$trans('UPLOAD_FAIL');
+        const status = target.status;
+        data.progress = '100%';
+        const emitItem = {
+          sender: self,
+          event: e,
+          progress: data.progress,
+          file: data.file,
+        };
+
+        let result = true;
+        let response = {};
+        try {
+          response = JSON.parse(target.response);
+        } catch (error) {
+          console.log(error);
         }
-        self.$update();
-        self.$emit('onload', { info: e });
+        if (self.data.beforeOnLoad) {
+          result = self.data.beforeOnLoad.call(self, response);
+        }
+        response.url = (result && result.url) || response.url;
+        if (status >= 200 && status < 400 && result) {
+          data.url = response.url;
+          data.status = 'success';
+          data.info = '';
+          self.$update();
+
+          emitItem.status = data.status;
+          self.$emit('success', emitItem);
+        } else {
+          data.status = 'fail';
+          data.info = self.$trans('UPLOAD_FAIL');
+          self.$update();
+
+          emitItem.status = data.status;
+          self.$emit('error', emitItem);
+        }
       },
       onerror(e) {
-        data.status = 'failed';
+        if (self.data.beforeOnError) {
+          self.data.beforeOnError.call(self, e);
+        }
+        data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');
         self.$update();
-        self.$emit('error', { info: e });
+
+        const emitItem = {
+          sender: self,
+          event: e,
+          progress: data.progress,
+          file: data.file,
+          status: data.status,
+        };
+        self.$emit('error', emitItem);
       },
     };
 
-    options = _.extend(options, data.options);
-    upload(options.url, file, options);
+    options.name = data.name;
+    options.data = data.data;
+
+    utils.upload(data.action, rawFile, options);
+
+    this.$update();
   },
 
-  onDelete() {
+  onRemove(e) {
     const self = this;
     const data = this.data;
+    const emitItem = {
+      sender: this,
+      event: e,
+      file: data.file,
+      status: data.status,
+    };
 
     if (data.delConfirm) {
       const modal = new JRModal({
         data: {
-          content: `${this.$trans('DELETE_CONFIRM') + data.name}?`,
+          content: `${this.$trans('REMOVE_CONFIRM') + data.filename}?`,
         },
       });
       modal.$on('ok', () => {
-        self.$emit('delete');
+        self.$emit('remove', emitItem);
       });
     } else {
-      self.$emit('delete');
+      self.$emit('remove', emitItem);
     }
   },
 
-  onPreview() {
-    this.$emit('preview');
+  onPreview(e) {
+    const data = this.data;
+    const emitItem = {
+      sender: this,
+      event: e,
+      file: data.file,
+      status: data.status,
+    };
+    this.$emit('preview', emitItem);
   },
 });
 

@@ -1,19 +1,44 @@
 <div class="m-upload">
-    <ul ref="fileswrapper" class="m-filelist" r-style={{width: fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px'}}></ul>
+    <ul ref="fileswrapper" class="m-filelist"
+        r-style={{
+            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'
+        }}>
+        {#list fileUnitList as fileunit}
+            <li class="u-fileitem"
+                r-style={{
+                    "margin-right": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? "0" : fileUnitMargin + "px"
+                }}>
+                  <file-unit
+                      file={fileunit}
+                      action={action}
+                      url={fileunit.url}
+                      name={name}
+                      status={fileunit.status}
+                      readonly={readonly}
+                      data={data}
+                      beforeOnLoad={beforeOnLoad}
+                      beforeOnError={beforeOnError}
+                      on-preview={this.onPreview($event)}
+                      on-progress={this.onProgress($event)}
+                      on-success={this.onSuccess($event)}
+                      on-error={this.onError($event)}
+                      on-remove={this.onRemove($event)}/>
+            </li>
+        {/list}
+        <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>
+            {#if this.$body}
+                {#inc this.$body}
+            {#else}
+                <div class="u-input-btn" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span></div>
+                <div class="u-input-info">{preCheckInfo}</div>
+            {/if}
+        </li>
+    </ul>
     <form method="POST" action={url} target="iframe{_id}" enctype={encType} ref="form">
         <input type="file" name={name} ref="file" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>
-
         {#list Object.keys(data) as key}
             <input type="hidden" name={key} value={data[key]}>
         {/list}
     </form>
-    <li ref="inputwrapper" class="u-input-wrapper" on-click={this.fileDialogOpen()} r-hide={true}>
-        {#if this.$body}
-            {#inc this.$body}
-        {#else}
-            <div class="u-input-btn" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span></div>
-            <div class="u-input-info">{preCheckInfo}</div>
-        {/if}
-    </li>
     <div ref="imagepreview"></div>
 </div>

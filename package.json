@@ -1,16 +1,16 @@
 {
-  "name": "regUI",
+  "name": "JRUI",
   "description": "UI components based on RegularJS",
-  "version": "0.6.0-beta.4",
-  "main": "./dist/js/regUI.js",
-  "homepage": "https://regUI.kaolafed.com/",
+  "version": "0.0.1",
+  "main": "./dist/js/JR.min.js",
+  "homepage": "https://xxyj.github.io/JR/components/",
   "license": "MIT",
   "files": [
     "dist"
   ],
   "keywords": [
     "regular",
-    "regUI",
+    "JRUI",
     "component",
     "ui"
   ],

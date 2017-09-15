@@ -8,7 +8,7 @@
 // Variables
 // ========================================================================
 
-$m-notify_z-index = 1040;
+$m-notify_z-index = 1050;
 $m-notify_position = 10px;
 $m-notify_width = 260px;
 

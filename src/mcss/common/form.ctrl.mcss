@@ -21,7 +21,7 @@
     // - Remove `border-radius` in iOS.
     border-radius: 0;
     // - Correct `font` properties and `color` not being inherited.
-    font: inherit;
+    // font: inherit;
     color: inherit;
     // - Remove default style in iOS.
     -webkit-appearance: none;

@@ -15,7 +15,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1040;
     // - 允许模态对话框在模态层里滚动，因为有时候内容可能会比较多
     // - Allow scrolling for the modal dialog
     overflow-y: auto;
@@ -64,7 +64,7 @@
 
     .modal_title {
         margin: 0;
-        font-size: 12px;
+        font-size: 16px;
         color: #333333;
         // line-height: $line-height-base;
     }
