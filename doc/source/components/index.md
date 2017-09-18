@@ -10,15 +10,16 @@ order: 0
 
 [JR](https://github.com/xxyj/JRUI) 是一个基于 Regularjs 的组件库，主要fork来源是[nek](https://github.com/kaola-fed/nek-ui)，由于某些业务的不适用，所以重新建一个组件库
 
-### 引入 JR(暂时未实现)
+### 引入 JR
 
 ```
-npm i regularjs@0.4.3 JR -S
+npm i jr-ui -S
 ```
 
 ```javascript
-import JRUI from 'JR'
-import 'node_modules/JR/dist/css/JR.default.min.css'
+import JRUI from 'jr-ui'
+import Regular from 'node_modules/jr-ui/dist/vendor/regular.min.js'
+import 'node_modules/jr-ui/dist/css/JR.default.min.css'
 ```
 
 或者直接在需要引入的页面上

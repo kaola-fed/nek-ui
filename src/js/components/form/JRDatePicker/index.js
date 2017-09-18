@@ -62,8 +62,13 @@ const JRDatePicker = Dropdown.extend({
       showTime: false,
       open: false,
     });
-    this.data.date = this.data.value ? this.data.value : this.data.date;
+    const dateTmp = this.data.value ? this.data.value : this.data.date;
+    // 为了兼容
+    this.data.date = dateTmp && dateTmp.replace
+      ? dateTmp.replace(new RegExp(/-/gm), '/')
+      : dateTmp;
     this.$watch('date', function (newValue) {
+      console.log(newValue);
       if (newValue === '') {
         this.data.value = '';
       } else {
@@ -208,8 +213,7 @@ const JRDatePicker = Dropdown.extend({
       return;
     }
     if (flag || !this.data.showTime) {
-      this._onDateTimeChange(date, time);
-      this._onOk();
+      this._onOk(date, time);
     }
   },
   /**
@@ -230,10 +234,11 @@ const JRDatePicker = Dropdown.extend({
   _onClose() {
     this.toggle(false);
   },
-  _onOk() {
-    const format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-    this.data.date = filter.format(this.date, format);
+  _onOk(date, time) {
+    this._onDateTimeChange(date, time);
+    this.data.date = this.date;
     this.data.time = this.time;
+    // this.data.time = this.time;
     /**
      * @event select 选择某一项时触发
      * @property {object} sender 事件发送对象

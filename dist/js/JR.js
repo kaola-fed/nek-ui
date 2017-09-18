@@ -1281,10 +1281,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (isOutOfRange !== false) return this.data.value = isOutOfRange;
 
 	      /**
-	         * @event change 数值改变时触发
-	         * @property {object} sender 事件发送对象
-	         * @property {number} value 改变后的数值
-	         */
+	             * @event change 数值改变时触发
+	             * @property {object} sender 事件发送对象
+	             * @property {number} value 改变后的数值
+	             */
 	      this.$emit('change', {
 	        sender: this,
 	        value: newValue
@@ -1313,7 +1313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    if (isNaN(value)) throw new TypeError(value + ' is not a number!');
 
-	    return this.data.value += value * this.data.step;
+	    return this.data.value += value;
 	  },
 
 	  /**
@@ -6570,7 +6570,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 175 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\n    <jr-input type='int' value={value | number} maxlength={maxLen} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label> {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
+	module.exports = "<label class=\"u-numberinput {class}\" r-hide={!visible}>\n    <jr-input  value={value | number} maxlength={maxLen} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(1)}><i class=\"u-icon u-icon-caret-up\"></i></a>\n    <a class=\"u-btn u-btn-tertiary\" z-dis={disabled} on-click={this.add(-1)}><i class=\"u-icon u-icon-caret-down\"></i></a>\n</label> {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 176 */
@@ -10208,8 +10208,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      showTime: false,
 	      open: false
 	    });
-	    this.data.date = this.data.value ? this.data.value : this.data.date;
+	    var dateTmp = this.data.value ? this.data.value : this.data.date;
+	    // 为了兼容
+	    this.data.date = dateTmp && dateTmp.replace ? dateTmp.replace(new RegExp(/-/gm), '/') : dateTmp;
 	    this.$watch('date', function (newValue) {
+	      console.log(newValue);
 	      if (newValue === '') {
 	        this.data.value = '';
 	      } else {
@@ -10346,8 +10349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    if (flag || !this.data.showTime) {
-	      this._onDateTimeChange(date, time);
-	      this._onOk();
+	      this._onOk(date, time);
 	    }
 	  },
 
@@ -10370,10 +10372,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _onClose: function _onClose() {
 	    this.toggle(false);
 	  },
-	  _onOk: function _onOk() {
-	    var format = this.data.showTime ? 'yyyy-MM-dd HH:mm:ss' : 'yyyy-MM-dd';
-	    this.data.date = filter.format(this.date, format);
+	  _onOk: function _onOk(date, time) {
+	    this._onDateTimeChange(date, time);
+	    this.data.date = this.date;
 	    this.data.time = this.time;
+	    // this.data.time = this.time;
 	    /**
 	     * @event select 选择某一项时触发
 	     * @property {object} sender 事件发送对象

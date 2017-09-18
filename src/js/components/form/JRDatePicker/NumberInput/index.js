@@ -54,10 +54,10 @@ const NumberInput = JRInput.extend({
       if (isOutOfRange !== false) return (this.data.value = isOutOfRange);
 
       /**
-         * @event change 数值改变时触发
-         * @property {object} sender 事件发送对象
-         * @property {number} value 改变后的数值
-         */
+             * @event change 数值改变时触发
+             * @property {object} sender 事件发送对象
+             * @property {number} value 改变后的数值
+             */
       this.$emit('change', {
         sender: this,
         value: newValue,
@@ -85,7 +85,7 @@ const NumberInput = JRInput.extend({
 
     if (isNaN(value)) throw new TypeError(`${value} is not a number!`);
 
-    return (this.data.value += value * this.data.step);
+    return (this.data.value += value);
   },
   /**
      * @method isOutOfRange(value) 是否超出规定的数值范围

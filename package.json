@@ -1,5 +1,5 @@
 {
-  "name": "JRUI",
+  "name": "jr-ui",
   "description": "UI components based on RegularJS",
   "version": "0.0.1",
   "main": "./dist/js/JR.min.js",
@@ -10,9 +10,8 @@
   ],
   "keywords": [
     "regular",
-    "JRUI",
-    "component",
-    "ui"
+    "jr-ui",
+    "component"
   ],
   "scripts": {
     "release": "npm run build && ./mkzip.sh && np --yolo",
