@@ -1,0 +1,478 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            通知 - 
+                JR
+        </title>
+        <meta charset="utf-8">
+        <meta name="description" content="JR - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="通知 - JR">
+        <meta property="og:description" content="JR - UI components based on RegularJS">
+        <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/JR/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=JR" rel='stylesheet' type='text/css'>
+        <!--  JR -->
+        <link href="/JR/css/JR.default.min.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/JR/css/page.css">
+            <script>
+                window.PAGE_TYPE = ""
+            </script>
+    </head>
+
+    <body class="docs">        <script src=" /JR/vendor/regular.min.js"></script>
+        <script src="/JR/js/JR.min.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+    <span>JR</span>
+</div>
+            
+                <div id="main" class="fix-sidebar">
+                    
+            <div class="sidebar">
+                <ul class="main-menu">
+                    <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+                </ul>
+            </div>
+            
+                <div class="content ">
+                    <p>创建显示消息的通知，并且能自动淡出。类似Android中的Toast。</p>
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Notify<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        JRUI.JRNotify.show(<span class="string">'This is a message.'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="状态扩展"><a href="#状态扩展" class="headerlink" title="状态扩展"></a>状态扩展</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-info"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">info</span>')&#125;&gt;</span>Info<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-success"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">success</span>')&#125;&gt;</span>Success<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-warning"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">warning</span>')&#125;&gt;</span>Warning<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-error"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">error</span>')&#125;&gt;</span>Error<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</div><div class="line">        JRUI.JRNotify[state](state + <span class="string">' message.'</span>, state);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="位置扩展"><a href="#位置扩展" class="headerlink" title="位置扩展"></a>位置扩展</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(0)&#125;</span>&gt;</span>Top Center<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(1)&#125;</span>&gt;</span>Top Left<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(2)&#125;</span>&gt;</span>Top Right<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(3)&#125;</span>&gt;</span>Bottom Center<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(4)&#125;</span>&gt;</span>Bottom Left<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(5)&#125;</span>&gt;</span>Bottom Right<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.notifies = [</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'topcenter'</span>&#125; &#125;),</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'topleft'</span>&#125; &#125;),</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'topright'</span>&#125; &#125;),</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'bottomcenter'</span>&#125; &#125;),</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'bottomleft'</span>&#125; &#125;),</div><div class="line">            <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">position</span>: <span class="string">'bottomright'</span>&#125; &#125;)</div><div class="line">        ];</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> notify = <span class="keyword">this</span>.notifies[index];</div><div class="line">        notify.show(<span class="string">'Position: '</span> + notify.data.position + <span class="string">'.'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="嵌入文档流"><a href="#嵌入文档流" class="headerlink" title="嵌入文档流"></a>嵌入文档流</h3><p>上面的模式通知都是以<code>fixed</code>的形式固定在浏览器中，如果要将通知嵌入到文档流，先将<code>notify</code>注入到需要的位置，同时设置<code>notify</code>的<code>position=&quot;static&quot;</code>。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Static<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">notify</span> <span class="attr">ref</span>=<span class="string">"notify"</span> <span class="attr">position</span>=<span class="string">"static"</span> <span class="attr">duration</span>=<span class="string">"0"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$refs.notify.show(<span class="string">'Static notify.'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="消息停留时间"><a href="#消息停留时间" class="headerlink" title="消息停留时间"></a>消息停留时间</h3><p>可以通过设置<code>notify</code>的<code>duration</code>参数设置所有消息的停留时间，也可以在<code>show</code>的时候单独设置该条消息的停留时间，单位为毫秒。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(500)&#125;</span>&gt;</span>0.5s<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(1000)&#125;</span>&gt;</span>1s<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(2000)&#125;</span>&gt;</span>2s<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(0)&#125;</span>&gt;</span>常驻<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">duration</span>) </span>&#123;</div><div class="line">        JRUI.JRNotify.show(<span class="string">'Duration: '</span> + duration + <span class="string">' ms.'</span>, <span class="literal">null</span>, duration);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="始终显示一条"><a href="#始终显示一条" class="headerlink" title="始终显示一条"></a>始终显示一条</h3><p>将<code>single</code>设置为<code>true</code>，可以让<code>notify</code>始终只显示一条消息。</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-info"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">info</span>')&#125;&gt;</span>Info<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-success"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">success</span>')&#125;&gt;</span>Success<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-warning"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">warning</span>')&#125;&gt;</span>Warning<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-error"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show(</span>'<span class="attr">error</span>')&#125;&gt;</span>Error<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.notify = <span class="keyword">new</span> JRUI.JRNotify(&#123;<span class="attr">data</span>: &#123;<span class="attr">single</span>: <span class="literal">true</span>&#125; &#125;);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">number</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.notify[state](<span class="string">'Message '</span> + <span class="keyword">this</span>.number + <span class="string">'.'</span>);</div><div class="line">        <span class="keyword">this</span>.number++;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#JRNotify">JRNotify</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>JRNotify    通知</p>
+</dd>
+<dt><a href="#notify">notify</a></dt>
+<dd><p>直接初始化一个实例</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#init">init()</a></dt>
+<dd></dd>
+<dt><a href="#show(text[,state][,duration]) 弹出一个消息">duration]) 弹出一个消息([text], [state], [duration])</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#close(message) 关闭某条消息">close(message) 关闭某条消息(message)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#closeAll_new 关闭所有消息">closeAll() 关闭所有消息()</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#[info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。">duration]) 弹出特殊类型的消息。为show方法的简写方式。([text], [duration])</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#show(text[,state][,duration]) 弹出一个消息">duration]) 弹出一个消息([text], [state], [duration])</a> ⇒ <code>void</code></dt>
+<dd></dd>
+<dt><a href="#[info|success|warning|error](text[,duration]) 弹出特殊类型的消息。为show方法的简写方式。">duration]) 弹出特殊类型的消息。为show方法的简写方式。([text], [duration])</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_show 弹出一个消息时触发">“show 弹出一个消息时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_close 关闭某条消息时触发">“close 关闭某条消息时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="JRNotify"></a></p>
+<h2 id="JRNotify"><a href="#JRNotify" class="headerlink" title="JRNotify"></a>JRNotify</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRNotify_new"></a></p>
+<h3 id="new-JRNotify"><a href="#new-JRNotify" class="headerlink" title="new JRNotify()"></a>new JRNotify()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.position]</td>
+<td><code>string</code></td>
+<td><code>&quot;topcenter&quot;</code></td>
+<td>=&gt; 通知的位置，可选参数：<code>topcenter</code>、<code>topleft</code>、<code>topright</code>、<code>bottomcenter</code>、<code>bottomleft</code>、<code>bottomright</code>、<code>static</code></td>
+</tr>
+<tr>
+<td>[options.data.duration]</td>
+<td><code>number</code></td>
+<td><code>2000</code></td>
+<td>=&gt; 每条消息默认的停留毫秒数，如果为0，则表示消息常驻不消失。</td>
+</tr>
+<tr>
+<td>[options.data.single]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否始终显示一条</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>JRNotify    通知</p>
+<p><strong>Kind</strong>: global constant  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="notify"></a></p>
+<h2 id="notify"><a href="#notify" class="headerlink" title="notify"></a>notify</h2><p>直接初始化一个实例</p>
+<p><strong>Kind</strong>: global constant<br><strong>State</strong>: <code>Notify</code><br><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
+<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="close(message) 关闭某条消息"></a></p>
+<h2 id="close-message-关闭某条消息-message-⇒-void"><a href="#close-message-关闭某条消息-message-⇒-void" class="headerlink" title="close(message) 关闭某条消息(message) ⇒ void"></a>close(message) 关闭某条消息(message) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>需要关闭的消息对象</td>
+</tr>
+</tbody>
+</table>
+<p><a name="closeAll_new 关闭所有消息"></a></p>
+<h2 id="closeAll-关闭所有消息-⇒-void"><a href="#closeAll-关闭所有消息-⇒-void" class="headerlink" title="closeAll() 关闭所有消息() ⇒ void"></a>closeAll() 关闭所有消息() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="event_show 弹出一个消息时触发"></a></p>
+<h2 id="“show-弹出一个消息时触发”"><a href="#“show-弹出一个消息时触发”" class="headerlink" title="“show 弹出一个消息时触发”"></a>“show 弹出一个消息时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>弹出的消息对象</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_close 关闭某条消息时触发"></a></p>
+<h2 id="“close-关闭某条消息时触发”"><a href="#“close-关闭某条消息时触发”" class="headerlink" title="“close 关闭某条消息时触发”"></a>“close 关闭某条消息时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>关闭了的消息对象</td>
+</tr>
+</tbody>
+</table>
+<p><a name="close(message) 关闭某条消息"></a></p>
+<h2 id="close-message-关闭某条消息-message-⇒-void-1"><a href="#close-message-关闭某条消息-message-⇒-void-1" class="headerlink" title=".close(message) 关闭某条消息(message) ⇒ void"></a>.close(message) 关闭某条消息(message) ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td><code>object</code></td>
+<td>需要关闭的消息对象</td>
+</tr>
+</tbody>
+</table>
+<p><a name="closeAll_new 关闭所有消息"></a></p>
+<h2 id="closeAll-关闭所有消息-⇒-void-1"><a href="#closeAll-关闭所有消息-⇒-void-1" class="headerlink" title=".closeAll() 关闭所有消息() ⇒ void"></a>.closeAll() 关闭所有消息() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-primary" on-click={this.show()}>Notify</button>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    show: function() {
+        JRUI.JRNotify.show('This is a message.');
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-info" on-click={this.show('info')}>Info</button>
+<button class="u-btn u-btn-success" on-click={this.show('success')}>Success</button>
+<button class="u-btn u-btn-warning" on-click={this.show('warning')}>Warning</button>
+<button class="u-btn u-btn-error" on-click={this.show('error')}>Error</button>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    show: function(state) {
+        JRUI.JRNotify[state](state + ' message.', state);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn" on-click={this.show(0)}>Top Center</button>
+<button class="u-btn" on-click={this.show(1)}>Top Left</button>
+<button class="u-btn" on-click={this.show(2)}>Top Right</button>
+<button class="u-btn" on-click={this.show(3)}>Bottom Center</button>
+<button class="u-btn" on-click={this.show(4)}>Bottom Left</button>
+<button class="u-btn" on-click={this.show(5)}>Bottom Right</button>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    config: function() {
+        this.notifies = [
+            new JRUI.JRNotify({data: {position: 'topcenter'} }),
+            new JRUI.JRNotify({data: {position: 'topleft'} }),
+            new JRUI.JRNotify({data: {position: 'topright'} }),
+            new JRUI.JRNotify({data: {position: 'bottomcenter'} }),
+            new JRUI.JRNotify({data: {position: 'bottomleft'} }),
+            new JRUI.JRNotify({data: {position: 'bottomright'} })
+        ];
+    },
+    show: function(index) {
+        var notify = this.notifies[index];
+        notify.show('Position: ' + notify.data.position + '.');
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-primary" on-click={this.show()}>Static</button>
+<notify ref="notify" position="static" duration="0" />
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    show: function() {
+        this.$refs.notify.show('Static notify.');
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn" on-click={this.show(500)}>0.5s</button>
+<button class="u-btn" on-click={this.show(1000)}>1s</button>
+<button class="u-btn" on-click={this.show(2000)}>2s</button>
+<button class="u-btn" on-click={this.show(0)}>常驻</button>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    show: function(duration) {
+        JRUI.JRNotify.show('Duration: ' + duration + ' ms.', null, duration);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<button class="u-btn u-btn-info" on-click={this.show('info')}>Info</button>
+<button class="u-btn u-btn-success" on-click={this.show('success')}>Success</button>
+<button class="u-btn u-btn-warning" on-click={this.show('warning')}>Warning</button>
+<button class="u-btn u-btn-error" on-click={this.show('error')}>Error</button>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    config: function() {
+        this.notify = new JRUI.JRNotify({data: {single: true} });
+    },
+    number: 1,
+    show: function(state) {
+        this.notify[state]('Message ' + this.number + '.');
+        this.number++;
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+                        <div class="guide-links">
+                            
+                                    
+                        </div>
+                </div>
+                </div>
+                <script src="/JR/js/smooth-scroll.min.js"></script>
+                
+
+                            <!-- main custom script for sidebars, version selects etc. -->
+                            <script src="/JR/js/common.js"></script>
+                            <!-- ga -->
+                            <script>
+                                (function(i, s, o, g, r, a, m) {
+                                    i['GoogleAnalyticsObject'] = r;
+                                    i[r] = i[r] || function() {
+                                        (i[r].q = i[r].q || []).push(arguments)
+                                    }, i[r].l = 1 * new Date();
+                                    a = s.createElement(o),
+                                        m = s.getElementsByTagName(o)[0];
+                                    a.async = 1;
+                                    a.src = g;
+                                    m.parentNode.insertBefore(a, m)
+                                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                                ga('create', 'UA-46698359-3', 'JR.kaolafed.com');
+                                ga('send', 'pageview');
+                            </script>
+
+                            <!-- search -->
+                            <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+                            <link rel="stylesheet" href="/JR/css/search.css">
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+                                <script>
+                                    [
+                                        '#search-query-nav',
+                                        '#search-query-sidebar'
+                                    ].forEach(function(selector) {
+                                        if (!document.querySelector(selector)) return
+                                            // search index defaults to v2
+                                        var match = window.location.pathname.match(/^\/(v\d+)/)
+                                        var version = match ? match[1] : 'v2'
+                                        docsearch({
+                                            appId: '34N72WTQ6D',
+                                            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+                                            indexName: 'JR',
+                                            inputSelector: selector,
+                                            algoliaOptions: {
+                                                facetFilters: ["version:" + version]
+                                            }
+                                        })
+                                    })
+                                </script>
+
+                                <!-- fastclick -->
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        FastClick.attach(document.body)
+                                    }, false)
+                                </script>
+    </body>
+
+    </html>

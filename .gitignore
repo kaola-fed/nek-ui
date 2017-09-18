@@ -13,7 +13,6 @@ src/mcss/components.mcss
 # doc
 db.json
 *.log
-public/
 .deploy*/
 _drafts
 doc/source/components/*

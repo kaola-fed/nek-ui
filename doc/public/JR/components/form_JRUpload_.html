@@ -1,0 +1,985 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            上传文件 - 
+                JR
+        </title>
+        <meta charset="utf-8">
+        <meta name="description" content="JR - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="上传文件 - JR">
+        <meta property="og:description" content="JR - UI components based on RegularJS">
+        <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/JR/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=JR" rel='stylesheet' type='text/css'>
+        <!--  JR -->
+        <link href="/JR/css/JR.default.min.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/JR/css/page.css">
+            <script>
+                window.PAGE_TYPE = "components"
+            </script>
+    </head>
+
+    <body class="docs">        <script src=" /JR/vendor/regular.min.js"></script>
+        <script src="/JR/js/JR.min.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+    <span>JR</span>
+</div>
+            
+                <div id="main" class="fix-sidebar">
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+                
+                    
+                                    <li>
+                                        <a href="/JR/components/index.html" class="sidebar-link">
+                                            快速上手
+                                                
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    布局
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/layout_JRCard_.html" class="sidebar-link">
+                                            卡片
+                                                JRCard
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/layout_JRTable_.html" class="sidebar-link">
+                                            表格
+                                                JRTable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    表单
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRButton_.html" class="sidebar-link">
+                                            按钮
+                                                JRButton
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRCheck_.html" class="sidebar-link">
+                                            复选框
+                                                JRCheck
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRCheckGroup_.html" class="sidebar-link">
+                                            复选组
+                                                JRCheckGroup
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRDatePicker_.html" class="sidebar-link beta">
+                                            日期选择
+                                                JRDatePicker
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRForm_.html" class="sidebar-link">
+                                            表单
+                                                JRForm
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRInput_.html" class="sidebar-link">
+                                            输入框
+                                                JRInput
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRMultiSelect_.html" class="sidebar-link">
+                                            多级选择
+                                                JRMultiSelect
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRRadioGroup_.html" class="sidebar-link">
+                                            单选组
+                                                JRRadioGroup
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRSelect_.html" class="sidebar-link beta">
+                                            下拉选择
+                                                JRSelect
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRSwitch_.html" class="sidebar-link new">
+                                            开关
+                                                JRSwitch
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link">
+                                            展示文本
+                                                JRText
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRTextArea_.html" class="sidebar-link">
+                                            文本输入
+                                                JRTextArea
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRUpload_.html" class="sidebar-link current">
+                                            上传文件
+                                                JRUpload
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    通知
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRMask_.html" class="sidebar-link">
+                                            遮罩
+                                                JRMask
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRModal_.html" class="sidebar-link">
+                                            模态框
+                                                JRModal
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRPopConfirm_.html" class="sidebar-link">
+                                            确认提示
+                                                JRPopConfirm
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    导航
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRCrumb_.html" class="sidebar-link">
+                                            面包屑
+                                                JRCrumb
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRMenu_.html" class="sidebar-link beta">
+                                            两级菜单
+                                                JRMenu
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRPager_.html" class="sidebar-link">
+                                            分页
+                                                JRPager
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRSidebar_.html" class="sidebar-link beta">
+                                            菜单栏
+                                                JRSidebar
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRSteps_.html" class="sidebar-link">
+                                            步骤
+                                                JRSteps
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRTabs_.html" class="sidebar-link">
+                                            选项卡
+                                                JRTabs
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    拖拽相关
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRDraggable_.html" class="sidebar-link new">
+                                            拖出
+                                                JRDraggable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRDroppable_.html" class="sidebar-link new">
+                                            拖入
+                                                JRDroppable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRMovable_.html" class="sidebar-link new">
+                                            移动
+                                                JRMovable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRSlider_.html" class="sidebar-link new">
+                                            滑块
+                                                JRSlider
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    其它
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRBadge_.html" class="sidebar-link">
+                                            徽标
+                                                JRBadge
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRIcon_.html" class="sidebar-link">
+                                            图标
+                                                JRIcon
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRImagePreview_.html" class="sidebar-link beta">
+                                            图片预览
+                                                JRImagePreview
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRLoading_.html" class="sidebar-link">
+                                            加载中
+                                                JRLoading
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRLocaleProvider_.html" class="sidebar-link">
+                                            国际化
+                                                JRLocaleProvider
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRProgress_.html" class="sidebar-link beta">
+                                            进度条
+                                                JRProgress
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRTooltip_.html" class="sidebar-link">
+                                            文字提示
+                                                JRTooltip
+                                        </a>
+                                    </li>
+                                    
+        </ul>
+    </div>
+</div>
+        
+                <div class="content components with-sidebar">
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>目前该上传组件采用FormData向后台提交文件数据。</p>
+<h3 id="基本展示形式（列表形式）-用于表单上传"><a href="#基本展示形式（列表形式）-用于表单上传" class="headerlink" title="基本展示形式（列表形式）, 用于表单上传"></a>基本展示形式（列表形式）, 用于表单上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="卡片展示形式，用于表格上传"><a href="#卡片展示形式，用于表格上传" class="headerlink" title="卡片展示形式，用于表格上传"></a>卡片展示形式，用于表格上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">list-type</span>=<span class="string">"card"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="基本展示形式，配置多选上传"><a href="#基本展示形式，配置多选上传" class="headerlink" title="基本展示形式，配置多选上传"></a>基本展示形式，配置多选上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="卡片展示形式，配置多选上传"><a href="#卡片展示形式，配置多选上传" class="headerlink" title="卡片展示形式，配置多选上传"></a>卡片展示形式，配置多选上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">list-type</span>=<span class="string">"card"</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">accept</span>=<span class="string">".jpg,.zip,video/*,audio/*"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">max-size</span>=<span class="string">"830M"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="每行展示文件个数和总文件个数限制"><a href="#每行展示文件个数和总文件个数限制" class="headerlink" title="每行展示文件个数和总文件个数限制"></a>每行展示文件个数和总文件个数限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span> <span class="attr">num-limit</span>=<span class="string">&#123;15&#125;</span> <span class="attr">num-perline</span>=<span class="string">&#123;4&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="带有已上传文件的形式"><a href="#带有已上传文件的形式" class="headerlink" title="带有已上传文件的形式"></a>带有已上传文件的形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#JRUpload">JRUpload</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#_">_</a></dt>
+<dd><hr>
+<h2 id="-jr-upload-"> jr-upload 上传</h2>
+</dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_success 文件上传成功回调函数">“success 文件上传成功回调函数”</a></dt>
+<dd></dd>
+<dt><a href="#event_progress 文件上传进度回调函数">“progress 文件上传进度回调函数”</a></dt>
+<dd></dd>
+<dt><a href="#event_error 文件上传失败回调函数">“error 文件上传失败回调函数”</a></dt>
+<dd></dd>
+<dt><a href="#event_remove 上传文件删除回调函数">“remove 上传文件删除回调函数”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="JRUpload"></a></p>
+<h2 id="JRUpload"><a href="#JRUpload" class="headerlink" title="JRUpload"></a>JRUpload</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRUpload_new"></a></p>
+<h3 id="new-JRUpload"><a href="#new-JRUpload" class="headerlink" title="new JRUpload()"></a>new JRUpload()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.action]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 必选，上传地址</td>
+</tr>
+<tr>
+<td>[options.data.file-list]</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:                                                             name: 文件名称                                                             url: 文件的路径                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件</td>
+</tr>
+<tr>
+<td>[options.data.name]</td>
+<td><code>string</code></td>
+<td><code>&quot;file&quot;</code></td>
+<td>=&gt; 可选，上传的文件字段名, 默认为’file’</td>
+</tr>
+<tr>
+<td>[options.data.multiple]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 可选，是否支持多选, 可选值true/false，默认false单选</td>
+</tr>
+<tr>
+<td>[options.data.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 可选，上传时附带的额外参数</td>
+</tr>
+<tr>
+<td>[options.data.drag]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽</td>
+</tr>
+<tr>
+<td>[options.data.accept]</td>
+<td><code>string</code></td>
+<td><code>&quot;*&quot;</code></td>
+<td>=&gt; 可选，接受上传的文件类型, 同input的accept属性</td>
+</tr>
+<tr>
+<td>[options.data.list-type]</td>
+<td><code>string</code></td>
+<td><code>&quot;list&quot;</code></td>
+<td>=&gt; 可选，上传组件的展示形式, 可选值list/card，默认list</td>
+</tr>
+<tr>
+<td>[options.data.num-min]</td>
+<td><code>number</code></td>
+<td><code>-Infinity</code></td>
+<td>=&gt; 可选，指定的至少上传的文件个数，默认无限制</td>
+</tr>
+<tr>
+<td>[options.data.num-max]</td>
+<td><code>number</code></td>
+<td><code>Infinity</code></td>
+<td>=&gt; 可选，最大允许上传文件的个数，默认无限制</td>
+</tr>
+<tr>
+<td>[options.data.num-perline]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；                                                             对于表单形式，默认每行展示5个</td>
+</tr>
+<tr>
+<td>[options.data.max-size]</td>
+<td><code>number</code></td>
+<td><code>1GB</code></td>
+<td>=&gt; 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，                                                             默认false，允许上传和删除图片</td>
+</tr>
+<tr>
+<td>[options.data.hideTip]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示校验错误信息，默认false显示</td>
+</tr>
+<tr>
+<td>[options.data.image-width]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800</td>
+</tr>
+<tr>
+<td>[options.data.image-height]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600</td>
+</tr>
+<tr>
+<td>[options.data.image-scale]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如’4:3’</td>
+</tr>
+</tbody>
+</table>
+<p><a name="_"></a></p>
+<h2 id=""><a href="#" class="headerlink" title="_"></a>_</h2><hr>
+<h2 id="jr-upload-上传"><a href="#jr-upload-上传" class="headerlink" title=" jr-upload 上传"></a> jr-upload 上传</h2><p><strong>Kind</strong>: global constant<br><a name="event_success 文件上传成功回调函数"></a></p>
+<h2 id="“success-文件上传成功回调函数”"><a href="#“success-文件上传成功回调函数”" class="headerlink" title="“success 文件上传成功回调函数”"></a>“success 文件上传成功回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>当前上传文件的实例</td>
+</tr>
+<tr>
+<td>file</td>
+<td><code>object</code></td>
+<td>当前上传的文件</td>
+</tr>
+<tr>
+<td>fileList</td>
+<td><code>array</code></td>
+<td>所有展示的文件列表</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>上传的状态</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><code>string</code></td>
+<td>上传的进度</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_progress 文件上传进度回调函数"></a></p>
+<h2 id="“progress-文件上传进度回调函数”"><a href="#“progress-文件上传进度回调函数”" class="headerlink" title="“progress 文件上传进度回调函数”"></a>“progress 文件上传进度回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>当前上传文件的实例</td>
+</tr>
+<tr>
+<td>file</td>
+<td><code>object</code></td>
+<td>当前上传的文件</td>
+</tr>
+<tr>
+<td>fileList</td>
+<td><code>array</code></td>
+<td>所有展示的文件列表</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>上传的状态</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><code>string</code></td>
+<td>上传的进度</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_error 文件上传失败回调函数"></a></p>
+<h2 id="“error-文件上传失败回调函数”"><a href="#“error-文件上传失败回调函数”" class="headerlink" title="“error 文件上传失败回调函数”"></a>“error 文件上传失败回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>当前上传文件的实例</td>
+</tr>
+<tr>
+<td>file</td>
+<td><code>object</code></td>
+<td>当前上传的文件</td>
+</tr>
+<tr>
+<td>fileList</td>
+<td><code>array</code></td>
+<td>所有展示的文件列表</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>上传的状态</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><code>string</code></td>
+<td>上传的进度</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_remove 上传文件删除回调函数"></a></p>
+<h2 id="“remove-上传文件删除回调函数”"><a href="#“remove-上传文件删除回调函数”" class="headerlink" title="“remove 上传文件删除回调函数”"></a>“remove 上传文件删除回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>当前上传文件的实例</td>
+</tr>
+<tr>
+<td>file</td>
+<td><code>object</code></td>
+<td>当前上传的文件</td>
+</tr>
+<tr>
+<td>fileList</td>
+<td><code>array</code></td>
+<td>所有展示的文件列表</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>上传的状态</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><code>string</code></td>
+<td>上传的进度</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload'></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' list-type="card"></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' multiple={true}></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} list-type="card" multiple={true}></jr-upload>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} accept=".jpg,.zip,video/*,audio/*"></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' max-size="830M"></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' multiple={true} num-limit={15} num-perline={4}></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list}></jr-upload>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [
+            {
+                name: 'kaola-logo.jpeg',
+                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
+            },
+            {
+                name: '权限申请交互.rar',
+                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
+            },
+            {
+                name: 'app-2dcode.jpg',
+                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+            }
+        ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+                        <div class="guide-links">
+                            
+                                <span>← <a href="/JR/components/form_JRTextArea_.html">文本输入</a></span>
+                                
+                                    
+                        </div>
+                </div>
+                </div>
+                <script src="/JR/js/smooth-scroll.min.js"></script>
+                
+
+                            <!-- main custom script for sidebars, version selects etc. -->
+                            <script src="/JR/js/common.js"></script>
+                            <!-- ga -->
+                            <script>
+                                (function(i, s, o, g, r, a, m) {
+                                    i['GoogleAnalyticsObject'] = r;
+                                    i[r] = i[r] || function() {
+                                        (i[r].q = i[r].q || []).push(arguments)
+                                    }, i[r].l = 1 * new Date();
+                                    a = s.createElement(o),
+                                        m = s.getElementsByTagName(o)[0];
+                                    a.async = 1;
+                                    a.src = g;
+                                    m.parentNode.insertBefore(a, m)
+                                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                                ga('create', 'UA-46698359-3', 'JR.kaolafed.com');
+                                ga('send', 'pageview');
+                            </script>
+
+                            <!-- search -->
+                            <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+                            <link rel="stylesheet" href="/JR/css/search.css">
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+                                <script>
+                                    [
+                                        '#search-query-nav',
+                                        '#search-query-sidebar'
+                                    ].forEach(function(selector) {
+                                        if (!document.querySelector(selector)) return
+                                            // search index defaults to v2
+                                        var match = window.location.pathname.match(/^\/(v\d+)/)
+                                        var version = match ? match[1] : 'v2'
+                                        docsearch({
+                                            appId: '34N72WTQ6D',
+                                            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+                                            indexName: 'JR',
+                                            inputSelector: selector,
+                                            algoliaOptions: {
+                                                facetFilters: ["version:" + version]
+                                            }
+                                        })
+                                    })
+                                </script>
+
+                                <!-- fastclick -->
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        FastClick.attach(document.body)
+                                    }, false)
+                                </script>
+    </body>
+
+    </html>
