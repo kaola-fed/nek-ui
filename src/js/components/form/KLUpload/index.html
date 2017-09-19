@@ -19,8 +19,8 @@
             imageScale={imageScale}
             data={data}
             encType={encType}
-            beforeOnLoad={beforeOnLoad}
-            beforeOnError={beforeOnError}
+            onLoadInterceptor={onLoadInterceptor}
+            onErrorInterceptor={onErrorInterceptor}
             beforeUpload={beforeUpload}
             beforeRemove={beforeRemove}/>
     {#elseif listType === 'card'}
@@ -43,8 +43,8 @@
             imageScale={imageScale}
             data={data}
             encType={encType}
-            beforeOnLoad={beforeOnLoad}
-            beforeOnError={beforeOnError}
+            onLoadInterceptor={onLoadInterceptor}
+            onErrorInterceptor={onErrorInterceptor}
             beforeUpload={beforeUpload}
             beforeRemove={beforeRemove}/>
     {/if}
