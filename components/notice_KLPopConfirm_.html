@@ -1101,8 +1101,11 @@ var component = new NEKUI.Component({
         document.addEventListener('DOMContentLoaded', function() {
           element2col();
         });
+        var windowWidth = window.innerWidth;
         window.onresize = function(){
-          location.reload();
+          if((windowWidth>1300 && window.innerWidth<=1300)||(windowWidth<=1300 && window.innerWidth>1300)){
+            location.reload();
+          }
         };
       </script>
       
