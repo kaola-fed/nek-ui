@@ -102,7 +102,7 @@
                 'sticky_header': stickyHeader && stickyHeaderActive
             }}
             r-style={{
-                width: fixedTableWidth,
+                width: fixedTableWidth + 'px',
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }} >
             <table-header
@@ -133,7 +133,7 @@
         <div ref="bodyWrapFixedLeft"
             class="kl_table_body"
             r-style={{
-                width: fixedTableWidth,
+                width: fixedTableWidth + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
             }}>
             <table-body

@@ -34,8 +34,8 @@
             on-mouseover={this._onRowHover($event, item)}
             on-mouseout={this._onRowBlur($event, item)} >
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass}"
-                style="{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle}"
+            <td class="tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}"
+                style="{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}"
                 on-click={this._onUnitClick($event, item, item_index, column, column_index)}
                 r-style={{
                     'text-align': column.align || align

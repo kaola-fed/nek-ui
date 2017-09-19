@@ -20,6 +20,8 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.childKey=children]        => 数据子项的键
  * @param {boolean}         [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
+ * @param {string}          [options.data.rootValue=null]           <=> 模式2种的选择值(具体见文档 demo)
+ * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.placeholder='']           => 默认提示
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
@@ -44,7 +46,9 @@ const KLMultiSelect = Dropdown.extend({
       // @inherited open: false,
       multiple: false,
       value: null,
+      rootValue: null,
       selected: [],
+      rootSelected: [],
       separator: ',',
       placeholder: '',
       key: 'id',
@@ -73,6 +77,9 @@ const KLMultiSelect = Dropdown.extend({
       data.tree[0] = data._source;
       if (data._source && data._source.length) {
         this.initSelected();
+        if (data.showRoot) {
+          this.initRootSelected();
+        }
       }
       this.$update();
     });
@@ -94,6 +101,25 @@ const KLMultiSelect = Dropdown.extend({
         if (data.source && data.source.length) {
           this.validate();
         }
+      }
+      this.$update();
+    });
+
+    this.$watch('rootValue', (newValue, oldValue) => {
+      if (data._source && data._source.length && data.showRoot) {
+        this.initRootSelected();
+      }
+      if (oldValue !== null && oldValue !== undefined) {
+        /**
+         * @event KLMultiSelect#rootValue 改变时触发
+         * @property {object} sender 事件发送对象
+         * @property {object} value 当前 value 的值
+         */
+        this.$emit('rootChange', {
+          sender: this,
+          value: newValue,
+          key: data.key,
+        });
       }
       this.$update();
     });
@@ -120,7 +146,7 @@ const KLMultiSelect = Dropdown.extend({
   // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
   initSelected() {
     const data = this.data;
-    if (data.value !== null && data.value !== undefined) {
+    if (data.value !== null && data.value !== undefined && data.value !== '') {
       const _list = data.value.toString().split(data.separator);
       const _checkedItem = function (list) {
         list.map((item2) => {
@@ -171,6 +197,30 @@ const KLMultiSelect = Dropdown.extend({
       this.watchValue();
     } else {
       data.value = '';
+    }
+    this.$update();
+  },
+  // 将 rootValue 转换成对应的 value
+  initRootSelected() {
+    const data = this.data;
+    const self = this;
+    if (data.rootValue !== undefined && data.rootValue !== null && data.rootValue !== '') {
+      const _list = data.rootValue.split(data.separator);
+      const _checkItem = function (list) {
+        list.map((item) => {
+          if (_list.indexOf(item[data.key].toString()) > -1) {
+            item.checked = true;
+            self.setCheck(item[data.childKey], true);
+          } else if (item[data.childKey] && item[data.childKey].length) {
+            _checkItem(item[data.childKey]);
+          }
+          return undefined;
+        });
+      };
+      _checkItem(data._source);
+      self.watchValue();
+    } else {
+      data.rootValue = '';
     }
     this.$update();
   },
@@ -289,11 +339,13 @@ const KLMultiSelect = Dropdown.extend({
     });
     this.watchValue();
   },
-  // 循环列表获取 value 值
+  // 循环列表获取 value 值和 rootValue 值
   watchValue() {
     const data = this.data;
     data.selected = [];
     const _value = [];
+    data.rootSelected = [];
+    const _rootValue = [];
     const _getChecked = function (list) {
       list.map((item) => {
         if (item[data.childKey] && item[data.childKey].length) {
@@ -309,11 +361,30 @@ const KLMultiSelect = Dropdown.extend({
         return undefined;
       });
     };
+    const _getRootChecked = function (list) {
+      list.map((item) => {
+        if (item.checked) {
+          _rootValue.push(item[data.key]).toString();
+          data.rootSelected.push(item);
+        } else if (item[data.childKey] && item[data.childKey].length) {
+          _getRootChecked(item[data.childKey]);
+        }
+        return undefined;
+      });
+    };
     _getChecked(data._source);
     if (_value.length) {
       data.value = _value.join([data.separator]);
     } else {
       data.value = '';
+    }
+    if (data.showRoot) {
+      _getRootChecked(data._source);
+      if (_rootValue.length) {
+        data.rootValue = _rootValue.join([data.separator]);
+      } else {
+        data.rootValue = '';
+      }
     }
     this.$update();
   },
