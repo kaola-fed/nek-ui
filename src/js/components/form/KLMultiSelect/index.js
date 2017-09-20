@@ -407,47 +407,52 @@ const KLMultiSelect = Dropdown.extend({
       return;
     }
     this.toggle(true);
-    let _list = [];
-    _list = data.value.toString().split(data.separator);
+    const _list = data.value.toString().split(data.separator);
     // 如果是模式2，把删除的 item 的所有子项的 id 从 value 中去除，然后把当前的 id 从 rootValue 中去除
     if (data.showRoot) {
-      const calcValue = function (list) {
-        list.map((child) => {
-          if (child[data.childKey] && child[data.childKey].length) {
-            calcValue(child[data.childKey]);
-          } else {
-            const _index = _list.indexOf((child[data.key].toString() || '').toString());
-            if (_index > -1) {
-              _list.splice(_index, 1);
-            }
-          }
-          return undefined;
-        });
-      };
-      if (item[data.childKey] && item[data.childKey].length) {
-        calcValue(item[data.childKey]);
-      } else {
-        const _index = _list.indexOf((item[data.key].toString() || '').toString());
-        if (_index > -1) {
-          _list.splice(_index, 1);
-        }
-      }
-      data.value = _list.join(data.separator);
-      const _rootList = data.rootValue.toString().split(data.separator);
-      const _rootIndex = _rootList.indexOf((item[data.key].toString() || '').toString());
-      if (_rootIndex > -1) {
-        _rootList.splice(_rootIndex, 1);
-      }
-      data.rootValue = _rootList.join(data.separator);
-      this.initSelected();
-      this.watchValue();
+      this.deleteRoot(item);
       return;
     }
-    const _index = _list.indexOf((item[data.key].toString() || '').toString());
+    const _index = _list.indexOf((item[data.key].toString() || ''));
     if (_index > -1) {
       _list.splice(_index, 1);
     }
     data.value = _list.join(data.separator);
+    this.initSelected();
+    this.watchValue();
+  },
+  deleteRoot(item) {
+    const data = this.data;
+    const _list = data.value.toString().split(data.separator);
+    let _index;
+    const calcValue = function (list) {
+      list.map((child) => {
+        if (child[data.childKey] && child[data.childKey].length) {
+          calcValue(child[data.childKey]);
+        } else {
+          _index = _list.indexOf((child[data.key].toString() || ''));
+          if (_index > -1) {
+            _list.splice(_index, 1);
+          }
+        }
+        return undefined;
+      });
+    };
+    if (item[data.childKey] && item[data.childKey].length) {
+      calcValue(item[data.childKey]);
+    } else {
+      _index = _list.indexOf((item[data.key].toString() || ''));
+      if (_index > -1) {
+        _list.splice(_index, 1);
+      }
+    }
+    data.value = _list.join(data.separator);
+    const _rootList = data.rootValue.toString().split(data.separator);
+    _index = _rootList.indexOf((item[data.key].toString() || ''));
+    if (_index > -1) {
+      _rootList.splice(_index, 1);
+    }
+    data.rootValue = _rootList.join(data.separator);
     this.initSelected();
     this.watchValue();
   },
