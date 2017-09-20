@@ -27291,47 +27291,52 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 	    this.toggle(true);
-	    var _list = [];
-	    _list = data.value.toString().split(data.separator);
+	    var _list = data.value.toString().split(data.separator);
 	    // 如果是模式2，把删除的 item 的所有子项的 id 从 value 中去除，然后把当前的 id 从 rootValue 中去除
 	    if (data.showRoot) {
-	      var calcValue = function calcValue(list) {
-	        list.map(function (child) {
-	          if (child[data.childKey] && child[data.childKey].length) {
-	            calcValue(child[data.childKey]);
-	          } else {
-	            var _index2 = _list.indexOf((child[data.key].toString() || '').toString());
-	            if (_index2 > -1) {
-	              _list.splice(_index2, 1);
-	            }
-	          }
-	          return undefined;
-	        });
-	      };
-	      if (item[data.childKey] && item[data.childKey].length) {
-	        calcValue(item[data.childKey]);
-	      } else {
-	        var _index3 = _list.indexOf((item[data.key].toString() || '').toString());
-	        if (_index3 > -1) {
-	          _list.splice(_index3, 1);
-	        }
-	      }
-	      data.value = _list.join(data.separator);
-	      var _rootList = data.rootValue.toString().split(data.separator);
-	      var _rootIndex = _rootList.indexOf((item[data.key].toString() || '').toString());
-	      if (_rootIndex > -1) {
-	        _rootList.splice(_rootIndex, 1);
-	      }
-	      data.rootValue = _rootList.join(data.separator);
-	      this.initSelected();
-	      this.watchValue();
+	      this.deleteRoot(item);
 	      return;
 	    }
-	    var _index = _list.indexOf((item[data.key].toString() || '').toString());
+	    var _index = _list.indexOf(item[data.key].toString() || '');
 	    if (_index > -1) {
 	      _list.splice(_index, 1);
 	    }
 	    data.value = _list.join(data.separator);
+	    this.initSelected();
+	    this.watchValue();
+	  },
+	  deleteRoot: function deleteRoot(item) {
+	    var data = this.data;
+	    var _list = data.value.toString().split(data.separator);
+	    var _index = void 0;
+	    var calcValue = function calcValue(list) {
+	      list.map(function (child) {
+	        if (child[data.childKey] && child[data.childKey].length) {
+	          calcValue(child[data.childKey]);
+	        } else {
+	          _index = _list.indexOf(child[data.key].toString() || '');
+	          if (_index > -1) {
+	            _list.splice(_index, 1);
+	          }
+	        }
+	        return undefined;
+	      });
+	    };
+	    if (item[data.childKey] && item[data.childKey].length) {
+	      calcValue(item[data.childKey]);
+	    } else {
+	      _index = _list.indexOf(item[data.key].toString() || '');
+	      if (_index > -1) {
+	        _list.splice(_index, 1);
+	      }
+	    }
+	    data.value = _list.join(data.separator);
+	    var _rootList = data.rootValue.toString().split(data.separator);
+	    _index = _rootList.indexOf(item[data.key].toString() || '');
+	    if (_index > -1) {
+	      _rootList.splice(_index, 1);
+	    }
+	    data.rootValue = _rootList.join(data.separator);
 	    this.initSelected();
 	    this.watchValue();
 	  },
