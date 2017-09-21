@@ -63,22 +63,6 @@ const TableBody = Component.extend({
   _expandTr(item, itemIndex, column) {
     item._expanddingColumn = column;
     item.expand = !item.expand;
-    if (column.expandable) {
-      this._updateSubTrHeight(item, itemIndex);
-    }
-  },
-  _updateSubTrHeight(item, itemIndex) {
-    const self = this;
-    const timer = setInterval(() => {
-      const tdElement = self.$refs[`expand${itemIndex}`];
-      if (tdElement && item._expandHeight !== tdElement.clientHeight) {
-        item._expandHeight = tdElement.clientHeight;
-        self.$update();
-      }
-      if (!item.expand) {
-        clearInterval(timer);
-      }
-    }, 100);
   },
   _onSubEvent(type, table, e) {
     this.$emit('subevent', {
