@@ -611,12 +611,18 @@ const KLTable = Component.extend({
   .component('table-header', TableHeader)
   .component('table-body', TableBody);
 
-const oldFilterFunc = KLTable.filter;
-
-KLTable.filter = function (...args) {
+const oldFilter = KLTable.filter;
+KLTable.$filter = function (...args) {
   TableHeader.filter(...args);
   TableBody.filter(...args);
-  oldFilterFunc.apply(KLTable, args);
+  oldFilter.apply(KLTable, args);
+};
+KLTable.filter = KLTable.$filter;
+
+KLTable.$component = function (...args) {
+  TableHeader.component(...args);
+  TableBody.component(...args);
+  KLTable.component(KLTable, ...args);
 };
 
 module.exports = KLTable;
