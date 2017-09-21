@@ -20,6 +20,8 @@ const TableBody = Component.extend({
     this.supr(data);
     this.$table = this.$parent;
     this.$tableData = this.$parent.data;
+    this.data.$table = this.$table;
+    this.data.$tableData = this.$tableData;
     if (!this.data.fixedCol) {
       this.data.timer = setInterval(() => {
         this._updateItemHeight();
