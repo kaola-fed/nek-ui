@@ -440,7 +440,8 @@
 <h3 id="自定义模版与filter"><a href="#自定义模版与filter" class="headerlink" title="自定义模版与filter"></a>自定义模版与filter</h3><p>通过 <code>kl-table-template</code> 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 <code>template</code> 属性。
 自定义模版中可以通过 <code>emit</code> 的方法向上抛出事件。
 如果模版直接写在<code>kl-table</code>当中，这部分模版会被作为footer模版进行渲染。这部分模版不需要进行特殊的字符串处理，并可以直接进行数据绑定。</p>
-<p>要在模版中使用自定义的 <code>filter</code> 则需要将其先注册到 <code>NEKUI.KLTable</code> 上。</p>
+<p>要在模版中使用自定义的 <code>filter</code> 则需要通过 <code>NEKUI.KLTable.$filter</code> 方法 将其先注册到 <code>NEKUI.KLTable</code> 上。</p>
+<p>要在模版中使用自定义的组件则需要通过 <code>NEKUI.KLTable.$component</code> 方法 将其先注册到 <code>NEKUI.KLTable</code> 上。</p>
 <p>注意：</p>
 <ol>
 <li>内嵌形式的模版需要在每行的两端加上 <code>{&#39;</code>、<code>&#39;}</code> ，否则模版字符串的插值会无法传递给模版组件，</li>
@@ -450,7 +451,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span></span></div><div class="line">    <span class="attr">stickyFooter</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span></div><div class="line">    <span class="attr">on-itemclick</span>=<span class="string">&#123;this.onItemClick($event)&#125;</span> <span class="attr">on-headerclick</span>=<span class="string">&#123;this.onHeaderClick($event)&#125;</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-table-template</span> <span class="attr">type</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;header.name+</span>"&gt;</span>+~!!@#$%^&amp;*()"&#125; on-click=&#123;this.emit("headerclick", header)&#125;&gt;I am &amp;&amp; &#123;header.name&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span>'&#125;</div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">anchor</span>/&gt;</span>'&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-table-template</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-table-template</span> <span class="attr">template</span>=<span class="string">&#123;tdTpl&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pager</span></span></div><div class="line">        <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span></div><div class="line">        <span class="attr">current</span>=<span class="string">&#123;current&#125;</span></div><div class="line">        <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span></div><div class="line">    /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> anchor = NEKUI.Component.extend(&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'anchor'</span>,</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;a&gt;&amp;nbsp;anchor&lt;/a&gt;'</span>,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">NEKUI.KLTable.filter(<span class="string">'txtFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> val + <span class="string">'*'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: [],</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">pageSize</span>:<span class="number">15</span>,</div><div class="line">        <span class="attr">current</span>:<span class="number">1</span>,</div><div class="line">        <span class="attr">sumTotal</span>:<span class="number">100</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&lt;a on-click=&#123;this.emit("itemclick", item, this)&#125;&gt;I am &#123;item.title | txtFilter&#125;&lt;/a&gt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$watch(<span class="string">'current'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(newVal);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onItemClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onHeaderClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> anchor = NEKUI.Component.extend(&#123;</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;a&gt;&amp;nbsp;anchor&lt;/a&gt;'</span>,</div><div class="line">&#125;);</div><div class="line"></div><div class="line">NEKUI.KLTable.$component(<span class="string">'anchor'</span>, anchor);</div><div class="line"></div><div class="line">NEKUI.KLTable.$filter(<span class="string">'txtFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> val + <span class="string">'*'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: [],</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">pageSize</span>:<span class="number">15</span>,</div><div class="line">        <span class="attr">current</span>:<span class="number">1</span>,</div><div class="line">        <span class="attr">sumTotal</span>:<span class="number">100</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&lt;a on-click=&#123;this.emit("itemclick", item, this)&#125;&gt;I am &#123;item.title | txtFilter&#125;&lt;/a&gt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$watch(<span class="string">'current'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(newVal);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onItemClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onHeaderClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="自定义行样式"><a href="#自定义行样式" class="headerlink" title="自定义行样式"></a>自定义行样式</h3><p>通过设置 <code>item.rowClass</code> 或 <code>item.rowStyle</code> 修改每一行的样式。</p>
@@ -507,11 +508,11 @@
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="模版中获取外部数据的方法"><a href="#模版中获取外部数据的方法" class="headerlink" title="模版中获取外部数据的方法"></a>模版中获取外部数据的方法</h3><p>由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　<code>kl-table</code> 上挂载的属性无法直接传递到表头和内容当中。</p>
-<p>如有需要取得外部的数据，则需要通过 <code>this.$table.data</code> 或者 <code>this.$tableData</code> 去获取。</p>
+<p>如有需要取得外部的数据，则需要通过 <code>$table.data</code> 或者 <code>$tableData</code> 去获取。</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">count</span>=<span class="string">&#123;count&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">template</span>=<span class="string">&#123;tdTpl&#125;</span> <span class="attr">headerTemplate</span>=<span class="string">&#123;thTpl&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-table</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">thTpl</span>: <span class="string">'&#123;header.name + " :" + this.$tableData.count&#125;'</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&#123;item.title + " :" + this.$table.data.count&#125;'</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.count++;</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">thTpl</span>: <span class="string">'&#123;header.name + " :" + $tableData.count&#125;'</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&#123;item.title + " :" + $table.data.count&#125;'</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.count++;</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="特殊"><a href="#特殊" class="headerlink" title="特殊"></a>特殊</h3><p>由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 <code>Regular</code> 的插值符号进行修改时，需要进行特殊处理。</p>
@@ -645,6 +646,38 @@
 </tr>
 </tbody>
 </table>
+<p><a name="KLTable+event_checkchange 多选事件"></a></p>
+<h3 id="checkchange-多选事件Event"><a href="#checkchange-多选事件Event" class="headerlink" title="checkchange 多选事件Event"></a><span class="param-title">checkchange 多选事件</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>checked</td>
+<td><code>boolean</code></td>
+<td>是否选中</td>
+</tr>
+<tr>
+<td>item</td>
+<td><code>object</code></td>
+<td>操作对象</td>
+</tr>
+<tr>
+<td>checkedEvent</td>
+<td><code>object</code></td>
+<td>多选事件对象源</td>
+</tr>
+</tbody>
+</table>
 <p><a name="KLTable+event_type 自定义的操作事件"></a></p>
 <h3 id="type-自定义的操作事件Event"><a href="#type-自定义的操作事件Event" class="headerlink" title="type 自定义的操作事件Event"></a><span class="param-title">type 自定义的操作事件</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
@@ -696,6 +729,11 @@
 <td>paging</td>
 <td><code>object</code></td>
 <td>分页对象</td>
+</tr>
+<tr>
+<td>pagingEvent</td>
+<td><code>object</code></td>
+<td>Pager 的分页事件</td>
 </tr>
 </tbody>
 </table>
@@ -1783,11 +1821,12 @@ var component = new NEKUI.Component({
       */});
       
 var anchor = NEKUI.Component.extend({
-    name: 'anchor',
     template: '<a>&nbsp;anchor</a>',
 });
 
-NEKUI.KLTable.filter('txtFilter', function(val) {
+NEKUI.KLTable.$component('anchor', anchor);
+
+NEKUI.KLTable.$filter('txtFilter', function(val) {
     return val + '*';
 });
 
@@ -1861,11 +1900,12 @@ var component = new NEKUI.Component({
 `,
               jsCode: `
 var anchor = NEKUI.Component.extend({
-    name: 'anchor',
     template: '<a>&nbsp;anchor</a>',
 });
 
-NEKUI.KLTable.filter('txtFilter', function(val) {
+NEKUI.KLTable.$component('anchor', anchor);
+
+NEKUI.KLTable.$filter('txtFilter', function(val) {
     return val + '*';
 });
 
@@ -2632,8 +2672,8 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         count: 0,
-        thTpl: '{header.name + " :" + this.$tableData.count}',
-        tdTpl: '{item.title + " :" + this.$table.data.count}',
+        thTpl: '{header.name + " :" + $tableData.count}',
+        tdTpl: '{item.title + " :" + $table.data.count}',
         table: {
             source: []
         }
@@ -2679,8 +2719,8 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         count: 0,
-        thTpl: '{header.name + " :" + this.$tableData.count}',
-        tdTpl: '{item.title + " :" + this.$table.data.count}',
+        thTpl: '{header.name + " :" + $tableData.count}',
+        tdTpl: '{item.title + " :" + $table.data.count}',
         table: {
             source: []
         }
