@@ -45,25 +45,21 @@ const DemoWrap = Regular.extend({
     var btn = this.$refs.onlineBtn;
     console.log(111,this.data)
     var html = `
-<script>
-  var template = \`
+<script id="template" type="template/rgl">
   {! template here !}
   ${this.data.htmlCode.trim()}
-  \`;
 </script>
-
-<div id="app">
-</div>
 `.trim();
+
     var css = `
-#app{
+body{
   padding: 20px;
 }
 `.trim();
     var js = `
 ${this.data.jsCode.trim()}
 
-component.$inject('#app');
+component.$inject(document.body);
 `.trim();
     var data = {
       title: 'nekui demo',

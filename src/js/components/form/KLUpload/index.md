@@ -22,7 +22,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='https://nos.kaolafed.com/upload' file-list={list}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></kl-upload>
 ```
 ```javascript
 var component = new NEKUI.Component({
@@ -38,7 +38,18 @@ var component = new NEKUI.Component({
             name: 'Music.jpg',
             url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
-    }
+    },
+    //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
+    /*onLoadInterceptor: function(json){
+      if(json.code == 200){
+        var data = json.data || {};
+        if(Array.isArray(data)){
+            data = data[0];
+        }
+        return data;
+      }
+      return false;
+    }*/
 });
 ```
 <!-- demo_end -->
