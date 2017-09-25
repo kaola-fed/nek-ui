@@ -62,6 +62,8 @@ const TableHeader = Component.extend({
     this.supr(data);
     this.$table = this.$parent;
     this.$tableData = this.$parent.data;
+    this.data.$table = this.$table;
+    this.data.$tableData = this.$tableData;
   },
   _onHeaderClick(header, headerIndex) {
     if (!header.sortable) {

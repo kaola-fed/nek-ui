@@ -458,7 +458,10 @@ var component = new NEKUI.Component({
 自定义模版中可以通过 `emit` 的方法向上抛出事件。
 如果模版直接写在`kl-table`当中，这部分模版会被作为footer模版进行渲染。这部分模版不需要进行特殊的字符串处理，并可以直接进行数据绑定。
 
-要在模版中使用自定义的 `filter` 则需要将其先注册到 `NEKUI.KLTable` 上。
+要在模版中使用自定义的 `filter` 则需要通过 `NEKUI.KLTable.$filter` 方法 将其先注册到 `NEKUI.KLTable` 上。
+
+
+要在模版中使用自定义的组件则需要通过 `NEKUI.KLTable.$component` 方法 将其先注册到 `NEKUI.KLTable` 上。
 
 注意：
 1. 内嵌形式的模版需要在每行的两端加上 `{'`、`'}` ，否则模版字符串的插值会无法传递给模版组件，
@@ -492,11 +495,12 @@ var component = new NEKUI.Component({
 
 ```javascript
 var anchor = NEKUI.Component.extend({
-    name: 'anchor',
     template: '<a>&nbsp;anchor</a>',
 });
 
-NEKUI.KLTable.filter('txtFilter', function(val) {
+NEKUI.KLTable.$component('anchor', anchor);
+
+NEKUI.KLTable.$filter('txtFilter', function(val) {
     return val + '*';
 });
 
@@ -879,7 +883,7 @@ var component = new NEKUI.Component({
 
 由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　`kl-table` 上挂载的属性无法直接传递到表头和内容当中。
 
-如有需要取得外部的数据，则需要通过 `this.$table.data` 或者 `this.$tableData` 去获取。
+如有需要取得外部的数据，则需要通过 `$table.data` 或者 `$tableData` 去获取。
 
 <div class="m-example"></div>
 
@@ -895,8 +899,8 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         count: 0,
-        thTpl: '{header.name + " :" + this.$tableData.count}',
-        tdTpl: '{item.title + " :" + this.$table.data.count}',
+        thTpl: '{header.name + " :" + $tableData.count}',
+        tdTpl: '{item.title + " :" + $table.data.count}',
         table: {
             source: []
         }

@@ -122,7 +122,9 @@ const KLTable = Component.extend({
       self._updateParentWidth();
       self._updateSticky();
       self._updateTableWidth();
+      this._updateExpandHeight();
       self._initWatchers();
+      this.$update();
     }, 0);
     setTimeout(() => {
       self._getHeaderHeight();
@@ -313,7 +315,7 @@ const KLTable = Component.extend({
     });
   },
   _getExpandRowTop(index) {
-    const a = this.data.source.reduce((sum, row, rowIndex) => {
+    const top = this.data.source.reduce((sum, row, rowIndex) => {
       let newSum = sum;
       if (rowIndex <= index) {
         newSum += row._rowHeight;
@@ -324,7 +326,7 @@ const KLTable = Component.extend({
       }
       return sum;
     }, this.data.headerHeight);
-    return a;
+    return top;
   },
   _updateParentWidth() {
     const data = this.data;
@@ -505,7 +507,7 @@ const KLTable = Component.extend({
   },
   _onItemCheckChange(e) {
     /**
-         * @event cKLTable#heckchange 多选事件
+         * @event KLTable#checkchange 多选事件
          * @property {object} sender 事件来源
          * @property {boolean} checked 是否选中
          * @property {object} item 操作对象
@@ -564,11 +566,13 @@ const KLTable = Component.extend({
          * @property {object} sender 事件来源
          * @property {number} current 事件来源
          * @property {object} paging 分页对象
+         * @property {object} pagingEvent Pager 的分页事件
          */
     this.$emit('paging', {
       sender: this,
       current: e.current,
       paging: this.data.paging,
+      pagingEvent: e,
     });
   },
   _onFixedExpand(e) {
@@ -607,12 +611,18 @@ const KLTable = Component.extend({
   .component('table-header', TableHeader)
   .component('table-body', TableBody);
 
-const oldFilterFunc = KLTable.filter;
-
-KLTable.filter = function (...args) {
+const oldFilter = KLTable.filter;
+KLTable.$filter = function (...args) {
   TableHeader.filter(...args);
   TableBody.filter(...args);
-  oldFilterFunc.apply(KLTable, args);
+  oldFilter.apply(KLTable, args);
+};
+KLTable.filter = KLTable.$filter;
+
+KLTable.$component = function (...args) {
+  TableHeader.component(...args);
+  TableBody.component(...args);
+  KLTable.component(KLTable, ...args);
 };
 
 module.exports = KLTable;
