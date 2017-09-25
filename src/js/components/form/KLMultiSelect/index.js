@@ -21,7 +21,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}         [options.data.onlyChild=true]           => 在单选模式下，是否只允许选中末级
  * @param {string}          [options.data.value=null]               <=> 当前选择值
  * @param {string}          [options.data.rootValue=null]           <=> 模式2种的选择值(具体见文档 demo)
- * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)
+ * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)，这种模式下如果 value 和 rootValue 都传入，回显以 rootValue 为准
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
  * @param {string}          [options.data.placeholder='']           => 默认提示
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
@@ -76,9 +76,10 @@ const KLMultiSelect = Dropdown.extend({
       this.addPath();
       data.tree[0] = data._source;
       if (data._source && data._source.length) {
-        this.initSelected();
         if (data.showRoot) {
           this.initRootSelected();
+        } else {
+          this.initSelected();
         }
       }
       this.$update();
@@ -146,7 +147,7 @@ const KLMultiSelect = Dropdown.extend({
   // 以 value 为标准，对整个 source 数组的每一项进行检测，value 里面是否包含这一项，设置 checked 是 true 还是 false
   initSelected() {
     const data = this.data;
-    if (data.value !== null && data.value !== undefined && data.value !== '') {
+    if (data.value !== null && data.value !== undefined) {
       const _list = data.value.toString().split(data.separator);
       const _checkedItem = function (list) {
         list.map((item2) => {
@@ -204,7 +205,7 @@ const KLMultiSelect = Dropdown.extend({
   initRootSelected() {
     const data = this.data;
     const self = this;
-    if (data.rootValue !== undefined && data.rootValue !== null && data.rootValue !== '') {
+    if (data.rootValue !== undefined && data.rootValue !== null) {
       const _list = data.rootValue.split(data.separator);
       const _checkItem = function (list) {
         list.map((item) => {
@@ -218,7 +219,7 @@ const KLMultiSelect = Dropdown.extend({
         });
       };
       _checkItem(data._source);
-      self.watchValue();
+      this.watchValue();
     } else {
       data.rootValue = '';
     }
@@ -407,11 +408,51 @@ const KLMultiSelect = Dropdown.extend({
     }
     this.toggle(true);
     const _list = data.value.toString().split(data.separator);
-    _list.splice(
-      _list.indexOf((item[data.key].toString() || '').toString()),
-      1,
-    );
+    // 如果是模式2，把删除的 item 的所有子项的 id 从 value 中去除，然后把当前的 id 从 rootValue 中去除
+    if (data.showRoot) {
+      this.deleteRoot(item);
+      return;
+    }
+    const _index = _list.indexOf((item[data.key].toString() || ''));
+    if (_index > -1) {
+      _list.splice(_index, 1);
+    }
     data.value = _list.join(data.separator);
+    this.initSelected();
+    this.watchValue();
+  },
+  deleteRoot(item) {
+    const data = this.data;
+    const _list = data.value.toString().split(data.separator);
+    let _index;
+    const calcValue = function (list) {
+      list.map((child) => {
+        if (child[data.childKey] && child[data.childKey].length) {
+          calcValue(child[data.childKey]);
+        } else {
+          _index = _list.indexOf((child[data.key].toString() || ''));
+          if (_index > -1) {
+            _list.splice(_index, 1);
+          }
+        }
+        return undefined;
+      });
+    };
+    if (item[data.childKey] && item[data.childKey].length) {
+      calcValue(item[data.childKey]);
+    } else {
+      _index = _list.indexOf((item[data.key].toString() || ''));
+      if (_index > -1) {
+        _list.splice(_index, 1);
+      }
+    }
+    data.value = _list.join(data.separator);
+    const _rootList = data.rootValue.toString().split(data.separator);
+    _index = _rootList.indexOf((item[data.key].toString() || ''));
+    if (_index > -1) {
+      _rootList.splice(_index, 1);
+    }
+    data.rootValue = _rootList.join(data.separator);
     this.initSelected();
     this.watchValue();
   },
