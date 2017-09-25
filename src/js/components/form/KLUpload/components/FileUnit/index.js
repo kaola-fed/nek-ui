@@ -87,8 +87,8 @@ const FileUnit = Component.extend({
         } catch (error) {
           console.log(error);
         }
-        if (self.data.beforeOnLoad) {
-          result = self.data.beforeOnLoad.call(self, response);
+        if (self.data.onLoadInterceptor) {
+          result = self.data.onLoadInterceptor.call(self, response);
         }
         response.url = (result && result.url) || response.url;
         if (status >= 200 && status < 400 && result) {
@@ -109,8 +109,8 @@ const FileUnit = Component.extend({
         }
       },
       onerror(e) {
-        if (self.data.beforeOnError) {
-          self.data.beforeOnError.call(self, e);
+        if (self.data.onErrorInterceptor) {
+          self.data.onErrorInterceptor.call(self, e);
         }
         data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');

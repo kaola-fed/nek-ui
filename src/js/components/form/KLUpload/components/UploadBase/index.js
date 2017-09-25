@@ -61,8 +61,8 @@ const UploadBase = Component.extend({
       imageHeight: Infinity,
       imageScale: '',
       encType: 'multipart/form-data',
-      beforeOnLoad: null,
-      beforeOnError: null,
+      onLoadInterceptor: null,
+      onErrorInterceptor: null,
       beforeUpload: null,
       beforeRemove: null,
     });

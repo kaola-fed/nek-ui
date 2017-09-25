@@ -7,7 +7,7 @@ masonry: true
 ### 基本形式
 
 * 目前该上传组件采用FormData向后台提交文件数据
-* 组件上传成功依赖的返回数据结构为`{name: 'xxx', url: 'xxx'}`, 通常和后端接口不一致，可以通过配置`beforeOnLoad`做一层数据转换
+* 组件上传成功依赖的返回数据结构为`{name: 'xxx', url: 'xxx'}`, 通常和后端接口不一致，可以通过配置`onLoadInterceptor`做一层数据转换
 * 可通过file-list指定初始值，格式为[Object], 其中Object结构如下
 ```
     {
@@ -22,7 +22,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} beforeOnLoad={this.beforeOnLoad}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></kl-upload>
 ```
 ```javascript
 var component = new NEKUI.Component({
@@ -38,7 +38,18 @@ var component = new NEKUI.Component({
             name: 'Music.jpg',
             url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
-    }
+    },
+    //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
+    /*onLoadInterceptor: function(json){
+      if(json.code == 200){
+        var data = json.data || {};
+        if(Array.isArray(data)){
+            data = data[0];
+        }
+        return data;
+      }
+      return false;
+    }*/
 });
 ```
 <!-- demo_end -->
