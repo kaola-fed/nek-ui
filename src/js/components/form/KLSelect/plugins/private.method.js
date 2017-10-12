@@ -44,61 +44,19 @@ module.exports = function PrivateMethod(Component) {
       const maxShowCount = data.maxShowCount;
       const isCaseSensitive = data.isCaseSensitive;
       searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
-      const targetSource = source.filter((item, index) => {
+      let targetSource = source.filter((item, index) => {
         const text = `${item[nameKey]}`;
         const value = isCaseSensitive ? text.toLowerCase() : text;
         return (
           (searchValue && value.indexOf(searchValue) >= 0) ||
           (!searchValue && index < maxShowCount)
         );
-      }).sort((pre, next) => this.Levenshtein_Distance_Percent(pre[data.nameKey], searchValue) - this.Levenshtein_Distance_Percent(next[data.nameKey], searchValue));
+      });
+      if (searchValue) {
+        targetSource = targetSource.sort((pre, next) => pre[data.nameKey].length - next[data.nameKey].length);
+      }
       if (data.limit) return targetSource.slice(0, data.limit);
       return targetSource;
-    },
-    Levenshtein_Distance(s, t) {
-      const n = s.length;// length of s
-      const m = t.length;// length of t
-      const d = [];// matrix
-      let i;// iterates through s
-      let j;// iterates through t
-      let si;// ith character of s
-      let tj;// jth character of t
-      let cost;// cost
-    // Step 1
-      if (n === 0) return m;
-      if (m === 0) return n;
-    // Step 2
-      for (i = 0; i <= n; i += 1) {
-        d[i] = [];
-        d[i][0] = i;
-      }
-      for (j = 0; j <= m; j += 1) {
-        d[0][j] = j;
-      }
-    // Step 3
-      for (i = 1; i <= n; i += 1) {
-        si = s.charAt(i - 1);
-      // Step 4
-        for (j = 1; j <= m; j += 1) {
-          tj = t.charAt(j - 1);
-    // Step 5
-          if (si === tj) {
-            cost = 0;
-          } else {
-            cost = 1;
-          }
-    // Step 6
-          d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + cost);
-        }
-      }
-    // Step 7
-      return d[n][m];
-    },
-
-    Levenshtein_Distance_Percent(s, t) {
-      const l = s.length > t.length ? s.length : t.length;
-      const d = this.Levenshtein_Distance(s, t);
-      return (1 - (d / l)).toFixed(4);
     },
     /**
      * 获取 Map 在 List<Map> 中的索引，因为是数据，所以转化为字符串比较
