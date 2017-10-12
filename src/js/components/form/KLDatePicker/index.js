@@ -1,7 +1,13 @@
 /**
- * @file KLDatePicker 日期选择
- * @author   sensen<rainforest92@126.com>
+ * ------------------------------------------------------------
+ * KLDatePicker 日期选择
+ * @author   sensen(rainforest92@126.com)
+ * ------------------------------------------------------------
  */
+
+const dom = require('regularjs').dom;
+/* eslint no-unused-vars: 0 */
+const Popper = require('../../layout/KLPopper/index.js');
 
 const Dropdown = require('../common/Dropdown');
 const template = require('./index.html');
@@ -35,6 +41,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
  * @param {number}        [options.data.width]            => 组件宽度
  * @param {string}        [options.data.class]            => 补充class
+ * @param {boolean}      [options.data.appendToBody]                   => 是否将下拉直接插到body上，一般用于弹框和表格样式有问题的时候
  */
 const KLDatePicker = Dropdown.extend({
   name: 'kl-date-picker',
@@ -55,6 +62,7 @@ const KLDatePicker = Dropdown.extend({
       required: false,
       showTime: false,
       open: false,
+      appendToBody: false,
     });
     this.supr();
 
@@ -155,6 +163,18 @@ const KLDatePicker = Dropdown.extend({
     });
 
     this.initValidation();
+  },
+  init() {
+    const that = this;
+    this.data.reference = dom.element(this.$refs.dropdown_hd);
+    this.$watch('open', (newValue) => {
+      if (newValue === true && that.data.appendToBody) {
+        document.body.appendChild(dom.element(that.$refs.dropdown_bd));
+        // 获取dropdown_hd宽度
+        // const referenceWidth = this.data.reference.offsetWidth;
+        // this.$refs.dropdown_bd.style.minWidth = referenceWidth + 'px';
+      }
+    });
   },
   select(date, time) {
     if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {

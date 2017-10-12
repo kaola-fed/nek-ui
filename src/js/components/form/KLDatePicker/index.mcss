@@ -29,3 +29,7 @@
         }
     }
 }
+
+.kldatepicker_dropdown_bd {
+    z-index: 1000;
+}

@@ -168,3 +168,17 @@
         line-height: 12px;
     }
 }
+
+.klselect_dropdown_bd {
+    z-index: 1000;
+    clear: both;
+    .m-listview {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 0;
+        max-height: 200px;
+        .u-check {
+            line-height: 0;
+        }
+    }
+}

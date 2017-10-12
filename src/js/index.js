@@ -54,6 +54,7 @@ const Components = {
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
 
   // Layout
+  KLPopper: require('./components/layout/KLPopper'),
   KLTable: require('./components/layout/KLTable'),
   KLTableCol: require('./components/layout/KLTable/KLTableCol'),
   KLTableTemplate: require('./components/layout/KLTable/KLTableTemplate'),

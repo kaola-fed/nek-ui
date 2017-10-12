@@ -2,7 +2,7 @@
 <div class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
     <div class="m-left-pager">
         {#if !!pageSize || pageSize === 0}
-        <div class="page_size"><kl-select placeholder="" value={pageSize} source={pageSizeList} size="sm"></kl-select></div>
+        <div class="page_size"><kl-select appendToBody={true} placeholder="" value={pageSize} source={pageSizeList} size="sm"></kl-select></div>
         {/if}
 
         {#if !!sumTotal || sumTotal === 0}

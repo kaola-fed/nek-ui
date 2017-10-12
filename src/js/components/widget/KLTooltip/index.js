@@ -4,6 +4,8 @@
  * ------------------------------------------------------------
  */
 
+/* eslint no-unused-vars: 0 */
+const Popper = require('../../layout/KLPopper/index.js');
 const dom = require('regularjs').dom;
 
 const Component = require('../../../ui-base/component');
@@ -22,11 +24,8 @@ const TipPopUp = Component.extend({
     if (this.$root === this) {
       this.$inject(document.body);
     }
-    this.data.element = dom.element(this);
   },
-  getElement() {
-    return this.data.element;
-  },
+
 });
 
 /**
@@ -40,7 +39,7 @@ const TipPopUp = Component.extend({
 const KLTooltip = Component.extend({
   name: 'kl-tooltip',
   template:
-    '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
+    '{#inc this.$body}',
   config(data) {
     this.defaults({
       tip: '',
@@ -48,6 +47,24 @@ const KLTooltip = Component.extend({
     });
 
     this.supr(data);
+  },
+  init() {
+    const self = this;
+    const element = dom.element(this);
+    dom.on(element, 'mouseenter', () => {
+      self.onMouseEnter();
+    });
+    dom.on(element, 'mouseleave', () => {
+      self.onMouseLeave();
+    });
+  },
+  onMouseEnter() {
+    this.getInstance();
+  },
+  onMouseLeave() {
+    if (this.data.instance) {
+      this.data.instance.destroy();
+    }
   },
   destroy() {
     if (this.data.instance) {
@@ -57,14 +74,16 @@ const KLTooltip = Component.extend({
   },
   getInstance() {
     const self = this;
-    const { tip, placement } = this.data;
     if (!this.data.instance) {
       const instance = new TipPopUp({
-        data: { tip, placement },
+        data: {
+          tip: self.data.tip,
+          placement: self.data.placement,
+          reference: dom.element(this),
+        },
       });
 
       instance.$on('destroy', () => {
-        self.$refs.trigger.data.isShow = false;
         self.data.instance = null;
       });
 
@@ -73,5 +92,6 @@ const KLTooltip = Component.extend({
     return this.data.instance;
   },
 });
+
 
 module.exports = KLTooltip;

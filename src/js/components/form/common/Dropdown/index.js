@@ -102,10 +102,12 @@ _.dom.on(document, 'click', (e) => {
   const opens = Dropdown.opens.map(d => d);
   opens.forEach((dropdown) => {
     // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
+    const dropdownHd = dropdown.$refs.dropdown_hd;
+    const dropdownBd = dropdown.$refs.dropdown_bd;
     const element = dropdown.$refs.element;
     let element2 = e.target;
     while (element2) {
-      if (element === element2) return;
+      if (dropdownHd === element2 || dropdownBd === element2 || element === element2) return;
       element2 = element2.parentElement;
     }
     dropdown.toggle(false);
