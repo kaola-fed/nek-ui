@@ -4030,7 +4030,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	-moz-user-select:none;
 	-ms-user-select:none;
 	user-select:none;
-	font-size:12px;
 }
 .u-calendar .calendar_item{
 	display:inline-block;
@@ -4128,9 +4127,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#e31436;
 	background:#fff;
 	border:1px solid #e31436;
-}
-.kldatepicker_dropdown_bd{
-	z-index:1000;
 }
 .u-numberinput{
 	display:inline-block;
@@ -4716,19 +4712,6 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .u-select-sm .m-listview>li{
 	line-height:12px;
-}
-.klselect_dropdown_bd{
-	z-index:1000;
-	clear:both;
-}
-.klselect_dropdown_bd .m-listview{
-	overflow-x:hidden;
-	overflow-y:auto;
-	padding:0;
-	max-height:200px;
-}
-.klselect_dropdown_bd .m-listview .u-check{
-	line-height:0;
 }
 .u-text.u-text_unlink{
 	display:inline;
@@ -6663,6 +6646,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#333;
 }
 .m-menuItem{
+	display:block;
 	position:relative;
 	padding:8px 0 8px 54px;
 	line-height:1em;

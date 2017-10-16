@@ -367,7 +367,7 @@
 
     <h2 id="pageName">菜单栏 <span>KLSidebar</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p><code>KLSidebar</code>只是对<code>KLMenu</code>的进一步封装,如果无法满足需求,可直接使用<code>KLMenu</code>组件; 除了<code>KLMenu</code>的功能外, 还增加菜单展开/收起的功能, 注意需要配置<code>bodyEl</code>属性</p>
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p><code>KLSidebar</code>只是对<code>KLMenu</code>的进一步封装,如果无法满足需求,可直接使用<code>KLMenu</code>组件; 除了<code>KLMenu</code>的功能外, 还增加菜单展开/收起的功能, 注意需要配置<code>bodyEl</code>属性; 注意:如果是单页,需要额外配置router属性,并将页面链接的<code>url属性</code>改为<code>route属性</code>;</p>
 <p><div class="m-example"></div></p>
 <p><style>
     .m-example {
@@ -467,6 +467,12 @@
 <td>=&gt; 菜单结构中的链接key名</td>
 </tr>
 <tr>
+<td>[options.data.routeKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;route&quot;</code></td>
+<td>=&gt; 单页spa应用时,使用</td>
+</tr>
+<tr>
 <td>[options.data.pageKey]</td>
 <td><code>string</code></td>
 <td><code>&quot;title&quot;</code></td>
@@ -477,6 +483,12 @@
 <td><code>string</code></td>
 <td><code>&quot;children&quot;</code></td>
 <td>=&gt; 一级菜单对象下二级菜单数组的key名</td>
+</tr>
+<tr>
+<td>[options.data.router]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 单页应用时, 请将regular-state的manager实例传入</td>
 </tr>
 </tbody>
 </table>

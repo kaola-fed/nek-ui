@@ -86,56 +86,55 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLCheck: __webpack_require__(215),
 	  KLCheckGroup: __webpack_require__(217),
 	  KLDatePicker: __webpack_require__(219),
-	  KLRadioGroup: __webpack_require__(345),
-	  KLMultiSelect: __webpack_require__(347),
-	  KLButton: __webpack_require__(349),
-	  KLForm: __webpack_require__(351),
-	  KLFormItem: __webpack_require__(353),
+	  KLRadioGroup: __webpack_require__(342),
+	  KLMultiSelect: __webpack_require__(344),
+	  KLButton: __webpack_require__(346),
+	  KLForm: __webpack_require__(348),
+	  KLFormItem: __webpack_require__(350),
 	  KLInput: __webpack_require__(69),
-	  KLSelect: __webpack_require__(355),
-	  KLText: __webpack_require__(360),
-	  KLTextArea: __webpack_require__(362),
-	  KLUpload: __webpack_require__(364),
+	  KLSelect: __webpack_require__(352),
+	  KLText: __webpack_require__(357),
+	  KLTextArea: __webpack_require__(359),
+	  KLUpload: __webpack_require__(361),
 	  KLTreeView: __webpack_require__(190),
 
 	  // Navigation
-	  KLSidebar: __webpack_require__(393),
-	  KLMenu: __webpack_require__(395),
-	  KLMenuItem: __webpack_require__(397),
-	  KLSubMenu: __webpack_require__(400),
-	  KLPager: __webpack_require__(402),
-	  KLTabs: __webpack_require__(404),
-	  KLTab: __webpack_require__(406),
-	  KLSteps: __webpack_require__(408),
-	  KLCrumb: __webpack_require__(410),
-	  KLCrumbItem: __webpack_require__(412),
+	  KLSidebar: __webpack_require__(390),
+	  KLMenu: __webpack_require__(392),
+	  KLMenuItem: __webpack_require__(394),
+	  KLSubMenu: __webpack_require__(397),
+	  KLPager: __webpack_require__(399),
+	  KLTabs: __webpack_require__(401),
+	  KLTab: __webpack_require__(403),
+	  KLSteps: __webpack_require__(405),
+	  KLCrumb: __webpack_require__(407),
+	  KLCrumbItem: __webpack_require__(409),
 
 	  // Notice
-	  KLModal: __webpack_require__(386),
-	  KLNotify: __webpack_require__(414),
-	  KLPopConfirm: __webpack_require__(416),
-	  KLMessage: __webpack_require__(418),
+	  KLModal: __webpack_require__(383),
+	  KLNotify: __webpack_require__(411),
+	  KLPopConfirm: __webpack_require__(413),
+	  KLMessage: __webpack_require__(427),
 
 	  // Widget
-	  KLBadge: __webpack_require__(420),
-	  KLProgress: __webpack_require__(422),
-	  KLLoading: __webpack_require__(424),
-	  KLTooltip: __webpack_require__(426),
-	  KLIcon: __webpack_require__(440),
-	  KLImagePreview: __webpack_require__(385),
-	  KLLocaleProvider: __webpack_require__(442),
+	  KLBadge: __webpack_require__(429),
+	  KLProgress: __webpack_require__(431),
+	  KLLoading: __webpack_require__(433),
+	  KLTooltip: __webpack_require__(435),
+	  KLIcon: __webpack_require__(437),
+	  KLImagePreview: __webpack_require__(382),
+	  KLLocaleProvider: __webpack_require__(439),
 
 	  // Layout
-	  KLPopper: __webpack_require__(220),
-	  KLTable: __webpack_require__(443),
-	  KLTableCol: __webpack_require__(453),
-	  KLTableTemplate: __webpack_require__(454),
-	  KLRow: __webpack_require__(455),
-	  KLCol: __webpack_require__(457),
-	  KLCard: __webpack_require__(459),
-	  KLCardTools: __webpack_require__(461),
-	  KLSearch: __webpack_require__(462),
-	  KLSearchMore: __webpack_require__(464)
+	  KLTable: __webpack_require__(440),
+	  KLTableCol: __webpack_require__(450),
+	  KLTableTemplate: __webpack_require__(451),
+	  KLRow: __webpack_require__(452),
+	  KLCol: __webpack_require__(454),
+	  KLCard: __webpack_require__(456),
+	  KLCardTools: __webpack_require__(458),
+	  KLSearch: __webpack_require__(459),
+	  KLSearchMore: __webpack_require__(461)
 	};
 
 	backward(Components);
@@ -1548,21 +1547,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onKeyUp: function _onKeyUp($event) {
 	    this.validate('keyup');
+	    /**
+	     * @event KLInput#keyup 原生keyup事件
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('keyup', $event);
 	  },
 	  _onBlur: function _onBlur($event) {
 	    this.validate('blur');
+	    /**
+	     * @event KLInput#blur 原生blur事件
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('blur', $event);
 	  },
 	  _onFocus: function _onFocus($event) {
+	    /**
+	     * @event KLInput#focus 原生focus事件
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('focus', $event);
 	  },
 	  _onChange: function _onChange($event) {
 	    this.validate('change');
+	    /**
+	     * @event KLInput#change 原生change事件
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('change', $event);
 	  },
 	  _onInput: function _onInput($event) {
 	    this.validate('input');
+	    /**
+	     * @event KLInput#input 原生input事件
+	     * @param {event} MouseEvent 点击的鼠标事件
+	     */
 	    this.$emit('input', $event);
 	  },
 	  _onSearch: function _onSearch($event) {
@@ -2227,6 +2246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var _ = __webpack_require__(72);
+	var Regular = __webpack_require__(71);
 
 	var rClassGenerator = function rClassGenerator(rClass) {
 	  exports[rClass] = function (elem, value) {
@@ -2287,6 +2307,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (parseInt(newValue)) {
 	      elem.style.width = parseInt(newValue) + 'px';
 	      elem.style.display = 'inline-block';
+	    }
+	  });
+	};
+
+	/**
+	 * r-route kl-menu中使用, 支持单页跳转
+	 * @param elem
+	 */
+	exports['r-route'] = function (elem, value) {
+	  this.$watch(value, function () {
+	    var data = this.data;
+	    var url = data.url,
+	        route = data.route,
+	        rootMenu = data.rootMenu;
+	    var router = rootMenu.data.router;
+
+
+	    if (url) {
+	      elem.href = url;
+	    } else if (router && route) {
+	      Regular.directive('r-link').link.call(this, elem, route);
 	    }
 	  });
 	};
@@ -6830,12 +6871,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  });
 	  opens.forEach(function (dropdown) {
 	    // 这个地方不能用stopPropagation来处理，因为展开一个dropdown的同时要收起其他dropdown
-	    var dropdownHd = dropdown.$refs.dropdown_hd;
-	    var dropdownBd = dropdown.$refs.dropdown_bd;
 	    var element = dropdown.$refs.element;
 	    var element2 = e.target;
 	    while (element2) {
-	      if (dropdownHd === element2 || dropdownBd === element2 || element === element2) return;
+	      if (element === element2) return;
 	      element2 = element2.parentElement;
 	    }
 	    dropdown.toggle(false);
@@ -7668,7 +7707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 183 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div ref=\"dropdown_hd\" class=\"dropdown_hd\" z-dis={disabled} on-click={this.toggle()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    {#if open}\n    <div ref=\"dropdown_bd\" class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-dropdown {class}\" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" z-dis={disabled} on-click={this.toggle()}>\n        {#if this.$body}\n            {#inc this.$body}\n        {#else}\n            <a class=\"u-btn\" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class=\"u-icon u-icon-caret-down\"></i></a>\n        {/if}\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <ul class=\"m-listview\">\n            {#list source as item}\n            <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>\n            {/list}\n        </ul>\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
 /* 184 */
@@ -10155,25 +10194,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * KLDatePicker 日期选择
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file KLDatePicker 日期选择
+	 * @author   sensen<rainforest92@126.com>
 	 */
 
-	var dom = __webpack_require__(71).dom;
-	/* eslint no-unused-vars: 0 */
-	var Popper = __webpack_require__(220);
-
 	var Dropdown = __webpack_require__(178);
-	var template = __webpack_require__(223);
+	var template = __webpack_require__(220);
 	var _ = __webpack_require__(72);
 
 	var filter = __webpack_require__(78);
-	var Calendar = __webpack_require__(224);
+	var Calendar = __webpack_require__(221);
 	var bowser = __webpack_require__(173);
-	var moment = __webpack_require__(226);
-	var polyfill = __webpack_require__(344);
+	var moment = __webpack_require__(223);
+	var polyfill = __webpack_require__(341);
 
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
@@ -10197,7 +10230,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
 	 * @param {number}        [options.data.width]            => 组件宽度
 	 * @param {string}        [options.data.class]            => 补充class
-	 * @param {boolean}      [options.data.appendToBody]                   => 是否将下拉直接插到body上，一般用于弹框和表格样式有问题的时候
 	 */
 	var KLDatePicker = Dropdown.extend({
 	  name: 'kl-date-picker',
@@ -10217,8 +10249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      autofocus: false,
 	      required: false,
 	      showTime: false,
-	      open: false,
-	      appendToBody: false
+	      open: false
 	    });
 	    this.supr();
 
@@ -10315,18 +10346,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
-	  init: function init() {
-	    var that = this;
-	    this.data.reference = dom.element(this.$refs.dropdown_hd);
-	    this.$watch('open', function (newValue) {
-	      if (newValue === true && that.data.appendToBody) {
-	        document.body.appendChild(dom.element(that.$refs.dropdown_bd));
-	        // 获取dropdown_hd宽度
-	        // const referenceWidth = this.data.reference.offsetWidth;
-	        // this.$refs.dropdown_bd.style.minWidth = referenceWidth + 'px';
-	      }
-	    });
-	  },
 	  select: function select(date, time) {
 	    if (this.data.readonly || this.data.disabled || this.isOutOfRange(date)) {
 	      return;
@@ -10422,2580 +10441,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 220 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-	'use strict';
-
-	var PopperJS = __webpack_require__(221);
-	var Component = __webpack_require__(70);
-	var dom = __webpack_require__(71).dom;
-	var PlacementObj = __webpack_require__(222);
-
-	var Popper = Component.extend({
-	  name: 'kl-popper',
-	  template: '{#inc this.$body}',
-	  config: function config(data) {
-	    this.defaults({
-	      placement: 'bottom',
-	      reference: {},
-	      popper: {},
-	      appendToBody: true,
-	      currentPlacement: ''
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init() {
-	    if (this.data.appendToBody === true) {
-	      this.createPopper();
-	    }
-	  },
-	  createPopper: function createPopper() {
-	    var that = this;
-	    var data = this.data;
-	    var popperElm = dom.element(this);
-	    var reference = data.reference;
-	    if (!reference) {
-	      return;
-	    }
-	    this.data.popperJS = new PopperJS(reference, popperElm, {
-	      gpuAcceleration: false,
-	      placement: PlacementObj.placement[data.placement],
-	      onUpdate: function onUpdate(instance) {
-	        var realPlacement = instance.attributes['x-placement'];
-	        that.restPlacement(realPlacement);
-	      },
-	      onCreate: function onCreate(instance) {
-	        var realPlacement = instance.attributes['x-placement'];
-	        that.restPlacement(realPlacement);
-	      }
-	    });
-	  },
-	  restPlacement: function restPlacement(realPlacement) {
-	    var data = this.data;
-	    if (realPlacement !== PlacementObj.placement[data.placement]) {
-	      data.placement = PlacementObj.xplacement[realPlacement];
-	    }
-	    this.$update();
-	  },
-	  destroy: function destroy() {
-	    if (this.data.popperJS) {
-	      this.data.popperJS.destroy();
-	    }
-	    this.supr();
-	  },
-	  update: function update() {
-	    if (this.data.popperJS) {
-	      this.data.popperJS.update();
-	    } else {
-	      this.createPopper();
-	    }
-	  }
-	});
-
-		module.exports = Popper;
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(global) {/**!
-	 * @fileOverview Kickass library to create and place poppers near their reference elements.
-	 * @version 1.12.5
-	 * @license
-	 * Copyright (c) 2016 Federico Zivolo and contributors
-	 *
-	 * Permission is hereby granted, free of charge, to any person obtaining a copy
-	 * of this software and associated documentation files (the "Software"), to deal
-	 * in the Software without restriction, including without limitation the rights
-	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-	 * copies of the Software, and to permit persons to whom the Software is
-	 * furnished to do so, subject to the following conditions:
-	 *
-	 * The above copyright notice and this permission notice shall be included in all
-	 * copies or substantial portions of the Software.
-	 *
-	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-	 * SOFTWARE.
-	 */
-	(function (global, factory) {
-		 true ? module.exports = factory() :
-		typeof define === 'function' && define.amd ? define(factory) :
-		(global.Popper = factory());
-	}(this, (function () { 'use strict';
-
-	var nativeHints = ['native code', '[object MutationObserverConstructor]'];
-
-	/**
-	 * Determine if a function is implemented natively (as opposed to a polyfill).
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Function | undefined} fn the function to check
-	 * @returns {Boolean}
-	 */
-	var isNative = (function (fn) {
-	  return nativeHints.some(function (hint) {
-	    return (fn || '').toString().indexOf(hint) > -1;
-	  });
-	});
-
-	var isBrowser = typeof window !== 'undefined';
-	var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
-	var timeoutDuration = 0;
-	for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
-	  if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
-	    timeoutDuration = 1;
-	    break;
-	  }
-	}
-
-	function microtaskDebounce(fn) {
-	  var scheduled = false;
-	  var i = 0;
-	  var elem = document.createElement('span');
-
-	  // MutationObserver provides a mechanism for scheduling microtasks, which
-	  // are scheduled *before* the next task. This gives us a way to debounce
-	  // a function but ensure it's called *before* the next paint.
-	  var observer = new MutationObserver(function () {
-	    fn();
-	    scheduled = false;
-	  });
-
-	  observer.observe(elem, { attributes: true });
-
-	  return function () {
-	    if (!scheduled) {
-	      scheduled = true;
-	      elem.setAttribute('x-index', i);
-	      i = i + 1; // don't use compund (+=) because it doesn't get optimized in V8
-	    }
-	  };
-	}
-
-	function taskDebounce(fn) {
-	  var scheduled = false;
-	  return function () {
-	    if (!scheduled) {
-	      scheduled = true;
-	      setTimeout(function () {
-	        scheduled = false;
-	        fn();
-	      }, timeoutDuration);
-	    }
-	  };
-	}
-
-	// It's common for MutationObserver polyfills to be seen in the wild, however
-	// these rely on Mutation Events which only occur when an element is connected
-	// to the DOM. The algorithm used in this module does not use a connected element,
-	// and so we must ensure that a *native* MutationObserver is available.
-	var supportsNativeMutationObserver = isBrowser && isNative(window.MutationObserver);
-
-	/**
-	* Create a debounced version of a method, that's asynchronously deferred
-	* but called in the minimum time possible.
-	*
-	* @method
-	* @memberof Popper.Utils
-	* @argument {Function} fn
-	* @returns {Function}
-	*/
-	var debounce = supportsNativeMutationObserver ? microtaskDebounce : taskDebounce;
-
-	/**
-	 * Check if the given variable is a function
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Any} functionToCheck - variable to check
-	 * @returns {Boolean} answer to: is a function?
-	 */
-	function isFunction(functionToCheck) {
-	  var getType = {};
-	  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
-	}
-
-	/**
-	 * Get CSS computed property of the given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Eement} element
-	 * @argument {String} property
-	 */
-	function getStyleComputedProperty(element, property) {
-	  if (element.nodeType !== 1) {
-	    return [];
-	  }
-	  // NOTE: 1 DOM access here
-	  var css = window.getComputedStyle(element, null);
-	  return property ? css[property] : css;
-	}
-
-	/**
-	 * Returns the parentNode or the host of the element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @returns {Element} parent
-	 */
-	function getParentNode(element) {
-	  if (element.nodeName === 'HTML') {
-	    return element;
-	  }
-	  return element.parentNode || element.host;
-	}
-
-	/**
-	 * Returns the scrolling parent of the given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @returns {Element} scroll parent
-	 */
-	function getScrollParent(element) {
-	  // Return body, `getScroll` will take care to get the correct `scrollTop` from it
-	  if (!element || ['HTML', 'BODY', '#document'].indexOf(element.nodeName) !== -1) {
-	    return window.document.body;
-	  }
-
-	  // Firefox want us to check `-x` and `-y` variations as well
-
-	  var _getStyleComputedProp = getStyleComputedProperty(element),
-	      overflow = _getStyleComputedProp.overflow,
-	      overflowX = _getStyleComputedProp.overflowX,
-	      overflowY = _getStyleComputedProp.overflowY;
-
-	  if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
-	    return element;
-	  }
-
-	  return getScrollParent(getParentNode(element));
-	}
-
-	/**
-	 * Returns the offset parent of the given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @returns {Element} offset parent
-	 */
-	function getOffsetParent(element) {
-	  // NOTE: 1 DOM access here
-	  var offsetParent = element && element.offsetParent;
-	  var nodeName = offsetParent && offsetParent.nodeName;
-
-	  if (!nodeName || nodeName === 'BODY' || nodeName === 'HTML') {
-	    return window.document.documentElement;
-	  }
-
-	  // .offsetParent will return the closest TD or TABLE in case
-	  // no offsetParent is present, I hate this job...
-	  if (['TD', 'TABLE'].indexOf(offsetParent.nodeName) !== -1 && getStyleComputedProperty(offsetParent, 'position') === 'static') {
-	    return getOffsetParent(offsetParent);
-	  }
-
-	  return offsetParent;
-	}
-
-	function isOffsetContainer(element) {
-	  var nodeName = element.nodeName;
-
-	  if (nodeName === 'BODY') {
-	    return false;
-	  }
-	  return nodeName === 'HTML' || getOffsetParent(element.firstElementChild) === element;
-	}
-
-	/**
-	 * Finds the root node (document, shadowDOM root) of the given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} node
-	 * @returns {Element} root node
-	 */
-	function getRoot(node) {
-	  if (node.parentNode !== null) {
-	    return getRoot(node.parentNode);
-	  }
-
-	  return node;
-	}
-
-	/**
-	 * Finds the offset parent common to the two provided nodes
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element1
-	 * @argument {Element} element2
-	 * @returns {Element} common offset parent
-	 */
-	function findCommonOffsetParent(element1, element2) {
-	  // This check is needed to avoid errors in case one of the elements isn't defined for any reason
-	  if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
-	    return window.document.documentElement;
-	  }
-
-	  // Here we make sure to give as "start" the element that comes first in the DOM
-	  var order = element1.compareDocumentPosition(element2) & Node.DOCUMENT_POSITION_FOLLOWING;
-	  var start = order ? element1 : element2;
-	  var end = order ? element2 : element1;
-
-	  // Get common ancestor container
-	  var range = document.createRange();
-	  range.setStart(start, 0);
-	  range.setEnd(end, 0);
-	  var commonAncestorContainer = range.commonAncestorContainer;
-
-	  // Both nodes are inside #document
-
-	  if (element1 !== commonAncestorContainer && element2 !== commonAncestorContainer || start.contains(end)) {
-	    if (isOffsetContainer(commonAncestorContainer)) {
-	      return commonAncestorContainer;
-	    }
-
-	    return getOffsetParent(commonAncestorContainer);
-	  }
-
-	  // one of the nodes is inside shadowDOM, find which one
-	  var element1root = getRoot(element1);
-	  if (element1root.host) {
-	    return findCommonOffsetParent(element1root.host, element2);
-	  } else {
-	    return findCommonOffsetParent(element1, getRoot(element2).host);
-	  }
-	}
-
-	/**
-	 * Gets the scroll value of the given element in the given side (top and left)
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @argument {String} side `top` or `left`
-	 * @returns {number} amount of scrolled pixels
-	 */
-	function getScroll(element) {
-	  var side = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'top';
-
-	  var upperSide = side === 'top' ? 'scrollTop' : 'scrollLeft';
-	  var nodeName = element.nodeName;
-
-	  if (nodeName === 'BODY' || nodeName === 'HTML') {
-	    var html = window.document.documentElement;
-	    var scrollingElement = window.document.scrollingElement || html;
-	    return scrollingElement[upperSide];
-	  }
-
-	  return element[upperSide];
-	}
-
-	/*
-	 * Sum or subtract the element scroll values (left and top) from a given rect object
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {Object} rect - Rect object you want to change
-	 * @param {HTMLElement} element - The element from the function reads the scroll values
-	 * @param {Boolean} subtract - set to true if you want to subtract the scroll values
-	 * @return {Object} rect - The modifier rect object
-	 */
-	function includeScroll(rect, element) {
-	  var subtract = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-	  var scrollTop = getScroll(element, 'top');
-	  var scrollLeft = getScroll(element, 'left');
-	  var modifier = subtract ? -1 : 1;
-	  rect.top += scrollTop * modifier;
-	  rect.bottom += scrollTop * modifier;
-	  rect.left += scrollLeft * modifier;
-	  rect.right += scrollLeft * modifier;
-	  return rect;
-	}
-
-	/*
-	 * Helper to detect borders of a given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {CSSStyleDeclaration} styles
-	 * Result of `getStyleComputedProperty` on the given element
-	 * @param {String} axis - `x` or `y`
-	 * @return {number} borders - The borders size of the given axis
-	 */
-
-	function getBordersSize(styles, axis) {
-	  var sideA = axis === 'x' ? 'Left' : 'Top';
-	  var sideB = sideA === 'Left' ? 'Right' : 'Bottom';
-
-	  return +styles['border' + sideA + 'Width'].split('px')[0] + +styles['border' + sideB + 'Width'].split('px')[0];
-	}
-
-	/**
-	 * Tells if you are running Internet Explorer 10
-	 * @method
-	 * @memberof Popper.Utils
-	 * @returns {Boolean} isIE10
-	 */
-	var isIE10 = undefined;
-
-	var isIE10$1 = function () {
-	  if (isIE10 === undefined) {
-	    isIE10 = navigator.appVersion.indexOf('MSIE 10') !== -1;
-	  }
-	  return isIE10;
-	};
-
-	function getSize(axis, body, html, computedStyle) {
-	  return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE10$1() ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
-	}
-
-	function getWindowSizes() {
-	  var body = window.document.body;
-	  var html = window.document.documentElement;
-	  var computedStyle = isIE10$1() && window.getComputedStyle(html);
-
-	  return {
-	    height: getSize('Height', body, html, computedStyle),
-	    width: getSize('Width', body, html, computedStyle)
-	  };
-	}
-
-	var classCallCheck = function (instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	};
-
-	var createClass = function () {
-	  function defineProperties(target, props) {
-	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];
-	      descriptor.enumerable = descriptor.enumerable || false;
-	      descriptor.configurable = true;
-	      if ("value" in descriptor) descriptor.writable = true;
-	      Object.defineProperty(target, descriptor.key, descriptor);
-	    }
-	  }
-
-	  return function (Constructor, protoProps, staticProps) {
-	    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-	    if (staticProps) defineProperties(Constructor, staticProps);
-	    return Constructor;
-	  };
-	}();
-
-
-
-
-
-	var defineProperty = function (obj, key, value) {
-	  if (key in obj) {
-	    Object.defineProperty(obj, key, {
-	      value: value,
-	      enumerable: true,
-	      configurable: true,
-	      writable: true
-	    });
-	  } else {
-	    obj[key] = value;
-	  }
-
-	  return obj;
-	};
-
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];
-
-	    for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }
-
-	  return target;
-	};
-
-	/**
-	 * Given element offsets, generate an output similar to getBoundingClientRect
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Object} offsets
-	 * @returns {Object} ClientRect like output
-	 */
-	function getClientRect(offsets) {
-	  return _extends({}, offsets, {
-	    right: offsets.left + offsets.width,
-	    bottom: offsets.top + offsets.height
-	  });
-	}
-
-	/**
-	 * Get bounding client rect of given element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {HTMLElement} element
-	 * @return {Object} client rect
-	 */
-	function getBoundingClientRect(element) {
-	  var rect = {};
-
-	  // IE10 10 FIX: Please, don't ask, the element isn't
-	  // considered in DOM in some circumstances...
-	  // This isn't reproducible in IE10 compatibility mode of IE11
-	  if (isIE10$1()) {
-	    try {
-	      rect = element.getBoundingClientRect();
-	      var scrollTop = getScroll(element, 'top');
-	      var scrollLeft = getScroll(element, 'left');
-	      rect.top += scrollTop;
-	      rect.left += scrollLeft;
-	      rect.bottom += scrollTop;
-	      rect.right += scrollLeft;
-	    } catch (err) {}
-	  } else {
-	    rect = element.getBoundingClientRect();
-	  }
-
-	  var result = {
-	    left: rect.left,
-	    top: rect.top,
-	    width: rect.right - rect.left,
-	    height: rect.bottom - rect.top
-	  };
-
-	  // subtract scrollbar size from sizes
-	  var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
-	  var width = sizes.width || element.clientWidth || result.right - result.left;
-	  var height = sizes.height || element.clientHeight || result.bottom - result.top;
-
-	  var horizScrollbar = element.offsetWidth - width;
-	  var vertScrollbar = element.offsetHeight - height;
-
-	  // if an hypothetical scrollbar is detected, we must be sure it's not a `border`
-	  // we make this check conditional for performance reasons
-	  if (horizScrollbar || vertScrollbar) {
-	    var styles = getStyleComputedProperty(element);
-	    horizScrollbar -= getBordersSize(styles, 'x');
-	    vertScrollbar -= getBordersSize(styles, 'y');
-
-	    result.width -= horizScrollbar;
-	    result.height -= vertScrollbar;
-	  }
-
-	  return getClientRect(result);
-	}
-
-	function getOffsetRectRelativeToArbitraryNode(children, parent) {
-	  var isIE10 = isIE10$1();
-	  var isHTML = parent.nodeName === 'HTML';
-	  var childrenRect = getBoundingClientRect(children);
-	  var parentRect = getBoundingClientRect(parent);
-	  var scrollParent = getScrollParent(children);
-
-	  var styles = getStyleComputedProperty(parent);
-	  var borderTopWidth = +styles.borderTopWidth.split('px')[0];
-	  var borderLeftWidth = +styles.borderLeftWidth.split('px')[0];
-
-	  var offsets = getClientRect({
-	    top: childrenRect.top - parentRect.top - borderTopWidth,
-	    left: childrenRect.left - parentRect.left - borderLeftWidth,
-	    width: childrenRect.width,
-	    height: childrenRect.height
-	  });
-	  offsets.marginTop = 0;
-	  offsets.marginLeft = 0;
-
-	  // Subtract margins of documentElement in case it's being used as parent
-	  // we do this only on HTML because it's the only element that behaves
-	  // differently when margins are applied to it. The margins are included in
-	  // the box of the documentElement, in the other cases not.
-	  if (!isIE10 && isHTML) {
-	    var marginTop = +styles.marginTop.split('px')[0];
-	    var marginLeft = +styles.marginLeft.split('px')[0];
-
-	    offsets.top -= borderTopWidth - marginTop;
-	    offsets.bottom -= borderTopWidth - marginTop;
-	    offsets.left -= borderLeftWidth - marginLeft;
-	    offsets.right -= borderLeftWidth - marginLeft;
-
-	    // Attach marginTop and marginLeft because in some circumstances we may need them
-	    offsets.marginTop = marginTop;
-	    offsets.marginLeft = marginLeft;
-	  }
-
-	  if (isIE10 ? parent.contains(scrollParent) : parent === scrollParent && scrollParent.nodeName !== 'BODY') {
-	    offsets = includeScroll(offsets, parent);
-	  }
-
-	  return offsets;
-	}
-
-	function getViewportOffsetRectRelativeToArtbitraryNode(element) {
-	  var html = window.document.documentElement;
-	  var relativeOffset = getOffsetRectRelativeToArbitraryNode(element, html);
-	  var width = Math.max(html.clientWidth, window.innerWidth || 0);
-	  var height = Math.max(html.clientHeight, window.innerHeight || 0);
-
-	  var scrollTop = getScroll(html);
-	  var scrollLeft = getScroll(html, 'left');
-
-	  var offset = {
-	    top: scrollTop - relativeOffset.top + relativeOffset.marginTop,
-	    left: scrollLeft - relativeOffset.left + relativeOffset.marginLeft,
-	    width: width,
-	    height: height
-	  };
-
-	  return getClientRect(offset);
-	}
-
-	/**
-	 * Check if the given element is fixed or is inside a fixed parent
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @argument {Element} customContainer
-	 * @returns {Boolean} answer to "isFixed?"
-	 */
-	function isFixed(element) {
-	  var nodeName = element.nodeName;
-	  if (nodeName === 'BODY' || nodeName === 'HTML') {
-	    return false;
-	  }
-	  if (getStyleComputedProperty(element, 'position') === 'fixed') {
-	    return true;
-	  }
-	  return isFixed(getParentNode(element));
-	}
-
-	/**
-	 * Computed the boundaries limits and return them
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {HTMLElement} popper
-	 * @param {HTMLElement} reference
-	 * @param {number} padding
-	 * @param {HTMLElement} boundariesElement - Element used to define the boundaries
-	 * @returns {Object} Coordinates of the boundaries
-	 */
-	function getBoundaries(popper, reference, padding, boundariesElement) {
-	  // NOTE: 1 DOM access here
-	  var boundaries = { top: 0, left: 0 };
-	  var offsetParent = findCommonOffsetParent(popper, reference);
-
-	  // Handle viewport case
-	  if (boundariesElement === 'viewport') {
-	    boundaries = getViewportOffsetRectRelativeToArtbitraryNode(offsetParent);
-	  } else {
-	    // Handle other cases based on DOM element used as boundaries
-	    var boundariesNode = void 0;
-	    if (boundariesElement === 'scrollParent') {
-	      boundariesNode = getScrollParent(getParentNode(popper));
-	      if (boundariesNode.nodeName === 'BODY') {
-	        boundariesNode = window.document.documentElement;
-	      }
-	    } else if (boundariesElement === 'window') {
-	      boundariesNode = window.document.documentElement;
-	    } else {
-	      boundariesNode = boundariesElement;
-	    }
-
-	    var offsets = getOffsetRectRelativeToArbitraryNode(boundariesNode, offsetParent);
-
-	    // In case of HTML, we need a different computation
-	    if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-	      var _getWindowSizes = getWindowSizes(),
-	          height = _getWindowSizes.height,
-	          width = _getWindowSizes.width;
-
-	      boundaries.top += offsets.top - offsets.marginTop;
-	      boundaries.bottom = height + offsets.top;
-	      boundaries.left += offsets.left - offsets.marginLeft;
-	      boundaries.right = width + offsets.left;
-	    } else {
-	      // for all the other DOM elements, this one is good
-	      boundaries = offsets;
-	    }
-	  }
-
-	  // Add paddings
-	  boundaries.left += padding;
-	  boundaries.top += padding;
-	  boundaries.right -= padding;
-	  boundaries.bottom -= padding;
-
-	  return boundaries;
-	}
-
-	function getArea(_ref) {
-	  var width = _ref.width,
-	      height = _ref.height;
-
-	  return width * height;
-	}
-
-	/**
-	 * Utility used to transform the `auto` placement to the placement with more
-	 * available space.
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
-	  var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
-
-	  if (placement.indexOf('auto') === -1) {
-	    return placement;
-	  }
-
-	  var boundaries = getBoundaries(popper, reference, padding, boundariesElement);
-
-	  var rects = {
-	    top: {
-	      width: boundaries.width,
-	      height: refRect.top - boundaries.top
-	    },
-	    right: {
-	      width: boundaries.right - refRect.right,
-	      height: boundaries.height
-	    },
-	    bottom: {
-	      width: boundaries.width,
-	      height: boundaries.bottom - refRect.bottom
-	    },
-	    left: {
-	      width: refRect.left - boundaries.left,
-	      height: boundaries.height
-	    }
-	  };
-
-	  var sortedAreas = Object.keys(rects).map(function (key) {
-	    return _extends({
-	      key: key
-	    }, rects[key], {
-	      area: getArea(rects[key])
-	    });
-	  }).sort(function (a, b) {
-	    return b.area - a.area;
-	  });
-
-	  var filteredAreas = sortedAreas.filter(function (_ref2) {
-	    var width = _ref2.width,
-	        height = _ref2.height;
-	    return width >= popper.clientWidth && height >= popper.clientHeight;
-	  });
-
-	  var computedPlacement = filteredAreas.length > 0 ? filteredAreas[0].key : sortedAreas[0].key;
-
-	  var variation = placement.split('-')[1];
-
-	  return computedPlacement + (variation ? '-' + variation : '');
-	}
-
-	/**
-	 * Get offsets to the reference element
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {Object} state
-	 * @param {Element} popper - the popper element
-	 * @param {Element} reference - the reference element (the popper will be relative to this)
-	 * @returns {Object} An object containing the offsets which will be applied to the popper
-	 */
-	function getReferenceOffsets(state, popper, reference) {
-	  var commonOffsetParent = findCommonOffsetParent(popper, reference);
-	  return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent);
-	}
-
-	/**
-	 * Get the outer sizes of the given element (offset size + margins)
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element
-	 * @returns {Object} object containing width and height properties
-	 */
-	function getOuterSizes(element) {
-	  var styles = window.getComputedStyle(element);
-	  var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
-	  var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
-	  var result = {
-	    width: element.offsetWidth + y,
-	    height: element.offsetHeight + x
-	  };
-	  return result;
-	}
-
-	/**
-	 * Get the opposite placement of the given one
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {String} placement
-	 * @returns {String} flipped placement
-	 */
-	function getOppositePlacement(placement) {
-	  var hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
-	  return placement.replace(/left|right|bottom|top/g, function (matched) {
-	    return hash[matched];
-	  });
-	}
-
-	/**
-	 * Get offsets to the popper
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {Object} position - CSS position the Popper will get applied
-	 * @param {HTMLElement} popper - the popper element
-	 * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
-	 * @param {String} placement - one of the valid placement options
-	 * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
-	 */
-	function getPopperOffsets(popper, referenceOffsets, placement) {
-	  placement = placement.split('-')[0];
-
-	  // Get popper node sizes
-	  var popperRect = getOuterSizes(popper);
-
-	  // Add position, width and height to our offsets object
-	  var popperOffsets = {
-	    width: popperRect.width,
-	    height: popperRect.height
-	  };
-
-	  // depending by the popper placement we have to compute its offsets slightly differently
-	  var isHoriz = ['right', 'left'].indexOf(placement) !== -1;
-	  var mainSide = isHoriz ? 'top' : 'left';
-	  var secondarySide = isHoriz ? 'left' : 'top';
-	  var measurement = isHoriz ? 'height' : 'width';
-	  var secondaryMeasurement = !isHoriz ? 'height' : 'width';
-
-	  popperOffsets[mainSide] = referenceOffsets[mainSide] + referenceOffsets[measurement] / 2 - popperRect[measurement] / 2;
-	  if (placement === secondarySide) {
-	    popperOffsets[secondarySide] = referenceOffsets[secondarySide] - popperRect[secondaryMeasurement];
-	  } else {
-	    popperOffsets[secondarySide] = referenceOffsets[getOppositePlacement(secondarySide)];
-	  }
-
-	  return popperOffsets;
-	}
-
-	/**
-	 * Mimics the `find` method of Array
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Array} arr
-	 * @argument prop
-	 * @argument value
-	 * @returns index or -1
-	 */
-	function find(arr, check) {
-	  // use native find if supported
-	  if (Array.prototype.find) {
-	    return arr.find(check);
-	  }
-
-	  // use `filter` to obtain the same behavior of `find`
-	  return arr.filter(check)[0];
-	}
-
-	/**
-	 * Return the index of the matching object
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Array} arr
-	 * @argument prop
-	 * @argument value
-	 * @returns index or -1
-	 */
-	function findIndex(arr, prop, value) {
-	  // use native findIndex if supported
-	  if (Array.prototype.findIndex) {
-	    return arr.findIndex(function (cur) {
-	      return cur[prop] === value;
-	    });
-	  }
-
-	  // use `find` + `indexOf` if `findIndex` isn't supported
-	  var match = find(arr, function (obj) {
-	    return obj[prop] === value;
-	  });
-	  return arr.indexOf(match);
-	}
-
-	/**
-	 * Loop trough the list of modifiers and run them in order,
-	 * each of them will then edit the data object.
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {dataObject} data
-	 * @param {Array} modifiers
-	 * @param {String} ends - Optional modifier name used as stopper
-	 * @returns {dataObject}
-	 */
-	function runModifiers(modifiers, data, ends) {
-	  var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
-
-	  modifiersToRun.forEach(function (modifier) {
-	    if (modifier.function) {
-	      console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
-	    }
-	    var fn = modifier.function || modifier.fn;
-	    if (modifier.enabled && isFunction(fn)) {
-	      // Add properties to offsets to make them a complete clientRect object
-	      // we do this before each modifier to make sure the previous one doesn't
-	      // mess with these values
-	      data.offsets.popper = getClientRect(data.offsets.popper);
-	      data.offsets.reference = getClientRect(data.offsets.reference);
-
-	      data = fn(data, modifier);
-	    }
-	  });
-
-	  return data;
-	}
-
-	/**
-	 * Updates the position of the popper, computing the new offsets and applying
-	 * the new style.<br />
-	 * Prefer `scheduleUpdate` over `update` because of performance reasons.
-	 * @method
-	 * @memberof Popper
-	 */
-	function update() {
-	  // if popper is destroyed, don't perform any further update
-	  if (this.state.isDestroyed) {
-	    return;
-	  }
-
-	  var data = {
-	    instance: this,
-	    styles: {},
-	    arrowStyles: {},
-	    attributes: {},
-	    flipped: false,
-	    offsets: {}
-	  };
-
-	  // compute reference element offsets
-	  data.offsets.reference = getReferenceOffsets(this.state, this.popper, this.reference);
-
-	  // compute auto placement, store placement inside the data object,
-	  // modifiers will be able to edit `placement` if needed
-	  // and refer to originalPlacement to know the original value
-	  data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
-
-	  // store the computed placement inside `originalPlacement`
-	  data.originalPlacement = data.placement;
-
-	  // compute the popper offsets
-	  data.offsets.popper = getPopperOffsets(this.popper, data.offsets.reference, data.placement);
-	  data.offsets.popper.position = 'absolute';
-
-	  // run the modifiers
-	  data = runModifiers(this.modifiers, data);
-
-	  // the first `update` will call `onCreate` callback
-	  // the other ones will call `onUpdate` callback
-	  if (!this.state.isCreated) {
-	    this.state.isCreated = true;
-	    this.options.onCreate(data);
-	  } else {
-	    this.options.onUpdate(data);
-	  }
-	}
-
-	/**
-	 * Helper used to know if the given modifier is enabled.
-	 * @method
-	 * @memberof Popper.Utils
-	 * @returns {Boolean}
-	 */
-	function isModifierEnabled(modifiers, modifierName) {
-	  return modifiers.some(function (_ref) {
-	    var name = _ref.name,
-	        enabled = _ref.enabled;
-	    return enabled && name === modifierName;
-	  });
-	}
-
-	/**
-	 * Get the prefixed supported property name
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {String} property (camelCase)
-	 * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
-	 */
-	function getSupportedPropertyName(property) {
-	  var prefixes = [false, 'ms', 'Webkit', 'Moz', 'O'];
-	  var upperProp = property.charAt(0).toUpperCase() + property.slice(1);
-
-	  for (var i = 0; i < prefixes.length - 1; i++) {
-	    var prefix = prefixes[i];
-	    var toCheck = prefix ? '' + prefix + upperProp : property;
-	    if (typeof window.document.body.style[toCheck] !== 'undefined') {
-	      return toCheck;
-	    }
-	  }
-	  return null;
-	}
-
-	/**
-	 * Destroy the popper
-	 * @method
-	 * @memberof Popper
-	 */
-	function destroy() {
-	  this.state.isDestroyed = true;
-
-	  // touch DOM only if `applyStyle` modifier is enabled
-	  if (isModifierEnabled(this.modifiers, 'applyStyle')) {
-	    this.popper.removeAttribute('x-placement');
-	    this.popper.style.left = '';
-	    this.popper.style.position = '';
-	    this.popper.style.top = '';
-	    this.popper.style[getSupportedPropertyName('transform')] = '';
-	  }
-
-	  this.disableEventListeners();
-
-	  // remove the popper if user explicity asked for the deletion on destroy
-	  // do not use `remove` because IE11 doesn't support it
-	  if (this.options.removeOnDestroy) {
-	    this.popper.parentNode.removeChild(this.popper);
-	  }
-	  return this;
-	}
-
-	function attachToScrollParents(scrollParent, event, callback, scrollParents) {
-	  var isBody = scrollParent.nodeName === 'BODY';
-	  var target = isBody ? window : scrollParent;
-	  target.addEventListener(event, callback, { passive: true });
-
-	  if (!isBody) {
-	    attachToScrollParents(getScrollParent(target.parentNode), event, callback, scrollParents);
-	  }
-	  scrollParents.push(target);
-	}
-
-	/**
-	 * Setup needed event listeners used to update the popper position
-	 * @method
-	 * @memberof Popper.Utils
-	 * @private
-	 */
-	function setupEventListeners(reference, options, state, updateBound) {
-	  // Resize event listener on window
-	  state.updateBound = updateBound;
-	  window.addEventListener('resize', state.updateBound, { passive: true });
-
-	  // Scroll event listener on scroll parents
-	  var scrollElement = getScrollParent(reference);
-	  attachToScrollParents(scrollElement, 'scroll', state.updateBound, state.scrollParents);
-	  state.scrollElement = scrollElement;
-	  state.eventsEnabled = true;
-
-	  return state;
-	}
-
-	/**
-	 * It will add resize/scroll events and start recalculating
-	 * position of the popper element when they are triggered.
-	 * @method
-	 * @memberof Popper
-	 */
-	function enableEventListeners() {
-	  if (!this.state.eventsEnabled) {
-	    this.state = setupEventListeners(this.reference, this.options, this.state, this.scheduleUpdate);
-	  }
-	}
-
-	/**
-	 * Remove event listeners used to update the popper position
-	 * @method
-	 * @memberof Popper.Utils
-	 * @private
-	 */
-	function removeEventListeners(reference, state) {
-	  // Remove resize event listener on window
-	  window.removeEventListener('resize', state.updateBound);
-
-	  // Remove scroll event listener on scroll parents
-	  state.scrollParents.forEach(function (target) {
-	    target.removeEventListener('scroll', state.updateBound);
-	  });
-
-	  // Reset state
-	  state.updateBound = null;
-	  state.scrollParents = [];
-	  state.scrollElement = null;
-	  state.eventsEnabled = false;
-	  return state;
-	}
-
-	/**
-	 * It will remove resize/scroll events and won't recalculate popper position
-	 * when they are triggered. It also won't trigger onUpdate callback anymore,
-	 * unless you call `update` method manually.
-	 * @method
-	 * @memberof Popper
-	 */
-	function disableEventListeners() {
-	  if (this.state.eventsEnabled) {
-	    window.cancelAnimationFrame(this.scheduleUpdate);
-	    this.state = removeEventListeners(this.reference, this.state);
-	  }
-	}
-
-	/**
-	 * Tells if a given input is a number
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {*} input to check
-	 * @return {Boolean}
-	 */
-	function isNumeric(n) {
-	  return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
-	}
-
-	/**
-	 * Set the style to the given popper
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element - Element to apply the style to
-	 * @argument {Object} styles
-	 * Object with a list of properties and values which will be applied to the element
-	 */
-	function setStyles(element, styles) {
-	  Object.keys(styles).forEach(function (prop) {
-	    var unit = '';
-	    // add unit if the value is numeric and is one of the following
-	    if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
-	      unit = 'px';
-	    }
-	    element.style[prop] = styles[prop] + unit;
-	  });
-	}
-
-	/**
-	 * Set the attributes to the given popper
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {Element} element - Element to apply the attributes to
-	 * @argument {Object} styles
-	 * Object with a list of properties and values which will be applied to the element
-	 */
-	function setAttributes(element, attributes) {
-	  Object.keys(attributes).forEach(function (prop) {
-	    var value = attributes[prop];
-	    if (value !== false) {
-	      element.setAttribute(prop, attributes[prop]);
-	    } else {
-	      element.removeAttribute(prop);
-	    }
-	  });
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by `update` method
-	 * @argument {Object} data.styles - List of style properties - values to apply to popper element
-	 * @argument {Object} data.attributes - List of attribute properties - values to apply to popper element
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The same data object
-	 */
-	function applyStyle(data) {
-	  // any property present in `data.styles` will be applied to the popper,
-	  // in this way we can make the 3rd party modifiers add custom styles to it
-	  // Be aware, modifiers could override the properties defined in the previous
-	  // lines of this modifier!
-	  setStyles(data.instance.popper, data.styles);
-
-	  // any property present in `data.attributes` will be applied to the popper,
-	  // they will be set as HTML attributes of the element
-	  setAttributes(data.instance.popper, data.attributes);
-
-	  // if arrowElement is defined and arrowStyles has some properties
-	  if (data.arrowElement && Object.keys(data.arrowStyles).length) {
-	    setStyles(data.arrowElement, data.arrowStyles);
-	  }
-
-	  return data;
-	}
-
-	/**
-	 * Set the x-placement attribute before everything else because it could be used
-	 * to add margins to the popper margins needs to be calculated to get the
-	 * correct popper offsets.
-	 * @method
-	 * @memberof Popper.modifiers
-	 * @param {HTMLElement} reference - The reference element used to position the popper
-	 * @param {HTMLElement} popper - The HTML element used as popper.
-	 * @param {Object} options - Popper.js options
-	 */
-	function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
-	  // compute reference element offsets
-	  var referenceOffsets = getReferenceOffsets(state, popper, reference);
-
-	  // compute auto placement, store placement inside the data object,
-	  // modifiers will be able to edit `placement` if needed
-	  // and refer to originalPlacement to know the original value
-	  var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
-
-	  popper.setAttribute('x-placement', placement);
-
-	  // Apply `position` to popper before anything else because
-	  // without the position applied we can't guarantee correct computations
-	  setStyles(popper, { position: 'absolute' });
-
-	  return options;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by `update` method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function computeStyle(data, options) {
-	  var x = options.x,
-	      y = options.y;
-	  var popper = data.offsets.popper;
-
-	  // Remove this legacy support in Popper.js v2
-
-	  var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
-	    return modifier.name === 'applyStyle';
-	  }).gpuAcceleration;
-	  if (legacyGpuAccelerationOption !== undefined) {
-	    console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!');
-	  }
-	  var gpuAcceleration = legacyGpuAccelerationOption !== undefined ? legacyGpuAccelerationOption : options.gpuAcceleration;
-
-	  var offsetParent = getOffsetParent(data.instance.popper);
-	  var offsetParentRect = getBoundingClientRect(offsetParent);
-
-	  // Styles
-	  var styles = {
-	    position: popper.position
-	  };
-
-	  // floor sides to avoid blurry text
-	  var offsets = {
-	    left: Math.floor(popper.left),
-	    top: Math.floor(popper.top),
-	    bottom: Math.floor(popper.bottom),
-	    right: Math.floor(popper.right)
-	  };
-
-	  var sideA = x === 'bottom' ? 'top' : 'bottom';
-	  var sideB = y === 'right' ? 'left' : 'right';
-
-	  // if gpuAcceleration is set to `true` and transform is supported,
-	  //  we use `translate3d` to apply the position to the popper we
-	  // automatically use the supported prefixed version if needed
-	  var prefixedProperty = getSupportedPropertyName('transform');
-
-	  // now, let's make a step back and look at this code closely (wtf?)
-	  // If the content of the popper grows once it's been positioned, it
-	  // may happen that the popper gets misplaced because of the new content
-	  // overflowing its reference element
-	  // To avoid this problem, we provide two options (x and y), which allow
-	  // the consumer to define the offset origin.
-	  // If we position a popper on top of a reference element, we can set
-	  // `x` to `top` to make the popper grow towards its top instead of
-	  // its bottom.
-	  var left = void 0,
-	      top = void 0;
-	  if (sideA === 'bottom') {
-	    top = -offsetParentRect.height + offsets.bottom;
-	  } else {
-	    top = offsets.top;
-	  }
-	  if (sideB === 'right') {
-	    left = -offsetParentRect.width + offsets.right;
-	  } else {
-	    left = offsets.left;
-	  }
-	  if (gpuAcceleration && prefixedProperty) {
-	    styles[prefixedProperty] = 'translate3d(' + left + 'px, ' + top + 'px, 0)';
-	    styles[sideA] = 0;
-	    styles[sideB] = 0;
-	    styles.willChange = 'transform';
-	  } else {
-	    // othwerise, we use the standard `top`, `left`, `bottom` and `right` properties
-	    var invertTop = sideA === 'bottom' ? -1 : 1;
-	    var invertLeft = sideB === 'right' ? -1 : 1;
-	    styles[sideA] = top * invertTop;
-	    styles[sideB] = left * invertLeft;
-	    styles.willChange = sideA + ', ' + sideB;
-	  }
-
-	  // Attributes
-	  var attributes = {
-	    'x-placement': data.placement
-	  };
-
-	  // Update `data` attributes, styles and arrowStyles
-	  data.attributes = _extends({}, attributes, data.attributes);
-	  data.styles = _extends({}, styles, data.styles);
-	  data.arrowStyles = _extends({}, data.offsets.arrow, data.arrowStyles);
-
-	  return data;
-	}
-
-	/**
-	 * Helper used to know if the given modifier depends from another one.<br />
-	 * It checks if the needed modifier is listed and enabled.
-	 * @method
-	 * @memberof Popper.Utils
-	 * @param {Array} modifiers - list of modifiers
-	 * @param {String} requestingName - name of requesting modifier
-	 * @param {String} requestedName - name of requested modifier
-	 * @returns {Boolean}
-	 */
-	function isModifierRequired(modifiers, requestingName, requestedName) {
-	  var requesting = find(modifiers, function (_ref) {
-	    var name = _ref.name;
-	    return name === requestingName;
-	  });
-
-	  var isRequired = !!requesting && modifiers.some(function (modifier) {
-	    return modifier.name === requestedName && modifier.enabled && modifier.order < requesting.order;
-	  });
-
-	  if (!isRequired) {
-	    var _requesting = '`' + requestingName + '`';
-	    var requested = '`' + requestedName + '`';
-	    console.warn(requested + ' modifier is required by ' + _requesting + ' modifier in order to work, be sure to include it before ' + _requesting + '!');
-	  }
-	  return isRequired;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function arrow(data, options) {
-	  // arrow depends on keepTogether in order to work
-	  if (!isModifierRequired(data.instance.modifiers, 'arrow', 'keepTogether')) {
-	    return data;
-	  }
-
-	  var arrowElement = options.element;
-
-	  // if arrowElement is a string, suppose it's a CSS selector
-	  if (typeof arrowElement === 'string') {
-	    arrowElement = data.instance.popper.querySelector(arrowElement);
-
-	    // if arrowElement is not found, don't run the modifier
-	    if (!arrowElement) {
-	      return data;
-	    }
-	  } else {
-	    // if the arrowElement isn't a query selector we must check that the
-	    // provided DOM node is child of its popper node
-	    if (!data.instance.popper.contains(arrowElement)) {
-	      console.warn('WARNING: `arrow.element` must be child of its popper element!');
-	      return data;
-	    }
-	  }
-
-	  var placement = data.placement.split('-')[0];
-	  var _data$offsets = data.offsets,
-	      popper = _data$offsets.popper,
-	      reference = _data$offsets.reference;
-
-	  var isVertical = ['left', 'right'].indexOf(placement) !== -1;
-
-	  var len = isVertical ? 'height' : 'width';
-	  var sideCapitalized = isVertical ? 'Top' : 'Left';
-	  var side = sideCapitalized.toLowerCase();
-	  var altSide = isVertical ? 'left' : 'top';
-	  var opSide = isVertical ? 'bottom' : 'right';
-	  var arrowElementSize = getOuterSizes(arrowElement)[len];
-
-	  //
-	  // extends keepTogether behavior making sure the popper and its
-	  // reference have enough pixels in conjuction
-	  //
-
-	  // top/left side
-	  if (reference[opSide] - arrowElementSize < popper[side]) {
-	    data.offsets.popper[side] -= popper[side] - (reference[opSide] - arrowElementSize);
-	  }
-	  // bottom/right side
-	  if (reference[side] + arrowElementSize > popper[opSide]) {
-	    data.offsets.popper[side] += reference[side] + arrowElementSize - popper[opSide];
-	  }
-
-	  // compute center of the popper
-	  var center = reference[side] + reference[len] / 2 - arrowElementSize / 2;
-
-	  // Compute the sideValue using the updated popper offsets
-	  // take popper margin in account because we don't have this info available
-	  var popperMarginSide = getStyleComputedProperty(data.instance.popper, 'margin' + sideCapitalized).replace('px', '');
-	  var sideValue = center - getClientRect(data.offsets.popper)[side] - popperMarginSide;
-
-	  // prevent arrowElement from being placed not contiguously to its popper
-	  sideValue = Math.max(Math.min(popper[len] - arrowElementSize, sideValue), 0);
-
-	  data.arrowElement = arrowElement;
-	  data.offsets.arrow = {};
-	  data.offsets.arrow[side] = Math.round(sideValue);
-	  data.offsets.arrow[altSide] = ''; // make sure to unset any eventual altSide value from the DOM node
-
-	  return data;
-	}
-
-	/**
-	 * Get the opposite placement variation of the given one
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {String} placement variation
-	 * @returns {String} flipped placement variation
-	 */
-	function getOppositeVariation(variation) {
-	  if (variation === 'end') {
-	    return 'start';
-	  } else if (variation === 'start') {
-	    return 'end';
-	  }
-	  return variation;
-	}
-
-	/**
-	 * List of accepted placements to use as values of the `placement` option.<br />
-	 * Valid placements are:
-	 * - `auto`
-	 * - `top`
-	 * - `right`
-	 * - `bottom`
-	 * - `left`
-	 *
-	 * Each placement can have a variation from this list:
-	 * - `-start`
-	 * - `-end`
-	 *
-	 * Variations are interpreted easily if you think of them as the left to right
-	 * written languages. Horizontally (`top` and `bottom`), `start` is left and `end`
-	 * is right.<br />
-	 * Vertically (`left` and `right`), `start` is top and `end` is bottom.
-	 *
-	 * Some valid examples are:
-	 * - `top-end` (on top of reference, right aligned)
-	 * - `right-start` (on right of reference, top aligned)
-	 * - `bottom` (on bottom, centered)
-	 * - `auto-right` (on the side with more space available, alignment depends by placement)
-	 *
-	 * @static
-	 * @type {Array}
-	 * @enum {String}
-	 * @readonly
-	 * @method placements
-	 * @memberof Popper
-	 */
-	var placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
-
-	// Get rid of `auto` `auto-start` and `auto-end`
-	var validPlacements = placements.slice(3);
-
-	/**
-	 * Given an initial placement, returns all the subsequent placements
-	 * clockwise (or counter-clockwise).
-	 *
-	 * @method
-	 * @memberof Popper.Utils
-	 * @argument {String} placement - A valid placement (it accepts variations)
-	 * @argument {Boolean} counter - Set to true to walk the placements counterclockwise
-	 * @returns {Array} placements including their variations
-	 */
-	function clockwise(placement) {
-	  var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-	  var index = validPlacements.indexOf(placement);
-	  var arr = validPlacements.slice(index + 1).concat(validPlacements.slice(0, index));
-	  return counter ? arr.reverse() : arr;
-	}
-
-	var BEHAVIORS = {
-	  FLIP: 'flip',
-	  CLOCKWISE: 'clockwise',
-	  COUNTERCLOCKWISE: 'counterclockwise'
-	};
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function flip(data, options) {
-	  // if `inner` modifier is enabled, we can't use the `flip` modifier
-	  if (isModifierEnabled(data.instance.modifiers, 'inner')) {
-	    return data;
-	  }
-
-	  if (data.flipped && data.placement === data.originalPlacement) {
-	    // seems like flip is trying to loop, probably there's not enough space on any of the flippable sides
-	    return data;
-	  }
-
-	  var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, options.boundariesElement);
-
-	  var placement = data.placement.split('-')[0];
-	  var placementOpposite = getOppositePlacement(placement);
-	  var variation = data.placement.split('-')[1] || '';
-
-	  var flipOrder = [];
-
-	  switch (options.behavior) {
-	    case BEHAVIORS.FLIP:
-	      flipOrder = [placement, placementOpposite];
-	      break;
-	    case BEHAVIORS.CLOCKWISE:
-	      flipOrder = clockwise(placement);
-	      break;
-	    case BEHAVIORS.COUNTERCLOCKWISE:
-	      flipOrder = clockwise(placement, true);
-	      break;
-	    default:
-	      flipOrder = options.behavior;
-	  }
-
-	  flipOrder.forEach(function (step, index) {
-	    if (placement !== step || flipOrder.length === index + 1) {
-	      return data;
-	    }
-
-	    placement = data.placement.split('-')[0];
-	    placementOpposite = getOppositePlacement(placement);
-
-	    var popperOffsets = data.offsets.popper;
-	    var refOffsets = data.offsets.reference;
-
-	    // using floor because the reference offsets may contain decimals we are not going to consider here
-	    var floor = Math.floor;
-	    var overlapsRef = placement === 'left' && floor(popperOffsets.right) > floor(refOffsets.left) || placement === 'right' && floor(popperOffsets.left) < floor(refOffsets.right) || placement === 'top' && floor(popperOffsets.bottom) > floor(refOffsets.top) || placement === 'bottom' && floor(popperOffsets.top) < floor(refOffsets.bottom);
-
-	    var overflowsLeft = floor(popperOffsets.left) < floor(boundaries.left);
-	    var overflowsRight = floor(popperOffsets.right) > floor(boundaries.right);
-	    var overflowsTop = floor(popperOffsets.top) < floor(boundaries.top);
-	    var overflowsBottom = floor(popperOffsets.bottom) > floor(boundaries.bottom);
-
-	    var overflowsBoundaries = placement === 'left' && overflowsLeft || placement === 'right' && overflowsRight || placement === 'top' && overflowsTop || placement === 'bottom' && overflowsBottom;
-
-	    // flip the variation if required
-	    var isVertical = ['top', 'bottom'].indexOf(placement) !== -1;
-	    var flippedVariation = !!options.flipVariations && (isVertical && variation === 'start' && overflowsLeft || isVertical && variation === 'end' && overflowsRight || !isVertical && variation === 'start' && overflowsTop || !isVertical && variation === 'end' && overflowsBottom);
-
-	    if (overlapsRef || overflowsBoundaries || flippedVariation) {
-	      // this boolean to detect any flip loop
-	      data.flipped = true;
-
-	      if (overlapsRef || overflowsBoundaries) {
-	        placement = flipOrder[index + 1];
-	      }
-
-	      if (flippedVariation) {
-	        variation = getOppositeVariation(variation);
-	      }
-
-	      data.placement = placement + (variation ? '-' + variation : '');
-
-	      // this object contains `position`, we want to preserve it along with
-	      // any additional property we may add in the future
-	      data.offsets.popper = _extends({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
-
-	      data = runModifiers(data.instance.modifiers, data, 'flip');
-	    }
-	  });
-	  return data;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function keepTogether(data) {
-	  var _data$offsets = data.offsets,
-	      popper = _data$offsets.popper,
-	      reference = _data$offsets.reference;
-
-	  var placement = data.placement.split('-')[0];
-	  var floor = Math.floor;
-	  var isVertical = ['top', 'bottom'].indexOf(placement) !== -1;
-	  var side = isVertical ? 'right' : 'bottom';
-	  var opSide = isVertical ? 'left' : 'top';
-	  var measurement = isVertical ? 'width' : 'height';
-
-	  if (popper[side] < floor(reference[opSide])) {
-	    data.offsets.popper[opSide] = floor(reference[opSide]) - popper[measurement];
-	  }
-	  if (popper[opSide] > floor(reference[side])) {
-	    data.offsets.popper[opSide] = floor(reference[side]);
-	  }
-
-	  return data;
-	}
-
-	/**
-	 * Converts a string containing value + unit into a px value number
-	 * @function
-	 * @memberof {modifiers~offset}
-	 * @private
-	 * @argument {String} str - Value + unit string
-	 * @argument {String} measurement - `height` or `width`
-	 * @argument {Object} popperOffsets
-	 * @argument {Object} referenceOffsets
-	 * @returns {Number|String}
-	 * Value in pixels, or original string if no values were extracted
-	 */
-	function toValue(str, measurement, popperOffsets, referenceOffsets) {
-	  // separate value from unit
-	  var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
-	  var value = +split[1];
-	  var unit = split[2];
-
-	  // If it's not a number it's an operator, I guess
-	  if (!value) {
-	    return str;
-	  }
-
-	  if (unit.indexOf('%') === 0) {
-	    var element = void 0;
-	    switch (unit) {
-	      case '%p':
-	        element = popperOffsets;
-	        break;
-	      case '%':
-	      case '%r':
-	      default:
-	        element = referenceOffsets;
-	    }
-
-	    var rect = getClientRect(element);
-	    return rect[measurement] / 100 * value;
-	  } else if (unit === 'vh' || unit === 'vw') {
-	    // if is a vh or vw, we calculate the size based on the viewport
-	    var size = void 0;
-	    if (unit === 'vh') {
-	      size = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	    } else {
-	      size = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-	    }
-	    return size / 100 * value;
-	  } else {
-	    // if is an explicit pixel unit, we get rid of the unit and keep the value
-	    // if is an implicit unit, it's px, and we return just the value
-	    return value;
-	  }
-	}
-
-	/**
-	 * Parse an `offset` string to extrapolate `x` and `y` numeric offsets.
-	 * @function
-	 * @memberof {modifiers~offset}
-	 * @private
-	 * @argument {String} offset
-	 * @argument {Object} popperOffsets
-	 * @argument {Object} referenceOffsets
-	 * @argument {String} basePlacement
-	 * @returns {Array} a two cells array with x and y offsets in numbers
-	 */
-	function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
-	  var offsets = [0, 0];
-
-	  // Use height if placement is left or right and index is 0 otherwise use width
-	  // in this way the first offset will use an axis and the second one
-	  // will use the other one
-	  var useHeight = ['right', 'left'].indexOf(basePlacement) !== -1;
-
-	  // Split the offset string to obtain a list of values and operands
-	  // The regex addresses values with the plus or minus sign in front (+10, -20, etc)
-	  var fragments = offset.split(/(\+|\-)/).map(function (frag) {
-	    return frag.trim();
-	  });
-
-	  // Detect if the offset string contains a pair of values or a single one
-	  // they could be separated by comma or space
-	  var divider = fragments.indexOf(find(fragments, function (frag) {
-	    return frag.search(/,|\s/) !== -1;
-	  }));
-
-	  if (fragments[divider] && fragments[divider].indexOf(',') === -1) {
-	    console.warn('Offsets separated by white space(s) are deprecated, use a comma (,) instead.');
-	  }
-
-	  // If divider is found, we divide the list of values and operands to divide
-	  // them by ofset X and Y.
-	  var splitRegex = /\s*,\s*|\s+/;
-	  var ops = divider !== -1 ? [fragments.slice(0, divider).concat([fragments[divider].split(splitRegex)[0]]), [fragments[divider].split(splitRegex)[1]].concat(fragments.slice(divider + 1))] : [fragments];
-
-	  // Convert the values with units to absolute pixels to allow our computations
-	  ops = ops.map(function (op, index) {
-	    // Most of the units rely on the orientation of the popper
-	    var measurement = (index === 1 ? !useHeight : useHeight) ? 'height' : 'width';
-	    var mergeWithPrevious = false;
-	    return op
-	    // This aggregates any `+` or `-` sign that aren't considered operators
-	    // e.g.: 10 + +5 => [10, +, +5]
-	    .reduce(function (a, b) {
-	      if (a[a.length - 1] === '' && ['+', '-'].indexOf(b) !== -1) {
-	        a[a.length - 1] = b;
-	        mergeWithPrevious = true;
-	        return a;
-	      } else if (mergeWithPrevious) {
-	        a[a.length - 1] += b;
-	        mergeWithPrevious = false;
-	        return a;
-	      } else {
-	        return a.concat(b);
-	      }
-	    }, [])
-	    // Here we convert the string values into number values (in px)
-	    .map(function (str) {
-	      return toValue(str, measurement, popperOffsets, referenceOffsets);
-	    });
-	  });
-
-	  // Loop trough the offsets arrays and execute the operations
-	  ops.forEach(function (op, index) {
-	    op.forEach(function (frag, index2) {
-	      if (isNumeric(frag)) {
-	        offsets[index] += frag * (op[index2 - 1] === '-' ? -1 : 1);
-	      }
-	    });
-	  });
-	  return offsets;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @argument {Number|String} options.offset=0
-	 * The offset value as described in the modifier description
-	 * @returns {Object} The data object, properly modified
-	 */
-	function offset(data, _ref) {
-	  var offset = _ref.offset;
-	  var placement = data.placement,
-	      _data$offsets = data.offsets,
-	      popper = _data$offsets.popper,
-	      reference = _data$offsets.reference;
-
-	  var basePlacement = placement.split('-')[0];
-
-	  var offsets = void 0;
-	  if (isNumeric(+offset)) {
-	    offsets = [+offset, 0];
-	  } else {
-	    offsets = parseOffset(offset, popper, reference, basePlacement);
-	  }
-
-	  if (basePlacement === 'left') {
-	    popper.top += offsets[0];
-	    popper.left -= offsets[1];
-	  } else if (basePlacement === 'right') {
-	    popper.top += offsets[0];
-	    popper.left += offsets[1];
-	  } else if (basePlacement === 'top') {
-	    popper.left += offsets[0];
-	    popper.top -= offsets[1];
-	  } else if (basePlacement === 'bottom') {
-	    popper.left += offsets[0];
-	    popper.top += offsets[1];
-	  }
-
-	  data.popper = popper;
-	  return data;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by `update` method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function preventOverflow(data, options) {
-	  var boundariesElement = options.boundariesElement || getOffsetParent(data.instance.popper);
-
-	  // If offsetParent is the reference element, we really want to
-	  // go one step up and use the next offsetParent as reference to
-	  // avoid to make this modifier completely useless and look like broken
-	  if (data.instance.reference === boundariesElement) {
-	    boundariesElement = getOffsetParent(boundariesElement);
-	  }
-
-	  var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, boundariesElement);
-	  options.boundaries = boundaries;
-
-	  var order = options.priority;
-	  var popper = data.offsets.popper;
-
-	  var check = {
-	    primary: function primary(placement) {
-	      var value = popper[placement];
-	      if (popper[placement] < boundaries[placement] && !options.escapeWithReference) {
-	        value = Math.max(popper[placement], boundaries[placement]);
-	      }
-	      return defineProperty({}, placement, value);
-	    },
-	    secondary: function secondary(placement) {
-	      var mainSide = placement === 'right' ? 'left' : 'top';
-	      var value = popper[mainSide];
-	      if (popper[placement] > boundaries[placement] && !options.escapeWithReference) {
-	        value = Math.min(popper[mainSide], boundaries[placement] - (placement === 'right' ? popper.width : popper.height));
-	      }
-	      return defineProperty({}, mainSide, value);
-	    }
-	  };
-
-	  order.forEach(function (placement) {
-	    var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-	    popper = _extends({}, popper, check[side](placement));
-	  });
-
-	  data.offsets.popper = popper;
-
-	  return data;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by `update` method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function shift(data) {
-	  var placement = data.placement;
-	  var basePlacement = placement.split('-')[0];
-	  var shiftvariation = placement.split('-')[1];
-
-	  // if shift shiftvariation is specified, run the modifier
-	  if (shiftvariation) {
-	    var _data$offsets = data.offsets,
-	        reference = _data$offsets.reference,
-	        popper = _data$offsets.popper;
-
-	    var isVertical = ['bottom', 'top'].indexOf(basePlacement) !== -1;
-	    var side = isVertical ? 'left' : 'top';
-	    var measurement = isVertical ? 'width' : 'height';
-
-	    var shiftOffsets = {
-	      start: defineProperty({}, side, reference[side]),
-	      end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
-	    };
-
-	    data.offsets.popper = _extends({}, popper, shiftOffsets[shiftvariation]);
-	  }
-
-	  return data;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by update method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function hide(data) {
-	  if (!isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
-	    return data;
-	  }
-
-	  var refRect = data.offsets.reference;
-	  var bound = find(data.instance.modifiers, function (modifier) {
-	    return modifier.name === 'preventOverflow';
-	  }).boundaries;
-
-	  if (refRect.bottom < bound.top || refRect.left > bound.right || refRect.top > bound.bottom || refRect.right < bound.left) {
-	    // Avoid unnecessary DOM access if visibility hasn't changed
-	    if (data.hide === true) {
-	      return data;
-	    }
-
-	    data.hide = true;
-	    data.attributes['x-out-of-boundaries'] = '';
-	  } else {
-	    // Avoid unnecessary DOM access if visibility hasn't changed
-	    if (data.hide === false) {
-	      return data;
-	    }
-
-	    data.hide = false;
-	    data.attributes['x-out-of-boundaries'] = false;
-	  }
-
-	  return data;
-	}
-
-	/**
-	 * @function
-	 * @memberof Modifiers
-	 * @argument {Object} data - The data object generated by `update` method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {Object} The data object, properly modified
-	 */
-	function inner(data) {
-	  var placement = data.placement;
-	  var basePlacement = placement.split('-')[0];
-	  var _data$offsets = data.offsets,
-	      popper = _data$offsets.popper,
-	      reference = _data$offsets.reference;
-
-	  var isHoriz = ['left', 'right'].indexOf(basePlacement) !== -1;
-
-	  var subtractLength = ['top', 'left'].indexOf(basePlacement) === -1;
-
-	  popper[isHoriz ? 'left' : 'top'] = reference[basePlacement] - (subtractLength ? popper[isHoriz ? 'width' : 'height'] : 0);
-
-	  data.placement = getOppositePlacement(placement);
-	  data.offsets.popper = getClientRect(popper);
-
-	  return data;
-	}
-
-	/**
-	 * Modifier function, each modifier can have a function of this type assigned
-	 * to its `fn` property.<br />
-	 * These functions will be called on each update, this means that you must
-	 * make sure they are performant enough to avoid performance bottlenecks.
-	 *
-	 * @function ModifierFn
-	 * @argument {dataObject} data - The data object generated by `update` method
-	 * @argument {Object} options - Modifiers configuration and options
-	 * @returns {dataObject} The data object, properly modified
-	 */
-
-	/**
-	 * Modifiers are plugins used to alter the behavior of your poppers.<br />
-	 * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
-	 * needed by the library.
-	 *
-	 * Usually you don't want to override the `order`, `fn` and `onLoad` props.
-	 * All the other properties are configurations that could be tweaked.
-	 * @namespace modifiers
-	 */
-	var modifiers = {
-	  /**
-	   * Modifier used to shift the popper on the start or end of its reference
-	   * element.<br />
-	   * It will read the variation of the `placement` property.<br />
-	   * It can be one either `-end` or `-start`.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  shift: {
-	    /** @prop {number} order=100 - Index used to define the order of execution */
-	    order: 100,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: shift
-	  },
-
-	  /**
-	   * The `offset` modifier can shift your popper on both its axis.
-	   *
-	   * It accepts the following units:
-	   * - `px` or unitless, interpreted as pixels
-	   * - `%` or `%r`, percentage relative to the length of the reference element
-	   * - `%p`, percentage relative to the length of the popper element
-	   * - `vw`, CSS viewport width unit
-	   * - `vh`, CSS viewport height unit
-	   *
-	   * For length is intended the main axis relative to the placement of the popper.<br />
-	   * This means that if the placement is `top` or `bottom`, the length will be the
-	   * `width`. In case of `left` or `right`, it will be the height.
-	   *
-	   * You can provide a single value (as `Number` or `String`), or a pair of values
-	   * as `String` divided by a comma or one (or more) white spaces.<br />
-	   * The latter is a deprecated method because it leads to confusion and will be
-	   * removed in v2.<br />
-	   * Additionally, it accepts additions and subtractions between different units.
-	   * Note that multiplications and divisions aren't supported.
-	   *
-	   * Valid examples are:
-	   * ```
-	   * 10
-	   * '10%'
-	   * '10, 10'
-	   * '10%, 10'
-	   * '10 + 10%'
-	   * '10 - 5vh + 3%'
-	   * '-10px + 5vh, 5px - 6%'
-	   * ```
-	   * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
-	   * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
-	   * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
-	   *
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  offset: {
-	    /** @prop {number} order=200 - Index used to define the order of execution */
-	    order: 200,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: offset,
-	    /** @prop {Number|String} offset=0
-	     * The offset value as described in the modifier description
-	     */
-	    offset: 0
-	  },
-
-	  /**
-	   * Modifier used to prevent the popper from being positioned outside the boundary.
-	   *
-	   * An scenario exists where the reference itself is not within the boundaries.<br />
-	   * We can say it has "escaped the boundaries" — or just "escaped".<br />
-	   * In this case we need to decide whether the popper should either:
-	   *
-	   * - detach from the reference and remain "trapped" in the boundaries, or
-	   * - if it should ignore the boundary and "escape with its reference"
-	   *
-	   * When `escapeWithReference` is set to`true` and reference is completely
-	   * outside its boundaries, the popper will overflow (or completely leave)
-	   * the boundaries in order to remain attached to the edge of the reference.
-	   *
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  preventOverflow: {
-	    /** @prop {number} order=300 - Index used to define the order of execution */
-	    order: 300,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: preventOverflow,
-	    /**
-	     * @prop {Array} [priority=['left','right','top','bottom']]
-	     * Popper will try to prevent overflow following these priorities by default,
-	     * then, it could overflow on the left and on top of the `boundariesElement`
-	     */
-	    priority: ['left', 'right', 'top', 'bottom'],
-	    /**
-	     * @prop {number} padding=5
-	     * Amount of pixel used to define a minimum distance between the boundaries
-	     * and the popper this makes sure the popper has always a little padding
-	     * between the edges of its container
-	     */
-	    padding: 5,
-	    /**
-	     * @prop {String|HTMLElement} boundariesElement='scrollParent'
-	     * Boundaries used by the modifier, can be `scrollParent`, `window`,
-	     * `viewport` or any DOM element.
-	     */
-	    boundariesElement: 'scrollParent'
-	  },
-
-	  /**
-	   * Modifier used to make sure the reference and its popper stay near eachothers
-	   * without leaving any gap between the two. Expecially useful when the arrow is
-	   * enabled and you want to assure it to point to its reference element.
-	   * It cares only about the first axis, you can still have poppers with margin
-	   * between the popper and its reference element.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  keepTogether: {
-	    /** @prop {number} order=400 - Index used to define the order of execution */
-	    order: 400,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: keepTogether
-	  },
-
-	  /**
-	   * This modifier is used to move the `arrowElement` of the popper to make
-	   * sure it is positioned between the reference element and its popper element.
-	   * It will read the outer size of the `arrowElement` node to detect how many
-	   * pixels of conjuction are needed.
-	   *
-	   * It has no effect if no `arrowElement` is provided.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  arrow: {
-	    /** @prop {number} order=500 - Index used to define the order of execution */
-	    order: 500,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: arrow,
-	    /** @prop {String|HTMLElement} element='[x-arrow]' - Selector or node used as arrow */
-	    element: '[x-arrow]'
-	  },
-
-	  /**
-	   * Modifier used to flip the popper's placement when it starts to overlap its
-	   * reference element.
-	   *
-	   * Requires the `preventOverflow` modifier before it in order to work.
-	   *
-	   * **NOTE:** this modifier will interrupt the current update cycle and will
-	   * restart it if it detects the need to flip the placement.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  flip: {
-	    /** @prop {number} order=600 - Index used to define the order of execution */
-	    order: 600,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: flip,
-	    /**
-	     * @prop {String|Array} behavior='flip'
-	     * The behavior used to change the popper's placement. It can be one of
-	     * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
-	     * placements (with optional variations).
-	     */
-	    behavior: 'flip',
-	    /**
-	     * @prop {number} padding=5
-	     * The popper will flip if it hits the edges of the `boundariesElement`
-	     */
-	    padding: 5,
-	    /**
-	     * @prop {String|HTMLElement} boundariesElement='viewport'
-	     * The element which will define the boundaries of the popper position,
-	     * the popper will never be placed outside of the defined boundaries
-	     * (except if keepTogether is enabled)
-	     */
-	    boundariesElement: 'viewport'
-	  },
-
-	  /**
-	   * Modifier used to make the popper flow toward the inner of the reference element.
-	   * By default, when this modifier is disabled, the popper will be placed outside
-	   * the reference element.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  inner: {
-	    /** @prop {number} order=700 - Index used to define the order of execution */
-	    order: 700,
-	    /** @prop {Boolean} enabled=false - Whether the modifier is enabled or not */
-	    enabled: false,
-	    /** @prop {ModifierFn} */
-	    fn: inner
-	  },
-
-	  /**
-	   * Modifier used to hide the popper when its reference element is outside of the
-	   * popper boundaries. It will set a `x-out-of-boundaries` attribute which can
-	   * be used to hide with a CSS selector the popper when its reference is
-	   * out of boundaries.
-	   *
-	   * Requires the `preventOverflow` modifier before it in order to work.
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  hide: {
-	    /** @prop {number} order=800 - Index used to define the order of execution */
-	    order: 800,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: hide
-	  },
-
-	  /**
-	   * Computes the style that will be applied to the popper element to gets
-	   * properly positioned.
-	   *
-	   * Note that this modifier will not touch the DOM, it just prepares the styles
-	   * so that `applyStyle` modifier can apply it. This separation is useful
-	   * in case you need to replace `applyStyle` with a custom implementation.
-	   *
-	   * This modifier has `850` as `order` value to maintain backward compatibility
-	   * with previous versions of Popper.js. Expect the modifiers ordering method
-	   * to change in future major versions of the library.
-	   *
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  computeStyle: {
-	    /** @prop {number} order=850 - Index used to define the order of execution */
-	    order: 850,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: computeStyle,
-	    /**
-	     * @prop {Boolean} gpuAcceleration=true
-	     * If true, it uses the CSS 3d transformation to position the popper.
-	     * Otherwise, it will use the `top` and `left` properties.
-	     */
-	    gpuAcceleration: true,
-	    /**
-	     * @prop {string} [x='bottom']
-	     * Where to anchor the X axis (`bottom` or `top`). AKA X offset origin.
-	     * Change this if your popper should grow in a direction different from `bottom`
-	     */
-	    x: 'bottom',
-	    /**
-	     * @prop {string} [x='left']
-	     * Where to anchor the Y axis (`left` or `right`). AKA Y offset origin.
-	     * Change this if your popper should grow in a direction different from `right`
-	     */
-	    y: 'right'
-	  },
-
-	  /**
-	   * Applies the computed styles to the popper element.
-	   *
-	   * All the DOM manipulations are limited to this modifier. This is useful in case
-	   * you want to integrate Popper.js inside a framework or view library and you
-	   * want to delegate all the DOM manipulations to it.
-	   *
-	   * Note that if you disable this modifier, you must make sure the popper element
-	   * has its position set to `absolute` before Popper.js can do its work!
-	   *
-	   * Just disable this modifier and define you own to achieve the desired effect.
-	   *
-	   * @memberof modifiers
-	   * @inner
-	   */
-	  applyStyle: {
-	    /** @prop {number} order=900 - Index used to define the order of execution */
-	    order: 900,
-	    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
-	    enabled: true,
-	    /** @prop {ModifierFn} */
-	    fn: applyStyle,
-	    /** @prop {Function} */
-	    onLoad: applyStyleOnLoad,
-	    /**
-	     * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
-	     * @prop {Boolean} gpuAcceleration=true
-	     * If true, it uses the CSS 3d transformation to position the popper.
-	     * Otherwise, it will use the `top` and `left` properties.
-	     */
-	    gpuAcceleration: undefined
-	  }
-	};
-
-	/**
-	 * The `dataObject` is an object containing all the informations used by Popper.js
-	 * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
-	 * @name dataObject
-	 * @property {Object} data.instance The Popper.js instance
-	 * @property {String} data.placement Placement applied to popper
-	 * @property {String} data.originalPlacement Placement originally defined on init
-	 * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
-	 * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
-	 * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
-	 * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
-	 * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
-	 * @property {Object} data.boundaries Offsets of the popper boundaries
-	 * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
-	 * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
-	 * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
-	 * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
-	 */
-
-	/**
-	 * Default options provided to Popper.js constructor.<br />
-	 * These can be overriden using the `options` argument of Popper.js.<br />
-	 * To override an option, simply pass as 3rd argument an object with the same
-	 * structure of this object, example:
-	 * ```
-	 * new Popper(ref, pop, {
-	 *   modifiers: {
-	 *     preventOverflow: { enabled: false }
-	 *   }
-	 * })
-	 * ```
-	 * @type {Object}
-	 * @static
-	 * @memberof Popper
-	 */
-	var Defaults = {
-	  /**
-	   * Popper's placement
-	   * @prop {Popper.placements} placement='bottom'
-	   */
-	  placement: 'bottom',
-
-	  /**
-	   * Whether events (resize, scroll) are initially enabled
-	   * @prop {Boolean} eventsEnabled=true
-	   */
-	  eventsEnabled: true,
-
-	  /**
-	   * Set to true if you want to automatically remove the popper when
-	   * you call the `destroy` method.
-	   * @prop {Boolean} removeOnDestroy=false
-	   */
-	  removeOnDestroy: false,
-
-	  /**
-	   * Callback called when the popper is created.<br />
-	   * By default, is set to no-op.<br />
-	   * Access Popper.js instance with `data.instance`.
-	   * @prop {onCreate}
-	   */
-	  onCreate: function onCreate() {},
-
-	  /**
-	   * Callback called when the popper is updated, this callback is not called
-	   * on the initialization/creation of the popper, but only on subsequent
-	   * updates.<br />
-	   * By default, is set to no-op.<br />
-	   * Access Popper.js instance with `data.instance`.
-	   * @prop {onUpdate}
-	   */
-	  onUpdate: function onUpdate() {},
-
-	  /**
-	   * List of modifiers used to modify the offsets before they are applied to the popper.
-	   * They provide most of the functionalities of Popper.js
-	   * @prop {modifiers}
-	   */
-	  modifiers: modifiers
-	};
-
-	/**
-	 * @callback onCreate
-	 * @param {dataObject} data
-	 */
-
-	/**
-	 * @callback onUpdate
-	 * @param {dataObject} data
-	 */
-
-	// Utils
-	// Methods
-	var Popper = function () {
-	  /**
-	   * Create a new Popper.js instance
-	   * @class Popper
-	   * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-	   * @param {HTMLElement} popper - The HTML element used as popper.
-	   * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
-	   * @return {Object} instance - The generated Popper.js instance
-	   */
-	  function Popper(reference, popper) {
-	    var _this = this;
-
-	    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-	    classCallCheck(this, Popper);
-
-	    this.scheduleUpdate = function () {
-	      return requestAnimationFrame(_this.update);
-	    };
-
-	    // make update() debounced, so that it only runs at most once-per-tick
-	    this.update = debounce(this.update.bind(this));
-
-	    // with {} we create a new object with the options inside it
-	    this.options = _extends({}, Popper.Defaults, options);
-
-	    // init state
-	    this.state = {
-	      isDestroyed: false,
-	      isCreated: false,
-	      scrollParents: []
-	    };
-
-	    // get reference and popper elements (allow jQuery wrappers)
-	    this.reference = reference.jquery ? reference[0] : reference;
-	    this.popper = popper.jquery ? popper[0] : popper;
-
-	    // Deep merge modifiers options
-	    this.options.modifiers = {};
-	    Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-	      _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
-	    });
-
-	    // Refactoring modifiers' list (Object => Array)
-	    this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-	      return _extends({
-	        name: name
-	      }, _this.options.modifiers[name]);
-	    })
-	    // sort the modifiers by order
-	    .sort(function (a, b) {
-	      return a.order - b.order;
-	    });
-
-	    // modifiers have the ability to execute arbitrary code when Popper.js get inited
-	    // such code is executed in the same order of its modifier
-	    // they could add new properties to their options configuration
-	    // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
-	    this.modifiers.forEach(function (modifierOptions) {
-	      if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
-	        modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
-	      }
-	    });
-
-	    // fire the first update to position the popper in the right place
-	    this.update();
-
-	    var eventsEnabled = this.options.eventsEnabled;
-	    if (eventsEnabled) {
-	      // setup event listeners, they will take care of update the position in specific situations
-	      this.enableEventListeners();
-	    }
-
-	    this.state.eventsEnabled = eventsEnabled;
-	  }
-
-	  // We can't use class properties because they don't get listed in the
-	  // class prototype and break stuff like Sinon stubs
-
-
-	  createClass(Popper, [{
-	    key: 'update',
-	    value: function update$$1() {
-	      return update.call(this);
-	    }
-	  }, {
-	    key: 'destroy',
-	    value: function destroy$$1() {
-	      return destroy.call(this);
-	    }
-	  }, {
-	    key: 'enableEventListeners',
-	    value: function enableEventListeners$$1() {
-	      return enableEventListeners.call(this);
-	    }
-	  }, {
-	    key: 'disableEventListeners',
-	    value: function disableEventListeners$$1() {
-	      return disableEventListeners.call(this);
-	    }
-
-	    /**
-	     * Schedule an update, it will run on the next UI update available
-	     * @method scheduleUpdate
-	     * @memberof Popper
-	     */
-
-
-	    /**
-	     * Collection of utilities useful when writing custom modifiers.
-	     * Starting from version 1.7, this method is available only if you
-	     * include `popper-utils.js` before `popper.js`.
-	     *
-	     * **DEPRECATION**: This way to access PopperUtils is deprecated
-	     * and will be removed in v2! Use the PopperUtils module directly instead.
-	     * Due to the high instability of the methods contained in Utils, we can't
-	     * guarantee them to follow semver. Use them at your own risk!
-	     * @static
-	     * @private
-	     * @type {Object}
-	     * @deprecated since version 1.8
-	     * @member Utils
-	     * @memberof Popper
-	     */
-
-	  }]);
-	  return Popper;
-	}();
-
-	/**
-	 * The `referenceObject` is an object that provides an interface compatible with Popper.js
-	 * and lets you use it as replacement of a real DOM node.<br />
-	 * You can use this method to position a popper relatively to a set of coordinates
-	 * in case you don't have a DOM node to use as reference.
-	 *
-	 * ```
-	 * new Popper(referenceObject, popperNode);
-	 * ```
-	 *
-	 * NB: This feature isn't supported in Internet Explorer 10
-	 * @name referenceObject
-	 * @property {Function} data.getBoundingClientRect
-	 * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
-	 * @property {number} data.clientWidth
-	 * An ES6 getter that will return the width of the virtual reference element.
-	 * @property {number} data.clientHeight
-	 * An ES6 getter that will return the height of the virtual reference element.
-	 */
-
-
-	Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
-	Popper.placements = placements;
-	Popper.Defaults = Defaults;
-
-	return Popper;
-
-	})));
-	//# sourceMappingURL=popper.js.map
-
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
-
-/***/ }),
-/* 222 */
-/***/ (function(module, exports) {
-
-	'use strict';
-
-	module.exports = {
-	  placement: {
-	    left: 'left',
-	    right: 'right',
-	    top: 'top',
-	    bottom: 'bottom',
-	    topLeft: 'top-start',
-	    leftTop: 'left-start',
-	    topRight: 'top-end',
-	    rightTop: 'right-start',
-	    bottomRight: 'bottom-end',
-	    rightBottom: 'right-end',
-	    bottomLeft: 'bottom-start',
-	    leftBottom: 'left-end'
-	  },
-	  xplacement: {
-	    left: 'left',
-	    right: 'right',
-	    top: 'top',
-	    bottom: 'bottom',
-	    'top-start': 'topLeft',
-	    'left-start': 'leftTop',
-	    'top-end': 'topRight',
-	    'right-start': 'rightTop',
-	    'bottom-end': 'bottomRight',
-	    'right-end': 'rightBottom',
-	    'bottom-start': 'bottomLeft',
-	    'left-end': 'leftBottom'
-	  }
-
-		};
-
-/***/ }),
-/* 223 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" ref=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    {#if open}\n    <kl-popper reference=\"{reference}\" appendToBody={appendToBody}>\n      <div class=\"dropdown_bd\"\n        ref=\"dropdown_bd\"\n        r-class=\"{{'kldatepicker_dropdown_bd': appendToBody}}\">\n          <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n            {#if showTime}\n              <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n              <div class=\"dropdown_ft\">\n                  <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n              </div>\n              {/if}\n          </calendar>\n      </div>\n    </kl-popper>\n    {/if}\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
-
-/***/ }),
-/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -13014,12 +10465,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(225);
+	var template = __webpack_require__(222);
 	var _ = __webpack_require__(72);
 
 	var bowser = __webpack_require__(173);
-	var moment = __webpack_require__(226);
-	var polyfill = __webpack_require__(344);
+	var moment = __webpack_require__(223);
+	var polyfill = __webpack_require__(341);
 
 	var MS_OF_DAY = 24 * 3600 * 1000;
 
@@ -13266,13 +10717,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Calendar;
 
 /***/ }),
-/* 225 */
+/* 222 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-calendar {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"calendar_hd\">\n        <span class=\"calendar_prev\">\n            <span class=\"calendar_item\" on-click={this.addYear(-1)}><i class=\"u-icon u-icon-angle-double-left\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addMonth(-1)}><i class=\"u-icon u-icon-angle-left\"></i></span>\n        </span>\n        <span>{date | format: 'yyyy-MM'}</span>\n        <span class=\"calendar_next\">\n            <span class=\"calendar_item\" on-click={this.addMonth(1)}><i class=\"u-icon u-icon-angle-right\"></i></span>\n            <span class=\"calendar_item\" on-click={this.addYear(1)}><i class=\"u-icon u-icon-angle-double-right\"></i></span>\n        </span>\n    </div>\n    <div class=\"calendar_bd\">\n        <div class=\"calendar_week\"><span class=\"calendar_item\">{this.$trans('CAL_SUNDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_MONDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_TUESDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_WENSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_THURSDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_FRIDAY')}</span><span class=\"calendar_item\">{this.$trans('CAL_SATURDAY')}</span></div>\n        <div class=\"calendar_day\">{#list _days as day}<span class=\"calendar_item\" z-sel={date.toDateString() === day.toDateString()} z-dis={!!this.isOutOfRange(day)} r-class={ {'z-muted': date.getMonth() !== day.getMonth()} } on-click={this.select(day, $event)}>{day | format: 'dd'}</span>{/list}</div>\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 226 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -15104,7 +12555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            module && module.exports) {
 	        try {
 	            oldLocale = globalLocale._abbr;
-	            __webpack_require__(228)("./" + name);
+	            __webpack_require__(225)("./" + name);
 	            // because defineLocale currently also sets the global locale, we
 	            // want to undo that for lazy loaded locales
 	            getSetGlobalLocale(oldLocale);
@@ -17739,10 +15190,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(227)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(224)(module)))
 
 /***/ }),
-/* 227 */
+/* 224 */
 /***/ (function(module, exports) {
 
 	module.exports = function(module) {
@@ -17758,240 +15209,240 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 228 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 229,
-		"./af.js": 229,
-		"./ar": 230,
-		"./ar-dz": 231,
-		"./ar-dz.js": 231,
-		"./ar-kw": 232,
-		"./ar-kw.js": 232,
-		"./ar-ly": 233,
-		"./ar-ly.js": 233,
-		"./ar-ma": 234,
-		"./ar-ma.js": 234,
-		"./ar-sa": 235,
-		"./ar-sa.js": 235,
-		"./ar-tn": 236,
-		"./ar-tn.js": 236,
-		"./ar.js": 230,
-		"./az": 237,
-		"./az.js": 237,
-		"./be": 238,
-		"./be.js": 238,
-		"./bg": 239,
-		"./bg.js": 239,
-		"./bn": 240,
-		"./bn.js": 240,
-		"./bo": 241,
-		"./bo.js": 241,
-		"./br": 242,
-		"./br.js": 242,
-		"./bs": 243,
-		"./bs.js": 243,
-		"./ca": 244,
-		"./ca.js": 244,
-		"./cs": 245,
-		"./cs.js": 245,
-		"./cv": 246,
-		"./cv.js": 246,
-		"./cy": 247,
-		"./cy.js": 247,
-		"./da": 248,
-		"./da.js": 248,
-		"./de": 249,
-		"./de-at": 250,
-		"./de-at.js": 250,
-		"./de-ch": 251,
-		"./de-ch.js": 251,
-		"./de.js": 249,
-		"./dv": 252,
-		"./dv.js": 252,
-		"./el": 253,
-		"./el.js": 253,
-		"./en-au": 254,
-		"./en-au.js": 254,
-		"./en-ca": 255,
-		"./en-ca.js": 255,
-		"./en-gb": 256,
-		"./en-gb.js": 256,
-		"./en-ie": 257,
-		"./en-ie.js": 257,
-		"./en-nz": 258,
-		"./en-nz.js": 258,
-		"./eo": 259,
-		"./eo.js": 259,
-		"./es": 260,
-		"./es-do": 261,
-		"./es-do.js": 261,
-		"./es.js": 260,
-		"./et": 262,
-		"./et.js": 262,
-		"./eu": 263,
-		"./eu.js": 263,
-		"./fa": 264,
-		"./fa.js": 264,
-		"./fi": 265,
-		"./fi.js": 265,
-		"./fo": 266,
-		"./fo.js": 266,
-		"./fr": 267,
-		"./fr-ca": 268,
-		"./fr-ca.js": 268,
-		"./fr-ch": 269,
-		"./fr-ch.js": 269,
-		"./fr.js": 267,
-		"./fy": 270,
-		"./fy.js": 270,
-		"./gd": 271,
-		"./gd.js": 271,
-		"./gl": 272,
-		"./gl.js": 272,
-		"./gom-latn": 273,
-		"./gom-latn.js": 273,
-		"./he": 274,
-		"./he.js": 274,
-		"./hi": 275,
-		"./hi.js": 275,
-		"./hr": 276,
-		"./hr.js": 276,
-		"./hu": 277,
-		"./hu.js": 277,
-		"./hy-am": 278,
-		"./hy-am.js": 278,
-		"./id": 279,
-		"./id.js": 279,
-		"./is": 280,
-		"./is.js": 280,
-		"./it": 281,
-		"./it.js": 281,
-		"./ja": 282,
-		"./ja.js": 282,
-		"./jv": 283,
-		"./jv.js": 283,
-		"./ka": 284,
-		"./ka.js": 284,
-		"./kk": 285,
-		"./kk.js": 285,
-		"./km": 286,
-		"./km.js": 286,
-		"./kn": 287,
-		"./kn.js": 287,
-		"./ko": 288,
-		"./ko.js": 288,
-		"./ky": 289,
-		"./ky.js": 289,
-		"./lb": 290,
-		"./lb.js": 290,
-		"./lo": 291,
-		"./lo.js": 291,
-		"./lt": 292,
-		"./lt.js": 292,
-		"./lv": 293,
-		"./lv.js": 293,
-		"./me": 294,
-		"./me.js": 294,
-		"./mi": 295,
-		"./mi.js": 295,
-		"./mk": 296,
-		"./mk.js": 296,
-		"./ml": 297,
-		"./ml.js": 297,
-		"./mr": 298,
-		"./mr.js": 298,
-		"./ms": 299,
-		"./ms-my": 300,
-		"./ms-my.js": 300,
-		"./ms.js": 299,
-		"./my": 301,
-		"./my.js": 301,
-		"./nb": 302,
-		"./nb.js": 302,
-		"./ne": 303,
-		"./ne.js": 303,
-		"./nl": 304,
-		"./nl-be": 305,
-		"./nl-be.js": 305,
-		"./nl.js": 304,
-		"./nn": 306,
-		"./nn.js": 306,
-		"./pa-in": 307,
-		"./pa-in.js": 307,
-		"./pl": 308,
-		"./pl.js": 308,
-		"./pt": 309,
-		"./pt-br": 310,
-		"./pt-br.js": 310,
-		"./pt.js": 309,
-		"./ro": 311,
-		"./ro.js": 311,
-		"./ru": 312,
-		"./ru.js": 312,
-		"./sd": 313,
-		"./sd.js": 313,
-		"./se": 314,
-		"./se.js": 314,
-		"./si": 315,
-		"./si.js": 315,
-		"./sk": 316,
-		"./sk.js": 316,
-		"./sl": 317,
-		"./sl.js": 317,
-		"./sq": 318,
-		"./sq.js": 318,
-		"./sr": 319,
-		"./sr-cyrl": 320,
-		"./sr-cyrl.js": 320,
-		"./sr.js": 319,
-		"./ss": 321,
-		"./ss.js": 321,
-		"./sv": 322,
-		"./sv.js": 322,
-		"./sw": 323,
-		"./sw.js": 323,
-		"./ta": 324,
-		"./ta.js": 324,
-		"./te": 325,
-		"./te.js": 325,
-		"./tet": 326,
-		"./tet.js": 326,
-		"./th": 327,
-		"./th.js": 327,
-		"./tl-ph": 328,
-		"./tl-ph.js": 328,
-		"./tlh": 329,
-		"./tlh.js": 329,
-		"./tr": 330,
-		"./tr.js": 330,
-		"./tzl": 331,
-		"./tzl.js": 331,
-		"./tzm": 332,
-		"./tzm-latn": 333,
-		"./tzm-latn.js": 333,
-		"./tzm.js": 332,
-		"./uk": 334,
-		"./uk.js": 334,
-		"./ur": 335,
-		"./ur.js": 335,
-		"./uz": 336,
-		"./uz-latn": 337,
-		"./uz-latn.js": 337,
-		"./uz.js": 336,
-		"./vi": 338,
-		"./vi.js": 338,
-		"./x-pseudo": 339,
-		"./x-pseudo.js": 339,
-		"./yo": 340,
-		"./yo.js": 340,
-		"./zh-cn": 341,
-		"./zh-cn.js": 341,
-		"./zh-hk": 342,
-		"./zh-hk.js": 342,
-		"./zh-tw": 343,
-		"./zh-tw.js": 343
+		"./af": 226,
+		"./af.js": 226,
+		"./ar": 227,
+		"./ar-dz": 228,
+		"./ar-dz.js": 228,
+		"./ar-kw": 229,
+		"./ar-kw.js": 229,
+		"./ar-ly": 230,
+		"./ar-ly.js": 230,
+		"./ar-ma": 231,
+		"./ar-ma.js": 231,
+		"./ar-sa": 232,
+		"./ar-sa.js": 232,
+		"./ar-tn": 233,
+		"./ar-tn.js": 233,
+		"./ar.js": 227,
+		"./az": 234,
+		"./az.js": 234,
+		"./be": 235,
+		"./be.js": 235,
+		"./bg": 236,
+		"./bg.js": 236,
+		"./bn": 237,
+		"./bn.js": 237,
+		"./bo": 238,
+		"./bo.js": 238,
+		"./br": 239,
+		"./br.js": 239,
+		"./bs": 240,
+		"./bs.js": 240,
+		"./ca": 241,
+		"./ca.js": 241,
+		"./cs": 242,
+		"./cs.js": 242,
+		"./cv": 243,
+		"./cv.js": 243,
+		"./cy": 244,
+		"./cy.js": 244,
+		"./da": 245,
+		"./da.js": 245,
+		"./de": 246,
+		"./de-at": 247,
+		"./de-at.js": 247,
+		"./de-ch": 248,
+		"./de-ch.js": 248,
+		"./de.js": 246,
+		"./dv": 249,
+		"./dv.js": 249,
+		"./el": 250,
+		"./el.js": 250,
+		"./en-au": 251,
+		"./en-au.js": 251,
+		"./en-ca": 252,
+		"./en-ca.js": 252,
+		"./en-gb": 253,
+		"./en-gb.js": 253,
+		"./en-ie": 254,
+		"./en-ie.js": 254,
+		"./en-nz": 255,
+		"./en-nz.js": 255,
+		"./eo": 256,
+		"./eo.js": 256,
+		"./es": 257,
+		"./es-do": 258,
+		"./es-do.js": 258,
+		"./es.js": 257,
+		"./et": 259,
+		"./et.js": 259,
+		"./eu": 260,
+		"./eu.js": 260,
+		"./fa": 261,
+		"./fa.js": 261,
+		"./fi": 262,
+		"./fi.js": 262,
+		"./fo": 263,
+		"./fo.js": 263,
+		"./fr": 264,
+		"./fr-ca": 265,
+		"./fr-ca.js": 265,
+		"./fr-ch": 266,
+		"./fr-ch.js": 266,
+		"./fr.js": 264,
+		"./fy": 267,
+		"./fy.js": 267,
+		"./gd": 268,
+		"./gd.js": 268,
+		"./gl": 269,
+		"./gl.js": 269,
+		"./gom-latn": 270,
+		"./gom-latn.js": 270,
+		"./he": 271,
+		"./he.js": 271,
+		"./hi": 272,
+		"./hi.js": 272,
+		"./hr": 273,
+		"./hr.js": 273,
+		"./hu": 274,
+		"./hu.js": 274,
+		"./hy-am": 275,
+		"./hy-am.js": 275,
+		"./id": 276,
+		"./id.js": 276,
+		"./is": 277,
+		"./is.js": 277,
+		"./it": 278,
+		"./it.js": 278,
+		"./ja": 279,
+		"./ja.js": 279,
+		"./jv": 280,
+		"./jv.js": 280,
+		"./ka": 281,
+		"./ka.js": 281,
+		"./kk": 282,
+		"./kk.js": 282,
+		"./km": 283,
+		"./km.js": 283,
+		"./kn": 284,
+		"./kn.js": 284,
+		"./ko": 285,
+		"./ko.js": 285,
+		"./ky": 286,
+		"./ky.js": 286,
+		"./lb": 287,
+		"./lb.js": 287,
+		"./lo": 288,
+		"./lo.js": 288,
+		"./lt": 289,
+		"./lt.js": 289,
+		"./lv": 290,
+		"./lv.js": 290,
+		"./me": 291,
+		"./me.js": 291,
+		"./mi": 292,
+		"./mi.js": 292,
+		"./mk": 293,
+		"./mk.js": 293,
+		"./ml": 294,
+		"./ml.js": 294,
+		"./mr": 295,
+		"./mr.js": 295,
+		"./ms": 296,
+		"./ms-my": 297,
+		"./ms-my.js": 297,
+		"./ms.js": 296,
+		"./my": 298,
+		"./my.js": 298,
+		"./nb": 299,
+		"./nb.js": 299,
+		"./ne": 300,
+		"./ne.js": 300,
+		"./nl": 301,
+		"./nl-be": 302,
+		"./nl-be.js": 302,
+		"./nl.js": 301,
+		"./nn": 303,
+		"./nn.js": 303,
+		"./pa-in": 304,
+		"./pa-in.js": 304,
+		"./pl": 305,
+		"./pl.js": 305,
+		"./pt": 306,
+		"./pt-br": 307,
+		"./pt-br.js": 307,
+		"./pt.js": 306,
+		"./ro": 308,
+		"./ro.js": 308,
+		"./ru": 309,
+		"./ru.js": 309,
+		"./sd": 310,
+		"./sd.js": 310,
+		"./se": 311,
+		"./se.js": 311,
+		"./si": 312,
+		"./si.js": 312,
+		"./sk": 313,
+		"./sk.js": 313,
+		"./sl": 314,
+		"./sl.js": 314,
+		"./sq": 315,
+		"./sq.js": 315,
+		"./sr": 316,
+		"./sr-cyrl": 317,
+		"./sr-cyrl.js": 317,
+		"./sr.js": 316,
+		"./ss": 318,
+		"./ss.js": 318,
+		"./sv": 319,
+		"./sv.js": 319,
+		"./sw": 320,
+		"./sw.js": 320,
+		"./ta": 321,
+		"./ta.js": 321,
+		"./te": 322,
+		"./te.js": 322,
+		"./tet": 323,
+		"./tet.js": 323,
+		"./th": 324,
+		"./th.js": 324,
+		"./tl-ph": 325,
+		"./tl-ph.js": 325,
+		"./tlh": 326,
+		"./tlh.js": 326,
+		"./tr": 327,
+		"./tr.js": 327,
+		"./tzl": 328,
+		"./tzl.js": 328,
+		"./tzm": 329,
+		"./tzm-latn": 330,
+		"./tzm-latn.js": 330,
+		"./tzm.js": 329,
+		"./uk": 331,
+		"./uk.js": 331,
+		"./ur": 332,
+		"./ur.js": 332,
+		"./uz": 333,
+		"./uz-latn": 334,
+		"./uz-latn.js": 334,
+		"./uz.js": 333,
+		"./vi": 335,
+		"./vi.js": 335,
+		"./x-pseudo": 336,
+		"./x-pseudo.js": 336,
+		"./yo": 337,
+		"./yo.js": 337,
+		"./zh-cn": 338,
+		"./zh-cn.js": 338,
+		"./zh-hk": 339,
+		"./zh-hk.js": 339,
+		"./zh-tw": 340,
+		"./zh-tw.js": 340
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -18004,11 +15455,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 228;
+	webpackContext.id = 225;
 
 
 /***/ }),
-/* 229 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18016,7 +15467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18086,7 +15537,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 230 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18096,7 +15547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : forabi https://github.com/forabi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18233,7 +15684,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 231 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18241,7 +15692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Noureddine LOUAHEDJ : https://github.com/noureddineme
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18297,7 +15748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 232 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18305,7 +15756,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nusret Parlak: https://github.com/nusretparlak
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18361,7 +15812,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 233 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18369,7 +15820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ali Hmer: https://github.com/kikoanis
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18492,7 +15943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 234 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18501,7 +15952,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18557,7 +16008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 235 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18565,7 +16016,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18667,7 +16118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 236 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18675,7 +16126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nader Toukabri : https://github.com/naderio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18731,7 +16182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 237 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18739,7 +16190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : topchiyev : https://github.com/topchiyev
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18841,7 +16292,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 238 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18851,7 +16302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -18980,7 +16431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 239 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -18988,7 +16439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19075,7 +16526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 240 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19083,7 +16534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19199,7 +16650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 241 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19207,7 +16658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19323,7 +16774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 242 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19331,7 +16782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19436,7 +16887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 243 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19445,7 +16896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on (hr) translation by Bojan Marković
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19584,7 +17035,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 244 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19592,7 +17043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19677,7 +17128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 245 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19685,7 +17136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19854,7 +17305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 246 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19862,7 +17313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -19922,7 +17373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 247 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -19931,7 +17382,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/ryangreaves
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20008,7 +17459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 248 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20016,7 +17467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20073,7 +17524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 249 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20083,7 +17534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20156,7 +17607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 250 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20167,7 +17618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mikolaj Dadela : https://github.com/mik01aj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20240,7 +17691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 251 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20248,7 +17699,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : sschueller : https://github.com/sschueller
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20323,7 +17774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 252 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20331,7 +17782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jawish Hameed : https://github.com/jawish
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20428,7 +17879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 253 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20436,7 +17887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20533,7 +17984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 254 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20541,7 +17992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jared Morse : https://github.com/jarcoal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20605,7 +18056,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 255 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20613,7 +18064,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20673,7 +18124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 256 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20681,7 +18132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20745,7 +18196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 257 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20753,7 +18204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Cartlidge : https://github.com/chriscartlidge
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20817,7 +18268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 258 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20825,7 +18276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Luke McGregor : https://github.com/lukemcgregor
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20889,7 +18340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 259 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20899,7 +18350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! comment : miestasmia corrected the translation by colindean
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -20967,7 +18418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 260 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -20975,7 +18426,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Julio Napurí : https://github.com/julionc
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21055,14 +18506,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 261 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : Spanish (Dominican Republic) [es-do]
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21142,7 +18593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 262 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21151,7 +18602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21227,7 +18678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 263 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21235,7 +18686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21298,7 +18749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 264 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21306,7 +18757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21410,7 +18861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 265 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21418,7 +18869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21522,7 +18973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 266 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21530,7 +18981,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21587,7 +19038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 267 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21595,7 +19046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Fischer : https://github.com/jfroffice
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21675,7 +19126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 268 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21683,7 +19134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21754,7 +19205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 269 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21762,7 +19213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Gaspard Bucher : https://github.com/gaspard
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21837,7 +19288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 270 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21845,7 +19296,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21917,7 +19368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 271 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -21925,7 +19376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jon Ashdown : https://github.com/jonashdown
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -21998,7 +19449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 272 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22006,7 +19457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22080,7 +19531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 273 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22088,7 +19539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : The Discoverer : https://github.com/WikiDiscoverer
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22207,7 +19658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 274 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22217,7 +19668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tal Ater : https://github.com/TalAter
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22311,7 +19762,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 275 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22319,7 +19770,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22440,7 +19891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 276 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22448,7 +19899,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22590,7 +20041,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 277 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22598,7 +20049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22704,7 +20155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 278 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22712,7 +20163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22804,7 +20255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 279 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22813,7 +20264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -22892,7 +20343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 280 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -22900,7 +20351,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23024,7 +20475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 281 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23033,7 +20484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23099,7 +20550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 282 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23107,7 +20558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : LI Long : https://github.com/baryon
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23184,7 +20635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 283 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23193,7 +20644,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23272,7 +20723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 284 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23280,7 +20731,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23366,7 +20817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 285 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23374,7 +20825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Nurlan Rakhimzhanov : https://github.com/nurlan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23458,7 +20909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 286 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23466,7 +20917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23521,7 +20972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 287 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23529,7 +20980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rajeev Naik : https://github.com/rajeevnaikte
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23652,7 +21103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 288 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23661,7 +21112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jeeeyul Lee <jeeeyul@gmail.com>
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23726,7 +21177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 289 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23734,7 +21185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chyngyz Arystan uulu : https://github.com/chyngyz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23819,7 +21270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 290 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23828,7 +21279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : David Raison : https://github.com/kwisatz
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -23961,7 +21412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 291 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -23969,7 +21420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Ryan Hart : https://github.com/ryanhart2
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24036,7 +21487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 292 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24044,7 +21495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24158,7 +21609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 293 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24167,7 +21618,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24260,7 +21711,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 294 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24268,7 +21719,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24376,7 +21827,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 295 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24384,7 +21835,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : John Corrigan <robbiecloset@gmail.com> : https://github.com/johnideal
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24445,7 +21896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 296 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24453,7 +21904,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24540,7 +21991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 297 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24548,7 +21999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24626,7 +22077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 298 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24635,7 +22086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Vivek Athalye : https://github.com/vnathalye
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24790,7 +22241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 299 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24798,7 +22249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24877,7 +22328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 300 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24886,7 +22337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -24965,7 +22416,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 301 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -24975,7 +22426,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Tin Aung Lin : https://github.com/thanyawzinmin
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25066,7 +22517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 302 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25075,7 +22526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25134,7 +22585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 303 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25142,7 +22593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : suvash : https://github.com/suvash
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25262,7 +22713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 304 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25271,7 +22722,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25355,7 +22806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 305 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25364,7 +22815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jacob Middag : https://github.com/middagj
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25448,7 +22899,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 306 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25456,7 +22907,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : https://github.com/mechuwind
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25513,7 +22964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 307 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25521,7 +22972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Harpreet Singh : https://github.com/harpreetkhalsagtbit
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25642,7 +23093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 308 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25650,7 +23101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25754,7 +23205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 309 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25762,7 +23213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jefferson : https://github.com/jalex79
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25824,7 +23275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 310 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25832,7 +23283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25890,7 +23341,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 311 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25899,7 +23350,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -25970,7 +23421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 312 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -25980,7 +23431,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Коренберг Марк : https://github.com/socketpair
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26158,7 +23609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 313 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26166,7 +23617,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Narain Sagar : https://github.com/narainsagar
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26261,7 +23712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 314 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26269,7 +23720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! authors : Bård Rolstad Henriksen : https://github.com/karamell
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26327,7 +23778,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 315 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26335,7 +23786,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26403,7 +23854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 316 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26412,7 +23863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! based on work of petrbela : https://github.com/petrbela
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26558,7 +24009,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 317 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26566,7 +24017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26725,7 +24176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 318 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26735,7 +24186,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Oerd Cukalla : https://github.com/oerd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26800,7 +24251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 319 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26808,7 +24259,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -26915,7 +24366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 320 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -26923,7 +24374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27030,7 +24481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 321 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27038,7 +24489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Nicolai Davies<mail@nicolai.io> : https://github.com/nicolaidavies
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27124,7 +24575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 322 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27132,7 +24583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Jens Alm : https://github.com/ulmus
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27198,7 +24649,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 323 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27206,7 +24657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Fahad Kassim : https://github.com/fadsel
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27262,7 +24713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 324 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27270,7 +24721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27397,7 +24848,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 325 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27405,7 +24856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Krishna Chaitanya Thota : https://github.com/kcthota
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27491,7 +24942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 326 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27500,7 +24951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Onorio De J. Afonso : https://github.com/marobo
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27564,7 +25015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 327 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27572,7 +25023,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27636,7 +25087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 328 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27644,7 +25095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dan Hagman : https://github.com/hagmandan
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27703,7 +25154,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 329 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27711,7 +25162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Dominika Kruk : https://github.com/amaranthrose
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27828,7 +25279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 330 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27837,7 +25288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -27923,7 +25374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 331 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -27932,7 +25383,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Iustì Canun
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28019,7 +25470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 332 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28027,7 +25478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28082,7 +25533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 333 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28090,7 +25541,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28145,7 +25596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 334 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28154,7 +25605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28301,7 +25752,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 335 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28310,7 +25761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zack : https://github.com/ZackVision
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28405,7 +25856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 336 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28413,7 +25864,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28468,7 +25919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 337 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28476,7 +25927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Rasulbek Mirzayev : github.com/Rasulbeeek
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28531,7 +25982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 338 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28539,7 +25990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28615,7 +26066,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 339 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28623,7 +26074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Andrew Hood : https://github.com/andrewhood125
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28688,7 +26139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 340 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28696,7 +26147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Atolagbe Abisoye : https://github.com/andela-batolagbe
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28753,7 +26204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 341 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28762,7 +26213,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28869,7 +26320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 342 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28879,7 +26330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Konstantin : https://github.com/skfd
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -28979,7 +26430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 343 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -28988,7 +26439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//! author : Chris Lam : https://github.com/hehachris
 
 	;(function (global, factory) {
-	    true ? factory(__webpack_require__(226)) :
+	    true ? factory(__webpack_require__(223)) :
 	   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
 	   factory(global.moment)
 	}(this, (function (moment) { 'use strict';
@@ -29088,7 +26539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 344 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29306,7 +26757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 345 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29317,7 +26768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var SourceComponent = __webpack_require__(179);
-	var template = __webpack_require__(346);
+	var template = __webpack_require__(343);
 	var _ = __webpack_require__(72);
 	var validationMixin = __webpack_require__(170);
 
@@ -29461,13 +26912,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRadioGroup;
 
 /***/ }),
-/* 346 */
+/* 343 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-unitgroup u-unitgroup-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n\t<div class=\"unitgroup_wrap\">\n\t    {#list source as item}\n\t    <label class=\"u-radio\" title={item[nameKey]} z-sel={item === selected} z-dis={disabled} r-class={ {'u-radio-block': block} } on-click={this.select(item)}>\n\t\t\t<div class=\"radio_box\">\n\t\t\t\t<i class=\"u-icon u-icon-radio\"></i>\n\t\t\t</div>{item[nameKey]}\n\t\t</label>\n\t    {/list}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>"
 
 /***/ }),
-/* 347 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29480,7 +26931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Dropdown = __webpack_require__(178);
 	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var template = __webpack_require__(348);
+	var template = __webpack_require__(345);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -29985,13 +27436,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMultiSelect;
 
 /***/ }),
-/* 348 */
+/* 345 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#if showRoot}\n            {#list rootSelected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {#else}\n            {#list selected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {/if}\n        <span class=\"m-multi-placeholder\" r-hide={open || !placeholder || selected.length}>{placeholder}</span>\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
-/* 349 */
+/* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30004,7 +27455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var validator = __webpack_require__(105);
 	var bowser = __webpack_require__(173);
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(350);
+	var template = __webpack_require__(347);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -30119,13 +27570,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLButton;
 
 /***/ }),
-/* 350 */
+/* 347 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if link}\n<a href={link || 'javascript:;'} target={target} class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)}>\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</a>\n{#else}\n<button class=\"u-btn u-btn-{type} u-btn-{size} u-btn-{actionIcons[action]} u-btn-{shape} {class}\" r-animation=\"on: click; class: u-btn-clicked;\" on-mouseup={this.onMouseUp($event)} on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type=\"button\">\n\t{#if icon && !loading}<i class=\"u-icon u-icon-{icon}\"></i>{/if}\n\t{#if action && actionIcons[action] && !loading}<i class=\"u-icon u-icon-{actionIcons[action]}\"></i>{/if}\n\t{#if loading}<i class=\"u-icon u-icon-spinner u-icon-pulse\"></i>{/if}\n\t{#if !shape}{title}{/if}\n</button>\n{/if}"
 
 /***/ }),
-/* 351 */
+/* 348 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30135,7 +27586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var ValidationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(352);
+	var template = __webpack_require__(349);
 
 	/**
 	 * @class KLForm
@@ -30296,13 +27747,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLForm;
 
 /***/ }),
-/* 352 */
+/* 349 */
 /***/ (function(module, exports) {
 
 	module.exports = "<form class=\"m-form f-row f-cb {class}\" r-class=\"{{'inline':!!inline}}\">\n\t{#inc this.$body}\n</form>"
 
 /***/ }),
-/* 353 */
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30311,7 +27762,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
 
-	var template = __webpack_require__(354);
+	var template = __webpack_require__(351);
 
 	/**
 	 * @class KLFormItem
@@ -30426,13 +27877,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLFormItem;
 
 /***/ }),
-/* 354 */
+/* 351 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-formitem u-formitem-{layout} {class}\" cols=\"{cols}\">\n  <!--title区块-->\n  {#if title || titleTemplate}\n  <label class=\"formitem_tt\" cols=\"{labelCols}\" size=\"{labelSize}\" lineHeight=\"{labelLineHeight}\" style=\"text-align:{textAlign}\">\n      <span class=\"formitem_rqr\" r-hide=\"{!required}\">&#42;</span>\n      {#if title}\n        {title}\n      {#else}\n        {#inc titleTemplate}\n      {/if}\n      {#if tip}<kl-tooltip tip=\"{tip}\"><i class=\"u-icon u-icon-warning formitem_info\"></i></kl-tooltip>{/if}\n  </label>\n  {/if}\n  <!--内容区块-->\n  <span class=\"formitem_ct\">\n    {#inc this.$body}\n\n    <!--说明区块-->\n    {#if descTemplate}\n      <div lineHeight=\"{labelLineHeight}\" class=\"formitem_desc\">\n        {#inc descTemplate}\n      </div>\n    {/if}\n  </span>\n</div>\n"
 
 /***/ }),
-/* 355 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30442,17 +27893,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author   sensen(rainforest92@126.com)
 	 */
 
-	var dom = __webpack_require__(71).dom;
-	/* eslint no-unused-vars: 0 */
-	var Popper = __webpack_require__(220);
-
 	var Dropdown = __webpack_require__(178);
-	var template = __webpack_require__(356);
+	var template = __webpack_require__(353);
 	var _ = __webpack_require__(72);
 	__webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
-	var Multiple = __webpack_require__(357);
-	var PrivateMethod = __webpack_require__(359);
+	var Multiple = __webpack_require__(354);
+	var PrivateMethod = __webpack_require__(356);
 
 	/**
 	 * @class KLSelect
@@ -30490,7 +27937,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}            [options.data.size]                     => 组件大小, sm/md/lg
 	 * @param {number}            [options.data.width]                    => 组件宽度
 	 * @param {number}            [options.data.limit]                    => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
-	 * @param {boolean}      [options.data.appendToBody]                   => 是否将下拉直接插到body上，一般用于弹框和表格样式有问题的时候
 	 */
 
 	var KLSelect = Dropdown.extend({
@@ -30504,7 +27950,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      key: 'id',
 	      nameKey: 'name',
 	      value: undefined,
-	      appendToBody: false,
+
 	      // 搜索的文案
 	      searchValue: '',
 	      canSearch: undefined,
@@ -30573,7 +28019,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          data.selected = newValue ? source.filter(function (item) {
 	            return newValueArr.indexOf('' + item[key]) !== -1;
 	          }, this) : [];
-	          this.updatePopper();
 	        } else {
 	          data.selected = source.find(function (item) {
 	            return '' + item[key] === '' + newValue;
@@ -30703,27 +28148,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.initValidation();
 	  },
-	  init: function init() {
-	    var _this = this;
-
-	    var that = this;
-	    this.data.reference = dom.element(this.$refs.dropdown_hd);
-	    this.$watch('open', function (newValue) {
-	      if (newValue === true && that.data.appendToBody) {
-	        document.body.appendChild(dom.element(that.$refs.dropdown_bd));
-	        // 获取dropdown_hd宽度
-	        var referenceWidth = _this.data.reference.offsetWidth;
-	        _this.$refs.dropdown_bd.style.minWidth = referenceWidth + 'px';
-	      }
-	    });
-	  },
-
-	  // 更新popper重新计算位置
-	  updatePopper: function updatePopper() {
-	    if (this.data.open && this.data.appendToBody) {
-	      this.$refs.reference.update();
-	    }
-	  },
 	  select: function select(item) {
 	    var data = this.data;
 	    var multiple = data.multiple;
@@ -30815,13 +28239,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSelect;
 
 /***/ }),
-/* 356 */
+/* 353 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t ref=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr {clearable ? 'hoverHide' : ''}\"/>\n\t\t\t\t{#if clearable}\n\t\t\t\t<kl-icon fontSize=12 type=\"error\" on-click={this.selectNone($event)} class=\"f-fr hoverShow\"/>\n\t\t\t\t{/if}\n\t\t\t\t{#if open && canSearch}\n\t\t\t\t<input disabled={disabled} readonly={readonly} type=\"text\" class={selected?'input u-search-input':'input u-search-input m-multi-placeholder'} r-autofocus\n\t\t\t\t\t\tplaceholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t\t\t\t{/if}\n\t\t\t\t<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，\n\t\t\t\t\t如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->\n\t\t\t\t<span class={selected?'':'m-multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t ref=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t\t\t\t\t<kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr\" />\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>\n\t\t            <kl-icon fontSize=12 type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t\t<kl-popper popperJS={popperJS} ref=\"reference\" reference=\"{reference}\" appendToBody={appendToBody}>\n\t\t\t<div class=\"dropdown_bd\"\n\t\t\t\t r-class=\"{{'klselect_dropdown_bd': appendToBody}}\"\n\t\t\t\t ref=\"dropdown_bd\"\n\t        >\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t\t</kl-popper>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr {clearable ? 'hoverHide' : ''}\"/>\n\t\t\t\t{#if clearable}\n\t\t\t\t<kl-icon fontSize=12 type=\"error\" on-click={this.selectNone($event)} class=\"f-fr hoverShow\"/>\n\t\t\t\t{/if}\n\t\t\t\t{#if open && canSearch}\n\t\t\t\t<input disabled={disabled} readonly={readonly} type=\"text\" class={selected?'input u-search-input':'input u-search-input m-multi-placeholder'} r-autofocus\n\t\t\t\t\t\tplaceholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t\t\t\t{/if}\n\t\t\t\t<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，\n\t\t\t\t\t如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->\n\t\t\t\t<span class={selected?'':'m-multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t\t\t\t\t<kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr\" />\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>\n\t\t            <kl-icon fontSize=12 type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
-/* 357 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30832,7 +28256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(358);
+	var util = __webpack_require__(355);
 
 	module.exports = function Multiple(Component) {
 	  Component.implement({
@@ -30896,7 +28320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 358 */
+/* 355 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -30950,7 +28374,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = selectUtil;
 
 /***/ }),
-/* 359 */
+/* 356 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30967,7 +28391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 
-	var util = __webpack_require__(358);
+	var util = __webpack_require__(355);
 
 	module.exports = function PrivateMethod(Component) {
 	  Component.implement({
@@ -31057,7 +28481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 360 */
+/* 357 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31068,7 +28492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(361);
+	var template = __webpack_require__(358);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31114,13 +28538,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLText;
 
 /***/ }),
-/* 361 */
+/* 358 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a href=\"{url}\" class=\"u-text u-text-{type} u-text-{size} u-text-{align} u-text-{vertical} {class}\"\n   target=\"{target}\"\n   on-click={this.onClick($event)}\n   r-class={{'u-text_unlink': url == 'javascript:;','u-text-wb': isBold}}>\n    {text}\n</a>"
 
 /***/ }),
-/* 362 */
+/* 359 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31131,7 +28555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(363);
+	var template = __webpack_require__(360);
 	var _ = __webpack_require__(72);
 	var Validation = __webpack_require__(104);
 	var validationMixin = __webpack_require__(170);
@@ -31242,13 +28666,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTextArea;
 
 /***/ }),
-/* 363 */
+/* 360 */
 /***/ (function(module, exports) {
 
 	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
-/* 364 */
+/* 361 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31258,13 +28682,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(365);
-	var Config = __webpack_require__(366);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
 	var Component = __webpack_require__(70);
-	var UploadList = __webpack_require__(367);
-	var UploadCard = __webpack_require__(390);
+	var UploadList = __webpack_require__(364);
+	var UploadCard = __webpack_require__(387);
 	var validationMixin = __webpack_require__(170);
-	var tpl = __webpack_require__(392);
+	var tpl = __webpack_require__(389);
 
 	/**
 	 * @class KLUpload
@@ -31445,7 +28869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLUpload;
 
 /***/ }),
-/* 365 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31533,7 +28957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 366 */
+/* 363 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -31596,7 +29020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 367 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31608,8 +29032,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var UploadBase = __webpack_require__(368);
-	var tpl = __webpack_require__(389);
+	var UploadBase = __webpack_require__(365);
+	var tpl = __webpack_require__(386);
 
 	/**
 	 * @class UploadList
@@ -31639,7 +29063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadList;
 
 /***/ }),
-/* 368 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31648,7 +29072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _promise = __webpack_require__(369);
+	var _promise = __webpack_require__(366);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
@@ -31662,10 +29086,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(365);
-	var Config = __webpack_require__(366);
-	var FileUnit = __webpack_require__(383);
-	var KLImagePreview = __webpack_require__(385);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
+	var FileUnit = __webpack_require__(380);
+	var KLImagePreview = __webpack_require__(382);
 
 	/**
 	 * @class UploadBase
@@ -32190,23 +29614,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadBase;
 
 /***/ }),
-/* 369 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(370), __esModule: true };
+	module.exports = { "default": __webpack_require__(367), __esModule: true };
 
 /***/ }),
-/* 370 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(99);
 	__webpack_require__(54);
 	__webpack_require__(38);
-	__webpack_require__(371);
+	__webpack_require__(368);
 	module.exports = __webpack_require__(6).Promise;
 
 /***/ }),
-/* 371 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32217,11 +29641,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , $export            = __webpack_require__(4)
 	  , isObject           = __webpack_require__(12)
 	  , aFunction          = __webpack_require__(8)
-	  , anInstance         = __webpack_require__(372)
-	  , forOf              = __webpack_require__(373)
-	  , speciesConstructor = __webpack_require__(376)
-	  , task               = __webpack_require__(377).set
-	  , microtask          = __webpack_require__(379)()
+	  , anInstance         = __webpack_require__(369)
+	  , forOf              = __webpack_require__(370)
+	  , speciesConstructor = __webpack_require__(373)
+	  , task               = __webpack_require__(374).set
+	  , microtask          = __webpack_require__(376)()
 	  , PROMISE            = 'Promise'
 	  , TypeError          = global.TypeError
 	  , process            = global.process
@@ -32413,7 +29837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false;          // <- notify
 	  };
-	  Internal.prototype = __webpack_require__(380)($Promise.prototype, {
+	  Internal.prototype = __webpack_require__(377)($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -32440,7 +29864,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 	__webpack_require__(50)($Promise, PROMISE);
-	__webpack_require__(381)(PROMISE);
+	__webpack_require__(378)(PROMISE);
 	Wrapper = __webpack_require__(6)[PROMISE];
 
 	// statics
@@ -32464,7 +29888,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return capability.promise;
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(382)(function(iter){
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(379)(function(iter){
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -32510,7 +29934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 372 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it, Constructor, name, forbiddenField){
@@ -32520,12 +29944,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 373 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(7)
-	  , call        = __webpack_require__(374)
-	  , isArrayIter = __webpack_require__(375)
+	  , call        = __webpack_require__(371)
+	  , isArrayIter = __webpack_require__(372)
 	  , anObject    = __webpack_require__(11)
 	  , toLength    = __webpack_require__(28)
 	  , getIterFn   = __webpack_require__(57)
@@ -32550,7 +29974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.RETURN = RETURN;
 
 /***/ }),
-/* 374 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -32567,7 +29991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 375 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
@@ -32580,7 +30004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 376 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -32593,11 +30017,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 377 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx                = __webpack_require__(7)
-	  , invoke             = __webpack_require__(378)
+	  , invoke             = __webpack_require__(375)
 	  , html               = __webpack_require__(49)
 	  , cel                = __webpack_require__(16)
 	  , global             = __webpack_require__(5)
@@ -32673,7 +30097,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 378 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -32694,11 +30118,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 379 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(5)
-	  , macrotask = __webpack_require__(377).set
+	  , macrotask = __webpack_require__(374).set
 	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
 	  , process   = global.process
 	  , Promise   = global.Promise
@@ -32767,7 +30191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 380 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var hide = __webpack_require__(9);
@@ -32779,7 +30203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 381 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32798,7 +30222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 382 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ITERATOR     = __webpack_require__(51)('iterator')
@@ -32824,7 +30248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 383 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32837,8 +30261,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(384);
-	var utils = __webpack_require__(365);
+	var tpl = __webpack_require__(381);
+	var utils = __webpack_require__(362);
 
 	var FileUnit = Component.extend({
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -33003,13 +30427,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FileUnit;
 
 /***/ }),
-/* 384 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
-/* 385 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33020,8 +30444,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(386);
-	var tpl = __webpack_require__(388);
+	var KLModal = __webpack_require__(383);
+	var tpl = __webpack_require__(385);
 
 	/**
 	 * @class KLImagePreview
@@ -33357,7 +30781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLImagePreview;
 
 /***/ }),
-/* 386 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33369,7 +30793,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//  */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(387);
+	var template = __webpack_require__(384);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -33429,11 +30853,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$emit('close', {
 	      result: result
 	    });
-	    var that = this;
-	    // setTimeout为了先触发下拉的收起（如果contentTemplate中有下拉组件）。
-	    setTimeout(function () {
-	      result ? that.ok(event) : that.cancel();
-	    });
+	    result ? this.ok(event) : this.cancel();
 	  },
 
 	  /**
@@ -33506,25 +30926,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLModal;
 
 /***/ }),
-/* 387 */
+/* 384 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 388 */
+/* 385 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
-/* 389 */
+/* 386 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      onLoadInterceptor={onLoadInterceptor}\n                      onErrorInterceptor={onErrorInterceptor}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 390 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33536,10 +30956,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(365);
-	var UploadBase = __webpack_require__(368);
-	var Config = __webpack_require__(366);
-	var tpl = __webpack_require__(391);
+	var utils = __webpack_require__(362);
+	var UploadBase = __webpack_require__(365);
+	var Config = __webpack_require__(363);
+	var tpl = __webpack_require__(388);
 
 	/**
 	 * @class UploadCard
@@ -33873,19 +31293,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadCard;
 
 /***/ }),
-/* 391 */
+/* 388 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                onLoadInterceptor={onLoadInterceptor}\n                                onErrorInterceptor={onErrorInterceptor}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 392 */
+/* 389 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
-/* 393 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33896,7 +31316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(394);
+	var template = __webpack_require__(391);
 
 	/**
 	 * @class KLSidebar
@@ -33910,8 +31330,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
 	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
 	 * @param {string}        [options.data.urlKey=url]             => 菜单结构中的链接key名
+	 * @param {string}        [options.data.routeKey=route]         => 单页spa应用时,使用
 	 * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
 	 * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
+	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
 	 */
 	var KLSidebar = Component.extend({
 	  name: 'kl-sidebar',
@@ -33923,6 +31345,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      menus: [],
 	      titleKey: 'title',
 	      urlKey: 'url',
+	      routeKey: 'route',
 	      pageKey: 'title',
 	      childrenKey: 'children',
 	      top: '60px',
@@ -33973,13 +31396,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSidebar;
 
 /***/ }),
-/* 394 */
+/* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\" router=\"{router}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\" route=\"{page[routeKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" route=\"{menu[routeKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
-/* 395 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33989,7 +31412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(396);
+	var template = __webpack_require__(393);
 
 	/**
 	 * @class KLMenu
@@ -33997,6 +31420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                          = 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
+	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
 	 */
 
 	/**
@@ -34006,6 +31430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
 	 * @param {string}        [options.data.url]                   => 如果一级菜单需要链接,可配置url属性
+	 * @param {string}        [options.data.route]                   => 单页spa应用时替代url属性
 	 * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
@@ -34018,6 +31443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.url]                      => 跳转链接
+	 * @param {string}        [options.data.route]                    => 单页spa应用时替代url属性
 	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
 	 */
 
@@ -34070,13 +31496,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMenu;
 
 /***/ }),
-/* 396 */
+/* 393 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
 
 /***/ }),
-/* 397 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34089,8 +31515,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(398);
-	var RootMenuMixin = __webpack_require__(399);
+	var template = __webpack_require__(395);
+	var RootMenuMixin = __webpack_require__(396);
 
 	/**
 	 * @class KLMenuItem
@@ -34134,9 +31560,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  goto: function goto(e) {
 	    e.stopPropagation();
 	    this.data.rootMenu.$emit('menuitem-click', this);
-	    if (this.data.url) {
-	      location.href = this.data.url;
-	    }
 	  }
 	});
 
@@ -34144,18 +31567,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMenuItem;
 
 /***/ }),
-/* 398 */
+/* 395 */
 /***/ (function(module, exports) {
 
-	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
+	module.exports = "<a class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)} r-route={url+route}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</a>\n"
 
 /***/ }),
-/* 399 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var KLMenu = __webpack_require__(395);
+	var KLMenu = __webpack_require__(392);
 
 	module.exports = function (Component) {
 	  Component.implement({
@@ -34177,7 +31600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 400 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34190,8 +31613,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(401);
-	var RootMenuMixin = __webpack_require__(399);
+	var template = __webpack_require__(398);
+	var RootMenuMixin = __webpack_require__(396);
 
 	/**
 	 * @class KLSubMenu
@@ -34245,13 +31668,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSubMenu;
 
 /***/ }),
-/* 401 */
+/* 398 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if url}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } href=\"{url}\">\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <ul class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n  {/if}\n</li>\n{/if}"
+	module.exports = "{#if url || route}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } r-route={url+route}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <div class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </div>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
-/* 402 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34262,7 +31685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(403);
+	var template = __webpack_require__(400);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34402,13 +31825,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPager;
 
 /***/ }),
-/* 403 */
+/* 400 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select appendToBody={true} placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
+	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 404 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34419,7 +31842,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(405);
+	var template = __webpack_require__(402);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34570,13 +31993,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTabs;
 
 /***/ }),
-/* 405 */
+/* 402 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"tabs-scroll {scrollable ? 'scrollable' : ''}\">\n        {#if scrollable}\n        <span class=\"nav-prev {scrollable.prev ? '' : 'disabled'}\" on-click={this.prev()}>\n            <i class=\"u-icon u-icon-chevron-left\"></i>\n        </span>\n        <span class=\"nav-next {scrollable.next ? '' : 'disabled'}\" on-click={this.next()}>\n            <i class=\"u-icon u-icon-chevron-right\"></i>\n        </span>\n        {/if}\n        <div ref=\"wrap\" class=\"nav-scroll\">\n            <ul ref=\"nav\" class=\"tabs_hd\" r-style={navStyle}>\n                {#list tabs as item}\n                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 406 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34589,8 +32012,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var template = __webpack_require__(407);
-	var KLTabs = __webpack_require__(404);
+	var template = __webpack_require__(404);
+	var KLTabs = __webpack_require__(401);
 
 	/**
 	 * @class KLTab
@@ -34632,13 +32055,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTab;
 
 /***/ }),
-/* 407 */
+/* 404 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this.$outer.data.fresh}\n{#if this.$outer.data.selected === this}\n<div>{#inc this.$body}</div>\n{/if}\n{#else}\n<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>\n{/if}"
 
 /***/ }),
-/* 408 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34649,7 +32072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(409);
+	var template = __webpack_require__(406);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34699,13 +32122,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSteps;
 
 /***/ }),
-/* 409 */
+/* 406 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 410 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34716,7 +32139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(411);
+	var template = __webpack_require__(408);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34752,13 +32175,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumb;
 
 /***/ }),
-/* 411 */
+/* 408 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 412 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34771,9 +32194,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(413);
+	var template = __webpack_require__(410);
 	var _ = __webpack_require__(72);
-	var KLCrumb = __webpack_require__(410);
+	var KLCrumb = __webpack_require__(407);
 
 	/**
 	 * @class KLCrumbItem
@@ -34799,19 +32222,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumbItem;
 
 /***/ }),
-/* 413 */
+/* 410 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc content || this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 414 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(415);
+	var template = __webpack_require__(412);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34960,13 +32383,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLNotify;
 
 /***/ }),
-/* 415 */
+/* 412 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 416 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34976,13 +32399,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @author   ziane(zianecui@gmail.com)
 	 */
 
-	/* eslint no-unused-vars: 0 */
-	var Popper = __webpack_require__(220);
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(417);
-	var _ = __webpack_require__(72);
+	var template = __webpack_require__(414);
+	__webpack_require__(415);
 
 	var PopUp = Component.extend({
 	  template: template,
@@ -35046,24 +32467,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 	var KLPopConfirm = Component.extend({
 	  name: 'kl-pop-confirm',
-	  template: '<div style="display: inline-block" ref="reference" on-click="{this.getInstance()}">{#inc this.$body}</div>',
+	  template: '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
 	  config: function config(data) {
 	    this.defaults({
 	      placement: 'top'
 	    });
 
 	    this.supr(data);
-	  },
-	  init: function init() {
-	    var element = dom.element(this);
-	    var self = this;
-
-	    dom.on(document.body, 'click', function (e) {
-	      var target = e.target;
-	      if (!_.dom.contains(element, target) && self.data.instance) {
-	        self.data.instance.destroy();
-	      }
-	    });
 	  },
 	  destroy: function destroy() {
 	    if (this.data.instance) {
@@ -35074,11 +32484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  getInstance: function getInstance() {
 	    var self = this;
 	    if (!this.data.instance) {
-	      var instance = new PopUp({
-	        data: _.extend(self.data, {
-	          reference: dom.element(self.$refs.reference)
-	        })
-	      });
+	      var instance = new PopUp({ data: this.data });
 
 	      instance.$on('ok', function (data) {
 	        if (self.events && self.events.ok) {
@@ -35097,6 +32503,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 
 	      instance.$on('destroy', function () {
+	        self.$refs.trigger.data.isShow = false;
 	        self.data.instance = null;
 	      });
 
@@ -35109,352 +32516,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPopConfirm;
 
 /***/ }),
-/* 417 */
+/* 414 */
 /***/ (function(module, exports) {
 
-	module.exports = "<kl-popper reference=\"{reference}\" placement=\"{placement}\">\n\t<div class=\"m-popconfirm {placement}\">\n\t\t<div class=\"arrow\"></div>\n\t\t<div class=\"inner\">\n\t\t\t<div class=\"body\">\n\t\t\t\t{#if contentTemplate}\n\t\t\t\t{#inc @(contentTemplate)}\n\t\t\t\t{#else}\n\t\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t\t{content}\n\t\t\t\t{/if}\n\t\t\t</div>\n\t\t\t<div class=\"foot\">\n\t\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</kl-popper>"
+	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 418 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(419);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLMessage
-	 * @extend Component
-	 * @param {object}      [options.data]                      = 绑定属性
-	 * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
-	 * @param {string}      [options.data.class]                => 补充`class`
-	 */
-
-	var KLMessage = Component.extend({
-	  name: 'kl-message',
-	  template: template,
-	  config: function config() {
-	    _.extend(this.data, {
-	      type: ''
-	    });
-	    this.supr();
-	  },
-	  init: function init() {
-	    this.supr();
-	  }
-	});
-		module.exports = KLMessage;
-
-/***/ }),
-/* 419 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"u-message u-message-{type} {class}\">\n    <i class=\"message_icon u-icon u-icon-{type + 2}\" r-hide={!type}></i>\n    <span class=\"message_t\">\n        {#inc this.$body}\n    </span>\n</div>"
-
-/***/ }),
-/* 420 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * @file KLBadge  文本
-	 * @author   Cody Chan<int64ago@gmail.com>
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(421);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLBadge
-	 * @extend Component
-	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {string}      [options.data.text=--]        <=> 内容
-	 * @param {boolean}     [options.data.circle=false]   => 是否圆角
-	 * @param {string}      [options.data.type=default]   => 文本样式
-	 */
-	var KLBadge = Component.extend({
-	  name: 'kl-badge',
-	  template: template,
-	  config: function config() {
-	    _.extend(this.data, {
-	      text: '--',
-	      // default/primary/info/success/warning/error
-	      type: 'default',
-	      circle: false
-	    });
-	    this.supr();
-	  },
-	  onClick: function onClick(e) {
-	    this.$emit('click', e);
-	  }
-	});
-
-		module.exports = KLBadge;
-
-/***/ }),
-/* 421 */
-/***/ (function(module, exports) {
-
-	module.exports = "<span class=\"u-badge u-badge-{type} u-badge-{circle ? 'number' : ''}\">{text}</span>"
-
-/***/ }),
-/* 422 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * @file KLProgress  进度条
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(423);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLProgress
-	 * @extend Component
-	 * @param {object}              [options.data]                    = 绑定属性
-	 * @param {number}              [options.data.percent=36]         => 百分比
-	 * @param {string/boolean}      [options.data.text=true]          => 在进度条中是否显示百分比。值为`string`时显示该段文字。
-	 * @param {string}              [options.data.size=null]          => 进度条的尺寸
-	 * @param {string}              [options.data.state=null]         => 进度条的状态
-	 * @param {boolean}             [options.data.striped=false]      => 是否显示条纹
-	 * @param {boolean}             [options.data.active=false]       => 进度条是否为激活状态，当`striped`为`true`时，进度条显示动画
-	 * @param {boolean}             [options.data.visible=true]       => 是否显示
-	 * @param {string}              [options.data.class]              => 补充class
-	 */
-	var KLProgress = Component.extend({
-	  name: 'kl-progress',
-	  template: template,
-	  config: function config() {
-	    _.extend(this.data, {
-	      percent: 36,
-	      text: true,
-	      size: null,
-	      state: null,
-	      striped: false,
-	      active: false
-	    });
-	    this.supr();
-	  }
-	});
-
-		module.exports = KLProgress;
-
-/***/ }),
-/* 423 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
-
-/***/ }),
-/* 424 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * @file KLLoading  加载中
-	 * @author   sensen(rainforest92@126.com)
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(425);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class KLLoading
-	 * @param {object}        [options.data]                    = 绑定属性
-	 * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
-	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
-	 * @param {boolean}       [options.data.visible=false]      => 是否显示
-	 * @param {string}        [options.data.class]              => 补充class
-	 */
-	var KLLoading = Component.extend({
-	  name: 'kl-loading',
-	  template: template,
-	  config: function config() {
-	    _.extend(this.data, {
-	      static: false,
-	      visible: false
-	    });
-	    this.supr();
-	  },
-	  init: function init() {
-	    this.supr();
-	    // 证明不是内嵌组件
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @method KLLoading#show() 显示组件
-	     * @return {void}
-	     */
-	  show: function show() {
-	    if (this.data.disabled) return;
-
-	    this.data.visible = true;
-	    this.$update();
-	  },
-
-	  /**
-	     * @method KLLoading#hide() 隐藏组件
-	     * @return {void}
-	     */
-	  hide: function hide() {
-	    if (this.data.disabled) return;
-
-	    this.data.visible = false;
-	    this.$update();
-	  }
-	});
-
-	var loading = new KLLoading();
-	/**
-	 * @param loading 内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例
-	 * @static
-	 */
-	KLLoading.loading = loading;
-
-	/**
-	 * @static
-	 */
-	KLLoading.show = function () {
-	  loading.show();
-	};
-
-	/**
-	 * @static
-	 */
-	KLLoading.hide = function () {
-	  loading.hide();
-	};
-
-	module.exports = KLLoading;
-
-/***/ }),
-/* 425 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}\n  r-animation=\"on:enter;class:animated fadeIn; on:leave;class:animated fadeOut\">\n    <svg class=\"loading-circular\" viewBox=\"25 25 50 50\">\n      <circle class=\"loading-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n    </svg>\n    {#if this.$body}\n      {#inc this.$body}\n    {/if}\n</div>"
-
-/***/ }),
-/* 426 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * @file KLTooltip     提示
-	 * @author   ziane(zianecui@gmail.com)
-	 * ------------------------------------------------------------
-	 */
-
-	/* eslint no-unused-vars: 0 */
-	var Popper = __webpack_require__(220);
-	var dom = __webpack_require__(71).dom;
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(427);
-	__webpack_require__(428);
-
-	var TipPopUp = Component.extend({
-	  template: template,
-	  config: function config(data) {
-	    this.defaults({
-	      isShow: true
-	    });
-	    this.supr(data);
-	  },
-	  init: function init() {
-	    if (this.$root === this) {
-	      this.$inject(document.body);
-	    }
-	  }
-	});
-
-	/**
-	 * @class KLTooltip
-	 * @extend Component
-	 * @param {object}          [options.data]                  = 绑定属性
-	 * @param {string}          [options.data.tip]              => 文字提示
-	 * @param {string}          [options.data.class]              => 增加class
-	 * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
-	 */
-	var KLTooltip = Component.extend({
-	  name: 'kl-tooltip',
-	  template: '{#inc this.$body}',
-	  config: function config(data) {
-	    this.defaults({
-	      tip: '',
-	      placement: 'top'
-	    });
-
-	    this.supr(data);
-	  },
-	  init: function init() {
-	    var self = this;
-	    var element = dom.element(this);
-	    dom.on(element, 'mouseenter', function () {
-	      self.onMouseEnter();
-	    });
-	    dom.on(element, 'mouseleave', function () {
-	      self.onMouseLeave();
-	    });
-	  },
-	  onMouseEnter: function onMouseEnter() {
-	    this.getInstance();
-	  },
-	  onMouseLeave: function onMouseLeave() {
-	    if (this.data.instance) {
-	      this.data.instance.destroy();
-	    }
-	  },
-	  destroy: function destroy() {
-	    if (this.data.instance) {
-	      this.data.instance.destroy();
-	    }
-	    this.supr();
-	  },
-	  getInstance: function getInstance() {
-	    var self = this;
-	    if (!this.data.instance) {
-	      var instance = new TipPopUp({
-	        data: {
-	          tip: self.data.tip,
-	          placement: self.data.placement,
-	          reference: dom.element(this)
-	        }
-	      });
-
-	      instance.$on('destroy', function () {
-	        self.data.instance = null;
-	      });
-
-	      this.data.instance = instance;
-	    }
-	    return this.data.instance;
-	  }
-	});
-
-		module.exports = KLTooltip;
-
-/***/ }),
-/* 427 */
-/***/ (function(module, exports) {
-
-	module.exports = "<kl-popper reference=\"{reference}\" placement=\"{placement}\">\n\t<div class=\"u-tooltip {placement} {class}\" r-hide=\"{!isShow}\">\n\t\t<div class=\"arrow\"></div>\n\t\t<p class=\"inner\">{#inc tip}</p>\n\t</div>\n</kl-popper>"
-
-/***/ }),
-/* 428 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35470,7 +32538,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	__webpack_require__(429);
+	__webpack_require__(416);
 
 	/**
 	 * @class Trigger
@@ -35571,7 +32639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ }),
-/* 429 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35584,11 +32652,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var dom = __webpack_require__(71).dom;
-	var domAlign = __webpack_require__(430);
+	var domAlign = __webpack_require__(417);
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var placement = __webpack_require__(439);
+	var placement = __webpack_require__(426);
 
 	/**
 	 * @class Alignment
@@ -35642,7 +32710,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ }),
-/* 430 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35651,31 +32719,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(431);
+	var _utils = __webpack_require__(418);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(433);
+	var _getOffsetParent = __webpack_require__(420);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(434);
+	var _getVisibleRectForElement = __webpack_require__(421);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(435);
+	var _adjustForViewport = __webpack_require__(422);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(436);
+	var _getRegion = __webpack_require__(423);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(437);
+	var _getElFuturePos = __webpack_require__(424);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	var _getAlignOffset = __webpack_require__(438);
+	var _getAlignOffset = __webpack_require__(425);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -35920,7 +32988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 431 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35931,7 +32999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(432);
+	var _propertyUtils = __webpack_require__(419);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -36496,7 +33564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 432 */
+/* 419 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -36611,7 +33679,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 433 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36620,7 +33688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(431);
+	var _utils = __webpack_require__(418);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -36672,7 +33740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 434 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36681,11 +33749,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(431);
+	var _utils = __webpack_require__(418);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(433);
+	var _getOffsetParent = __webpack_require__(420);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -36753,7 +33821,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 435 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36762,7 +33830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(431);
+	var _utils = __webpack_require__(418);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -36813,7 +33881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 436 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36822,7 +33890,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(431);
+	var _utils = __webpack_require__(418);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -36854,7 +33922,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 437 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36863,7 +33931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(438);
+	var _getAlignOffset = __webpack_require__(425);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -36895,7 +33963,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 438 */
+/* 425 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -36940,7 +34008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 439 */
+/* 426 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -37026,7 +34094,331 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 440 */
+/* 427 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(428);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLMessage
+	 * @extend Component
+	 * @param {object}      [options.data]                      = 绑定属性
+	 * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
+	 * @param {string}      [options.data.class]                => 补充`class`
+	 */
+
+	var KLMessage = Component.extend({
+	  name: 'kl-message',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      type: ''
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.supr();
+	  }
+	});
+		module.exports = KLMessage;
+
+/***/ }),
+/* 428 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"u-message u-message-{type} {class}\">\n    <i class=\"message_icon u-icon u-icon-{type + 2}\" r-hide={!type}></i>\n    <span class=\"message_t\">\n        {#inc this.$body}\n    </span>\n</div>"
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLBadge  文本
+	 * @author   Cody Chan<int64ago@gmail.com>
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(430);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLBadge
+	 * @extend Component
+	 * @param {object}      [options.data]                = 绑定属性
+	 * @param {string}      [options.data.text=--]        <=> 内容
+	 * @param {boolean}     [options.data.circle=false]   => 是否圆角
+	 * @param {string}      [options.data.type=default]   => 文本样式
+	 */
+	var KLBadge = Component.extend({
+	  name: 'kl-badge',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      text: '--',
+	      // default/primary/info/success/warning/error
+	      type: 'default',
+	      circle: false
+	    });
+	    this.supr();
+	  },
+	  onClick: function onClick(e) {
+	    this.$emit('click', e);
+	  }
+	});
+
+		module.exports = KLBadge;
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports) {
+
+	module.exports = "<span class=\"u-badge u-badge-{type} u-badge-{circle ? 'number' : ''}\">{text}</span>"
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLProgress  进度条
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(432);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLProgress
+	 * @extend Component
+	 * @param {object}              [options.data]                    = 绑定属性
+	 * @param {number}              [options.data.percent=36]         => 百分比
+	 * @param {string/boolean}      [options.data.text=true]          => 在进度条中是否显示百分比。值为`string`时显示该段文字。
+	 * @param {string}              [options.data.size=null]          => 进度条的尺寸
+	 * @param {string}              [options.data.state=null]         => 进度条的状态
+	 * @param {boolean}             [options.data.striped=false]      => 是否显示条纹
+	 * @param {boolean}             [options.data.active=false]       => 进度条是否为激活状态，当`striped`为`true`时，进度条显示动画
+	 * @param {boolean}             [options.data.visible=true]       => 是否显示
+	 * @param {string}              [options.data.class]              => 补充class
+	 */
+	var KLProgress = Component.extend({
+	  name: 'kl-progress',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      percent: 36,
+	      text: true,
+	      size: null,
+	      state: null,
+	      striped: false,
+	      active: false
+	    });
+	    this.supr();
+	  }
+	});
+
+		module.exports = KLProgress;
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
+
+/***/ }),
+/* 433 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLLoading  加载中
+	 * @author   sensen(rainforest92@126.com)
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(434);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class KLLoading
+	 * @param {object}        [options.data]                    = 绑定属性
+	 * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
+	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
+	 * @param {boolean}       [options.data.visible=false]      => 是否显示
+	 * @param {string}        [options.data.class]              => 补充class
+	 */
+	var KLLoading = Component.extend({
+	  name: 'kl-loading',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      static: false,
+	      visible: false
+	    });
+	    this.supr();
+	  },
+	  init: function init() {
+	    this.supr();
+	    // 证明不是内嵌组件
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @method KLLoading#show() 显示组件
+	     * @return {void}
+	     */
+	  show: function show() {
+	    if (this.data.disabled) return;
+
+	    this.data.visible = true;
+	    this.$update();
+	  },
+
+	  /**
+	     * @method KLLoading#hide() 隐藏组件
+	     * @return {void}
+	     */
+	  hide: function hide() {
+	    if (this.data.disabled) return;
+
+	    this.data.visible = false;
+	    this.$update();
+	  }
+	});
+
+	var loading = new KLLoading();
+	/**
+	 * @param loading 内部静态实例, 使用NEKUI.KLLoading的静态方法时,内部使用的是这个实例
+	 * @static
+	 */
+	KLLoading.loading = loading;
+
+	/**
+	 * @static
+	 */
+	KLLoading.show = function () {
+	  loading.show();
+	};
+
+	/**
+	 * @static
+	 */
+	KLLoading.hide = function () {
+	  loading.hide();
+	};
+
+	module.exports = KLLoading;
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}\n  r-animation=\"on:enter;class:animated fadeIn; on:leave;class:animated fadeOut\">\n    <svg class=\"loading-circular\" viewBox=\"25 25 50 50\">\n      <circle class=\"loading-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n    </svg>\n    {#if this.$body}\n      {#inc this.$body}\n    {/if}\n</div>"
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file KLTooltip     提示
+	 * @author   ziane(zianecui@gmail.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var dom = __webpack_require__(71).dom;
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(436);
+	__webpack_require__(415);
+
+	var TipPopUp = Component.extend({
+	  template: template,
+	  config: function config(data) {
+	    this.defaults({
+	      isShow: true
+	    });
+	    this.supr(data);
+	  },
+	  init: function init() {
+	    if (this.$root === this) {
+	      this.$inject(document.body);
+	    }
+	    this.data.element = dom.element(this);
+	  },
+	  getElement: function getElement() {
+	    return this.data.element;
+	  }
+	});
+
+	/**
+	 * @class KLTooltip
+	 * @extend Component
+	 * @param {object}          [options.data]                  = 绑定属性
+	 * @param {string}          [options.data.tip]              => 文字提示
+	 * @param {string}          [options.data.class]              => 增加class
+	 * @param {string}          [options.data.placement=top]    => tips展示出的位置：top left right bottom topLeft topRight bottomLeft bottomRight leftTop leftBottom rightTop rightBottom
+	 */
+	var KLTooltip = Component.extend({
+	  name: 'kl-tooltip',
+	  template: '<trigger ref="trigger" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide>{#inc this.$body}</trigger>',
+	  config: function config(data) {
+	    this.defaults({
+	      tip: '',
+	      placement: 'top'
+	    });
+
+	    this.supr(data);
+	  },
+	  destroy: function destroy() {
+	    if (this.data.instance) {
+	      this.data.instance.destroy();
+	    }
+	    this.supr();
+	  },
+	  getInstance: function getInstance() {
+	    var self = this;
+	    var _data = this.data,
+	        tip = _data.tip,
+	        placement = _data.placement;
+
+	    if (!this.data.instance) {
+	      var instance = new TipPopUp({
+	        data: { tip: tip, placement: placement }
+	      });
+
+	      instance.$on('destroy', function () {
+	        self.$refs.trigger.data.isShow = false;
+	        self.data.instance = null;
+	      });
+
+	      this.data.instance = instance;
+	    }
+	    return this.data.instance;
+	  }
+	});
+
+		module.exports = KLTooltip;
+
+/***/ }),
+/* 436 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"u-tooltip {placement} animated {class}\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{#inc tip}</p>\n</div>"
+
+/***/ }),
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37037,7 +34429,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(441);
+	var template = __webpack_require__(438);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -37068,13 +34460,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 441 */
+/* 438 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 442 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37208,7 +34600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLLocaleProvider;
 
 /***/ }),
-/* 443 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37217,13 +34609,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file KLtable 表格
 	 */
 
-	var TableHeader = __webpack_require__(444);
-	var TableBody = __webpack_require__(446);
+	var TableHeader = __webpack_require__(441);
+	var TableBody = __webpack_require__(443);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(449);
+	var u = __webpack_require__(446);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(452);
+	var tpl = __webpack_require__(449);
 
 	/**
 	 * @class KLTable
@@ -37849,13 +35241,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 444 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(445);
+	var tpl = __webpack_require__(442);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -38078,21 +35470,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 445 */
+/* 442 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft + 'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBarWidth}\n            <col name=\"gutter\" width={scrollYBarWidth}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBarWidth && !fixedCol}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBarWidth && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: 0,\n                width: scrollYBarWidth + 'px',\n            }}\n        ></div>\n    {/if}\n</table>\n"
 
 /***/ }),
-/* 446 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(447);
-	var templates = __webpack_require__(448);
-	var _ = __webpack_require__(449);
+	var tpl = __webpack_require__(444);
+	var templates = __webpack_require__(445);
+	var _ = __webpack_require__(446);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -38257,22 +35649,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 447 */
+/* 444 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 448 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(449);
+	var _ = __webpack_require__(446);
 
 	var tplMap = {
-	  progress: __webpack_require__(450),
-	  check: __webpack_require__(451)
+	  progress: __webpack_require__(447),
+	  check: __webpack_require__(448)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -38280,7 +35672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 449 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38472,33 +35864,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 450 */
+/* 447 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 451 */
+/* 448 */
 /***/ (function(module, exports) {
 
 	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 452 */
+/* 449 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-kl-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div ref=\"table\"\n        class=\"m-kl-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' :\n                  tableWidth > width ? width : width + scrollYBarWidth + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                stickyHeader={stickyHeader}\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"kl_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedColLeft }\n    <div ref=\"tableFixedLeft\"\n        class=\"m-kl-table m-kl-table-fixed\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixedLeft\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixedLeft\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedLeft\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div ref=\"tableFixedRight\"\n        class=\"m-kl-table m-kl-table-fixed m-kl-table-fixed-right\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            right: fixedTablePosRight + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapfixedTablePosRight\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidthRight,\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    <div class=\"kl_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBarWidth + 'px',\n            height: headerHeight + 'px',\n            right: fixedTablePosRight - scrollYBarWidth + 'px',\n            top: 0\n        }}/>\n    {/if}\n\n    {#list source as item by item_index}\n        {#if item.expand && item._expanddingColumn}\n            <div ref='expand{item_index}'\n              class=\"expand_row\"\n              r-style={{\n                top: this._getExpandRowTop(item_index) + 'px',\n              }}\n            >\n                {#include item._expanddingColumn.expandTemplate}\n            </div>\n        {/if}\n    {/list}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-kl-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 453 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLTableTemplate = __webpack_require__(454);
-	var KLTable = __webpack_require__(443);
+	var KLTableTemplate = __webpack_require__(451);
+	var KLTable = __webpack_require__(440);
 
 	/**
 	 * @class KLTableCol
@@ -38615,7 +36007,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 454 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38701,7 +36093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 455 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38711,7 +36103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(456);
+	var template = __webpack_require__(453);
 
 	/**
 	 * @class KLRow
@@ -38767,13 +36159,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 456 */
+/* 453 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 457 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38795,8 +36187,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(458);
-	var KLRow = __webpack_require__(455);
+	var template = __webpack_require__(455);
+	var KLRow = __webpack_require__(452);
 
 	/**
 	 * @class KLCol
@@ -38868,13 +36260,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 458 */
+/* 455 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 459 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38887,7 +36279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(460);
+	var template = __webpack_require__(457);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -38917,13 +36309,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 460 */
+/* 457 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    {#if title || this.$tools}\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {/if}\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 461 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38937,7 +36329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(459);
+	var KLCard = __webpack_require__(456);
 
 	/**
 	 * @class KLCardTools
@@ -38963,7 +36355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCardTools;
 
 /***/ }),
-/* 462 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38973,7 +36365,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(463);
+	var template = __webpack_require__(460);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -39032,13 +36424,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSearch;
 
 /***/ }),
-/* 463 */
+/* 460 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore}\n        <!--添加一层div，防止两个g-row样式并列导致marginTop--> \n        <div>\n            {#inc this.$more.$body}\n        </div>\n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if this.$more && isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 464 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39051,7 +36443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLSearch = __webpack_require__(462);
+	var KLSearch = __webpack_require__(459);
 
 	/**
 	 * @class KLSearchMore
