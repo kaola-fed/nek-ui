@@ -6646,7 +6646,6 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#333;
 }
 .m-menuItem{
-	display:block;
 	position:relative;
 	padding:8px 0 8px 54px;
 	line-height:1em;

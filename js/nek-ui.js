@@ -1547,41 +1547,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onKeyUp: function _onKeyUp($event) {
 	    this.validate('keyup');
-	    /**
-	     * @event KLInput#keyup 原生keyup事件
-	     * @param {event} MouseEvent 点击的鼠标事件
-	     */
 	    this.$emit('keyup', $event);
 	  },
 	  _onBlur: function _onBlur($event) {
 	    this.validate('blur');
-	    /**
-	     * @event KLInput#blur 原生blur事件
-	     * @param {event} MouseEvent 点击的鼠标事件
-	     */
 	    this.$emit('blur', $event);
 	  },
 	  _onFocus: function _onFocus($event) {
-	    /**
-	     * @event KLInput#focus 原生focus事件
-	     * @param {event} MouseEvent 点击的鼠标事件
-	     */
 	    this.$emit('focus', $event);
 	  },
 	  _onChange: function _onChange($event) {
 	    this.validate('change');
-	    /**
-	     * @event KLInput#change 原生change事件
-	     * @param {event} MouseEvent 点击的鼠标事件
-	     */
 	    this.$emit('change', $event);
 	  },
 	  _onInput: function _onInput($event) {
 	    this.validate('input');
-	    /**
-	     * @event KLInput#input 原生input事件
-	     * @param {event} MouseEvent 点击的鼠标事件
-	     */
 	    this.$emit('input', $event);
 	  },
 	  _onSearch: function _onSearch($event) {
@@ -2246,7 +2226,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var _ = __webpack_require__(72);
-	var Regular = __webpack_require__(71);
 
 	var rClassGenerator = function rClassGenerator(rClass) {
 	  exports[rClass] = function (elem, value) {
@@ -2307,27 +2286,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (parseInt(newValue)) {
 	      elem.style.width = parseInt(newValue) + 'px';
 	      elem.style.display = 'inline-block';
-	    }
-	  });
-	};
-
-	/**
-	 * r-route kl-menu中使用, 支持单页跳转
-	 * @param elem
-	 */
-	exports['r-route'] = function (elem, value) {
-	  this.$watch(value, function () {
-	    var data = this.data;
-	    var url = data.url,
-	        route = data.route,
-	        rootMenu = data.rootMenu;
-	    var router = rootMenu.data.router;
-
-
-	    if (url) {
-	      elem.href = url;
-	    } else if (router && route) {
-	      Regular.directive('r-link').link.call(this, elem, route);
 	    }
 	  });
 	};
@@ -31330,10 +31288,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
 	 * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
 	 * @param {string}        [options.data.urlKey=url]             => 菜单结构中的链接key名
-	 * @param {string}        [options.data.routeKey=route]         => 单页spa应用时,使用
 	 * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
 	 * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
-	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
 	 */
 	var KLSidebar = Component.extend({
 	  name: 'kl-sidebar',
@@ -31345,7 +31301,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      menus: [],
 	      titleKey: 'title',
 	      urlKey: 'url',
-	      routeKey: 'route',
 	      pageKey: 'title',
 	      childrenKey: 'children',
 	      top: '60px',
@@ -31399,7 +31354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\" router=\"{router}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\" route=\"{page[routeKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" route=\"{menu[routeKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 392 */
@@ -31420,7 +31375,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object}        [options.data]                          = 绑定属性
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.uniqueOpened]             => 是否只保持打开一个菜单
-	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
 	 */
 
 	/**
@@ -31430,7 +31384,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {boolean}       [options.data.defaultOpen=false]        => 是否默认展开,如果需要默认展开,设置为true
 	 * @param {string}        [options.data.url]                   => 如果一级菜单需要链接,可配置url属性
-	 * @param {string}        [options.data.route]                   => 单页spa应用时替代url属性
 	 * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.titleTemplate]            => 标题文案模板
@@ -31443,7 +31396,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.class]                    => 补充class
 	 * @param {string}        [options.data.title]                    => 标题文案
 	 * @param {string}        [options.data.url]                      => 跳转链接
-	 * @param {string}        [options.data.route]                    => 单页spa应用时替代url属性
 	 * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
 	 */
 
@@ -31560,6 +31512,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  goto: function goto(e) {
 	    e.stopPropagation();
 	    this.data.rootMenu.$emit('menuitem-click', this);
+	    if (this.data.url) {
+	      location.href = this.data.url;
+	    }
 	  }
 	});
 
@@ -31570,7 +31525,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 395 */
 /***/ (function(module, exports) {
 
-	module.exports = "<a class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)} r-route={url+route}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</a>\n"
+	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
 
 /***/ }),
 /* 396 */
@@ -31671,7 +31626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 398 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if url || route}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } r-route={url+route}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <div class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </div>\n  {/if}\n</li>\n{/if}"
+	module.exports = "{#if url}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } href=\"{url}\">\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <ul class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
 /* 399 */
@@ -35652,7 +35607,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 444 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include column.template}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
 /* 445 */
