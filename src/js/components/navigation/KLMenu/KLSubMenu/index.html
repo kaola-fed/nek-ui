@@ -1,5 +1,5 @@
-{#if url}
-<a class="m-subMenu {class}" r-class={ {'active': active} } href="{url}">
+{#if url || route}
+<a class="m-subMenu {class}" r-class={ {'active': active} } r-route={url+route}>
   <div class="head">
     {#if iconClass}
     <span class="head_icon {iconClass}"></span>
@@ -31,9 +31,9 @@
     {/if}
   </div>
   {#if active}
-  <ul class="menuItems" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
+  <div class="menuItems" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
     {#inc this.$body}
-  </ul>
+  </div>
   {/if}
 </li>
 {/if}
