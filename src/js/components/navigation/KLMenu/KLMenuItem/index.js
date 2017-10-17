@@ -50,9 +50,6 @@ const KLMenuItem = Component.extend({
   goto(e) {
     e.stopPropagation();
     this.data.rootMenu.$emit('menuitem-click', this);
-    if (this.data.url) {
-      location.href = this.data.url;
-    }
   },
 });
 

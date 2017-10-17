@@ -1,15 +1,15 @@
 <aside class="m-sidebar {class}" r-class={ {'active':active } } top="{top}">
   <div class="sidebar_menus">
-    <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}">
+    <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
       {#list menus as menu}
       {#if menu[childrenKey] && menu[childrenKey].length}
       <kl-menu-sub title="{menu[titleKey]}" defaultOpen="{menu.open}" iconClass="{menu.iconClass}">
         {#list menu[childrenKey] as page}
-        <kl-menu-item isCurrent="{page.open}" url="{page[urlKey]}">{page[pageKey]}</kl-menu-item>
+        <kl-menu-item isCurrent="{page.open}" url="{page[urlKey]}" route="{page[routeKey]}">{page[pageKey]}</kl-menu-item>
         {/list}
       </kl-menu-sub>
       {#else}
-      <kl-menu-sub url="{menu[urlKey]}" titleTemplate="{menu[titleKey]}" iconClass="{menu.iconClass}"></kl-menu-sub>
+      <kl-menu-sub url="{menu[urlKey]}" route="{menu[routeKey]}" titleTemplate="{menu[titleKey]}" iconClass="{menu.iconClass}"></kl-menu-sub>
       {/if}
       {/list}
     </kl-menu>

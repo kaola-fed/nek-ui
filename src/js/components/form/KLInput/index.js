@@ -170,21 +170,41 @@ const KLInput = Component.extend({
   },
   _onKeyUp($event) {
     this.validate('keyup');
+    /**
+     * @event KLInput#keyup 原生keyup事件
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('keyup', $event);
   },
   _onBlur($event) {
     this.validate('blur');
+    /**
+     * @event KLInput#blur 原生blur事件
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('blur', $event);
   },
   _onFocus($event) {
+    /**
+     * @event KLInput#focus 原生focus事件
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('focus', $event);
   },
   _onChange($event) {
     this.validate('change');
+    /**
+     * @event KLInput#change 原生change事件
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('change', $event);
   },
   _onInput($event) {
     this.validate('input');
+    /**
+     * @event KLInput#input 原生input事件
+     * @param {event} MouseEvent 点击的鼠标事件
+     */
     this.$emit('input', $event);
   },
   _onSearch($event) {

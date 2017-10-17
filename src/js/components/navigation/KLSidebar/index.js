@@ -18,8 +18,10 @@ const template = require('./index.html');
  * @param {boolean}       [options.data.uniqueOpened=true]        => 是否只保持打开一个菜单
  * @param {string}        [options.data.titleKey=title]           => 一级菜单的字段key名
  * @param {string}        [options.data.urlKey=url]             => 菜单结构中的链接key名
+ * @param {string}        [options.data.routeKey=route]         => 单页spa应用时,使用
  * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
  * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
+ * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
  */
 const KLSidebar = Component.extend({
   name: 'kl-sidebar',
@@ -31,6 +33,7 @@ const KLSidebar = Component.extend({
       menus: [],
       titleKey: 'title',
       urlKey: 'url',
+      routeKey: 'route',
       pageKey: 'title',
       childrenKey: 'children',
       top: '60px',
