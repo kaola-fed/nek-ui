@@ -14,7 +14,7 @@
         r-style={{
             height: fixedHeader ? 'auto' : height + 'px',
             width: width == undefined ? 'auto' :
-                  tableWidth > width ? width : width + scrollYBarWidth + 'px',
+                  ((tableWidth > width ? width : width + scrollYBarWidth) + 'px'),
         }}
         on-scroll={this._onBodyScroll(this.$refs.table, $event)} >
 
