@@ -9,8 +9,6 @@ $space = 50px
 #logo
     span
         font-size 1.2em
-    img
-        display none
 
 .sidebar
     display none
@@ -21,74 +19,6 @@ $space = 50px
         box-shadow none
         .logo
             display none
-
-#hero
-    padding $space 40px
-    background-color #fff
-    .inner
-        max-width $width
-        margin 0 auto
-    .left, .right
-        display inline-block
-        vertical-align top
-    .left
-        width 39%
-    .right
-        width 61%
-    .hero-logo
-        width 215px
-        height 215px
-        float right
-        margin-right 60px
-    h1
-        font-weight 300
-        margin 0
-        font-size 3.2em
-        line-height normal
-    h2
-        font-family $logo-font
-        font-weight 500
-        font-size 2.4em
-        margin 0 0 10px
-        line-height normal
-        display none
-    .button
-        margin 1em 0
-        font-size 1.05em
-        font-weight 600
-        letter-spacing .1em
-        &:first-child
-            margin-right 1em
-    .social-buttons
-        list-style-type none
-        padding 0
-        li
-            display inline-block
-            vertical-align middle
-            margin-right 15px
-
-#highlights
-    background-color #fff
-    padding-bottom 70px
-    .inner
-        max-width $width
-        margin 0 auto
-        text-align center
-    .point
-        width 33%
-        display inline-block
-        vertical-align top
-        box-sizing border-box
-        padding 0 2em
-        h2
-            color $green
-            font-size 1.5em
-            font-weight 400
-            margin 0
-            padding .5em 0
-        p
-            color $light
-
 #footer
     padding $space 0
     color #fff
@@ -97,6 +27,153 @@ $space = 50px
         font-weight 700
         color #fff
 
+.page-wrap
+    background: transparent;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    min-height: 600px;
+    position: relative;
+    .text-left 
+        .page-text-wrap
+            left: 9%;
+        .page-pic
+            margin-right: 7%;
+    .text-right 
+        .page-text-wrap
+            right: 9%;
+        .page-pic
+            margin-left: 2%;
+.page
+    min-height: 700px;
+    height: 100vh;
+    .page-text-wrap
+        position: absolute;
+        width: 500px;
+        top: 50%;
+        color: #fff;
+        text-align: left;
+        font-family: Lato,Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
+        .logo
+            img
+                height:60px;
+        .title
+            margin: 0px;
+            color: #fff;
+            font-size: 48px;
+            font-weight: bold;
+        .description
+            color: #fff;
+            font-size: 24px;
+    .text-white
+        .title
+            color: #666;
+        .description
+            color: #888;
+    .normal-button
+        display: inline-block;
+        width: 94px;
+        height: 40px;
+        border: 1px solid #F31919;
+        color: #fff;
+        background-color: #F31919;
+        font-size: 14px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 10px;
+    .white-button
+        border: 1px solid #fff;
+        background: none;
+    .page-pic
+        position: relative;
+        margin: auto;
+        top: 35%;
+        width: 740px;
+        height: 500px;
+    .next-step
+        position: absolute;
+        width: 100%;
+        bottom: 16px;
+        text-align: center;
+        animation: slideDown 1s linear;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    .choose-bar
+        position: absolute;
+        padding: 0px 40px;
+        top: 50%;
+        right: 0px;
+        .step
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: #3276C7;
+            margin: 10px 5px;
+        .current
+            background: #F31919;
+#mianView 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: url(../images/mainview.jpg) no-repeat 50%/cover;
+    .page-pic
+        background: url(../images/float1.png) no-repeat 50% 50%;
+#page2 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: url(../images/page2.jpg) no-repeat 50%/cover;
+    .page-pic
+        background: url(../images/float2.png) no-repeat 50% 50%;
+#page3 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: #3CA9F2;
+    .page-pic
+        background: url(../images/float3.png) no-repeat 50% 50%;
+#page4 
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    .content-block
+        position: relative;
+        height: 70vh;
+        background: url(../images/page4.jpg) no-repeat 50%/cover;
+        .page-text-wrap
+            left: 50%;
+            top: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            .description
+                color: #A0DFFF;
+    .footer-wrap
+        background-color: #1A2E46;
+        border-top: 1px solid #263950;
+        height: 30vh;
+        .footer-block
+            width: 80%;
+            height: 100%;
+            margin: 20px auto 0px;
+            display: flex;
+            justify-content: space-between;
+            div 
+                width: 300px;
+                .title
+                    font-size: 1.2em;
+                    color: #FFFFFF;
+                    line-height: 40px;
+                .detail 
+                    font-size: 1em;
+                    color: #667A92;
+                    line-height: 20px;
+@keyframes slideDown 
+    0% 
+        bottom 16px;
+    100%
+        bottom 10px;
 @media screen and (max-width: $width)
     body
         -webkit-text-size-adjust none
@@ -107,28 +184,3 @@ $space = 50px
         display none
     #mobile-bar
         display block
-    #hero
-        padding $space 40px 30px
-        .hero-logo
-            float none
-            margin 30px 0 15px
-            width 140px
-            height 140px
-        .left, .right
-            text-align center
-            width 100%
-        h1
-            font-size 2em
-        h2
-            display block
-        .button
-            font-size .9em
-    #highlights
-        .point
-            display block
-            margin 0 auto
-            width 300px
-            padding 0 40px 30px
-            &:before
-                content "—"
-                color $green

@@ -1,11 +1,14 @@
 $header-height = 40px
 
 #header
-    background-color #fff
-    height: $heading-inner-height
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    background-color rgba(0,0,0,0.28)
+    height: $header-inner-height
     padding $heading-padding-vertical 40px
-    position relative
-    z-index 2
 
 body.docs
     #header
@@ -29,16 +32,16 @@ body.docs
     li
         display inline-block
         position relative
-        margin 0 .6em
+        margin 0 25px
 
         a:hover
-            color $theme
+            color #fff
 
 .nav-link
     padding-bottom 3px
     &:hover, &.current
         color $theme
-        border-bottom 3px solid $theme
+        border-bottom 3px solid #fff
 
 .search-query
     height 30px
@@ -66,8 +69,7 @@ body.docs
     img
         vertical-align middle
         margin-right 6px
-        width $header-height
-        height $header-height
+        height 28px
 
 #mobile-bar
     position fixed
