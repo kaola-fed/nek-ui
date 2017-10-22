@@ -62,9 +62,19 @@ $space = 50px
             color: #fff;
             font-size: 48px;
             font-weight: bold;
+            transform: translate(0px, -100px);
+            opacity: 0;
+            transition: transform .8s .4s, opacity .8s .4s;
         .description
             color: #fff;
             font-size: 24px;
+            transform: translate(0px, -100px);
+            opacity: 0;
+            transition: transform .8s .3s, opacity .8s .3s;
+        .action
+            transform: translate(0px, -100px);
+            opacity: 0;
+            transition: transform .8s .2s, opacity .8s .2s;
     .text-white
         .title
             color: #666;
@@ -92,6 +102,9 @@ $space = 50px
         top: 35%;
         width: 740px;
         height: 500px;
+        transform: translate(0px, 100px);
+        opacity: 0;
+        transition: transform .8s .2s, opacity .8s .2s;
     .next-step
         position: absolute;
         width: 100%;
@@ -100,19 +113,6 @@ $space = 50px
         animation: slideDown 1s linear;
         animation-iteration-count: infinite;
         animation-direction: alternate;
-    .choose-bar
-        position: absolute;
-        padding: 0px 40px;
-        top: 50%;
-        right: 0px;
-        .step
-            display: block;
-            width: 8px;
-            height: 8px;
-            background-color: #3276C7;
-            margin: 10px 5px;
-        .current
-            background: #F31919;
 #mianView 
     position: relative;
     width: 100%;
@@ -120,6 +120,15 @@ $space = 50px
     background: url(../images/mainview.jpg) no-repeat 50%/cover;
     .page-pic
         background: url(../images/float1.png) no-repeat 50% 50%;
+    .title
+        transform: translate(0px, 0px);
+        opacity: 1;
+    .description
+        transform: translate(0px, 0px);
+        opacity: 1;
+    .page-pic
+        transform: translate(0px, 0px);
+        opacity: 1;
 #page2 
     position: relative;
     width: 100%;
@@ -149,6 +158,8 @@ $space = 50px
             transform: translate(-50%, -50%);
             .description
                 color: #A0DFFF;
+                transform: translate(0px, 0px);
+                opacity: 1;
     .footer-wrap
         background-color: #1A2E46;
         border-top: 1px solid #263950;
@@ -169,11 +180,29 @@ $space = 50px
                     font-size: 1em;
                     color: #667A92;
                     line-height: 20px;
+                    a
+                        color: #667A92;
 @keyframes slideDown 
     0% 
         bottom 16px;
     100%
-        bottom 10px;
+        bottom 6px;
+.choose-bar
+    position: fixed;
+    padding: 0px 40px;
+    top: 50%;
+    right: 0px;
+    z-index: 2;
+    .step
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: #3276C7;
+        margin: 10px 5px;
+    .current
+        background: #F31919;
+#animateText
+    height: 38px;
 @media screen and (max-width: $width)
     body
         -webkit-text-size-adjust none

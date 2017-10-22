@@ -9,7 +9,26 @@ $header-height = 40px
     background-color rgba(0,0,0,0.28)
     height: $header-inner-height
     padding $heading-padding-vertical 40px
-
+    transition: background-color .5s
+.header-white
+    background-color rgba(255,255,255,0.9)!important
+    #nav
+        li
+            a 
+                color: #666666
+            :hover 
+                color: #000
+            .arrow
+                border-top: 5px solid #666666
+            .nav-dropdown
+                border: 1px solid #666666;
+                background-color: #fff 
+.header-light
+    background-color rgba(0,0,0,0.32)!important
+    #nav
+        li
+            a 
+                color: #72A0D7
 body.docs
     #header
         position fixed

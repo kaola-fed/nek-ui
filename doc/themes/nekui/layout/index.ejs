@@ -3,7 +3,12 @@
     <%- partial('partials/main_menu', { context: 'sidebar' }) %>
   </ul>
 </div>
-
+<div id="pageCount" class="choose-bar">
+	<div class="step current"></div>
+	<div class="step"></div>
+	<div class="step"></div>
+	<div class="step"></div>
+</div>
 <div class="page-wrap">
 	<div id="mianView" class="page text-left">
 		<div class="page-text-wrap ">
@@ -14,48 +19,42 @@
 				一个后台UI组件库 | 基于Regular JS
 			</p>
 			<p>
-					<span class="normal-button">快速开始</span>
-					<span class="normal-button white-button">Github</span>
+					<a class="normal-button" href="/components/">快速开始</a>
+					<a class="normal-button white-button"  href="https://github.com/kaola-fed/NEK" target="_blank">Github</a>
 			</p>
 		</div>
 		<div class="page-pic"></div>
 		<div class="next-step">
 			<img src="/images/iconnext.png">
 		</div>
-		<div class="choose-bar">
-			<div class="step current"></div>
-			<div class="step"></div>
-			<div class="step"></div>
-			<div class="step"></div>
-		</div>
 	</div>
 	<div id="page2" class="page text-right">
 		<div class="page-text-wrap text-white">
-			<p class="title">
+			<p class="title" id="title2">
 				丰富组件
 			</p>
-			<p class="description">
+			<p class="description" id="description2">
 				考拉多年业务积累的基础组件，丰富、灵活、使用，为业务提供强有力的支持。
 			</p>
-			<p>
-					<span class="normal-button">了解更多</span>
+			<p class="action" id="action2">
+					<a class="normal-button" href="/components/">了解更多</a>
 			</p>
 		</div>
-		<div class="page-pic"></div>
+		<div class="page-pic" id="pic2"></div>
 	</div>
 	<div id="page3" class="page text-left">
 		<div class="page-text-wrap">
-			<p class="title">
+			<p class="title" id="title3">
 				使用场景
 			</p>
-			<p class="description">
+			<p class="description" id="description3">
 				总结后台设计中经常出现的组件组合，并提供相应的使用场景。
 			</p>
-			<p>
-					<span class="normal-button">了解更多</span>
+			<p class="action" id="action3">
+					<a class="normal-button" href="/components/">了解更多</a>
 			</p>
 		</div>
-		<div class="page-pic"></div>
+		<div class="page-pic" id="pic3"></div>
 	</div>
 	<div id="page4" class="page text-left">
 		<div class="content-block">
@@ -63,11 +62,11 @@
 				<div class="logo">
 						<img src="/images/logo.png">
 				</div>
-				<p class="description">
-					您触手可及的丰富资源
+				<p class="description" id="animateText">
+					
 				</p>
 				<p>
-						<span class="normal-button">Let's go</span>
+						<a class="normal-button" href="/components/">Let's go</a>
 				</p>
 			</div>
 		</div>
@@ -75,20 +74,22 @@
 			<div class="footer-block">
 				<div>
 					<p class="title">Github</p>
-					<p class="detail">源码仓库</p>
-					<p class="detail">aaa</p>
+					<p class="detail"><a href="https://github.com/kaola-fed/nek-ui" target="_blank">源码仓库</a></p>
 				</div>
 				<div>
-					<p class="title">Github</p>
-					<p class="detail">源码仓库</p>
+					<p class="title">相关站点</p>
+					<p class="detail"><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></p>
+					<p class="detail"><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></p>
 				</div>
 				<div>
-					<p class="title">Github</p>
-					<p class="detail">源码仓库</p>
+					<p class="title">社区</p>
+					<p class="detail"><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></p>
+					<p class="detail"><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></p>
+					<p class="detail"><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></p>
 				</div>
 				<div>
-					<p class="title">Github</p>
-					<p class="detail">源码仓库</p>
+					<p class="title">Copyright © 2017</p>
+					<p class="detail">网易考拉前端团队出品</p>
 				</div>
 			</div>
 		</div>
@@ -96,7 +97,41 @@
 </div>
 
 <script>
-var topScrolled = false
+var topScrolled = false;
+
+var clientHeight = window.innerHeight;
+var page2 = document.getElementById('page2');
+var header = document.getElementById('header');
+var headImg = document.getElementById('headImg');
+var pageCount = document.getElementById('pageCount');
+
+var pic2 = document.getElementById('pic2');
+var pic3 = document.getElementById('pic3');
+var title2 = document.getElementById('title2');
+var title3 = document.getElementById('title3');
+var description2 = document.getElementById('description2');
+var description3 = document.getElementById('description3');
+var action2 = document.getElementById('action2');
+var action3 = document.getElementById('action3');
+
+var start = false;
+var animateText = document.getElementById('animateText');
+var string = '您触手可及的丰富资源';
+var index = 0;
+function writemsg() {
+		if (index < string.length+1) {
+				animateText.innerHTML = string.substring(index, 0);
+				timer = setTimeout("writemsg()", 200);
+				index++;
+		}
+	}
+var startText = function(){
+	if(start){
+		return;
+	}
+	start = true;
+	writemsg();
+}
 window.addEventListener('scroll', function () {
   if (window.pageYOffset > 165 && !topScrolled) {
     topScrolled = true
@@ -104,6 +139,63 @@ window.addEventListener('scroll', function () {
   } else if (window.pageYOffset <= 165 && topScrolled) {
     topScrolled = false
     document.getElementById('mobile-bar').classList.add('top')
-  }
-})
+	}
+	
+	var position2 = page2.getBoundingClientRect().top;
+	if( position2<80 && position2>80-clientHeight ){
+		header.className = 'header-white';
+		headImg.src = '/images/logo2.png';
+		pageCount.childNodes[1].className = 'step';
+		pageCount.childNodes[3].className = 'step current';
+		pageCount.childNodes[5].className = 'step';
+		pageCount.childNodes[7].className = 'step';
+	}else if(position2<80-clientHeight && position2>80-1.6*clientHeight){
+		header.className = 'header-light';
+		headImg.src = '/images/logo.png';
+		pageCount.childNodes[1].className = 'step';
+		pageCount.childNodes[3].className = 'step';
+		pageCount.childNodes[5].className = 'step current';
+		pageCount.childNodes[7].className = 'step';
+	}else if(position2<80-1.6*clientHeight && position2>80-3*clientHeight){
+		header.className = '';
+		headImg.src = '/images/logo.png';
+		pageCount.childNodes[1].className = 'step';
+		pageCount.childNodes[3].className = 'step';
+		pageCount.childNodes[5].className = 'step';
+		pageCount.childNodes[7].className = 'step current';
+		startText();
+	}else{
+		header.className = '';
+		headImg.src = '/images/logo.png';
+		pageCount.childNodes[1].className = 'step current';
+		pageCount.childNodes[3].className = 'step';
+		pageCount.childNodes[5].className = 'step';
+		pageCount.childNodes[7].className = 'step';
+	}
+
+	var picTop2 = pic2.getBoundingClientRect().top;
+	var picTop3 = pic3.getBoundingClientRect().top;
+	if(picTop2<clientHeight){
+		pic2.style = 'transform: translate(0px, 0px); opacity: 1;';
+		title2.style = 'transform: translate(0px, 0px); opacity: 1;';
+		description2.style = 'transform: translate(0px, 0px); opacity: 1;';
+		action2.style = 'transform: translate(0px, 0px); opacity: 1;';	
+	}else{
+		pic2.style = '';
+		title2.style = '';
+		description2.style = '';
+		action2.style = '';	
+	}
+	if(picTop3<clientHeight){
+		pic3.style = 'transform: translate(0px, 0px); opacity: 1;';
+		title3.style = 'transform: translate(0px, 0px); opacity: 1;';
+		description3.style = 'transform: translate(0px, 0px); opacity: 1;';
+		action3.style = 'transform: translate(0px, 0px); opacity: 1;';	
+	}else{
+		pic3.style = '';
+		title3.style = '';
+		description3.style = '';
+		action3.style = '';	
+	}
+});
 </script>
