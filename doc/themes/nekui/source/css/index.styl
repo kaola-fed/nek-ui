@@ -45,12 +45,13 @@ $space = 50px
         .page-pic
             margin-left: 2%;
 .page
-    min-height: 700px;
+    min-height: 500px;
     height: 100vh;
     .page-text-wrap
         position: absolute;
-        width: 500px;
+        width: 40%;
         top: 50%;
+        transform: translate(0px, -50%);
         color: #fff;
         text-align: left;
         font-family: Lato,Helvetica Neue For Number,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -60,14 +61,14 @@ $space = 50px
         .title
             margin: 0px;
             color: #fff;
-            font-size: 48px;
+            font-size: 2rem;
             font-weight: bold;
             transform: translate(0px, -100px);
             opacity: 0;
             transition: transform .8s .4s, opacity .8s .4s;
         .description
             color: #fff;
-            font-size: 24px;
+            font-size: 1.3rem;
             transform: translate(0px, -100px);
             opacity: 0;
             transition: transform .8s .3s, opacity .8s .3s;
@@ -99,12 +100,13 @@ $space = 50px
     .page-pic
         position: relative;
         margin: auto;
-        top: 35%;
-        width: 740px;
-        height: 500px;
-        transform: translate(0px, 100px);
+        top: 50%;
+        width: 35%;
+        transform: translate(0px, -40%);
         opacity: 0;
         transition: transform .8s .2s, opacity .8s .2s;
+        img 
+            width 100%;
     .next-step
         position: absolute;
         width: 100%;
@@ -118,8 +120,6 @@ $space = 50px
     width: 100%;
     overflow: hidden;
     background: url(../images/mainview.jpg) no-repeat 50%/cover;
-    .page-pic
-        background: url(../images/float1.png) no-repeat 50% 50%;
     .title
         transform: translate(0px, 0px);
         opacity: 1;
@@ -127,29 +127,40 @@ $space = 50px
         transform: translate(0px, 0px);
         opacity: 1;
     .page-pic
-        transform: translate(0px, 0px);
+        transform: translate(0px, -50%);
+        opacity: 1;
+.active
+    #pic2,#pic3
+        transform: translate(0px, -50%); 
+        opacity: 1;
+    #title2,#description2,#action2,#title3,#description3,#action3
+        transform: translate(0px, 0px); 
         opacity: 1;
 #page2 
     position: relative;
     width: 100%;
     overflow: hidden;
     background: url(../images/page2.jpg) no-repeat 50%/cover;
-    .page-pic
-        background: url(../images/float2.png) no-repeat 50% 50%;
 #page3 
     position: relative;
     width: 100%;
     overflow: hidden;
     background-color: #3CA9F2;
-    .page-pic
-        background: url(../images/float3.png) no-repeat 50% 50%;
+@keyframes winkle {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
 #page4 
     position: relative;
     width: 100%;
     overflow: hidden;
     .content-block
         position: relative;
-        height: 70vh;
+        height: calc(100% - 180px);
         background: url(../images/page4.jpg) no-repeat 50%/cover;
         .page-text-wrap
             left: 50%;
@@ -160,10 +171,14 @@ $space = 50px
                 color: #A0DFFF;
                 transform: translate(0px, 0px);
                 opacity: 1;
+            .winkle
+                animation: winkle 0.4s linear;
+                animation-direction: alternate-reverse;
+                animation-iteration-count: infinite;
     .footer-wrap
         background-color: #1A2E46;
         border-top: 1px solid #263950;
-        height: 30vh;
+        height: 180px;
         .footer-block
             width: 80%;
             height: 100%;
@@ -173,13 +188,15 @@ $space = 50px
             div 
                 width: 300px;
                 .title
-                    font-size: 1.2em;
+                    font-size: 1rem;
                     color: #FFFFFF;
-                    line-height: 40px;
+                    line-height: 30px;
+                    margin: 0px;
                 .detail 
-                    font-size: 1em;
+                    font-size: 0.8rem;
                     color: #667A92;
                     line-height: 20px;
+                    margin: 10px 0px;
                     a
                         color: #667A92;
 @keyframes slideDown 
@@ -199,11 +216,13 @@ $space = 50px
         height: 8px;
         background-color: #3276C7;
         margin: 10px 5px;
-    .current
+    .active
         background: #F31919;
 #animateText
     height: 38px;
 @media screen and (max-width: $width)
+    html
+        font-size 14px
     body
         -webkit-text-size-adjust none
         font-size 14px

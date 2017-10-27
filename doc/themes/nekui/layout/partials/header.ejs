@@ -1,6 +1,15 @@
+<% var isIndex = page.path === 'index.html' %>
+<% if (isIndex) { %>
 <div id="header">
+<% } else { %>
+<div id="header" class="header-white">
+<% } %>
   <a id="logo" href="/">
-    <img id="headImg" src="/images/logo.png">
+    <% if (isIndex) { %>
+      <img id="headImg" src="/images/logo.png">
+    <% } else { %>
+      <img id="headImg" src="/images/logo2.png">
+    <% } %>
   </a>
   <ul id="nav">
     <%- partial('partials/main_menu', { context: 'nav' }) %>

@@ -18,7 +18,7 @@ body
 
 a
     text-decoration none
-    color #72A0D7
+    color $medium
     &:hover
         text-decoration none
 img
@@ -127,7 +127,7 @@ a.button
         display none
         box-sizing border-box
         max-height "calc(100vh - %s)" % $header-height
-        overflow-y scroll
+        overflow-y auto
         position absolute
         top 100%
         right -15px
@@ -157,11 +157,11 @@ a.button
             padding-top: .45em
             border-top: 1px solid #eee
         a
-            color #72A0D7
+            color lighten($dark, 10%)
             font-size .9em
             display block
             &:hover
-                color #fff
+                color $theme
     .arrow
         display inline-block
         vertical-align middle
@@ -172,4 +172,4 @@ a.button
         height 0
         border-left 4px solid transparent
         border-right 4px solid transparent
-        border-top 5px solid #72A0D7
+        border-top 5px solid #ccc 
