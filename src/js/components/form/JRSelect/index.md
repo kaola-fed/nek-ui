@@ -190,6 +190,7 @@ var component = new JRUI.Component({
 var component = new JRUI.Component({
     template: template,
     service: {
+        key:'searchValue',
         getList: function(params, success) {
             this.request({
                 url: '../../data/list.json',

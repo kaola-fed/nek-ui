@@ -27741,7 +27741,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.disabled=false]           => 是否禁用
 	 * @param {boolean}           [options.data.visible=true]             => 是否显示
 	 * @param {string}            [options.data.class]                    => 补充class
-	 * @param {object}            [options.service]                       @=> 数据服务
+	 * @param {object}            [options.data.service]                  @=> 数据服务
+	 * @param {object}            [options.data.service.key]              => 下发的参数名称
 	 * @param {boolean}           [options.data.canSearch=false]          => 是否可搜索
 	 * @param {boolean}           [options.data.isCaseSensitive=false]    => 是否区分大小写
 	 * @param {boolean}           [options.data.noMatchText=无匹配项]       => 搜索无结果文案
@@ -27952,7 +27953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.error(this.$trans('LIMIT_ERROR'));
 	      }
 	    });
-	    if (this.service && this.service.getList) {
+	    if (data.service && data.service.getList) {
 	      var $updateSource = _.throttle(this.$updateSource.bind(this), data.delaySearch);
 	      this.$watch('searchValue', function (newValue, oldValue) {
 	        if (oldValue === undefined) {
@@ -27990,12 +27991,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else {
 	      data.selected = item;
 	    }
-
 	    /**
-	             * @event select 选择某一项时触发
-	             * @property {object} sender 事件发送对象
-	             * @property {object} selected 当前选择项
-	             */
+	     * @event select 选择某一项时触发
+	     * @property {object} sender 事件发送对象
+	     * @property {object} selected 当前选择项
+	     */
 	    this.$emit('select', {
 	      sender: this,
 	      selected: item
@@ -28009,6 +28009,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    this.toggle(false);
 	  },
+
+	  /**
+	   * 远程调用的时候需要传递的参数
+	   */
+	  getParams: function getParams() {
+	    var params = {};
+	    var key = this.data.service && (this.data.service.key || 'data');
+	    params[key] = this.data.searchValue;
+	    return params;
+	  },
 	  clearContent: function clearContent(e) {
 	    e && e.stopPropagation();
 	    this.data.searchValue = '';
@@ -28016,7 +28026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  toggle: function toggle(open, e) {
 	    e && e.stopPropagation();
 	    var data = this.data;
-	    data.canSearch && this.clearSearchValue();
+	    (data.canSearch || data.service) && this.clearSearchValue();
 	    this.supr(open);
 	  },
 	  validate: function validate(on) {
@@ -28053,7 +28063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 351 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t\t\t\t{#if !open}\n\t            <jr-icon fontSize=12 type=\"angle_down\" class=\"f-fr\"/>\n\t            {/if}\n\t            {#if open && canSearch}\n\t                <input disabled={disabled} type=\"text\" class=\"input u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open && canSearch ? '116px' : '84px'}\">\n\t\t\t\t{#if !open}\n\t\t\t\t\t<jr-icon fontSize=12 type=\"angle_down\" class=\"f-fr\" />\n\t            {/if}\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\n\t\t            <jr-icon type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd {dir}\" ref=\"dropdown\"\n\t         r-animation=\"on: enter; class: animated fadeInY{dir} fast; on: leave; class: animated fadeOutY{dir} fast;\">\n\t        <ul class=\"m-listview {dir}\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <jr-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </jr-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t\t\t\t{#if !open}\n\t            <jr-icon fontSize=12 type=\"angle_down\" class=\"f-fr\"/>\n\t            {/if}\n\t            {#if open && (canSearch || service)}\n\t                <input disabled={disabled} type=\"text\" class=\"input u-search-input\" r-autofocus\n\t                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t            {#else}\n\t                <span>{selected?selected[nameKey]:placeholder}</span>\n\t            {/if}\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} style=\"max-height: {open &&  (canSearch || service) ? '116px' : '84px'}\">\n\t\t\t\t{#if !open}\n\t\t\t\t\t<jr-icon fontSize=12 type=\"angle_down\" class=\"f-fr\" />\n\t            {/if}\n\t            {#if open &&  (canSearch || service)}\n\t            <div>\n\t\t            <input disabled={disabled} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>\n\t\t            <jr-icon type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t            {/list}\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd {dir}\" ref=\"dropdown\"\n\t         r-animation=\"on: enter; class: animated fadeInY{dir} fast; on: leave; class: animated fadeOutY{dir} fast;\">\n\t        <ul class=\"m-listview {dir}\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <jr-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </jr-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 352 */

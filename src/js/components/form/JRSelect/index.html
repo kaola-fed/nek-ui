@@ -9,7 +9,7 @@
 				{#if !open}
 	            <jr-icon fontSize=12 type="angle_down" class="f-fr"/>
 	            {/if}
-	            {#if open && canSearch}
+	            {#if open && (canSearch || service)}
 	                <input disabled={disabled} type="text" class="input u-search-input" r-autofocus
 	                       placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
 	            {#else}
@@ -18,11 +18,11 @@
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
-	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
+	             on-click={this.toggle(!open, $event)} style="max-height: {open &&  (canSearch || service) ? '116px' : '84px'}">
 				{#if !open}
 					<jr-icon fontSize=12 type="angle_down" class="f-fr" />
 	            {/if}
-	            {#if open && canSearch}
+	            {#if open &&  (canSearch || service)}
 	            <div>
 		            <input disabled={disabled} type="text" class="input u-search-input searchInput1" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick()}/>

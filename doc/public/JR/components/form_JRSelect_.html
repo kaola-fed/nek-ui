@@ -493,7 +493,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-select</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> <span class="attr">value</span>=<span class="string">"2"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">                     <span class="keyword">this</span>.$update(<span class="string">'source'</span>, json.result);</div><div class="line">                 &#125;.bind(<span class="keyword">this</span>)</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">key</span>:<span class="string">'searchValue'</span>,</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">                     <span class="keyword">this</span>.$update(<span class="string">'source'</span>, json.result);</div><div class="line">                 &#125;.bind(<span class="keyword">this</span>)</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -531,6 +531,9 @@
 <dd></dd>
 <dt><a href="#select(item) 选择某一项">select(item) 选择某一项(item)</a> ⇒ <code>void</code></dt>
 <dd></dd>
+<dt><a href="#getParams">getParams()</a></dt>
+<dd><p>远程调用的时候需要传递的参数</p>
+</dd>
 </dl>
 
 <h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
@@ -667,10 +670,16 @@
 <td>=&gt; 补充class</td>
 </tr>
 <tr>
-<td>[options.service]</td>
+<td>[options.data.service]</td>
 <td><code>object</code></td>
 <td></td>
 <td>@=&gt; 数据服务</td>
+</tr>
+<tr>
+<td>[options.data.service.key]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 下发的参数名称</td>
 </tr>
 <tr>
 <td>[options.data.canSearch]</td>
@@ -769,7 +778,9 @@
 </tr>
 </tbody>
 </table>
-<p><a name="event_change 选择项改变时触发"></a></p>
+<p><a name="getParams"></a></p>
+<h2 id="getParams"><a href="#getParams" class="headerlink" title="getParams()"></a>getParams()</h2><p>远程调用的时候需要传递的参数</p>
+<p><strong>Kind</strong>: global function<br><a name="event_change 选择项改变时触发"></a></p>
 <h2 id="“change-选择项改变时触发”"><a href="#“change-选择项改变时触发”" class="headerlink" title="“change 选择项改变时触发”"></a>“change 选择项改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
 <table>
 <thead>
@@ -992,6 +1003,7 @@ var component = new JRUI.Component({
 var component = new JRUI.Component({
     template: template,
     service: {
+        key:'searchValue',
         getList: function(params, success) {
             this.request({
                 url: '../../data/list.json',

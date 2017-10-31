@@ -35,7 +35,8 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {boolean}           [options.data.disabled=false]           => 是否禁用
  * @param {boolean}           [options.data.visible=true]             => 是否显示
  * @param {string}            [options.data.class]                    => 补充class
- * @param {object}            [options.service]                       @=> 数据服务
+ * @param {object}            [options.data.service]                  @=> 数据服务
+ * @param {object}            [options.data.service.key]              => 下发的参数名称
  * @param {boolean}           [options.data.canSearch=false]          => 是否可搜索
  * @param {boolean}           [options.data.isCaseSensitive=false]    => 是否区分大小写
  * @param {boolean}           [options.data.noMatchText=无匹配项]       => 搜索无结果文案
@@ -265,7 +266,7 @@ const JRSelect = Dropdown.extend({
         console.error(this.$trans('LIMIT_ERROR'));
       }
     });
-    if (this.service && this.service.getList) {
+    if (data.service && data.service.getList) {
       const $updateSource = _.throttle(
         this.$updateSource.bind(this),
         data.delaySearch,
@@ -309,12 +310,11 @@ const JRSelect = Dropdown.extend({
     } else {
       data.selected = item;
     }
-
     /**
-             * @event select 选择某一项时触发
-             * @property {object} sender 事件发送对象
-             * @property {object} selected 当前选择项
-             */
+     * @event select 选择某一项时触发
+     * @property {object} sender 事件发送对象
+     * @property {object} selected 当前选择项
+     */
     this.$emit('select', {
       sender: this,
       selected: item,
@@ -328,6 +328,15 @@ const JRSelect = Dropdown.extend({
     }
     this.toggle(false);
   },
+  /**
+   * 远程调用的时候需要传递的参数
+   */
+  getParams() {
+    const params = {};
+    const key = this.data.service && (this.data.service.key || 'data');
+    params[key] = this.data.searchValue;
+    return params;
+  },
   clearContent(e) {
     e && e.stopPropagation();
     this.data.searchValue = '';
@@ -335,7 +344,7 @@ const JRSelect = Dropdown.extend({
   toggle(open, e) {
     e && e.stopPropagation();
     const data = this.data;
-    data.canSearch && this.clearSearchValue();
+    (data.canSearch || data.service) && this.clearSearchValue();
     this.supr(open);
   },
   validate(on) {
