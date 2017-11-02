@@ -345,8 +345,8 @@ var component = new NEKUI.Component({
         value: '',
         limit: null,
         source: [
-            {name: '母婴儿童'},{name: '美容彩妆'},
-            {name: '鞋包服饰'},{name: '家居个护'},
+            {name: '母婴儿童123'},{name: '母婴儿童12'},
+            {name: '母婴儿童1'},{name: '母婴儿童'},
             {name: '营养保健'},{name: '海外直邮'},
             {name: '数码家电'},{name: '环球美食'},
             {name: '运动户外'},{name: '水果生鲜'},
