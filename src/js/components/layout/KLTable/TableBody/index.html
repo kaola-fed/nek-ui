@@ -43,7 +43,7 @@
             >
                 <div class="tb_bd_td_div ">
                     {#if column.template}
-                        {#include @(column.template)}
+                        {#include column.template}
                     {#elseif column.formatter}
                         {#include this._getFormatter(column, item)}
                     {#elseif column.format}

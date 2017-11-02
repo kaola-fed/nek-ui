@@ -1,7 +1,7 @@
-<li class="m-menuItem {class}" r-class={ {'active': active} } on-click={this.goto($event)}>
+<a class="m-menuItem {class}" r-class={ {'active': active} } on-click={this.goto($event)} r-route={url+route}>
   {#if title}
     {title}
   {#else}
     {#inc this.$body}
   {/if}
-</li>
+</a>

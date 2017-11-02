@@ -1,4 +1,5 @@
 const _ = require('./_');
+const Regular = require('regularjs');
 
 const rClassGenerator = function (rClass) {
   exports[rClass] = function (elem, value) {
@@ -90,6 +91,25 @@ exports['r-width'] = function (elem, value) {
     if (parseInt(newValue)) {
       elem.style.width = `${parseInt(newValue)}px`;
       elem.style.display = 'inline-block';
+    }
+  });
+};
+
+
+/**
+ * r-route kl-menu中使用, 支持单页跳转
+ * @param elem
+ */
+exports['r-route'] = function (elem, value) {
+  this.$watch(value, function () {
+    const { data } = this;
+    const { url, route, rootMenu } = data;
+    const { router } = rootMenu.data;
+
+    if (url) {
+      elem.href = url;
+    } else if (router && route) {
+      Regular.directive('r-link').link.call(this, elem, route);
     }
   });
 };
