@@ -136,7 +136,7 @@ const KLMultiSelect = Dropdown.extend({
     const data = this.data;
     const dealPath = function (array, path) {
       array.forEach((item) => {
-        item.path = path ? path + data.pathString + item.name : item.name;
+        item.path = path ? path + data.pathString + item[data.nameKey] : item[data.nameKey];
         if (item[data.childKey] && item[data.childKey].length) {
           dealPath(item[data.childKey], item.path);
         }
