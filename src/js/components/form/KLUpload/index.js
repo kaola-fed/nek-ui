@@ -39,8 +39,8 @@ const tpl = require('./index.html');
  * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
  * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
  * @param {string}     [options.data.class]                => 可选，组件最外层包裹元素样式扩展
- * @param {function}   [options.data.beforeOnLoad=NULL]    => 可选，Http status介于200-300时触发，用于response.code校验决定成功或失败，以及数据转换，详见demo基本形式
- * @param {function}   [options.data.beforeOnError=NULL]   => 可选，Http status非200-300时触发，http状态失败的钩子
+ * @param {function}   [options.data.onLoadInterceptor=NULL]    => 可选，Http status介于200-300时触发，用于对响应数据拦截，response.code校验决定成功或失败，以及数据转换，详见demo基本形式
+ * @param {function}   [options.data.onErrorInterceptor=NULL]   => 可选，Http status非200-300时触发，http状态失败的钩子
  * @param {function}   [options.data.before-upload]        => 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise
  *                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，
  *                                                             如果非空，则提示校验信息，并停止上传
@@ -72,8 +72,8 @@ const KLUpload = Component.extend({
       imageScale: '',
       class: '',
       encType: 'multipart/form-data',
-      beforeOnLoad: null,
-      beforeOnError: null,
+      onLoadInterceptor: data.beforeOnLoad || null,
+      onErrorInterceptor: data.beforeOnError || null,
       beforeUpload: null,
       beforeRemove: null,
     });

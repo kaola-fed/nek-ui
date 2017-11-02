@@ -4,7 +4,7 @@ title: 菜单栏
 
 <!-- demo_start -->
 ### 基本形式
-`KLSidebar`只是对`KLMenu`的进一步封装,如果无法满足需求,可直接使用`KLMenu`组件; 除了`KLMenu`的功能外, 还增加菜单展开/收起的功能, 注意需要配置`bodyEl`属性
+`KLSidebar`只是对`KLMenu`的进一步封装,如果无法满足需求,可直接使用`KLMenu`组件; 除了`KLMenu`的功能外, 还增加菜单展开/收起的功能, 注意需要配置`bodyEl`属性; 注意:如果是单页,需要额外配置router属性,并将页面链接的`url属性`改为`route属性`;
 <div class="m-example"></div>
 <style>
     .m-example {
