@@ -1,5 +1,5 @@
 <div class="u-dropdown {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" z-dis={disabled} on-click={this.toggle()}>
+    <div ref="dropdown_hd" class="dropdown_hd" z-dis={disabled} on-click={this.toggle()}>
         {#if this.$body}
             {#inc this.$body}
         {#else}
@@ -7,7 +7,7 @@
         {/if}
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+    <div ref="dropdown_bd" class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         <ul class="m-listview">
             {#list source as item}
             <li z-dis={item.disabled} z-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>

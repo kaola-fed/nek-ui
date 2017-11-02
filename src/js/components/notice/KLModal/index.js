@@ -65,7 +65,11 @@ const KLModal = Component.extend({
     this.$emit('close', {
       result,
     });
-    result ? this.ok(event) : this.cancel();
+    const that = this;
+    // setTimeout为了先触发下拉的收起（如果contentTemplate中有下拉组件）。
+    setTimeout(() => {
+      result ? that.ok(event) : that.cancel();
+    });
   },
   /**
      * @method KLModal#ok() 确定对话框

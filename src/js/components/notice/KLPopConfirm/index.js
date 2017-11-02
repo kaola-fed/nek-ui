@@ -3,11 +3,13 @@
  * @author   ziane(zianecui@gmail.com)
  */
 
+/* eslint no-unused-vars: 0 */
+const Popper = require('../../layout/KLPopper/index.js');
 const dom = require('regularjs').dom;
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-require('../../layout/alignment/trigger');
+const _ = require('../../../ui-base/_');
 
 const PopUp = Component.extend({
   template,
@@ -71,14 +73,24 @@ const PopUp = Component.extend({
  */
 const KLPopConfirm = Component.extend({
   name: 'kl-pop-confirm',
-  template:
-    '<trigger ref="trigger" action="click" placement={placement} getInstance={@(this.getInstance.bind(this))} destroyOnHide=true hideWhenScroll={hideWhenScroll}>{#inc this.$body}</trigger>',
+  template: '<div style="display: inline-block" ref="reference" on-click="{this.getInstance()}">{#inc this.$body}</div>',
   config(data) {
     this.defaults({
       placement: 'top',
     });
 
     this.supr(data);
+  },
+  init() {
+    const element = dom.element(this);
+    const self = this;
+
+    dom.on(document.body, 'click', (e) => {
+      const target = e.target;
+      if (!_.dom.contains(element, target) && self.data.instance) {
+        self.data.instance.destroy();
+      }
+    });
   },
   destroy() {
     if (this.data.instance) {
@@ -89,7 +101,11 @@ const KLPopConfirm = Component.extend({
   getInstance() {
     const self = this;
     if (!this.data.instance) {
-      const instance = new PopUp({ data: this.data });
+      const instance = new PopUp({
+        data: _.extend(self.data, {
+          reference: dom.element(self.$refs.reference),
+        }),
+      });
 
       instance.$on('ok', (data) => {
         if (self.events && self.events.ok) {
@@ -108,7 +124,6 @@ const KLPopConfirm = Component.extend({
       });
 
       instance.$on('destroy', () => {
-        self.$refs.trigger.data.isShow = false;
         self.data.instance = null;
       });
 

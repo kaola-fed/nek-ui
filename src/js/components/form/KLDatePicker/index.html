@@ -1,6 +1,6 @@
 <div class="u-dropdown u-datetimepicker u-dropdown-{size} {class}" r-width="{width}">
   <div class="u-dropdown " z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd">
+    <div class="dropdown_hd" ref="dropdown_hd">
       {#if showTime}
       <label class="u-input">
         <input class="input input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref="input"
@@ -13,16 +13,22 @@
       </label>
       {/if}
     </div>
-    <div class="dropdown_bd" r-hide={!open}>
-      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
-        {#if showTime}
-        <time-picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)} />
-        <div class="dropdown_ft">
-          <a class="u-btn u-btn-sm datetimepicker_confirmBtn" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>
-        </div>
-        {/if}
-      </calendar>
-    </div>
+    {#if open}
+    <kl-popper reference="{reference}" appendToBody={appendToBody}>
+      <div class="dropdown_bd"
+        ref="dropdown_bd"
+        r-class="{{'kldatepicker_dropdown_bd': appendToBody}}">
+          <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
+            {#if showTime}
+              <time-picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)} />
+              <div class="dropdown_ft">
+                  <a class="u-btn u-btn-sm datetimepicker_confirmBtn" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>
+              </div>
+              {/if}
+          </calendar>
+      </div>
+    </kl-popper>
+    {/if}
   </div>
   {#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

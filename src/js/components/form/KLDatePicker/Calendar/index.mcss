@@ -11,6 +11,7 @@
 .u-calendar {
     text-align: center;
     $user-select: none;
+    font-size: 12px;
 
     .calendar_item {
         display: inline-block;

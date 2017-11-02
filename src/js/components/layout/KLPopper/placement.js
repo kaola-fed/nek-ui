@@ -1,0 +1,31 @@
+module.exports = {
+  placement: {
+    left: 'left',
+    right: 'right',
+    top: 'top',
+    bottom: 'bottom',
+    topLeft: 'top-start',
+    leftTop: 'left-start',
+    topRight: 'top-end',
+    rightTop: 'right-start',
+    bottomRight: 'bottom-end',
+    rightBottom: 'right-end',
+    bottomLeft: 'bottom-start',
+    leftBottom: 'left-end',
+  },
+  xplacement: {
+    left: 'left',
+    right: 'right',
+    top: 'top',
+    bottom: 'bottom',
+    'top-start': 'topLeft',
+    'left-start': 'leftTop',
+    'top-end': 'topRight',
+    'right-start': 'rightTop',
+    'bottom-end': 'bottomRight',
+    'right-end': 'rightBottom',
+    'bottom-start': 'bottomLeft',
+    'left-end': 'leftBottom',
+  },
+
+};

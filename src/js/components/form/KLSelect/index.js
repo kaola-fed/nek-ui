@@ -3,6 +3,10 @@
  * @author   sensen(rainforest92@126.com)
  */
 
+const dom = require('regularjs').dom;
+/* eslint no-unused-vars: 0 */
+const Popper = require('../../layout/KLPopper/index.js');
+
 const Dropdown = require('../common/Dropdown');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
@@ -47,6 +51,7 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {string}            [options.data.size]                     => 组件大小, sm/md/lg
  * @param {number}            [options.data.width]                    => 组件宽度
  * @param {number}            [options.data.limit]                    => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
+ * @param {boolean}      [options.data.appendToBody]                   => 是否将下拉直接插到body上，一般用于弹框和表格样式有问题的时候
  */
 
 const KLSelect = Dropdown.extend({
@@ -60,7 +65,7 @@ const KLSelect = Dropdown.extend({
       key: 'id',
       nameKey: 'name',
       value: undefined,
-
+      appendToBody: false,
       // 搜索的文案
       searchValue: '',
       canSearch: undefined,
@@ -136,6 +141,7 @@ const KLSelect = Dropdown.extend({
                 this,
               )
             : [];
+          this.updatePopper();
         } else {
           data.selected = source.find(
             item => `${item[key]}` === `${newValue}`,
@@ -276,6 +282,24 @@ const KLSelect = Dropdown.extend({
     }
 
     this.initValidation();
+  },
+  init() {
+    const that = this;
+    this.data.reference = dom.element(this.$refs.dropdown_hd);
+    this.$watch('open', (newValue) => {
+      if (newValue === true && that.data.appendToBody) {
+        document.body.appendChild(dom.element(that.$refs.dropdown_bd));
+        // 获取dropdown_hd宽度
+        const referenceWidth = this.data.reference.offsetWidth;
+        this.$refs.dropdown_bd.style.minWidth = `${referenceWidth}px`;
+      }
+    });
+  },
+  // 更新popper重新计算位置
+  updatePopper() {
+    if (this.data.open && this.data.appendToBody) {
+      this.$refs.reference.update();
+    }
   },
   select(item) {
     const data = this.data;
