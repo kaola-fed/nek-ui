@@ -67,13 +67,13 @@ const KLForm = Validation.extend({
     } = this.data;
     labelSize &&
       controls.forEach(($component) => {
-        if (!$component.labelSize) {
+        if (!$component.data.labelSize) {
           $component.$update('labelSize', labelSize);
         }
       });
     labelLineHeight &&
       controls.forEach(($component) => {
-        if (!$component.labelLineHeight) {
+        if (!$component.data.labelLineHeight) {
           $component.$update('labelLineHeight', labelLineHeight);
         }
       });
