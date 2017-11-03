@@ -8,7 +8,7 @@
             <h3 class="modal_title">{title}</h3>
         </div>
         </draggable>
-        <div class="modal_bd" {#if maxHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
+        <div class="modal_bd" {#if maxHeight || minHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
         </div>
         {#if hasFooter}
@@ -17,7 +17,7 @@
 	            {#inc @(footerTemplate)}
 	        {#else}
 		        {#if okButton}
-                    <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
+                <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
 		        {/if}
 		        {#if cancelButton && isCanClose}
 		            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
