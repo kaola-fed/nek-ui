@@ -1,7 +1,7 @@
 {
   "name": "jr-ui",
   "description": "UI components based on RegularJS",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/js/JR.min.js",
   "homepage": "https://xxyj.github.io/JR/components/",
   "license": "MIT",
