@@ -4,6 +4,7 @@
     <head>
         <title><%- page.title ? page.title + ' - ' : '' %><%- theme.title %></title>
         <meta charset="utf-8">
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
         <meta name="description" content="<%- theme.site_description %>">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
@@ -12,6 +13,12 @@
         <meta property="og:image" content="https://<%- theme.root_domain %>/images/logo.svg">
 
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+
+        <% if (isIndex) { %>
+            <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.css" />
+        <% } %>
 
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=<%- theme.title %>" rel='stylesheet' type='text/css'>
@@ -26,6 +33,11 @@
         <script src="/vendor/regular.js"></script>
         <script src="/js/nek-ui.js"></script>
         <script src="/demo.wrap/index.js"></script>
+        <% if (isIndex) { %>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery-1.8.0.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
+        <% } %>
+
         <div id="mobile-bar" <%- isIndex ? 'class="top"' : '' %>>
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
@@ -91,6 +103,7 @@
         }, false)
         </script>
 
+        <% if (!isIndex) { %>
         <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
         <script>
           (function(h,o,t,j,a,r){
@@ -102,5 +115,6 @@
             a.appendChild(r);
           })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
         </script>
+        <% } %>
     </body>
 </html>
