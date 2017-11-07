@@ -195,7 +195,7 @@ const KLInput = Component.extend({
     this.validate('change');
     /**
      * @event KLInput#change 原生change事件
-     * @param {event} MouseEvent 点击的鼠标事件
+     * @param {event} KeyBoardEvent 点击的鼠标事件
      */
     this.$emit('change', $event);
   },
@@ -203,7 +203,7 @@ const KLInput = Component.extend({
     this.validate('input');
     /**
      * @event KLInput#input 原生input事件
-     * @param {event} MouseEvent 点击的鼠标事件
+     * @param {event} KeyBoardEvent 点击的鼠标事件
      */
     this.$emit('input', $event);
   },
