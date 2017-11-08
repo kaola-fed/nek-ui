@@ -58,7 +58,7 @@ const KLTooltip = Component.extend({
   },
   getInstance() {
     const self = this;
-    const data = { ...this.data };
+    const data = Object.assign({}, this.data);
     delete data.instance;
     if (!this.data.instance) {
       const instance = new TipPopUp({

@@ -31,7 +31,6 @@
     ]
   },
   "dependencies": {
-    "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "^6.22.0",
     "bowser": "^1.5.0",
     "clipboard": "^1.6.0",
