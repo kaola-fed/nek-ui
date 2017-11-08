@@ -35398,10 +35398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * JRLoading   加载中
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
+	 * @file JRLoading  加载中
 	 */
 
 	var Component = __webpack_require__(70);
@@ -35412,16 +35409,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @class JRLoading
 	 * @param {object}        [options.data]                    = 绑定属性
 	 * @param {boolean}       [options.data.static=false]       => 是否嵌入文档流
-	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
-	 * @param {boolean}       [options.data.visible=true]       => 是否显示
+	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
+	 * @param {boolean}       [options.data.visible=false]      => 是否显示
 	 * @param {string}        [options.data.class]              => 补充class
 	 */
 	var JRLoading = Component.extend({
 	  name: 'jr-loading',
 	  template: template,
-	  /**
-	   * @protected
-	   */
 	  config: function config() {
 	    _.extend(this.data, {
 	      static: false,
@@ -35429,10 +35423,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    this.supr();
 	  },
-
-	  /**
-	   * @protected
-	   */
 	  init: function init() {
 	    this.supr();
 	    // 证明不是内嵌组件
@@ -35440,10 +35430,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	   * @method show() 显示组件
-	   * @public
-	   * @return {void}
-	   */
+	     * @method JRLoading#show() 显示组件
+	     * @return {void}
+	     */
 	  show: function show() {
 	    if (this.data.disabled) return;
 
@@ -35452,10 +35441,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 
 	  /**
-	   * @method show() 隐藏组件
-	   * @public
-	   * @return {void}
-	   */
+	     * @method JRLoading#hide() 隐藏组件
+	     * @return {void}
+	     */
 	  hide: function hide() {
 	    if (this.data.disabled) return;
 
@@ -35464,28 +35452,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	/**
-	 * 直接初始化一个实例
-	 * @type {Loading}
-	 */
 	var loading = new JRLoading();
+	/**
+	 * @param loading 内部静态实例, 使用NEKUI.JRLoading的静态方法时,内部使用的是这个实例
+	 * @static
+	 */
 	JRLoading.loading = loading;
 
 	/**
-	 * @method show() 显示加载中
 	 * @static
-	 * @public
-	 * @return {void}
 	 */
 	JRLoading.show = function () {
 	  loading.show();
 	};
 
 	/**
-	 * @method hide() 隐藏加载中
 	 * @static
-	 * @public
-	 * @return {void}
 	 */
 	JRLoading.hide = function () {
 	  loading.hide();
@@ -35497,7 +35479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 440 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
+	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}\n  r-animation=\"on:enter;class:animated fadeIn; on:leave;class:animated fadeOut\">\n    <svg class=\"loading-circular\" viewBox=\"25 25 50 50\">\n      <circle class=\"loading-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n    </svg>\n    {#if this.$body}\n      {#inc this.$body}\n    {/if}\n</div>"
 
 /***/ }),
 /* 441 */
@@ -35782,7 +35764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {array}             [options.data.columns]              => 列配置
 	 * @param {string}            [optiosn.data.align=center]         => 文字对齐
 	 * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
-	 * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
+	 * @param {boolean}           [optiosn.data.loading=false]       => 是否显示加载浮层
 	 */
 
 	/**

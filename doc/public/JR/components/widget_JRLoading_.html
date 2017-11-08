@@ -481,34 +481,26 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRLoading">JRLoading</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#Component">Component</a></dt>
-<dd><hr>
-<p>JRLoading   加载中</p>
-</dd>
-<dt><a href="#loading">loading</a> : <code>Loading</code></dt>
-<dd><p>直接初始化一个实例</p>
-</dd>
-</dl>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#init">init()</a></dt>
-<dd></dd>
-<dt><a href="#show_new 显示组件">show() 显示组件()</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#show_new 隐藏组件">show() 隐藏组件()</a> ⇒ <code>void</code></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRLoading"></a></p>
-<h2 id="JRLoading"><a href="#JRLoading" class="headerlink" title="JRLoading"></a>JRLoading</h2><p><strong>Kind</strong>: global class<br><a name="new_JRLoading_new"></a></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a name="JRLoading"></a></p>
+<h2 id="JRLoading"><a href="#JRLoading" class="headerlink" title="JRLoading"></a>JRLoading</h2><p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#JRLoading">JRLoading</a><ul>
+<li><a href="#new_JRLoading_new">new JRLoading()</a></li>
+<li><em>instance</em><ul>
+<li><a href="#JRLoading+show_new 显示组件">.show() 显示组件()</a> ⇒ <code>void</code></li>
+<li><a href="#JRLoading+hide_new 隐藏组件">.hide() 隐藏组件()</a> ⇒ <code>void</code></li>
+</ul>
+</li>
+<li><em>static</em><ul>
+<li><a href="#JRLoading.loading">.loading</a></li>
+<li><a href="#JRLoading.show">.show()</a></li>
+<li><a href="#JRLoading.hide">.hide()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="new_JRLoading_new"></a></p>
 <h3 id="new-JRLoading"><a href="#new-JRLoading" class="headerlink" title="new JRLoading()"></a>new JRLoading()</h3><table>
 <thead>
 <tr>
@@ -535,12 +527,12 @@
 <td>[options.data.disabled]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
+<td>=&gt; 是否禁用, 禁用后调用show和hide则无效</td>
 </tr>
 <tr>
 <td>[options.data.visible]</td>
 <td><code>boolean</code></td>
-<td><code>true</code></td>
+<td><code>false</code></td>
 <td>=&gt; 是否显示</td>
 </tr>
 <tr>
@@ -551,19 +543,27 @@
 </tr>
 </tbody>
 </table>
-<p><a name="Component"></a></p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>JRLoading   加载中</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="loading"></a></p>
-<h2 id="loading-Loading"><a href="#loading-Loading" class="headerlink" title="loading : Loading"></a>loading : <code>Loading</code></h2><p>直接初始化一个实例</p>
-<p><strong>Kind</strong>: global constant<br><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
-<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="show_new 显示组件"></a></p>
-<h2 id="show-显示组件-⇒-void"><a href="#show-显示组件-⇒-void" class="headerlink" title="show() 显示组件() ⇒ void"></a>show() 显示组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 隐藏组件"></a></p>
-<h2 id="show-隐藏组件-⇒-void"><a href="#show-隐藏组件-⇒-void" class="headerlink" title="show() 隐藏组件() ⇒ void"></a>show() 隐藏组件() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="show_new 显示加载中"></a></p>
-<h2 id="show-显示加载中-⇒-void"><a href="#show-显示加载中-⇒-void" class="headerlink" title=".show() 显示加载中() ⇒ void"></a>.show() 显示加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public<br><a name="hide_new 隐藏加载中"></a></p>
-<h2 id="hide-隐藏加载中-⇒-void"><a href="#hide-隐藏加载中-⇒-void" class="headerlink" title=".hide() 隐藏加载中() ⇒ void"></a>.hide() 隐藏加载中() ⇒ <code>void</code></h2><p><strong>Kind</strong>: static function<br><strong>Access:</strong> public  </p>
+<p><a name="JRLoading+show_new 显示组件"></a></p>
+<h3 id="jrLoading-show-显示组件-⇒-void"><a href="#jrLoading-show-显示组件-⇒-void" class="headerlink" title="jrLoading.show() 显示组件() ⇒ void"></a>jrLoading.show() 显示组件() ⇒ <code>void</code></h3><p><strong>Kind</strong>: instance method of <code><a href="#JRLoading">JRLoading</a></code><br><a name="JRLoading+hide_new 隐藏组件"></a></p>
+<h3 id="jrLoading-hide-隐藏组件-⇒-void"><a href="#jrLoading-hide-隐藏组件-⇒-void" class="headerlink" title="jrLoading.hide() 隐藏组件() ⇒ void"></a>jrLoading.hide() 隐藏组件() ⇒ <code>void</code></h3><p><strong>Kind</strong>: instance method of <code><a href="#JRLoading">JRLoading</a></code><br><a name="JRLoading.loading"></a></p>
+<h3 id="JRLoading-loading"><a href="#JRLoading-loading" class="headerlink" title="JRLoading.loading"></a>JRLoading.loading</h3><p><strong>Kind</strong>: static property of <code><a href="#JRLoading">JRLoading</a></code>  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loading</td>
+<td>内部静态实例, 使用NEKUI.JRLoading的静态方法时,内部使用的是这个实例</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRLoading.show"></a></p>
+<h3 id="JRLoading-show"><a href="#JRLoading-show" class="headerlink" title="JRLoading.show()"></a>JRLoading.show()</h3><p><strong>Kind</strong>: static method of <code><a href="#JRLoading">JRLoading</a></code><br><a name="JRLoading.hide"></a></p>
+<h3 id="JRLoading-hide"><a href="#JRLoading-hide" class="headerlink" title="JRLoading.hide()"></a>JRLoading.hide()</h3><p><strong>Kind</strong>: static method of <code><a href="#JRLoading">JRLoading</a></code>  </p>
 
 <script>
 var index = 0;

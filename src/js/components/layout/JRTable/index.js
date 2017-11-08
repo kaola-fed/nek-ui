@@ -24,7 +24,7 @@ const tpl = require('./index.html');
  * @param {array}             [options.data.columns]              => 列配置
  * @param {string}            [optiosn.data.align=center]         => 文字对齐
  * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
- * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
+ * @param {boolean}           [optiosn.data.loading=false]       => 是否显示加载浮层
  */
 
 /**
