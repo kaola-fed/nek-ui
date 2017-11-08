@@ -45,6 +45,7 @@ const KLTooltip = Component.extend({
     this.defaults({
       tip: '',
       placement: 'top',
+      class: '',
     });
 
     this.supr(data);
@@ -57,10 +58,11 @@ const KLTooltip = Component.extend({
   },
   getInstance() {
     const self = this;
-    const { tip, placement } = this.data;
+    const data = { ...this.data };
+    delete data.instance;
     if (!this.data.instance) {
       const instance = new TipPopUp({
-        data: { tip, placement },
+        data,
       });
 
       instance.$on('destroy', () => {
