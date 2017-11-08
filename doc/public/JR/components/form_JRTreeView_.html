@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            分页 - 
+            树型视图 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="分页 - JR">
+        <meta property="og:title" content="树型视图 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -214,7 +214,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRTreeView_.html" class="sidebar-link">
+                                        <a href="/JR/components/form_JRTreeView_.html" class="sidebar-link current">
                                             树型视图
                                                 JRTreeView
                                         </a>
@@ -306,7 +306,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/navigation_JRPager_.html" class="sidebar-link current">
+                                        <a href="/JR/components/navigation_JRPager_.html" class="sidebar-link">
                                             分页
                                                 JRPager
                                         </a>
@@ -469,63 +469,45 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+                    <!-- demo_start -->
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-tree-view</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;/</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'家居个护'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'洗护日用'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'居家用品'</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'杯子'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'锅具刀具'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'家装家纺'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'其他个护'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'护肤'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'彩妆'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="selected-value和key"><a href="#selected-value和key" class="headerlink" title="selected, value和key"></a>selected, value和key</h3><p><code>selected</code>表示当前选择项，<code>value</code>表示当前选择值。<code>key</code>表示数据项的键，默认为<code>&#39;id&#39;</code>。</p>
+<p>它们三者的关系如下：<code>selected[key] == value</code>。其中<code>selected</code>和<code>value</code>是联动的，当一项变化时会同时改变另一项。</p>
+<p>*注意：暂时不支持<code>value</code>赋初始值。</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的分别是是: &#123;selected.name&#125; &#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'母婴儿童'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'美容彩妆'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'服饰鞋包'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.selected = <span class="keyword">this</span>.data.source[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="总条数展示设置一"><a href="#总条数展示设置一" class="headerlink" title="总条数展示设置一"></a>总条数展示设置一</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">isEllipsis</span>=<span class="string">&#123;true&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-row</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-tree-view</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-tree-view</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [&#123;   </div><div class="line">            <span class="attr">name</span>: <span class="string">'家居个护'</span>, </div><div class="line">            <span class="attr">id</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">children</span>: [&#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'洗护日用'</span>,</div><div class="line">                <span class="attr">id</span>: <span class="number">11</span></div><div class="line">            &#125;,&#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'居家用品'</span>,</div><div class="line">                <span class="attr">id</span>:<span class="number">12</span>,</div><div class="line">                <span class="attr">disabled</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'杯子'</span>, <span class="attr">id</span>: <span class="number">121</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'锅具刀具'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">            ]&#125;,&#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'家装家纺'</span>, </div><div class="line">                <span class="attr">id</span>: <span class="number">13</span>,</div><div class="line">                <span class="attr">disabled</span>: <span class="literal">true</span></div><div class="line">            &#125;,&#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'其他个护'</span>,</div><div class="line">                <span class="attr">id</span>: <span class="number">14</span></div><div class="line">            &#125;]</div><div class="line">        &#125;,&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'母婴儿童'</span>, </div><div class="line">            <span class="attr">id</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">disabled</span>: <span class="literal">true</span></div><div class="line">        &#125;,&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'美容彩妆'</span>, </div><div class="line">            <span class="attr">id</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'护肤'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'彩妆'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="总条数展示设置二"><a href="#总条数展示设置二" class="headerlink" title="总条数展示设置二"></a>总条数展示设置二</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">3</span> <span class="attr">sumTotal</span>=<span class="string">200</span> <span class="attr">pageSize</span>=<span class="string">5</span> <span class="attr">maxTotal</span>=<span class="string">100</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-tree-view</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'家居个护'</span>, <span class="attr">checked</span>: <span class="literal">true</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'洗护日用'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'居家用品'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'杯子'</span>&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'锅具刀具'</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">divider</span>: <span class="literal">true</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'家装家纺'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'其他个护'</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">disabled</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">divider</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'护肤'</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'彩妆'</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"left"</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">pageSize</span>=<span class="string">20</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"center"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">position</span>=<span class="string">"right"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="显示数目"><a href="#显示数目" class="headerlink" title="显示数目"></a>显示数目</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">middle</span>=<span class="string">3</span> <span class="attr">side</span>=<span class="string">1</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">6</span> <span class="attr">total</span>=<span class="string">11</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRPager">JRPager</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#Component">Component</a></dt>
-<dd><hr>
-<p>JRPager     分页</p>
-</dd>
-</dl>
-
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#select(page) 选择某一页">select(page) 选择某一页(page)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_select 选择某一页时触发">“select 选择某一页时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRPager"></a></p>
-<h2 id="JRPager"><a href="#JRPager" class="headerlink" title="JRPager"></a>JRPager</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRPager_new"></a></p>
-<h3 id="new-JRPager"><a href="#new-JRPager" class="headerlink" title="new JRPager()"></a>new JRPager()</h3><table>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a name="TreeView"></a></p>
+<h2 id="TreeView"><a href="#TreeView" class="headerlink" title="TreeView"></a>TreeView</h2><p><strong>Kind</strong>: global class  </p>
+<ul>
+<li><a href="#TreeView">TreeView</a><ul>
+<li><a href="#new_TreeView_new">new TreeView()</a></li>
+<li><a href="#TreeView+event_select 选择某一项时触发">“select 选择某一项时触发”</a></li>
+<li><a href="#TreeView+event_toggle 展开或收起某一项时触发">“toggle 展开或收起某一项时触发”</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="new_TreeView_new"></a></p>
+<h3 id="new-TreeView"><a href="#new-TreeView" class="headerlink" title="new TreeView()"></a>new TreeView()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -542,58 +524,76 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.current]</td>
-<td><code>number</code></td>
-<td><code>1</code></td>
-<td>&lt;=&gt; 当前页</td>
+<td>[options.data.source]</td>
+<td><code>Array.&lt;object&gt;</code></td>
+<td><code>[]</code></td>
+<td>&lt;=&gt; 数据源</td>
 </tr>
 <tr>
-<td>[options.data.total]</td>
-<td><code>number</code></td>
-<td><code>0</code></td>
-<td>=&gt; 总页数</td>
-</tr>
-<tr>
-<td>[options.data.sumTotal]</td>
-<td><code>number</code></td>
-<td><code>0</code></td>
-<td>=&gt; 总个数</td>
-</tr>
-<tr>
-<td>[options.data.pageSize]</td>
-<td><code>number</code></td>
-<td><code>20</code></td>
-<td>=&gt; 每页个数</td>
-</tr>
-<tr>
-<td>[options.data.position]</td>
+<td>[options.data.source[].name]</td>
 <td><code>string</code></td>
-<td><code>&quot;center&quot;</code></td>
-<td>=&gt; 分页的位置，可选参数：<code>center</code>、<code>left</code>、<code>right</code></td>
+<td></td>
+<td>=&gt; 每项的内容</td>
 </tr>
 <tr>
-<td>[options.data.middle]</td>
-<td><code>number</code></td>
-<td><code>5</code></td>
-<td>=&gt; 当页数较多时，中间显示的页数</td>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td><code>&quot;id&quot;</code></td>
+<td>=&gt; 数据项的键</td>
 </tr>
 <tr>
-<td>[options.data.side]</td>
-<td><code>number</code></td>
-<td><code>2</code></td>
-<td>=&gt; 当页数较多时，两端显示的页数</td>
+<td>[options.data.childKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;children&quot;</code></td>
+<td>=&gt; 数据子项的键</td>
 </tr>
 <tr>
-<td>[options.data.step]</td>
-<td><code>number</code></td>
-<td><code>5</code></td>
-<td>=&gt; 每页条数选择步长</td>
+<td>[options.data.source[].open]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 此项为展开/收起状态</td>
 </tr>
 <tr>
-<td>[options.data.maxPageSize]</td>
-<td><code>number</code></td>
-<td><code>50</code></td>
-<td>=&gt; 最大可设置的每页条数</td>
+<td>[options.data.source[].checked]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 选中此项</td>
+</tr>
+<tr>
+<td>[options.data.source[].disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 禁用此项</td>
+</tr>
+<tr>
+<td>[options.data.source[].divider]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 设置此项为分隔线</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>&lt;=&gt; 当前选择值</td>
+</tr>
+<tr>
+<td>[options.data.selected]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择项</td>
+</tr>
+<tr>
+<td>[options.data.separator]</td>
+<td><code>string</code></td>
+<td><code>&quot;,&quot;</code></td>
+<td>=&gt; 多选时value分隔符</td>
+</tr>
+<tr>
+<td>[options.data.multiple]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否多选</td>
 </tr>
 <tr>
 <td>[options.data.readonly]</td>
@@ -614,18 +614,6 @@
 <td>=&gt; 是否显示</td>
 </tr>
 <tr>
-<td>[options.data.isEllipsis]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否展示位总条数+</td>
-</tr>
-<tr>
-<td>[options.data.maxTotal]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 总条数超过maxTotal条数时，展示为maxTotal+条数</td>
-</tr>
-<tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
 <td></td>
@@ -633,31 +621,8 @@
 </tr>
 </tbody>
 </table>
-<p><a name="Component"></a></p>
-<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>JRPager     分页</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(page) 选择某一页"></a></p>
-<h2 id="select-page-选择某一页-page-⇒-void"><a href="#select-page-选择某一页-page-⇒-void" class="headerlink" title="select(page) 选择某一页(page) ⇒ void"></a>select(page) 选择某一页(page) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>page</td>
-<td><code>object</code></td>
-<td>选择页</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_select 选择某一页时触发"></a></p>
-<h2 id="“select-选择某一页时触发”"><a href="#“select-选择某一页时触发”" class="headerlink" title="“select 选择某一页时触发”"></a>“select 选择某一页时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<p><a name="TreeView+event_select 选择某一项时触发"></a></p>
+<h3 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#TreeView">TreeView</a></code><br><strong>Properties</strong></p>
 <table>
 <thead>
 <tr>
@@ -673,9 +638,37 @@
 <td>事件发送对象</td>
 </tr>
 <tr>
-<td>current</td>
+<td>selected</td>
 <td><code>object</code></td>
-<td>当前选择页</td>
+<td>当前选择项</td>
+</tr>
+</tbody>
+</table>
+<p><a name="TreeView+event_toggle 展开或收起某一项时触发"></a></p>
+<h3 id="“toggle-展开或收起某一项时触发”"><a href="#“toggle-展开或收起某一项时触发”" class="headerlink" title="“toggle 展开或收起某一项时触发”"></a>“toggle 展开或收起某一项时触发”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#TreeView">TreeView</a></code><br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>item</td>
+<td><code>object</code></td>
+<td>处理项</td>
+</tr>
+<tr>
+<td>open</td>
+<td><code>boolean</code></td>
+<td>展开/收起状态</td>
 </tr>
 </tbody>
 </table>
@@ -686,62 +679,157 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-pager current=3 sumTotal=200 pageSize=5 />
+<jr-tree-view source={source} value={value}/>
+<p>选择的是：{value}</p>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '家居个护', children: [
+                {name: '洗护日用'},
+                {name: '居家用品', children: [
+                    {name: '杯子'},
+                    {name: '锅具刀具'}
+                ]},
+                {name: '家装家纺'},
+                {name: '其他个护'},
+            ]},
+            {name: '母婴儿童'},
+            {name: '美容彩妆', children: [
+                {name: '护肤'},
+                {name: '彩妆'}
+            ]}
+        ]
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-pager current=3 sumTotal=200 pageSize=5 isEllipsis={true} />
+<jr-form>
+    <jr-col span=6>
+        <jr-tree-view  source={source} selected={selected} />
+    </jr-col>
+    <jr-col span=6>
+        <jr-tree-view  source={source} value={value} />
+    </jr-col>
+</jr-form>
+<p>选择的分别是是: {selected.name} {value}</p>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        source: [
+            {id: 1, name: '母婴儿童'},
+            {id: 2, name: '美容彩妆'},
+            {id: 3, name: '服饰鞋包'}
+        ]
+    },
+    config: function() {
+        this.data.selected = this.data.source[0];
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-pager current=3 sumTotal=200 pageSize=5 maxTotal=100 />
+<jr-row>
+    <jr-col span=6>
+        <jr-tree-view source={source} value={value} />
+    </jr-col>
+    <jr-col span=6>
+        <jr-tree-view source={source} disabled />
+    </jr-col>
+</jr-row>
+<p>选择的是：{value}</p>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        source: [{   
+            name: '家居个护', 
+            id: 1,
+            children: [{
+                name: '洗护日用',
+                id: 11
+            },{
+                name: '居家用品',
+                id:12,
+                disabled: true,
+                children: [
+                {name: '杯子', id: 121},
+                {name: '锅具刀具', id: 122}
+            ]},{
+                name: '家装家纺', 
+                id: 13,
+                disabled: true
+            },{
+                name: '其他个护',
+                id: 14
+            }]
+        },{
+            name: '母婴儿童', 
+            id: 2,
+            disabled: true
+        },{
+            name: '美容彩妆', 
+            id: 3,
+            children: [
+                {name: '护肤', id: 31},
+                {name: '彩妆', id: 32}
+            ]
+        }]
+    }
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-pager pageSize=20 current=6 total=11 position="left" lang="en-US" />
-<jr-pager pageSize=20 current=6 total=11 position="center" />
-<jr-pager current=6 total=11 position="right" />
+<jr-tree-view source={source} value={value} />
+<p>选择的是：{value}</p>
 
       */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
       
-<jr-pager current=6 total=11 middle=3 side=1 />
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '家居个护', checked: true, children: [
+                {name: '洗护日用'},
+                {name: '居家用品', disabled: true, children: [
+                    {name: '杯子'},
+                    {name: '锅具刀具'}
+                ]},
+                {divider: true},
+                {name: '家装家纺', disabled: true},
+                {name: '其他个护'},
+            ]},
+            {name: '母婴儿童', disabled: true},
+            {divider: true},
+            {name: '美容彩妆', children: [
+                {name: '护肤'},
+                {name: '彩妆'}
+            ]}
+        ]
+    }
+});
 
-      */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-pager current=6 total=11 disabled />
-
-      */});
-      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -749,10 +837,10 @@ var index = 0;
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/navigation_JRMenu_.html">两级菜单</a></span>
+                                <span>← <a href="/JR/components/form_JRTextArea_.html">文本输入</a></span>
                                 
                                     
-                                        <span style="float:right"><a href="/JR/components/navigation_JRSidebar_.html">菜单栏</a> →</span>
+                                        <span style="float:right"><a href="/JR/components/form_JRUpload_.html">上传文件</a> →</span>
                                         
                         </div>
                 </div>

@@ -6,11 +6,13 @@ $trBackgroundColor = #f6f9fc;
 $clickabelColor = #0398FF;
 $orderIconColor = #666;
 
-.m-ui-table-wrap {
+.m-kl-table-wrap {
     position: relative;
-    .ui_table_header_fiexd_right_gutter {
+    .kl_table_header_fiexd_right_gutter {
+        box-sizing: border-box;
         position: absolute;
         background: $headerGrey;
+        border-left: 1px solid #fff;
     }
     .u-resize-proxy {
         position: absolute;
@@ -20,9 +22,13 @@ $orderIconColor = #666;
         z-index: 100;
         background: $resizeProxyColor;
     }
+    .expand_row {
+        position: absolute;
+        width: 100%;
+    }
 }
 
-.m-ui-table {
+.m-kl-table {
     overflow: auto;
     box-sizing: border-box;
     border-collapse: collapse;
@@ -32,12 +38,12 @@ $orderIconColor = #666;
     color: #333;
     &.fixed_header {
         overflow: hidden;
-        .ui_table_header {
+        .kl_table_header {
             overflow: hidden;
         }
     }
 
-    .ui_table_header {
+    .kl_table_header {
         &.sticky_header {
             position: fixed;
             overflow: hidden;
@@ -46,39 +52,44 @@ $orderIconColor = #666;
         }
     }
 
-    .ui_table_body {
+    .kl_table_body {
         transition: width 10ms;
         &.fixed_header {
             overflow: auto;
         }
     }
 
-    &.m-ui-table-fixed {
+    &.m-kl-table-fixed {
         position: absolute;
         overflow: hidden;
         top: 0;
         left: 0;
         border-bottom: none;
         box-shadow: 1px 0 8px #d3d4d6;
-        &.m-ui-table-fixed-right {
+        &.m-kl-table-fixed-right {
             left: auto;
             right: 0;
         }
-        .ui_table_header {
+        .kl_table_header {
             box-shadow: 2px 0px 8px #d3d4d6;
         }
-        .ui_table_header,
-        .ui_table_body {
+        .kl_table_header,
+        .kl_table_body {
             overflow: hidden;
         }
     }
 
     .table_tb {
         width: 100%;
+        position: relative;
         table-layout: fixed;
     }
-
     .tb_hd {
+    }
+
+    .patch {
+        background: $headerGrey;
+        position: absolute;
     }
 
     .tb_hd_tr {
@@ -92,7 +103,7 @@ $orderIconColor = #666;
         border-collapse: collapse;
         border-bottom: 1px solid #fff;
         font-weight: normal;
-        >.th_content {
+        .th_content {
             box-sizing: border-box;
             height: 100%;
             display: flex;
@@ -202,19 +213,31 @@ $orderIconColor = #666;
     .u-progress-wrap {
         box-sizing: border-box;
         text-align: left;
-        .u-ui-progress {
+        .u-kl-progress {
             width: 70%;
         }
     }
 
     .u-expand-sign {
-        &:hover {
-            text-decoration: underline;
+        display: inline-block;
+        box-sizing: border-box;
+        height: 17px;
+        width: 17px;
+        border: 1px solid #ddd;
+        line-height: 13px;
+        vertical-align: middle;
+    }
+}
+
+.m-kl-table-fixed {
+    .tb_bd_tr {
+        &.td_bd_tr_expand {
+            //visibility: hidden;
         }
     }
 }
 
-.m-ui-table-ft {
+.m-kl-table-ft {
     padding: 10px 0;
     background: #fff;
     .scroll_bar {
@@ -275,73 +298,4 @@ $num = 5;
         @extend clamp;
         -webkit-line-clamp: $item;
     }
-}
-
-
-.m-table {
-    // - (It has been realized in normalize.css) Remove most spacing between table cells.
-    // border-collapse: collapse;
-    // border-spacing: 0;
-    // - Block element behavior.
-    table-layout: fixed;
-    width: 100%;
-
-    caption {}
-
-    th, td {
-        // vertical-align: top;
-    }
-}
-
-
-
-////////////////////////
-.m-table {
-    caption {
-        color: #999;
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 6px 8px;
-        height: 32px;
-        line-height: 16px;
-        word-wrap: break-word;
-    }
-
-    thead {
-        background: #EEF1F4;
-        font-size: 12px;
-        color: #333333;
-        th {
-            text-align: center;
-            border-right: 1px solid #d8dee4;
-            border-bottom: 1px solid #E3E7EB;
-        }
-        th:last-child {
-            border-right: none;
-        }
-    }
-
-    tbody {
-        font-size: 12px;
-        td {
-            text-align: center;
-            border-bottom: 1px solid #ECF2F9;
-        }
-    }
-}
-
-
-
-// Extends:         `m-table-striped`, `m-table-hover`
-// Description:     尺寸和颜色扩展函数
-// ========================================================================
-//
-.m-table-striped {
-    tbody tr:nth-of-type(2n+0) {background: #f6f9fc;}
-}
-
-.m-table-hover {
-    tbody tr:hover {background: #ECF2F9;}
 }

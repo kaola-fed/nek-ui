@@ -1,3 +1,7 @@
+/**
+ * @file JRtable 表格
+ */
+
 const TableHeader = require('./TableHeader');
 const TableBody = require('./TableBody');
 const _ = require('../../../ui-base/_');
@@ -18,7 +22,9 @@ const tpl = require('./index.html');
  * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
  * @param {number}            [options.data.lineClamp]            => 单元格行数限制
  * @param {array}             [options.data.columns]              => 列配置
- * @param {string}            [optiosn.data.align='center']       => 文字对齐
+ * @param {string}            [optiosn.data.align=center]         => 文字对齐
+ * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
+ * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
  */
 
 /**
@@ -30,43 +36,53 @@ const tpl = require('./index.html');
  * @param {string}      [options.data.tip]              => 提示信息
  * @param {string}      [options.data.type]             => 列内容的预设类型
  * @param {string}      [options.data.width]            => 列宽
- * @param {string}      [options.data.tdClass]          => 列内容样式
- * @param {string}      [options.data.thClass]          => 表头样式
+ * @param {number}      [optiosn.data.minWidth]         => 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置
+ * @param {string}      [options.data.columnClass]      => 列内容样式
+ * @param {string}      [options.data.headerClass]      => 表头样式
  * @param {boolean}     [options.data.sortable]         => 可排序
  * @param {string}      [options.data.children]         => 子表头
  * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
  * @param {string}      [optiosn.data.align='']         => 列文字对齐
-
+ * @param {string}      [optiosn.data.placeholder='-']  => 列文字占位符
+ *
  * @param {string}      [options.data.template]         => 列内容模版
+ * @param {string}      [options.data.headerTemplate]   => 列表头模版
+ * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
  */
 
 /**
  * @class JRTableTemplate
  * @extend Component
  * @param {object}      [options.data]                = 绑定属性
- * @param {string}      [options.data.type="content"] => 模版类型, header, content
+ * @param {string}      [options.data.type=content] => 模版类型, header, content
  */
 
 const JRTable = Component.extend({
   name: 'jr-table',
   template: tpl,
   computed: {
-    bodyHeight: {
+    checkAll: {
       get() {
-        const data = this.data;
-        if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
-          return +data.height - data.headerHeight;
+        if (!this.data.source) {
+          return false;
         }
+        const checkedList = this.data.source.filter(item => (item._checked));
+        if (checkedList.length === this.data.source.length) {
+          return true;
+        } else if (checkedList.length > 0) {
+          return null;
+        }
+        return false;
       },
       set(val) {
-        return (this.data.bodyHeight = val);
-      },
-    },
-    fixedRight: {
-      get() {
-        const data = this.data;
-        const fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-        return fixedRight > 0 ? fixedRight : 0;
+        if (!this.data.source) {
+          return val;
+        }
+        if (val !== null) {
+          this.data.source.forEach((item) => {
+            item._checked = !!val;
+          });
+        }
       },
     },
   },
@@ -78,86 +94,57 @@ const JRTable = Component.extend({
       scrollParentNode: null,
       strip: true,
       enableHover: true,
-      scrollYBar: 0,
-      scrollXBar: 0,
+      scrollYBarWidth: 0,
+      scrollXBarWidth: 0,
 
       show: true,
       columns: [],
       sorting: {},
       config: {},
       align: 'center',
+      placeholder: '-',
+      checkAll: false,
       initFinished: false,
+      minColWidth: 50,
     });
     this.supr(data);
-
-    this._initWatchers();
+    this.data.minColWidth = +this.data.minColWidth;
+    this.data._defaultWidth = +this.data.width;
+    this.$table = this;
+    this.$tableData = this.data;
   },
   init() {
     this._initTable();
   },
   _initTable() {
     const self = this;
-    const data = this.data;
-    const refs = this.$refs;
-    const INIT = 1;
     setTimeout(() => {
-      data.headerHeight = refs.headerWrap.offsetHeight;
-
-      self._updateContainerWidth(INIT);
-      self._updateViewWidth();
-      self._initTableWidth();
-      self._getHeaderHeight();
-      data.initFinished = true;
-    }, 50);
-  },
-  _initTableWidth() {
-    const data = this.data;
-    const _dataColumns = data._dataColumns;
-    if (!_dataColumns) {
-      return;
-    }
-
-    const tableWidth = data.parentWidth;
-    let customWidthCount = 0;
-    const customColumnWidthTotal = _dataColumns.reduce((previous, current) => {
-      const width = parseInt(current.width);
-      if (width) {
-        customWidthCount += 1;
-        return previous + width;
-      }
-      return previous;
+      self._updateParentWidth();
+      self._updateSticky();
+      self._updateTableWidth();
+      this._updateExpandHeight();
+      self._initWatchers();
+      this.$update();
     }, 0);
-
-    const tableViewWidth = tableWidth - data.scrollYBar;
-    let autoWidth = Math.floor(
-      (tableViewWidth - customColumnWidthTotal) /
-        (_dataColumns.length - customWidthCount),
-    );
-    autoWidth = autoWidth > 0 ? autoWidth : 100;
-
-    _dataColumns.forEach((dataColumn) => {
-      dataColumn._width = parseInt(dataColumn.width || autoWidth);
-      return dataColumn;
-    });
-
-    this._updateData('tableWidth', tableWidth);
+    setTimeout(() => {
+      self._getHeaderHeight();
+    }, 400);
   },
   _initWatchers() {
-    this.$watch('show', this._onShowChange);
     this.$watch('source', this._onSouceChange);
     this.$watch('columns', this._onColumnsChange);
-    this.$watch('scrollYBar', this._onScrollYBarChange);
+    this.$watch('scrollYBarWidth', this._onScrollYBarChange);
     this.$watch('parentWidth', this._onParentWidthChange);
+    this.$watch('tableWidth', this._onTableWidthChange);
+    this.$watch('headerHeight', this._updateBodyHeight);
+    this.$watch('height', this._updateBodyHeight);
 
     this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
-    this._getScrollParentNode().addEventListener(
-      'scroll',
-      this._onWinodwScroll,
-    );
+    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
+    this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
 
-    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
+    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 50);
     window.addEventListener('resize', this._onWindowResize);
 
     this._watchWidthChange();
@@ -178,28 +165,20 @@ const JRTable = Component.extend({
     if (!columns) {
       return;
     }
-    this.data.headers = u.getHeaders(columns);
-  },
-  _onShowChange(newVal) {
-    const self = this;
-    if (newVal) {
-      setTimeout(() => {
-        self._updateViewWidth();
-      }, 100);
-    }
-  },
-  _updateViewWidth() {
-    if (this.$refs.table) {
-      this._updateData('viewWidth', this.$refs.table.offsetWidth);
-    }
+    const headers = u.getHeaders(columns);
+    this._updateData('headers', headers);
   },
   _onParentWidthChange(newVal, oldVal) {
     if (newVal === undefined || oldVal === undefined) {
       return;
     }
-    const _oldVal = oldVal || this.data.tableWidth;
-    const ratio = newVal / _oldVal;
-    this._updateTableWidth(ratio);
+    this._updateTableWidth();
+    this._updateSticky();
+    this._updateFixedTablePosRight();
+    this._getHeaderHeight();
+  },
+  _onTableWidthChange() {
+    this._updateFixedTablePosRight();
   },
   _onSouceChange() {
     const self = this;
@@ -207,7 +186,7 @@ const JRTable = Component.extend({
       self._updateSticky();
     }, 500);
   },
-  _onWinodwScroll() {
+  _onWindowScroll() {
     if (!this.$refs || !this._isShow()) {
       return;
     }
@@ -215,6 +194,11 @@ const JRTable = Component.extend({
   },
   _updateSticky() {
     const data = this.data;
+    if (data.parentWidth === 0) {
+      data.stickyHeaderActive = false;
+      data.stickyFooterActive = false;
+      return;
+    }
     if (!data.stickyHeader && !data.stickyFooter) {
       return;
     }
@@ -259,21 +243,22 @@ const JRTable = Component.extend({
     if (scrollParentNode !== window) {
       scrollY = scrollParentNode.scrollTop;
     } else {
-      scrollY = window.scrollY;
+      scrollY = window.pageYOffset || document.documentElement.scrollTop;
     }
 
     let stickyActive = false;
+    const stickyHeaderOffset = +this.data.stickyHeaderOffset;
 
     if (
-      scrollY + headerHeight > tableWrapOffset.bottom ||
-      scrollY < tableWrapOffset.top
+      scrollY + stickyHeaderOffset + headerHeight > tableWrapOffset.bottom ||
+      scrollY + stickyHeaderOffset < tableWrapOffset.top
     ) {
       stickyActive = false;
-    } else if (scrollY > tableWrapOffset.top) {
+    } else {
       stickyActive = true;
     }
 
-    this.data.stickyHeaderActive = stickyActive;
+    this._updateData('stickyHeaderActive', stickyActive);
   },
   _updateStickyFooterStatus(tableWrapOffset) {
     const headerHeight = this._getHeaderHeight();
@@ -293,51 +278,69 @@ const JRTable = Component.extend({
     const scrollYBottom = scrollY + innerHeight;
     let stickyActive = false;
 
+    const stickyFooterOffset = +this.data.stickyFooterOffset;
+
     if (
-      scrollYBottom > tableWrapOffset.bottom + footerHeight ||
-      scrollYBottom < tableWrapOffset.top + headerHeight + 20
+      scrollYBottom > tableWrapOffset.bottom + footerHeight + stickyFooterOffset ||
+      scrollYBottom < tableWrapOffset.top + headerHeight + 20 + stickyFooterOffset
     ) {
       stickyActive = false;
     } else {
       stickyActive = true;
     }
 
-    this.data.stickyFooterActive = stickyActive;
+    this._updateData('stickyFooterActive', stickyActive);
   },
   _watchWidthChange() {
     const self = this;
-    this.data._quickTimer = setInterval(() => {
+    self.data._quickTimer = setInterval(() => {
       if (!self._isShow()) {
         return;
       }
-      self._updateContainerWidth();
+      self._getHeaderHeight();
+      self._updateParentWidth();
       self._updateScrollBar();
-    }, 50);
-    this.data._slowTimer = setInterval(() => {
-      if (!self._isShow()) {
-        return;
-      }
-      self._updateTableWidth();
+      self._updateExpandHeight();
     }, 200);
   },
-  _updateContainerWidth(init) {
-    const data = this.data;
-    let width = data.width;
-    if (init && width) {
-      data._defaultWidth = width;
+  _updateExpandHeight() {
+    if (!this.data.source) {
       return;
     }
+    this.data.source.forEach((row, index) => {
+      const expandElement = this.$refs[`expand${index}`];
+      if (expandElement && row._expanddingColumn) {
+        row._expandHeight = expandElement.clientHeight;
+      }
+    });
+  },
+  _getExpandRowTop(index) {
+    const top = this.data.source.reduce((sum, row, rowIndex) => {
+      let newSum = sum;
+      if (rowIndex <= index) {
+        newSum += row._rowHeight;
+        if (rowIndex < index && row.expand) {
+          newSum += (row._expandHeight || 0);
+        }
+        return newSum;
+      }
+      return sum;
+    }, this.data.headerHeight);
+    return top;
+  },
+  _updateParentWidth() {
+    const data = this.data;
+    let width = data.width;
 
     const parentStyle = window.getComputedStyle(
       this.$refs.tableWrap.parentElement,
     );
     const parentPadding =
-      u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
-    const parentWidth = u.getNum(parentStyle.width);
+      u.getNum(parentStyle.paddingLeft) + u.getNum(parentStyle.paddingRight);
+    const parentWidth = this.$refs.tableWrap.parentElement.clientWidth;
     width = parentWidth - parentPadding;
 
-    data.parentWidth = width;
-    data._defaultWidth = width;
+    this._updateData('parentWidth', width);
   },
   _updateScrollBar() {
     const tableWrapEle = this.$refs.bodyWrap;
@@ -356,8 +359,8 @@ const JRTable = Component.extend({
     );
     const xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
 
-    this._updateData('scrollYBar', yBarWidth);
-    this._updateData('scrollXBar', xBarWidth);
+    this._updateData('scrollYBarWidth', yBarWidth);
+    this._updateData('scrollXBarWidth', xBarWidth);
   },
   _onScrollYBarChange(newVal, oldVal) {
     if (oldVal === undefined) {
@@ -385,63 +388,87 @@ const JRTable = Component.extend({
     this._updateData('footerHeight', footerHeight);
     return footerHeight;
   },
-  _updateTableWidth(_ratio) {
+  _updateTableWidth() {
     const data = this.data;
+    const minColWidth = data.minColWidth;
+    const parentWidth = data.parentWidth - (data.scrollYBarWidth || 0);
     const _dataColumns = data._dataColumns;
     if (!_dataColumns) {
       return;
     }
-    const ratio = _ratio || 1;
-    let newTableWidth = 0;
-    let fixedCol = false;
-    let fixedTableWidth = 0;
-    let fixedColRight = false;
-    let fixedTableWidthRight = 0;
+    const minTableWidth = _dataColumns.reduce((sum, column) => sum + (column.width || column.minWidth || minColWidth), 0);
+    if (parentWidth > minTableWidth) {
+      const totalFlexWidth = parentWidth - minTableWidth;
+      const flexColumns = _dataColumns.filter(column => !column.width);
+      const flexColumnsWidth = flexColumns.reduce((sum, column) => sum + (column.minWidth || minColWidth), 0);
+      const ratio = totalFlexWidth / flexColumnsWidth;
+      let noneFirstColFlexWidth = 0;
 
-    _dataColumns.forEach((column) => {
-      // 计算表格宽度
-      newTableWidth += column._width;
-
-      // 更新列宽
-      if (!column._width) {
-        column._width = column.width || 100;
+      if (flexColumns.length > 0) {
+        flexColumns.forEach((column, index) => {
+          if (index === 0) {
+            return;
+          }
+          const flexWidth = Math.floor((column.minWidth || minColWidth) * ratio);
+          column._width = flexWidth + (column.minWidth || minColWidth);
+          noneFirstColFlexWidth += flexWidth;
+        });
+        flexColumns[0]._width = (flexColumns[0].minWidth || minColWidth) + (totalFlexWidth - noneFirstColFlexWidth);
       }
 
-      if (ratio !== 1) {
-        column._width = Math.floor(column._width * ratio);
-      }
-
-      // 计算固定列的总宽度
-      if (column._width && column.fixed) {
-        if (column.fixed === 'right') {
-          fixedColRight = true;
-          fixedTableWidthRight += column._width;
-        } else {
-          fixedCol = true;
-          fixedTableWidth += column._width;
+      const newTableWidth = _dataColumns.reduce((sum, column) => {
+        if (!column._width) {
+          column._width = column.width || data.defaultsColWidth;
         }
-      }
-    });
+        return sum + column._width;
+      }, 0);
 
-    data.fixedCol = fixedCol;
-    data.fixedTableWidth = fixedTableWidth;
-    data.fixedColRight = fixedColRight;
-    data.fixedTableWidthRight = fixedTableWidthRight;
-
-    data.tableWidth = newTableWidth;
-
-    if (newTableWidth <= data._defaultWidth) {
-      data.width = newTableWidth;
+      this._updateData('tableWidth', newTableWidth);
     } else {
-      data.width = data._defaultWidth;
+      let newTableWidth = 0;
+      _dataColumns.forEach((column) => {
+        column._width = column.width || column.minWidth || minColWidth;
+        newTableWidth += column._width;
+      });
+      this._updateData('tableWidth', newTableWidth);
     }
-    this.$update();
+
+    let newWidth = data.tableWidth;
+    if (data._defaultWidth) {
+      newWidth = Math.min(newWidth, data._defaultWidth);
+    }
+    newWidth = Math.min(newWidth, data.parentWidth);
+    this._updateData('width', newWidth);
+    this._updateFixedWidth();
+  },
+  _updateFixedWidth() {
+    const _dataColumns = this.data._dataColumns;
+    const fixedTableWidth = _dataColumns.reduce((sum, current) => {
+      if (current.fixed === 'left' || current.fixed === true) {
+        return sum + current._width;
+      }
+      return sum;
+    }, 0);
+    const fixedColLeft = !!fixedTableWidth;
+
+    const fixedTableWidthRight = _dataColumns.reduce((sum, current) => {
+      if (current.fixed === 'right') {
+        return sum + current._width;
+      }
+      return sum;
+    }, 0) - 1;
+    const fixedColRight = !!fixedTableWidthRight;
+
+    this._updateData('fixedColLeft', fixedColLeft);
+    this._updateData('fixedTableWidth', fixedTableWidth);
+    this._updateData('fixedColRight', fixedColRight);
+    this._updateData('fixedTableWidthRight', fixedTableWidthRight);
   },
   _onWindowResize() {
     if (!this.$refs || !this._isShow()) {
       return;
     }
-    this.$update('viewWidth', this.$refs.table.offsetWidth);
+    this._updateParentWidth();
   },
   _onBodyScroll(host) {
     if (!this._isShow()) {
@@ -449,14 +476,14 @@ const JRTable = Component.extend({
     }
     const $refs = this.$refs;
 
-    u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+    u.setElementValue($refs.bodyWrapFixedLeft, 'scrollTop', host.scrollTop);
     u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
     u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
     u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
   },
   _onSort(e) {
     /**
-         * @event sort 排序事件
+         * @event JRTable#sort 排序事件
          * @property {object} sender 事件来源
          * @property {boolean} asc 是否升序
          * @property {object} column 目标列
@@ -480,22 +507,36 @@ const JRTable = Component.extend({
   },
   _onItemCheckChange(e) {
     /**
-         * @event checkchange 多选事件
+         * @event JRTable#checkchange 多选事件
          * @property {object} sender 事件来源
          * @property {boolean} checked 是否选中
          * @property {object} item 操作对象
          * @property {object} checkedEvent 多选事件对象源
          */
-    this.$emit('checkchange', {
-      sender: this,
-      item: e.item,
-      checked: e.checked,
-      checkedEvent: e.event,
+    setTimeout(() => {
+      this.$emit('checkchange', {
+        sender: this,
+        item: e.item,
+        checked: e.checked,
+        checkedEvent: e.event,
+        checkAll: this.data.checkAll,
+      });
     });
+  },
+  _updateFixedTablePosRight() {
+    const data = this.data;
+    const fixedTablePosRight = Math.floor(data.parentWidth - data.tableWidth);
+    this._updateData('fixedTablePosRight', fixedTablePosRight > 0 ? fixedTablePosRight : data.scrollYBarWidth);
+  },
+  _updateBodyHeight() {
+    const data = this.data;
+    if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
+      this._updateData('bodyHeight', +data.height - data.headerHeight);
+    }
   },
   emitEvent(type, ...args) {
     /**
-         * @event [type] 自定义的操作事件
+         * @event JRTable#type 自定义的操作事件
          * @property {object} sender 事件来源
          * @property {boolean} custom 自定义事件标识
          * @property {array} param 自定义事件所带的参数
@@ -507,6 +548,10 @@ const JRTable = Component.extend({
     });
   },
   _onExpand(e) {
+    setTimeout(() => {
+      this._updateExpandHeight();
+      this.$update();
+    }, 0);
     this.$emit('expand', {
       sender: this,
       expand: e.expand,
@@ -517,19 +562,33 @@ const JRTable = Component.extend({
   },
   _onPaging(e) {
     /**
-         * @event paging 分页事件
+         * @event JRTable#paging 分页事件
          * @property {object} sender 事件来源
          * @property {number} current 事件来源
          * @property {object} paging 分页对象
+         * @property {object} pagingEvent Pager 的分页事件
          */
     this.$emit('paging', {
       sender: this,
       current: e.current,
       paging: this.data.paging,
+      pagingEvent: e,
     });
   },
   _onFixedExpand(e) {
     this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+  },
+  _onColumnResize() {
+    this._updateTableWidth();
+    this._updateFixedWidth();
+    this._forceRender();
+  },
+  _forceRender() {
+    const strip = this.data.strip;
+    this.$update('strip', !strip);
+    setTimeout(() => {
+      this.$update('strip', strip);
+    }, 50);
   },
   _isShow() {
     return this.data.show;
@@ -545,21 +604,25 @@ const JRTable = Component.extend({
   },
   removeEventListener() {
     clearInterval(this.data._quickTimer);
-    clearInterval(this.data._slowTimer);
-    window.document.removeEventListener('scroll', this._onWinodwScroll);
+    window.document.removeEventListener('scroll', this._onWindowScroll);
     window.removeEventListener('resize', this._onWindowResize);
   },
 })
   .component('table-header', TableHeader)
   .component('table-body', TableBody);
 
-const oldFilterFunc = JRTable.filter;
-
-JRTable.filter = function (...args) {
-  // const args = [].slice.call(arguments, 0);
+const oldFilter = JRTable.filter;
+JRTable.$filter = function (...args) {
   TableHeader.filter(...args);
   TableBody.filter(...args);
-  oldFilterFunc.apply(JRTable, args);
+  oldFilter.apply(JRTable, args);
+};
+JRTable.filter = JRTable.$filter;
+
+JRTable.$component = function (...args) {
+  TableHeader.component(...args);
+  TableBody.component(...args);
+  JRTable.component(JRTable, ...args);
 };
 
 module.exports = JRTable;

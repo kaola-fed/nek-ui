@@ -95,48 +95,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	  JRSelect: __webpack_require__(350),
 	  JRText: __webpack_require__(355),
 	  JRTextArea: __webpack_require__(357),
-	  JRUpload: __webpack_require__(359),
-	  JRSwitch: __webpack_require__(388),
+	  JRTreeView: __webpack_require__(359),
+	  JRUpload: __webpack_require__(361),
+	  JRSwitch: __webpack_require__(390),
 
 	  // Navigation
-	  JRSidebar: __webpack_require__(390),
-	  JRMenu: __webpack_require__(392),
-	  JRMenuItem: __webpack_require__(394),
-	  JRSubMenu: __webpack_require__(397),
-	  JRPager: __webpack_require__(399),
-	  JRTabs: __webpack_require__(401),
-	  JRTab: __webpack_require__(403),
-	  JRSteps: __webpack_require__(404),
-	  JRCrumb: __webpack_require__(406),
-	  JRCrumbItem: __webpack_require__(408),
+	  JRSidebar: __webpack_require__(392),
+	  JRMenu: __webpack_require__(394),
+	  JRMenuItem: __webpack_require__(396),
+	  JRSubMenu: __webpack_require__(399),
+	  JRPager: __webpack_require__(401),
+	  JRTabs: __webpack_require__(403),
+	  JRTab: __webpack_require__(405),
+	  JRSteps: __webpack_require__(406),
+	  JRCrumb: __webpack_require__(408),
+	  JRCrumbItem: __webpack_require__(410),
 
 	  // Notice
-	  JRModal: __webpack_require__(380),
-	  JRMask: __webpack_require__(410),
-	  JRNotify: __webpack_require__(412),
-	  JRPopConfirm: __webpack_require__(414),
+	  JRModal: __webpack_require__(383),
+	  JRMask: __webpack_require__(412),
+	  JRNotify: __webpack_require__(414),
+	  JRPopConfirm: __webpack_require__(416),
 
 	  // drag
-	  JRDraggable: __webpack_require__(428),
-	  JRDroppable: __webpack_require__(431),
-	  JRMovable: __webpack_require__(432),
-	  JRSlider: __webpack_require__(433),
+	  JRDraggable: __webpack_require__(430),
+	  JRDroppable: __webpack_require__(433),
+	  JRMovable: __webpack_require__(434),
+	  JRSlider: __webpack_require__(435),
 	  // Widget
-	  JRProgress: __webpack_require__(435),
-	  JRLoading: __webpack_require__(437),
-	  JRTooltip: __webpack_require__(439),
-	  JRIcon: __webpack_require__(441),
-	  JRLocaleProvider: __webpack_require__(443),
+	  JRProgress: __webpack_require__(437),
+	  JRLoading: __webpack_require__(439),
+	  JRTooltip: __webpack_require__(441),
+	  JRIcon: __webpack_require__(443),
+	  JRLocaleProvider: __webpack_require__(445),
 	  JRImagePreview: __webpack_require__(382),
 
 	  // Layout
-	  JRTable: __webpack_require__(444),
-	  JRTableCol: __webpack_require__(455),
-	  JRTableTemplate: __webpack_require__(456),
-	  JRRow: __webpack_require__(457),
-	  JRCol: __webpack_require__(459),
-	  JRCard: __webpack_require__(461),
-	  JRCardTools: __webpack_require__(463)
+	  JRTable: __webpack_require__(446),
+	  JRTableCol: __webpack_require__(456),
+	  JRTableTemplate: __webpack_require__(457),
+	  JRRow: __webpack_require__(458),
+	  JRCol: __webpack_require__(460),
+	  JRCard: __webpack_require__(462),
+	  JRCardTools: __webpack_require__(464)
 	};
 
 	backward(Components);
@@ -8436,22 +8437,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * @note 移交$ancestor处理
 	     */
 	  select: function select() {
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _$ancestor;
 
-	    this.$ancestor.select(args);
+	    (_$ancestor = this.$ancestor).select.apply(_$ancestor, arguments);
 	  },
 
 	  /**
 	     * @note 移给$ancestor处理
 	     */
 	  toggle: function toggle() {
-	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	      args[_key2] = arguments[_key2];
-	    }
+	    var _$ancestor2;
 
-	    this.$ancestor.toggle(args);
+	    (_$ancestor2 = this.$ancestor).toggle.apply(_$ancestor2, arguments);
 	  },
 	  check: function check() {
 	    this._setSelected({});
@@ -8495,7 +8492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 193 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<jr-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree.view.list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
+	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
 
 /***/ }),
 /* 194 */
@@ -27500,14 +27497,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var self = this;
 	        var keys = this.__getSourceKeys();
 
-	        window.NEKSelects = window.NEKSelects || {};
+	        window.JRSelects = window.JRSelects || {};
 	        keys = keys.filter(function (key) {
-	            return !window.NEKSelects[key];
+	            return !window.JRSelects[key];
 	        });
 
 	        this.selectors.forEach(function ($formitem) {
 	            var key = $formitem.data.sourceKey;
-	            var source = window.NEKSelects[key] || [];
+	            var source = window.JRSelects[key] || [];
 	            self.__updateSource($formitem, key, source);
 	        });
 
@@ -27542,7 +27539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	         */
 	        this.$emit('sourceCompleted', {
 	            sender: this,
-	            result: window.NEKSelects
+	            result: window.JRSelects
 	        });
 	    },
 	    __updateSource: function __updateSource($formitem, key, source) {
@@ -27553,7 +27550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return;
 	        }
 	        $selectItem.data.source = _.clone(source);
-	        window.NEKSelects[key] = _.clone(source);
+	        window.JRSelects[key] = _.clone(source);
 	        $selectItem.$update();
 	    }
 	});
@@ -28309,7 +28306,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * ------------------------------------------------------------
 	 * JRText  文本
-	 * @author   Cody Chan<int64ago@gmail.com>
 	 * ------------------------------------------------------------
 	 */
 
@@ -28501,19 +28497,152 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 *  ------------------------------
-	 *  jr-upload 上传
-	 *  ------------------------------
+	 * @file TreeView  树型视图
+	 * @author   sensen(rainforest92@126.com)
+	 */
+
+	var SourceComponent = __webpack_require__(179);
+	var template = __webpack_require__(360);
+	var _ = __webpack_require__(72);
+
+	__webpack_require__(192);
+
+	/**
+	 * @class TreeView
+	 * @param {object}    [options.data]                          = 绑定属性
+	 * @param {object[]}  [options.data.source=[]]                <=> 数据源
+	 * @param {string}    [options.data.source[].name]            => 每项的内容
+	 * @param {string}    [options.data.key=id]                   => 数据项的键
+	 * @param {string}    [options.data.childKey=children]        => 数据子项的键
+	 * @param {boolean}   [options.data.source[].open=false]      => 此项为展开/收起状态
+	 * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
+	 * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
+	 * @param {boolean}   [options.data.source[].divider=false]   => 设置此项为分隔线
+	 * @param {string}    [options.data.value=null]               <=> 当前选择值
+	 * @param {object}    [options.data.selected=null]            <=> 当前选择项
+	 * @param {string}    [options.data.separator=,]              => 多选时value分隔符
+	 * @param {boolean}   [options.data.multiple=false]           => 是否多选
+	 * @param {boolean}   [options.data.readonly=false]           => 是否只读
+	 * @param {boolean}   [options.data.disabled=false]           => 是否禁用
+	 * @param {boolean}   [options.data.visible=true]             => 是否显示
+	 * @param {string}    [options.data.class]                    => 补充class
+	 */
+	var TreeView = SourceComponent.extend({
+	  name: 'jr-tree-view',
+	  template: template,
+	  config: function config() {
+	    _.extend(this.data, {
+	      // @inherited source: [],
+	      key: 'id',
+	      nameKey: 'name',
+	      childKey: 'children',
+	      value: null,
+	      selected: null,
+	      multiple: false,
+	      hierarchical: false
+	    });
+	    this.supr();
+	    this.$ancestor = this;
+	    this.$watch('selected', function (newVal) {
+	      var _data = this.data,
+	          key = _data.key,
+	          nameKey = _data.nameKey,
+	          separator = _data.separator;
+
+	      if (!newVal) return this.data.value = '';
+	      if (Array.isArray(newVal)) {
+	        return this.data.value = newVal.map(function (d) {
+	          return d[key] || d[nameKey];
+	        }).join(separator);
+	      }
+	      this.data.value = newVal[key] || newVal[nameKey];
+	    });
+	  },
+	  select: function select(item) {
+	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
+	      return;
+	    }
+
+	    if (this.data.multiple) return item.selected = !item.selected;
+
+	    this.data.selected = item;
+	    this.toggle(item);
+	    /**
+	       * @event TreeView#select 选择某一项时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} selected 当前选择项
+	       */
+	    this.$emit('select', {
+	      sender: this,
+	      selected: item
+	    });
+	  },
+	  toggle: function toggle(item, _open) {
+	    if (this.data.readonly || this.data.disabled || item.disabled || item.divider) {
+	      return;
+	    }
+
+	    var open = _open;
+	    if (open === undefined) open = !item.open;
+	    item.open = open;
+
+	    /**
+	       * @event TreeView#toggle 展开或收起某一项时触发
+	       * @property {object} sender 事件发送对象
+	       * @property {object} item 处理项
+	       * @property {boolean} open 展开/收起状态
+	       */
+	    this.$emit('toggle', {
+	      sender: this,
+	      item: item,
+	      open: open
+	    });
+	  },
+	  _getSelected: function _getSelected(source) {
+	    var self = this;
+	    if (!source) return [];
+	    var arr = [];
+	    source.forEach(function (d) {
+	      var child = d[self.data.childKey];
+	      if (child && child.length) {
+	        arr = arr.concat(self._getSelected(d[self.data.childKey]));
+	      } else if (d.checked) {
+	        arr = arr.concat(d);
+	      }
+	    });
+	    return arr;
+	  },
+	  setSelected: function setSelected() {
+	    this.data.selected = this._getSelected(this.data.source);
+	  }
+	});
+
+		module.exports = TreeView;
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-treeview {class}\" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>\n\t<tree-view-list source={source} childKey={childKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\n</div>"
+
+/***/ }),
+/* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * @file jr-upload 上传
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
 	var Component = __webpack_require__(70);
-	var UploadList = __webpack_require__(362);
-	var UploadCard = __webpack_require__(385);
+	var UploadList = __webpack_require__(364);
+	var UploadCard = __webpack_require__(387);
 	var validationMixin = __webpack_require__(170);
-	var tpl = __webpack_require__(387);
+	var tpl = __webpack_require__(389);
 
 	/**
 	 * @class JRUpload
@@ -28535,13 +28664,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}     [options.data.num-max=Infinity]     => 可选，最大允许上传文件的个数，默认无限制
 	 * @param {number}     [options.data.num-perline]          => 可选，每行展示的文件个数，对于列表形式，默认无限制，根据父容器自动折行；
 	 *                                                             对于表单形式，默认每行展示5个
-	 * @param {number}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
+	 * @param {string}     [options.data.max-size=1GB]         => 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定
 	 * @param {boolean}    [options.data.readonly=false]       => 可选，是否开启预览模式，可选值true/false，true预览模式，只能预览和下载图片，
 	 *                                                             默认false，允许上传和删除图片
 	 * @param {boolean}    [options.data.hideTip=false]        => 是否显示校验错误信息，默认false显示
 	 * @param {number}     [options.data.image-width]          => 可选，指定上传图片文件的宽度, 值为数值，单位为px，如800
 	 * @param {number}     [options.data.image-height]         => 可选，指定上传图片文件的高度, 值为数值，单位为px, 如600
 	 * @param {string}     [options.data.image-scale]          => 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如'4:3'
+	 * @param {string}     [options.data.class]                => 可选，组件最外层包裹元素样式扩展
+	 * @param {function}   [options.data.onLoadInterceptor=NULL]    => 可选，Http status介于200-300时触发，用于对响应数据拦截，response.code校验决定成功或失败，以及数据转换，详见demo基本形式
+	 * @param {function}   [options.data.onErrorInterceptor=NULL]   => 可选，Http status非200-300时触发，http状态失败的钩子
+	 * @param {function}   [options.data.before-upload]        => 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise
+	 *                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，
+	 *                                                             如果非空，则提示校验信息，并停止上传
+	 * @param {function}   [options.data.before-remove]        => 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者
+	 *                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件
 	 */
 
 	var JRUpload = Component.extend({
@@ -28566,9 +28703,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      imageWidth: Infinity,
 	      imageHeight: Infinity,
 	      imageScale: '',
+	      class: '',
 	      encType: 'multipart/form-data',
-	      beforeOnLoad: null,
-	      beforeOnError: null
+	      onLoadInterceptor: data.beforeOnLoad || null,
+	      onErrorInterceptor: data.beforeOnError || null,
+	      beforeUpload: null,
+	      beforeRemove: null
 	    });
 
 	    this.preProcess(data);
@@ -28579,6 +28719,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  preProcess: function preProcess(data) {
 	    if (typeof data.maxSize === 'number') {
 	      data.maxSize += '';
+	    }
+	    if (typeof data.imageWidth === 'string') {
+	      data.imageWidth = parseInt(data.imageWidth);
+	    }
+	    if (typeof data.imageHeight === 'string') {
+	      data.imageHeight = parseInt(data.imageHeight);
 	    }
 	  },
 	  init: function init(data) {
@@ -28603,45 +28749,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  onSuccess: function onSuccess(info) {
 	    /**
-	     * @event success 文件上传成功回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event JRUpload#success 文件上传成功回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('success', info);
 	  },
 	  onProgress: function onProgress(info) {
 	    /**
-	     * @event progress 文件上传进度回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event JRUpload#progress 文件上传进度回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('progress', info);
 	  },
 	  onError: function onError(info) {
 	    /**
-	     * @event error 文件上传失败回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event JRUpload#error 文件上传失败回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('error', info);
 	  },
 	  onRemove: function onRemove(info) {
 	    /**
-	     * @event remove 上传文件删除回调函数
-	     * @property {object} sender 当前上传文件的实例
-	     * @property {object} file 当前上传的文件
-	     * @property {array} fileList 所有展示的文件列表
-	     * @property {string} status 上传的状态
-	     * @property {string} progress 上传的进度
+	     * @event JRUpload#remove 上传文件删除回调函数
+	     * @param {object} sender 当前上传文件的实例
+	     * @param {object} file 当前上传的文件
+	     * @param {array} fileList 所有展示的文件列表
+	     * @param {string} status 上传的状态
+	     * @param {string} progress 上传的进度
 	     */
 	    this.$emit('remove', info);
 	  },
@@ -28677,7 +28823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRUpload;
 
 /***/ }),
-/* 360 */
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28765,7 +28911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 361 */
+/* 363 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -28828,7 +28974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 362 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28840,8 +28986,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(384);
+	var UploadBase = __webpack_require__(365);
+	var tpl = __webpack_require__(386);
 
 	/**
 	 * @class UploadList
@@ -28871,7 +29017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadList;
 
 /***/ }),
-/* 363 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28880,7 +29026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _promise = __webpack_require__(364);
+	var _promise = __webpack_require__(366);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
@@ -28894,9 +29040,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var Config = __webpack_require__(361);
-	var FileUnit = __webpack_require__(378);
+	var utils = __webpack_require__(362);
+	var Config = __webpack_require__(363);
+	var FileUnit = __webpack_require__(380);
 	var JRImagePreview = __webpack_require__(382);
 
 	/**
@@ -28948,11 +29094,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      imageWidth: Infinity,
 	      imageHeight: Infinity,
 	      imageScale: '',
-	      encType: 'multipart/form-data'
+	      encType: 'multipart/form-data',
+	      onLoadInterceptor: null,
+	      onErrorInterceptor: null,
+	      beforeUpload: null,
+	      beforeRemove: null
 	    });
 
 	    _.extend(data, {
-	      fileUnitList: []
+	      fileUnitList: [],
+	      dragover: false,
+	      dragenterCount: 0
 	    });
 
 	    this.initWatchers();
@@ -28983,12 +29135,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!file.uid) {
 	        var uid = utils.genUid();
 	        file.uid = uid;
-	        file.flag = Config.flagMap.ADDED;
+	        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
 	        var fileunit = {
 	          name: file.name,
 	          url: file.url,
 	          type: self.getFileType(file),
-	          flag: 'ADDED',
+	          flag: file.flag,
 	          uid: file.uid,
 	          status: 'success'
 	        };
@@ -29041,16 +29193,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      fileList.forEach(function (file) {
 	        var uid = utils.genUid();
 	        file.uid = uid;
-	        file.flag = Config.flagMap.ORIGINAL;
+	        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
 	        var fileunit = {
 	          name: file.name,
 	          url: file.url,
 	          type: self.getFileType(file),
-	          flag: 'ORIGINAL',
+	          flag: file.flag,
 	          uid: file.uid,
 	          status: 'success'
 	        };
-	        fileUnitList.push(fileunit);
+
+	        if (fileunit.flag !== Config.flagMap.DELETED) {
+	          fileUnitList.push(fileunit);
+	        }
 	      });
 	    }
 	  },
@@ -29077,10 +29232,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        newFileList.push({
 	          name: file.name,
 	          url: file.url,
-	          flag: Config.flagMap[flag],
+	          flag: flag,
 	          uid: uid
 	        });
-	      } else if (flag === 'DELETED') {
+	      } else if (flag === Config.flagMap.DELETED) {
 	        fileList[fileIndex].flag = Config.flagMap.DELETED;
 	        fileUnitList.splice(index, 1);
 	      } else if (destroyed) {
@@ -29110,14 +29265,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    inputNode.value = '';
 	  },
 	  onDragEnter: function onDragEnter(e) {
+	    var data = this.data;
 	    e.stopPropagation();
 	    e.preventDefault();
+	    data.dragover = true;
+	    data.dragenterCount += 1;
 	  },
 	  onDragOver: function onDragOver(e) {
 	    e.stopPropagation();
 	    e.preventDefault();
 	  },
+	  onDragLeave: function onDragLeave(e) {
+	    var data = this.data;
+	    e.stopPropagation();
+	    e.preventDefault();
+	    data.dragenterCount -= 1;
+	    if (data.dragenterCount === 0) {
+	      data.dragover = false;
+	    }
+	  },
 	  onDrop: function onDrop(e) {
+	    this.data.dragover = false;
 	    e.stopPropagation();
 	    e.preventDefault();
 
@@ -29143,13 +29311,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        checker.then(function (preCheckInfo) {
 	          data.preCheckInfo = preCheckInfo;
 	          self.$update();
-	          if (!data.preCheckInfo) {
+	          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
 	            var fileunit = {
 	              rawFile: file,
 	              name: file.name,
 	              url: window.URL.createObjectURL(file),
 	              type: self.getFileType(file),
-	              flag: 'ADDED',
+	              flag: Config.flagMap.ADDED,
 	              uid: utils.genUid(),
 	              status: 'ready'
 	            };
@@ -29241,8 +29409,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var inst = info.sender;
 	    var file = info.file;
 	    file.destroyed = true;
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
+	    if (file.flag === Config.flagMap.ORIGINAL) {
+	      file.flag = Config.flagMap.DELETED;
 	    }
 	    inst.destroy();
 	    this.updateList();
@@ -29263,7 +29431,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  preCheck: function preCheck(file) {
 	    var self = this;
-	    var onPass = function onPass(resolve) {
+	    var data = self.data;
+	    var beforeCheck = data.beforeUpload && data.beforeUpload(file);
+
+	    var preFileCheck = function preFileCheck(resolve) {
 	      var type = self.getFileType(file).toLowerCase();
 	      var preCheckInfo = '';
 
@@ -29286,9 +29457,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    };
 
-	    var onError = function onError() {};
+	    if (beforeCheck && beforeCheck.then) {
+	      return beforeCheck.then(function (checkInfo) {
+	        if (checkInfo === '') {
+	          return new _promise2.default(preFileCheck);
+	        }
+	        return _promise2.default.resolve(checkInfo);
+	      });
+	    } else if (beforeCheck === '' || beforeCheck === null || beforeCheck === undefined) {
+	      return new _promise2.default(preFileCheck);
+	    }
 
-	    return new _promise2.default(onPass, onError);
+	    return _promise2.default.resolve(beforeCheck);
 	  },
 	  preCheckImage: function preCheckImage(file) {
 	    var self = this;
@@ -29300,7 +29480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var imageHeight = data.imageHeight;
 	      var imageScale = data.imageScale;
 
-	      var onResolve = function onResolve(resolve) {
+	      var preImageCheck = function preImageCheck(resolve) {
 	        var img = new window.Image();
 	        img.onload = function () {
 	          window.URL.revokeObjectURL(img.src);
@@ -29328,9 +29508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        img.src = window.URL.createObjectURL(file);
 	      };
 
-	      var onReject = function onReject() {};
-
-	      return new _promise2.default(onResolve, onReject);
+	      return new _promise2.default(preImageCheck);
 	    }
 	  },
 	  isAcceptedFileType: function isAcceptedFileType(file) {
@@ -29390,23 +29568,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadBase;
 
 /***/ }),
-/* 364 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(365), __esModule: true };
+	module.exports = { "default": __webpack_require__(367), __esModule: true };
 
 /***/ }),
-/* 365 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(99);
 	__webpack_require__(54);
 	__webpack_require__(38);
-	__webpack_require__(366);
+	__webpack_require__(368);
 	module.exports = __webpack_require__(6).Promise;
 
 /***/ }),
-/* 366 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29417,11 +29595,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , $export            = __webpack_require__(4)
 	  , isObject           = __webpack_require__(12)
 	  , aFunction          = __webpack_require__(8)
-	  , anInstance         = __webpack_require__(367)
-	  , forOf              = __webpack_require__(368)
-	  , speciesConstructor = __webpack_require__(371)
-	  , task               = __webpack_require__(372).set
-	  , microtask          = __webpack_require__(374)()
+	  , anInstance         = __webpack_require__(369)
+	  , forOf              = __webpack_require__(370)
+	  , speciesConstructor = __webpack_require__(373)
+	  , task               = __webpack_require__(374).set
+	  , microtask          = __webpack_require__(376)()
 	  , PROMISE            = 'Promise'
 	  , TypeError          = global.TypeError
 	  , process            = global.process
@@ -29613,7 +29791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false;          // <- notify
 	  };
-	  Internal.prototype = __webpack_require__(375)($Promise.prototype, {
+	  Internal.prototype = __webpack_require__(377)($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -29640,7 +29818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 	__webpack_require__(50)($Promise, PROMISE);
-	__webpack_require__(376)(PROMISE);
+	__webpack_require__(378)(PROMISE);
 	Wrapper = __webpack_require__(6)[PROMISE];
 
 	// statics
@@ -29664,7 +29842,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return capability.promise;
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(377)(function(iter){
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(379)(function(iter){
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -29710,7 +29888,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 367 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it, Constructor, name, forbiddenField){
@@ -29720,12 +29898,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 368 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(7)
-	  , call        = __webpack_require__(369)
-	  , isArrayIter = __webpack_require__(370)
+	  , call        = __webpack_require__(371)
+	  , isArrayIter = __webpack_require__(372)
 	  , anObject    = __webpack_require__(11)
 	  , toLength    = __webpack_require__(28)
 	  , getIterFn   = __webpack_require__(57)
@@ -29750,7 +29928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.RETURN = RETURN;
 
 /***/ }),
-/* 369 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -29767,7 +29945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 370 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
@@ -29780,7 +29958,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 371 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -29793,11 +29971,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 372 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx                = __webpack_require__(7)
-	  , invoke             = __webpack_require__(373)
+	  , invoke             = __webpack_require__(375)
 	  , html               = __webpack_require__(49)
 	  , cel                = __webpack_require__(16)
 	  , global             = __webpack_require__(5)
@@ -29873,7 +30051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 373 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -29894,11 +30072,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 374 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(5)
-	  , macrotask = __webpack_require__(372).set
+	  , macrotask = __webpack_require__(374).set
 	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
 	  , process   = global.process
 	  , Promise   = global.Promise
@@ -29967,7 +30145,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 375 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var hide = __webpack_require__(9);
@@ -29979,7 +30157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 376 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29998,7 +30176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 377 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ITERATOR     = __webpack_require__(51)('iterator')
@@ -30024,7 +30202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 378 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30037,9 +30215,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(379);
-	var utils = __webpack_require__(360);
-	var JRModal = __webpack_require__(380);
+	var tpl = __webpack_require__(381);
+	var utils = __webpack_require__(362);
 
 	var FileUnit = Component.extend({
 	  template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -30117,8 +30294,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } catch (error) {
 	          console.log(error);
 	        }
-	        if (self.data.beforeOnLoad) {
-	          result = self.data.beforeOnLoad.call(self, response);
+	        if (self.data.onLoadInterceptor) {
+	          result = self.data.onLoadInterceptor.call(self, response);
 	        }
 	        response.url = result && result.url || response.url;
 	        if (status >= 200 && status < 400 && result) {
@@ -30139,8 +30316,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      },
 	      onerror: function onerror(e) {
-	        if (self.data.beforeOnError) {
-	          self.data.beforeOnError.call(self, e);
+	        if (self.data.onErrorInterceptor) {
+	          self.data.onErrorInterceptor.call(self, e);
 	        }
 	        data.status = 'fail';
 	        data.info = self.$trans('UPLOAD_FAIL');
@@ -30173,18 +30350,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      file: data.file,
 	      status: data.status
 	    };
+	    var beforeRemove = data.beforeRemove && data.beforeRemove(emitItem);
 
-	    if (data.delConfirm) {
-	      var modal = new JRModal({
-	        data: {
-	          content: this.$trans('REMOVE_CONFIRM') + data.filename + '?'
+	    if (beforeRemove && beforeRemove.then) {
+	      beforeRemove.then(function (removeConfirm) {
+	        if (removeConfirm !== false) {
+	          self.$emit('remove', emitItem);
+	        } else {
+	          return removeConfirm;
 	        }
 	      });
-	      modal.$on('ok', function () {
-	        self.$emit('remove', emitItem);
-	      });
-	    } else {
+	    } else if (beforeRemove !== false) {
 	      self.$emit('remove', emitItem);
+	    } else {
+	      return beforeRemove;
 	    }
 	  },
 	  onPreview: function onPreview(e) {
@@ -30202,186 +30381,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FileUnit;
 
 /***/ }),
-/* 379 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove()}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
-
-/***/ }),
-/* 380 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
-	 * ------------------------------------------------------------
-	 * JRModal     模态对话框
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var template = __webpack_require__(381);
-	var _ = __webpack_require__(72);
-
-	/**
-	 * @class JRModal
-	 * @extend Component
-	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
-	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
-	 * @param {string}            [options.data.content]              => 对话框内容
-	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
-	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
-	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
-	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
-	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
-	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
-	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
-	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
-	 * @param {string}            [options.data.class]                => 补充class
-	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
-	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
-	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
-	 */
-	var JRModal = Component.extend({
-	  name: 'jr-modal',
-	  template: template,
-	  /**
-	     * @protected
-	     */
-	  config: function config() {
-	    _.extend(this.data, {
-	      title: this.$trans('NOTICE'),
-	      content: '',
-	      okButton: true,
-	      with: 400,
-	      cancelButton: false,
-	      noClose: false,
-	      okDisabled: false,
-	      cancelDisabled: false,
-	      hasFooter: true,
-	      isCanClose: true
-	    });
-	    this.supr();
-	  },
-
-	  /**
-	     * @protected
-	     */
-	  init: function init() {
-	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到document.body中
-	    if (this.$root === this) this.$inject(document.body);
-	  },
-
-	  /**
-	     * @method close(result) 关闭对话框
-	     * @public
-	     * @param  {boolean} result 点击确定还是取消
-	     * @return {void}
-	     */
-	  close: function close(result, event) {
-	    /**
-	         * @event close 关闭对话框时触发
-	         * @property {boolean} result 点击了确定还是取消
-	         */
-	    this.$emit('close', {
-	      result: result
-	    });
-	    result ? this.ok(event) : this.cancel();
-	  },
-
-	  /**
-	     * @method ok() 确定对话框
-	     * @public
-	     * @return {void}
-	     */
-	  ok: function ok(event) {
-	    /**
-	         * @event ok 确定对话框时触发
-	         */
-	    this.$emit('ok', event);
-	    !this.data.noClose && this.destroy();
-	  },
-
-	  /**
-	     * @method cancel() 取消对话框
-	     * @public
-	     * @return {void}
-	     */
-	  cancel: function cancel() {
-	    /**
-	         * @event cancel 取消对话框时触发
-	         */
-	    this.$emit('cancel');
-	    this.destroy();
-	  },
-	  _onDragStart: function _onDragStart($event) {
-	    var dialog = $event.proxy;
-	    dialog.style.left = dialog.offsetLeft + 'px';
-	    dialog.style.top = dialog.offsetTop + 'px';
-	    dialog.style.zIndex = '1000';
-	    dialog.style.position = 'absolute';
-	  }
-	});
-
-	/**
-	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	JRModal.alert = function (content, title, okButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton
-	    }
-	  });
-
-	  return modal;
-	};
-
-	/**
-	 * @method confirm(content[,title]) 弹出一个confirm对话框
-	 * @static
-	 * @public
-	 * @param  {string} [content] 对话框内容
-	 * @param  {string} [title=提示] 对话框标题
-	 * @return {Modal} modal 返回该对话框
-	 */
-	JRModal.confirm = function (content, title, okButton, cancelButton) {
-	  var modal = new this({
-	    data: {
-	      content: content,
-	      title: title,
-	      okButton: okButton,
-	      cancelButton: cancelButton || true
-	    }
-	  });
-
-	  return modal;
-	};
-
-	// var oldExtend = Modal.extend;
-	// Modal.extend = function() {
-	//     var extended = oldExtend.apply(this, arguments);
-	//     extended.alert = this.alert;
-	//     extended.confirm = this.confirm;
-	//     return extended;
-	// }
-
-	module.exports = JRModal;
-
-/***/ }),
 /* 381 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <jr-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <jr-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 382 */
@@ -30397,8 +30400,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var JRModal = __webpack_require__(380);
-	var tpl = __webpack_require__(383);
+	var JRModal = __webpack_require__(383);
+	var tpl = __webpack_require__(385);
 
 	/**
 	 * @class JRImagePreview
@@ -30732,18 +30735,194 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 383 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+	'use strict';
+
+	/**
+	 * ------------------------------------------------------------
+	 * JRModal     模态对话框
+	 * @author   sensen(rainforest92@126.com)
+	 * ------------------------------------------------------------
+	 */
+
+	var Component = __webpack_require__(70);
+	var template = __webpack_require__(384);
+	var _ = __webpack_require__(72);
+
+	/**
+	 * @class JRModal
+	 * @extend Component
+	 * @param {object}            [options.data]                      = 绑定属性 | Binding Properties
+	 * @param {string}            [options.data.title=提示]            => 对话框标题 | Title of Dialog
+	 * @param {string}            [options.data.content]              => 对话框内容
+	 * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
+	 * @param {string}            [options.data.footerTemplate]       => 对话框底部模板
+	 * @param {boolean}           [options.data.okDisabled=false]     => Disale 确认按钮
+	 * @param {boolean}           [options.data.cancelDisabled=false] => Disale 取消按钮
+	 * @param {boolean}           [options.data.hasFooter=true]       => 是否显示 footer
+	 * @param {boolean}           [options.data.isCanClose=true]      => 是否允许取消关闭
+	 * @param {string|boolean}    [options.data.okButton=true]        => 是否显示确定按钮。值为`string`时显示该段文字。
+	 * @param {string|boolean}    [options.data.cancelButton=false]   => 是否显示取消按钮。值为`string`时显示该段文字。
+	 * @param {string}            [options.data.class]                => 补充class
+	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
+	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
+	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
+	 */
+	var JRModal = Component.extend({
+	  name: 'jr-modal',
+	  template: template,
+	  /**
+	     * @protected
+	     */
+	  config: function config() {
+	    _.extend(this.data, {
+	      title: this.$trans('NOTICE'),
+	      content: '',
+	      okButton: true,
+	      with: 400,
+	      cancelButton: false,
+	      noClose: false,
+	      okDisabled: false,
+	      cancelDisabled: false,
+	      hasFooter: true,
+	      isCanClose: true
+	    });
+	    this.supr();
+	  },
+
+	  /**
+	     * @protected
+	     */
+	  init: function init() {
+	    this.supr();
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
+	  },
+
+	  /**
+	     * @method close(result) 关闭对话框
+	     * @public
+	     * @param  {boolean} result 点击确定还是取消
+	     * @return {void}
+	     */
+	  close: function close(result, event) {
+	    /**
+	         * @event close 关闭对话框时触发
+	         * @property {boolean} result 点击了确定还是取消
+	         */
+	    this.$emit('close', {
+	      result: result
+	    });
+	    result ? this.ok(event) : this.cancel();
+	  },
+
+	  /**
+	     * @method ok() 确定对话框
+	     * @public
+	     * @return {void}
+	     */
+	  ok: function ok(event) {
+	    /**
+	         * @event ok 确定对话框时触发
+	         */
+	    this.$emit('ok', event);
+	    !this.data.noClose && this.destroy();
+	  },
+
+	  /**
+	     * @method cancel() 取消对话框
+	     * @public
+	     * @return {void}
+	     */
+	  cancel: function cancel() {
+	    /**
+	         * @event cancel 取消对话框时触发
+	         */
+	    this.$emit('cancel');
+	    this.destroy();
+	  },
+	  _onDragStart: function _onDragStart($event) {
+	    var dialog = $event.proxy;
+	    dialog.style.left = dialog.offsetLeft + 'px';
+	    dialog.style.top = dialog.offsetTop + 'px';
+	    dialog.style.zIndex = '1000';
+	    dialog.style.position = 'absolute';
+	  }
+	});
+
+	/**
+	 * @method alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	JRModal.alert = function (content, title, okButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton
+	    }
+	  });
+
+	  return modal;
+	};
+
+	/**
+	 * @method confirm(content[,title]) 弹出一个confirm对话框
+	 * @static
+	 * @public
+	 * @param  {string} [content] 对话框内容
+	 * @param  {string} [title=提示] 对话框标题
+	 * @return {Modal} modal 返回该对话框
+	 */
+	JRModal.confirm = function (content, title, okButton, cancelButton) {
+	  var modal = new this({
+	    data: {
+	      content: content,
+	      title: title,
+	      okButton: okButton,
+	      cancelButton: cancelButton || true
+	    }
+	  });
+
+	  return modal;
+	};
+
+	// var oldExtend = Modal.extend;
+	// Modal.extend = function() {
+	//     var extended = oldExtend.apply(this, arguments);
+	//     extended.alert = this.alert;
+	//     extended.confirm = this.confirm;
+	//     return extended;
+	// }
+
+	module.exports = JRModal;
 
 /***/ }),
 /* 384 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      beforeOnLoad={beforeOnLoad}\n                      beforeOnError={beforeOnError}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= limit} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}><span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span></div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                    <jr-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <jr-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 385 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
+
+/***/ }),
+/* 386 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      onLoadInterceptor={onLoadInterceptor}\n                      onErrorInterceptor={onErrorInterceptor}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30755,9 +30934,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var utils = __webpack_require__(360);
-	var UploadBase = __webpack_require__(363);
-	var tpl = __webpack_require__(386);
+	var utils = __webpack_require__(362);
+	var UploadBase = __webpack_require__(365);
+	var Config = __webpack_require__(363);
+	var tpl = __webpack_require__(388);
 
 	/**
 	 * @class UploadCard
@@ -30835,7 +31015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              name: file.name,
 	              url: window.URL.createObjectURL(file),
 	              type: self.getFileType(file),
-	              flag: 'ADDED',
+	              flag: Config.flagMap.ADDED,
 	              uid: utils.genUid(),
 	              status: 'ready'
 	            };
@@ -30904,8 +31084,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    self.toggle(false);
 	    file.destroyed = true;
 
-	    if (file.flag === 'ORIGINAL') {
-	      file.flag = 'DELETED';
+	    if (file.flag === Config.flagMap.ORIGINAL) {
+	      file.flag = Config.flagMap.DELETED;
 	    }
 	    inst.destroy();
 	    self.updateList();
@@ -31070,7 +31250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var close = true;
 
 	    var upload = opens[i];
-	    var uploadElement = upload.$refs.element;
+	    var uploadElement = upload.$refs && upload.$refs.element;
 	    var iterator = e.target;
 
 	    while (iterator) {
@@ -31091,19 +31271,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadCard;
 
 /***/ }),
-/* 386 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                beforeOnLoad={beforeOnLoad}\n                                beforeOnError={beforeOnError}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\" on-drop={this.onDrop($event)} on-dragenter={this.onDragEnter($event)} on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
-
-/***/ }),
-/* 387 */
-/***/ (function(module, exports) {
-
-	module.exports = "<div ref=\"m-upload\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            beforeOnLoad={beforeOnLoad}\n            beforeOnError={beforeOnError}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
-
-/***/ }),
 /* 388 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                onLoadInterceptor={onLoadInterceptor}\n                                onErrorInterceptor={onErrorInterceptor}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+
+/***/ }),
+/* 389 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+
+/***/ }),
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31115,7 +31295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(389);
+	var template = __webpack_require__(391);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31171,13 +31351,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRSwitch;
 
 /***/ }),
-/* 389 */
+/* 391 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-switch {class}\"  style=\"width:{width}px\" on-click={this.switch()}>\n\t<div class=\"u-switch-warp\" r-class={{'notAllow':disabled}} style=\"background:{disabled?'#999':(open?onColor:offColor)};border:1px solid {disabled?'#999':(open?onColor:offColor)};width:{width}px\">\n\t\t<div class=\"u-switch-btn\" r-class={{'notAllow':disabled}} style=\"transform:translateX({open?(width-20):2}px)\"></div>\n\t</div>\n\t{#if showText}\n\t<div class=\"u-switch-label left\" r-class={{'notAllow':disabled}} style=\"width:{width}px\" r-class={{ 'show':open}}><span>{onText}</span></div>\n\t<div class=\"u-switch-label right\" r-class={{'notAllow':disabled}} style=\"width:{width}px\" r-class={{ 'show':!open}}><span>{offText}</span></div>\n\t{/if}\n</div>"
 
 /***/ }),
-/* 390 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31190,7 +31370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(391);
+	var template = __webpack_require__(393);
 
 	/**
 	 * @class JRSidebar
@@ -31303,13 +31483,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRSidebar;
 
 /***/ }),
-/* 391 */
+/* 393 */
 /***/ (function(module, exports) {
 
 	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ { 'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <jr-menu uniqueOpened=\"{uniqueOpened}\">\n      {#list menus as menu} {#if menu[childrenKey] && menu[childrenKey].length}\n      <jr-menu-sub icon='{menu.icon}' title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\">\n        {#list menu[childrenKey] as page}\n        <jr-menu-item isCurrent=\"{page.open}\" module=\"{page[moduleKey]}\" url=\"{page[urlKey]}\">{page[pageKey]}</jr-menu-item>\n        {/list}\n      </jr-menu-sub>\n      {#else}\n      <jr-menu-sub titleTemplate=\"<a href='{menu[urlKey]}'>{menu[titleKey]}</a>\"></jr-menu-sub>\n      {/if} {/list}\n    </jr-menu>\n  </div>\n\n  {#if showRetract}\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i> {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i> {/if}\n  </div>\n  {/if}\n</aside>"
 
 /***/ }),
-/* 392 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31322,7 +31502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(393);
+	var template = __webpack_require__(395);
 
 	/**
 	 * @class Menu
@@ -31381,13 +31561,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRMenu;
 
 /***/ }),
-/* 393 */
+/* 395 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
 
 /***/ }),
-/* 394 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31400,8 +31580,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(395);
-	var RootMenuMixin = __webpack_require__(396);
+	var template = __webpack_require__(397);
+	var RootMenuMixin = __webpack_require__(398);
 
 	/**
 	 * @class KLMenuItem
@@ -31465,18 +31645,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRMenuItem;
 
 /***/ }),
-/* 395 */
+/* 397 */
 /***/ (function(module, exports) {
 
 	module.exports = "<li class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)}>\n  {#if icon}\n      <img src='{icon}' class=\"item-icon\"/>\n  {/if }\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</li>"
 
 /***/ }),
-/* 396 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var JRMenu = __webpack_require__(392);
+	var JRMenu = __webpack_require__(394);
 
 	module.exports = function (Component) {
 	  Component.implement({
@@ -31498,7 +31678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 397 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31511,8 +31691,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(398);
-	var RootMenuMixin = __webpack_require__(396);
+	var template = __webpack_require__(400);
+	var RootMenuMixin = __webpack_require__(398);
 
 	/**
 	 * @class JRSubMenu
@@ -31574,13 +31754,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRSubMenu;
 
 /***/ }),
-/* 398 */
+/* 400 */
 /***/ (function(module, exports) {
 
 	module.exports = "<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if icon}\n       <img src='{icon}' class=\"subItem-icon\"/>\n    {#else}\n      <span class=\"head_arrow u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>   \n    {/if }\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if icon}\n         <span class=\"head_arrow right u-icon u-icon-angle-down\" r-class={ {'isOpen':active} }></span>\n     {/if}\n  </div>\n  <ul class=\"menuItems\" r-hide=\"!active\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </ul>\n</li>"
 
 /***/ }),
-/* 399 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31593,7 +31773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(400);
+	var template = __webpack_require__(402);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31752,13 +31932,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRPager;
 
 /***/ }),
-/* 400 */
+/* 402 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if total >= 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><jr-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></jr-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <jr-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <jr-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 401 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31771,7 +31951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(402);
+	var template = __webpack_require__(404);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31850,13 +32030,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRTabs;
 
 /***/ }),
-/* 402 */
+/* 404 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <ul class=\"tabs_hd\">\n        {#list tabs as item}\n        <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n        {/list}\n    </ul>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 403 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31869,7 +32049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var JRTabs = __webpack_require__(401);
+	var JRTabs = __webpack_require__(403);
 
 	/**
 	 * @class JRTab
@@ -31911,7 +32091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRTab;
 
 /***/ }),
-/* 404 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31924,7 +32104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(405);
+	var template = __webpack_require__(407);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31974,13 +32154,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRSteps;
 
 /***/ }),
-/* 405 */
+/* 407 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 406 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31993,7 +32173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(407);
+	var template = __webpack_require__(409);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32023,13 +32203,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRCrumb;
 
 /***/ }),
-/* 407 */
+/* 409 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"jr-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 408 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32042,9 +32222,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(409);
+	var template = __webpack_require__(411);
 	var _ = __webpack_require__(72);
-	var JRCrumb = __webpack_require__(406);
+	var JRCrumb = __webpack_require__(408);
 
 	/**
 	 * @class JRCrumbItem
@@ -32073,13 +32253,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRCrumbItem;
 
 /***/ }),
-/* 409 */
+/* 411 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"jr-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 410 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32092,7 +32272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(411);
+	var template = __webpack_require__(413);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32157,13 +32337,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRMask;
 
 /***/ }),
-/* 411 */
+/* 413 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-mask {class}\" on-click={this._handleClick($event)}>\n  {#if content}{#inc @(content)}{/if}\n</div>"
 
 /***/ }),
-/* 412 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32176,7 +32356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(413);
+	var template = __webpack_require__(415);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32353,13 +32533,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRNotify;
 
 /***/ }),
-/* 413 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 414 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32374,8 +32554,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(415);
-	__webpack_require__(416);
+	var template = __webpack_require__(417);
+	__webpack_require__(418);
 
 	var PopUp = Component.extend({
 	  template: template,
@@ -32488,13 +32668,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRPopConfirm;
 
 /***/ }),
-/* 415 */
+/* 417 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 416 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32510,7 +32690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	__webpack_require__(417);
+	__webpack_require__(419);
 
 	/**
 	 * @class Trigger
@@ -32611,7 +32791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ }),
-/* 417 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32624,11 +32804,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var dom = __webpack_require__(71).dom;
-	var domAlign = __webpack_require__(418);
+	var domAlign = __webpack_require__(420);
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var placement = __webpack_require__(427);
+	var placement = __webpack_require__(429);
 
 	/**
 	 * @class Alignment
@@ -32682,7 +32862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ }),
-/* 418 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32691,31 +32871,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(419);
+	var _utils = __webpack_require__(421);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(421);
+	var _getOffsetParent = __webpack_require__(423);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(422);
+	var _getVisibleRectForElement = __webpack_require__(424);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(423);
+	var _adjustForViewport = __webpack_require__(425);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(424);
+	var _getRegion = __webpack_require__(426);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(425);
+	var _getElFuturePos = __webpack_require__(427);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	var _getAlignOffset = __webpack_require__(426);
+	var _getAlignOffset = __webpack_require__(428);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -32960,7 +33140,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 419 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32971,7 +33151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(420);
+	var _propertyUtils = __webpack_require__(422);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -33536,7 +33716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 420 */
+/* 422 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33651,7 +33831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 421 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33660,7 +33840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(419);
+	var _utils = __webpack_require__(421);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33712,7 +33892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 422 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33721,11 +33901,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(419);
+	var _utils = __webpack_require__(421);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(421);
+	var _getOffsetParent = __webpack_require__(423);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -33793,7 +33973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 423 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33802,7 +33982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(419);
+	var _utils = __webpack_require__(421);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33853,7 +34033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 424 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33862,7 +34042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(419);
+	var _utils = __webpack_require__(421);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -33894,7 +34074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 425 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33903,7 +34083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(426);
+	var _getAlignOffset = __webpack_require__(428);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -33935,7 +34115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 426 */
+/* 428 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -33980,7 +34160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 427 */
+/* 429 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34066,7 +34246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 428 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34085,7 +34265,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var dom = __webpack_require__(71).dom;
-	var manager = __webpack_require__(429);
+	var manager = __webpack_require__(431);
 
 	/**
 	 * @class JRDraggable
@@ -34495,12 +34675,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRDraggable;
 
 /***/ }),
-/* 429 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(430);
+	__webpack_require__(432);
 
 	var manager = {
 	  dragging: false,
@@ -34527,7 +34707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = manager;
 
 /***/ }),
-/* 430 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34588,7 +34768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = dom;
 
 /***/ }),
-/* 431 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34607,7 +34787,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var dom = __webpack_require__(71).dom;
-	var manager = __webpack_require__(429);
+	var manager = __webpack_require__(431);
 
 	/**
 	 * @class JRDroppable
@@ -34833,7 +35013,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRDroppable;
 
 /***/ }),
-/* 432 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34858,8 +35038,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 	var dom = __webpack_require__(71).dom;
-	var Draggable = __webpack_require__(428);
-	var manager = __webpack_require__(429);
+	var Draggable = __webpack_require__(430);
+	var manager = __webpack_require__(431);
 
 	/**
 	 * @class JRMovable
@@ -34975,7 +35155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = JRMovable;
 
 /***/ }),
-/* 433 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34989,7 +35169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * ------------------------------------------------------------
 	 */
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(434);
+	var template = __webpack_require__(436);
 	var dom = __webpack_require__(71).dom;
 	__webpack_require__(65);
 	/**
@@ -35147,13 +35327,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = JRSlider;
 
 /***/ }),
-/* 434 */
+/* 436 */
 /***/ (function(module, exports) {
 
 	module.exports = "<jr-movable disabled={readonly || disabled} proxy={this.$refs.handle} axis=\"x\" grid={ _grid } range=\"offsetParent\" rangeMode=\"center\"\n    on-dragstart={this._onDragStart($event)} on-drag={this._onDrag($event)}>\n    <div style='width:{width}px;height:{height}px' class=\"u-slider {class}\" z-dis={disabled} r-hide={!visible} on-mousedown={this._onMouseDown($event)}>\n        <div class=\"slider_track\">\n            {#if showStep} {#list pointArr as item}\n            <div class=\"step-point\"  style='left:{item}%'></div>\n            {/list} {/if}\n            <div class=\"slider_trail\" style=\"width: {percent}%\"></div>\n        </div>\n        {#if showTips}\n        <jr-tooltip tip=\"{value}\">\n            <div class=\"slider_handle\" ref=\"handle\" style=\"left: {percent}%;height:{height2}px\"></div>\n        </jr-tooltip>\n        {#else}\n        <div class=\"slider_handle\" ref=\"handle\" style=\"left: {percent}%;height:{height2}px\"></div>\n        {/if}\n        <div class=\"u-range-min\">{min}</div>\n        <div class=\"u-range-max\">{max}</div>\n    </div>\n    {#if showInput}\n    <div class=\"u-show-value\">\n        <number-input min=\"{min}\" maxLen={inputMaxLen} step={step} max=\"{inputMax}\" value={value} readonly={readonly} disabled={disabled} />\n    </div>\n    {/if}\n</jr-movable>\n"
 
 /***/ }),
-/* 435 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35166,7 +35346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(436);
+	var template = __webpack_require__(438);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -35206,13 +35386,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRProgress;
 
 /***/ }),
-/* 436 */
+/* 438 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div r-width=\"{width}\" r-height=\"{height}\" class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 437 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35225,7 +35405,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(438);
+	var template = __webpack_require__(440);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -35314,13 +35494,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRLoading;
 
 /***/ }),
-/* 438 */
+/* 440 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static} } r-hide={!visible}>\n    {#if this.$body}\n        {#inc this.$body}\n    {#else}\n        <i class=\"u-icon u-icon-spinner u-icon-spin\"></i>\n    {/if}\n</div>"
 
 /***/ }),
-/* 439 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35335,8 +35515,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(440);
-	__webpack_require__(416);
+	var template = __webpack_require__(442);
+	__webpack_require__(418);
 
 	var TipPopUp = Component.extend({
 	  template: template,
@@ -35406,13 +35586,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRTooltip;
 
 /***/ }),
-/* 440 */
+/* 442 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-tooltip {placement} animated\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{tip}</p>\n</div>"
 
 /***/ }),
-/* 441 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35425,7 +35605,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(442);
+	var template = __webpack_require__(444);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -35459,13 +35639,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRIcon;
 
 /***/ }),
-/* 442 */
+/* 444 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 443 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35571,18 +35751,22 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRLocaleProvider;
 
 /***/ }),
-/* 444 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var TableHeader = __webpack_require__(445);
-	var TableBody = __webpack_require__(447);
+	/**
+	 * @file JRtable 表格
+	 */
+
+	var TableHeader = __webpack_require__(447);
+	var TableBody = __webpack_require__(449);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(450);
+	var u = __webpack_require__(452);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(454);
+	var tpl = __webpack_require__(455);
 
 	/**
 	 * @class JRTable
@@ -35596,7 +35780,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.fixedHeader]          => 将表头固定到表格顶部
 	 * @param {number}            [options.data.lineClamp]            => 单元格行数限制
 	 * @param {array}             [options.data.columns]              => 列配置
-	 * @param {string}            [optiosn.data.align='center']       => 文字对齐
+	 * @param {string}            [optiosn.data.align=center]         => 文字对齐
+	 * @param {number}            [optiosn.data.minColWidth=50]       => 最小列宽
+	 * @param {boolean}            [optiosn.data.loading=false]       => 是否显示加载浮层
 	 */
 
 	/**
@@ -35608,43 +35794,55 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.tip]              => 提示信息
 	 * @param {string}      [options.data.type]             => 列内容的预设类型
 	 * @param {string}      [options.data.width]            => 列宽
-	 * @param {string}      [options.data.tdClass]          => 列内容样式
-	 * @param {string}      [options.data.thClass]          => 表头样式
+	 * @param {number}      [optiosn.data.minWidth]         => 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置
+	 * @param {string}      [options.data.columnClass]      => 列内容样式
+	 * @param {string}      [options.data.headerClass]      => 表头样式
 	 * @param {boolean}     [options.data.sortable]         => 可排序
 	 * @param {string}      [options.data.children]         => 子表头
 	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
 	 * @param {string}      [optiosn.data.align='']         => 列文字对齐
-
+	 * @param {string}      [optiosn.data.placeholder='-']  => 列文字占位符
+	 *
 	 * @param {string}      [options.data.template]         => 列内容模版
+	 * @param {string}      [options.data.headerTemplate]   => 列表头模版
+	 * @param {string}      [options.data.expandTemplate]   => 下钻展开内容模版
 	 */
 
 	/**
 	 * @class JRTableTemplate
 	 * @extend Component
 	 * @param {object}      [options.data]                = 绑定属性
-	 * @param {string}      [options.data.type="content"] => 模版类型, header, content
+	 * @param {string}      [options.data.type=content] => 模版类型, header, content
 	 */
 
 	var JRTable = Component.extend({
 	  name: 'jr-table',
 	  template: tpl,
 	  computed: {
-	    bodyHeight: {
+	    checkAll: {
 	      get: function get() {
-	        var data = this.data;
-	        if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
-	          return +data.height - data.headerHeight;
+	        if (!this.data.source) {
+	          return false;
 	        }
+	        var checkedList = this.data.source.filter(function (item) {
+	          return item._checked;
+	        });
+	        if (checkedList.length === this.data.source.length) {
+	          return true;
+	        } else if (checkedList.length > 0) {
+	          return null;
+	        }
+	        return false;
 	      },
 	      set: function set(val) {
-	        return this.data.bodyHeight = val;
-	      }
-	    },
-	    fixedRight: {
-	      get: function get() {
-	        var data = this.data;
-	        var fixedRight = Math.floor(data.parentWidth - data.tableWidth);
-	        return fixedRight > 0 ? fixedRight : 0;
+	        if (!this.data.source) {
+	          return val;
+	        }
+	        if (val !== null) {
+	          this.data.source.forEach(function (item) {
+	            item._checked = !!val;
+	          });
+	        }
 	      }
 	    }
 	  },
@@ -35656,80 +35854,59 @@ return /******/ (function(modules) { // webpackBootstrap
 	      scrollParentNode: null,
 	      strip: true,
 	      enableHover: true,
-	      scrollYBar: 0,
-	      scrollXBar: 0,
+	      scrollYBarWidth: 0,
+	      scrollXBarWidth: 0,
 
 	      show: true,
 	      columns: [],
 	      sorting: {},
 	      config: {},
 	      align: 'center',
-	      initFinished: false
+	      placeholder: '-',
+	      checkAll: false,
+	      initFinished: false,
+	      minColWidth: 50
 	    });
 	    this.supr(data);
-
-	    this._initWatchers();
+	    this.data.minColWidth = +this.data.minColWidth;
+	    this.data._defaultWidth = +this.data.width;
+	    this.$table = this;
+	    this.$tableData = this.data;
 	  },
 	  init: function init() {
 	    this._initTable();
 	  },
 	  _initTable: function _initTable() {
+	    var _this = this;
+
 	    var self = this;
-	    var data = this.data;
-	    var refs = this.$refs;
-	    var INIT = 1;
 	    setTimeout(function () {
-	      data.headerHeight = refs.headerWrap.offsetHeight;
-
-	      self._updateContainerWidth(INIT);
-	      self._updateViewWidth();
-	      self._initTableWidth();
-	      self._getHeaderHeight();
-	      data.initFinished = true;
-	    }, 50);
-	  },
-	  _initTableWidth: function _initTableWidth() {
-	    var data = this.data;
-	    var _dataColumns = data._dataColumns;
-	    if (!_dataColumns) {
-	      return;
-	    }
-
-	    var tableWidth = data.parentWidth;
-	    var customWidthCount = 0;
-	    var customColumnWidthTotal = _dataColumns.reduce(function (previous, current) {
-	      var width = parseInt(current.width);
-	      if (width) {
-	        customWidthCount += 1;
-	        return previous + width;
-	      }
-	      return previous;
+	      self._updateParentWidth();
+	      self._updateSticky();
+	      self._updateTableWidth();
+	      _this._updateExpandHeight();
+	      self._initWatchers();
+	      _this.$update();
 	    }, 0);
-
-	    var tableViewWidth = tableWidth - data.scrollYBar;
-	    var autoWidth = Math.floor((tableViewWidth - customColumnWidthTotal) / (_dataColumns.length - customWidthCount));
-	    autoWidth = autoWidth > 0 ? autoWidth : 100;
-
-	    _dataColumns.forEach(function (dataColumn) {
-	      dataColumn._width = parseInt(dataColumn.width || autoWidth);
-	      return dataColumn;
-	    });
-
-	    this._updateData('tableWidth', tableWidth);
+	    setTimeout(function () {
+	      self._getHeaderHeight();
+	    }, 400);
 	  },
 	  _initWatchers: function _initWatchers() {
-	    this.$watch('show', this._onShowChange);
 	    this.$watch('source', this._onSouceChange);
 	    this.$watch('columns', this._onColumnsChange);
-	    this.$watch('scrollYBar', this._onScrollYBarChange);
+	    this.$watch('scrollYBarWidth', this._onScrollYBarChange);
 	    this.$watch('parentWidth', this._onParentWidthChange);
+	    this.$watch('tableWidth', this._onTableWidthChange);
+	    this.$watch('headerHeight', this._updateBodyHeight);
+	    this.$watch('height', this._updateBodyHeight);
 
 	    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
 
-	    this._onWinodwScroll = u.throttle(this._onWinodwScroll.bind(this), 200);
-	    this._getScrollParentNode().addEventListener('scroll', this._onWinodwScroll);
+	    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
+	    this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
 
-	    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 200);
+	    this._onWindowResize = u.throttle(this._onWindowResize.bind(this), 50);
 	    window.addEventListener('resize', this._onWindowResize);
 
 	    this._watchWidthChange();
@@ -35749,28 +35926,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!columns) {
 	      return;
 	    }
-	    this.data.headers = u.getHeaders(columns);
-	  },
-	  _onShowChange: function _onShowChange(newVal) {
-	    var self = this;
-	    if (newVal) {
-	      setTimeout(function () {
-	        self._updateViewWidth();
-	      }, 100);
-	    }
-	  },
-	  _updateViewWidth: function _updateViewWidth() {
-	    if (this.$refs.table) {
-	      this._updateData('viewWidth', this.$refs.table.offsetWidth);
-	    }
+	    var headers = u.getHeaders(columns);
+	    this._updateData('headers', headers);
 	  },
 	  _onParentWidthChange: function _onParentWidthChange(newVal, oldVal) {
 	    if (newVal === undefined || oldVal === undefined) {
 	      return;
 	    }
-	    var _oldVal = oldVal || this.data.tableWidth;
-	    var ratio = newVal / _oldVal;
-	    this._updateTableWidth(ratio);
+	    this._updateTableWidth();
+	    this._updateSticky();
+	    this._updateFixedTablePosRight();
+	    this._getHeaderHeight();
+	  },
+	  _onTableWidthChange: function _onTableWidthChange() {
+	    this._updateFixedTablePosRight();
 	  },
 	  _onSouceChange: function _onSouceChange() {
 	    var self = this;
@@ -35778,7 +35947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      self._updateSticky();
 	    }, 500);
 	  },
-	  _onWinodwScroll: function _onWinodwScroll() {
+	  _onWindowScroll: function _onWindowScroll() {
 	    if (!this.$refs || !this._isShow()) {
 	      return;
 	    }
@@ -35786,6 +35955,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _updateSticky: function _updateSticky() {
 	    var data = this.data;
+	    if (data.parentWidth === 0) {
+	      data.stickyHeaderActive = false;
+	      data.stickyFooterActive = false;
+	      return;
+	    }
 	    if (!data.stickyHeader && !data.stickyFooter) {
 	      return;
 	    }
@@ -35830,18 +36004,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (scrollParentNode !== window) {
 	      scrollY = scrollParentNode.scrollTop;
 	    } else {
-	      scrollY = window.scrollY;
+	      scrollY = window.pageYOffset || document.documentElement.scrollTop;
 	    }
 
 	    var stickyActive = false;
+	    var stickyHeaderOffset = +this.data.stickyHeaderOffset;
 
-	    if (scrollY + headerHeight > tableWrapOffset.bottom || scrollY < tableWrapOffset.top) {
+	    if (scrollY + stickyHeaderOffset + headerHeight > tableWrapOffset.bottom || scrollY + stickyHeaderOffset < tableWrapOffset.top) {
 	      stickyActive = false;
-	    } else if (scrollY > tableWrapOffset.top) {
+	    } else {
 	      stickyActive = true;
 	    }
 
-	    this.data.stickyHeaderActive = stickyActive;
+	    this._updateData('stickyHeaderActive', stickyActive);
 	  },
 	  _updateStickyFooterStatus: function _updateStickyFooterStatus(tableWrapOffset) {
 	    var headerHeight = this._getHeaderHeight();
@@ -35861,45 +36036,65 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var scrollYBottom = scrollY + innerHeight;
 	    var stickyActive = false;
 
-	    if (scrollYBottom > tableWrapOffset.bottom + footerHeight || scrollYBottom < tableWrapOffset.top + headerHeight + 20) {
+	    var stickyFooterOffset = +this.data.stickyFooterOffset;
+
+	    if (scrollYBottom > tableWrapOffset.bottom + footerHeight + stickyFooterOffset || scrollYBottom < tableWrapOffset.top + headerHeight + 20 + stickyFooterOffset) {
 	      stickyActive = false;
 	    } else {
 	      stickyActive = true;
 	    }
 
-	    this.data.stickyFooterActive = stickyActive;
+	    this._updateData('stickyFooterActive', stickyActive);
 	  },
 	  _watchWidthChange: function _watchWidthChange() {
 	    var self = this;
-	    this.data._quickTimer = setInterval(function () {
+	    self.data._quickTimer = setInterval(function () {
 	      if (!self._isShow()) {
 	        return;
 	      }
-	      self._updateContainerWidth();
+	      self._getHeaderHeight();
+	      self._updateParentWidth();
 	      self._updateScrollBar();
-	    }, 50);
-	    this.data._slowTimer = setInterval(function () {
-	      if (!self._isShow()) {
-	        return;
-	      }
-	      self._updateTableWidth();
+	      self._updateExpandHeight();
 	    }, 200);
 	  },
-	  _updateContainerWidth: function _updateContainerWidth(init) {
-	    var data = this.data;
-	    var width = data.width;
-	    if (init && width) {
-	      data._defaultWidth = width;
+	  _updateExpandHeight: function _updateExpandHeight() {
+	    var _this2 = this;
+
+	    if (!this.data.source) {
 	      return;
 	    }
+	    this.data.source.forEach(function (row, index) {
+	      var expandElement = _this2.$refs['expand' + index];
+	      if (expandElement && row._expanddingColumn) {
+	        row._expandHeight = expandElement.clientHeight;
+	      }
+	    });
+	  },
+	  _getExpandRowTop: function _getExpandRowTop(index) {
+	    var top = this.data.source.reduce(function (sum, row, rowIndex) {
+	      var newSum = sum;
+	      if (rowIndex <= index) {
+	        newSum += row._rowHeight;
+	        if (rowIndex < index && row.expand) {
+	          newSum += row._expandHeight || 0;
+	        }
+	        return newSum;
+	      }
+	      return sum;
+	    }, this.data.headerHeight);
+	    return top;
+	  },
+	  _updateParentWidth: function _updateParentWidth() {
+	    var data = this.data;
+	    var width = data.width;
 
 	    var parentStyle = window.getComputedStyle(this.$refs.tableWrap.parentElement);
-	    var parentPadding = u.getNum(parentStyle.paddingLeft) - u.getNum(parentStyle.paddingRight);
-	    var parentWidth = u.getNum(parentStyle.width);
+	    var parentPadding = u.getNum(parentStyle.paddingLeft) + u.getNum(parentStyle.paddingRight);
+	    var parentWidth = this.$refs.tableWrap.parentElement.clientWidth;
 	    width = parentWidth - parentPadding;
 
-	    data.parentWidth = width;
-	    data._defaultWidth = width;
+	    this._updateData('parentWidth', width);
 	  },
 	  _updateScrollBar: function _updateScrollBar() {
 	    var tableWrapEle = this.$refs.bodyWrap;
@@ -35912,8 +36107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var tableEleXBarWidth = Math.abs(tableEle.offsetHeight - tableEle.clientHeight);
 	    var xBarWidth = Math.max(tableWrapEleXBarWidth, tableEleXBarWidth);
 
-	    this._updateData('scrollYBar', yBarWidth);
-	    this._updateData('scrollXBar', xBarWidth);
+	    this._updateData('scrollYBarWidth', yBarWidth);
+	    this._updateData('scrollXBarWidth', xBarWidth);
 	  },
 	  _onScrollYBarChange: function _onScrollYBarChange(newVal, oldVal) {
 	    if (oldVal === undefined) {
@@ -35941,63 +36136,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._updateData('footerHeight', footerHeight);
 	    return footerHeight;
 	  },
-	  _updateTableWidth: function _updateTableWidth(_ratio) {
+	  _updateTableWidth: function _updateTableWidth() {
 	    var data = this.data;
+	    var minColWidth = data.minColWidth;
+	    var parentWidth = data.parentWidth - (data.scrollYBarWidth || 0);
 	    var _dataColumns = data._dataColumns;
 	    if (!_dataColumns) {
 	      return;
 	    }
-	    var ratio = _ratio || 1;
-	    var newTableWidth = 0;
-	    var fixedCol = false;
-	    var fixedTableWidth = 0;
-	    var fixedColRight = false;
-	    var fixedTableWidthRight = 0;
+	    var minTableWidth = _dataColumns.reduce(function (sum, column) {
+	      return sum + (column.width || column.minWidth || minColWidth);
+	    }, 0);
+	    if (parentWidth > minTableWidth) {
+	      var totalFlexWidth = parentWidth - minTableWidth;
+	      var flexColumns = _dataColumns.filter(function (column) {
+	        return !column.width;
+	      });
+	      var flexColumnsWidth = flexColumns.reduce(function (sum, column) {
+	        return sum + (column.minWidth || minColWidth);
+	      }, 0);
+	      var ratio = totalFlexWidth / flexColumnsWidth;
+	      var noneFirstColFlexWidth = 0;
 
-	    _dataColumns.forEach(function (column) {
-	      // 计算表格宽度
-	      newTableWidth += column._width;
-
-	      // 更新列宽
-	      if (!column._width) {
-	        column._width = column.width || 100;
+	      if (flexColumns.length > 0) {
+	        flexColumns.forEach(function (column, index) {
+	          if (index === 0) {
+	            return;
+	          }
+	          var flexWidth = Math.floor((column.minWidth || minColWidth) * ratio);
+	          column._width = flexWidth + (column.minWidth || minColWidth);
+	          noneFirstColFlexWidth += flexWidth;
+	        });
+	        flexColumns[0]._width = (flexColumns[0].minWidth || minColWidth) + (totalFlexWidth - noneFirstColFlexWidth);
 	      }
 
-	      if (ratio !== 1) {
-	        column._width = Math.floor(column._width * ratio);
-	      }
-
-	      // 计算固定列的总宽度
-	      if (column._width && column.fixed) {
-	        if (column.fixed === 'right') {
-	          fixedColRight = true;
-	          fixedTableWidthRight += column._width;
-	        } else {
-	          fixedCol = true;
-	          fixedTableWidth += column._width;
+	      var newTableWidth = _dataColumns.reduce(function (sum, column) {
+	        if (!column._width) {
+	          column._width = column.width || data.defaultsColWidth;
 	        }
-	      }
-	    });
+	        return sum + column._width;
+	      }, 0);
 
-	    data.fixedCol = fixedCol;
-	    data.fixedTableWidth = fixedTableWidth;
-	    data.fixedColRight = fixedColRight;
-	    data.fixedTableWidthRight = fixedTableWidthRight;
-
-	    data.tableWidth = newTableWidth;
-
-	    if (newTableWidth <= data._defaultWidth) {
-	      data.width = newTableWidth;
+	      this._updateData('tableWidth', newTableWidth);
 	    } else {
-	      data.width = data._defaultWidth;
+	      var _newTableWidth = 0;
+	      _dataColumns.forEach(function (column) {
+	        column._width = column.width || column.minWidth || minColWidth;
+	        _newTableWidth += column._width;
+	      });
+	      this._updateData('tableWidth', _newTableWidth);
 	    }
-	    this.$update();
+
+	    var newWidth = data.tableWidth;
+	    if (data._defaultWidth) {
+	      newWidth = Math.min(newWidth, data._defaultWidth);
+	    }
+	    newWidth = Math.min(newWidth, data.parentWidth);
+	    this._updateData('width', newWidth);
+	    this._updateFixedWidth();
+	  },
+	  _updateFixedWidth: function _updateFixedWidth() {
+	    var _dataColumns = this.data._dataColumns;
+	    var fixedTableWidth = _dataColumns.reduce(function (sum, current) {
+	      if (current.fixed === 'left' || current.fixed === true) {
+	        return sum + current._width;
+	      }
+	      return sum;
+	    }, 0);
+	    var fixedColLeft = !!fixedTableWidth;
+
+	    var fixedTableWidthRight = _dataColumns.reduce(function (sum, current) {
+	      if (current.fixed === 'right') {
+	        return sum + current._width;
+	      }
+	      return sum;
+	    }, 0) - 1;
+	    var fixedColRight = !!fixedTableWidthRight;
+
+	    this._updateData('fixedColLeft', fixedColLeft);
+	    this._updateData('fixedTableWidth', fixedTableWidth);
+	    this._updateData('fixedColRight', fixedColRight);
+	    this._updateData('fixedTableWidthRight', fixedTableWidthRight);
 	  },
 	  _onWindowResize: function _onWindowResize() {
 	    if (!this.$refs || !this._isShow()) {
 	      return;
 	    }
-	    this.$update('viewWidth', this.$refs.table.offsetWidth);
+	    this._updateParentWidth();
 	  },
 	  _onBodyScroll: function _onBodyScroll(host) {
 	    if (!this._isShow()) {
@@ -36005,14 +36230,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    var $refs = this.$refs;
 
-	    u.setElementValue($refs.bodyWrapFixed, 'scrollTop', host.scrollTop);
+	    u.setElementValue($refs.bodyWrapFixedLeft, 'scrollTop', host.scrollTop);
 	    u.setElementValue($refs.bodyWrapFixedRight, 'scrollTop', host.scrollTop);
 	    u.setElementValue($refs.headerWrap, 'scrollLeft', host.scrollLeft);
 	    u.setElementValue($refs.bodyWrap, 'scrollLeft', host.scrollLeft);
 	  },
 	  _onSort: function _onSort(e) {
 	    /**
-	         * @event sort 排序事件
+	         * @event JRTable#sort 排序事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} asc 是否升序
 	         * @property {object} column 目标列
@@ -36029,19 +36254,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, e.args));
 	  },
 	  _onItemCheckChange: function _onItemCheckChange(e) {
+	    var _this3 = this;
+
 	    /**
-	         * @event checkchange 多选事件
+	         * @event JRTable#checkchange 多选事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} checked 是否选中
 	         * @property {object} item 操作对象
 	         * @property {object} checkedEvent 多选事件对象源
 	         */
-	    this.$emit('checkchange', {
-	      sender: this,
-	      item: e.item,
-	      checked: e.checked,
-	      checkedEvent: e.event
+	    setTimeout(function () {
+	      _this3.$emit('checkchange', {
+	        sender: _this3,
+	        item: e.item,
+	        checked: e.checked,
+	        checkedEvent: e.event,
+	        checkAll: _this3.data.checkAll
+	      });
 	    });
+	  },
+	  _updateFixedTablePosRight: function _updateFixedTablePosRight() {
+	    var data = this.data;
+	    var fixedTablePosRight = Math.floor(data.parentWidth - data.tableWidth);
+	    this._updateData('fixedTablePosRight', fixedTablePosRight > 0 ? fixedTablePosRight : data.scrollYBarWidth);
+	  },
+	  _updateBodyHeight: function _updateBodyHeight() {
+	    var data = this.data;
+	    if (data.height !== undefined && data.headerHeight !== undefined && data.height !== null && data.headerHeight !== null) {
+	      this._updateData('bodyHeight', +data.height - data.headerHeight);
+	    }
 	  },
 	  emitEvent: function emitEvent(type) {
 	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -36049,7 +36290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    /**
-	         * @event [type] 自定义的操作事件
+	         * @event JRTable#type 自定义的操作事件
 	         * @property {object} sender 事件来源
 	         * @property {boolean} custom 自定义事件标识
 	         * @property {array} param 自定义事件所带的参数
@@ -36061,6 +36302,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	  _onExpand: function _onExpand(e) {
+	    var _this4 = this;
+
+	    setTimeout(function () {
+	      _this4._updateExpandHeight();
+	      _this4.$update();
+	    }, 0);
 	    this.$emit('expand', {
 	      sender: this,
 	      expand: e.expand,
@@ -36071,19 +36318,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onPaging: function _onPaging(e) {
 	    /**
-	         * @event paging 分页事件
+	         * @event JRTable#paging 分页事件
 	         * @property {object} sender 事件来源
 	         * @property {number} current 事件来源
 	         * @property {object} paging 分页对象
+	         * @property {object} pagingEvent Pager 的分页事件
 	         */
 	    this.$emit('paging', {
 	      sender: this,
 	      current: e.current,
-	      paging: this.data.paging
+	      paging: this.data.paging,
+	      pagingEvent: e
 	    });
 	  },
 	  _onFixedExpand: function _onFixedExpand(e) {
 	    this.$refs.tableBody._onExpand(e.item, e.itemIndex, e.column);
+	  },
+	  _onColumnResize: function _onColumnResize() {
+	    this._updateTableWidth();
+	    this._updateFixedWidth();
+	    this._forceRender();
+	  },
+	  _forceRender: function _forceRender() {
+	    var _this5 = this;
+
+	    var strip = this.data.strip;
+	    this.$update('strip', !strip);
+	    setTimeout(function () {
+	      _this5.$update('strip', strip);
+	    }, 50);
 	  },
 	  _isShow: function _isShow() {
 	    return this.data.show;
@@ -36099,35 +36362,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  removeEventListener: function removeEventListener() {
 	    clearInterval(this.data._quickTimer);
-	    clearInterval(this.data._slowTimer);
-	    window.document.removeEventListener('scroll', this._onWinodwScroll);
+	    window.document.removeEventListener('scroll', this._onWindowScroll);
 	    window.removeEventListener('resize', this._onWindowResize);
 	  }
 	}).component('table-header', TableHeader).component('table-body', TableBody);
 
-	var oldFilterFunc = JRTable.filter;
-
-	JRTable.filter = function () {
+	var oldFilter = JRTable.filter;
+	JRTable.$filter = function () {
 	  for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
 	    args[_key2] = arguments[_key2];
 	  }
 
-	  // const args = [].slice.call(arguments, 0);
 	  TableHeader.filter.apply(TableHeader, args);
 	  TableBody.filter.apply(TableBody, args);
-	  oldFilterFunc.apply(JRTable, args);
+	  oldFilter.apply(JRTable, args);
+	};
+	JRTable.filter = JRTable.$filter;
+
+	JRTable.$component = function () {
+	  for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	    args[_key3] = arguments[_key3];
+	  }
+
+	  TableHeader.component.apply(TableHeader, args);
+	  TableBody.component.apply(TableBody, args);
+	  JRTable.component.apply(JRTable, [JRTable].concat(args));
 	};
 
 	module.exports = JRTable;
 
 /***/ }),
-/* 445 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(446);
+	var tpl = __webpack_require__(448);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -36142,7 +36413,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    setColumnWidth(children[children.length - 1], width);
 	    return;
 	  }
-	  column._width = Math.max(width, HEADER_MIN_WIDTH);
+	  column.width = Math.max(width, HEADER_MIN_WIDTH);
+	  column._width = column.width;
 	};
 
 	var getColumnWidth = function getColumnWidth(column) {
@@ -36167,21 +36439,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return ret;
 	};
 
+	var getLeftLeavesWidth = function getLeftLeavesWidth(column) {
+	  var info = getColumnWidth(column);
+	  return info.width - info.lastLeafWidth;
+	};
+
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 	};
 
 	var TableHeader = Component.extend({
 	  template: tpl,
-	  computed: {
-	    fixedWidth: {
-	      get: function get() {
-	        return this.data.headers.reduce(function (previous, current) {
-	          return current.fixed ? previous + current._width : previous;
-	        }, 0);
-	      }
-	    }
-	  },
 	  config: function config(data) {
 	    this.defaults({
 	      type: '',
@@ -36191,6 +36459,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      config: {}
 	    });
 	    this.supr(data);
+	    this.$table = this.$parent;
+	    this.$tableData = this.$parent.data;
+	    this.data.$table = this.$table;
+	    this.data.$tableData = this.$tableData;
 	  },
 	  _onHeaderClick: function _onHeaderClick(header, headerIndex) {
 	    if (!header.sortable) {
@@ -36262,8 +36534,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      resizeProxy.style.visibility = 'hidden';
 
 	      var headerWidth = _e.pageX - headerLeft;
-	      var widthInfo = getColumnWidth(header);
-	      setColumnWidth(header, headerWidth - (widthInfo.width - widthInfo.lastLeafWidth));
+	      var leftLeavesWidth = getLeftLeavesWidth(header);
+	      setColumnWidth(header, headerWidth - leftLeavesWidth);
+
+	      self.$emit('columnresize', {
+	        sender: self
+	      });
 
 	      document.removeEventListener('mousemove', onMouseMove);
 	      document.removeEventListener('mouseup', onMouseUp);
@@ -36297,11 +36573,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _enableResize: function _enableResize() {
 	    document.body.style.cursor = 'col-resize';
-	    this.$update('_ok2ResizeCol', true);
+	    this.data._ok2ResizeCol = true;
 	  },
 	  _disableResize: function _disableResize() {
 	    document.body.style.cursor = '';
-	    this.$update('_ok2ResizeCol', false);
+	    this.data._ok2ResizeCol = false;
 	  },
 	  _getFormatter: function _getFormatter(header, headers) {
 	    return header.headerFormatter.call(this, header, headers) || '';
@@ -36345,20 +36621,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 446 */
+/* 448 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBar}\n            <col name=\"gutter\" width={scrollYBar}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerTr by headerTr_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerTr as header by header_index}\n                    <th ref=\"table_th_{headerTr_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        r-class={{\n                            'f-visibility-hidden': (fixedCol && !header.fixed) || (!fixedCol && !!header.fixed),\n                        }}\n                        colspan=\"{header.headerColSpan}\"\n                        rowspan=\"{headers.length - headerTr_index - header.childrenDepth}\"\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerTr_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerTr_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerTr_index)}>\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <jr-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </jr-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBar}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n</table>\n"
+	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft + 'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBarWidth}\n            <col name=\"gutter\" width={scrollYBarWidth}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <jr-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </jr-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <jr-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBarWidth && !fixedCol}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBarWidth && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: 0,\n                width: scrollYBarWidth + 'px',\n            }}\n        ></div>\n    {/if}\n</table>\n"
 
 /***/ }),
-/* 447 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(448);
-	var templates = __webpack_require__(449);
+	var tpl = __webpack_require__(450);
+	var templates = __webpack_require__(451);
+	var _ = __webpack_require__(452);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36367,6 +36644,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var TableBody = Component.extend({
 	  template: tpl,
 	  config: function config(data) {
+	    var _this = this;
+
 	    this.defaults({
 	      type: '',
 	      enableHover: true,
@@ -36375,6 +36654,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	      config: {}
 	    });
 	    this.supr(data);
+	    this.$table = this.$parent;
+	    this.$tableData = this.$parent.data;
+	    this.data.$table = this.$table;
+	    this.data.$tableData = this.$tableData;
+	    if (!this.data.fixedCol) {
+	      this.data.timer = setInterval(function () {
+	        _this._updateItemHeight();
+	      }, 200);
+	    }
+	  },
+	  _updateItemHeight: function _updateItemHeight() {
+	    var _this2 = this;
+
+	    if (!this.data.source) {
+	      return;
+	    }
+	    this.data.source.forEach(function (row, index) {
+	      var rowElement = _this2.$refs['row' + index];
+	      if (rowElement) {
+	        row._rowHeight = _.getElementHeight(rowElement);
+	      }
+	    });
 	  },
 	  _onExpand: function _onExpand(item, itemIndex, column) {
 	    if (!this.data.fixedCol) {
@@ -36390,6 +36691,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	  _onItemCheckChange: function _onItemCheckChange(item, e) {
+	    if (this.data.fixedCol) {
+	      return;
+	    }
 	    this.$emit('checkchange', {
 	      item: item,
 	      checked: e.checked,
@@ -36399,21 +36703,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _expandTr: function _expandTr(item, itemIndex, column) {
 	    item._expanddingColumn = column;
 	    item.expand = !item.expand;
-
-	    this._updateSubTrHeight(item, itemIndex);
-	  },
-	  _updateSubTrHeight: function _updateSubTrHeight(item, itemIndex) {
-	    var self = this;
-	    var timer = setInterval(function () {
-	      var tdElement = self.$refs['td' + itemIndex];
-	      if (tdElement && item._expandHeight !== tdElement.clientHeight) {
-	        item._expandHeight = tdElement.clientHeight;
-	        self.$update();
-	      }
-	      if (!item.expand) {
-	        clearInterval(timer);
-	      }
-	    }, 100);
 	  },
 	  _onSubEvent: function _onSubEvent(type, table, e) {
 	    this.$emit('subevent', {
@@ -36467,15 +36756,41 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    (_$parent$$emit = this.$parent.$emit).call.apply(_$parent$$emit, [this.$parent].concat(args));
 	  },
-	  _onTrHover: function _onTrHover($event, item) {
+	  _onRowHover: function _onRowHover(e, item) {
 	    item._hover = true;
 	  },
-	  _onTrBlur: function _onTrBlur($event, item) {
+	  _onRowBlur: function _onRowBlur(e, item) {
 	    item._hover = false;
+	  },
+	  _onRowClick: function _onRowClick(e, item, itemIndex) {
+	    this.emit('rowclick', {
+	      sender: this.$parent,
+	      item: item,
+	      itemIndex: itemIndex
+	    });
+	  },
+	  _onUnitClick: function _onUnitClick(e, item, itemIndex, column, columnIndex) {
+	    this.emit('unitclick', {
+	      sender: this.$parent,
+	      item: item,
+	      itemIndex: itemIndex,
+	      key: column.key,
+	      column: column,
+	      columnIndex: columnIndex
+	    });
+	  },
+	  destroy: function destroy() {
+	    if (this.data.timer) {
+	      clearInterval(this.data.timer);
+	    }
+	    this.supr();
 	  }
-	}).filter('placeholder', function (val) {
+	}).filter('placeholder', function (val, column, self) {
 	  if (val === null || val === undefined) {
-	    return '-';
+	    if (column && column.placeholder !== undefined) {
+	      return column.placeholder;
+	    }
+	    return self.data.placeholder;
 	  }
 	  return val;
 	}).filter('expandSign', function (item) {
@@ -36485,31 +36800,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 448 */
+/* 450 */
 /***/ (function(module, exports) {
 
-	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBar + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <jr-loading visible={loading} static/>&nbsp;{this.$trans('LOADING')}...\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr class=\"tb_bd_tr {item.trClass}\"\n            style=\"{item.trStyle || column.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-mouseover={this._onTrHover($event, item)}\n            on-mouseout={this._onTrBlur($event, item)}>\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.tdClass || column.tdClass}\"\n                style=\"{item.tdStyle || column.tdStyle}\"\n                r-style={{\n                    'text-align': column.align || align\n                }}\n                r-class={{\n                    'f-visibility-hidden': (fixedCol && !column.fixed) || (!fixedCol && !!column.fixed)\n                }}>\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include @(column.template)}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_nohover\">\n            <td ref=\"td{item_index}\"\n                r-style={{\n                    height: item._expandHeight && fixedCol ? item._expandHeight + 'px' : 'auto'\n                }}\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                {#include item._expanddingColumn.expandTemplate}\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
+	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <jr-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </jr-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include column.template}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 449 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(450);
+	var _ = __webpack_require__(452);
 
 	var tplMap = {
-	  default: __webpack_require__(451),
-	  progress: __webpack_require__(452),
-	  check: __webpack_require__(453)
+	  progress: __webpack_require__(453),
+	  check: __webpack_require__(454)
 	};
 
 	exports.get = function getTemplate(type) {
-	  return _.convertBeginEnd(tplMap[type] || tplMap.default);
+	  return _.convertBeginEnd(tplMap[type] || '');
 	};
 
 /***/ }),
-/* 450 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36553,12 +36867,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	      fn.apply(self, args);
 	    } else {
 	      // run at last time
-	      setTimeout(function () {
+	      timer = setTimeout(function () {
 	        fn.apply(self, args);
 	      }, delay);
 	    }
 	  };
 	};
+
+	/*eslint-disable*/
+	_.debounce = function (func, wait, immediate) {
+	  var timeout = void 0,
+	      args = void 0,
+	      context = void 0,
+	      timestamp = void 0,
+	      result = void 0;
+
+	  var later = function later() {
+	    // 据上一次触发时间间隔
+	    var last = +new Date() - timestamp;
+
+	    // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
+	    if (last < wait && last > 0) {
+	      timeout = setTimeout(later, wait - last);
+	    } else {
+	      timeout = null;
+	      // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+	      if (!immediate) {
+	        result = func.apply(context, args);
+	        if (!timeout) {
+	          context = args = null;
+	        }
+	      }
+	    }
+	  };
+
+	  return function () {
+	    context = this;
+	    args = arguments; // eslint-disable-line
+	    timestamp = +new Date();
+	    var callNow = immediate && !timeout;
+	    // 如果延时不存在，重新设定延时
+	    if (!timeout) {
+	      timeout = setTimeout(later, wait);
+	    }
+	    if (callNow) {
+	      result = func.apply(context, args);
+	      context = args = null;
+	    }
+
+	    return result;
+	  };
+	};
+	/*eslint-enable*/
 
 	_.convertBeginEnd = function (_str) {
 	  var BEGIN = Regular._BEGIN_;
@@ -36577,6 +36937,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return root.children && root.children.length > 0;
 	};
 
+	var updateHeaderSpan = function updateHeaderSpan(headers) {
+	  var len = headers.length;
+	  headers.forEach(function (row, rowIndex) {
+	    row.forEach(function (header) {
+	      header._headerColSpan = header._nodeWidth;
+	      header._headerRowSpan = len - rowIndex - (header._nodeDepth - 1);
+	    });
+	  });
+	  return headers;
+	};
+
 	_.getHeaders = function (_columns) {
 	  var headers = [];
 	  var extractHeaders = function extractHeaders(columns, depth) {
@@ -36589,21 +36960,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      // 计算深度和宽度
 	      if (hasChildren(column)) {
-	        column.childrenDepth = 1 + column.children.reduce(function (previous, current) {
-	          return current.childrenDepth > previous ? current.childrenDepth : previous;
-	        }, -1);
-	        column.headerColSpan = column.children.reduce(function (previous, current) {
-	          return previous + (current.headerColSpan || 0);
+	        column._nodeDepth = 1 + column.children.reduce(function (previous, current) {
+	          return current._nodeDepth > previous ? current._nodeDepth : previous;
+	        }, 0);
+	        column._nodeWidth = column.children.reduce(function (previous, current) {
+	          return previous + (current._nodeWidth || 0);
 	        }, 0);
 	      } else {
-	        column.childrenDepth = 0;
-	        column.headerColSpan = 1;
+	        column._nodeDepth = 1;
+	        column._nodeWidth = 1;
 	      }
 	      headers[depth].push(column);
 	    });
 	  };
 	  extractHeaders(_columns, 0);
-	  return headers;
+	  return updateHeaderSpan(headers);
 	};
 
 	_.getLeaves = function (tree) {
@@ -36644,38 +37015,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 451 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <p class=\"u-td-line\"><span title={this._filter(column, value, item, item_index)}>{this._filter(column, value, item, item_index) | placeholder}</span></p>\n    {/list}\n{#else}\n    <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder}</span>\n{/if}\n"
-
-/***/ }),
-/* 452 */
-/***/ (function(module, exports) {
-
-	module.exports = "{#if this._isArray(item[column.key])} {#list item[column.key] as value by value_index}\n<div class=\"u-progress-wrap\">\n    <jr-progress percent={value} /> {#if !column.hideProressValue}<span>{value}</span>{/if}\n</div>\n{/list} {#else}\n<div class=\"u-progress-wrap\">\n    <jr-progress percent={item[column.key]} /> {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n</div>\n{/if}"
-
-/***/ }),
 /* 453 */
 /***/ (function(module, exports) {
 
-	module.exports = "<jr-check name={item[column.key] | placeholder} checked={item._checked} on-change={this._onItemCheckChange(item, $event)}/>"
+	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <jr-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <jr-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
 /* 454 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-ui-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n\n    <!-- 读取内嵌模版 -->\n    <div ref=\"bodyContainer\" style=\"display: none\" >\n        {#include this.$body}\n    </div>\n\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div\n        ref=\"table\"\n        class=\"m-ui-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' : width + 'px',\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? viewWidth + 'px' : width == undefined ? 'auto' : width + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"ui_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedCol }\n    <div ref=\"tableFixed\"\n        class=\"m-ui-table m-ui-table-fixed\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixed\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixed\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixed\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div class=\"ui_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBar + 'px',\n            height: headerHeight + 'px',\n            right: fixedRight + 'px',\n            top: 0\n        }}/>\n    <div ref=\"tableFixedRight\"\n        class=\"m-ui-table m-ui-table-fixed m-ui-table-fixed-right\"\n        r-class={{\n            'm-ui-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBar + 'px',\n            right: fixedRight - 1 + scrollYBar + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapFixedRight\"\n            class=\"ui_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"ui_table_body\"\n            r-style={{\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBar + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBar={scrollYBar}\n                align={align}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-ui-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n    {#if paging}\n    <jr-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        visible={paging.visible}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+	module.exports = "<jr-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
 /* 455 */
+/***/ (function(module, exports) {
+
+	module.exports = "<div class=\"m-kl-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div ref=\"table\"\n        class=\"m-kl-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' :\n                  ((tableWidth > width ? width : width + scrollYBarWidth) + 'px'),\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                stickyHeader={stickyHeader}\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"kl_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedColLeft }\n    <div ref=\"tableFixedLeft\"\n        class=\"m-kl-table m-kl-table-fixed\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixedLeft\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixedLeft\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedLeft\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div ref=\"tableFixedRight\"\n        class=\"m-kl-table m-kl-table-fixed m-kl-table-fixed-right\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            right: fixedTablePosRight + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapfixedTablePosRight\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidthRight,\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    <div class=\"kl_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBarWidth + 'px',\n            height: headerHeight + 'px',\n            right: fixedTablePosRight - scrollYBarWidth + 'px',\n            top: 0\n        }}/>\n    {/if}\n\n    {#list source as item by item_index}\n        {#if item.expand && item._expanddingColumn}\n            <div ref='expand{item_index}'\n              class=\"expand_row\"\n              r-style={{\n                top: this._getExpandRowTop(item_index) + 'px',\n              }}\n            >\n                {#include item._expanddingColumn.expandTemplate}\n            </div>\n        {/if}\n    {/list}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-kl-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非JRTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <jr-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+
+/***/ }),
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var JRTableTemplate = __webpack_require__(456);
-	var JRTable = __webpack_require__(444);
+	var _ = __webpack_require__(72);
+	var JRTableTemplate = __webpack_require__(457);
+	var JRTable = __webpack_require__(446);
 
 	/**
 	 * @class JRTableCol
@@ -36686,12 +37052,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}      [options.data.tip]              => 提示信息
 	 * @param {string}      [options.data.type]             => 列内容的预设类型
 	 * @param {string}      [options.data.width]            => 列宽
-	 * @param {string}      [options.data.tdClass]          => 列内容样式
-	 * @param {string}      [options.data.thClass]          => 表头样式
+	 * @param {number}      [optiosn.data.minWidth]         => 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置
+	 * @param {string}      [options.data.columnClass]      => 列内容样式
+	 * @param {string}      [options.data.headerClass]      => 表头样式
 	 * @param {boolean}     [options.data.sortable]         => 可排序
-	 * @param {boolean}     [options.data.expandable]       => 可下钻展开
 	 * @param {string}      [options.data.children]         => 子表头
 	 * @param {boolean|string} [options.data.fixed]         => 列固定开关，默认left为做固定，right为右固定
+	 * @param {string}      [optiosn.data.align='']         => 列文字对齐
+	 * @param {string}      [optiosn.data.placeholder='-']  => 列文字对齐
 
 	 * @param {string}      [options.data.template]         => 列内容模版
 	 * @param {string}      [options.data.headerTemplate]   => 列表头模版
@@ -36700,10 +37068,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var JRTableCol = Component.extend({
 	  name: 'jr-table-col',
 	  template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-	  config: function config() {
+	  config: function config(data) {
 	    this.defaults({
 	      _innerColumns: [],
-	      colSpan: 1
+	      colSpan: 1,
+	      custom: data,
+	      columnData: {},
+	      outerColumns: []
 	    });
 	  },
 	  init: function init() {
@@ -36719,19 +37090,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _register2Table: function _register2Table() {
 	    var _outer = this.$outer;
+	    this.data.outerColumns = _outer.data.columns;
 	    this._push2Columns(_outer.data.columns);
 	  },
 	  _register2TableCol: function _register2TableCol() {
 	    var _outer = this.$outer;
+	    this.data.outerColumns = _outer.data._innerColumns;
 	    this._push2Columns(_outer.data._innerColumns);
 	  },
 	  _push2Columns: function _push2Columns(columns) {
 	    var data = this.data;
-	    columns && columns.push({
+	    var index = +data.index;
+
+	    data.columnData = this.createColumnData(data);
+
+	    if (columns) {
+	      var insertIndex = -1;
+	      columns.some(function (item, i) {
+	        if (index < item.index) {
+	          insertIndex = i;
+	          return true;
+	        }
+	        return false;
+	      });
+	      if (insertIndex !== -1) {
+	        columns.splice(insertIndex, 0, data.columnData);
+	      } else {
+	        columns && columns.push(data.columnData);
+	      }
+	    }
+	  },
+	  createColumnData: function createColumnData(data) {
+	    return _.extend({
 	      name: data.name,
 	      key: data.key,
+	      index: +data.index,
 	      type: data.type,
-	      width: data.width,
+	      width: +data.width,
+	      minWidth: +data.minWidth,
 	      tip: data.tip,
 	      tdClass: data.tdClass,
 	      thClass: data.thClass,
@@ -36749,14 +37145,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      headerFormatter: data.headerFormatter,
 	      headerFormat: data.headerFormat,
 	      expandTemplate: data._expandTemplate
-	    });
+	    }, data.custom);
+	  },
+	  destroy: function destroy() {
+	    var data = this.data;
+	    var index = data.outerColumns.indexOf(data.columnData);
+	    data.outerColumns.splice(index, 1);
+	    this.supr();
 	  }
 	}).component('jr-table-tempalte', JRTableTemplate);
 
 		module.exports = JRTableCol;
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36771,78 +37173,78 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var matchList = [{
-	    reg: /&quot;/g,
-	    glyph: '"'
+	  reg: /&quot;/g,
+	  glyph: '"'
 	}, {
-	    reg: /&amp;/g,
-	    glyph: '&'
+	  reg: /&amp;/g,
+	  glyph: '&'
 	}, {
-	    reg: /&lt;/g,
-	    glyph: '<'
+	  reg: /&lt;/g,
+	  glyph: '<'
 	}, {
-	    reg: /&gt;/g,
-	    glyph: '>'
+	  reg: /&gt;/g,
+	  glyph: '>'
 	}, {
-	    reg: /&nbsp;/g,
-	    glyph: ' '
+	  reg: /&nbsp;/g,
+	  glyph: ' '
 	}];
 
 	var decodeChar = function decodeChar(_str) {
-	    var str = _str;
-	    matchList.forEach(function (item) {
-	        str = str.replace(item.reg, item.glyph);
-	    });
-	    return str;
+	  var str = _str;
+	  matchList.forEach(function (item) {
+	    str = str.replace(item.reg, item.glyph);
+	  });
+	  return str;
 	};
 
 	var JRTableTemplate = Component.extend({
-	    name: 'jr-table-template',
-	    template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
-	    config: function config() {
-	        this.defaults({
-	            type: 'content',
-	            template: null
-	        });
-	    },
-	    init: function init() {
-	        this._register();
-	    },
-	    _register: function _register() {
-	        switch (this.data.type) {
-	            case 'header':
-	                this._register2Header();
-	                break;
-	            case 'expand':
-	                this._register2Expand();
-	                break;
-	            default:
-	                this._register2Content();
-	        }
-	    },
-	    _register2Header: function _register2Header() {
-	        var outerData = this.$outer.data;
-	        outerData._headerTemplate = this._getInnertTemplate();
-	    },
-	    _register2Expand: function _register2Expand() {
-	        this.$outer.data._expandTemplate = this._getInnertTemplate();
-	    },
-	    _register2Content: function _register2Content() {
-	        var outerData = this.$outer.data;
-	        outerData._template = this._getInnertTemplate();
-	    },
-	    _getInnertTemplate: function _getInnertTemplate() {
-	        var template = this.data.template || this.$refs.bodyContainer.innerHTML;
-	        return this._parseTemplate(template);
-	    },
-	    _parseTemplate: function _parseTemplate(template) {
-	        return decodeChar(template).replace(/(<!--)(.*)(-->)/g, '').trim();
+	  name: 'jr-table-template',
+	  template: '<div ref="bodyContainer" style="display:none">{#include this.$body}</div>',
+	  config: function config() {
+	    this.defaults({
+	      type: 'content',
+	      template: null
+	    });
+	  },
+	  init: function init() {
+	    this._register();
+	  },
+	  _register: function _register() {
+	    switch (this.data.type) {
+	      case 'header':
+	        this._register2Header();
+	        break;
+	      case 'expand':
+	        this._register2Expand();
+	        break;
+	      default:
+	        this._register2Content();
 	    }
+	  },
+	  _register2Header: function _register2Header() {
+	    var outerData = this.$outer.data;
+	    outerData._headerTemplate = this._getInnertTemplate();
+	  },
+	  _register2Expand: function _register2Expand() {
+	    this.$outer.data._expandTemplate = this._getInnertTemplate();
+	  },
+	  _register2Content: function _register2Content() {
+	    var outerData = this.$outer.data;
+	    outerData._template = this._getInnertTemplate();
+	  },
+	  _getInnertTemplate: function _getInnertTemplate() {
+	    var template = this.data.template || this.$refs.bodyContainer.innerHTML;
+	    return this._parseTemplate(template);
+	  },
+	  _parseTemplate: function _parseTemplate(template) {
+	    return decodeChar(template).replace(/(<!--)(.*)(-->)/g, '').trim();
+	  }
 	});
 
 		module.exports = JRTableTemplate;
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36854,7 +37256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(458);
+	var template = __webpack_require__(459);
 
 	/**
 	 * @class JRRow
@@ -36896,13 +37298,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRRow;
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36914,8 +37316,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(460);
-	var JRRow = __webpack_require__(457);
+	var template = __webpack_require__(461);
+	var JRRow = __webpack_require__(458);
 
 	/**
 	 * @class JRCol
@@ -36965,13 +37367,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = JRCol;
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36984,7 +37386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(462);
+	var template = __webpack_require__(463);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -37017,13 +37419,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = JRCard;
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37037,7 +37439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var JRCard = __webpack_require__(461);
+	var JRCard = __webpack_require__(462);
 
 	/**
 	 * @class JRCardTools

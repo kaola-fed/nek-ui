@@ -61,10 +61,16 @@ const UploadBase = Component.extend({
       imageHeight: Infinity,
       imageScale: '',
       encType: 'multipart/form-data',
+      onLoadInterceptor: null,
+      onErrorInterceptor: null,
+      beforeUpload: null,
+      beforeRemove: null,
     });
 
     _.extend(data, {
       fileUnitList: [],
+      dragover: false,
+      dragenterCount: 0,
     });
 
     this.initWatchers();
@@ -97,12 +103,12 @@ const UploadBase = Component.extend({
       if (!file.uid) {
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap.ADDED;
+        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
-          flag: 'ADDED',
+          flag: file.flag,
           uid: file.uid,
           status: 'success',
         };
@@ -156,16 +162,19 @@ const UploadBase = Component.extend({
       fileList.forEach((file) => {
         const uid = utils.genUid();
         file.uid = uid;
-        file.flag = Config.flagMap.ORIGINAL;
+        file.flag = file.flag === undefined ? Config.flagMap.ORIGINAL : file.flag;
         const fileunit = {
           name: file.name,
           url: file.url,
           type: self.getFileType(file),
-          flag: 'ORIGINAL',
+          flag: file.flag,
           uid: file.uid,
           status: 'success',
         };
-        fileUnitList.push(fileunit);
+
+        if (fileunit.flag !== Config.flagMap.DELETED) {
+          fileUnitList.push(fileunit);
+        }
       });
     }
   },
@@ -192,10 +201,10 @@ const UploadBase = Component.extend({
         newFileList.push({
           name: file.name,
           url: file.url,
-          flag: Config.flagMap[flag],
+          flag,
           uid,
         });
-      } else if (flag === 'DELETED') {
+      } else if (flag === Config.flagMap.DELETED) {
         fileList[fileIndex].flag = Config.flagMap.DELETED;
         fileUnitList.splice(index, 1);
       } else if (destroyed) {
@@ -224,8 +233,11 @@ const UploadBase = Component.extend({
   },
 
   onDragEnter(e) {
+    const data = this.data;
     e.stopPropagation();
     e.preventDefault();
+    data.dragover = true;
+    data.dragenterCount += 1;
   },
 
   onDragOver(e) {
@@ -233,7 +245,18 @@ const UploadBase = Component.extend({
     e.preventDefault();
   },
 
+  onDragLeave(e) {
+    const data = this.data;
+    e.stopPropagation();
+    e.preventDefault();
+    data.dragenterCount -= 1;
+    if (data.dragenterCount === 0) {
+      data.dragover = false;
+    }
+  },
+
   onDrop(e) {
+    this.data.dragover = false;
     e.stopPropagation();
     e.preventDefault();
 
@@ -260,13 +283,13 @@ const UploadBase = Component.extend({
         checker.then((preCheckInfo) => {
           data.preCheckInfo = preCheckInfo;
           self.$update();
-          if (!data.preCheckInfo) {
+          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
             const fileunit = {
               rawFile: file,
               name: file.name,
               url: window.URL.createObjectURL(file),
               type: self.getFileType(file),
-              flag: 'ADDED',
+              flag: Config.flagMap.ADDED,
               uid: utils.genUid(),
               status: 'ready',
             };
@@ -374,8 +397,8 @@ const UploadBase = Component.extend({
     const inst = info.sender;
     const file = info.file;
     file.destroyed = true;
-    if (file.flag === 'ORIGINAL') {
-      file.flag = 'DELETED';
+    if (file.flag === Config.flagMap.ORIGINAL) {
+      file.flag = Config.flagMap.DELETED;
     }
     inst.destroy();
     this.updateList();
@@ -401,7 +424,10 @@ const UploadBase = Component.extend({
 
   preCheck(file) {
     const self = this;
-    const onPass = (resolve) => {
+    const data = self.data;
+    const beforeCheck = data.beforeUpload && data.beforeUpload(file);
+
+    const preFileCheck = (resolve) => {
       const type = self.getFileType(file).toLowerCase();
       let preCheckInfo = '';
 
@@ -422,9 +448,18 @@ const UploadBase = Component.extend({
       }
     };
 
-    const onError = () => {};
+    if (beforeCheck && beforeCheck.then) {
+      return beforeCheck.then((checkInfo) => {
+        if (checkInfo === '') {
+          return new Promise(preFileCheck);
+        }
+        return Promise.resolve(checkInfo);
+      });
+    } else if (beforeCheck === '' || beforeCheck === null || beforeCheck === undefined) {
+      return new Promise(preFileCheck);
+    }
 
-    return new Promise(onPass, onError);
+    return Promise.resolve(beforeCheck);
   },
 
   preCheckImage(file) {
@@ -437,7 +472,7 @@ const UploadBase = Component.extend({
       const imageHeight = data.imageHeight;
       const imageScale = data.imageScale;
 
-      const onResolve = (resolve) => {
+      const preImageCheck = (resolve) => {
         const img = new window.Image();
         img.onload = () => {
           window.URL.revokeObjectURL(img.src);
@@ -465,9 +500,7 @@ const UploadBase = Component.extend({
         img.src = window.URL.createObjectURL(file);
       };
 
-      const onReject = () => {};
-
-      return new Promise(onResolve, onReject);
+      return new Promise(preImageCheck);
     }
   },
 

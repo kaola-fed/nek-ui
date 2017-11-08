@@ -75,12 +75,12 @@ const JRForm = Validation.extend({
         const self = this;
         let keys = this.__getSourceKeys();
 
-        window.NEKSelects = window.NEKSelects || {};
-        keys = keys.filter(key => !window.NEKSelects[key]);
+        window.JRSelects = window.JRSelects || {};
+        keys = keys.filter(key => !window.JRSelects[key]);
 
         this.selectors.forEach(($formitem) => {
             const key = $formitem.data.sourceKey;
-            const source = window.NEKSelects[key] || [];
+            const source = window.JRSelects[key] || [];
             self.__updateSource($formitem, key, source);
         });
 
@@ -115,7 +115,7 @@ const JRForm = Validation.extend({
          */
         this.$emit('sourceCompleted', {
             sender: this,
-            result: window.NEKSelects,
+            result: window.JRSelects,
         });
     },
     __updateSource($formitem, key, source) {
@@ -126,7 +126,7 @@ const JRForm = Validation.extend({
             return;
         }
         $selectItem.data.source = _.clone(source);
-        window.NEKSelects[key] = _.clone(source);
+        window.JRSelects[key] = _.clone(source);
         $selectItem.$update();
     },
 });

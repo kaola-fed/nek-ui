@@ -1,7 +1,5 @@
 /**
- * ------------------------------------------------------------
- * JRBadge  文本
- * @author   Cody Chan<int64ago@gmail.com>
+ * @file JRBadge  文本
  * ------------------------------------------------------------
  */
 
@@ -10,7 +8,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
 /**
- * @class JRBadge
+ * @class KLBadge
  * @extend Component
  * @param {object}      [options.data]                = 绑定属性
  * @param {string}      [options.data.text=--]        <=> 内容

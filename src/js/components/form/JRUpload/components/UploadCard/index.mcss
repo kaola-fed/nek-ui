@@ -231,6 +231,10 @@ $margin = 20;
                    height: 100%;
                    vertical-align: middle;
                }
+               &.dragover {
+                   background-color: rgba(32, 159, 255, .06);
+                   border: 1px dashed #20a0ff;
+               }
            }
            .u-input-info {
                margin-top: 4px;

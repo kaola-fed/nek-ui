@@ -214,6 +214,16 @@
                         
                                 
                                     <li>
+                                        <a href="/JR/components/form_JRTreeView_.html" class="sidebar-link">
+                                            树型视图
+                                                JRTreeView
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
                                         <a href="/JR/components/form_JRUpload_.html" class="sidebar-link current">
                                             上传文件
                                                 JRUpload
@@ -419,7 +429,7 @@
                                 
                                     <li>
                                         <a href="/JR/components/widget_JRLoading_.html" class="sidebar-link">
-                                            加载中
+                                            加载
                                                 JRLoading
                                         </a>
                                     </li>
@@ -459,74 +469,93 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>目前该上传组件采用FormData向后台提交文件数据。</p>
-<h3 id="基本展示形式（列表形式）-用于表单上传"><a href="#基本展示形式（列表形式）-用于表单上传" class="headerlink" title="基本展示形式（列表形式）, 用于表单上传"></a>基本展示形式（列表形式）, 用于表单上传</h3><!-- demo_start -->
+                    <!-- demo_start -->
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><ul>
+<li>目前该上传组件采用FormData向后台提交文件数据</li>
+<li>组件上传成功依赖的返回数据结构为<code>{name: &#39;xxx&#39;, url: &#39;xxx&#39;}</code>, 通常和后端接口不一致，可以通过配置<code>onLoadInterceptor</code>做一层数据转换</li>
+<li>可通过file-list指定初始值，格式为[Object], 其中Object结构如下<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    name: &apos;文件名称&apos;,</div><div class="line">    url: &apos;文件的路径&apos;,</div><div class="line">    flag: &apos;0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong> 特别注意: 例子中使用的url为私人服务器, 请勿直接使用, 请使用自己后台的上传接口 </strong></p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">onLoadInterceptor</span>=<span class="string">&#123;this.onLoadInterceptor&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//transform &#123;code: 200, data: &#123;...&#125;&#125; to &#123;name: 'xxx', url: 'xxx'&#125;</span></div><div class="line">    <span class="comment">/*onLoadInterceptor: function(json)&#123;</span></div><div class="line">      if(json.code == 200)&#123;</div><div class="line">        var data = json.data || &#123;&#125;;</div><div class="line">        if(Array.isArray(data))&#123;</div><div class="line">            data = data[0];</div><div class="line">        &#125;</div><div class="line">        return data;</div><div class="line">      &#125;</div><div class="line">      return false;</div><div class="line">    &#125;*/</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="卡片展示形式，用于表格上传"><a href="#卡片展示形式，用于表格上传" class="headerlink" title="卡片展示形式，用于表格上传"></a>卡片展示形式，用于表格上传</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="卡片展示形式，用于表格内上传"><a href="#卡片展示形式，用于表格内上传" class="headerlink" title="卡片展示形式，用于表格内上传"></a>卡片展示形式，用于表格内上传</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">list-type</span>=<span class="string">"card"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="基本展示形式，配置多选上传"><a href="#基本展示形式，配置多选上传" class="headerlink" title="基本展示形式，配置多选上传"></a>基本展示形式，配置多选上传</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="多选上传"><a href="#多选上传" class="headerlink" title="多选上传"></a>多选上传</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="卡片展示形式，配置多选上传"><a href="#卡片展示形式，配置多选上传" class="headerlink" title="卡片展示形式，配置多选上传"></a>卡片展示形式，配置多选上传</h3><!-- demo_start -->
+<!-- demo_start -->
+<h3 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h3><p>配置accept属性为文件后缀或<a href="https://www.iana.org/assignments/media-types/media-types.xhtml" target="_blank" rel="external">MIME_TYPE</a></p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">list-type</span>=<span class="string">"card"</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">accept</span>=<span class="string">".jpg,.zip,video/*,audio/*"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h3><!-- demo_start -->
+<!-- demo_start -->
+<h3 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">max-size</span>=<span class="string">"2K"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="文件个数限制"><a href="#文件个数限制" class="headerlink" title="文件个数限制"></a>文件个数限制</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">num-max</span>=<span class="string">&#123;2&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="行布局"><a href="#行布局" class="headerlink" title="行布局"></a>行布局</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">num-perline</span>=<span class="string">&#123;2&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">readonly</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="指定宽高或宽高比"><a href="#指定宽高或宽高比" class="headerlink" title="指定宽高或宽高比"></a>指定宽高或宽高比</h3><p>只作用于图片</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">accept</span>=<span class="string">".jpg,.zip,video/*,audio/*"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">image-width</span>=<span class="string">&#123;20&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">image-height</span>=<span class="string">&#123;20&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">image-scale</span>=<span class="string">'4:3'</span> &gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="拖拽上传"><a href="#拖拽上传" class="headerlink" title="拖拽上传"></a>拖拽上传</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">max-size</span>=<span class="string">"830M"</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">drag</span>=<span class="string">&#123;true&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="每行展示文件个数和总文件个数限制"><a href="#每行展示文件个数和总文件个数限制" class="headerlink" title="每行展示文件个数和总文件个数限制"></a>每行展示文件个数和总文件个数限制</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="文件上传前的校验（文件格式限制为图片）"><a href="#文件上传前的校验（文件格式限制为图片）" class="headerlink" title="文件上传前的校验（文件格式限制为图片）"></a>文件上传前的校验（文件格式限制为图片）</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span> <span class="attr">num-limit</span>=<span class="string">&#123;15&#125;</span> <span class="attr">num-perline</span>=<span class="string">&#123;4&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-upload</span>=<span class="string">&#123;this.beforeUpload&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeUpload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> fileTypeCheck = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> msg = <span class="string">''</span>;</div><div class="line">            <span class="keyword">if</span> (!<span class="regexp">/image\/.*/</span>.test(file.type)) &#123;</div><div class="line">                msg = <span class="string">'格式错误'</span>;</div><div class="line">            &#125;</div><div class="line">            resolve(msg);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(fileTypeCheck);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="带有已上传文件的形式"><a href="#带有已上传文件的形式" class="headerlink" title="带有已上传文件的形式"></a>带有已上传文件的形式</h3><!-- demo_start -->
-<div class="m-example"></div>
+<!-- demo_start -->
+<h3 id="文件删除前的确认"><a href="#文件删除前的确认" class="headerlink" title="文件删除前的确认"></a>文件删除前的确认</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-remove</span>=<span class="string">&#123;this.beforeRemove&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeRemove</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> file = item.file;</div><div class="line">        <span class="keyword">var</span> removeConfirm = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> modal = JRUI.KLModal.confirm(<span class="string">'确认删除'</span> + file.name + <span class="string">'?'</span>);</div><div class="line">            modal.$on(<span class="string">'ok'</span>, () =&gt; resolve(<span class="literal">true</span>));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(removeConfirm);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRUpload">JRUpload</a></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#_">_</a></dt>
-<dd><hr>
-<h2 id="-jr-upload-"> jr-upload 上传</h2>
-</dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_success 文件上传成功回调函数">“success 文件上传成功回调函数”</a></dt>
-<dd></dd>
-<dt><a href="#event_progress 文件上传进度回调函数">“progress 文件上传进度回调函数”</a></dt>
-<dd></dd>
-<dt><a href="#event_error 文件上传失败回调函数">“error 文件上传失败回调函数”</a></dt>
-<dd></dd>
-<dt><a href="#event_remove 上传文件删除回调函数">“remove 上传文件删除回调函数”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRUpload"></a></p>
-<h2 id="JRUpload"><a href="#JRUpload" class="headerlink" title="JRUpload"></a>JRUpload</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRUpload_new"></a></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p><a name="JRUpload"></a></p>
+<h2 id="JRUpload"><a href="#JRUpload" class="headerlink" title="JRUpload"></a>JRUpload</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component  </p>
+<ul>
+<li><a href="#JRUpload">JRUpload</a><ul>
+<li><a href="#new_JRUpload_new">new JRUpload()</a></li>
+<li><a href="#JRUpload+event_success 文件上传成功回调函数">“success 文件上传成功回调函数” (sender, file, fileList, status, progress)</a></li>
+<li><a href="#JRUpload+event_progress 文件上传进度回调函数">“progress 文件上传进度回调函数” (sender, file, fileList, status, progress)</a></li>
+<li><a href="#JRUpload+event_error 文件上传失败回调函数">“error 文件上传失败回调函数” (sender, file, fileList, status, progress)</a></li>
+<li><a href="#JRUpload+event_remove 上传文件删除回调函数">“remove 上传文件删除回调函数” (sender, file, fileList, status, progress)</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="new_JRUpload_new"></a></p>
 <h3 id="new-JRUpload"><a href="#new-JRUpload" class="headerlink" title="new JRUpload()"></a>new JRUpload()</h3><table>
 <thead>
 <tr>
@@ -611,8 +640,8 @@
 </tr>
 <tr>
 <td>[options.data.max-size]</td>
-<td><code>number</code></td>
-<td><code>1GB</code></td>
+<td><code>string</code></td>
+<td><code>&quot;1GB&quot;</code></td>
 <td>=&gt; 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定</td>
 </tr>
 <tr>
@@ -645,16 +674,44 @@
 <td></td>
 <td>=&gt; 可选，指定上传图片文件的宽高比, 值为冒号分隔的宽高比例字符串，如’4:3’</td>
 </tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 可选，组件最外层包裹元素样式扩展</td>
+</tr>
+<tr>
+<td>[options.data.onLoadInterceptor]</td>
+<td><code>function</code></td>
+<td><code>NULL</code></td>
+<td>=&gt; 可选，Http status介于200-300时触发，用于对响应数据拦截，response.code校验决定成功或失败，以及数据转换，详见demo基本形式</td>
+</tr>
+<tr>
+<td>[options.data.onErrorInterceptor]</td>
+<td><code>function</code></td>
+<td><code>NULL</code></td>
+<td>=&gt; 可选，Http status非200-300时触发，http状态失败的钩子</td>
+</tr>
+<tr>
+<td>[options.data.before-upload]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，上传文件前的钩子，参数为上传的文件，返回同步校验信息或 Promise                                                             对象，最终返回文件的字符串校验信息，如果为空，则继续进行文件的后续校验，                                                             如果非空，则提示校验信息，并停止上传</td>
+</tr>
+<tr>
+<td>[options.data.before-remove]</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件</td>
+</tr>
 </tbody>
 </table>
-<p><a name="_"></a></p>
-<h2 id=""><a href="#" class="headerlink" title="_"></a>_</h2><hr>
-<h2 id="jr-upload-上传"><a href="#jr-upload-上传" class="headerlink" title=" jr-upload 上传"></a> jr-upload 上传</h2><p><strong>Kind</strong>: global constant<br><a name="event_success 文件上传成功回调函数"></a></p>
-<h2 id="“success-文件上传成功回调函数”"><a href="#“success-文件上传成功回调函数”" class="headerlink" title="“success 文件上传成功回调函数”"></a>“success 文件上传成功回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<p><a name="JRUpload+event_success 文件上传成功回调函数"></a></p>
+<h3 id="“success-文件上传成功回调函数”-sender-file-fileList-status-progress"><a href="#“success-文件上传成功回调函数”-sender-file-fileList-status-progress" class="headerlink" title="“success 文件上传成功回调函数” (sender, file, fileList, status, progress)"></a>“success 文件上传成功回调函数” (sender, file, fileList, status, progress)</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRUpload">JRUpload</a></code>  </p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Param</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -687,12 +744,12 @@
 </tr>
 </tbody>
 </table>
-<p><a name="event_progress 文件上传进度回调函数"></a></p>
-<h2 id="“progress-文件上传进度回调函数”"><a href="#“progress-文件上传进度回调函数”" class="headerlink" title="“progress 文件上传进度回调函数”"></a>“progress 文件上传进度回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<p><a name="JRUpload+event_progress 文件上传进度回调函数"></a></p>
+<h3 id="“progress-文件上传进度回调函数”-sender-file-fileList-status-progress"><a href="#“progress-文件上传进度回调函数”-sender-file-fileList-status-progress" class="headerlink" title="“progress 文件上传进度回调函数” (sender, file, fileList, status, progress)"></a>“progress 文件上传进度回调函数” (sender, file, fileList, status, progress)</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRUpload">JRUpload</a></code>  </p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Param</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -725,12 +782,12 @@
 </tr>
 </tbody>
 </table>
-<p><a name="event_error 文件上传失败回调函数"></a></p>
-<h2 id="“error-文件上传失败回调函数”"><a href="#“error-文件上传失败回调函数”" class="headerlink" title="“error 文件上传失败回调函数”"></a>“error 文件上传失败回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<p><a name="JRUpload+event_error 文件上传失败回调函数"></a></p>
+<h3 id="“error-文件上传失败回调函数”-sender-file-fileList-status-progress"><a href="#“error-文件上传失败回调函数”-sender-file-fileList-status-progress" class="headerlink" title="“error 文件上传失败回调函数” (sender, file, fileList, status, progress)"></a>“error 文件上传失败回调函数” (sender, file, fileList, status, progress)</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRUpload">JRUpload</a></code>  </p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Param</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -763,12 +820,12 @@
 </tr>
 </tbody>
 </table>
-<p><a name="event_remove 上传文件删除回调函数"></a></p>
-<h2 id="“remove-上传文件删除回调函数”"><a href="#“remove-上传文件删除回调函数”" class="headerlink" title="“remove 上传文件删除回调函数”"></a>“remove 上传文件删除回调函数”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<p><a name="JRUpload+event_remove 上传文件删除回调函数"></a></p>
+<h3 id="“remove-上传文件删除回调函数”-sender-file-fileList-status-progress"><a href="#“remove-上传文件删除回调函数”-sender-file-fileList-status-progress" class="headerlink" title="“remove 上传文件删除回调函数” (sender, file, fileList, status, progress)"></a>“remove 上传文件删除回调函数” (sender, file, fileList, status, progress)</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRUpload">JRUpload</a></code>  </p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Param</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
@@ -808,10 +865,37 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-upload action='https://nos.kaolafed.com/upload'></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></jr-upload>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+            name: 'Game.jpg',
+            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+            name: 'Kaola.jpg',
+            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+            name: 'Music.jpg',
+            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
+    /*onLoadInterceptor: function(json){
+      if(json.code == 200){
+        var data = json.data || {};
+        if(Array.isArray(data)){
+            data = data[0];
+        }
+        return data;
+      }
+      return false;
+    }*/
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -838,27 +922,53 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} list-type="card" multiple={true}></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' accept=".jpg,.zip,video/*,audio/*"></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' max-size="2K"></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' num-max={2}></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} num-perline={2}></jr-upload>
 
       */});
       
 var component = new JRUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     }
 });
 
@@ -868,57 +978,117 @@ var component = new JRUI.Component({
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} accept=".jpg,.zip,video/*,audio/*"></jr-upload>
-
-      */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-upload action='https://nos.kaolafed.com/upload' max-size="830M"></jr-upload>
-
-      */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-upload action='https://nos.kaolafed.com/upload' multiple={true} num-limit={15} num-perline={4}></jr-upload>
-
-      */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list}></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} readonly={true}></jr-upload>
 
       */});
       
 var component = new JRUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' image-width={20} ></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' image-height={20} ></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' image-scale='4:3' ></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' drag={true} ></jr-upload>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} before-upload={this.beforeUpload}></jr-upload>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    beforeUpload: function(file) {
+        var fileTypeCheck = function(resolve) {
+            var msg = '';
+            if (!/image\/.*/.test(file.type)) {
+                msg = '格式错误';
             }
-        ]
+            resolve(msg);
+        };
+
+        return new Promise(fileTypeCheck);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} before-remove={this.beforeRemove}></jr-upload>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    beforeRemove: function(item) {
+        var file = item.file;
+        var removeConfirm = function(resolve) {
+            var modal = JRUI.KLModal.confirm('确认删除' + file.name + '?');
+            modal.$on('ok', () => resolve(true));
+        };
+
+        return new Promise(removeConfirm);
     }
 });
 
@@ -929,7 +1099,7 @@ var component = new JRUI.Component({
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/form_JRTextArea_.html">文本输入</a></span>
+                                <span>← <a href="/JR/components/form_JRTreeView_.html">树型视图</a></span>
                                 
                                     
                         </div>

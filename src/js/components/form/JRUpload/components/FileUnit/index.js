@@ -8,7 +8,6 @@ const Component = require('../../../../../ui-base/component');
 const _ = require('../../../../../ui-base/_');
 const tpl = require('./index.html');
 const utils = require('../../utils');
-const JRModal = require('../../../../notice/JRModal');
 
 const FileUnit = Component.extend({
   template: tpl.replace(/([>}])\s*([<{])/g, '$1$2'),
@@ -88,8 +87,8 @@ const FileUnit = Component.extend({
         } catch (error) {
           console.log(error);
         }
-        if (self.data.beforeOnLoad) {
-          result = self.data.beforeOnLoad.call(self, response);
+        if (self.data.onLoadInterceptor) {
+          result = self.data.onLoadInterceptor.call(self, response);
         }
         response.url = (result && result.url) || response.url;
         if (status >= 200 && status < 400 && result) {
@@ -110,8 +109,8 @@ const FileUnit = Component.extend({
         }
       },
       onerror(e) {
-        if (self.data.beforeOnError) {
-          self.data.beforeOnError.call(self, e);
+        if (self.data.onErrorInterceptor) {
+          self.data.onErrorInterceptor.call(self, e);
         }
         data.status = 'fail';
         data.info = self.$trans('UPLOAD_FAIL');
@@ -145,18 +144,20 @@ const FileUnit = Component.extend({
       file: data.file,
       status: data.status,
     };
+    const beforeRemove = data.beforeRemove && data.beforeRemove(emitItem);
 
-    if (data.delConfirm) {
-      const modal = new JRModal({
-        data: {
-          content: `${this.$trans('REMOVE_CONFIRM') + data.filename}?`,
-        },
+    if (beforeRemove && beforeRemove.then) {
+      beforeRemove.then((removeConfirm) => {
+        if (removeConfirm !== false) {
+          self.$emit('remove', emitItem);
+        } else {
+          return removeConfirm;
+        }
       });
-      modal.$on('ok', () => {
-        self.$emit('remove', emitItem);
-      });
-    } else {
+    } else if (beforeRemove !== false) {
       self.$emit('remove', emitItem);
+    } else {
+      return beforeRemove;
     }
   },
 

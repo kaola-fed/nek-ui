@@ -14,7 +14,8 @@ const setColumnWidth = function (column, width) {
     setColumnWidth(children[children.length - 1], width);
     return;
   }
-  column._width = Math.max(width, HEADER_MIN_WIDTH);
+  column.width = Math.max(width, HEADER_MIN_WIDTH);
+  column._width = column.width;
 };
 
 const getColumnWidth = function (column) {
@@ -39,24 +40,17 @@ const getColumnWidth = function (column) {
   return ret;
 };
 
+const getLeftLeavesWidth = function (column) {
+  const info = getColumnWidth(column);
+  return info.width - info.lastLeafWidth;
+};
+
 const _parseFormat = function (str) {
   return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 };
 
 const TableHeader = Component.extend({
   template: tpl,
-  computed: {
-    fixedWidth: {
-      get() {
-        return this.data.headers.reduce(
-          (previous, current) => (
-            current.fixed ? previous + current._width : previous
-          ),
-          0,
-        );
-      },
-    },
-  },
   config(data) {
     this.defaults({
       type: '',
@@ -66,6 +60,10 @@ const TableHeader = Component.extend({
       config: {},
     });
     this.supr(data);
+    this.$table = this.$parent;
+    this.$tableData = this.$parent.data;
+    this.data.$table = this.$table;
+    this.data.$tableData = this.$tableData;
   },
   _onHeaderClick(header, headerIndex) {
     if (!header.sortable) {
@@ -137,11 +135,15 @@ const TableHeader = Component.extend({
       resizeProxy.style.visibility = 'hidden';
 
       const headerWidth = _e.pageX - headerLeft;
-      const widthInfo = getColumnWidth(header);
+      const leftLeavesWidth = getLeftLeavesWidth(header);
       setColumnWidth(
         header,
-        headerWidth - (widthInfo.width - widthInfo.lastLeafWidth),
+        headerWidth - leftLeavesWidth,
       );
+
+      self.$emit('columnresize', {
+        sender: self,
+      });
 
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
@@ -178,11 +180,11 @@ const TableHeader = Component.extend({
   },
   _enableResize() {
     document.body.style.cursor = 'col-resize';
-    this.$update('_ok2ResizeCol', true);
+    this.data._ok2ResizeCol = true;
   },
   _disableResize() {
     document.body.style.cursor = '';
-    this.$update('_ok2ResizeCol', false);
+    this.data._ok2ResizeCol = false;
   },
   _getFormatter(header, headers) {
     return header.headerFormatter.call(this, header, headers) || '';

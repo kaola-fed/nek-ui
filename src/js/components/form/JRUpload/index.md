@@ -1,26 +1,61 @@
 ---
 title: 上传文件
+masonry: true
 ---
 
-## 代码演示
-
-### 注
-
-目前该上传组件采用FormData向后台提交文件数据。
-
-### 基本展示形式（列表形式）, 用于表单上传
-
 <!-- demo_start -->
+### 基本形式
+
+* 目前该上传组件采用FormData向后台提交文件数据
+* 组件上传成功依赖的返回数据结构为`{name: 'xxx', url: 'xxx'}`, 通常和后端接口不一致，可以通过配置`onLoadInterceptor`做一层数据转换
+* 可通过file-list指定初始值，格式为[Object], 其中Object结构如下
+```
+    {
+        name: '文件名称',
+        url: '文件的路径',
+        flag: '0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件'
+    }
+```
+
+** 特别注意: 例子中使用的url为私人服务器, 请勿直接使用, 请使用自己后台的上传接口 **
+
 <div class="m-example"></div>
 
 ```xml
-<jr-upload action='https://nos.kaolafed.com/upload'></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></jr-upload>
+```
+```javascript
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+            name: 'Game.jpg',
+            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+            name: 'Kaola.jpg',
+            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+            name: 'Music.jpg',
+            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
+    /*onLoadInterceptor: function(json){
+      if(json.code == 200){
+        var data = json.data || {};
+        if(Array.isArray(data)){
+            data = data[0];
+        }
+        return data;
+      }
+      return false;
+    }*/
+});
 ```
 <!-- demo_end -->
 
-### 卡片展示形式，用于表格上传
-
 <!-- demo_start -->
+### 卡片展示形式，用于表格内上传
 <div class="m-example"></div>
 
 ```xml
@@ -28,9 +63,8 @@ title: 上传文件
 ```
 <!-- demo_end -->
 
-### 基本展示形式，配置多选上传
-
 <!-- demo_start -->
+### 多选上传
 <div class="m-example"></div>
 
 ```xml
@@ -38,95 +72,182 @@ title: 上传文件
 ```
 <!-- demo_end -->
 
-### 卡片展示形式，配置多选上传
-
 <!-- demo_start -->
+### 文件类型限制
+
+配置accept属性为文件后缀或[MIME_TYPE](https://www.iana.org/assignments/media-types/media-types.xhtml)
 <div class="m-example"></div>
 
 ```xml
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} list-type="card" multiple={true}></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' accept=".jpg,.zip,video/*,audio/*"></jr-upload>
 ```
+<!-- demo_end -->
 
+<!-- demo_start -->
+### 文件大小限制
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' max-size="2K"></jr-upload>
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 文件个数限制
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' num-max={2}></jr-upload>
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 行布局
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} num-perline={2}></jr-upload>
+```
 ```javascript
 var component = new JRUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
-            }
-        ]
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
     }
 });
 ```
 <!-- demo_end -->
 
-### 文件类型限制
-
 <!-- demo_start -->
+### 只读模式
 <div class="m-example"></div>
 
 ```xml
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} accept=".jpg,.zip,video/*,audio/*"></jr-upload>
-```
-<!-- demo_end -->
-
-### 文件大小限制
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
-<jr-upload action='https://nos.kaolafed.com/upload' max-size="830M"></jr-upload>
-```
-<!-- demo_end -->
-
-### 每行展示文件个数和总文件个数限制
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
-<jr-upload action='https://nos.kaolafed.com/upload' multiple={true} num-limit={15} num-perline={4}></jr-upload>
-```
-<!-- demo_end -->
-
-### 带有已上传文件的形式
-
-<!-- demo_start -->
-<div class="m-example"></div>
-
-```xml
-<jr-upload action='https://nos.kaolafed.com/upload' file-list={list}></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} readonly={true}></jr-upload>
 ```
 
 ```javascript
 var component = new JRUI.Component({
     template: template,
     data: {
-        list: [
-            {
-                name: 'kaola-logo.jpeg',
-                url: 'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&thumbnail=220x0&quality=85&v=1'
-            },
-            {
-                name: '权限申请交互.rar',
-                url: 'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'
-            },
-            {
-                name: 'app-2dcode.jpg',
-                url: 'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 指定宽高或宽高比
+
+只作用于图片
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' image-width={20} ></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' image-height={20} ></jr-upload>
+<jr-upload action='https://nos.kaolafed.com/upload' image-scale='4:3' ></jr-upload>
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 拖拽上传
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' drag={true} ></jr-upload>
+```
+<!-- demo_end -->
+
+
+<!-- demo_start -->
+### 文件上传前的校验（文件格式限制为图片）
+
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} before-upload={this.beforeUpload}></jr-upload>
+```
+
+```javascript
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    beforeUpload: function(file) {
+        var fileTypeCheck = function(resolve) {
+            var msg = '';
+            if (!/image\/.*/.test(file.type)) {
+                msg = '格式错误';
             }
-        ]
+            resolve(msg);
+        };
+
+        return new Promise(fileTypeCheck);
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 文件删除前的确认
+
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload' file-list={list} before-remove={this.beforeRemove}></jr-upload>
+```
+
+```javascript
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }]
+    },
+    beforeRemove: function(item) {
+        var file = item.file;
+        var removeConfirm = function(resolve) {
+            var modal = JRUI.KLModal.confirm('确认删除' + file.name + '?');
+            modal.$on('ok', () => resolve(true));
+        };
+
+        return new Promise(removeConfirm);
     }
 });
 ```

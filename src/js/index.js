@@ -23,6 +23,7 @@ const Components = {
   JRSelect: require('./components/form/JRSelect'),
   JRText: require('./components/form/JRText'),
   JRTextArea: require('./components/form/JRTextArea'),
+  JRTreeView: require('./components/form/JRTreeView'),
   JRUpload: require('./components/form/JRUpload'),
   JRSwitch: require('./components/form/JRSwitch'),
 
