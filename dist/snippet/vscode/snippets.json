@@ -186,5 +186,20 @@
             "</jr-tooltip>"
         ],
         "description": "文字提示"
+    },
+    "开关":{
+        "prefix": "jr-switch",
+        "body": [
+            "<jr-switch></jr-switch>"
+        ],
+        "description": "开关"
+    },
+    "进度条":{
+        "prefix": "jr-progress",
+        "body": [
+             "<jr-progress percent=\"$0\">",
+            "</jr-progress>"
+        ],
+        "description": "进度条"
     }
 }
