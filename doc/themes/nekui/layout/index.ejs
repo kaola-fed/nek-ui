@@ -87,6 +87,10 @@ $(document).ready(function() {
         $anchors = $('.anchors_item'),
         $txt = $('.section4_subtt');
 
+    setTimeout(function() {
+        $('.m-section1').addClass('loaded');
+    }, 200);
+
     $('#fullpage').fullpage({
         sectionSelector: '.m-section',
         css3: true,

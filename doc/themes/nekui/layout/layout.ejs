@@ -29,7 +29,7 @@
         <%- css(isIndex ? 'css/index' : 'css/page') %>
         <script>window.PAGE_TYPE = "<%- page.type %>"</script>
     </head>
-    <body class="<%- isIndex ? 'homepage' : 'docs' -%>">
+    <body class="<%- isIndex ? '' : 'docs' -%>" <%if (isIndex) { %>id="homepage"<% } %>>
         <div id="mobile-bar" <%- isIndex ? 'class="top"' : '' %>>
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
