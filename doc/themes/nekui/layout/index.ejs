@@ -12,6 +12,7 @@
             </div>
             <div class="section1_right"></div>
         </div>
+        <div class="section1_arrow"></div>
     </div>
     <div class="m-section m-section2">
         <div class="section_wrap">
@@ -47,26 +48,28 @@
                 <a href="" class="section_btn">Let's go</a>
             </div>
             <footer class="m-ft">
-                <ul class="ft_links">
-                    <li class="ft_tt">Github</li>
-                    <li class="ft_link">源码仓库</li>
-                    <li class="ft_link">定制主题</li>
-                </ul>
-                <ul class="ft_links">
-                    <li class="ft_tt">相关站点</li>
-                    <li class="ft_link">源码仓库</li>
-                    <li class="ft_link">定制主题</li>
-                </ul>
-                <ul class="ft_links">
-                    <li class="ft_tt">社区</li>
-                    <li class="ft_link">源码仓库</li>
-                    <li class="ft_link">定制主题</li>
-                </ul>
-                <ul class="ft_links">
-                    <li class="ft_tt">Copyright © 2017</li>
-                    <li class="ft_link">源码仓库</li>
-                    <li class="ft_link">定制主题</li>
-                </ul>
+                <div class="ft_wrap">
+                    <ul class="ft_links">
+                        <li class="ft_tt">Github</li>
+                        <li class="ft_link">源码仓库</li>
+                        <li class="ft_link">定制主题</li>
+                    </ul>
+                    <ul class="ft_links">
+                        <li class="ft_tt">相关站点</li>
+                        <li class="ft_link">源码仓库</li>
+                        <li class="ft_link">定制主题</li>
+                    </ul>
+                    <ul class="ft_links">
+                        <li class="ft_tt">社区</li>
+                        <li class="ft_link">源码仓库</li>
+                        <li class="ft_link">定制主题</li>
+                    </ul>
+                    <ul class="ft_links">
+                        <li class="ft_tt">Copyright © 2017</li>
+                        <li class="ft_link">源码仓库</li>
+                        <li class="ft_link">定制主题</li>
+                    </ul>
+                </div>
             </footer>
         </div>
     </div>
@@ -76,8 +79,22 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
 <script>
 $(document).ready(function() {
+    var $header = $('#header'),
+        $logo = $('#logo');
+
     $('#fullpage').fullpage({
-        sectionSelector: '.m-section'
+        sectionSelector: '.m-section',
+        css3: true,
+        easingcss3: 'cubic-bezier(0.77, 0, 0.175, 1)',
+        onLeave: function(index, nextIndex) {
+            $header.removeClass('header-' + index);
+            $header.addClass('header-' + nextIndex);
+            if (nextIndex == 2) {
+                $logo.children('.u-logo').removeClass('u-logo-white').addClass('u-logo-grey');
+            } else {
+                $logo.children('.u-logo').removeClass('u-logo-grey').addClass('u-logo-white');
+            }
+        }
     });
 });
 </script>

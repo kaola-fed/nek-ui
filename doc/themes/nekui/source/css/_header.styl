@@ -1,12 +1,47 @@
 $header-height = 40px
 
 #header
-    background-color #fff
-    height: $heading-inner-height
-    padding $heading-padding-vertical 40px
-    position relative
+    box-sizing: border-box;
+    height 80px
+    padding 26px 40px
     z-index 2
 
+.homepage
+  .header
+    position: fixed
+    top 0
+    width: 100%
+    transition: all .8s ease-out
+    #nav
+      right 25px
+      .nav-dropdown-container
+        .nav-link
+          margin-right 0
+    .nav-link
+      font-size 14px
+      margin-right 30px
+      &.current
+        color rgba(255,255,255,1)
+    &-1
+      background-color rgba(0, 0, 0, 0.28)
+      .nav-link
+        color rgba(114,160,215,1)
+    &-2
+      background-color rgba(255, 255, 255, 0.9)
+      .nav-link
+        color rgba(153,153,153,1)
+        &.current
+          color #666
+    &-3
+      background-color rgba(0, 0, 0, 0.32)
+      .nav-link
+        color rgba(114,160,215,1)
+    &-4
+      background-color rgba(0, 0, 0, 0.32)
+      .nav-link
+        color rgba(114,160,215,1)
+    .u-logo
+      background-size 89px 28px
 body.docs
     #header
         position fixed
@@ -20,10 +55,11 @@ body.docs
     margin 0
     padding 0
     position absolute
-    right 60px
-    top $heading-padding-vertical
-    height $header-height
-    line-height $header-height
+    display flex
+    align-items center
+    top 0
+    right 0
+    height 80px
     .break
         display none
     li

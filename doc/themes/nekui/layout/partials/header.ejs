@@ -1,9 +1,13 @@
-<div id="header">
-  <a id="logo" href="/">
-    <img src="/images/logo.svg">
-    <span>考拉后台UI组件库</span>
-  </a>
-  <ul id="nav">
-    <%- partial('partials/main_menu', { context: 'nav' }) %>
-  </ul>
+<div id="header" class="<%-isIndex ? 'header header-1': '' -%>">
+    <a id="logo" href="/">
+        <% if (isIndex) { %>
+            <span class="u-logo u-logo-white"></span>
+        <% } else { %>
+            <img src="/images/logo.svg">
+            <span>考拉后台UI组件库</span>
+        <% } %>
+    </a>
+    <ul id="nav">
+        <%- partial('partials/main_menu', { context: 'nav', isIndex: isIndex }) %>
+    </ul>
 </div>

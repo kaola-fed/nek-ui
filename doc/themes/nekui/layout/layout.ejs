@@ -29,12 +29,12 @@
         <%- css(isIndex ? 'css/index' : 'css/page') %>
         <script>window.PAGE_TYPE = "<%- page.type %>"</script>
     </head>
-    <body class="<%- isIndex ? '' : 'docs' -%>">
+    <body class="<%- isIndex ? 'homepage' : 'docs' -%>">
         <div id="mobile-bar" <%- isIndex ? 'class="top"' : '' %>>
             <a class="menu-button"></a>
             <a class="logo" href="/"></a>
         </div>
-        <%- partial('partials/header') %>
+        <%- partial('partials/header', {isIndex: isIndex}) %>
         <% if (!isIndex) { %>
             <div id="main" class="fix-sidebar">
                 <%- body %>
