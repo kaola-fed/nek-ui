@@ -43,9 +43,9 @@
             <%- body %>
         <% } %>
 
+        <% if (!isIndex) { %>
         <!-- main custom script for sidebars, version selects etc. -->
         <script src="/js/common.js"></script>
-        <% if (!isIndex) { %>
         <script src="/vendor/regular.js"></script>
         <script src="/js/nek-ui.js"></script>
         <script src="/demo.wrap/index.js"></script>

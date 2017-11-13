@@ -2,8 +2,8 @@ $header-height = 40px
 
 #header
     box-sizing: border-box;
-    height 80px
-    padding 26px 40px
+    height: $heading-inner-height
+    padding $heading-padding-vertical 40px
     z-index 2
 
 .homepage
@@ -11,9 +11,15 @@ $header-height = 40px
     position: fixed
     top 0
     width: 100%
+    height 80px
+    padding 26px 40px!important
     transition: all .8s ease-out
     #nav
+      display flex
+      align-items center
+      top 0
       right 25px
+      height 80px
       .nav-dropdown-container
         .nav-link
           margin-right 0
@@ -55,11 +61,10 @@ body.docs
     margin 0
     padding 0
     position absolute
-    display flex
-    align-items center
-    top 0
-    right 0
-    height 80px
+    right 60px
+    top $heading-padding-vertical
+    height $header-height
+    line-height $header-height
     .break
         display none
     li
