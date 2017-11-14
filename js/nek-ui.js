@@ -34336,6 +34336,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _assign = __webpack_require__(59);
+
+	var _assign2 = _interopRequireDefault(_assign);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	/**
 	 * @file KLTooltip     提示
 	 * @author   ziane(zianecui@gmail.com)
@@ -34381,7 +34387,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  config: function config(data) {
 	    this.defaults({
 	      tip: '',
-	      placement: 'top'
+	      placement: 'top',
+	      class: ''
 	    });
 
 	    this.supr(data);
@@ -34394,13 +34401,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  getInstance: function getInstance() {
 	    var self = this;
-	    var _data = this.data,
-	        tip = _data.tip,
-	        placement = _data.placement;
-
+	    var data = (0, _assign2.default)({}, this.data);
+	    delete data.instance;
 	    if (!this.data.instance) {
 	      var instance = new TipPopUp({
-	        data: { tip: tip, placement: placement }
+	        data: data
 	      });
 
 	      instance.$on('destroy', function () {
