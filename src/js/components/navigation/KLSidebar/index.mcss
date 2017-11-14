@@ -11,13 +11,16 @@
 .m-sidebar {
     position: absolute;
     bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
     overflow: visible;
     background: #fff;
     border-right: 1px solid #E1E6ED;
-    transition: left .3s;
+    transition: transform .3s;
+    z-index: 2;
 
     &.active {
-        left: 0;
+        transform: translateX(0);
     }
 
     .sidebar_menus {
@@ -29,12 +32,10 @@
         display: flex;
         position: absolute;
         top: 50%;
-        left: 180px;
         width: 10px;
         height: 50px;
         font-size: 10px;
         margin-top: -60px;
-        z-index: 10;
         align-items: center;
         background: #C2C9D0;
         color: #fff;

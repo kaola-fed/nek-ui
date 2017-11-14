@@ -77,10 +77,4 @@ const KLSidebar = Component.extend({
   },
 });
 
-KLSidebar.directive('top', function (ele, value) {
-  this.$watch(value, (top) => {
-    ele.style.top = top;
-  });
-});
-
 module.exports = KLSidebar;

@@ -1,4 +1,4 @@
-<aside class="m-sidebar {class}" r-class={ {'active':active } } top="{top}" style="width: {width}, left: -{width}">
+<aside class="m-sidebar {class}" r-class={ {'active':active } } r-style={ {width: width, top: top} }>
   <div class="sidebar_menus">
     <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
       {#list menus as menu}
@@ -15,7 +15,7 @@
     </kl-menu>
   </div>
 
-  <div class="sidebar_slideBtn" on-click="{this.toggle($event)}">
+  <div class="sidebar_slideBtn" on-click="{this.toggle($event)}" r-style={{ left: width }}>
     {#if active}
     <i class="u-icon u-icon-chevron_left"></i>
     {#else}
