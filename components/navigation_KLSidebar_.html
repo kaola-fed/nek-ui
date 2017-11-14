@@ -405,7 +405,7 @@
     }
     .grid-item .m-menu { padding: 0; }
 </style>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        考拉UI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        考拉UI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> <span class="attr">width</span>=<span class="string">"200px"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">menus</span>: [&#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'首页'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-home'</span></div><div class="line">      &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'库存管理'</span>,</div><div class="line">       <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-inventory'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">title</span>: <span class="string">'商品实时数据'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'单据审核'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'财务管理'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-financial'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'对账管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'请款管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'统计数据'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-statistics'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'订单管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-order'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'消息管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-message'</span></div><div class="line">     &#125;]</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLSidebar"></a></p>
@@ -497,6 +497,12 @@
 <td></td>
 <td>=&gt; 单页应用时, 请将regular-state的manager实例传入</td>
 </tr>
+<tr>
+<td>[options.data.width]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; sidebar的宽度设置,默认181px</td>
+</tr>
 </tbody>
 </table>
 <p><a name="KLSidebar+event_toggle 收缩菜单时触发"></a></p>
@@ -546,7 +552,7 @@ var index = 0;
         <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
         考拉UI系统
     </div>
-    <kl-sidebar menus={menus} bodyEl="j-body" />
+    <kl-sidebar menus={menus} bodyEl="j-body" width="200px" />
     <div id="j-body" class="demo-body"></div>
 </div>
 
@@ -614,7 +620,7 @@ var component = new NEKUI.Component({
         <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
         考拉UI系统
     </div>
-    <kl-sidebar menus={menus} bodyEl="j-body" />
+    <kl-sidebar menus={menus} bodyEl="j-body" width="200px" />
     <div id="j-body" class="demo-body"></div>
 </div>
 `,

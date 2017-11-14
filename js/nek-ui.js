@@ -1572,7 +1572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.validate('change');
 	    /**
 	     * @event KLInput#change 原生change事件
-	     * @param {event} KeyBoardEvent 点击的鼠标事件
+	     * @param {event} MouseEvent 点击的鼠标事件
 	     */
 	    this.$emit('change', $event);
 	  },
@@ -1580,7 +1580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.validate('input');
 	    /**
 	     * @event KLInput#input 原生input事件
-	     * @param {event} KeyBoardEvent 点击的鼠标事件
+	     * @param {event} MouseEvent 点击的鼠标事件
 	     */
 	    this.$emit('input', $event);
 	  },
@@ -28659,27 +28659,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  _onKeyUp: function _onKeyUp($event) {
 	    this.validate('keyup');
-	    /**
-	     * @event KLTextarea#keyup 原生keyup事件
-	     * @param {event} KeyBoardEvent 键盘事件
-	     */
 	    this.$emit('keyup', $event);
 	  },
 	  _onBlur: function _onBlur($event) {
 	    this.validate('blur');
-	    /**
-	     * @event KLTextarea#blur 原生blur事件
-	     * @param {event} MouseEvent 鼠标点击事件
-	     */
 	    this.$emit('blur', $event);
-	  },
-	  _onFocus: function _onFocus($event) {
-	    this.validate('focus');
-	    /**
-	     * @event KLTextarea#blur 原生focus事件
-	     * @param {event} MouseEvent 鼠标点击事件
-	     */
-	    this.$emit('focus', $event);
 	  }
 	});
 
@@ -28690,7 +28674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 360 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" on-focus={this._onFocus($event)} ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 361 */
@@ -31355,6 +31339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
 	 * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
 	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
+	 * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
 	 */
 	var KLSidebar = Component.extend({
 	  name: 'kl-sidebar',
@@ -31371,7 +31356,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      childrenKey: 'children',
 	      top: '60px',
 	      active: true,
-	      bodyEl: ''
+	      bodyEl: '',
+	      width: '181px'
 	    });
 
 	    this.supr();
@@ -31388,8 +31374,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.initBodyEl();
 
 	    this.data.active = !this.data.active;
+	    var width = this.data.width;
+
 	    if (this.data.$bodyEl) {
-	      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+	      this.data.$bodyEl.style.left = this.data.active ? width : '0';
 	    }
 
 	    /**
@@ -31408,19 +31396,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	});
 
-	KLSidebar.directive('top', function (ele, value) {
-	  this.$watch(value, function (top) {
-	    ele.style.top = top;
-	  });
-	});
-
-	module.exports = KLSidebar;
+		module.exports = KLSidebar;
 
 /***/ }),
 /* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } top=\"{top}\">\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\" router=\"{router}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\" route=\"{page[routeKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" route=\"{menu[routeKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\">\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
+	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } r-style={ {width: width, top: top} }>\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\" router=\"{router}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\" route=\"{page[routeKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" route=\"{menu[routeKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\" r-style={{ left: width }}>\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
 /* 392 */

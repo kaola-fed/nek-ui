@@ -6846,16 +6846,17 @@ input.u-check:disabled,input.u-radio:disabled{
 }
 .m-sidebar{
 	position:absolute;
-	left:-181px;
 	bottom:0;
-	width:181px;
+	left:0;
+	transform:translateX(-100%);
 	overflow:visible;
 	background:#fff;
 	border-right:1px solid #e1e6ed;
-	transition:left 0.3s;
+	transition:transform 0.3s;
+	z-index:2;
 }
 .m-sidebar.active{
-	left:0;
+	transform:translateX(0);
 }
 .m-sidebar .sidebar_menus{
 	height:100%;
@@ -6865,12 +6866,10 @@ input.u-check:disabled,input.u-radio:disabled{
 	display:flex;
 	position:absolute;
 	top:50%;
-	left:180px;
 	width:10px;
 	height:50px;
 	font-size:10px;
 	margin-top:-60px;
-	z-index:10;
 	align-items:center;
 	background:#c2c9d0;
 	color:#fff;
