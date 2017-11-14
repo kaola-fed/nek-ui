@@ -10,9 +10,7 @@
 
 .m-sidebar {
     position: absolute;
-    left: -181px;
     bottom: 0;
-    width: 181px;
     overflow: visible;
     background: #fff;
     border-right: 1px solid #E1E6ED;
