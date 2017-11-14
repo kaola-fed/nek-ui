@@ -1,18 +1,18 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
 
 module.exports = {
   output: {
     filename: 'nek-ui.js',
     library: 'NEKUI',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   externals: {
-    'regularjs': {
-      root: "Regular",
-      amd: "Regular",
-      commonjs: "regularjs",
-      commonjs2: "regularjs"
-    }
+    regularjs: {
+      root: 'Regular',
+      amd: 'Regular',
+      commonjs: 'regularjs',
+      commonjs2: 'regularjs',
+    },
   },
   module: {
     loaders: [
@@ -22,23 +22,23 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015'],
-          plugins: ['transform-runtime']
-        }
+          plugins: ['transform-runtime'],
+        },
       },
       {
         test: /\.html$/,
-        loader: 'text-loader'
+        loader: 'text-loader',
       },
       {
         test: /\.mcss$/,
-        loader: 'style!css!mcss'
-      }
-    ]
+        loader: 'style!css!mcss',
+      },
+    ],
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: "nek-ui.js.map",
-      columns: false
-    })
-  ]
-}
+      filename: 'nek-ui.js.map',
+      columns: false,
+    }),
+  ],
+};
