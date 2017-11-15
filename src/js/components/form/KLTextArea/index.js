@@ -105,11 +105,27 @@ const KLTextArea = Component.extend({
   },
   _onKeyUp($event) {
     this.validate('keyup');
+    /**
+     * @event KLTextarea#keyup 原生keyup事件
+     * @param {event} KeyBoardEvent 键盘事件
+     */
     this.$emit('keyup', $event);
   },
   _onBlur($event) {
     this.validate('blur');
+    /**
+     * @event KLTextarea#blur 原生blur事件
+     * @param {event} MouseEvent 鼠标点击事件
+     */
     this.$emit('blur', $event);
+  },
+  _onFocus($event) {
+    this.validate('focus');
+    /**
+     * @event KLTextarea#blur 原生focus事件
+     * @param {event} MouseEvent 鼠标点击事件
+     */
+    this.$emit('focus', $event);
   },
 });
 
