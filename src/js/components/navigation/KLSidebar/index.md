@@ -42,7 +42,7 @@ title: 菜单栏
         <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
         考拉UI系统
     </div>
-    <kl-sidebar menus={menus} bodyEl="j-body" />
+    <kl-sidebar menus={menus} bodyEl="j-body" width="200px" />
     <div id="j-body" class="demo-body"></div>
 </div>
 ```

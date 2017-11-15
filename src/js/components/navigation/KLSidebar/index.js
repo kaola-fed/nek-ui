@@ -22,6 +22,7 @@ const template = require('./index.html');
  * @param {string}        [options.data.pageKey=title]          => 二级菜单的字段key名
  * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
  * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
+ * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
  */
 const KLSidebar = Component.extend({
   name: 'kl-sidebar',
@@ -39,6 +40,7 @@ const KLSidebar = Component.extend({
       top: '60px',
       active: true,
       bodyEl: '',
+      width: '181px',
     });
 
     this.supr();
@@ -55,8 +57,9 @@ const KLSidebar = Component.extend({
     this.initBodyEl();
 
     this.data.active = !this.data.active;
+    const { width } = this.data;
     if (this.data.$bodyEl) {
-      this.data.$bodyEl.style.left = this.data.active ? '180px' : '0';
+      this.data.$bodyEl.style.left = this.data.active ? width : '0';
     }
 
     /**
@@ -72,12 +75,6 @@ const KLSidebar = Component.extend({
   onMenuItemClick(e) {
     this.$emit('menuitem-click', e);
   },
-});
-
-KLSidebar.directive('top', function (ele, value) {
-  this.$watch(value, (top) => {
-    ele.style.top = top;
-  });
 });
 
 module.exports = KLSidebar;
