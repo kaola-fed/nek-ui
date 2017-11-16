@@ -31335,7 +31335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file KLSidebar
 	 * @author   sensen(rainforest92@126.com)
 	 */
-	var scrollIntoView = __webpack_require__(391);
+	var scrollIntoViewFn = __webpack_require__(391);
 
 	var Component = __webpack_require__(70);
 	var template = __webpack_require__(392);
@@ -31357,6 +31357,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
 	 * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
 	 * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
+	 * @param {boolean}        [options.data.scrollIntoView=false]          => 是否需要scrollIntoView
 	 */
 	var KLSidebar = Component.extend({
 	  name: 'kl-sidebar',
@@ -31380,13 +31381,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.supr();
 	  },
 	  init: function init() {
-	    setTimeout(function () {
-	      scrollIntoView(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
+	    var scrollIntoView = this.data.scrollIntoView;
+
+	    scrollIntoView && setTimeout(function () {
+	      scrollIntoViewFn(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
 	        validTarget: function validTarget(target, parentsScrolled) {
 	          return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
 	        }
 	      });
-	    }, 200);
+	    }, 50);
 	    this.supr();
 	  },
 	  initBodyEl: function initBodyEl() {
