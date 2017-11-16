@@ -1,8 +1,8 @@
 (function() {
 
-  initMobileMenu()
+  // initMobileMenu()
   if (PAGE_TYPE) {
-    initSubHeaders()
+    // initSubHeaders()
     initLocationHashFuzzyMatching()
   }
 
