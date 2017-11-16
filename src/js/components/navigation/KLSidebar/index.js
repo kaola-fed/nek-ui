@@ -2,6 +2,7 @@
  * @file KLSidebar
  * @author   sensen(rainforest92@126.com)
  */
+const scrollIntoView = require('scroll-into-view');
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
@@ -43,6 +44,16 @@ const KLSidebar = Component.extend({
       width: '181px',
     });
 
+    this.supr();
+  },
+  init() {
+    setTimeout(() => {
+      scrollIntoView(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
+        validTarget(target, parentsScrolled) {
+          return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
+        },
+      });
+    }, 200);
     this.supr();
   },
   initBodyEl() {

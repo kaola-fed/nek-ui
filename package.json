@@ -38,6 +38,7 @@
     "moment": "^2.17.1",
     "regularjs": "0.4.3",
     "reqwest": "^2.0.5",
+    "scroll-into-view": "^1.9.1",
     "validator": "^6.1.0"
   },
   "devDependencies": {
