@@ -2,7 +2,7 @@
  * @file KLSidebar
  * @author   sensen(rainforest92@126.com)
  */
-const scrollIntoView = require('scroll-into-view');
+const scrollIntoViewFn = require('scroll-into-view');
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
@@ -24,6 +24,7 @@ const template = require('./index.html');
  * @param {string}        [options.data.childrenKey=children]   => 一级菜单对象下二级菜单数组的key名
  * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
  * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
+ * @param {boolean}        [options.data.scrollIntoView=false]          => 是否需要scrollIntoView
  */
 const KLSidebar = Component.extend({
   name: 'kl-sidebar',
@@ -47,13 +48,14 @@ const KLSidebar = Component.extend({
     this.supr();
   },
   init() {
-    setTimeout(() => {
-      scrollIntoView(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
+    const { scrollIntoView } = this.data;
+    scrollIntoView && setTimeout(() => {
+      scrollIntoViewFn(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
         validTarget(target, parentsScrolled) {
           return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
         },
       });
-    }, 200);
+    }, 50);
     this.supr();
   },
   initBodyEl() {
