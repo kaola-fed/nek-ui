@@ -58,8 +58,10 @@
         right: 10px; top:0; bottom:0; margin:auto;
         color:#666;
     }
-    .input_icon { font-size:14px; }
+    .input_icon { font-size:12px; }
     .input_icon:hover, .input_icon:active { color:$brand-primary; cursor:pointer; }
+    .input_icon_clearable { opacity: 0; }
+    .input_icon_clearable:hover { opacity: 1; }
 
     .input_placeholder {
         position: absolute;

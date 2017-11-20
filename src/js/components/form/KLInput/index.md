@@ -98,7 +98,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-速度：<kl-input width="200px" on-search={this.onSearch($event)} />
+搜索：<kl-input width="200px" on-search={this.onSearch($event)} />
 ```
 
 ```javascript
@@ -108,6 +108,16 @@ var component = new NEKUI.Component({
         console.log(json);
     }
 });
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 清空输入内容
+
+<div class="m-example"></div>
+
+```xml
+内容：<kl-input width="200px" clearable />
 ```
 <!-- demo_end -->
 
