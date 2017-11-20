@@ -109,7 +109,7 @@ const doc = (isDev, callback) => {
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
 
-      if (isDev && !/^KL(Upload|LocaleProvider|Button)$/.test(comp)) {
+      if (isDev && !/^KL(Sidebar|Menu|Button)$/.test(comp)) {
         return false;
       }
 
