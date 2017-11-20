@@ -4360,11 +4360,17 @@ input.u-check:disabled,input.u-radio:disabled{
 	color:#666;
 }
 .u-input .input_icon{
-	font-size:14px;
+	font-size:12px;
 }
 .u-input .input_icon:hover,.u-input .input_icon:active{
 	color:#4690ee;
 	cursor:pointer;
+}
+.u-input .input_icon_clearable{
+	opacity:0;
+}
+.u-input .input_icon_clearable:hover{
+	opacity:1;
 }
 .u-input .input_placeholder{
 	position:absolute;

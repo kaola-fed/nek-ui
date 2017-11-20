@@ -432,8 +432,13 @@
 <div class="grid-item" markdown="1">
 <h3 id="搜索-打开console-查看输出"><a href="#搜索-打开console-查看输出" class="headerlink" title="搜索(打开console,查看输出)"></a>搜索(打开console,查看输出)</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">速度：<span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">on-search</span>=<span class="string">&#123;this.onSearch($event)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">搜索：<span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">on-search</span>=<span class="string">&#123;this.onSearch($event)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onSearch</span>: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="清空输入内容"><a href="#清空输入内容" class="headerlink" title="清空输入内容"></a>清空输入内容</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line">内容：<span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">width</span>=<span class="string">"200px"</span> <span class="attr">clearable</span> /&gt;</span></div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>通过<code>rules</code>设置验证规则</p>
@@ -494,6 +499,12 @@
 <td><code>string</code></td>
 <td></td>
 <td>=&gt; 单位</td>
+</tr>
+<tr>
+<td>[options.data.clearable]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示清空图标</td>
 </tr>
 <tr>
 <td>[options.data.rules]</td>
@@ -901,7 +912,7 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-速度：<kl-input width="200px" on-search={this.onSearch($event)} />
+搜索：<kl-input width="200px" on-search={this.onSearch($event)} />
 
       */});
       
@@ -927,7 +938,7 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-速度：<kl-input width="200px" on-search={this.onSearch($event)} />
+搜索：<kl-input width="200px" on-search={this.onSearch($event)} />
 `,
               jsCode: `
 var component = new NEKUI.Component({
@@ -937,6 +948,37 @@ var component = new NEKUI.Component({
     }
 });
 `
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+内容：<kl-input width="200px" clearable />
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+内容：<kl-input width="200px" clearable />
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
           }
       });
       codeDemo.innerHTML = '';

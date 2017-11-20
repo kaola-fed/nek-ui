@@ -1408,6 +1408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.state]              <=> 文本框的状态
 	 * @param {number}          [options.data.maxlength]          => 文本框的最大长度
 	 * @param {string}          [options.data.unit]               => 单位
+	 * @param {boolean}         [options.data.clearable=false]    => 是否显示清空图标
 	 * @param {object[]}        [options.data.rules=[]]           => 验证规则
 	 * @param {boolean}         [options.data.autofocus=false]    => 是否自动获得焦点
 	 * @param {boolean}         [options.data.readonly=false]     => 是否只读
@@ -1437,7 +1438,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      unit: '',
 	      rules: [],
 	      autofocus: false,
-	      _eltIE9: bowser.msie && bowser.version <= 9
+	      _eltIE9: bowser.msie && bowser.version <= 9,
+	      clearable: false
 	    });
 	    this.rules({
 	      required: false,
@@ -1534,7 +1536,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return result;
 	  },
-
+	  clear: function clear() {
+	    this.$update('value', '');
+	  },
 
 	  /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
 	  __valueFilter: function __valueFilter(_value) {
@@ -2916,7 +2920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 103 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if visible}\n<label class=\"u-input u-input-{size} {class}\" r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}<i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>{/if}\n        {#if unit}<span class=\"input_unit\">{unit}</span>{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n{/if}"
+	module.exports = "{#if visible}\n<label class=\"u-input u-input-{size} {class}\" r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}\n          <i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>\n        {#elseif unit}\n          <span class=\"input_unit\">{unit}</span>\n        {#elseif clearable && value.length}\n\t\t\t\t  <kl-icon type=\"error\" on-click={this.clear()} class=\"input_icon\"/>\n\t\t\t\t{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n{/if}"
 
 /***/ }),
 /* 104 */
