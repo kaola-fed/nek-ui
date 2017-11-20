@@ -24,6 +24,7 @@ const bowser = require('bowser');
  * @param {string}          [options.data.state]              <=> 文本框的状态
  * @param {number}          [options.data.maxlength]          => 文本框的最大长度
  * @param {string}          [options.data.unit]               => 单位
+ * @param {boolean}         [options.data.clearable=false]    => 是否显示清空图标
  * @param {object[]}        [options.data.rules=[]]           => 验证规则
  * @param {boolean}         [options.data.autofocus=false]    => 是否自动获得焦点
  * @param {boolean}         [options.data.readonly=false]     => 是否只读
@@ -54,6 +55,7 @@ const KLInput = Component.extend({
       rules: [],
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
+      clearable: false,
     });
     this.rules({
       required: false,
@@ -155,7 +157,9 @@ const KLInput = Component.extend({
 
     return result;
   },
-
+  clear() {
+    this.$update('value', '');
+  },
   /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
   __valueFilter(_value) {
     const type = this.data.type;
