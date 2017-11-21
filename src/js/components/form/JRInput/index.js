@@ -40,6 +40,16 @@ const bowser = require('bowser');
  * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
  * @param {number}          [options.data.width]              => 组件宽度
  */
+
+/**
+ * @class rules参数说明
+  * @param {string}          [options.type]                   => 类型[isInt,isFloat,isRequired,isEmail,isURL,method,is,isNot,isFilled,byteLen]
+  * @param {string}          [options.message]                => 错误提示
+  * @param {string}          [options.on]                     => 监听事件[focus,blur,keyup,change,input,search]
+  * @param {string}          [options.success]                => 是否验证通过的表示
+  * @param {string}          [options.options]                => 对象或则正则
+  * @param {string}          [options.method]                 => 自定义函数，type为method时生效
+ */
 const JRInput = Component.extend({
   name: 'jr-input',
   template,

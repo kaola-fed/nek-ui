@@ -503,8 +503,16 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">jr-input</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">maxlength</span>=<span class="string">20</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isFilled'</span>, <span class="attr">on</span>: <span class="string">'blur'</span>, <span class="attr">message</span>: <span class="string">'请输入邮箱！'</span>&#125;,</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isEmail'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'请输入正确的邮箱！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<h3 id="验证2"><a href="#验证2" class="headerlink" title="验证2"></a>验证2</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>姓名：<span class="tag">&lt;<span class="name">jr-input</span> <span class="attr">required</span> <span class="attr">rules</span>=<span class="string">&#123;rules.rulesA&#125;</span> <span class="attr">ref</span>=<span class="string">'name'</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>金额：<span class="tag">&lt;<span class="name">jr-input</span> <span class="attr">required</span> <span class="attr">rules</span>=<span class="string">&#123;rules.rulesB&#125;</span> <span class="attr">ref</span>=<span class="string">'amount'</span>/&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">action</span>=<span class="string">"submit"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.submit()&#125;</span> <span class="attr">title</span>=<span class="string">"提交"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">rules</span>: &#123;</div><div class="line">             <span class="attr">rulesA</span>:[</div><div class="line">                  &#123; <span class="attr">type</span>: <span class="string">'isRequired'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">success</span>: <span class="literal">false</span>, <span class="attr">message</span>: <span class="string">'不能为空'</span> &#125;,</div><div class="line">                  &#123; <span class="attr">type</span>: <span class="string">'isNot'</span>, <span class="attr">options</span>: <span class="regexp">/^[^a-z]/</span>,<span class="attr">success</span>: <span class="literal">false</span>, <span class="attr">on</span>: <span class="string">'blur'</span>, <span class="attr">message</span>: <span class="string">'以小写字母开头'</span> &#125;,</div><div class="line">                  &#123; <span class="attr">type</span>: <span class="string">'method'</span>, <span class="attr">on</span>: <span class="string">'blur'</span>,<span class="attr">message</span>:<span class="string">'名字中必须包含x'</span>, <span class="attr">success</span>: <span class="literal">false</span>, method(value)&#123;</div><div class="line">                       <span class="keyword">return</span> value==<span class="string">""</span>||(<span class="string">""</span>+value).indexOf(<span class="string">'x'</span>)!== <span class="number">-1</span></div><div class="line">                  &#125;&#125;,</div><div class="line">             ],</div><div class="line">             <span class="attr">rulesB</span>:[</div><div class="line">                  &#123; <span class="attr">type</span>: <span class="string">'isRequired'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">success</span>: <span class="literal">false</span>, <span class="attr">message</span>: <span class="string">'不能为空'</span> &#125;,</div><div class="line">                  &#123; <span class="attr">type</span>: <span class="string">'isFloat'</span>, <span class="attr">options</span>:&#123;<span class="attr">min</span>:<span class="number">10</span>,<span class="attr">max</span>:<span class="number">10000</span>&#125;,<span class="attr">success</span>: <span class="literal">false</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'10-10000之间'</span> &#125;</div><div class="line">             ]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    submit()&#123;</div><div class="line">      <span class="comment">//防止按钮直接点击，没有触发验证函数，此处为手动触发验证</span></div><div class="line">      [<span class="string">"name"</span>,<span class="string">"amount"</span>].forEach(<span class="function">(<span class="params">key</span>)=&gt;</span>&#123;</div><div class="line">          <span class="keyword">this</span>.$refs[key].validate()</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">let</span> succ =  <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.data.rules).every(<span class="function">(<span class="params">key</span>)=&gt;</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="keyword">this</span>.data.rules[key].every(<span class="function">(<span class="params">rule</span>)=&gt;</span> &#123;</div><div class="line">                        <span class="keyword">return</span> rule.success;</div><div class="line">                    &#125;);</div><div class="line">       &#125;)</div><div class="line">      <span class="keyword">if</span>(succ)&#123;</div><div class="line">          alert(<span class="string">"提交成功"</span>)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#JRInput">JRInput</a></dt>
+<dd></dd>
+<dt><a href="#rules参数说明">rules参数说明</a></dt>
 <dd></dd>
 </dl>
 
@@ -672,6 +680,49 @@
 </tr>
 </tbody>
 </table>
+<p><a name="rules参数说明"></a></p>
+<h2 id="rules参数说明"><a href="#rules参数说明" class="headerlink" title="rules参数说明"></a>rules参数说明</h2><p><strong>Kind</strong>: global class<br><a name="new_rules参数说明_new"></a></p>
+<h3 id="new-rules参数说明"><a href="#new-rules参数说明" class="headerlink" title="new rules参数说明()"></a>new rules参数说明()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.type]</td>
+<td><code>string</code></td>
+<td>=&gt; 类型[isInt,isFloat,isRequired,isEmail,isURL,method,is,isNot,isFilled,byteLen]</td>
+</tr>
+<tr>
+<td>[options.message]</td>
+<td><code>string</code></td>
+<td>=&gt; 错误提示</td>
+</tr>
+<tr>
+<td>[options.on]</td>
+<td><code>string</code></td>
+<td>=&gt; 监听事件[focus,blur,keyup,change,input,search]</td>
+</tr>
+<tr>
+<td>[options.success]</td>
+<td><code>string</code></td>
+<td>=&gt; 是否验证通过的表示</td>
+</tr>
+<tr>
+<td>[options.options]</td>
+<td><code>string</code></td>
+<td>=&gt; 对象或则正则</td>
+</tr>
+<tr>
+<td>[options.method]</td>
+<td><code>string</code></td>
+<td>=&gt; 自定义函数，type为method时生效</td>
+</tr>
+</tbody>
+</table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
 <p>JRInput   输入扩展</p>
@@ -777,6 +828,51 @@ var component = new JRUI.Component({
             {type: 'isFilled', on: 'blur', message: '请输入邮箱！'},
             {type: 'isEmail', on: 'keyup+blur', message: '请输入正确的邮箱！'}
         ]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<label>姓名：<jr-input required rules={rules.rulesA} ref='name'/></label>
+<label>金额：<jr-input required rules={rules.rulesB} ref='amount'/></label>
+<jr-button action="submit" on-click={this.submit()} title="提交" />
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        rules: {
+             rulesA:[
+                  { type: 'isRequired', on: 'keyup+blur', success: false, message: '不能为空' },
+                  { type: 'isNot', options: /^[^a-z]/,success: false, on: 'blur', message: '以小写字母开头' },
+                  { type: 'method', on: 'blur',message:'名字中必须包含x', success: false, method(value){
+                       return value==""||(""+value).indexOf('x')!== -1
+                  }},
+             ],
+             rulesB:[
+                  { type: 'isRequired', on: 'keyup+blur', success: false, message: '不能为空' },
+                  { type: 'isFloat', options:{min:10,max:10000},success: false, on: 'keyup+blur', message: '10-10000之间' }
+             ]
+        }
+    },
+    submit(){
+      //防止按钮直接点击，没有触发验证函数，此处为手动触发验证
+      ["name","amount"].forEach((key)=>{
+          this.$refs[key].validate()
+      })
+      let succ =  Object.keys(this.data.rules).every((key)=> {
+                    return this.data.rules[key].every((rule)=> {
+                        return rule.success;
+                    });
+       })
+      if(succ){
+          alert("提交成功")
+      }
     }
 });
 
