@@ -437,9 +437,6 @@ body.docs #nav {
 .u-logo-white {
   background: url("//haitao.nos.netease.com/d1eb27aa-a64a-495d-bd56-aad944a1e423.png") no-repeat;
 }
-.u-logo-sm {
-  background-size: 89px 28px;
-}
 #mobile-bar {
   position: fixed;
   top: 0;
