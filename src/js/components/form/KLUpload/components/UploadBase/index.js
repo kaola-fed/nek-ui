@@ -207,6 +207,8 @@ const UploadBase = Component.extend({
       } else if (flag === Config.flagMap.DELETED) {
         fileList[fileIndex].flag = Config.flagMap.DELETED;
         fileUnitList.splice(index, 1);
+      } else if (flag === Config.flagMap.ADDED) {
+        fileList[fileIndex].url = file.url;
       } else if (destroyed) {
         fileList.splice(fileIndex, 1);
         fileUnitList.splice(index, 1);
