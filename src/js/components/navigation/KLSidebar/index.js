@@ -25,6 +25,7 @@ const template = require('./index.html');
  * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
  * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
  * @param {boolean}        [options.data.scrollIntoView=false]          => 是否需要scrollIntoView
+ * @param {number}        [options.data.scrollTimeout=100]          => scrollIntoView启动的间隔时间
  */
 const KLSidebar = Component.extend({
   name: 'kl-sidebar',
@@ -43,19 +44,20 @@ const KLSidebar = Component.extend({
       active: true,
       bodyEl: '',
       width: '181px',
+      scrollTimeout: 100,
     });
 
     this.supr();
   },
   init() {
-    const { scrollIntoView } = this.data;
+    const { scrollIntoView, scrollTimeout } = this.data;
     scrollIntoView && setTimeout(() => {
       scrollIntoViewFn(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
         validTarget(target, parentsScrolled) {
           return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
         },
       });
-    }, 50);
+    }, scrollTimeout);
     this.supr();
   },
   initBodyEl() {
