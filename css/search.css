@@ -21,7 +21,7 @@
   border-color: #ddd;
 }
 .algolia-docsearch-suggestion--category-header {
-  background: #31995e;
+  background: #ec364c;
 }
 .algolia-docsearch-footer {
   border-color: #ddd;
@@ -30,7 +30,7 @@
   background: rgba(255,255,255,0.6);
 }
 .algolia-docsearch-suggestion--highlight {
-  color: #2c815b;
+  color: #ec364c;
 }
 .aa-cursor .algolia-docsearch-suggestion--content {
   color: #2c3e50;

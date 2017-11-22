@@ -43,7 +43,8 @@
         
     </a>
     <ul id="nav">
-        <li><a href="/" class="nav-link">首页</a></li>
+        <li><input id="search-query-nav" class="search-query" placeholder="搜索" type="text" value=""></li>
+<li><a href="/" class="nav-link">首页</a></li>
 <li><a href="/components/" class="nav-link current">组件</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">资源</a><span class="arrow"></span>
@@ -55,14 +56,17 @@
   </ul>
 </li>
 
+
     </ul>
 </div>
+
         
             <div id="main" class="fix-sidebar">
                 
     <div class="sidebar">
     <ul class="main-menu">
-        <li><a href="/" class="nav-link">首页</a></li>
+        <li><input id="search-query-nav" class="search-query" placeholder="搜索" type="text" value=""></li>
+<li><a href="/" class="nav-link">首页</a></li>
 <li><a href="/components/" class="nav-link current">组件</a></li>
 <li class="nav-dropdown-container">
   <a class="nav-link">资源</a><span class="arrow"></span>
@@ -73,6 +77,7 @@
     <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
   </ul>
 </li>
+
 
     </ul>
     <div class="list">
@@ -1012,21 +1017,11 @@ var component = new NEKUI.Component({
         <link rel="stylesheet" href="/css/search.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
         <script>
-            [
-                '#search-query-nav',
-                '#search-query-sidebar'
-            ].forEach(function (selector) {
-                if (!document.querySelector(selector)) return
-                // search index defaults to v2
-                var match = window.location.pathname.match(/^\/(v\d+)/)
-                var version = match ? match[1] : 'v2'
-                docsearch({
-                    appId: '34N72WTQ6D',
-                    apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
-                    indexName: 'nek-ui',
-                    inputSelector: selector,
-                    algoliaOptions: { facetFilters: ["version:" + version] }
-                })
+            docsearch({
+                apiKey: 'e5880dd54c730e68c9fcc610adb30f33',
+                indexName: 'nek_ui',
+                inputSelector: '#search-query-nav',
+                debug: false
             })
         </script>
     </body>

@@ -396,21 +396,23 @@ body.docs #nav {
   border-bottom: 3px solid #e31436;
 }
 .search-query {
-  height: 30px;
-  line-height: 30px;
+  height: 36px;
+  line-height: 36px;
   box-sizing: border-box;
   padding: 0 15px 0 30px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid #eee;
   color: #2c3e50;
   outline: none;
   margin-right: 10px;
   transition: border-color 0.2s ease;
-  background: #fff url("/images/search.png") 8px 5px no-repeat;
+  background: #fff url("/images/search.png") 8px 7px no-repeat;
   background-size: 20px;
   vertical-align: middle !important;
+  border-radius: 2px;
 }
-.search-query:focus {
-  border-color: #e31436;
+.search-query::placeholder {
+  color: #bbb;
+  font-size: 13px;
 }
 #logo {
   display: inline-block;
