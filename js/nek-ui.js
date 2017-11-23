@@ -28936,7 +28936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	function upload(url, rawFile, options) {
-	  var data = createFormData(rawFile, options.data);
+	  var data = createFormData(rawFile, options);
 	  _.extend(options, { url: url, data: data }, true);
 
 	  return ajax(_.extend(defaults, options, true));
@@ -28947,12 +28947,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var fd = new FormData();
 	  var data = rawFile;
-	  var name = options.name || 'file';
+	  var name = options.name;
 	  if (rawFile instanceof File) {
 	    data = {};
 	    data[name] = rawFile;
 	  }
-	  _.extend(data, options);
+	  _.extend(data, options.data);
 	  var _iteratorNormalCompletion = true;
 	  var _didIteratorError = false;
 	  var _iteratorError = undefined;
@@ -28986,6 +28986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function ajax(options) {
 	  var xhr = new XMLHttpRequest();
 	  var headers = options.headers || {};
+	  _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
 
 	  xhr.open(options.type, options.url, options.async);
 
@@ -30542,6 +30543,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.status = 'uploading';
 
 	    var options = {
+	      name: data.name || 'file',
+	      data: data.data,
 	      upload: {
 	        onprogress: function onprogress(e) {
 	          data.status = 'uploading';
@@ -30616,9 +30619,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        self.$emit('error', emitItem);
 	      }
 	    };
-
-	    options.name = data.name;
-	    options.data = data.data;
 
 	    utils.upload(data.action, rawFile, options);
 
