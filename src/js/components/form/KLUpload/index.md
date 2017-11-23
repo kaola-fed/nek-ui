@@ -56,6 +56,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 ### 卡片展示形式，用于表格内上传
+
 <div class="m-example"></div>
 
 ```xml
@@ -248,6 +249,43 @@ var component = new NEKUI.Component({
         };
 
         return new Promise(removeConfirm);
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 选择文件后不上传
+
+* 该模式下，必须初始化formData属性为new FormData()默认值  
+
+<div class="m-example"></div>
+
+```xml
+<kl-upload file-list={list} autoUpload={false} formData={formData}></kl-upload>
+<kl-button title="上传" on-click={this.upload()}></kl-button>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }],
+        formData: new FormData()
+    },
+    upload: function(){
+      var ajax = new XMLHttpRequest();
+      ajax.open('json', '/upload');
+      ajax.send(this.data.formData);  
     }
 });
 ```

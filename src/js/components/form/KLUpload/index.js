@@ -46,6 +46,9 @@ const tpl = require('./index.html');
  *                                                             如果非空，则提示校验信息，并停止上传
  * @param {function}   [options.data.before-remove]        => 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者
  *                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件
+ * @param {boolean}    [options.data.autoUpload=false]     => 可选，选择文件后是否立即上传，如果设置为false, 新增文件的数据会维护在formData属性中
+ * @param {FormData}    [options.data.formData=FormData]    => 可选，在autoUpload为false（非自动上传）模式下，新增文件的formData格式数据。
+ *                                                             注：此处使用时，必须在外部初始化formData默认值，否则无法实现三层的双向数据绑定
  */
 
 const KLUpload = Component.extend({
@@ -76,8 +79,9 @@ const KLUpload = Component.extend({
       onErrorInterceptor: data.beforeOnError || null,
       beforeUpload: null,
       beforeRemove: null,
+      autoUpload: true,
+      formData: new FormData(),
     });
-
     this.preProcess(data);
     this.initValidation();
 

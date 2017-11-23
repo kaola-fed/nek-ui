@@ -18,29 +18,26 @@ const defaults = {
   async: true,
 };
 
-function upload(url, src, options) {
-  const fd = new FormData();
-  let data = src;
-  const name = options.name || 'file';
-
-  if (src instanceof File) {
-    data = {};
-    data[name] = src;
-  }
-
-  data = _.extend(data, options.data);
-
-  let key;
-  for (key in data) {
-    if (data.hasOwnProperty(key)) {
-      fd.append(key, data[key]);
-    }
-  }
-
-  options.url = url;
-  options.data = fd;
+function upload(url, rawFile, options) {
+  const data = createFormData(rawFile, options.data);
+  _.extend(options, { url, data }, true);
 
   return ajax(_.extend(defaults, options, true));
+}
+
+function createFormData(rawFile, options = {}) {
+  const fd = new FormData();
+  let data = rawFile;
+  const name = options.name || 'file';
+  if (rawFile instanceof File) {
+    data = {};
+    data[name] = rawFile;
+  }
+  _.extend(data, options);
+  for (const [key, value] of Object.entries(data)) {
+    fd.append(key, value);
+  }
+  return fd;
 }
 
 function ajax(options) {
@@ -80,4 +77,5 @@ module.exports = {
   upload,
   genUid,
   camelize,
+  createFormData,
 };

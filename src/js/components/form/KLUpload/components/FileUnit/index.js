@@ -38,6 +38,14 @@ const FileUnit = Component.extend({
     data.filename = file.name;
     data.type = file.type;
 
+    if (!data.autoUpload) {
+      this.$emit('success', {
+        sender: this,
+        file: data.file,
+        status: data.status,
+      });
+      return true;
+    }
     // for initial uploaded files
     if (data.status === 'ready') {
       this.uploadFile(file.rawFile);
