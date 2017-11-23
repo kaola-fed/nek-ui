@@ -19,7 +19,7 @@ const defaults = {
 };
 
 function upload(url, rawFile, options) {
-  const data = createFormData(rawFile, options.data);
+  const data = createFormData(rawFile, options);
   _.extend(options, { url, data }, true);
 
   return ajax(_.extend(defaults, options, true));
@@ -28,12 +28,12 @@ function upload(url, rawFile, options) {
 function createFormData(rawFile, options = {}) {
   const fd = new FormData();
   let data = rawFile;
-  const name = options.name || 'file';
+  const name = options.name;
   if (rawFile instanceof File) {
     data = {};
     data[name] = rawFile;
   }
-  _.extend(data, options);
+  _.extend(data, options.data);
   for (const [key, value] of Object.entries(data)) {
     fd.append(key, value);
   }
@@ -43,6 +43,7 @@ function createFormData(rawFile, options = {}) {
 function ajax(options) {
   const xhr = new XMLHttpRequest();
   const headers = options.headers || {};
+  _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
 
   xhr.open(options.type, options.url, options.async);
 

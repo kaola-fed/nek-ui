@@ -60,6 +60,8 @@ const FileUnit = Component.extend({
     data.status = 'uploading';
 
     const options = {
+      name: data.name || 'file',
+      data: data.data,
       upload: {
         onprogress(e) {
           data.status = 'uploading';
@@ -134,9 +136,6 @@ const FileUnit = Component.extend({
         self.$emit('error', emitItem);
       },
     };
-
-    options.name = data.name;
-    options.data = data.data;
 
     utils.upload(data.action, rawFile, options);
 
