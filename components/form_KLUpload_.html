@@ -467,6 +467,15 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-remove</span>=<span class="string">&#123;this.beforeRemove&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeRemove</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> file = item.file;</div><div class="line">        <span class="keyword">var</span> removeConfirm = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(<span class="string">'确认删除'</span> + file.name + <span class="string">'?'</span>);</div><div class="line">            modal.$on(<span class="string">'ok'</span>, () =&gt; resolve(<span class="literal">true</span>));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(removeConfirm);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
+<div class="grid-item" markdown="1">
+<h3 id="选择文件后不上传"><a href="#选择文件后不上传" class="headerlink" title="选择文件后不上传"></a>选择文件后不上传</h3><ul>
+<li>该模式下，必须初始化formData属性为new FormData()默认值  </li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">autoUpload</span>=<span class="string">&#123;false&#125;</span> <span class="attr">formData</span>=<span class="string">&#123;formData&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"上传"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.upload()&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;],</div><div class="line">        <span class="attr">formData</span>: <span class="keyword">new</span> FormData()</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">upload</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> ajax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">      ajax.open(<span class="string">'json'</span>, <span class="string">'/upload'</span>);</div><div class="line">      ajax.send(<span class="keyword">this</span>.data.formData);  </div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLUpload"></a></p>
 <h2 id="KLUpload"><a href="#KLUpload" class="headerlink" title="KLUpload"></a><span class="param-title">KLUpload</span><a name="new_KLUpload_new"></a></h2><h3 id="KLUpload-1"><a href="#KLUpload-1" class="headerlink" title="KLUpload"></a><span class="param-title">KLUpload</span></h3><table>
 <thead>
@@ -615,6 +624,18 @@
 <td><code>function</code></td>
 <td></td>
 <td>=&gt; 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件</td>
+</tr>
+<tr>
+<td>[options.data.autoUpload]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 可选，选择文件后是否立即上传，如果设置为false, 新增文件的数据会维护在formData属性中</td>
+</tr>
+<tr>
+<td>[options.data.formData]</td>
+<td><code>FormData</code></td>
+<td><code>FormData</code></td>
+<td>=&gt; 可选，在autoUpload为false（非自动上传）模式下，新增文件的formData格式数据。                                                             注：此处使用时，必须在外部初始化formData默认值，否则无法实现三层的双向数据绑定</td>
 </tr>
 </tbody>
 </table>
@@ -1359,6 +1380,83 @@ var component = new NEKUI.Component({
         };
 
         return new Promise(removeConfirm);
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-upload file-list={list} autoUpload={false} formData={formData}></kl-upload>
+<kl-button title="上传" on-click={this.upload()}></kl-button>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }],
+        formData: new FormData()
+    },
+    upload: function(){
+      var ajax = new XMLHttpRequest();
+      ajax.open('json', '/upload');
+      ajax.send(this.data.formData);  
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-upload file-list={list} autoUpload={false} formData={formData}></kl-upload>
+<kl-button title="上传" on-click={this.upload()}></kl-button>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }],
+        formData: new FormData()
+    },
+    upload: function(){
+      var ajax = new XMLHttpRequest();
+      ajax.open('json', '/upload');
+      ajax.send(this.data.formData);  
     }
 });
 `
