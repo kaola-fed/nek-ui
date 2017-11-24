@@ -106,6 +106,7 @@ const KLTable = Component.extend({
       checkAll: false,
       initFinished: false,
       minColWidth: 50,
+      isMobile: u.browser.versions.mobile,
     });
     this.supr(data);
     this.data.minColWidth = +this.data.minColWidth;
@@ -139,7 +140,7 @@ const KLTable = Component.extend({
     this.$watch('headerHeight', this._updateBodyHeight);
     this.$watch('height', this._updateBodyHeight);
 
-    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
+    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), this.data.isMobile ? 100 : 16);
 
     this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
     this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
