@@ -99,42 +99,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLTreeView: __webpack_require__(190),
 
 	  // Navigation
-	  KLSidebar: __webpack_require__(397),
-	  KLMenu: __webpack_require__(400),
-	  KLMenuItem: __webpack_require__(402),
-	  KLSubMenu: __webpack_require__(405),
-	  KLPager: __webpack_require__(407),
-	  KLTabs: __webpack_require__(409),
-	  KLTab: __webpack_require__(411),
-	  KLSteps: __webpack_require__(413),
-	  KLCrumb: __webpack_require__(415),
-	  KLCrumbItem: __webpack_require__(417),
+	  KLSidebar: __webpack_require__(390),
+	  KLMenu: __webpack_require__(393),
+	  KLMenuItem: __webpack_require__(395),
+	  KLSubMenu: __webpack_require__(398),
+	  KLPager: __webpack_require__(400),
+	  KLTabs: __webpack_require__(402),
+	  KLTab: __webpack_require__(404),
+	  KLSteps: __webpack_require__(406),
+	  KLCrumb: __webpack_require__(408),
+	  KLCrumbItem: __webpack_require__(410),
 
 	  // Notice
-	  KLModal: __webpack_require__(390),
-	  KLNotify: __webpack_require__(419),
-	  KLPopConfirm: __webpack_require__(421),
-	  KLMessage: __webpack_require__(435),
+	  KLModal: __webpack_require__(383),
+	  KLNotify: __webpack_require__(412),
+	  KLPopConfirm: __webpack_require__(414),
+	  KLMessage: __webpack_require__(428),
 
 	  // Widget
-	  KLBadge: __webpack_require__(437),
-	  KLProgress: __webpack_require__(439),
-	  KLLoading: __webpack_require__(441),
-	  KLTooltip: __webpack_require__(443),
-	  KLIcon: __webpack_require__(445),
-	  KLImagePreview: __webpack_require__(389),
-	  KLLocaleProvider: __webpack_require__(447),
+	  KLBadge: __webpack_require__(430),
+	  KLProgress: __webpack_require__(432),
+	  KLLoading: __webpack_require__(434),
+	  KLTooltip: __webpack_require__(436),
+	  KLIcon: __webpack_require__(438),
+	  KLImagePreview: __webpack_require__(382),
+	  KLLocaleProvider: __webpack_require__(440),
 
 	  // Layout
-	  KLTable: __webpack_require__(448),
-	  KLTableCol: __webpack_require__(458),
-	  KLTableTemplate: __webpack_require__(459),
-	  KLRow: __webpack_require__(460),
-	  KLCol: __webpack_require__(462),
-	  KLCard: __webpack_require__(464),
-	  KLCardTools: __webpack_require__(466),
-	  KLSearch: __webpack_require__(467),
-	  KLSearchMore: __webpack_require__(469)
+	  KLTable: __webpack_require__(441),
+	  KLTableCol: __webpack_require__(451),
+	  KLTableTemplate: __webpack_require__(452),
+	  KLRow: __webpack_require__(453),
+	  KLCol: __webpack_require__(455),
+	  KLCard: __webpack_require__(457),
+	  KLCardTools: __webpack_require__(459),
+	  KLSearch: __webpack_require__(460),
+	  KLSearchMore: __webpack_require__(462)
 	};
 
 	backward(Components);
@@ -28708,12 +28708,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ = __webpack_require__(72);
 	var utils = __webpack_require__(362);
-	var Config = __webpack_require__(370);
+	var Config = __webpack_require__(363);
 	var Component = __webpack_require__(70);
-	var UploadList = __webpack_require__(371);
-	var UploadCard = __webpack_require__(394);
+	var UploadList = __webpack_require__(364);
+	var UploadCard = __webpack_require__(387);
 	var validationMixin = __webpack_require__(170);
-	var tpl = __webpack_require__(396);
+	var tpl = __webpack_require__(389);
 
 	/**
 	 * @class KLUpload
@@ -28750,9 +28750,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *                                                             如果非空，则提示校验信息，并停止上传
 	 * @param {function}   [options.data.before-remove]        => 可选，删除文件时的钩子，参数结构同remove回调函数，返回同步删除确认信息或者
 	 *                                                             Promise 对象，最终返回的确认信息，如果为false，则停止删除；否则删除改文件
-	 * @param {boolean}    [options.data.autoUpload=false]     => 可选，选择文件后是否立即上传，如果设置为false, 新增文件的数据会维护在formData属性中
-	 * @param {FormData}    [options.data.formData=FormData]    => 可选，在autoUpload为false（非自动上传）模式下，新增文件的formData格式数据。
-	 *                                                             注：此处使用时，必须在外部初始化formData默认值，否则无法实现三层的双向数据绑定
 	 */
 
 	var KLUpload = Component.extend({
@@ -28782,10 +28779,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onLoadInterceptor: data.beforeOnLoad || null,
 	      onErrorInterceptor: data.beforeOnError || null,
 	      beforeUpload: null,
-	      beforeRemove: null,
-	      autoUpload: true,
-	      formData: new FormData()
+	      beforeRemove: null
 	    });
+
 	    this.preProcess(data);
 	    this.initValidation();
 
@@ -28903,20 +28899,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _slicedToArray2 = __webpack_require__(363);
-
-	var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
-
-	var _entries = __webpack_require__(367);
-
-	var _entries2 = _interopRequireDefault(_entries);
-
-	var _getIterator2 = __webpack_require__(36);
-
-	var _getIterator3 = _interopRequireDefault(_getIterator2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var _ = __webpack_require__(72);
 
 	function genUid() {
@@ -28935,58 +28917,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	  async: true
 	};
 
-	function upload(url, rawFile, options) {
-	  var data = createFormData(rawFile, options);
-	  _.extend(options, { url: url, data: data }, true);
+	function upload(url, src, options) {
+	  var fd = new FormData();
+	  var data = src;
+	  var name = options.name || 'file';
+
+	  if (src instanceof File) {
+	    data = {};
+	    data[name] = src;
+	  }
+
+	  data = _.extend(data, options.data);
+
+	  var key = void 0;
+	  for (key in data) {
+	    if (data.hasOwnProperty(key)) {
+	      fd.append(key, data[key]);
+	    }
+	  }
+
+	  options.url = url;
+	  options.data = fd;
 
 	  return ajax(_.extend(defaults, options, true));
-	}
-
-	function createFormData(rawFile) {
-	  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-	  var fd = new FormData();
-	  var data = rawFile;
-	  var name = options.name;
-	  if (rawFile instanceof File) {
-	    data = {};
-	    data[name] = rawFile;
-	  }
-	  _.extend(data, options.data);
-	  var _iteratorNormalCompletion = true;
-	  var _didIteratorError = false;
-	  var _iteratorError = undefined;
-
-	  try {
-	    for (var _iterator = (0, _getIterator3.default)((0, _entries2.default)(data)), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	      var _step$value = (0, _slicedToArray3.default)(_step.value, 2),
-	          key = _step$value[0],
-	          value = _step$value[1];
-
-	      fd.append(key, value);
-	    }
-	  } catch (err) {
-	    _didIteratorError = true;
-	    _iteratorError = err;
-	  } finally {
-	    try {
-	      if (!_iteratorNormalCompletion && _iterator.return) {
-	        _iterator.return();
-	      }
-	    } finally {
-	      if (_didIteratorError) {
-	        throw _iteratorError;
-	      }
-	    }
-	  }
-
-	  return fd;
 	}
 
 	function ajax(options) {
 	  var xhr = new XMLHttpRequest();
 	  var headers = options.headers || {};
-	  _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
 
 	  xhr.open(options.type, options.url, options.async);
 
@@ -29020,123 +28978,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = {
 	  upload: upload,
 	  genUid: genUid,
-	  camelize: camelize,
-	  createFormData: createFormData
+	  camelize: camelize
 		};
 
 /***/ }),
 /* 363 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _isIterable2 = __webpack_require__(364);
-
-	var _isIterable3 = _interopRequireDefault(_isIterable2);
-
-	var _getIterator2 = __webpack_require__(36);
-
-	var _getIterator3 = _interopRequireDefault(_getIterator2);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = function () {
-	  function sliceIterator(arr, i) {
-	    var _arr = [];
-	    var _n = true;
-	    var _d = false;
-	    var _e = undefined;
-
-	    try {
-	      for (var _i = (0, _getIterator3.default)(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
-	        _arr.push(_s.value);
-
-	        if (i && _arr.length === i) break;
-	      }
-	    } catch (err) {
-	      _d = true;
-	      _e = err;
-	    } finally {
-	      try {
-	        if (!_n && _i["return"]) _i["return"]();
-	      } finally {
-	        if (_d) throw _e;
-	      }
-	    }
-
-	    return _arr;
-	  }
-
-	  return function (arr, i) {
-	    if (Array.isArray(arr)) {
-	      return arr;
-	    } else if ((0, _isIterable3.default)(Object(arr))) {
-	      return sliceIterator(arr, i);
-	    } else {
-	      throw new TypeError("Invalid attempt to destructure non-iterable instance");
-	    }
-	  };
-	}();
-
-/***/ }),
-/* 364 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(365), __esModule: true };
-
-/***/ }),
-/* 365 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(38);
-	__webpack_require__(54);
-	module.exports = __webpack_require__(366);
-
-/***/ }),
-/* 366 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var classof   = __webpack_require__(58)
-	  , ITERATOR  = __webpack_require__(51)('iterator')
-	  , Iterators = __webpack_require__(42);
-	module.exports = __webpack_require__(6).isIterable = function(it){
-	  var O = Object(it);
-	  return O[ITERATOR] !== undefined
-	    || '@@iterator' in O
-	    || Iterators.hasOwnProperty(classof(O));
-	};
-
-/***/ }),
-/* 367 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(368), __esModule: true };
-
-/***/ }),
-/* 368 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	__webpack_require__(369);
-	module.exports = __webpack_require__(6).Object.entries;
-
-/***/ }),
-/* 369 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	// https://github.com/tc39/proposal-object-values-entries
-	var $export  = __webpack_require__(4)
-	  , $entries = __webpack_require__(19)(true);
-
-	$export($export.S, 'Object', {
-	  entries: function entries(it){
-	    return $entries(it);
-	  }
-	});
-
-/***/ }),
-/* 370 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -29199,7 +29045,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 371 */
+/* 364 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29211,8 +29057,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var _ = __webpack_require__(72);
-	var UploadBase = __webpack_require__(372);
-	var tpl = __webpack_require__(393);
+	var UploadBase = __webpack_require__(365);
+	var tpl = __webpack_require__(386);
 
 	/**
 	 * @class UploadList
@@ -29242,7 +29088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadList;
 
 /***/ }),
-/* 372 */
+/* 365 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29251,17 +29097,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _keys2 = _interopRequireDefault(_keys);
 
-	var _promise = __webpack_require__(373);
+	var _promise = __webpack_require__(366);
 
 	var _promise2 = _interopRequireDefault(_promise);
-
-	var _values = __webpack_require__(1);
-
-	var _values2 = _interopRequireDefault(_values);
-
-	var _getIterator2 = __webpack_require__(36);
-
-	var _getIterator3 = _interopRequireDefault(_getIterator2);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29274,9 +29112,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
 	var utils = __webpack_require__(362);
-	var Config = __webpack_require__(370);
-	var FileUnit = __webpack_require__(387);
-	var KLImagePreview = __webpack_require__(389);
+	var Config = __webpack_require__(363);
+	var FileUnit = __webpack_require__(380);
+	var KLImagePreview = __webpack_require__(382);
 
 	/**
 	 * @class UploadBase
@@ -29442,91 +29280,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  },
-	  updateList: function updateList(info) {
+	  updateList: function updateList() {
 	    // setTimeout((function() { this.updateFileList(); }).bind(this), 0);
-	    this.updateFileList(info);
+	    this.updateFileList();
 	  },
-	  updateFileList: function updateFileList(info) {
+	  updateFileList: function updateFileList() {
 	    var data = this.data;
-	    var uid = info.file.uid;
-	    var fileList = data.fileList,
-	        fileUnitList = data.fileUnitList;
+	    var fileList = data.fileList;
+	    var fileUnitList = data.fileUnitList;
+	    var newFileList = [];
 
-	    // 找到触发更新的unit单元
+	    var _loop = function _loop(index) {
+	      var file = fileUnitList[index];
+	      var uid = file.uid;
+	      var flag = file.flag;
+	      var destroyed = file.destroyed;
+	      var fileIndex = fileList.findIndex(function (item) {
+	        return uid === item.uid;
+	      });
 
-	    var unitIndex = fileUnitList.findIndex(function (item) {
-	      return uid === item.uid;
-	    });
-	    var unit = fileUnitList[unitIndex];
-	    var name = unit.name,
-	        url = unit.url,
-	        flag = unit.flag,
-	        destroyed = unit.destroyed;
+	      if (fileIndex === -1) {
+	        newFileList.push({
+	          name: file.name,
+	          url: file.url,
+	          flag: flag,
+	          uid: uid
+	        });
+	      } else if (flag === Config.flagMap.DELETED) {
+	        fileList[fileIndex].flag = Config.flagMap.DELETED;
+	        fileUnitList.splice(index, 1);
+	      } else if (flag === Config.flagMap.ADDED) {
+	        fileList[fileIndex].url = file.url;
+	      } else if (destroyed) {
+	        fileList.splice(fileIndex, 1);
+	        fileUnitList.splice(index, 1);
+	      }
+	    };
 
-	    // 找到该unit单元在fileList中的位置
-
-	    var fileIndex = fileList.findIndex(function (item) {
-	      return uid === item.uid;
-	    });
-	    if (fileIndex === -1) {
-	      // fileList中不存在该单元数据，新增数据
-	      fileList.push({ name: name, url: url, flag: flag, uid: uid });
-	    } else if (flag === Config.flagMap.DELETED) {
-	      fileList[fileIndex].flag = Config.flagMap.DELETED;
-	      fileUnitList.splice(unitIndex, 1);
-	    } else if (destroyed) {
-	      fileList.splice(fileIndex, 1);
-	      fileUnitList.splice(unitIndex, 1);
+	    for (var index = fileUnitList.length - 1; index >= 0; index -= 1) {
+	      _loop(index);
 	    }
-	    if (!data.autoUpload) {
-	      this.initFormData();
-	    }
+
+	    [].push.apply(fileList, newFileList.reverse());
+
 	    this.$update();
-	  },
-	  initFormData: function initFormData() {
-	    var data = this.data;
-	    var name = data.name || 'file';
-	    var fileList = data.fileList,
-	        fileUnitList = data.fileUnitList;
-
-
-	    data.formData = data.formData || new FormData();
-	    data.formData.delete(name);
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
-
-	    try {
-	      var _loop = function _loop() {
-	        var file = _step.value;
-	        var flag = file.flag,
-	            uid = file.uid;
-
-	        if (flag === Config.flagMap.ADDED) {
-	          var unitIndex = fileUnitList.findIndex(function (item) {
-	            return uid === item.uid;
-	          });
-	          data.formData.append(name, fileUnitList[unitIndex].rawFile);
-	        }
-	      };
-
-	      for (var _iterator = (0, _getIterator3.default)((0, _values2.default)(fileList)), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        _loop();
-	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
-	    }
 	  },
 	  fileDialogOpen: function fileDialogOpen() {
 	    var inputNode = this.$refs.file;
@@ -29595,7 +29392,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              type: self.getFileType(file),
 	              flag: Config.flagMap.ADDED,
 	              uid: utils.genUid(),
-	              status: self.data.autoUpload ? 'ready' : 'wait'
+	              status: 'ready'
 	            };
 	            data.fileUnitList.push(fileunit);
 	            self.$update();
@@ -29670,13 +29467,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }));
 	  },
 	  onSuccess: function onSuccess(info) {
-	    this.updateList(info);
+	    this.updateList();
 	    this.$emit('success', _.extend(info, {
 	      fileList: this.data.fileList
 	    }));
 	  },
 	  onError: function onError(info) {
-	    this.updateList(info);
+	    this.updateList();
 	    this.$emit('error', _.extend(info, {
 	      fileList: this.data.fileList
 	    }));
@@ -29689,7 +29486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      file.flag = Config.flagMap.DELETED;
 	    }
 	    inst.destroy();
-	    this.updateList(info);
+	    this.updateList();
 
 	    this.$emit('remove', _.extend(info, {
 	      fileList: this.data.fileList
@@ -29844,23 +29641,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadBase;
 
 /***/ }),
-/* 373 */
+/* 366 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(374), __esModule: true };
+	module.exports = { "default": __webpack_require__(367), __esModule: true };
 
 /***/ }),
-/* 374 */
+/* 367 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	__webpack_require__(99);
 	__webpack_require__(54);
 	__webpack_require__(38);
-	__webpack_require__(375);
+	__webpack_require__(368);
 	module.exports = __webpack_require__(6).Promise;
 
 /***/ }),
-/* 375 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29871,11 +29668,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  , $export            = __webpack_require__(4)
 	  , isObject           = __webpack_require__(12)
 	  , aFunction          = __webpack_require__(8)
-	  , anInstance         = __webpack_require__(376)
-	  , forOf              = __webpack_require__(377)
-	  , speciesConstructor = __webpack_require__(380)
-	  , task               = __webpack_require__(381).set
-	  , microtask          = __webpack_require__(383)()
+	  , anInstance         = __webpack_require__(369)
+	  , forOf              = __webpack_require__(370)
+	  , speciesConstructor = __webpack_require__(373)
+	  , task               = __webpack_require__(374).set
+	  , microtask          = __webpack_require__(376)()
 	  , PROMISE            = 'Promise'
 	  , TypeError          = global.TypeError
 	  , process            = global.process
@@ -30067,7 +29864,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false;          // <- notify
 	  };
-	  Internal.prototype = __webpack_require__(384)($Promise.prototype, {
+	  Internal.prototype = __webpack_require__(377)($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -30094,7 +29891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 	__webpack_require__(50)($Promise, PROMISE);
-	__webpack_require__(385)(PROMISE);
+	__webpack_require__(378)(PROMISE);
 	Wrapper = __webpack_require__(6)[PROMISE];
 
 	// statics
@@ -30118,7 +29915,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return capability.promise;
 	  }
 	});
-	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(386)(function(iter){
+	$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(379)(function(iter){
 	  $Promise.all(iter)['catch'](empty);
 	})), PROMISE, {
 	  // 25.4.4.1 Promise.all(iterable)
@@ -30164,7 +29961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ }),
-/* 376 */
+/* 369 */
 /***/ (function(module, exports) {
 
 	module.exports = function(it, Constructor, name, forbiddenField){
@@ -30174,12 +29971,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 377 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx         = __webpack_require__(7)
-	  , call        = __webpack_require__(378)
-	  , isArrayIter = __webpack_require__(379)
+	  , call        = __webpack_require__(371)
+	  , isArrayIter = __webpack_require__(372)
 	  , anObject    = __webpack_require__(11)
 	  , toLength    = __webpack_require__(28)
 	  , getIterFn   = __webpack_require__(57)
@@ -30204,7 +30001,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.RETURN = RETURN;
 
 /***/ }),
-/* 378 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// call something on iterator step with safe closing on error
@@ -30221,7 +30018,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 379 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
@@ -30234,7 +30031,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 380 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -30247,11 +30044,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 381 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ctx                = __webpack_require__(7)
-	  , invoke             = __webpack_require__(382)
+	  , invoke             = __webpack_require__(375)
 	  , html               = __webpack_require__(49)
 	  , cel                = __webpack_require__(16)
 	  , global             = __webpack_require__(5)
@@ -30327,7 +30124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 382 */
+/* 375 */
 /***/ (function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -30348,11 +30145,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 383 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(5)
-	  , macrotask = __webpack_require__(381).set
+	  , macrotask = __webpack_require__(374).set
 	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
 	  , process   = global.process
 	  , Promise   = global.Promise
@@ -30421,7 +30218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 384 */
+/* 377 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var hide = __webpack_require__(9);
@@ -30433,7 +30230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 385 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30452,7 +30249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 386 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var ITERATOR     = __webpack_require__(51)('iterator')
@@ -30478,7 +30275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 387 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30491,7 +30288,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var tpl = __webpack_require__(388);
+	var tpl = __webpack_require__(381);
 	var utils = __webpack_require__(362);
 
 	var FileUnit = Component.extend({
@@ -30522,14 +30319,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.filename = file.name;
 	    data.type = file.type;
 
-	    if (!data.autoUpload) {
-	      this.$emit('success', {
-	        sender: this,
-	        file: data.file,
-	        status: data.status
-	      });
-	      return true;
-	    }
 	    // for initial uploaded files
 	    if (data.status === 'ready') {
 	      this.uploadFile(file.rawFile);
@@ -30543,8 +30332,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data.status = 'uploading';
 
 	    var options = {
-	      name: data.name || 'file',
-	      data: data.data,
 	      upload: {
 	        onprogress: function onprogress(e) {
 	          data.status = 'uploading';
@@ -30620,6 +30407,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    };
 
+	    options.name = data.name;
+	    options.data = data.data;
+
 	    utils.upload(data.action, rawFile, options);
 
 	    this.$update();
@@ -30664,13 +30454,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = FileUnit;
 
 /***/ }),
-/* 388 */
+/* 381 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
-/* 389 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -30681,8 +30471,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLModal = __webpack_require__(390);
-	var tpl = __webpack_require__(392);
+	var KLModal = __webpack_require__(383);
+	var tpl = __webpack_require__(385);
 
 	/**
 	 * @class KLImagePreview
@@ -31018,7 +30808,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLImagePreview;
 
 /***/ }),
-/* 390 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31030,7 +30820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	//  */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(391);
+	var template = __webpack_require__(384);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -31163,25 +30953,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLModal;
 
 /***/ }),
-/* 391 */
+/* 384 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight || minHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 392 */
+/* 385 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-image-preview\" on-mouseup={this.onMouseUp($event)}>\n    <div class=\"m-panel-wrapper\">\n        <div class=\"m-panel-close\" on-click={this.onClose()}></div>\n        <div class=\"m-full-panel\" on-mousewheel={this.onMouseWheel($event)}>\n            <span class=\"u-pre-btn\" on-click={this.onPrev()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" ref=\"full-{img_index}\" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>\n                        <img ref=\"full-img-{img_index}\" src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n            <span class=\"u-next-btn\" on-click={this.onNext()}><i class=\"u-icon\"></i></span>\n            <ul class=\"m-btn-group\">\n                {#list opList as op}\n                    <li class=\"m-btn-item\" r-style={{\"margin-right\": op.name === 'zoomIn' ? '30px' : 0}}>\n                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}\n                            <a class=\"u-download\" href={imageList[curIndex].src} download={imageList[curIndex].name}><i class=\"u-icon u-icon-export\"></i></a>\n                        {#elseif op.name === 'zoomIn'}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                            <span class=\"u-scale\">{parseInt(virtualInfo.scale * 100)}%</span>\n                        {#else}\n                            <i class=\"u-icon u-icon-{op.icon}\" on-click={this[op.fnName].bind(this)(curIndex)}></i>\n                        {/if}\n                    </li>\n                {/list}\n            </ul>\n            <ul class=\"m-virtual-zone\" ref=\"virtualzone\" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>\n                <li ref=\"virtualimage\" class=\"m-image-wrapper\" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>\n                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>\n                </li>\n            </ul>\n        </div>\n        <div class=\"m-thumbnail-panel\">\n            <div class=\"u-image-name\" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>\n            <ul class=\"m-image-list\">\n                {#list imageList as img}\n                    <li class=\"m-image-item\" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>\n                        <img src={img.src} alt={img.name} draggable={false}/>\n                    </li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
-/* 393 */
+/* 386 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      autoUpload={autoUpload}\n                      onLoadInterceptor={onLoadInterceptor}\n                      onErrorInterceptor={onErrorInterceptor}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
+	module.exports = "<div class=\"m-upload\">\n    <ul ref=\"fileswrapper\" class=\"m-filelist\"\n        r-style={{\n            width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'\n        }}>\n        {#list fileUnitList as fileunit}\n            <li class=\"u-fileitem\"\n                r-style={{\n                    \"margin-right\": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? \"0\" : fileUnitMargin + \"px\"\n                }}>\n                  <file-unit\n                      file={fileunit}\n                      action={action}\n                      url={fileunit.url}\n                      name={name}\n                      status={fileunit.status}\n                      readonly={readonly}\n                      data={data}\n                      onLoadInterceptor={onLoadInterceptor}\n                      onErrorInterceptor={onErrorInterceptor}\n                      beforeRemove={beforeRemove}\n                      on-preview={this.onPreview($event)}\n                      on-progress={this.onProgress($event)}\n                      on-success={this.onSuccess($event)}\n                      on-error={this.onError($event)}\n                      on-remove={this.onRemove($event)}/>\n            </li>\n        {/list}\n        <li ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </li>\n    </ul>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={encType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 394 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31194,9 +30984,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ = __webpack_require__(72);
 	var utils = __webpack_require__(362);
-	var UploadBase = __webpack_require__(372);
-	var Config = __webpack_require__(370);
-	var tpl = __webpack_require__(395);
+	var UploadBase = __webpack_require__(365);
+	var Config = __webpack_require__(363);
+	var tpl = __webpack_require__(388);
 
 	/**
 	 * @class UploadCard
@@ -31530,19 +31320,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = UploadCard;
 
 /***/ }),
-/* 395 */
+/* 388 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-upload\" ref=\"element\">\n    <div class=\"m-files-zone\" ref=\"fileszone\">\n        <div class=\"m-entry-wrapper\" ref=\"entrywrapper\" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>\n            <div ref=\"filesentry\" class=\"m-entry\">\n                {#if entryFileInfo.type === 'image'}\n                    <div class=\"m-img-wrapper\">\n                        <img class=\"u-img\" src={entryFileInfo.src} alt={entryFileInfo.name}/>\n                    </div>\n                {#elseif entryFileInfo.type === 'unknown'}\n                    <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n                {#else} <!-- TEXT, DOC, JS, HTML -->\n                    <span class=\"u-txt\">{entryFileInfo.type.toUpperCase()}</span>\n                {/if}\n                <div class=\"m-status\">\n                    {#if status === 'fail'}\n                        <span class=\"u-failed\" on-click={this.uploadFiles()}>\n                            <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                        </span>\n                    {#elseif status === 'uploading'}\n                        <span class=\"u-uploading\">\n                            <span class=\"u-progress-wrapper\">\n                                <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                                <span class=\"u-progress\">\n                                    <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                                </span>\n                            </span>\n                        </span>\n                    {/if}\n                </div>\n                <span class=\"u-info\">{fileUnitList.length}</span>\n                <span ref=\"filesbanner\" class=\"u-banner\" r-class={{'top': isTopBanner}}></span>\n                <ul ref=\"fileswrapper\" class=\"m-filelist\" on-click={this.toggle(true, $event)}\n                    r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>\n                    {#list fileUnitList as fileunit}\n                        <li class=\"u-fileitem\"\n                            r-style={{\n                                \"margin-left\": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + \"px\" : \"auto\"\n                            }}>\n                            <file-unit ref=\"fileunit{fileunit_index}\"\n                                file={fileunit}\n                                action={action}\n                                url={fileunit.url}\n                                name={name}\n                                status={fileunit.status}\n                                readonly={readonly}\n                                data={data}\n                                onLoadInterceptor={onLoadInterceptor}\n                                onErrorInterceptor={onErrorInterceptor}\n                                beforeRemove={beforeRemove}\n                                on-preview={this.onPreview($event)}\n                                on-progress={this.onProgress($event)}\n                                on-success={this.onSuccess($event)}\n                                on-error={this.onError($event)}\n                                on-remove={this.onRemove($event)}/>\n                        </li>\n                    {/list}\n                </ul>\n            </div>\n            <div class=\"m-entry-info\">{info}</div>\n        </div>\n        <div ref=\"inputwrapper\" class=\"u-input-wrapper\" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>\n            {#if this.$body}\n                {#inc this.$body}\n            {#else}\n                <div class=\"u-input-btn\"\n                     r-class={{dragover: dragover}}\n                     on-drop={this.onDrop($event)}\n                     on-dragenter={this.onDragEnter($event)}\n                     on-dragleave={this.onDragLeave($event)}\n                     on-dragover={this.onDragOver($event)}>\n                    <span class=\"u-input-content\"><i class=\"u-icon u-icon-plus\"></i>{this.$trans('UPLOAD_FILE')}</span>\n                </div>\n                <div class=\"u-input-info\">{preCheckInfo}</div>\n            {/if}\n        </div>\n    </div>\n    <form method=\"POST\" action={url} target=\"iframe{_id}\" enctype={contentType} ref=\"form\">\n        <input type=\"file\" name={name} ref=\"file\" multiple={multiple ? 'multiple' : ''} accept={accept} r-hide={true} on-change={this.fileSelect()}>\n        {#list Object.keys(data) as key}\n            <input type=\"hidden\" name={key} value={data[key]}>\n        {/list}\n    </form>\n    <div ref=\"imagepreview\"></div>\n</div>\n"
 
 /***/ }),
-/* 396 */
+/* 389 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
-/* 397 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31551,10 +31341,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file KLSidebar
 	 * @author   sensen(rainforest92@126.com)
 	 */
-	var scrollIntoViewFn = __webpack_require__(398);
+	var scrollIntoViewFn = __webpack_require__(391);
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(399);
+	var template = __webpack_require__(392);
 
 	/**
 	 * @class KLSidebar
@@ -31645,7 +31435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSidebar;
 
 /***/ }),
-/* 398 */
+/* 391 */
 /***/ (function(module, exports) {
 
 	var COMPLETE = 'complete',
@@ -31848,13 +31638,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 399 */
+/* 392 */
 /***/ (function(module, exports) {
 
 	module.exports = "<aside class=\"m-sidebar {class}\" r-class={ {'active':active } } r-style={ {width: width, top: top} }>\n  <div class=\"sidebar_menus\">\n    <kl-menu uniqueOpened=\"{uniqueOpened}\" on-menuitem-click=\"{this.onMenuItemClick($event)}\" router=\"{router}\">\n      {#list menus as menu}\n      {#if menu[childrenKey] && menu[childrenKey].length}\n      <kl-menu-sub title=\"{menu[titleKey]}\" defaultOpen=\"{menu.open}\" iconClass=\"{menu.iconClass}\">\n        {#list menu[childrenKey] as page}\n        <kl-menu-item isCurrent=\"{page.open}\" url=\"{page[urlKey]}\" route=\"{page[routeKey]}\">{page[pageKey]}</kl-menu-item>\n        {/list}\n      </kl-menu-sub>\n      {#else}\n      <kl-menu-sub url=\"{menu[urlKey]}\" route=\"{menu[routeKey]}\" titleTemplate=\"{menu[titleKey]}\" iconClass=\"{menu.iconClass}\"></kl-menu-sub>\n      {/if}\n      {/list}\n    </kl-menu>\n  </div>\n\n  <div class=\"sidebar_slideBtn\" on-click=\"{this.toggle($event)}\" r-style={{ left: width }}>\n    {#if active}\n    <i class=\"u-icon u-icon-chevron_left\"></i>\n    {#else}\n    <i class=\"u-icon u-icon-chevron_right\"></i>\n    {/if}\n  </div>\n</aside>"
 
 /***/ }),
-/* 400 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31864,7 +31654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(401);
+	var template = __webpack_require__(394);
 
 	/**
 	 * @class KLMenu
@@ -31948,13 +31738,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMenu;
 
 /***/ }),
-/* 401 */
+/* 394 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-menu {class}\">\n  {#inc this.$body}\n</ul>"
 
 /***/ }),
-/* 402 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -31967,8 +31757,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(403);
-	var RootMenuMixin = __webpack_require__(404);
+	var template = __webpack_require__(396);
+	var RootMenuMixin = __webpack_require__(397);
 
 	/**
 	 * @class KLMenuItem
@@ -32019,18 +31809,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLMenuItem;
 
 /***/ }),
-/* 403 */
+/* 396 */
 /***/ (function(module, exports) {
 
 	module.exports = "<a class=\"m-menuItem {class}\" r-class={ {'active': active} } on-click={this.goto($event)} r-route={url+route}>\n  {#if title}\n    {title}\n  {#else}\n    {#inc this.$body}\n  {/if}\n</a>\n"
 
 /***/ }),
-/* 404 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var KLMenu = __webpack_require__(400);
+	var KLMenu = __webpack_require__(393);
 
 	module.exports = function (Component) {
 	  Component.implement({
@@ -32052,7 +31842,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 405 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32065,8 +31855,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(406);
-	var RootMenuMixin = __webpack_require__(404);
+	var template = __webpack_require__(399);
+	var RootMenuMixin = __webpack_require__(397);
 
 	/**
 	 * @class KLSubMenu
@@ -32120,13 +31910,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLSubMenu;
 
 /***/ }),
-/* 406 */
+/* 399 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if url || route}\n<a class=\"m-subMenu {class}\" r-class={ {'active': active} } r-route={url+route}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n  </div>\n</a>\n{#else}\n<li class=\"m-subMenu {class}\" r-class={ {'active': active} } on-click={this.toggle($event)}>\n  <div class=\"head\">\n    {#if iconClass}\n    <span class=\"head_icon {iconClass}\"></span>\n    {/if}\n    <span class=\"head_title\">\n      {#if title}\n        {title}\n      {#elseif titleTemplate}\n        {#inc titleTemplate}\n      {/if}\n    </span>\n    {#if this.$body}\n      <span class=\"head_arrow u-icon u-icon-angle-right\" r-class={ {'isOpen':active} }></span>\n    {/if}\n  </div>\n  {#if active}\n  <div class=\"menuItems\" r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n    {#inc this.$body}\n  </div>\n  {/if}\n</li>\n{/if}"
 
 /***/ }),
-/* 407 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32137,7 +31927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(408);
+	var template = __webpack_require__(401);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32277,13 +32067,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPager;
 
 /***/ }),
-/* 408 */
+/* 401 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if total > 1}\n<div class=\"m-pager m-pager-{@(position)} {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"m-left-pager\">\n        {#if !!pageSize || pageSize === 0}\n        <div class=\"page_size\"><kl-select placeholder=\"\" value={pageSize} source={pageSizeList} size=\"sm\"></kl-select></div>\n        {/if}\n\n        {#if !!sumTotal || sumTotal === 0}\n            {#if !!maxTotal && sumTotal > maxTotal}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#elseif isEllipsis}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>\n            {#else}\n            <div class=\"page_total\">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>\n            {/if}\n        {/if}\n    </div>\n\n    <ul class=\"m-right-pager\">\n        <li class=\"page_item page_prev\" z-dis={current <= 1} on-click={this.select(current - 1)}>\n        <i class=\"u-icon u-icon-chevron_left\"></i>\n        </li>\n\n        {#if total - middle > side * 2 + 1}\n        {#list 1..side as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _start > side + 1}<li class=\"page_item\">...</li>{/if}\n        {#list _start.._end as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#if _end < total - side}<li class=\"page_item\">...</li>{/if}\n        {#list (total - side + 1)..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {#else}\n        {#list 1..total as i}\n        <li class=\"page_item\" z-crt={current == i} on-click={this.select(i)}>{i}</li>\n        {/list}\n        {/if}\n\n        <li class=\"page_item pager_next\" z-dis={current >= total} on-click={this.select(current + 1)}><i class=\"u-icon u-icon-chevron_right\"></i></li>\n\n        <li class=\"page_goto\">\n            <span>{this.$trans('GOTO')}</span>\n            <kl-input type=\"int\" on-keyup={this.enter($event)} size=\"sm\" value={pageNo} />\n            <span>{this.$trans('PAGE')}</span>\n        </li>\n\n        <li class=\"page_confirm\">\n            <kl-button on-click={this.goto()} type=\"tertiary\" title={this.$trans('CONFIRM')} size=\"sm\" />\n        </li>\n    </ul>\n\n</div>\n{/if}\n"
 
 /***/ }),
-/* 409 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32294,7 +32084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(410);
+	var template = __webpack_require__(403);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32445,13 +32235,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTabs;
 
 /***/ }),
-/* 410 */
+/* 403 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-tabs {class}\" z-dis={disabled} r-hide={!visible}>\n    <div class=\"tabs-scroll {scrollable ? 'scrollable' : ''}\">\n        {#if scrollable}\n        <span class=\"nav-prev {scrollable.prev ? '' : 'disabled'}\" on-click={this.prev()}>\n            <i class=\"u-icon u-icon-chevron-left\"></i>\n        </span>\n        <span class=\"nav-next {scrollable.next ? '' : 'disabled'}\" on-click={this.next()}>\n            <i class=\"u-icon u-icon-chevron-right\"></i>\n        </span>\n        {/if}\n        <div ref=\"wrap\" class=\"nav-scroll\">\n            <ul ref=\"nav\" class=\"tabs_hd\" r-style={navStyle}>\n                {#list tabs as item}\n                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>\n                {/list}\n            </ul>\n        </div>\n    </div>\n    <div class=\"tabs_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 411 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32464,8 +32254,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var template = __webpack_require__(412);
-	var KLTabs = __webpack_require__(409);
+	var template = __webpack_require__(405);
+	var KLTabs = __webpack_require__(402);
 
 	/**
 	 * @class KLTab
@@ -32507,13 +32297,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTab;
 
 /***/ }),
-/* 412 */
+/* 405 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this.$outer.data.fresh}\n{#if this.$outer.data.selected === this}\n<div>{#inc this.$body}</div>\n{/if}\n{#else}\n<div r-hide={this.$outer.data.selected !== this}>{#inc this.$body}</div>\n{/if}"
 
 /***/ }),
-/* 413 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32524,7 +32314,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(414);
+	var template = __webpack_require__(407);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32574,13 +32364,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSteps;
 
 /***/ }),
-/* 414 */
+/* 407 */
 /***/ (function(module, exports) {
 
 	module.exports = "<ul class=\"m-steps m-steps-{size} f-cb\">\n    {#list steps as item by item_index}\n        <li class=\"stepsItem\"\n            style=\"{ item_index != steps.length-1 ? 'width:'+ 100/(steps.length-1) + '%;margin-right:' + ( -166/(steps.length-1) ) + 'px;' : ''}\"\n            r-class={{'finishedItem': item_index/1 < currentIndex/1}} >\n            {#if item_index != steps.length-1}\n            <div class=\"stepsLine\" style=\"{ 'left: 72px;padding-right:' + 160/(steps.length-1) + 'px;' }\">\n                <i></i>\n            </div>\n            {/if}\n            <div class=\"step\" r-class={{'currentStep': current == item.status}}>\n                <div class=\"itemHead\">\n                    {#if item_index < currentIndex}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon u-icon u-icon-ok\"></span>\n                    </div>\n                    {#else}\n                    <div class=\"icon\">\n                        <span class=\"stepIcon\">{item_index + 1}</span>\n                    </div>\n                    {/if}\n                </div>\n                <div class=\"itemMain\">\n                    <div class=\"mainTitle\">{item.title}</div>\n                    <div class=\"mainDescription\">{item.description}</div>\n                </div>\n            </div>\n        </li>\n    {/list}\n</ul>"
 
 /***/ }),
-/* 415 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32591,7 +32381,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(416);
+	var template = __webpack_require__(409);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32627,13 +32417,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumb;
 
 /***/ }),
-/* 416 */
+/* 409 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb f-cb {class}\">\n    {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 417 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32646,9 +32436,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(418);
+	var template = __webpack_require__(411);
 	var _ = __webpack_require__(72);
-	var KLCrumb = __webpack_require__(415);
+	var KLCrumb = __webpack_require__(408);
 
 	/**
 	 * @class KLCrumbItem
@@ -32674,19 +32464,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCrumbItem;
 
 /***/ }),
-/* 418 */
+/* 411 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"kl-m-crumb_item f-cb {class}\">\n    {#if this != this.$outer.data.crumbArr[0]}\n    <span class=\"crumb_separator\">{#inc this.$outer.data.separator}</span>\n    {/if}\n    <div class=\"crumb_ct\">\n        {#if href}\n            <a class=\"crumb_link\" href=\"{href}\">{#inc content || this.$body}</a>\n        {#else}\n            {#inc content || this.$body}\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
-/* 419 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(420);
+	var template = __webpack_require__(413);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -32835,13 +32625,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLNotify;
 
 /***/ }),
-/* 420 */
+/* 413 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
-/* 421 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32854,8 +32644,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(422);
-	__webpack_require__(423);
+	var template = __webpack_require__(415);
+	__webpack_require__(416);
 
 	var PopUp = Component.extend({
 	  template: template,
@@ -32968,13 +32758,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLPopConfirm;
 
 /***/ }),
-/* 422 */
+/* 415 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-popconfirm {placement}\">\n\t<div class=\"arrow\"></div>\n\t<div class=\"inner\">\n\t\t<div class=\"body\">\n\t\t\t{#if contentTemplate}\n\t\t\t{#inc @(contentTemplate)}\n\t\t\t{#else}\n\t\t\t<span class=\"u-icon u-icon-info-circle u-text u-text-warning\"></span>\n\t\t\t{content}\n\t\t\t{/if}\n\t\t</div>\n\t\t<div class=\"foot\">\n\t\t\t<button class=\"u-btn u-btn-sm\" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>\n\t\t\t<button class=\"u-btn u-btn-sm u-btn-primary\" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
-/* 423 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -32990,7 +32780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	__webpack_require__(424);
+	__webpack_require__(417);
 
 	/**
 	 * @class Trigger
@@ -33091,7 +32881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Trigger;
 
 /***/ }),
-/* 424 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33104,11 +32894,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var dom = __webpack_require__(71).dom;
-	var domAlign = __webpack_require__(425);
+	var domAlign = __webpack_require__(418);
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var placement = __webpack_require__(434);
+	var placement = __webpack_require__(427);
 
 	/**
 	 * @class Alignment
@@ -33162,7 +32952,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = Alignment;
 
 /***/ }),
-/* 425 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33171,31 +32961,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(426);
+	var _utils = __webpack_require__(419);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(428);
+	var _getOffsetParent = __webpack_require__(421);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
-	var _getVisibleRectForElement = __webpack_require__(429);
+	var _getVisibleRectForElement = __webpack_require__(422);
 
 	var _getVisibleRectForElement2 = _interopRequireDefault(_getVisibleRectForElement);
 
-	var _adjustForViewport = __webpack_require__(430);
+	var _adjustForViewport = __webpack_require__(423);
 
 	var _adjustForViewport2 = _interopRequireDefault(_adjustForViewport);
 
-	var _getRegion = __webpack_require__(431);
+	var _getRegion = __webpack_require__(424);
 
 	var _getRegion2 = _interopRequireDefault(_getRegion);
 
-	var _getElFuturePos = __webpack_require__(432);
+	var _getElFuturePos = __webpack_require__(425);
 
 	var _getElFuturePos2 = _interopRequireDefault(_getElFuturePos);
 
-	var _getAlignOffset = __webpack_require__(433);
+	var _getAlignOffset = __webpack_require__(426);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -33440,7 +33230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 426 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33451,7 +33241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-	var _propertyUtils = __webpack_require__(427);
+	var _propertyUtils = __webpack_require__(420);
 
 	var RE_NUM = /[\-+]?(?:\d*\.|)\d+(?:[eE][\-+]?\d+|)/.source;
 
@@ -34016,7 +33806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 427 */
+/* 420 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34131,7 +33921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ }),
-/* 428 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34140,7 +33930,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(426);
+	var _utils = __webpack_require__(419);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -34192,7 +33982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 429 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34201,11 +33991,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(426);
+	var _utils = __webpack_require__(419);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
-	var _getOffsetParent = __webpack_require__(428);
+	var _getOffsetParent = __webpack_require__(421);
 
 	var _getOffsetParent2 = _interopRequireDefault(_getOffsetParent);
 
@@ -34273,7 +34063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 430 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34282,7 +34072,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(426);
+	var _utils = __webpack_require__(419);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -34333,7 +34123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 431 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34342,7 +34132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _utils = __webpack_require__(426);
+	var _utils = __webpack_require__(419);
 
 	var _utils2 = _interopRequireDefault(_utils);
 
@@ -34374,7 +34164,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 432 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34383,7 +34173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _getAlignOffset = __webpack_require__(433);
+	var _getAlignOffset = __webpack_require__(426);
 
 	var _getAlignOffset2 = _interopRequireDefault(_getAlignOffset);
 
@@ -34415,7 +34205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 433 */
+/* 426 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34460,7 +34250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ }),
-/* 434 */
+/* 427 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -34546,13 +34336,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 
 /***/ }),
-/* 435 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(436);
+	var template = __webpack_require__(429);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34579,13 +34369,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLMessage;
 
 /***/ }),
-/* 436 */
+/* 429 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-message u-message-{type} {class}\">\n    <i class=\"message_icon u-icon u-icon-{type + 2}\" r-hide={!type}></i>\n    <span class=\"message_t\">\n        {#inc this.$body}\n    </span>\n</div>"
 
 /***/ }),
-/* 437 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34597,7 +34387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(438);
+	var template = __webpack_require__(431);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34628,13 +34418,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLBadge;
 
 /***/ }),
-/* 438 */
+/* 431 */
 /***/ (function(module, exports) {
 
 	module.exports = "<span class=\"u-badge u-badge-{type} u-badge-{circle ? 'number' : ''}\">{text}</span>"
 
 /***/ }),
-/* 439 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34646,7 +34436,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(440);
+	var template = __webpack_require__(433);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34681,13 +34471,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLProgress;
 
 /***/ }),
-/* 440 */
+/* 433 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-progress u-progress-{@(size)} u-progress-{@(state)} {class}\" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>\n    <div class=\"progress_bar\" style=\"width: {percent}%;\">{text ? (text === true ? percent + '%' : text) : ''}</div>\n</div>"
 
 /***/ }),
-/* 441 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34698,7 +34488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(442);
+	var template = __webpack_require__(435);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34772,13 +34562,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLLoading;
 
 /***/ }),
-/* 442 */
+/* 435 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-loading {class}\" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}\n  r-animation=\"on:enter;class:animated fadeIn; on:leave;class:animated fadeOut\">\n    <svg class=\"loading-circular\" viewBox=\"25 25 50 50\">\n      <circle class=\"loading-path\" cx=\"50\" cy=\"50\" r=\"20\" fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n    </svg>\n    {#if this.$body}\n      {#inc this.$body}\n    {/if}\n</div>"
 
 /***/ }),
-/* 443 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34798,8 +34588,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var dom = __webpack_require__(71).dom;
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(444);
-	__webpack_require__(423);
+	var template = __webpack_require__(437);
+	__webpack_require__(416);
 
 	var TipPopUp = Component.extend({
 	  template: template,
@@ -34869,13 +34659,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTooltip;
 
 /***/ }),
-/* 444 */
+/* 437 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"u-tooltip {placement} animated {class}\" r-hide=\"{!isShow}\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY\">\n\t<div class=\"arrow\"></div>\n\t<p class=\"inner\">{#inc tip}</p>\n</div>"
 
 /***/ }),
-/* 445 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34886,7 +34676,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(446);
+	var template = __webpack_require__(439);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -34917,13 +34707,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLIcon;
 
 /***/ }),
-/* 446 */
+/* 439 */
 /***/ (function(module, exports) {
 
 	module.exports = "<i class=\"u-icon u-icon-{type} {class}\" style=\"font-size: {fontSize}px;color: {color}\" on-click=\"{this.onClick($event)}\"></i>"
 
 /***/ }),
-/* 447 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35057,7 +34847,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLLocaleProvider;
 
 /***/ }),
-/* 448 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35066,13 +34856,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @file KLtable 表格
 	 */
 
-	var TableHeader = __webpack_require__(449);
-	var TableBody = __webpack_require__(451);
+	var TableHeader = __webpack_require__(442);
+	var TableBody = __webpack_require__(444);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(454);
+	var u = __webpack_require__(447);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(457);
+	var tpl = __webpack_require__(450);
 
 	/**
 	 * @class KLTable
@@ -35171,7 +34961,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      placeholder: '-',
 	      checkAll: false,
 	      initFinished: false,
-	      minColWidth: 50
+	      minColWidth: 50,
+	      isMobile: u.browser.versions.mobile
 	    });
 	    this.supr(data);
 	    this.data.minColWidth = +this.data.minColWidth;
@@ -35207,7 +34998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.$watch('headerHeight', this._updateBodyHeight);
 	    this.$watch('height', this._updateBodyHeight);
 
-	    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), 16);
+	    this._onBodyScroll = u.throttle(this._onBodyScroll.bind(this), this.data.isMobile ? 100 : 16);
 
 	    this._onWindowScroll = u.throttle(this._onWindowScroll.bind(this), 50);
 	    this._getScrollParentNode().addEventListener('scroll', this._onWindowScroll);
@@ -35698,13 +35489,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 449 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(450);
+	var tpl = __webpack_require__(443);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -35927,21 +35718,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 450 */
+/* 443 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft + 'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBarWidth}\n            <col name=\"gutter\" width={scrollYBarWidth}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBarWidth && !fixedCol}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBarWidth && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: 0,\n                width: scrollYBarWidth + 'px',\n            }}\n        ></div>\n    {/if}\n</table>\n"
 
 /***/ }),
-/* 451 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(452);
-	var templates = __webpack_require__(453);
-	var _ = __webpack_require__(454);
+	var tpl = __webpack_require__(445);
+	var templates = __webpack_require__(446);
+	var _ = __webpack_require__(447);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36106,22 +35897,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 452 */
+/* 445 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include column.template}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 453 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(454);
+	var _ = __webpack_require__(447);
 
 	var tplMap = {
-	  progress: __webpack_require__(455),
-	  check: __webpack_require__(456)
+	  progress: __webpack_require__(448),
+	  check: __webpack_require__(449)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -36129,7 +35920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 454 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36318,36 +36109,57 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return height;
 	};
 
+	/*eslint-disable*/
+	_.browser = {
+	  versions: function () {
+	    var u = navigator.userAgent;
+	    return { //移动终端浏览器版本信息
+	      trident: u.indexOf("Trident") > -1, //IE内核
+	      presto: u.indexOf("Presto") > -1, //opera内核
+	      webKit: u.indexOf("AppleWebKit") > -1, //苹果、谷歌内核
+	      gecko: u.indexOf("Gecko") > -1 && u.indexOf("KHTML") == -1, //火狐内核
+	      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+	      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+	      android: u.indexOf("Android") > -1 || u.indexOf("Linux") > -1, //android终端或者uc浏览器
+	      iPhone: u.indexOf("iPhone") > -1, //是否为iPhone或者QQHD浏览器
+	      iPad: u.indexOf("iPad") > -1, //是否iPad
+	      webApp: u.indexOf("Safari") == -1 //是否web应该程序，没有头部与底部
+	    };
+	  }(),
+	  language: (navigator.browserLanguage || navigator.language).toLowerCase()
+	};
+	/*eslint-enable*/
+
 	module.exports = _;
 
 /***/ }),
-/* 455 */
+/* 448 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 456 */
+/* 449 */
 /***/ (function(module, exports) {
 
 	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 457 */
+/* 450 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-kl-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div ref=\"table\"\n        class=\"m-kl-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' :\n                  ((tableWidth > width ? width : width + scrollYBarWidth) + 'px'),\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                stickyHeader={stickyHeader}\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"kl_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedColLeft }\n    <div ref=\"tableFixedLeft\"\n        class=\"m-kl-table m-kl-table-fixed\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixedLeft\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixedLeft\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedLeft\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div ref=\"tableFixedRight\"\n        class=\"m-kl-table m-kl-table-fixed m-kl-table-fixed-right\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            right: fixedTablePosRight + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapfixedTablePosRight\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidthRight,\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    <div class=\"kl_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBarWidth + 'px',\n            height: headerHeight + 'px',\n            right: fixedTablePosRight - scrollYBarWidth + 'px',\n            top: 0\n        }}/>\n    {/if}\n\n    {#list source as item by item_index}\n        {#if item.expand && item._expanddingColumn}\n            <div ref='expand{item_index}'\n              class=\"expand_row\"\n              r-style={{\n                top: this._getExpandRowTop(item_index) + 'px',\n              }}\n            >\n                {#include item._expanddingColumn.expandTemplate}\n            </div>\n        {/if}\n    {/list}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-kl-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
+	module.exports = "<div class=\"m-kl-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div ref=\"table\"\n        class=\"m-kl-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' :\n                  ((tableWidth > width ? width : width + scrollYBarWidth) + 'px'),\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                stickyHeader={stickyHeader}\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"kl_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': !isMobile && stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedColLeft }\n    <div ref=\"tableFixedLeft\"\n        class=\"m-kl-table m-kl-table-fixed\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixedLeft\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixedLeft\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedLeft\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div ref=\"tableFixedRight\"\n        class=\"m-kl-table m-kl-table-fixed m-kl-table-fixed-right\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            right: fixedTablePosRight + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapfixedTablePosRight\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidthRight,\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    <div class=\"kl_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBarWidth + 'px',\n            height: headerHeight + 'px',\n            right: fixedTablePosRight - scrollYBarWidth + 'px',\n            top: 0\n        }}/>\n    {/if}\n\n    {#list source as item by item_index}\n        {#if item.expand && item._expanddingColumn}\n            <div ref='expand{item_index}'\n              class=\"expand_row\"\n              r-style={{\n                top: this._getExpandRowTop(item_index) + 'px',\n              }}\n            >\n                {#include item._expanddingColumn.expandTemplate}\n            </div>\n        {/if}\n    {/list}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-kl-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if !isMobile && stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 458 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLTableTemplate = __webpack_require__(459);
-	var KLTable = __webpack_require__(448);
+	var KLTableTemplate = __webpack_require__(452);
+	var KLTable = __webpack_require__(441);
 
 	/**
 	 * @class KLTableCol
@@ -36464,7 +36276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 459 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36550,7 +36362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 460 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36560,7 +36372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(461);
+	var template = __webpack_require__(454);
 
 	/**
 	 * @class KLRow
@@ -36616,13 +36428,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 461 */
+/* 454 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 462 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36644,8 +36456,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(463);
-	var KLRow = __webpack_require__(460);
+	var template = __webpack_require__(456);
+	var KLRow = __webpack_require__(453);
 
 	/**
 	 * @class KLCol
@@ -36717,13 +36529,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 463 */
+/* 456 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 464 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36736,7 +36548,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(465);
+	var template = __webpack_require__(458);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -36766,13 +36578,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 465 */
+/* 458 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    {#if title || this.$tools}\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {/if}\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 466 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36786,7 +36598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(464);
+	var KLCard = __webpack_require__(457);
 
 	/**
 	 * @class KLCardTools
@@ -36812,7 +36624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCardTools;
 
 /***/ }),
-/* 467 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36822,7 +36634,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(468);
+	var template = __webpack_require__(461);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -36881,13 +36693,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSearch;
 
 /***/ }),
-/* 468 */
+/* 461 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore}\n        <!--添加一层div，防止两个g-row样式并列导致marginTop--> \n        <div>\n            {#inc this.$more.$body}\n        </div>\n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if this.$more && isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 469 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36900,7 +36712,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLSearch = __webpack_require__(467);
+	var KLSearch = __webpack_require__(460);
 
 	/**
 	 * @class KLSearchMore
