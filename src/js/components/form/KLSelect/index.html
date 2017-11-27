@@ -20,7 +20,7 @@
 	        </div>
 	    {#else}
 	        <div class="dropdown_hd"
-	             on-click={this.toggle(!open, $event)} style="max-height: {open && canSearch ? '116px' : '84px'}">
+	             on-click={this.toggle(!open, $event)} r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} {#if open && canSearch} style="min-height: 65px;" {/if}>
 					<kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr" />
 	            {#if open && canSearch}
 	            <div>
@@ -34,7 +34,10 @@
 	                    {item[nameKey]}
 	                    <i class="u-icon u-icon-remove" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
-	            {/list}
+				{/list}
+				{#if !open && (!selected || !selected.length)}
+					<span class='m-multi-placeholder'>{placeholder}</span>
+				{/if}
 	        </div>
 	    {/if}
 	    {#if open}
