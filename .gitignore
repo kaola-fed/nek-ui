@@ -10,6 +10,7 @@ dist/
 
 # Auto generate
 src/mcss/components.mcss
+coverage
 
 # doc
 db.json
@@ -23,3 +24,4 @@ doc/source/components/*
 dist.zip
 
 .history
+package-lock.json
