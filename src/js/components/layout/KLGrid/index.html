@@ -1,0 +1,14 @@
+<div class="kl-grid">
+  <div class="grid_hwrap" r-style="{{width:width-scrollerWidth+2 + 'px'}}" on-click="{this.scroll($event,0)}">
+    <div class="grid_hscroll" ref="horizontal" on-mousedown="{this.dragMove($event)}" r-style="{{width:hscrollBar.size+'px',left:hscrollBar.x+'px'}}">
+      <div r-style="{{backgroundColor: hscrollBar.move ? '#a1a1a1;':'#c1c1c1;'}}"></div>
+    </div>
+  </div>
+
+  <div class="grid_vwrap" r-style="{{height:height-scrollerWidth+2 + 'px'}}" on-click="{this.scroll($event,1)}">
+    <div class="grid_vscroll" ref="horizontal" on-mousedown="{this.dragMove($event,true)}" r-style="{{height:vscrollBar.size+'px',top:vscrollBar.y+'px'}}">
+      <div r-style="{{backgroundColor: vscrollBar.move ? '#a1a1a1;':'#c1c1c1;'}}"></div>
+    </div>
+  </div>
+  <canvas ref="grid" class="grid_canvas"></canvas>
+</div>
