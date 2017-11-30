@@ -394,7 +394,8 @@ const UploadBase = Component.extend({
   },
 
   onError(info) {
-    this.updateList(info);
+    // 错误的情况下不更新fileList
+    // this.updateList(info);
     this.$emit(
       'error',
       _.extend(info, {
