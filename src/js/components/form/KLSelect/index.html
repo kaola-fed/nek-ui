@@ -35,9 +35,7 @@
 	                    <i class="u-icon u-icon-remove" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
 				{/list}
-				{#if !open && (!selected || !selected.length)}
-					<span class='m-multi-placeholder'>{placeholder}</span>
-				{/if}
+				<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>
 	        </div>
 	    {/if}
 	    {#if open}
