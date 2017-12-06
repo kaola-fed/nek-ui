@@ -42,7 +42,7 @@ const KLSteps = Component.extend({
     const steps = data.steps;
 
     steps.forEach((item, index) => {
-      if (item.status / 1 === current / 1) {
+      if ((typeof item.status !== 'function' && item.status / 1 === current / 1) || (typeof item.status === 'function' && item.status() === current)) {
         data.currentIndex = index;
       }
     });
