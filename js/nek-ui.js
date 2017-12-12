@@ -27614,7 +27614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
 	 * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
 	 * @param {string/number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
-	 * @param {string}        [options.data.labelLineHeight=lg] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)
+	 * @param {string}        [options.data.labelLineHeight='2.5'] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)
 	 * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
 	 * @param {boolean}       [options.data.required=false]     => 是否必选项
 	 * @param {string}        [options.data.tip]                => 字段说明
@@ -27778,7 +27778,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {number}        [options.data.cols]               => [deprecated]布局列数, 请使用布局组件代替直接设置cols属性
 	   * @param {number}        [options.data.labelCols]          => [deprecated]如果有title, label占的列数, 建议使用labelSize
 	   * @param {string|number} [options.data.labelSize=200]      => 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg
-	   * @param {string}        [options.data.labelLineHeight="lg"] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)
+	   * @param {string}        [options.data.labelLineHeight="2.5"] => label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)
 	   * @param {string}        [options.data.textAlign=none]     => label text-align 属性：none/left/right
 	   * @param {boolean}       [options.data.required=false]     => 是否必选项
 	   * @param {string}        [options.data.tip]                => 字段说明
@@ -27792,8 +27792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  config: function config(data) {
 	    _.extend(data, {
 	      textAlign: 'right',
-	      labelCols: '',
-	      labelLineHeight: 'lg'
+	      labelCols: ''
 	    });
 	    this.supr(data);
 
@@ -32533,7 +32532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @extend Component
 	 * @param {object}      [options.data]                        = 绑定属性
 	 * @param {object[]}    [options.data.steps=null]             <=> 数据源
-	 * @param {number}      [options.data.steps[].status]         => 状态id，支持方法，传入当前 current 返回 true 则属于当前状态
+	 * @param {number}      [options.data.steps[].status]         => 状态id
 	 * @param {string}      [options.data.steps[].title]          => 步骤标题
 	 * @param {object[]}    [options.data.steps[].description]    => 步骤具体描述
 	 * @param {number}      [options.data.current=0]              <=> 当前状态
@@ -32565,7 +32564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var steps = data.steps;
 
 	    steps.forEach(function (item, index) {
-	      if (typeof item.status !== 'function' && item.status / 1 === current / 1 || typeof item.status === 'function' && item.status(current)) {
+	      if (item.status / 1 === current / 1) {
 	        data.currentIndex = index;
 	      }
 	    });
