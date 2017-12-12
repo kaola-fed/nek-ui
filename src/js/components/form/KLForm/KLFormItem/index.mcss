@@ -17,7 +17,7 @@
         padding-right: $size-base;
         font-size: $font-size-base;
         text-align: right;
-        line-height: 1;
+        line-height: 2.5;
         max-width: $size-base * 18;
 
         &-sm { width: $size-base * 10; }
