@@ -12,7 +12,7 @@ const _ = require('../../../ui-base/_');
  * @extend Component
  * @param {object}      [options.data]                        = 绑定属性
  * @param {object[]}    [options.data.steps=null]             <=> 数据源
- * @param {number}      [options.data.steps[].status]         => 状态id
+ * @param {number}      [options.data.steps[].status]         => 状态id，支持方法，传入当前 current 返回 true 则属于当前状态
  * @param {string}      [options.data.steps[].title]          => 步骤标题
  * @param {object[]}    [options.data.steps[].description]    => 步骤具体描述
  * @param {number}      [options.data.current=0]              <=> 当前状态
@@ -42,7 +42,7 @@ const KLSteps = Component.extend({
     const steps = data.steps;
 
     steps.forEach((item, index) => {
-      if (item.status / 1 === current / 1) {
+      if ((typeof item.status !== 'function' && item.status / 1 === current / 1) || (typeof item.status === 'function' && item.status(current))) {
         data.currentIndex = index;
       }
     });
