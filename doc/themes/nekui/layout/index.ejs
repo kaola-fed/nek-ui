@@ -82,14 +82,18 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.js"></script>
 <script>
 $(document).ready(function() {
+    var earth = new Image();
+    earth.onload = function() {
+        $('.m-section1').css({'backgroundSize':'66%',
+            'background': '#1D2E45 url(//haitao.nos.netease.com/056f5787-daa5-4a46-8eb4-d662eb6c7618.jpg) no-repeat scroll right bottom'});
+        $('.m-section1').addClass('loaded');
+    };
+    earth.src = 'http://haitao.nos.netease.com/056f5787-daa5-4a46-8eb4-d662eb6c7618.jpg';
+
     var $header = $('#header'),
         $logo = $('#logo'),
         $anchors = $('.anchors_item'),
         $txt = $('.section4_subtt');
-
-    setTimeout(function() {
-        $('.m-section1').addClass('loaded');
-    }, 200);
 
     $('#fullpage').fullpage({
         sectionSelector: '.m-section',
