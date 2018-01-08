@@ -38,6 +38,14 @@ const FileUnit = Component.extend({
     data.filename = file.name;
     data.type = file.type;
 
+    if (!data.autoUpload) {
+      this.$emit('success', {
+        sender: this,
+        file: data.file,
+        status: data.status,
+      });
+      return true;
+    }
     // for initial uploaded files
     if (data.status === 'ready') {
       this.uploadFile(file.rawFile);
@@ -52,6 +60,8 @@ const FileUnit = Component.extend({
     data.status = 'uploading';
 
     const options = {
+      name: data.name || 'file',
+      data: data.data,
       upload: {
         onprogress(e) {
           data.status = 'uploading';
@@ -126,9 +136,6 @@ const FileUnit = Component.extend({
         self.$emit('error', emitItem);
       },
     };
-
-    options.name = data.name;
-    options.data = data.data;
 
     utils.upload(data.action, rawFile, options);
 

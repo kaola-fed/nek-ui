@@ -22,7 +22,9 @@
             onLoadInterceptor={onLoadInterceptor}
             onErrorInterceptor={onErrorInterceptor}
             beforeUpload={beforeUpload}
-            beforeRemove={beforeRemove}/>
+            beforeRemove={beforeRemove}
+            autoUpload={autoUpload}
+            formData={formData}/>
     {#elseif listType === 'card'}
         <upload-card ref="upload"
             action={action}
@@ -46,7 +48,9 @@
             onLoadInterceptor={onLoadInterceptor}
             onErrorInterceptor={onErrorInterceptor}
             beforeUpload={beforeUpload}
-            beforeRemove={beforeRemove}/>
+            beforeRemove={beforeRemove}
+            autoUpload={autoUpload}
+            formData={formData}/>
     {/if}
 </div>
 {#if tip && !hideTip}

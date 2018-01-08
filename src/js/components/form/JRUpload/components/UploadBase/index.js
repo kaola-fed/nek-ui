@@ -179,43 +179,53 @@ const UploadBase = Component.extend({
     }
   },
 
-  updateList() {
+  updateList(info) {
     // setTimeout((function() { this.updateFileList(); }).bind(this), 0);
-    this.updateFileList();
+    this.updateFileList(info);
   },
 
-  updateFileList() {
+  updateFileList(info) {
     const data = this.data;
-    const fileList = data.fileList;
-    const fileUnitList = data.fileUnitList;
-    const newFileList = [];
+    const uid = info.file.uid;
+    const { fileList, fileUnitList } = data;
 
-    for (let index = fileUnitList.length - 1; index >= 0; index -= 1) {
-      const file = fileUnitList[index];
-      const uid = file.uid;
-      const flag = file.flag;
-      const destroyed = file.destroyed;
-      const fileIndex = fileList.findIndex(item => uid === item.uid);
+    // 找到触发更新的unit单元
+    const unitIndex = fileUnitList.findIndex(item => uid === item.uid);
+    const unit = fileUnitList[unitIndex];
+    const { name, url, flag, destroyed } = unit;
 
-      if (fileIndex === -1) {
-        newFileList.push({
-          name: file.name,
-          url: file.url,
-          flag,
-          uid,
-        });
-      } else if (flag === Config.flagMap.DELETED) {
-        fileList[fileIndex].flag = Config.flagMap.DELETED;
-        fileUnitList.splice(index, 1);
-      } else if (destroyed) {
-        fileList.splice(fileIndex, 1);
-        fileUnitList.splice(index, 1);
+    // 找到该unit单元在fileList中的位置
+    const fileIndex = fileList.findIndex(item => uid === item.uid);
+    if (fileIndex === -1) {
+      // fileList中不存在该单元数据，新增数据
+      fileList.push({ name, url, flag, uid });
+    } else if (flag === Config.flagMap.DELETED) {
+      fileList[fileIndex].flag = Config.flagMap.DELETED;
+      fileUnitList.splice(unitIndex, 1);
+    } else if (destroyed) {
+      fileList.splice(fileIndex, 1);
+      fileUnitList.splice(unitIndex, 1);
+    }
+    if (!data.autoUpload) {
+      this.initFormData();
+    }
+    this.$update();
+  },
+
+  initFormData() {
+    const data = this.data;
+    const name = data.name || 'file';
+    const { fileList, fileUnitList } = data;
+
+    data.formData = data.formData || new FormData();
+    data.formData.delete(name);
+    for (const file of Object.values(fileList)) {
+      const { flag, uid } = file;
+      if (flag === Config.flagMap.ADDED) {
+        const unitIndex = fileUnitList.findIndex(item => uid === item.uid);
+        data.formData.append(name, fileUnitList[unitIndex].rawFile);
       }
     }
-
-    [].push.apply(fileList, newFileList.reverse());
-
-    this.$update();
   },
 
   fileDialogOpen() {
@@ -291,7 +301,7 @@ const UploadBase = Component.extend({
               type: self.getFileType(file),
               flag: Config.flagMap.ADDED,
               uid: utils.genUid(),
-              status: 'ready',
+              status: self.data.autoUpload ? 'ready' : 'wait',
             };
             data.fileUnitList.push(fileunit);
             self.$update();
@@ -374,7 +384,7 @@ const UploadBase = Component.extend({
   },
 
   onSuccess(info) {
-    this.updateList();
+    this.updateList(info);
     this.$emit(
       'success',
       _.extend(info, {
@@ -384,7 +394,8 @@ const UploadBase = Component.extend({
   },
 
   onError(info) {
-    this.updateList();
+    // 错误的情况下不更新fileList
+    // this.updateList(info);
     this.$emit(
       'error',
       _.extend(info, {
@@ -401,7 +412,7 @@ const UploadBase = Component.extend({
       file.flag = Config.flagMap.DELETED;
     }
     inst.destroy();
-    this.updateList();
+    this.updateList(info);
 
     this.$emit(
         'remove',

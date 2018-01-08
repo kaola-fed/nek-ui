@@ -1,0 +1,1926 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>
+            表格 - 
+                JR
+        </title>
+        <meta charset="utf-8">
+        <meta name="description" content="JR - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="表格 - JR">
+        <meta property="og:description" content="JR - UI components based on RegularJS">
+        <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/JR/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=JR" rel='stylesheet' type='text/css'>
+        <!--  JR -->
+        <link href="/JR/css/JR.default.min.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/JR/css/page.css">
+            <script>
+                window.PAGE_TYPE = "components"
+            </script>
+    </head>
+
+    <body class="docs">        <script src=" /JR/vendor/regular.min.js"></script>
+        <script src="/JR/js/JR.min.js"></script>
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+    <span>JR</span>
+</div>
+            
+                <div id="main" class="fix-sidebar">
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/">首页</a></li>
+<li><a href="/components/" class="nav-link current">组件</a></li>
+<li><a href="/tools/" class="nav-link">工具</a></li>
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+            
+                
+                    
+                                    <li>
+                                        <a href="/JR/components/index.html" class="sidebar-link">
+                                            快速上手
+                                                
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    布局
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/layout_JRCard_.html" class="sidebar-link">
+                                            卡片
+                                                JRCard
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/layout_JRTable_.html" class="sidebar-link current">
+                                            表格
+                                                JRTable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    表单
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRButton_.html" class="sidebar-link">
+                                            按钮
+                                                JRButton
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRCheck_.html" class="sidebar-link">
+                                            复选框
+                                                JRCheck
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRCheckGroup_.html" class="sidebar-link">
+                                            复选组
+                                                JRCheckGroup
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRDatePicker_.html" class="sidebar-link beta">
+                                            日期选择
+                                                JRDatePicker
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRForm_.html" class="sidebar-link">
+                                            表单
+                                                JRForm
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRInput_.html" class="sidebar-link">
+                                            输入框
+                                                JRInput
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRMultiSelect_.html" class="sidebar-link">
+                                            多级选择
+                                                JRMultiSelect
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRRadioGroup_.html" class="sidebar-link">
+                                            单选组
+                                                JRRadioGroup
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRSelect_.html" class="sidebar-link beta">
+                                            下拉选择
+                                                JRSelect
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRSwitch_.html" class="sidebar-link new">
+                                            开关
+                                                JRSwitch
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link">
+                                            展示文本
+                                                JRText
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRTextArea_.html" class="sidebar-link">
+                                            文本输入
+                                                JRTextArea
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRTreeView_.html" class="sidebar-link">
+                                            树型视图
+                                                JRTreeView
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRUpload_.html" class="sidebar-link">
+                                            上传文件
+                                                JRUpload
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/form_JRUploadBACK_.html" class="sidebar-link">
+                                            上传文件
+                                                JRUploadBACK
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    通知
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRMask_.html" class="sidebar-link">
+                                            遮罩
+                                                JRMask
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRModal_.html" class="sidebar-link">
+                                            模态框
+                                                JRModal
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRNotify_.html" class="sidebar-link">
+                                            通知
+                                                JRNotify
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/notice_JRPopConfirm_.html" class="sidebar-link">
+                                            确认提示
+                                                JRPopConfirm
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    导航
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRCrumb_.html" class="sidebar-link">
+                                            面包屑
+                                                JRCrumb
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRMenu_.html" class="sidebar-link beta">
+                                            两级菜单
+                                                JRMenu
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRPager_.html" class="sidebar-link">
+                                            分页
+                                                JRPager
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRSidebar_.html" class="sidebar-link beta">
+                                            菜单栏
+                                                JRSidebar
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRSteps_.html" class="sidebar-link">
+                                            步骤
+                                                JRSteps
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRTabs_.html" class="sidebar-link">
+                                            选项卡
+                                                JRTabs
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    拖拽相关
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRDraggable_.html" class="sidebar-link new">
+                                            拖出
+                                                JRDraggable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRDroppable_.html" class="sidebar-link new">
+                                            拖入
+                                                JRDroppable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRMovable_.html" class="sidebar-link new">
+                                            移动
+                                                JRMovable
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/drag_JRSlider_.html" class="sidebar-link new">
+                                            滑块
+                                                JRSlider
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                            <li>
+                                <h3>
+                                    其它
+                                </h3>
+                            </li>
+                            
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRBadge_.html" class="sidebar-link">
+                                            徽标
+                                                JRBadge
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRIcon_.html" class="sidebar-link">
+                                            图标
+                                                JRIcon
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRImagePreview_.html" class="sidebar-link beta">
+                                            图片预览
+                                                JRImagePreview
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRLoading_.html" class="sidebar-link">
+                                            加载
+                                                JRLoading
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRLocaleProvider_.html" class="sidebar-link">
+                                            国际化
+                                                JRLocaleProvider
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRProgress_.html" class="sidebar-link beta">
+                                            进度条
+                                                JRProgress
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
+                                        <a href="/JR/components/widget_JRTooltip_.html" class="sidebar-link">
+                                            文字提示
+                                                JRTooltip
+                                        </a>
+                                    </li>
+                                    
+        </ul>
+    </div>
+</div>
+        
+                <div class="content components with-sidebar">
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><!-- demo_start -->
+<h3 id="基本使用形式一：配置模板"><a href="#基本使用形式一：配置模板" class="headerlink" title="基本使用形式一：配置模板"></a>基本使用形式一：配置模板</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> <span class="attr">width</span>=<span class="string">150</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> <span class="attr">tip</span>=<span class="string">"I am tip"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: [&#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">                <span class="attr">age</span>: <span class="number">20</span></div><div class="line">            &#125;, &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">                <span class="attr">age</span>: <span class="number">18</span></div><div class="line">            &#125;]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="基本使用形式二：数据配置"><a href="#基本使用形式二：数据配置" class="headerlink" title="基本使用形式二：数据配置"></a>基本使用形式二：数据配置</h3><p>在进行数据配置时，模版的配置方式更为灵活。</p>
+<ol>
+<li><code>template</code>，模版字符串；</li>
+<li><code>format</code>，纯粹的字符串格式化，不对html进行渲染，保留插值语法；</li>
+<li><code>formatter</code>，通过函数返回模版字符串，适用于当模版需要动态运算生成的情景。</li>
+</ol>
+<p>加上前缀 <code>header</code> 成为 <code>headerTemplate</code>，<code>headerFormat</code>，<code>headerFormatter</code>，可作为表头的模版。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span></span></div><div class="line">    <span class="attr">fixedHeader</span></div><div class="line">    <span class="attr">columns</span>=<span class="string">&#123;table.columns&#125;</span></div><div class="line">    <span class="attr">sorting</span>=<span class="string">&#123;table.sorting&#125;</span></div><div class="line">    <span class="attr">paging</span>=<span class="string">&#123;table.paging&#125;</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span></div><div class="line">    <span class="attr">loading</span>=<span class="string">&#123;loading&#125;</span></div><div class="line">/&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">columns</span>: [</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">name</span>: <span class="string">'职位'</span>,</div><div class="line">                    <span class="attr">key</span>: <span class="string">'job'</span>,</div><div class="line">                    <span class="attr">tip</span>: <span class="string">'所属部门的职位类别'</span>,</div><div class="line">                    <span class="attr">width</span>: <span class="number">120</span>,</div><div class="line">                    <span class="attr">formatter</span>: <span class="function"><span class="keyword">function</span>(<span class="params">column, item</span>) </span>&#123;</div><div class="line">                        <span class="keyword">return</span> <span class="string">'职位'</span> + item.job;</div><div class="line">                    &#125;,</div><div class="line">                &#125;,</div><div class="line">                &#123;</div><div class="line">                    <span class="attr">name</span>: <span class="string">'用户信息'</span>,</div><div class="line">                    <span class="attr">children</span>: [</div><div class="line">                        &#123;</div><div class="line">                            <span class="attr">name</span>: <span class="string">'姓名'</span>,</div><div class="line">                            <span class="attr">key</span>: <span class="string">'name'</span>,</div><div class="line">                            <span class="attr">format</span>: <span class="string">'姓名：&#123;item.name&#125;'</span>,</div><div class="line">                            <span class="attr">custom</span>: <span class="string">'sortField'</span>,</div><div class="line">                            <span class="attr">sortable</span>: <span class="literal">true</span></div><div class="line">                        &#125;,</div><div class="line">                        &#123;</div><div class="line">                            <span class="attr">name</span>: <span class="string">'年龄'</span>,</div><div class="line">                            <span class="attr">key</span>: <span class="string">'age'</span>,</div><div class="line">                            <span class="attr">sortable</span>: <span class="literal">true</span></div><div class="line">                        &#125;</div><div class="line">                    ]</div><div class="line">                &#125;</div><div class="line">            ],</div><div class="line">            <span class="attr">sorting</span>: &#123;</div><div class="line">                <span class="attr">key</span>: <span class="string">'name'</span>,</div><div class="line">                <span class="attr">isAsc</span>: <span class="number">0</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">paging</span>: &#123;</div><div class="line">                <span class="attr">pageSize</span>: <span class="number">10</span>,</div><div class="line">                <span class="attr">sumTotal</span>: <span class="number">100</span>,</div><div class="line">                <span class="attr">current</span>: <span class="number">1</span></div><div class="line">            &#125;,</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="多选"><a href="#多选" class="headerlink" title="多选"></a>多选</h3><p>通过 <code>enableCheckAll</code> 使能全选按钮</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">on-checkchange</span>=<span class="string">&#123;this.onCheck($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">width</span>=<span class="string">50</span> <span class="attr">placeholder</span>=<span class="string">""</span> <span class="attr">type</span>=<span class="string">"check"</span> <span class="attr">enableCheckAll</span>  /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端开发'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端开发'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onCheck</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="显示样式配置项"><a href="#显示样式配置项" class="headerlink" title="显示样式配置项"></a>显示样式配置项</h3><ol>
+<li>无条纹：<code>strip={false}</code></li>
+<li>占位符：默认<code>placeholder=&quot;-&quot;</code></li>
+<li>对齐：默认 <code>align=&quot;center&quot;</code></li>
+</ol>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">strip</span>=<span class="string">&#123;false&#125;</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">placeholder</span>=<span class="string">"*"</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">""</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">""</span> <span class="attr">placeholder</span>=<span class="string">"-"</span> <span class="attr">align</span>=<span class="string">"right"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p><code>filter</code> 接收一个 <code>function</code>，依次可以取得参数 <code>val</code>，<code>item</code>，<code>itemIndex</code>。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> <span class="attr">filter</span>=<span class="string">&#123;this.filterName&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"出生日期"</span> <span class="attr">key</span>=<span class="string">"birthday"</span>  <span class="attr">filter</span>=<span class="string">&#123;this.filterTime&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">birthday</span>: <span class="number">766108800000</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">birthday</span>: <span class="number">766108800000</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">birthday</span>: <span class="number">766108800000</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">birthday</span>: <span class="number">766108800000</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_fmtnmb</span>: <span class="function"><span class="keyword">function</span>(<span class="params">_number</span>)</span>&#123;</div><div class="line">        _number = <span class="built_in">parseInt</span>(_number) || <span class="number">0</span>;</div><div class="line">        <span class="keyword">return</span> ( _number &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span> ) + _number;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">filterTime</span>: <span class="function"><span class="keyword">function</span>(<span class="params">val, item, itemIndex</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!val) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="string">''</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> _fmtnmb = <span class="function"><span class="keyword">function</span>(<span class="params">_number</span>)</span>&#123;</div><div class="line">            _number = <span class="built_in">parseInt</span>(_number) || <span class="number">0</span>;</div><div class="line">            <span class="keyword">return</span> ( _number &lt; <span class="number">10</span> ? <span class="string">'0'</span> : <span class="string">''</span> ) + _number;</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> _time = <span class="keyword">new</span> <span class="built_in">Date</span>(val);</div><div class="line">        <span class="keyword">var</span> _year = _time.getFullYear();</div><div class="line">        <span class="keyword">var</span> _month = _fmtnmb( _time.getMonth() + <span class="number">1</span> );</div><div class="line">        <span class="keyword">var</span> _day = _fmtnmb( _time.getDate() );</div><div class="line">        <span class="keyword">return</span> _year + <span class="string">'-'</span> + _month + <span class="string">'-'</span> + _day;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">filterName</span>: <span class="function"><span class="keyword">function</span>(<span class="params">val, item, itemIndex</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> itemIndex + <span class="string">': '</span> + val;</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="多级表头"><a href="#多级表头" class="headerlink" title="多级表头"></a>多级表头</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"日期"</span> <span class="attr">key</span>=<span class="string">"date"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"收货地址"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"地址"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"省"</span> <span class="attr">key</span>=<span class="string">"province"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"市"</span> <span class="attr">key</span>=<span class="string">"city"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">jr-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"是否已支付"</span> <span class="attr">key</span>=<span class="string">"isPaid"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2017-08-18'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">province</span>: <span class="string">'浙江省'</span>,</div><div class="line">    <span class="attr">city</span>: <span class="string">'杭州市'</span>,</div><div class="line">    <span class="attr">isPaid</span>: <span class="string">'是'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2017-08-18'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">province</span>: <span class="string">'浙江省'</span>,</div><div class="line">    <span class="attr">city</span>: <span class="string">'杭州市'</span>,</div><div class="line">    <span class="attr">isPaid</span>: <span class="string">'是'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2017-08-18'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">province</span>: <span class="string">'浙江省'</span>,</div><div class="line">    <span class="attr">city</span>: <span class="string">'杭州市'</span>,</div><div class="line">    <span class="attr">isPaid</span>: <span class="string">'是'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2017-08-18'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">province</span>: <span class="string">'浙江省'</span>,</div><div class="line">    <span class="attr">city</span>: <span class="string">'杭州市'</span>,</div><div class="line">    <span class="attr">isPaid</span>: <span class="string">'是'</span></div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="悬浮表头和底部"><a href="#悬浮表头和底部" class="headerlink" title="悬浮表头和底部"></a>悬浮表头和底部</h3><p>控制表头和底部的悬浮需要对 <code>scroll</code> 事件进行监听，在默认的情况下，监听对象是 <code>window</code>，即页面的滚动。</p>
+<p>如果页面布局比较特殊，需要指定监听的对象，则可以通过 <code>scrollParent</code> 指定会发生滚动的容器，如 <code>scrollParent=&quot;#example&quot;</code>。</p>
+<div class="m-example" id="example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span></span></div><div class="line">    <span class="attr">stickyHeader</span></div><div class="line">    <span class="attr">stickyFooter</span></div><div class="line">    <span class="attr">stickyHeaderOffset</span>=<span class="string">64</span></div><div class="line">    <span class="attr">stickyFooterOffset</span>=<span class="string">0</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"工号"</span> <span class="attr">key</span>=<span class="string">"no"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"联系电话"</span> <span class="attr">key</span>=<span class="string">"phone"</span> <span class="attr">width</span>=<span class="string">500</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">no</span>: <span class="string">'NO.'</span> + i,</div><div class="line">                <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">                <span class="attr">phone</span>: <span class="number">16300001110</span> + i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="表头固定在表格顶部"><a href="#表头固定在表格顶部" class="headerlink" title="表头固定在表格顶部"></a>表头固定在表格顶部</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">fixedHeader</span> <span class="attr">height</span>=<span class="string">200</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"工号"</span> <span class="attr">key</span>=<span class="string">"no"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"联系电话"</span> <span class="attr">key</span>=<span class="string">"phone"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">no</span>: <span class="string">'NO.'</span> + i,</div><div class="line">                <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">                <span class="attr">phone</span>: <span class="number">16300001110</span> + i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="固定列"><a href="#固定列" class="headerlink" title="固定列"></a>固定列</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">fixedHeader</span> <span class="attr">height</span>=<span class="string">200</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"工号"</span> <span class="attr">key</span>=<span class="string">"no"</span> <span class="attr">fixed</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"联系电话"</span> <span class="attr">key</span>=<span class="string">"phone"</span> <span class="attr">fixed</span>=<span class="string">"right"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">60</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">no</span>: <span class="string">'NO.'</span> + i,</div><div class="line">                <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">                <span class="attr">phone</span>: <span class="number">16300001110</span> + i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="自定义模版与filter"><a href="#自定义模版与filter" class="headerlink" title="自定义模版与filter"></a>自定义模版与filter</h3><p>通过 <code>jr-table-template</code> 组件定义单元格和表头的模版，可以将模版内嵌到组件中，也可以将模版注入到组件的 <code>template</code> 属性。
+自定义模版中可以通过 <code>emit</code> 的方法向上抛出事件。
+如果模版直接写在<code>jr-table</code>当中，这部分模版会被作为footer模版进行渲染。这部分模版不需要进行特殊的字符串处理，并可以直接进行数据绑定。</p>
+<p>要在模版中使用自定义的 <code>filter</code> 则需要通过 <code>JRUI.JRTable.$filter</code> 方法 将其先注册到 <code>JRUI.JRTable</code> 上。</p>
+<p>要在模版中使用自定义的组件则需要通过 <code>JRUI.JRTable.$component</code> 方法 将其先注册到 <code>JRUI.JRTable</code> 上。</p>
+<p>注意：</p>
+<ol>
+<li>内嵌形式的模版需要在每行的两端加上 <code>{&#39;</code>、<code>&#39;}</code> ，否则模版字符串的插值会无法传递给模版组件，</li>
+<li>原有的 <code>emitEvent</code> 方法不建议使用，但仍然保留。</li>
+</ol>
+<p><code>jr-table-col</code>上亦可以直接传入对应的模版属性， <code>template</code>，<code>headerTemplate</code>，<code>formatter</code>，<code>headerFormatter</code>，<code>format</code>，<code>headerFormat</code>。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span></span></div><div class="line">    <span class="attr">stickyFooter</span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span></div><div class="line">    <span class="attr">on-itemclick</span>=<span class="string">&#123;this.onItemClick($event)&#125;</span> <span class="attr">on-headerclick</span>=<span class="string">&#123;this.onHeaderClick($event)&#125;</span> &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-table-template</span> <span class="attr">type</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;header.name+</span>"&gt;</span>+~!!@#$%^&amp;*()"&#125; on-click=&#123;this.emit("headerclick", header)&#125;&gt;I am &amp;&amp; &#123;header.name&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span>'&#125;</div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">anchor</span>/&gt;</span>'&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">jr-table-template</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-table-template</span> <span class="attr">template</span>=<span class="string">&#123;tdTpl&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">jr-pager</span></span></div><div class="line">        <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span></div><div class="line">        <span class="attr">current</span>=<span class="string">&#123;current&#125;</span></div><div class="line">        <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span></div><div class="line">    /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> anchor = JRUI.Component.extend(&#123;</div><div class="line">    <span class="attr">template</span>: <span class="string">'&lt;a&gt;&amp;nbsp;anchor&lt;/a&gt;'</span>,</div><div class="line">&#125;);</div><div class="line">JRUI.JRTable.$component(<span class="string">'anchor'</span>, anchor);</div><div class="line"></div><div class="line">JRUI.JRTable.$filter(<span class="string">'txtFilter'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> val + <span class="string">'*'</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: [],</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">pageSize</span>:<span class="number">15</span>,</div><div class="line">        <span class="attr">current</span>:<span class="number">1</span>,</div><div class="line">        <span class="attr">sumTotal</span>:<span class="number">100</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&lt;a on-click=&#123;this.emit("itemclick", item, this)&#125;&gt;I am &#123;item.title | txtFilter&#125;&lt;/a&gt;'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.$watch(<span class="string">'current'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(newVal);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onItemClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onHeaderClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="自定义行样式"><a href="#自定义行样式" class="headerlink" title="自定义行样式"></a>自定义行样式</h3><p>通过设置 <code>item.rowClass</code> 或 <code>item.rowStyle</code> 修改每一行的样式。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"小明"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端开发'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">    <span class="attr">rowStyle</span>: <span class="string">'background-color:#FFBC07'</span></div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>没有实际的排序效果，请查看 console 打印的事件对象。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">sorting</span>=<span class="string">&#123;table.sorting&#125;</span> <span class="attr">on-sort</span>=<span class="string">&#123;this.onSort($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> <span class="attr">customKey</span>=<span class="string">"sort_title"</span> <span class="attr">sortable</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> <span class="attr">sortable</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source,</div><div class="line">            <span class="attr">sorting</span>: &#123;</div><div class="line">                <span class="attr">key</span>: <span class="string">'name'</span>,</div><div class="line">                <span class="attr">isAsc</span>: <span class="number">0</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onSort</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>分页的配置参考 <a href="/components/navigation_pager_.html">分页 Pager</a> 。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">stickyFooter</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">paging</span>=<span class="string">&#123;table.paging&#125;</span> <span class="attr">on-paging</span>=<span class="string">&#123;this.onPaging($event)&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source,</div><div class="line">            <span class="attr">paging</span>: &#123;</div><div class="line">                <span class="attr">pageSize</span>: <span class="number">10</span>,</div><div class="line">                <span class="attr">sumTotal</span>: <span class="number">100</span>,</div><div class="line">                <span class="attr">current</span>: <span class="number">1</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPaging</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="分页-1"><a href="#分页-1" class="headerlink" title="分页"></a>分页</h3><p>分页的配置参考 <a href="/components/navigation_pager_.html">分页 Pager</a> 。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-pager</span> <span class="attr">current</span>=<span class="string">&#123;current&#125;</span> <span class="attr">sumTotal</span>=<span class="string">&#123;sumTotal&#125;</span> <span class="attr">pageSize</span>=<span class="string">&#123;pageSize&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source,</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">pageSize</span>: <span class="number">10</span>,</div><div class="line">        <span class="attr">sumTotal</span>: <span class="number">100</span>,</div><div class="line">        <span class="attr">current</span>: <span class="number">1</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPaging</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="隐藏列"><a href="#隐藏列" class="headerlink" title="隐藏列"></a>隐藏列</h3><p>需要通过 <code>index</code> 指定顺序，否则会乱序。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> &gt;</span></div><div class="line">    &#123;#if col[0]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">index</span>=<span class="string">1</span> <span class="attr">placeholder</span>=<span class="string">""</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line">    &#123;#if col[1]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">index</span>=<span class="string">2</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line">    &#123;#if col[2]&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">index</span>=<span class="string">3</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> /&gt;</span></div><div class="line">    &#123;/if&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div><div class="line">&#123;#list [0,1,2] as index&#125;</div><div class="line"><span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">title</span>=<span class="string">&#123;isHideCol[index]</span> ? '显示<span class="attr">col</span>' + <span class="attr">index</span> <span class="attr">:</span> '隐藏<span class="attr">col</span>' + <span class="attr">index</span>&#125; <span class="attr">on-click</span>=<span class="string">&#123;this.toggle(index)&#125;/</span>&gt;</span></div><div class="line">&#123;/list&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source</div><div class="line">        &#125;,</div><div class="line">        <span class="attr">col</span>: [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</div><div class="line">        <span class="attr">isHideCol</span>: [<span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">toggle</span>: <span class="function"><span class="keyword">function</span>(<span class="params">index</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.col[index] = !<span class="keyword">this</span>.data.col[index];</div><div class="line">        <span class="keyword">this</span>.data.isHideCol[index] = !<span class="keyword">this</span>.data.isHideCol[index];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="行展开"><a href="#行展开" class="headerlink" title="行展开"></a>行展开</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">key</span>=<span class="string">""</span> <span class="attr">placeholder</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">50</span> <span class="attr">fixed</span> <span class="attr">expandable</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-table-template</span> <span class="attr">type</span>=<span class="string">"expand"</span>&gt;</span></div><div class="line">            &#123;'<span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding: 10px; background: #eee"</span>&gt;</span>&#123;item.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>'&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">jr-table-template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-table-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"职位"</span> <span class="attr">key</span>=<span class="string">"job"</span> <span class="attr">fixed</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"姓名"</span> <span class="attr">key</span>=<span class="string">"name"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"年龄"</span> <span class="attr">key</span>=<span class="string">"age"</span> <span class="attr">fixed</span>=<span class="string">"right"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> source = [&#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小明'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'前端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小红'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">22</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小王'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">20</span>,</div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">job</span>: <span class="string">'后端'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'小李'</span>,</div><div class="line">    <span class="attr">age</span>: <span class="number">25</span>,</div><div class="line">&#125;];</div><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: source,</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPaging</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(e);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="空数据"><a href="#空数据" class="headerlink" title="空数据"></a>空数据</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="加载中"><a href="#加载中" class="headerlink" title="加载中"></a>加载中</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">loading</span>=<span class="string">&#123;true&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="模版中获取外部数据的方法"><a href="#模版中获取外部数据的方法" class="headerlink" title="模版中获取外部数据的方法"></a>模版中获取外部数据的方法</h3><p>由于组件的设计结构比较特殊，表格中表头和内容分别是两个独立的组件，因此　<code>jr-table</code> 上挂载的属性无法直接传递到表头和内容当中。</p>
+<p>如有需要取得外部的数据，则需要通过 <code>$table.data</code> 或者 <code>$tableData</code> 去获取。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-table</span> <span class="attr">source</span>=<span class="string">&#123;table.source&#125;</span> <span class="attr">count</span>=<span class="string">&#123;count&#125;</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"title"</span> <span class="attr">key</span>=<span class="string">"title"</span> <span class="attr">template</span>=<span class="string">&#123;tdTpl&#125;</span> <span class="attr">headerTemplate</span>=<span class="string">&#123;thTpl&#125;/</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-table-col</span> <span class="attr">name</span>=<span class="string">"value"</span> <span class="attr">key</span>=<span class="string">"value"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">count</span>: <span class="number">0</span>,</div><div class="line">        <span class="attr">thTpl</span>: <span class="string">'&#123;header.name + " :" + $tableData.count&#125;'</span>,</div><div class="line">        <span class="attr">tdTpl</span>: <span class="string">'&#123;item.title + " :" + $table.data.count&#125;'</span>,</div><div class="line">        <span class="attr">table</span>: &#123;</div><div class="line">            <span class="attr">source</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">init</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.table.source = [];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) &#123;</div><div class="line">            <span class="keyword">this</span>.data.table.source.push(&#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'test'</span> + i,</div><div class="line">                <span class="attr">col1</span>: <span class="string">''</span> + i,</div><div class="line">                <span class="attr">value</span>: <span class="number">10</span> * i</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">this</span>.data.count++;</div><div class="line">            <span class="keyword">this</span>.$update();</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">1000</span>);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<!-- demo_start -->
+<h3 id="特殊"><a href="#特殊" class="headerlink" title="特殊"></a>特殊</h3><p>由于组件内部有部分模版是使用字符串形式存储，只有在使用时才是进行解析，因此当页面对 <code>Regular</code> 的插值符号进行修改时，需要进行特殊处理。</p>
+<p>为了向组件内部传递新修改的插值，需要在 <code>Regular</code> 下挂载两个新的属性 <code>_BEGIN_</code>， <code>_END_</code>。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Regular._BEGIN_ = &apos;&#123;&#123;&apos;;</div><div class="line">Regular._END_ = &apos;&#125;&#125;&apos;;</div><div class="line">Regular.config(&#123;</div><div class="line">    BEGIN: Regular._BEGIN_,</div><div class="line">    END: Regular._END_</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#JRTable">JRTable</a></dt>
+<dd></dd>
+<dt><a href="#JRTableCol">JRTableCol</a></dt>
+<dd></dd>
+<dt><a href="#JRTableTemplate">JRTableTemplate</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="JRTable"></a></p>
+<h2 id="JRTable"><a href="#JRTable" class="headerlink" title="JRTable"></a>JRTable</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component  </p>
+<ul>
+<li><a href="#JRTable">JRTable</a><ul>
+<li><a href="#new_JRTable_new">new JRTable()</a></li>
+<li><a href="#JRTable+event_sort 排序事件">“sort 排序事件”</a></li>
+<li><a href="#JRTable+event_checkchange 多选事件">“checkchange 多选事件”</a></li>
+<li><a href="#JRTable+event_type 自定义的操作事件">“type 自定义的操作事件”</a></li>
+<li><a href="#JRTable+event_paging 分页事件">“paging 分页事件”</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="new_JRTable_new"></a></p>
+<h3 id="new-JRTable"><a href="#new-JRTable" class="headerlink" title="new JRTable()"></a>new JRTable()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.source]</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 数据源</td>
+</tr>
+<tr>
+<td>[options.data.paging]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 分页</td>
+</tr>
+<tr>
+<td>[options.data.sorting]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 排序</td>
+</tr>
+<tr>
+<td>[options.data.stickyHeader]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 将表头固定到页面顶部</td>
+</tr>
+<tr>
+<td>[options.data.stickyFooter]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 将表格底部操作固定到页面底部</td>
+</tr>
+<tr>
+<td>[options.data.fixedHeader]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 将表头固定到表格顶部</td>
+</tr>
+<tr>
+<td>[options.data.lineClamp]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 单元格行数限制</td>
+</tr>
+<tr>
+<td>[options.data.columns]</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 列配置</td>
+</tr>
+<tr>
+<td>[optiosn.data.align]</td>
+<td><code>string</code></td>
+<td><code>&quot;center&quot;</code></td>
+<td>=&gt; 文字对齐</td>
+</tr>
+<tr>
+<td>[optiosn.data.minColWidth]</td>
+<td><code>number</code></td>
+<td><code>50</code></td>
+<td>=&gt; 最小列宽</td>
+</tr>
+<tr>
+<td>[optiosn.data.loading]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示加载浮层</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTable+event_sort 排序事件"></a></p>
+<h3 id="“sort-排序事件”"><a href="#“sort-排序事件”" class="headerlink" title="“sort 排序事件”"></a>“sort 排序事件”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRTable">JRTable</a></code><br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>asc</td>
+<td><code>boolean</code></td>
+<td>是否升序</td>
+</tr>
+<tr>
+<td>column</td>
+<td><code>object</code></td>
+<td>目标列</td>
+</tr>
+<tr>
+<td>columnIndex</td>
+<td><code>number</code></td>
+<td>目标列序号</td>
+</tr>
+<tr>
+<td>key</td>
+<td><code>string</code></td>
+<td>排序字段</td>
+</tr>
+<tr>
+<td>sorting</td>
+<td><code>object</code></td>
+<td>排序设置对象</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTable+event_checkchange 多选事件"></a></p>
+<h3 id="“checkchange-多选事件”"><a href="#“checkchange-多选事件”" class="headerlink" title="“checkchange 多选事件”"></a>“checkchange 多选事件”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRTable">JRTable</a></code><br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>checked</td>
+<td><code>boolean</code></td>
+<td>是否选中</td>
+</tr>
+<tr>
+<td>item</td>
+<td><code>object</code></td>
+<td>操作对象</td>
+</tr>
+<tr>
+<td>checkedEvent</td>
+<td><code>object</code></td>
+<td>多选事件对象源</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTable+event_type 自定义的操作事件"></a></p>
+<h3 id="“type-自定义的操作事件”"><a href="#“type-自定义的操作事件”" class="headerlink" title="“type 自定义的操作事件”"></a>“type 自定义的操作事件”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRTable">JRTable</a></code><br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>custom</td>
+<td><code>boolean</code></td>
+<td>自定义事件标识</td>
+</tr>
+<tr>
+<td>param</td>
+<td><code>array</code></td>
+<td>自定义事件所带的参数</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTable+event_paging 分页事件"></a></p>
+<h3 id="“paging-分页事件”"><a href="#“paging-分页事件”" class="headerlink" title="“paging 分页事件”"></a>“paging 分页事件”</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRTable">JRTable</a></code><br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>current</td>
+<td><code>number</code></td>
+<td>事件来源</td>
+</tr>
+<tr>
+<td>paging</td>
+<td><code>object</code></td>
+<td>分页对象</td>
+</tr>
+<tr>
+<td>pagingEvent</td>
+<td><code>object</code></td>
+<td>Pager 的分页事件</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTableCol"></a></p>
+<h2 id="JRTableCol"><a href="#JRTableCol" class="headerlink" title="JRTableCol"></a>JRTableCol</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRTableCol_new"></a></p>
+<h3 id="new-JRTableCol"><a href="#new-JRTableCol" class="headerlink" title="new JRTableCol()"></a>new JRTableCol()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 表头名称</td>
+</tr>
+<tr>
+<td>[options.data.key]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列属性字段</td>
+</tr>
+<tr>
+<td>[options.data.tip]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 提示信息</td>
+</tr>
+<tr>
+<td>[options.data.type]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列内容的预设类型</td>
+</tr>
+<tr>
+<td>[options.data.width]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列宽</td>
+</tr>
+<tr>
+<td>[optiosn.data.minWidth]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 最小列宽，不设置时取全局值 minColWidth，拖动改变列宽后会被设置</td>
+</tr>
+<tr>
+<td>[options.data.columnClass]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列内容样式</td>
+</tr>
+<tr>
+<td>[options.data.headerClass]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 表头样式</td>
+</tr>
+<tr>
+<td>[options.data.sortable]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 可排序</td>
+</tr>
+<tr>
+<td>[options.data.children]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 子表头</td>
+</tr>
+<tr>
+<td>[options.data.fixed]</td>
+<td><code>boolean</code> &#124; <code>string</code></td>
+<td></td>
+<td>=&gt; 列固定开关，默认left为做固定，right为右固定</td>
+</tr>
+<tr>
+<td>[optiosn.data.align]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
+<td>=&gt; 列文字对齐</td>
+</tr>
+<tr>
+<td>[optiosn.data.placeholder]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;-&#x27;&quot;</code></td>
+<td>=&gt; 列文字占位符</td>
+</tr>
+<tr>
+<td>[options.data.template]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列内容模版</td>
+</tr>
+<tr>
+<td>[options.data.headerTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 列表头模版</td>
+</tr>
+<tr>
+<td>[options.data.expandTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 下钻展开内容模版</td>
+</tr>
+</tbody>
+</table>
+<p><a name="JRTableTemplate"></a></p>
+<h2 id="JRTableTemplate"><a href="#JRTableTemplate" class="headerlink" title="JRTableTemplate"></a>JRTableTemplate</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRTableTemplate_new"></a></p>
+<h3 id="new-JRTableTemplate"><a href="#new-JRTableTemplate" class="headerlink" title="new JRTableTemplate()"></a>new JRTableTemplate()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.type]</td>
+<td><code>string</code></td>
+<td><code>&quot;content&quot;</code></td>
+<td>=&gt; 模版类型, header, content</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source}>
+    <jr-table-col name="姓名" key="name" width=150 />
+    <jr-table-col name="年龄" key="age" tip="I am tip"/>
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: [{
+                name: '小明',
+                age: 20
+            }, {
+                name: '小红',
+                age: 18
+            }]
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table
+    fixedHeader
+    columns={table.columns}
+    sorting={table.sorting}
+    paging={table.paging}
+    source={table.source}
+    loading={loading}
+/>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            columns: [
+                {
+                    name: '职位',
+                    key: 'job',
+                    tip: '所属部门的职位类别',
+                    width: 120,
+                    formatter: function(column, item) {
+                        return '职位' + item.job;
+                    },
+                },
+                {
+                    name: '用户信息',
+                    children: [
+                        {
+                            name: '姓名',
+                            key: 'name',
+                            format: '姓名：{item.name}',
+                            custom: 'sortField',
+                            sortable: true
+                        },
+                        {
+                            name: '年龄',
+                            key: 'age',
+                            sortable: true
+                        }
+                    ]
+                }
+            ],
+            sorting: {
+                key: 'name',
+                isAsc: 0
+            },
+            paging: {
+                pageSize: 10,
+                sumTotal: 100,
+                current: 1
+            },
+            source: source
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} on-checkchange={this.onCheck($event)}>
+    <jr-table-col width=50 placeholder="" type="check" enableCheckAll  />
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="姓名" key="name" />
+    <jr-table-col name="年龄" key="age" />
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端开发',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端开发',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端开发',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端开发',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    },
+    onCheck: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table strip={false} source={table.source} placeholder="*" align="left">
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="姓名" key="" />
+    <jr-table-col name="年龄" key="" placeholder="-" align="right"/>
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} >
+    <jr-table-col name="姓名" key="name" filter={this.filterName} />
+    <jr-table-col name="出生日期" key="birthday"  filter={this.filterTime} />
+</jr-table>
+
+      */});
+      
+var source = [{
+    name: '小明',
+    birthday: 766108800000,
+}, {
+    name: '小红',
+    birthday: 766108800000,
+}, {
+    name: '小王',
+    birthday: 766108800000,
+}, {
+    name: '小李',
+    birthday: 766108800000,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    },
+    _fmtnmb: function(_number){
+        _number = parseInt(_number) || 0;
+        return ( _number < 10 ? '0' : '' ) + _number;
+    },
+    filterTime: function(val, item, itemIndex) {
+        if (!val) {
+                return '';
+        }
+        var _fmtnmb = function(_number){
+            _number = parseInt(_number) || 0;
+            return ( _number < 10 ? '0' : '' ) + _number;
+        };
+        var _time = new Date(val);
+        var _year = _time.getFullYear();
+        var _month = _fmtnmb( _time.getMonth() + 1 );
+        var _day = _fmtnmb( _time.getDate() );
+        return _year + '-' + _month + '-' + _day;
+    },
+    filterName: function(val, item, itemIndex) {
+        return itemIndex + ': ' + val;
+    },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} >
+    <jr-table-col name="日期" key="date" />
+    <jr-table-col name="收货地址">
+        <jr-table-col name="姓名" key="name" />
+        <jr-table-col name="地址">
+            <jr-table-col name="省" key="province" />
+            <jr-table-col name="市" key="city" />
+        </jr-table-col>
+    </jr-table-col>
+    <jr-table-col name="是否已支付" key="isPaid" />
+</jr-table>
+
+      */});
+      
+var source = [{
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}, {
+    date: '2017-08-18',
+    name: '小明',
+    province: '浙江省',
+    city: '杭州市',
+    isPaid: '是'
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table
+    stickyHeader
+    stickyFooter
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
+    source={table.source} >
+    <jr-table-col name="工号" key="no" width=500 />
+    <jr-table-col name="职位" key="job" width=500 />
+    <jr-table-col name="联系电话" key="phone" width=500 />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 60; ++i) {
+            this.data.table.source.push({
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table fixedHeader height=200 source={table.source}>
+    <jr-table-col name="工号" key="no" />
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="联系电话" key="phone" />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 60; ++i) {
+            this.data.table.source.push({
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table fixedHeader height=200 source={table.source}>
+    <jr-table-col name="工号" key="no" fixed />
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="联系电话" key="phone" fixed="right" />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 60; ++i) {
+            this.data.table.source.push({
+                no: 'NO.' + i,
+                job: '前端开发',
+                phone: 16300001110 + i
+            });
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table
+    stickyFooter
+    source={table.source}
+    on-itemclick={this.onItemClick($event)} on-headerclick={this.onHeaderClick($event)} >
+    <jr-table-col name="title" key="title">
+        <jr-table-template type="header">
+            {'<a href={header.name+">+~!!@#$%^&*()"} on-click={this.emit("headerclick", header)}>I am && {header.name}</a>'}
+            {'<anchor/>'}
+        </jr-table-template>
+        <jr-table-template template={tdTpl} />
+    </jr-table-col>
+    <jr-table-col name="value" key="value" />
+
+    <jr-pager
+        pageSize={pageSize}
+        current={current}
+        sumTotal={sumTotal}
+    />
+</jr-table>
+
+      */});
+      
+var anchor = JRUI.Component.extend({
+    template: '<a>&nbsp;anchor</a>',
+});
+JRUI.JRTable.$component('anchor', anchor);
+
+JRUI.JRTable.$filter('txtFilter', function(val) {
+    return val + '*';
+});
+
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        count: 0,
+        table: {
+            source: [],
+        },
+        pageSize:15,
+        current:1,
+        sumTotal:100,
+        tdTpl: '<a on-click={this.emit("itemclick", item, this)}>I am {item.title | txtFilter}</a>'
+    },
+    init: function() {
+        this.$watch('current', function(newVal) {
+            console.log(newVal);
+        });
+
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                value: 10 * i
+            });
+        }
+    },
+    onItemClick: function(e) {
+        console.log(e);
+    },
+    onHeaderClick: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source}>
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="小明" key="name" />
+    <jr-table-col name="年龄" key="age" />
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端开发',
+    name: '小明',
+    age: 20,
+    rowStyle: 'background-color:#FFBC07'
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        }
+    },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} sorting={table.sorting} on-sort={this.onSort($event)}>
+    <jr-table-col name="姓名" key="name" customKey="sort_title" sortable />
+    <jr-table-col name="年龄" key="age" sortable/>
+</jr-table>
+
+      */});
+      
+var source = [{
+    name: '小明',
+    age: 20,
+}, {
+    name: '小红',
+    age: 22,
+}, {
+    name: '小王',
+    age: 20,
+}, {
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+            sorting: {
+                key: 'name',
+                isAsc: 0
+            }
+        }
+    },
+    onSort: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table stickyFooter source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="姓名" key="name" />
+    <jr-table-col name="年龄" key="age" />
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+            paging: {
+                pageSize: 10,
+                sumTotal: 100,
+                current: 1
+            }
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source}>
+    <jr-table-col name="职位" key="job" />
+    <jr-table-col name="姓名" key="name" />
+    <jr-table-col name="年龄" key="age" />
+    <jr-pager current={current} sumTotal={sumTotal} pageSize={pageSize} />
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+        },
+        pageSize: 10,
+        sumTotal: 100,
+        current: 1
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} >
+    {#if col[0]}
+    <jr-table-col index=1 placeholder="" />
+    {/if}
+    {#if col[1]}
+    <jr-table-col index=2 name="姓名" key="name" />
+    {/if}
+    {#if col[2]}
+    <jr-table-col index=3 name="年龄" key="age" />
+    {/if}
+</jr-table>
+{#list [0,1,2] as index}
+<jr-button title={isHideCol[index] ? '显示col' + index : '隐藏col' + index} on-click={this.toggle(index)}/>
+{/list}
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source
+        },
+        col: [1, 1, 1],
+        isHideCol: [false, false, false]
+    },
+    toggle: function(index) {
+        this.data.col[index] = !this.data.col[index];
+        this.data.isHideCol[index] = !this.data.isHideCol[index];
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source}>
+    <jr-table-col name="" key="" placeholder="" width=50 fixed expandable>
+        <jr-table-template type="expand">
+            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+        </jr-table-template>
+    </jr-table-col>
+    <jr-table-col name="职位" key="job" fixed />
+    <jr-table-col name="姓名" key="name" />
+    <jr-table-col name="年龄" key="age" fixed="right" />
+</jr-table>
+
+      */});
+      
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table>
+    <jr-table-col name="title" key="title" />
+    <jr-table-col name="value" key="value" />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table loading={true}>
+    <jr-table-col name="title" key="title" />
+    <jr-table-col name="value" key="value" />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        table: {
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-table source={table.source} count={count}>
+    <jr-table-col name="title" key="title" template={tdTpl} headerTemplate={thTpl}/>
+    <jr-table-col name="value" key="value" />
+</jr-table>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        count: 0,
+        thTpl: '{header.name + " :" + $tableData.count}',
+        tdTpl: '{item.title + " :" + $table.data.count}',
+        table: {
+            source: []
+        }
+    },
+    init: function() {
+        this.data.table.source = [];
+        for(var i = 0; i < 3; ++i) {
+            this.data.table.source.push({
+                title: 'test' + i,
+                col1: '' + i,
+                value: 10 * i
+            });
+        }
+        setInterval(function() {
+            this.data.count++;
+            this.$update();
+        }.bind(this), 1000);
+    },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
+                        <div class="guide-links">
+                            
+                                <span>← <a href="/JR/components/layout_JRCard_.html">卡片</a></span>
+                                
+                                    
+                        </div>
+                </div>
+                </div>
+                <script src="/JR/js/smooth-scroll.min.js"></script>
+                
+
+                            <!-- main custom script for sidebars, version selects etc. -->
+                            <script src="/JR/js/common.js"></script>
+                            <!-- ga -->
+                            <script>
+                                (function(i, s, o, g, r, a, m) {
+                                    i['GoogleAnalyticsObject'] = r;
+                                    i[r] = i[r] || function() {
+                                        (i[r].q = i[r].q || []).push(arguments)
+                                    }, i[r].l = 1 * new Date();
+                                    a = s.createElement(o),
+                                        m = s.getElementsByTagName(o)[0];
+                                    a.async = 1;
+                                    a.src = g;
+                                    m.parentNode.insertBefore(a, m)
+                                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                                ga('create', 'UA-46698359-3', 'JR.kaolafed.com');
+                                ga('send', 'pageview');
+                            </script>
+
+                            <!-- search -->
+                            <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+                            <link rel="stylesheet" href="/JR/css/search.css">
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+                                <script>
+                                    [
+                                        '#search-query-nav',
+                                        '#search-query-sidebar'
+                                    ].forEach(function(selector) {
+                                        if (!document.querySelector(selector)) return
+                                            // search index defaults to v2
+                                        var match = window.location.pathname.match(/^\/(v\d+)/)
+                                        var version = match ? match[1] : 'v2'
+                                        docsearch({
+                                            appId: '34N72WTQ6D',
+                                            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+                                            indexName: 'JR',
+                                            inputSelector: selector,
+                                            algoliaOptions: {
+                                                facetFilters: ["version:" + version]
+                                            }
+                                        })
+                                    })
+                                </script>
+
+                                <!-- fastclick -->
+                                <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        FastClick.attach(document.body)
+                                    }, false)
+                                </script>
+    </body>
+
+    </html>

@@ -1,0 +1,122 @@
+".text.html.basic":
+  "卡片":
+    prefix: "kl-card"
+    body: '''
+      <kl-card title="$1">
+          $0
+      </kl-card>$0
+    '''
+  "栅格":
+    prefix: "kl-row"
+    body: '''
+      <kl-row>
+          <kl-col span=3>
+              $0
+          </kl-col>
+      </kl-row>$0
+    '''
+  "表格":
+    prefix: "kl-table"
+    body: '''
+      <kl-table source={${1:list}}>
+          <kl-table-col name="$2" key="$3" />$0
+      </kl-table>$0
+    '''
+  "按钮":
+    prefix: "kl-button"
+    body: "<kl-button type=\"${1:primary}\" title=\"$2\" />$0"
+  "复选框":
+    prefix: "kl-check"
+    body: "<kl-check name=\"$1\" />$0"
+  "复选组":
+    prefix: "kl-check-group"
+    body: "<kl-check-group source={${1:source}} />$0"
+  "日期选择":
+    prefix: "kl-date-picker"
+    body: "<kl-date-picker />$0"
+  "表单":
+    prefix: "kl-form"
+    body: '''
+      <kl-form>
+          <kl-row>
+              <kl-col span=3>
+                  <kl-form-item title="$1">
+                      $0
+                  </kl-form-item>
+              </kl-col>
+          </kl-row>
+      </kl-form>$0
+    '''
+  "输入框":
+    prefix: "kl-input"
+    body: "<kl-input type=\"$1\" />$0"
+  "多级选择":
+    prefix: "kl-multi-select"
+    body: "<kl-multi-select source={${1:source}} />$0"
+  "单选组":
+    prefix: "kl-radio-group"
+    body: "<kl-radio-group source={${1:source}} />$0"
+  "下拉选择":
+    prefix: "kl-select"
+    body: "<kl-select source={${1:source}} />$0"
+  "文本":
+    prefix: "kl-text"
+    body: "<kl-text text=\"$1\" />$0"
+  "文本输入":
+    prefix: "kl-textarea"
+    body: "<kl-textarea placeholder=\"$1\" />$0"
+  "上传":
+    prefix: "kl-upload"
+    body: "<kl-upload action=\"$1\" />$0"
+  "确认提示":
+    prefix: "kl-pop-confirm"
+    body: '''
+      <kl-pop-confirm content="$1">
+          $0
+      </kl-pop-confirm>$0
+    '''
+  "面包屑":
+    prefix: "kl-crumb"
+    body: '''
+      <kl-crumb separator="/">
+          <kl-crumb-item><kl-icon type="home2" color="#E31436" /></kl-crumb-item>
+          <kl-crumb-item>$1</kl-crumb-item>
+          <kl-crumb-item>$2</kl-crumb-item>
+      </kl-crumb>
+      $0
+    '''
+  "分页":
+    prefix: "kl-pager"
+    body: "<kl-pager current=$1 sumTotal=$2 pageSize=$3 />$0"
+  "步骤":
+    prefix: "kl-steps"
+    body: "<kl-steps steps={${1:steps}} current=$2 />$0"
+  "选项卡":
+    prefix: "kl-tabs"
+    body: '''
+      <kl-tabs>
+          <kl-tab title="$1">$2</kl-tab>$0
+      </kl-tabs>$0
+    '''
+  "图标":
+    prefix: "kl-icon"
+    body: "<kl-icon type=\"$1\" />$0"
+  "加载中":
+    prefix: "kl-loading"
+    body: "<kl-loading visible=$1 />$0"
+  "开关":
+    prefix: "jr-switch",
+    body: "<jr-switch></jr-switch>"
+"进度条":{
+    prefix: "jr-progress"
+    body: '''
+         <jr-progress percent="$0">,
+          </jr-progress>
+        '''
+  "文字提示":
+    prefix: "kl-tooltip"
+    body: '''
+      <kl-tooltip tip="$1">
+          $0
+      </kl-tooltip>$0
+    '''

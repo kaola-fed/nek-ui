@@ -56,6 +56,7 @@ var component = new JRUI.Component({
 
 <!-- demo_start -->
 ### 卡片展示形式，用于表格内上传
+
 <div class="m-example"></div>
 
 ```xml
@@ -243,12 +244,59 @@ var component = new JRUI.Component({
     beforeRemove: function(item) {
         var file = item.file;
         var removeConfirm = function(resolve) {
-            var modal = JRUI.KLModal.confirm('确认删除' + file.name + '?');
+            var modal = JRUI.JRModal.confirm('确认删除' + file.name + '?');
             modal.$on('ok', () => resolve(true));
         };
 
         return new Promise(removeConfirm);
     }
 });
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 选择文件后不上传
+
+* 该模式下，必须初始化formData属性为new FormData()默认值  
+
+<div class="m-example"></div>
+
+```xml
+<jr-upload file-list={list} autoUpload={false} formData={formData}></jr-upload>
+<jr-button title="上传" on-click={this.upload()}></jr-button>
+```
+
+```javascript
+var component = new JRUI.Component({
+    template: template,
+    data: {
+        list: [{
+          name: 'Game.jpg',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+        }, {
+          name: 'Kaola.jpg',
+          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+        }, {
+          name: 'Music.jpg',
+          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+        }],
+        formData: new FormData()
+    },
+    upload: function(){
+      var ajax = new XMLHttpRequest();
+      ajax.open('json', '/upload');
+      ajax.send(this.data.formData);  
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 上传时携带其他参数
+
+<div class="m-example"></div>
+
+```xml
+<jr-upload action='https://nos.kaolafed.com/upload'  data={{a:1,b:2}}></jr-upload>
 ```
 <!-- demo_end -->
