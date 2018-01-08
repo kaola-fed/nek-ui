@@ -399,23 +399,20 @@ body.docs #nav {
   height: 36px;
   line-height: 36px;
   box-sizing: border-box;
-  padding: 0 15px;
+  padding: 0 15px 0 30px;
   border: 1px solid #eee;
-  color: #999;
+  color: #2c3e50;
   outline: none;
-  margin-left: 50px;
+  margin-right: 10px;
+  transition: border-color 0.2s ease;
+  background: #fff url("/images/search.png") 8px 7px no-repeat;
+  background-size: 20px;
   vertical-align: middle !important;
   border-radius: 2px;
-  background: rgba(255,255,255,0.1);
 }
 .search-query::placeholder {
   color: #bbb;
   font-size: 13px;
-}
-.header-1 .search-query,
-.header-3 .search-query,
-.header-4 .search-query {
-  border: none;
 }
 #logo {
   display: inline-block;
@@ -763,7 +760,8 @@ body {
   color: #fff;
 }
 .m-section1 {
-  background: #1d2e45;
+  background: #1d2e45 url("//haitao.nos.netease.com/056f5787-daa5-4a46-8eb4-d662eb6c7618.jpg") no-repeat scroll right bottom;
+  background-size: 66%;
 }
 .m-section1 .section1_logo {
   width: 189px;

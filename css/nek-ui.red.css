@@ -4221,7 +4221,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	padding-right:8px;
 	font-size:12px;
 	text-align:right;
-	line-height:1;
+	line-height:2.5;
 	max-width:144px;
 }
 .u-formitem .formitem_tt-sm{
