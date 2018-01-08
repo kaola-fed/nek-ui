@@ -22,6 +22,9 @@ require('../NumberInput');
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
  * @param {string}        [options.data.class]           => 补充class
+ * @param {boolean}       [options.data.disabledHours=false]   => 是否禁用小时输入框
+ * @param {boolean}       [options.data.disabledMinutes=false]   => 是否禁用分钟输入框
+ * @param {boolean}       [options.data.disabledSeconds=false]   => 是否禁用秒输入框
  */
 const TimePicker = Component.extend({
   name: 'time-picker',

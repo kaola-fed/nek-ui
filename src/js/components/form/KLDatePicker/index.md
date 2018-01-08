@@ -35,6 +35,26 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 禁用时/分/秒
+<div class="m-example"></div>
+
+```xml
+<p>禁用小时:</p>
+<kl-date-picker lang="en-US" date={selectDate1} placeholder="请选择时间" showTime disabledHours />
+<p>禁用分钟:</p>
+<kl-date-picker lang="en-US" date={selectDate2} placeholder="请选择时间" showTime disabledMinutes />
+<p>禁用秒:</p>
+<kl-date-picker lang="en-US" date={selectDate3} placeholder="请选择时间" showTime disabledSeconds />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### 禁用组件
 通过`disabled`属性来设置组件是否可用
 <div class="m-example"></div>
