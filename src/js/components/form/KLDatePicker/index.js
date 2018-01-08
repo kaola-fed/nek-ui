@@ -31,6 +31,9 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {boolean}       [options.data.required=false]   => 是否必填
  * @param {boolean}       [options.data.readonly=false]   => 是否只读
  * @param {boolean}       [options.data.disabled=false]   => 是否禁用
+ * @param {boolean}       [options.data.disabledHours=false]   => 是否禁用小时输入框
+ * @param {boolean}       [options.data.disabledMinutes=false]   => 是否禁用分钟输入框
+ * @param {boolean}       [options.data.disabledSeconds=false]   => 是否禁用秒输入框
  * @param {boolean}       [options.data.visible=true]     => 是否显示
  * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
  * @param {number}        [options.data.width]            => 组件宽度
@@ -113,6 +116,10 @@ const KLDatePicker = Dropdown.extend({
         return (this.data.minDate = new Date(newValue));
       }
 
+      if (typeof newValue === 'number') {
+        return (this.data.minDate = new Date(newValue));
+      }
+
       if (newValue === 'Invalid Date' || newValue === 'NaN') {
         throw new TypeError('Invalid Date');
       }
@@ -125,6 +132,10 @@ const KLDatePicker = Dropdown.extend({
         if (bowser.msie && bowser.version <= 9) {
           return (this.data.date = polyfill.StringDate(newValue));
         }
+        return (this.data.maxDate = new Date(newValue));
+      }
+
+      if (typeof newValue === 'number') {
         return (this.data.maxDate = new Date(newValue));
       }
 
