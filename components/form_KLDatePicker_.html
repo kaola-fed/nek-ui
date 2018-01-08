@@ -409,12 +409,6 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">selectDate</span>: <span class="literal">null</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="禁用时-分-秒"><a href="#禁用时-分-秒" class="headerlink" title="禁用时/分/秒"></a>禁用时/分/秒</h3><div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>禁用小时:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">date</span>=<span class="string">&#123;selectDate1&#125;</span> <span class="attr">placeholder</span>=<span class="string">"请选择时间"</span> <span class="attr">showTime</span> <span class="attr">disabledHours</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>禁用分钟:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">date</span>=<span class="string">&#123;selectDate2&#125;</span> <span class="attr">placeholder</span>=<span class="string">"请选择时间"</span> <span class="attr">showTime</span> <span class="attr">disabledMinutes</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>禁用秒:<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> <span class="attr">date</span>=<span class="string">&#123;selectDate3&#125;</span> <span class="attr">placeholder</span>=<span class="string">"请选择时间"</span> <span class="attr">showTime</span> <span class="attr">disabledSeconds</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</div>
-<div class="grid-item" markdown="1">
 <h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><p>通过<code>disabled</code>属性来设置组件是否可用</p>
 <div class="m-example"></div>
 
@@ -537,24 +531,6 @@
 <td><code>boolean</code></td>
 <td><code>false</code></td>
 <td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.disabledHours]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用小时输入框</td>
-</tr>
-<tr>
-<td>[options.data.disabledMinutes]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用分钟输入框</td>
-</tr>
-<tr>
-<td>[options.data.disabledSeconds]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用秒输入框</td>
 </tr>
 <tr>
 <td>[options.data.visible]</td>
@@ -706,55 +682,6 @@ var component = new NEKUI.Component({
     data: {
         selectDate: null
     }
-});
-`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<p>禁用小时:</p>
-<kl-date-picker lang="en-US" date={selectDate1} placeholder="请选择时间" showTime disabledHours />
-<p>禁用分钟:</p>
-<kl-date-picker lang="en-US" date={selectDate2} placeholder="请选择时间" showTime disabledMinutes />
-<p>禁用秒:</p>
-<kl-date-picker lang="en-US" date={selectDate3} placeholder="请选择时间" showTime disabledSeconds />
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<p>禁用小时:</p>
-<kl-date-picker lang="en-US" date={selectDate1} placeholder="请选择时间" showTime disabledHours />
-<p>禁用分钟:</p>
-<kl-date-picker lang="en-US" date={selectDate2} placeholder="请选择时间" showTime disabledMinutes />
-<p>禁用秒:</p>
-<kl-date-picker lang="en-US" date={selectDate3} placeholder="请选择时间" showTime disabledSeconds />
-`,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template
 });
 `
           }

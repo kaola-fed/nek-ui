@@ -6656,9 +6656,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用
 	 * @param {boolean}       [options.data.visible=true]       => 是否显示
 	 * @param {string}        [options.data.class]           => 补充class
-	 * @param {boolean}       [options.data.disabledHours=false]   => 是否禁用小时输入框
-	 * @param {boolean}       [options.data.disabledMinutes=false]   => 是否禁用分钟输入框
-	 * @param {boolean}       [options.data.disabledSeconds=false]   => 是否禁用秒输入框
 	 */
 	var TimePicker = Component.extend({
 	  name: 'time-picker',
@@ -6763,7 +6760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 177 */
 /***/ (function(module, exports) {
 
-	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\n\t<number-input min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled || disabledHours} autofocus={autofocus} />\n\t<span>:</span>\n\t<number-input min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled || disabledMinutes} />\n\t<span>:</span>\n\t<number-input min=\"0\" max=\"59\" format=\"00\" value={seconds} readonly={readonly} disabled={disabled || disabledSeconds} />\n</span>"
+	module.exports = "<span class=\"u-timepicker {class}\" r-hide={!visible}>\n\t<number-input min=\"0\" max=\"23\" format=\"00\" value={hour} readonly={readonly} disabled={disabled} autofocus={autofocus} />\n\t<span>:</span>\n\t<number-input min=\"0\" max=\"59\" format=\"00\" value={minute} readonly={readonly} disabled={disabled} />\n\t<span>:</span>\n\t<number-input min=\"0\" max=\"59\" format=\"00\" value={seconds} readonly={readonly} disabled={disabled} />\n</span>"
 
 /***/ }),
 /* 178 */
@@ -10233,9 +10230,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.required=false]   => 是否必填
 	 * @param {boolean}       [options.data.readonly=false]   => 是否只读
 	 * @param {boolean}       [options.data.disabled=false]   => 是否禁用
-	 * @param {boolean}       [options.data.disabledHours=false]   => 是否禁用小时输入框
-	 * @param {boolean}       [options.data.disabledMinutes=false]   => 是否禁用分钟输入框
-	 * @param {boolean}       [options.data.disabledSeconds=false]   => 是否禁用秒输入框
 	 * @param {boolean}       [options.data.visible=true]     => 是否显示
 	 * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
 	 * @param {number}        [options.data.width]            => 组件宽度
@@ -10318,10 +10312,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return this.data.minDate = new Date(newValue);
 	      }
 
-	      if (typeof newValue === 'number') {
-	        return this.data.minDate = new Date(newValue);
-	      }
-
 	      if (newValue === 'Invalid Date' || newValue === 'NaN') {
 	        throw new TypeError('Invalid Date');
 	      }
@@ -10334,10 +10324,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (bowser.msie && bowser.version <= 9) {
 	          return this.data.date = polyfill.StringDate(newValue);
 	        }
-	        return this.data.maxDate = new Date(newValue);
-	      }
-
-	      if (typeof newValue === 'number') {
 	        return this.data.maxDate = new Date(newValue);
 	      }
 
@@ -10461,7 +10447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 220 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)}\n                     disabledHours={disabledHours}\n                     disabledMinutes={disabledMinutes}\n                     disabledSeconds={disabledSeconds}\n        />\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-dropdown u-datetimepicker u-dropdown-{size} {class}\" r-width=\"{width}\">\n  <div class=\"u-dropdown \" z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\">\n      {#if showTime}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {#else}\n      <label class=\"u-input\">\n        <input class=\"input input-{state}\" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref=\"input\"\n        autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >\n      </label>\n      {/if}\n    </div>\n    <div class=\"dropdown_bd\" r-hide={!open}>\n      <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>\n        {#if showTime}\n        <time-picker size=\"sm\" time={_time} on-change={this._onDateTimeChange(_date, _time)} />\n        <div class=\"dropdown_ft\">\n          <a class=\"u-btn u-btn-sm datetimepicker_confirmBtn\" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>\n        </div>\n        {/if}\n      </calendar>\n    </div>\n  </div>\n  {#if tip && !hideTip}<span class=\"u-tip u-tip-{state}\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 221 */
