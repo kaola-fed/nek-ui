@@ -5,7 +5,6 @@
         position:relative;
         padding: 5px 20px;
         cursor:pointer;
-       
         .header_arrow{
             font-size: 14px;
             transform: rotate(0);
