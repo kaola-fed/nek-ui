@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            文本输入 - 
+            折叠面板 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="文本输入 - JR">
+        <meta property="og:title" content="折叠面板 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -214,7 +214,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRTextArea_.html" class="sidebar-link current">
+                                        <a href="/JR/components/form_JRTextArea_.html" class="sidebar-link">
                                             文本输入
                                                 JRTextArea
                                         </a>
@@ -296,7 +296,7 @@
                             
                                 
                                     <li>
-                                        <a href="/JR/components/navigation_JRCollapse_.html" class="sidebar-link new">
+                                        <a href="/JR/components/navigation_JRCollapse_.html" class="sidebar-link current new">
                                             折叠面板
                                                 JRCollapse
                                         </a>
@@ -489,52 +489,44 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>大部分属性的用法与<code>&lt;textarea&gt;</code>一致。</p>
-<!-- demo_start -->
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式-默认展开并且会折叠其他"><a href="#基本形式-默认展开并且会折叠其他" class="headerlink" title="基本形式.默认展开并且会折叠其他"></a>基本形式.默认展开并且会折叠其他</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>备注：<span class="tag">&lt;<span class="name">jr-textarea</span> <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
-<!-- demo_start -->
+<h3 id="可定制宽度"><a href="#可定制宽度" class="headerlink" title="可定制宽度,"></a>可定制宽度,</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"备注"</span> <span class="attr">hint</span>=<span class="string">"写点备注吧"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-textarea</span> <span class="attr">placeholder</span>=<span class="string">"请输入备注"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span> <span class="attr">width</span>=<span class="string">'200px'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span> <span class="attr">active</span>=<span class="string">&#123;false&#125;</span> <span class="attr">width</span>=<span class="string">'400px'</span> &gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span> <span class="attr">width</span>=<span class="string">'600px'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><!-- demo_start -->
+<h3 id="可定制折叠"><a href="#可定制折叠" class="headerlink" title="可定制折叠"></a>可定制折叠</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span>邮箱：<span class="tag">&lt;<span class="name">jr-textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">maxlength</span>=<span class="string">20</span> /&gt;</span><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isFilled'</span>, <span class="attr">on</span>: <span class="string">'blur'</span>, <span class="attr">message</span>: <span class="string">'请输入邮箱！'</span>&#125;,</div><div class="line">            &#123;<span class="attr">type</span>: <span class="string">'isEmail'</span>, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'请输入正确的邮箱！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="字数实时统计"><a href="#字数实时统计" class="headerlink" title="字数实时统计"></a>字数实时统计</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">最大长度&#123;maxLength&#125;字，已经输入了&#123;(value || '').length&#125;字</div><div class="line"><span class="tag">&lt;<span class="name">jr-textarea</span> <span class="attr">rules</span>=<span class="string">&#123;rules&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">label</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">maxLength</span>: <span class="number">10</span>,</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">rules</span>: [</div><div class="line">            &#123;<span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params">text</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> (text || <span class="string">''</span>).length &lt;= component.data.maxLength;</div><div class="line">            &#125;, <span class="attr">on</span>: <span class="string">'keyup+blur'</span>, <span class="attr">message</span>: <span class="string">'字数超出限制！'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span> <span class="attr">accordion</span>=<span class="string">&#123;false&#125;</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容，我不会被折叠哦<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容，我不会被折叠哦<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容，我不会被折叠哦<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容，我不会被折叠哦<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容，我不会被折叠哦<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-collapse</span> <span class="attr">title</span>=<span class="string">'标题'</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>&gt;</span>测试内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-collapse</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRTextArea">JRTextArea</a></dt>
+<dt><a href="#JRCollapse">JRCollapse</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>JRTextArea   输入扩展</p>
+<h2 id="jrcollapse-">JRCollapse  折叠文本</h2>
 </dd>
 </dl>
 
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#validate_new 根据`rules`验证组件的值是否正确">validate() 根据<code>rules</code>验证组件的值是否正确()</a> ⇒ <code>object</code></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRTextArea"></a></p>
-<h2 id="JRTextArea"><a href="#JRTextArea" class="headerlink" title="JRTextArea"></a>JRTextArea</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRTextArea_new"></a></p>
-<h3 id="new-JRTextArea"><a href="#new-JRTextArea" class="headerlink" title="new JRTextArea()"></a>new JRTextArea()</h3><table>
+<p><a name="JRCollapse"></a></p>
+<h2 id="JRCollapse"><a href="#JRCollapse" class="headerlink" title="JRCollapse"></a>JRCollapse</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component  </p>
+<ul>
+<li><a href="#JRCollapse">JRCollapse</a><ul>
+<li><a href="#new_JRCollapse_new">new JRCollapse()</a></li>
+<li><a href="#JRCollapse+event_open 打开面板回调">“open 打开面板回调” (事件句柄)</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="new_JRCollapse_new"></a></p>
+<h3 id="new-JRCollapse"><a href="#new-JRCollapse" class="headerlink" title="new JRCollapse()"></a>new JRCollapse()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -551,110 +543,62 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.value]</td>
+<td>[options.data.title]</td>
 <td><code>string</code></td>
 <td></td>
-<td>&lt;=&gt; 文本框的值</td>
+<td>=&gt; 标题</td>
 </tr>
 <tr>
-<td>[options.data.placeholder]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 占位符</td>
-</tr>
-<tr>
-<td>[options.data.state]</td>
-<td><code>string</code></td>
-<td></td>
-<td>&lt;=&gt; 文本框的状态</td>
-</tr>
-<tr>
-<td>[options.data.maxlength]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 文本框的最大长度</td>
-</tr>
-<tr>
-<td>[options.data.rules]</td>
-<td><code>Array.&lt;object&gt;</code></td>
-<td><code>[]</code></td>
-<td>=&gt; 验证规则</td>
-</tr>
-<tr>
-<td>[options.data.autofocus]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否自动获得焦点</td>
-</tr>
-<tr>
-<td>[options.data.height]</td>
-<td><code>number</code></td>
-<td><code>120</code></td>
-<td>=&gt; 高度</td>
-</tr>
-<tr>
-<td>[options.data.required]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否必填</td>
-</tr>
-<tr>
-<td>[options.data.message]</td>
-<td><code>string</code></td>
-<td><code>&quot;&#x27;&#x27;&quot;</code></td>
-<td>=&gt; 必填校验失败提示的消息</td>
-</tr>
-<tr>
-<td>[options.data.hideTip]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示校验错误信息</td>
-</tr>
-<tr>
-<td>[options.data.readonly]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否只读</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
+<td>[options.data.active]</td>
 <td><code>boolean</code></td>
 <td><code>true</code></td>
-<td>=&gt; 是否显示</td>
+<td>=&gt; 是否默认显示内容区域</td>
+</tr>
+<tr>
+<td>[options.data.showIcon]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示右侧标签</td>
+</tr>
+<tr>
+<td>[options.data.accordion]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否手风琴模式</td>
+</tr>
+<tr>
+<td>[options.data.width]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;100%&#x27;&quot;</code></td>
+<td>=&gt; 宽度</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
 <td></td>
-<td>=&gt; 补充class</td>
+<td>=&gt; 补充样式</td>
 </tr>
+</tbody>
+</table>
+<p><a name="JRCollapse+event_open 打开面板回调"></a></p>
+<h3 id="“open-打开面板回调”-事件句柄"><a href="#“open-打开面板回调”-事件句柄" class="headerlink" title="“open 打开面板回调” (事件句柄)"></a>“open 打开面板回调” (事件句柄)</h3><p><strong>Kind</strong>: event emitted by <code><a href="#JRCollapse">JRCollapse</a></code>  </p>
+<table>
+<thead>
 <tr>
-<td>[options.data.size]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 组件大小, sm/md/lg</td>
+<th>Param</th>
+<th>Type</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td>[options.data.width]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 组件宽度</td>
+<td>事件句柄</td>
+<td><code>object</code></td>
 </tr>
 </tbody>
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>JRTextArea   输入扩展</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="validate_new 根据`rules`验证组件的值是否正确"></a></p>
-<h2 id="validate-根据rules验证组件的值是否正确-⇒-object"><a href="#validate-根据rules验证组件的值是否正确-⇒-object" class="headerlink" title="validate() 根据rules验证组件的值是否正确() ⇒ object"></a>validate() 根据<code>rules</code>验证组件的值是否正确() ⇒ <code>object</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>object</code> - result 结果<br><strong>Access:</strong> public  </p>
+<h2 id="JRCollapse-折叠文本"><a href="#JRCollapse-折叠文本" class="headerlink" title="JRCollapse  折叠文本"></a>JRCollapse  折叠文本</h2><p><strong>Kind</strong>: global constant  </p>
 
 <script>
 var index = 0;
@@ -662,7 +606,27 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<label>备注：<jr-textarea placeholder="请输入备注" /></label>
+<jr-collapse title='标题'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
+<jr-collapse title='标题'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
+<jr-collapse title='标题'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
 
       */});
       var component = new JRUI.Component({template: template});
@@ -672,11 +636,27 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-form>
-    <jr-form-item cols="12" title="备注" hint="写点备注吧">
-        <jr-textarea placeholder="请输入备注" />
-    </jr-form-item>
-</jr-form>
+<jr-collapse title='标题' width='200px'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
+<jr-collapse title='标题' active={false} width='400px' >
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
+<jr-collapse title='标题' width='600px'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
 
       */});
       var component = new JRUI.Component({template: template});
@@ -686,46 +666,30 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<label>邮箱：<jr-textarea rules={rules} maxlength=20 /></label>
+<jr-collapse title='标题' accordion={false}>
+   <div>测试内容，我不会被折叠哦</div>
+   <div>测试内容，我不会被折叠哦</div>
+   <div>测试内容，我不会被折叠哦</div>
+   <div>测试内容，我不会被折叠哦</div>
+   <div>测试内容，我不会被折叠哦</div>
+</jr-collapse>
+<jr-collapse title='标题'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
+<jr-collapse title='标题'>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+   <div>测试内容</div>
+</jr-collapse>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        rules: [
-            {type: 'isFilled', on: 'blur', message: '请输入邮箱！'},
-            {type: 'isEmail', on: 'keyup+blur', message: '请输入正确的邮箱！'}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<label>
-最大长度{maxLength}字，已经输入了{(value || '').length}字
-<jr-textarea rules={rules} value={value} />
-</label>
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        maxLength: 10,
-        value: '',
-        rules: [
-            {method: function(text) {
-                return (text || '').length <= component.data.maxLength;
-            }, on: 'keyup+blur', message: '字数超出限制！'}
-        ]
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -733,10 +697,8 @@ var component = new JRUI.Component({
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/form_JRText_.html">展示文本</a></span>
-                                
                                     
-                                        <span style="float:right"><a href="/JR/components/form_JRTreeView_.html">树型视图</a> →</span>
+                                        <span style="float:right"><a href="/JR/components/navigation_JRCrumb_.html">面包屑</a> →</span>
                                         
                         </div>
                 </div>

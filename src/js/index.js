@@ -37,6 +37,7 @@ const Components = {
   JRTab: require('./components/navigation/JRTabs/JRTab'),
   JRSteps: require('./components/navigation/JRSteps'),
   JRCrumb: require('./components/navigation/JRCrumb'),
+  JRCollapse: require('./components/navigation/JRCollapse'),
   JRCrumbItem: require('./components/navigation/JRCrumb/JRCrumbItem'),
 
   // Notice
@@ -60,6 +61,11 @@ const Components = {
 
   // Layout
   JRTable: require('./components/layout/JRTable'),
+  JRContainer: require('./components/layout/JRContainer'),
+  JRHeader: require('./components/layout/JRContainer/JRHeader'),
+  JRFooter: require('./components/layout/JRContainer/JRFooter'),
+  JRMain: require('./components/layout/JRContainer/JRMain'),
+  JRAside: require('./components/layout/JRContainer/JRAside'),
   JRTableCol: require('./components/layout/JRTable/JRTableCol'),
   JRTableTemplate: require('./components/layout/JRTable/JRTableTemplate'),
   JRRow: require('./components/layout/JRRow'),

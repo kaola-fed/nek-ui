@@ -1,0 +1,30 @@
+.m-collapse{
+    overflow:hidden;
+    border-bottom:1px solid  $brand-primary;
+    header{
+        position:relative;
+        padding: 5px 20px;
+        cursor:pointer;
+       
+        .header_arrow{
+            font-size: 14px;
+            transform: rotate(0);
+            transition: 0.3s all ease-in-out;
+            margin-right: 10px;
+        }
+        .open{
+            transform:rotate(180deg)
+        }
+        .right{
+            position:absolute;
+            right:10px;
+        }
+    }
+    main{
+        border-top:1px solid  #dcdcdc;
+        padding:5px 20px;
+    }
+}
+.collapse-transition {
+        transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+}

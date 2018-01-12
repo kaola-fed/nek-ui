@@ -1,0 +1,11 @@
+<div class="m-collapse {class}" r-style={{width:width}}>
+    <header on-click={this.toggle()}>
+        <span r-html={title}></span> {#if showIcon}
+        <span r-class={{open:active}} class="header_arrow right u-icon u-icon-angle-down"></span> {/if}
+    </header>
+    {#if active}
+        <main ref='mainContent' r-animation="on:enter;collapse:on;on:leave;collapse:off;">
+            {#inc this.$body}
+        </main>
+    {/if}
+</div>

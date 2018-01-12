@@ -78,6 +78,16 @@
                         
                                 
                                     <li>
+                                        <a href="/JR/components/layout_JRContainer_.html" class="sidebar-link new">
+                                            容器布局
+                                                JRContainer
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
+                                
+                                    <li>
                                         <a href="/JR/components/layout_JRTable_.html" class="sidebar-link">
                                             表格
                                                 JRTable
@@ -232,16 +242,6 @@
                                     
                     
                         
-                                
-                                    <li>
-                                        <a href="/JR/components/form_JRUploadBACK_.html" class="sidebar-link">
-                                            上传文件
-                                                JRUploadBACK
-                                        </a>
-                                    </li>
-                                    
-                    
-                        
                             <li>
                                 <h3>
                                     通知
@@ -294,6 +294,16 @@
                                 </h3>
                             </li>
                             
+                                
+                                    <li>
+                                        <a href="/JR/components/navigation_JRCollapse_.html" class="sidebar-link new">
+                                            折叠面板
+                                                JRCollapse
+                                        </a>
+                                    </li>
+                                    
+                    
+                        
                                 
                                     <li>
                                         <a href="/JR/components/navigation_JRCrumb_.html" class="sidebar-link">
@@ -485,37 +495,6 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
-<!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            JRUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="全选"><a href="#全选" class="headerlink" title="全选"></a>全选</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">check</span> <span class="attr">name</span>=<span class="string">"全选"</span> <span class="attr">checked</span>=<span class="string">&#123;checkedAll&#125;</span> <span class="attr">on-check</span>=<span class="string">&#123;this._checkAll($event)&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-check-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>, <span class="attr">id</span>: <span class="number">1</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>, <span class="attr">id</span>: <span class="number">3</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>, <span class="attr">id</span>: <span class="number">4</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>, <span class="attr">id</span>: <span class="number">5</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>, <span class="attr">id</span>: <span class="number">6</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">computed</span>: &#123;</div><div class="line">        <span class="attr">checkedAll</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> source = <span class="keyword">this</span>.data.source;</div><div class="line">            <span class="keyword">return</span> source.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> item.checked;</div><div class="line">            &#125;).length === source.length;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">_checkAll</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">      <span class="keyword">this</span>.data.source.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">d</span>) </span>&#123;</div><div class="line">        d.checked = !!event.checked;</div><div class="line">      &#125;)</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#JRCheckGroup">JRCheckGroup</a></dt>
 <dd></dd>
@@ -686,145 +665,6 @@ var component = new JRUI.Component({
             {name: '选项6', id: 6}
         ]
     }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-form>
-    <jr-form-item cols="12" title="用户名" hint="用户名的用途">
-        <jr-check-group source={source} />
-    </jr-form-item>
-</jr-form>
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-check-group source={source} disabled />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-check-group source={source} block />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-check-group service={@(this.service)} />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    service: {
-        getList: function(params, success) {
-            JRUI.ajax.request({
-                url: '../data/list.json',
-                method: 'get',
-                type: 'json',
-                data: params,
-                success: success
-            });
-        }
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<check name="全选" checked={checkedAll} on-check={this._checkAll($event)} />
-<jr-check-group source={source} />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1', id: 1},
-            {name: '选项2', id: 2},
-            {name: '选项3', id: 3},
-            {name: '选项4', id: 4},
-            {name: '选项5', id: 5},
-            {name: '选项6', id: 6}
-        ]
-    },
-    computed: {
-        checkedAll: function() {
-            var source = this.data.source;
-            return source.filter(function(item) {
-                return item.checked;
-            }).length === source.length;
-        }
-    },
-    _checkAll: function(event) {
-      this.data.source.forEach(function(d) {
-        d.checked = !!event.checked;
-      })
-    },
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
