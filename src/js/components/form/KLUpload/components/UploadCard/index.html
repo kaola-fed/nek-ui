@@ -44,6 +44,7 @@
                                 status={fileunit.status}
                                 readonly={readonly}
                                 data={data}
+                                viewpdf={viewpdf}
                                 onLoadInterceptor={onLoadInterceptor}
                                 onErrorInterceptor={onErrorInterceptor}
                                 beforeRemove={beforeRemove}
@@ -51,6 +52,7 @@
                                 on-progress={this.onProgress($event)}
                                 on-success={this.onSuccess($event)}
                                 on-error={this.onError($event)}
+                                on-previewPDF={this.previewPDF($event)}
                                 on-remove={this.onRemove($event)}/>
                         </li>
                     {/list}

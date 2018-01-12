@@ -81,6 +81,8 @@ const KLUpload = Component.extend({
       beforeRemove: null,
       autoUpload: true,
       formData: new FormData(),
+      // 是否可以点击预览pdf，默认否
+      viewpdf: false,
     });
     this.preProcess(data);
     this.initValidation();

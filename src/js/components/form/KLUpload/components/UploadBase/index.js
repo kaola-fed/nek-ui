@@ -310,7 +310,11 @@ const UploadBase = Component.extend({
       }
     });
   },
-
+  previewPDF(info) {
+    if (this.data.viewpdf) {
+      window.open(info.file.url);
+    }
+  },
   onPreview(info) {
     const current = info.file;
 

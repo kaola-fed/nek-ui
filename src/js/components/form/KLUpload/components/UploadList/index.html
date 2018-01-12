@@ -20,6 +20,8 @@
                       onLoadInterceptor={onLoadInterceptor}
                       onErrorInterceptor={onErrorInterceptor}
                       beforeRemove={beforeRemove}
+                      on-previewPDF={this.previewPDF($event)}
+                      viewpdf={viewpdf}
                       on-preview={this.onPreview($event)}
                       on-progress={this.onProgress($event)}
                       on-success={this.onSuccess($event)}

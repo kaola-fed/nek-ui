@@ -168,7 +168,7 @@ const FileUnit = Component.extend({
     }
   },
 
-  onPreview(e) {
+  onPreview(e, type) {
     const data = this.data;
     const emitItem = {
       sender: this,
@@ -176,7 +176,11 @@ const FileUnit = Component.extend({
       file: data.file,
       status: data.status,
     };
-    this.$emit('preview', emitItem);
+    if (type === 'pdf') {
+      this.$emit('previewPDF', emitItem);
+    } else {
+      this.$emit('preview', emitItem);
+    }
   },
 });
 
