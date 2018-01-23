@@ -29481,8 +29481,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var fileIndex = fileList.findIndex(function (item) {
 	      return uid === item.uid;
 	    });
-	    if (fileIndex === -1) {
+	    if (fileIndex === -1 && unit.status === 'success') {
 	      // fileList中不存在该单元数据，新增数据
+	      // 只有当上传成功时才更新fileList
 	      fileList.push({ name: name, url: url, flag: flag, uid: uid });
 	    } else if (flag === Config.flagMap.DELETED) {
 	      fileList[fileIndex].flag = Config.flagMap.DELETED;
