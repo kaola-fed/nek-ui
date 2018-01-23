@@ -201,10 +201,14 @@ const UploadBase = Component.extend({
       // 只有当上传成功时才更新fileList
       fileList.push({ name, url, flag, uid });
     } else if (flag === Config.flagMap.DELETED) {
-      fileList[fileIndex].flag = Config.flagMap.DELETED;
+      if (fileIndex !== -1) {
+        fileList[fileIndex].flag = Config.flagMap.DELETED;
+      }
       fileUnitList.splice(unitIndex, 1);
     } else if (destroyed) {
-      fileList.splice(fileIndex, 1);
+      if (fileIndex !== -1) {
+        fileList.splice(fileIndex, 1);
+      }
       fileUnitList.splice(unitIndex, 1);
     }
     if (!data.autoUpload) {
