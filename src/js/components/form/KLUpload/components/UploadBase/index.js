@@ -187,8 +187,9 @@ const UploadBase = Component.extend({
   updateFileList(info) {
     const data = this.data;
     const uid = info.file.uid;
-    const { fileList, fileUnitList } = data;
+    const { fileUnitList } = data;
 
+    const fileList = JSON.parse(JSON.stringify(data.fileList));
     // 找到触发更新的unit单元
     const unitIndex = fileUnitList.findIndex(item => uid === item.uid);
     const unit = fileUnitList[unitIndex];
@@ -210,6 +211,7 @@ const UploadBase = Component.extend({
     if (!data.autoUpload) {
       this.initFormData();
     }
+    data.fileList = fileList;
     this.$update();
   },
 
