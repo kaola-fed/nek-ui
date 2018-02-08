@@ -29276,6 +29276,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _getIterator3 = _interopRequireDefault(_getIterator2);
 
+	var _stringify = __webpack_require__(73);
+
+	var _stringify2 = _interopRequireDefault(_stringify);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
@@ -29462,11 +29466,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  updateFileList: function updateFileList(info) {
 	    var data = this.data;
 	    var uid = info.file.uid;
-	    var fileList = data.fileList,
-	        fileUnitList = data.fileUnitList;
+	    var fileUnitList = data.fileUnitList;
 
+
+	    var fileList = JSON.parse((0, _stringify2.default)(data.fileList));
 	    // 找到触发更新的unit单元
-
 	    var unitIndex = fileUnitList.findIndex(function (item) {
 	      return uid === item.uid;
 	    });
@@ -29495,6 +29499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!data.autoUpload) {
 	      this.initFormData();
 	    }
+	    data.fileList = fileList;
 	    this.$update();
 	  },
 	  initFormData: function initFormData() {
