@@ -22,7 +22,7 @@ module.exports = function (Component) {
         this.$on('destroy', function () {
           const index = $outer.controls.indexOf(this);
           if (index !== -1) {
-            $outer.controls.splice(index, 1);
+            $outer.controls = $outer.controls.splice(index, 1);
           }
         });
       }
