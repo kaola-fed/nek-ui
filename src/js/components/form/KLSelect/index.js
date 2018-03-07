@@ -80,6 +80,8 @@ const KLSelect = Dropdown.extend({
       placeholder: this.$trans('PLEASE_SELECT'),
       required: false,
       clearable: false,
+      // 键盘事件当前对应的顺序
+      key_index: -1,
     });
     if (data.multiple && !Array.isArray(data.selected)) {
       data.selected = data.selected ? [data.selected] : [];
@@ -262,20 +264,22 @@ const KLSelect = Dropdown.extend({
         console.error(this.$trans('LIMIT_ERROR'));
       }
     });
-    if (this.service && this.service.getList) {
-      const $updateSource = _.throttle(
-        this.$updateSource.bind(this),
-        data.delaySearch,
-      );
-      this.$watch('searchValue', (newValue, oldValue) => {
-        if (oldValue === undefined) {
-          return;
-        }
+    const $updateSource = _.throttle(
+      this.$updateSource.bind(this),
+      data.delaySearch,
+    );
+    this.$watch('searchValue', (newValue, oldValue) => {
+      if (oldValue === undefined) {
+        return;
+      }
+      data.key_index = -1;
+      if (this.service && this.service.getList) {
         $updateSource();
-      });
-    }
+      }
+    });
 
     this.initValidation();
+    document.addEventListener('keydown', event => this.keyup(event));
   },
   select(item) {
     const data = this.data;
@@ -332,6 +336,7 @@ const KLSelect = Dropdown.extend({
   toggle(open) {
     const data = this.data;
     data.canSearch && this.clearSearchValue();
+    data.key_index = -1;
     this.supr(open);
   },
   validate(on) {

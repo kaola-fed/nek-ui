@@ -41,9 +41,9 @@
 	    {#if open}
 	    <div class="dropdown_bd"
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-	        <ul class="m-listview">
+	        <ul class="m-listview" ref="listview">
 	            {#if placeholder}
-	                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+	                <li z-hover={key_index == -1}  z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
 	                    {placeholder}
 	                </li>
 	            {/if}
@@ -51,7 +51,7 @@
 	            {#list this.filterArray(source) as item}
 	            {#if (!filter || (filter && filter(item)))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-	                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+	                    <li z-hover={key_index == 'all'} on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
 	                        {this.$trans('ALL')}
 	                    </li>
@@ -71,11 +71,11 @@
 	                    </li>
 	                </kl-tooltip>
 	                {#else}
-	                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+	                <li z-hover={key_index == item_index}  z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
 	                    title={item[nameKey]} on-click={this.select(item)}>
 	                    {#if multiple && !item.divider}
 	                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-	                    {/if}
+						{/if}
 	                    {#if @(itemTemplate)}
 	                        {#inc @(itemTemplate)}
 	                    {#else}

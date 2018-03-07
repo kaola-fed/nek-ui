@@ -100,5 +100,97 @@ module.exports = function PrivateMethod(Component) {
         searchValue: this.data.searchValue,
       };
     },
+    /**
+     * 键盘事件
+     */
+    keyup(event) {
+      const data = this.data;
+      if (data.open && [13, 27, 38, 40].indexOf(event.keyCode) > -1) {
+        event.preventDefault();
+        event.stopPropagation();
+        switch (event.keyCode) {
+          case 38:
+            this.up();
+            break;
+          case 40:
+            this.down();
+            break;
+          case 13:
+            this.enter();
+            break;
+          case 27:
+            data.open = false;
+            this.$update();
+            break;
+          default:
+        }
+      }
+    },
+    /**
+     * 键盘 arrow up 事件
+     */
+    up() {
+      const data = this.data;
+      const all = data.canSelectAll && data.multiple && (data.canSearch && !data.searchValue);
+      if (data.key_index > 0) {
+        data.key_index -= 1;
+      } else if (data.key_index === 0) {
+        data.key_index = all ? 'all' : -1;
+      } else if (data.key_index === 'all') {
+        data.key_index = -1;
+      }
+      let seeLength = Math.floor((this.$refs.listview.scrollTop + 4) / 38) - 1;
+      if (data.placeholder) {
+        seeLength -= 1;
+      }
+      if (all) {
+        seeLength -= 1;
+      }
+      if (seeLength + 1 > data.key_index) {
+        this.$refs.listview.scrollTop -= 38;
+      }
+      this.$update();
+    },
+    /**
+     * 键盘 arrow down 事件
+     */
+    down() {
+      const data = this.data;
+      const length = this.filterArray(data.source).length;
+      const all = data.canSelectAll && data.multiple && (data.canSearch && !data.searchValue);
+      if (data.key_index >= 0 && data.key_index < length - 1) {
+        data.key_index += 1;
+      } else if (data.key_index === -1) {
+        data.key_index = all ? 'all' : 0;
+      } else if (data.key_index === 'all') {
+        data.key_index = 0;
+      }
+      let seeLength = Math.floor((this.$refs.listview.scrollTop + 4) / 38);
+      if (data.placeholder) {
+        seeLength -= 1;
+      }
+      if (all) {
+        seeLength -= 1;
+      }
+      if (seeLength + 4 < data.key_index) {
+        this.$refs.listview.scrollTop += 38;
+      }
+      this.$update();
+    },
+    /**
+     * 键盘 enter 事件
+     */
+    enter() {
+      const data = this.data;
+      const list = this.filterArray(data.source);
+      if (data.key_index >= 0) {
+        this.select(list[data.key_index]);
+      } else if (data.key_index === -1) {
+        this.select(undefined);
+      } else {
+        this.selectAll(data.selected.length !== this.filterData(data.source).length);
+      }
+      this.$update();
+    },
   });
 };

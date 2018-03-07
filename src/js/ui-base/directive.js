@@ -16,6 +16,7 @@ rClassGenerator('z-sel');
 rClassGenerator('z-chk');
 rClassGenerator('z-act');
 rClassGenerator('z-dis');
+rClassGenerator('z-hover');
 rClassGenerator('z-divider');
 
 exports['r-show'] = function (elem, value) {
