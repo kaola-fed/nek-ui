@@ -4585,6 +4585,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	user-select:none;
 	vertical-align:top;
 }
+.u-select .z-hover{
+	background:#f1f1f1;
+}
 .u-select .dropdown_hd{
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
