@@ -197,15 +197,19 @@ const UploadBase = Component.extend({
 
     // 找到该unit单元在fileList中的位置
     const fileIndex = fileList.findIndex(item => uid === item.uid);
-    if (fileIndex === -1 && unit.status === 'success') {
+    if (fileIndex === -1 && (unit.status === 'success' || unit.status === 'wait')) {
       // fileList中不存在该单元数据，新增数据
       // 只有当上传成功时才更新fileList
       fileList.push({ name, url, flag, uid });
     } else if (flag === Config.flagMap.DELETED) {
-      fileList[fileIndex].flag = Config.flagMap.DELETED;
+      if (fileIndex !== -1) {
+        fileList[fileIndex].flag = Config.flagMap.DELETED;
+      }
       fileUnitList.splice(unitIndex, 1);
     } else if (destroyed) {
-      fileList.splice(fileIndex, 1);
+      if (fileIndex !== -1) {
+        fileList.splice(fileIndex, 1);
+      }
       fileUnitList.splice(unitIndex, 1);
     }
     if (!data.autoUpload) {
