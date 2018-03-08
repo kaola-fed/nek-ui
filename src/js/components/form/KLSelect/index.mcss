@@ -9,6 +9,10 @@
 // ========================================================================
 
 .u-select {
+    .z-hover {
+        background: #f1f1f1;
+    }
+    
     $user-select: none;
     vertical-align: top;
 
