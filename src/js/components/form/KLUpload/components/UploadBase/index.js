@@ -196,7 +196,7 @@ const UploadBase = Component.extend({
 
     // 找到该unit单元在fileList中的位置
     const fileIndex = fileList.findIndex(item => uid === item.uid);
-    if (fileIndex === -1 && unit.status === 'success') {
+    if (fileIndex === -1 && (unit.status === 'success' || unit.status === 'wait')) {
       // fileList中不存在该单元数据，新增数据
       // 只有当上传成功时才更新fileList
       fileList.push({ name, url, flag, uid });
