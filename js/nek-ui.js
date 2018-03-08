@@ -2267,7 +2267,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	rClassGenerator('z-chk');
 	rClassGenerator('z-act');
 	rClassGenerator('z-dis');
-	rClassGenerator('z-hover');
 	rClassGenerator('z-divider');
 
 	exports['r-show'] = function (elem, value) {
@@ -27961,8 +27960,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  name: 'kl-select',
 	  template: template,
 	  config: function config() {
-	    var _this = this;
-
 	    var data = this.data;
 	    _.extend(data, {
 	      hideTip: false,
@@ -27989,9 +27986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      placeholder: this.$trans('PLEASE_SELECT'),
 	      required: false,
-	      clearable: false,
-	      // 键盘事件当前对应的顺序
-	      key_index: -1
+	      clearable: false
 	    });
 	    if (data.multiple && !Array.isArray(data.selected)) {
 	      data.selected = data.selected ? [data.selected] : [];
@@ -28158,21 +28153,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.error(this.$trans('LIMIT_ERROR'));
 	      }
 	    });
-	    var $updateSource = _.throttle(this.$updateSource.bind(this), data.delaySearch);
-	    this.$watch('searchValue', function (newValue, oldValue) {
-	      if (oldValue === undefined) {
-	        return;
-	      }
-	      data.key_index = -1;
-	      if (_this.service && _this.service.getList) {
+	    if (this.service && this.service.getList) {
+	      var $updateSource = _.throttle(this.$updateSource.bind(this), data.delaySearch);
+	      this.$watch('searchValue', function (newValue, oldValue) {
+	        if (oldValue === undefined) {
+	          return;
+	        }
 	        $updateSource();
-	      }
-	    });
+	      });
+	    }
 
 	    this.initValidation();
-	    document.addEventListener('keydown', function (event) {
-	      return _this.keyup(event);
-	    });
 	  },
 	  select: function select(item) {
 	    var data = this.data;
@@ -28225,7 +28216,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  toggle: function toggle(open) {
 	    var data = this.data;
 	    data.canSearch && this.clearSearchValue();
-	    data.key_index = -1;
 	    this.supr(open);
 	  },
 	  validate: function validate(on) {
@@ -28269,7 +28259,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 353 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr {clearable ? 'hoverHide' : ''}\"/>\n\t\t\t\t{#if clearable}\n\t\t\t\t<kl-icon fontSize=12 type=\"error\" on-click={this.selectNone($event)} class=\"f-fr hoverShow\"/>\n\t\t\t\t{/if}\n\t\t\t\t{#if open && canSearch}\n\t\t\t\t<input disabled={disabled} readonly={readonly} type=\"text\" class={selected?'input u-search-input':'input u-search-input m-multi-placeholder'} r-autofocus\n\t\t\t\t\t\tplaceholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t\t\t\t{/if}\n\t\t\t\t<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，\n\t\t\t\t\t如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->\n\t\t\t\t<span class={selected?'':'m-multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} {#if open && canSearch} style=\"min-height: 65px;\" {/if}>\n\t\t\t\t\t<kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr\" />\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>\n\t\t            <kl-icon fontSize=12 type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t\t\t\t{/list}\n\t\t\t\t<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\" ref=\"listview\">\n\t            {#if placeholder}\n\t                <li z-hover={key_index == -1}  z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li z-hover={key_index == 'all'} on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-hover={key_index == item_index}  z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t\t\t\t\t\t{/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
+	module.exports = "<div class=\"u-select u-select-{state} u-select-{size} {class}\" r-width=\"{width}\">\n\t<div class=\"u-dropdown\" r-class={{isMultiple:multiple}}\n\t     z-dis={disabled} r-hide={!visible} ref=\"element\">\n\t    {#if !multiple}\n\t        <div class=\"dropdown_hd\"\n\t\t\t\t z-dis={disabled}\n\t             title={selected?selected[nameKey]:placeholder}\n\t             on-click={this.toggle(!open, $event)}>\n\t            <kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr {clearable ? 'hoverHide' : ''}\"/>\n\t\t\t\t{#if clearable}\n\t\t\t\t<kl-icon fontSize=12 type=\"error\" on-click={this.selectNone($event)} class=\"f-fr hoverShow\"/>\n\t\t\t\t{/if}\n\t\t\t\t{#if open && canSearch}\n\t\t\t\t<input disabled={disabled} readonly={readonly} type=\"text\" class={selected?'input u-search-input':'input u-search-input m-multi-placeholder'} r-autofocus\n\t\t\t\t\t\tplaceholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>\n\t\t\t\t{/if}\n\t\t\t\t<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，\n\t\t\t\t\t如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->\n\t\t\t\t<span class={selected?'':'m-multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>\n\t        </div>\n\t    {#else}\n\t        <div class=\"dropdown_hd\"\n\t             on-click={this.toggle(!open, $event)} r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} {#if open && canSearch} style=\"min-height: 65px;\" {/if}>\n\t\t\t\t\t<kl-icon fontSize=12 type=\"{open ? 'angle_up' : 'angle_down'}\" class=\"f-fr\" />\n\t            {#if open && canSearch}\n\t            <div>\n\t\t            <input disabled={disabled} readonly={readonly} type=\"text\" class=\"input u-search-input searchInput1\" ref=\"input\"\n\t\t                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>\n\t\t            <kl-icon fontSize=12 type=\"error\" on-click={this.clearContent($event)} class=\"u-select-errorIcon\"/>\n\t            </div>\n\t            {/if}\n\t            {#list selected as item}\n\t                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>\n\t                    {item[nameKey]}\n\t                    <i class=\"u-icon u-icon-remove\" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>\n\t                </span>\n\t\t\t\t{/list}\n\t\t\t\t<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>\n\t        </div>\n\t    {/if}\n\t    {#if open}\n\t    <div class=\"dropdown_bd\"\n\t         r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n\t        <ul class=\"m-listview\">\n\t            {#if placeholder}\n\t                <li z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>\n\t                    {placeholder}\n\t                </li>\n\t            {/if}\n\n\t            {#list this.filterArray(source) as item}\n\t            {#if (!filter || (filter && filter(item)))}\n\t                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}\n\t                    <li on-click={this.selectAll(selected.length!==this.filterData(source).length)}>\n\t                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />\n\t                        {this.$trans('ALL')}\n\t                    </li>\n\t                {/if}\n\t                {#if item.disabled && item.tip}\n\t                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>\n\t                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                        title={item[nameKey]} on-click={this.select(item)}>\n\t                        {#if multiple && !item.divider}\n\t                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                        {/if}\n\t                        {#if @(itemTemplate)}\n\t                            {#inc @(itemTemplate)}\n\t                        {#else}\n\t                            {@(item[nameKey])}\n\t                        {/if}\n\t                    </li>\n\t                </kl-tooltip>\n\t                {#else}\n\t                <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}\n\t                    title={item[nameKey]} on-click={this.select(item)}>\n\t                    {#if multiple && !item.divider}\n\t                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />\n\t                    {/if}\n\t                    {#if @(itemTemplate)}\n\t                        {#inc @(itemTemplate)}\n\t                    {#else}\n\t                        {@(item[nameKey])}\n\t                    {/if}\n\t                </li>\n\t                {/if}\n                {/if}\n\t            {#else}\n\t                {#if searchValue}\n\t                <li>\n\t                    {@(noMatchText)}\n\t                </li>\n\t                {/if}\n\t            {/list}\n\t        </ul>\n\t    </div>\n\t    {/if}\n\t</div>\n\t{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</div>\n"
 
 /***/ }),
 /* 354 */
@@ -28508,102 +28498,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return {
 	        searchValue: this.data.searchValue
 	      };
-	    },
-
-	    /**
-	     * 键盘事件
-	     */
-	    keyup: function keyup(event) {
-	      var data = this.data;
-	      if (data.open && [13, 27, 38, 40].indexOf(event.keyCode) > -1) {
-	        event.preventDefault();
-	        event.stopPropagation();
-	        switch (event.keyCode) {
-	          case 38:
-	            this.up();
-	            break;
-	          case 40:
-	            this.down();
-	            break;
-	          case 13:
-	            this.enter();
-	            break;
-	          case 27:
-	            data.open = false;
-	            this.$update();
-	            break;
-	          default:
-	        }
-	      }
-	    },
-
-	    /**
-	     * 键盘 arrow up 事件
-	     */
-	    up: function up() {
-	      var data = this.data;
-	      var all = data.canSelectAll && data.multiple && data.canSearch && !data.searchValue;
-	      if (data.key_index > 0) {
-	        data.key_index -= 1;
-	      } else if (data.key_index === 0) {
-	        data.key_index = all ? 'all' : -1;
-	      } else if (data.key_index === 'all') {
-	        data.key_index = -1;
-	      }
-	      var seeLength = Math.floor((this.$refs.listview.scrollTop + 4) / 38) - 1;
-	      if (data.placeholder) {
-	        seeLength -= 1;
-	      }
-	      if (all) {
-	        seeLength -= 1;
-	      }
-	      if (seeLength + 1 > data.key_index) {
-	        this.$refs.listview.scrollTop -= 38;
-	      }
-	      this.$update();
-	    },
-
-	    /**
-	     * 键盘 arrow down 事件
-	     */
-	    down: function down() {
-	      var data = this.data;
-	      var length = this.filterArray(data.source).length;
-	      var all = data.canSelectAll && data.multiple && data.canSearch && !data.searchValue;
-	      if (data.key_index >= 0 && data.key_index < length - 1) {
-	        data.key_index += 1;
-	      } else if (data.key_index === -1) {
-	        data.key_index = all ? 'all' : 0;
-	      } else if (data.key_index === 'all') {
-	        data.key_index = 0;
-	      }
-	      var seeLength = Math.floor((this.$refs.listview.scrollTop + 4) / 38);
-	      if (data.placeholder) {
-	        seeLength -= 1;
-	      }
-	      if (all) {
-	        seeLength -= 1;
-	      }
-	      if (seeLength + 4 < data.key_index) {
-	        this.$refs.listview.scrollTop += 38;
-	      }
-	      this.$update();
-	    },
-
-	    /**
-	     * 键盘 enter 事件
-	     */
-	    enter: function enter() {
-	      var data = this.data;
-	      var list = this.filterArray(data.source);
-	      if (data.key_index >= 0) {
-	        this.select(list[data.key_index]);
-	      } else if (data.key_index === -1) {
-	        this.select(undefined);
-	      } else {
-	        this.selectAll(data.selected.length !== this.filterData(data.source).length);
-	      }
-	      this.$update();
 	    }
 	  });
 		};
@@ -29591,15 +29485,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var fileIndex = fileList.findIndex(function (item) {
 	      return uid === item.uid;
 	    });
-	    if (fileIndex === -1 && unit.status === 'success') {
+	    if (fileIndex === -1 && (unit.status === 'success' || unit.status === 'wait')) {
 	      // fileList中不存在该单元数据，新增数据
 	      // 只有当上传成功时才更新fileList
 	      fileList.push({ name: name, url: url, flag: flag, uid: uid });
 	    } else if (flag === Config.flagMap.DELETED) {
-	      fileList[fileIndex].flag = Config.flagMap.DELETED;
+	      if (fileIndex !== -1) {
+	        fileList[fileIndex].flag = Config.flagMap.DELETED;
+	      }
 	      fileUnitList.splice(unitIndex, 1);
 	    } else if (destroyed) {
-	      fileList.splice(fileIndex, 1);
+	      if (fileIndex !== -1) {
+	        fileList.splice(fileIndex, 1);
+	      }
 	      fileUnitList.splice(unitIndex, 1);
 	    }
 	    if (!data.autoUpload) {
