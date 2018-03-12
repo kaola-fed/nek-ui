@@ -320,7 +320,9 @@ const UploadBase = Component.extend({
 
   onPreview(info) {
     const current = info.file;
-
+    if (current.type === 'pdf') {
+      return this.$emit('preview', info);
+    }
     function filterImgFile(file) {
       return file.type === 'image';
     }

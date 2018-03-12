@@ -1,12 +1,14 @@
 <div class="m-file-unit">
     <div class="m-content">
         {#if type === 'image'}
-            <div class="m-img-wrapper" on-click={this.onPreview()}>
+            <div class="m-img-wrapper" on-click={this.onPreview($event)}>
                 <img class="u-img" src={url}/>
             </div>
         {#elseif type === 'unknown'}
             <span class="u-txt">{this.$trans('UNKNOWN')}</span>
-        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
+        {#elseif type === 'pdf'}
+            <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
+        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt">{type.toUpperCase()}</span>
         {/if}
         <div class="m-remove" r-hide={readonly} on-click={this.onRemove($event)}><i class="u-icon u-icon-error"></i></div>
