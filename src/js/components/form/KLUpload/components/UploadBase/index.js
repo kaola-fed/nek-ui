@@ -212,10 +212,10 @@ const UploadBase = Component.extend({
       }
       fileUnitList.splice(unitIndex, 1);
     }
+    data.fileList = fileList;
     if (!data.autoUpload) {
       this.initFormData();
     }
-    data.fileList = fileList;
     this.$update();
   },
 
