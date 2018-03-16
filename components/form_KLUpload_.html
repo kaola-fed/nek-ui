@@ -407,8 +407,8 @@
 <p><strong> 特别注意: 例子中使用的url为私人服务器, 请勿直接使用, 请使用自己后台的上传接口 </strong></p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">onLoadInterceptor</span>=<span class="string">&#123;this.onLoadInterceptor&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//transform &#123;code: 200, data: &#123;...&#125;&#125; to &#123;name: 'xxx', url: 'xxx'&#125;</span></div><div class="line">    <span class="comment">/*onLoadInterceptor: function(json)&#123;</span></div><div class="line">      if(json.code == 200)&#123;</div><div class="line">        var data = json.data || &#123;&#125;;</div><div class="line">        if(Array.isArray(data))&#123;</div><div class="line">            data = data[0];</div><div class="line">        &#125;</div><div class="line">        return data;</div><div class="line">      &#125;</div><div class="line">      return false;</div><div class="line">    &#125;*/</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">onLoadInterceptor</span>=<span class="string">&#123;this.onLoadInterceptor&#125;</span> <span class="attr">on-preview</span>=<span class="string">&#123;this.onPreview($event)&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPreview</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(e.file.type === <span class="string">'pdf'</span>) &#123;</div><div class="line">            <span class="built_in">window</span>.open(e.file.url);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//transform &#123;code: 200, data: &#123;...&#125;&#125; to &#123;name: 'xxx', url: 'xxx'&#125;</span></div><div class="line">    <span class="comment">/*onLoadInterceptor: function(json)&#123;</span></div><div class="line">      if(json.code == 200)&#123;</div><div class="line">        var data = json.data || &#123;&#125;;</div><div class="line">        if(Array.isArray(data))&#123;</div><div class="line">            data = data[0];</div><div class="line">        &#125;</div><div class="line">        return data;</div><div class="line">      &#125;</div><div class="line">      return false;</div><div class="line">    &#125;*/</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="卡片展示形式，用于表格内上传"><a href="#卡片展示形式，用于表格内上传" class="headerlink" title="卡片展示形式，用于表格内上传"></a>卡片展示形式，用于表格内上传</h3><div class="m-example"></div>
@@ -643,6 +643,43 @@
 </tr>
 </tbody>
 </table>
+<p><a name="KLUpload+event_preview 上传预览点击事件"></a></p>
+<h3 id="preview-上传预览点击事件Event"><a href="#preview-上传预览点击事件Event" class="headerlink" title="preview 上传预览点击事件Event"></a><span class="param-title">preview 上传预览点击事件</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>当前上传文件的实例</td>
+</tr>
+<tr>
+<td>file</td>
+<td><code>object</code></td>
+<td>当前上传的文件</td>
+</tr>
+<tr>
+<td>fileList</td>
+<td><code>array</code></td>
+<td>所有展示的文件列表</td>
+</tr>
+<tr>
+<td>status</td>
+<td><code>string</code></td>
+<td>上传的状态</td>
+</tr>
+<tr>
+<td>progress</td>
+<td><code>string</code></td>
+<td>上传的进度</td>
+</tr>
+</tbody>
+</table>
 <p><a name="KLUpload+event_success 文件上传成功回调函数"></a></p>
 <h3 id="success-文件上传成功回调函数Event"><a href="#success-文件上传成功回调函数Event" class="headerlink" title="success 文件上传成功回调函数Event"></a><span class="param-title">success 文件上传成功回调函数</span><span class="type-tag type-tag-event">Event</span></h3><table>
 <thead>
@@ -798,7 +835,7 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor} on-preview={this.onPreview($event)}></kl-upload>
 
       */});
       
@@ -816,6 +853,11 @@ var component = new NEKUI.Component({
             url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
+    onPreview: function(e) {
+        if(e.file.type === 'pdf') {
+            window.open(e.file.url);
+        }
+    }
     //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
     /*onLoadInterceptor: function(json){
       if(json.code == 200){
@@ -844,7 +886,7 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor}></kl-upload>
+<kl-upload action='https://nos.kaolafed.com/upload' file-list={list} onLoadInterceptor={this.onLoadInterceptor} on-preview={this.onPreview($event)}></kl-upload>
 `,
               jsCode: `
 var component = new NEKUI.Component({
@@ -861,6 +903,11 @@ var component = new NEKUI.Component({
             url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
+    onPreview: function(e) {
+        if(e.file.type === 'pdf') {
+            window.open(e.file.url);
+        }
+    }
     //transform {code: 200, data: {...}} to {name: 'xxx', url: 'xxx'}
     /*onLoadInterceptor: function(json){
       if(json.code == 200){

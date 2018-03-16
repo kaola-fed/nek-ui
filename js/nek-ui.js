@@ -28910,6 +28910,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    this.supr(data);
 	  },
+	  onPreview: function onPreview(e) {
+	    /**
+	    * @event KLUpload#preview 上传预览点击事件
+	    * @param {object} sender 当前上传文件的实例
+	    * @param {object} file 当前上传的文件
+	    * @param {array} fileList 所有展示的文件列表
+	    * @param {string} status 上传的状态
+	    * @param {string} progress 上传的进度
+	    */
+	    this.$emit('preview', e);
+	  },
 	  preProcess: function preProcess(data) {
 	    if (typeof data.maxSize === 'number') {
 	      data.maxSize += '';
@@ -29606,10 +29617,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      fileUnitList.splice(unitIndex, 1);
 	    }
-	    data.fileList = fileList;
 	    if (!data.autoUpload) {
 	      this.initFormData();
 	    }
+	    data.fileList = fileList;
 	    this.$update();
 	  },
 	  initFormData: function initFormData() {
@@ -29735,7 +29746,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  onPreview: function onPreview(info) {
 	    var current = info.file;
-
+	    this.$emit('preview', info);
+	    if (current.type !== 'image') {
+	      return;
+	    }
 	    function filterImgFile(file) {
 	      return file.type === 'image';
 	    }
@@ -30797,7 +30811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 388 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview()}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\">{this.$trans('UNKNOWN')}</span>\n        {#else} <!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\">{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 389 */
@@ -31669,7 +31683,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 396 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
+	module.exports = "<div ref=\"m-upload\" class=\"m-upload-wrapper {class}\">\n    {#if listType === 'list'}\n        <upload-list ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            on-preview={this.onPreview($event)}\n            encType={encType}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {#elseif listType === 'card'}\n        <upload-card ref=\"upload\"\n            action={action}\n            name={name}\n            data={data}\n            multiple={multiple}\n            drag={drag}\n            accept={accept}\n            listType={listType}\n            fileList={fileList}\n            numMin={numMin}\n            numMax={numMax}\n            numPerline={numPerline}\n            maxSize={maxSize}\n            readonly={readonly}\n            imageWidth={imageWidth}\n            imageHeight={imageHeight}\n            imageScale={imageScale}\n            data={data}\n            encType={encType}\n            on-preview={this.onPreview($event)}\n            onLoadInterceptor={onLoadInterceptor}\n            onErrorInterceptor={onErrorInterceptor}\n            beforeUpload={beforeUpload}\n            beforeRemove={beforeRemove}\n            autoUpload={autoUpload}\n            formData={formData}/>\n    {/if}\n</div>\n{#if tip && !hideTip}\n    <span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <i class=\"u-icon u-icon-{state}\"></i>\n        <span class=\"tip\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
 /* 397 */
