@@ -182,7 +182,7 @@ const FileUnit = Component.extend({
   downloadFile() {
     const a = document.createElement('a');
     a.download = this.data.filename;
-    if (this.data.file.type !== 'excel') {
+    if (this.data.file.type !== 'doc') {
       fetch(this.data.url).then(res => res.blob().then((blob) => {
         const blobUrl = window.URL.createObjectURL(blob);
         a.href = blobUrl;
@@ -190,7 +190,7 @@ const FileUnit = Component.extend({
         window.URL.revokeObjectURL(blobUrl);
       }));
     } else {
-      a.url = this.data.url;
+      a.href = this.data.url;
       a.click();
     }
   },
