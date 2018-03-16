@@ -5,11 +5,11 @@
                 <img class="u-img" src={url}/>
             </div>
         {#elseif type === 'unknown'}
-            <span class="u-txt">{this.$trans('UNKNOWN')}</span>
+            <span class="u-txt" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>
         {#elseif type === 'pdf'}
             <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
-            <span class="u-txt">{type.toUpperCase()}</span>
+            <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {/if}
         <div class="m-remove" r-hide={readonly} on-click={this.onRemove($event)}><i class="u-icon u-icon-error"></i></div>
         <div class="m-status">

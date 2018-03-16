@@ -87,16 +87,16 @@ const KLUpload = Component.extend({
 
     this.supr(data);
   },
-  onPreviewPDF(e) {
+  onPreview(e) {
      /**
-     * @event KLUpload#previewpdf 上传pdf预览
+     * @event KLUpload#preview 上传预览点击事件
      * @param {object} sender 当前上传文件的实例
      * @param {object} file 当前上传的文件
      * @param {array} fileList 所有展示的文件列表
      * @param {string} status 上传的状态
      * @param {string} progress 上传的进度
      */
-    this.$emit('previewpdf', e);
+    this.$emit('preview', e);
   },
 
   preProcess(data) {
