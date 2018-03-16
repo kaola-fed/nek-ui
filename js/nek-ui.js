@@ -30802,6 +30802,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      status: data.status
 	    };
 	    this.$emit('preview', emitItem);
+	  },
+	  downloadFile: function downloadFile() {
+	    var a = document.createElement('a');
+	    a.download = this.data.filename;
+	    if (this.data.file.type !== 'excel') {
+	      fetch(this.data.url).then(function (res) {
+	        return res.blob().then(function (blob) {
+	          var blobUrl = window.URL.createObjectURL(blob);
+	          a.href = blobUrl;
+	          a.click();
+	          window.URL.revokeObjectURL(blobUrl);
+	        });
+	      });
+	    } else {
+	      a.url = this.data.url;
+	      a.click();
+	    }
 	  }
 	});
 
@@ -30811,7 +30828,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 388 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\">\n                    <a class=\"u-uploaded-zone\" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"u-uploaded-zone\">{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 389 */
