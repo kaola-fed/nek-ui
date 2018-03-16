@@ -27,8 +27,8 @@
                     </span>
                 </span>
             {#elseif status === 'success'}
-                <span class="u-uploaded">
-                    <a class="u-uploaded-zone" href={url} download={filename}>{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
+                <span class="u-uploaded" on-click={this.downloadFile()}>
+                    <a class="u-uploaded-zone">{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
                 </span>
             {/if}
         </div>
