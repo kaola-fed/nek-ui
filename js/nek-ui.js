@@ -30806,7 +30806,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  downloadFile: function downloadFile() {
 	    var a = document.createElement('a');
 	    a.download = this.data.filename;
-	    if (this.data.file.type !== 'excel') {
+	    if (this.data.file.type !== 'doc') {
 	      fetch(this.data.url).then(function (res) {
 	        return res.blob().then(function (blob) {
 	          var blobUrl = window.URL.createObjectURL(blob);
@@ -30816,7 +30816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	      });
 	    } else {
-	      a.url = this.data.url;
+	      a.href = this.data.url;
 	      a.click();
 	    }
 	  }
