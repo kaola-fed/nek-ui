@@ -351,7 +351,7 @@ const KLImagePreview = Component.extend({
   downloadFile(file) {
     const a = document.createElement('a');
     a.download = file.name;
-    fetch(file.url).then(res => res.blob().then((blob) => {
+    fetch(file.src).then(res => res.blob().then((blob) => {
       const blobUrl = window.URL.createObjectURL(blob);
       a.href = blobUrl;
       a.click();
