@@ -58,6 +58,8 @@ const KLForm = Validation.extend({
       this.initSelectorSource();
       this.initFormItem();
     });
+
+    this.__reqSourceOnce = _.debounce(this.__reqSource.bind(this), 200, false);
   },
   initFormItem() {
     const controls = this.controls;
@@ -85,8 +87,7 @@ const KLForm = Validation.extend({
     if (!this.data.service || !this.selectors.length) {
       return;
     }
-
-    this.__reqSource();
+    this.__reqSourceOnce();
   },
   __getSourceKeys() {
     return this.selectors.map($formitem => $formitem.data.sourceKey);
