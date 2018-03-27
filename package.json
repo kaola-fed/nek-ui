@@ -39,7 +39,8 @@
     "regularjs": "0.4.3",
     "reqwest": "^2.0.5",
     "scroll-into-view": "^1.9.1",
-    "validator": "^6.1.0"
+    "validator": "^6.1.0",
+    "postcss-salad": "^2.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -52,6 +53,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.6.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "fs-extra": "^2.1.2",
     "glob": "^7.1.1",
     "gulp": "^3.9.1",
@@ -59,6 +61,7 @@
     "gulp-clean-css": "^3.4.2",
     "gulp-ignore": "^2.0.2",
     "gulp-mocha": "^2.2.0",
+    "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-require-convert": "0.0.1",
     "gulp-rimraf": "^0.2.0",
@@ -78,12 +81,15 @@
     "np": "^2.16.0",
     "npm-run-all": "^3.1.1",
     "peta": "^1.0.2",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.3",
     "rimraf": "^2.5.4",
     "run-sequence": "^1.2.1",
     "style-loader": "^0.13.1",
     "text-loader": "0.0.1",
-    "webpack": "^1.14.0",
-    "webpack-stream": "^3.2.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^2.6.1",
+    "webpack-stream": "^4.0.0",
     "yargs": "^6.6.0"
   }
 }

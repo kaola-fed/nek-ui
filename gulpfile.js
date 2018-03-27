@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 
 const webpack = require('webpack-stream');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./build/webpack.config');
 const rimraf = require('rimraf');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
@@ -17,10 +17,13 @@ const fs = require('fs');
 const argv = require('yargs').argv;
 const doc = require('./doc/source/doc');
 const themes = require('./src/mcss/themes');
+const postcss = require('gulp-postcss');
 
 const browserSync = require('browser-sync').create();
 
 const reload = browserSync.reload;
+
+const postcssConfig = require('./build/postcss.config');
 
 gulp.task('dist-clean', (cb) => {
   rimraf('{dist,doc/public}', () => {
@@ -45,6 +48,26 @@ gulp.task('dist-js', () => gulp.src('./src/js/index.js')
     .pipe(uglify())
     .pipe(gulp.dest('./dist/js')));
 
+// gulp.task('dist-css', () => {
+//   const gulpCSS = function (theme) {
+//     return gulp.src('./src/js/index.js')
+//       .pipe(webpack(webpackConfig))
+//     //   .pipe(mcss({
+//     //     pathes: ['./node_modules'],
+//     //     importCSS: true,
+//     //   }))
+//     //   .pipe(rename(`nek-ui.${theme}.css`))
+//     //   .pipe(gulp.dest('./dist/css'))
+//     //   .pipe(rename({
+//     //     suffix: '.min',
+//     //   }))
+//     //   .pipe(minifycss())
+//     //   .pipe(gulp.dest('./dist/css'));
+//   };
+
+//   return all(themes.map(gulpCSS));
+// });
+
 gulp.task('dist-css', () => {
   const gulpCSS = function (theme) {
     return gulp.src(`./src/mcss/${theme}.mcss`)
@@ -52,6 +75,7 @@ gulp.task('dist-css', () => {
         pathes: ['./node_modules'],
         importCSS: true,
       }))
+      .pipe(postcss(postcssConfig.plugins))
       .pipe(rename(`nek-ui.${theme}.css`))
       .pipe(gulp.dest('./dist/css'))
       .pipe(rename({
@@ -64,8 +88,9 @@ gulp.task('dist-css', () => {
   return all(themes.map(gulpCSS));
 });
 
+
 gulp.task('gen-mcss', (cb) => {
-  glob(path.join(__dirname, './src/js/components/**/**/*.mcss'), (er, files) => {
+  glob(path.join(__dirname, './src/js/components/**/**/*.*css'), (er, files) => {
     let out = '';
     files.forEach((d) => {
       out += `@import "${d}";\n`;

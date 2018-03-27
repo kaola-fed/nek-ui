@@ -1,0 +1,117 @@
+/*:=======================================================================
+// Name:            Variables
+// Description:     变量
+// Author:          sensen(rainforest92@126.com)
+//:=======================================================================
+
+*/
+
+:root {
+    --size-base: 8px;
+
+    /* Dimensions */
+    --media-xs-max-width:  calc(480px - 1);
+    --media-sm-max-width:  calc(768px - 1);
+    --media-md-max-width:  calc(960px - 1);
+    --media-lg-max-width:  calc(1220px - 1);
+
+    /* Fonts */
+    --font-family-sans-serif: PingFangTC-Regular,Microsoft YaHei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
+    --font-family-serif: Georgia, "Times New Roman", Times, SimSun, "FontAwesome", serif;
+    --font-family-monospace: Monaco, Menlo, Consolas, "Courier New", "FontAwesome", monospace;
+    --font-family-kai: Georgia, "Times New Roman", Times, Kai, "Kaiti SC", KaiTi, BiauKai, "FontAwesome", serif;
+
+    /* Height */
+    --height-base: 32px;
+    --height-xs: 22px;
+    --height-sm: 24px;
+    --height-lg: 38px;
+    --height-xl: 46px;
+
+    /* Font Size */
+    --font-size-base: 12px;
+    --font-size-xs: 10px;
+    --font-size-sm: 12px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+
+    /* Padding */
+    --padding-base: 6px 10px 6px 8px;
+    --padding-xs: 1px 5px;
+    --padding-sm: 5px 10px;
+    --padding-lg: 10px 16px;
+    --padding-xl: 16px 24px;
+
+    /* Border Radius */
+    --border-radius-base: 2px;
+    --border-radius-xs: 1px;
+    --border-radius-sm: 2px;
+    --border-radius-lg: 4px;
+    --border-radius-xl: 6px;
+
+
+
+    /* Color Variables:
+    :=======================================================================
+    */
+
+    /* Gray Colors */
+    --gray-base: #777;
+
+    /* Base Colors */
+    --background-base: var(--brand-default);
+    --color-base: #444;
+    --border-base: #ddd;
+    --border-width-base: 1px;
+
+
+
+    /* Form Control Variables:
+    :=======================================================================
+    */
+
+    /* Dimensions */
+    --u-formctrl_padding: var(--padding-base);
+    --u-formctrl-sm_padding: var(--padding-sm);
+    --u-formctrl-lg_padding: var(--padding-lg);
+
+    --u-formctrl_height: var(--height-base);
+    --u-formctrl-sm_height: var(--height-sm);
+    --u-formctrl-lg_height: var(--height-lg);
+
+    --u-formctrl_width: 100%;
+
+    --u-formctrl-sm_font-size: var(--font-size-sm);
+    --u-formctrl-lg_font-size: var(--font-size-lg);
+
+    --u-formctrl_min-width: 160px;
+
+    /* Colors */
+    --u-formctrl_background: white;
+    --u-formctrl_color: #333;
+    --u-formctrl_border: #ddd;
+
+    --u-formctrl-focus_background: var(--u-formctrl_background);
+    --u-formctrl-focus_color: var(--u-formctrl_color);
+    --u-formctrl-focus_border: var(--brand-error);
+
+    --u-formctrl-disabled_background: #eee;
+    --u-formctrl-disabled_color: #999;
+    --u-formctrl-disabled_border: var(--u-formctrl_border);
+
+    --u-formctrl_placeholder_color: #999;
+
+    --u-formctrl-error-border: #F48080;
+
+
+
+    /* Form Control Item */
+    --u-formctrl_item_padding: 3px 20px;
+    --u-formctrl_item-hover_background: #F1F1F1;
+    --u-formctrl_item-hover_color: #444;
+    --u-formctrl_item-hover_border: null;
+
+    --u-formctrl_item-selected_background: var(--brand-primary);
+    --u-formctrl_item-selected_color: white;
+    --u-formctrl_item-selected_border: null;
+}
