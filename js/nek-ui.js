@@ -2921,7 +2921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 103 */
 /***/ (function(module, exports) {
 
-	module.exports = "{#if visible}\n<label class=\"u-input u-input-{size} {class}\" r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}\n          <i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>\n        {#elseif unit}\n          <span class=\"input_unit\">{unit}</span>\n        {#elseif clearable && value.length}\n\t\t\t\t  <kl-icon type=\"error\" on-click={this.clear()} class=\"input_icon\"/>\n\t\t\t\t{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n{/if}"
+	module.exports = "{#if visible}\n<label class=\"u-input u-input-{size} {class}\" r-width=\"{width}\">\n    <span class=\"input_wrap\">\n        <input class=\"input input-{state}\" type={type | type}\n            name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n            r-model={value | valueFilter}\n            on-focus={this._onFocus($event)}\n            on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change=\"{this._onChange($event)}\" on-input=\"{this._onInput($event)}\">\n        {#if this.events.search}\n          <i class=\"input_icon u-icon u-icon-search\" on-click={this._onSearch($event)}></i>\n        {#elseif unit}\n          <span class=\"input_unit\">{unit}</span>\n        {#elseif clearable && value.length}\n\t\t\t\t  <kl-icon type=\"error\" on-click={this.clear()} class=\"input_icon\"/>\n\t\t\t\t{/if}\n        {#if _eltIE9 && !value}<span class=\"input_placeholder\">{placeholder}</span>{/if}\n     </span>\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n{/if}"
 
 /***/ }),
 /* 104 */
@@ -5877,7 +5877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.$on('destroy', function () {
 	          var index = $outer.controls.indexOf(this);
 	          if (index !== -1) {
-	            $outer.controls = $outer.controls.splice(index, 1);
+	            $outer.controls.splice(index, 1);
 	          }
 	        });
 	      }
@@ -27660,6 +27660,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.initSelectorSource();
 	      this.initFormItem();
 	    });
+
+	    this.__reqSourceOnce = _.debounce(this.__reqSource.bind(this), 200, false);
 	  },
 	  initFormItem: function initFormItem() {
 	    var controls = this.controls;
@@ -27687,8 +27689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!this.data.service || !this.selectors.length) {
 	      return;
 	    }
-
-	    this.__reqSource();
+	    this.__reqSourceOnce();
 	  },
 	  __getSourceKeys: function __getSourceKeys() {
 	    return this.selectors.map(function ($formitem) {
@@ -27815,13 +27816,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  init: function init() {
 	    var parentValidator = this._parentValidator;
-	    this.$watch('this.controls.length', function (newValue, oldValue) {
-	      /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
-	      if (oldValue === undefined) {
-	        return;
-	      }
+	    this.$watch('this.controls.length', function () {
 	      if (parentValidator && parentValidator.initSelectorSource) {
 	        parentValidator.initSelectorSource();
+	      }
+	      if (parentValidator && parentValidator.initFormItem) {
+	        parentValidator.initFormItem();
 	      }
 	    });
 
@@ -28813,7 +28813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 360 */
 /***/ (function(module, exports) {
 
-	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" on-focus={this._onFocus($event)} ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
+	module.exports = "<label class=\"u-textarea u-textarea-{size} {class}\" r-hide={!visible} r-width=\"{width}\">\n    <textarea spellcheck=\"false\" class=\"textarea textarea-{state} textarea-{width}\"\n        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}\n        r-model={value}\n        style=\"height: {height}px\"\n        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change=\"change\" on-focus={this._onFocus($event)} ></textarea>\n    {#if maxlength && value}<span class=\"textarea_len\">{value.length}/{maxlength}</span>{/if}\n    {#if _eltIE9 && !value}<span class=\"textarea_placeholder\">{placeholder}</span>{/if}\n    {#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n</label>\n"
 
 /***/ }),
 /* 361 */
