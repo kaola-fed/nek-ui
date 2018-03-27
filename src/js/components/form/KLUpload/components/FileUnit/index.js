@@ -178,6 +178,22 @@ const FileUnit = Component.extend({
     };
     this.$emit('preview', emitItem);
   },
+
+  downloadFile() {
+    const a = document.createElement('a');
+    a.download = this.data.filename;
+    if (this.data.file.type !== 'doc') {
+      fetch(this.data.url).then(res => res.blob().then((blob) => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        a.href = blobUrl;
+        a.click();
+        window.URL.revokeObjectURL(blobUrl);
+      }));
+    } else {
+      a.href = this.data.url;
+      a.click();
+    }
+  },
 });
 
 module.exports = FileUnit;

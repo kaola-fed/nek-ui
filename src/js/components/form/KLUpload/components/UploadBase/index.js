@@ -212,10 +212,10 @@ const UploadBase = Component.extend({
       }
       fileUnitList.splice(unitIndex, 1);
     }
+    data.fileList = fileList;
     if (!data.autoUpload) {
       this.initFormData();
     }
-    data.fileList = fileList;
     this.$update();
   },
 
@@ -320,7 +320,10 @@ const UploadBase = Component.extend({
 
   onPreview(info) {
     const current = info.file;
-
+    this.$emit('preview', info);
+    if (current.type !== 'image') {
+      return;
+    }
     function filterImgFile(file) {
       return file.type === 'image';
     }
