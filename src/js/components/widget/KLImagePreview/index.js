@@ -348,6 +348,16 @@ const KLImagePreview = Component.extend({
       minTranslateY: minDeltaY < 0 ? minDeltaY : 0,
     };
   },
+  downloadFile(file) {
+    const a = document.createElement('a');
+    a.download = file.name;
+    fetch(file.src).then(res => res.blob().then((blob) => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      a.href = blobUrl;
+      a.click();
+      window.URL.revokeObjectURL(blobUrl);
+    }));
+  },
 });
 
 module.exports = KLImagePreview;
