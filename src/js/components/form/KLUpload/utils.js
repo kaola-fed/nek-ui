@@ -45,6 +45,8 @@ function ajax(options) {
   const headers = options.headers || {};
   _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
 
+  xhr.withCredentials = options.withCredentials;
+
   xhr.open(options.type, options.url, options.async);
 
   let key;
