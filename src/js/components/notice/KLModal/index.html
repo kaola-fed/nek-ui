@@ -3,7 +3,7 @@
         <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>
         <div class="modal_hd">
             {#if isCanClose}
-            <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-remove"></i></a>
+            <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-times"></i></a>
             {/if}
             <h3 class="modal_title">{title}</h3>
         </div>

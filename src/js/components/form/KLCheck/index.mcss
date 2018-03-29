@@ -39,6 +39,8 @@ $u-check_box_size = 13px;
 /* Checked */
 .u-check.z-chk {
     .check_box {
+        background: #e61438;
+        color: #fff;
         $border: #E61438;
         .u-icon {
             display: inline-block;
@@ -49,6 +51,8 @@ $u-check_box_size = 13px;
 /* Indetermined */
 .u-check.z-part {
     .check_box {
+        background: #e61438;
+        color: #fff;
         $border: #E61438;
         .u-icon {
             display: inline-block;

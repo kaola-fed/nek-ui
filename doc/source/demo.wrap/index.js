@@ -7,17 +7,24 @@
 const DemoWrap = Regular.extend({
   template: `
     <div class="m-demowrap">
-        <div class="m-iconLine"> <div class="m-iconOuter" r-class="{ {'revert':showScript}}" on-click={this.toggle()}> <kl-icon type="angle-down" /> </div> </div>
         <div class="m-codeBlock" r-class="{ {'wrap': !showScript}}" >
           <div class="m-operate-ctn">
-            <kl-button type="tertiary" size="sm" title="复制代码" on-click={this.copy($event)}></kl-button>
-            <kl-button type="tertiary" size="sm" title="在线运行" on-click={this.online()}></kl-button>
+            <kl-button class="m-copyCode" type="tertiary" size="sm" title="复制代码" on-click={this.copy($event)}></kl-button>
             <form action="https://codepen.io/pen/define" method="POST" target="_blank" style="display:none;">
               <input type="hidden" name="data" value={codepenJson} />
               <input ref="onlineBtn" type="submit" />
             </form>
           </div>
           <div r-html={htmlTpl} class="figure-outer"></div>
+        </div>
+        <div class="m-iconLine" r-class="{ {'watchCode':showScript}}"> 
+          <div class="m-iconOuter" r-class="{ {'revert':showScript}}" on-click={this.toggle()}> 
+            <kl-icon type="caret-down" ></kl-icon>
+          </div> 
+          <div class="m-iconBtn" r-class="{ {'revertBtn': showScript}}">
+            <span class="m-iconTitle" on-click={this.toggle()}>{showScript ? '隐藏代码' : '显示代码'}</span>
+            <kl-button class="m-onlineRun" type="tertiary" size="sm" title="在线运行" on-click={this.online()}></kl-button>
+          </div>
         </div>
     </div>`,
   name: 'demo-wrap',
