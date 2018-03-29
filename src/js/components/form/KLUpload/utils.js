@@ -54,6 +54,8 @@ function ajax(options) {
     }
   }
 
+  xhr.withCredentials = options.withCredentials;
+
   const noop = function () {};
   const onerror = options.onerror || noop;
   const onDownloadLoad = options.onload || noop;
