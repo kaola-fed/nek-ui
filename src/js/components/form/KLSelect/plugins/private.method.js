@@ -43,10 +43,10 @@ module.exports = function PrivateMethod(Component) {
       let searchValue = (data.searchValue || '').trim();
       const maxShowCount = data.maxShowCount;
       const isCaseSensitive = data.isCaseSensitive;
-      searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
+      searchValue = isCaseSensitive ? searchValue : searchValue.toLowerCase();
       let targetSource = source.filter((item, index) => {
         const text = `${item[nameKey]}`;
-        const value = isCaseSensitive ? text.toLowerCase() : text;
+        const value = isCaseSensitive ? text : text.toLowerCase();
         return (
           (searchValue && value.indexOf(searchValue) >= 0) ||
           (!searchValue && index < maxShowCount)
