@@ -3,7 +3,9 @@
  * @author   sensen(rainforest92@126.com)
  */
 
+const dom = require('regularjs').dom;
 const Dropdown = require('../common/Dropdown');
+// const KLPopper = require('../../layout/KLPopper');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 require('../../../util/validation');
@@ -280,6 +282,18 @@ const KLSelect = Dropdown.extend({
 
     this.initValidation();
     document.addEventListener('keydown', event => this.keyup(event));
+  },
+  init() {
+    // const that = this;
+    this.data.reference = dom.element(this.$refs.dropdown_hd);
+        // this.$watch('open', (newValue) => {
+        //     if (newValue === true && that.data.appendToBody) {
+        //         document.body.appendChild(dom.element(that.$refs.dropdown_bd));
+        //         // 获取dropdown_hd宽度
+        //         const referenceWidth = this.data.reference.offsetWidth;
+        //         this.$refs.dropdown_bd.style.minWidth = `${referenceWidth}px`;
+        //     }
+        // });
   },
   select(item) {
     const data = this.data;

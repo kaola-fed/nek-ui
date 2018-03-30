@@ -1,6 +1,6 @@
 <div class="u-select u-select-{state} u-select-{size} {class}" r-width="{width}">
 	<div class="u-dropdown" r-class={{isMultiple:multiple}}
-	     z-dis={disabled} r-hide={!visible} ref="element">
+	     z-dis={disabled} r-hide={!visible} ref="dropdown_hd">
 	    {#if !multiple}
 	        <div class="dropdown_hd"
 				 z-dis={disabled}
@@ -38,7 +38,8 @@
 				<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>
 	        </div>
 	    {/if}
-	    {#if open}
+	    <!--{#if open}-->
+		<kl-popper reference="{reference}">
 	    <div class="dropdown_bd"
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="m-listview" ref="listview">
@@ -93,7 +94,8 @@
 	            {/list}
 	        </ul>
 	    </div>
-	    {/if}
+		</kl-popper>
+	    <!--{/if}-->
 	</div>
 	{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>
