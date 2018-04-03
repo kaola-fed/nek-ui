@@ -1,0 +1,66 @@
+
+/* Color */
+$--primary-color: #e31436;
+$--info-color: #80bcf4;
+$--success-color: #9fe385;
+$--warning-color: #f48080;
+$--normal-color: #ddd;
+
+/* Color_BG */
+$--body-background: #fff;
+$--component-background: #fff;
+$--background-color-base: #fff;
+
+/* Color_Disabled */
+$--disabled-color: #999;
+$--disabled-bg: #eee;
+$--disabled-border: #ddd;
+
+/* Color_Text */
+$--text-color: #444;
+$--text-color-secondary: #e31436;
+
+/* Font */
+$--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+$--font-family: "Helvetica Neue For Number", $--font-family-no-number;
+$--code-family: Consolas, Menlo, Courier, monospace;
+$--font-size-base: 12px;
+$--font-size-xs: $--font-size-base - 2;
+$--font-size-lg: $--font-size-base + 4;
+$--font-size-xl: $--font-size-base + 6;
+$--line-height-base: 1.5;
+
+/* Height */
+$--height-base: 32px;
+$--height-xs: $--height-base - 10;
+$--height-sm: $--height-base - 8;
+$--height-lg: $--height-base + 6;
+$--height-xl: $--height-base + 12;
+
+/* Border */
+
+/* Border_Radius */
+$--border-radius-base: 2px;
+$--border-radius-xs: 1px;
+$--border-radius-lg: 4px;
+$--border-radius-xl: 6px;
+
+/* Border_Style */
+$--border-color-base: #ddd;
+$--border-color-secondary: #e31436;
+$--border-width-base: 1px;
+$--border-style-base: solid;
+
+/* Outline */
+$--outline-blur-size: 0;
+$--outline-width: 2px;
+$--outline-color: $--primary-color;
+
+/* LINK */
+$--link-color: $--primary-color;
+$--link-hover-color: $--primary-color;
+$--link-active-color: $--primary-color;
+$--link-decoration: none;
+$--link-hover-decoration: none;

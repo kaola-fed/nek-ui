@@ -1,0 +1,40 @@
+@import "function";
+@import "../common/var";
+
+/* BEM
+ -------------------------- */
+
+@mixin b($block) {
+    $B: $namespace + '-' + $block !global;
+    .#{$B} {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    $selector: &;
+    @if containsModifier($selector) {
+        @at-root {
+            #{$selector} {
+                #{'.' + $B + $elementSeparator + $element} {
+                    @content;
+                }
+            }
+        }
+    }
+    @else {
+        @at-root {
+            #{$selector+$elementSeparator + $element} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin m($modifier) {
+    @at-root {
+        #{&}#{$modifierSeparator + $modifier} {
+            @content;
+        }
+    }
+}
