@@ -1,2 +1,4 @@
-@import "base/reset.mcss";
-@import "components.mcss";
+@import "base/reset.scss";
+@import "mixins/index.scss";
+@import "common/var.scss";
+@import "components.scss";

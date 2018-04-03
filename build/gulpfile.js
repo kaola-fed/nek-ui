@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 
 const webpack = require('webpack-stream');
-const webpackConfig = require('./build/webpack.config');
+const webpackConfig = require('../build/webpack.config');
 const rimraf = require('rimraf');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
@@ -9,21 +9,22 @@ const ignore = require('gulp-ignore');
 const minifycss = require('gulp-clean-css');
 const sequence = require('run-sequence');
 const all = require('gulp-all');
-const mcss = require('gulp_mcss');
+// const mcss = require('gulp_mcss');
 const glob = require('glob');
 const path = require('path');
 const Hexo = require('hexo');
 const fs = require('fs');
 const argv = require('yargs').argv;
-const doc = require('./doc/source/doc');
-const themes = require('./src/mcss/themes');
+const doc = require('../doc/source/doc');
+// const themes = require('../src/mcss/themes');
 const postcss = require('gulp-postcss');
+const sass = require('gulp-sass');
 
 const browserSync = require('browser-sync').create();
 
 const reload = browserSync.reload;
 
-const postcssConfig = require('./build/postcss.config');
+const postcssConfig = require('../build/postcss.config');
 
 gulp.task('dist-clean', (cb) => {
   rimraf('{dist,doc/public}', () => {
@@ -32,70 +33,62 @@ gulp.task('dist-clean', (cb) => {
 });
 
 gulp.task('dist-copy', () => all(
-    gulp.src('./src/fonts/**').pipe(gulp.dest('./dist/fonts')),
+    gulp.src(path.join(__dirname, '../src/fonts/**')).pipe(gulp.dest(path.join(__dirname, '../dist/fonts'))),
     gulp.src([
-      './node_modules/regularjs/dist/regular.min.js',
-      './node_modules/regularjs/dist/regular.js',
-    ]).pipe(gulp.dest('./dist/vendor'))));
+      path.join(__dirname, '../node_modules/regularjs/dist/regular.min.js'),
+      path.join(__dirname, '../node_modules/regularjs/dist/regular.js'),
+    ]).pipe(gulp.dest(path.join(__dirname, '../dist/vendor')))));
 
-gulp.task('dist-js', () => gulp.src('./src/js/index.js')
+gulp.task('dist-js', () => gulp.src(path.join(__dirname, '../src/js/index.js'))
     .pipe(webpack(webpackConfig))
-    .pipe(gulp.dest('./dist/js'))
+    .pipe(gulp.dest(path.join(__dirname, '../dist/js')))
     .pipe(ignore.exclude('*.js.map'))
     .pipe(rename({
       suffix: '.min',
     }))
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/js')));
+    .pipe(gulp.dest(path.join(__dirname, '../dist/js'))));
 
 // gulp.task('dist-css', () => {
 //   const gulpCSS = function (theme) {
-//     return gulp.src('./src/js/index.js')
-//       .pipe(webpack(webpackConfig))
-//     //   .pipe(mcss({
-//     //     pathes: ['./node_modules'],
-//     //     importCSS: true,
-//     //   }))
-//     //   .pipe(rename(`nek-ui.${theme}.css`))
-//     //   .pipe(gulp.dest('./dist/css'))
-//     //   .pipe(rename({
-//     //     suffix: '.min',
-//     //   }))
-//     //   .pipe(minifycss())
-//     //   .pipe(gulp.dest('./dist/css'));
+//     return gulp.src(`./src/mcss/${theme}.mcss`)
+//       .pipe(mcss({
+//         pathes: ['./node_modules'],
+//         importCSS: true,
+//       }))
+//       .pipe(postcss(postcssConfig.plugins))
+//       .pipe(rename(`nek-ui.${theme}.css`))
+//       .pipe(gulp.dest('./dist/css'))
+//       .pipe(rename({
+//         suffix: '.min',
+//       }))
+//       .pipe(minifycss())
+//       .pipe(gulp.dest('./dist/css'));
 //   };
 
 //   return all(themes.map(gulpCSS));
 // });
 
 gulp.task('dist-css', () => {
-  const gulpCSS = function (theme) {
-    return gulp.src(`./src/mcss/${theme}.mcss`)
-      .pipe(mcss({
-        pathes: ['./node_modules'],
-        importCSS: true,
-      }))
-      .pipe(postcss(postcssConfig.plugins))
-      .pipe(rename(`nek-ui.${theme}.css`))
-      .pipe(gulp.dest('./dist/css'))
-      .pipe(rename({
-        suffix: '.min',
-      }))
-      .pipe(minifycss())
-      .pipe(gulp.dest('./dist/css'));
-  };
-
-  return all(themes.map(gulpCSS));
+  gulp.src(path.join(__dirname, '../src/scss/index.scss'))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss(postcssConfig.plugins))
+        .pipe(rename('nek-ui.default.css'))
+        .pipe(gulp.dest(path.join(__dirname, '../dist/css')))
+        .pipe(rename({
+          suffix: '.min',
+        }))
+        .pipe(minifycss())
+        .pipe(gulp.dest(path.join(__dirname, '../dist/css')));
 });
 
-
 gulp.task('gen-mcss', (cb) => {
-  glob(path.join(__dirname, './src/js/components/**/**/*.*css'), (er, files) => {
+  glob(path.join(__dirname, '../src/js/components/**/**/*.scss'), (er, files) => {
     let out = '';
     files.forEach((d) => {
       out += `@import "${d}";\n`;
     });
-    fs.writeFileSync(path.join(__dirname, './src/mcss/components.mcss'), out);
+    fs.writeFileSync(path.join(__dirname, '../src/scss/components.scss'), out);
     cb();
   });
 });
@@ -114,7 +107,9 @@ gulp.task('gen-doc', (cb) => {
 
   doc(argv.dev, () => {
     hexo.init().then(() => {
-      const option = argv.dev ? { watch: true } : {};
+      const option = argv.dev ? {
+        watch: true,
+      } : {};
       hexo.call('generate', option, cb);
     });
   });
@@ -147,7 +142,7 @@ gulp.task('easy-doc', (done) => {
 gulp.task('server', ['default'], () => {
   browserSync.init({
     server: {
-      baseDir: ['./doc/public', './dist'],
+      baseDir: ['../doc/public', '../dist'],
     },
     browser: 'default',
     ghostMode: false,
@@ -158,12 +153,12 @@ gulp.task('server', ['default'], () => {
 });
 
 gulp.task('watch', ['server'], () => {
-  gulp.watch(['./src/**/*'], ['default']);
+  gulp.watch(['../src/**/*'], ['default']);
 });
 
 gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['./src/**/*', './doc/source/partials/**/*'], ['easy-doc']);
+  gulp.watch(['../src/**/*', '../doc/source/partials/**/*'], ['easy-doc']);
 });
 
 /* 把v0.5版本的文档copy到pulic目录下 */
-gulp.task('copy-oldDoc', () => gulp.src('./doc/v0.5/**').pipe(gulp.dest('./doc/public/v0.5')));
+gulp.task('copy-oldDoc', () => gulp.src(path.join(__dirname, '../doc/v0.5/**')).pipe(gulp.dest(path.join(__dirname, '../doc/public/v0.5'))));

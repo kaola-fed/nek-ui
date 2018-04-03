@@ -6,17 +6,6 @@ module.exports = {
         autoprefixer: {
           remove: false,
         },
-        bem: {
-          shortcuts: {
-            component: 'b',
-            descendent: 'e',
-            modifier: 'm',
-          },
-          separators: {
-            descendent: '__',
-            modifier: '--',
-          },
-        },
       },
     }),
   ],
