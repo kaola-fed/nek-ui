@@ -18,8 +18,9 @@ const Popper = Component.extend({
     this.supr(data);
   },
   init() {
-    console.log(123);
-    this.createPopper();
+    this.$watch('reference', () => {
+      this.createPopper();
+    });
   },
   createPopper() {
     const that = this;
@@ -29,6 +30,9 @@ const Popper = Component.extend({
     if (!reference) {
       return;
     }
+    const referenceNodeStyles = document.defaultView.getComputedStyle(reference);
+    this.data.width = `${referenceNodeStyles.width}px`;
+    console.log(this.data.width);
     this.data.popperJS = new PopperJS(reference, popperElm, {
       gpuAcceleration: false,
       placement: PlacementObj.placement[data.placement],

@@ -142,3 +142,60 @@ gulp.task('watch-doc', ['server'], () => {
 
 /* 把v0.5版本的文档copy到pulic目录下 */
 gulp.task('copy-oldDoc', () => gulp.src('./doc/v0.5/**').pipe(gulp.dest('./doc/public/v0.5')));
+
+
+/* 本地开发配置环境 */
+gulp.task('dev-server', ['default-dev'], () => {
+  browserSync.init({
+    server: {
+      baseDir: ['./examples', './dist'],
+    },
+    browser: 'default',
+    ghostMode: false,
+    reloadDelay: 1000,
+    cors: true,
+    port: 8080,
+  });
+});
+
+gulp.task('default-dev', (done) => {
+  sequence('dist', 'reload', done);
+});
+
+gulp.task('new', ['dev-server'], () => {
+  const devHTML = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>nek-ui</title>
+        <meta charset="utf-8">
+        <!--  nek-ui -->
+        <link href="//localhost:8080/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            #app {
+                margin: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="app">
+
+        </div>
+        <script src="//localhost:8080/vendor/regular.js"></script>
+        <script src="//localhost:8080/js/nek-ui.js"></script>
+        <script>
+            new NEKUI.Component({
+                template: '',
+            }).$inject('#app');
+        </script>
+    </body>
+
+    </html>`;
+  fs.writeFile('./examples/index.html', devHTML, (err) => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log('数据写入成功！');
+  });
+  gulp.watch(['./src/**/*'], ['./examples']);
+});

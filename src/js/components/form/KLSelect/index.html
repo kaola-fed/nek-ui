@@ -38,64 +38,62 @@
 				<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>
 	        </div>
 	    {/if}
-	    <!--{#if open}-->
-		<kl-popper reference="{reference}">
-	    <div class="dropdown_bd"
-	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-	        <ul class="m-listview" ref="listview">
-	            {#if placeholder}
-	                <li z-hover={key_index == -1}  z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
-	                    {placeholder}
-	                </li>
-	            {/if}
+		<kl-popper reference="{reference}" isHide="{isHide}">
+	    	<div class="dropdown_bd"
+	         	r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+				<ul class="m-listview" ref="listview">
+					{#if placeholder}
+						<li z-hover={key_index == -1}  z-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+							{placeholder}
+						</li>
+					{/if}
 
-	            {#list this.filterArray(source) as item}
-	            {#if (!filter || (filter && filter(item)))}
-	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-	                    <li z-hover={key_index == 'all'} on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
-	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
-	                        {this.$trans('ALL')}
-	                    </li>
-	                {/if}
-	                {#if item.disabled && item.tip}
-	                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>
-	                    <li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
-	                        title={item[nameKey]} on-click={this.select(item)}>
-	                        {#if multiple && !item.divider}
-	                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-	                        {/if}
-	                        {#if @(itemTemplate)}
-	                            {#inc @(itemTemplate)}
-	                        {#else}
-	                            {@(item[nameKey])}
-	                        {/if}
-	                    </li>
-	                </kl-tooltip>
-	                {#else}
-	                <li z-hover={key_index == item_index}  z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
-	                    title={item[nameKey]} on-click={this.select(item)}>
-	                    {#if multiple && !item.divider}
-	                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+					{#list this.filterArray(source) as item}
+					{#if (!filter || (filter && filter(item)))}
+						{#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
+							<li z-hover={key_index == 'all'} on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+								<check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+								{this.$trans('ALL')}
+							</li>
 						{/if}
-	                    {#if @(itemTemplate)}
-	                        {#inc @(itemTemplate)}
-	                    {#else}
-	                        {@(item[nameKey])}
-	                    {/if}
-	                </li>
-	                {/if}
-                {/if}
-	            {#else}
-	                {#if searchValue}
-	                <li>
-	                    {@(noMatchText)}
-	                </li>
-	                {/if}
-	            {/list}
-	        </ul>
-	    </div>
+						{#if item.disabled && item.tip}
+						<kl-tooltip tip={item.tip} placement={item.placement||'top'}>
+							<li z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+								title={item[nameKey]} on-click={this.select(item)}>
+								{#if multiple && !item.divider}
+									<check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+								{/if}
+								{#if @(itemTemplate)}
+									{#inc @(itemTemplate)}
+								{#else}
+									{@(item[nameKey])}
+								{/if}
+							</li>
+						</kl-tooltip>
+						{#else}
+						<li z-hover={key_index == item_index}  z-dis={item.disabled} z-divider={item.divider} z-sel={multiple?false:selected===item}
+							title={item[nameKey]} on-click={this.select(item)}>
+							{#if multiple && !item.divider}
+								<check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+							{/if}
+							{#if @(itemTemplate)}
+								{#inc @(itemTemplate)}
+							{#else}
+								{@(item[nameKey])}
+							{/if}
+						</li>
+						{/if}
+					{/if}
+					{#else}
+						{#if searchValue}
+						<li>
+							{@(noMatchText)}
+						</li>
+						{/if}
+					{/list}
+</ul>
+	    		</div>
 		</kl-popper>
-	    <!--{/if}-->
 	</div>
 	{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

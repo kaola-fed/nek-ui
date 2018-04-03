@@ -5,7 +5,7 @@
 
 const dom = require('regularjs').dom;
 const Dropdown = require('../common/Dropdown');
-// const KLPopper = require('../../layout/KLPopper');
+const KLPopper = require('../../layout/KLPopper');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 require('../../../util/validation');
@@ -286,14 +286,16 @@ const KLSelect = Dropdown.extend({
   init() {
     // const that = this;
     this.data.reference = dom.element(this.$refs.dropdown_hd);
-        // this.$watch('open', (newValue) => {
-        //     if (newValue === true && that.data.appendToBody) {
-        //         document.body.appendChild(dom.element(that.$refs.dropdown_bd));
-        //         // 获取dropdown_hd宽度
-        //         const referenceWidth = this.data.reference.offsetWidth;
-        //         this.$refs.dropdown_bd.style.minWidth = `${referenceWidth}px`;
-        //     }
-        // });
+    console.log(this.data.reference);
+    // this.$watch('open', (newValue) => {
+    //     if (newValue === true && that.data.appendToBody) {
+    //         document.body.appendChild(dom.element(that.$refs.dropdown_bd));
+    //         // 获取dropdown_hd宽度
+    //         const referenceWidth = this.data.reference.offsetWidth;
+    //         this.$refs.dropdown_bd.style.minWidth = `${referenceWidth}px`;
+    //     }
+    // });
+    this.supr();
   },
   select(item) {
     const data = this.data;
@@ -389,6 +391,7 @@ const KLSelect = Dropdown.extend({
 })
   .use(Multiple)
   .use(PrivateMethod)
-  .use(validationMixin);
+  .use(validationMixin)
+  .component('kl-popper', KLPopper);
 
 module.exports = KLSelect;
