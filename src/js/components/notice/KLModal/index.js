@@ -26,6 +26,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
  * @param {number}            [options.data.minHeight]            => 内容区域最小高度
  * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
+ * @param {boolean}           [options.data.draggable=false]      => 是否可以拖拽对话框
  */
 const KLModal = Component.extend({
   name: 'kl-modal',

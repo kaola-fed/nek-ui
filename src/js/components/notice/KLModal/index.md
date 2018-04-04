@@ -431,6 +431,31 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 配置信息draggable
+设置Modal可拖拽，默认不可拖拽。
+
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="draggable：true"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal可拖拽',
+                draggable: true
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### 实例方法cancel
 通过实例调用，执行该实例对象的`cancel`事件
 
