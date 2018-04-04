@@ -1,7 +1,7 @@
 ---
-title: test
+title: 二级目录名1
 type: ux
-cate: test
+cate: 一级目录二
 ---
 
 
