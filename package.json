@@ -42,8 +42,7 @@
     "regularjs": "0.4.3",
     "reqwest": "^2.0.5",
     "scroll-into-view": "^1.9.1",
-    "validator": "^6.1.0",
-    "webpack": "^2.6.1",
+    "validator": "^6.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -92,6 +91,7 @@
     "style-loader": "^0.13.1",
     "text-loader": "0.0.1",
     "url-loader": "^1.0.1",
+    "webpack": "^2.6.1",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^2.9.1",
     "webpack-stream": "^4.0.0",
