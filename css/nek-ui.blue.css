@@ -3974,12 +3974,16 @@ input.u-check:disabled,input.u-radio:disabled{
 	line-height:13px;
 }
 .u-check.z-chk .check_box{
+	background:#e61438;
+	color:#fff;
 	border:1px solid #e61438;
 }
 .u-check.z-chk .check_box .u-icon{
 	display:inline-block;
 }
 .u-check.z-part .check_box{
+	background:#e61438;
+	color:#fff;
 	border:1px solid #e61438;
 }
 .u-check.z-part .check_box .u-icon{
@@ -4424,8 +4428,8 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow-y:auto;
 }
 .u-multi .dropdown_hd .selected-tag{
-	height:18px;
-	line-height:18px;
+	height:22px;
+	line-height:22px;
 }
 .u-multi .dropdown_hd .m-multi-placeholder{
 	color:#999;
@@ -4612,6 +4616,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	position:absolute;
 	right:5px;
 }
+.u-select .dropdown_hd .u-icon-remove{
+	color:#a4a5b9;
+}
 .u-select .dropdown_hd .m-multi-placeholder{
 	color:#999;
 }
@@ -4635,7 +4642,7 @@ input.u-check:disabled,input.u-radio:disabled{
 .u-select .selected-tag{
 	position:relative;
 	padding:0 20px 0 10px;
-	margin:6px 5px 0 0;
+	margin:4px 5px 0 0;
 	background-color:#f3f3f3;
 	-moz-border-radius:2px;
 	border-radius:2px;
