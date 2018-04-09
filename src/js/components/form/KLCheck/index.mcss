@@ -32,6 +32,9 @@ $u-check_box_size = 13px;
             font-size: 13px;
             line-height: 13px;
         }
+        &:hover {
+            $border: 1px solid #e61438;
+        }
     }
 }
 
