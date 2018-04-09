@@ -267,6 +267,11 @@
         margin: 0 !important
 
 .grid-item
+        transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        -o-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
         width: auto;
         border: 1px solid #e1e6ec;
         margin: 0px 0px 20px 22px;
@@ -287,6 +292,34 @@
             font-weight: bold;
         ul
             padding: 0 0 0 15px;
+        &:hover
+            box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
+            -moz-box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
+            -webkit-box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);      
+            .m-iconOuter, .m-iconTitle
+                transform: translateX(-30px);
+                -ms-transform: translateX(-30px);
+                -webkit-transform: translateX(-30px);
+                -o-transform: translateX(-30px);
+                -moz-transform: translateX(-30px);
+            .m-iconOuter.revert
+                transform: translateX(-30px) rotate(180deg);
+                -ms-transform: translateX(-30px) rotate(180deg);
+                -webkit-transform: translateX(-30px) rotate(180deg);
+                -o-transform: translateX(-30px) rotate(180deg);
+                -moz-transform: translateX(-30px) rotate(180deg);
+            .revertBtn
+                display: inline-block;
+            .m-iconTitle
+                opacity: 1;
+            .m-onlineRun
+                opacity: 1;
+                transform: translateX(-10px);
+                -ms-transform: translateX(-10px);
+                -webkit-transform: translateX(-10px);
+                -o-transform: translateX(-10px);
+                -moz-transform: translateX(-10px);
+
 .type-tag
     display: inline-block;
     margin-left: 10px;
@@ -314,10 +347,18 @@
     border: none;
     color: #0398ff;
     height: 41px;
+    &:hover
+        color: #0398ff;
 .m-copyCode
     margin-top: 24px;
 .m-demowrap
     border-top: 1px solid #e1e6ec;
+    .m-iconLine, .m-iconTitle, .m-onlineRun, .revertBtn, .m-iconOuter
+        transition: all .3s ease-in;
+        -ms-transition: all .3s ease-in;
+        -webkit-transition: all .3s ease-in;
+        -o-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
     .m-iconLine
         position: relative;
         text-align: center;
@@ -332,37 +373,36 @@
         .m-iconBtn
             display: inline-block;
         &:hover
-            .revertBtn
-                display: inline-block;
             .m-iconTitle
-                display: inline-block;
-            .m-onlineRun
-                display: inline-block;
-                position: absolute;
-                right: 0px;
-                top: 0px;
+                color: #0398ff;
             .m-iconOuter
-                color: #0398FF; 
+                color: #0398ff;
+    .m-iconBtn
+        width: 120px;
     .m-onlineRun
-        display: none;
-    .revertBtn
-        .m-onlineRun
-            display: inline-block;
-            position: absolute;
-            right: 0px;
-            top: 0px;
+        display: inline-block;
+        opacity: 0;
+        position: absolute;
+        right: 0px;
+        top: 0px;
     .m-iconTitle
         cursor: pointer;
-        color: #0398ff;
+        color: #b2bfcf;
         height: 41px;
         line-height: 41px;
-        display: none;      
+        display: inline-block;
+        opacity: 0;
+        width: 80px;
+        position: relative;
+        left: 10px;
     .m-operate-ctn
         position:absolute;
         top: 0px;
         right: 20px;
         z-index: 1;
     .m-iconOuter
+        position: relative;
+        left: 40px; 
         display: inline-block;
         width: 17px;
         height: 41px;
@@ -371,11 +411,6 @@
         border-radius: 9px;
         background-color: #fff;
         cursor: pointer;
-        transition: transform 0.5s;
-        -ms-transition: transform 0.5s;
-        -webkit-transition: transform 0.5s;
-        -o-transition: transform 0.5s;
-        -moz-transition: transform 0.5s;
     .m-codeBlock
         border-bottom: 1px solid #e1e6ec;        
         overflow: hidden;
@@ -389,4 +424,3 @@
     .wrap
         height: 0px;
         border-bottom: none;  
-         

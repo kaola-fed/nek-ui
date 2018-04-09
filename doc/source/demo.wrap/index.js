@@ -23,7 +23,8 @@ const DemoWrap = Regular.extend({
           </div> 
           <div class="m-iconBtn" r-class="{ {'revertBtn': showScript}}">
             <span class="m-iconTitle" on-click={this.toggle()}>{showScript ? '隐藏代码' : '显示代码'}</span>
-            <kl-button class="m-onlineRun" type="tertiary" size="sm" title="在线运行" on-click={this.online()}></kl-button>
+            <kl-button class="m-onlineRun" type="tertiary" size="sm" title="在线运行" on-click={this.online()}>
+            </kl-button>
           </div>
         </div>
     </div>`,

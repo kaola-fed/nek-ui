@@ -39,7 +39,9 @@
             position: absolute;
             right: 5px;
         }
-
+        .u-icon-times {
+            color: #A4A5B9;
+        }
         .m-multi-placeholder {
             color: #999;
         }
