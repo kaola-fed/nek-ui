@@ -39,7 +39,7 @@
             position: absolute;
             right: 5px;
         }
-        .u-icon-times {
+        .u-icon-remove {
             color: #A4A5B9;
         }
         .m-multi-placeholder {

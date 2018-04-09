@@ -32,7 +32,7 @@
 	            {#list selected as item}
 	                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>
 	                    {item[nameKey]}
-	                    <i class="u-icon u-icon-times" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>
+	                    <i class="u-icon u-icon-remove" z-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>
 	                </span>
 				{/list}
 				<span class='m-multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>
