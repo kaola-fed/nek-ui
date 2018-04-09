@@ -1239,7 +1239,7 @@ body{
 .u-icon-check:before{
 	content:"\f00c";
 }
-.u-icon-remove:before,.u-icon-close:before,.u-icon-times:before{
+.u-icon-remove:before{
 	content:"\f00d";
 }
 .u-icon-search-plus:before{
@@ -3009,7 +3009,7 @@ body{
 .u-icon-search:before{
 	content:"\e911";
 }
-.u-icon-remove:before{
+.u-icon-close:before{
 	content:"\e912";
 }
 .u-icon-ok:before{
@@ -3972,6 +3972,9 @@ input.u-check:disabled,input.u-radio:disabled{
 	display:none;
 	font-size:13px;
 	line-height:13px;
+}
+.u-check .check_box:hover{
+	border:1px solid #e61438;
 }
 .u-check.z-chk .check_box{
 	background:#e61438;
