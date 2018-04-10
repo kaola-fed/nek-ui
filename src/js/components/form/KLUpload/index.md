@@ -146,8 +146,9 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         list: [{
-          name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          name: 'Game.JPG',
+          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
+          class: 'my-img-test'
         }, {
           name: 'Kaola.jpg',
           url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
