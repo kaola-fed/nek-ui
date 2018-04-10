@@ -174,6 +174,7 @@ const UploadBase = Component.extend({
           flag: file.flag,
           uid: file.uid,
           status: 'success',
+          class: file.class,
         };
 
         if (fileunit.flag !== Config.flagMap.DELETED) {
@@ -560,7 +561,8 @@ const UploadBase = Component.extend({
 
     Object.keys(typeMap).forEach((key) => {
       const reg = new RegExp(`${key}$`);
-      if (reg.test(type) || (!type && reg.test(name))) {
+      // 名称后缀不区分大小写
+      if (reg.test(type) || (!type && reg.test(name.toLowerCase()))) {
         typeStr = typeMap[key];
       }
     });
