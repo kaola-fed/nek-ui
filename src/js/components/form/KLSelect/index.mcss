@@ -12,7 +12,7 @@
     .z-hover {
         background: #f1f1f1;
     }
-    
+
     $user-select: none;
     vertical-align: top;
 
@@ -39,7 +39,9 @@
             position: absolute;
             right: 5px;
         }
-
+        .u-icon-remove {
+            color: #A4A5B9;
+        }
         .m-multi-placeholder {
             color: #999;
         }
@@ -71,7 +73,7 @@
     .selected-tag {
         position: relative;
         padding: 0 20px 0 10px;
-        margin: 6px 5px 0 0;
+        margin: 4px 5px 0 0;
         background-color: #f3f3f3;
         $border-radius: $border-radius-base;
         height: 20px;
