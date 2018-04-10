@@ -27976,7 +27976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      canSearch: undefined,
 	      filter: null,
 	      // 默认不区分大小写
-	      isCaseSensitive: false,
+	      isCaseSensitive: true,
 	      noMatchText: this.$trans('NO_MATCH'),
 	      delaySearch: 300,
 	      maxShowCount: 1000,
@@ -28454,10 +28454,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var searchValue = (data.searchValue || '').trim();
 	      var maxShowCount = data.maxShowCount;
 	      var isCaseSensitive = data.isCaseSensitive;
-	      searchValue = isCaseSensitive ? searchValue : searchValue.toLowerCase();
+	      searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
 	      var targetSource = source.filter(function (item, index) {
 	        var text = '' + item[nameKey];
-	        var value = isCaseSensitive ? text : text.toLowerCase();
+	        var value = isCaseSensitive ? text.toLowerCase() : text;
 	        return searchValue && value.indexOf(searchValue) >= 0 || !searchValue && index < maxShowCount;
 	      });
 	      if (searchValue) {
