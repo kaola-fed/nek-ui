@@ -29578,7 +29578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          flag: file.flag,
 	          uid: file.uid,
 	          status: 'success',
-	          class: file.class
+	          class: file.class || ''
 	        };
 
 	        if (fileunit.flag !== Config.flagMap.DELETED) {
@@ -29973,7 +29973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (0, _keys2.default)(typeMap).forEach(function (key) {
 	      var reg = new RegExp(key + '$');
 	      // 名称后缀不区分大小写
-	      if (reg.test(type) || !type && reg.test(name.toLowerCase())) {
+	      if (reg.test(type) || !type && reg.test(('' + name).toLowerCase())) {
 	        typeStr = typeMap[key];
 	      }
 	    });
