@@ -27976,7 +27976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      canSearch: undefined,
 	      filter: null,
 	      // 默认不区分大小写
-	      isCaseSensitive: false,
+	      isCaseSensitive: true,
 	      noMatchText: this.$trans('NO_MATCH'),
 	      delaySearch: 300,
 	      maxShowCount: 1000,
@@ -28454,10 +28454,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var searchValue = (data.searchValue || '').trim();
 	      var maxShowCount = data.maxShowCount;
 	      var isCaseSensitive = data.isCaseSensitive;
-	      searchValue = isCaseSensitive ? searchValue : searchValue.toLowerCase();
+	      searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
 	      var targetSource = source.filter(function (item, index) {
 	        var text = '' + item[nameKey];
-	        var value = isCaseSensitive ? text : text.toLowerCase();
+	        var value = isCaseSensitive ? text.toLowerCase() : text;
 	        return searchValue && value.indexOf(searchValue) >= 0 || !searchValue && index < maxShowCount;
 	      });
 	      if (searchValue) {
@@ -29577,7 +29577,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: self.getFileType(file),
 	          flag: file.flag,
 	          uid: file.uid,
-	          status: 'success'
+	          status: 'success',
+	          class: file.class || ''
 	        };
 
 	        if (fileunit.flag !== Config.flagMap.DELETED) {
@@ -29971,7 +29972,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    (0, _keys2.default)(typeMap).forEach(function (key) {
 	      var reg = new RegExp(key + '$');
-	      if (reg.test(type) || !type && reg.test(name)) {
+	      // 名称后缀不区分大小写
+	      if (reg.test(type) || !type && reg.test(('' + name).toLowerCase())) {
 	        typeStr = typeMap[key];
 	      }
 	    });
@@ -30841,7 +30843,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 388 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"u-uploaded-zone\">{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit {file.class}\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"u-uploaded-zone\">{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 389 */
