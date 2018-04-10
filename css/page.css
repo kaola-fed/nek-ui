@@ -1007,11 +1007,16 @@ body.docs #nav {
   }
 }
 .grid-item {
+  transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
   width: auto;
   border: 1px solid #e1e6ec;
   margin: 0px 0px 20px 22px;
   border-radius: 4px;
-  padding: 16px 24px;
+  padding: 16px 24px 0 24px;
   font-family: PingFangTC-Regular;
   font-size: 12px;
   color: #666;
@@ -1030,6 +1035,40 @@ body.docs #nav {
 }
 .grid-item ul {
   padding: 0 0 0 15px;
+}
+.grid-item:hover {
+  box-shadow: 0 0 8px 0 rgba(232,237,250,0.6), 0 2px 4px 0 rgba(232,237,250,0.5);
+  -moz-box-shadow: 0 0 8px 0 rgba(232,237,250,0.6), 0 2px 4px 0 rgba(232,237,250,0.5);
+  -webkit-box-shadow: 0 0 8px 0 rgba(232,237,250,0.6), 0 2px 4px 0 rgba(232,237,250,0.5);
+}
+.grid-item:hover .m-iconOuter,
+.grid-item:hover .m-iconTitle {
+  transform: translateX(-30px);
+  -ms-transform: translateX(-30px);
+  -webkit-transform: translateX(-30px);
+  -o-transform: translateX(-30px);
+  -moz-transform: translateX(-30px);
+}
+.grid-item:hover .m-iconOuter.revert {
+  transform: translateX(-30px) rotate(180deg);
+  -ms-transform: translateX(-30px) rotate(180deg);
+  -webkit-transform: translateX(-30px) rotate(180deg);
+  -o-transform: translateX(-30px) rotate(180deg);
+  -moz-transform: translateX(-30px) rotate(180deg);
+}
+.grid-item:hover .revertBtn {
+  display: inline-block;
+}
+.grid-item:hover .m-iconTitle {
+  opacity: 1;
+}
+.grid-item:hover .m-onlineRun {
+  opacity: 1;
+  transform: translateX(-10px);
+  -ms-transform: translateX(-10px);
+  -webkit-transform: translateX(-10px);
+  -o-transform: translateX(-10px);
+  -moz-transform: translateX(-10px);
 }
 .type-tag {
   display: inline-block;
@@ -1061,14 +1100,35 @@ body.docs #nav {
   margin: 0px;
   padding: 0em 0.8em;
 }
+.m-onlineRun {
+  border: none;
+  color: #0398ff;
+  height: 41px;
+}
+.m-onlineRun:hover {
+  color: #0398ff;
+}
+.m-copyCode {
+  margin-top: 24px;
+}
 .m-demowrap {
   border-top: 1px solid #e1e6ec;
+}
+.m-demowrap .m-iconLine,
+.m-demowrap .m-iconTitle,
+.m-demowrap .m-onlineRun,
+.m-demowrap .revertBtn,
+.m-demowrap .m-iconOuter {
+  transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
 }
 .m-demowrap .m-iconLine {
   position: relative;
   text-align: center;
   color: #b2bfcf;
-  top: -10px;
 }
 .m-demowrap .m-iconLine .revert {
   transform: rotate(180deg);
@@ -1076,8 +1136,37 @@ body.docs #nav {
   -webkit-transform: rotate(180deg);
   -o-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
-  color: #e31436;
-  border: 1px solid #e31436;
+  color: #b2bfcf;
+}
+.m-demowrap .m-iconLine .m-iconBtn {
+  display: inline-block;
+}
+.m-demowrap .m-iconLine:hover .m-iconTitle {
+  color: #0398ff;
+}
+.m-demowrap .m-iconLine:hover .m-iconOuter {
+  color: #0398ff;
+}
+.m-demowrap .m-iconBtn {
+  width: 120px;
+}
+.m-demowrap .m-onlineRun {
+  display: inline-block;
+  opacity: 0;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+.m-demowrap .m-iconTitle {
+  cursor: pointer;
+  color: #b2bfcf;
+  height: 41px;
+  line-height: 41px;
+  display: inline-block;
+  opacity: 0;
+  width: 80px;
+  position: relative;
+  left: 10px;
 }
 .m-demowrap .m-operate-ctn {
   position: absolute;
@@ -1086,25 +1175,19 @@ body.docs #nav {
   z-index: 1;
 }
 .m-demowrap .m-iconOuter {
+  position: relative;
+  left: 40px;
   display: inline-block;
   width: 17px;
-  height: 17px;
-  line-height: 18px;
-  border: 1px solid #b2bfcf;
+  height: 41px;
+  font-size: 14px;
+  line-height: 41px;
   border-radius: 9px;
   background-color: #fff;
   cursor: pointer;
-  transition: transform 0.5s;
-  -ms-transition: transform 0.5s;
-  -webkit-transition: transform 0.5s;
-  -o-transition: transform 0.5s;
-  -moz-transition: transform 0.5s;
-}
-.m-demowrap .m-iconOuter:hover {
-  color: #e31436;
-  border: 1px solid #e31436;
 }
 .m-demowrap .m-codeBlock {
+  border-bottom: 1px solid #e1e6ec;
   overflow: hidden;
   position: relative;
 }
@@ -1120,4 +1203,5 @@ body.docs #nav {
 }
 .m-demowrap .wrap {
   height: 0px;
+  border-bottom: none;
 }
