@@ -21,7 +21,7 @@ const dragdrop = require('./dragdrop.js');
  * @param {string}                                   [options.data.dragClass=z-drag]      => 拖拽该元素时给元素附加此class
  */
 const Draggable = Component.extend({
-  name: 'draggable',
+  name: 'kl-draggable',
   template: '{#inc this.$body}',
   config() {
     _.extend(this.data, {
