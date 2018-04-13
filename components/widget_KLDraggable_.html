@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>消息 - nek-ui</title>
+        <title>拖拽 - nek-ui</title>
         <meta charset="utf-8">
         <meta http-equiv="x-dns-prefetch-control" content="on" />
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="消息 - nek-ui">
+        <meta property="og:title" content="拖拽 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -232,7 +232,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>通知
@@ -242,7 +242,7 @@
                         <ul class="submenu">
                             
                                <li>
-                                   <a href="/components/notice_KLMessage_.html" class="current">
+                                   <a href="/components/notice_KLMessage_.html" class="">
                                        消息 <span>KLMessage</span>
                                    </a>
                                </li>
@@ -318,7 +318,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="u-icon u-icon-angle-down"></span>其它
@@ -334,7 +334,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLDraggable_.html" class="">
+                                   <a href="/components/widget_KLDraggable_.html" class="current">
                                        拖拽 <span>KLDraggable</span>
                                    </a>
                                </li>
@@ -387,39 +387,29 @@
 <div class="content components with-sidebar ">
     
 
-    <h2 id="pageName">消息 <span>KLMessage</span> </h2>
-    <h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>提示信息展示格式(图标+颜色)。</p>
-<div class="grid-item" markdown="1">
-<div class="m-example"></div>
+    <h2 id="pageName">拖拽 <span>KLDraggable</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">    this is a message</div><div class="line"><span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-draggable</span>&gt;</span><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"拖我"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-draggable</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h3 id="基本属性type"><a href="#基本属性type" class="headerlink" title="基本属性type"></a>基本属性type</h3><p><code>type</code>设置样式，取值<code>success</code>、<code>warning</code>、<code>info</code>、<code>error</code>。默认不设置则无色无图标。</p>
 <div class="grid-item" markdown="1">
-<div class="m-example"></div>
+<h3 id="移动自身"><a href="#移动自身" class="headerlink" title="移动自身"></a>移动自身</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-row</span> <span class="attr">type</span>=<span class="string">"flex"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">        不设置type</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"success"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">            type为success</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"warning"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">            type为warning</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"info"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">            type为info</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">"4"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">type</span>=<span class="string">"error"</span> <span class="attr">class</span>=<span class="string">"f-mb10"</span>&gt;</span></div><div class="line">            type为error</div><div class="line">        <span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-draggable</span> <span class="attr">proxy</span>=<span class="string">"self"</span>&gt;</span><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"自由"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-draggable</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-draggable</span> <span class="attr">proxy</span>=<span class="string">"self"</span> <span class="attr">direction</span>=<span class="string">"horizontal"</span>&gt;</span><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"水平"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-draggable</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-draggable</span> <span class="attr">proxy</span>=<span class="string">"self"</span> <span class="attr">direction</span>=<span class="string">"vertical"</span>&gt;</span><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"垂直"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-draggable</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h3 id="基本属性class"><a href="#基本属性class" class="headerlink" title="基本属性class"></a>基本属性class</h3><p><code>class</code>属性设置补充样式</p>
 <div class="grid-item" markdown="1">
-<div class="m-example">
-    <style>
-        .m-bg-specical {
-            background: #ccc;
-            color: #FFF;
-            border: none;
-        }
-    </style>
-</div>
+<h3 id="修改代理"><a href="#修改代理" class="headerlink" title="修改代理"></a>修改代理</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-message</span> <span class="attr">class</span>=<span class="string">"f-mb10 m-bg-specical"</span> <span class="attr">type</span>=<span class="string">"error"</span>&gt;</span>type=error,设置自定义class<span class="tag">&lt;/<span class="name">kl-message</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-draggable</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">title</span>=<span class="string">"拖我"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-draggable-proxy</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"拖我"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-draggable-proxy</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-draggable</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLMessage"></a></p>
-<h2 id="KLMessage"><a href="#KLMessage" class="headerlink" title="KLMessage"></a><span class="param-title">KLMessage</span><a name="new_KLMessage_new"></a></h2><h3 id="KLMessage-1"><a href="#KLMessage-1" class="headerlink" title="KLMessage"></a><span class="param-title">KLMessage</span></h3><table>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLDraggable"></a></p>
+<h2 id="KLDraggable"><a href="#KLDraggable" class="headerlink" title="KLDraggable"></a><span class="param-title">KLDraggable</span><a name="new_KLDraggable_new"></a></h2><h3 id="KLDraggable-1"><a href="#KLDraggable-1" class="headerlink" title="KLDraggable"></a><span class="param-title">KLDraggable</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
 <th>Type</th>
+<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -427,17 +417,240 @@
 <tr>
 <td>[options.data]</td>
 <td><code>object</code></td>
-<td>= 绑定属性</td>
+<td></td>
+<td>=  绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.type]</td>
+<td>[options.data.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 拖拽时需要传递的数据</td>
+</tr>
+<tr>
+<td>[options.data.proxy]</td>
+<td><code>string/Dragable.Proxy/Element/function</code></td>
+<td></td>
+<td>@=&gt; 拖拽代理，即拖拽时显示的元素。默认值为<code>clone</code>，拖拽时拖起自身的一个拷贝；当值为<code>self</code>，拖拽时直接拖起自身。也可以用<code>&lt;draggable.proxy&gt;</code>自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。</td>
+</tr>
+<tr>
+<td>[options.data.direction]</td>
 <td><code>string</code></td>
-<td>=&gt; 消息类型，可选参数：<code>success</code>、<code>warning</code>、<code>info</code>、<code>error</code></td>
+<td><code>&quot;all&quot;</code></td>
+<td>=&gt; 拖拽代理可以移动的方向，<code>all</code>为任意方向，<code>horizontal</code>为水平方向，<code>vertical</code>为垂直方向</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
 </tr>
 <tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
-<td>=&gt; 补充<code>class</code></td>
+<td><code>&quot;z-draggable&quot;</code></td>
+<td>=&gt; 可拖拽时（即disabled=false）给元素附加此class</td>
+</tr>
+<tr>
+<td>[options.data.dragClass]</td>
+<td><code>string</code></td>
+<td><code>&quot;z-drag&quot;</code></td>
+<td>=&gt; 拖拽该元素时给元素附加此class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLDraggable+event_dragstart 拖拽开始时触发"></a></p>
+<h3 id="dragstart-拖拽开始时触发Event"><a href="#dragstart-拖拽开始时触发Event" class="headerlink" title="dragstart 拖拽开始时触发Event"></a><span class="param-title">dragstart 拖拽开始时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象，为当前draggable</td>
+</tr>
+<tr>
+<td>origin</td>
+<td><code>object</code></td>
+<td>拖拽源，为当前draggable</td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>object</code></td>
+<td>拖拽起始元素</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td><code>object</code></td>
+<td>拖拽代理元素</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>拖拽时需要传递的数据</td>
+</tr>
+<tr>
+<td>screenX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于屏幕的水平位置</td>
+</tr>
+<tr>
+<td>screenY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于屏幕的垂直位置</td>
+</tr>
+<tr>
+<td>clientX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于浏览器的水平位置</td>
+</tr>
+<tr>
+<td>clientY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于浏览器的垂直位置</td>
+</tr>
+<tr>
+<td>pageX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于页面的水平位置</td>
+</tr>
+<tr>
+<td>pageY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于页面的垂直位置</td>
+</tr>
+<tr>
+<td>movementX</td>
+<td><code>number</code></td>
+<td>鼠标指针水平位置相对于上次操作的偏移量</td>
+</tr>
+<tr>
+<td>movementY</td>
+<td><code>number</code></td>
+<td>鼠标指针垂直位置相对于上次操作的偏移量</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td><code>function</code></td>
+<td>取消拖拽操作</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLDraggable+event_drag 正在拖拽时触发"></a></p>
+<h3 id="drag-正在拖拽时触发Event"><a href="#drag-正在拖拽时触发Event" class="headerlink" title="drag 正在拖拽时触发Event"></a><span class="param-title">drag 正在拖拽时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象，为当前draggable</td>
+</tr>
+<tr>
+<td>origin</td>
+<td><code>object</code></td>
+<td>拖拽源，为当前draggable</td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>object</code></td>
+<td>拖拽起始元素</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td><code>object</code></td>
+<td>拖拽代理元素</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>拖拽时需要传递的数据</td>
+</tr>
+<tr>
+<td>screenX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于屏幕的水平位置</td>
+</tr>
+<tr>
+<td>screenY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于屏幕的垂直位置</td>
+</tr>
+<tr>
+<td>clientX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于浏览器的水平位置</td>
+</tr>
+<tr>
+<td>clientY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于浏览器的垂直位置</td>
+</tr>
+<tr>
+<td>pageX</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于页面的水平位置</td>
+</tr>
+<tr>
+<td>pageY</td>
+<td><code>number</code></td>
+<td>鼠标指针相对于页面的垂直位置</td>
+</tr>
+<tr>
+<td>movementX</td>
+<td><code>number</code></td>
+<td>鼠标指针水平位置相对于上次操作的偏移量</td>
+</tr>
+<tr>
+<td>movementY</td>
+<td><code>number</code></td>
+<td>鼠标指针垂直位置相对于上次操作的偏移量</td>
+</tr>
+<tr>
+<td>cancel</td>
+<td><code>function</code></td>
+<td>取消拖拽操作</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLDraggable+event_dragend 拖拽结束时触发"></a></p>
+<h3 id="dragend-拖拽结束时触发Event"><a href="#dragend-拖拽结束时触发Event" class="headerlink" title="dragend 拖拽结束时触发Event"></a><span class="param-title">dragend 拖拽结束时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象，为当前draggable</td>
+</tr>
+<tr>
+<td>origin</td>
+<td><code>object</code></td>
+<td>拖拽源，为当前draggable</td>
+</tr>
+<tr>
+<td>source</td>
+<td><code>object</code></td>
+<td>拖拽起始元素</td>
+</tr>
+<tr>
+<td>proxy</td>
+<td><code>object</code></td>
+<td>拖拽代理元素</td>
 </tr>
 </tbody>
 </table>
@@ -448,9 +661,7 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-message class="f-mb10">
-    this is a message
-</kl-message>
+<kl-draggable><kl-button type="primary" title="拖我"></kl-button></kl-draggable>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -469,9 +680,7 @@ var index = 0;
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-message class="f-mb10">
-    this is a message
-</kl-message>
+<kl-draggable><kl-button type="primary" title="拖我"></kl-button></kl-draggable>
 `,
               jsCode: `var component = new NEKUI.Component({template: template});`
           }
@@ -483,33 +692,9 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-row type="flex">
-    <kl-col span="4">
-        <kl-message class="f-mb10">
-        不设置type
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="success" class="f-mb10">
-            type为success
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="warning" class="f-mb10">
-            type为warning
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="info" class="f-mb10">
-            type为info
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="error" class="f-mb10">
-            type为error
-        </kl-message>
-    </kl-col>
-</kl-row>
+<kl-draggable proxy="self"><kl-button type="primary" title="自由"></kl-button></kl-draggable>
+<kl-draggable proxy="self" direction="horizontal"><kl-button type="secondary" title="水平"></kl-button></kl-draggable>
+<kl-draggable proxy="self" direction="vertical"><kl-button title="垂直"></kl-button></kl-draggable>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -528,33 +713,9 @@ var index = 0;
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-row type="flex">
-    <kl-col span="4">
-        <kl-message class="f-mb10">
-        不设置type
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="success" class="f-mb10">
-            type为success
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="warning" class="f-mb10">
-            type为warning
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="info" class="f-mb10">
-            type为info
-        </kl-message>
-    </kl-col>
-    <kl-col span="4">
-        <kl-message type="error" class="f-mb10">
-            type为error
-        </kl-message>
-    </kl-col>
-</kl-row>
+<kl-draggable proxy="self"><kl-button type="primary" title="自由"></kl-button></kl-draggable>
+<kl-draggable proxy="self" direction="horizontal"><kl-button type="secondary" title="水平"></kl-button></kl-draggable>
+<kl-draggable proxy="self" direction="vertical"><kl-button title="垂直"></kl-button></kl-draggable>
 `,
               jsCode: `var component = new NEKUI.Component({template: template});`
           }
@@ -566,7 +727,12 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-message class="f-mb10 m-bg-specical" type="error">type=error,设置自定义class</kl-message>
+<kl-draggable>
+    <kl-button type="primary" title="拖我"></kl-button>
+    <kl-draggable-proxy>
+        <kl-button type="secondary" title="拖我"></kl-button>
+    </kl-draggable-proxy>
+</kl-draggable>
 
       */});
       var component = new NEKUI.Component({template: template});
@@ -585,7 +751,12 @@ var index = 0;
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-message class="f-mb10 m-bg-specical" type="error">type=error,设置自定义class</kl-message>
+<kl-draggable>
+    <kl-button type="primary" title="拖我"></kl-button>
+    <kl-draggable-proxy>
+        <kl-button type="secondary" title="拖我"></kl-button>
+    </kl-draggable-proxy>
+</kl-draggable>
 `,
               jsCode: `var component = new NEKUI.Component({template: template});`
           }
@@ -599,10 +770,14 @@ var index = 0;
 
     <div class="guide-links">
       
+        <a href="/components/widget_KLBadge_.html" class="pager">
+            <span class="icon icon-left"></span><span>徽标</span>
+        </a>
+      
         <span class="placeholder"></span>
       
-        <a href="/components/notice_KLModal_.html" class="pager">
-            <span>模态框</span><span class="icon icon-right"></span>
+        <a href="/components/widget_KLIcon_.html" class="pager">
+            <span>图标</span><span class="icon icon-right"></span>
         </a>
       
     </div>

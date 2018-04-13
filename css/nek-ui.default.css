@@ -1028,6 +1028,9 @@ body{
 }
 .modal_zoomOut .modal_dialog{
 	animation-name:zoomOut;
+	-webkit-animation-duration:0.3s;
+	-moz-animation-duration:0.3s;
+	animation-duration:0.3s;
 }
 @keyframes zoomIn{
 	from{
@@ -1040,6 +1043,12 @@ body{
 }
 .zoomIn{
 	animation-name:zoomIn;
+}
+.modal_zoomIn .modal_dialog{
+	animation-name:zoomIn;
+	-webkit-animation-duration:0.3s;
+	-moz-animation-duration:0.3s;
+	animation-duration:0.3s;
 }
 @font-face {
 	font-family:"icomoon";
@@ -7258,7 +7267,7 @@ input.u-check:disabled,input.u-radio:disabled{
 	overflow:hidden;
 	background:rgba(0,0,0,0.6);
 }
-.m-modal:before{
+.m-modal:after{
 	content:"";
 	display:inline-block;
 	vertical-align:middle;
