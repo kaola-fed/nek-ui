@@ -52,13 +52,13 @@ var component = new NEKUI.Component({
 ```xml
 <kl-form>
     <kl-col span=6>
-        <kl-tree-view  source={source} selected={selected} />
+        <kl-tree-view  source={source} nameKey='value' selected={selected} />
     </kl-col>
     <kl-col span=6>
-        <kl-tree-view  source={source} value={value} />
+        <kl-tree-view  source={source} nameKey='value' value={value} />
     </kl-col>
 </kl-form>
-<p>选择的分别是是: {selected.name} {value}</p>
+<p>选择的分别是是: {selected.value} {value}</p>
 ```
 
 ```javascript
@@ -66,9 +66,9 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 1, name: '母婴儿童'},
-            {id: 2, name: '美容彩妆'},
-            {id: 3, name: '服饰鞋包'}
+            {id: 1, value: '母婴儿童'},
+            {id: 2, value: '美容彩妆'},
+            {id: 3, value: '服饰鞋包'}
         ]
     },
     config: function() {
