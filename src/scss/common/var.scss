@@ -1,25 +1,22 @@
 $--size-base: 8px;
 
-/* Color */
-$--primary-color: #e31436;
-$--info-color: #80bcf4;
-$--success-color: #9fe385;
-$--warning-color: #f48080;
-$--normal-color: #ddd;
+/* Color-Base */
+$--primary-color: #00C4C0;
+$--info-color: #54A8F7;
+$--success-color: #93DD68;
+$--warning-color: #FFB539;
+$--error-color: #F86B6B;
 
-/* Color_BG */
+/* Color-BG */
 $--body-background: #fff;
 $--component-background: #fff;
-$--background-color-base: #fff;
+$--disabled-background: #eee;
 
-/* Color_Disabled */
-$--disabled-color: #999;
-$--disabled-bg: #eee;
-$--disabled-border: #ddd;
-
-/* Color_Text */
-$--text-color: #444;
-$--text-color-secondary: #e31436;
+/* Color-Text */
+$--text-default-color: #333;
+$--text-auxiliary-color: #666;
+$--text-placeholder-color: #999;
+$--text--disabled-color: #ccc;
 
 /* Font */
 $--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -42,15 +39,15 @@ $--height-xl: $--height-base + 12;
 
 /* Border */
 
-/* Border_Radius */
+/* Border-Radius */
 $--border-radius-base: 2px;
 $--border-radius-xs: 1px;
 $--border-radius-lg: 4px;
 $--border-radius-xl: 6px;
 
-/* Border_Style */
+/* Border-Style */
 $--border-color-base: #ddd;
-$--border-color-secondary: #e31436;
+$--border-color-active: $--primary-color;
 $--border-width-base: 1px;
 $--border-style-base: solid;
 
