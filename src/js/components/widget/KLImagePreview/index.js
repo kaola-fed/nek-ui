@@ -15,6 +15,7 @@ const tpl = require('./index.html');
  *                                                     name: 图片文件名称
  *                                                     src: 图片文件的路径
  * @param {number}     [options.data.cur-index=0]   => 必选，当前图片文件的索引, 默认第一项为当前项
+ * @param {string}     [options.data.el]            => 设置对话框要插入的父级元素，默认为document.body
  */
 
 const KLImagePreview = Component.extend({
@@ -77,8 +78,10 @@ const KLImagePreview = Component.extend({
   init(data) {
     this.supr(data);
 
-    // 如果不是内嵌组件，则嵌入到document.body中
-    if (this.$root === this) this.$inject(document.body);
+    // 如果不是内嵌组件，则嵌入到data.el或document.body中
+    if (this.$root === this) {
+      this.$inject(data.el || document.body);
+    }
   },
   onClose() {
     this.destroy();

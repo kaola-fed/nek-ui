@@ -360,10 +360,11 @@ $pulse();
   to {  opacity: 0;  }
 }
 .zoomOut {  animation-name: zoomOut;  }
-.modal_zoomOut .modal_dialog {  animation-name: zoomOut;  }
+.modal_zoomOut .modal_dialog {  animation-name: zoomOut; $animation-duration: 0.3s;  }
 
 @keyframes zoomIn {
   from {  opacity: 0;  transform: scale3d(.3, .3, .3);  }
   50% {  opacity: 1;  }
 }
 .zoomIn {  animation-name: zoomIn;  }
+.modal_zoomIn .modal_dialog {  animation-name: zoomIn; $animation-duration: 0.3s; }
