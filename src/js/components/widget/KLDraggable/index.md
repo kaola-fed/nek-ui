@@ -32,9 +32,9 @@ title: 拖拽
 ```xml
 <kl-draggable>
     <kl-button type="primary" title="拖我"></kl-button>
-    <kl-draggable.proxy>
+    <kl-draggable-proxy>
         <kl-button type="secondary" title="拖我"></kl-button>
-    </kl-draggable.proxy>
+    </kl-draggable-proxy>
 </kl-draggable>
 ```
 <!-- demo_end -->

@@ -26,6 +26,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
  * @param {number}            [options.data.minHeight]            => 内容区域最小高度
  * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
+ * @param {string}            [options.data.el]                   => 设置对话框要插入的父级元素，默认为document.body
  * @param {boolean}           [options.data.draggable=false]      => 是否可以拖拽对话框
  */
 const KLModal = Component.extend({
@@ -49,9 +50,10 @@ const KLModal = Component.extend({
 
   init() {
     this.supr();
-
-    // 如果不是内嵌组件，则嵌入到document.body中
-    if (this.$root === this) this.$inject(document.body);
+    // 如果不是内嵌组件，则嵌入到data.el或document.body中
+    if (this.$root === this) {
+      this.$inject(this.data.el || document.body);
+    }
   },
   /**
      * @method KLModal#close(result) 关闭对话框

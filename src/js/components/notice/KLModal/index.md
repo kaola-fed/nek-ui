@@ -31,6 +31,33 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 配置要嵌入的父级元素
+
+设置modal嵌入的父级元素，默认为document.body
+
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="el: main"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal，inject到#main元素里
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                el: '#main'
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### 配置信息title
 
 设置打开modal的标题，默认显示`notice`
@@ -95,7 +122,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
             }
@@ -121,7 +148,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 content: '自定义footer',
                 footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
@@ -148,7 +175,7 @@ var component = new NEKUI.Component({
     show: function(okDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okDisabled: okDisabled,
                 content: 'okDisabled设置为' + okDisabled,
             }
@@ -174,7 +201,7 @@ var component = new NEKUI.Component({
     show: function(cancelDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelDisabled: cancelDisabled,
                 cancelButton: true,
                 content: 'cancelDisabled设置为' + cancelDisabled,
@@ -203,7 +230,7 @@ var component = new NEKUI.Component({
     show: function(hasFooter) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 hasFooter: hasFooter,
                 content: 'hasFooter设置为' + hasFooter,
             }
@@ -233,7 +260,7 @@ var component = new NEKUI.Component({
     show: function(isCanClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 isCanClose: isCanClose,
                 content: 'isCanClose设置为' + isCanClose,
             }
@@ -263,7 +290,7 @@ var component = new NEKUI.Component({
     show: function(okButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okButton: okButton,
                 content: '设置okButton的值',
             }
@@ -290,7 +317,7 @@ var component = new NEKUI.Component({
     show: function(cancelButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: cancelButton,
                 content: '设置cancelButton'
             }
@@ -324,7 +351,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: true,
                 content: '设置自定义样式',
                 class: 'u-modal-red',
@@ -352,7 +379,7 @@ var component = new NEKUI.Component({
     show: function(noClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 noClose: noClose,
                 content: '设置noClose:' + noClose,
             }
@@ -478,11 +505,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
-      
+
         setTimeout(function(){
              modal.cancel();
         }, 3000);
@@ -560,11 +587,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-      
+
         setTimeout(function(){
              modal.ok();
         }, 3000);
@@ -609,11 +636,11 @@ var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton, cancelButton) {
         var modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
@@ -647,9 +674,9 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton) {
-  
+
         var modal = NEKUI.KLModal.alert(content, title, okButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });

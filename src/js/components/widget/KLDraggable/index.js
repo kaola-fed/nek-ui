@@ -20,7 +20,7 @@ const dragdrop = require('./dragdrop.js');
  * @param {string}                                   [options.data.class=z-draggable]     => 可拖拽时（即disabled=false）给元素附加此class
  * @param {string}                                   [options.data.dragClass=z-drag]      => 拖拽该元素时给元素附加此class
  */
-const Draggable = Component.extend({
+const KLDraggable = Component.extend({
   name: 'kl-draggable',
   template: '{#inc this.$body}',
   config() {
@@ -56,7 +56,7 @@ const Draggable = Component.extend({
       return this.data.proxy();
     } else if (this.data.proxy instanceof window.Element) {
       return this.data.proxy;
-    } else if (this.data.proxy instanceof Draggable.Proxy) {
+    } else if (this.data.proxy instanceof KLDraggable.Proxy) {
       const proxy = _.dom.element(this.data.proxy);
       const dimension = _.dom.getDimension(_.dom.element(this));
       this._initProxy(proxy, dimension);
@@ -275,7 +275,7 @@ const Draggable = Component.extend({
     });
 
     if (dragdrop.proxy) {
-      if (this.data.proxy instanceof Draggable.Proxy || this.data.proxy === 'clone') {
+      if (this.data.proxy instanceof KLDraggable.Proxy || this.data.proxy === 'clone') {
         dragdrop.proxy.parentElement.removeChild(dragdrop.proxy);
       }
       _.dom.delClass(dragdrop.proxy, this.data.dragClass);
@@ -283,11 +283,11 @@ const Draggable = Component.extend({
   },
 });
 
-Draggable.Proxy = Component.extend({
-  name: 'draggable.proxy',
+KLDraggable.Proxy = Component.extend({
+  name: 'kl-draggable-proxy',
   template: '{#inc this.$body}',
   init() {
-    if (this.$outer instanceof Draggable) {
+    if (this.$outer instanceof KLDraggable) {
       _.dom.element(this).style.display = 'none';
       this.$outer.data.proxy = this;
     }
@@ -295,4 +295,4 @@ Draggable.Proxy = Component.extend({
   // node: _.noop
 });
 
-module.exports = Draggable;
+module.exports = KLDraggable;

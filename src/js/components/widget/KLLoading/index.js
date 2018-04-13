@@ -14,6 +14,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
  * @param {boolean}       [options.data.visible=false]      => 是否显示
  * @param {string}        [options.data.class]              => 补充class
+ * @param {string}        [options.data.el]                 => 设置对话框要嵌入的父级元素，默认为document.body
  */
 const KLLoading = Component.extend({
   name: 'kl-loading',
@@ -27,8 +28,11 @@ const KLLoading = Component.extend({
   },
   init() {
     this.supr();
-    // 证明不是内嵌组件
-    if (this.$root === this) this.$inject(document.body);
+
+    // 如果不是内嵌组件，则嵌入到data.el或document.body中
+    if (this.$root === this) {
+      this.$inject(this.data.el || document.body);
+    }
   },
   /**
      * @method KLLoading#show() 显示组件
