@@ -1,7 +1,6 @@
 @import "function";
 @import "bem.config";
 @import "../common/var";
-
 /* BEM
  -------------------------- */
 
@@ -37,5 +36,20 @@
         #{&}#{$modifier-separator + $modifier} {
             @content;
         }
+    }
+}
+
+/* Placeholder
+ -------------------------- */
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content
+    }
+    &::-moz-placeholder {
+        @content
+    }
+    &:-ms-input-placeholder {
+        @content
     }
 }

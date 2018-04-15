@@ -1,64 +1,70 @@
-$--size-base: 8px;
+$--size-base: 8px !default;
 
 /* Color-Base */
-$--primary-color: #00C4C0;
-$--info-color: #54A8F7;
-$--success-color: #93DD68;
-$--warning-color: #FFB539;
-$--error-color: #F86B6B;
+$--primary-color: #00C4C0 !default;
+$--info-color: #54A8F7 !default;
+$--success-color: #93DD68 !default;
+$--warning-color: #FFB539 !default;
+$--error-color: #F86B6B !default;
 
 /* Color-BG */
-$--body-background: #fff;
-$--component-background: #fff;
-$--disabled-background: #eee;
+$--background-color-base: #fff !default;
+$--background-color-disabled: #eee !default;
 
 /* Color-Text */
-$--text-default-color: #333;
-$--text-auxiliary-color: #666;
-$--text-placeholder-color: #999;
-$--text--disabled-color: #ccc;
+$--text-color-default: #333 !default;
+$--text-color-auxiliary: #666 !default;
+$--text-color-placeholder: #999 !default;
+$--text-color-disabled: #ccc !default;
 
 /* Font */
 $--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
-$--font-family: "Helvetica Neue For Number", $--font-family-no-number;
-$--code-family: Consolas, Menlo, Courier, monospace;
-$--font-size-base: 12px;
-$--font-size-xs: $--font-size-base - 2;
-$--font-size-lg: $--font-size-base + 4;
-$--font-size-xl: $--font-size-base + 6;
-$--line-height-base: 1.5;
+    "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$--font-family: "Helvetica Neue For Number", $--font-family-no-number !default;
+$--code-family: Consolas, Menlo, Courier, monospace !default;
+$--font-size-base: 12px !default;
+$--font-size-xs: $--font-size-base - 2 !default;
+$--font-size-lg: $--font-size-base + 4 !default;
+$--font-size-xl: $--font-size-base + 6 !default;
+$--line-height-base: 1.5 !default;
 
 /* Height */
-$--height-base: 32px;
-$--height-xs: $--height-base - 10;
-$--height-sm: $--height-base - 8;
-$--height-lg: $--height-base + 6;
-$--height-xl: $--height-base + 12;
+$--height-base: 32px !default;
+$--height-xs: $--height-base - 10 !default;
+$--height-sm: $--height-base - 8 !default;
+$--height-lg: $--height-base + 6 !default;
+$--height-xl: $--height-base + 12 !default;
+
+/* Padding */
+$--padding-base: 6px 10px 6px 8px !default;
+$--padding-xs: 1px 5px !default;
+$--padding-sm: 5px 10px !default;
+$--padding-lg: 10px 16px !default;
+$--padding-xl: 16px 24px !default;
 
 /* Border */
 
 /* Border-Radius */
-$--border-radius-base: 2px;
-$--border-radius-xs: 1px;
-$--border-radius-lg: 4px;
-$--border-radius-xl: 6px;
+$--border-radius-base: 2px !default;
+$--border-radius-xs: 1px !default;
+$--border-radius-lg: 4px !default;
+$--border-radius-xl: 6px !default;
 
 /* Border-Style */
-$--border-color-base: #ddd;
-$--border-color-active: $--primary-color;
-$--border-width-base: 1px;
-$--border-style-base: solid;
+$--border-color-base: #ddd !default;
+$--border-color-active: $--primary-color !default;
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
 
 /* Outline */
-$--outline-blur-size: 0;
-$--outline-width: 2px;
-$--outline-color: $--primary-color;
+$--outline-blur-size: 0 !default;
+$--outline-width: 2px !default;
+$--outline-color: $--primary-color !default;
 
 /* LINK */
-$--link-color: $--primary-color;
-$--link-hover-color: $--primary-color;
-$--link-active-color: $--primary-color;
-$--link-decoration: none;
-$--link-hover-decoration: none;
+$--link-color: $--primary-color !default;
+$--link-hover-color: $--primary-color !default;
+$--link-active-color: $--primary-color !default;
+$--link-decoration: none !default;
+$--link-hover-decoration: none !default;

@@ -1,0 +1,101 @@
+@mixin input-element {
+    position: absolute;
+    height: 24px;
+    line-height: 24px;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: #666;
+}
+
+@include b(input) {
+    display: block;
+    position: relative;
+    width: 100%;
+    @include e(inner) {
+        padding: $--padding-base;
+        color: $--text-color-default;
+        background: $--background-color-base;
+        border-radius: $--border-radius-base;
+        border: 1px solid $--border-color-base;
+        height: $--height-base;
+        line-height: $--height-base;
+        font-size: $--font-size-base;
+        width: 100%;
+        &:focus {
+            outline: 0;
+            background: $--background-color-base;
+            color: $--text-color-default;
+            border-color: $--primary-color;
+            box-shadow: 0 0 2px 0 #00C4C0;
+        }
+        &:hover {
+            border-color: $--primary-color;
+        }
+        &:disabled {
+            cursor: not-allowed;
+            background: $--background-color-disabled;
+            color: $--text-color-placeholder;
+            border: $--border-color-base;
+        }
+        @include placeholder {
+            color: #999;
+            font-size: $--font-size-base; // - Removes placeholder transparency in Firefox.
+            $opacity: 1;
+        }
+        @include m(error) {
+            border-color: $--error-color;
+            &:hover {
+                box-shadow: 0 0 0 0;
+                border-color: $--error-color;
+            }
+            &:focus {
+                border-color: $--error-color;
+                box-shadow: 0 0 0 0;
+            }
+        }
+    }
+    @include e(unit) {
+        @include input-element;
+    }
+    @include e(icon) {
+        @include input-element;
+        font-size: 12px;
+        &:hover,
+        &:active {
+            color: $--primary-color;
+            cursor: pointer;
+        }
+        @include m(clearable) {
+            opacity: 0;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    @include e(placeholder) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        color: $--text-color-placeholder;
+        padding: $--padding-base;
+        border-left: 1px solid transparent;
+    }
+    @include m(sm) {
+        height: 24px;
+        .input {
+            height: 24px;
+            line-height: 24px;
+        }
+    }
+    +.kl-tip {
+        margin-left: 5px;
+    }
+}
+
+@include b(input-wrapper) {
+    position: relative;
+    display: block;
+}
