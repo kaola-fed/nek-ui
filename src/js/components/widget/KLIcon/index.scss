@@ -1,0 +1,31 @@
+@include b(icon) {
+    line-height: inherit;
+    /* */
+    width: 1em;
+    /* */
+    text-align: center;
+    /* */
+    /*vertical-align: middle;*/
+    /* */
+    /*margin-top: -2px;*/
+    @include m(error-circle) {
+        &:before {
+            content: "\f057";
+        }
+    }
+    @include m(success-circle) {
+        &:before {
+            content: "\f058";
+        }
+    }
+    @include m(warning-circle) {
+        &:before {
+            content: "\f06a";
+        }
+    }
+    @include m(quote) {
+        &:before {
+            content: "\f10d";
+        }
+    }
+}
