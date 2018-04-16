@@ -29302,12 +29302,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  '.rar': 'rar',
 	  '.gz': 'gz',
 	  document: 'doc',
-	  sheet: 'doc',
-	  powerpoint: 'doc',
+	  sheet: 'excel',
+	  powerpoint: 'ppt',
 	  msword: 'doc',
 	  '.doc': 'doc',
-	  '.xlsx': 'doc',
-	  '.ppt': 'doc',
+	  '.xlsx': 'excel',
+	  '.xls': 'excel',
+	  '.ppt': 'ppt',
+	  '.pptx': 'ppt',
 	  'video/*': 'video',
 	  '.mp4': 'video',
 	  '.mkv': 'video',
@@ -29321,6 +29323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  '.js': 'js',
 	  '.html': 'html',
 	  '.txt': 'text',
+	  'text/plain': 'text',
 	  '.json': 'json'
 	};
 
@@ -29975,7 +29978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    (0, _keys2.default)(typeMap).forEach(function (key) {
 	      var reg = new RegExp(key + '$');
 	      // 名称后缀不区分大小写
-	      if (reg.test(type) || !type && reg.test(('' + name).toLowerCase())) {
+	      if (reg.test(type) || reg.test(('' + name).toLowerCase())) {
 	        typeStr = typeMap[key];
 	      }
 	    });
