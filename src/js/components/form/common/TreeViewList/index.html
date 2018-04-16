@@ -8,9 +8,9 @@
 			{#if multiple && !item.divider}
 			<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />
 			{/if}
-			<div class="treeview_itemname" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>
+			<div class="treeview_itemname" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item[nameKey]} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</div>
 		</div>
-		{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}
+		{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} nameKey={nameKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}
 	</li>
 	{/list}
 </ul>

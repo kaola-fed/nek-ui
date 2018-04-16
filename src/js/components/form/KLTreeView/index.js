@@ -15,6 +15,7 @@ require('../common/TreeViewList');
  * @param {object[]}  [options.data.source=[]]                <=> 数据源
  * @param {string}    [options.data.source[].name]            => 每项的内容
  * @param {string}    [options.data.key=id]                   => 数据项的键
+ * @param {string}    [options.data.nameKey=name]             => 数据项的显示值
  * @param {string}    [options.data.childKey=children]        => 数据子项的键
  * @param {boolean}   [options.data.source[].open=false]      => 此项为展开/收起状态
  * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
