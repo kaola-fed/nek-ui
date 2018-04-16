@@ -8,7 +8,7 @@ title: 加载
 <div class="m-example"></div>
 
 ```xml
-<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
+<kl-button on-click="{this.showLoading()}" title="显示加载，2秒后隐藏" />
 <kl-loading visible={visible} />
 ```
 
@@ -45,6 +45,35 @@ var component = new NEKUI.Component({
     template: template,
     config: function(data) {
         data.visible = false;
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 指定嵌入的父级元素
+
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}" title="显示加载，2秒后隐藏" />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    config: function(data) {
+    },
+    show: function() {
+        var loading = new NEKUI.KLLoading({
+            data: {
+                visible: true,
+                el: '#main'
+            }
+        });
+        setTimeout(function() {
+            loading.destroy();
+        }, 2000);
     }
 });
 ```
