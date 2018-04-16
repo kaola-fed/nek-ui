@@ -66,7 +66,7 @@ const KLSelect = Dropdown.extend({
       canSearch: undefined,
       filter: null,
       // 默认不区分大小写
-      isCaseSensitive: true,
+      isCaseSensitive: false,
       noMatchText: this.$trans('NO_MATCH'),
       delaySearch: 300,
       maxShowCount: 1000,

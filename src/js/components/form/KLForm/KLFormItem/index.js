@@ -36,13 +36,12 @@ const KLFormItem = Validation.extend({
   },
   init() {
     const parentValidator = this._parentValidator;
-    this.$watch('this.controls.length', (newValue, oldValue) => {
-      /* 处理kl-form-item下面kl-select数量变化的情况,当从没有变为有时,需要赋值 */
-      if (oldValue === undefined) {
-        return;
-      }
+    this.$watch('this.controls.length', () => {
       if (parentValidator && parentValidator.initSelectorSource) {
         parentValidator.initSelectorSource();
+      }
+      if (parentValidator && parentValidator.initFormItem) {
+        parentValidator.initFormItem();
       }
     });
 

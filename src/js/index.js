@@ -52,6 +52,7 @@ const Components = {
   KLIcon: require('./components/widget/KLIcon'),
   KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
+  KLDraggable: require('./components/widget/KLDraggable'),
 
   // Layout
   KLTable: require('./components/layout/KLTable'),

@@ -18,6 +18,7 @@ const FileUnit = Component.extend({
       url: '',
       name: '',
       readonly: false,
+      headers: {},
       data: {},
     });
 
@@ -61,6 +62,8 @@ const FileUnit = Component.extend({
 
     const options = {
       name: data.name || 'file',
+      headers: data.headers,
+      withCredentials: data.withCredentials,
       data: data.data,
       upload: {
         onprogress(e) {

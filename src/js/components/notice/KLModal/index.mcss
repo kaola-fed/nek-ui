@@ -31,7 +31,7 @@
     // - Mask the background page
     background: rgba(0, 0, 0, 0.6);
 
-    &:before {
+    &:after {
         content: '';
         display: inline-block;
         vertical-align: middle;
