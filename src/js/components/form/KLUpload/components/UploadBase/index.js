@@ -562,7 +562,7 @@ const UploadBase = Component.extend({
     Object.keys(typeMap).forEach((key) => {
       const reg = new RegExp(`${key}$`);
       // 名称后缀不区分大小写
-      if (reg.test(type) || (!type && reg.test(`${name}`.toLowerCase()))) {
+      if (reg.test(type) || reg.test(`${name}`.toLowerCase())) {
         typeStr = typeMap[key];
       }
     });
