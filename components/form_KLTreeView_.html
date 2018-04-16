@@ -417,8 +417,8 @@
 <p>*注意：暂时不支持<code>value</code>赋初始值。</p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的分别是是: &#123;selected.name&#125; &#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'母婴儿童'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'美容彩妆'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'服饰鞋包'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.selected = <span class="keyword">this</span>.data.source[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">nameKey</span>=<span class="string">'value'</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-tree-view</span>  <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">nameKey</span>=<span class="string">'value'</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的分别是是: &#123;selected.value&#125; &#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">value</span>: <span class="string">'母婴儿童'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">value</span>: <span class="string">'美容彩妆'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">value</span>: <span class="string">'服饰鞋包'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.selected = <span class="keyword">this</span>.data.source[<span class="number">0</span>];</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="禁用某一项，禁用组件"><a href="#禁用某一项，禁用组件" class="headerlink" title="禁用某一项，禁用组件"></a>禁用某一项，禁用组件</h3><div class="m-example"></div>
@@ -466,6 +466,12 @@
 <td><code>string</code></td>
 <td><code>&quot;id&quot;</code></td>
 <td>=&gt; 数据项的键</td>
+</tr>
+<tr>
+<td>[options.data.nameKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;name&quot;</code></td>
+<td>=&gt; 数据项的显示值</td>
 </tr>
 <tr>
 <td>[options.data.childKey]</td>
@@ -682,13 +688,13 @@ var component = new NEKUI.Component({
       
 <kl-form>
     <kl-col span=6>
-        <kl-tree-view  source={source} selected={selected} />
+        <kl-tree-view  source={source} nameKey='value' selected={selected} />
     </kl-col>
     <kl-col span=6>
-        <kl-tree-view  source={source} value={value} />
+        <kl-tree-view  source={source} nameKey='value' value={value} />
     </kl-col>
 </kl-form>
-<p>选择的分别是是: {selected.name} {value}</p>
+<p>选择的分别是是: {selected.value} {value}</p>
 
       */});
       
@@ -696,9 +702,9 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 1, name: '母婴儿童'},
-            {id: 2, name: '美容彩妆'},
-            {id: 3, name: '服饰鞋包'}
+            {id: 1, value: '母婴儿童'},
+            {id: 2, value: '美容彩妆'},
+            {id: 3, value: '服饰鞋包'}
         ]
     },
     config: function() {
@@ -723,22 +729,22 @@ var component = new NEKUI.Component({
               htmlCode: `
 <kl-form>
     <kl-col span=6>
-        <kl-tree-view  source={source} selected={selected} />
+        <kl-tree-view  source={source} nameKey='value' selected={selected} />
     </kl-col>
     <kl-col span=6>
-        <kl-tree-view  source={source} value={value} />
+        <kl-tree-view  source={source} nameKey='value' value={value} />
     </kl-col>
 </kl-form>
-<p>选择的分别是是: {selected.name} {value}</p>
+<p>选择的分别是是: {selected.value} {value}</p>
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
     data: {
         source: [
-            {id: 1, name: '母婴儿童'},
-            {id: 2, name: '美容彩妆'},
-            {id: 3, name: '服饰鞋包'}
+            {id: 1, value: '母婴儿童'},
+            {id: 2, value: '美容彩妆'},
+            {id: 3, value: '服饰鞋包'}
         ]
     },
     config: function() {
