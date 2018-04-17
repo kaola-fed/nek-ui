@@ -40,3 +40,60 @@
         margin-bottom: $--size-base * 2;
     }
 }
+
+
+/*select组件相关*/
+@include b(select) {
+    // - Default is `content-box` with following exceptions set to `border-box`.
+    box-sizing: border-box;
+    // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+    margin: 0;
+    border: 0;
+    padding: 0;
+    // - Remove `border-radius` in iOS.
+    border-radius: 0;
+    // - Correct `font` properties and `color` not being inherited.
+    font: inherit;
+    color: inherit;
+    // - Remove default style in iOS.
+    -webkit-appearance: none;
+    // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+    max-width: 100%;
+    text-transform: none;
+
+    color: $--text-color-default;
+    background: $--background-color-base;
+    border-radius: $--border-radius-base;
+
+    // -webkit-transition: all linear 0.2s;
+    // transition: all linear 0.2s;
+    @include placeholder {
+        color: $--text-color-placeholder;
+        // - Removes placeholder transparency in Firefox.
+        opacity: 1;
+    }
+
+    &:focus {
+        outline: 0;
+        background: $--background-color-base;
+        color: $--text-color-default;
+        border: $--border-color-active;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        background: $--background-color-disabled;
+        color: $--text-color-disabled;
+        border: $--border-color-disabled;
+    }
+
+    // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox
+    
+    optgroup {
+        // - Correct `font` properties not being inherited.
+        font: inherit;
+        // - Don't inherit the `font-weight` and use `bold` instead.
+        font-weight: bold;
+        // - NOTE: Both declarations don't work in Chrome, Safari and Opera.
+    }
+}

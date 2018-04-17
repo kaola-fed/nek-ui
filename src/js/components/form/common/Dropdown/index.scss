@@ -1,0 +1,36 @@
+@include b(dropdown) {
+    position: relative;
+    vertical-align: top;
+
+    .dropdown_bd {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        top: 100%;
+        line-height:normal;
+        .listview {
+            > li > a {
+                display: block;
+            }
+        }
+
+        .kl-check,
+        .check_box{
+            margin-bottom: 0;
+        }
+    }
+    &.z-dis {
+        .dropdown_hd > .kl-btn {
+            cursor: not-allowed;
+            opacity: .5;
+            box-shadow: none;
+        }
+    }
+}
+
+.dropdown_hd.z-dis {
+    background: #eee;
+    color: #999;
+    border: 1px solid #d2d6de;
+    cursor: not-allowed;
+}
