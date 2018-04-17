@@ -76,7 +76,7 @@
 .f-mt20{margin-top:20px;}
 
 .f-color-primary{color: var($--primary-color);}
-.f-color-secondary{color: var(--brand-secondary);}
+.f-color-secondary{color: var($--primary-color);}
 .f-color-info{color: var($--info-color);}
 .f-color-success{color: var($--success-color);}
 .f-color-error{color: var($--error-color);}
