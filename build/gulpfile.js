@@ -49,25 +49,6 @@ gulp.task('dist-js', () => gulp.src(path.join(__dirname, '../src/js/index.js'))
     .pipe(uglify())
     .pipe(gulp.dest(path.join(__dirname, '../dist/js'))));
 
-// gulp.task('dist-css', () => {
-//   const gulpCSS = function (theme) {
-//     return gulp.src(`./src/mcss/${theme}.mcss`)
-//       .pipe(mcss({
-//         pathes: ['./node_modules'],
-//         importCSS: true,
-//       }))
-//       .pipe(postcss(postcssConfig.plugins))
-//       .pipe(rename(`nek-ui.${theme}.css`))
-//       .pipe(gulp.dest('./dist/css'))
-//       .pipe(rename({
-//         suffix: '.min',
-//       }))
-//       .pipe(minifycss())
-//       .pipe(gulp.dest('./dist/css'));
-//   };
-
-//   return all(themes.map(gulpCSS));
-// });
 
 gulp.task('dist-css', () => {
   gulp.src(path.join(__dirname, '../src/scss/index.scss'))
@@ -94,7 +75,7 @@ gulp.task('gen-mcss', (cb) => {
 });
 
 gulp.task('gen-doc', (cb) => {
-  const hexo = new Hexo(path.join(__dirname, 'doc'), {
+  const hexo = new Hexo(path.join(__dirname, '../doc'), {
     dev: argv.dev,
   });
   hexo.extend.filter.register('after_post_render', (data) => {
@@ -115,10 +96,6 @@ gulp.task('gen-doc', (cb) => {
   });
 });
 
-gulp.task('gen-easy-doc', (cb) => {
-  doc(argv.dev, cb);
-});
-
 gulp.task('dist', (done) => {
   sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
 });
@@ -135,10 +112,6 @@ gulp.task('default-doc', (done) => {
   sequence('gen-doc', 'reload', done);
 });
 
-gulp.task('easy-doc', (done) => {
-  sequence('gen-easy-doc', 'reload', done);
-});
-
 gulp.task('server', ['default'], () => {
   browserSync.init({
     server: {
@@ -152,12 +125,8 @@ gulp.task('server', ['default'], () => {
   });
 });
 
-gulp.task('watch', ['server'], () => {
+gulp.task('watch', ['default', 'server'], () => {
   gulp.watch(['../src/**/*'], ['default']);
-});
-
-gulp.task('watch-doc', ['server'], () => {
-  gulp.watch(['../src/**/*', '../doc/source/partials/**/*'], ['easy-doc']);
 });
 
 /* 把v0.5版本的文档copy到pulic目录下 */
