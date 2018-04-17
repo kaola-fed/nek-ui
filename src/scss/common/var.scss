@@ -54,6 +54,8 @@ $--border-radius-xl: 6px !default;
 /* Border-Style */
 $--border-color-base: #ddd !default;
 $--border-color-active: $--primary-color !default;
+$--border-color-error: $--error-color !default;
+$--border-color-disabled: #ccc !default;
 $--border-width-base: 1px !default;
 $--border-style-base: solid !default;
 
