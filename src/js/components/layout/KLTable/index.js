@@ -98,6 +98,8 @@ const KLTable = Component.extend({
       scrollXBarWidth: 0,
 
       show: true,
+      fixHeaderBody: false,
+      fixHeaderBodySource: [],
       columns: [],
       sorting: {},
       config: {},

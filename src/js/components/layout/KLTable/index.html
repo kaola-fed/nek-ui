@@ -29,6 +29,8 @@
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }}>
             <table-header
+                fixHeaderBody={fixHeaderBody}
+                fixHeaderBodySource={fixHeaderBodySource} 
                 ref="tableHeader"
                 stickyHeader={stickyHeader}
                 _dataColumns={_dataColumns}
@@ -106,6 +108,8 @@
                 top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0
             }} >
             <table-header
+                fixHeaderBody={fixHeaderBody}
+                fixHeaderBodySource={fixHeaderBodySource} 
                 ref="tableHeaderFixedLeft"
                 _dataColumns={_dataColumns}
                 headers={headers}
@@ -183,6 +187,8 @@
             }}
             >
             <table-header ref="tableHeaderFixedRight"
+                fixHeaderBody={fixHeaderBody}
+                fixHeaderBodySource={fixHeaderBodySource} 
                 _dataColumns={_dataColumns}
                 headers={headers}
                 fixedCol="right"

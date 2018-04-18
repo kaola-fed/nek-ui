@@ -49,7 +49,12 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table
-    fixedHeader
+    stickyHeader
+    stickyFooter
+    fixHeaderBody 
+    fixHeaderBodySource={table.fixHeaderBodySource} 
+    stickyHeaderOffset=64
+    stickyFooterOffset=0
     columns={table.columns}
     sorting={table.sorting}
     paging={table.paging}
@@ -75,6 +80,11 @@ var source = [{
     job: '后端',
     name: '小李',
     age: 25,
+}];
+var fixHeaderBodySource = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
 }];
 
 var component = new NEKUI.Component({
@@ -118,7 +128,8 @@ var component = new NEKUI.Component({
                 sumTotal: 100,
                 current: 1
             },
-            source: source
+            source: source,
+            fixHeaderBodySource: fixHeaderBodySource
         }
     }
 });

@@ -79,4 +79,22 @@
             }}
         ></div>
     {/if}
+    {#if fixHeaderBody}
+    <table-body
+        onlyBody 
+        _dataColumns={_dataColumns}
+        loading={loading}
+        fixedHeader={fixedHeader}
+        height={bodyHeight}
+        width={tableWidth}
+        lineClamp={lineClamp}
+        columns={columns}
+        sorting={sorting}
+        source={fixHeaderBodySource}
+        scrollYBarWidth={scrollYBarWidth}
+        align={align}
+        placeholder={placeholder}
+        on-customevent={this._onCustomEvent($event)}
+        />
+    {/if}
 </table>

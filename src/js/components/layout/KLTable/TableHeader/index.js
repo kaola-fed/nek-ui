@@ -1,5 +1,6 @@
 const Component = require('../../../../ui-base/component');
 const tpl = require('./index.html');
+const TableBody = require('../TableBody');
 
 const HEADER_MIN_WIDTH = 30;
 const SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -213,6 +214,6 @@ const TableHeader = Component.extend({
     }
     return '';
   }
-});
+}).component('table-body', TableBody);
 
 module.exports = TableHeader;
