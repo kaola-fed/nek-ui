@@ -1,6 +1,7 @@
 @import "function";
 @import "bem.config";
 @import "../common/var";
+
 /* BEM
  -------------------------- */
 
@@ -37,6 +38,14 @@
             @content;
         }
     }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$when-prefix + $state} {
+      @content;
+    }
+  }
 }
 
 /* Placeholder

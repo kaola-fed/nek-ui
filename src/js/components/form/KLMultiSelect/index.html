@@ -1,16 +1,16 @@
-<div class="u-dropdown u-select u-select-{state} u-multi u-multi{class}" r-width={width} z-dis={disabled} r-hide={!visible} ref="element">
+<div class="kl-dropdown kl-select kl-select--{state} u-multi u-multi{class}" r-width={width} z-dis={disabled} r-hide={!visible} ref="element">
     <div class="dropdown_hd" on-click={this.toggle(!open, $event)}>
         {#if showRoot}
             {#list rootSelected as item}
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
+                        <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
+                    <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                 </span>
                 {/if}
             {/list}
@@ -19,12 +19,12 @@
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
+                        <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <i class="u-icon u-icon-remove" on-click={this.delete($event, item)}></i>
+                    <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                 </span>
                 {/if}
             {/list}
@@ -60,4 +60,4 @@
     </div>
     {/if}
 </div>
-{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}

@@ -1,0 +1,74 @@
+@include b(check) {
+    display:inline-block;
+    cursor: pointer;
+    user-select: none;
+    white-space:nowrap;
+    font-size: 12px;
+    line-height: 32px;
+
+    .check_box {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        margin-right: 8px;
+        size: 15px;
+        line-height: 12px;
+        vertical-align: text-top;
+        background: white;
+        color: #E61438;
+        border: 1px solid $--border-color-base;
+        .kl-icon {
+            display: none;
+            font-size: 13px;
+            line-height: 13px;
+        }
+        &:hover {
+            border: 1px solid #e61438;
+        }
+    }
+
+    /* Checked */
+    &.z-chk {
+        .check_box {
+            background: #e61438;
+            color: #fff;
+            border: 1px solid #E61438;
+            .kl-icon {
+                display: inline-block;
+            }
+        }
+    }
+
+    /* Indetermined */
+    &.z-part {
+        .check_box {
+            background: #e61438;
+            color: #fff;
+            border: 1px solid #E61438;
+            .kl-icon {
+                display: inline-block;
+                &:before {
+                    content: "\e91c";
+                }
+            }
+        }
+    }
+
+    /* Disabled */
+    &.z-dis {
+        cursor: not-allowed;
+        .check_box {
+            color: $--background-color-disabled;
+            border: 1px solid $--background-color-disabled;
+        }
+    }
+
+    // Extends:         `u-check-block`
+    // ========================================================================
+    @include m(block) {
+        display: block;
+        width: 100%;
+    }
+}
+
