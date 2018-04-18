@@ -40,6 +40,14 @@
     }
 }
 
+@mixin when($state) {
+  @at-root {
+    &.#{$when-prefix + $state} {
+      @content;
+    }
+  }
+}
+
 /* Placeholder
  -------------------------- */
 
