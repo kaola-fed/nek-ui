@@ -9,14 +9,12 @@ const ignore = require('gulp-ignore');
 const minifycss = require('gulp-clean-css');
 const sequence = require('run-sequence');
 const all = require('gulp-all');
-// const mcss = require('gulp_mcss');
 const glob = require('glob');
 const path = require('path');
 const Hexo = require('hexo');
 const fs = require('fs');
 const argv = require('yargs').argv;
 const doc = require('../doc/source/doc');
-// const themes = require('../src/mcss/themes');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
 
@@ -63,11 +61,13 @@ gulp.task('dist-css', () => {
         .pipe(gulp.dest(path.join(__dirname, '../dist/css')));
 });
 
-gulp.task('gen-mcss', (cb) => {
+gulp.task('gen-css', (cb) => {
   glob(path.join(__dirname, '../src/js/components/**/**/*.scss'), (er, files) => {
     let out = '';
     files.forEach((d) => {
+      // if (d.indexOf('KLButton') !== -1) {
       out += `@import "${d}";\n`;
+      // }
     });
     fs.writeFileSync(path.join(__dirname, '../src/scss/components.scss'), out);
     cb();
@@ -97,7 +97,7 @@ gulp.task('gen-doc', (cb) => {
 });
 
 gulp.task('dist', (done) => {
-  sequence('dist-clean', ['dist-copy', 'gen-mcss', 'dist-js', 'dist-css'], done);
+  sequence('dist-clean', ['dist-copy', 'gen-css', 'dist-js', 'dist-css'], done);
 });
 
 gulp.task('reload', () => {

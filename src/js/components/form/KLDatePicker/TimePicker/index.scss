@@ -1,0 +1,24 @@
+@include b(timepicker) {
+  display: inline-block;
+
+  @include b(numberinput) {
+    width: auto;
+
+    @include b(btn) {
+      top: 8px;
+      margin: auto;
+
+      & + & {
+        top: auto;
+        bottom: 8px;
+      }
+    }
+  }
+
+  @include b(input) {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 56px;
+    padding: 6px;
+  }
+}

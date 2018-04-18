@@ -1,19 +1,19 @@
-<div class="u-dropdown u-datetimepicker u-dropdown-{size} {class}" r-width="{width}">
-  <div class="u-dropdown " z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd">
+<div class="kl-datepicker kl-datepicker--{size} {class}" r-width="{width}">
+  <div class="kl-dropdown" z-dis={disabled} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd">
       {#if showTime}
-      <label class="u-input">
-        <input class="input input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref="input"
+      <label class="kl-input">
+        <input class="kl-dropdown__input kl-dropdown__input--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref="input"
         autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
       </label>
       {#else}
-      <label class="u-input">
-        <input class="input input-{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input"
+      <label class="kl-input">
+        <input class="kl-dropdown__input kl-dropdown__input--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input"
         autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
       </label>
       {/if}
     </div>
-    <div class="dropdown_bd" r-hide={!open}>
+    <div class="kl-dropdown__bd" r-hide={!open}>
       <calendar lang={lang} minDate={minDate} maxDate={maxDate} date={_date} on-select={this.select($event.date, _time)}>
         {#if showTime}
         <time-picker size="sm" time={_time} on-change={this._onDateTimeChange(_date, _time)}
@@ -21,12 +21,17 @@
                      disabledMinutes={disabledMinutes}
                      disabledSeconds={disabledSeconds}
         />
-        <div class="dropdown_ft">
-          <a class="u-btn u-btn-sm datetimepicker_confirmBtn" on-click={this.onConfirm()}>{this.$trans('CONFIRM')}</a>
+        <div class="kl-dropdown__ft">
+          <kl-button size="sm" class="kl-datetimepicker__confirmBtn" on-click={this.onConfirm()} title={this.$trans('CONFIRM')} />
         </div>
         {/if}
       </calendar>
     </div>
   </div>
-  {#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+  {#if tip && !hideTip}
+    <span class="kl-tip kl-tip-{state}">
+      <kl-icon type={state} />
+      <span class="kl-tip__msg">{tip}</span>
+    </span>
+  {/if}
 </div>
