@@ -1,0 +1,113 @@
+@include b(btn) {
+  // - Correct inability to style clickable `input` types in iOS.
+  -webkit-appearance: none;
+  // - 移除浏览器中的margin。| Remove margins in Chrome, Safari and Opera.
+  margin: 0;
+  // - 移除浏览器中的默认border。| Remove borders for `button`.
+  overflow: visible;
+  // - 让字体继承父节点的。| Correct `font` properties not being inherited for `button`.
+  font: inherit;
+  // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE.
+  text-transform: none;
+  // - 为了`a`标签。| Required for `a`.
+  text-decoration: none;
+  // - 统一用`pointer`，在`a`标签没有`href`的时候鼠标指针不是pointer。 | Use pointer cursor at any time.
+  cursor: pointer;
+  // - 统一box-sizing，a标签默认的box-sizing是content-box，而button标签默认的box-sizing是border-box。
+  box-sizing: border-box;
+  // - Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  background: none;
+  // - Others
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+
+  height: $--height-base;
+  min-width: $--size-base*10;
+  padding: 0 $--size-base*2;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  line-height: $--height-base - 2;
+  font-size: 12px;
+  color: #333;
+  transition-duration: 0.1s;
+  transition-property: transform;
+  transition-timing-function: ease;
+  white-space: nowrap;
+
+  &:hover, &:focus {
+    // - Remove default focus style
+    outline: none;
+    // - Required for `a` elements
+    text-decoration: none;
+    background: #fff;
+    border-color: #bbb;
+  }
+
+  &:active {
+    background: #fff;
+  }
+  @include m(act) {
+    @extend .kl-btn:active;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    box-shadow: none;
+  }
+
+  @include m(dis) {
+    @extend .kl-btn:disabled;
+  }
+
+  @include m(clicked) {
+    transform: translateY(2px);
+  }
+
+  @include m(block) {
+    display: block;
+    // - 为了`button`标签
+    width: 100%;
+  }
+
+  .kl-icon {
+    vertical-align: bottom;
+    color: #999;
+    margin-right: 4px;
+    font-size: 15px;
+  }
+}
+
+// btn with icon Extends:
+// ========================================================================
+@mixin btn-extend_icon($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color) {
+  @include b(btn) {
+    @include m($name) {
+      padding: 0 10px;
+      background: $bg_color;
+      color: $color;
+      border: $bd_color;
+      .kl-icon {
+        font-size: 15px;
+        vertical-align: top;
+        color: $ico_color;
+      }
+      &:hover, &:focus {
+        color: $hover_font_color;
+        background: $hover_bg_color;
+        border-color: $bd_hover_color;
+      }
+    }
+  }
+}
+
+@include btn-extend_icon(success, #ffffff, #fff, #A3E37E, #9FE385, #fff, #fff, #a9e691);
+
+// btn with icon Extends: $u-btn-extend_icon = ($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color)
+// ========================================================================
+// 颜色暂时没给
+//@include $btn-extend_icon(success, #ffffff, $--primary-color, #A3E37E, #9FE385, $brand-success-darker, #fff, #a9e691);
+//@include $btn-extend_icon(warning, #ffffff, #F86B6B, $brand-error, #F78081, #f97a7a, #fff, #f88d8e);
+//@include $btn-extend_icon(add, #ffffff, $brand-primary, $brand-primary, $brand-primary, $brand-primary-darker, #fff, $brand-primary-darker);

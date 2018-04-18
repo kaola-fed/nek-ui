@@ -10,12 +10,18 @@ $--error-color: #F86B6B !default;
 /* Color-BG */
 $--background-color-base: #fff !default;
 $--background-color-disabled: #eee !default;
+$--background-color-hover: #F1F1F1 !default;
+$--background-color-selected: $--primary-color !default;
 
 /* Color-Text */
+$--text-color-white: #fff !default;
+$--text-color-black: #000 !default;
 $--text-color-default: #333 !default;
 $--text-color-auxiliary: #666 !default;
 $--text-color-placeholder: #999 !default;
 $--text-color-disabled: #ccc !default;
+$--text-color-hover: #444 !default;
+$--text-color-selected: $--text-color-white !default;
 
 /* Font */
 $--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",

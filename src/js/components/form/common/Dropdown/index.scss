@@ -1,0 +1,30 @@
+@include b(dropdown) {
+  position: relative;
+  vertical-align: top;
+
+  @include m(dis) {
+    @include e(hd) {
+      .kl-btn {
+        @extend .kl-btn--dis;
+      }
+    }
+  }
+
+  @include e(bd) {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    top: 100%;
+    line-height:normal;
+
+    .kl-listview {
+      > li > a {
+        display: block;
+      }
+    }
+
+    .kl-check, .kl-check__checkbox {
+      margin-bottom: 0;
+    }
+  }
+}
