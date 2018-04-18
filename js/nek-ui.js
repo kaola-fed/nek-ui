@@ -10618,8 +10618,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _update: function _update() {
 	    this.data._days = [];
 	    var date = this.data.date;
-	    var month = date.getMonth();
 	    var mfirst = new Date(date);
+	    var month = mfirst.getMonth();
 	    mfirst.setDate(1);
 	    var mfirstTime = +mfirst;
 	    var nfirst = new Date(mfirst);
