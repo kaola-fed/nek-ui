@@ -1,35 +1,35 @@
 @include b(dropdown) {
     position: relative;
     vertical-align: top;
-    .dropdown_bd {
+    @include e(bd) {
         position: absolute;
         z-index: 10;
         width: 100%;
         top: 100%;
         line-height:normal;
-        .listview {
+        .kl-listview {
             > li > a {
                 display: block;
             }
         }
-
         .kl-check,
-        .check_box{
+        .kl-check_box{
             margin-bottom: 0;
         }
     }
-    &.z-dis {
-        .dropdown_hd > .kl-btn {
+    @include e(hd) {
+        &.is-dis {
+            background: #eee;
+            color: #999;
+            border: 1px solid #d2d6de;
+            cursor: not-allowed;
+        }
+    }
+    &.is-dis {
+        .kl-dropdown__hd > .kl-btn {
             cursor: not-allowed;
             opacity: .5;
             box-shadow: none;
         }
     }
-}
-
-.dropdown_hd.z-dis {
-    background: #eee;
-    color: #999;
-    border: 1px solid #d2d6de;
-    cursor: not-allowed;
 }
