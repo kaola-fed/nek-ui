@@ -7,7 +7,7 @@
   {#if maxlength && value}<span class="kl-textarea__length">{value.length}/{maxlength}</span>{/if}
   {#if _eltIE9 && !value}<span class="kl-textarea__placeholder">{placeholder}</span>{/if}
   {#if tip && !hideTip}
-    <span class="kl-tip kl-tip-{state}">
+    <span class="kl-tip kl-tip--{state}">
       <kl-icon type={state} />
       <span class="kl-tip__msg">{tip}</span>
     </span>
