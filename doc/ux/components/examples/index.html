@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>nek-ui</title>
+        <meta charset="utf-8">
+        <!--  nek-ui -->
+        <link href="//localhost:8080/css/ux-ui.default.css" rel='stylesheet' type='text/css'>
+        <style type="text/css">
+            #app {
+                margin: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+        </div>
+        <script src="//localhost:8080/vendor/regular.js"></script>
+        <script src="//localhost:8080/js/ux-ui.js"></script>
+        <script>
+            new UXUI.Component({
+                template: `<ux-image src="https://haitao.nos.netease.com/20f8ca15-69d2-4219-a22c-3f1fce255fb0.png"
+                            title="标题"
+                            description="描述内容一：巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉；<br> 描述内容二： 巴拉巴拉巴拉巴拉。。。。。" />`,
+            }).$inject('#app');
+        </script>
+    </body>
+    </html>

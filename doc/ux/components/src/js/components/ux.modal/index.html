@@ -1,0 +1,30 @@
+<div class="m-modal {class}" r-animation='on:leave;class: modal_animated modal_zoomOut'>
+    <div class="modal_dialog modal_animated zoomIn fast" style="width: {width}px" ref="modalDialog">
+        <div class="modal_hd">
+            {#if isCanClose}
+            <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-remove"></i></a>
+            {/if}
+            {#if title}
+            <h3 class="modal_title">{title}</h3>
+            {/if}
+        </div>
+        <div class="modal_bd" {#if maxHeight || minHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
+        {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
+    </div>
+    {#if hasFooter}
+    <div class="modal_ft">
+        {#if footerTemplate}
+        {#inc @(footerTemplate)}
+        {#else}
+        {#if okButton}
+        <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />
+        {/if}
+        {#if cancelButton && isCanClose}
+        <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
+        on-click={this.close(false)} disabled={cancelDisabled} />
+        {/if}
+        {/if}
+    </div>
+    {/if}
+</div>
+</div>

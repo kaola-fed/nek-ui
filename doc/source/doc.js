@@ -24,6 +24,65 @@ const CATES = [
 const DOC_PATH = __dirname;
 const COMPONENTS_PATH = path.join(__dirname, '../../src/js/components');
 const COMPONENTS_DEST = path.join(DOC_PATH, 'components');
+const UX_DOCUMENTS_PATH = path.join(__dirname, '../ux/documents');
+const UX_DOCUMENTS_PATH_DEST = path.join(DOC_PATH, 'ux');
+
+const guid = () => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        let r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+};
+
+const getFilesName = filePath => filePath.split('/').pop();
+
+const getUxComponents = (md) => {
+    const rgls = [];
+    const rglReg = /(```ux)([\s\S]*?)(```)/g;
+    return md.match(rglReg) || [];
+};
+
+
+const replaceUxComponentsText = (md, template, uuid) => {
+    return md.replace(template, `<div id="${uuid}"></div>`);
+};
+
+const changeMd = (md, matchRgls) => {
+
+    if (matchRgls.length != 0) {
+        let injectScript = '\n{% raw %}\n<script>\n';
+
+        matchRgls.forEach((template) => {
+            const uuid = guid();
+
+            md = replaceUxComponentsText(md, template, uuid);
+
+            template = template.slice(5, -4);
+
+            injectScript += renderSingleJSCode(uuid, template);
+        });
+
+        injectScript += '\n</script>\n{% endraw %}';
+
+        return md + injectScript;
+    }
+
+    return md;
+
+};
+
+const renderSingleJSCode = (uuid, template) => {
+    return `
+        new Regular({template: \`${template}\`}).$inject(document.getElementById('${uuid}'));
+    `;
+};
+
+const injectUxComponents = (md) => {
+  const matchRgls = getUxComponents(md) || [];
+  return changeMd(md, matchRgls);
+};
+
+
 
 const getComponents = (cate) => {
   const fullPath = path.join(COMPONENTS_PATH, cate);
@@ -105,9 +164,21 @@ const doc = (isDev, callback) => {
       fs.writeFileSync(md, injectComponents(fs.readFileSync(md, 'utf8')));
     });
   }
+
+  // 视觉交互文档
+  // 从其他文件夹读取md文件
+
+  const uxMds = glob.sync(path.join(UX_DOCUMENTS_PATH, './*.md'));
+
+  uxMds.forEach((md) => {
+    fs.writeFileSync(path.join(UX_DOCUMENTS_PATH_DEST, `./${getFilesName(md)}`), injectUxComponents(fs.readFileSync(md, 'utf8')));
+  });
+
+
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
+
       if (isDev && !/^KL(Sidebar|Upload|Menu|Button|Table|Select|MultiSelect)$/.test(comp)) {
         return false;
       }

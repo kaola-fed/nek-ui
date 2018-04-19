@@ -1,0 +1,25 @@
+node_modules
+tmp
+.sass-cache
+.DS_Store
+Thumbs.db
+.idea
+npm-debug.log
+test/
+dist/
+
+# Auto generate
+src/mcss/components.mcss
+
+# doc
+db.json
+*.log
+public/
+.deploy*/
+_drafts
+doc/source/components/*
+!doc/source/components/index.md
+
+dist.zip
+
+.history

@@ -1,0 +1,58 @@
+.ux-image {
+    float: right;
+    margin: 0 0 70px 64px;
+    width: 496px;
+    clear: both;
+}
+
+.ux-image_box {
+    background: #f2f4f5;
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    .ux-image_box_image {
+        cursor: pointer;
+        max-width: 100%;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+        background: #fff;
+        border-radius: 4px;
+    }
+
+    .ux-image_box_image:hover {
+        box-shadow: 2px 2px 3px 0 #666;
+    }
+}
+
+.ux-image_title {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.ux-image_description {
+    font-size: 12px;
+    margin-top: 2px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.ux-image-modal {
+    .modal_dialog {
+        .modal_hd {
+            border-bottom: none;
+        }
+        .modal_bd {
+            padding: 0px 15px 17px 15px;
+            max-height: 900px;
+        }
+        .ux-image-modal_image {
+            display: inline-block;
+            width: 100%;
+        }
+    }
+}
+
+

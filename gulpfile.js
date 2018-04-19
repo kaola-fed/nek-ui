@@ -122,7 +122,7 @@ gulp.task('easy-doc', (done) => {
 gulp.task('server', ['default'], () => {
   browserSync.init({
     server: {
-      baseDir: ['./doc/public', './dist'],
+      baseDir: ['./doc/public', './dist', './doc/ux/components/dist'],
     },
     browser: 'default',
     ghostMode: false,
