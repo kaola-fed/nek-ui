@@ -1,10 +1,15 @@
-<label class="u-textarea u-textarea-{size} {class}" r-hide={!visible} r-width="{width}">
-    <textarea spellcheck="false" class="textarea textarea-{state} textarea-{width}"
-        name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
-        r-model={value}
-        style="height: {height}px"
-        on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change" on-focus={this._onFocus($event)} ></textarea>
-    {#if maxlength && value}<span class="textarea_len">{value.length}/{maxlength}</span>{/if}
-    {#if _eltIE9 && !value}<span class="textarea_placeholder">{placeholder}</span>{/if}
-    {#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+<label class="kl-textarea kl-textarea--{size} {class}" r-hide={!visible} r-width="{width}">
+    <textarea spellcheck="false" class="kl-textarea__inner kl-textarea__inner-{state}"
+              name={name} type={type} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
+              r-model={value}
+              style="height: {height}px"
+              on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)} on-change="change" on-focus={this._onFocus($event)} ></textarea>
+  {#if maxlength && value}<span class="kl-textarea__length">{value.length}/{maxlength}</span>{/if}
+  {#if _eltIE9 && !value}<span class="kl-textarea__placeholder">{placeholder}</span>{/if}
+  {#if tip && !hideTip}
+    <span class="kl-tip kl-tip-{state}">
+      <kl-icon type={state} />
+      <span class="kl-tip__msg">{tip}</span>
+    </span>
+  {/if}
 </label>

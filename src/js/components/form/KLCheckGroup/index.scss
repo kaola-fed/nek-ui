@@ -19,7 +19,7 @@
         margin-top: 0;
     }
 
-    .unitgroup_wrap {
+    @include e(wrap) {
         display: flex;
         align-items: center;
         flex-wrap: wrap;

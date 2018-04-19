@@ -1,21 +1,21 @@
 @include b(timepicker) {
   display: inline-block;
 
-  @include b(numberinput) {
+  .kl-numberinput {
     width: auto;
 
-    @include b(btn) {
+    .kl-btn {
       top: 8px;
       margin: auto;
 
-      & + & {
+      & + .kl-btn {
         top: auto;
         bottom: 8px;
       }
     }
   }
 
-  @include b(input) {
+  .kl-input {
     display: inline-block;
     box-sizing: content-box;
     width: 56px;
