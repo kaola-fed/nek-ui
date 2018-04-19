@@ -42,6 +42,8 @@
 }
 
 
+// Component:       FormCtrl
+// ========================================================================
 /*select组件相关*/
 @include b(select) {
     // - Default is `content-box` with following exceptions set to `border-box`.
@@ -88,7 +90,7 @@
     }
 
     // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox
-    
+
     optgroup {
         // - Correct `font` properties not being inherited.
         font: inherit;
@@ -97,3 +99,100 @@
         // - NOTE: Both declarations don't work in Chrome, Safari and Opera.
     }
 }
+
+@mixin formctrl-input {
+  // - Default is `content-box` with following exceptions set to `border-box`.
+  box-sizing: border-box;
+  // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+  margin: 0;
+  border: 0;
+  padding: 0;
+  // - Remove `border-radius` in iOS.
+  border-radius: 0;
+  // - Correct `font` properties and `color` not being inherited.
+  font: inherit;
+  color: inherit;
+  // - Remove default style in iOS.
+  -webkit-appearance: none;
+  // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+  max-width: 100%;
+}
+
+// 由于优先级问题,不能写成.kl-input .kl-input__inner,会覆盖
+.kl-input__inner,
+.kl-textarea__inner {
+  @include formctrl-input;
+}
+
+.kl-textarea__inner  {
+  // - (It has been realized in normalize.css) Remove default vertical scrollbar in IE 8/9/10/11.
+  // overflow: auto;
+  // - Improve readability and alignment in all browsers.
+  width: 100%;
+  height: 120px;
+}
+
+input {
+  &.kl-check, &.kl-radio {
+    // - (It has been realized in normalize.css) Removes excess padding in IE 8/9/10.
+    // padding: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &.kl-check:disabled, &.kl-radio:disabled {
+    cursor: not-allowed;
+  }
+}
+
+// Size Extends:
+// ========================================================================
+@mixin formctrl-extend_size($name, $padding, $height, $font-size:null, $border-radius:null) {
+  // 为了兼容老的.sm, .lg保留两种写法
+  .kl-input.#{$name}, .kl-dropdown.#{$name}, .kl-textarea.#{$name},
+  .kl-input--#{$name}, .kl-dropdown--#{$name}, .kl-textarea--#{$name} {
+    padding: $padding;
+    height: $height;
+    @if($font-size) {font-size: $font-size;}
+    @if($border-radius) {border-radius: $border-radius;}
+  }
+}
+@include formctrl-extend_size(sm, $--padding-sm, $--height-sm, $--font-size-base);
+@include formctrl-extend_size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
+
+@mixin formctrl-extend_width($name, $width) {
+  .kl-dropdown-#{$name}w, .kl-select-#{$name}w, .kl-textarea-#{$name}w {
+    display:inline-block;
+    width: $width;
+  }
+}
+@include formctrl-extend_width(sm, 80px);
+@include formctrl-extend_width(md, 160px);
+@include formctrl-extend_width(lg, 300px);
+
+
+// Color Extends:
+// ========================================================================
+.kl-input .input__inner,
+.kl-select,
+.kl-textarea, .textarea__inner {
+  transition: border-color 1s ease;
+}
+
+@mixin formctrl-extend_color($name, $background, $color, $border) {
+  .kl-input .input__inner--#{$name},
+  .kl-select.kl-select--#{$name},
+  .kl-textarea .textarea__inner--#{$name} {
+    @if($background) {background: $background;}
+    color: $color;
+    border-color: $border;
+  }
+}
+
+@include formctrl-extend_color(success, null, $--success-color, $--success-color);
+@include formctrl-extend_color(warning, null, $--warning-color, $--warning-color);
+@include formctrl-extend_color(error, null, $--error-color, $--error-color);
+

@@ -34,7 +34,7 @@
       cursor: not-allowed;
     }
 
-    @incluce when(muted) {
+    @include when(muted) {
       color: $--text-color-disabled;
     }
   }
@@ -69,8 +69,8 @@
   clear: both;
 }
 
-@include b(canlendar-week) {
-  @include e(item) {
+@include b(calendar-week) {
+  .kl-calendar__item {
     cursor: default;
     background: none;
   }

@@ -1,5 +1,5 @@
 {#if total > 1}
-<div class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
+<div class="m-pager m-pager-{@(position)} {class}" is-dis={disabled} r-hide={!visible}>
     <div class="m-left-pager">
         {#if !!pageSize || pageSize === 0}
         <div class="page_size"><kl-select placeholder="" value={pageSize} source={pageSizeList} size="sm"></kl-select></div>
@@ -17,29 +17,29 @@
     </div>
 
     <ul class="m-right-pager">
-        <li class="page_item page_prev" z-dis={current <= 1} on-click={this.select(current - 1)}>
+        <li class="page_item page_prev" is-dis={current <= 1} on-click={this.select(current - 1)}>
         <i class="u-icon u-icon-chevron_left"></i>
         </li>
 
         {#if total - middle > side * 2 + 1}
         {#list 1..side as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {#if _start > side + 1}<li class="page_item">...</li>{/if}
         {#list _start.._end as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {#if _end < total - side}<li class="page_item">...</li>{/if}
         {#list (total - side + 1)..total as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {#else}
         {#list 1..total as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {/if}
 
-        <li class="page_item pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><i class="u-icon u-icon-chevron_right"></i></li>
+        <li class="page_item pager_next" is-dis={current >= total} on-click={this.select(current + 1)}><i class="u-icon u-icon-chevron_right"></i></li>
 
         <li class="page_goto">
             <span>{this.$trans('GOTO')}</span>

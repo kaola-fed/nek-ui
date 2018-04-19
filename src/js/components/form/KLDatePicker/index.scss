@@ -1,14 +1,12 @@
 @include b(datepicker) {
-  @include e(input) {
-    @include m(error) {
-      border-color: $--error-color;
-    }
-  }
-
   @include e(confirmBtn) {
     color: #e31436;
     background: #fff;
     border: 1px solid #e31436;
+  }
+
+  .kl-input__inner--error {
+    border-color: $--error-color;
   }
 
   .kl-dropdown {
