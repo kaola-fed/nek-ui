@@ -23,18 +23,18 @@
       color: $--text-color-hover;
     }
 
-    @include m(sel) {
+    @include when(sel) {
       background: $--background-color-selected;
       color: $--text-color-selected;
     }
 
-    @include m(dis) {
+    @include when(dis) {
       background: none;
       color: $--text-color-disabled;
       cursor: not-allowed;
     }
 
-    @incluce m(muted) {
+    @incluce when(muted) {
       color: $--text-color-disabled;
     }
   }
@@ -45,7 +45,7 @@
       color: $--text-color-disabled;
       cursor: not-allowed;
 
-      @include m(sel) {
+      @include when(sel) {
         background: $--background-color-disabled;
         color: $--text-color-disabled;
       }

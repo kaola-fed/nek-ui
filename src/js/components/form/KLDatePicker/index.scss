@@ -11,8 +11,8 @@
     border: 1px solid #e31436;
   }
 
-  @include b(dropdown) {
-    @include e(ft) {
+  .kl-dropdown {
+    .kl-dropdown__ft {
       display: flex;
       padding: 4px 0 0;
       margin-top: 4px;
