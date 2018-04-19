@@ -118,11 +118,10 @@
     &.lgw {
         width: 300px;
     }
-}
-
-@include b(input-wrap) {
-    position: relative;
-    display: block;
+    @include b(input-wrap) {
+        position: relative;
+        display: block;
+    }
 }
 
 
