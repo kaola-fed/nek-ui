@@ -176,16 +176,16 @@ input {
 
 // Color Extends:
 // ========================================================================
-.kl-input .input__inner,
+.kl-input .kl-input__inner,
 .kl-select,
-.kl-textarea, .textarea__inner {
+.kl-textarea, .kl-textarea__inner {
   transition: border-color 1s ease;
 }
 
 @mixin formctrl-extend_color($name, $background, $color, $border) {
-  .kl-input .input__inner--#{$name},
+  .kl-input .kl-input__inner--#{$name},
   .kl-select.kl-select--#{$name},
-  .kl-textarea .textarea__inner--#{$name} {
+  .kl-textarea .kl-textarea__inner--#{$name} {
     @if($background) {background: $background;}
     color: $color;
     border-color: $border;
