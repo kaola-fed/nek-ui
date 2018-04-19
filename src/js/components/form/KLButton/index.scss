@@ -83,31 +83,110 @@
 // btn with icon Extends:
 // ========================================================================
 @mixin btn-extend_icon($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color) {
-  @include b(btn) {
-    @include m($name) {
-      padding: 0 10px;
-      background: $bg_color;
-      color: $color;
-      border: $bd_color;
-      .kl-icon {
-        font-size: 15px;
-        vertical-align: top;
-        color: $ico_color;
-      }
-      &:hover, &:focus {
-        color: $hover_font_color;
-        background: $hover_bg_color;
-        border-color: $bd_hover_color;
-      }
+  .kl-btn--#{$name} {
+    padding: 0 10px;
+    background: $bg_color;
+    color: $color;
+    border: 1px solid $bd_color;
+
+    .kl-icon {
+      font-size: 15px;
+      vertical-align: top;
+      color: $ico_color;
+    }
+
+    &:hover, &:focus {
+      color: $hover_font_color;
+      background: $hover_bg_color;
+      border-color: $bd_hover_color;
     }
   }
 }
 
-@include btn-extend_icon(success, #ffffff, #fff, #A3E37E, #9FE385, #fff, #fff, #a9e691);
+//@include btn-extend_icon(success, #ffffff, $--success-color, #A3E37E, #9FE385, $brand-success-darker, #fff, #a9e691);
+//@include btn-extend_icon(warning, #ffffff, #F86B6B, $brand-error, #F78081, #f97a7a, #fff, #f88d8e);
+//@include btn-extend_icon(add, #ffffff, $brand-primary, $brand-primary, $brand-primary, $brand-primary-darker, #fff, $brand-primary-darker);
 
-// btn with icon Extends: $u-btn-extend_icon = ($name, $bg_color, $color, $bd_color, $ico_color, $hover_font_color, $hover_bg_color, $bd_hover_color)
+// Size Extends:
 // ========================================================================
-// 颜色暂时没给
-//@include $btn-extend_icon(success, #ffffff, $--primary-color, #A3E37E, #9FE385, $brand-success-darker, #fff, #a9e691);
-//@include $btn-extend_icon(warning, #ffffff, #F86B6B, $brand-error, #F78081, #f97a7a, #fff, #f88d8e);
-//@include $btn-extend_icon(add, #ffffff, $brand-primary, $brand-primary, $brand-primary, $brand-primary-darker, #fff, $brand-primary-darker);
+@mixin btn-extend_size($name, $padding-horizontal, $height, $font-size:null, $border-radius:null) {
+  .kl-btn--#{$name} {
+    padding: 0 $padding-horizontal;
+    line-height: $--height-base - 2;
+    .kl-icon {
+      @if($font-size) {font-size: $font-size;}
+    }
+    @if($name == sm) { min-width: $--size-base*7; height: $--size-base*3; line-height: $--size-base*3 - 2;}
+    @if($font-size) {font-size: $font-size;}
+    @if($border-radius) {border-radius: 1px solid $border-radius;}
+  }
+}
+@include btn-extend_size(xs, 5px, $--height-xs, $--font-size-xs);
+@include btn-extend_size(sm, $--size-base, 1, $--font-size-base);
+@include btn-extend_size(lg, 16px, $--height-lg, $--font-size-lg);
+@include btn-extend_size(xl, 20px, $--height-xl, $--font-size-xl);
+
+// Shape Extends:
+// ========================================================================
+@mixin btn-extend_shape($name, $size, $height,$line-height, $font-size:null, $border-radius:null) {
+  .kl-btn--#{$name}.kl-btn--#{$size} {
+    padding:0;
+    width:$height; height:$height; line-height:$line-height;
+    min-width: inherit;
+    @if($name == 'icon') {border: none;}
+    @if($font-size) {font-size: $font-size;}
+    @if($border-radius) {$border-radius: 1px solid $border-radius;}
+
+    .kl-icon {
+      margin-right: 0;
+      margin-left: 2px;
+    }
+  }
+}
+@include btn-extend_shape(circle, xs, $--height-xs, $--height-xs - 2, $--font-size-xs, 100%);
+@include btn-extend_shape(circle, sm, $--height-sm, $--height-sm - 2, $--font-size-base, 100%);
+@include btn-extend_shape(circle, normal, 34px, 30px, 12px, 100%);
+@include btn-extend_shape(circle, lg, $--height-lg, $--height-lg - 2, $--font-size-lg, 100%);
+@include btn-extend_shape(circle, xl, $--height-xl, $--height-xl - 2, $--font-size-xl, 100%);
+
+@include btn-extend_shape(icon, xs, $--height-xs, $--height-xs - 2, $--font-size-xs, 100%);
+@include btn-extend_shape(icon, sm, $--height-sm, $--height-sm - 2, $--font-size-base, 100%);
+@include btn-extend_shape(icon, normal, 34px, 30px, 12px, 100%);
+@include btn-extend_shape(icon, lg, $--height-lg, $--height-lg - 2, $--font-size-lg, 100%);
+@include btn-extend_shape(icon, xl, $--height-xl, $--height-xl - 2, $--font-size-xl, 100%);
+
+// Color Extends:
+// ========================================================================
+@mixin btn-extend_color($name, $bd_color, $bd_hover_color, $bg_color, $hover_bg_color, $font_color, $hover_font_color) {
+  .kl-btn--#{$name} {
+    color: $font_color;
+    background: $bg_color;
+    border: 1px solid $bd_color;
+    .kl-icon {
+      color: $font_color;
+    }
+  }
+
+  /* Hover */
+  .kl-btn--#{$name}:hover,
+  .kl-btn--#{$name}:focus {
+    color: $hover_font_color;
+    background: $hover_bg_color;
+    border-color:$bd_hover_color;
+  }
+
+  /* Active */
+  .kl-btn--#{$name}:active,
+  .kl-btn--#{$name}.is-act {
+    color: $hover_font_color;
+    background: $hover_bg_color;
+    border-color:$bd_hover_color;
+  }
+}
+//@include btn-extend_color(primary, $brand-primary, $brand-primary-darker, $brand-primary, $brand-primary-darker, white, white);
+//@include btn-extend_color(secondary, $brand-secondary, $brand-secondary-darker, white, white, $brand-secondary, $brand-secondary-darker);
+//@include btn-extend_color(tertiary, #ddd, #bbb, white, white, #333, #333);
+//@include btn-extend_color(info, $--info-color, $brand-info-darker, $brand-info, $brand-info-darker, white, white);
+//@include btn-extend_color(success, $--success-color, $brand-success-darker, $brand-success, $brand-success-darker, white, white);
+//@include btn-extend_color(warning, $brand-error, $--warning-color, $brand-error, $brand-error-darker, white, white);
+//@include btn-extend_color(error, $brand-error, $brand-error-darker, $brand-error, $brand-error-darker, white, white);

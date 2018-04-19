@@ -1,11 +1,12 @@
 
 @include b(select) {
-    @include when(hover) {
-        background: #f1f1f1;
-    }
 
     user-select: none;
     vertical-align: top;
+
+    @include when(hover) {
+        background: $--background-color-hover;
+    }
 
     .kl-dropdown__hd {
         box-sizing: border-box;
@@ -26,6 +27,10 @@
         overflow-y: auto;
         position: relative;
 
+        
+        @include when(active) {
+            border: 1px solid $--border-color-active;
+        }
         @include b(icon) {
             float: right;
             width: auto;
@@ -37,7 +42,7 @@
         .kl-icon-remove {
             color: #A4A5B9;
         }
-       
+
         @include b(hover) {
             @include m(show) {
                 display: none;
@@ -119,6 +124,8 @@
         font-size: 12px;
         &:focus{
             outline: none;
+            box-shadow: none;
+            border: none;
         }
         @include m(one) {
             border-bottom: 1px solid #eee;

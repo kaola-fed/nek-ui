@@ -25,7 +25,7 @@ const _ = require('../../../../ui-base/_');
  */
 const NumberInput = KLInput.extend({
   name: 'number-input',
-  template,
+  template: _.compressHtml(template),
   /**
      * @protected
      */

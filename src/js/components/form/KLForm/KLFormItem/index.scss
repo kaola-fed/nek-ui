@@ -1,0 +1,81 @@
+@include b(formitem) {
+    display: flex;
+    margin-bottom: 10px;
+    @include e(tt) {
+
+        position:relative;
+        float: left;
+        padding-right: $--size-base;
+        font-size: $--font-size-base;
+        text-align: right;
+        line-height: 2.5;
+        max-width: $--size-base * 18;
+
+        @include m(sm) {
+            width: $--size-base * 10;
+        }
+        @include m(md) {
+            width: $--size-base * 18;
+        }
+        @include m(lg) {
+            width: $--size-base * 22;
+            max-width: $--size-base * 22;
+        }
+        @include m(xlg) {
+            width: $--size-base * 28; 
+            max-width: $--size-base * 28;
+        }
+        @include m(lh-sm) {
+            line-height: 1;
+        }
+        @include m(lh-md) {
+            line-height: 1.6;
+        }
+        @include m(lh-lg) {
+            line-height: 2.5;
+        }
+    }
+    @include e(info) {
+        color: #ccc;
+        vertical-align: middle;
+    }
+    @include e(ct) {
+        flex: 1;
+        min-width: 0;
+        font-size: $--font-size-base;
+    }
+    @include e(desc) {
+        display: inline-block;
+        vertical-align: top;
+        color: #999;
+    }
+
+    .kl-col:first-child { padding-left:0; }
+    .kl-col:last-child { padding-right:0; }
+
+    @include m(rqr) {
+        color: #FF753F;
+    }
+
+    @include m(inline) {
+        display:inline-block;
+        vertical-align:top;
+        margin-bottom:0;
+        .kl-formitem__ct {
+            display:inline-block;
+        }
+    }
+
+    @include e(vertical) {
+        flex-direction: column;
+        .kl-formitem__tt {
+            text-align: left!important;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.kl-table .kl-formitem {
+    margin-bottom: 0;
+}
