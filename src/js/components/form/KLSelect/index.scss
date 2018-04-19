@@ -1,13 +1,13 @@
 
 @include b(select) {
-    .z-hover {
+    .is-hover {
         background: #f1f1f1;
     }
 
     user-select: none;
     vertical-align: top;
 
-    .dropdown_hd {
+    .kl-dropdown__hd {
         
         box-sizing: border-box;
         cursor: pointer;
@@ -65,11 +65,11 @@
             color: #999;
         }
     }
-    .dropdown_bd {
+    .kl-dropdown__bd {
         clear: both;
     }
 
-    .m-listview {
+    .kl-listview {
         overflow-x: hidden;
         overflow-y: auto;
         padding: 0;
@@ -78,7 +78,8 @@
             line-height: 0;
         }
     }
-    .selected-tag {
+
+    @include m(tag) {
         position: relative;
         padding: 0 20px 0 10px;
         margin: 4px 5px 0 0;
@@ -98,18 +99,16 @@
             margin-bottom: 6px;
         }
 
-        .z-dis {
+        .is-dis {
             cursor: not-allowed;
         }
+        @include e(more) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
     }
-    
-    .selectedTagMore {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-    }
-
-    .search-input{
+    @include m(search) {
         font-family: inherit;
         line-height: 20px;
         vertical-align: middle;
@@ -120,6 +119,7 @@
             outline: none;
         }
     }
+
     .search-one {
         border-bottom: 1px solid #eee;
         padding: 5px 0;
