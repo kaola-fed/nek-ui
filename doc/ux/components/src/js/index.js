@@ -8,8 +8,8 @@ const Base = {
 
 const Components = {
     // Layout
-    // KLCard: require('./components/layout/KLCard'),
-    // KLCardTools: require('./components/layout/KLCard/KLCardTools'),
+    KLCard: require('./components/layout/KLCard'),
+    KLCardTools: require('./components/layout/KLCard/KLCardTools'),
   UXImage: require('./components/ux.image'),
   UXModal: require('./components/ux.modal'),
 };

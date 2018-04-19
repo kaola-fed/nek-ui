@@ -7,6 +7,7 @@ Thumbs.db
 npm-debug.log
 test/
 dist/
+!doc/ux/components/dist/
 
 # Auto generate
 src/mcss/components.mcss
