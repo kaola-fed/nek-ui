@@ -124,18 +124,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	  KLIcon: __webpack_require__(445),
 	  KLImagePreview: __webpack_require__(389),
 	  KLLocaleProvider: __webpack_require__(447),
-	  KLDraggable: __webpack_require__(448),
 
 	  // Layout
-	  KLTable: __webpack_require__(450),
-	  KLTableCol: __webpack_require__(460),
-	  KLTableTemplate: __webpack_require__(461),
-	  KLRow: __webpack_require__(462),
-	  KLCol: __webpack_require__(464),
-	  KLCard: __webpack_require__(466),
-	  KLCardTools: __webpack_require__(468),
-	  KLSearch: __webpack_require__(469),
-	  KLSearchMore: __webpack_require__(471)
+	  KLTable: __webpack_require__(448),
+	  KLTableCol: __webpack_require__(458),
+	  KLTableTemplate: __webpack_require__(459),
+	  KLRow: __webpack_require__(460),
+	  KLCol: __webpack_require__(462),
+	  KLCard: __webpack_require__(464),
+	  KLCardTools: __webpack_require__(466),
+	  KLSearch: __webpack_require__(467),
+	  KLSearchMore: __webpack_require__(469)
 	};
 
 	backward(Components);
@@ -8242,7 +8241,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {object[]}  [options.data.source=[]]                <=> 数据源
 	 * @param {string}    [options.data.source[].name]            => 每项的内容
 	 * @param {string}    [options.data.key=id]                   => 数据项的键
-	 * @param {string}    [options.data.nameKey=name]             => 数据项的显示值
 	 * @param {string}    [options.data.childKey=children]        => 数据子项的键
 	 * @param {boolean}   [options.data.source[].open=false]      => 此项为展开/收起状态
 	 * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
@@ -8353,7 +8351,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 191 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-treeview {class}\" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>\n\t<tree-view-list source={source} childKey={childKey} nameKey={nameKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\n</div>"
+	module.exports = "<div class=\"m-treeview {class}\" r-class={ {'m-multitreeview': multiple} } z-dis={disabled} r-hide={!visible}>\n\t<tree-view-list source={source} childKey={childKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\n</div>"
 
 /***/ }),
 /* 192 */
@@ -8500,7 +8498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 193 */
 /***/ (function(module, exports) {
 
-	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item[nameKey]} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} nameKey={nameKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
+	module.exports = "<ul class=\"treeview_list\" r-hide={!visible}>\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"treeview_item\">\n\t\t\t{#if item.childrenCount || (item.children && item.children.length)}\n\t\t\t<i class=\"u-icon\" r-class={ {'u-icon-caret-right': !item.open, 'u-icon-caret-down': item.open}} on-click={this.toggle(item)}></i>\n\t\t\t{/if}\n\t\t\t{#if multiple && !item.divider}\n\t\t\t<kl-check checked={item.checked} on-check={this.check()} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"treeview_itemname\" z-sel={this.$ancestor.data.multiple ? item.selected : this.$ancestor.data.selected === item} z-dis={item.disabled} title={item.name} z-divider={item.divider} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}<tree-view-list childKey={childKey} source={item.children} visible={item.open} parent={item} multiple={multiple} on-setselected={this._setSelected($event)} />{/if}\n\t</li>\n\t{/list}\n</ul>"
 
 /***/ }),
 /* 194 */
@@ -10618,8 +10616,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _update: function _update() {
 	    this.data._days = [];
 	    var date = this.data.date;
+	    var month = date.getMonth();
 	    var mfirst = new Date(date);
-	    var month = mfirst.getMonth();
 	    mfirst.setDate(1);
 	    var mfirstTime = +mfirst;
 	    var nfirst = new Date(mfirst);
@@ -27460,7 +27458,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 345 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#if showRoot}\n            {#list rootSelected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {#else}\n            {#list selected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {/if}\n        <span class=\"m-multi-placeholder\" r-hide={open || !placeholder || selected.length}>{placeholder}</span>\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n"
+	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#if showRoot}\n            {#list rootSelected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {#else}\n            {#list selected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {/if}\n        <span class=\"m-multi-placeholder\" r-hide={open || !placeholder || selected.length}>{placeholder}</span>\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}"
 
 /***/ }),
 /* 346 */
@@ -27978,7 +27976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      canSearch: undefined,
 	      filter: null,
 	      // 默认不区分大小写
-	      isCaseSensitive: false,
+	      isCaseSensitive: true,
 	      noMatchText: this.$trans('NO_MATCH'),
 	      delaySearch: 300,
 	      maxShowCount: 1000,
@@ -28456,10 +28454,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var searchValue = (data.searchValue || '').trim();
 	      var maxShowCount = data.maxShowCount;
 	      var isCaseSensitive = data.isCaseSensitive;
-	      searchValue = isCaseSensitive ? searchValue : searchValue.toLowerCase();
+	      searchValue = isCaseSensitive ? searchValue.toLowerCase() : searchValue;
 	      var targetSource = source.filter(function (item, index) {
 	        var text = '' + item[nameKey];
-	        var value = isCaseSensitive ? text : text.toLowerCase();
+	        var value = isCaseSensitive ? text.toLowerCase() : text;
 	        return searchValue && value.indexOf(searchValue) >= 0 || !searchValue && index < maxShowCount;
 	      });
 	      if (searchValue) {
@@ -29302,14 +29300,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  '.rar': 'rar',
 	  '.gz': 'gz',
 	  document: 'doc',
-	  sheet: 'excel',
-	  powerpoint: 'ppt',
+	  sheet: 'doc',
+	  powerpoint: 'doc',
 	  msword: 'doc',
 	  '.doc': 'doc',
-	  '.xlsx': 'excel',
-	  '.xls': 'excel',
-	  '.ppt': 'ppt',
-	  '.pptx': 'ppt',
+	  '.xlsx': 'doc',
+	  '.ppt': 'doc',
 	  'video/*': 'video',
 	  '.mp4': 'video',
 	  '.mkv': 'video',
@@ -29323,7 +29319,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  '.js': 'js',
 	  '.html': 'html',
 	  '.txt': 'text',
-	  'text/plain': 'text',
 	  '.json': 'json'
 	};
 
@@ -29582,8 +29577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: self.getFileType(file),
 	          flag: file.flag,
 	          uid: file.uid,
-	          status: 'success',
-	          class: file.class || ''
+	          status: 'success'
 	        };
 
 	        if (fileunit.flag !== Config.flagMap.DELETED) {
@@ -29977,8 +29971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    (0, _keys2.default)(typeMap).forEach(function (key) {
 	      var reg = new RegExp(key + '$');
-	      // 名称后缀不区分大小写
-	      if (reg.test(type) || reg.test(('' + name).toLowerCase())) {
+	      if (reg.test(type) || !type && reg.test(name)) {
 	        typeStr = typeMap[key];
 	      }
 	    });
@@ -30848,7 +30841,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 388 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-file-unit {file.class}\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"u-uploaded-zone\">{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
+	module.exports = "<div class=\"m-file-unit\">\n    <div class=\"m-content\">\n        {#if type === 'image'}\n            <div class=\"m-img-wrapper\" on-click={this.onPreview($event)}>\n                <img class=\"u-img\" src={url}/>\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"u-txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"m-remove\" r-hide={readonly} on-click={this.onRemove($event)}><i class=\"u-icon u-icon-error\"></i></div>\n        <div class=\"m-status\">\n            {#if status === 'fail'}\n                <span class=\"u-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"u-failed-info\"><i class=\"u-icon u-icon-retry\"></i>{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"u-uploading\">\n                    <span class=\"u-progress-wrapper\">\n                        <span class=\"u-progress-txt\">{progress || '0%'}</span>\n                        <span class=\"u-progress\">\n                            <span class=\"u-progress-bar\" style=\"width: {progress || '0%'};\"></span>\n                        </span>\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"u-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"u-uploaded-zone\">{this.$trans('DOWNLOAD_FILE')}<i class=\"u-icon u-icon-export\"></i></a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"m-name\" title={filename}>{filename}</div>\n    <div class=\"m-info\">{info}</div>\n</div>"
 
 /***/ }),
 /* 389 */
@@ -30873,7 +30866,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 *                                                     name: 图片文件名称
 	 *                                                     src: 图片文件的路径
 	 * @param {number}     [options.data.cur-index=0]   => 必选，当前图片文件的索引, 默认第一项为当前项
-	 * @param {string}     [options.data.el]            => 设置对话框要插入的父级元素，默认为document.body
 	 */
 
 	var KLImagePreview = Component.extend({
@@ -30929,10 +30921,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  init: function init(data) {
 	    this.supr(data);
 
-	    // 如果不是内嵌组件，则嵌入到data.el或document.body中
-	    if (this.$root === this) {
-	      this.$inject(data.el || document.body);
-	    }
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
 	  },
 	  onClose: function onClose() {
 	    this.destroy();
@@ -31247,8 +31237,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}           [options.data.noClose]              => ok时是否关闭弹窗
 	 * @param {number}            [options.data.minHeight]            => 内容区域最小高度
 	 * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
-	 * @param {string}            [options.data.el]                   => 设置对话框要插入的父级元素，默认为document.body
-	 * @param {boolean}           [options.data.draggable=false]      => 是否可以拖拽对话框
 	 */
 	var KLModal = Component.extend({
 	  name: 'kl-modal',
@@ -31270,10 +31258,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  init: function init() {
 	    this.supr();
-	    // 如果不是内嵌组件，则嵌入到data.el或document.body中
-	    if (this.$root === this) {
-	      this.$inject(this.data.el || document.body);
-	    }
+
+	    // 如果不是内嵌组件，则嵌入到document.body中
+	    if (this.$root === this) this.$inject(document.body);
 	  },
 
 	  /**
@@ -31365,7 +31352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 391 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-modal {class}\" r-anim='on:enter; class: modal_animated modal_zoomIn; on:leave; class: modal_animated modal_zoomOut;'>\n    <div class=\"modal_dialog\" style=\"width: {width}px;\" ref=\"modalDialog\">\n        <kl-draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-close\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </kl-draggable>\n        <div class=\"modal_bd\" {#if maxHeight || minHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>\n"
+	module.exports = "<div class=\"m-modal {class}\" r-animation='on:leave;class: modal_animated modal_zoomOut'>\n    <div class=\"modal_dialog modal_animated zoomIn fast\" style=\"width: {width}px\" ref=\"modalDialog\">\n        <draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>\n        <div class=\"modal_hd\">\n            {#if isCanClose}\n            <a class=\"modal_close\" on-click={this.close(false)}><i class=\"u-icon u-icon-remove\"></i></a>\n            {/if}\n            <h3 class=\"modal_title\">{title}</h3>\n        </div>\n        </draggable>\n        <div class=\"modal_bd\" {#if maxHeight || minHeight} style=\"max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;\" {/if}>\n            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}\n        </div>\n        {#if hasFooter}\n        <div class=\"modal_ft\">\n\t        {#if footerTemplate}\n\t            {#inc @(footerTemplate)}\n\t        {#else}\n\t\t        {#if okButton}\n                <kl-button type=\"primary\" title={okButton === true ? this.$trans('CONFIRM') : okButton}on-click={this.close(true, $event)} disabled={okDisabled} />\n\t\t        {/if}\n\t\t        {#if cancelButton && isCanClose}\n\t\t            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}\n                    on-click={this.close(false)} disabled={cancelDisabled} />\n\t\t        {/if}\n\t        {/if}\n        </div>\n        {/if}\n    </div>\n</div>"
 
 /***/ }),
 /* 392 */
@@ -33037,7 +33024,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 420 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-close\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>\n"
+	module.exports = "<div class=\"m-notify m-notify-{position} {class}\" r-hide={!visible}>\n    {#list messages as message}\n    <div class=\"u-message u-message-{message.state}\" r-animation=\"on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;\">\n        <a class=\"message_close\" on-click={this.close(message)}><i class=\"u-icon u-icon-remove\"></i></a>\n        <i class=\"message_icon u-icon u-icon-{message.state + 2}\" r-hide={!message.state}></i>\n        <span class=\"message_ct\">{message.text}</span>\n    </div>\n    {/list}\n</div>"
 
 /***/ }),
 /* 421 */
@@ -34907,7 +34894,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {boolean}       [options.data.disabled=false]     => 是否禁用, 禁用后调用show和hide则无效
 	 * @param {boolean}       [options.data.visible=false]      => 是否显示
 	 * @param {string}        [options.data.class]              => 补充class
-	 * @param {string}        [options.data.el]                 => 设置对话框要嵌入的父级元素，默认为document.body
 	 */
 	var KLLoading = Component.extend({
 	  name: 'kl-loading',
@@ -34921,11 +34907,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	  init: function init() {
 	    this.supr();
-
-	    // 如果不是内嵌组件，则嵌入到data.el或document.body中
-	    if (this.$root === this) {
-	      this.$inject(this.data.el || document.body);
-	    }
+	    // 证明不是内嵌组件
+	    if (this.$root === this) this.$inject(document.body);
 	  },
 
 	  /**
@@ -35266,350 +35249,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	/**
-	 * ------------------------------------------------------------
-	 * @file KLDraggable  拖拽
-	 * @author   sensen(rainforest92@126.com)
-	 * ------------------------------------------------------------
-	 */
-
-	var Component = __webpack_require__(70);
-	var _ = __webpack_require__(72);
-	var dragdrop = __webpack_require__(449);
-
-	/**
-	 * @class KLDraggable
-	 * @extend Component
-	 * @param {object}                                   [options.data]                       =  绑定属性
-	 * @param {object}                                   [options.data.data]                  => 拖拽时需要传递的数据
-	 * @param {string/Dragable.Proxy/Element/function}   [options.data.proxy]                 @=> 拖拽代理，即拖拽时显示的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。
-	 * @param {string}                                   [options.data.direction=all]         => 拖拽代理可以移动的方向，`all`为任意方向，`horizontal`为水平方向，`vertical`为垂直方向
-	 * @param {boolean}                                  [options.data.disabled=false]        => 是否禁用
-	 * @param {string}                                   [options.data.class=z-draggable]     => 可拖拽时（即disabled=false）给元素附加此class
-	 * @param {string}                                   [options.data.dragClass=z-drag]      => 拖拽该元素时给元素附加此class
-	 */
-	var KLDraggable = Component.extend({
-	  name: 'kl-draggable',
-	  template: '{#inc this.$body}',
-	  config: function config() {
-	    _.extend(this.data, {
-	      data: null,
-	      proxy: 'clone',
-	      direction: 'all',
-	      class: 'z-draggable',
-	      dragClass: 'z-drag'
-	    });
-	    this.supr();
-
-	    this._onMouseDown = this._onMouseDown.bind(this);
-	    this._onBodyMouseMove = this._onBodyMouseMove.bind(this);
-	    this._onBodyMouseUp = this._onBodyMouseUp.bind(this);
-	    this.cancel = this.cancel.bind(this);
-	  },
-	  init: function init() {
-	    var _this = this;
-
-	    var inner = _.dom.element(this);
-	    _.dom.on(inner, 'mousedown', this._onMouseDown);
-	    this.supr();
-
-	    this.$watch('disabled', function (newValue) {
-	      if (newValue) {
-	        _.dom.delClass(inner, _this.data.class);
-	      } else {
-	        _.dom.addClass(inner, _this.data.class);
-	      }
-	    });
-	  },
-	  _getProxy: function _getProxy() {
-	    if (typeof this.data.proxy === 'function') {
-	      return this.data.proxy();
-	    } else if (this.data.proxy instanceof window.Element) {
-	      return this.data.proxy;
-	    } else if (this.data.proxy instanceof KLDraggable.Proxy) {
-	      var proxy = _.dom.element(this.data.proxy);
-	      var dimension = _.dom.getDimension(_.dom.element(this));
-	      this._initProxy(proxy, dimension);
-	      document.body.appendChild(proxy);
-	      return proxy;
-	    } else if (this.data.proxy === 'clone') {
-	      var self = _.dom.element(this);
-	      var _dimension = _.dom.getDimension(self);
-	      var _proxy = self.cloneNode(true);
-	      this._initProxy(_proxy, _dimension);
-	      self.parentElement.appendChild(_proxy);
-	      return _proxy;
-	    } else if (this.data.proxy === 'self') {
-	      var _proxy2 = _.dom.element(this);
-	      var _dimension2 = _.dom.getDimension(_proxy2);
-	      this._initProxy(_proxy2, _dimension2);
-	      return _proxy2;
-	    }
-	  },
-	  _initProxy: function _initProxy(proxy, dimension) {
-	    proxy.style.left = dimension.left + 'px';
-	    proxy.style.top = dimension.top + 'px';
-	    proxy.style.zIndex = '2000';
-	    proxy.style.position = 'fixed';
-	    proxy.style.display = '';
-	  },
-	  _onMouseDown: function _onMouseDown($event) {
-	    if (this.data.disabled) {
-	      return;
-	    }
-	    $event.preventDefault();
-	    _.dom.on(document, 'mousemove', this._onBodyMouseMove);
-	    _.dom.on(document, 'mouseup', this._onBodyMouseUp);
-	  },
-	  _onBodyMouseMove: function _onBodyMouseMove($event) {
-	    var e = $event.event;
-	    $event.preventDefault();
-	    if (dragdrop.dragging === false) {
-	      _.extend(dragdrop, {
-	        dragging: true,
-	        data: this.data.data,
-	        proxy: this._getProxy(),
-	        screenX: e.screenX,
-	        screenY: e.screenY,
-	        clientX: e.clientX,
-	        clientY: e.clientY,
-	        pageX: e.pageX,
-	        pageY: e.pageY,
-	        movementX: 0,
-	        movementY: 0,
-	        droppable: undefined
-	      }, true);
-
-	      this._dragStart();
-	    } else {
-	      _.extend(dragdrop, {
-	        screenX: e.screenX,
-	        screenY: e.screenY,
-	        clientX: e.clientX,
-	        clientY: e.clientY,
-	        pageX: e.pageX,
-	        pageY: e.pageY,
-	        movementX: e.screenX - dragdrop.screenX,
-	        movementY: e.screenY - dragdrop.screenY
-	      }, true);
-
-	      if (dragdrop.proxy) {
-	        if (this.data.direction === 'all' || this.data.direction === 'horizontal') {
-	          dragdrop.proxy.style.left = dragdrop.proxy.offsetLeft + dragdrop.movementX + 'px';
-	        }
-	        if (this.data.direction === 'all' || this.data.direction === 'vertical') {
-	          dragdrop.proxy.style.top = dragdrop.proxy.offsetTop + dragdrop.movementY + 'px';
-	        }
-	      }
-
-	      this._drag();
-	      if (!dragdrop.dragging) {
-	        return;
-	      }
-
-	      // Drop
-	      var pointElement = null;
-	      if (dragdrop.proxy) {
-	        dragdrop.proxy.style.display = 'none';
-	        pointElement = document.elementFromPoint(e.clientX, e.clientY);
-	        dragdrop.proxy.style.display = '';
-	      } else {
-	        pointElement = document.elementFromPoint(e.clientX, e.clientY);
-	      }
-
-	      var pointDroppable = dragdrop.droppables.find(function (droppable) {
-	        // eslint-disable-line array-callback-return
-	        var element = pointElement;
-	        var target = _.dom.element(droppable);
-	        while (element) {
-	          if (element === target) {
-	            return true;
-	          }
-	          element = element.parentElement;
-	        }
-	      });
-
-	      if (dragdrop.droppable !== pointDroppable) {
-	        dragdrop.droppable && dragdrop.droppable._dragLeave(this);
-	        if (!dragdrop.dragging) {
-	          return;
-	        }
-	        pointDroppable && pointDroppable._dragEnter(this);
-	        if (!dragdrop.dragging) {
-	          return;
-	        }
-	        dragdrop.droppable = pointDroppable;
-	      } else {
-	        pointDroppable && pointDroppable._dragOver(this);
-	      }
-	    }
-	  },
-	  _onBodyMouseUp: function _onBodyMouseUp($event) {
-	    $event.preventDefault();
-
-	    dragdrop.droppable && dragdrop.droppable._drop(this);
-	    this.cancel();
-	  },
-	  cancel: function cancel() {
-	    this._dragEnd();
-
-	    _.extend(dragdrop, {
-	      dragging: false,
-	      data: null,
-	      proxy: null,
-	      screenX: 0,
-	      screenY: 0,
-	      clientX: 0,
-	      clientY: 0,
-	      pageX: 0,
-	      pageY: 0,
-	      movementX: 0,
-	      movementY: 0,
-	      droppable: undefined
-	    }, true);
-
-	    _.dom.off(document, 'mousemove', this._onBodyMouseMove);
-	    _.dom.off(document, 'mouseup', this._onBodyMouseUp);
-	  },
-	  _dragStart: function _dragStart() {
-	    if (dragdrop.proxy) {
-	      _.dom.addClass(dragdrop.proxy, this.data.dragClass);
-	    }
-
-	    /**
-	     * @event KLDraggable#dragstart 拖拽开始时触发
-	     * @property {object} sender 事件发送对象，为当前draggable
-	     * @property {object} origin 拖拽源，为当前draggable
-	     * @property {object} source 拖拽起始元素
-	     * @property {object} proxy 拖拽代理元素
-	     * @property {object} data 拖拽时需要传递的数据
-	     * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	     * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	     * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	     * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	     * @property {number} pageX 鼠标指针相对于页面的水平位置
-	     * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	     * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	     * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	     * @property {function} cancel 取消拖拽操作
-	     */
-	    this.$emit('dragstart', _.extend({
-	      sender: this,
-	      origin: this,
-	      source: _.dom.element(this),
-	      proxy: dragdrop.proxy,
-	      cancel: this.cancel
-	    }, dragdrop));
-	  },
-	  _drag: function _drag() {
-	    /**
-	     * @event KLDraggable#drag 正在拖拽时触发
-	     * @property {object} sender 事件发送对象，为当前draggable
-	     * @property {object} origin 拖拽源，为当前draggable
-	     * @property {object} source 拖拽起始元素
-	     * @property {object} proxy 拖拽代理元素
-	     * @property {object} data 拖拽时需要传递的数据
-	     * @property {number} screenX 鼠标指针相对于屏幕的水平位置
-	     * @property {number} screenY 鼠标指针相对于屏幕的垂直位置
-	     * @property {number} clientX 鼠标指针相对于浏览器的水平位置
-	     * @property {number} clientY 鼠标指针相对于浏览器的垂直位置
-	     * @property {number} pageX 鼠标指针相对于页面的水平位置
-	     * @property {number} pageY 鼠标指针相对于页面的垂直位置
-	     * @property {number} movementX 鼠标指针水平位置相对于上次操作的偏移量
-	     * @property {number} movementY 鼠标指针垂直位置相对于上次操作的偏移量
-	     * @property {function} cancel 取消拖拽操作
-	     */
-	    this.$emit('drag', _.extend({
-	      sender: this,
-	      origin: this,
-	      source: _.dom.element(this),
-	      proxy: dragdrop.proxy,
-	      cancel: this.cancel
-	    }, dragdrop));
-	  },
-
-	  /**
-	   * @private
-	   */
-	  _dragEnd: function _dragEnd() {
-	    /**
-	     * @event KLDraggable#dragend 拖拽结束时触发
-	     * @property {object} sender 事件发送对象，为当前draggable
-	     * @property {object} origin 拖拽源，为当前draggable
-	     * @property {object} source 拖拽起始元素
-	     * @property {object} proxy 拖拽代理元素
-	     */
-	    this.$emit('dragend', {
-	      sender: this,
-	      origin: this,
-	      source: _.dom.element(this),
-	      proxy: dragdrop.proxy
-	    });
-
-	    if (dragdrop.proxy) {
-	      if (this.data.proxy instanceof KLDraggable.Proxy || this.data.proxy === 'clone') {
-	        dragdrop.proxy.parentElement.removeChild(dragdrop.proxy);
-	      }
-	      _.dom.delClass(dragdrop.proxy, this.data.dragClass);
-	    }
-	  }
-	});
-
-	KLDraggable.Proxy = Component.extend({
-	  name: 'kl-draggable-proxy',
-	  template: '{#inc this.$body}',
-	  init: function init() {
-	    if (this.$outer instanceof KLDraggable) {
-	      _.dom.element(this).style.display = 'none';
-	      this.$outer.data.proxy = this;
-	    }
-	  }
-	}
-	// node: _.noop
-	);
-
-		module.exports = KLDraggable;
-
-/***/ }),
-/* 449 */
-/***/ (function(module, exports) {
-
-	"use strict";
-
-	var dragdrop = {
-	  dragging: false,
-	  data: null,
-	  proxy: null,
-	  screenX: 0,
-	  screenY: 0,
-	  clientX: 0,
-	  clientY: 0,
-	  pageX: 0,
-	  pageY: 0,
-	  movementX: 0,
-	  movementY: 0,
-	  droppable: null,
-	  droppables: []
-	};
-
-		module.exports = dragdrop;
-
-/***/ }),
-/* 450 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	/**
 	 * @file KLtable 表格
 	 */
 
-	var TableHeader = __webpack_require__(451);
-	var TableBody = __webpack_require__(453);
+	var TableHeader = __webpack_require__(449);
+	var TableBody = __webpack_require__(451);
 	var _ = __webpack_require__(72);
-	var u = __webpack_require__(456);
+	var u = __webpack_require__(454);
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(459);
+	var tpl = __webpack_require__(457);
 
 	/**
 	 * @class KLTable
@@ -36236,13 +35885,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLTable;
 
 /***/ }),
-/* 451 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(452);
+	var tpl = __webpack_require__(450);
 
 	var HEADER_MIN_WIDTH = 30;
 	var SHOULD_ENABLE_RESIZE_THRESHOLD = 12;
@@ -36465,21 +36114,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableHeader;
 
 /***/ }),
-/* 452 */
+/* 450 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table\n    class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft + 'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n        <!-- 当固定表头时，内容区出现垂直滚动条则需要占位 -->\n        {#if scrollYBarWidth}\n            <col name=\"gutter\" width={scrollYBarWidth}>\n        {/if}\n    </colgroup>\n\n    <thead class=\"tb_hd\">\n        {#list headers as headerRow by headerRow_index}\n            <tr class=\"tb_hd_tr\">\n                {#list headerRow as header by header_index}\n                    <th ref=\"table_th_{headerRow_index}_{header_index}\"\n                        class=\"tb_hd_th {header.thClass}\"\n                        colspan={header._headerColSpan}\n                        rowspan={header._headerRowSpan}\n                        on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}\n                        on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}\n                        on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}\n                        >\n                        <div class=\"th_content f-flex-{header.align || align || 'center'}\"\n                            title={header.name}\n                            on-click={this._onHeaderClick(header, header_index)}>\n                            {#if header.headerTemplate}\n                                {#include @(header.headerTemplate)}\n                            {#elseif header.headerFormatter}\n                                {#include this._getFormatter(header, headers)}\n                            {#elseif header.headerFormat}\n                                {#include this._getFormat(header)}\n                            {#else}\n                                <span class=\"header_text\"\n                                    r-class={{\n                                        'f-cursor-pointer': !!(header.sortable && header.key),\n                                    }}>{header.name}</span>\n                                <span>\n                                    {#if header.tip}\n                                        <span class=\"th_tip\">\n                                            <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>\n                                                <i class=\"u-icon u-icon-info-circle\" />\n                                            </kl-tooltip>\n                                        </span>\n                                    {/if}\n                                    {#if header.sortable && header.key}\n                                        <i class=\"u-icon u-icon-unsorted u-icon-1\">\n                                            <i class=\"u-icon u-icon-2 {header | sortingClass}\"/>\n                                        </i>\n                                    {/if}\n                                    {#if header.type === 'check' && header.enableCheckAll}\n                                        <kl-check name={header.name} checked={checkAll} />\n                                    {/if}\n                                </span>\n                            {/if}\n                        </div>\n                    </th>\n                {/list}\n\n                {#if scrollYBarWidth && !fixedCol}\n                    <th class=\"th_hd_gutter\" />\n                {/if}\n            </tr>\n        {/list}\n    </thead>\n    {#if scrollYBarWidth && !fixedCol}\n        <div class=\"patch\"\n            r-style={{\n                height: height + 'px',\n                top: 0,\n                right: 0,\n                width: scrollYBarWidth + 'px',\n            }}\n        ></div>\n    {/if}\n</table>\n"
 
 /***/ }),
-/* 453 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
-	var tpl = __webpack_require__(454);
-	var templates = __webpack_require__(455);
-	var _ = __webpack_require__(456);
+	var tpl = __webpack_require__(452);
+	var templates = __webpack_require__(453);
+	var _ = __webpack_require__(454);
 
 	var _parseFormat = function _parseFormat(str) {
 	  return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -36644,22 +36293,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = TableBody;
 
 /***/ }),
-/* 454 */
+/* 452 */
 /***/ (function(module, exports) {
 
 	module.exports = "<table class=\"table_tb\"\n    r-style={{\n        'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',\n        'text-align': config.textAlign || 'center',\n        'margin-left': fixedCol === 'right' ? '-'+marginLeft+'px' : ''\n    }}>\n    <colgroup>\n        {#list _dataColumns as _dataColumn by _dataColumn_index}\n            <col width={_dataColumn._width}>\n        {/list}\n    </colgroup>\n\n    <tbody class=\"tb_bd\">\n        <!-- 加载中 -->\n        {#if loading}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <kl-loading visible={loading} static>\n                  <p>{this.$trans('LOADING')}</p>\n                </kl-loading>\n            </td>\n        </tr>\n\n        <!-- 内容 -->\n        {#elseif source.length > 0}\n        {#list source as item by item_index}\n        <tr ref=\"row{item_index}\"\n            class=\"tb_bd_tr {item.rowClass || item.trClass}\"\n            style=\"{item.rowStyle || item.trStyle}\"\n            r-class={{\n                'z-hover': item._hover\n            }}\n            on-click={this._onRowClick($event, item, item_index)}\n            on-mouseover={this._onRowHover($event, item)}\n            on-mouseout={this._onRowBlur($event, item)} >\n            {#list _dataColumns as column by column_index}\n            <td class=\"tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}\"\n                style=\"{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}\"\n                on-click={this._onUnitClick($event, item, item_index, column, column_index)}\n                r-style={{\n                    'text-align': column.align || align\n                }}\n            >\n                <div class=\"tb_bd_td_div \">\n                    {#if column.template}\n                        {#include column.template}\n                    {#elseif column.formatter}\n                        {#include this._getFormatter(column, item)}\n                    {#elseif column.format}\n                        {#include this._getFormat(column)}\n                    {#elseif column.type}\n                        {#include this._getTypeTemplate(column)}\n                    {#else}\n                    <!-- deafult template -->\n                        <span class=\"f-ellipsis {column.lineClamp || lineClamp ? 'f-line-clamp-' + (column.lineClamp || lineClamp) : 'f-line-clamp-3'}\" title={this._filter(column, item[column.key], item, item_index)}>{this._filter(column, item[column.key], item, item_index) | placeholder: column, this}</span>\n                    {/if}\n                    {#if column.expandable}\n                    <span class=\"u-expand-sign f-cursor-pointer\"\n                        on-click={this._onExpand(item, item_index, column)}>\n                        {item | expandSign}\n                    </span>\n                    {/if}\n                </div>\n            </td>\n            {/list}\n        </tr>\n\n        <!-- 下钻内容 -->\n        {#if item.expand}\n        <tr class=\"tb_bd_tr td_bd_tr_expand\"\n            r-style={{\n                height: item._expandHeight + 'px'\n            }}\n        >\n            <td\n                class=\"m-sub-protable-td {column.tdClass}\"\n                colspan={_dataColumns.length}>\n                <!-- {#if !fixedCol} -->\n                    <!-- {#include item._expanddingColumn.expandTemplate} -->\n                <!-- {/if} -->\n            </td>\n        </tr>\n        {/if}\n        {/list}\n\n        <!-- 空内容 -->\n        {#else}\n        <tr class=\"tb_bd_tr\">\n            <td class=\"tb_bd_td\" colspan={_dataColumns.length}>\n                <span class=\"td-empty\">{this.$trans('NO_DATA')}</span>\n            </td>\n        </tr>\n        {/if}\n    </tbody>\n</table>\n"
 
 /***/ }),
-/* 455 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _ = __webpack_require__(456);
+	var _ = __webpack_require__(454);
 
 	var tplMap = {
-	  progress: __webpack_require__(457),
-	  check: __webpack_require__(458)
+	  progress: __webpack_require__(455),
+	  check: __webpack_require__(456)
 	};
 
 	exports.get = function getTemplate(type) {
@@ -36667,7 +36316,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ }),
-/* 456 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36880,33 +36529,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _;
 
 /***/ }),
-/* 457 */
+/* 455 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if this._isArray(item[column.key])}\n    {#list item[column.key] as value by value_index}\n        <div class=\"u-progress-wrap\">\n            <kl-progress percent={value} />\n            {#if !column.hideProressValue}<span>{value}</span>{/if}\n        </div>\n    {/list}\n{#else}\n    <div class=\"u-progress-wrap\">\n        <kl-progress percent={item[column.key]} />\n        {#if !column.hideProressValue}<span>{item[column.key]}</span>{/if}\n    </div>\n{/if}\n"
 
 /***/ }),
-/* 458 */
+/* 456 */
 /***/ (function(module, exports) {
 
 	module.exports = "<kl-check\n    name={item && item[column.key] | placeholder : column, this}\n    checked={item._checked}\n    on-change={this._onItemCheckChange(item, $event)}/>"
 
 /***/ }),
-/* 459 */
+/* 457 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-kl-table-wrap \"\n    ref=\"tableWrap\"\n    r-hide={!show}>\n    <!-- 列表拖动标尺 -->\n    <div ref=\"resizeProxy\" class=\"u-resize-proxy\" />\n\n    <!-- 表格主体 -->\n    <div ref=\"table\"\n        class=\"m-kl-table\"\n        r-class={{\n            'fixed_header': fixedHeader,\n            'strip': strip\n        }}\n        r-style={{\n            height: fixedHeader ? 'auto' : height + 'px',\n            width: width == undefined ? 'auto' :\n                  ((tableWidth > width ? width : width + scrollYBarWidth) + 'px'),\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.table, $event)} >\n\n        <div ref=\"headerWrap\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive,\n                'f-overflow-hidden': stickyFooter\n            }}\n            r-style={{\n                width: stickyHeader && stickyHeaderActive ? parentWidth + 'px' : 'auto',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}>\n            <table-header\n                ref=\"tableHeader\"\n                stickyHeader={stickyHeader}\n                _dataColumns={_dataColumns}\n                headers={headers}\n                resizePorxy={this.$refs.resizeProxy}\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                source={source}\n                sorting={sorting}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }}/>\n\n        <div ref=\"bodyWrap\"\n            class=\"kl_table_body\"\n            r-class={{\n                'fixed_header': fixedHeader,\n                'f-overflow-hidden': !isMobile && stickyFooter\n            }}\n            r-style={{\n                'max-height': !fixedHeader || bodyHeight == undefined ? 'auto' : bodyHeight + 'px',\n            }}\n            on-scroll={this._onBodyScroll(this.$refs.bodyWrap, $event)} >\n            <table-body\n                ref=\"tableBody\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onExpand($event)}/>\n        </div>\n    </div>\n\n    <!-- 左固定列 -->\n    {#if fixedColLeft }\n    <div ref=\"tableFixedLeft\"\n        class=\"m-kl-table m-kl-table-fixed\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            width: fixedTableWidth + 'px'\n        }}>\n        <div ref=\"headerWrapFixedLeft\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidth + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }} >\n            <table-header\n                ref=\"tableHeaderFixedLeft\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                checkAll={checkAll}\n                align={align}\n                placeholder={placeholder}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedLeft\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidth + 'px',\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body\n                ref=\"tableBodyFixed\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol\n                fixedHeader={fixedHeader}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    {/if}\n\n\n    <!-- 右固定列 -->\n    {#if fixedColRight }\n    <div ref=\"tableFixedRight\"\n        class=\"m-kl-table m-kl-table-fixed m-kl-table-fixed-right\"\n        r-class={{\n            'm-kl-table-hover': enableHover,\n            'strip': strip\n        }}\n        r-style={{\n            bottom: scrollXBarWidth + 'px',\n            right: fixedTablePosRight + 'px',\n            width: fixedTableWidthRight + 'px',\n        }}>\n        <div ref=\"headerWrapfixedTablePosRight\"\n            class=\"kl_table_header\"\n            r-class={{\n                'sticky_header': stickyHeader && stickyHeaderActive\n            }}\n            r-style={{\n                width: fixedTableWidthRight + 'px',\n                top: stickyHeader && stickyHeaderActive ? stickyHeaderOffset + 'px' : 0\n            }}\n            >\n            <table-header ref=\"tableHeaderFixedRight\"\n                _dataColumns={_dataColumns}\n                headers={headers}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                height={headerHeight}\n                width={tableWidth}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                checkAll={checkAll}\n                placeholder={placeholder}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                on-customevent={this._onCustomEvent($event)}\n                on-columnresize={this._onColumnResize($event)}\n                on-sort={this._onSort($event)}/>\n        </div>\n\n        <div class=\"header_placeholder\"\n            r-style={{\n                height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0\n            }} />\n\n        <div ref=\"bodyWrapFixedRight\"\n            class=\"kl_table_body\"\n            r-style={{\n                width: fixedTableWidthRight,\n                'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'\n            }}>\n            <table-body ref=\"tableBodyFixedRight\"\n                _dataColumns={_dataColumns}\n                loading={loading}\n                fixedCol=\"right\"\n                fixedHeader={fixedHeader}\n                marginLeft={tableWidth - fixedTableWidthRight}\n                height={bodyHeight}\n                width={tableWidth}\n                lineClamp={lineClamp}\n                columns={columns}\n                sorting={sorting}\n                source={source}\n                scrollYBarWidth={scrollYBarWidth}\n                align={align}\n                placeholder={placeholder}\n                on-checkchange={this._onItemCheckChange($event)}\n                on-customevent={this._onCustomEvent($event)}\n                on-expand={this._onFixedExpand($event)}/>\n        </div>\n    </div>\n    <div class=\"kl_table_header_fiexd_right_gutter\"\n        r-style={{\n            width: scrollYBarWidth + 'px',\n            height: headerHeight + 'px',\n            right: fixedTablePosRight - scrollYBarWidth + 'px',\n            top: 0\n        }}/>\n    {/if}\n\n    {#list source as item by item_index}\n        {#if item.expand && item._expanddingColumn}\n            <div ref='expand{item_index}'\n              class=\"expand_row\"\n              r-style={{\n                top: this._getExpandRowTop(item_index) + 'px',\n              }}\n            >\n                {#include item._expanddingColumn.expandTemplate}\n            </div>\n        {/if}\n    {/list}\n\n</div>\n\n<div class=\"footer_placeholder\"\n    r-style={{\n        height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0\n    }}\n/>\n<div class=\"m-kl-table-ft\"\n    ref=\"footerWrap\"\n    r-class={{\n        'sticky_footer': stickyFooter && stickyFooterActive\n    }}\n    r-style={{\n        bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0\n    }}\n>\n    {#if !isMobile && stickyFooter}\n    <div ref=\"scrollBar\"\n        class=\"scroll_bar\"\n        r-style={{\n            width: width + 'px'\n        }}\n        on-scroll={this._onBodyScroll(this.$refs.scrollBar, $event)} >\n        <div r-style={{ width: tableWidth + 'px' }} />\n    </div>\n    {/if}\n\n    <!-- 读取内嵌模版, 非KLTable组件会直接显示在footer上 -->\n    {#include this.$body}\n\n    {#if paging}\n    <kl-pager\n        position={paging.position || 'right'}\n        pageSize={paging.pageSize}\n        step={paging.step}\n        maxPageSize={paging.maxPageSize}\n        disabled={paging.disabled}\n        middle={paging.middle}\n        side={paging.side}\n        current={paging.current}\n        sumTotal={paging.sumTotal}\n        total={paging.total}\n        on-select={this._onPaging($event)}/>\n    {/if}\n</div>\n"
 
 /***/ }),
-/* 460 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLTableTemplate = __webpack_require__(461);
-	var KLTable = __webpack_require__(450);
+	var KLTableTemplate = __webpack_require__(459);
+	var KLTable = __webpack_require__(448);
 
 	/**
 	 * @class KLTableCol
@@ -37023,7 +36672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableCol;
 
 /***/ }),
-/* 461 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37109,7 +36758,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLTableTemplate;
 
 /***/ }),
-/* 462 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37119,7 +36768,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(463);
+	var template = __webpack_require__(461);
 
 	/**
 	 * @class KLRow
@@ -37175,13 +36824,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLRow;
 
 /***/ }),
-/* 463 */
+/* 461 */
 /***/ (function(module, exports) {
 
 	module.exports = "{#if type === 'flex'}\n<div class=\"g-row g-row-flex justify-{justify} align-{align} flex-{wrap} {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{#else}\n<div class=\"g-row {class}\" gutter=\"{gutter}\">\n  {#inc this.$body}\n</div>\n{/if}"
 
 /***/ }),
-/* 464 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37203,8 +36852,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(465);
-	var KLRow = __webpack_require__(462);
+	var template = __webpack_require__(463);
+	var KLRow = __webpack_require__(460);
 
 	/**
 	 * @class KLCol
@@ -37276,13 +36925,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KLCol;
 
 /***/ }),
-/* 465 */
+/* 463 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"g-col g-col-{span} g-offset-{offset} {class}\" gutter=\"{gutter}\" mediaSize>\n  {#inc this.$body}\n</div>"
 
 /***/ }),
-/* 466 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37295,7 +36944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(467);
+	var template = __webpack_require__(465);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -37325,13 +36974,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCard;
 
 /***/ }),
-/* 467 */
+/* 465 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"m-card {class}\" r-class=\"{{'m-card-indent' : isIndent === true}}\">\n    {#if title || this.$tools}\n    <div class=\"card_hd\">\n        {#if isShowLine}\n        <span class=\"line\"></span>\n        {/if}\n        <span class=\"title\">{#inc title}</span>\n        {#if this.$tools}\n        <div class=\"operate\">\n            {#inc this.$tools.$body}\n        </div>\n        {/if}\n    </div>\n    {/if}\n    {#if isShowBtLine}\n    <div class=\"btLine\"></div>\n    {/if}\n    <div class=\"card_bd\">\n        {#inc this.$body}\n    </div>\n</div>"
 
 /***/ }),
-/* 468 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37345,7 +36994,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLCard = __webpack_require__(466);
+	var KLCard = __webpack_require__(464);
 
 	/**
 	 * @class KLCardTools
@@ -37371,7 +37020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLCardTools;
 
 /***/ }),
-/* 469 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37381,7 +37030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	var Component = __webpack_require__(70);
-	var template = __webpack_require__(470);
+	var template = __webpack_require__(468);
 	var _ = __webpack_require__(72);
 
 	/**
@@ -37440,13 +37089,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		module.exports = KLSearch;
 
 /***/ }),
-/* 470 */
+/* 468 */
 /***/ (function(module, exports) {
 
 	module.exports = "<div class=\"{class}\">\n    {#inc this.$body} \n    {#if this.$more && isShowMore}\n        <!--添加一层div，防止两个g-row样式并列导致marginTop--> \n        <div>\n            {#inc this.$more.$body}\n        </div>\n    {/if} \n    {#if isShowFooter}\n    <div class=\"kl-search_ft\">\n        <kl-button type=\"secondary\" title={searchText} on-click={this.search()} class=\"kl-search_btn\"></kl-button>\n        <kl-button title={resetText} on-click={this.reset()}></kl-button>\n        {#if this.$more && isShowToggle}\n            <a href=\"javascript: void(0);\" on-click={this.toggle()} class=\"f-ml10\">\n                 {toggleText}<i class=\"u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}\"></i>\n            </a> \n        {/if}\n    </div>\n    {/if}\n</div>"
 
 /***/ }),
-/* 471 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37459,7 +37108,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Component = __webpack_require__(70);
 	var _ = __webpack_require__(72);
-	var KLSearch = __webpack_require__(469);
+	var KLSearch = __webpack_require__(467);
 
 	/**
 	 * @class KLSearchMore

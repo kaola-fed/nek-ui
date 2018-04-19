@@ -15,14 +15,14 @@
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
-        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
-        <link rel="dns-prefetch" href="//at.alicdn.com" />
 
         
 
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
         <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
+        <!--  ux-ui -->
+        <link href="/css/ux-ui.default.css" rel='stylesheet' type='text/css'>
         <!--  nek-ui -->
         <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
         <!-- main page styles -->
@@ -33,6 +33,7 @@
             <script src="/js/common.js"></script>
             <script src="/vendor/regular.js"></script>
             <script src="/js/nek-ui.js"></script>
+            <script src="/js/ux-ui.js"></script>
             <script src="/demo.wrap/index.js"></script>
         
         <div id="mobile-bar" >
@@ -334,12 +335,6 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLDraggable_.html" class="">
-                                       拖拽 <span>KLDraggable</span>
-                                   </a>
-                               </li>
-                            
-                               <li>
                                    <a href="/components/widget_KLIcon_.html" class="">
                                        图标 <span>KLIcon</span>
                                    </a>
@@ -391,7 +386,7 @@
     <div class="grid-item" markdown="1">
 <h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载，2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.showLoading()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载, 2秒后隐藏"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">showLoading</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.visible = <span class="literal">true</span>;</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">          <span class="keyword">this</span>.$update(<span class="string">'visible'</span>, <span class="literal">false</span>);</div><div class="line">        &#125;.bind(<span class="keyword">this</span>), <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
@@ -399,12 +394,6 @@
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;visible = !visible&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;visible ? '隐藏加载' : '显示加载'&#125;"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-loading</span> <span class="attr">visible</span>=<span class="string">&#123;visible&#125;</span> <span class="attr">static</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">        data.visible = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-</div>
-<div class="grid-item" markdown="1">
-<h3 id="指定嵌入的父级元素"><a href="#指定嵌入的父级元素" class="headerlink" title="指定嵌入的父级元素"></a>指定嵌入的父级元素</h3><div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span> <span class="attr">title</span>=<span class="string">"显示加载，2秒后隐藏"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> loading = <span class="keyword">new</span> NEKUI.KLLoading(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">visible</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            loading.destroy();</div><div class="line">        &#125;, <span class="number">2000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLoading"></a></p>
 <h2 id="KLLoading"><a href="#KLLoading" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span><a name="new_KLLoading_new"></a></h2><h3 id="KLLoading-1"><a href="#KLLoading-1" class="headerlink" title="KLLoading"></a><span class="param-title">KLLoading</span></h3><table>
@@ -447,12 +436,6 @@
 <td></td>
 <td>=&gt; 补充class</td>
 </tr>
-<tr>
-<td>[options.data.el]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 设置对话框要嵌入的父级元素，默认为document.body</td>
-</tr>
 </tbody>
 </table>
 <p><a name="KLLoading+show_new 显示组件"></a></p>
@@ -481,7 +464,7 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button on-click="{this.showLoading()}" title="显示加载，2秒后隐藏" />
+<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
 <kl-loading visible={visible} />
 
       */});
@@ -514,7 +497,7 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button on-click="{this.showLoading()}" title="显示加载，2秒后隐藏" />
+<kl-button on-click="{this.showLoading()}" title="显示加载, 2秒后隐藏" />
 <kl-loading visible={visible} />
 `,
               jsCode: `
@@ -579,71 +562,6 @@ var component = new NEKUI.Component({
     template: template,
     config: function(data) {
         data.visible = false;
-    }
-});
-`
-          }
-      });
-      codeDemo.innerHTML = '';
-      codeComponent.$inject(codeDemo);
-    })(index++);
-    
-    (function(index) {
-      var template = NEKUI._.multiline(function(){/*
-      
-<kl-button on-click="{this.show()}" title="显示加载，2秒后隐藏" />
-
-      */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-    },
-    show: function() {
-        var loading = new NEKUI.KLLoading({
-            data: {
-                visible: true,
-                el: '#main'
-            }
-        });
-        setTimeout(function() {
-            loading.destroy();
-        }, 2000);
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-      var gridItem = document.querySelectorAll('.grid-item')[index];
-      var codeDemo = document.createElement('div');
-      codeDemo.className = 'm-code';
-      var child = gridItem.childNodes;
-      child.forEach(function(item,index){
-        if(item.tagName == 'FIGURE'){
-          codeDemo.appendChild(item);
-        }
-      });
-      gridItem.appendChild(codeDemo);
-      var codeComponent = new DemoWrap({
-          data: {
-              htmlTpl: codeDemo.innerHTML,
-              htmlCode: `
-<kl-button on-click="{this.show()}" title="显示加载，2秒后隐藏" />
-`,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    config: function(data) {
-    },
-    show: function() {
-        var loading = new NEKUI.KLLoading({
-            data: {
-                visible: true,
-                el: '#main'
-            }
-        });
-        setTimeout(function() {
-            loading.destroy();
-        }, 2000);
     }
 });
 `
