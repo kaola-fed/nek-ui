@@ -1,7 +1,7 @@
 @include b(listview) {
   @extend .f-lsn;
   padding: 5px 0;
-  border-color: $--border-color-base;
+  border: 1px solid $--border-color-base;
   border-top: none;
   background: $--background-color-base;
   color: $--text-color-default;
@@ -23,18 +23,18 @@
       color: $--text-color-hover;
     }
 
-    @include m(sel) {
+    @include when(sel) {
       background: $--primary-color;
       color: $--text-color-white;
     }
 
-    @include m(dis) {
+    @include when(dis) {
       cursor: not-allowed;
       background: none;
       color: $--text-color-disabled;
     }
 
-    @include m(divider) {
+    @include when(divider) {
       margin: 9px 0;
       padding: 0;
       height: 1px;
@@ -43,7 +43,7 @@
     }
   }
 
-  @include m(dis) {
+  @include when(dis) {
     background: $--background-color-disabled;
 
     @include e(item) {

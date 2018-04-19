@@ -1,6 +1,6 @@
 
 @include b(select) {
-    .is-hover {
+    @include when(hover) {
         background: #f1f1f1;
     }
 
@@ -8,7 +8,6 @@
     vertical-align: top;
 
     .kl-dropdown__hd {
-        
         box-sizing: border-box;
         cursor: pointer;
         font-size: 0;
@@ -38,20 +37,18 @@
         .kl-icon-remove {
             color: #A4A5B9;
         }
-        .select-errorIcon {
-            position: relative;
-            top: -28px;
-        }
-
-        .hoverShow {
-            display: none;
+       
+        @include b(hover) {
+            @include m(show) {
+                display: none;
+            }
         }
 
         &:hover {
-            .hoverShow {
+            .kl-select__hover--show {
                 display: inline-block;
             }
-            .hoverHide {
+            .kl-select__hover--hide {
                 display: none;
             }
         }
@@ -61,7 +58,11 @@
             font-size: 12px;
         }
 
-        .multi-placeholder {
+        .kl-icon-errorIcon {
+            position: relative;
+            top: -28px;
+        }
+        @include e(multi-placeholder) {
             color: #999;
         }
     }
@@ -79,7 +80,7 @@
         }
     }
 
-    @include m(tag) {
+    @include e(tag) {
         position: relative;
         padding: 0 20px 0 10px;
         margin: 4px 5px 0 0;
@@ -90,25 +91,26 @@
         float: left;
         cursor: default;
 
-        .kl-icon-remove{
+        .kl-icon-remove {
             position: absolute;
             right: 5px;
         }
-
+        
         &:last-child {
             margin-bottom: 6px;
         }
-
-        .is-dis {
+        @include when(dis) {
             cursor: not-allowed;
         }
-        @include e(more) {
+        
+        @include m(more) {
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 150px;
         }
     }
-    @include m(search) {
+
+    @include e(search) {
         font-family: inherit;
         line-height: 20px;
         vertical-align: middle;
@@ -118,22 +120,12 @@
         &:focus{
             outline: none;
         }
-    }
-
-    .search-one {
-        border-bottom: 1px solid #eee;
-        padding: 5px 0;
-        display: block;
-    }
-    &.isMultiple{
-        .search-input{
-            float: left;
-            margin-top: 7px;
-            width: 1em;
+        @include m(one) {
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+            display: block;
         }
     }
-
-    
     
     @include m(error) {
         .kl-dropdown__hd { 
@@ -149,12 +141,12 @@
             line-height: 22px;
         }
 
-        .m-listview >li{
+        .kl-listview >.kl-listview__item{
             line-height: 12px;
         }
     }
 
-    .z-dis {
+    @include when(dis) {
         .kl-dropdown__hd {
             cursor: not-allowed;
             background: $--background-color-disabled;
@@ -162,17 +154,9 @@
             color: $--text-color-disabled;
         }
     }
-    .m-treeview {
+    .kl-treeview {
         overflow: auto;
         max-height: 200px;
     }
 }
 
-.kl-selectgroup {
-    .kl-select {
-        width:160px;
-    }
-    .kl-dropdown {
-        display:inline-block;
-    }
-}

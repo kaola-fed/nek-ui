@@ -1,0 +1,16 @@
+@include b(electgroup) {
+    vertical-align: top;
+    .kl-select {
+        width:160px;
+    }
+    .kl-dropdown {
+        display:inline-block;
+    }
+    @include m(error) {
+        .kl-select {
+            .kl-dropdown__hd {
+                border-color: #d73925;
+            }
+        } 
+    }
+}
