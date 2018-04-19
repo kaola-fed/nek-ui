@@ -1,15 +1,15 @@
-<div class="kl-dropdown kl-select kl-select--{state} u-multi u-multi{class}" r-width={width} z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd" on-click={this.toggle(!open, $event)}>
+<div class="kl-dropdown kl-select kl-select--{state} kl-multi {class}" r-width={width} is-dis={disabled} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd" on-click={this.toggle(!open, $event)}>
         {#if showRoot}
             {#list rootSelected as item}
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
-                    <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
+                    <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
                         <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                     </span>
                 </kl-tooltip>
                 {#else}
-                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
+                <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
                     <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                 </span>
                 {/if}
@@ -18,35 +18,39 @@
             {#list selected as item}
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
-                    <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
+                    <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
                         <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                     </span>
                 </kl-tooltip>
                 {#else}
-                <span class="selected-tag" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
+                <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
                     <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
                 </span>
                 {/if}
             {/list}
         {/if}
-        <span class="m-multi-placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
-        <kl-icon fontSize=20 type="angle-down" class="f-fr angle {open ? 'angle-transform' : ''}"/>
+        <span class="kl-multi__placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
+        <kl-icon fontSize=20 type="angle-down" class="f-fr kl-multi__angle {open ? 'kl-multi__angle--transform' : ''}"/>
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <div class="cateWrap">
+    <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        <div class="kl-cate-wrap">
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
             <ul r-animation="on: leave; class: animated fadeOutX fast;">
                 <kl-input value={search[level]}  readonly={readonly}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}
-                <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
+                <li class="f-csp {cate.active ? 'kl-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
-                    <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="more" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
+                    <span {#if !multiple} class="kl-cate__name"  {/if}>{cate[nameKey]}</span>
+                    {#if cate[childKey] && cate[childKey].length}
+                    <span class="kl-cate__more" r-class={{kl-cate__more--child: !multiple && !onlyChild}}
+                        {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}>
+                    <kl-icon type="chevron_right" /></span>
+                    {/if}
                 </li>
                 {/if}
                 {/list}
@@ -60,4 +64,4 @@
     </div>
     {/if}
 </div>
-{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="kl-tip__msg">{tip}</span></span>{/if}
