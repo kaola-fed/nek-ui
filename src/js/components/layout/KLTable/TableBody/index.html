@@ -28,7 +28,7 @@
             class="tb_bd_tr {item.rowClass || item.trClass}"
             style="{item.rowStyle || item.trStyle}"
             r-class={{
-                'z-hover': item._hover
+                'is-hover': item._hover
             }}
             on-click={this._onRowClick($event, item, item_index)}
             on-mouseover={this._onRowHover($event, item)}

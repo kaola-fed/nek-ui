@@ -1,14 +1,14 @@
 <div class="kl-datepicker kl-datepicker--{size} {class}" r-width="{width}">
-  <div class="kl-dropdown" z-dis={disabled} r-hide={!visible} ref="element">
+  <div class="kl-dropdown" is-dis={disabled} r-hide={!visible} ref="element">
     <div class="kl-dropdown__hd">
       {#if showTime}
       <label class="kl-input">
-        <input class="kl-dropdown__input kl-dropdown__input--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref="input"
+        <input class="kl-input__inner kl-input__inner--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd HH:mm:ss'} ref="input"
         autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
       </label>
       {#else}
       <label class="kl-input">
-        <input class="kl-dropdown__input kl-dropdown__input--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input"
+        <input class="kl-input__inner kl-input__inner--{state}" placeholder={placeholder} value={date | format: 'yyyy-MM-dd'} ref="input"
         autofocus={autofocus} readonly={readonly} disabled={disabled} on-focus={this.toggle(true)} on-change={this._onInput($event)} >
       </label>
       {/if}

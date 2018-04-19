@@ -4,11 +4,11 @@
   width: 100%;
   user-select: none;
 
-  @include b(input) {
+  .kl-input {
     display: inline-block;
   }
 
-  @include b(btn) {
+  .kl-btn {
     position: absolute;
     border: none;
     right: 7px;
@@ -17,7 +17,7 @@
     line-height: $--height-base / 2 - $--border-width-base * 2 - 1px;
     padding: 0 4px;
 
-    & + &  {
+    & + .kl-btn {
       top: auto;
       bottom: 2px;
     }

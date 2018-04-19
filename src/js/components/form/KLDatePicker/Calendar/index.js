@@ -29,7 +29,7 @@ const MS_OF_DAY = 24 * 3600 * 1000;
  */
 const Calendar = Component.extend({
   name: 'calendar',
-  template,
+  template: _.compressHtml(template),
   /**
      * @protected
      */

@@ -1,4 +1,4 @@
-<div class="m-tabs {class}" z-dis={disabled} r-hide={!visible}>
+<div class="m-tabs {class}" is-dis={disabled} r-hide={!visible}>
     <div class="tabs-scroll {scrollable ? 'scrollable' : ''}">
         {#if scrollable}
         <span class="nav-prev {scrollable.prev ? '' : 'disabled'}" on-click={this.prev()}>
@@ -11,7 +11,7 @@
         <div ref="wrap" class="nav-scroll">
             <ul ref="nav" class="tabs_hd" r-style={navStyle}>
                 {#list tabs as item}
-                <li z-crt={item == selected} z-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>
+                <li is-crt={item == selected} is-dis={item.data.disabled} on-click={this.select(item)}>{#if @(titleTemplate)}{#inc @(titleTemplate)}{#else}{item.data.title}{/if}</li>
                 {/list}
             </ul>
         </div>

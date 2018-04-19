@@ -94,7 +94,7 @@
         margin-left: 5px;
     }
     // Size Extends:
-    
+
     &.sm {
         padding: $--padding-sm;
         height: $--height-sm;
@@ -117,10 +117,10 @@
     }
     &.lgw {
         width: 300px;
-    } 
+    }
 }
 
-@include b(input-wrapper) {
+@include b(input-wrap) {
     position: relative;
     display: block;
 }

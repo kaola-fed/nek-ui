@@ -1,4 +1,4 @@
-<div class="kl-calendar {class}" z-dis={disabled} r-hide={!visible}>
+<div class="kl-calendar {class}" is-dis={disabled} r-hide={!visible}>
     <div class="kl-calendar-hd">
         <span class="kl-calendar-hd__prev">
             <span class="kl-calendar__item" on-click={this.addYear(-1)}><kl-icon type="angle-double-left" /></span>
@@ -22,8 +22,8 @@
         </div>
         <div>
           {#list _days as day}
-          <span class="kl-calendar__item" z-sel={date.toDateString() === day.toDateString()}
-              z-dis={!!this.isOutOfRange(day)}
+          <span class="kl-calendar__item" is-sel={date.toDateString() === day.toDateString()}
+              is-dis={!!this.isOutOfRange(day)}
               r-class={ {'z-muted': date.getMonth() !== day.getMonth()} }
               on-click={this.select(day, $event)}>{day | format: 'dd'}</span>
           {/list}
