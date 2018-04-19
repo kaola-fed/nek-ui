@@ -1,9 +1,10 @@
 <div class="kl-select kl-select--{state} kl-select--{size} {class}" r-width="{width}">
-	<div class="kl-dropdown" r-class={{isMultiple:multiple}}
+	<div class="kl-dropdown" r-class={{'is-multiple':multiple}}
 	     is-dis={disabled} r-hide={!visible} ref="element">
 	    {#if !multiple}
 	        <div class="kl-dropdown__hd"
 				 is-dis={disabled}
+				 r-class={{'is-active':open}}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
 	            <kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
@@ -11,7 +12,7 @@
 				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
 				{#if open && canSearch}
-				<input disabled={disabled} readonly={readonly} type="text" class={selected?'input search-input':'input search-input kl-select__multi-placeholder'} r-autofocus
+				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input__inner kl-select__search':'kl-input__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
 						placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
 				{/if}
 				<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，
@@ -19,12 +20,12 @@
 				<span class={selected?'':'kl-select__multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>
 	        </div>
 	    {#else}
-	        <div class="kl-dropdown__hd"
+	        <div class="kl-dropdown__hd" r-class={{'is-active':open}}
 	             on-click={this.toggle(!open, $event)} r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} {#if open && canSearch} style="min-height: 65px;" {/if}>
 					<kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr" />
 	            {#if open && canSearch}
 	            <div>
-		            <input disabled={disabled} readonly={readonly} type="text" class="input kl-select__search kl-select__search--one" ref="input"
+		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input__inner kl-select__search kl-select__search--one" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
 		            <kl-icon fontSize=12 type="error" on-click={this.clearContent($event)} class="kl-icon-errorIcon"/>
 	            </div>
@@ -42,11 +43,6 @@
 	    <div class="kl-dropdown__bd"
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="kl-listview" ref="listview">
-	            {#if placeholder}
-	                <li is-hover={key_index == -1} class="kl-listview__item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
-	                    {placeholder}
-	                </li>
-	            {/if}
 
 	            {#list this.filterArray(source) as item}
 	            {#if (!filter || (filter && filter(item)))}
@@ -95,5 +91,5 @@
 	    </div>
 	    {/if}
 	</div>
-	{#if tip && !hideTip}<span class="kl-tip ukltip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
 </div>

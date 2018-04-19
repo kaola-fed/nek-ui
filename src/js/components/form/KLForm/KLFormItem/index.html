@@ -1,23 +1,23 @@
-<div class="u-formitem u-formitem-{layout} {class}" cols="{cols}">
+<div class="kl-formitem kl-formitem--{layout} {class}" cols="{cols}">
   <!--title区块-->
   {#if title || titleTemplate}
-  <label class="formitem_tt" cols="{labelCols}" size="{labelSize}" lineHeight="{labelLineHeight}" style="text-align:{textAlign}">
-      <span class="formitem_rqr" r-hide="{!required}">&#42;</span>
+  <label class="kl-formitem__tt" cols="{labelCols}" size="{labelSize}" lineHeight="{labelLineHeight}" style="text-align:{textAlign}">
+      <span class="kl-formitem__rqr" r-hide="{!required}">&#42;</span>
       {#if title}
         {title}
       {#else}
         {#inc titleTemplate}
       {/if}
-      {#if tip}<kl-tooltip tip="{tip}"><i class="u-icon u-icon-warning formitem_info"></i></kl-tooltip>{/if}
+      {#if tip}<kl-tooltip tip="{tip}"><i class="kl-icon kl-icon-warning kl-formitem__info"></i></kl-tooltip>{/if}
   </label>
   {/if}
   <!--内容区块-->
-  <span class="formitem_ct">
+  <span class="kl-formitem__ct">
     {#inc this.$body}
 
     <!--说明区块-->
     {#if descTemplate}
-      <div lineHeight="{labelLineHeight}" class="formitem_desc">
+      <div lineHeight="{labelLineHeight}" class="kl-formitem__desc">
         {#inc descTemplate}
       </div>
     {/if}
