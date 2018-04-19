@@ -6,7 +6,6 @@ Thumbs.db
 .idea
 npm-debug.log
 test/
-dist/
 
 # Auto generate
 src/mcss/components.mcss
