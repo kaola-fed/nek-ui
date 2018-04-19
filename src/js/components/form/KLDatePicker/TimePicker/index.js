@@ -28,7 +28,7 @@ require('../NumberInput');
  */
 const TimePicker = Component.extend({
   name: 'time-picker',
-  template,
+  template: _.compressHtml(template),
   /**
    * @protected
    */
