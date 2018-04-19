@@ -1,4 +1,4 @@
-<div class="kl-dropdown kl-select kl-select--{state} kl-multi {class}" r-width={width} is-dis={disabled} r-hide={!visible} ref="element">
+<div class="kl-dropdown kl-select kl-select--{state} kl-multi-select {class}" r-width={width} is-dis={disabled} r-hide={!visible} ref="element">
     <div class="kl-dropdown__hd" on-click={this.toggle(!open, $event)}>
         {#if showRoot}
             {#list rootSelected as item}
@@ -29,8 +29,8 @@
                 {/if}
             {/list}
         {/if}
-        <span class="kl-multi__placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
-        <kl-icon fontSize=20 type="angle-down" class="f-fr kl-multi__angle {open ? 'kl-multi__angle--transform' : ''}"/>
+        <span class="kl-multi-select__placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
+        <kl-icon fontSize=20 type="angle-down" class="f-fr kl-multi-select__angle {open ? 'kl-multi-select__angle--transform' : ''}"/>
     </div>
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
@@ -45,8 +45,8 @@
                 	{#if multiple}
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
-                    <span {#if !multiple} class="kl-cate__name"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="kl-cate__more" r-class={{'kl-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
+                    <span {#if !multiple} class="kl-cate-wrap__name"  {/if}>{cate[nameKey]}</span>
+                    {#if cate[childKey] && cate[childKey].length}<span class="kl-cate-wrap__more" r-class={{'kl-cate-wrap__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
                 </li>
                 {/if}
                 {/list}
@@ -60,4 +60,9 @@
     </div>
     {/if}
 </div>
-{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="kl-tip__msg">{tip}</span></span>{/if}
+{#if tip && !hideTip}
+    <span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
+        <kl-icon type={state} />
+        <span class="kl-tip__msg">{tip}</span>
+    </span>
+{/if}
