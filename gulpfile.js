@@ -38,15 +38,18 @@ gulp.task('dist-copy', function() {
 });
 
 gulp.task('dist-js', function() {
-    return gulp.src('./src/js/index.js')
+    const distjs =  gulp.src('./src/js/index.js')
         .pipe(webpack(webpackConfig))
         .pipe(gulp.dest('./dist/js'))
         .pipe(ignore.exclude('*.js.map'))
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(uglify())
-        .pipe(gulp.dest('./dist/js'));
+        if(!argv.dev){
+            distjs.pipe(uglify())
+        }
+        distjs.pipe(gulp.dest('./dist/js'));
+    return distjs
 });
 
 gulp.task('dist-css', function() {
