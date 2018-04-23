@@ -122,13 +122,15 @@
         width: calc(100% - 20px);
         background-color: transparent;
         font-size: 12px;
+        &.kl-input__inner {
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
         &:focus{
             outline: none;
             box-shadow: none;
-            border: none;
         }
         @include m(one) {
-            border-bottom: 1px solid #eee;
             padding: 5px 0;
             display: block;
         }

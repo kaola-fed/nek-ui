@@ -16,7 +16,7 @@
         line-height: 12px;
         vertical-align: text-top;
         background: white;
-        color: #E61438;
+        color: #00C4C0;
         border: 1px solid $--border-color-base;
 
         .kl-icon {
@@ -25,16 +25,16 @@
             line-height: 13px;
         }
         &:hover {
-            border: 1px solid #e61438;
+            border: 1px solid #00C4C0;
         }
     }
 
     /* Checked */
     &.is-chk {
         .kl-check__box {
-            background: #e61438;
+            background: #00C4C0;
             color: #fff;
-            border: 1px solid #E61438;
+            border: 1px solid #00C4C0;
             .kl-icon {
                 display: inline-block;
             }
@@ -44,9 +44,9 @@
     /* Indetermined */
     &.is-part {
         .kl-check__box {
-            background: #e61438;
+            background: #00C4C0;
             color: #fff;
-            border: 1px solid #E61438;
+            border: 1px solid #00C4C0;
             .kl-icon {
                 display: inline-block;
                 &:before {
