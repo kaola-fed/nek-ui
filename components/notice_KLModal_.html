@@ -15,14 +15,14 @@
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
+        <link rel="dns-prefetch" href="//at.alicdn.com" />
 
         
 
         <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
         <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
         <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
-        <!--  ux-ui -->
-        <link href="/css/ux-ui.default.css" rel='stylesheet' type='text/css'>
         <!--  nek-ui -->
         <link href="/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
         <!-- main page styles -->
@@ -33,7 +33,6 @@
             <script src="/js/common.js"></script>
             <script src="/vendor/regular.js"></script>
             <script src="/js/nek-ui.js"></script>
-            <script src="/js/ux-ui.js"></script>
             <script src="/demo.wrap/index.js"></script>
         
         <div id="mobile-bar" >
@@ -335,6 +334,12 @@
                                </li>
                             
                                <li>
+                                   <a href="/components/widget_KLDraggable_.html" class="">
+                                       拖拽 <span>KLDraggable</span>
+                                   </a>
+                               </li>
+                            
+                               <li>
                                    <a href="/components/widget_KLIcon_.html" class="">
                                        图标 <span>KLIcon</span>
                                    </a>
@@ -409,6 +414,13 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 打开一个Modal</span></div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
+<h3 id="配置要嵌入的父级元素"><a href="#配置要嵌入的父级元素" class="headerlink" title="配置要嵌入的父级元素"></a>配置要嵌入的父级元素</h3><p>设置modal嵌入的父级元素，默认为document.body</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"el: main"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 打开一个Modal，inject到#main元素里</span></div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
 <h3 id="配置信息title"><a href="#配置信息title" class="headerlink" title="配置信息title"></a>配置信息title</h3><p>设置打开modal的标题，默认显示<code>notice</code></p>
 <div class="m-example"></div>
 
@@ -427,7 +439,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"contentTemplate"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">contentTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=10&gt;&lt;kl-input value="&#123;name&#125;"/&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">contentTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=10&gt;&lt;kl-input value="&#123;name&#125;"/&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息footerTemplate"><a href="#配置信息footerTemplate" class="headerlink" title="配置信息footerTemplate"></a>配置信息footerTemplate</h3><p>设置modal的footer显示区域(html代码片段)。默认<code>onfirm</code>和<code>Cancel</code>按钮</p>
@@ -435,49 +447,49 @@
 
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"footerTemplate"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'自定义footer'</span>,</div><div class="line">                <span class="attr">footerTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=6&gt;&lt;kl-button title="提交" type="secondary" /&gt;&lt;/kl-col&gt;&lt;kl-col span=6&gt;&lt;kl-button title="撤销"  type="success" /&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'自定义footer'</span>,</div><div class="line">                <span class="attr">footerTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=6&gt;&lt;kl-button title="提交" type="secondary" /&gt;&lt;/kl-col&gt;&lt;kl-col span=6&gt;&lt;kl-button title="撤销"  type="success" /&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息okDisabled"><a href="#配置信息okDisabled" class="headerlink" title="配置信息okDisabled"></a>配置信息okDisabled</h3><p>是否禁用footer中原生Confirm按钮，true表示是，false表示否。默认为false</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okDisabled: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okDisabled: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">okDisabled</span>: okDisabled,</div><div class="line">                <span class="attr">content</span>: <span class="string">'okDisabled设置为'</span> + okDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">okDisabled</span>: okDisabled,</div><div class="line">                <span class="attr">content</span>: <span class="string">'okDisabled设置为'</span> + okDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息cancelDisabled"><a href="#配置信息cancelDisabled" class="headerlink" title="配置信息cancelDisabled"></a>配置信息cancelDisabled</h3><p>是否禁用footer中原生Cancel按钮，true表示是，false表示否，该属性需要与cancelButton属性配合使用。默认为false。</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelDisabled: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelDisabled: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">cancelDisabled</span>: cancelDisabled,</div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'cancelDisabled设置为'</span> + cancelDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelDisabled</span>: cancelDisabled,</div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'cancelDisabled设置为'</span> + cancelDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息hasFooter"><a href="#配置信息hasFooter" class="headerlink" title="配置信息hasFooter"></a>配置信息hasFooter</h3><p>是否显示Modal的footer部分，true表示显示，false表示不显示，默认为true。</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"hasFooter: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"hasFooter: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">hasFooter</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">hasFooter</span>: hasFooter,</div><div class="line">                <span class="attr">content</span>: <span class="string">'hasFooter设置为'</span> + hasFooter,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">hasFooter</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">hasFooter</span>: hasFooter,</div><div class="line">                <span class="attr">content</span>: <span class="string">'hasFooter设置为'</span> + hasFooter,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息isCanClose"><a href="#配置信息isCanClose" class="headerlink" title="配置信息isCanClose"></a>配置信息isCanClose</h3><p>设置是否可关闭Modal(显示关闭图标),默认为true，可关闭。</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"isCanClose: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"isCanClose: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">isCanClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">isCanClose</span>: isCanClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'isCanClose设置为'</span> + isCanClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">           <span class="built_in">console</span>.log(res);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">isCanClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">isCanClose</span>: isCanClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'isCanClose设置为'</span> + isCanClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">           <span class="built_in">console</span>.log(res);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息okButton"><a href="#配置信息okButton" class="headerlink" title="配置信息okButton"></a>配置信息okButton</h3><p>设置<code>okButton</code>按钮是否显示<code>true</code>(显示)/<code>false</code>(不显示)，也可以设置显示文本(设置字符串)，设置默认为<code>Confirm</code></p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('确认')&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: '确认'"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">okButton</span>: okButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置okButton的值'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">okButton</span>: okButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置okButton的值'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息cancelButton"><a href="#配置信息cancelButton" class="headerlink" title="配置信息cancelButton"></a>配置信息cancelButton</h3><p>设置<code>cancelButton</code>按钮是否显示<code>true</code>(显示)/<code>false</code>(不显示)，也可以设置显示文本(设置字符串)，默认文本<code>Cancel</code>且不显示</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('取消')&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: '取消'"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">cancelButton</span>: cancelButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置cancelButton'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelButton</span>: cancelButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置cancelButton'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息class"><a href="#配置信息class" class="headerlink" title="配置信息class"></a>配置信息class</h3><p>设置自定义Modal样式。</p>
@@ -490,14 +502,14 @@
 </div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置自定义样式'</span>,</div><div class="line">                <span class="attr">class</span>: <span class="string">'u-modal-red'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置自定义样式'</span>,</div><div class="line">                <span class="attr">class</span>: <span class="string">'u-modal-red'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息noClose"><a href="#配置信息noClose" class="headerlink" title="配置信息noClose"></a>配置信息noClose</h3><p>点击ok按钮的时候是否自动关闭Modal，默认为true。</p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"noClose: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"noClose: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">   </div><div class="line">                <span class="attr">noClose</span>: noClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置noClose:'</span> + noClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">noClose</span>: noClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置noClose:'</span> + noClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置信息minHeight"><a href="#配置信息minHeight" class="headerlink" title="配置信息minHeight"></a>配置信息minHeight</h3><p>设置Modal的最小显示高度，默认随内容变化。</p>
@@ -516,12 +528,19 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">maxHeight</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">if</span>(maxHeight) &#123;</div><div class="line">            data.maxHeight = maxHeight;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
+<h3 id="配置信息draggable"><a href="#配置信息draggable" class="headerlink" title="配置信息draggable"></a>配置信息draggable</h3><p>设置Modal可拖拽，默认不可拖拽。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"draggable：true"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal可拖拽'</span>,</div><div class="line">                <span class="attr">draggable</span>: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
 <h3 id="实例方法cancel"><a href="#实例方法cancel" class="headerlink" title="实例方法cancel"></a>实例方法cancel</h3><p>通过实例调用，执行该实例对象的<code>cancel</code>事件</p>
 <p><strong>该方法执行时会派发<code>cancel</code>事件，通过<code>modal.$on(&#39;cancel&#39;, callback)</code>监听,打开控制台可查看</strong></p>
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancel"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用cancel&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line">      </div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.cancel();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用cancel&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.cancel();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="实例方法close"><a href="#实例方法close" class="headerlink" title="实例方法close"></a>实例方法close</h3><p>通过实例调用，执行该实例对象的<code>close</code>事件，可接收一个标志调用<code>close</code>(true)或者<code>cancel</code>(false)方法的参数。默认调用<code>cancel</code>事件
@@ -537,7 +556,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"【noClose:true】"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"【noClose:false】"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">noClose</span>: noClose,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用ok&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">      </div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.ok();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">noClose</span>: noClose,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用ok&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.ok();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="静态方法confirm"><a href="#静态方法confirm" class="headerlink" title="静态方法confirm"></a>静态方法confirm</h3><p>通过<code>NEKUI.KLModal.confirm</code>调用，返回实例本身，弹出一个confirm对话框。ok按钮触发ok事件，cancel按钮触发cancel事件。有四个参数，
@@ -549,7 +568,7 @@
 
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定','撤销')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton, cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);</div><div class="line">        </div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton, cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="静态方法alert"><a href="#静态方法alert" class="headerlink" title="静态方法alert"></a>静态方法alert</h3><p>通过<code>NEKUI.KLModal.alert</code>调用，返回实例本身，弹出一个alert对话框。关闭时始终触发ok事件。有三个参数，
@@ -558,7 +577,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton</span>) </span>&#123;</div><div class="line">  </div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.alert(content, title, okButton);</div><div class="line">        </div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.alert(content, title, okButton);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLModal"></a></p>
 <h2 id="KLModal"><a href="#KLModal" class="headerlink" title="KLModal"></a><span class="param-title">KLModal</span><a name="new_KLModal_new"></a></h2><h3 id="KLModal-1"><a href="#KLModal-1" class="headerlink" title="KLModal"></a><span class="param-title">KLModal</span></h3><table>
@@ -660,6 +679,18 @@
 <td><code>number</code></td>
 <td></td>
 <td>=&gt; 内容区域最大高度，超出则显示滚动条</td>
+</tr>
+<tr>
+<td>[options.data.el]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 设置对话框要插入的父级元素，默认为document.body</td>
+</tr>
+<tr>
+<td>[options.data.draggable]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否可以拖拽对话框</td>
 </tr>
 </tbody>
 </table>
@@ -813,6 +844,63 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
+<kl-button on-click="{this.show()}"  title="el: main"/>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal，inject到#main元素里
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                el: '#main'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="el: main"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal，inject到#main元素里
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                el: '#main'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
 <kl-button on-click="{this.show()}"  title="Title"/>
 
       */});
@@ -928,7 +1016,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
             }
@@ -959,7 +1047,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
             }
@@ -985,7 +1073,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 content: '自定义footer',
                 footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
@@ -1017,7 +1105,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 name: 'Rabbit',
                 content: '自定义footer',
                 footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
@@ -1045,7 +1133,7 @@ var component = new NEKUI.Component({
     show: function(okDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okDisabled: okDisabled,
                 content: 'okDisabled设置为' + okDisabled,
             }
@@ -1077,7 +1165,7 @@ var component = new NEKUI.Component({
     show: function(okDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okDisabled: okDisabled,
                 content: 'okDisabled设置为' + okDisabled,
             }
@@ -1104,7 +1192,7 @@ var component = new NEKUI.Component({
     show: function(cancelDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelDisabled: cancelDisabled,
                 cancelButton: true,
                 content: 'cancelDisabled设置为' + cancelDisabled,
@@ -1137,7 +1225,7 @@ var component = new NEKUI.Component({
     show: function(cancelDisabled) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelDisabled: cancelDisabled,
                 cancelButton: true,
                 content: 'cancelDisabled设置为' + cancelDisabled,
@@ -1165,7 +1253,7 @@ var component = new NEKUI.Component({
     show: function(hasFooter) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 hasFooter: hasFooter,
                 content: 'hasFooter设置为' + hasFooter,
             }
@@ -1197,7 +1285,7 @@ var component = new NEKUI.Component({
     show: function(hasFooter) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 hasFooter: hasFooter,
                 content: 'hasFooter设置为' + hasFooter,
             }
@@ -1224,7 +1312,7 @@ var component = new NEKUI.Component({
     show: function(isCanClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 isCanClose: isCanClose,
                 content: 'isCanClose设置为' + isCanClose,
             }
@@ -1259,7 +1347,7 @@ var component = new NEKUI.Component({
     show: function(isCanClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 isCanClose: isCanClose,
                 content: 'isCanClose设置为' + isCanClose,
             }
@@ -1290,7 +1378,7 @@ var component = new NEKUI.Component({
     show: function(okButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okButton: okButton,
                 content: '设置okButton的值',
             }
@@ -1323,7 +1411,7 @@ var component = new NEKUI.Component({
     show: function(okButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 okButton: okButton,
                 content: '设置okButton的值',
             }
@@ -1351,7 +1439,7 @@ var component = new NEKUI.Component({
     show: function(cancelButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: cancelButton,
                 content: '设置cancelButton'
             }
@@ -1384,7 +1472,7 @@ var component = new NEKUI.Component({
     show: function(cancelButton) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: cancelButton,
                 content: '设置cancelButton'
             }
@@ -1410,7 +1498,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: true,
                 content: '设置自定义样式',
                 class: 'u-modal-red',
@@ -1442,7 +1530,7 @@ var component = new NEKUI.Component({
     show: function() {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 cancelButton: true,
                 content: '设置自定义样式',
                 class: 'u-modal-red',
@@ -1470,7 +1558,7 @@ var component = new NEKUI.Component({
     show: function(noClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 noClose: noClose,
                 content: '设置noClose:' + noClose,
             }
@@ -1502,7 +1590,7 @@ var component = new NEKUI.Component({
     show: function(noClose) {
         var modal = new NEKUI.KLModal({
             data: {
-   
+
                 noClose: noClose,
                 content: '设置noClose:' + noClose,
             }
@@ -1655,6 +1743,61 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
+<kl-button on-click="{this.show()}"  title="draggable：true"/>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal可拖拽',
+                draggable: true
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="draggable：true"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal可拖拽',
+                draggable: true
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
 <kl-button on-click="{this.show()}"  title="cancel" />
 
       */});
@@ -1669,11 +1812,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
-      
+
         setTimeout(function(){
              modal.cancel();
         }, 3000);
@@ -1708,11 +1851,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
-      
+
         setTimeout(function(){
              modal.cancel();
         }, 3000);
@@ -1833,11 +1976,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-      
+
         setTimeout(function(){
              modal.ok();
         }, 3000);
@@ -1874,11 +2017,11 @@ var component = new NEKUI.Component({
         var modal = new NEKUI.KLModal({
             data: data
         });
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-      
+
         setTimeout(function(){
              modal.ok();
         }, 3000);
@@ -1917,11 +2060,11 @@ var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton, cancelButton) {
         var modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
@@ -1965,11 +2108,11 @@ var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton, cancelButton) {
         var modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
-        
+
         modal.$on('cancel', function(){
             console.log('监听cancel事件');
         });
@@ -2000,9 +2143,9 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton) {
-  
+
         var modal = NEKUI.KLModal.alert(content, title, okButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });
@@ -2038,9 +2181,9 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     show: function(content, title, okButton) {
-  
+
         var modal = NEKUI.KLModal.alert(content, title, okButton);
-        
+
         modal.$on('ok', function(){
             console.log('监听ok事件');
         });

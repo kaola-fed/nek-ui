@@ -121,9 +121,6 @@ strong {
   font-weight: 600;
   color: #2c3e50;
 }
-br {
-  clear: both;
-}
 code,
 pre {
   font-family: 'Roboto Mono', Monaco, courier, monospace;
