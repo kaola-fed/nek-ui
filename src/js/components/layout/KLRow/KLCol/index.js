@@ -65,14 +65,14 @@ KLCol.directive('mediaSize', function (ele) {
   const self = this;
   ['xs', 'sm', 'md', 'lg'].forEach((size) => {
     if (parseInt(self.data[size])) {
-      ele.classList.add(`g-col-${size}-${self.data[size]}`);
+      ele.classList.add(`kl-col-${size}-${self.data[size]}`);
     } else if (typeof self.data[size] === 'object') {
       const props = self.data[size];
       Object.keys(props).forEach((prop) => {
         ele.classList.add(
           prop !== 'span'
-            ? `g-col-${size}-${prop}-${props[prop]}`
-            : `g-col-${size}-${props[prop]}`,
+            ? `kl-col-${size}-${prop}-${props[prop]}`
+            : `kl-col-${size}-${props[prop]}`,
         );
       });
     }
