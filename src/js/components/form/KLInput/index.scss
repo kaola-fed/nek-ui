@@ -1,7 +1,7 @@
 @mixin input-element {
     position: absolute;
     height: 24px;
-    line-height: 24px;
+    line-height: 24px !important;
     right: 10px;
     top: 0;
     bottom: 0;
@@ -41,7 +41,6 @@
         }
         @include placeholder {
             color: #999;
-            font-size: $--font-size-base; // - Removes placeholder transparency in Firefox.
             $opacity: 1;
         }
         @include m(error) {
@@ -83,41 +82,11 @@
         padding: $--padding-base;
         border-left: 1px solid transparent;
     }
-    @include m(sm) {
-        height: 24px;
-        .input {
-            height: 24px;
-            line-height: 24px;
-        }
-    }
+
     +.kl-tip {
         margin-left: 5px;
     }
-    // Size Extends:
 
-    &.sm {
-        padding: $--padding-sm;
-        height: $--height-sm;
-        font-size: $--font-size-base;
-    }
-    &.lg {
-        padding: $--padding-lg;
-        height: $--height-lg;
-        font-size: $--font-size-lg;
-    }
-    &.smw, &.md, &.lg {
-        display:inline-block;
-        vertical-align:top;
-    }
-    &.smw {
-        width: 80px;
-    }
-    &.mdw {
-        width: 160px;
-    }
-    &.lgw {
-        width: 300px;
-    }
     @include b(input-wrap) {
         position: relative;
         display: block;

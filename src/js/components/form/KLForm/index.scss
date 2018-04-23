@@ -121,66 +121,62 @@ input {
     }
 }
 
-// Size Extends:
+// Size-Extend
 // ========================================================================
-@mixin formctrl-extend_size($name, $padding, $height, $font-size:null, $border-radius:null) {
-    // 为了兼容老的.sm, .lg保留两种写法
-    .kl-input.#{$name},
-    .kl-dropdown.#{$name},
-    .kl-textarea.#{$name},
-    .kl-input--#{$name},
+
+@mixin form-item-size($name, $padding, $height, $font-size) {
+    .kl-input .kl-input__inner--#{$name},
+    .kl-textarea .kl-textarea__inner--#{$name},
     .kl-dropdown--#{$name},
-    .kl-textarea--#{$name} {
+    .kl-select--#{$name},
+    .kl-multi-select--#{$name} {
         padding: $padding;
         height: $height;
-        @if($font-size) {
-            font-size: $font-size;
-        }
-        @if($border-radius) {
-            border-radius: $border-radius;
-        }
+        line-height: $height;
+        font-size: $font-size;
     }
 }
 
-@include formctrl-extend_size(sm, $--padding-sm, $--height-sm, $--font-size-base);
-@include formctrl-extend_size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
-@mixin formctrl-extend_width($name, $width) {
-    .kl-dropdown-#{$name}w,
-    .kl-select-#{$name}w,
-    .kl-textarea-#{$name}w {
+@include form-item-size(sm, $--padding-sm, $--height-sm, $--font-size-xs);
+@include form-item-size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
+
+@mixin form-item-width($name, $width) {
+    .kl-input--#{$name}w,
+    .kl-textarea--#{$name}w,
+    .kl-dropdown--#{$name}w,
+    .kl-select--#{$name}w,
+    .kl-multi-select--#{$name}w {
         display: inline-block;
         width: $width;
     }
 }
 
-@include formctrl-extend_width(sm, 80px);
-@include formctrl-extend_width(md, 160px);
-@include formctrl-extend_width(lg, 300px);
+@include form-item-width(sm, 80px);
+@include form-item-width(md, 160px);
+@include form-item-width(lg, 300px);
 
-// Color Extends:
+// Transition-Extend
 // ========================================================================
-.kl-input .kl-input__inner,
+
+.kl-input__inner,
 .kl-select,
 .kl-textarea,
 .kl-textarea__inner {
     transition: border-color 1s ease;
 }
 
-@mixin formctrl-extend_color($name, $background, $color, $border) {
+// Color Extends:
+// ========================================================================
+
+@mixin form-item-color($name, $border-color) {
     .kl-input .kl-input__inner--#{$name},
-    .kl-select.kl-select--#{$name},
-    .kl-textarea .kl-textarea__inner--#{$name} {
-        @if($background) {
-            background: $background;
-        }
-        color: $color;
-        border-color: $border;
+    .kl-textarea .kl-textarea__inner--#{$name},
+    .kl-select .kl-dropdown__hd--#{$name} {
+        border-color: $border-color;
     }
 }
 
-@include formctrl-extend_color(success, null, $--success-color, $--success-color);
-@include formctrl-extend_color(warning, null, $--warning-color, $--warning-color);
-@include formctrl-extend_color(error, null, $--error-color, $--error-color);
+@include form-item-color(error, $--error-color);
 
 // Component:       Tip
 // ========================================================================
@@ -210,13 +206,13 @@ input {
 // Color Extends:
 // ========================================================================
 
-@mixin tip-extend_color($name, $color) {
+@mixin tip-color($name, $color) {
     .kl-tip--#{$name} {
         color: $color;
     }
 }
 
-@include tip-extend_color(info, $--info-color);
-@include tip-extend_color(success, $--success-color);
-@include tip-extend_color(warning, $--warning-color);
-@include tip-extend_color(error, $--error-color);
+@include tip-color(info, $--info-color);
+@include tip-color(success, $--success-color);
+@include tip-color(warning, $--warning-color);
+@include tip-color(error, $--error-color);

@@ -27,7 +27,7 @@
         overflow-y: auto;
         position: relative;
 
-        
+
         @include when(active) {
             border: 1px solid $--border-color-active;
         }
@@ -67,9 +67,6 @@
             position: relative;
             top: -28px;
         }
-        @include e(multi-placeholder) {
-            color: #999;
-        }
     }
     .kl-dropdown__bd {
         clear: both;
@@ -83,6 +80,10 @@
         .kl-check {
             line-height: 0;
         }
+    }
+
+    @include e(multi-placeholder) {
+        color: #999;
     }
 
     @include e(tag) {
@@ -100,14 +101,14 @@
             position: absolute;
             right: 5px;
         }
-        
+
         &:last-child {
             margin-bottom: 6px;
         }
         @include when(dis) {
             cursor: not-allowed;
         }
-        
+
         @include m(more) {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -133,10 +134,10 @@
             display: block;
         }
     }
-    
+
     @include m(error) {
-        .kl-dropdown__hd { 
-            border-color: $--border-color-error; 
+        .kl-dropdown__hd {
+            border-color: $--border-color-error;
         }
     }
 

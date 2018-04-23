@@ -11,7 +11,19 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-textarea  placeholder="请输入备注" />
+<kl-textarea placeholder="请输入备注" />
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 大小控制
+
+可通过设置size来控制输入文字的大小。
+
+<div class="m-example"></div>
+
+```xml
+<kl-textarea size="lg" placeholder="请输入备注" />
 ```
 <!-- demo_end -->
 

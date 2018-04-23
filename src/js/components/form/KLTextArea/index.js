@@ -17,7 +17,6 @@ const bowser = require('bowser');
  * @param {object}        [options.data]                    = 绑定属性
  * @param {string}        [options.data.value]              <=> 文本框的值
  * @param {string}        [options.data.placeholder]         => 占位符
- * @param {string}        [options.data.state]              <=> 文本框的状态(保留字段，暂无实现)
  * @param {number}        [options.data.maxlength]          => 文本框的最大长度
  * @param {object[]}      [options.data.rules=[]]           => 验证规则
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
@@ -29,6 +28,7 @@ const bowser = require('bowser');
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
+ * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
  * @param {string}        [options.data.class]              => 补充class
  */
 const KLTextArea = Component.extend({
@@ -76,7 +76,9 @@ const KLTextArea = Component.extend({
     let rules = data.rules;
 
     rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
-
+    if (!rules.length) {
+      return { success: true };
+    }
     const result = Validation.validate(value, rules);
     if (
       result.firstRule &&

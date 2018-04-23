@@ -5,12 +5,12 @@
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
+                        <kl-icon type="remove" on-click={this.delete($event, item)} />
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
+                    <kl-icon type="remove" on-click={this.delete($event, item)} />
                 </span>
                 {/if}
             {/list}
@@ -19,12 +19,12 @@
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
+                        <kl-icon type="remove" on-click={this.delete($event, item)} />
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <i class="kl-icon kl-icon-remove" on-click={this.delete($event, item)}></i>
+                    <kl-icon type="remove" on-click={this.delete($event, item)} />
                 </span>
                 {/if}
             {/list}

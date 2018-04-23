@@ -53,12 +53,12 @@
 
 @mixin placeholder {
     &::-webkit-input-placeholder {
-        @content
+        @content;
     }
     &::-moz-placeholder {
-        @content
+        @content;
     }
     &:-ms-input-placeholder {
-        @content
+        @content;
     }
 }

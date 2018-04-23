@@ -1,45 +1,61 @@
 @include b(textarea) {
-  display: inline-block;
-  position: relative;
-  width:100%;
-
-  @include e(inner) {
-    padding: $--padding-base;
-    color: $--text-color-default;
-    background: $--background-color-base;
-    border-radius: $--border-radius-base;
-    border: 1px solid #EEEEEE;
-    font-size: $--font-size-base;
+    display: inline-block;
+    position: relative;
     width: 100%;
-
-    &:focus {
-      outline: 0;
-      background: $--background-color-base;
-      color: $--text-color-default;
-      border: 1px solid $--primary-color;
+    @include e(inner) {
+        padding: $--padding-base;
+        color: $--text-color-default;
+        background: $--background-color-base;
+        border-radius: $--border-radius-base;
+        border: 1px solid #EEEEEE;
+        font-size: $--font-size-base;
+        width: 100%;
+        &:focus {
+            outline: 0;
+            background: $--background-color-base;
+            color: $--text-color-default;
+            border: 1px solid $--primary-color;
+            box-shadow: 0 0 2px 0 #00C4C0;
+        }
+        &:hover {
+            border-color: $--primary-color;
+        }
+        &:disabled {
+            cursor: not-allowed;
+            background: $--background-color-disabled;
+            color: $--text-color-disabled;
+            border: 1px solid $--border-color-disabled;
+        }
+        @include m(error) {
+            border-color: $--error-color;
+            &:hover {
+                box-shadow: 0 0 0 0;
+                border-color: $--error-color;
+            }
+            &:focus {
+                border-color: $--error-color;
+                box-shadow: 0 0 0 0;
+            }
+        }
+        @include m(sm) {
+            line-height: 2.3 !important;
+        }
+        @include m(lg) {
+            line-height: 1.3 !important;
+        }
     }
-
-    &:disabled {
-      cursor: not-allowed;
-      background: $--background-color-disabled;
-      color: $--text-color-disabled;
-      border: 1px solid $--border-color-disabled;
+    @include e(placeholder) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: $--text-color-placeholder;
+        padding: $--padding-base;
+        border-left: 1px solid transparent;
     }
-  }
-
-  @include e(placeholder) {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    color: $--text-color-placeholder;
-    padding: $--padding-base;
-    border-left: 1px solid transparent;
-  }
-
-  @include e(length) {
-    font-size:12px;
-    color:#999;
-  }
+    @include e(length) {
+        font-size: 12px;
+        color: #999;
+    }
 }
