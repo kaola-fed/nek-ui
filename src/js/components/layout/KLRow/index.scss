@@ -1,0 +1,40 @@
+@include b(row) {
+  @extend .f-cb;
+
+  @include m(flex) {
+    display: flex;
+
+    @include when(justify-center) {
+      justify-content: center;
+    }
+
+    @include when(justify-end) {
+      justify-content: flex-end;
+    }
+    @include when(justify-space-between) {
+      justify-content: space-between;
+    }
+    @include when(justify-space-around) {
+      justify-content: space-around;
+    }
+    @include when(align-middle) {
+      align-items: center;
+    }
+    @include when(align-bottom) {
+      align-items: top;
+    }
+    @include when(flex-wrap) {
+      flex-wrap: wrap;
+    }
+    @include when(flex-nowrap) {
+      flex-wrap: nowrap;
+    }
+    @include when(flex-wrap-reverse) {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  & + .kl-row {
+    margin-top: 10px;
+  }
+}
