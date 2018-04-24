@@ -41,7 +41,7 @@
         }
         @include placeholder {
             color: #999;
-            $opacity: 1;
+            opacity: 1;
         }
         @include m(error) {
             border-color: $--error-color;

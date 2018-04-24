@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     require('postcss-salad')({
-      browsers: ['ie > 9', 'last 2 versions'],
+      browsers: ['ie > 6', 'last 2 versions'],
       features: {
         autoprefixer: {
           remove: false,
