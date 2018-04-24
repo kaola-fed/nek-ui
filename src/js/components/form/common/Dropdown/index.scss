@@ -1,6 +1,16 @@
 @include b(dropdown) {
     position: relative;
     vertical-align: top;
+
+    @include e(hd) {
+      @include when(dis) {
+        background: #eee;
+        color: #999;
+        border: 1px solid #d2d6de;
+        cursor: not-allowed;
+      }
+    }
+
     @include e(bd) {
         position: absolute;
         z-index: 10;
@@ -17,14 +27,7 @@
             margin-bottom: 0;
         }
     }
-    @include e(hd) {
-        @include when(dis) {
-            background: #eee;
-            color: #999;
-            border: 1px solid #d2d6de;
-            cursor: not-allowed;
-        }
-    }
+
     @include when(dis) {
         .kl-dropdown__hd > .kl-btn {
             cursor: not-allowed;
