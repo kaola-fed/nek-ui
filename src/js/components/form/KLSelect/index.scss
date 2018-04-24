@@ -31,22 +31,28 @@
         @include when(active) {
             border: 1px solid $--border-color-active;
         }
-        @include b(icon) {
+        .kl-icon {
             float: right;
             width: auto;
             line-height: inherit;
             position: absolute;
             right: 5px;
         }
-
         .kl-icon-remove {
             color: #A4A5B9;
         }
-
-        @include b(hover) {
-            @include m(show) {
-                display: none;
-            }
+        .kl-icon-angle_up {
+            transform: rotate(180deg);
+        }
+       
+        @include when(dis) {
+            cursor: not-allowed;
+            background: $--background-color-disabled;
+            border: 1px solid $--border-color-disabled;
+            color: $--text-color-disabled;
+        }
+        .kl-select__hover--show {
+            display: none;
         }
 
         &:hover {
@@ -63,7 +69,7 @@
             font-size: 12px;
         }
 
-        .kl-icon-errorIcon {
+        .kl-icon-remove-addclass {
             position: relative;
             top: -28px;
         }
@@ -156,14 +162,13 @@
         }
     }
 
-    @include when(dis) {
-        .kl-dropdown__hd {
-            cursor: not-allowed;
-            background: $--background-color-disabled;
-            border: 1px solid $--border-color-disabled;
-            color: $--text-color-disabled;
+    .kl-icon-remove1 {
+        color: #999;
+        &:hover {
+            color: #666;
         }
     }
+
     .kl-treeview {
         overflow: auto;
         max-height: 200px;

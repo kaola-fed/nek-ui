@@ -53,8 +53,8 @@
     .kl-col:first-child { padding-left:0; }
     .kl-col:last-child { padding-right:0; }
 
-    @include m(rqr) {
-        color: #FF753F;
+    @include e(rqr) {
+        color: #F86B6B;
     }
 
     @include m(inline) {
