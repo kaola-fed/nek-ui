@@ -22,6 +22,8 @@ const JRImagePreview = require('../../../../widget/JRImagePreview');
  *                                                       url: 文件的路径
  *                                                       flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件
  * @param {string}     [options.data.name]           => 可选，上传的文件字段名, 默认为'file'
+ * @param {object}     [options.data.headers]              => 可选，设置上传的请求头部
+ * @param {object}     [options.data.with-credentials=false]    => 可选，支持发送 cookie 凭证信息, 默认false
  * @param {boolean}    [options.data.multiple]       => 可选，是否支持多选, 可选值true/false，默认false单选
  * @param {object}     [options.data.data]           => 可选，上传时附带的额外参数
  * @param {boolean}    [options.data.drag]           => 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽
@@ -46,6 +48,8 @@ const UploadBase = Component.extend({
     _.extend(data, {
       action: '',
       name: 'file',
+      headers: {},
+      withCredentials: false,
       multiple: false,
       data: {},
       drag: false,
@@ -170,6 +174,7 @@ const UploadBase = Component.extend({
           flag: file.flag,
           uid: file.uid,
           status: 'success',
+          class: file.class || '',
         };
 
         if (fileunit.flag !== Config.flagMap.DELETED) {
@@ -187,8 +192,9 @@ const UploadBase = Component.extend({
   updateFileList(info) {
     const data = this.data;
     const uid = info.file.uid;
-    const { fileList, fileUnitList } = data;
+    const { fileUnitList } = data;
 
+    const fileList = JSON.parse(JSON.stringify(data.fileList));
     // 找到触发更新的unit单元
     const unitIndex = fileUnitList.findIndex(item => uid === item.uid);
     const unit = fileUnitList[unitIndex];
@@ -196,16 +202,22 @@ const UploadBase = Component.extend({
 
     // 找到该unit单元在fileList中的位置
     const fileIndex = fileList.findIndex(item => uid === item.uid);
-    if (fileIndex === -1) {
+    if (fileIndex === -1 && (unit.status === 'success' || unit.status === 'wait')) {
       // fileList中不存在该单元数据，新增数据
+      // 只有当上传成功时才更新fileList
       fileList.push({ name, url, flag, uid });
     } else if (flag === Config.flagMap.DELETED) {
-      fileList[fileIndex].flag = Config.flagMap.DELETED;
+      if (fileIndex !== -1) {
+        fileList[fileIndex].flag = Config.flagMap.DELETED;
+      }
       fileUnitList.splice(unitIndex, 1);
     } else if (destroyed) {
-      fileList.splice(fileIndex, 1);
+      if (fileIndex !== -1) {
+        fileList.splice(fileIndex, 1);
+      }
       fileUnitList.splice(unitIndex, 1);
     }
+    data.fileList = fileList;
     if (!data.autoUpload) {
       this.initFormData();
     }
@@ -313,7 +325,10 @@ const UploadBase = Component.extend({
 
   onPreview(info) {
     const current = info.file;
-
+    this.$emit('preview', info);
+    if (current.type !== 'image') {
+      return;
+    }
     function filterImgFile(file) {
       return file.type === 'image';
     }
@@ -546,7 +561,8 @@ const UploadBase = Component.extend({
 
     Object.keys(typeMap).forEach((key) => {
       const reg = new RegExp(`${key}$`);
-      if (reg.test(type) || (!type && reg.test(name))) {
+      // 名称后缀不区分大小写
+      if (reg.test(type) || reg.test(`${name}`.toLowerCase())) {
         typeStr = typeMap[key];
       }
     });
