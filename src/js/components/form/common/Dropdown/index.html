@@ -1,5 +1,5 @@
-<div class="kl-dropdown {class}" is is-dis={disabled} r-hide={!visible} ref="element">
-    <div class="kl-dropdown__hd" is is-dis={disabled} on-click={this.toggle()}>
+<div class="kl-dropdown {class}" is-dis={disabled} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd" is-dis={disabled} on-click={this.toggle()}>
         {#if this.$body}
             {#inc this.$body}
         {#else}
@@ -8,9 +8,9 @@
     </div>
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <ul class="listview">
+        <ul class="kl-listview">
             {#list source as item}
-            <li is is-dis={item.disabled} is is-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>
+            <li is-dis={item.disabled} is-divider={item.divider} title={item.name} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item.name}{/if}</li>
             {/list}
         </ul>
     </div>
