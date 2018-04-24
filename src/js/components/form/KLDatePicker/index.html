@@ -22,14 +22,14 @@
                      disabledSeconds={disabledSeconds}
         />
         <div class="kl-dropdown__ft">
-          <kl-button size="sm" class="kl-datetimepicker__confirmBtn" on-click={this.onConfirm()} title={this.$trans('CONFIRM')} />
+          <kl-button size="sm" class="kl-datepicker__confirmBtn" on-click={this.onConfirm()} title={this.$trans('CONFIRM')} />
         </div>
         {/if}
       </calendar>
     </div>
   </div>
   {#if tip && !hideTip}
-    <span class="kl-tip kl-tip--{state}">
+    <span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
       <kl-icon type={state} />
       <span class="kl-tip__msg">{tip}</span>
     </span>
