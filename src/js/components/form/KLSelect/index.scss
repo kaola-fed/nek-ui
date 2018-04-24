@@ -1,12 +1,7 @@
 
 @include b(select) {
-
     user-select: none;
     vertical-align: top;
-
-    @include when(hover) {
-        background: $--background-color-hover;
-    }
 
     .kl-dropdown__hd {
         box-sizing: border-box;
@@ -16,8 +11,7 @@
         word-wrap:normal;
         white-space:nowrap;
         text-overflow:ellipsis;
-
-        min-height: $--height-base;
+        height: $--height-base;
         line-height: $--height-base - 2;
         padding: 0 10px;
         background: $--background-color-base;
@@ -27,10 +21,6 @@
         overflow-y: auto;
         position: relative;
 
-
-        @include when(active) {
-            border: 1px solid $--border-color-active;
-        }
         .kl-icon {
             float: right;
             width: auto;
@@ -38,19 +28,15 @@
             position: absolute;
             right: 5px;
         }
+
         .kl-icon-remove {
             color: #A4A5B9;
         }
+
         .kl-icon-angle_up {
             transform: rotate(180deg);
         }
-       
-        @include when(dis) {
-            cursor: not-allowed;
-            background: $--background-color-disabled;
-            border: 1px solid $--border-color-disabled;
-            color: $--text-color-disabled;
-        }
+
         .kl-select__hover--show {
             display: none;
         }
@@ -73,7 +59,23 @@
             position: relative;
             top: -28px;
         }
+
+        @include when(hover) {
+            background: $--background-color-hover;
+        }
+
+        @include when(active) {
+            border: 1px solid $--border-color-active;
+        }
+
+        @include when(dis) {
+            cursor: not-allowed;
+            background: $--background-color-disabled;
+            border: 1px solid $--border-color-disabled;
+            color: $--text-color-disabled;
+        }
     }
+
     .kl-dropdown__bd {
         clear: both;
     }
@@ -111,6 +113,7 @@
         &:last-child {
             margin-bottom: 6px;
         }
+
         @include when(dis) {
             cursor: not-allowed;
         }
@@ -129,14 +132,17 @@
         width: calc(100% - 20px);
         background-color: transparent;
         font-size: 12px;
+
         &.kl-input__inner {
             border: none;
             border-bottom: 1px solid #eee;
         }
+
         &:focus{
             outline: none;
             box-shadow: none;
         }
+
         @include m(one) {
             padding: 5px 0;
             display: block;
@@ -150,11 +156,34 @@
     }
 
     @include m(sm) {
-        height: 24px;
+        height: $--height-sm;
         padding: 0;
+
         .kl-dropdown__hd {
-            min-height: 24px;
-            line-height: 22px;
+            padding: 0px 6px;
+            height: $--height-sm;
+            line-height: $--height-sm - 2;
+            span {
+                font-size: $--font-size-xs;
+            }
+        }
+
+        .kl-listview >.kl-listview__item{
+            line-height: 12px;
+        }
+    }
+
+    @include m(lg) {
+        height: $--height-lg;
+        padding: 0;
+
+        .kl-dropdown__hd {
+            padding: 0 10px;
+            height: $--height-lg;
+            line-height: $--height-lg - 2;
+            span {
+                font-size: $--font-size-lg;
+            }
         }
 
         .kl-listview >.kl-listview__item{
@@ -164,6 +193,7 @@
 
     .kl-icon-remove1 {
         color: #999;
+
         &:hover {
             color: #666;
         }

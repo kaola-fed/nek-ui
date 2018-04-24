@@ -127,9 +127,7 @@ input {
 @mixin form-item-size($name, $padding, $height, $font-size) {
     .kl-input--#{$name} .kl-input__inner,
     .kl-textarea--#{$name} .kl-textarea__inner,
-    .kl-datepicker--#{$name} .kl-input__inner,
-    .kl-select--#{$name} .kl-dropdown__hd,
-    .kl-multi-select--#{$name} {
+    .kl-datepicker--#{$name} .kl-input__inner {
         padding: $padding;
         height: $height;
         line-height: $height;
