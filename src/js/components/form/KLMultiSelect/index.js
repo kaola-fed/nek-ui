@@ -290,7 +290,7 @@ const KLMultiSelect = Dropdown.extend({
   },
   scroll(level) {
     const data = this.data;
-    const target = document.getElementsByClassName('cateWrap')[0];
+    const target = document.getElementsByClassName('kl-multi-select-cate-wrap')[0];
     const startWidth = target.scrollLeft;
     const WIDTH = (level - 1) * data.LI_WEITH;
     const TIME = 300;

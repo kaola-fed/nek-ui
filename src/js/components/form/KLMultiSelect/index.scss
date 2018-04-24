@@ -41,7 +41,7 @@
             color: $--text-color-disabled;
         }
     }
-    @include b(cate-wrap) {
+    @include b(multi-select-cate-wrap) {
         max-width: 412px;
         overflow-x: auto;
         white-space: nowrap;
@@ -90,6 +90,8 @@
             margin-left: 13px;
             width: 15px;
         }
+    }
+    @include b(multi-select-cate) {
         @include e(more) {
             position: absolute;
             text-align: center;
