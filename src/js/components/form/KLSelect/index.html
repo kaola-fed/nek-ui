@@ -9,7 +9,7 @@
 	             on-click={this.toggle(!open, $event)}>
 	            <kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
 				{#if clearable}
-				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
+				<kl-icon fontSize=12 type="remove1" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
 				{#if open && canSearch}
 				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input__inner kl-select__search':'kl-input__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
@@ -27,13 +27,13 @@
 	            <div>
 		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input__inner kl-select__search kl-select__search--one" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
-		            <kl-icon fontSize=12 type="error" on-click={this.clearContent($event)} class="kl-icon-errorIcon"/>
+		            <kl-icon fontSize=12 type="remove1" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
 	            </div>
 	            {/if}
 	            {#list selected as item}
 	                <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>
 	                    {item[nameKey]}
-	                    <i class="kl-icon kl-icon-remove" is-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)}></i>
+						<kl-icon type="remove" is-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)} />
 	                </span>
 				{/list}
 				<span class='kl-select__multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>

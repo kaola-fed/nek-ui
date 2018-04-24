@@ -71,9 +71,9 @@ const KLFormItem = Validation.extend({
 
 KLFormItem.directive('cols', function (ele, cols) {
   this.$watch(cols, (ncols) => {
-    ele.className = ele.className.replace(/(\s)?g-col(-\d*)?/gim, '');
+    ele.className = ele.className.replace(/(\s)?kl-col(-\d*)?/gim, '');
     if (ncols) {
-      ele.classList.add('g-col', `g-col-${ncols}`);
+      ele.classList.add('kl-col', `kl-col-${ncols}`);
     }
   });
 });
