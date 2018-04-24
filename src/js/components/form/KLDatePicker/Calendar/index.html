@@ -24,7 +24,7 @@
           {#list _days as day}
           <span class="kl-calendar__item" is-sel={date.toDateString() === day.toDateString()}
               is-dis={!!this.isOutOfRange(day)}
-              r-class={ {'z-muted': date.getMonth() !== day.getMonth()} }
+              r-class={ {'is-muted': date.getMonth() !== day.getMonth()} }
               on-click={this.select(day, $event)}>{day | format: 'dd'}</span>
           {/list}
         </div>
