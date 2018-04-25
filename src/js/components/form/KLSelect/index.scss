@@ -64,10 +64,6 @@
             background: $--background-color-hover;
         }
 
-        @include when(active) {
-            border: 1px solid $--border-color-active;
-        }
-
         @include when(dis) {
             cursor: not-allowed;
             background: $--background-color-disabled;
@@ -192,7 +188,7 @@
         }
     }
 
-    .kl-icon-remove1 {
+    .kl-icon-error {
         color: #999;
 
         &:hover {
