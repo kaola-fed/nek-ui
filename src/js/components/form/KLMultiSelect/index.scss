@@ -41,74 +41,73 @@
             color: $--text-color-disabled;
         }
     }
-    @include b(multi-select-cate-wrap) {
-        max-width: 412px;
-        overflow-x: auto;
-        white-space: nowrap;
-        position: absolute;
-        background-color: #fff;
-        font-size: 0;
-        ul, li {
-            list-style-type: none;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-            background-color: #fff;
-        }
-        ::-webkit-scrollbar-thumb {
-            border-radius: 3px;
-            background-color: #dadada;
-        }
-        ul {
-            width: 136px;
-            border-bottom: 1px solid #eee;
-            border-left: 1px solid #eee;
-            margin: 0;
-            height: 260px;
-            padding: 0;
-            overflow-y: auto;
-            overflow-x: hidden;
-            font-size: 14px;
-            display: inline-block;
-            &:last-child { border-right: 1px solid #eee; }
-        }
-        li {
-            height: 32px;
-            overflow: hidden;
-            line-height: 32px;
-            word-wrap: normal;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            padding-right: 15px;
-            position: relative;
-            &:hover { background-color: #F6F9FC; }
-        }
-        .kl-input, .kl-input-wrap {
-            height: 32px;
-        }
-        .kl-check {
-            margin-left: 13px;
-            width: 15px;
-        }
+}
+
+@include b(multi-select-cate-wrap) {
+    max-width: 412px;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: absolute;
+    background-color: #fff;
+    font-size: 0;
+    ul, li {
+        list-style-type: none;
     }
-    @include b(multi-select-cate) {
-        @include e(more) {
-            position: absolute;
-            text-align: center;
-            width: 30px;
-            right: 0;
-            @include m(child) {
-                background-color: #fff;
-                font-size: 12px;
-                &:hover { background-color: #ddd; }
-            }
-        }
-        @include e(name) {
-            padding-left: 15px;
-        }
-        @include m(active) {
-            background-color: #F6F9FC;
-        }
+    ::-webkit-scrollbar {
+        width: 6px;
+        background-color: #fff;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background-color: #dadada;
+    }
+    .kl-multi-select-cate-inner {
+        width: 136px;
+        border-bottom: 1px solid #eee;
+        border-left: 1px solid #eee;
+        margin: 0;
+        height: 260px;
+        padding: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 14px;
+        display: inline-block;
+        &:last-child { border-right: 1px solid #eee; }
+    }
+    .kl-input, .kl-input-wrap {
+        height: 32px;
+    }
+    .kl-check {
+        margin-left: 13px;
+        width: 15px;
     }
 }
 
+@include b(multi-select-cate) {
+    height: 32px;
+    overflow: hidden;
+    line-height: 32px;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    position: relative;
+    &:hover { background-color: #F6F9FC; }
+    @include e(more) {
+        position: absolute;
+        text-align: center;
+        width: 30px;
+        right: 0;
+        @include m(child) {
+            background-color: #fff;
+            font-size: 12px;
+            &:hover { background-color: #ddd; }
+        }
+    }
+    @include e(name) {
+        padding-left: 15px;
+    }
+    @include m(active) {
+        background-color: #F6F9FC;
+    }
+}

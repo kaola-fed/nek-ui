@@ -1,0 +1,34 @@
+@mixin form-item-size($padding, $height, $font-size) {
+    padding: $padding;
+    height: $height;
+    line-height: $height;
+    font-size: $font-size;
+}
+
+@mixin form-item-width($width) {
+    display: inline-block;
+    width: $width;
+}
+
+@mixin form-item-transition {
+    transition: all 1s ease;
+}
+
+@mixin form-item-focus {
+    outline: 0;
+    background: $--background-color-base;
+    color: $--text-color-default;
+    border-color: $--primary-color;
+    box-shadow: 0 0 2px 0 $--primary-color;
+}
+
+@mixin form-item-hover {
+    border-color: $--primary-color;
+}
+
+@mixin form-item-disabled {
+    cursor: not-allowed;
+    background: $--background-color-disabled;
+    color: $--text-color-disabled;
+    border: $--border-color-disabled;
+}

@@ -25,7 +25,7 @@ $--error-color-darker: darken($--error-color, $--darker-amount) !default;
 
 /* Color-BG */
 $--background-color-base: #fff !default;
-$--background-color-disabled: #eee !default;
+$--background-color-disabled: #f8f8f8 !default;
 $--background-color-hover: #EFFBFB !default;
 $--background-color-selected: $--primary-color !default;
 
@@ -33,7 +33,7 @@ $--background-color-selected: $--primary-color !default;
 $--text-color-white: #fff !default;
 $--text-color-black: #000 !default;
 $--text-color-default: #333 !default;
-$--text-color-auxiliary: #666 !default;
+$--text-color-secondary: #666 !default;
 $--text-color-placeholder: #999 !default;
 $--text-color-disabled: #ccc !default;
 $--text-color-hover: #444 !default;
@@ -58,10 +58,15 @@ $--height-sm: $--height-base - 8 !default;
 $--height-lg: $--height-base + 6 !default;
 $--height-xl: $--height-base + 12 !default;
 
+/* Width */
+$--width-sm: 80px !default;
+$--width-md: 160px !default;
+$--width-lg: 300px !default;
+
 /* Padding */
-$--padding-base: 0px 10px !default;
-$--padding-sm: 0px 6px !default;
-$--padding-lg: 0px 10px !default;
+$--padding-base: 6px 10px !default;
+$--padding-sm: 4px 6px !default;
+$--padding-lg: 8px 10px !default;
 $--padding-xl: 16px 24px !default;
 
 /* Border */
@@ -76,7 +81,7 @@ $--border-radius-xl: 6px !default;
 $--border-color-base: #ddd !default;
 $--border-color-active: $--primary-color !default;
 $--border-color-error: $--error-color !default;
-$--border-color-disabled: #ccc !default;
+$--border-color-disabled: #eee !default;
 $--border-width-base: 1px !default;
 $--border-style-base: solid !default;
 

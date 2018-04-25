@@ -124,57 +124,56 @@ input {
 // Size-Extend
 // ========================================================================
 
-@mixin form-item-size($name, $padding, $height, $font-size) {
-    .kl-input--#{$name} .kl-input__inner,
-    .kl-textarea--#{$name} .kl-textarea__inner,
-    .kl-datepicker--#{$name} .kl-input__inner {
-        padding: $padding;
-        height: $height;
-        line-height: $height;
-        font-size: $font-size;
-    }
-}
+// @mixin form-item-size($name, $padding, $height, $font-size) {
+//     .kl-input--#{$name} .kl-input__inner,
+//     .kl-textarea--#{$name} .kl-textarea__inner,
+//     .kl-datepicker--#{$name} .kl-input__inner {
+//         padding: $padding;
+//         height: $height;
+//         line-height: $height;
+//         font-size: $font-size;
+//     }
+// }
 
-@include form-item-size(sm, $--padding-sm, $--height-sm, $--font-size-xs);
-@include form-item-size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
+// @include form-item-size(sm, $--padding-sm, $--height-sm, $--font-size-xs);
+// @include form-item-size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
 
-@mixin form-item-width($name, $width) {
-    .kl-input--#{$name}w,
-    .kl-textarea--#{$name}w,
-    .kl-dropdown--#{$name}w,
-    .kl-select--#{$name}w,
-    .kl-multi-select--#{$name}w {
-        display: inline-block;
-        width: $width;
-    }
-}
+// @mixin form-item-width($name, $width) {
+//     .kl-input--#{$name}w,
+//     .kl-textarea--#{$name}w,
+//     .kl-dropdown--#{$name}w,
+//     .kl-select--#{$name}w,
+//     .kl-multi-select--#{$name}w {
+//         display: inline-block;
+//         width: $width;
+//     }
+// }
 
-@include form-item-width(sm, 80px);
-@include form-item-width(md, 160px);
-@include form-item-width(lg, 300px);
+// @include form-item-width(sm, 80px);
+// @include form-item-width(md, 160px);
+// @include form-item-width(lg, 300px);
 
 // Transition-Extend
 // ========================================================================
 
-.kl-input__inner,
-.kl-select,
-.kl-textarea,
-.kl-textarea__inner {
-    transition: all 1s ease;
-}
+// .kl-input__inner,
+// .kl-select,
+// .kl-textarea__inner {
+//     transition: all 1s ease;
+// }
 
 // Color Extends:
 // ========================================================================
 
-@mixin form-item-color($name, $border-color) {
-    .kl-input .kl-input__inner--#{$name},
-    .kl-textarea .kl-textarea__inner--#{$name},
-    .kl-select .kl-dropdown__hd--#{$name} {
-        border-color: $border-color;
-    }
-}
+// @mixin form-item-color($name, $border-color) {
+//     .kl-input .kl-input__inner--#{$name},
+//     .kl-textarea .kl-textarea__inner--#{$name},
+//     .kl-select .kl-dropdown__hd--#{$name} {
+//         border-color: $border-color;
+//     }
+// }
 
-@include form-item-color(error, $--error-color);
+// @include form-item-color(error, $--error-color);
 
 // Component:       Tip
 // ========================================================================

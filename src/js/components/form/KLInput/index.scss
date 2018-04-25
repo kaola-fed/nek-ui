@@ -6,13 +6,32 @@
     top: 0;
     bottom: 0;
     margin: auto;
-    color: #666;
+    color: $--text-color-secondary;
 }
 
 @include b(input) {
     display: block;
     position: relative;
     width: 100%;
+    @include m(sm) {
+        .kl-input__inner {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
+        }
+    }
+    @include m(lg) {
+        .kl-input__inner {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg)
+        }
+    }
+    @include m(smw) {
+        @include form-item-width($--width-sm);
+    }
+    @include m(mdw) {
+        @include form-item-width($--width-md);
+    }
+    @include m(lgw) {
+        @include form-item-width($--width-lg);
+    }
     @include e(inner) {
         padding: $--padding-base;
         color: $--text-color-default;
@@ -23,24 +42,17 @@
         line-height: $--height-base;
         font-size: $--font-size-base;
         width: 100%;
-        &:focus {
-            outline: 0;
-            background: $--background-color-base;
-            color: $--text-color-default;
-            border-color: $--primary-color;
-            box-shadow: 0 0 2px 0 #00C4C0;
-        }
         &:hover {
-            border-color: $--primary-color;
+            @include form-item-hover;
+        }
+        &:focus {
+            @include form-item-focus;
         }
         &:disabled {
-            cursor: not-allowed;
-            background: $--background-color-disabled;
-            color: $--text-color-placeholder;
-            border: $--border-color-base;
+            @include form-item-disabled;
         }
         @include placeholder {
-            color: #999;
+            color: $--text-color-placeholder;
             opacity: 1;
         }
         @include m(error) {
@@ -54,6 +66,7 @@
                 box-shadow: 0 0 0 0;
             }
         }
+        @include form-item-transition;
     }
     @include e(unit) {
         @include input-element;
@@ -82,11 +95,10 @@
         padding: $--padding-base;
         border-left: 1px solid transparent;
     }
-
-    @include b(input-wrap) {
-        position: relative;
-        display: block;
-    }
+}
+@include b(input-wrap) {
+    position: relative;
+    display: block;
 }
 
 
