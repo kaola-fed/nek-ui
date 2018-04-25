@@ -11,7 +11,7 @@
         word-wrap:normal;
         white-space:nowrap;
         text-overflow:ellipsis;
-        height: $--height-base;
+        min-height: $--height-base;
         line-height: $--height-base - 2;
         padding: 0 10px;
         background: $--background-color-base;
@@ -62,10 +62,6 @@
 
         @include when(hover) {
             background: $--background-color-hover;
-        }
-
-        @include when(active) {
-            border: 1px solid $--border-color-active;
         }
 
         @include when(dis) {
@@ -134,6 +130,7 @@
         font-size: 12px;
 
         &.kl-input__inner {
+            height: 31px;
             border: none;
             border-bottom: 1px solid #eee;
         }
@@ -191,7 +188,7 @@
         }
     }
 
-    .kl-icon-remove1 {
+    .kl-icon-error {
         color: #999;
 
         &:hover {
