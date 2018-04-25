@@ -30,5 +30,29 @@
     cursor: not-allowed;
     background: $--background-color-disabled;
     color: $--text-color-disabled;
-    border: $--border-color-disabled;
+    border: 1px solid $--border-color-disabled;
+}
+
+@mixin form-item-error {
+    border-color: $--border-color-error;
+    &:hover {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
+}
+
+@mixin form-item-input {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    max-width: 100%;
 }

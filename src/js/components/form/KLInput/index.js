@@ -36,7 +36,7 @@ const bowser = require('bowser');
  * @param {number}          [options.data.min]                => 【验证规则】type=int/float时的最小值, type=char时，最小长度
  * @param {number}          [options.data.max]                => 【验证规则】type=int/float时的最大值, type=char时，最大长度
  * @param {string}          [options.data.message]            => 【验证规则】验证失败时，提示的消息
- * @param {string}          [options.data.size]               => 组件大小, sm/md/lg
+ * @param {string}          [options.data.size]               => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {number}          [options.data.width]              => 组件宽度
  */
 const KLInput = Component.extend({

@@ -35,7 +35,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {boolean}       [options.data.disabledMinutes=false]   => 是否禁用分钟输入框
  * @param {boolean}       [options.data.disabledSeconds=false]   => 是否禁用秒输入框
  * @param {boolean}       [options.data.visible=true]     => 是否显示
- * @param {string}        [options.data.size]             => 组件大小, sm/md/lg
+ * @param {string}        [options.data.size]             => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {number}        [options.data.width]            => 组件宽度
  * @param {string}        [options.data.class]            => 补充class
  */

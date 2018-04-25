@@ -3,10 +3,70 @@
     user-select: none;
     vertical-align: top;
 
+    @include e(multi-placeholder) {
+        color: #999;
+    }
+
+    @include e(tag) {
+        position: relative;
+        padding: 0 20px 0 10px;
+        margin: 4px 5px 0 0;
+        background-color: #f3f3f3;
+        border-radius: $--border-radius-base;
+        height: 20px;
+        line-height: 20px;
+        float: left;
+        cursor: default;
+
+        @include when(dis) {
+            cursor: not-allowed;
+        }
+
+        @include m(more) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+
+        .kl-icon-remove {
+            position: absolute;
+            right: 5px;
+        }
+
+        &:last-child {
+            margin-bottom: 6px;
+        }
+    }
+
+    @include e(search) {
+        font-family: inherit;
+        line-height: 20px;
+        vertical-align: middle;
+        width: calc(100% - 20px);
+        background-color: transparent;
+        font-size: 12px;
+
+        @include m(one) {
+            padding: 5px 0;
+            display: block;
+        }
+
+        &.kl-input__inner {
+            height: 31px;
+            border: none;
+            border-bottom: 1px solid #eee;
+        }
+
+        &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
     .kl-dropdown__hd {
         box-sizing: border-box;
         cursor: pointer;
-        font-size: 0;
+        font-size: 12px;
         overflow:hidden;
         word-wrap:normal;
         white-space:nowrap;
@@ -20,6 +80,25 @@
         border-radius: $--border-radius-base;
         overflow-y: auto;
         position: relative;
+        @include form-item-transition;
+
+        @include when(active) {
+            @include form-item-focus;
+        }
+
+        &:hover {
+            @include form-item-hover;
+            .kl-select__hover--show {
+                display: inline-block;
+            }
+            .kl-select__hover--hide {
+                display: none;
+            }
+        }
+
+        @include when(dis) {
+            @include form-item-disabled;
+        }
 
         .kl-icon {
             float: right;
@@ -41,34 +120,13 @@
             display: none;
         }
 
-        &:hover {
-            .kl-select__hover--show {
-                display: inline-block;
-            }
-            .kl-select__hover--hide {
-                display: none;
-            }
-        }
-
-        span {
-            float: left;
-            font-size: 12px;
-        }
-
         .kl-icon-remove-addclass {
             position: relative;
             top: -28px;
         }
 
-        @include when(hover) {
-            background: $--background-color-hover;
-        }
-
-        @include when(dis) {
-            cursor: not-allowed;
-            background: $--background-color-disabled;
-            border: 1px solid $--border-color-disabled;
-            color: $--text-color-disabled;
+        span {
+            float: left;
         }
     }
 
@@ -86,109 +144,7 @@
         }
     }
 
-    @include e(multi-placeholder) {
-        color: #999;
-    }
-
-    @include e(tag) {
-        position: relative;
-        padding: 0 20px 0 10px;
-        margin: 4px 5px 0 0;
-        background-color: #f3f3f3;
-        border-radius: $--border-radius-base;
-        height: 20px;
-        line-height: 20px;
-        float: left;
-        cursor: default;
-
-        .kl-icon-remove {
-            position: absolute;
-            right: 5px;
-        }
-
-        &:last-child {
-            margin-bottom: 6px;
-        }
-
-        @include when(dis) {
-            cursor: not-allowed;
-        }
-
-        @include m(more) {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 150px;
-        }
-    }
-
-    @include e(search) {
-        font-family: inherit;
-        line-height: 20px;
-        vertical-align: middle;
-        width: calc(100% - 20px);
-        background-color: transparent;
-        font-size: 12px;
-
-        &.kl-input__inner {
-            height: 31px;
-            border: none;
-            border-bottom: 1px solid #eee;
-        }
-
-        &:focus{
-            outline: none;
-            box-shadow: none;
-        }
-
-        @include m(one) {
-            padding: 5px 0;
-            display: block;
-        }
-    }
-
-    @include m(error) {
-        .kl-dropdown__hd {
-            border-color: $--border-color-error;
-        }
-    }
-
-    @include m(sm) {
-        height: $--height-sm;
-        padding: 0;
-
-        .kl-dropdown__hd {
-            padding: 0px 6px;
-            height: $--height-sm;
-            line-height: $--height-sm - 2;
-            span {
-                font-size: $--font-size-xs;
-            }
-        }
-
-        .kl-listview >.kl-listview__item{
-            line-height: 12px;
-        }
-    }
-
-    @include m(lg) {
-        height: $--height-lg;
-        padding: 0;
-
-        .kl-dropdown__hd {
-            padding: 0 10px;
-            height: $--height-lg;
-            line-height: $--height-lg - 2;
-            span {
-                font-size: $--font-size-lg;
-            }
-        }
-
-        .kl-listview >.kl-listview__item{
-            line-height: 12px;
-        }
-    }
-
-    .kl-icon-error {
+    .kl-select__hover--show {
         color: #999;
 
         &:hover {
@@ -199,6 +155,60 @@
     .kl-treeview {
         overflow: auto;
         max-height: 200px;
+    }
+
+    @include m(error) {
+        .kl-dropdown__hd {
+            @include form-item-error;
+            @include when(active) {
+                border-color: $--error-color;
+                box-shadow: 0 0 0 0;
+            }
+        }
+    }
+
+    @include m(sm) {
+        .kl-dropdown__hd {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs);
+            min-height: $--height-sm;
+            line-height: $--height-sm - 2;
+            padding: 0px 6px;
+        }
+
+        .kl-listview >.kl-listview__item {
+            line-height: 12px;
+            font-size: $--font-size-xs;
+        }
+    }
+
+    @include m(lg) {
+        .kl-dropdown__hd {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg);
+            line-height: $--height-lg - 2;
+            min-height: $--height-lg;
+            padding: 0 10px;
+        }
+
+        .kl-listview >.kl-listview__item {
+            font-size: $--font-size-lg;
+            line-height: 22px;
+        }
+    }
+
+    @include m(smw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-sm);
+        }
+    }
+    @include m(mdw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-md);
+        }
+    }
+    @include m(lgw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-lg);
+        }
     }
 }
 

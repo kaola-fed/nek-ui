@@ -23,8 +23,6 @@
 	}
     @include e(angle) {
         transition: transform .5s;
-        line-height: 20px !important;
-        margin-top: 5px;
         @include m(transform) {
             transform: rotate(180deg);
         }
@@ -35,10 +33,7 @@
 
     @include when(dis) {
         .kl-dropdown__hd {
-            cursor: not-allowed;
-            background: $--background-color-disabled;
-            border: 1px solid $--border-color-disabled;
-            color: $--text-color-disabled;
+            @include form-item-disabled;
         }
     }
 }
@@ -92,7 +87,12 @@
     text-overflow: ellipsis;
     padding-right: 15px;
     position: relative;
-    &:hover { background-color: #F6F9FC; }
+    &:hover {
+        background-color: $--background-color-hover;
+    }
+    @include m(active) {
+        background-color: $--background-color-hover;
+    }
     @include e(more) {
         position: absolute;
         text-align: center;
@@ -106,8 +106,5 @@
     }
     @include e(name) {
         padding-left: 15px;
-    }
-    @include m(active) {
-        background-color: #F6F9FC;
     }
 }

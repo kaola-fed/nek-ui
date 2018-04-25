@@ -33,6 +33,7 @@
         @include form-item-width($--width-lg);
     }
     @include e(inner) {
+        @include form-item-input;
         padding: $--padding-base;
         color: $--text-color-default;
         background: $--background-color-base;
@@ -42,31 +43,24 @@
         line-height: $--height-base;
         font-size: $--font-size-base;
         width: 100%;
+        @include placeholder {
+            color: $--text-color-placeholder;
+            opacity: 1;
+        }
+        @include form-item-transition;
+
         &:hover {
             @include form-item-hover;
         }
         &:focus {
             @include form-item-focus;
         }
+        @include m(error) {
+            @include form-item-error;
+        }
         &:disabled {
             @include form-item-disabled;
         }
-        @include placeholder {
-            color: $--text-color-placeholder;
-            opacity: 1;
-        }
-        @include m(error) {
-            border-color: $--error-color;
-            &:hover {
-                box-shadow: 0 0 0 0;
-                border-color: $--error-color;
-            }
-            &:focus {
-                border-color: $--error-color;
-                box-shadow: 0 0 0 0;
-            }
-        }
-        @include form-item-transition;
     }
     @include e(unit) {
         @include input-element;

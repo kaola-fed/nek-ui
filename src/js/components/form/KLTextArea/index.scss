@@ -24,6 +24,7 @@
         @include form-item-width($--width-lg);
     }
     @include e(inner) {
+        @include form-item-input;
         padding: $--padding-base;
         color: $--text-color-default;
         background: $--background-color-base;
@@ -31,6 +32,7 @@
         border: 1px solid #EEEEEE;
         font-size: $--font-size-base;
         width: 100%;
+        height: 120px;
         &:hover {
             @include form-item-hover;
         }
@@ -41,15 +43,7 @@
             @include form-item-disabled;
         }
         @include m(error) {
-            border-color: $--error-color;
-            &:hover {
-                box-shadow: 0 0 0 0;
-                border-color: $--error-color;
-            }
-            &:focus {
-                border-color: $--error-color;
-                box-shadow: 0 0 0 0;
-            }
+            @include form-item-error;
         }
         @include form-item-transition;
     }

@@ -12,11 +12,11 @@
         border: none;
     }
     @include m(inline) {
-        .u-formitem {
+        .kl-form-item {
             display: inline-block;
             vertical-align: top;
             margin-bottom: 0;
-            .formitem_ct {
+            .kl-form-item__ct {
                 display: inline-block;
             }
         }
@@ -28,8 +28,8 @@
         margin: 15px 0;
         color: #777;
     }
-    >.u-formitem,
-    fieldset>.u-formitem {
+    >.kl-form-item,
+    fieldset>.kl-form-item {
         margin-bottom: $--size-base * 2;
     }
 }
@@ -77,33 +77,6 @@
     }
 }
 
-@mixin formctrl-input {
-    // - Default is `content-box` with following exceptions set to `border-box`.
-    box-sizing: border-box; // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
-    margin: 0;
-    border: 0;
-    padding: 0; // - Remove `border-radius` in iOS.
-    border-radius: 0; // - Correct `font` properties and `color` not being inherited.
-    font: inherit;
-    color: inherit; // - Remove default style in iOS.
-    -webkit-appearance: none; // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
-    max-width: 100%;
-}
-
-// 由于优先级问题,不能写成.kl-input .kl-input__inner,会覆盖
-.kl-input__inner,
-.kl-textarea__inner {
-    @include formctrl-input;
-}
-
-.kl-textarea__inner {
-    // - (It has been realized in normalize.css) Remove default vertical scrollbar in IE 8/9/10/11.
-    // overflow: auto;
-    // - Improve readability and alignment in all browsers.
-    width: 100%;
-    height: 120px;
-}
-
 input {
     &.kl-check,
     &.kl-radio {
@@ -120,60 +93,6 @@ input {
         cursor: not-allowed;
     }
 }
-
-// Size-Extend
-// ========================================================================
-
-// @mixin form-item-size($name, $padding, $height, $font-size) {
-//     .kl-input--#{$name} .kl-input__inner,
-//     .kl-textarea--#{$name} .kl-textarea__inner,
-//     .kl-datepicker--#{$name} .kl-input__inner {
-//         padding: $padding;
-//         height: $height;
-//         line-height: $height;
-//         font-size: $font-size;
-//     }
-// }
-
-// @include form-item-size(sm, $--padding-sm, $--height-sm, $--font-size-xs);
-// @include form-item-size(lg, $--padding-lg, $--height-lg, $--font-size-lg);
-
-// @mixin form-item-width($name, $width) {
-//     .kl-input--#{$name}w,
-//     .kl-textarea--#{$name}w,
-//     .kl-dropdown--#{$name}w,
-//     .kl-select--#{$name}w,
-//     .kl-multi-select--#{$name}w {
-//         display: inline-block;
-//         width: $width;
-//     }
-// }
-
-// @include form-item-width(sm, 80px);
-// @include form-item-width(md, 160px);
-// @include form-item-width(lg, 300px);
-
-// Transition-Extend
-// ========================================================================
-
-// .kl-input__inner,
-// .kl-select,
-// .kl-textarea__inner {
-//     transition: all 1s ease;
-// }
-
-// Color Extends:
-// ========================================================================
-
-// @mixin form-item-color($name, $border-color) {
-//     .kl-input .kl-input__inner--#{$name},
-//     .kl-textarea .kl-textarea__inner--#{$name},
-//     .kl-select .kl-dropdown__hd--#{$name} {
-//         border-color: $border-color;
-//     }
-// }
-
-// @include form-item-color(error, $--error-color);
 
 // Component:       Tip
 // ========================================================================

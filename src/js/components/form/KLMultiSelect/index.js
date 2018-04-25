@@ -32,6 +32,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}         [options.data.readonly=false]           => 是否只读
  * @param {boolean}         [options.data.multiple=false]           => 是否多选
  * @param {boolean}         [options.data.disabled=false]           => 是否禁用
+ * @param {string}          [options.data.size]                     => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {boolean}         [options.data.visible=true]             => 是否显示
  * @param {string}          [options.data.class]                    => 补充class
  * @param {number}          [options.data.width]                    => 组件宽度

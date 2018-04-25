@@ -43,8 +43,8 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {boolean}           [options.data.multiple=false]           => 是否多选
  * @param {string}            [options.data.separator=,]              => 多选value分隔符
  * @param {boolean}           [options.data.selectedClose=true]       => 多选时选中非全部和请选择项时 是否关闭
- * @param {boolean}           [options.data.canSelectAll=true]       => 是否有全选
- * @param {string}            [options.data.size]                     => 组件大小, sm/md/lg
+ * @param {boolean}           [options.data.canSelectAll=true]        => 是否有全选
+ * @param {string}            [options.data.size]                     => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {number}            [options.data.width]                    => 组件宽度
  * @param {number}            [options.data.limit]                    => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
  */

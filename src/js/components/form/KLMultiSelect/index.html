@@ -1,5 +1,5 @@
-<div class="kl-dropdown kl-select kl-select--{state} kl-multi-select {class}" r-width={width} is-dis={disabled} r-hide={!visible} ref="element">
-    <div class="kl-dropdown__hd" on-click={this.toggle(!open, $event)}>
+<div class="kl-dropdown kl-select kl-select--{size} kl-select--{state} kl-multi-select {class}" r-width={width} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd" is-dis={disabled} r-class={{'is-active':open}} on-click={this.toggle(!open, $event)}>
         {#if showRoot}
             {#list rootSelected as item}
                 {#if showPath && placement}

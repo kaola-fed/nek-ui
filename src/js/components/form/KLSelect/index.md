@@ -211,7 +211,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-select source={source} selected={selected} value={value} /> 
+<kl-select source={source} selected={selected} value={value} />
 <p>当前选择项：{selected ? selected.name : 'undefined'}</p>
 <p>当前选择值：{value || 'undefined'}</p>
 ```
@@ -315,14 +315,14 @@ var component = new NEKUI.Component({
     <kl-check checked={isCaseSensitive} />
 </kl-form-item>
 <kl-form-item>
-    <kl-select source={source} 
-            multiple={multiple} 
+    <kl-select source={source}
+            multiple={multiple}
             canSearch={canSearch}
-            separator={separator} 
+            separator={separator}
             selectedClose={selectedClose}
-            canSelectAll={canSelectAll} 
+            canSelectAll={canSelectAll}
             isCaseSensitive={isCaseSensitive}
-            searchInputPlaceholder="请输入" 
+            searchInputPlaceholder="请输入"
             value={value} limit={limit}
             />
 </kl-form-item>
