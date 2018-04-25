@@ -34,19 +34,19 @@
     </div>
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <div class="kl-cate-wrap">
+        <div class="kl-multi-select-cate-wrap">
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
             <ul r-animation="on: leave; class: animated fadeOutX fast;">
                 <kl-input value={search[level]}  readonly={readonly}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}
-                <li class="f-csp {cate.active ? 'kl-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
+                <li class="f-csp {cate.active ? 'kl-multi-select-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
-                    <span {#if !multiple} class="kl-cate-wrap__name"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="kl-cate-wrap__more" r-class={{'kl-cate-wrap__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
+                    <span {#if !multiple} class="kl-multi-select-cate__name"  {/if}>{cate[nameKey]}</span>
+                    {#if cate[childKey] && cate[childKey].length}<span class="kl-multi-select-cate__more" r-class={{'kl-multi-select-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
                 </li>
                 {/if}
                 {/list}

@@ -83,10 +83,6 @@
         border-left: 1px solid transparent;
     }
 
-    +.kl-tip {
-        margin-left: 5px;
-    }
-
     @include b(input-wrap) {
         position: relative;
         display: block;
