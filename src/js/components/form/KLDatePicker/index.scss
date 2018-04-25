@@ -6,6 +6,11 @@
   }
 
   .kl-dropdown {
+    .kl-dropdown__bd {
+      display: inline-block;
+      width: auto;
+    }
+
     .kl-dropdown__ft {
       display: flex;
       padding: 4px 0 0;

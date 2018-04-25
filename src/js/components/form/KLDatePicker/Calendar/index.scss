@@ -10,9 +10,23 @@
   text-align: center;
   user-select: none;
 
+  @include m(dis) {
+    @include e(item) {
+      background: $--background-color-base;
+      color: $--text-color-disabled;
+      cursor: not-allowed;
+
+      @include when(sel) {
+        background: $--background-color-disabled;
+        color: $--text-color-disabled;
+      }
+    }
+  }
+
   @include e(item) {
     display: inline-block;
     width: 32px;
+    height: 30px;
     line-height: 30px;
     margin: 1px;
     border-radius: $--border-radius-base;
@@ -36,19 +50,6 @@
 
     @include when(muted) {
       color: $--text-color-disabled;
-    }
-  }
-
-  @include m(dis) {
-    @include e(item) {
-      background: $--background-color-base;
-      color: $--text-color-disabled;
-      cursor: not-allowed;
-
-      @include when(sel) {
-        background: $--background-color-disabled;
-        color: $--text-color-disabled;
-      }
     }
   }
 }
