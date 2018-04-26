@@ -1,37 +1,44 @@
 $--size-base: 8px !default;
-$--lighter-amount: 15%;
-$--darker-amount: 15%;
+$--color-mix-amount: 10%;
 
 /* Color-Base */
+$--color-white: #FFF !default;
+$--color-black: #000 !default;
+
 $--primary-color: #00C4C0 !default;
-$--primary-color-lighter: lighten($--primary-color, $--lighter-amount) !default;
-$--primary-color-darker: darken($--primary-color, $--darker-amount) !default;
+$--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amount) !default;
+$--primary-color-active: mix($--black-white, $--primary-color, $--color-mix-amount) !default;
+$--primary-color-background: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
 
 $--info-color: #54A8F7 !default;
-$--info-color-lighter: lighten($--info-color, $--lighter-amount) !default;
-$--info-color-darker: darken($--info-color, $--darker-amount) !default;
+$--info-color-hover: mix($--color-white, $--info-color, $--color-mix-amount) !default;
+$--info-color-active: mix($--black-white, $--info-color, $--color-mix-amount) !default;
+$--info-color-background: mix($--color-white, $--info-color, $--color-mix-amount * 5) !default;
 
 $--success-color: #93DD68 !default;
-$--success-color-lighter: lighten($--success-color, $--lighter-amount) !default;
-$--success-color-darker: darken($--success-color, $--darker-amount) !default;
+$--success-color-hover: mix($--color-white, $--success-color, $--color-mix-amount) !default;
+$--success-color-active: mix($--black-white, $--success-color, $--color-mix-amount) !default;
+$--success-color-background: mix($--color-white, $--success-color, $--color-mix-amount * 5) !default;
 
 $--warning-color: #FFB539 !default;
-$--warning-color-lighter: lighten($--warning-color, $--lighter-amount) !default;
-$--warning-color-darker: darken($--warning-color, $--darker-amount) !default;
+$--warning-color-hover: mix($--color-white, $--warning-color, $--color-mix-amount) !default;
+$--warning-color-active: mix($--black-white, $--warning-color, $--color-mix-amount) !default;
+$--warning-color-background: mix($--color-white, $--warning-color, $--color-mix-amount * 5) !default;
 
 $--error-color: #F86B6B !default;
-$--error-color-lighter: lighten($--error-color, $--lighter-amount) !default;
-$--error-color-darker: darken($--error-color, $--darker-amount) !default;
+$--error-color-hover: mix($--color-white, $--error-color, $--color-mix-amount) !default;
+$--error-color-active: mix($--black-white, $--error-color, $--color-mix-amount) !default;
+$--error-color-background: mix($--color-white, $--error-color, $--color-mix-amount * 5) !default;
 
 /* Color-BG */
-$--background-color-base: #fff !default;
+$--background-color-base: $--color-white !default;
 $--background-color-disabled: #f8f8f8 !default;
-$--background-color-hover: #EFFBFB !default;
+$--background-color-hover: $--primary-color-background !default;
 $--background-color-selected: $--primary-color !default;
 
 /* Color-Text */
-$--text-color-white: #fff !default;
-$--text-color-black: #000 !default;
+$--text-color-white: $--color-white !default;
+$--text-color-black: $--color-black !default;
 $--text-color-default: #333 !default;
 $--text-color-secondary: #666 !default;
 $--text-color-placeholder: #999 !default;
