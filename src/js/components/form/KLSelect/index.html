@@ -48,7 +48,6 @@
 	                    {placeholder}
 	                </li>
 	            {/if}
-
 	            {#list this.filterArray(source) as item}
 	            {#if (!filter || (filter && filter(item)))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}

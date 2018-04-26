@@ -38,6 +38,13 @@
         }
     }
 
+    .kl-input__inner {
+        border: none;
+        padding: 0px;
+        height: 20px;
+        vertical-align: unset;
+    }
+
     @include e(search) {
         font-family: inherit;
         line-height: 20px;
@@ -49,14 +56,12 @@
         @include m(one) {
             padding: 5px 0;
             display: block;
+            &.kl-input__inner {
+                height: 31px;
+                border-bottom: 1px solid #eee;
+            }
         }
-
-        &.kl-input__inner {
-            height: 31px;
-            border: none;
-            border-bottom: 1px solid #eee;
-        }
-
+       
         &:focus{
             outline: none;
             box-shadow: none;
@@ -174,7 +179,11 @@
             line-height: $--height-sm - 2;
             padding: 0px 6px;
         }
-
+        .kl-input__inner {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs);
+            padding: 0px;
+            height: $--height-sm - 2;
+        }
         .kl-listview >.kl-listview__item {
             line-height: 12px;
             font-size: $--font-size-xs;
@@ -188,7 +197,11 @@
             min-height: $--height-lg;
             padding: 0 10px;
         }
-
+        .kl-input__inner {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg);
+            padding: 0px;
+            height: $--height-lg - 2;
+        }
         .kl-listview >.kl-listview__item {
             font-size: $--font-size-lg;
             line-height: 22px;
