@@ -22,7 +22,7 @@
         }
 	}
     @include e(angle) {
-        transition: transform .5s;
+        // transition: transform .5s;
         @include m(transform) {
             transform: rotate(180deg);
         }
