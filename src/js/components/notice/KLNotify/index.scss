@@ -1,0 +1,82 @@
+
+$--notify_z-index: 1040;
+$--notify_position: 10px;
+$--notify_width: 260px;
+$--media-sm-max-width: 768px - 1;
+@include b(notify) {
+    box-sizing: border-box;
+    position: fixed;
+    z-index: $--notify_z-index;
+    top: $--notify_position;
+    left: $--notify_position;
+    min-width: $--notify_width;
+    max-width: 350px;
+    font-size: 12px;
+
+    .kl-message {
+        margin-bottom: 10px;
+        padding: 16px 35px 16px 20px;
+        &:hover .message_close {
+            display: block;
+        }
+        .kl-message__close {
+            display: none;
+            position: absolute;
+            right: 16px;
+            margin-top: 2px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+    }
+
+    @include m(topright) {
+        left: auto;
+        right: $--notify_position;
+    }
+
+    @include m(bottomright) {
+        left: auto;
+        right: $--notify_position;
+    }
+
+    @include m(topcenter) {
+        left: 50%;
+        margin-left: ($--notify_width / -2);
+    }
+
+    @include m(bottomcenter) {
+        left: 50%;
+        margin-left: ($--notify_width / -2);
+    }
+
+    @include m(bottomleft) {
+        top: auto;
+        bottom: $--notify_position;
+    }
+
+    @include m(bottomright) {
+        top: auto;
+        bottom: $--notify_position;
+    }
+
+    @include m(bottomcenter) {
+        top: auto;
+        bottom: $--notify_position;
+    }
+
+    @include m(static) {
+        position: static;
+        width: auto;
+    }
+}
+/* Responsive */
+@media (max-width: $--media-sm-max-width) {
+    // - Fit in small screen
+    .kl-notify {
+        left: $--notify_position;
+        right: $--notify_position;
+        width: auto;
+        margin: 0;
+    }
+}
