@@ -108,7 +108,7 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (isDev && !/^KL(MultiSelect)$/.test(comp)) {
+      if (isDev && !/^KL(Button)$/.test(comp)) {
         return false;
       }
 

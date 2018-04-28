@@ -51,7 +51,7 @@
     max-width: 100%;
     text-transform: none;
     color: $--text-color-default;
-    background: $--background-color-base;
+    background: $--background-color-white;
     border-radius: $--border-radius-base; // -webkit-transition: all linear 0.2s;
     // transition: all linear 0.2s;
     @include placeholder {
@@ -60,9 +60,9 @@
     }
     &:focus {
         outline: 0;
-        background: $--background-color-base;
+        background: $--background-color-white;
         color: $--text-color-default;
-        border: $--border-color-active;
+        border: $--border-color-primary;
     }
     &:disabled {
         cursor: not-allowed;

@@ -12,8 +12,8 @@ masonry: true
 
 ```xml
 <kl-button type="primary" title="主按钮" />
-<kl-button type="secondary" title="次按钮" />
-<kl-button title="弱按钮" />
+<kl-button title="次按钮" />
+<kl-button type="warning" title="警示按钮" />
 <kl-button disabled={true} title="不可点" />
 ```
 
@@ -26,10 +26,9 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="primary" title="主按钮" size="sm" />
-<kl-button type="secondary" title="次按钮" size="sm" />
-<kl-button title="弱按钮" size="sm" />
-<kl-button disabled={true} title="不可点" size="sm" />
+<kl-button title="大型按钮" size="lg" />
+<kl-button title="默认大小" />
+<kl-button title="小型按钮" size="sm" />
 ```
 
 <!-- demo_end -->
@@ -47,14 +46,14 @@ masonry: true
 </style>
 
 ```xml
-<kl-button action="add" title="添加" class="doc-iconBtn" />
-<kl-button action="reject" title="驳回" class="doc-iconBtn" />
-<kl-button action="pass" title="通过" class="doc-iconBtn" />
-<kl-button action="copy" title="复制" class="doc-iconBtn" />
-<kl-button action="download" title="下载" class="doc-iconBtn" />
-<kl-button action="upload" title="上传" class="doc-iconBtn" />
-<kl-button action="remove" title="删除" class="doc-iconBtn" />
-<kl-button action="search" title="查询" class="doc-iconBtn" />
+<kl-button type="primary" icon="add" title="添加" class="doc-iconBtn" />
+<kl-button type="warning" icon="warning" title="驳回" class="doc-iconBtn" />
+<kl-button icon="success" title="通过" class="doc-iconBtn" />
+<kl-button icon="copy" title="复制" class="doc-iconBtn" />
+<kl-button icon="download" title="下载" class="doc-iconBtn" />
+<kl-button icon="upload" title="上传" class="doc-iconBtn" />
+<kl-button icon="remove" title="删除" class="doc-iconBtn" />
+<kl-button icon="search" title="查询" class="doc-iconBtn" />
 ```
 
 <!-- demo_end -->

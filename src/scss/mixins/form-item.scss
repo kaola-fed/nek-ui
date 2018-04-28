@@ -16,14 +16,14 @@
 
 @mixin form-item-focus {
     outline: 0;
-    background: $--background-color-base;
+    background: $--background-color-white;
     color: $--text-color-default;
-    border-color: $--primary-color;
-    box-shadow: 0 0 2px 0 $--primary-color;
+    border-color: $--border-color-primary;
+    box-shadow: 0 0 2px 0 $--border-color-primary;
 }
 
 @mixin form-item-hover {
-    border-color: $--primary-color;
+    border-color: $--border-color-primary;
 }
 
 @mixin form-item-disabled {

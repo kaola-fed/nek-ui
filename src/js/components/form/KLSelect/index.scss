@@ -61,7 +61,7 @@
                 border-bottom: 1px solid #eee;
             }
         }
-       
+
         &:focus{
             outline: none;
             box-shadow: none;
@@ -79,7 +79,7 @@
         min-height: $--height-base;
         line-height: $--height-base - 2;
         padding: 0 10px;
-        background: $--background-color-base;
+        background: $--background-color-white;
         color: $--text-color-default;
         border: 1px solid $--border-color-base;
         border-radius: $--border-radius-base;

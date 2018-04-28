@@ -1,5 +1,5 @@
 <table
-    class="table_tb"
+    class="kl-table-tbody"
     r-style={{
         'width': width == undefined ? 'auto' : width + 'px',
         'text-align': config.textAlign || 'center',
@@ -15,19 +15,19 @@
         {/if}
     </colgroup>
 
-    <thead class="tb_hd">
+    <thead class="kl-table-tbody-head">
         {#list headers as headerRow by headerRow_index}
-            <tr class="tb_hd_tr">
+            <tr class="kl-table-tbody-head__tr">
                 {#list headerRow as header by header_index}
                     <th ref="table_th_{headerRow_index}_{header_index}"
-                        class="tb_hd_th {header.thClass}"
+                        class="kl-table-tbody-head__th {header.thClass}"
                         colspan={header._headerColSpan}
                         rowspan={header._headerRowSpan}
                         on-mousedown={this._onMouseDown($event, header, header_index, headerRow_index)}
                         on-mousemove={this._onMouseMove($event, header, header_index, headerRow_index)}
                         on-mouseout={this._onMouseOut($event, header, header_index, headerRow_index)}
                         >
-                        <div class="th_content f-flex-{header.align || align || 'center'}"
+                        <div class="kl-table-tbody-head-th f-flex-{header.align || align || 'center'}"
                             title={header.name}
                             on-click={this._onHeaderClick(header, header_index)}>
                             {#if header.headerTemplate}
@@ -37,21 +37,21 @@
                             {#elseif header.headerFormat}
                                 {#include this._getFormat(header)}
                             {#else}
-                                <span class="header_text"
+                                <span class="kl-table-tbody-head-th__headerText"
                                     r-class={{
                                         'f-cursor-pointer': !!(header.sortable && header.key),
                                     }}>{header.name}</span>
                                 <span>
                                     {#if header.tip}
-                                        <span class="th_tip">
+                                        <span class="kl-table-tbody-head-th__tip">
                                             <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>
-                                                <i class="u-icon u-icon-info-circle" />
+                                                <i class="kl-icon kl-icon-info-circle" />
                                             </kl-tooltip>
                                         </span>
                                     {/if}
                                     {#if header.sortable && header.key}
-                                        <i class="u-icon u-icon-unsorted u-icon-1">
-                                            <i class="u-icon u-icon-2 {header | sortingClass}"/>
+                                        <i class="kl-icon kl-icon-unsorted kl-icon-1 kl-table-tbody-head-th-unsortedIcon">
+                                            <i class="kl-icon kl-table-tbody-head-th-unsortedIcon__icon2 {header | sortingClass}"/>
                                         </i>
                                     {/if}
                                     {#if header.type === 'check' && header.enableCheckAll}
@@ -64,13 +64,13 @@
                 {/list}
 
                 {#if scrollYBarWidth && !fixedCol}
-                    <th class="th_hd_gutter" />
+                    <th class="kl-table-theader-head__gutter" />
                 {/if}
             </tr>
         {/list}
     </thead>
     {#if scrollYBarWidth && !fixedCol}
-        <div class="patch"
+        <div class="kl-table-patch"
             r-style={{
                 height: height + 'px',
                 top: 0,

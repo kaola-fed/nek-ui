@@ -86,7 +86,7 @@ title: 筛选区
         </kl-col>
         <kl-col span="4">
             <kl-form-item>
-                <kl-button type="secondary" title="查询"></kl-button>
+                <kl-button title="查询"></kl-button>
                 <kl-button title="重置"></kl-button>
             </kl-form-item>
         </kl-col>

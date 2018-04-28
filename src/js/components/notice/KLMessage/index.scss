@@ -1,10 +1,10 @@
 @include b(message) {
     @extend .f-cb;
-    
+
     display: flex;
     align-items: center;
     padding: 6px 15px;
-    background: $--background-color-base;
+    background: $--background-color-white;
     color: #777;
     border: 1px solid $--border-color-base;
     box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);

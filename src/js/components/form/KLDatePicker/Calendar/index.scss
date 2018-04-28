@@ -1,7 +1,7 @@
 @include b(calendar) {
   width: 250px;
   padding: 4px;
-  background: $--background-color-base;
+  background: $--background-color-white;
   color: $--text-color-default;
   border: 1px solid $--border-color-base;
   border-radius: $--border-radius-lg;
@@ -12,7 +12,7 @@
 
   @include m(dis) {
     @include e(item) {
-      background: $--background-color-base;
+      background: $--background-color-white;
       color: $--text-color-disabled;
       cursor: not-allowed;
 
@@ -33,12 +33,12 @@
     cursor: pointer;
 
     &:hover {
-      background: $--background-color-hover;
+      background: $--background-color-white-hover;
       color: $--text-color-hover;
     }
 
     @include when(sel) {
-      background: $--background-color-selected;
+      background: $--background-color-primary;
       color: $--text-color-selected;
     }
 
