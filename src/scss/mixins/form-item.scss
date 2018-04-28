@@ -1,3 +1,5 @@
+/* Form-Item-Common */
+
 @mixin form-item-size($padding, $height, $font-size) {
     padding: $padding;
     height: $height;
@@ -45,6 +47,7 @@
     }
 }
 
+/* Input */
 @mixin form-item-input {
     box-sizing: border-box;
     margin: 0;
@@ -55,4 +58,35 @@
     color: inherit;
     -webkit-appearance: none;
     max-width: 100%;
+}
+
+/* Button */
+
+@mixin btn-type($bg-color, $color, $border-color, $hover-bg-color, $hover-color, $hover-border-color,
+$active-bg-color, $active-color, $active-border-color) {
+    background: $bg-color;
+    color: $color;
+    border: 1px solid $border-color;
+
+    &:hover,
+    &:focus {
+        outline: none;
+        text-decoration: none;
+        color: $hover-color;
+        background: $hover-bg-color;
+        border-color: $hover-border-color;
+    }
+    &:active {
+        transform: translateY(2px);
+        color: $active-color;
+        background: $active-bg-color;
+        border-color: $active-border-color;
+    }
+}
+
+@mixin btn-size($padding, $height, $font-size) {
+    padding: $padding;
+    height: $height;
+    line-height: $height - 2;
+    font-size: $font-size;
 }
