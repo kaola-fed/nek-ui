@@ -6,7 +6,7 @@
  */
 
 const dom = require('regularjs').dom;
-const domAlign = require('dom-align');
+const domAlign = require('dom-align').default;
 
 const Component = require('../../../ui-base/component');
 const _ = require('../../../ui-base/_');

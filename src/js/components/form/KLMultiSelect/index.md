@@ -8,9 +8,9 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    source={source} 
-    value={value} 
+<kl-multi-select
+    source={source}
+    value={value}
     on-select={this.selected($event)}
     placeholder={placeholder}
     />
@@ -64,11 +64,11 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    source={source} 
-    showPath={showPath} 
-    value={value} 
-    on-select={this.selected($event)} 
+<kl-multi-select
+    source={source}
+    showPath={showPath}
+    value={value}
+    on-select={this.selected($event)}
     onlyChild={onlyChild}
     />
 <p>选择的是：{value}</p>
@@ -186,11 +186,11 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    showPath={showPath} 
-    placement={placement} 
-    pathString={pathString} 
-    source={source} 
+<kl-multi-select
+    showPath={showPath}
+    placement={placement}
+    pathString={pathString}
+    source={source}
     value={value}
     on-select={this.selected($event)}
     />
@@ -243,11 +243,11 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    source={source} 
-    multiple={multiple} 
-    value={value}  
-    on-select={this.selected($event)} 
+<kl-multi-select
+    source={source}
+    multiple={multiple}
+    value={value}
+    on-select={this.selected($event)}
     on-change={this.change($event)}
     />
 选择的是：{value}
@@ -305,13 +305,13 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    showPath={showPath} 
-    placement={placement} 
-    pathString={pathString} 
-    showPathName={showPathName} 
+<kl-multi-select
+    showPath={showPath}
+    placement={placement}
+    pathString={pathString}
+    showPathName={showPathName}
     multiple={multiple}
-    source={source} 
+    source={source}
     value={value}
     on-select={this.selected($event)}
     />
@@ -370,13 +370,13 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-multi-select 
-    source={source} 
-    multiple={multiple} 
+<kl-multi-select
+    source={source}
+    multiple={multiple}
     showRoot={showRoot}
-    value={value}  
+    value={value}
     rootValue={rootValue}
-    on-select={this.selected($event)} 
+    on-select={this.selected($event)}
     on-change={this.change($event)}
     />
 <p>选择的是：{value}</p>

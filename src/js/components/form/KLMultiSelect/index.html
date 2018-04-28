@@ -1,5 +1,5 @@
-<div class="kl-dropdown kl-select kl-select--{state} kl-multi-select {class}" r-width={width} is-dis={disabled} r-hide={!visible} ref="element">
-    <div class="kl-dropdown__hd" on-click={this.toggle(!open, $event)}>
+<div class="kl-dropdown kl-select kl-select--{size} kl-select--{state} kl-multi-select {class}" r-width={width} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd" is-dis={disabled} r-class={{'is-active':open}} on-click={this.toggle(!open, $event)}>
         {#if showRoot}
             {#list rootSelected as item}
                 {#if showPath && placement}
@@ -37,11 +37,11 @@
         <div class="kl-multi-select-cate-wrap">
             {#list 0..9 as level}
             {#if tree[level] && tree[level].length}
-            <ul r-animation="on: leave; class: animated fadeOutX fast;">
+            <ul class="kl-multi-select-cate-inner" r-animation="on: leave; class: animated fadeOutX fast;">
                 <kl-input value={search[level]}  readonly={readonly}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
                 {#if !filter || (filter && filter(cate))}
-                <li class="f-csp {cate.active ? 'kl-multi-select-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
+                <li class="f-csp kl-multi-select-cate {cate.active ? 'kl-multi-select-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}

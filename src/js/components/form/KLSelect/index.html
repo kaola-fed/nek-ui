@@ -9,7 +9,7 @@
 	             on-click={this.toggle(!open, $event)}>
 	            <kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
 				{#if clearable}
-				<kl-icon fontSize=12 type="remove1" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
+				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
 				{#if open && canSearch}
 				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input__inner kl-select__search':'kl-input__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
@@ -27,7 +27,7 @@
 	            <div>
 		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input__inner kl-select__search kl-select__search--one" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
-		            <kl-icon fontSize=12 type="remove1" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
+		            <kl-icon fontSize=12 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
 	            </div>
 	            {/if}
 	            {#list selected as item}
@@ -43,7 +43,11 @@
 	    <div class="kl-dropdown__bd"
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="kl-listview" ref="listview">
-
+				{#if placeholder}
+	                <li is-hover={key_index == -1} class="kl-listview__item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+	                    {placeholder}
+	                </li>
+	            {/if}
 	            {#list this.filterArray(source) as item}
 	            {#if (!filter || (filter && filter(item)))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}

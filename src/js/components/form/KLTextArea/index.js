@@ -28,7 +28,7 @@ const bowser = require('bowser');
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
- * @param {string}        [options.data.size]               => 组件大小, sm/md/lg
+ * @param {string}        [options.data.size]               => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {string}        [options.data.class]              => 补充class
  */
 const KLTextArea = Component.extend({

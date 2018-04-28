@@ -1,0 +1,23 @@
+@mixin btn-icon($bg-color, $color, $bd-color, $icon-color, $hover-text-color, $hover-bg-color, $bd-hover-color) {
+    padding: 0 10px;
+    background: $bg-color;
+    color: $color;
+    border: 1px solid $bd-color;
+    .kl-icon {
+        font-size: 15px;
+        vertical-align: top;
+        color: $icon-color;
+    }
+    &:hover, &:focus {
+        color: $hover-font-color;
+        background: $hover-bg-color;
+        border-color: $bd-hover-color;
+    }
+}
+
+@mixin btn-size($padding, $height, $font-size) {
+    padding: $padding;
+    height: $height;
+    line-height: $height - 2;
+    font-size: $font-size;
+}

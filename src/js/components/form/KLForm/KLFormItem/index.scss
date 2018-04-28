@@ -1,4 +1,4 @@
-@include b(formitem) {
+@include b(form-item) {
     display: flex;
     margin-bottom: 10px;
     @include e(tt) {
@@ -22,7 +22,7 @@
             max-width: $--size-base * 22;
         }
         @include m(xlg) {
-            width: $--size-base * 28; 
+            width: $--size-base * 28;
             max-width: $--size-base * 28;
         }
         @include m(lh-sm) {
@@ -61,14 +61,14 @@
         display:inline-block;
         vertical-align:top;
         margin-bottom:0;
-        .kl-formitem__ct {
+        .kl-form-item__ct {
             display:inline-block;
         }
     }
 
     @include e(vertical) {
         flex-direction: column;
-        .kl-formitem__tt {
+        .kl-form-item__tt {
             text-align: left!important;
             width: 100%;
             max-width: 100%;
@@ -76,6 +76,6 @@
     }
 }
 
-.kl-table .kl-formitem {
+.kl-table .kl-form-item {
     margin-bottom: 0;
 }
