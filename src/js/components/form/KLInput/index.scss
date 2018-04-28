@@ -36,7 +36,7 @@
         @include form-item-input;
         padding: $--padding-base;
         color: $--text-color-default;
-        background: $--background-color-base;
+        background: $--background-color-white;
         border-radius: $--border-radius-base;
         border: 1px solid $--border-color-base;
         height: $--height-base;
@@ -70,7 +70,7 @@
         font-size: 12px;
         &:hover,
         &:active {
-            color: $--primary-color;
+            color: $--text-color-primary;
             cursor: pointer;
         }
         @include m(clearable) {

@@ -88,10 +88,10 @@
     padding-right: 15px;
     position: relative;
     &:hover {
-        background-color: $--background-color-hover;
+        background-color: $--background-color-white-hover;
     }
     @include m(active) {
-        background-color: $--background-color-hover;
+        background-color: $--background-color-white-hover;
     }
     @include e(more) {
         position: absolute;

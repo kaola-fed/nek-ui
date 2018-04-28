@@ -11,7 +11,7 @@ masonry: true
 
 ```xml
 <kl-pop-confirm content="Are you sure delete this task?">
-    <kl-button  type="tertiary" title="删除"></kl-button>
+    <kl-button title="删除"></kl-button>
 </kl-pop-confirm>
 ```
 <!-- demo_end -->
@@ -24,7 +24,7 @@ masonry: true
 
 ```xml
 <kl-pop-confirm content="我是设置的气泡信息内容">
-    <kl-button  type="tertiary" title="Content"></kl-button>
+    <kl-button title="Content"></kl-button>
 </kl-pop-confirm>
 ```
 
@@ -39,12 +39,12 @@ masonry: true
         .u-red-font {
             color: #f00;
         }
-    </style> 
+    </style>
 </div>
 
 ```xml
 <kl-pop-confirm contentTemplate="<div><span class='u-red-font'>红色字体</span><span>普通字体</span></div>">
-    <kl-button  type="tertiary" title="contentTemplate"></kl-button>
+    <kl-button title="contentTemplate"></kl-button>
 </kl-pop-confirm>
 ```
 
@@ -117,10 +117,10 @@ masonry: true
 
 ```xml
     <kl-pop-confirm content="拖动页面滚动看效果【弹出框会关闭】" hideWhenScroll="{true}" >
-        <kl-button  type="tertiary" title="hideWhenScroll:true"></kl-button>
+        <kl-button title="hideWhenScroll:true"></kl-button>
     </kl-pop-confirm>
     <kl-pop-confirm content="拖动页面滚动看效果【弹出框不会关闭】">
-        <kl-button type="tertiary" title="hideWhenScroll:false"></kl-button>
+        <kl-button title="hideWhenScroll:false"></kl-button>
     </kl-pop-confirm>
 ```
 
@@ -135,7 +135,7 @@ masonry: true
 
 ```xml
 <kl-pop-confirm content="Are you sure delete this task?" cancelText="{'cancelText'}">
-    <kl-button  type="tertiary" title="cancelText">cancelText</kl-button>
+    <kl-button title="cancelText">cancelText</kl-button>
 </kl-pop-confirm>
 ```
 <!-- demo_end -->
@@ -150,7 +150,7 @@ masonry: true
 
 ```xml
 <kl-pop-confirm content="Are you sure delete this task?" okText="{'okText'}">
-    <kl-button  type="tertiary" title="okText"></kl-button>
+    <kl-button title="okText"></kl-button>
 </kl-pop-confirm>
 ```
 <!-- demo_end -->
@@ -168,7 +168,7 @@ masonry: true
 
 ```xml
 <kl-pop-confirm contentTemplate="{testTemplate}" on-ok="{this.submit($event)}" okText="{'提交'}">
-    <kl-button  type="tertiary" title="保存提交"></kl-button>
+    <kl-button title="保存提交"></kl-button>
 </kl-pop-confirm>
 ```
 
@@ -202,7 +202,7 @@ on-cancel绑定方法调用之后会派发`cancel`事件以及参数`$event`{sen
 
 ```xml
 <kl-pop-confirm contentTemplate="{testTemplate}" on-cancel="{this.reset($event)}" cancelText="{'重置'}">
-    <kl-button  type="secondary" title="重置内容"></kl-button>
+    <kl-button title="重置内容"></kl-button>
 </kl-pop-confirm>
 ```
 

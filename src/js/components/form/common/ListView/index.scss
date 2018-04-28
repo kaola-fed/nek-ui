@@ -3,7 +3,7 @@
   padding: 5px 0;
   border: 1px solid $--border-color-base;
   border-top: none;
-  background: $--background-color-base;
+  background: $--background-color-white;
   color: $--text-color-default;
 
   box-sizing: border-box;
@@ -19,12 +19,12 @@
     line-height: 18px;
 
     &:hover {
-      background: $--background-color-hover;
+      background: $--background-color-white-hover;
       color: $--text-color-hover;
     }
 
     @include when(sel) {
-      background: $--primary-color;
+      background: $--background-color-primary;
       color: $--text-color-white;
     }
 

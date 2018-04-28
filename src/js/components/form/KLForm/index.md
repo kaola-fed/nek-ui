@@ -218,7 +218,7 @@ var component = new NEKUI.Component({
        <kl-textarea value="{remark}" width="300px" />
     </kl-form-item>
     <div style="padding-left:88px">
-        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+        <kl-button on-click="{this.validate()}" title="提交" />
     </div>
 </kl-form>
 ```
@@ -264,7 +264,7 @@ var component = new NEKUI.Component({
        <kl-textarea rules="{remarkRule}" value="{remark}" width="300px" placeholder="备注" />
     </kl-form-item>
     <div style="padding-left:88px">
-        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+        <kl-button on-click="{this.validate()}" title="提交" />
     </div>
 </kl-form>
 ```

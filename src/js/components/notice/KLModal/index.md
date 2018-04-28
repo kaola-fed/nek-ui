@@ -151,7 +151,7 @@ var component = new NEKUI.Component({
 
                 name: 'Rabbit',
                 content: '自定义footer',
-                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
+                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="primary" /></kl-col><kl-col span=6><kl-button title="撤销" /></kl-col></kl-row>'
             }
         });
     }

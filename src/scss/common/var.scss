@@ -8,33 +8,35 @@ $--color-black: #000 !default;
 $--primary-color: #00C4C0 !default;
 $--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amount) !default;
 $--primary-color-active: mix($--color-black, $--primary-color, $--color-mix-amount) !default;
-$--primary-color-background: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
+$--primary-color-white-hover: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
 
 $--info-color: #54A8F7 !default;
 $--info-color-hover: mix($--color-white, $--info-color, $--color-mix-amount) !default;
 $--info-color-active: mix($--color-black, $--info-color, $--color-mix-amount) !default;
-$--info-color-background: mix($--color-white, $--info-color, $--color-mix-amount * 5) !default;
+$--info-color-white-hover: mix($--color-white, $--info-color, $--color-mix-amount * 5) !default;
 
 $--success-color: #93DD68 !default;
 $--success-color-hover: mix($--color-white, $--success-color, $--color-mix-amount) !default;
 $--success-color-active: mix($--color-black, $--success-color, $--color-mix-amount) !default;
-$--success-color-background: mix($--color-white, $--success-color, $--color-mix-amount * 5) !default;
+$--success-color-white-hover: mix($--color-white, $--success-color, $--color-mix-amount * 5) !default;
 
 $--warning-color: #FFB539 !default;
 $--warning-color-hover: mix($--color-white, $--warning-color, $--color-mix-amount) !default;
 $--warning-color-active: mix($--color-black, $--warning-color, $--color-mix-amount) !default;
-$--warning-color-background: mix($--color-white, $--warning-color, $--color-mix-amount * 5) !default;
+$--warning-color-white-hover: mix($--color-white, $--warning-color, $--color-mix-amount * 5) !default;
 
 $--error-color: #F86B6B !default;
 $--error-color-hover: mix($--color-white, $--error-color, $--color-mix-amount) !default;
 $--error-color-active: mix($--color-black, $--error-color, $--color-mix-amount) !default;
-$--error-color-background: mix($--color-white, $--error-color, $--color-mix-amount * 5) !default;
+$--error-color-white-hover: mix($--color-white, $--error-color, $--color-mix-amount * 5) !default;
 
 /* Color-BG */
-$--background-color-base: $--color-white !default;
+$--background-color-white: $--color-white !default;
+$--background-color-primary: $--primary-color !default;
 $--background-color-disabled: #f8f8f8 !default;
-$--background-color-hover: $--primary-color-background !default;
-$--background-color-selected: $--primary-color !default;
+$--background-color-white-hover: $--primary-color-white-hover !default;
+$--background-color-primary-hover: $--primary-color-hover !default;
+$--background-color-primary-active: $--primary-color-active !default;
 
 /* Color-Text */
 $--text-color-white: $--color-white !default;
@@ -43,8 +45,24 @@ $--text-color-default: #333 !default;
 $--text-color-secondary: #666 !default;
 $--text-color-placeholder: #999 !default;
 $--text-color-disabled: #ccc !default;
+$--text-color-primary: $--primary-color !default;
+$--text-color-primary-hover: $--primary-color-hover !default;
+$--text-color-primary-active: $--primary-color-active !default;
 $--text-color-hover: #444 !default;
+$--text-color-error: $--error-color !default;
+$--text-color-error-hover: $--error-color-hover !default;
+$--text-color-error-active: $--error-color-active !default;
 $--text-color-selected: $--text-color-white !default;
+
+/* Color-Border */
+$--border-color-base: #ddd !default;
+$--border-color-primary: $--primary-color !default;
+$--border-color-primary-hover: $--primary-color-hover !default;
+$--border-color-primary-active: $--primary-color-active !default;
+$--border-color-error: $--error-color !default;
+$--border-color-error-hover: $--error-color-hover !default;
+$--border-color-error-active: $--error-color-active !default;
+$--border-color-disabled: #eee !default;
 
 /* Font */
 $--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -54,15 +72,15 @@ $--font-family: "Helvetica Neue For Number", $--font-family-no-number !default;
 $--code-family: Consolas, Menlo, Courier, monospace !default;
 $--font-size-base: 12px !default;
 $--font-size-xs: $--font-size-base - 2 !default;
-$--font-size-lg: $--font-size-base + 4 !default;
+$--font-size-lg: $--font-size-base + 2 !default;
 $--font-size-xl: $--font-size-base + 6 !default;
 $--line-height-base: 1.5 !default;
 
 /* Height */
-$--height-base: 32px !default;
+$--height-base: $--size-base * 4 !default;
 $--height-xs: $--height-base - 10 !default;
-$--height-sm: $--height-base - 8 !default;
-$--height-lg: $--height-base + 6 !default;
+$--height-sm: $--size-base * 3 !default;
+$--height-lg: $--size-base * 5 !default;
 $--height-xl: $--height-base + 12 !default;
 
 /* Width */
@@ -85,10 +103,6 @@ $--border-radius-lg: 4px !default;
 $--border-radius-xl: 6px !default;
 
 /* Border-Style */
-$--border-color-base: #ddd !default;
-$--border-color-active: $--primary-color !default;
-$--border-color-error: $--error-color !default;
-$--border-color-disabled: #eee !default;
 $--border-width-base: 1px !default;
 $--border-style-base: solid !default;
 
