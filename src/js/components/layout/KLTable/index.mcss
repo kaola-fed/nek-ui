@@ -6,29 +6,15 @@ $trBackgroundColor = #f6f9fc;
 $clickabelColor = #0398FF;
 $orderIconColor = #666;
 
-.m-kl-table-wrap {
+.kl-table-wrap {
     position: relative;
-    .kl_table_header_fiexd_right_gutter {
-        box-sizing: border-box;
-        position: absolute;
-        background: $headerGrey;
-        border-left: 1px solid #fff;
-    }
-    .u-resize-proxy {
-        position: absolute;
-        visibility: hidden;
-        height: 100%;
-        width: 1px;
-        z-index: 100;
-        background: $resizeProxyColor;
-    }
-    .expand_row {
-        position: absolute;
-        width: 100%;
-    }
+
+    .kl_table_header_fiexd_right_gutter { box-sizing: border-box;position: absolute;background: $headerGrey;border-left: 1px solid #fff; }
+    .u-resize-proxy { position: absolute;visibility: hidden;height: 100%;width: 1px;z-index: 100;background: $resizeProxyColor; }
+    .expand_row { position: absolute; width: 100%; }
 }
 
-.m-kl-table {
+.kl-table {
     overflow: auto;
     box-sizing: border-box;
     border-collapse: collapse;
@@ -44,12 +30,7 @@ $orderIconColor = #666;
     }
 
     .kl_table_header {
-        &.sticky_header {
-            position: fixed;
-            overflow: hidden;
-            z-index: 100;
-            top: 0;
-        }
+        &.sticky_header { position: fixed; overflow: hidden; z-index: 100; top: 0; }
     }
 
     .kl_table_body {
@@ -59,20 +40,15 @@ $orderIconColor = #666;
         }
     }
 
-    &.m-kl-table-fixed {
+    &.kl-table-fixed {
         position: absolute;
         overflow: hidden;
         top: 0;
         left: 0;
         border-bottom: none;
         box-shadow: 1px 0 8px #d3d4d6;
-        &.m-kl-table-fixed-right {
-            left: auto;
-            right: 0;
-        }
-        .kl_table_header {
-            box-shadow: 2px 0px 8px #d3d4d6;
-        }
+        &.kl-table-fixed-right { left: auto; right: 0; }
+        .kl_table_header { box-shadow: 2px 0px 8px #d3d4d6; }
         .kl_table_header,
         .kl_table_body {
             overflow: hidden;
@@ -229,7 +205,7 @@ $orderIconColor = #666;
     }
 }
 
-.m-kl-table-fixed {
+.kl-table-fixed {
     .tb_bd_tr {
         &.td_bd_tr_expand {
             //visibility: hidden;
@@ -237,7 +213,7 @@ $orderIconColor = #666;
     }
 }
 
-.m-kl-table-ft {
+.kl-table-ft {
     padding: 10px 0;
     background: #fff;
     .scroll_bar {

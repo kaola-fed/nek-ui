@@ -1,0 +1,136 @@
+$m-pager_li_a_size: 24px;
+
+
+@include b(pager) {
+    list-style:none;
+    margin:0;
+    padding:0;
+    letter-spacing: -5px;
+    word-wrap:normal;
+    white-space:nowrap;
+    > * {
+        letter-spacing: normal;
+    }
+    user-select: none;
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+
+    font-size: 12px;
+
+    @include when(dis) {
+        > li {
+            > a {
+                cursor: not-allowed;
+                background: white;
+                color: #999;
+                border-color: #ddd;
+            }
+        }
+    }
+
+    @include e(size) {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 8px;
+
+        .kl-select{
+            display: inline-block;
+            min-width: 75px;
+            .dropdown_hd {
+                .kl-icon {
+                    position: static;
+                }
+            }
+        }
+    }
+
+    @include e(total) {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 24px;
+    }
+}
+
+@include b(pager-main) {
+    list-style:none;
+    margin:0;
+    padding:0;
+    letter-spacing: -5px;
+    word-wrap:normal;
+    white-space:nowrap;
+    > * {
+        letter-spacing: normal;
+    }
+    user-select: none;
+    @include e(item) {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        margin-right: 6px;
+        padding: 0 8px;
+        height: $m-pager_li_a_size;
+        line-height: $m-pager_li_a_size - 2;
+        color: #444;
+        background: #fff;
+        text-decoration: none;
+        text-align: center;
+        min-width: $m-pager_li_a_size;
+        border: 1px solid #ddd;
+        border-radius: 2px;
+        &:hover{
+            cursor: pointer;
+            border: 1px solid #bbb;
+        }
+
+        @include when(crt) {
+            background: #E31436;
+            color: white;
+            border-color: #E31436;
+            &:hover{
+                border-color: #E31436;
+            }
+        }
+    }
+
+    @include e(prev) {
+        width: 24px;
+        padding: initial;
+        .kl-icon {
+            line-height: 22px;
+        }
+    }
+
+    @include e(next) {
+        .kl-icon {
+            line-height: 22px;
+        }
+    }
+
+
+    @include e(goto) {
+        display: inline-block;
+        margin-left: 20px;
+        .kl-input{
+            display: inline-block;
+            width: 40px;
+            margin: 0 7px 0 10px;
+        }
+    }
+
+    @include e(confirm) {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 27px;
+    }
+}

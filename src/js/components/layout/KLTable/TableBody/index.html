@@ -1,4 +1,4 @@
-<table class="table_tb"
+<table class="kl-table-tbody"
     r-style={{
         'width': width == undefined ? 'auto' : width - scrollYBarWidth + 'px',
         'text-align': config.textAlign || 'center',
@@ -10,11 +10,11 @@
         {/list}
     </colgroup>
 
-    <tbody class="tb_bd">
+    <tbody class="kl-table-tbody-body">
         <!-- 加载中 -->
         {#if loading}
-        <tr class="tb_bd_tr">
-            <td class="tb_bd_td" colspan={_dataColumns.length}>
+        <tr class="kl-table-tbody-body__tr">
+            <td class="kl-table-tbody-body__td" colspan={_dataColumns.length}>
                 <kl-loading visible={loading} static>
                   <p>{this.$trans('LOADING')}</p>
                 </kl-loading>
@@ -25,7 +25,7 @@
         {#elseif source.length > 0}
         {#list source as item by item_index}
         <tr ref="row{item_index}"
-            class="tb_bd_tr {item.rowClass || item.trClass}"
+            class="kl-table-tbody-body__tr {item.rowClass || item.trClass}"
             style="{item.rowStyle || item.trStyle}"
             r-class={{
                 'is-hover': item._hover
@@ -34,14 +34,14 @@
             on-mouseover={this._onRowHover($event, item)}
             on-mouseout={this._onRowBlur($event, item)} >
             {#list _dataColumns as column by column_index}
-            <td class="tb_bd_td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}"
+            <td class="kl-table-tbody-body-td kl-table-tbody-body__td {item.unitClass && item.unitStyle[item_index] || column.columnClass || column.tdClass}"
                 style="{(item.unitStyle && item.unitStyle[item_index]) || column.columnStyle || column.tdStyle}"
                 on-click={this._onUnitClick($event, item, item_index, column, column_index)}
                 r-style={{
                     'text-align': column.align || align
                 }}
             >
-                <div class="tb_bd_td_div ">
+                <div class="kl-table-tbody-body-td__div">
                     {#if column.template}
                         {#include column.template}
                     {#elseif column.formatter}
@@ -67,13 +67,13 @@
 
         <!-- 下钻内容 -->
         {#if item.expand}
-        <tr class="tb_bd_tr td_bd_tr_expand"
+        <tr class="kl-table-tbody-body__tr kl-table-tbody-body--trExpand"
             r-style={{
                 height: item._expandHeight + 'px'
             }}
         >
             <td
-                class="m-sub-protable-td {column.tdClass}"
+                class="{column.tdClass}"
                 colspan={_dataColumns.length}>
                 <!-- {#if !fixedCol} -->
                     <!-- {#include item._expanddingColumn.expandTemplate} -->
@@ -85,9 +85,9 @@
 
         <!-- 空内容 -->
         {#else}
-        <tr class="tb_bd_tr">
-            <td class="tb_bd_td" colspan={_dataColumns.length}>
-                <span class="td-empty">{this.$trans('NO_DATA')}</span>
+        <tr class="kl-table-tbody-body__tr">
+            <td class="kl-table-tbody-body__td" colspan={_dataColumns.length}>
+                <span class="kl-table-tbody-body__td--empty">{this.$trans('NO_DATA')}</span>
             </td>
         </tr>
         {/if}

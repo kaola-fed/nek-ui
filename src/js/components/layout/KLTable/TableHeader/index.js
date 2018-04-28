@@ -209,7 +209,7 @@ const TableHeader = Component.extend({
   const sorting = data.sorting;
   if (sorting) {
     if (sorting.key === header.key) {
-      return sorting.isAsc ? 'u-icon-sort-asc' : 'u-icon-sort-desc';
+      return sorting.isAsc ? 'kl-icon-sort-asc' : 'kl-icon-sort-desc';
     }
     return '';
   }

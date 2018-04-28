@@ -1,0 +1,280 @@
+$headerGrey: #EEF1F4;
+$resizeProxyColor: #ddd;
+$trBorderColor: #ecf2f9;
+$trHoverColor: #ecf2f9;
+$trBackgroundColor: #f6f9fc;
+$clickabelColor: #0398FF;
+$orderIconColor: #666;
+
+
+
+@include b(table-wrap) {
+    position: relative;
+    @include e(resizeProxy) {
+        position: absolute;
+        visibility: hidden;
+        height: 100%;
+        width: 1px;
+        z-index: 100;
+        background: $resizeProxyColor;
+    }
+}
+
+@include b(table-header-gutter-fixedRight) {
+    box-sizing: border-box;
+    position: absolute;
+    background: $headerGrey;
+    border-left: 1px solid #fff;
+    @include m(expand) {
+        position: absolute;
+        width: 100%;
+    }
+}
+
+
+@include b(table) {
+    overflow: auto;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    border-bottom: 1px solid $trBorderColor;
+    line-height: 17px;
+    font-size: 12px;
+    color: #333;
+    @include m(fixedHeader) {
+        overflow: hidden;
+    }
+
+    @include e(header) {
+        overflow: hidden;
+        @include m(sticky) {
+            position: fixed;
+            overflow: hidden;
+            z-index: 100;
+            top: 0;
+        }
+    }
+
+    @include e(body) {
+        transition: width 10ms;
+        @include m(fixedHeader) {
+            overflow: auto;
+        }
+    }
+
+    @include m(strip) {
+        .tb_bd_tr {
+            &:nth-child(2n-1){
+                background: #fff;
+            }
+            &:nth-child(2n){
+                background: $trBackgroundColor;
+            }
+            &:not(:last-child) {
+                border-bottom: 1px solid $trBorderColor;
+            }
+            &.z-hover,
+            &:hover {
+                background: $trHoverColor;
+            }
+            transition: background 200ms ease-out;
+            &.td_bd_tr_nohover {
+                background: #fff;
+            }
+        }
+    }
+}
+
+@include b(table-fixed) {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    border-bottom: none;
+    box-shadow: 1px 0 8px #d3d4d6;
+    @include e(header) {
+        box-shadow: 2px 0px 8px #d3d4d6;
+        overflow: hidden;
+    }
+    @include e(body) {
+        overflow: hidden;
+    }
+}
+
+@include b(table-fixedRight) {
+    left: auto;
+    right: 0;
+}
+
+
+//TableHeader TableBody 中的样式
+@include b(table-tbody) {
+    width: 100%;
+    position: relative;
+    table-layout: fixed;
+}
+
+//TableHeader.html中的DOM
+@include b(table-patch) {
+    background: $headerGrey;
+    position: absolute;
+}
+
+@include b(table-tbody-head) {
+    @include e(th) {
+        box-sizing: border-box;
+        background-color: $headerGrey;
+        height: 32px;
+        padding: 0;
+        border-collapse: collapse;
+        border-bottom: 1px solid #fff;
+        font-weight: normal;
+        &:not(:last-child){
+            border-right: 1px solid #fff;
+        }
+    }
+}
+
+@include b(table-tbody-head-th) {
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 8px;
+    @include e(tip) {
+        margin-left: 8px;
+    }
+    &.f-flex-center {
+        justify-content: center;
+    }
+    &.f-flex-right {
+        justify-content: flex-end;
+    }
+    &.f-flex-left {
+        justify-content: flex-start;
+    }
+}
+
+@include b(table-tbody-head-th-unsortedIcon) {
+    position: relative;
+    cursor: pointer;
+    color: #ddd;
+    @include e(icon2) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        &.kl-icon-sort-desc,
+        &.kl-icon-sort-asc {
+            color: $orderIconColor;
+        }
+    }
+}
+
+
+
+@include b(table-tbody-body) {
+    @include e(tr) {
+        background: #fff;
+        transition: background 200ms ease-out;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $trBorderColor;
+        }
+        &.z-hover, &:hover {
+            background: $trHoverColor;
+        }
+        &.td_bd_tr_nohover {
+            background: #fff;
+        }
+    }
+    @include e(td) {
+        box-sizing: border-box;
+        position: relative;
+        padding: 0;
+        height: 32px;
+    }
+}
+
+@include b(kl-table-tbody-body-td) {
+    @include e(div) {
+        padding: 6px 8px;
+        line-height: 17px;
+    }
+}
+
+
+
+@include b(table-ft) {
+    padding: 10px 0;
+    background: #fff;
+    @include e(scrollBar) {
+        overflow: auto;
+        margin-bottom: 10px;
+        >div {
+            height: 1px;
+        }
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 8px;
+            height: 12px;
+            &:hover {
+                background-color: rgba(0,0,0,.1);
+            }
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,.2);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+    }
+
+    @include m(sticky) {
+        position: fixed;
+        bottom: 0;
+        z-index: 1000;
+    }
+
+}
+
+.u-clickable {
+    cursor: pointer;
+    color: $clickabelColor;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.u-progress-wrap {
+    box-sizing: border-box;
+    text-align: left;
+    .u-kl-progress {
+        width: 70%;
+    }
+}
+
+.u-expand-sign {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 17px;
+    width: 17px;
+    border: 1px solid #ddd;
+    line-height: 13px;
+    vertical-align: middle;
+}
+
+.f-cursor-pointer {
+    cursor: pointer;
+}
+
+.f-overflow-hidden {
+    overflow: hidden;
+}
+
+.f-visibility-hidden {
+    visibility: hidden;
+}
+
+.f-ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
