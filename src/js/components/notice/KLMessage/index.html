@@ -1,6 +1,6 @@
-<div class="u-message u-message-{type} {class}">
-    <i class="message_icon u-icon u-icon-{type + 2}" r-hide={!type}></i>
-    <span class="message_t">
+<div class="kl-message kl-message--{type} {class}">
+    <kl-icon type={type + 2}  class="message_icon" r-hide={!type}/>
+    <span class="kl-message__t">
         {#inc this.$body}
     </span>
 </div>

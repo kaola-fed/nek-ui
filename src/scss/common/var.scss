@@ -7,27 +7,27 @@ $--color-black: #000 !default;
 
 $--primary-color: #00C4C0 !default;
 $--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amount) !default;
-$--primary-color-active: mix($--black-white, $--primary-color, $--color-mix-amount) !default;
+$--primary-color-active: mix($--color-black, $--primary-color, $--color-mix-amount) !default;
 $--primary-color-background: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
 
 $--info-color: #54A8F7 !default;
 $--info-color-hover: mix($--color-white, $--info-color, $--color-mix-amount) !default;
-$--info-color-active: mix($--black-white, $--info-color, $--color-mix-amount) !default;
+$--info-color-active: mix($--color-black, $--info-color, $--color-mix-amount) !default;
 $--info-color-background: mix($--color-white, $--info-color, $--color-mix-amount * 5) !default;
 
 $--success-color: #93DD68 !default;
 $--success-color-hover: mix($--color-white, $--success-color, $--color-mix-amount) !default;
-$--success-color-active: mix($--black-white, $--success-color, $--color-mix-amount) !default;
+$--success-color-active: mix($--color-black, $--success-color, $--color-mix-amount) !default;
 $--success-color-background: mix($--color-white, $--success-color, $--color-mix-amount * 5) !default;
 
 $--warning-color: #FFB539 !default;
 $--warning-color-hover: mix($--color-white, $--warning-color, $--color-mix-amount) !default;
-$--warning-color-active: mix($--black-white, $--warning-color, $--color-mix-amount) !default;
+$--warning-color-active: mix($--color-black, $--warning-color, $--color-mix-amount) !default;
 $--warning-color-background: mix($--color-white, $--warning-color, $--color-mix-amount * 5) !default;
 
 $--error-color: #F86B6B !default;
 $--error-color-hover: mix($--color-white, $--error-color, $--color-mix-amount) !default;
-$--error-color-active: mix($--black-white, $--error-color, $--color-mix-amount) !default;
+$--error-color-active: mix($--color-black, $--error-color, $--color-mix-amount) !default;
 $--error-color-background: mix($--color-white, $--error-color, $--color-mix-amount * 5) !default;
 
 /* Color-BG */
@@ -85,7 +85,7 @@ $--border-radius-lg: 4px !default;
 $--border-radius-xl: 6px !default;
 
 /* Border-Style */
-$--border-color-base: #ddd !default;
+$--border-color-base: #e3e3e3 !default;
 $--border-color-active: $--primary-color !default;
 $--border-color-error: $--error-color !default;
 $--border-color-disabled: #eee !default;

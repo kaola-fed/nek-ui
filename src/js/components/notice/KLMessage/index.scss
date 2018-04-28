@@ -1,0 +1,52 @@
+@include b(message) {
+    @extend .f-cb;
+    
+    display: flex;
+    align-items: center;
+    padding: 6px 15px;
+    background: $--background-color-base;
+    color: #777;
+    border: 1px solid $--border-color-base;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    border-radius: 4px;
+
+    @include e(ct) {
+        display: inline-block;
+        max-width: 90%;
+    }
+    
+    @include e(icon) {
+        font-size: 23px;
+        vertical-align: middle;
+        margin-top: -2px;
+        margin-right: 10px;
+        line-height: 1;
+    }
+}
+
+
+
+
+// Color Extend:
+// Description:     颜色扩展
+// ========================================================================
+
+@mixin message-color($name, $color) {
+    .kl-message--#{$name} {
+        color: #fff;
+        background: $color;
+        border: 1px solid $color;
+
+        .kl-message__icon {
+            color: #fff;
+        }
+    }
+}
+
+// Color Extends:@include message-color = ($name, $color)
+// ========================================================================
+
+@include message-color(info, #80BCF4);
+@include message-color(success, #89D280);
+@include message-color(warning, #F9BF65);
+@include message-color(error, #F37373);

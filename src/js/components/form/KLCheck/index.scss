@@ -5,6 +5,12 @@
     white-space:nowrap;
     font-size: 12px;
     line-height: 32px;
+    color: $--text-color-default;
+
+    @include m(block) {
+        display: block;
+        width: 100%;
+    }
 
     @include e(box) {
         display: inline-block;
@@ -18,7 +24,8 @@
         background: white;
         color: #00C4C0;
         border: 1px solid $--border-color-base;
-
+        border-radius: 1px;
+        
         .kl-icon {
             display: none;
             font-size: 13px;
@@ -59,15 +66,10 @@
     /* Disabled */
     &.is-dis {
         cursor: not-allowed;
+        color: $--text-color-disabled;
         .kl-check__box {
-            color: $--background-color-disabled;
-            border: 1px solid $--background-color-disabled;
+            @include form-item-disabled;
         }
-    }
-
-    @include m(block) {
-        display: block;
-        width: 100%;
     }
 }
 

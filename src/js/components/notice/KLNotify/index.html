@@ -1,9 +1,9 @@
-<div class="m-notify m-notify-{position} {class}" r-hide={!visible}>
+<div class="kl-notify kl-notify--{position} {class}" r-hide={!visible}>
     {#list messages as message}
-    <div class="u-message u-message-{message.state}" r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
-        <a class="message_close" on-click={this.close(message)}><i class="u-icon u-icon-close"></i></a>
-        <i class="message_icon u-icon u-icon-{message.state + 2}" r-hide={!message.state}></i>
-        <span class="message_ct">{message.text}</span>
+    <div class="kl-message kl-message--{message.state}" r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
+        <a class="kl-message__close" on-click={this.close(message)}><kl-icon type="close" /></a>
+        <kl-icon type="{message.state}2" class="kl-message__icon" r-hide={!message.state}/>
+        <span class="kl-message__ct">{message.text}</span>
     </div>
     {/list}
 </div>

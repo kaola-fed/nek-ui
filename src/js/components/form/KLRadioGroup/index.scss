@@ -1,0 +1,77 @@
+$--radio--size: 7px;
+
+@include b(radio) {
+    display:inline-block;
+    cursor: pointer;
+    user-select: none;
+    white-space:nowrap;
+    font-size: 12px;
+    line-height: 32px;
+    color: $--text-color-default;
+
+    @include m(block) {
+        display: block;
+        width: 100%;
+    }
+
+    @include e(box) {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        margin-right: $--size-base;
+        size: 13px;
+        line-height: 13px;
+        vertical-align: text-top;
+        background: white;
+        color: $--primary-color;
+        border: 1px solid $--border-color-base;
+        border-radius: 13px;
+
+        &:hover {
+            @include form-item-hover;
+        }
+
+        @include when(error) {
+            @include form-item-error;
+        }
+
+        .kl-icon {
+            content: '';
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: - $--radio--size / 2;
+            margin-left: - $--radio--size / 2;
+            width: $--radio--size;
+            height: $--radio--size;
+            border-radius: $--radio--size;
+            background: $--primary-color;
+        }
+    }
+
+    @include when(sel) {
+        .kl-radio__box {
+            border: 1px solid $--primary-color;
+            .kl-icon {
+                display: inline-block;
+            }
+        }
+    }
+
+    @include when(dis) {
+        cursor: not-allowed;
+        color: $--text-color-disabled;
+        .kl-radio__box {
+            @include form-item-disabled;
+            .kl-icon {
+                background: $--text-color-disabled;
+            }
+        }
+    }
+
+}
+
+
+
