@@ -10,14 +10,17 @@
 
   .kl-btn {
     position: absolute;
-    // border: none;
+    border: 1px solid #fff;;
     right: 7px;
     top: 2px;
     min-width: 0;
     height: $--height-base / 2 - $--border-width-base * 2 - 1px;
     line-height: $--height-base / 2 - $--border-width-base * 2 - 1px;
     padding: 0 4px;
-
+    color: #333;
+    .kl-icon {
+        margin-right: 0;
+    }
     & + .kl-btn {
       top: auto;
       bottom: 2px;
