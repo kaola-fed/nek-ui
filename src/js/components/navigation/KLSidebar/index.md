@@ -33,7 +33,7 @@ title: 菜单栏
         right: 0;
         padding: 10px 13px;
     }
-    .grid-item .m-menu { padding: 0; }
+    .grid-item .kl-menu { padding: 0; }
 </style>
 ```xml
 
