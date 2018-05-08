@@ -1,0 +1,60 @@
+@include b(switch) {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+
+  @include e(slider) {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background-color: #BFBFBF;
+    transition: .4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      top: 2px;
+      left: 2px;
+      border-radius: 100%;
+      background-color: white;
+      transition: .4s;
+    }
+  }
+
+  @include when(chk) {
+    .kl-switch__slider {
+      background-color: $--primary-color;
+    }
+    .kl-switch__slider:before {
+      transform: translateX(22px);
+    }
+  }
+
+  @include when(dis) {
+
+    .kl-switch__slider {
+      cursor: not-allowed;
+      background-color: #D9D9D9;
+
+      &:before {
+        background-color: #F5F5F5;
+      }
+    }
+
+    &.is-chk {
+      .kl-switch__slider {
+        background-color: #A6EBE9;
+      }
+      .kl-switch__slider:before {
+        background-color: $--color-white;
+      }
+    }
+  }
+}
