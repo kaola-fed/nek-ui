@@ -1,5 +1,4 @@
 /* Form-Item-Common */
-
 @mixin form-item-size($padding, $height, $font-size) {
     padding: $padding;
     height: $height;
@@ -61,7 +60,6 @@
 }
 
 /* Button */
-
 @mixin btn-type($bg-color, $color, $border-color, $hover-bg-color, $hover-color, $hover-border-color,
 $active-bg-color, $active-color, $active-border-color) {
     background: $bg-color;

@@ -2,14 +2,13 @@
     @include e(item) {
         display: block;
         position: relative;
-        padding: 13px 0 13px 47px;
+        padding: 13px 0 13px 45px;
         line-height: 1em;
         background: #F6F9FC;
         transition: height .3s ease-in;
-        // &:hover {
-        //     text-decoration: underline;
-        //     font-weight: bold;
-        // }
+        &:hover {
+            color: #00C4C0 !important;
+        }
         @include when(active) {
             color: #fff !important;
             background: $--background-color-primary;
@@ -18,24 +17,11 @@
             a {
                 color: #D9244E;
             }
-            // &:before {
-            //     position: absolute;
-            //     width: 2px;
-            //     height: 10px;
-            //     background: #D9244E;
-            //     content: '';
-            //     top: 8px;
-            //     left: 48px;
-            // }
         }
         &:first-child {
-            // padding-top: 0;
             &:before {
                 top: 0;
             }
-        }
-        &:last-child {
-            // margin-bottom: 5px;
         }
     }
 }
