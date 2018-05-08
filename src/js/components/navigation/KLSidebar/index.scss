@@ -12,6 +12,33 @@
     @include when(active) {
         transform: translateX(0);
     }
+
+    @include when(dark) {
+        .kl-menu {
+            background: #222;
+            color: rgba($color: #fff, $alpha: 0.65);
+
+            .kl-sub-menu-head {
+                &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
+                    color: #fff !important;
+                }
+            }
+
+            .kl-sub-menu-head__title a, .kl-menu-item-wrap a, a.kl-sub-menu {
+                color: rgba($color: #fff, $alpha: 0.65);
+            }
+
+            .kl-menu__item {
+                background: #111;
+                &:hover {
+                    color: #fff !important;
+                }
+            }
+            .kl-menu__item.is-active {
+                background: $--background-color-primary;
+            }
+        }
+    }
 }
 
 @include b(sidebar-menus-wrap) {

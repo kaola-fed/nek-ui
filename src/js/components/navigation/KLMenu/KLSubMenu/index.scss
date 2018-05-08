@@ -1,32 +1,26 @@
 @include b(sub-menu) {
     position: relative;
     display: block;
-    // border-bottom: 1px solid #DFEAF3;
     cursor: pointer;
-
-    // @include when(active) {
-    //     background: #F6F9FC;
-    // }
 }
 
 @include b(sub-menu-head) {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 17px 0 17px 47px;
+    padding: 17px 0 17px 45px;
     font-size: 14px;
     transition: all .4s ease;
 
-    // &:hover .kl-sub-menu-head__title, &:hover a {
-    //     text-decoration:underline;
-    //     font-weight:bold;
-    // }
+    &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
+        color: #00C4C0;
+    }
 
     @include e(arrow) {
         position: absolute;
         right: 10px;
         font-size: 18px;
-        transition: all .4s ease;
+        transition: transform .4s ease;
         transform: rotate(0);
 
         @include when(open) {
@@ -38,7 +32,7 @@
         position:absolute;
         left: 20px;
         color: #c4c4c4;
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
