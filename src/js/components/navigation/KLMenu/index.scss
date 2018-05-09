@@ -1,6 +1,6 @@
 @include b(menu) {
     height: 100%;
-    overflow-y: auto;
+    overflow-y: overlay;
     background: #fff;
     border-right: 1px solid #E1E6ED;
     list-style: none;
