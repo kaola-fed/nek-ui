@@ -1,31 +1,50 @@
+$--switch--width: 44px;
+$--switch--height: 22px;
+$--switch--width-sm: 28px ;
+$--switch--height-sm: 16px;
+$--switch--border-radius: 10px;
+
 @include b(switch) {
-  position: relative;
   display: inline-block;
-  width: 44px;
-  height: 22px;
 
   @include e(slider) {
-    position: absolute;
+    position: relative;
+    display: inline-block;
+    width: $--switch--width;
+    height: $--switch--height;
+    line-height: $--switch--height;
+    font-size: $--font-size-base;
+
+    align-items: center;
+
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 10px;
+    border-radius: $--switch--border-radius;
+    color: $--color-white;
     background-color: #BFBFBF;
     transition: .4s;
+    vertical-align: middle;
 
     &:before {
       position: absolute;
       content: "";
-      height: 18px;
-      width: 18px;
+      width: $--switch--height - 4;
+      height: $--switch--height - 4;
       top: 2px;
       left: 2px;
       border-radius: 100%;
-      background-color: white;
+      background-color: $--color-white;
       transition: .4s;
     }
+  }
+
+  @include e(checkedText) {
+      float: left;
+      margin-left: $--switch--border-radius - 2px;
+  }
+
+  @include e(unCheckedText) {
+      float: right;
+      margin-right: $--switch--border-radius - 2px;
   }
 
   @include when(chk) {
@@ -33,7 +52,7 @@
       background-color: $--primary-color;
     }
     .kl-switch__slider:before {
-      transform: translateX(22px);
+      transform: translateX($--switch--width - $--switch--height);
     }
   }
 
@@ -55,6 +74,30 @@
       .kl-switch__slider:before {
         background-color: $--color-white;
       }
+    }
+  }
+
+  // 小号扩展
+  @include m(sm) {
+    .kl-switch__slider {
+      width: $--switch--width-sm;
+      height: $--switch--height-sm;
+
+      &:before {
+        width: $--switch--height-sm - 4;
+        height: $--switch--height-sm - 4;
+      }
+    }
+
+    &.is-chk {
+      .kl-switch__slider:before {
+        transform: translateX($--switch--width-sm - $--switch--height-sm);
+      }
+    }
+
+    // 小号不显示描述
+    .kl-switch__checkedText, .kl-switch__unCheckedText {
+      display: none;
     }
   }
 }
