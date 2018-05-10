@@ -36,7 +36,7 @@ title: 选项卡
 var component = new NEKUI.Component({
     template: template,
     titleTemplate: `
-{item.data.title} {#if item.data.mark}<span class="u-text u-text-success"><i class="u-icon u-icon-check-circle"></i></span>{/if}`
+{item.data.title} {#if item.data.mark}<kl-text type="success"><kl-icon type="check-circle" /></kl-text>{/if}`
 });
 ```
 <!-- demo_end -->
@@ -103,41 +103,24 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<div class="g-row">
-    <div class="g-col g-col-6">
+<kl-row>
+    <kl-col span=6>
         <kl-tabs>
             <kl-tab title="Tab1">Content1</kl-tab>
             <kl-tab title="Tab2">Content2</kl-tab>
             <kl-tab title="Tab3" disabled>Content3</kl-tab>
             <kl-tab title="Tab4">Content4</kl-tab>
         </kl-tabs>
-    </div>
-    <div class="g-col g-col-6">
+    </kl-col>
+    <kl-col span=6>
         <kl-tabs disabled>
             <kl-tab title="Tab1">Content1</kl-tab>
             <kl-tab title="Tab2">Content2</kl-tab>
             <kl-tab title="Tab3">Content3</kl-tab>
             <kl-tab title="Tab4">Content4</kl-tab>
         </kl-tabs>
-    </div>
-</div>
-```
-<!-- demo_end -->
-
-<!-- demo_start -->
-### 居中
-
-通过配置class属性可以自定义样式，可用m-tabs-center实现居中
-
-<div class="m-example"></div>
-
-```xml
-<kl-tabs class="m-tabs-center">
-    <kl-tab title="Tab1">Content1</kl-tab>
-    <kl-tab title="Tab2">Content2</kl-tab>
-    <kl-tab title="Tab3">Content3</kl-tab>
-    <kl-tab title="Tab4">Content4</kl-tab>
-</kl-tabs>
+    </kl-col>
+</kl-row>
 ```
 <!-- demo_end -->
 
