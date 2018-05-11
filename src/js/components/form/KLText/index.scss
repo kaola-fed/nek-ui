@@ -1,0 +1,59 @@
+@include b(text) {
+  @include m(unlink) {
+    display: inline;
+    text-decoration: none;
+    color: initial;
+    cursor: default;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include m(bold) {
+    font-weight: bold;
+  }
+}
+
+@mixin text-extend_size($name, $font-size, $line-height:null) {
+  .kl-text--#{$name} {
+    font-size: $font-size;
+    @if($line-height) { line-height: $line-height; }
+  }
+}
+@include text-extend_size(xs, 10px, 12px);
+@include text-extend_size(sm, 12px, 16px);
+@include text-extend_size(lg, 20px, 24px);
+@include text-extend_size(xl, 24px, 32px);
+
+@mixin text-extend_align($name, $align) {
+  .kl-text--#{$name} {
+    text-align: $align;
+  }
+}
+@include text-extend_align(left, left);
+@include text-extend_align(center,center);
+@include text-extend_align(right, right);
+@include text-extend_align(justify, justify);
+
+@mixin text-extend_vertical($name, $vertical) {
+  .kl-text--#{$name} {
+    vertical-align: $vertical;
+  }
+}
+@include text-extend_vertical(top, top);
+@include text-extend_vertical(middle, middle);
+@include text-extend_vertical(bottom, bottom);
+
+@mixin text-extend_color($name, $color) {
+  .kl-text--#{$name} {
+    color: $color;
+  }
+}
+@include text-extend_color(primary, $--text-color-primary);
+@include text-extend_color(success, $--success-color);
+@include text-extend_color(warning, $--warning-color);
+@include text-extend_color(error, $--text-color-error);
+@include text-extend_color(inverse, $--color-white);
+@include text-extend_color(muted, $--text-color-disabled);
+

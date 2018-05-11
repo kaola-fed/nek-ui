@@ -1,5 +1,5 @@
-<aside class="m-sidebar {class}" r-class={ {'active':active } } r-style={ {width: width, top: top} }>
-  <div class="sidebar_menus">
+<aside class="kl-sidebar {class}" r-class={ {'is-active':active, 'is-dark': theme === 'dark' } } r-style={ {width: width, top: top} }>
+  <div class="kl-sidebar-menus-wrap">
     <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
       {#list menus as menu}
       {#if menu[childrenKey] && menu[childrenKey].length}
@@ -15,11 +15,11 @@
     </kl-menu>
   </div>
 
-  <div class="sidebar_slideBtn" on-click="{this.toggle($event)}" r-style={{ left: width }}>
+  <div class="kl-sidebar-btn-wrap" on-click="{this.toggle($event)}" r-style={{ left: width }}>
     {#if active}
-    <i class="u-icon u-icon-chevron_left"></i>
+    <i class="kl-icon kl-icon-chevron_left"></i>
     {#else}
-    <i class="u-icon u-icon-chevron_right"></i>
+    <i class="kl-icon kl-icon-chevron_right"></i>
     {/if}
   </div>
 </aside>

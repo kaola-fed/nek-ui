@@ -1,0 +1,99 @@
+@include b(tabs) {
+  font-size: $--font-size-base;
+
+  @include e(hd) {
+    @extend .f-lsn;
+    display: inline-block;
+    padding: 0;
+    transition: transform 0.3s;
+    white-space: nowrap;
+  }
+
+  @include e(bd) {
+    padding: 20px 0;
+    border-top: 1px solid #DEEAF2;
+    background: $--background-color-white;
+    clear: both;
+  }
+
+  @include e(tab) {
+    box-sizing: border-box;
+
+    position: relative;
+    display: inline-block;
+    height: 31px;
+    line-height: 32px;
+    min-width: 104px;
+    padding: 0 15px;
+    margin-bottom: -1px;
+
+    color: $--text-color-default;
+    text-align: center;
+    border: 1px solid #DEEAF2;
+    border-bottom: none;
+    border-radius: 2px 2px 0 0;
+    background: $--background-color-white;
+    cursor: pointer;
+
+    & + .kl-tabs__tab {
+      margin-left: 2px;
+    }
+
+    &:hover, &:focus {
+      color: adjust-color($--text-color-default, $lightness: 20%);
+    }
+
+    @include when(crt) {
+      border-top: 3px solid #D9244E;
+      height: 32px;
+      line-height: 28px;
+    }
+
+
+    @include when(dis) {
+      color: #999;
+      background: none;
+      border-color: transparent;
+      cursor: not-allowed;
+    }
+  }
+
+  @include when(dis) {
+    .kl-tabs__tab {
+      cursor: not-allowed;
+
+      @include when(crt) {
+        cursor: default;
+      }
+    }
+  }
+}
+
+@include b(tabs-scroll) {
+  position: relative;
+  overflow: hidden;
+
+  @include when(scrollable) {
+    padding: 0 15px;
+  }
+
+  @include e(nav) {
+    position: absolute;
+    cursor: pointer;
+    line-height: 32px;
+    font-size: 12px;
+
+    @include when(dis) {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    @include m(prev) {
+      left: 0;
+    }
+
+    @include m(next) {
+      right: 0;
+    }
+  }
+}

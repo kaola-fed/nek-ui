@@ -1,0 +1,36 @@
+@include b(crumb-item) {
+  display: inline-block;
+  color: $--text-color-default;
+
+  @include e(separator) {
+    display: inline-block;
+    margin: 0 4px;
+    font-size: $--font-size-base;
+  }
+
+  @include e(cnt) {
+    display: inline-block;
+    font-size: $--font-size-base;
+  }
+
+  @include e(link) {
+    &:link, &:visited, &:hover {
+      text-decoration: none;
+      color: $--text-color-default;
+    }
+
+    &:hover {
+      color: #21D1C8;
+    }
+  }
+
+  a {
+    @extend .kl-crumb-item__link;
+  }
+
+  &:last-child {
+    .kl-crumb-item__cnt {
+      font-weight: bold;
+    }
+  }
+}

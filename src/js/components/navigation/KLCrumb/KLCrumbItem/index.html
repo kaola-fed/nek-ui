@@ -1,10 +1,11 @@
-<div class="kl-m-crumb_item f-cb {class}">
+<div class="kl-crumb-item f-cb {class}">
     {#if this != this.$outer.data.crumbArr[0]}
-    <span class="crumb_separator">{#inc this.$outer.data.separator}</span>
+    <span class="kl-crumb-item__separator">{#inc this.$outer.data.separator}</span>
     {/if}
-    <div class="crumb_ct">
+
+    <div class="kl-crumb-item__cnt">
         {#if href}
-            <a class="crumb_link" href="{href}">{#inc content || this.$body}</a>
+            <a class="kl-crumb-item__link" href="{href}">{#inc content || this.$body}</a>
         {#else}
             {#inc content || this.$body}
         {/if}

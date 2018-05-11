@@ -12,7 +12,7 @@ masonry: true
 示例：
 <kl-text size="xs" text="超小号文本"></kl-text>
 <kl-text size="sm" text="小号文本"></kl-text>
-<kl-text  text="正常文本"></kl-text>
+<kl-text text="正常文本"></kl-text>
 <kl-text size="lg" text="大号文本"></kl-text>
 <kl-text size="xl" text="超大号文本"></kl-text>
 ```
@@ -30,7 +30,7 @@ masonry: true
 <kl-text type="success" text="Success"></kl-text>
 <kl-text type="warning" text="Warning"></kl-text>
 <kl-text type="error" text="Error"></kl-text>
-<kl-text type="inverse" text="Inverse"></kl-text>
+<kl-text type="inverse" text="Inverse" class="s-bg-dark"></kl-text>
 <kl-text type="muted" text="Muted"></kl-text>
 ```
 <!-- demo_end -->
