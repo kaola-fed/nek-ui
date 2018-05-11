@@ -13,6 +13,8 @@ const sizeMap = {
 
 const typeMap = {
   'image/*': 'image',
+  '.webp': 'image',
+  '.bmp': 'image',
   '.jpg': 'image',
   '.jpeg': 'image',
   '.gif': 'image',
