@@ -65,6 +65,10 @@ const Components = {
   KLCardTools: require('./components/layout/KLCard/KLCardTools'),
   KLSearch: require('./components/layout/KLSearch'),
   KLSearchMore: require('./components/layout/KLSearch/KLSearchMore'),
+  KLLayout: require('./components/layout/KLLayout'),
+  KLHeader: require('./components/layout/KLHeader'),
+  KLFooter: require('./components/layout/KLFooter'),
+  KLMain: require('./components/layout/KLMain'),
 };
 
 backward(Components);

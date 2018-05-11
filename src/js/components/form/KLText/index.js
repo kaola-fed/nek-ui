@@ -26,7 +26,7 @@ const KLText = Component.extend({
   template,
   config() {
     _.extend(this.data, {
-      text: '--',
+      text: '-',
       // default/primary/info/success/warning/error
       type: 'default',
       // xs/sm/lg/xl

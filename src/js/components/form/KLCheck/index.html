@@ -1,4 +1,5 @@
 <label class="kl-check {class}" is-chk={checked} is-dis={disabled}
        r-class={ {'is-part': checked === null, 'kl-check--block': block} } r-hide={!visible} title={name} on-click={this.check()}>
-  <div class="kl-check__box"><i class="kl-icon kl-icon-ok"></i></div>{name}
+  <div class="kl-check__box"><i class="kl-icon kl-icon-ok"></i></div>
+  {#if contentTemplate}{#inc @(contentTemplate)}{#else}{name}{/if}
 </label>

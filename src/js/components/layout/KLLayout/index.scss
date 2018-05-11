@@ -1,0 +1,10 @@
+@include b(layout) {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-basis: auto;
+
+    @include when(vertical) {
+        flex-direction: column;
+    }
+}
