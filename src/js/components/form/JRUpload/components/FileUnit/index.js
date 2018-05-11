@@ -170,13 +170,16 @@ const FileUnit = Component.extend({
 
   onPreview(e) {
     const data = this.data;
-    const emitItem = {
-      sender: this,
-      event: e,
-      file: data.file,
-      status: data.status,
-    };
-    this.$emit('preview', emitItem);
+    // 如果url不存在，则不允许预览
+    if (data.url) {
+      var emitItem = {
+        sender: this,
+        event: e,
+        file: data.file,
+        status: data.status
+      };
+      this.$emit('preview', emitItem);
+    }
   },
 });
 
