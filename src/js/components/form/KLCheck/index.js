@@ -18,6 +18,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.disabled=false]   => 是否禁用
  * @param {boolean}     [options.data.visible=true]     => 是否显示
  * @param {string}      [options.data.class]            => 补充class
+ * @param {string}      [options.data.contentTemplate]  => 内容模板，用于支持复杂内容的自定义。
  */
 const KLCheck = Component.extend({
   name: 'kl-check',

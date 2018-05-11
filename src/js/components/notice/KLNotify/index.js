@@ -11,6 +11,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.single=false]         => 是否始终显示一条，`true`表示是，`false`表示否
  * @param {boolean}     [options.data.visible=true]         => 是否显示,`true`表示是、`false`表示否
  * @param {string}      [options.data.class]                => 补充`class`
+ * @param {string}      [options.data.contentTemplate]      => 内容模板，用于支持复杂内容的自定义。
  */
 const KLNotify = Component.extend({
   name: 'kl-notify',

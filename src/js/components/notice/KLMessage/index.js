@@ -17,11 +17,18 @@ const KLMessage = Component.extend({
   config() {
     _.extend(this.data, {
       type: '',
+      basic: true,
+      title: '',
+      visible: true,
     });
     this.supr();
   },
   init() {
     this.supr();
+  },
+  close(result) {
+    this.data.visible = Boolean(result);
+    this.$update();
   },
 });
 module.exports = KLMessage;
