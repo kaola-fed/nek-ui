@@ -1,6 +1,8 @@
 @include b(header) {
-    padding: 10px 20px;
+    flex-shrink: 0;
+    padding: 0 20px;
     box-sizing: border-box;
     line-height: 60px;
-    background: #ccc;
+    background: #222;
+    color: #fff;
 }

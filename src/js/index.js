@@ -69,6 +69,7 @@ const Components = {
   KLHeader: require('./components/layout/KLHeader'),
   KLFooter: require('./components/layout/KLFooter'),
   KLMain: require('./components/layout/KLMain'),
+  KLAside: require('./components/layout/KLAside'),
 };
 
 backward(Components);
