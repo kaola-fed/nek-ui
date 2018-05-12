@@ -1,9 +1,11 @@
 <div class="kl-notify kl-notify--{position} {class}" r-hide={!visible}>
     {#list messages as message}
     <div class="kl-message kl-message--{message.state}" r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
-        <a class="kl-message__close" on-click={this.close(message)}><kl-icon type="close" /></a>
+        <a class="kl-message__close" on-click={this.close(message)}><kl-icon type="remove" /></a>
         <kl-icon type="{message.state}2" class="kl-message__icon" r-hide={!message.state}/>
-        <span class="kl-message__ct">{message.text}</span>
+        <span class="kl-message__t">
+            {#if contentTemplate}{#inc @(contentTemplate)}{#else}{message.text}{/if}
+        </span>
     </div>
     {/list}
 </div>

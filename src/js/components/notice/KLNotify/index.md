@@ -33,13 +33,13 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<div class="g-row">
+<div class="kl-row">
     <kl-button title="topcenter" on-click="{this.show('topcenter')}" />
     <kl-button title="topleft" on-click="{this.show('topleft')}" />
     <kl-button title="topright" on-click="{this.show('topright')}" />
     <kl-button title="bottomcenter" on-click="{this.show('bottomcenter')}" />
 </div>
-<div class="g-row">
+<div class="kl-row">
     <kl-button title="bottomleft" on-click="{this.show('bottomleft')}" />
     <kl-button title="bottomright" on-click="{this.show('bottomright')}" />
     <kl-button title="static" on-click="{this.show('static')}" />
@@ -160,7 +160,7 @@ var component = new NEKUI.Component({
 
 <div class="m-example">
   <style>
-    .m-bg-notify-demo .u-message{
+    .m-bg-notify-demo .kl-message{
         color: #f00;
     }
   </style>
@@ -265,6 +265,31 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
+### 配置信息contentTemplate
+设置notify的内容显示区域(html代码片段)。默认为空
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="contentTemplate"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        let notify = new NEKUI.KLNotify({
+            data: {
+                name: 'Rabbit',
+                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+            }
+        });
+        notify.show();
+    }
+});
+```
+<!-- demo_end -->
+
 
 <!-- demo_start -->
 ### 特殊类型方法
@@ -288,6 +313,9 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+
+
 
 
 
