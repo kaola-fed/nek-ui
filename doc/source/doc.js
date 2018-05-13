@@ -24,10 +24,26 @@ const CATES = [
 const DOC_PATH = __dirname;
 const COMPONENTS_PATH = path.join(__dirname, '../../src/js/components');
 const COMPONENTS_DEST = path.join(DOC_PATH, 'components');
+const COMMON_PATH = '/common';
+
+const getComponentPath = (cate, comp) => {
+    let dirPath = path.join(COMPONENTS_PATH, cate, comp);
+    if (fs.existsSync(dirPath)) return dirPath;
+
+    dirPath = path.join(COMPONENTS_PATH, cate, COMMON_PATH, comp);
+    if (fs.existsSync(dirPath)) return dirPath;
+}
 
 const getComponents = (cate) => {
-  const fullPath = path.join(COMPONENTS_PATH, cate);
-  return fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+  let fullPath = path.join(COMPONENTS_PATH, cate);
+  const components = fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+
+  let commons = [];
+  fullPath = path.join(fullPath, COMMON_PATH);
+  if (fs.existsSync(fullPath)) {
+      commons = fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+  }
+  return components.concat(commons);
 };
 
 const getDemoCode = (demo) => {
@@ -108,16 +124,16 @@ const doc = (isDev, callback) => {
   // 组件文档
   CATES.forEach((c) => {
     const components = getComponents(c.cate).filter((comp) => {
-      if (isDev && !/^KL(Notify)$/.test(comp)) {
+      if (isDev && !/^KL(Tabs|Tag)$/.test(comp)) {
         return false;
       }
 
-      const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
+      const mdPath = path.join(getComponentPath(c.cate, comp), 'index.md');
       if (fs.existsSync(mdPath)) return true;
       return false;
     });
     components.forEach((comp, i) => {
-      const compPath = path.join(COMPONENTS_PATH, c.cate, comp);
+      const compPath = getComponentPath(c.cate, comp);
       const mdPath = path.join(compPath, 'index.md');
       const jsPath = path.join(compPath, 'index.js');
 

@@ -127,7 +127,7 @@ var component = new NEKUI.Component({
 <!-- demo_start -->
 ### 左右滚动箭头
 
-当tab过多时会自动出现左右滚动箭头（与class: m-tabs-center冲突）
+当tab过多时会自动出现左右滚动箭头
 
 当DOM加载比较慢时，可能会出现初始左右滚动箭头不出现。是由于regular无法获取dom加载完成事件导致，待解决
 
@@ -175,5 +175,20 @@ var component = new NEKUI.Component({
         console.log('changed: ', event.key);
     }
 });
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### line类型
+
+<div class="m-example"></div>
+
+```xml
+<kl-tabs type="line">
+    <kl-tab title="Tab1" key="1">Content1</kl-tab>
+    <kl-tab title="Tab2" key="2">Content2</kl-tab>
+    <kl-tab title="Tab3" key="3">Content3</kl-tab>
+    <kl-tab title="Tab4" key="4">Content4</kl-tab>
+</kl-tabs>
 ```
 <!-- demo_end -->

@@ -11,6 +11,7 @@ const _ = require('../../../ui-base/_');
  * @class KLTabs
  * @extend Component
  * @param {object}        [options.data]                      = 绑定属性
+ * @param {string}        [options.data.type=card]            => 显示类型,card/line
  * @param {object}        [options.data.selected=null]        <=> 当前选择卡
  * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
  * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
@@ -38,6 +39,8 @@ const KLTabs = Component.extend({
       titleTemplate: null,
       offset: 0,
       navStyle: {},
+      type: 'card',
+      crtTabElem: null,
     });
     this.supr();
 
@@ -61,9 +64,8 @@ const KLTabs = Component.extend({
   },
   events: {
     $init() {
-      const self = this;
       setTimeout(() => {
-        self.update();
+        this.update();
       }, 10);
     },
   },
@@ -128,25 +130,42 @@ const KLTabs = Component.extend({
     const newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
     this.setOffset(newOffset);
   },
-  select(item) {
+  select(item, e) {
     if (this.data.readonly || this.data.disabled || item.data.disabled) return;
 
     this.data.selected = item;
+    this.data.crtTabElem = e.target;
     /**
      * @event KLTabs#select 选择某一项时触发
      * @property {object} sender 事件发送对象
      * @property {object} selected 当前选择卡
+     * @property {string} key 当前选择卡的key属性
+     * @property {event} e 点击鼠标事件
      */
     this.$emit('select', {
       sender: this,
       selected: item,
       key: item.data.key,
+      e,
     });
   },
   destroy() {
     this.supr();
     window.removeEventListener('resize', this._update);
   },
+});
+
+// eslint-disable-next-line
+KLTabs.directive('active-bar', function(activeBarElem) {
+  this.$watch('selected', (selected) => {
+    if (this.data.type !== 'line' || !selected) { return; }
+    setTimeout(() => {
+      const elem = activeBarElem.parentElement.querySelector('.is-crt');
+
+      activeBarElem.style.width = `${elem.clientWidth}px`;
+      activeBarElem.style.transform = `translateX(${elem.offsetLeft}px)`;
+    }, 10);
+  });
 });
 
 module.exports = KLTabs;
