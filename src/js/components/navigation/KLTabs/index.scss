@@ -5,13 +5,13 @@
     @extend .f-lsn;
     display: inline-block;
     padding: 0;
+    border-bottom: 1px solid #D9D9D9;
     transition: transform 0.3s;
     white-space: nowrap;
   }
 
   @include e(bd) {
     padding: 20px 0;
-    border-top: 1px solid #DEEAF2;
     background: $--background-color-white;
     clear: both;
   }
@@ -21,18 +21,18 @@
 
     position: relative;
     display: inline-block;
-    height: 31px;
-    line-height: 32px;
+    height: 40px;
+    line-height: 40px;
     min-width: 104px;
     padding: 0 15px;
     margin-bottom: -1px;
 
     color: $--text-color-default;
     text-align: center;
-    border: 1px solid #DEEAF2;
+    border: 1px solid #D9D9D9;
     border-bottom: none;
-    border-radius: 2px 2px 0 0;
-    background: $--background-color-white;
+    border-radius: 4px 4px 0 0;
+    background: #FAFAFA;
     cursor: pointer;
 
     & + .kl-tabs__tab {
@@ -44,9 +44,11 @@
     }
 
     @include when(crt) {
-      border-top: 3px solid #D9244E;
-      height: 32px;
-      line-height: 28px;
+      height: 41px;
+      line-height: 39px;
+      margin-bottom: -1px;
+      color: $--text-color-primary;
+      background: $--background-color-white;
     }
 
 
@@ -86,6 +88,7 @@
     @include when(dis) {
       color: #ccc;
       cursor: not-allowed;
+
     }
 
     @include m(prev) {
