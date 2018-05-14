@@ -1,0 +1,5 @@
+@include b(aside) {
+    flex-shrink: 0;
+    overflow: auto;
+    background: #eee;
+}

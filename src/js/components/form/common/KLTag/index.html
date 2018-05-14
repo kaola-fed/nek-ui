@@ -1,0 +1,6 @@
+<span class="kl-tag kl-tag--{type}">
+  {#inc this.$body}
+  {#if closable}
+    <kl-icon class="kl-tag__close" type="remove" on-click={this.close($event)} />
+  {/if}
+</span>

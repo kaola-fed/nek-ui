@@ -1,6 +1,6 @@
-const _ = require('../../../../ui-base/_');
-const Validation = require('../../../../util/validation');
-const validationMixin = require('../../../../util/validationMixin');
+const _ = require('../../../../../ui-base/_');
+const Validation = require('../../../../../util/validation');
+const validationMixin = require('../../../../../util/validationMixin');
 
 const template = require('./index.html');
 

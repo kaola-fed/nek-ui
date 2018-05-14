@@ -26,7 +26,7 @@ const KLCard = Component.extend({
     _.extend(this.data, {
       title: '',
       isShowLine: true,
-      isShowBtLine: false,
+      isShowBtLine: true,
       isIndent: true,
     });
     this.supr();

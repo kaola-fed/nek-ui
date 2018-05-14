@@ -1,0 +1,67 @@
+@include b(card) {
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    margin-bottom: 8px;
+    color: #333333;
+    @include m(indent) {
+
+    }
+    @include e(btLine) {
+        background: #ddd;
+        height: 1px;
+        margin-bottom: 8px;
+    }
+    @include e(body) {
+        padding:16px;
+    }
+
+    .kl-card {
+        .kl-card-header {
+            .kl-card-header__line {
+                height: 13px;
+            }
+            .kl-card-header__title {
+                font-size: 12px;
+            }
+            .kl-card-header__operate {
+                margin-right: 0;
+            }
+        }
+    }
+    .m-card--indent{
+        margin: 0 40px;
+    }
+}
+
+@include b(card-header) {
+    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+    display: -moz-box; /* 老版本语法: Firefox (buggy) */
+    display: -ms-flexbox; /* 混合版本语法: IE 10 */
+    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+    -webkit-box-align: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    //@include e(line) {
+    //    display: inline-block;
+    //    background: #333;
+    //    width: 3px;
+    //    height: 15px;
+    //    margin-right: 8px;
+    //}
+    @include e(title) {
+        font-size: 14px;
+        font-weight: bold;
+        color: rgba(0,0,0,0.85);
+        padding: 12px 16px;
+    }
+    @include e(operate) {
+        flex: 1;
+        text-align: right;
+        margin-right: 40px;
+        font-size: 12px;
+        color: #54A8F7;
+        letter-spacing: 0;
+    }
+}

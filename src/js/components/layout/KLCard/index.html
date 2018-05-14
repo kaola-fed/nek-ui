@@ -1,21 +1,21 @@
-<div class="m-card {class}" r-class="{{'m-card-indent' : isIndent === true}}">
+<div class="kl-card {class}" r-class="{{'m-card--indent' : isIndent === true}}">
     {#if title || this.$tools}
-    <div class="card_hd">
-        {#if isShowLine}
-        <span class="line"></span>
-        {/if}
-        <span class="title">{#inc title}</span>
-        {#if this.$tools}
-        <div class="operate">
-            {#inc this.$tools.$body}
+        <div class="kl-card-header">
+            <!--{#if isShowLine}-->
+            <!--<span class="kl-card-header__line"></span>-->
+            <!--{/if}-->
+            <span class="kl-card-header__title">{#inc title}</span>
+            {#if this.$tools}
+            <div class="kl-card-header__operate">
+                {#inc this.$tools.$body}
+            </div>
+            {/if}
         </div>
+        {#if isShowBtLine}
+        <div class="kl-card__btLine"></div>
         {/if}
-    </div>
     {/if}
-    {#if isShowBtLine}
-    <div class="btLine"></div>
-    {/if}
-    <div class="card_bd">
+    <div class="kl-card__body">
         {#inc this.$body}
     </div>
 </div>

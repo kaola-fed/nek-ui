@@ -9,7 +9,7 @@ title: 卡片
 <div class="m-example"></div>
 
 ```xml
-<kl-card title="用户信息">
+<kl-card title="用户信息" isShowBtLine={true}>
     <kl-form labelSize="80px">
         <kl-row>
             <kl-col span=4>
