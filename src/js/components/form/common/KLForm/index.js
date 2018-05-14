@@ -1,7 +1,7 @@
-const _ = require('../../../ui-base/_');
-const ajax = require('../../../ui-base/ajax');
-const Validation = require('../../../util/validation');
-const ValidationMixin = require('../../../util/validationMixin');
+const _ = require('../../../../ui-base/_');
+const ajax = require('../../../../ui-base/ajax');
+const Validation = require('../../../../util/validation');
+const ValidationMixin = require('../../../../util/validationMixin');
 
 const template = require('./index.html');
 

@@ -1,26 +1,31 @@
-<div class="kl-tabs {class}" is-dis={disabled} r-hide={!visible}>
-    <div class="kl-tabs-scroll {scrollable ? 'is-scrollable' : ''}">
+<div class="kl-tabs kl-tabs--{type} {class}" is-dis={disabled} r-hide={!visible}>
+    <div class="kl-tabs__wrap">
+      <div class="kl-tabs-scroll {scrollable ? 'is-scrollable' : ''}">
         {#if scrollable}
         <span class="kl-tabs-scroll__nav kl-tabs-scroll__nav--prev" is-dis={!scrollable.prev} on-click={this.prev()}>
-            <kl-icon type="chevron-left" />
+            <kl-icon type="chevron_left" />
         </span>
         <span class="kl-tabs-scroll__nav kl-tabs-scroll__nav--next" is-dis={!scrollable.next} on-click={this.next()}>
             <kl-icon type="chevron-right" />
         </span>
         {/if}
         <div ref="wrap" class="f-oh">
-            <ul ref="nav" class="kl-tabs__hd" r-style={navStyle}>
-                {#list tabs as item}
-                <li class="kl-tabs__tab" is-crt={item == selected} is-dis={item.data.disabled} on-click={this.select(item)}>
-                  {#if @(titleTemplate)}
-                    {#inc @(titleTemplate)}
-                  {#else}
-                    {item.data.title}
-                  {/if}
-                </li>
-                {/list}
-            </ul>
+          <ul ref="nav" class="kl-tabs__hd" r-style={navStyle}>
+            {#if type == 'line'}
+            <li class="kl-tabs__active-bar" active-bar></li>
+            {/if}
+            {#list tabs as item}
+            <li class="kl-tabs__tab" is-crt={item == selected} is-dis={item.data.disabled} on-click={this.select(item, $event)}>
+            {#if @(titleTemplate)}
+            {#inc @(titleTemplate)}
+            {#else}
+            {item.data.title}
+            {/if}
+            </li>
+            {/list}
+          </ul>
         </div>
+      </div>
     </div>
     <div class="kl-tabs__bd">
         {#inc this.$body}

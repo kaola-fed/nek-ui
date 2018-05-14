@@ -11,14 +11,15 @@ const Base = {
 
 const Components = {
   // Form
+  KLForm: require('./components/form/common/KLForm'),
+  KLFormItem: require('./components/form/common/KLForm/KLFormItem'),
+  KLTag: require('./components/form/common/KLTag'),
   KLCheck: require('./components/form/KLCheck'),
   KLCheckGroup: require('./components/form/KLCheckGroup'),
   KLDatePicker: require('./components/form/KLDatePicker'),
   KLRadioGroup: require('./components/form/KLRadioGroup'),
   KLMultiSelect: require('./components/form/KLMultiSelect'),
   KLButton: require('./components/form/KLButton'),
-  KLForm: require('./components/form/KLForm'),
-  KLFormItem: require('./components/form/KLForm/KLFormItem'),
   KLInput: require('./components/form/KLInput'),
   KLSelect: require('./components/form/KLSelect'),
   KLText: require('./components/form/KLText'),
