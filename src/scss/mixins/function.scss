@@ -1,14 +1,14 @@
 @import "bem.config";
-
 /* BEM support Func
  -------------------------- */
+
 @function __selectorToString($selector) {
     $selector: inspect($selector);
     $selector: str-slice($selector, 2, -2);
     @return $selector;
 }
 
-@function containsModifier($selector) {
+@function containModifier($selector) {
     $selector: __selectorToString($selector);
     @if str-index($selector, $modifier-separator) {
         @return true;
@@ -16,4 +16,28 @@
     @else {
         @return false;
     }
+}
+
+@function containWhen($selector) {
+    $selector: selectorToString($selector);
+    @if str-index($selector, '.' + $when-prefix) {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+@function containPseudoClass($selector) {
+    $selector: selectorToString($selector);
+    @if str-index($selector, ':') {
+        @return true;
+    }
+    @else {
+        @return false;
+    }
+}
+
+@function containSpecialClass($selector) {
+    @return containModifier($selector) or containWhen($selector) or containPseudoClass($selector);
 }

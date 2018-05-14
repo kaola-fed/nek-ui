@@ -14,7 +14,7 @@
 
 @mixin e($element) {
     $selector: &;
-    @if containsModifier($selector) {
+    @if containSpecialClass($selector) {
         @at-root {
             #{$selector} {
                 #{'.' + $B + $element-separator + $element} {
