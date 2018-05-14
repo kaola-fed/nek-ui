@@ -9,6 +9,7 @@ const _ = require('../../../ui-base/_');
  * @param {object}      [options.data]                      = 绑定属性
  * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
  * @param {string}      [options.data.class]                => 补充`class`
+ * @param {string}      [options.data.title]                => 补充`title`
  */
 
 const KLMessage = Component.extend({
