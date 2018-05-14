@@ -53,21 +53,43 @@ $--media-sm-max-width: 768px - 1;
         width: auto;
     }
 
-    .kl-message {
+    @include e(message) {
+        @extend .kl-message;
+
         margin-bottom: 10px;
         padding: 11px 35px 11px 20px;
         background: $--background-color-white;
         border: 1px solid #E3E3E3;
 
-        .kl-message__close {
+        @include m(info) {
+            @extend .kl-message--info;
+        }
+
+        @include m(success) {
+            @extend .kl-message--success;
+        }
+
+        @include m(warning) {
+            @extend .kl-message--warning;
+        }
+
+        @include m(error) {
+            @extend .kl-message--error;
+        }
+        
+        @include m(content) {
+            @extend .kl-message__content;
+        }
+
+        @include m(close) {
             display: none;
             position: absolute;
             right: 16px;
             font-size: 12px;
-            color: rgba(0,0,0,0.45);;
+            color: rgba(0,0,0,0.45);
         }
 
-        &:hover .kl-message__close {
+        &:hover .kl-notify__message--close {
             display: block;
         }
     }

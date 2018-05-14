@@ -65,3 +65,15 @@ var component = new NEKUI.Component({
 <kl-check name="禁用多选按钮" disabled />
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 插入模版
+<div class="m-example"></div>
+
+```xml
+<kl-check name="多选按钮" checked={isChecked} on-check={console.log($event)} on-change={console.log($event)} />
+<kl-button title="测试"></kl-button>
+
+<div>checked: {isChecked}</div>
+```
+<!-- demo_end -->
