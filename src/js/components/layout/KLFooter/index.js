@@ -7,7 +7,6 @@
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
 
 /**
  * @class KLFooter
@@ -19,9 +18,10 @@ const KLFooter = Component.extend({
   name: 'kl-footer',
   template,
   config() {
-    _.extend(this.data, {
+    this.defaults({
       height: '60px',
     });
+
     this.supr();
 
     this.$outer && (this.$outer.header = this);

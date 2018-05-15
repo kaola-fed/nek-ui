@@ -7,20 +7,23 @@
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
 
 /**
  * @class KLMain
  * @extend Component
- * @param {string}           [options.height]                        => 内容区高度
-
+ * @param {boolean}          [options.isMaster]                      => 是否为主内容页面，与KLAside的showFold配合使用
  */
 const KLMain = Component.extend({
   name: 'kl-main',
   template,
   config() {
-    _.extend(this.data, {});
+    this.defaults({
+      isMaster: false,
+    });
+
     this.supr();
+
+    this.$outer && this.data.isMaster && (this.$outer.bodyEl = this);
   },
 });
 
