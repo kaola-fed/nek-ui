@@ -28,6 +28,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {boolean}   [options.data.visible=true]       => 是否显示
  * @param {string}    [options.data.class]              => 补充class
  * @param {object}    [options.service]                 @=> 数据服务
+ * @param {string}    [options.data.source.contentTemplate]  => 内容模板，用于支持复杂内容的自定义。
  */
 const KLCheckGroup = SourceComponent.extend({
   name: 'kl-check-group',

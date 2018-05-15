@@ -27,7 +27,7 @@ $--border-color-warning: #FFCA61;
     border-radius: 4px;
     position: relative;
 
-    @include e(t) {
+    @include e(content) {
         display: inline-block;
         font-family: PingFangSC-Regular;
         font-size: 12px;
@@ -45,19 +45,32 @@ $--border-color-warning: #FFCA61;
 
         @include m(large) {
             font-size: 24px;
-            margin: 4px 16px 0px 11px;
+            position: absolute;
+            top: 16px;
+            left: 24px;;
         }
     }
     
+    @include e(box) {
+        margin: 0px 0px 4px 64px;
+    }
+
     @include e(title) {
         font-size: 16px;
         color: rgba(0,0,0,0.85);
+        margin-top: 3px;
+        margin-bottom: 7px;
+        font-weight: 600;
     }
 
     @include e(remove) {
         color: #666666 !important;
         position: absolute;
-        right: 18px;
+        right: 17.5px;
+
+        @include m(large) {
+            top: 17.5px;
+        }
     }
 
     @include m(info) {

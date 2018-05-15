@@ -27,6 +27,7 @@ const validationMixin = require('../../../util/validationMixin');
  * @param {boolean}       [options.data.visible=true]     => 是否显
  * @param {string}        [options.data.class]            => 补充class
  * @param {object}        [options.service]               @=> 数据服务
+ * @param {string}        [options.data.source.contentTemplate]  => 内容模板，用于支持复杂内容的自定义。
  */
 const KLRadioGroup = SourceComponent.extend({
   name: 'kl-radio-group',
@@ -41,6 +42,7 @@ const KLRadioGroup = SourceComponent.extend({
       required: false,
       nameKey: 'name',
       key: 'id',
+      contentTemplate: '',
     });
     this.supr();
 

@@ -18,7 +18,7 @@ const KLMessage = Component.extend({
   config() {
     _.extend(this.data, {
       type: '',
-      basic: true,
+      basic: false,
       title: '',
       visible: true,
     });
