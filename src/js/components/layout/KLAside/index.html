@@ -1,3 +1,13 @@
-<aside class="kl-aside" r-style={ { width: width } }>
+<aside class="kl-aside" r-style={ { width: width } } r-class={ {'is-active': active } }>
     {#inc this.$body}
+
+  {#if showFold}
+  <div class="kl-sidebar-btn-wrap" on-click="{this.toggle($event)}" r-style={{ left: width }}>
+    {#if active}
+    <i class="kl-icon kl-icon-chevron_left"></i>
+    {#else}
+    <i class="kl-icon kl-icon-chevron_right"></i>
+    {/if}
+  </div>
+  {/if}
 </aside>

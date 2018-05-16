@@ -1,0 +1,38 @@
+@include b(group) {
+    font-size: 0;
+    .kl-select:first-child {
+        display: inline-block;
+        width: 50%;
+        .kl-dropdown__hd {
+            border-radius: 2px 0 0 2px;
+        }
+    }
+    .kl-input:last-child {
+        display: inline-block;
+        width: 50%;
+        .kl-input__inner {
+            border-left: none;
+            border-radius: 0 2px 2px 0;
+        }
+    }
+}
+
+@include b(group) {
+    font-size: 0;
+    .kl-input:first-child {
+        display: inline-block;
+        width: 50%;
+        .kl-input__inner {
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+        }
+    }
+    .kl-select:last-child {
+        display: inline-block;
+        width: 50%;
+        .kl-dropdown__hd {
+            border-radius: 0 2px 2px 0;
+        }
+    }
+}
+

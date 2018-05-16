@@ -1,5 +1,5 @@
 /**
- * @file KLSteps     步骤条
+ * @file KLGroup     步骤条
  * @author   ziane(zianecui@gmail.com)
  */
 
@@ -8,18 +8,12 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
 
-const KLSteps = Component.extend({
-  name: 'kl-steps',
+const KLGroup = Component.extend({
+  name: 'kl-group',
   template,
+  $stepsNode: [],
   config() {
     _.extend(this.data, {
-      $stepsNode: [],
-      steps: [],
-      current: 0,
-      size: '',
-      currentIndex: 0,
-      currentStatus: '',  // wait; process; finish; error
-      direction: 'horizontal',
     });
     this.supr();
   },
@@ -28,4 +22,4 @@ const KLSteps = Component.extend({
   },
 });
 
-module.exports = KLSteps;
+module.exports = KLGroup;

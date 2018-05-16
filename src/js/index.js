@@ -27,6 +27,7 @@ const Components = {
   KLUpload: require('./components/form/KLUpload'),
   KLTreeView: require('./components/form/KLTreeView'),
   KLSwitch: require('./components/form/KLSwitch'),
+  KLGroup: require('./components/form/KLGroup'),
 
   // Navigation
   KLSidebar: require('./components/navigation/KLSidebar'),
@@ -37,6 +38,7 @@ const Components = {
   KLTabs: require('./components/navigation/KLTabs'),
   KLTab: require('./components/navigation/KLTabs/KLTab'),
   KLSteps: require('./components/navigation/KLSteps'),
+  KLStep: require('./components/navigation/KLSteps/KLStep'),
   KLCrumb: require('./components/navigation/KLCrumb'),
   KLCrumbItem: require('./components/navigation/KLCrumb/KLCrumbItem'),
 

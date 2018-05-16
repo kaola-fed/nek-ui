@@ -9,6 +9,7 @@ title: 布局容器
 
 <div class="m-example m-example-1"></div>
 <style>
+    .m-example { overflow: hidden; }
     .m-example .kl-main { line-height: 160px; }
     .m-example-1 .kl-header, .m-example-1 .kl-footer, .m-example-2 .kl-header, .m-example-2 .kl-footer, .m-example-3 .kl-header, .m-example-3 .kl-footer { background: #ccc; color: #666; }
     .m-example .kl-header, .m-example .kl-footer, .m-example .kl-main { text-align: center; }
@@ -38,7 +39,7 @@ title: 布局容器
     <kl-header>Header</kl-header>
     <kl-layout>
         <kl-aside>Aside</kl-aside>
-        <kl-main>Main</kl-main>
+        <kl-main isMaster={true}>Main</kl-main>
     </kl-layout>
 </kl-layout>
 ```
@@ -60,7 +61,7 @@ title: 布局容器
 ```xml
 <kl-layout>
     <kl-aside>Aside</kl-aside>
-    <kl-layout>
+    <kl-layout isMaster={true}>
         <kl-header>Header</kl-header>
         <kl-main>Main</kl-main>
         <kl-footer>Footer</kl-footer>
@@ -94,14 +95,7 @@ title: 布局容器
         font-size: 18px;
         color: #fff;
     }
-    .demo-body {
-        position: absolute;
-        left: 180px;
-        top: 60px;
-        bottom: 0;
-        right: 0;
-        padding: 10px 13px;
-    }
+
     .grid-item .kl-menu { padding: 0; }
 </style>
 
@@ -110,16 +104,9 @@ title: 布局容器
     <kl-header>Header</kl-header>
     <kl-layout>
         <kl-aside>
-            <!-- <div class="demo-main"> -->
-                <!-- <div class="demo-head">
-                    <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
-                    考拉UI系统
-                </div>
-                <div id="j-body" class="demo-body"></div> -->
-            <kl-sidebar top="0px" menus={menus} uniqueOpened={false} bodyEl="j-body" width="200px" />
-            <!-- </div> -->
+            <kl-sidebar top="0px" menus={menus} uniqueOpened={false} width="200px" />
         </kl-aside>
-        <kl-main id="j-body" class="demo-body">Main</kl-main>
+        <kl-main isMaster={true}>Main</kl-main>
     </kl-layout>
 </kl-layout>
 ```

@@ -161,6 +161,12 @@ const KLInput = Component.extend({
   clear() {
     this.$update('value', '');
   },
+  focus() {
+    this.$refs.input.focus();
+  },
+  blur() {
+    this.$refs.input.blur();
+  },
   /* 1. type=char时,去除前后的空格; 2. type=int/float时, 只能输入对应类型的数字; */
   __valueFilter(_value) {
     const type = this.data.type;

@@ -308,7 +308,7 @@ a.button.white {
   height: $heading-inner-height;
   padding: 10px 60px;
   position: relative;
-  z-index: 2;
+  z-index: 1000;
 }
 body.docs #header {
   position: fixed;
