@@ -158,7 +158,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 基本形式
+### 插入模版
 <div class="m-example">
     <style>
         .kl-template {
@@ -179,13 +179,14 @@ var component = new NEKUI.Component({
             {
                 name: '一般贸易', 
                 id: 1,
-                contentTemplate: '<kl-input class="kl-template" value="{name}"/>'
+                contentTemplate: '<kl-input class="kl-template" value="{this.$parent.data.test}"/>'
             },
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
         ],
         value: 2,
+        test: '插入模版'
     }
 });
 ```

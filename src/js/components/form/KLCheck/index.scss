@@ -37,7 +37,8 @@
     }
 
     /* Checked */
-    &.is-chk {
+    &.is-chk,
+    &.is-part {
         .kl-check__box {
             background: #00C4C0;
             color: #fff;
@@ -51,11 +52,7 @@
     /* Indetermined */
     &.is-part {
         .kl-check__box {
-            background: #00C4C0;
-            color: #fff;
-            border: 1px solid #00C4C0;
             .kl-icon {
-                display: inline-block;
                 &:before {
                     content: "\e91c";
                 }

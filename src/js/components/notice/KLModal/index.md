@@ -110,7 +110,14 @@ var component = new NEKUI.Component({
 <!-- demo_start -->
 ### 配置信息contentTemplate
 设置modal的内容显示区域(html代码片段)。默认为空
-<div class="m-example"></div>
+<div class="m-example">
+    <style>
+        .template_label {
+            line-height: 32px;
+            display: inline-block;
+        }
+    </style>
+</div>
 
 ```xml
 <kl-button on-click="{this.show()}"  title="contentTemplate"/>
@@ -124,13 +131,78 @@ var component = new NEKUI.Component({
             data: {
 
                 name: 'Rabbit',
-                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+                contentTemplate: '<kl-row>\
+                                    <kl-col span=2><span class="template_label">标题</span></kl-col>\
+                                    <kl-col span=10><kl-input placeholder="请输入"/></kl-col>\
+                                  </kl-row>\
+                                  <kl-row>\
+                                    <kl-col span=2><span class="template_label">描述</span></kl-col>\
+                                    <kl-col span=10><kl-textarea placeholder="请至少输入五个字符" /></kl-col>\
+                                  </kl-row>',
+                cancelButton: true
             }
         });
     }
 });
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 配置信息contentTemplate
+设置modal的内容显示区域(html代码片段)。默认为空
+<div class="m-example">
+    <style>
+        .template_label {
+            line-height: 32px;
+            display: inline-block;
+        }
+    </style>
+</div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="contentTemplate"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                title: '新建文档',
+                contentTemplate: '<kl-table source="{this.$parent.data.table.source}" >\
+                                      <kl-table-col name="标题1" on-click={console.log(1)} key={name} />\
+                                      <kl-table-col name="标题2" key="age" />\
+                                      <kl-table-col name="标题3" key="num" />\
+                                  </kl-table>',
+                cancelButton: true,
+                table: {
+                    source: [{
+                        name: '小明',
+                        age: 20,
+                        num: 'test1'
+                    }, {
+                        name: '小红',
+                        age: 18,
+                        num: 'test2'
+                    }, {
+                        name: '小刚',
+                        age: 12,
+                        num: 'test3'
+                    }, {
+                        name: '小李',
+                        age: 32,
+                        num: 'test4'
+                    }]
+                }
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
 
 <!-- demo_start -->
 ### 配置信息footerTemplate
@@ -685,4 +757,35 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
+### modal类型
+不同类型的modal, 可选参数：`default`, `info`, `warning`, `error`, `success`
 
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show('default')}"  title="default"/>
+<kl-button on-click="{this.show('info')}"  title="info"/>
+<kl-button on-click="{this.show('warning')}"  title="warning"/>
+<kl-button on-click="{this.show('error')}"  title="error"/>
+<kl-button on-click="{this.show('success')}"  title="success"/>
+
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function(type) {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                type: type,
+                title: '确认要删除这条信息吗？',
+                cancelButton: true
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->

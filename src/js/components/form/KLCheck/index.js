@@ -50,6 +50,7 @@ const KLCheck = Component.extend({
     if (this.data.readonly || this.data.disabled) return;
 
     let checked = _checked;
+
     if (checked === undefined) checked = !this.data.checked;
     this.data.checked = checked;
 
@@ -62,6 +63,7 @@ const KLCheck = Component.extend({
       sender: this,
       checked,
     });
+    return false;
   },
 });
 

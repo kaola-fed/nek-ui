@@ -17,8 +17,8 @@ const dragdrop = require('./dragdrop.js');
  * @param {string/Dragable.Proxy/Element/function}   [options.data.proxy]                 @=> 拖拽代理，即拖拽时显示的元素。默认值为`clone`，拖拽时拖起自身的一个拷贝；当值为`self`，拖拽时直接拖起自身。也可以用`<draggable.proxy>`自定义代理，或直接传入一个元素或函数。其他值表示不使用拖拽代理。
  * @param {string}                                   [options.data.direction=all]         => 拖拽代理可以移动的方向，`all`为任意方向，`horizontal`为水平方向，`vertical`为垂直方向
  * @param {boolean}                                  [options.data.disabled=false]        => 是否禁用
- * @param {string}                                   [options.data.class=z-draggable]     => 可拖拽时（即disabled=false）给元素附加此class
- * @param {string}                                   [options.data.dragClass=z-drag]      => 拖拽该元素时给元素附加此class
+ * @param {string}                                   [options.data.class=is-draggable]     => 可拖拽时（即disabled=false）给元素附加此class
+ * @param {string}                                   [options.data.dragClass=is-drag]      => 拖拽该元素时给元素附加此class
  */
 const KLDraggable = Component.extend({
   name: 'kl-draggable',
@@ -28,8 +28,8 @@ const KLDraggable = Component.extend({
       data: null,
       proxy: 'clone',
       direction: 'all',
-      class: 'z-draggable',
-      dragClass: 'z-drag',
+      class: 'is-draggable',
+      dragClass: 'is-drag',
     });
     this.supr();
 

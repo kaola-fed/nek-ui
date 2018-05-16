@@ -2,19 +2,21 @@
     font-size: 0;   //解决display: inline-block的元素之前产生的间距
     line-height: initial;
 
-    .kl-btn{
+    .kl-btn {
         margin-right: 16px;
     }
-    .kl-btn:last-child{
+    .kl-btn:last-child {
         margin-right: 0;
     }
 
-    .kl-check, .kl-radio{
+    .kl-check, .kl-radio {
         margin-right: 40px;
     }
+
     .kl-check:last-child, .kl-radio:last-child {
         margin-right: 0;
     }
+
     .kl-tip {
         margin-top: 0;
     }
@@ -26,20 +28,13 @@
     }
 
     @include m(sm) {
-        font-size: 0;   //解决display: inline-block的元素之前产生的间距
         .kl-btn {
             margin-right: 8px;
-        }
-        .kl-btn:last-child{
-            margin-right: 0;
         }
 
         .kl-check, .kl-radio{
             margin-right: 16px;
             line-height: 24px;
-        }
-        .kl-check:last-child, .kl-radio:last-child{
-            margin-right: 0;
         }
     }
 }

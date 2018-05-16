@@ -37,6 +37,7 @@ const KLNotify = Component.extend({
       text,
       state,
       duration: duration >= 0 ? +duration : +this.data.duration,
+      // duration: 0,
     };
     const messages = this.data.messages;
 

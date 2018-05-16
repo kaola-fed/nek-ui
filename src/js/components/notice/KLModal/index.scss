@@ -1,0 +1,150 @@
+$--media-sm-max-width: 768px - 1;
+@include b(modal) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    // - 允许模态对话框在模态层里滚动，因为有时候内容可能会比较多
+    // - Allow scrolling for the modal dialog
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+    text-align: center;
+    // - Mask the background page
+    background: rgba(0, 0, 0, 0.6);
+
+    &:after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+    @include e(dialog) {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        width: 433px;
+        background: white;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
+        border-radius: 4px;
+        max-width: 1050px;
+    }
+
+    @include e(hd) {
+        padding: 15px 16px;
+        border-bottom: 1px solid #eee;
+        @include when(draggable) {
+            cursor: move;
+            cursor: -webkit-grab;
+        }
+    }
+
+    @include e(title) {
+        margin: 0;
+        font-size: 16px;
+        color: rgba(0,0,0,0.85);
+        line-height: 24px;
+    }
+
+    @include e(close) {
+        float: right;
+        font-size: 12px;
+        line-height: 24px;
+
+        .kl-icon {
+            color: rgba(0,0,0,0.25);
+        }
+
+        &:hover .kl-icon{
+            color: #888;
+        }
+    }
+
+    @include when(drag) {
+        .kl-modal__hd.is-draggable {
+            cursor: move;
+            cursor: -webkit-grabbing;
+        }
+    }
+
+    @include e(bd) {
+        padding: 24px;
+        min-height: 12px;
+        overflow:auto;
+        font-size: 12px;
+        color: rgba(0,0,0,0.65);
+        line-height: 24px;
+    }
+
+    @include e(ft) { 
+        padding: 10px 15px;
+        text-align: right;
+        border-top: 1px solid $--border-color-base;
+        font-size: 0;
+        
+        .kl-btn {
+            min-width: 60px;
+            margin-right: 10px;
+        }
+    }
+
+}
+@include b(modal-type) {
+    padding: 32px 32px 24px 32px;
+    display: flex;
+    
+    @include e(right) {
+        text-align: right;
+        width: 100%;
+    }
+
+    @include e(title) {
+        @extend .kl-modal__title;
+        text-align: left;
+    }
+
+    @include e(bd) {
+        @extend .kl-modal__bd;
+        text-align: left;
+        padding: 8px 0 24px 0;
+    }
+
+    .kl-icon {
+        line-height: 24px;
+        font-size: 24px;
+        margin-right: 16px;
+    }
+
+    .kl-icon-default {
+        display: none;
+    }
+
+    .kl-icon-info {
+        color: $--info-color;
+    }
+
+    .kl-icon-warning {
+        color: $--warning-color;        
+    }
+
+    .kl-icon-error {
+        color: $--error-color;        
+    }
+
+    .kl-icon-success {
+        color: $--success-color;       
+    }
+}
+
+// - Phone landscape and smaller
+@media (max-width: $--media-sm-max-width) {
+    // - Fit in small screen
+    .kl-modal__dialog {
+        margin: 10px;
+    }
+}
+
+

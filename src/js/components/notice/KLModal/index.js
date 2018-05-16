@@ -12,6 +12,7 @@ const _ = require('../../../ui-base/_');
  * @class KLModal
  * @extend Component
  * @param {object}            [options.data]                      = 绑定属性
+ * @param {string}            [options.data.type=提示]             => 对话框类型, 可选参数：`default`、`info`、`warning`、`error`、`success`
  * @param {string}            [options.data.title=提示]            => 对话框标题
  * @param {string}            [options.data.content]              => 对话框内容
  * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。
@@ -36,6 +37,7 @@ const KLModal = Component.extend({
     _.extend(this.data, {
       title: this.$trans('NOTICE'),
       content: '',
+      type: '',
       okButton: true,
       with: 400,
       cancelButton: false,
@@ -49,6 +51,8 @@ const KLModal = Component.extend({
   },
 
   init() {
+    // - 禁止Modal的时候后面的内容还可以滚动，很重要的一条！
+    document.body.style.overflow = 'hidden';
     this.supr();
     // 如果不是内嵌组件，则嵌入到data.el或document.body中
     if (this.$root === this) {
@@ -79,7 +83,10 @@ const KLModal = Component.extend({
          * @event KLModal#ok 确定对话框时触发
          */
     this.$emit('ok', event);
-    !this.data.noClose && this.destroy();
+    if (!this.data.noClose) {
+      this.destroy();
+      document.body.style.overflow = '';
+    }
   },
   /**
      * @method KLModal#cancel() 取消对话框
@@ -91,6 +98,8 @@ const KLModal = Component.extend({
          */
     this.$emit('cancel');
     this.destroy();
+    // - 禁止Modal的时候后面的内容还可以滚动，很重要的一条！
+    document.body.style.overflow = '';
   },
   _onDragStart($event) {
     const dialog = $event.proxy;
