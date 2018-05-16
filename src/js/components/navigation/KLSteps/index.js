@@ -22,15 +22,6 @@ const KLSteps = Component.extend({
       direction: 'horizontal',
     });
     this.supr();
-
-    this.$watch('$stepsNode.length', (newValue) => {
-      if (newValue !== 0) {
-        const stepsNode = this.data.$stepsNode;
-        stepsNode.forEach((element) => {
-          console.log(element);
-        });
-      }
-    });
   },
   init() {
     this.supr();

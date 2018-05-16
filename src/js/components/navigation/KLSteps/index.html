@@ -3,7 +3,7 @@
     r-class={{'kl-steps--simple': simple}}
     style="height: {height}px; width: {width}px"
     >
-    {#inc this.$body}
+    <!-- {#inc this.$body} -->
     {#list steps as step}
     <kl-step title="{step.title}" description="{step.description}" status="{step.status}" key="{step.key}" />
     {/list}

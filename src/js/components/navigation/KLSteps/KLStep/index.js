@@ -2,7 +2,7 @@
  * @file KLSteps     步骤条
  * @author   ziane(zianecui@gmail.com)
  */
-import KLStep from '../index';
+// import KLStep from '../index';
 
 const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
@@ -20,46 +20,68 @@ const KLSteps = Component.extend({
     });
     this.supr();
 
-    if (this.$outer && this.$outer instanceof KLStep) {
-      this.data.stepNumber = this.$outer.data.$stepsNode.length;
-      this.$outer.data.$stepsNode.push(this);
-      this.data.current = this.$outer.data.current;
+    this.data.stepNumber = this.$parent.data.$stepsNode.length;
+    this.$parent.data.$stepsNode.push(this);
+    this.data.current = this.$parent.data.current;
+    this.data.size = this.$parent.data.size;
+    this.data.direction = this.$parent.data.direction; // vertical/horizontal
 
-      // 获取默认值
-      this.data.size = this.$outer.data.size;
-      this.data.direction = this.$outer.data.direction; // vertical/horizontal
+    const steps = this.$parent.data.steps;
 
-      const steps = [];
-      this.$outer.data.$stepsNode.forEach((item) => {
-        steps.push({
-          title: item.data.title,
-          description: item.data.description,
-          key: item.data.key,
-          status: '',
-        });
-      });
-
-      this.$watch('this.$outer.data.current', (newValue) => {
-        this.data.current = newValue;
-        this.getCurrentIndex(steps);
-      });
-
-
-      this.$watch('this.$outer.data.$stepsNode.length', (newValue) => {
-        const len = newValue;
-        this.data.style = this.setStyles(len);
-      });
-    } else {
-      this.data.stepNumber = this.$parent.data.$stepsNode.length;
-      this.$parent.data.$stepsNode.push(this);
-
-      const steps = this.$parent.data.steps;
+    this.$watch('this.$parent.data.current', (newValue) => {
+      this.data.current = newValue;
       this.getCurrentIndex(steps);
-      this.$watch('this.$outer.data.current', (newValue) => {
-        this.data.current = newValue;
-        this.getCurrentIndex(steps);
-      });
-    }
+    });
+
+    this.$watch('this.$parent.data.source.length', () => {
+      this.getCurrentIndex(steps);
+    });
+
+    // if (this.$outer && this.$outer instanceof KLStep) {
+    //   this.data.stepNumber = this.$outer.data.$stepsNode.length;
+    //   this.$outer.data.$stepsNode.push(this);
+    //   this.data.current = this.$outer.data.current;
+
+    //   // 获取默认值
+    //   this.data.size = this.$outer.data.size;
+    //   this.data.direction = this.$outer.data.direction; // vertical/horizontal
+
+    //   const steps = [];
+    //   this.$outer.data.$stepsNode.forEach((item) => {
+    //     steps.push({
+    //       title: item.data.title,
+    //       description: item.data.description,
+    //       key: item.data.key,
+    //       status: '',
+    //     });
+    //   });
+
+    //   this.$watch('this.$outer.data.current', (newValue) => {
+    //     this.data.current = newValue;
+    //     this.getCurrentIndex(steps);
+    //   });
+
+
+    //   this.$watch('this.$outer.data.$stepsNode.length', (newValue) => {
+    //     const len = newValue;
+    //     this.data.style = this.setStyles(len);
+    //   });
+    // } else {
+    //   this.data.stepNumber = this.$parent.data.$stepsNode.length;
+    //   this.$parent.data.$stepsNode.push(this);
+
+    //   const steps = this.$parent.data.steps;
+    //   this.getCurrentIndex(steps);
+    //   this.$watch('this.$parent.data.current', (newValue) => {
+    //     this.data.current = newValue;
+    //     this.getCurrentIndex(steps);
+    //   });
+
+    //   this.$watch('this.$parent.data.source', (newValue) => {
+    //     this.data.current = newValue;
+    //     this.getCurrentIndex(steps);
+    //   });
+    // }
   },
   init() {
     this.supr();
@@ -95,6 +117,7 @@ const KLSteps = Component.extend({
   getCurrentIndex(steps) {
     const data = this.data;
     const current = data.current;
+    if (!current && current !== 0 && current !== '0') return;
     if (!steps) return;
 
     steps.forEach((item, index) => {
@@ -111,7 +134,7 @@ const KLSteps = Component.extend({
   setStatus(steps) {
     const data = this.data;
     const currentIndex = data.currentIndex;
-
+    console.log(currentIndex);
     if (currentIndex === undefined) {
       this.data.currentStatus = 'finish';
     } else {
