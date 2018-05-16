@@ -7,7 +7,6 @@
 
 const Component = require('../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
 
 /**
  * @class KLHeader
@@ -19,7 +18,7 @@ const KLHeader = Component.extend({
   name: 'kl-header',
   template,
   config() {
-    _.extend(this.data, {
+    this.defaults({
       height: '60px',
     });
     this.supr();

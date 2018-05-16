@@ -7,12 +7,13 @@
     margin: 0;
     padding: 0;
     color: #333;
-
-    .kl-sub-menu-head__title a, .kl-menu-item-wrap a, a.kl-sub-menu {
+    .kl-sub-menu-head__title a,
+    .kl-menu-item-wrap a,
+    a.kl-sub-menu {
         color: #333;
     }
 }
 
 .collapse-transition {
-  transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
+    transition: 0.3s height ease-in-out, 0.3s padding-top ease-in-out, 0.3s padding-bottom ease-in-out;
 }

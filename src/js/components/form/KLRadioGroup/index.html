@@ -4,7 +4,7 @@
 	    <label class="kl-radio" title={item[nameKey]} is-sel={item === selected} is-dis={disabled} r-class={ {'kl-radio--block': block} } on-click={this.select(item)}>
 			<div class="kl-radio__box">
 				<kl-icon type="radio" />
-			</div>{item[nameKey]}
+			</div>{#if item['contentTemplate']}{#inc @(item['contentTemplate'])}{#else}{item[nameKey]}{/if}
 		</label>
 	    {/list}
 	</div>

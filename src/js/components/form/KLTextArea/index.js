@@ -105,6 +105,12 @@ const KLTextArea = Component.extend({
 
     return result;
   },
+  focus() {
+    this.$refs.textarea.focus();
+  },
+  blur() {
+    this.$refs.textarea.blur();
+  },
   _onKeyUp($event) {
     this.validate('keyup');
     /**

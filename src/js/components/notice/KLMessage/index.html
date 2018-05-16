@@ -1,8 +1,10 @@
 <div class="kl-message kl-message--{type} {class}" r-hide={!visible} r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
-    <kl-icon type={type + 2} class="kl-message__icon {class}" r-hide={!type}  />
-    <p class="kl-message__title" r-hide={!title} >{title}</p>
-    <span class="kl-message__t">
-        {#inc this.$body}
-    </span>
-    <a r-hide={!basic} class="kl-message__remove" on-click={this.close(false)}><kl-icon type="remove" /></a>
+    <kl-icon type={type + 2} class="kl-message__icon {!!title ? 'kl-message__icon--large' : ''}" r-hide={!type}  />
+    <div class="{!!title ? 'kl-message__box' : ''}">
+        <p class="kl-message__title" r-hide={!title} >{title}</p>
+        <span class="kl-message__content">
+            {#inc this.$body}
+        </span>
+    </div>
+    <a r-hide={!basic} class="kl-message__remove {!!title ? 'kl-message__remove--large' : ''}" on-click={this.close(false)}><kl-icon type="remove" /></a>
 </div>

@@ -8,6 +8,7 @@
         transition: height .3s ease-in;
         &:hover {
             color: #00C4C0 !important;
+            text-decoration: none;
         }
         @include when(active) {
             color: #fff !important;
