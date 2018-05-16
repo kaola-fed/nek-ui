@@ -1,4 +1,4 @@
-$headerGrey: #EEF1F4;
+$headerGrey:  #F2F6FF;
 $resizeProxyColor: #ddd;
 $trBorderColor: #ecf2f9;
 $trHoverColor: #ecf2f9;
@@ -121,15 +121,20 @@ $orderIconColor: #666;
 
 @include b(table-tbody-head) {
     @include e(th) {
+        font-size: 14px;
+        color: #222222;
+        letter-spacing: 0;
+        line-height: 14px;
+        font-weight: bold;
         box-sizing: border-box;
         background-color: $headerGrey;
-        height: 32px;
+        height: 40px;
         padding: 0;
         border-collapse: collapse;
-        border-bottom: 1px solid #fff;
+        border-bottom: 1px solid #E5ECFC;;
         font-weight: normal;
         &:not(:last-child){
-            border-right: 1px solid #fff;
+            border-right: 1px solid headerGrey;
         }
     }
 }
@@ -205,8 +210,7 @@ $orderIconColor: #666;
 
 
 @include b(table-ft) {
-    padding: 10px 0;
-    background: #fff;
+    background: $headerGrey;
     @include e(scrollBar) {
         overflow: auto;
         margin-bottom: 10px;
@@ -232,6 +236,12 @@ $orderIconColor: #666;
         bottom: 0;
         z-index: 1000;
     }
+
+    .kl-pager {
+        padding: 15px 20px;
+        background: $headerGrey;
+    }
+
 
 }
 

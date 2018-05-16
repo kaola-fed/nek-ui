@@ -1,0 +1,387 @@
+@mixin pseudo($pseudo) {
+    @at-root #{&}#{':#{$pseudo}'} {
+        @content
+    }
+
+
+}
+
+@include b(step) {
+    position: relative;
+    flex-shrink: 1;
+
+    @include pseudo(last-of-type) {
+        @include e(line) {
+            display: none;
+        }
+
+        // 只有未设置 space 的情况下才自适应宽度
+        @include when(flex) {
+            flex-basis: auto !important;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+
+        @include e((main, description)) {
+            padding-right: 0;
+        }
+
+        .kl-step__line {
+            display: none;
+        }
+    }
+
+    @include e(head) {
+        position: relative;
+        width: 100%;
+
+        @include when(process) {
+            color: #303133;
+            border-color: #303133;
+        }
+
+        @include when(wait) {
+            color: #EFF1F5;
+            border-color: #EFF1F5;
+        }
+
+        @include when(success) {
+            border-color: #54A8F7;
+            .kl-step__icon {
+                background: #fff;
+                color: #54A8F7;
+            }
+        }
+
+        @include when(error) {
+            border-color: #f56c6c;
+            .kl-step__icon {
+                color: #fff;
+                background: #f56c6c;
+            }
+        }
+
+        @include when(finish) {
+            border-color: #54A8F7;
+            .kl-step__icon {
+                color: #fff;
+                background: #54A8F7;
+            }
+        }
+    }
+
+    @include e(icon) {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        box-sizing: border-box;
+        background: #fff;
+        color: #999999;
+        transition: .15s ease-out;
+
+        @include when(text) {
+            border-radius: 50%;
+            border: 2px solid;
+            border-color: inherit;
+        }
+
+        @include when(icon) {
+            width: 40px;
+        }
+    }
+
+    @include e(icon-inner) {
+        display: inline-block;
+        user-select: none;
+        text-align: center;
+        font-weight: bold;
+        line-height: 1;
+        color: inherit;
+
+        &[class*=el-icon]:not(.is-status) {
+            font-size: 25px;
+            font-weight: normal;
+        }
+
+        // 组件自身表示状态的图标
+        @include when(status) {
+            transform: translateY(1px);
+        }
+    }
+
+    @include e(line) {
+        position: absolute;
+        border-color: inherit;
+        background-color: #EFF1F5;
+    }
+
+    @include e(line-inner) {
+        display: block;
+        border-width: 1px;
+        border-style: solid;
+        border-color: inherit;
+        transition: .15s ease-out;
+        box-sizing: border-box;
+        width: 0;
+        height: 0;
+    }
+
+    @include e(main) {
+        white-space: normal;
+        text-align: left;
+    }
+
+    @include e(title) {
+        margin-top: 12px;
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 24px;
+
+        @include when(process) {
+            font-weight: bold;
+            color: #303133;
+        }
+
+        @include when(wait) {
+            color: #666666;;
+        }
+
+        @include when(success) {
+            color: #54A8F7;
+        }
+
+        @include when(error) {
+            color: #f56c6c;
+        }
+
+        @include when(finish) {
+            color: #54A8F7;
+        }
+    }
+
+    @include e(description) {
+        padding-right: 10%;
+        margin-top: -5px;
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: normal;
+
+        @include when(process) {
+            color: #303133;
+        }
+
+        @include when(wait) {
+            color: #999999;
+        }
+
+        @include when(success) {
+            color: #54A8F7;
+        }
+
+        @include when(error) {
+            color: #f56c6c;
+        }
+
+        @include when(finish) {
+            color: #999999;
+        }
+    }
+
+    @include when(horizontal) {
+        display: inline-block;
+
+        // .kl-step__line {
+        //     height: 4px;
+        //     top: 14px;
+        //     left: 0;
+        //     right: 0;
+        // }
+        @include e(line) {
+            height: 4px;
+            top: 14px;
+            left: 0;
+            right: 0;
+        }
+
+        @include when(small) {
+            @include e(line) {
+                height: 2px;
+                top: 11px;
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+
+    @include when(vertical) {
+        display: flex;
+
+        @include e(head) {
+            flex-grow: 0;
+            width: 32px;
+        }
+
+        @include e(main) {
+            padding-left: 10px;
+            flex-grow: 1;
+        }
+
+        @include e(title) {
+            line-height: 32px;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        @include e(line) {
+            width: 4px;
+            top: 0;
+            bottom: 0;
+            left: 14px;
+        }
+
+        @include e(icon) {
+            @include when(icon) {
+                width: 24px;
+            }
+        }
+
+        @include when(small) {
+            @include e(head) {
+                width: 24px;
+            }
+            @include e(main) {
+                padding-left: 12px;
+            }
+            @include e(title) {
+                line-height: 24px;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            @include e(line) {
+                width: 2px;
+                left: 11px;
+            }
+        }
+    }
+
+    @include when(center) {
+
+        @include e(head) {
+            text-align: center;
+        }
+
+        @include e(main) {
+            text-align: center;
+        }
+
+        @include e(description) {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+
+        @include e(line) {
+            left: 50%;
+            right: -50%;
+        }
+    }
+
+
+    @include when(small) {
+        @include e(icon) {
+            width: 24px;
+            height: 24px;
+            font-size: 14px;
+        }
+        @include e(title) {
+            font-size: 12px;
+        }
+        @include e(description) {
+            font-size: 12px;
+        }
+    }
+
+    @include when(simple) {
+        display: flex;
+        align-items: center;
+
+        @include e(head) {
+            width: auto;
+            font-size: 0;
+            padding-right: 10px;
+        }
+
+        @include e(icon) {
+            background: transparent;
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+        }
+
+        @include e(icon-inner) {
+            &[class*=el-icon]:not(.is-status) {
+                font-size: 18px;
+            }
+
+            &.is-status {
+                transform: scale(.8) translateY(1px);
+            }
+        }
+
+        @include e(main) {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            flex-grow: 1;
+        }
+
+        @include e(title) {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        @include pseudo('not(:last-of-type)') {
+            @include e(title) {
+                max-width: 50%;
+                word-break: break-all;
+            }
+        }
+
+        @include e(arrow) {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &::before,
+            &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                height: 15px;
+                width: 1px;
+                background: #c0c4cc;
+            }
+
+            &::before {
+                transform: rotate(-45deg) translateY(-4px);
+                transform-origin: 0 0;
+            }
+
+            &::after {
+                transform: rotate(45deg) translateY(4px);
+                transform-origin: 100% 100%;
+            }
+        }
+
+        @include pseudo(last-of-type) {
+            @include e(arrow) {
+                display: none;
+            }
+        }
+    }
+}

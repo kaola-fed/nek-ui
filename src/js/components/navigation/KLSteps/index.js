@@ -7,45 +7,33 @@ const Component = require('../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
-/**
- * @class KLSteps
- * @extend Component
- * @param {object}      [options.data]                        = 绑定属性
- * @param {object[]}    [options.data.steps=null]             <=> 数据源
- * @param {number}      [options.data.steps[].status]         => 状态id，支持方法，传入当前 current 返回 true 则属于当前状态
- * @param {string}      [options.data.steps[].title]          => 步骤标题
- * @param {object[]}    [options.data.steps[].description]    => 步骤具体描述
- * @param {number}      [options.data.current=0]              <=> 当前状态
- * @param {string}      [options.data.size]                   =>  当前尺寸，sm
- */
+
 const KLSteps = Component.extend({
   name: 'kl-steps',
   template,
   config() {
     _.extend(this.data, {
+      $stepsNode: [],
       steps: [],
       current: 0,
       size: '',
       currentIndex: 0,
+      currentStatus: '',  // wait; process; finish; error
+      direction: 'horizontal',
     });
     this.supr();
+
+    this.$watch('$stepsNode.length', (newValue) => {
+      if (newValue !== 0) {
+        const stepsNode = this.data.$stepsNode;
+        stepsNode.forEach((element) => {
+          console.log(element);
+        });
+      }
+    });
   },
   init() {
     this.supr();
-    this.$watch('current', () => {
-      this.juedgeFinishedItem();
-    });
-  },
-  juedgeFinishedItem() {
-    const data = this.data;
-    const current = data.current;
-    const steps = data.steps;
-
-    steps.forEach((item, index) => {
-      if ((typeof item.status !== 'function' && item.status / 1 === current / 1) || (typeof item.status === 'function' && item.status(current))) {
-        data.currentIndex = index;
-      }
-    });
   },
 });
 
