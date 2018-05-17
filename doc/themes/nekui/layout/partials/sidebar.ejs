@@ -8,17 +8,17 @@
             <% var menus = [], currIdx = 0 %>
             <% pages.forEach(function(p, i) {
                 // 无分类
-                if (!p.categories) {
+                if (!p.cate) {
                     menus.push({
                         display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                         title: p.title,
                         path: p.path
                     })
-                } else if (p.categories !== pages.data[i - 1].categories) {
+                } else if (p.cate !== pages.data[i - 1].cate) {
                     // 首个不同的，添加分类标题
                     currIdx = menus.length
                     menus.push({
-                        display: p.categories,
+                        display: p.cate,
                         children: [{
                             display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                             title: p.title,
@@ -48,7 +48,7 @@
                                 <%- m.display %>
                             </a>
                         <% } else {%>
-                            <span class="u-icon u-icon-angle-down"></span><%- m.display %>
+                            <span class="kl-icon kl-icon-angle-down"></span><%- m.display %>
                         <% } %>
                     </div>
                     <% if (hadChild) { %>
