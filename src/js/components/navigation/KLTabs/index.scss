@@ -50,8 +50,6 @@
 
     @include when(dis) {
       color: #999;
-      background: #F5F5F5;
-      border-color: #D9D9D9;
       cursor: not-allowed;
     }
   }
@@ -71,14 +69,15 @@
       border-bottom: none;
       border-radius: 4px 4px 0 0;
       background: #FAFAFA;
-      &.crt {
+      &.is-crt {
         background: $--background-color-white;
       }
+
+      &.is-dis {
+        background: #F5F5F5;
+        border-color: #D9D9D9;
+      }
     }
-  }
-
-  @include m(line) {
-
   }
 
   @include when(dis) {
