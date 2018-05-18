@@ -1,8 +1,7 @@
 /**
- * @file KLSteps     步骤条
+ * @file KLStep    步骤条
  * @author   ziane(zianecui@gmail.com)
  */
-// import KLStep from '../index';
 
 const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
@@ -33,69 +32,13 @@ const KLSteps = Component.extend({
       this.getCurrentIndex(steps);
     });
 
-    this.$watch('this.$parent.data.source.length', () => {
+    this.$watch('this.$parent.data.steps.length', (len) => {
       this.getCurrentIndex(steps);
+      this.data.style = this.setStyles(len);
     });
-
-    // if (this.$outer && this.$outer instanceof KLStep) {
-    //   this.data.stepNumber = this.$outer.data.$stepsNode.length;
-    //   this.$outer.data.$stepsNode.push(this);
-    //   this.data.current = this.$outer.data.current;
-
-    //   // 获取默认值
-    //   this.data.size = this.$outer.data.size;
-    //   this.data.direction = this.$outer.data.direction; // vertical/horizontal
-
-    //   const steps = [];
-    //   this.$outer.data.$stepsNode.forEach((item) => {
-    //     steps.push({
-    //       title: item.data.title,
-    //       description: item.data.description,
-    //       key: item.data.key,
-    //       status: '',
-    //     });
-    //   });
-
-    //   this.$watch('this.$outer.data.current', (newValue) => {
-    //     this.data.current = newValue;
-    //     this.getCurrentIndex(steps);
-    //   });
-
-
-    //   this.$watch('this.$outer.data.$stepsNode.length', (newValue) => {
-    //     const len = newValue;
-    //     this.data.style = this.setStyles(len);
-    //   });
-    // } else {
-    //   this.data.stepNumber = this.$parent.data.$stepsNode.length;
-    //   this.$parent.data.$stepsNode.push(this);
-
-    //   const steps = this.$parent.data.steps;
-    //   this.getCurrentIndex(steps);
-    //   this.$watch('this.$parent.data.current', (newValue) => {
-    //     this.data.current = newValue;
-    //     this.getCurrentIndex(steps);
-    //   });
-
-    //   this.$watch('this.$parent.data.source', (newValue) => {
-    //     this.data.current = newValue;
-    //     this.getCurrentIndex(steps);
-    //   });
-    // }
   },
   init() {
     this.supr();
-  },
-  nodeFilterSource() {
-    const steps = [];
-    this.$outer.data.$stepsNode.forEach((item) => {
-      steps.push({
-        title: item.data.title,
-        description: item.data.description,
-        key: item.data.key,
-        status: '',
-      });
-    });
   },
   /**
    * 计算出step的宽度百分比，为了让每个step平分
@@ -134,7 +77,6 @@ const KLSteps = Component.extend({
   setStatus(steps) {
     const data = this.data;
     const currentIndex = data.currentIndex;
-    console.log(currentIndex);
     if (currentIndex === undefined) {
       this.data.currentStatus = 'finish';
     } else {
@@ -149,7 +91,6 @@ const KLSteps = Component.extend({
       });
       this.data.currentStatus = steps[data.stepNumber].status;
     }
-    console.log(this.data.currentStatus);
     this.calcProgress(this.data.currentStatus);
   },
   calcProgress(status) {
@@ -174,7 +115,6 @@ const KLSteps = Component.extend({
 
     this.data.lineStyle = style;
     this.$update();
-    console.log(this.data.lineStyle);
   },
 });
 

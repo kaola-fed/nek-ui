@@ -831,6 +831,58 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+
+<!-- demo_start -->
+### 行展开
+
+<div class="m-example"></div>
+
+```xml
+<kl-table source={table.source}>
+    <kl-table-col name="" key="" placeholder="" width=50 fixed expandable>
+        <kl-table-template type="expand">
+            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+        </kl-table-template>
+    </kl-table-col>
+    <kl-table-col name="职位" key="job" fixed />
+    <kl-table-col name="姓名" key="name" />
+    <kl-table-col name="年龄" key="age" fixed="right" />
+</kl-table>
+```
+
+```javascript
+var source = [{
+    job: '前端',
+    name: '小明',
+    age: 20,
+}, {
+    job: '前端',
+    name: '小红',
+    age: 22,
+}, {
+    job: '后端',
+    name: '小王',
+    age: 20,
+}, {
+    job: '后端',
+    name: '小李',
+    age: 25,
+}];
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        table: {
+            source: source,
+        }
+    },
+    onPaging: function(e) {
+        console.log(e);
+    }
+});
+```
+<!-- demo_end -->
+
+
 <!-- demo_start -->
 ### 空数据
 
