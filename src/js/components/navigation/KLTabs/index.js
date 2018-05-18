@@ -11,7 +11,7 @@ const _ = require('../../../ui-base/_');
  * @class KLTabs
  * @extend Component
  * @param {object}        [options.data]                      = 绑定属性
- * @param {string}        [options.data.type=card]            => 显示类型,card/line
+ * @param {string}        [options.data.type=line]            => 显示类型,card/line
  * @param {object}        [options.data.selected=null]        <=> 当前选择卡
  * @param {string}        [options.data.titleTemplate=null]   @=> 标题模板
  * @param {string}        [options.data.defaultKey=null]      => 默认显示对应 key 的 Tab
@@ -39,7 +39,7 @@ const KLTabs = Component.extend({
       titleTemplate: null,
       offset: 0,
       navStyle: {},
-      type: 'card',
+      type: 'line',
       crtTabElem: null,
     });
     this.supr();
@@ -60,13 +60,14 @@ const KLTabs = Component.extend({
   init() {
     this.supr();
     this._update = this.update.bind(this);
+
     window.addEventListener('resize', this._update);
   },
   events: {
     $init() {
       setTimeout(() => {
         this.update();
-      }, 10);
+      }, 50);
     },
   },
   update() {
@@ -87,6 +88,7 @@ const KLTabs = Component.extend({
       }
     } else {
       this.data.scrollable = false;
+      this.setOffset(0);
     }
     this.$update();
   },
@@ -97,7 +99,7 @@ const KLTabs = Component.extend({
     navStyle.transform = transform;
     navStyle.msTransform = transform;
     navStyle.webkitTransform = transform;
-    this.update();
+    this.data.scrollable && this.update();
   },
   prev() {
     if (!this.data.scrollable || !this.data.scrollable.prev) {
@@ -164,7 +166,7 @@ KLTabs.directive('active-bar', function(activeBarElem) {
 
       activeBarElem.style.width = `${elem.clientWidth}px`;
       activeBarElem.style.transform = `translateX(${elem.offsetLeft}px)`;
-    }, 10);
+    }, 100);
   });
 });
 

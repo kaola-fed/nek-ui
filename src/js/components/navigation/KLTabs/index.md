@@ -179,12 +179,12 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### line类型
+### 卡片类型
 
 <div class="m-example"></div>
 
 ```xml
-<kl-tabs type="line">
+<kl-tabs type="card">
     <kl-tab title="Tab1" key="1">Content1</kl-tab>
     <kl-tab title="Tab2" key="2">Content2</kl-tab>
     <kl-tab title="Tab3" key="3">Content3</kl-tab>
