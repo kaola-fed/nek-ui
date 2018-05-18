@@ -99,6 +99,7 @@ const KLTabs = Component.extend({
     navStyle.transform = transform;
     navStyle.msTransform = transform;
     navStyle.webkitTransform = transform;
+    this.data.scrollable && this.update();
   },
   prev() {
     if (!this.data.scrollable || !this.data.scrollable.prev) {
@@ -112,7 +113,6 @@ const KLTabs = Component.extend({
     const wrapWidth = wrap.offsetWidth;
     const newOffset = currentOffset > wrapWidth ? currentOffset - wrapWidth : 0;
     this.setOffset(newOffset);
-    this.update();
   },
   next() {
     if (!this.data.scrollable || !this.data.scrollable.next) {
@@ -131,7 +131,6 @@ const KLTabs = Component.extend({
     }
     const newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
     this.setOffset(newOffset);
-    this.update();
   },
   select(item, e) {
     if (this.data.readonly || this.data.disabled || item.data.disabled) return;
