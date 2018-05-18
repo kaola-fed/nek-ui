@@ -25,8 +25,8 @@ const reload = browserSync.reload;
 const postcssConfig = require('../build/postcss.config');
 
 gulp.task('dist-clean', (cb) => {
-  rimraf('{dist,doc/public}', () => {
-    rimraf('doc/source/components/*_.md', cb);
+  rimraf('{../dist,../doc/public}', () => {
+    rimraf('../doc/source/components/*_.md', cb);
   });
 });
 
