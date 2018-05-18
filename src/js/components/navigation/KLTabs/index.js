@@ -60,13 +60,14 @@ const KLTabs = Component.extend({
   init() {
     this.supr();
     this._update = this.update.bind(this);
+
     window.addEventListener('resize', this._update);
   },
   events: {
     $init() {
       setTimeout(() => {
         this.update();
-      }, 100);
+      }, 50);
     },
   },
   update() {
@@ -98,7 +99,6 @@ const KLTabs = Component.extend({
     navStyle.transform = transform;
     navStyle.msTransform = transform;
     navStyle.webkitTransform = transform;
-    this.update();
   },
   prev() {
     if (!this.data.scrollable || !this.data.scrollable.prev) {
@@ -112,6 +112,7 @@ const KLTabs = Component.extend({
     const wrapWidth = wrap.offsetWidth;
     const newOffset = currentOffset > wrapWidth ? currentOffset - wrapWidth : 0;
     this.setOffset(newOffset);
+    this.update();
   },
   next() {
     if (!this.data.scrollable || !this.data.scrollable.next) {
@@ -130,6 +131,7 @@ const KLTabs = Component.extend({
     }
     const newOffset = navWidth - currentOffset > wrapWidth * 2 ? currentOffset + wrapWidth : (navWidth - wrapWidth);
     this.setOffset(newOffset);
+    this.update();
   },
   select(item, e) {
     if (this.data.readonly || this.data.disabled || item.data.disabled) return;
@@ -165,7 +167,7 @@ KLTabs.directive('active-bar', function(activeBarElem) {
 
       activeBarElem.style.width = `${elem.clientWidth}px`;
       activeBarElem.style.transform = `translateX(${elem.offsetLeft}px)`;
-    }, 10);
+    }, 100);
   });
 });
 
