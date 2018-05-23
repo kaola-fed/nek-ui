@@ -5,9 +5,9 @@
  * ------------------------------------------------------------
  */
 
-const Component = require('../../../ui-base/component');
+const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
-const _ = require('../../../ui-base/_');
+const _ = require('../../../../ui-base/_');
 
 /**
  * @class KLAside

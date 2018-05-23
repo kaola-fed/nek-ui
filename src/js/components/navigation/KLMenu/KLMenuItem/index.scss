@@ -1,28 +1,26 @@
-@include b(menu) {
-    @include e(item) {
-        display: block;
-        position: relative;
-        padding: 13px 0 13px 45px;
-        line-height: 1em;
-        background: #F6F9FC;
-        transition: height .3s ease-in;
-        &:hover {
-            color: #00C4C0 !important;
-            text-decoration: none;
-        }
-        @include when(active) {
-            color: #fff !important;
-            background: $--background-color-primary;
-            font-size: 14px;
+@include b(menu-item) {
+    display: block;
+    position: relative;
+    padding: 13px 0 13px 45px;
+    line-height: 1em;
+    background: #F6F9FC;
+    transition: height .3s ease-in;
+    &:hover {
+        color: #00C4C0 !important;
+        text-decoration: none;
+    }
+    @include when(active) {
+        color: #fff !important;
+        background: $--background-color-primary;
+        font-size: 14px;
 
-            a {
-                color: #D9244E;
-            }
+        a {
+            color: #D9244E;
         }
-        &:first-child {
-            &:before {
-                top: 0;
-            }
+    }
+    &:first-child {
+        &:before {
+            top: 0;
         }
     }
 }

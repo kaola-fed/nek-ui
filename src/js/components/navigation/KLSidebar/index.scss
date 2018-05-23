@@ -4,7 +4,6 @@
     left: 0;
     overflow: visible;
     background: #fff;
-    border-right: 1px solid #E1E6ED;
     transition: transform .3s;
     z-index: 2;
 
@@ -23,13 +22,13 @@
                 color: rgba($color: #fff, $alpha: 0.65);
             }
 
-            .kl-menu__item {
+            .kl-menu-item {
                 background: #111;
                 &:hover {
                     color: #fff !important;
                 }
             }
-            .kl-menu__item.is-active {
+            .kl-menu-item.is-active {
                 background: $--background-color-primary;
             }
         }

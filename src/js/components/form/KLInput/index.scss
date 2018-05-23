@@ -13,6 +13,12 @@
     display: block;
     position: relative;
     width: 100%;
+}
+
+@include b(input-wrap) {
+    position: relative;
+    display: block;
+
     @include m(sm) {
         .kl-input__inner {
             @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
@@ -89,10 +95,6 @@
         padding: $--padding-base;
         border-left: 1px solid transparent;
     }
-}
-@include b(input-wrap) {
-    position: relative;
-    display: block;
 }
 
 
