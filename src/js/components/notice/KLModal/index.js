@@ -29,6 +29,7 @@ const _ = require('../../../ui-base/_');
  * @param {number}            [options.data.maxHeight]            => 内容区域最大高度，超出则显示滚动条
  * @param {string}            [options.data.el]                   => 设置对话框要插入的父级元素，默认为document.body
  * @param {boolean}           [options.data.draggable=false]      => 是否可以拖拽对话框
+ * @param {boolean}           [options.data.fullscreen=false]     => 是否覆盖全屏
  */
 const KLModal = Component.extend({
   name: 'kl-modal',
@@ -39,13 +40,14 @@ const KLModal = Component.extend({
       content: '',
       type: '',
       okButton: true,
-      with: 400,
+      width: 400,
       cancelButton: false,
       noClose: false,
       okDisabled: false,
       cancelDisabled: false,
       hasFooter: true,
       isCanClose: true,
+      fullscreen: false,
     });
     this.supr();
   },

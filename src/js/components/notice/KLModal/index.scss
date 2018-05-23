@@ -6,13 +6,10 @@ $--media-sm-max-width: 768px - 1;
     bottom: 0;
     left: 0;
     z-index: 1000;
-    // - 允许模态对话框在模态层里滚动，因为有时候内容可能会比较多
-    // - Allow scrolling for the modal dialog
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     touch-action: cross-slide-y pinch-zoom double-tap-zoom;
     text-align: center;
-    // - Mask the background page
     background: rgba(0, 0, 0, 0.6);
 
     &:after {
@@ -24,15 +21,21 @@ $--media-sm-max-width: 768px - 1;
 
     @include e(dialog) {
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
+        margin: 100px auto 0 auto;
         text-align: left;
         width: 433px;
         background: white;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
-        border-radius: 4px;
-        max-width: 1050px;
-    }
 
+        @include m(fullscreen) {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0;
+            margin: 0;
+        }
+    }
+    
     @include e(hd) {
         padding: 15px 16px;
         border-bottom: 1px solid #eee;

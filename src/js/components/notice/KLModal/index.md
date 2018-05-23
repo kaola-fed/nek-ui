@@ -148,63 +148,6 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 配置信息contentTemplate
-设置modal的内容显示区域(html代码片段)。默认为空
-<div class="m-example">
-    <style>
-        .template_label {
-            line-height: 32px;
-            display: inline-block;
-        }
-    </style>
-</div>
-
-```xml
-<kl-button on-click="{this.show()}"  title="contentTemplate"/>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    show: function() {
-        var modal = new NEKUI.KLModal({
-            data: {
-
-                title: '新建文档',
-                contentTemplate: '<kl-table source="{this.$parent.data.table.source}" >\
-                                      <kl-table-col name="标题1" on-click={console.log(1)} key={name} />\
-                                      <kl-table-col name="标题2" key="age" />\
-                                      <kl-table-col name="标题3" key="num" />\
-                                  </kl-table>',
-                cancelButton: true,
-                table: {
-                    source: [{
-                        name: '小明',
-                        age: 20,
-                        num: 'test1'
-                    }, {
-                        name: '小红',
-                        age: 18,
-                        num: 'test2'
-                    }, {
-                        name: '小刚',
-                        age: 12,
-                        num: 'test3'
-                    }, {
-                        name: '小李',
-                        age: 32,
-                        num: 'test4'
-                    }]
-                }
-            }
-        });
-    }
-});
-```
-<!-- demo_end -->
-
-
-<!-- demo_start -->
 ### 配置信息footerTemplate
 设置modal的footer显示区域(html代码片段)。默认`onfirm`和`Cancel`按钮
 <div class="m-example"></div>
@@ -783,6 +726,32 @@ var component = new NEKUI.Component({
                 type: type,
                 title: '确认要删除这条信息吗？',
                 cancelButton: true
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 全屏模式
+设置`fullscreen` 为true, 弹窗占全屏 
+
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="Modal"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                fullscreen: true
             }
         });
     }
