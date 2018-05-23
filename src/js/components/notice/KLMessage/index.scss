@@ -3,6 +3,10 @@
     border: 1px solid $border-color;
     .kl-message__icon {
         color: $color;
+        display: block;
+    }
+    .kl-message__box {
+        margin-left: 64px;
     }
 }
 $--background-color-error: #FFF2F0;
@@ -34,14 +38,18 @@ $--border-color-warning: #FFCA61;
         color: #666666;
         letter-spacing: 0;
         text-align: left;
-        margin-right: 45px;
         word-break: break-word;
     }
-    
+
+    @include e(operation) {
+        margin-right: 45px;
+    }
+
     @include e(icon) {
         font-size: 15px;
         vertical-align: middle;
         margin-right: 10px;
+        display: none;
 
         @include m(large) {
             font-size: 24px;
@@ -52,7 +60,7 @@ $--border-color-warning: #FFCA61;
     }
     
     @include e(box) {
-        margin: 0px 0px 4px 64px;
+        margin: 0px 0px 4px 0;
     }
 
     @include e(title) {

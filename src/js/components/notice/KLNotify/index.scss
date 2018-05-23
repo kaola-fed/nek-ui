@@ -64,6 +64,10 @@ $--media-sm-max-width: 768px - 1;
     background: $--background-color-white;
     border: 1px solid #E3E3E3;
 
+    @include e(icon) {
+        display: none;
+    }
+
     @include e(content) {
         @extend .kl-message__content;
         margin-right: 0px;

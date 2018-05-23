@@ -10,6 +10,7 @@ const _ = require('../../../ui-base/_');
  * @param {string}      [options.data.type]                 => 消息类型，可选参数：`success`、`warning`、`info`、`error`
  * @param {string}      [options.data.class]                => 补充`class`
  * @param {string}      [options.data.title]                => 补充`title`
+ * @param {string}      [options.data.addClose]                => 补充`addClose`  添加了该字段, 为message添加了关闭按钮
  */
 
 const KLMessage = Component.extend({
@@ -18,7 +19,7 @@ const KLMessage = Component.extend({
   config() {
     _.extend(this.data, {
       type: '',
-      basic: false,
+      addClose: false,
       title: '',
       visible: true,
     });
