@@ -124,9 +124,10 @@ const doc = (isDev, callback) => {
     // 组件文档
     CATES.forEach((c) => {
         const components = getComponents(c.cate).filter((comp) => {
-            if (isDev && !/^KL(Sidebar|Menu|Layout|Button|Input)$/.test(comp)) {
-                return false;
-            }
+            // 暂时注释掉给视觉review
+            // if (isDev && !/^KL(Sidebar|Menu|Layout|Button)$/.test(comp)) {
+            //     return false;
+            // }
 
             const mdPath = path.join(getComponentPath(c.cate, comp), 'index.md');
             if (fs.existsSync(mdPath)) return true;
