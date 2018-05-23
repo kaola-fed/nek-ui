@@ -13,19 +13,14 @@
     display: block;
     position: relative;
     width: 100%;
-}
-
-@include b(input-wrap) {
-    position: relative;
-    display: block;
 
     @include m(sm) {
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
         }
     }
     @include m(lg) {
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg)
         }
     }
@@ -38,7 +33,13 @@
     @include m(lgw) {
         @include form-item-width($--width-lg);
     }
-    @include e(inner) {
+}
+
+@include b(input-wrap) {
+    position: relative;
+    display: block;
+
+        @include e(inner) {
         @include form-item-input;
         padding: $--padding-base;
         color: $--text-color-default;
