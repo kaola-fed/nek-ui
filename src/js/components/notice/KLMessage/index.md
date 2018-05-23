@@ -2,10 +2,10 @@
 title: 消息
 ---
 
+<!-- demo_start -->
 ### 基本形式
 提示信息展示格式(图标+颜色)。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -16,10 +16,10 @@ title: 消息
 <!-- demo_end -->
 
 
+<!-- demo_start -->
 ### 基本属性type
 `type`设置样式，取值`success`、`warning`、`info`、`error`。默认不设置则无色无图标。
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -28,7 +28,7 @@ title: 消息
 </kl-message>
 
 <kl-message type="success" class="f-mb10" addClose>
-    恭喜！你所提交的信息已经审核通过，如有问题请联系客服。
+    恭喜！你所提交的信息已经审核通过。
 </kl-message>
 
 <kl-message type="warning" class="f-mb10" addClose>
@@ -36,7 +36,7 @@ title: 消息
 </kl-message>
 
 <kl-message type="info" class="f-mb10" addClose>
-    你好！欢迎使用金融云2.0专业版，你可以根据自身需求添加业务模块。
+    你好！欢迎使用。
 </kl-message>
 
 <kl-message type="error" class="f-mb10" addClose>
@@ -47,10 +47,10 @@ title: 消息
 
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 基本属性class
 `class`属性设置补充样式
 
-<!-- demo_start -->
 <div class="m-example">
     <style>
         .m-bg-specical {
@@ -67,8 +67,8 @@ title: 消息
 
 <!-- demo_end -->
 
-### 直接插入模版
 <!-- demo_start -->
+### 直接插入模版
 <div class="m-example">
     <style>
         p {
@@ -87,7 +87,7 @@ title: 消息
 ```xml
 <kl-message type="info" class="f-mb10">
     <p >
-        你好！欢迎使用新版云客服，如有疑问请咨询在线客服。
+        你好！欢迎使用。
         <a class="m-template">查看详情</a>
     </p>
 </kl-message>
@@ -95,10 +95,10 @@ title: 消息
 
 <!-- demo_end -->
 
+<!-- demo_start -->
 ### 有title属性的模式
 设置`title`属性后得样式
 
-<!-- demo_start -->
 <div class="m-example"></div>
 
 ```xml
@@ -115,7 +115,7 @@ title: 消息
 </kl-message>
 
 <kl-message title="帮助信息" type="info" class="f-mb10" addClose>
-    你好！欢迎使用金融云2.0专业版，你可以根据自身需求添加业务模块。
+    你好！欢迎使用。
 </kl-message>
 
 <kl-message title="出错了！" type="error" class="f-mb10" addClose>
