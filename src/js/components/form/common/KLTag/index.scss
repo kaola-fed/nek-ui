@@ -1,5 +1,4 @@
-@mixin tag-type($bg-color, $color, $border-color, $hover-bg-color, $hover-color, $hover-border-color,
-$active-bg-color, $active-color, $active-border-color) {
+@mixin tag-type($bg-color, $color, $border-color, $hover-bg-color, $hover-color, $hover-border-color) {
   background: $bg-color;
   color: $color;
   border: 1px solid $border-color;
@@ -23,18 +22,15 @@ $active-bg-color, $active-color, $active-border-color) {
   /* Btn-Type */
   @include m(default) {
     @include tag-type($--background-color-white, $--text-color-default, $--border-color-base,
-            $--background-color-white, $--text-color-primary-hover, $--border-color-primary-hover,
-            $--background-color-white, $--text-color-primary-active, $--border-color-primary-active);
+            $--background-color-white, $--text-color-primary-hover, $--border-color-primary-hover);
   }
   @include m(primary) {
     @include tag-type($--background-color-primary, $--text-color-white, $--border-color-primary,
-            $--background-color-primary-hover, $--text-color-white, $--border-color-primary-hover,
-            $--background-color-primary-active,$--text-color-white, $--border-color-primary-active);
+            $--background-color-primary-hover, $--text-color-white, $--border-color-primary-hover);
   }
   @include m(warning) {
     @include tag-type($--background-color-white, $--text-color-error, $--border-color-error,
-            $--background-color-white, $--text-color-error-hover, $--border-color-error-hover,
-            $--background-color-white, $--text-color-error-active, $--border-color-error-active);
+            $--background-color-white, $--text-color-error-hover, $--border-color-error-hover);
   }
 
   @include e(close) {

@@ -31,7 +31,7 @@ const _ = require('../../../ui-base/_');
 
 const KLTabs = Component.extend({
   name: 'kl-tabs',
-  template,
+  template: _.compressHtml(template),
   config() {
     _.extend(this.data, {
       tabs: [],

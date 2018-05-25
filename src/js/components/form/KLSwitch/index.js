@@ -12,9 +12,9 @@ const template = require('./index.html');
  * @param {object}      [options.data]                = 绑定属性
  * @param {string}      [options.data.class]               => 补充class
  * @param {boolean}     [options.data.disabled=false]      => 禁用开关
- * @param {boolean|string|number}      [options.data.value=false]  <=> 选择的值
- * @param {boolean|string|number} [options.data.checkedValue=true]  => 选中时的值, 用于扩展value值类型
- * @param {boolean|string|number} [options.data.unCheckedValue=false]  => 非选中时的值, 用于扩展value值类型
+ * @param {boolean/string/number} [options.data.value=false]  <=> 选择的值
+ * @param {boolean/string/number} [options.data.checkedValue=true]  => 选中时的值, 用于扩展value值类型
+ * @param {boolean/string/number} [options.data.unCheckedValue=false]  => 非选中时的值, 用于扩展value值类型
  * @param {string}      [options.data.checkedText]  => 选中时的文字描述,可以是字符串模板
  * @param {string}      [options.data.unCheckedText]  => 非选中时的文字描述,可以是字符串模板
  * @param {string}      [options.data.size]  => 可选值sm
