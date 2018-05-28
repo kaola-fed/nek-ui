@@ -33,6 +33,7 @@
     "File": true,
     "XMLHttpRequest": true,
     "location": true,
-    "fetch": true
+    "fetch": true,
+    "ResizeObserver": true
   }
 }

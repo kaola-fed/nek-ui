@@ -57,6 +57,7 @@ const Components = {
   KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
   KLDraggable: require('./components/widget/KLDraggable'),
+  KLScroll: require('./components/widget/KLScroll'),
 
   // Layout
   KLTable: require('./components/layout/KLTable'),

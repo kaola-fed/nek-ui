@@ -1,0 +1,11 @@
+<div class="kl-scroll {class}">
+  <div class="kl-scroll-wrap {wrapClass}"
+       r-style="{{'max-height': wrapMaxHeight || 'auto'}}"
+       ref="wrap" on-scroll={this.onScroll($event)}>
+    <div class="kl-scroll-wrap__view" ref="resize">
+      {#inc this.$body}
+    </div>
+  </div>
+  <kl-scroll-bar move={moveX} size={sizeWidth} direction="horizontal" />
+  <kl-scroll-bar move={moveY} size={sizeHeight} direction="vertical" />
+</div>
