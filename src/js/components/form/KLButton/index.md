@@ -50,10 +50,6 @@ masonry: true
 <kl-button type="warning" icon="warning" title="驳回" class="doc-iconBtn" />
 <kl-button icon="success" title="通过" class="doc-iconBtn" />
 <kl-button icon="copy" title="复制" class="doc-iconBtn" />
-<kl-button icon="download" title="下载" class="doc-iconBtn" />
-<kl-button icon="upload" title="上传" class="doc-iconBtn" />
-<kl-button icon="remove" title="删除" class="doc-iconBtn" />
-<kl-button icon="search" title="查询" class="doc-iconBtn" />
 ```
 
 <!-- demo_end -->

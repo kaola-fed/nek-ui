@@ -2,15 +2,13 @@
     display: flex;
     margin-bottom: 10px;
     @include e(tt) {
-
-        position:relative;
+        position: relative;
         float: left;
         padding-right: $--size-base;
         font-size: $--font-size-base;
         text-align: right;
         line-height: 2.5;
         max-width: $--size-base * 18;
-
         @include m(sm) {
             width: $--size-base * 10;
         }
@@ -46,30 +44,30 @@
     }
     @include e(desc) {
         display: inline-block;
-        vertical-align: top;
+        vertical-align: middle;
         color: #999;
     }
-
-    .kl-col:first-child { padding-left:0; }
-    .kl-col:last-child { padding-right:0; }
-
+    .kl-col:first-child {
+        padding-left: 0;
+    }
+    .kl-col:last-child {
+        padding-right: 0;
+    }
     @include e(rqr) {
         color: #F86B6B;
     }
-
     @include m(inline) {
-        display:inline-block;
-        vertical-align:top;
-        margin-bottom:0;
+        display: inline-block;
+        vertical-align: top;
+        margin-bottom: 0;
         .kl-form-item__ct {
-            display:inline-block;
+            display: inline-block;
         }
     }
-
     @include e(vertical) {
         flex-direction: column;
         .kl-form-item__tt {
-            text-align: left!important;
+            text-align: left !important;
             width: 100%;
             max-width: 100%;
         }
@@ -80,64 +78,65 @@
     margin-bottom: 0;
 }
 
-
 /* Form-Item-Common */
+
 @mixin form-item-size($padding, $height, $font-size) {
-  padding: $padding;
-  height: $height;
-  line-height: $height;
-  font-size: $font-size;
+    padding: $padding;
+    height: $height;
+    line-height: $height;
+    font-size: $font-size;
 }
 
 @mixin form-item-width($width) {
-  display: inline-block;
-  width: $width;
+    display: inline-block;
+    width: $width;
 }
 
 @mixin form-item-transition {
-  transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 @mixin form-item-focus {
-  outline: 0;
-  background: $--background-color-white;
-  color: $--text-color-default;
-  border-color: $--border-color-primary;
-  box-shadow: 0 0 2px 0 $--border-color-primary;
+    outline: 0;
+    background: $--background-color-white;
+    color: $--text-color-default;
+    border-color: $--border-color-primary;
+    box-shadow: 0 0 2px 0 $--border-color-primary;
 }
 
 @mixin form-item-hover {
-  border-color: $--border-color-primary;
+    border-color: $--border-color-primary;
 }
 
 @mixin form-item-disabled {
-  cursor: not-allowed;
-  background: $--background-color-disabled;
-  color: $--text-color-disabled;
-  border: 1px solid $--border-color-disabled;
+    cursor: not-allowed;
+    background: $--background-color-disabled;
+    color: $--text-color-disabled;
+    border: 1px solid $--border-color-disabled;
 }
 
 @mixin form-item-error {
-  border-color: $--border-color-error;
-  &:hover {
-    box-shadow: 0 0 0 0;
-    border-color: $--error-color;
-  }
-  &:focus {
-    box-shadow: 0 0 0 0;
-    border-color: $--error-color;
-  }
+    border-color: $--border-color-error;
+    &:hover {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
 }
 
 /* Input */
+
 @mixin form-item-input {
-  box-sizing: border-box;
-  margin: 0;
-  border: 0;
-  padding: 0;
-  border-radius: 0;
-  font: inherit;
-  color: inherit;
-  -webkit-appearance: none;
-  max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    max-width: 100%;
 }

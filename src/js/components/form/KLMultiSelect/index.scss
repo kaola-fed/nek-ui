@@ -28,7 +28,7 @@
         }
     }
     @include e(placeholder) {
-        color: #999;
+        color: $--text-color-placeholder;
     }
 
     @include when(dis) {

@@ -7,12 +7,12 @@
         </div>
     {/if}
     {#if isShowFooter}
-    <div class="kl-search_ft">
-        <kl-button title={searchText} on-click={this.search()} class="kl-search_btn"></kl-button>
+    <div class="kl-search-ft">
+        <kl-button title={searchText} on-click={this.search()} class="kl-search-ft__btn"></kl-button>
         <kl-button title={resetText} on-click={this.reset()}></kl-button>
         {#if this.$more && isShowToggle}
             <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">
-                 {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
+                {toggleText}<i class="kl-icon kl-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
             </a>
         {/if}
     </div>
