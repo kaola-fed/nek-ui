@@ -1,23 +1,23 @@
-<div class="m-panel {class}" r-hide={!visible} is-dis={disabled}>
+<div class="kl-panel {class}" r-hide={!visible} is-dis={disabled}>
 
-    <div class="panel_hd f-cb" on-click={this.toggle()}>
-	    <span class="panel_tt">
-			<i class="u-icon" r-class="{{'u-icon-chevron-circle-down':open, 'u-icon-chevron-circle-up':!open}}"></i>
+    <div class="kl-panel__hd f-cb" on-click={this.toggle()}>
+	    <span class="kl-panel__hd-tt">
+			<i class="kl-icon" r-class="{{'kl-icon-chevron-circle-down':open, 'kl-icon-chevron-circle-up':!open}}"></i>
 			 {title}
 		</span>
         {#if this.$tools}
-		<div class="tools" on-click={this.stopPropagation($event)}>
+		<div class="kl-panel__hd-tools" on-click={this.stopPropagation($event)}>
 			{#inc this.$tools.$body}
 		</div>
 		{/if}
     </div>
 
-	<div class="panel_bd" r-hide={!open} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">
+	<div class="kl-panel__bd" r-hide={!open} r-animation="on: enter; class: animated fadeIn; on: leave; class: animated fadeOut;">
 		{#inc this.$body}
 	</div>
 
 	{#if this.$foot}
-	<div class="panel_ft">
+	<div class="kl-panel__ft">
 		{#inc this.$foot.$body}
 	</div>
 	{/if}

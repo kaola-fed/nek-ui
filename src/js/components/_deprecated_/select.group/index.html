@@ -1,6 +1,11 @@
-<div class="u-selectgroup u-selectgroup-{state} {class}" r-hide={!visible} r-width="{width}">
+<div class="kl-selectgroup kl-selectgroup--{state} {class}" r-hide={!visible} r-width="{width}">
     {#list 0..(depth - 1) as i}
     <kl-select size={size} source={sources[i]} selected={selecteds[i]} key={key} value={values[i]} readonly={readonly} disabled={disabled} placeholder={placeholders[i]} on-change={this._onChange($event.selected, i)} />
     {/list}
 </div>
-{#if tip && !hideTip}<span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+{#if tip && !hideTip}
+<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;">
+            <kl-icon type={state} />
+            <span class="kl-tip__msg">{tip}</span>
+        </span>
+{/if}
