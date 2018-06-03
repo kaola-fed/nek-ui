@@ -1,0 +1,155 @@
+$unit-length = 50;
+$margin = 20;
+
+@include b(upload-card) {
+
+  @include e(txt) {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: $unit-length + px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  @include e(info) {
+    content: "";
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    text-align: center;
+    background: #FFFFFF;
+    border: 1px solid #EEF1F4;
+    border-radius: 100px;
+    color: #333;
+    font-size: 12px;
+  }
+
+  @include e(banner) {
+    position: absolute;
+    bottom: -7px;
+    left: -9999px;
+    z-index: 5;
+    &:before, &:after {
+      content: "";
+      border: 5px solid transparent;
+      position: absolute;
+      left: 0;
+    }
+    &:before {
+      border-bottom-color: #eee;
+      bottom: 1px;
+    }
+    &:after {
+      border-bottom-color: #fff;
+      bottom: 0;
+    }
+
+    @include when(top) {
+      top: -7px;
+      &:before, &:after {
+        border-bottom: none;
+      }
+      &:before {
+        border-top-color: #eee;
+        top: 1px;
+      }
+      &:after {
+        border-top-color: #fff;
+        top: 0;
+      }
+    }
+  }
+}
+
+@include b(upload-card-files) {
+  width: $unit-length * 2.5 + px;
+
+  .kl-upload-list-filelist {
+    position: absolute;
+    left: -9999px;
+    padding: 22px;
+    padding-bottom: 12px;
+    text-align: left;
+    border: 1px solid #EEEEEE;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+    background: #FFFFFF;
+    z-index: 1;
+  }
+}
+
+@include b(upload-card-entry-wrap) {
+  position: relative;
+  display: inline-block;
+  width: $unit-length + px;
+  margin-right: $margin + px;
+  vertical-align: top;
+
+  @include e(entry) {
+    position: relative;
+    width: 100%;
+    height: $unit-length + px;
+    border: 1px solid #EEF1F4;
+    border-radius: 2px;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  @include e(info) {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #F86B6B;
+    text-align: center;
+  }
+}
+
+@include b(upload-card-imgwrap) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  cursor: zoom-in;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  @include e(img) {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.m-upload {
+  .m-files-zone {
+    .m-filelist {
+      position: absolute;
+      left: -9999px;
+      padding: 22px;
+      padding-bottom: 12px;
+      text-align: left;
+      border: 1px solid #EEEEEE;
+      border-radius: 2px;
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
+      background: #FFFFFF;
+      z-index: 1;
+    }
+  }
+}

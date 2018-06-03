@@ -1,4 +1,4 @@
-<div ref="m-upload" class="m-upload-wrapper {class}">
+<div ref="kl-upload" class="{class}">
     {#if listType === 'list'}
         <upload-list ref="upload"
             action={action}
@@ -59,9 +59,10 @@
             formData={formData}/>
     {/if}
 </div>
+
 {#if tip && !hideTip}
-    <span class="u-tip u-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
-        <i class="u-icon u-icon-{state}"></i>
-        <span class="tip">{tip}</span>
-    </span>
+<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;">
+    <kl-icon type={state} />
+    <span class="kl-tip__msg">{tip}</span>
+</span>
 {/if}

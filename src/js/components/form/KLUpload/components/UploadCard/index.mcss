@@ -2,20 +2,6 @@ $unit-length = 50;
 $margin = 20;
 
 .m-upload {
-    ul {
-        margin: 0;
-        padding: 0;
-        li {
-            list-style: none;
-        }
-    }
-    .u-fileitem, .u-input-wrapper {
-        display: inline-block;
-        vertical-align: top;
-    }
-    .u-fileitem {
-        width: $unit-length + px;
-    }
     .m-files-zone {
        width: $unit-length * 2.5 + px;
        .m-entry-wrapper {
@@ -198,49 +184,6 @@ $margin = 20;
            background: #FFFFFF;
            z-index: 1;
        }
-       .u-input-wrapper {
-           position: relative;
-           display: inline-block;
-           width: $unit-length + px;
-           vertical-align: top;
-           text-align: center;
-           .u-input-btn {
-               display: inline-block;
-               width: $unit-length + px;
-               height: $unit-length + px;
-               vertical-align: top;
-               border: 1px dashed #ccc;
-               border-radius: 2px;
-               box-sizing: border-box;
-               font-size: 12px;
-               cursor: pointer;
-               .u-input-content {
-                   display: inline-block;
-                   width: 100%;
-                   vertical-align: middle;
-                   .u-icon {
-                       display: inline-block;
-                       width: 100%;
-                       font-size: 12px;
-                       color: #666;
-                   }
-               }
-               &:before {
-                   content: "";
-                   display: inline-block;
-                   height: 100%;
-                   vertical-align: middle;
-               }
-               &.dragover {
-                   background-color: rgba(32, 159, 255, .06);
-                   border: 1px dashed #20a0ff;
-               }
-           }
-           .u-input-info {
-               margin-top: 4px;
-               font-size: 12px;
-               color: #F86B6B;
-           }
-       }
+
     }
 }
