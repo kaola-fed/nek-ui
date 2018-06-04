@@ -58,19 +58,19 @@
             </div>
             <div class="kl-upload-card-entry-wrap__info">{info}</div>
         </div>
-        <div ref="inputwrapper" class="kl-upload-list-input-wrap" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
+        <div ref="inputwrapper" class="kl-upload-list-inputwrap" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}
-                <div class="kl-upload-list-input-wrap__btn"
+                <div class="kl-upload-list-inputwrap__btn"
                      r-class={{dragover: dragover}}
                      on-drop={this.onDrop($event)}
                      on-dragenter={this.onDragEnter($event)}
                      on-dragleave={this.onDragLeave($event)}
                      on-dragover={this.onDragOver($event)}>
-                    <span class="kl-upload-list-input-wrap__cnt"><kl-icon type="plus" />{this.$trans('UPLOAD_FILE')}</span>
+                    <span class="kl-upload-list-inputwrap__cnt"><kl-icon type="plus" />{this.$trans('UPLOAD_FILE')}</span>
                 </div>
-                <div class="kl-upload-list-input-wrap__info">{preCheckInfo}</div>
+                <div class="kl-upload-list-inputwrap__info">{preCheckInfo}</div>
             {/if}
         </div>
     </div>

@@ -1,5 +1,5 @@
-$unit-length = 50;
-$margin = 20;
+$unit-length: 50;
+$margin: 20;
 
 @include b(upload-card) {
 
@@ -134,22 +134,5 @@ $margin = 20;
     max-width: 100%;
     max-height: 100%;
     vertical-align: middle;
-  }
-}
-
-.m-upload {
-  .m-files-zone {
-    .m-filelist {
-      position: absolute;
-      left: -9999px;
-      padding: 22px;
-      padding-bottom: 12px;
-      text-align: left;
-      border: 1px solid #EEEEEE;
-      border-radius: 2px;
-      box-shadow: 0 2px 3px 0 rgba(0,0,0,0.10);
-      background: #FFFFFF;
-      z-index: 1;
-    }
   }
 }

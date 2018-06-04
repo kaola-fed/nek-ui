@@ -1,4 +1,4 @@
-$unit-length = 50;
+$unit-length: 50;
 
 @include b(upload-unit) {
   display: inline-block;

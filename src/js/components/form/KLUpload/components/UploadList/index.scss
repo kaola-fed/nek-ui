@@ -1,5 +1,5 @@
-$unit-length = 50;
-$margin = 25;
+$unit-length: 50;
+$margin: 25;
 
 @include b(upload-list) {
   line-height: 1.6;
@@ -10,6 +10,7 @@ $margin = 25;
   padding: 0;
 
   @include e(item) {
+    display: inline-block;
     width: $unit-length + px;
 
     list-style: none;
