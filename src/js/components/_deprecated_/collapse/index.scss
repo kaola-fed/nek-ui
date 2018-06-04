@@ -1,0 +1,8 @@
+@include b(collapse) {
+    user-select: none;
+    .kl-panel {
+        .kl-panel_hd {
+            cursor: pointer;
+        }
+    }
+}
