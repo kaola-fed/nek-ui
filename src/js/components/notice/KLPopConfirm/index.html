@@ -1,17 +1,17 @@
-<div class="m-popconfirm {placement}">
-	<div class="arrow"></div>
-	<div class="inner">
-		<div class="body">
+<div class="kl-popconfirm kl-popconfirm--{placement}">
+	<div class="kl-popconfirm__arrow"></div>
+	<div class="kl-popconfirm__inner">
+		<div class="kl-popconfirm__body">
 			{#if contentTemplate}
 			{#inc @(contentTemplate)}
 			{#else}
-			<span class="u-icon u-icon-info-circle u-text u-text-warning"></span>
+			<kl-icon type="info-circle" class="kl-text kl-text--warning"/>
 			{content}
 			{/if}
 		</div>
-		<div class="foot">
-			<button class="u-btn u-btn-sm" on-click={this.cancel()}>{cancelText ? cancelText : this.$trans('CANCEL')}</button>
-			<button class="u-btn u-btn-sm u-btn-primary" on-click={this.ok()} r-autofocus>{okText ? okText : this.$trans('CONFIRM')}</button>
+		<div class="kl-popconfirm__foot">
+          	<kl-button size="sm" on-click={this.cancel()} title={cancelText ? cancelText : this.$trans('CANCEL')} />
+          	<kl-button size="sm" type="primary" on-click={this.ok()} r-autofocus title={okText ? okText : this.$trans('CONFIRM')} />
 		</div>
 	</div>
 </div>
