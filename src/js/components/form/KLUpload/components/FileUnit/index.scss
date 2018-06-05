@@ -1,4 +1,4 @@
-$unit-length: 50;
+$unit-length: 60;
 
 @include b(upload-unit) {
   display: inline-block;
@@ -12,9 +12,10 @@ $unit-length: 50;
     width: $unit-length + px;
     height: $unit-length + px;
     border: 1px solid #EEF1F4;
-    border-radius: 2px;
+    border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
+    overflow: hidden;
 
     &:hover {
       .kl-upload-unit__remove {
@@ -112,7 +113,7 @@ $unit-length: 50;
   text-align: center;
   font-size: 12px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   &:before {
     content: "";
     display: inline-block;
@@ -155,6 +156,10 @@ $unit-length: 50;
     display: inline-block;
     width: 100%;
   }
+
+  @include e(progress) {
+    margin-top: 6px;
+  }
 }
 
 @include b(upload-unit-uploaded) {
@@ -167,7 +172,7 @@ $unit-length: 50;
   text-align: center;
   font-size: 12px;
   color: #fff;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
 
   &:before {
     content: "";

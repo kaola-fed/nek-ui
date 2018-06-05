@@ -21,12 +21,12 @@
                 <span class="kl-upload-unit-uploading">
                     <span class="kl-upload-unit-uploading__wrap">
                       <span class="kl-upload-unit-uploading__txt">{progress || '0%'}</span>
-                      <kl-progress percent={progress || 0} />
+                      <kl-progress percent={progress || 0} size="sm" class="kl-upload-unit-uploading__progress" />
                     </span>
                 </span>
             {#elseif status === 'success'}
                 <span class="kl-upload-unit-uploaded" on-click={this.downloadFile()}>
-                    <a class="kl-upload-unit-uploaded__zone">{this.$trans('DOWNLOAD_FILE')}<kl-icon type="export" /></a>
+                    <a class="kl-upload-unit-uploaded__zone"><kl-icon type="export" />{this.$trans('DOWNLOAD_FILE')}</a>
                 </span>
             {/if}
         </div>

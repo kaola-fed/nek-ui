@@ -19,7 +19,6 @@
     width: 0;
     height: 100%;
     box-sizing: border-box;
-    padding: 6px 6px 6px 0;
     line-height: 12px;
     text-align: right;
     color: #fff;
@@ -39,6 +38,10 @@
 
   @include m(lg) {
     height: 24px;
+
+    .kl-progress-wrap__bar {
+      padding: 6px 6px 6px 0;
+    }
   }
 }
 
