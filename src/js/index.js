@@ -57,6 +57,7 @@ const Components = {
   KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
   KLDraggable: require('./components/widget/KLDraggable'),
+  KLScroll: require('./components/widget/KLScroll'),
 
   // Layout
   KLTable: require('./components/layout/KLTable'),
@@ -69,10 +70,10 @@ const Components = {
   KLSearch: require('./components/layout/KLSearch'),
   KLSearchMore: require('./components/layout/KLSearch/KLSearchMore'),
   KLLayout: require('./components/layout/KLLayout'),
-  KLHeader: require('./components/layout/KLHeader'),
-  KLFooter: require('./components/layout/KLFooter'),
-  KLMain: require('./components/layout/KLMain'),
-  KLAside: require('./components/layout/KLAside'),
+  KLHeader: require('./components/layout/KLLayout/KLHeader'),
+  KLFooter: require('./components/layout/KLLayout/KLFooter'),
+  KLMain: require('./components/layout/KLLayout/KLMain'),
+  KLAside: require('./components/layout/KLLayout/KLAside'),
 };
 
 backward(Components);

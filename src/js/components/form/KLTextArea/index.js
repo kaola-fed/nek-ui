@@ -42,6 +42,7 @@ const KLTextArea = Component.extend({
       state: '',
       maxlength: undefined,
       height: 120,
+    //   autosize: {},
       rules: [],
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
@@ -51,6 +52,20 @@ const KLTextArea = Component.extend({
     this.supr();
 
     this.initValidation();
+  },
+  computed: {
+    // styleObj(data) {
+    //   const autosize = data.autosize;
+    //   if (!autosize || !(autosize instanceof Object)) {
+    //     return {};
+    //   }
+    //   const { minRow, maxRow } = autosize;
+
+    //   return {
+    //     'min-height': `${(minRow || 2) * 12}px`,
+    //     'max-height': `${(maxRow || 4) * 12}px`,
+    //   };
+    // },
   },
   init() {
     this.$watch('required', function (value) {

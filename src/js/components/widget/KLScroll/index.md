@@ -1,0 +1,32 @@
+---
+title: Scroll
+masonry: true
+---
+
+<!-- demo_start -->
+
+### 基本形式
+
+<div class="m-example">
+    <style>
+       .test {
+
+       }
+    </style>
+</div>
+
+```xml
+<div style="width: 50px; height: 50px;">
+    <kl-scroll wrapClass="test" wrapMaxHeight="50px">
+        <p style="background: red; width: 200px; height: 200px;">231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132231231232132</p>
+    </kl-scroll>
+</div>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template
+});
+```
+
+<!-- demo_end -->

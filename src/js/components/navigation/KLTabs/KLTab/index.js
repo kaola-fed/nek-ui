@@ -18,7 +18,7 @@ const KLTabs = require('../index');
  */
 const KLTab = Component.extend({
   name: 'kl-tab',
-  template,
+  template: _.compressHtml(template),
   /**
      * @protected
      */

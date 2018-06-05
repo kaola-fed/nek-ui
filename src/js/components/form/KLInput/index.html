@@ -1,20 +1,20 @@
 {#if visible}
 <label class="kl-input kl-input--{size} {class}" r-width="{width}">
     <span class="kl-input-wrap">
-        <input ref="input" class="kl-input__inner kl-input__inner--{state}" type={type | type}
+        <input ref="input" class="kl-input-wrap__inner kl-input-wrap__inner--{state}" type={type | type}
             name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
             r-model={value | valueFilter}
             on-focus={this._onFocus($event)}
             on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change={this._onChange($event)} on-input={this._onInput($event)}>
         {#if this.events.search}
-            <kl-icon class="kl-input__icon" type="search" on-click={this._onSearch($event)} />
+            <kl-icon class="kl-input-wrap__icon" type="search" on-click={this._onSearch($event)} />
         {#elseif unit}
-            <span class="kl-input__unit">{unit}</span>
+            <span class="kl-input-wrap__unit">{unit}</span>
         {#elseif clearable && value.length}
-			<kl-icon type="error" on-click={this.clear()} class="kl-input__icon"/>
+			<kl-icon type="error" on-click={this.clear()} class="kl-input-wrap__icon"/>
 		{/if}
         {#if _eltIE9 && !value}
-            <span class="kl-input__placeholder">{placeholder}</span>
+            <span class="kl-input-wrap__placeholder">{placeholder}</span>
         {/if}
      </span>
 

@@ -1,0 +1,71 @@
+$unit-length: 60;
+$margin: 25;
+
+@include b(upload-list) {
+  line-height: 1.6;
+}
+
+@include b(upload-list-filelist) {
+  margin: 0;
+  padding: 0;
+
+  @include e(item) {
+    display: inline-block;
+    width: $unit-length + px;
+
+    list-style: none;
+    vertical-align: top;
+  }
+}
+@include b(upload-list-inputwrap) {
+  display: inline-block;
+  text-align: center;
+
+  @include e(btn) {
+    display: inline-block;
+    width: $unit-length + px;
+    height: $unit-length + px;
+    vertical-align: top;
+    border: 1px dashed #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    font-size: 12px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.04);
+    border: 1px dashed #D9D9D9;
+
+    &:hover {
+      border-color: #569BF2;
+    }
+
+    &:before {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+    }
+    &.dragover {
+      background-color: rgba(32, 159, 255, .06);
+      border: 1px dashed #20a0ff;
+    }
+  }
+
+  @include e(cnt) {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  @include e(info) {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #F86B6B;
+  }
+
+  .kl-icon {
+    display: inline-block;
+    width: 100%;
+    font-size: 12px;
+    color: #666;
+  }
+}

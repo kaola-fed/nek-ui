@@ -4,7 +4,7 @@
     vertical-align: top;
 
     @include e(multi-placeholder) {
-        color: #999;
+        color: $--text-color-placeholder;
     }
 
     @include e(tag) {
@@ -111,6 +111,7 @@
             line-height: inherit;
             position: absolute;
             right: 5px;
+            color: #666;
         }
 
         .kl-icon-remove {

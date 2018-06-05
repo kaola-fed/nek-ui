@@ -5,7 +5,7 @@
  * ------------------------------------------------------------
  */
 
-const Component = require('../../../ui-base/component');
+const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
 
 /**

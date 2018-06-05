@@ -1,0 +1,50 @@
+$panel-header:                         #6F8CB0;
+$panel-header-color:                   #f4f4f4;
+
+
+@include b(panel) {
+
+    background: white;
+
+    @include e(hd) {
+        background: $panel-header;
+        padding: 8px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $panel-header-color;
+        border-bottom: 1px solid #e31436;
+        .kl-btn{
+            font-size: 16px;
+            background: $panel-header;
+            border: 1px solid $panel-header;
+            .kl-icon{
+                color: #f4f4f4;
+                background: $panel-header;
+                border: 1px solid $panel-header;
+            }
+        }
+        .kl-btn:hover{
+            border: 1px solid $panel-header;
+        }
+    }
+    @include e(hd-tt) {
+        background: $panel-header;
+        padding: 8px 10px;
+    }
+
+    @include e(hd-tools) {
+        margin-left: auto;
+    }
+
+    @include e(bd) {
+        padding: 20px 5px;
+        border: 1px solid rgb(239, 239, 239);
+        border-top:0;
+    }
+
+    @include e(ft) {
+        background: $panel-header;
+        padding:5px 10px;
+    }
+}

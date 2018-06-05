@@ -1,10 +1,10 @@
-<div class="m-upload">
-    <ul ref="fileswrapper" class="m-filelist"
+<div class="kl-upload-list">
+    <ul ref="fileswrapper" class="kl-upload-list-filelist"
         r-style={{
             width: numPerline !== Infinity ? fileUnitWidth * numPerline + fileUnitMargin * (numPerline - 1) + 'px' : '100%'
         }}>
         {#list fileUnitList as fileunit}
-            <li class="u-fileitem"
+            <li class="kl-upload-list-filelist__item"
                 r-style={{
                     "margin-right": (fileunit_index && numPerline != Infinity && (fileunit_index + 1) % numPerline == 0) ? "0" : fileUnitMargin + "px"
                 }}>
@@ -29,19 +29,19 @@
                       on-remove={this.onRemove($event)}/>
             </li>
         {/list}
-        <li ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
+        <li ref="inputwrapper" class="kl-upload-list-filelist__item kl-upload-list-inputwrap" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}
-                <div class="u-input-btn"
+                <div class="kl-upload-list-inputwrap__btn"
                      r-class={{dragover: dragover}}
                      on-drop={this.onDrop($event)}
                      on-dragenter={this.onDragEnter($event)}
                      on-dragleave={this.onDragLeave($event)}
                      on-dragover={this.onDragOver($event)}>
-                    <span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span>
+                    <span class="kl-upload-list-inputwrap__cnt"><kl-icon type="plus" />{this.$trans('UPLOAD_FILE')}</span>
                 </div>
-                <div class="u-input-info">{preCheckInfo}</div>
+                <div class="kl-upload-list-inputwrap__info">{preCheckInfo}</div>
             {/if}
         </li>
     </ul>

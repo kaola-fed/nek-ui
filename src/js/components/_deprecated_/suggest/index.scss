@@ -1,0 +1,12 @@
+@include b(suggest) {
+   @include e(list-view) {
+       overflow-x: hidden;
+       overflow-y: auto;
+       max-height: 200px;
+   }
+
+    .kl-treeview {
+        overflow: auto;
+        max-height: 200px;
+    }
+}

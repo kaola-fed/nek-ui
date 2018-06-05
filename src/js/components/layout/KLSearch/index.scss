@@ -1,9 +1,7 @@
-@include b(search) {
-    @include e(ft) {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    }
+@include b(search-ft) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     @include e(btn) {
         margin-right: 10px;
