@@ -124,7 +124,7 @@ const doc = (isDev, callback) => {
     // 组件文档
     CATES.forEach((c) => {
         const components = getComponents(c.cate).filter((comp) => {
-            if (isDev && !/^KL(Tabs|Tag)$/.test(comp)) {
+            if (isDev && !/^KL(Tabs|Tag|Message|Notify|Modal|Switch|Crumb|Search|PopConfirm)$/.test(comp)) {
                 return false;
             }
 
