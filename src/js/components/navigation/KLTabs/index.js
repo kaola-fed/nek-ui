@@ -50,7 +50,7 @@ const KLTabs = Component.extend({
       this.$emit('change', {
         sender: this,
         selected: newValue,
-        key: newValue.data.key,
+        key: newValue.key,
       });
     });
   },
