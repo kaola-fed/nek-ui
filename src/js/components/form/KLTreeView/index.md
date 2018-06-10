@@ -209,3 +209,45 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 自定义模板内容
+
+<div class="m-example"></div>
+
+```xml
+<kl-tree-view source={source} value={value} multiple>
+    <kl-icon type="edit" on-click={this.edit()} />
+</kl-tree-view>
+<p>edit的值是：{edit}</p>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        edit: false,
+        source: [
+            {name: '家居个护', children: [
+                {name: '洗护日用'},
+                {name: '居家用品', children: [
+                    {name: '杯子'},
+                    {name: '锅具刀具'}
+                ]},
+                {name: '家装家纺'},
+                {name: '其他个护'},
+            ]},
+            {name: '母婴儿童'},
+            {name: '美容彩妆', children: [
+                {name: '护肤'},
+                {name: '彩妆'}
+            ]}
+        ]
+    },
+    edit: function() {
+        this.data.edit = !this.data.edit;
+        this.$update();
+    }
+});
+```
+<!-- demo_end -->

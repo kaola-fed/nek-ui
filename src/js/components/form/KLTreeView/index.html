@@ -1,3 +1,3 @@
 <div class="kl-treeview {class}" r-class={ {'kl-treeview--multiple': multiple} } r-hide={!visible}>
-	<kl-tree source={source} childKey={childKey} nameKey={nameKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />
+	<kl-tree body={this.$body} source={source} childKey={childKey} nameKey={nameKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />
 </div>

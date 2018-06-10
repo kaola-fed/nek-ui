@@ -88,6 +88,9 @@ const KLTree = SourceComponent.extend({
       self.$emit('setselected', event);
     }, 0);
   },
+  stopPropagation(e) {
+    e.stopPropagation();
+  },
   /**
      * @private
      */
