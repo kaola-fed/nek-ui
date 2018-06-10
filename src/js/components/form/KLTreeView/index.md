@@ -39,6 +39,82 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
+### 多选
+
+<div class="m-example"></div>
+
+```xml
+<kl-tree-view source={source} value={value} multiple />
+<p>选择的是：{value}</p>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '家居个护', children: [
+                {name: '洗护日用'},
+                {name: '居家用品', children: [
+                    {name: '杯子'},
+                    {name: '锅具刀具'}
+                ]},
+                {name: '家装家纺'},
+                {name: '其他个护'},
+            ]},
+            {name: '母婴儿童'},
+            {name: '美容彩妆', children: [
+                {name: '护肤'},
+                {name: '彩妆'}
+            ]}
+        ]
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 默认展开项
+
+<div class="m-example"></div>
+
+```xml
+<kl-row type="flex">
+    <kl-col span=6>
+        <kl-tree-view source={source} value={value} />
+    </kl-col>
+    <kl-col span=6>
+        <kl-tree-view source={source} value={value} multiple />
+    </kl-col>
+</kl-row>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '家居个护', open: true, children: [
+                {name: '洗护日用'},
+                {name: '居家用品', open: true, children: [
+                    {name: '杯子'},
+                    {name: '锅具刀具'}
+                ]},
+                {name: '家装家纺'},
+                {name: '其他个护'},
+            ]},
+            {name: '母婴儿童'},
+            {name: '美容彩妆', open: true, children: [
+                {name: '护肤'},
+                {name: '彩妆'}
+            ]}
+        ]
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
 ### selected, value和key
 
 `selected`表示当前选择项，`value`表示当前选择值。`key`表示数据项的键，默认为`'id'`。
@@ -79,7 +155,7 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 禁用某一项，禁用组件
+### 禁用某一项
 
 <div class="m-example"></div>
 
@@ -87,9 +163,6 @@ var component = new NEKUI.Component({
 <kl-row>
     <kl-col span=6>
         <kl-tree-view source={source} value={value} />
-    </kl-col>
-    <kl-col span=6>
-        <kl-tree-view source={source} disabled />
     </kl-col>
 </kl-row>
 <p>选择的是：{value}</p>
@@ -132,43 +205,6 @@ var component = new NEKUI.Component({
                 {name: '彩妆', id: 32}
             ]
         }]
-    }
-});
-```
-<!-- demo_end -->
-
-<!-- demo_start -->
-### 分隔线
-
-<div class="m-example"></div>
-
-```xml
-<kl-tree-view source={source} value={value} />
-<p>选择的是：{value}</p>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '家居个护', checked: true, children: [
-                {name: '洗护日用'},
-                {name: '居家用品', disabled: true, children: [
-                    {name: '杯子'},
-                    {name: '锅具刀具'}
-                ]},
-                {divider: true},
-                {name: '家装家纺', disabled: true},
-                {name: '其他个护'},
-            ]},
-            {name: '母婴儿童', disabled: true},
-            {divider: true},
-            {name: '美容彩妆', children: [
-                {name: '护肤'},
-                {name: '彩妆'}
-            ]}
-        ]
     }
 });
 ```

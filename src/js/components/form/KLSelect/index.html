@@ -44,21 +44,21 @@
 	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
 	        <ul class="kl-listview" ref="listview">
 				{#if placeholder}
-	                <li is-hover={key_index == -1} class="kl-listview__item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+	                <li is-hover={key_index == -1} class="kl-listview-item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
 	                    {placeholder}
 	                </li>
 	            {/if}
 	            {#list this.filterArray(source) as item}
 	            {#if (!filter || (filter && filter(item)))}
 	                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-	                    <li is-hover={key_index == 'all'} class="kl-listview__item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+	                    <li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
 	                        <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
 	                        {this.$trans('ALL')}
 	                    </li>
 	                {/if}
 	                {#if item.disabled && item.tip}
 	                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>
-	                    <li is-dis={item.disabled} class="kl-listview__item" is-divider={item.divider} is-sel={multiple?false:selected===item}
+	                    <li is-dis={item.disabled} class="kl-listview-item" is-divider={item.divider} is-sel={multiple?false:selected===item}
 	                        title={item[nameKey]} on-click={this.select(item)}>
 	                        {#if multiple && !item.divider}
 	                            <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
@@ -71,7 +71,7 @@
 	                    </li>
 	                </kl-tooltip>
 	                {#else}
-	                <li is-hover={key_index == item_index} class="kl-listview__item"  is-dis={item.disabled} is-divider={item.divider} is-sel={multiple?false:selected===item}
+	                <li is-hover={key_index == item_index} class="kl-listview-item"  is-dis={item.disabled} is-divider={item.divider} is-sel={multiple?false:selected===item}
 	                    title={item[nameKey]} on-click={this.select(item)}>
 	                    {#if multiple && !item.divider}
 	                        <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
@@ -86,7 +86,7 @@
                 {/if}
 	            {#else}
 	                {#if searchValue}
-	                <li class="kl-listview__item">
+	                <li class="kl-listview-item">
 	                    {@(noMatchText)}
 	                </li>
 	                {/if}

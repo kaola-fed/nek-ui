@@ -46,7 +46,7 @@ const KLCheck = Component.extend({
     });
   },
 
-  check(_checked) {
+  check(_checked, e) {
     if (this.data.readonly || this.data.disabled) return;
 
     let checked = _checked;
@@ -62,6 +62,7 @@ const KLCheck = Component.extend({
     this.$emit('check', {
       sender: this,
       checked,
+      e,
     });
     return false;
   },
