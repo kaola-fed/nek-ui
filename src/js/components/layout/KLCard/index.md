@@ -9,7 +9,7 @@ title: 卡片
 <div class="m-example"></div>
 
 ```xml
-<kl-card title="用户信息" isShowBtLine={true}>
+<kl-card bordered title="用户信息" isShowBtLine={true}>
     <kl-form labelSize="80px">
         <kl-row>
             <kl-col span=4>
@@ -42,7 +42,7 @@ card是可以嵌套多个的，多用于一个模块里面又有小的分类。
 <div class="m-example"></div>
 
 ```xml
-<kl-card title="一级标题">
+<kl-card bordered title="一级标题">
     <kl-form labelSize="80px">
             <kl-row>
                 <kl-col span=4>
@@ -62,7 +62,7 @@ card是可以嵌套多个的，多用于一个模块里面又有小的分类。
                 </kl-col>
             </kl-row>
         </kl-form>
-    <kl-card title="二级标题" isShowLine={false}>
+    <kl-card bordered title="二级标题" isShowLine={false}>
         <kl-form labelSize="80px">
             <kl-row>
                 <kl-col span=4>
@@ -82,7 +82,7 @@ card是可以嵌套多个的，多用于一个模块里面又有小的分类。
                 </kl-col>
             </kl-row>
         </kl-form>
-        <kl-card title="三级标题" isShowLine={false}>
+        <kl-card bordered title="三级标题" disHover isShowLine={false}>
             <kl-form labelSize="80px">
                 <kl-row>
                     <kl-col span=4>
@@ -115,7 +115,7 @@ card不设置title，仅仅使用它的布局样式，常用于列表页的表�
 <div class="m-example"></div>
 
 ```xml
-<kl-card>
+<kl-card bordered>
     <kl-table source={table.source}>
         <kl-table-col name="姓名" key="name" />
         <kl-table-col name="年龄" key="age" />
@@ -149,7 +149,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-card title="用户信息">
+<kl-card bordered title="用户信息">
     <kl-card-tools>
         <a href="/components/layout_KLTable_.html">跳至表格组件页面</a>
     </kl-card-tools>
