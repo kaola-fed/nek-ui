@@ -17,11 +17,14 @@
     @include when(justify-space-around) {
       justify-content: space-around;
     }
+    @include when(align-top) {
+      align-items: flex-start;
+    }
     @include when(align-middle) {
       align-items: center;
     }
     @include when(align-bottom) {
-      align-items: top;
+      align-items: flex-end;
     }
     @include when(flex-wrap) {
       flex-wrap: wrap;
