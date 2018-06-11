@@ -17,6 +17,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}          [options.data.isShowLine]            => 控制展示title之前的竖线，默认展示出来
  * @param {boolean}          [options.data.isShowBtLine]          => 控制展示title下发的横线，默认不展示出来
  * @param {boolean}          [options.data.isIndent]              => 控制子模块的title是否缩进
+ * @param {boolean}          [options.data.showBorder]            => 控制card是否有边框
  */
 const KLCard = Component.extend({
   name: 'kl-card',
@@ -32,5 +33,20 @@ const KLCard = Component.extend({
     this.supr();
   },
 });
+
+// KLCard.directive('bordered', function (ele, bordered) {
+//   console.log(bordered);
+//   if (!bordered) {
+//     return;
+//   }
+//   ele.classList.add('kl-card--show-border');
+//   this.$watch(bordered, (newValue) => {
+//     console.log(newValue);
+//     if (!newValue) {
+//       return;
+//     }
+//     ele.classList.add('kl-card--show-border');
+//   });
+// });
 
 module.exports = KLCard;
