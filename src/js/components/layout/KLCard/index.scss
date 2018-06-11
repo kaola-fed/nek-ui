@@ -9,10 +9,9 @@
     @include e(btLine) {
         background: #ddd;
         height: 1px;
-        margin-bottom: 8px;
     }
     @include e(body) {
-        padding:16px;
+        padding:24px;
     }
 
     .kl-card {
