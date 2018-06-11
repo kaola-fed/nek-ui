@@ -194,8 +194,8 @@ var component = new NEKUI.Component({
                 type: 'json',
                 data: params,
                 success: function(json) {
-                     this.$update('source', json.result);
-                 }.bind(this)
+                    this.$update('source', json.result);
+                }.bind(this)
             });
         }
     }
@@ -299,6 +299,9 @@ var component = new NEKUI.Component({
 <kl-form-item title="是否有全选: ">
     <kl-check checked={canSelectAll} />
 </kl-form-item>
+<kl-form-item title="是否标签显示多选: ">
+    <kl-check checked={tags} />
+</kl-form-item>
 <kl-form-item title="是否选中关闭: ">
     <kl-check checked={selectedClose} />
 </kl-form-item>
@@ -315,7 +318,9 @@ var component = new NEKUI.Component({
     <kl-check checked={isCaseSensitive} />
 </kl-form-item>
 <kl-form-item>
-    <kl-select source={source}
+    <kl-select source={source} 
+            on-search={this.search($event)}
+            tags={tags}
             multiple={multiple}
             canSearch={canSearch}
             separator={separator}
@@ -336,6 +341,7 @@ var component = new NEKUI.Component({
     template: template,
     data: {
         multiple: true,
+        tags: false,
         separator: ',',
         showSeparator: '、',
         selectedClose: false,
@@ -356,6 +362,10 @@ var component = new NEKUI.Component({
             {name: '速冻特产'},{name: '新鲜水果'}
         ]
     },
+    search: function(event) {
+        console.log(event.sender);
+        console.log(event.value);
+    }
 });
 ```
 <!-- demo_end -->

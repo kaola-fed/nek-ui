@@ -38,6 +38,11 @@
         }
     }
 
+    @include e(tags) {
+        @extend .kl-select__tag;
+        padding: 0 10px;
+    }
+
     .kl-input__inner {
         border: none;
         padding: 0px;
@@ -150,13 +155,18 @@
         }
     }
 
-    .kl-select__hover--show {
-        color: #999;
+    @include e(hover) {
+        @include m(show) {
+            color: #999;
 
-        &:hover {
-            color: #666;
+            &:hover {
+                color: #666;
+            }
         }
     }
+    // .kl-select__hover--show {
+        
+    // }
 
     .kl-treeview {
         overflow: auto;

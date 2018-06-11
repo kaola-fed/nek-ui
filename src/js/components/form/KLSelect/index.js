@@ -37,10 +37,11 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {object}            [options.service]                       @=> 数据服务
  * @param {boolean}           [options.data.canSearch=false]          => 是否可搜索
  * @param {boolean}           [options.data.isCaseSensitive=false]    => 是否区分大小写
- * @param {boolean}           [options.data.noMatchText=无匹配项]       => 搜索无结果文案
+ * @param {boolean}           [options.data.noMatchText=无匹配项]      => 搜索无结果文案
  * @param {Number}            [options.data.delaySearch=300]          => 异步搜索的延迟
  * @param {Number}            [options.data.maxShowCount=1000]        => 最大展示条数
  * @param {boolean}           [options.data.multiple=false]           => 是否多选
+ * @param {boolean}           [options.data.tags=false]               => 是否用数字标签代替多行显示
  * @param {string}            [options.data.separator=,]              => 多选value分隔符
  * @param {boolean}           [options.data.selectedClose=true]       => 多选时选中非全部和请选择项时 是否关闭
  * @param {boolean}           [options.data.canSelectAll=true]        => 是否有全选
@@ -72,6 +73,7 @@ const KLSelect = Dropdown.extend({
       maxShowCount: 1000,
 
       separator: ',',
+      tags: false,
       multiple: false,
       selectedClose: false,
       canSelectAll: true,
@@ -107,12 +109,12 @@ const KLSelect = Dropdown.extend({
         data.selected = [];
       }
       /**
-             * @event KLSelect#change 选择项改变时触发
-             * @property {object} sender 事件发送对象
-             * @property {object} selected 改变后的选择项
-             * @property {string} key 数据项的键
-             * @property {string/number} value 改变后的选择值
-             */
+       * @event KLSelect#change 选择项改变时触发
+       * @property {object} sender 事件发送对象
+       * @property {object} selected 改变后的选择项
+       * @property {string} key 数据项的键
+       * @property {string/number} value 改变后的选择值
+       */
       this.$emit('change', {
         sender: this,
         selected: newValue,
@@ -245,7 +247,7 @@ const KLSelect = Dropdown.extend({
       }
       if (newValue) {
         if (!Array.isArray(data.selected)) {
-          data.selected = data.selected ? [data.selected] : data.selected;
+          data.selected = data.selected ? [data.selected] : [];
         }
       } else {
         data.value = '';
@@ -273,6 +275,17 @@ const KLSelect = Dropdown.extend({
         return;
       }
       data.key_index = -1;
+      if (newValue) {
+        /**
+         * @event KLSelect#search 在搜索框输入的值变化后发生
+         * @property {object} sender 事件发送对象
+         * @property {string/number} value 输入的value
+         */
+        this.$emit('search', {
+          sender: this,
+          value: newValue,
+        });
+      }
       if (this.service && this.service.getList) {
         $updateSource();
       }
