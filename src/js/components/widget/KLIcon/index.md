@@ -97,7 +97,7 @@ var component = new NEKUI.Component({
     template: template,
     copy: function(e) {
         var type = e.target.className.trim();
-        type = type.slice(14)
+        type = type.slice(17)
         var text = '<kl-icon type="' + type + '" />'
         var copyFrom, body;
         copyFrom = document.createElement('textarea');
