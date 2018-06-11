@@ -1,0 +1,32 @@
+
+@include b(badge) {
+    display: inline;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: .2em .6em .3em;
+    font-size: 11px;
+    line-height: 1;
+    background: #aaa;
+    color: white;
+    border-radius: .25em;
+
+    @include m(number) {
+        border-radius: 1000px;
+    }
+}
+
+// Color Extends:
+// ========================================================================
+
+@mixin badge-color($name, $color) {
+    .kl-badge--#{$name} {
+        background: $color;
+    }
+}
+
+@include badge-color(primary, $--primary-color);
+@include badge-color(info, $--info-color);
+@include badge-color(success, $--success-color);
+@include badge-color(warning, $--warning-color);
+@include badge-color(error, $--error-color);

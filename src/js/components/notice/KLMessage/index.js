@@ -30,6 +30,7 @@ const KLMessage = Component.extend({
   },
   close(result) {
     this.data.visible = Boolean(result);
+    this.$emit('close');
     this.$update();
   },
 });

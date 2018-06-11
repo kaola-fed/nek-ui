@@ -1,7 +1,7 @@
-<div class="u-loading {class}" r-class={ {'u-loading-static': static, 'u-loading-fixed': !static} } r-hide={!visible}
+<div class="kl-loading {class}" r-class={ {'kl-loading--static': static, 'kl-loading--fixed': !static} } r-hide={!visible}
   r-animation="on:enter;class:animated fadeIn; on:leave;class:animated fadeOut">
-    <svg class="loading-circular" viewBox="25 25 50 50">
-      <circle class="loading-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    <svg class="kl-loading__circular" viewBox="25 25 50 50">
+      <circle class="kl-loading__path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
     </svg>
     {#if this.$body}
       {#inc this.$body}

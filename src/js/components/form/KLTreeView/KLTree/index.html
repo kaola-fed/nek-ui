@@ -1,0 +1,31 @@
+<ul class="kl-treeview-list" r-class={{'kl-treeview-list--child': !!parent}} r-hide={!visible} r-animation="on:enter;collapse:on;on:leave;collapse:off;">
+	{#list source as item}
+	<li>
+		<div class="kl-treeview-list-item"
+         r-style={{'padding-left':  level == 1 ? '8px' : (multiple ? 24 : 16) * (level - 1) + 'px'}}
+         is-sel={this.$ancestor.data.selected === item}
+         is-dis={item.disabled}
+         on-click={this.select(item)}
+      >
+      <kl-icon type="caret-right"
+               class="kl-treeview-list-item__arrow {item.open ? 'is-open' : ''}"
+               color="{(item.childrenCount || (item.children && item.children.length)) ? '#333': 'transparent'}" />
+			{#if multiple}
+			<kl-check class="kl-treeview-list-item__check" checked={item.checked} on-check={this.check($event)} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />
+			{/if}
+			<div class="kl-treeview-list-item__name" title={item[nameKey]} on-click={this.stopPropagation($event)}>
+          {#if @(itemTemplate)}
+            {#inc @(itemTemplate)}
+          {#else}
+            {item[nameKey]}{#inc body}
+          {/if}
+      </div>
+		</div>
+		{#if item.childrenCount || (item.children && item.children.length)}
+      <kl-tree childKey={childKey} nameKey={nameKey} source={item.children} body={body}
+               visible={item.open} parent={item} multiple={multiple} level={level+1}
+               on-setselected={this._setSelected($event)} />
+    {/if}
+	</li>
+	{/list}
+</ul>

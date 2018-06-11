@@ -1,21 +1,14 @@
-/**
- * ------------------------------------------------------------
- * TreeViewList  树型视图列表
- * @author   sensen(rainforest92@126.com)
- * ------------------------------------------------------------
- */
-
 const SourceComponent = require('../../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
 
 /**
- * @class TreeViewList
+ * @class KLTree
  * @extend SourceComponent
  * @private
  */
-const TreeViewList = SourceComponent.extend({
-  name: 'tree-view-list',
+const KLTree = SourceComponent.extend({
+  name: 'kl-tree',
   template,
   /**
      * @protected
@@ -26,6 +19,7 @@ const TreeViewList = SourceComponent.extend({
       itemTemplate: null,
       visible: false,
       multiple: false,
+      level: 1,
     });
     this.supr();
 
@@ -37,7 +31,7 @@ const TreeViewList = SourceComponent.extend({
     this.$watch('visible', function (newValue) {
       if (!this.data.hierarchical) return;
 
-      if (!newValue || this.$parent.name !== 'treeViewList') return;
+      if (!newValue || this.$parent.name !== 'kl-tree') return;
 
       this.$updateSource(function () {
         this.data.hierarchical = false;
@@ -84,13 +78,8 @@ const TreeViewList = SourceComponent.extend({
   select(...args) {
     this.$ancestor.select(...args);
   },
-  /**
-     * @note 移给$ancestor处理
-     */
-  toggle(...args) {
-    this.$ancestor.toggle(...args);
-  },
-  check() {
+  check($event) {
+    $event.e.stopPropagation();
     this._setSelected({});
   },
   _setSelected(event) {
@@ -98,6 +87,9 @@ const TreeViewList = SourceComponent.extend({
     setTimeout(() => {
       self.$emit('setselected', event);
     }, 0);
+  },
+  stopPropagation(e) {
+    e.stopPropagation();
   },
   /**
      * @private
@@ -127,4 +119,4 @@ const TreeViewList = SourceComponent.extend({
   },
 });
 
-module.exports = TreeViewList;
+module.exports = KLTree;

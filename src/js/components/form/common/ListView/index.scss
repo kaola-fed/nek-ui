@@ -9,47 +9,47 @@
   box-sizing: border-box;
   user-select: none;
 
-  @include e(item) {
-    position: relative;
-    cursor: pointer;
-    font-size: $--font-size-base;
-    color: $--text-color-default;
-    padding: 7px 9px 7px 9px;
-    margin: 6px 0;
-    line-height: 18px;
-
-    &:hover {
-      background: $--background-color-white-hover;
-      color: $--text-color-hover;
-    }
-
-    @include when(sel) {
-      background: $--background-color-primary;
-      color: $--text-color-white;
-    }
-
-    @include when(dis) {
-      cursor: not-allowed;
-      background: none;
-      color: $--text-color-disabled;
-    }
-
-    @include when(divider) {
-      margin: 9px 0;
-      padding: 0;
-      height: 1px;
-      background: #e5e5e5;
-      overflow: hidden;
-    }
-  }
-
   @include when(dis) {
     background: $--background-color-disabled;
 
-    @include e(item) {
+    .kl-listview-item {
       cursor: not-allowed;
       background: $--background-color-disabled;
       color: $--text-color-disabled;
     }
+  }
+}
+
+@include b(listview-item) {
+  position: relative;
+  cursor: pointer;
+  font-size: $--font-size-base;
+  color: $--text-color-default;
+  padding: 7px 9px 7px 9px;
+  margin: 6px 0;
+  line-height: 18px;
+
+  &:hover {
+    background: $--background-color-white-hover;
+    color: $--text-color-hover;
+  }
+
+  @include when(sel) {
+    background: $--background-color-primary;
+    color: $--text-color-white;
+  }
+
+  @include when(dis) {
+    cursor: not-allowed;
+    background: none;
+    color: $--text-color-disabled;
+  }
+
+  @include when(divider) {
+    margin: 9px 0;
+    padding: 0;
+    height: 1px;
+    background: #e5e5e5;
+    overflow: hidden;
   }
 }

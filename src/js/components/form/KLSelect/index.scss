@@ -195,7 +195,7 @@
             padding: 0px;
             height: $--height-sm - 2;
         }
-        .kl-listview >.kl-listview__item {
+        .kl-listview >.kl-listview-item {
             line-height: 12px;
             font-size: $--font-size-xs;
         }
@@ -213,7 +213,7 @@
             padding: 0px;
             height: $--height-lg - 2;
         }
-        .kl-listview >.kl-listview__item {
+        .kl-listview >.kl-listview-item {
             font-size: $--font-size-lg;
             line-height: 22px;
         }
