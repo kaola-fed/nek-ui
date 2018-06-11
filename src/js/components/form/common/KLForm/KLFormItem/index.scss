@@ -93,7 +93,7 @@
 }
 
 @mixin form-item-transition {
-    transition: all 1s ease;
+    transition: border 1s ease, box-shadow 1s ease;
 }
 
 @mixin form-item-focus {

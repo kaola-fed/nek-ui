@@ -8,6 +8,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const calcTextareaHeight = require('./calcTextareaHeight');
 
 const bowser = require('bowser');
 
@@ -20,7 +21,6 @@ const bowser = require('bowser');
  * @param {number}        [options.data.maxlength]          => 文本框的最大长度
  * @param {object[]}      [options.data.rules=[]]           => 验证规则
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
- * @param {number}        [options.data.height=120]         => 高度
  * @param {number}        [options.data.width]              => 组件宽度
  * @param {boolean}       [options.data.required=false]     => 是否必填
  * @param {string}        [options.data.message]         => 必填校验失败提示的消息
@@ -41,12 +41,12 @@ const KLTextArea = Component.extend({
       placeholder: '',
       state: '',
       maxlength: undefined,
-      height: 120,
-    //   autosize: {},
+      autosize: null,
       rules: [],
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
       required: false,
+      textareaCalcStyle: {},
     });
 
     this.supr();
@@ -54,20 +54,12 @@ const KLTextArea = Component.extend({
     this.initValidation();
   },
   computed: {
-    // styleObj(data) {
-    //   const autosize = data.autosize;
-    //   if (!autosize || !(autosize instanceof Object)) {
-    //     return {};
-    //   }
-    //   const { minRow, maxRow } = autosize;
-
-    //   return {
-    //     'min-height': `${(minRow || 2) * 12}px`,
-    //     'max-height': `${(maxRow || 4) * 12}px`,
-    //   };
-    // },
+    textareaStyle() {
+      return this.merge({}, this.textareaCalcStyle, { resize: this.resize });
+    },
   },
   init() {
+    this.resizeTextarea();
     this.$watch('required', function (value) {
       const rules = this.data.rules;
       const message = this.data.message || this.$trans('PLEASE_INPUT');
@@ -77,6 +69,23 @@ const KLTextArea = Component.extend({
         this.data.rules = rules.filter(rule => rule.type !== 'isRequired');
       }
     });
+
+    this.$watch('value', function () {
+      this.resizeTextarea();
+    });
+  },
+  resizeTextarea() {
+    const { autosize } = this.data;
+    if (!autosize) {
+      this.textareaCalcStyle = {
+        minHeight: calcTextareaHeight(this.$refs.textarea).minHeight,
+      };
+      return;
+    }
+    const minRows = autosize.minRows;
+    const maxRows = autosize.maxRows;
+
+    this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
   },
   validate(on = '') {
     const data = this.data;
@@ -149,6 +158,21 @@ const KLTextArea = Component.extend({
      * @param {event} MouseEvent 鼠标点击事件
      */
     this.$emit('focus', $event);
+  },
+  merge(...args) {
+    for (let i = 1, j = args.length; i < j; i += 1) {
+      const source = args[i] || {};
+      for (const prop in source) {
+        if (source.hasOwnProperty(prop)) {
+          const value = source[prop];
+          if (value !== undefined) {
+            args[0][prop] = value;
+          }
+        }
+      }
+    }
+
+    return args[0];
   },
 });
 
