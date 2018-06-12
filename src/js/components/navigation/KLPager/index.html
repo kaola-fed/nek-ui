@@ -18,7 +18,7 @@
 
     <ul class="m-right-pager kl-pager-main">
         <li class="page_item page_prev kl-pager-main__item kl-pager-main__prev" is-dis={current <= 1} on-click={this.select(current - 1)}>
-        <i class="kl-icon kl-icon-chevron_left"></i>
+        <i class="kl-icon kl-icon--arrow-left"></i>
         </li>
 
         {#if total - middle > side * 2 + 1}
@@ -39,7 +39,7 @@
         {/list}
         {/if}
 
-        <li class="page_item pager_next kl-pager-main__item kl-pager-main__next" is-dis={current >= total} on-click={this.select(current + 1)}><i class="kl-icon kl-icon-chevron_right"></i></li>
+        <li class="page_item pager_next kl-pager-main__item kl-pager-main__next" is-dis={current >= total} on-click={this.select(current + 1)}><i class="kl-icon kl-icon--arrow-right"></i></li>
 
         <li class="page_goto kl-pager-main__goto">
             <span>{this.$trans('GOTO')}</span>
@@ -48,7 +48,7 @@
         </li>
 
         <li class="page_confirm kl-pager-main__confirm">
-            <kl-button on-click={this.goto()} title={this.$trans('CONFIRM')} size="sm" />
+            <kl-button class="kl-pager-main__confirm_btn" on-click={this.goto()} title={this.$trans('CONFIRM')} size="sm" />
         </li>
     </ul>
 
