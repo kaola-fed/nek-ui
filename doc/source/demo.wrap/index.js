@@ -75,8 +75,8 @@ component.$inject(document.body);
       html: html,
       css: css,
       js: js,
-      js_external: 'https://unpkg.com/nek-ui/dist/vendor/regular.min.js;https://unpkg.com/nek-ui/dist/js/nek-ui.min.js',
-      css_external: 'https://unpkg.com/nek-ui/dist/css/nek-ui.red.min.css'
+      js_external: 'https://unpkg.com/nek-ui/dist/vendor/regular.min.js;https://unpkg.com/nek-ui@0.6.2-beta.20/dist/js/nek-ui.min.js',
+      css_external: 'https://unpkg.com/nek-ui@0.6.2-beta.20/dist/css/nek-ui.red.min.css'
     };
     this.data.codepenJson = JSON.stringify(data);
     this.$update();
