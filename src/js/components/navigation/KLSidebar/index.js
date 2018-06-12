@@ -21,6 +21,7 @@ const template = require('./index.html');
  * @param {string}        [options.data.routeKey=route]           => 单页spa应用时,使用
  * @param {string}        [options.data.pageKey=title]            => 二级菜单的字段key名
  * @param {string}        [options.data.childrenKey=children]     => 一级菜单对象下二级菜单数组的key名
+ * @param {string}        [options.data.todoKey=todos]            => 需要显示待办数量时,需要指定key值
  * @param {object}        [options.data.router]                   => 单页应用时, 请将regular-state的manager实例传入
  * @param {string}        [options.data.width]                    => sidebar的宽度设置,默认181px
  * @param {string}        [options.data.theme]                    => sidebar的主题颜色，可选light/dark，默认light
@@ -39,6 +40,7 @@ const KLSidebar = Component.extend({
       routeKey: 'route',
       pageKey: 'title',
       childrenKey: 'children',
+      todoKey: 'todos',
       top: '60px',
       width: '181px',
       theme: 'light',
@@ -63,6 +65,14 @@ const KLSidebar = Component.extend({
    */
   onMenuItemClick(e) {
     this.$emit('menuitem-click', e);
+  },
+  getTitleTemplate(name, todos) {
+    const title = this.highlight(name);
+    if (todos && !isNaN(todos)) {
+      const count = todos > 99 ? '99+' : todos;
+      return `<span class="kl-sidebar-todowrap"><span class="kl-sidebar-todowrap__title">${title}</span><span class="kl-sidebar-todowrap__badge">${count}</span></span>`;
+    }
+    return title;
   },
 });
 

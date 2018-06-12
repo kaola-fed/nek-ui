@@ -12,8 +12,9 @@
     font-size: 14px;
     transition: all .4s ease;
 
-    &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
-        color: #00C4C0;
+    @include e(title) {
+      display: block;
+      width: 100%;
     }
 
     @include e(arrow) {
@@ -33,6 +34,10 @@
         left: 20px;
         color: #c4c4c4;
         font-size: 14px;
+    }
+
+    &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
+      color: #00C4C0;
     }
 }
 
