@@ -23,6 +23,9 @@ const _ = require('../../../ui-base/_');
  * @param {string}          [options.data.rootValue=null]           <=> 模式2种的选择值(具体见文档 demo)
  * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)，这种模式下如果 value 和 rootValue 都传入，回显以 rootValue 为准
  * @param {object}          [options.data.selected=null]            <=> 当前选择项
+ * @param {object}          [options.data.server=false]             => 是否远程获取数据
+ * @param {object}          [options.data.hasChildKey=hasChild]     => 远程获取数据时标识是否有子级的字段的 key
+ * @param {object}          [options.data.serverFn]                 => 远程获取数据的方法，传入当前的 item，返回一个 promise，promose.resolve(list)
  * @param {string}          [options.data.placeholder='']           => 默认提示
  * @param {string}          [options.data.separator=,]              => 多选时value分隔符
  * @param {boolean}         [options.data.showPath=false]           => 单选时是否展示路径
@@ -50,6 +53,8 @@ const KLMultiSelect = Dropdown.extend({
       selected: [],
       rootSelected: [],
       separator: ',',
+      server: false,
+      hasChildKey: 'hasChild',
       placeholder: '',
       key: 'id',
       nameKey: 'name',
@@ -231,6 +236,17 @@ const KLMultiSelect = Dropdown.extend({
     if (data.disabled || data.readonly) {
       return;
     }
+    if (data.server && cate[data.hasChildKey] && (!cate[data.childKey] || !cate[data.childKey].length)) {
+      data.serverFn(cate).then((list) => {
+        cate[data.childKey] = list;
+        this.dealCate(cate, level, show);
+      });
+    } else {
+      this.dealCate(cate, level, show);
+    }
+  },
+  dealCate(cate, level, show) {
+    const data = this.data;
     data.tree[level + 1] = cate[data.childKey] || [];
     // 将本级和下一级的active都置为false
     for (let i = level; i < level + 2; i += 1) {
