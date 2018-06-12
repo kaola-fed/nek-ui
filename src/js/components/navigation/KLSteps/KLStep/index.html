@@ -25,7 +25,7 @@
         <div class="kl-step__icon {icon ? 'is-icon' : 'is-text'}">
             {#if currentStatus !== 'error'}
                 {#if size === 'small' && currentStatus === 'finish'}
-                    <i class="kl-step__icon-inner is-status kl-icon kl-icon-ok"></i>
+                    <i class="kl-step__icon-inner is-status kl-icon kl-icon--tick"></i>
                 {#else}
                     {#if icon}
                         <i class="kl-step__icon-inner {icon}"></i>
@@ -35,7 +35,7 @@
                     {/if}
                 {/if}
             {#else}
-            <i class="kl-step__icon-inner is-status kl-icon kl-icon-remove"></i>
+            <i class="kl-step__icon-inner is-status kl-icon kl-icon--cross"></i>
             {/if}
         </div>
     </div>
