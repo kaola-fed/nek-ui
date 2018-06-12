@@ -10,7 +10,7 @@ title: 面包屑
 
 ```xml
 <kl-crumb separator="/">
-    <kl-crumb-item href="/"><kl-icon type="home2" color="#00C4C0" /></kl-crumb-item>
+    <kl-crumb-item href="/"><kl-icon type="home" color="#00C4C0" /></kl-crumb-item>
     <kl-crumb-item href="/components/index.html" content="促销中心" />
     <kl-crumb-item href="/components/index.html" content="优惠券管理" />
     <kl-crumb-item content="优惠券配置" />
@@ -24,7 +24,7 @@ title: 面包屑
 
 ```xml
 <kl-crumb separator="/">
-    <kl-crumb-item><a href="/"><kl-icon type="home2" color="#00C4C0" /></a></kl-crumb-item>
+    <kl-crumb-item><a href="/"><kl-icon type="home" color="#00C4C0" /></a></kl-crumb-item>
     <kl-crumb-item><a href="/components/index.html">促销中心</a></kl-crumb-item>
     <kl-crumb-item><a href="/components/index.html">优惠券管理</a></kl-crumb-item>
     <kl-crumb-item>优惠券配置</kl-crumb-item>

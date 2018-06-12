@@ -27,7 +27,7 @@
       {/if}
     </span>
     {#if this.$body}
-      <span class="kl-sub-menu-head__arrow kl-icon kl-icon-angle-down" r-class={ {'is-open':active} }></span>
+      <kl-icon type="arrow-down" class="kl-sub-menu-head__arrow {active ? 'is-open' : ''}" />
     {/if}
   </div>
   {#if active}

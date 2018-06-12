@@ -3,10 +3,10 @@
       <div class="kl-tabs-scroll {scrollable ? 'is-scrollable' : ''}">
         {#if scrollable}
         <span class="kl-tabs-scroll__nav kl-tabs-scroll__nav--prev" is-dis={!scrollable.prev} on-click={this.prev()}>
-            <kl-icon type="chevron_left" />
+            <kl-icon type="arrow-left" />
         </span>
         <span class="kl-tabs-scroll__nav kl-tabs-scroll__nav--next" is-dis={!scrollable.next} on-click={this.next()}>
-            <kl-icon type="chevron-right" />
+            <kl-icon type="arrow-right" />
         </span>
         {/if}
         <div ref="wrap" class="f-oh">
