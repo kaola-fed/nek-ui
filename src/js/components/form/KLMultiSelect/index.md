@@ -444,8 +444,6 @@ serverFn 是一个接受当前 item， return promise 的 方法，在 resolve �
     server={server}
     serverFn={serverFn}
     hasChildKey={hasChildKey}
-    on-select={this.selected($event)} 
-    on-change={this.change($event)}
     />
 <p>选择的是：{value}</p>
 ```
