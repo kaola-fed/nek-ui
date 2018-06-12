@@ -5,12 +5,12 @@
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <kl-icon type="remove" on-click={this.delete($event, item)} />
+                        <kl-icon type="cross" on-click={this.delete($event, item)} />
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <kl-icon type="remove" on-click={this.delete($event, item)} />
+                    <kl-icon type="cross" on-click={this.delete($event, item)} />
                 </span>
                 {/if}
             {/list}
@@ -19,18 +19,18 @@
                 {#if showPath && placement}
                 <kl-tooltip tip={item.path} placement={placement}>
                     <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                        <kl-icon type="remove" on-click={this.delete($event, item)} />
+                        <kl-icon type="cross" on-click={this.delete($event, item)} />
                     </span>
                 </kl-tooltip>
                 {#else}
                 <span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}
-                    <kl-icon type="remove" on-click={this.delete($event, item)} />
+                    <kl-icon type="cross" on-click={this.delete($event, item)} />
                 </span>
                 {/if}
             {/list}
         {/if}
         <span class="kl-multi-select__placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
-        <kl-icon fontSize=20 type="angle-down" class="f-fr kl-multi-select__angle {open ? 'kl-multi-select__angle--transform' : ''}"/>
+        <kl-icon fontSize=15 type="arrow-down" class="f-fr kl-multi-select__angle {open ? 'kl-multi-select__angle--transform' : ''}"/>
     </div>
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">

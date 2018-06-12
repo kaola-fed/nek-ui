@@ -129,11 +129,26 @@ const KLTextArea = Component.extend({
 
     return result;
   },
+  /**
+    * @method KLTextArea#focus 原生focus方法
+    * @param {method} 无 使 textarea 获取焦点
+  */
   focus() {
     this.$refs.textarea.focus();
   },
+  /**
+    * @method KLTextArea#blur 原生blur方法
+    * @param {method} 无 使 textarea 失去焦点
+  */
   blur() {
     this.$refs.textarea.blur();
+  },
+  /**
+    * @method KLTextArea#select 原生select方法
+    * @param {method} 无 使 textarea 选中
+  */
+  select() {
+    this.$refs.textarea.select();
   },
   _onKeyUp($event) {
     this.validate('keyup');
