@@ -427,3 +427,58 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 远程数据
+
+server 为 true
+
+serverFn 是一个接受当前 item， return promise 的 方法，在 resolve 里面传入下一级的 list，并且在 list 里面的每一项都需要一个 key 来判断是否还有下一级，key 默认为 hasChild，可以用 hasChildKey 来覆盖。
+
+<div class="m-example"></div>
+
+```xml
+<kl-multi-select 
+    source={source} 
+    value={value}  
+    server={server}
+    serverFn={serverFn}
+    hasChildKey={hasChildKey}
+    />
+<p>选择的是：{value}</p>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, hasChild: true},
+            {name: '美容彩妆', id: 2, hasChild: true},
+            {name: '服饰鞋包', id: 3, hasChild: true}
+        ],
+        value: '',
+        server: true,
+        hasChildKey: 'hasChild',
+        serverFn: function(item) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    var list = [
+                        {name: '母婴儿童', id: 1, hasChild: true},
+                        {name: '美容彩妆', id: 2, hasChild: true},
+                        {name: '服饰鞋包', id: 3, hasChild: true}
+                    ];
+                    resolve(list)
+                }, 0)
+                // request(url, {
+                //     data: item.id,
+                //     onload: function(json) {
+                //         resolve(json.result.list);
+                //     }
+                // })
+            })
+        }
+    }
+});
+```
+<!-- demo_end -->

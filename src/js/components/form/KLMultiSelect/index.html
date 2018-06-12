@@ -40,13 +40,13 @@
             <ul r-animation="on: leave; class: animated fadeOutX fast;">
                 <kl-input value={search[level]}  readonly={readonly}></kl-input>
                 {#list tree[level] | search : search[level],level as cate}
-                {#if !filter || (filter && filter(cate))}
+                {#if !filter || (filter && filter(cate, cate_index))}
                 <li class="f-csp {cate.active?'active':''}" on-click={this.viewCate(cate, level)}>
                 	{#if multiple}
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
                     <span {#if !multiple} class="cateName"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="more" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
+                    {#if (cate[childKey] && cate[childKey].length) || (server && cate[hasChildKey])}<span class="more" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
                 </li>
                 {/if}
                 {/list}
