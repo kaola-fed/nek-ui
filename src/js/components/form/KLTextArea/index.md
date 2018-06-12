@@ -110,3 +110,28 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 自适应文本高度
+<div class="m-example"></div>
+
+```xml
+<p>最大长度{maxLength}字，已经输入了{(value || '').length}字</p>
+<kl-textarea value={value} autosize={autosize} placeholder="请输入内容" />
+
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        maxLength: 10,
+        value: '',
+        autosize: {
+            minRows: 2,
+            maxRows: 6
+        }
+    }
+});
+```
+<!-- demo_end -->
