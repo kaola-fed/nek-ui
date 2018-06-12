@@ -5,6 +5,7 @@
 const scrollIntoViewFn = require('scroll-into-view');
 
 const Component = require('../../../ui-base/component');
+const searchableMixin = require('./mixins/searchable');
 const template = require('./index.html');
 
 /**
@@ -64,5 +65,7 @@ const KLSidebar = Component.extend({
     this.$emit('menuitem-click', e);
   },
 });
+
+KLSidebar.use(searchableMixin);
 
 module.exports = KLSidebar;

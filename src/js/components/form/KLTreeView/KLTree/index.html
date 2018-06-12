@@ -7,7 +7,7 @@
          is-dis={item.disabled}
          on-click={this.select(item)}
       >
-      <kl-icon type="caret-right"
+      <kl-icon type="solid-arrow-right"
                class="kl-treeview-list-item__arrow {item.open ? 'is-open' : ''}"
                color="{(item.childrenCount || (item.children && item.children.length)) ? '#333': 'transparent'}" />
 			{#if multiple}

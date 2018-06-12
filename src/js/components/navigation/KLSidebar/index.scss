@@ -32,11 +32,26 @@
                 background: $--background-color-primary;
             }
         }
+        .kl-sidebar-search-box {
+          background: #222;
+        }
+      .kl-sidebar__highlight {
+        color: $--text-color-primary;
+      }
     }
+
+  @include e(highlight) {
+    color: #008EFB;
+  }
 }
 
 @include b(sidebar-menus-wrap) {
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
+}
+
+@include b(sidebar-search-box) {
+  padding: 8px 16px;
+  border-right: 1px solid #E1E6ED;
 }
 
