@@ -36,6 +36,7 @@
     @include e(info) {
         color: #ccc;
         vertical-align: middle;
+        font-size: 13px;
     }
     @include e(ct) {
         flex: 1;

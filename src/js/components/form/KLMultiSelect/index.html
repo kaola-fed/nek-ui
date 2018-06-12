@@ -46,7 +46,7 @@
                 	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
                     {/if}
                     <span {#if !multiple} class="kl-multi-select-cate__name"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="kl-multi-select-cate__more" r-class={{'kl-multi-select-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="chevron_right" /></span>{/if}
+                    {#if cate[childKey] && cate[childKey].length}<span class="kl-multi-select-cate__more" r-class={{'kl-multi-select-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="arrow-right" /></span>{/if}
                 </li>
                 {/if}
                 {/list}
