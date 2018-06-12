@@ -459,6 +459,14 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> </span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> </div><div class="line">    <span class="attr">multiple</span>=<span class="string">&#123;multiple&#125;</span> </div><div class="line">    <span class="attr">showRoot</span>=<span class="string">&#123;showRoot&#125;</span></div><div class="line">    <span class="attr">value</span>=<span class="string">&#123;value&#125;</span>  </div><div class="line">    <span class="attr">rootValue</span>=<span class="string">&#123;rootValue&#125;</span></div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;this.selected($event)&#125;</span> </div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;this.change($event)&#125;</span></div><div class="line">    /&gt;</div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>rootValue: &#123;rootValue&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'营养辅食'</span>, <span class="attr">id</span>: <span class="number">11</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'奶粉'</span>, <span class="attr">id</span>: <span class="number">12</span>, <span class="attr">children</span>: [</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'爱他美'</span>, <span class="attr">id</span>: <span class="number">121</span>, <span class="attr">children</span>: [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'1段'</span>, <span class="attr">id</span>: <span class="number">1211</span>, <span class="attr">children</span>: [</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'0-6个月'</span>, <span class="attr">id</span>: <span class="number">12111</span>&#125;,</div><div class="line">                            &#123;<span class="attr">name</span>: <span class="string">'6-12个月'</span>, <span class="attr">id</span>: <span class="number">12112</span>&#125;</div><div class="line">                            ]&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'3段'</span>, <span class="attr">id</span>: <span class="number">1212</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'5段'</span>, <span class="attr">id</span>: <span class="number">1213</span>&#125;</div><div class="line">                        ]&#125;,</div><div class="line">                    &#123;<span class="attr">name</span>: <span class="string">'美赞臣'</span>, <span class="attr">id</span>: <span class="number">122</span>&#125;</div><div class="line">                ]&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'童装童鞋'</span>, <span class="attr">id</span>: <span class="number">13</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'宝宝用品'</span>, <span class="attr">id</span>: <span class="number">14</span>&#125;,</div><div class="line">            ]&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">children</span>: [</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'女士箱包'</span>, <span class="attr">id</span>: <span class="number">31</span>&#125;,</div><div class="line">                &#123;<span class="attr">name</span>: <span class="string">'男士箱包'</span>, <span class="attr">id</span>: <span class="number">32</span>&#125;</div><div class="line">            ]&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">rootValue</span>: <span class="string">'1'</span>,</div><div class="line">        <span class="attr">multiple</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">showRoot</span>: <span class="literal">true</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">selected</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'selected'</span>,event);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">change</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'change'</span>,event);</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">rootChange</span>: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'rootChange'</span>,event);</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
+<div class="grid-item" markdown="1">
+<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><p>server 为 true</p>
+<p>serverFn 是一个接受当前 item， return promise 的 方法，在 resolve 里面传入下一级的 list，并且在 list 里面的每一项都需要一个 key 来判断是否还有下一级，key 默认为 hasChild，可以用 hasChildKey 来覆盖。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-multi-select</span> </span></div><div class="line">    <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> </div><div class="line">    <span class="attr">value</span>=<span class="string">&#123;value&#125;</span>  </div><div class="line">    <span class="attr">server</span>=<span class="string">&#123;server&#125;</span></div><div class="line">    <span class="attr">serverFn</span>=<span class="string">&#123;serverFn&#125;</span></div><div class="line">    <span class="attr">hasChildKey</span>=<span class="string">&#123;hasChildKey&#125;</span></div><div class="line">    /&gt;</div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;</div><div class="line">        ],</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">server</span>: <span class="literal">true</span>,</div><div class="line">        <span class="attr">hasChildKey</span>: <span class="string">'hasChild'</span>,</div><div class="line">        <span class="attr">serverFn</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">                setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">var</span> list = [</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'母婴儿童'</span>, <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'美容彩妆'</span>, <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;,</div><div class="line">                        &#123;<span class="attr">name</span>: <span class="string">'服饰鞋包'</span>, <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">hasChild</span>: <span class="literal">true</span>&#125;</div><div class="line">                    ];</div><div class="line">                    resolve(list)</div><div class="line">                &#125;, <span class="number">0</span>)</div><div class="line">                <span class="comment">// request(url, &#123;</span></div><div class="line">                <span class="comment">//     data: item.id,</span></div><div class="line">                <span class="comment">//     onload: function(json) &#123;</span></div><div class="line">                <span class="comment">//         resolve(json.result.list);</span></div><div class="line">                <span class="comment">//     &#125;</span></div><div class="line">                <span class="comment">// &#125;)</span></div><div class="line">            &#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLMultiSelect"></a></p>
 <h2 id="KLMultiSelect"><a href="#KLMultiSelect" class="headerlink" title="KLMultiSelect"></a><span class="param-title">KLMultiSelect</span><a name="new_KLMultiSelect_new"></a></h2><h3 id="KLMultiSelect-1"><a href="#KLMultiSelect-1" class="headerlink" title="KLMultiSelect"></a><span class="param-title">KLMultiSelect</span></h3><table>
 <thead>
@@ -535,6 +543,24 @@
 <td><code>object</code></td>
 <td><code></code></td>
 <td>&lt;=&gt; 当前选择项</td>
+</tr>
+<tr>
+<td>[options.data.server]</td>
+<td><code>object</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否远程获取数据</td>
+</tr>
+<tr>
+<td>[options.data.hasChildKey]</td>
+<td><code>object</code></td>
+<td><code>hasChild</code></td>
+<td>=&gt; 远程获取数据时标识是否有子级的字段的 key</td>
+</tr>
+<tr>
+<td>[options.data.serverFn]</td>
+<td><code>object</code></td>
+<td></td>
+<td>=&gt; 远程获取数据的方法，传入当前的 item，返回一个 promise，promose.resolve(list)</td>
 </tr>
 <tr>
 <td>[options.data.placeholder]</td>
@@ -1527,6 +1553,115 @@ var component = new NEKUI.Component({
     rootChange: function(event) {
         console.log('rootChange',event);
     },
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-multi-select 
+    source={source} 
+    value={value}  
+    server={server}
+    serverFn={serverFn}
+    hasChildKey={hasChildKey}
+    />
+<p>选择的是：{value}</p>
+
+      */});
+      
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, hasChild: true},
+            {name: '美容彩妆', id: 2, hasChild: true},
+            {name: '服饰鞋包', id: 3, hasChild: true}
+        ],
+        value: '',
+        server: true,
+        hasChildKey: 'hasChild',
+        serverFn: function(item) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    var list = [
+                        {name: '母婴儿童', id: 1, hasChild: true},
+                        {name: '美容彩妆', id: 2, hasChild: true},
+                        {name: '服饰鞋包', id: 3, hasChild: true}
+                    ];
+                    resolve(list)
+                }, 0)
+                // request(url, {
+                //     data: item.id,
+                //     onload: function(json) {
+                //         resolve(json.result.list);
+                //     }
+                // })
+            })
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-multi-select 
+    source={source} 
+    value={value}  
+    server={server}
+    serverFn={serverFn}
+    hasChildKey={hasChildKey}
+    />
+<p>选择的是：{value}</p>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '母婴儿童', id: 1, hasChild: true},
+            {name: '美容彩妆', id: 2, hasChild: true},
+            {name: '服饰鞋包', id: 3, hasChild: true}
+        ],
+        value: '',
+        server: true,
+        hasChildKey: 'hasChild',
+        serverFn: function(item) {
+            return new Promise(function(resolve, reject) {
+                setTimeout(function() {
+                    var list = [
+                        {name: '母婴儿童', id: 1, hasChild: true},
+                        {name: '美容彩妆', id: 2, hasChild: true},
+                        {name: '服饰鞋包', id: 3, hasChild: true}
+                    ];
+                    resolve(list)
+                }, 0)
+                // request(url, {
+                //     data: item.id,
+                //     onload: function(json) {
+                //         resolve(json.result.list);
+                //     }
+                // })
+            })
+        }
+    }
 });
 `
           }

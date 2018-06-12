@@ -26969,6 +26969,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {string}          [options.data.rootValue=null]           <=> 模式2种的选择值(具体见文档 demo)
 	 * @param {string}          [options.data.showRoot=false]           => 是否用模式2(具体见文档 demo)，这种模式下如果 value 和 rootValue 都传入，回显以 rootValue 为准
 	 * @param {object}          [options.data.selected=null]            <=> 当前选择项
+	 * @param {object}          [options.data.server=false]             => 是否远程获取数据
+	 * @param {object}          [options.data.hasChildKey=hasChild]     => 远程获取数据时标识是否有子级的字段的 key
+	 * @param {object}          [options.data.serverFn]                 => 远程获取数据的方法，传入当前的 item，返回一个 promise，promose.resolve(list)
 	 * @param {string}          [options.data.placeholder='']           => 默认提示
 	 * @param {string}          [options.data.separator=,]              => 多选时value分隔符
 	 * @param {boolean}         [options.data.showPath=false]           => 单选时是否展示路径
@@ -26998,6 +27001,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      selected: [],
 	      rootSelected: [],
 	      separator: ',',
+	      server: false,
+	      hasChildKey: 'hasChild',
 	      placeholder: '',
 	      key: 'id',
 	      nameKey: 'name',
@@ -27180,6 +27185,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (data.disabled || data.readonly) {
 	      return;
 	    }
+	    if (data.server && cate[data.hasChildKey] && (!cate[data.childKey] || !cate[data.childKey].length)) {
+	      data.serverFn(cate).then(function (list) {
+	        cate[data.childKey] = list;
+	        _this2.dealCate(cate, level, show);
+	      });
+	    } else {
+	      this.dealCate(cate, level, show);
+	    }
+	  },
+	  dealCate: function dealCate(cate, level, show) {
+	    var _this3 = this;
+
+	    var data = this.data;
 	    data.tree[level + 1] = cate[data.childKey] || [];
 	    // 将本级和下一级的active都置为false
 	    for (var i = level; i < level + 2; i += 1) {
@@ -27231,7 +27249,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	    setTimeout(function () {
-	      _this2.scroll(level);
+	      _this3.scroll(level);
 	    }, 0);
 	  },
 	  scroll: function scroll(level) {
@@ -27460,7 +27478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 345 */
 /***/ (function(module, exports) {
 
-	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#if showRoot}\n            {#list rootSelected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {#else}\n            {#list selected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {/if}\n        <span class=\"m-multi-placeholder\" r-hide={open || !placeholder || selected.length}>{placeholder}</span>\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if cate[childKey] && cate[childKey].length}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n"
+	module.exports = "<div class=\"u-dropdown u-select u-select-{state} u-multi u-multi{class}\" r-width={width} z-dis={disabled} r-hide={!visible} ref=\"element\">\n    <div class=\"dropdown_hd\" on-click={this.toggle(!open, $event)}>\n        {#if showRoot}\n            {#list rootSelected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {#else}\n            {#list selected as item}\n                {#if showPath && placement}\n                <kl-tooltip tip={item.path} placement={placement}>\n                    <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                        <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                    </span>\n                </kl-tooltip>\n                {#else}\n                <span class=\"selected-tag\" r-class={{selectedTagMore:item[nameKey].length >= 15}}>{showPathName ? item.path : item[nameKey]}\n                    <i class=\"u-icon u-icon-remove\" on-click={this.delete($event, item)}></i>\n                </span>\n                {/if}\n            {/list}\n        {/if}\n        <span class=\"m-multi-placeholder\" r-hide={open || !placeholder || selected.length}>{placeholder}</span>\n        <kl-icon fontSize=20 type=\"angle-down\" class=\"f-fr angle {open ? 'angle-transform' : ''}\"/>\n    </div>\n    {#if open}\n    <div class=\"dropdown_bd\" r-animation=\"on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;\">\n        <div class=\"cateWrap\">\n            {#list 0..9 as level}\n            {#if tree[level] && tree[level].length}\n            <ul r-animation=\"on: leave; class: animated fadeOutX fast;\">\n                <kl-input value={search[level]}  readonly={readonly}></kl-input>\n                {#list tree[level] | search : search[level],level as cate}\n                {#if !filter || (filter && filter(cate, cate_index))}\n                <li class=\"f-csp {cate.active?'active':''}\" on-click={this.viewCate(cate, level)}>\n                \t{#if multiple}\n                \t<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>\n                    {/if}\n                    <span {#if !multiple} class=\"cateName\"  {/if}>{cate[nameKey]}</span>\n                    {#if (cate[childKey] && cate[childKey].length) || (server && cate[hasChildKey])}<span class=\"more\" r-class={{onlyChild:!multiple && !onlyChild}} {#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type=\"chevron_right\" /></span>{/if}\n                </li>\n                {/if}\n                {/list}\n                {#if empty[level]}\n\t\t\t\t<li class=\"f-csp\">无任何匹配选项</li>\n                {/if}\n            </ul>\n            {/if}\n            {/list}\n        </div>\n    </div>\n    {/if}\n</div>\n{#if tip && !hideTip}<span class=\"u-tip u-tip-{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\"><i class=\"u-icon u-icon-{state}\"></i><span class=\"tip\">{tip}</span></span>{/if}\n"
 
 /***/ }),
 /* 346 */
@@ -29496,7 +29514,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var self = this;
 
 	    this.$watch('fileList', function (newVal, oldVal) {
-	      if (oldVal !== undefined && newVal) {
+	      if (oldVal !== undefined) {
 	        if (newVal.length >= oldVal.length) {
 	          self.extendFileList(newVal);
 	        } else {
