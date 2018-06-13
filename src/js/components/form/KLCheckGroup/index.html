@@ -5,5 +5,5 @@
 			</kl-check>
 	    {/list}
 	</div>
-	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} aniamted" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} aniamted" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><kl-icon type={state} /><span class="tip">{tip}</span></span>{/if}
 </div>

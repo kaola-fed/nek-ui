@@ -18,7 +18,7 @@
 
     <ul class="m-right-pager kl-pager-main">
         <li class="page_item page_prev kl-pager-main__item kl-pager-main__prev" is-dis={current <= 1} on-click={this.select(current - 1)}>
-        <i class="kl-icon kl-icon--arrow-left"></i>
+        <kl-icon type="arrow-left" />
         </li>
 
         {#if total - middle > side * 2 + 1}
@@ -39,7 +39,7 @@
         {/list}
         {/if}
 
-        <li class="page_item pager_next kl-pager-main__item kl-pager-main__next" is-dis={current >= total} on-click={this.select(current + 1)}><i class="kl-icon kl-icon--arrow-right"></i></li>
+        <li class="page_item pager_next kl-pager-main__item kl-pager-main__next" is-dis={current >= total} on-click={this.select(current + 1)}><kl-icon type="arrow-right" /></li>
 
         <li class="page_goto kl-pager-main__goto">
             <span>{this.$trans('GOTO')}</span>
