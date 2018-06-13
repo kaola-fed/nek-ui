@@ -3,7 +3,7 @@
         {#if this.$body}
             {#inc this.$body}
         {#else}
-            <a class="kl-btn" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <i class="kl-icon kl-icon-caret-down"></i></a>
+            <a class="kl-btn" title={title || this.$trans('DROPDOWN_LIST')}>{title || this.$trans('DROPDOWN_LIST')} <kl-icon type="solid-arrow-down"></kl-icon></a>
         {/if}
     </div>
     {#if open}

@@ -1,7 +1,7 @@
 <label class="kl-numberinput {class}" r-hide={!visible}>
     <kl-input value={value | number} placeholder={placeholder} autofocus={autofocus} readonly={readonly} disabled={disabled} />
-    <a class="kl-btn kl-btn-default" is-dis={disabled} on-click={this.add(1)}><kl-icon type="caret-up" /></a>
-    <a class="kl-btn kl-btn-default" is-dis={disabled} on-click={this.add(-1)}><kl-icon type="caret-down" /></a>
+    <a class="kl-btn kl-btn-default" is-dis={disabled} on-click={this.add(1)}><kl-icon type="solid-arrow-up" /></a>
+    <a class="kl-btn kl-btn-default" is-dis={disabled} on-click={this.add(-1)}><kl-icon type="solid-arrow-down" /></a>
 </label>
 
 {#if tip && !hideTip}

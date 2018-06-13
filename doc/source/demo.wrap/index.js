@@ -19,7 +19,7 @@ const DemoWrap = Regular.extend({
         </div>
         <div class="m-iconLine" r-class="{ {'watchCode':showScript}}">
           <div class="m-iconOuter" r-class="{ {'revert':showScript}}" on-click={this.toggle()}>
-            <kl-icon type="caret-down" ></kl-icon>
+            <kl-icon type="solid-arrow-down" />
           </div>
           <div class="m-iconBtn" r-class="{ {'revertBtn': showScript}}">
             <span class="m-iconTitle" on-click={this.toggle()}>{showScript ? '隐藏代码' : '显示代码'}</span>
