@@ -14,7 +14,7 @@
                 <div>
                     {#if status === 'fail'}
                         <span class="kl-upload-unit-failed" on-click={this.uploadFiles()}>
-                            <span class="kl-upload-unit-failed__info"><kl-icon type="retry" />{this.$trans('RETRY')}</span>
+                            <span class="kl-upload-unit-failed__info"><kl-icon type="refresh" />{this.$trans('RETRY')}</span>
                         </span>
                     {#elseif status === 'uploading'}
                         <span class="kl-upload-unit-uploading">

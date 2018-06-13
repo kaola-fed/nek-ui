@@ -76,7 +76,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-button action="download" download={download} title="导出文件" on-click={this.download()} />
+<kl-button icon="download" download={download} title="导出文件" on-click={this.download()} />
 ```
 
 ```javascript

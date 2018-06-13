@@ -14,7 +14,7 @@
               {#list opList as op}
                   <li class="kl-image-preview-slide-operate-item" r-style={{"margin-right": op.name === 'zoomIn' ? '30px' : 0}}>
                       {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}
-                          <a class="kl-image-preview-slide-operate-item__download" href="javascript:void(0);"  on-click={this.downloadFile(imageList[curIndex])}><kl-icon type="export" /></a>
+                          <a class="kl-image-preview-slide-operate-item__download" href="javascript:void(0);"  on-click={this.downloadFile(imageList[curIndex])}><kl-icon type="download" /></a>
                       {#elseif op.name === 'zoomIn'}
                           <kl-icon type="{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)} />
                           <span class="kl-image-preview-slide-operate-item__scale">{parseInt(virtualInfo.scale * 100)}%</span>

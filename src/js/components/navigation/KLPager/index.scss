@@ -36,7 +36,9 @@ $m-pager_li_a_size: 30px;
         .kl-select{
             display: inline-block;
             min-width: 75px;
-            .dropdown_hd {
+            .kl-dropdown__hd {
+                height: 30px;
+                line-height: 28px;
                 .kl-icon {
                     position: static;
                 }
@@ -47,7 +49,7 @@ $m-pager_li_a_size: 30px;
     @include e(total) {
         display: inline-block;
         vertical-align: top;
-        line-height: 24px;
+        line-height: 30px;
     }
 }
 
@@ -98,13 +100,13 @@ $m-pager_li_a_size: 30px;
         width: 24px;
         padding: initial;
         .kl-icon {
-            line-height: 22px;
+            line-height: 28px;
         }
     }
 
     @include e(next) {
         .kl-icon {
-            line-height: 22px;
+            line-height: 28px;
         }
     }
 
@@ -116,6 +118,10 @@ $m-pager_li_a_size: 30px;
             display: inline-block;
             width: 40px;
             margin: 0 7px 0 10px;
+            .kl-input-wrap__inner {
+                height: 30px;
+                line-height: 30px;
+            }
         }
     }
 
@@ -124,4 +130,9 @@ $m-pager_li_a_size: 30px;
         vertical-align: top;
         margin-left: 27px;
     }
+
+    @include e(confirm_btn) {
+        height: 30px;
+    }
+
 }

@@ -35,9 +35,9 @@
         .kl-sidebar-search-box {
           background: #222;
         }
-      .kl-sidebar__highlight {
-        color: $--text-color-primary;
-      }
+        .kl-sidebar__highlight {
+          color: $--text-color-primary;
+        }
     }
 
   @include e(highlight) {
@@ -53,5 +53,26 @@
 @include b(sidebar-search-box) {
   padding: 8px 16px;
   border-right: 1px solid #E1E6ED;
+}
+
+@include b(sidebar-todowrap) {
+  display: flex;
+  align-items: center;
+  padding-right: 38px;
+
+  @include e(title) {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @include e(badge) {
+    padding: 2px 6px;
+    margin-left: 4px;
+    border-radius: 100px;
+    background: #ffb539;
+    color: #fff;
+    font-size: 11px;
+  }
 }
 

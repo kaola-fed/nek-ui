@@ -30,7 +30,7 @@
             {/list}
         {/if}
         <span class="kl-multi-select__placeholder" r-hide={open || !placeholder || selected.length}>{placeholder}</span>
-        <kl-icon fontSize=12 type="arrow-down" class="f-fr kl-multi-select__angle {open ? 'kl-multi-select__angle--transform' : ''}"/>
+        <kl-icon fontSize=15 type="arrow-down" class="f-fr kl-multi-select__angle {open ? 'kl-multi-select__angle--transform' : ''}"/>
     </div>
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">

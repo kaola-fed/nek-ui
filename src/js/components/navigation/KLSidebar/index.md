@@ -95,68 +95,6 @@ var component = new NEKUI.Component({
 <!-- demo_end -->
 
 <!-- demo_start -->
-### 主题配置
-`KLSidebar`目前支持light和dark两种主题的配置。
-
-<div class="m-example"></div>
-
-```xml
-
-<div class="demo-main">
-    <div class="demo-head">
-        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
-        考拉UI系统
-    </div>
-    <kl-sidebar top="48px" theme="dark" menus={menus} uniqueOpened={false} bodyEl="j-body" width="200px" />
-    <div id="j-body" class="demo-body"></div>
-</div>
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-      menus: [{
-       title: '首页',
-       iconClass: 'icon icon-home'
-      }, {
-       title: '库存管理',
-       open: true,
-       iconClass: 'icon icon-inventory',
-       children: [{
-         open: true,
-         title: '商品实时数据',
-         url: '/'
-       },{
-         title: '单据审核',
-         url: '/'
-       }]
-     }, {
-       title: '财务管理',
-       iconClass: 'icon icon-financial',
-       children: [{
-         title: '对账管理',
-         url: '/'
-       },{
-         title: '请款管理',
-         url: '/'
-       }]
-     }, {
-        title: '统计数据',
-        iconClass: 'icon icon-statistics'
-     }, {
-        title: '订单管理',
-        iconClass: 'icon icon-order'
-     }, {
-        title: '消息管理',
-        iconClass: 'icon icon-message'
-     }]
-   }
-});
-```
-<!-- demo_end -->
-
-<!-- demo_start -->
 
 ### 可搜索
 
@@ -201,6 +139,136 @@ var component = new NEKUI.Component({
          url: '/'
        },{
          title: '请款单据管理',
+         url: '/'
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+
+### 显示待办数量
+
+<div class="m-example"></div>
+
+```xml
+
+<div class="demo-main">
+    <div class="demo-head">
+        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        考拉UI系统
+    </div>
+    <kl-sidebar top="48px" menus={menus} uniqueOpened={true} bodyEl="j-body" width="200px" searchable />
+    <div id="j-body" class="demo-body"></div>
+</div>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       todos: 200,
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/',
+         toods: 100
+       },{
+         title: '单据审核',
+         url: '/',
+         todos: 88
+       }]
+     }, {
+       title: '财务管理',
+       todos: 23,
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         todos: 8,
+         url: '/'
+       },{
+         title: '请款单据管理',
+         url: '/',
+         todos: 31
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 主题配置
+`KLSidebar`目前支持light和dark两种主题的配置。
+
+<div class="m-example"></div>
+
+```xml
+
+<div class="demo-main">
+    <div class="demo-head">
+        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        考拉UI系统
+    </div>
+    <kl-sidebar top="48px" theme="dark" menus={menus} uniqueOpened={false} bodyEl="j-body" width="200px" />
+    <div id="j-body" class="demo-body"></div>
+</div>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/'
+       },{
+         title: '单据审核',
+         url: '/'
+       }]
+     }, {
+       title: '财务管理',
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         url: '/'
+       },{
+         title: '请款管理',
          url: '/'
        }]
      }, {
