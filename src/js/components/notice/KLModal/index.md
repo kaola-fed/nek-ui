@@ -702,13 +702,13 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 ### modal类型
-不同类型的modal, 可选参数：`default`, `info`, `warning`, `error`, `success`
+不同类型的modal, 可选参数：`default`, `notice`, `warning`, `error`, `success`
 
 <div class="m-example"></div>
 
 ```xml
 <kl-button on-click="{this.show('default')}"  title="default"/>
-<kl-button on-click="{this.show('info')}"  title="info"/>
+<kl-button on-click="{this.show('notice')}"  title="notice"/>
 <kl-button on-click="{this.show('warning')}"  title="warning"/>
 <kl-button on-click="{this.show('error')}"  title="error"/>
 <kl-button on-click="{this.show('success')}"  title="success"/>

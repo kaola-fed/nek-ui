@@ -10,10 +10,10 @@ $--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amoun
 $--primary-color-active: mix($--color-black, $--primary-color, $--color-mix-amount) !default;
 $--primary-color-white-hover: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
 
-$--info-color: #54A8F7 !default;
-$--info-color-hover: mix($--color-white, $--info-color, $--color-mix-amount) !default;
-$--info-color-active: mix($--color-black, $--info-color, $--color-mix-amount) !default;
-$--info-color-white-hover: mix($--color-white, $--info-color, $--color-mix-amount * 5) !default;
+$--notice-color: #54A8F7 !default;
+$--notice-color-hover: mix($--color-white, $--notice-color, $--color-mix-amount) !default;
+$--notice-color-active: mix($--color-black, $--notice-color, $--color-mix-amount) !default;
+$--notice-color-white-hover: mix($--color-white, $--notice-color, $--color-mix-amount * 5) !default;
 
 $--success-color: #93DD68 !default;
 $--success-color-hover: mix($--color-white, $--success-color, $--color-mix-amount) !default;

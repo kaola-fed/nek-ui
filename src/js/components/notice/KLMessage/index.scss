@@ -11,8 +11,8 @@
 }
 $--background-color-error: #FFF2F0;
 $--border-color-error: #FF9A96;
-$--background-color-info: #E6F7FF;
-$--border-color-info: #91D5FF;
+$--background-color-notice: #E6F7FF;
+$--border-color-notice: #91D5FF;
 $--background-color-success: #F8FFF0;
 $--border-color-success: #B7EB94;
 $--background-color-warning: #FEFCF0;
@@ -81,8 +81,8 @@ $--border-color-warning: #FFCA61;
         }
     }
 
-    @include m(info) {
-        @include message-type($--info-color, $--background-color-info, $--border-color-info);
+    @include m(notice) {
+        @include message-type($--notice-color, $--background-color-notice, $--border-color-notice);
     }
 
     @include m(success) {

@@ -1,5 +1,5 @@
 <div class="kl-message kl-message--{type} {class}" r-hide={!visible} r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
-    <kl-icon type={type + 2} class="kl-message__icon {!!title ? 'kl-message__icon--large' : ''}" />
+    <kl-icon type={type} class="kl-message__icon {!!title ? 'kl-message__icon--large' : ''}" />
     <div class="{!!title ? 'kl-message__box' : ''}" >
         <p class="kl-message__title" r-hide={!title} >{title}</p>
         <span class="kl-message__content {!!addClose ? 'kl-message__operation': ''}">

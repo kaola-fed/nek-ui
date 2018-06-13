@@ -26,7 +26,7 @@
 }
 
 @include badge-color(primary, $--primary-color);
-@include badge-color(info, $--info-color);
+@include badge-color(notice, $--notice-color);
 @include badge-color(success, $--success-color);
 @include badge-color(warning, $--warning-color);
 @include badge-color(error, $--error-color);

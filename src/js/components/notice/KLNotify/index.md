@@ -298,7 +298,7 @@ show方法简写，弹出特殊类型消息，方法有`success`、`error`、`wa
 <div class="m-example"></div>
 
 ```xml
-    <kl-button title="info" on-click="{this.show('info', 6000)}" />
+    <kl-button title="notice" on-click="{this.show('notice', 6000)}" />
     <kl-button title="success" on-click="{this.show('success', 5000)}" />
     <kl-button title="warning" on-click="{this.show('warning', 4000)}" />
     <kl-button title="error" on-click="{this.show('error', 3000)}" />

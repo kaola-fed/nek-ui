@@ -128,7 +128,7 @@ input {
     }
 }
 
-@include tip-color(info, $--info-color);
+@include tip-color(notice, $--notice-color);
 @include tip-color(success, $--success-color);
 @include tip-color(warning, $--warning-color);
 @include tip-color(error, $--error-color);
