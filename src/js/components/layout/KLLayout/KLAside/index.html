@@ -5,8 +5,9 @@
   <div class="kl-sidebar-btn-wrap" on-click="{this.toggle($event)}" r-style={{ left: width }}>
     {#if active}
     <i class="kl-icon kl-icon-chevron_left"></i>
+    <kl-icon fontSize=12 type="arrow-left" />
     {#else}
-    <i class="kl-icon kl-icon-chevron_right"></i>
+    <kl-icon fontSize=12 type="arrow-right" />
     {/if}
   </div>
   {/if}

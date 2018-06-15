@@ -125,9 +125,9 @@ const doc = (isDev, callback) => {
     CATES.forEach((c) => {
         const components = getComponents(c.cate).filter((comp) => {
             // 暂时注释掉给视觉review
-            // if (isDev && !/^KL(Select|Button|MultiSelect)$/.test(comp)) {
-            //     return false;
-            // }
+            if (isDev && !/^KL(Input)$/.test(comp)) {
+                return false;
+            }
 
             const mdPath = path.join(getComponentPath(c.cate, comp), 'index.md');
             if (fs.existsSync(mdPath)) return true;

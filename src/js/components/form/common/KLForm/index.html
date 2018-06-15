@@ -1,3 +1,6 @@
 <form class="kl-form f-row f-cb {class}" r-class="{{'kl-form--inline':!!inline}}">
+    {#if this.controls && this.controls.length === 1}
+    <input style="display: none;" />
+    {/if}
 	{#inc this.$body}
 </form>
