@@ -1,0 +1,86 @@
+.kl-year {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    width: 247px;
+    box-sizing: border-box;
+    .year_header {
+        position: relative;
+        line-height: 34px;
+        text-align: center;
+        .year_header_preyear, .year_header_premonth, .year_header_nextmonth, .year_header_nextyear {
+            position: absolute;
+            font-size: 14px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .year_header_preyear:hover,
+        .year_header_premonth:hover,
+        .year_header_nextmonth:hover,
+        .year_header_nextyear:hover,
+        .year_header_month:hover,
+        .year_header_year:hover {
+            color: #108EE9;
+            cursor: pointer;
+        }
+        .year_header_preyear {
+            left: 8px;
+        }
+        .year_header_premonth {
+            left: 24px;
+        }
+        .year_header_nextmonth {
+            right: 24px;
+        }
+        .year_header_nextyear {
+            right: 8px;
+        }
+    }
+    .year_body {
+        padding: 4px 8px;
+        border-top: 1px solid #eee;
+        .year_table{
+            width: 100%;
+            height: 212px;
+        }
+        .year_cell {
+            text-align: center;
+        }
+        .year_cell_other {
+            color: #eee;
+            .year_cell_item {
+                color: #ddd;
+            }
+        }
+        .year_cell_item {
+            display: inline-block;
+            margin: 0 auto;
+            color: rgba(0,0,0,.65);
+            background: transparent;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+        .year_cell_item:hover {
+            background: $brand-primary-lighter;
+            color: #fff;
+            text-decoration: none;
+        }
+        .year_cell_disabled {
+            .year_item{
+                background: #eee;
+                color: #aaa;
+            }
+        }
+        .year_now {
+            background: $brand-primary;
+            color: #fff;
+        }
+    }
+    .year_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}

@@ -1,6 +1,7 @@
-<!-- <date-table></date-table>
-<month-table></month-table>
-<year-table></year-table> -->
+<div>
+    <kl-calendar type="date" value={value} on-select={this.select($event)} minDate={minDate} maxDate={maxDate}></kl-calendar>
+</div>
 
-<kl-date-picker-panel></kl-date-picker-panel>
-<!--<kl-date-range-picker-panel></kl-date-range-picker-panel>-->
+<div>
+    <kl-date-range type="daterange" startTime={startTime} endTime={endTime}></kl-date-range>
+</div>

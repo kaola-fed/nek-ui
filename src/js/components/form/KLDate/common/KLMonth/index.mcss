@@ -1,0 +1,53 @@
+.kl-month {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    width: 247px;
+    box-sizing: border-box;
+    .month_header {
+        position: relative;
+        line-height: 34px;
+        text-align: center;
+    }
+    .month_body {
+        padding: 4px 8px;
+        border-top: 1px solid #eee;
+        .month_table{
+            width: 100%;
+            height: 212px;
+        }
+        .month_cell {
+            text-align: center;
+        }
+        .month_cell_item {
+           display: inline-block;
+            margin: 0 auto;
+            color: rgba(0,0,0,.65);
+            background: transparent;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+        .month_cell_item:hover {
+            background: $brand-primary-lighter;
+            color: #fff;
+            text-decoration: none;
+        }
+        .month_cell_disabled {
+            .month_item{
+                background: #eee;
+                color: #aaa;
+            }
+        }
+        .month_now {
+            background: $brand-primary;
+            color: #fff;
+        }
+    }
+    .month_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}
