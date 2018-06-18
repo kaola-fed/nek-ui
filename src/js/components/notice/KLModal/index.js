@@ -12,7 +12,7 @@ const _ = require('../../../ui-base/_');
  * @class KLModal
  * @extend Component
  * @param {object}            [options.data]                      = 绑定属性
- * @param {string}            [options.data.type=提示]             => 对话框类型, 可选参数：`default`、`info`、`warning`、`error`、`success`
+ * @param {string}            [options.data.type=提示]             => 对话框类型, 可选参数：`default`、`notice`、`warning`、`error`、`success`
  * @param {string}            [options.data.title=提示]            => 对话框标题
  * @param {string}            [options.data.content]              => 对话框内容
  * @param {string}            [options.data.contentTemplate]      => 对话框内容模板，用于支持复杂内容的自定义。

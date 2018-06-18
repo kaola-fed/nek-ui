@@ -61,7 +61,7 @@ var component = new NEKUI.Component({
 文字:
 <kl-switch value={value1} checkedText="开" unCheckedText="关" />
 &emsp;图标:
-<kl-switch value={value2} checkedText="<kl-icon type='tick' />" unCheckedText="<kl-icon type='cancel' />" />
+<kl-switch value={value2} checkedText="<kl-icon type='tick' />" unCheckedText="<kl-icon type='cross' />" />
 ```
 <!-- demo_end -->
 

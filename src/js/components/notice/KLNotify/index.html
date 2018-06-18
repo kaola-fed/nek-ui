@@ -1,8 +1,8 @@
 <div class="kl-notify kl-notify--{position} {class}" r-hide={!visible}>
     {#list messages as message}
     <div class="kl-notify-message kl-notify-message--{message.state}" r-animation="on: enter; class: animated fadeIn fast; on: leave; class: animated fadeOut fast;">
-        <a class="kl-notify-message__close" on-click={this.close(message)}><kl-icon type="remove" /></a>
-        <kl-icon type="{message.state}2" class="kl-message__icon {!message.state ? 'kl-notify-message__icon' : ''}" />
+        <a class="kl-notify-message__close" on-click={this.close(message)}><kl-icon type="cross" /></a>
+        <kl-icon type="{message.state}" class="kl-message__icon {!message.state ? 'kl-notify-message__icon' : ''}" />
         <span class="kl-notify-message__content">
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{message.text}{/if}
         </span>

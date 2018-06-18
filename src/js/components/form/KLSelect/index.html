@@ -7,9 +7,9 @@
 				 is-dis={disabled}
 	             title={selected?selected[nameKey]:placeholder}
 	             on-click={this.toggle(!open, $event)}>
-	            <kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
+	            <kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
 				{#if clearable}
-				<kl-icon fontSize=12 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
+				<kl-icon fontSize=15 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
 				{#if open && canSearch}
 				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input__inner kl-select__search':'kl-input__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
@@ -25,18 +25,19 @@
 	             on-click={this.toggle(!open, $event)} 
 				 r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} 
 				 {#if open && canSearch} style="min-height: 65px;" {/if}>
-					<kl-icon fontSize=12 type="{open ? 'angle_up' : 'angle_down'}" class="f-fr" />
+	            <kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {multiple ? 'kl-select__hover--hide' : ''}"/>
+				 
 	            {#if open && canSearch}
 	            <div>
 		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input__inner kl-select__search kl-select__search--one" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
-		            <kl-icon fontSize=12 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
+		            <kl-icon fontSize=15 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
 	            </div>
 	            {/if}
 				{#if tags && selected.length > 0}
 					<span class="kl-select__tag" >
 	                    {selected[0]['name']}
-						<kl-icon type="remove" is-dis={selected.disabled} on-click={this.removeSelected(selected,0,$event)} />
+						<kl-icon type="cross" is-dis={selected.disabled} on-click={this.removeSelected(selected,0,$event)} />
 	                </span>
 					<span class="kl-select__tags" >
 	                    + {selected.length}
@@ -45,7 +46,7 @@
 					{#list selected as item}
 						<span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>
 							{item[nameKey]}
-							<kl-icon type="remove" is-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)} />
+							<kl-icon type="cross" is-dis={item.disabled} on-click={this.removeSelected(selected,item_index,$event)} />
 						</span>
 					{/list}
 				{/if}
@@ -108,5 +109,5 @@
 	    </div>
 	    {/if}
 	</div>
-	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><i class="kl-icon kl-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><kl-icon type={state} /><span class="tip">{tip}</span></span>{/if}
 </div>

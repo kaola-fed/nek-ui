@@ -11,7 +11,26 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-textarea placeholder="请输入备注" />
+<kl-textarea ref="textarea" placeholder="请输入备注" />
+<kl-button title="聚焦后失焦" on-click={this.focus()} />
+<kl-button title="选中" on-click={this.select()} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+    },
+    focus: function() {
+        this.$refs.textarea.focus();
+        setTimeout(() => {
+            this.$refs.textarea.blur();
+        }, 1000);
+    },
+    select: function() {
+        this.$refs.textarea.select();
+    }
+});
 ```
 <!-- demo_end -->
 

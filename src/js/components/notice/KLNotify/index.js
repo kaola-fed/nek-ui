@@ -90,7 +90,7 @@ const KLNotify = Component.extend({
   },
 });
 
-const STATES = ['success', 'warning', 'info', 'error'];
+const STATES = ['success', 'warning', 'notice', 'error'];
 
 STATES.forEach((state) => {
   KLNotify.prototype[state] = function (text, duration) {
@@ -107,7 +107,7 @@ const METHODS = [
   'closeAll',
   'success',
   'warning',
-  'info',
+  'notice',
   'error',
 ];
 KLNotify.METHODS = METHODS;
@@ -116,7 +116,7 @@ KLNotify.METHODS = METHODS;
 /**
  * @static
  * @param  {string} text 消息内容
- * @param  {string} state 消息状态，可选参数：`info`、`success`、`warning`、`error`
+ * @param  {string} state 消息状态，可选参数：`notice`、`success`、`warning`、`error`
  * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
  */
 KLNotify.show = () => {};
@@ -146,7 +146,7 @@ KLNotify.warning = () => {};
  * @param  {string} text 消息内容
  * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
  */
-KLNotify.info = () => {};
+KLNotify.notice = () => {};
 /**
  * @static
  * @param  {string} text 消息内容

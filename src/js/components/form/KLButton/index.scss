@@ -14,7 +14,6 @@ $active-bg-color, $active-color, $active-border-color) {
     border-color: $hover-border-color;
   }
   &:active {
-    transform: translateY(2px);
     color: $active-color;
     background: $active-bg-color;
     border-color: $active-border-color;

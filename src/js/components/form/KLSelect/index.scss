@@ -28,7 +28,11 @@
             max-width: 150px;
         }
 
-        .kl-icon-remove {
+        .kl-icon {
+            font-size: 12px;
+        }
+
+        .kl-icon--error {
             position: absolute;
             right: 5px;
         }
@@ -117,14 +121,12 @@
             position: absolute;
             right: 5px;
             color: #666;
+            font-weight: bold;
         }
 
-        .kl-icon-remove {
+        .kl-icon--error {
             color: #A4A5B9;
-        }
-
-        .kl-icon-angle_up {
-            transform: rotate(180deg);
+            font-weight: 100;
         }
 
         .kl-select__hover--show {
@@ -162,6 +164,10 @@
             &:hover {
                 color: #666;
             }
+        }
+
+        @include m(hide) {
+            display: none;
         }
     }
     // .kl-select__hover--show {

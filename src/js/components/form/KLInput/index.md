@@ -58,7 +58,8 @@ sm：
         <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入年龄" />
     </kl-form-item>
     <kl-button title="提交" on-click={this.validate()} />
-    <kl-button title="聚焦" on-click={this.focus()} />
+    <kl-button title="聚焦后失焦" on-click={this.focus()} />
+    <kl-button title="选中" on-click={this.select()} />
 </kl-form>
 ```
 
@@ -71,6 +72,12 @@ var component = new NEKUI.Component({
     },
     focus: function() {
         this.$refs.input.focus();
+        setTimeout(() => {
+            this.$refs.input.blur();
+        }, 1000);
+    },
+    select: function() {
+        this.$refs.input.select();
     }
 });
 ```

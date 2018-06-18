@@ -12,7 +12,7 @@
         <kl-button title={resetText} on-click={this.reset()}></kl-button>
         {#if this.$more && isShowToggle}
             <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">
-                {toggleText}<kl-icon type="angle-{isShowMore ? 'up' : 'down'}"  />
+                {toggleText}<kl-icon type="arrow-{isShowMore ? 'up' : 'down'}"  />
             </a>
         {/if}
     </div>

@@ -18,7 +18,7 @@ title: 消息
 
 <!-- demo_start -->
 ### 基本属性type
-`type`设置样式，取值`success`、`warning`、`info`、`error`。默认不设置则无色无图标。
+`type`设置样式，取值`success`、`warning`、`notice`、`error`。默认不设置则无色无图标。
 
 <div class="m-example"></div>
 
@@ -35,7 +35,7 @@ title: 消息
     系统将于 15 : 00 - 17 : 00 进行升级，请及时保存你的资料！
 </kl-message>
 
-<kl-message type="info" class="f-mb10" addClose>
+<kl-message type="notice" class="f-mb10" addClose>
     你好！欢迎使用。
 </kl-message>
 
@@ -85,7 +85,7 @@ title: 消息
 </div>
 
 ```xml
-<kl-message type="info" class="f-mb10">
+<kl-message type="notice" class="f-mb10">
     <p >
         你好！欢迎使用。
         <a class="m-template">查看详情</a>
@@ -114,7 +114,7 @@ title: 消息
     系统将于 15 : 00 - 17 : 00 进行升级，请及时保存你的资料！
 </kl-message>
 
-<kl-message title="帮助信息" type="info" class="f-mb10" addClose>
+<kl-message title="帮助信息" type="notice" class="f-mb10" addClose>
     你好！欢迎使用。
 </kl-message>
 
