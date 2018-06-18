@@ -1,0 +1,32 @@
+<table
+    cellspacing="0"
+    cellpadding="0"
+    class="el-date-table {selectionMode === 'week' ? 'is-week-mode' : ''}"
+    on-click="{this.handleClick($event)}"
+    on-mousemove="{this.handleMouseMove()}">
+    <tbody>
+        <tr>
+            {#if showWeekNumber}
+            <th>周次</th>
+            {/if}
+            {#list WEEKS as week}
+            <th>{ week }</th>
+            {/list}
+        </tr>
+        {#list rows as row}
+        <tr
+        class="el-date-table__row {this.isWeekActive(row[1]) ? 'current' : ''}">
+            {#list row as cell}
+            <td
+                class="{this.getCellClasses(cell)}">
+                <div>
+                    <span>
+                        { cell.text }
+                    </span>
+                </div>
+            </td>
+            {/list}
+        </tr>
+        {/list}
+    </tbody>
+</table>

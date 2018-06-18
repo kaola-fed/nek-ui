@@ -1,0 +1,65 @@
+
+
+<!--<div class="kl-dropdown kl-date">-->
+<!--<div class="kl-dropdown__header" ref="reference" on-click="{this.onClick()}">-->
+<!--下拉菜单-->
+<!--</div>-->
+<!--<kl-popper-->
+<!--class="kl-dropdown__footer"-->
+<!--reference="{this.$refs.reference}"-->
+<!--appendToBody="{appendToBody}"-->
+<!--placement="{placement}"-->
+<!--isShow="{isShow}">-->
+<div class="el-picker-panel">
+
+    <div
+            class="el-date-picker__header"
+            r-class="{{ 'el-date-picker__header--bordered': currentView === 'year' || currentView === 'month' }}"
+            r-hide="currentView == 'time'">
+
+        <span class="el-picker-panel__icon-btn el-date-picker__prev-btn el-icon-d-arrow-left" on-click="{this.preYear()}"> << </span>
+        <span class="el-picker-panel__icon-btn el-date-picker__prev-btn el-icon-arrow-left" on-click="{this.preMonth()}"> < </span>
+
+        <span
+                on-click="{this.showYearPicker()}"
+                role="button"
+                class="el-date-picker__header-label">{ year }年</span>
+        <span
+                on-click="{this.showMonthPicker()}"
+                role="button"
+                class="el-date-picker__header-label"
+                r-class="{{ active: currentView === 'month' }}">{ month }月</span>
+
+        <span class="el-picker-panel__icon-btn el-date-picker__next-btn el-icon-d-arrow-right" on-click="{this.nextMonth()}"> > </span>
+        <span class="el-picker-panel__icon-btn el-date-picker__next-btn el-icon-arrow-right" on-click="{this.nextYear()}"> >> </span>
+
+    </div>
+
+    <div class="el-picker-panel__body-wrapper">
+        <div class="el-picker-panel__body">
+            <div class="el-picker-panel__content">
+                <date-table on-pick="{this.handleDatePick($event)}"
+                            on-select="{this.handleDateSelect()}"
+                            on-selection-mode="{this.selectionMode()}"
+                            first-day-of-week="{firstDayOfWeek}"
+                            value="{valueDate}"
+                            default-value="{defaultValue ? defaultValueDate : null}"
+                            date="{date}"
+                            disabled-date="{disabledDate}"
+                            selected-date="{selectedDate}" />
+            </div>
+        </div>
+    </div>
+    <div class="el-picker-panel__footer">
+
+    </div>
+
+</div>
+
+
+
+
+
+<!--</kl-popper>-->
+
+<!--</div>-->
