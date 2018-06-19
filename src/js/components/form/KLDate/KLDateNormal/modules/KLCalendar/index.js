@@ -15,7 +15,7 @@ const MS_OF_DAY = 24 * 3600 * 1000;
 const MS_OF_7DAY = 7 * 24 * 3600 * 1000;
 
 const KLDateRangeCalendar = KLCalendar.extend({
-  name: 'kl-date-range-calendar',
+  name: 'kl-date-normal-calendar',
   template,
   config() {
     _.extend(this.data, {
@@ -119,20 +119,26 @@ const KLDateRangeCalendar = KLCalendar.extend({
     /**
      * 日期选择成功
      */
-  select(date) {
+  select(date, e) {
+    e.stopPropagation();
     const data = this.data;
     if ((data.minDate !== null && date < data.minDate) || (data.maxDate !== null && date > data.maxDate)) {
       return;
     }
-
+    this.data.value = date;
+    this.data.year = new Date(date).getFullYear()
+    this.data.month = new Date(date).getMonth()
+    this.resetDate();
     this.$emit('select', date);
   },
   changeMonth() {
     this.data.isChangeMonth = true;
+    this.$emit('changeMonth');
     this.resetDate();
   },
   changeYear() {
     this.data.isChangeYear = true;
+    this.$emit('changeYear');
     this.resetDate();
   },
   preYear() {

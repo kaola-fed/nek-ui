@@ -9,7 +9,7 @@
                 <tr>
                     {#list item as item2}
                     <td class="month_cell"
-                        on-click={this.setMonth(item2.month)}>
+                        on-click={this.setMonth(item2.month, $event)}>
                         <a href="javascript:;" class="month_cell_item {month == item2.month ? 'month_now' : ''}">{item2.text}</a>
                     </td>
                     {/list}
@@ -18,7 +18,7 @@
             </tbody>
         </table>
     </div>
-    <div class="month_footer">
+    <!-- <div class="month_footer">
         本月
-    </div>
+    </div> -->
 </div>

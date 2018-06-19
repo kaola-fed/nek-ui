@@ -6,7 +6,7 @@ const template = require('./index.html');
 const KLMonth = require('../../../common/KLMonth/index');
 
 const KLDateRangeMonth = KLMonth.extend({
-  name: 'kl-date-range-month',
+  name: 'kl-date-normal-month',
   template,
   config() {
     _.extend(this.data, {
@@ -54,30 +54,15 @@ const KLDateRangeMonth = KLMonth.extend({
       this.data.year = year;
     });
   },
-  setMonth(month) {
+  setMonth(month, e) {
+    e.stopPropagation();
     const data = this.data;
     const secondPanelTime = data.secondPanelTime;
     const firstPanelTime = data.firstPanelTime;
 
     data.panelTime = new Date(this.data.year, month, 1);
 
-    if (data.calendarPosition === 'FRONT') {
-      const canOperateMonth = data.panelTime >= this.getPreMonthFirstTime(secondPanelTime);
-
-      if (canOperateMonth) {
-        data.secondPanelTime = new Date(this.data.year, month + 1, 1);
-      }
-    }
-
-    if (data.calendarPosition === 'END') {
-      const canOperateMonth = data.panelTime <= this.getNextMonthFirstTime(firstPanelTime);
-
-      if (canOperateMonth) {
-        data.firstPanelTime = new Date(this.data.year, month - 1, 1);
-      }
-    }
-    console.log(data.panelTime);
-    // this.$emit('update', month);
+    this.$emit('update', data.panelTime);
   },
   getMonth(date) {
     const time = new Date(date);

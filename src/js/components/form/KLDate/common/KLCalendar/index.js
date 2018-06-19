@@ -127,6 +127,7 @@ const KLCalendar = Component.extend({
     }
 
     data.value = date;
+    this.resetPanel(date);
     this.$emit('select', date);
   },
   changeMonth() {

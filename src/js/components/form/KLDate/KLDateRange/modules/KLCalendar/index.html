@@ -1,24 +1,13 @@
-<div class="kl-calendar">
+<div class="kl-date-calendar">
     <div class="calendar_header">
-        <kl-icon class="calendar_header_preyear" type="angle-double-left" on-click={this.preYear()} />
-        <kl-icon class="calendar_header_premonth" type="angle-left" on-click={this.preMonth()} />
-        <span class="calendar_header_year" on-click={this.changeYear()}>{year}年</span>
-        <span class="calendar_header_month" on-click={this.changeMonth()}>{month + 1}月</span>
-        <kl-icon class="calendar_header_nextmonth" type="angle-right" on-click={this.nextMonth()} />
-        <kl-icon class="calendar_header_nextyear" type="angle-double-right" on-click={this.nextYear()} />
+            <kl-icon class="calendar_header_preyear" type="arrow-left-double" on-click={this.preYear()} />
+            <kl-icon class="calendar_header_premonth" type="arrow-left-small" on-click={this.preMonth()} />
+            <span class="calendar_header_year" on-click={this.changeYear()}>{year}年</span>
+            <span class="calendar_header_month" on-click={this.changeMonth()}>{month + 1}月</span>
+            <kl-icon class="calendar_header_nextmonth" type="arrow-right-small" on-click={this.nextMonth()} />
+            <kl-icon class="calendar_header_nextyear" type="arrow-right-double" on-click={this.nextYear()} />
     </div>
     <div class="calendar_body">
-        <!--{#if isChangeMonth}-->
-        <!--<kl-date-range-month-->
-            <!--calendarPosition={calendarPosition}-->
-            <!--secondPanelTime={secondPanelTime}-->
-            <!--firstPanelTime={firstPanelTime}-->
-            <!--panelTime={panelTime}-->
-            <!--year={year}-->
-            <!--on-update={this.updateMonth($event)} />-->
-        <!--{/if}-->
-
-        {#if !isChangeMonth && !isChangeYear}
         <table class="calendar_table">
             <thead class="calendar_week">
             <tr>
@@ -37,7 +26,7 @@
                             'calendar_cell_ranged': ((rangeEndTime < item2.date) && (item2.date < startTime)) || ((rangeEndTime > item2.date) && (item2.date > startTime)) || ((startTime < item2.date) && (item2.date < endTime))
                             }}"
                     on-mouseover={this.onMouseOver($event, item2.date)}
-                    on-click={this.select(item2.date)}>
+                    on-click={this.select(item2.date, $event)}>
                     <span>{item2.day}</span>
                 </td>
                 {/list}
@@ -45,15 +34,8 @@
             {/list}
             </tbody>
         </table>
-        {/if}
     </div>
-    <div class="calendar_footer">
+    <!-- <div class="calendar_footer">
         today
-    </div>
+    </div> -->
 </div>
-
-{#if isChangeYear}
-<kl-date-range-year value={year} />
-{/if}
-
-

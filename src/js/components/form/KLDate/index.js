@@ -5,6 +5,7 @@ const Component = require('../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const KLDateRange = require('./KLDateRange/index');
+const KLDateNormal = require('./KLDateNormal/index');
 
 const KLDate = Component.extend({
   name: 'kl-date',

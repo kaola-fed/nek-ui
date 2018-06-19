@@ -39,7 +39,8 @@ const KLDateRangeYear = KLYear.extend({
       }
     }
   },
-  setYear(year) {
+  setYear(year, e) {
+    e.stopPropagation();
     const data = this.data;
     const secondPanelTime = data.secondPanelTime;
     const firstPanelTime = data.firstPanelTime;
@@ -61,7 +62,7 @@ const KLDateRangeYear = KLYear.extend({
         data.firstPanelTime = new Date(year, this.data.month - 1, 1);
       }
     }
-    this.$emit('update', year);
+    this.$emit('update', data.panelTime);
   },
   preYear() {
     const year = this.data.yearArr[0][0];

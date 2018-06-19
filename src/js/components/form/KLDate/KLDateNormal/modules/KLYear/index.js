@@ -6,7 +6,7 @@ const template = require('./index.html');
 const KLYear = require('../../../common/KLYear/index');
 
 const KLDateRangeYear = KLYear.extend({
-  name: 'kl-date-range-year',
+  name: 'kl-date-normal-year',
   template,
   config() {
     _.extend(this.data, {
@@ -38,29 +38,15 @@ const KLDateRangeYear = KLYear.extend({
       }
     }
   },
-  setYear(year) {
+  setYear(year, e) {
+    e.stopPropagation();
     const data = this.data;
     const secondPanelTime = data.secondPanelTime;
     const firstPanelTime = data.firstPanelTime;
 
     data.panelTime = new Date(year, this.data.month, 1);
 
-    if (data.calendarPosition === 'FRONT') {
-      const canOperateMonth = data.panelTime >= this.getPreMonthFirstTime(secondPanelTime);
-
-      if (canOperateMonth) {
-        data.secondPanelTime = new Date(year, this.data.month + 1, 1);
-      }
-    }
-
-    if (data.calendarPosition === 'END') {
-      const canOperateMonth = data.panelTime <= this.getNextMonthFirstTime(firstPanelTime);
-
-      if (canOperateMonth) {
-        data.firstPanelTime = new Date(year, this.data.month - 1, 1);
-      }
-    }
-    this.$emit('update', year);
+    this.$emit('update', data.panelTime);
   },
   preYear() {
     const year = this.data.yearArr[0][0];

@@ -55,7 +55,8 @@ const KLDateRangeMonth = KLMonth.extend({
       this.data.year = year;
     });
   },
-  setMonth(month) {
+  setMonth(month, e) {
+    e.stopPropagation();
     const data = this.data;
     const secondPanelTime = data.secondPanelTime;
     const firstPanelTime = data.firstPanelTime;
@@ -78,7 +79,7 @@ const KLDateRangeMonth = KLMonth.extend({
       }
     }
     console.log(data.panelTime);
-    // this.$emit('update', month);
+    this.$emit('update', data.panelTime);
   },
   getMonth(date) {
     const time = new Date(date);

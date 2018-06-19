@@ -1,11 +1,13 @@
 .kl-dropdown {
-    display: inline-block;
-    position: relative;
+  display: inline-block;
+  width: 100%;
+  position: relative;
 }
 
 .kl-dropdown__header {
-    display: inline-block;
-    font-size: 12px;
+  width: 100%;
+  display: inline-block;
+  font-size: 12px;
 }
 
 .kl-dropdown__footer {

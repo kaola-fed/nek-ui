@@ -11,7 +11,7 @@
                 <tr>
                     {#list item as item2 by item2_index}
                     <td class="year_cell"
-                        on-click={this.setYear(item2)}>
+                        on-click={this.setYear(item2, $event)}>
                         <a class="year_cell_item {year == item2 ? 'year_now' : ''}" href="javascript:;">{item2}</a>
                     </td>
                     {/list}
@@ -20,8 +20,8 @@
             </tbody>
         </table>
     </div>
-    <div class="year_footer">
+    <!-- <div class="year_footer">
         <kl-button size="sm" title="选择日期"></kl-button>
         <kl-button size="sm" title="确定"></kl-button>
-    </div>
+    </div> -->
 </div>

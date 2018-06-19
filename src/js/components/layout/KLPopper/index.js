@@ -107,11 +107,14 @@ _.dom.on(document, 'click', (e) => {
     // 这个地方不能用stopPropagation来处理，因为展开一个popperNode的同时要收起其他popperNode
     const element = popperNode.$refs.popper;
     const referenceNode = popperNode.data.reference;
-    let clickedElem = e.target;
-    while (clickedElem) {
-      if (element === clickedElem || referenceNode === clickedElem) return;
-      clickedElem = clickedElem.parentElement;
+    // let clickedElem = e.target;
+    if (referenceNode.contains(e.target) || element.contains(e.target)) {
+      return false;
     }
+    // while (clickedElem) {
+    //   if (element === clickedElem || referenceNode === clickedElem) return;
+    //   clickedElem = clickedElem.parentElement;
+    // }
     // popperNode.toggle(false);
     popperNode.data.isShow = false;
     popperNode.$update();

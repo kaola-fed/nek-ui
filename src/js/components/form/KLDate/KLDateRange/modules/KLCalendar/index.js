@@ -119,20 +119,27 @@ const KLDateRangeCalendar = KLCalendar.extend({
     /**
      * 日期选择成功
      */
-  select(date) {
+  select(date, e) {
+    e.stopPropagation();
     const data = this.data;
     if ((data.minDate !== null && date < data.minDate) || (data.maxDate !== null && date > data.maxDate)) {
       return;
     }
-
+    this.data.rangeEndTime = date;
+    this.data.value = date;
+    this.data.year = new Date(date).getFullYear()
+    this.data.month = new Date(date).getMonth()
+    this.resetDate();
     this.$emit('select', date);
   },
   changeMonth() {
     this.data.isChangeMonth = true;
+    this.$emit('changeMonth');
     this.resetDate();
   },
   changeYear() {
     this.data.isChangeYear = true;
+    this.$emit('changeYear');
     this.resetDate();
   },
   preYear() {
@@ -216,8 +223,7 @@ const KLDateRangeCalendar = KLCalendar.extend({
   },
   onMouseOver(e, rangeEndTime) {
     this.$emit('mouseover', e);
-
-    if (!!this.data.startTime || !!this.data.endTime) {
+    if ((!this.data.startTime && !!this.data.endTime) || (!!this.data.startTime && !this.data.endTime)) {
       this.data.rangeEndTime = rangeEndTime;
     }
   },

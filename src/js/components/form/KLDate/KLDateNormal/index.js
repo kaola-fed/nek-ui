@@ -1,5 +1,11 @@
 /* eslint-disable */
 
+/* eslint no-unused-vars: 0 */
+import moment from 'moment';
+import KLDrop from '../../../layout/KLDrop/index';
+import KLDropHeader from '../../../layout/KLDrop/KLDropHeader/index';
+import KLDropMenu from '../../../layout/KLDrop/KLDropMenu/index';
+
 const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
@@ -9,43 +15,41 @@ const KLYear = require('./modules/KLYear/index');
 const KLTime = require('./modules/KLTime/index');
 
 const KLDateRange = Component.extend({
-  name: 'kl-date-range',
+  name: 'kl-date-normal',
   template,
   config() {
     _.extend(this.data, {
       firstSelectValue: null,
       secondSelectValue: null,
+      value: null,
       startTime: null,
       endTime: null,
+      appendToBody: false,
+      placement: 'top-right',
+      isShow: false,
     });
     this.initPanel();
     this.supr();
   },
-    /**
-     * 初始化面板
-     */
+  toggle() {
+    this.initPanel();
+  },
+  /**
+   * 初始化面板
+   */
   initPanel() {
     const data = this.data;
-    const startTime = data.startTime;
-    const endTime = data.endTime;
-
-    const date = new Date();
+    const value = data.value;
+    let date;
+    if (value === null || value === undefined) {
+      date = new Date();
+    } else {
+      date = new Date(value);
+    }
     const year = date.getFullYear();
     const month = date.getMonth();
 
-    if (startTime === null && endTime === null) {
-      data.firstPanelTime = this.getFirstDay(date, 'now');
-      data.secondPanelTime = this.getFirstDay(date, 'next');
-    } else if (startTime !== null && endTime === null) {
-      data.firstPanelTime = this.getFirstDay(startTime, 'now');
-      data.secondPanelTime = this.getFirstDay(date, 'next');
-    } else if (startTime === null && endTime !== null) {
-      data.firstPanelTime = this.getFirstDay(endTime, 'pre');
-      data.secondPanelTime = this.getFirstDay(endTime, 'now');
-    } else {
-      data.firstPanelTime = this.getFirstDay(startTime, 'now');
-      data.secondPanelTime = this.getFirstDay(endTime, 'now');
-    }
+    data.panelTime = this.getFirstDay(date, 'now');
   },
   getFirstDay(time, type) {
     const date = new Date(time);
@@ -76,20 +80,39 @@ const KLDateRange = Component.extend({
   },
   select(e) {
     const data = this.data;
-    if (data.firstSelectValue === null) {
-      data.firstSelectValue = e;
-      data.startTime = e;
-    } else if (data.secondSelectValue === null) {
-      data.secondSelectValue = e;
-      this.assign();
-    } else {
-      data.firstSelectValue = e;
-      data.secondSelectValue = null;
-
-      data.startTime = e;
-      data.endTime = null;
-    }
+    data.value = e;
+    this.data.isShow = false;
   },
+  changeYear() {
+    this.data.isChangeYear = true;
+  },
+  updateYear(panelTime) {
+    this.data.panelTime = panelTime;
+    this.data.isChangeYear = false;
+  },
+  changeMonth() {
+    this.data.isChangeMonth = true;
+  },
+  updateMonth(panelTime) {
+    this.data.panelTime = panelTime;
+    this.data.isChangeMonth = false;
+  },
+
+}).filter({
+  format(value, type) {
+    if(!value){
+      return null;
+    }
+
+    let newValue = moment(value).isValid();
+    if (!newValue) {
+        return;
+    }
+    if (!type) {
+        type = 'YYYY-MM-DD';
+    }
+    return moment(value).format(type);
+  }
 });
 
 module.exports = KLDateRange;

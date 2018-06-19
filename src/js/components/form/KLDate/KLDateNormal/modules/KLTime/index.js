@@ -4,7 +4,7 @@ const template = require('./index.html');
 const _ = require('../../../../../../ui-base/_');
 
 const KLTime = Component.extend({
-  name: 'kl-date-range-time',
+  name: 'kl-date-normal-time',
   template,
   config() {
     _.extend(this.data, {

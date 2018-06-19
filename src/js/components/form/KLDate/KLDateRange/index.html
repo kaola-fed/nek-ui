@@ -1,68 +1,118 @@
-<!-- <div class="kl-date-range"> -->
-    <kl-date-range-calendar
-        type="daterange"
-        calendarPosition="FRONT"
-        panelTime={firstPanelTime}
-        rangeEndTime={rangeEndTime}
-        secondPanelTime={secondPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-        startTime={startTime}
-        endTime={endTime}
-        on-select={this.select($event)}></kl-date-range-calendar>
-    <kl-date-range-month
-        calendarPosition="FRONT"
-        panelTime={firstPanelTime}
-        secondPanelTime={secondPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    ></kl-date-range-month>
-    <kl-date-range-year
-        calendarPosition="FRONT"
-        panelTime={firstPanelTime}
-        secondPanelTime={secondPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    />
-    <kl-date-range-time
-        calendarPosition="FRONT"
-        value={startTime}
-        endTime={endTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    />
 
-    <kl-date-range-calendar
-        type="daterange"
-        calendarPosition="END"
-        panelTime={secondPanelTime}
-        rangeEndTime={rangeEndTime}
-        firstPanelTime={firstPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-        startTime={startTime}
-        endTime={endTime}
-        on-select={this.select($event)}>
-    </kl-date-range-calendar>
-    <kl-date-range-month
-        calendarPosition="END"
-        panelTime={secondPanelTime}
-        firstPanelTime={firstPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    ></kl-date-range-month>
-    <kl-date-range-year
-        calendarPosition="END"
-        panelTime={secondPanelTime}
-        firstPanelTime={firstPanelTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    />
-    <kl-date-range-time
-        calendarPosition="END"
-        value={endTime}
-        startTime={startTime}
-        maxDate={maxDate}
-        minDate={minDate}
-    />
-<!-- </div> -->
+<kl-drop isShow={isShow}>
+    <kl-drop-header>
+        <!-- <label class="kl-input kl-input--{size}" r-width="{width}">
+            <span class="kl-input-wrap">
+                <input ref="input" class="kl-input-wrap__inner kl-input-wrap__inner--{state}"
+                    name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={true} disabled={disabled}
+                    r-model={value | format: 'YYYY/MM/DD'}>
+                    ~
+                <input ref="input" class="kl-input-wrap__inner kl-input-wrap__inner--{state}"
+                    name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={true} disabled={disabled}
+                    r-model={value | format: 'YYYY/MM/DD'}>
+                <kl-icon class="kl-input-wrap__icon" type="calendar" />
+            </span>
+        </label> -->
+        <div class="kl-date-range__hd"
+            r-class={{'is-active':isShow}}
+            is-dis={disabled}
+            >
+            <span class="kl-date-range__hd-start">{startTime | format: 'YYYY/MM/DD'}</span>
+            <span class="kl-date-range__hd-separator"></span>
+            ~
+            <span class="kl-date-range__hd-end">{endTime | format: 'YYYY/MM/DD'}</span>
+            <kl-icon class="kl-date-range__hd-icon" type="calendar" />
+        </div>
+    </kl-drop-header>
+    <div class="kl-date-range">
+        <div class="kl-date-range__front">
+            <kl-date-range-calendar
+                on-changeMonth={this.changeFrontMonth()}
+                on-changeYear={this.changeFrontYear()}
+                type="daterange"
+                calendarPosition="FRONT"
+                panelTime={firstPanelTime}
+                rangeEndTime={rangeEndTime}
+                secondPanelTime={secondPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+                startTime={startTime}
+                endTime={endTime}
+                on-select={this.select($event)}></kl-date-range-calendar>
+            {#if isFrontChangeMonth}
+            <kl-date-range-month
+                on-update={this.updateFrontMonth($event)}
+                calendarPosition="FRONT"
+                panelTime={firstPanelTime}
+                secondPanelTime={secondPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            ></kl-date-range-month>
+            {/if}
+            {#if isFrontChangeYear}
+            <kl-date-range-year
+                on-update={this.updateFrontYear($event)}
+                calendarPosition="FRONT"
+                panelTime={firstPanelTime}
+                secondPanelTime={secondPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            />
+            {/if}
+            <!-- <kl-date-range-time
+                calendarPosition="FRONT"
+                value={startTime}
+                endTime={endTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            /> -->
+        </div>
+
+        <div class="kl-date-range__end">
+            <kl-date-range-calendar
+                on-changeMonth={this.changeBackMonth()}
+                on-changeYear={this.changeBackYear()}
+                type="daterange"
+                calendarPosition="END"
+                panelTime={secondPanelTime}
+                rangeEndTime={rangeEndTime}
+                firstPanelTime={firstPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+                startTime={startTime}
+                endTime={endTime}
+                on-select={this.select($event)}>
+            </kl-date-range-calendar>
+            {#if isBackChangeMonth}
+            <kl-date-range-month
+                on-update={this.updateBackMonth($event)}
+                calendarPosition="END"
+                panelTime={secondPanelTime}
+                firstPanelTime={firstPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            ></kl-date-range-month>
+            {/if}
+            {#if isBackChangeYear}
+            <kl-date-range-year
+                on-update={this.updateBackYear($event)}
+                calendarPosition="END"
+                panelTime={secondPanelTime}
+                firstPanelTime={firstPanelTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            />
+            {/if}
+            <!-- <kl-date-range-time
+                calendarPosition="END"
+                value={endTime}
+                startTime={startTime}
+                maxDate={maxDate}
+                minDate={minDate}
+            /> -->
+        </div>
+    </div>
+</kl-drop>
+
+
+

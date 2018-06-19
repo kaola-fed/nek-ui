@@ -24,7 +24,9 @@ const KLDrop = Component.extend({
     // }
 
     this.data.isShow = !this.data.isShow;
-    console.log(this.data.isShow);
+    if (this.data.isShow) {
+      this.$emit('toggle');
+    }
   },
 });
 

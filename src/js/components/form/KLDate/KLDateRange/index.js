@@ -1,4 +1,11 @@
 /* eslint-disable */
+
+/* eslint no-unused-vars: 0 */
+import moment from 'moment';
+import KLDrop from '../../../layout/KLDrop/index';
+import KLDropHeader from '../../../layout/KLDrop/KLDropHeader/index';
+import KLDropMenu from '../../../layout/KLDrop/KLDropMenu/index';
+
 const Component = require('../../../../ui-base/component');
 const template = require('./index.html');
 const _ = require('../../../../ui-base/_');
@@ -89,6 +96,134 @@ const KLDateRange = Component.extend({
       data.endTime = null;
     }
   },
+
+  restPanelTime() {
+    const data = this.data;
+
+    // 如果前一个面板的时间再后一个面板之后，更新面板时间
+    const secondPanelTime = this.data.secondPanelTime;
+    const firstPanelTime = this.data.firstPanelTime;
+
+    if (data.calendarPosition === 'FRONT' && isUpdate === true) {
+      const canOperateMonth = data.panelTime >= this.getPreMonthFirstTime(secondPanelTime);
+
+      if (canOperateMonth) {
+        data.secondPanelTime = new Date(this.data.year, this.data.month + 1, 1);
+      }
+    }
+
+    if (data.calendarPosition === 'END' && isUpdate === true) {
+      const canOperateMonth = data.panelTime <= this.getNextMonthFirstTime(firstPanelTime);
+      // const canOperateYear = this.getYear(data.panelTime) === this.getYear(firstPanelTime);
+
+      if (canOperateMonth) {
+        data.firstPanelTime = new Date(this.data.year, this.data.month - 1, 1);
+      }
+    }
+
+    const newDate = new Date(this.data.year, this.data.month, 1);
+    data.panelTime = newDate.getTime();
+
+    this.resetPanel(newDate);
+  },
+  getPreMonthFirstTime(date) {
+    const time = new Date(date);
+    const year = time.getFullYear();
+    const month = time.getMonth();
+
+    return new Date(year, month - 1, 1).getTime();
+  },
+  getNextMonthFirstTime(date) {
+    const time = new Date(date);
+    const year = time.getFullYear();
+    const month = time.getMonth();
+
+    return new Date(year, month + 1, 1).getTime();
+  },
+
+
+
+  changeFrontYear() {
+    this.data.isFrontChangeYear = true;
+  },
+  updateFrontYear(panelTime) {
+    const data = this.data;
+    data.firstPanelTime = panelTime;
+
+    const canOperateMonth = data.firstPanelTime >= this.getPreMonthFirstTime(data.secondPanelTime);
+    if (canOperateMonth) {
+      const year = new Date(data.firstPanelTime).getFullYear();
+      const month = new Date(data.firstPanelTime).getMonth();
+      data.secondPanelTime = new Date(year, month + 1, 1);
+    }
+
+    this.data.isFrontChangeYear = false;
+  },
+
+  changeFrontMonth() {
+    this.data.isFrontChangeMonth = true;
+  },
+  updateFrontMonth(panelTime) {
+    const data = this.data;
+    data.firstPanelTime = panelTime;
+
+    const canOperateMonth = data.firstPanelTime >= this.getPreMonthFirstTime(data.secondPanelTime);
+    if (canOperateMonth) {
+      const year = new Date(data.firstPanelTime).getFullYear();
+      const month = new Date(data.firstPanelTime).getMonth();
+      data.secondPanelTime = new Date(year, month + 1, 1);
+    }
+
+    this.data.isFrontChangeMonth = false;
+  },
+
+  changeBackYear() {
+    this.data.isBackChangeYear = true;
+  },
+  updateBackYear(panelTime) {
+    const data = this.data;
+    data.secondPanelTime = panelTime;
+
+    const canOperateMonth = data.secondPanelTime <= this.getNextMonthFirstTime(data.firstPanelTime);
+
+    if (canOperateMonth) {
+      const year = new Date(data.secondPanelTime).getFullYear();
+      const month = new Date(data.secondPanelTime).getMonth();
+      data.firstPanelTime = new Date(year, month - 1, 1);
+    }
+    this.data.isBackChangeYear = false;
+  },
+
+  changeBackMonth() {
+    this.data.isBackChangeMonth = true;
+  },
+  updateBackMonth(panelTime) {
+    const data = this.data;
+    data.secondPanelTime = panelTime;
+
+    const canOperateMonth = data.secondPanelTime <= this.getNextMonthFirstTime(data.firstPanelTime);
+    if (canOperateMonth) {
+      const year = new Date(data.secondPanelTime).getFullYear();
+      const month = new Date(data.secondPanelTime).getMonth();
+      data.firstPanelTime = new Date(year, month - 1, 1);
+    }
+    this.data.isBackChangeMonth = false;
+  },
+}).filter({
+  format(value, type) {
+    if(!value){
+      return null;
+    }
+
+    let newValue = moment(value).isValid();
+    if (!newValue) {
+        return;
+    }
+    if (!type) {
+        type = 'YYYY-MM-DD';
+    }
+    return moment(value).format(type);
+  }
 });
 
 module.exports = KLDateRange;
