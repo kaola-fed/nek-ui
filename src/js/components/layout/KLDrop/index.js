@@ -14,6 +14,7 @@ const KLDrop = Component.extend({
       appendToBody: false,
       placement: 'top-right',
       isShow: false,
+      headerClass: '',
     });
     this.supr();
   },

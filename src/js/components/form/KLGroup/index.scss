@@ -10,7 +10,7 @@
     .kl-input:last-child {
         display: inline-block;
         width: 50%;
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             border-left: none;
             border-radius: 0 2px 2px 0;
         }
@@ -22,7 +22,7 @@
     .kl-input:first-child {
         display: inline-block;
         width: 50%;
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             border-right: none;
             border-radius: 2px 0 0 2px;
         }

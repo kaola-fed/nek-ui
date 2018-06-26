@@ -47,7 +47,7 @@
         padding: 0 10px;
     }
 
-    .kl-input__inner {
+    .kl-input-wrap__inner {
         border: none;
         padding: 0px;
         height: 20px;
@@ -65,7 +65,7 @@
         @include m(one) {
             padding: 5px 0;
             display: block;
-            &.kl-input__inner {
+            &.kl-input-wrap__inner {
                 height: 31px;
                 border-bottom: 1px solid #eee;
             }
@@ -171,7 +171,7 @@
         }
     }
     // .kl-select__hover--show {
-        
+
     // }
 
     .kl-treeview {
@@ -196,7 +196,7 @@
             line-height: $--height-sm - 2;
             padding: 0px 6px;
         }
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs);
             padding: 0px;
             height: $--height-sm - 2;
@@ -214,7 +214,7 @@
             min-height: $--height-lg;
             padding: 0 10px;
         }
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg);
             padding: 0px;
             height: $--height-lg - 2;

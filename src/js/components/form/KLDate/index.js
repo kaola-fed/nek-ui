@@ -12,7 +12,7 @@ const KLDate = Component.extend({
   template,
   config() {
     _.extend(this.data, {
-
+      type: 'normal'
     });
     this.supr();
   },

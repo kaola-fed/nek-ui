@@ -76,6 +76,9 @@ const Components = {
   KLMain: require('./components/layout/KLLayout/KLMain'),
   KLAside: require('./components/layout/KLLayout/KLAside'),
   KLPopper: require('./components/layout/KLPopper'),
+  KLDrop: require('./components/layout/KLDrop'),
+  KLDropHeader: require('./components/layout/KLDrop/KLDropHeader'),
+  KLDropItem: require('./components/layout/KLDrop/KLDropItem'),
 };
 
 backward(Components);

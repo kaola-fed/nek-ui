@@ -1,2 +1,5 @@
+{#if type == 'date'}
 <kl-date-normal type="date" value={value} on-select={this.select($event)} minDate={minDate} maxDate={maxDate}></kl-date-normal>
+{#elseif type == 'daterange'}
 <kl-date-range type="daterange" startTime={startTime} endTime={endTime}></kl-date-range>
+{/if}
