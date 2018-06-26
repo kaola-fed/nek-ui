@@ -1,6 +1,6 @@
 $brand-primary: #00C4C0;
 $brand-primary-lighter: $--primary-color-hover;
-$width: 242px;
+$width: 268px;
 
 
 @include b(date-calendar) {
@@ -56,18 +56,19 @@ $width: 242px;
     }
     .calendar_week_item ,.calendar_cell {
         display: inline-block;
-        width: 30px;
         margin-right: 4px;
         font-size: 12px;
-        line-height: 16px;
-        width: 28px;
-        padding: 6px 0;
+        line-height: 14px;
+        padding: 3px 0;
         text-align: center;
         color: rgba(0, 0, 0, 0.65);
         box-sizing: border-box;
+        border: 1px solid #fff;
+        margin-bottom: 4px;
     }
     .calendar_week_item {
         font-weight: bold;
+        width: 32px;
     }
     .calendar_cell {
         cursor: pointer;
@@ -75,31 +76,58 @@ $width: 242px;
     .calendar_cell:hover {
         background: #F2FFFC;;
     }
-    .calendar_cell_today {
-        border: 1px solid $brand-primary;
-        line-height: 14px;
-    }
+
     .calendar_cell_selected {
         background: $brand-primary;
         color: #fff;
+        border: 1px solid $brand-primary;
         &:hover {
             background: $brand-primary;
+            border: 1px solid $brand-primary;
+            color: #fff;
+        }
+    }
+    .calendar_cell_selected.calendar_cell_ranged {
+        background: $brand-primary;
+        color: #fff;
+        border: 1px solid $brand-primary;
+        &:hover {
+            background: $brand-primary;
+            border: 1px solid $brand-primary;
             color: #fff;
         }
     }
     .calendar_cell_lastmonth, .calendar_cell_nextmonth {
         color: #999999;
         background: #fff;
+        border: 1px solid #fff;
     }
     .calendar_cell_ranged {
-        background: #F2FFFC;
-        &:hover {
-            background: #F2FFFC;
+        background: $--primary-color-white-hover;
+        border: 1px solid $--primary-color-white-hover;
+        padding-right: 4px;
+        margin-right: 0;
+        &:last-child {
+            padding-right: 0;
         }
+        &:hover {
+            background: $--primary-color-white-hover;
+            border: 1px solid $--primary-color-white-hover;
+        }
+    }
+    .calendar_cell_today {
+        border: 1px solid $brand-primary;
+        line-height: 14px;
     }
     .calendar_cell_disabled {
         background: #eee;
         cursor: not-allowed;
+    }
+    .calendar_cell--number {
+        display: inline-block;
+        width: 30px;
+        padding: 4px 4px;
+        box-sizing: border-box;
     }
     .calendar_footer {
         border-top: 1px solid #eee;
@@ -330,7 +358,7 @@ $width: 242px;
 }
 
 .kl-date-range {
-    width: 490px;
+    width: 542px;
 }
 
 .kl-date-range__front, .kl-date-range__end {
