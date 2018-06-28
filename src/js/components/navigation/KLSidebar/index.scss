@@ -8,6 +8,10 @@
     z-index: 2;
 
     @include when(dark) {
+        .kl-sidebar-menus-wrap {
+          background: #222;
+        }
+
         .kl-menu {
             background: #222;
             color: rgba($color: #fff, $alpha: 0.65);

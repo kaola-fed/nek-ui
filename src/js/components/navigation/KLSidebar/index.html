@@ -1,11 +1,11 @@
 <div class="kl-sidebar {class}" r-class={ { 'is-dark': theme === 'dark' } } r-style={ {width: width, top: top} }>
   <div class="kl-sidebar-menus-wrap" ref="menuWrap">
-    <kl-scroll wrapMaxHeight="{this.$refs.menuWrap.clientHeight}px">
-      {#if searchable}
-      <div class="kl-sidebar-search-box">
-        <kl-input value={searchValue} clearable placeholder="" />
-      </div>
-      {/if}
+    {#if searchable}
+    <div class="kl-sidebar-search-box" ref="searchBox">
+      <kl-input value={searchValue} clearable placeholder="" />
+    </div>
+    {/if}
+    <kl-scroll wrapMaxHeight="{this.getScrollMaxHeight()}px">
       <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
         {#list menus as menu}
           {#if this.filterMenu(menu)}

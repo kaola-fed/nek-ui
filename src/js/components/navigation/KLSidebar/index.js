@@ -74,6 +74,14 @@ const KLSidebar = Component.extend({
     }
     return title;
   },
+  getScrollMaxHeight() {
+    const { menuWrap, searchBox } = this.$refs;
+    if (menuWrap && searchBox) {
+      return menuWrap.clientHeight - searchBox.clientHeight;
+    } else if (menuWrap) {
+      return menuWrap.clientHeight;
+    }
+  },
 });
 
 KLSidebar.use(searchableMixin);
