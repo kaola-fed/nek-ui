@@ -68,7 +68,7 @@ const KLMenu = Component.extend({
      */
     this.$on('menuitem-click', function (menuitem) {
       this.currentItem = menuitem;
-      // 选中了二级页面,及时一级收起, 也要高亮显示
+      // 选中了二级页面,即使一级收起, 也要高亮显示
       this.currentSubMenu = menuitem.$outer;
     });
   },
