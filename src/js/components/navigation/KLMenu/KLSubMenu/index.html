@@ -1,5 +1,5 @@
 {#if url || route}
-<a class="kl-sub-menu {class}" r-class={ {'is-active': active} } r-route={url+route}>
+<a class="kl-sub-menu {class}" r-class={ {'is-highlight': active} } r-route={url+route}>
   <div class="kl-sub-menu-head">
     {#if iconClass}
     <span class="kl-sub-menu-head__icon {iconClass}"></span>
@@ -14,7 +14,7 @@
   </div>
 </a>
 {#else}
-<li class="kl-sub-menu {class}" r-class={ {'is-active': active} } on-click={this.toggle($event)}>
+<li class="kl-sub-menu {class}" r-class={ {'is-highlight': (!active && rootMenu.currentSubMenu === this)} } on-click={this.toggle($event)}>
   <div class="kl-sub-menu-head">
     {#if iconClass}
     <span class="kl-sub-menu-head__icon {iconClass}"></span>

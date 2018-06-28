@@ -2,6 +2,13 @@
     position: relative;
     display: block;
     cursor: pointer;
+
+    @include when(highlight) {
+      color: #00C4C0;
+      .kl-sub-menu-head__icon {
+        color: #00C4C0;
+      }
+    }
 }
 
 @include b(sub-menu-head) {

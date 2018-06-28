@@ -51,9 +51,9 @@ const KLSidebar = Component.extend({
   init() {
     const { scrollIntoView } = this.data;
     scrollIntoView && setTimeout(() => {
-      scrollIntoViewFn(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
+      scrollIntoViewFn(document.querySelector('.kl-sidebar .kl-subMenu .kl-menu-item.is-active'), {
         validTarget(target, parentsScrolled) {
-          return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
+          return parentsScrolled < 2 && target !== window && target.matches('.kl-menu');
         },
       });
     }, 50);
