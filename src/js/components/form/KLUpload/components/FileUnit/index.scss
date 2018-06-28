@@ -12,10 +12,8 @@ $unit-length: 60;
     width: $unit-length + px;
     height: $unit-length + px;
     border: 1px solid #EEF1F4;
-    border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
 
     &:hover {
       .kl-upload-unit__remove {
@@ -100,6 +98,7 @@ $unit-length: 60;
     max-width: 100%;
     max-height: 100%;
     vertical-align: middle;
+    border-radius: 4px;
   }
 }
 

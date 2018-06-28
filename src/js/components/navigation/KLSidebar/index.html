@@ -1,28 +1,30 @@
 <div class="kl-sidebar {class}" r-class={ { 'is-dark': theme === 'dark' } } r-style={ {width: width, top: top} }>
-  <div class="kl-sidebar-menus-wrap">
-    {#if searchable}
-    <div class="kl-sidebar-search-box">
-      <kl-input value={searchValue} clearable placeholder="" />
-    </div>
-    {/if}
-    <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
-      {#list menus as menu}
-        {#if this.filterMenu(menu)}
-          {#if menu[childrenKey] && menu[childrenKey].length}
-          <kl-menu-sub titleTemplate="{this.getTitleTemplate(menu[titleKey], menu[todoKey])}" defaultOpen="{menu.open}" iconClass="{menu.iconClass}">
-            {#list menu[childrenKey] as page}
-              {#if this.filterMenuSub(page)}
-              <kl-menu-item isCurrent="{page.open}" url="{page[urlKey]}" route="{page[routeKey]}">
-                {#inc this.getTitleTemplate(page[pageKey], page[todoKey])}
-              </kl-menu-item>
-              {/if}
-            {/list}
-          </kl-menu-sub>
-          {#else}
-          <kl-menu-sub url="{menu[urlKey]}" route="{menu[routeKey]}" titleTemplate="{this.getTitleTemplate(menu[titleKey], menu[todoKey])}" iconClass="{menu.iconClass}"></kl-menu-sub>
+  <div class="kl-sidebar-menus-wrap" ref="menuWrap">
+    <kl-scroll wrapMaxHeight="{this.$refs.menuWrap.clientHeight}px">
+      {#if searchable}
+      <div class="kl-sidebar-search-box">
+        <kl-input value={searchValue} clearable placeholder="" />
+      </div>
+      {/if}
+      <kl-menu uniqueOpened="{uniqueOpened}" on-menuitem-click="{this.onMenuItemClick($event)}" router="{router}">
+        {#list menus as menu}
+          {#if this.filterMenu(menu)}
+            {#if menu[childrenKey] && menu[childrenKey].length}
+            <kl-menu-sub titleTemplate="{this.getTitleTemplate(menu[titleKey], menu[todoKey])}" defaultOpen="{menu.open}" iconClass="{menu.iconClass}">
+              {#list menu[childrenKey] as page}
+                {#if this.filterMenuSub(page)}
+                <kl-menu-item isCurrent="{page.open}" url="{page[urlKey]}" route="{page[routeKey]}">
+                  {#inc this.getTitleTemplate(page[pageKey], page[todoKey])}
+                </kl-menu-item>
+                {/if}
+              {/list}
+            </kl-menu-sub>
+            {#else}
+            <kl-menu-sub url="{menu[urlKey]}" route="{menu[routeKey]}" titleTemplate="{this.getTitleTemplate(menu[titleKey], menu[todoKey])}" iconClass="{menu.iconClass}"></kl-menu-sub>
+            {/if}
           {/if}
-        {/if}
-      {/list}
-    </kl-menu>
+        {/list}
+      </kl-menu>
+    </kl-scroll>
   </div>
 </div>
