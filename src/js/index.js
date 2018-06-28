@@ -17,6 +17,7 @@ const Components = {
   KLCheck: require('./components/form/KLCheck'),
   KLCheckGroup: require('./components/form/KLCheckGroup'),
   KLDatePicker: require('./components/form/KLDatePicker'),
+  KLDate: require('./components/form/KLDate'),
   KLRadioGroup: require('./components/form/KLRadioGroup'),
   KLMultiSelect: require('./components/form/KLMultiSelect'),
   KLButton: require('./components/form/KLButton'),
@@ -74,6 +75,10 @@ const Components = {
   KLFooter: require('./components/layout/KLLayout/KLFooter'),
   KLMain: require('./components/layout/KLLayout/KLMain'),
   KLAside: require('./components/layout/KLLayout/KLAside'),
+  KLPopper: require('./components/layout/KLPopper'),
+  KLDrop: require('./components/layout/KLDrop'),
+  KLDropHeader: require('./components/layout/KLDrop/KLDropHeader'),
+  KLDropItem: require('./components/layout/KLDrop/KLDropItem'),
 };
 
 backward(Components);

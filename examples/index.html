@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>nek-ui</title>
+    <meta charset="utf-8">
+    <!--  nek-ui -->
+    <link href="//localhost:8080/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        #app {
+            margin: 100px;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="app"></div>
+<div id="app">
+
+</div>
+<script src="//localhost:8080/vendor/regular.js"></script>
+<script src="//localhost:8080/js/nek-ui.js"></script>
+<script>
+    new NEKUI.Component({
+        template: '<kl-date />',
+    }).$inject('#app');
+</script>
 </body>
+
 </html>

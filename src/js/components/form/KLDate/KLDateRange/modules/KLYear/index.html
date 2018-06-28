@@ -1,0 +1,27 @@
+<div class="kl-year">
+    <div class="year_header">
+        <kl-icon class="year_header_preyear" type="angle-double-left" on-click={this.preYear()} />
+        <span class="year_header_year">{yearArr[0][1]}~{yearArr[3][1]}年</span>
+        <kl-icon class="year_header_nextyear" type="angle-double-right" on-click={this.nextYear()} />
+    </div>
+    <div class="year_body">
+        <table class="year_table">
+            <tbody>
+                {#list yearArr as item by item_index}
+                <tr>
+                    {#list item as item2 by item2_index}
+                    <td class="year_cell"
+                        on-click={this.setYear(item2, $event)}>
+                        <a class="year_cell_item {year == item2 ? 'year_now' : ''}" href="javascript:;">{item2}</a>
+                    </td>
+                    {/list}
+                </tr>
+                {/list}
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="year_footer">
+        <kl-button size="sm" title="选择日期"></kl-button>
+        <kl-button size="sm" title="确定"></kl-button>
+    </div> -->
+</div>

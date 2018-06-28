@@ -125,7 +125,7 @@ const doc = (isDev, callback) => {
     CATES.forEach((c) => {
         const components = getComponents(c.cate).filter((comp) => {
             // 暂时注释掉给视觉review
-            // if (isDev && !/^KL(Select|Button|MultiSelect)$/.test(comp)) {
+            // if (isDev && !/^KL(Input)$/.test(comp)) {
             //     return false;
             // }
 

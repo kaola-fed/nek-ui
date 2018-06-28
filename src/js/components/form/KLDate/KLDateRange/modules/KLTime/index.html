@@ -1,0 +1,35 @@
+<div class="kl-time">
+    <div class="month_body">
+        <div class="time_cells" ref="hourElement">
+            <ul class="time_cells_ct">
+                {#list hourList as item}
+                <li class="time_cells_cell"
+                    r-class="{{'time_cells_cell_selected': hour == item}}"
+                    on-click={this.onClick($event, item, 'HOUR')}>{item}</li>
+                {/list}
+            </ul>
+        </div>
+        <div class="time_cells" ref="minuteElement">
+            <ul class="time_cells_ct">
+                {#list minuteList as item}
+                <li class="time_cells_cell"
+                    r-class="{{'time_cells_cell_selected': minute == item}}"
+                    on-click={this.onClick($event, item, 'MINUTE')}>{item}</li>
+                {/list}
+            </ul>
+        </div>
+        <div class="time_cells" ref="secondElement">
+            <ul class="time_cells_ct">
+                {#list secondList as item}
+                <li class="time_cells_cell"
+                    r-class="{{'time_cells_cell_selected': second == item}}"
+                    on-click={this.onClick($event, item, 'SECOND')}>{item}</li>
+                {/list}
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="time_footer">
+        <kl-button size="sm" title="选择日期"></kl-button>
+        <kl-button size="sm" title="确定"></kl-button>
+    </div> -->
+</div>

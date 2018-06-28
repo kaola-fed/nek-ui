@@ -12,7 +12,7 @@
 				<kl-icon fontSize=15 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
 				{#if open && canSearch}
-				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input__inner kl-select__search':'kl-input__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
+				<input disabled={disabled} readonly={readonly} type="text" class={selected?'kl-input-wrap__inner kl-select__search':'kl-input-wrap__inner kl-select__search kl-select__multi-placeholder'} r-autofocus
 						placeholder={selected?selected[nameKey]:placeholder} r-model={searchValue}/>
 				{/if}
 				<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，
@@ -20,16 +20,16 @@
 				<span class={selected?'':'kl-select__multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>
 	        </div>
 	    {#else}
-	        <div class="kl-dropdown__hd" 
+	        <div class="kl-dropdown__hd"
 				 r-class={{'is-active':open}}
-	             on-click={this.toggle(!open, $event)} 
-				 r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}} 
+	             on-click={this.toggle(!open, $event)}
+				 r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}}
 				 {#if open && canSearch} style="min-height: 65px;" {/if}>
 	            <kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {multiple ? 'kl-select__hover--hide' : ''}"/>
-				 
+
 	            {#if open && canSearch}
 	            <div>
-		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input__inner kl-select__search kl-select__search--one" ref="input"
+		            <input disabled={disabled} readonly={readonly} type="text" class="kl-input-wrap__inner kl-select__search kl-select__search--one" ref="input"
 		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
 		            <kl-icon fontSize=15 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
 	            </div>

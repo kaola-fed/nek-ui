@@ -1,11 +1,11 @@
 @include b(datepicker) {
     @include m(sm) {
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
         }
     }
     @include m(lg) {
-        .kl-input__inner {
+        .kl-input-wrap__inner {
             @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg)
         }
     }

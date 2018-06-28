@@ -12,9 +12,6 @@ title: 表单
     <kl-form-item title="订单号">
         <kl-input value="{billno}" width="300px" placeholder="订单号" />
     </kl-form-item>
-    <kl-form-item title="支付方式">
-        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
-    </kl-form-item>
 </kl-form>
 ```
 <!-- demo_end -->

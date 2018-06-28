@@ -913,8 +913,10 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-table loading={true}>
-    <kl-table-col name="title" key="title" />
-    <kl-table-col name="value" key="value" />
+    <kl-table-col name="title" key="title"  width=500 />
+    <kl-table-col name="value" key="value"  width=500 />
+    <kl-table-col name="value" key="value"  width=500 />
+    <kl-table-col name="value" key="value"  width=500 />
 </kl-table>
 ```
 

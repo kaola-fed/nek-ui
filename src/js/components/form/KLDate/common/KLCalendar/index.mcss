@@ -1,0 +1,81 @@
+.kl-calendar {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    box-sizing: border-box;
+    .calendar_header {
+        position: relative;
+        line-height: 34px;
+        text-align: center;
+        .calendar_header_preyear, .calendar_header_premonth, .calendar_header_nextmonth, .calendar_header_nextyear {
+            position: absolute;
+            font-size: 14px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .calendar_header_preyear:hover,
+        .calendar_header_premonth:hover,
+        .calendar_header_nextmonth:hover,
+        .calendar_header_nextyear:hover,
+        .calendar_header_month:hover,
+        .calendar_header_year:hover {
+            color: #108EE9;
+            cursor: pointer;
+        }
+        .calendar_header_preyear {
+            left: 8px;
+        }
+        .calendar_header_premonth {
+            left: 24px;
+        }
+        .calendar_header_nextmonth {
+            right: 24px;
+        }
+        .calendar_header_nextyear {
+            right: 8px;
+        }
+    }
+    .calendar_body {
+        width: 231px;
+        padding: 4px 8px;
+        border-top: 1px solid #eee;
+        .calendar_table {
+            height: 212px;
+        }
+    }
+    .calendar_week_item ,.calendar_cell {
+        line-height: 18px;
+        width: 33px;
+        padding: 6px 0;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.65);
+    }
+    .calendar_cell {
+        cursor: pointer;
+    }
+    .calendar_cell:hover {
+        background: #f8c4cd;
+    }
+    .calendar_cell_today {
+        border: 1px solid $brand-primary;
+    }
+    .calendar_cell_selected {
+        background: $brand-primary;
+        color: #fff;
+    }
+    .calendar_cell_ranged {
+        background: #fbdce1;
+    }
+    .calendar_cell_lastmonth, .calendar_cell_nextmonth {
+        color: #ddd;
+        background: #fff;
+    }
+    .calendar_cell_disabled {
+        background: #eee;
+        cursor: not-allowed;
+    }
+    .calendar_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}

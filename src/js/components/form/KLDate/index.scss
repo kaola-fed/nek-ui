@@ -1,0 +1,445 @@
+$brand-primary: #00C4C0;
+$brand-primary-lighter: $--primary-color-hover;
+$width: 268px;
+
+
+@include b(date-calendar) {
+
+}
+
+.kl-date-calendar {
+    width: auto;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    box-sizing: border-box;
+    width: $width;
+    .calendar_header {
+        position: relative;
+        line-height: 34px;
+        font-size: 12px;
+        text-align: center;
+        .calendar_header_preyear, .calendar_header_premonth, .calendar_header_nextmonth, .calendar_header_nextyear {
+            position: absolute;
+            font-size: 14px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .calendar_header_preyear:hover,
+        .calendar_header_premonth:hover,
+        .calendar_header_nextmonth:hover,
+        .calendar_header_nextyear:hover,
+        .calendar_header_month:hover,
+        .calendar_header_year:hover {
+            color: #108EE9;
+            cursor: pointer;
+        }
+        .calendar_header_preyear {
+            left: 8px;
+        }
+        .calendar_header_premonth {
+            left: 24px;
+        }
+        .calendar_header_nextmonth {
+            right: 24px;
+        }
+        .calendar_header_nextyear {
+            right: 8px;
+        }
+    }
+    .calendar_body {
+        // width: 231px;
+        padding: 8px 8px 4px 8px;
+        .calendar_table {
+            height: 212px;
+        }
+    }
+    .calendar_week_item ,.calendar_cell {
+        display: inline-block;
+        margin-right: 4px;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 3px 0;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.65);
+        box-sizing: border-box;
+        border: 1px solid #fff;
+        margin-bottom: 4px;
+    }
+    .calendar_week_item {
+        font-weight: bold;
+        width: 32px;
+    }
+    .calendar_cell {
+        cursor: pointer;
+    }
+    .calendar_cell:hover {
+        background: #F2FFFC;;
+    }
+
+    .calendar_cell_selected {
+        background: $brand-primary;
+        color: #fff;
+        border: 1px solid $brand-primary;
+        &:hover {
+            background: $brand-primary;
+            border: 1px solid $brand-primary;
+            color: #fff;
+        }
+    }
+    .calendar_cell_selected.calendar_cell_ranged {
+        background: $brand-primary;
+        color: #fff;
+        border: 1px solid $brand-primary;
+        &:hover {
+            background: $brand-primary;
+            border: 1px solid $brand-primary;
+            color: #fff;
+        }
+    }
+    .calendar_cell_lastmonth, .calendar_cell_nextmonth {
+        color: #999999;
+        background: #fff;
+        border: 1px solid #fff;
+    }
+    .calendar_cell_ranged {
+        background: $--primary-color-white-hover;
+        border: 1px solid $--primary-color-white-hover;
+        padding-right: 4px;
+        margin-right: 0;
+        &:last-child {
+            padding-right: 0;
+        }
+        &:hover {
+            background: $--primary-color-white-hover;
+            border: 1px solid $--primary-color-white-hover;
+        }
+    }
+    .calendar_cell_today {
+        border: 1px solid $brand-primary;
+        line-height: 14px;
+    }
+    .calendar_cell_disabled {
+        background: #eee;
+        cursor: not-allowed;
+    }
+    .calendar_cell--number {
+        display: inline-block;
+        width: 30px;
+        padding: 4px 4px;
+        box-sizing: border-box;
+    }
+    .calendar_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+
+}
+
+
+.kl-year {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    width: $width;
+    box-sizing: border-box;
+    font-size: 12px;
+    .year_header {
+        position: relative;
+        line-height: 34px;
+        text-align: center;
+        .year_header_preyear, .year_header_premonth, .year_header_nextmonth, .year_header_nextyear {
+            position: absolute;
+            font-size: 14px;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .year_header_preyear:hover,
+        .year_header_premonth:hover,
+        .year_header_nextmonth:hover,
+        .year_header_nextyear:hover,
+        .year_header_month:hover,
+        .year_header_year:hover {
+            color: #108EE9;
+            cursor: pointer;
+        }
+        .year_header_preyear {
+            left: 8px;
+        }
+        .year_header_premonth {
+            left: 24px;
+        }
+        .year_header_nextmonth {
+            right: 24px;
+        }
+        .year_header_nextyear {
+            right: 8px;
+        }
+    }
+    .year_body {
+        padding: 8px 8px 4px 8px;
+        .year_table{
+            width: 100%;
+            height: 212px;
+        }
+        .year_cell {
+            text-align: center;
+        }
+        .year_cell_other {
+            color: #eee;
+            .year_cell_item {
+                color: #ddd;
+            }
+        }
+        .year_cell_item {
+            display: inline-block;
+            margin: 0 auto;
+            color: rgba(0,0,0,.65);
+            background: transparent;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+        .year_cell_item:hover {
+            background: $brand-primary-lighter;
+            color: #fff;
+            text-decoration: none;
+        }
+        .year_cell_disabled {
+            .year_item{
+                background: #eee;
+                color: #aaa;
+            }
+        }
+        .year_now {
+            background: $brand-primary;
+            color: #fff;
+        }
+    }
+    .year_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}
+
+
+.kl-month {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    width: $width;
+    box-sizing: border-box;
+    font-size: 12px;
+    .month_header {
+        position: relative;
+        line-height: 34px;
+        text-align: center;
+    }
+    .month_body {
+        padding: 8px 8px 4px 8px;
+        font-size: 12px;
+        .month_table{
+            width: 100%;
+            height: 212px;
+        }
+        .month_cell {
+            text-align: center;
+        }
+        .month_cell_item {
+            display: inline-block;
+            margin: 0 auto;
+            color: rgba(0,0,0,.65);
+            background: transparent;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+        .month_cell_item:hover {
+            background: $brand-primary-lighter;
+            color: #fff;
+            text-decoration: none;
+        }
+        .month_cell_disabled {
+            .month_item{
+                background: #eee;
+                color: #aaa;
+            }
+        }
+        .month_now {
+            background: $brand-primary;
+            color: #fff;
+        }
+    }
+    .month_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}
+
+
+.kl-time {
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    // width: 247px;
+    font-size: 0;
+    box-sizing: border-box;
+    .time_cells {
+        width: 33.33%;
+        display: inline-block;
+        font-size: 12px;
+        height: 255px;
+        overflow: hidden;
+        border-right: 1px solid #eee;
+        box-sizing: border-box;
+        padding-bottom: 231px;
+    }
+    .time_cells:hover {
+        overflow-y: auto;
+    }
+    .time_cells_ct {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .time_cells_cell {
+        width: 100%;
+        height: 24px;
+        line-height: 24px;
+        margin: 0;
+        padding: 0 0 0 16px;
+        box-sizing: content-box;
+        text-align: left;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        list-style: none;
+        transition: background .2s ease-in-out;
+    }
+    .time_cells_cell:hover {
+        background: #F2FFFC;;
+    }
+    .time_cells_cell_selected {
+        background: $brand-primary;
+        color: #fff;
+    }
+    .time_footer {
+        border-top: 1px solid #eee;
+        line-height: 34px;
+    }
+}
+
+
+
+
+.kl-date-normal {
+    position: relative;
+    .kl-month {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .kl-year {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .kl-time {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.kl-date-range {
+    width: 542px;
+}
+
+.kl-date-range__front, .kl-date-range__end {
+    display: inline-block;
+    position: relative;
+    .kl-month {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .kl-year {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .kl-time {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.kl-date-range__hd {
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    max-width: 100%;
+    padding: 6px 10px;
+    color: #333;
+    background: #FFF;
+    border-radius: 2px;
+    border: 1px solid #e3e3e3;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    width: 100%;
+    transition: border 1s ease, box-shadow 1s ease;
+}
+.kl-date-range__hd.is-active,
+.kl-date-range__hd.is-active:hover {
+    outline: 0;
+    background: #FFF;
+    color: #333;
+    border-color: #00C4C0;
+    box-shadow: 0 0 2px 0 #00C4C0;
+}
+
+.kl-date-range__hd-icon {
+    position: absolute;
+    height: 24px;
+    line-height: 24px !important;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: #666;
+    font-size: 12px;
+}
+
+.kl-date-range__hd-start, .kl-date-range__hd-end {
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    color: #333333;
+    letter-spacing: 0;
+    width: 40%
+}
+
+.kl-date-range__hd-separator {
+    width: 5%;
+}
+
+
+.kl-date-header {
+    width: 100%;
+}

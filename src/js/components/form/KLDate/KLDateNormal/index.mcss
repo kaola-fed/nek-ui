@@ -1,0 +1,4 @@
+.kl-date-range {
+    background: #fff;
+    display: inline-block;
+}

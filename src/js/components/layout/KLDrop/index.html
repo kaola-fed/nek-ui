@@ -1,0 +1,17 @@
+<div class="kl-dropdown">
+    <div class="kl-dropdown__header {headerClass}" ref="reference" on-click="{this.onClick()}">
+        {#if this.$header}
+            {#inc this.$header.$body}
+        {/if}
+    </div>
+    <div>
+        <kl-popper
+            class="kl-dropdown__footer"
+            reference="{this.$refs.reference}"
+            appendToBody="{appendToBody}"
+            placement="{placement}"
+            isShow="{isShow}">
+                {#inc this.$body}
+        </kl-popper>
+    </div>
+</div>

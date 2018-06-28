@@ -1,0 +1,13 @@
+<table class="kl-year">
+    <tbody>
+        {#list yearArr as item}
+        <tr>
+            {#list item as item2}
+            <td class="year_cell" on-click={this.setYear(item2)}>
+                <a href="javascript:;" class="month_item">{item2}</a>
+            </td>
+            {/list}
+        </tr>
+        {/list}
+    </tbody>
+</table>
