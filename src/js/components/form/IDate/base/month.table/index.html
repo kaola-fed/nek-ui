@@ -1,0 +1,12 @@
+<div class="{classes}">
+    {#list cells as cell}
+    <span
+        class="{this.getCellCls(cell)}"
+        on-click="{this.handleClick(cell)}"
+        on-mouseenter="{this.handleMouseMove(cell)}"
+
+    >
+        <em>{ cell.text }</em>
+    </span>
+    {/list}
+</div>

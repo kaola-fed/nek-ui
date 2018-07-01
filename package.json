@@ -37,6 +37,7 @@
     "bowser": "^1.5.0",
     "clipboard": "^1.6.0",
     "dom-align": "^1.5.2",
+    "js-calendar": "^1.2.3",
     "moment": "^2.22.2",
     "popper.js": "^1.14.3",
     "postcss-salad": "^2.0.1",

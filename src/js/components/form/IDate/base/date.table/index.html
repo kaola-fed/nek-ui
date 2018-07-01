@@ -1,0 +1,19 @@
+<div class="{this.getClasses()}">
+    <div class="{prefixCls + '-header'}">
+        {#list headerDays as day }
+        <span key="{day}">
+            {day}
+        </span>
+        {/list}
+    </div>
+    {#list cells as cell by cell_item}
+        <span
+            class="{this.getCellCls(cell)}"
+            key="{cell.date + '' + i}"
+            on-click={this.handleClick(cell, $event)}
+            on-mouseenter="{this.handleMouseMove(cell)}"
+            >
+        <em>{ cell.desc }</em>
+    </span>
+    {/list}
+</div>

@@ -1,0 +1,6 @@
+{#if showTime}
+<kl-button size="small" disabled="{timeDisabled}" title="{labels.time}" on-click={this.handleToggleTime()} />
+{/if}
+
+<kl-button size="small" title="{labels.clear}" on-click={this.handleClear()} />
+<kl-button size="small" type="primary" title="{labels.ok}" on-click={this.handleSuccess()} />

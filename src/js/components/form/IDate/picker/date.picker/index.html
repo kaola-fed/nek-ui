@@ -1,0 +1,102 @@
+<!--<div-->
+    <!--:class="wrapperClasses"-->
+    <!--v-click-outside:mousedown.capture="handleClose"-->
+    <!--v-click-outside.capture="handleClose"-->
+<!--&gt;-->
+    <!--<div ref="reference" :class="[prefixCls + '-rel']">-->
+        <!--<slot>-->
+            <!--<i-input-->
+                <!--:key="forceInputRerender"-->
+                <!--:element-id="elementId"-->
+                <!--:class="[prefixCls + '-editor']"-->
+                <!--:readonly="!editable || readonly"-->
+                <!--:disabled="disabled"-->
+                <!--:size="size"-->
+                <!--:placeholder="placeholder"-->
+                <!--:value="visualValue"-->
+                <!--:name="name"-->
+                <!--ref="input"-->
+
+                <!--@on-input-change="handleInputChange"-->
+                <!--@on-focus="handleFocus"-->
+                <!--@on-blur="handleBlur"-->
+                <!--@on-click="handleIconClick"-->
+                <!--@click.native="handleFocus"-->
+                <!--@keydown.native="handleKeydown"-->
+                <!--@mouseenter.native="handleInputMouseenter"-->
+                <!--@mouseleave.native="handleInputMouseleave"-->
+
+                <!--:icon="iconType"-->
+            <!--&gt;</i-input>-->
+        <!--</slot>-->
+    <!--</div>-->
+    <!--<transition name="transition-drop">-->
+        <!--<Drop-->
+            <!--@click.native="handleTransferClick"-->
+            <!--v-show="opened"-->
+            <!--:class="{ [prefixCls + '-transfer']: transfer }"-->
+            <!--:placement="placement"-->
+            <!--ref="drop"-->
+            <!--:data-transfer="transfer"-->
+            <!--v-transfer-dom>-->
+            <!--<div>-->
+                    <!--{#if panel == 'daterange' ||  panel == 'datetimerange'}-->
+                    <!--<kl-range-date-picker-panel-->
+                        <!--ref="pickerPanel"-->
+                        <!--visible="{visible}"-->
+                        <!--showTime="{type === 'datetime' || type === 'datetimerange'}"-->
+                        <!--confirm="{isConfirm}"-->
+                        <!--selectionMode="{selectionMode}"-->
+                        <!--steps="{steps}"-->
+                        <!--format="{format}"-->
+                        <!--value="{internalValue}"-->
+                        <!--start-date="{startDate}"-->
+                        <!--split-panels="{splitPanels}"-->
+                        <!--show-week-numbers="{showWeekNumbers}"-->
+                        <!--picker-type="{type}"-->
+                        <!--multiple="{multiple}"-->
+                        <!--focused-date="{focusedDate}"-->
+
+                        <!--time-picker-options="{timePickerOptions}"-->
+
+                        <!--v-bind="{ownPickerProps}"-->
+
+                        <!--on-on-pick="{this.onPick()}"-->
+                        <!--on-on-pick-clear="{this.handleClear($event)}"-->
+                        <!--on-on-pick-success="{this.onPickSuccess($event)}"-->
+                        <!--on-on-pick-click="{disableClickOutSide = true}"-->
+                        <!--on-on-selection-mode-change="{this.onSelectionModeChange($event)}"-->
+                    <!--&gt;</kl-range-date-picker-panel>-->
+                <!--{#else}-->
+                    <kl-date-picker-panel
+                        ref="pickerPanel"
+                        visible="{visible}"
+                        showTime="{type === 'datetime' || type === 'datetimerange'}"
+                        confirm="{isConfirm}"
+                        selectionMode="{selectionMode}"
+                        steps="{steps}"
+                        format="{format}"
+                        value="{internalValue}"
+                        start-date="{startDate}"
+                        split-panels="{splitPanels}"
+                        show-week-numbers="{showWeekNumbers}"
+                        picker-type="{type}"
+                        multiple="{multiple}"
+                        focused-date="{focusedDate}"
+
+                        time-picker-options="{timePickerOptions}"
+
+
+                        v-bind="{ownPickerProps}"
+
+                        on-pick="{this.onPick($event)}"
+                        on-pick-clear="{this.handleClear($event)}"
+                        on-pick-success="{this.onPickSuccess($event)}"
+                        on-pick-click="{disableClickOutSide = true}"
+                        on-selection-mode-change="{this.onSelectionModeChange($event)}"
+                    ></kl-date-picker-panel>
+                <!--{/if}-->
+            <!--</div>-->
+        <!--</Drop>-->
+    <!--</transition>-->
+<!--</div>-->

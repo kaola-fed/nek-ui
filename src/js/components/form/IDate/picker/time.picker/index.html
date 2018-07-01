@@ -1,0 +1,101 @@
+<!-- <div
+    :class="wrapperClasses"
+    v-click-outside:mousedown.capture="handleClose"
+    v-click-outside.capture="handleClose"
+>
+    <div ref="reference" :class="[prefixCls + '-rel']">
+        <slot>
+            <i-input
+                :key="forceInputRerender"
+                :element-id="elementId"
+                :class="[prefixCls + '-editor']"
+                :readonly="!editable || readonly"
+                :disabled="disabled"
+                :size="size"
+                :placeholder="placeholder"
+                :value="visualValue"
+                :name="name"
+                ref="input"
+
+                @on-input-change="handleInputChange"
+                @on-focus="handleFocus"
+                @on-blur="handleBlur"
+                @on-click="handleIconClick"
+                @click.native="handleFocus"
+                @keydown.native="handleKeydown"
+                @mouseenter.native="handleInputMouseenter"
+                @mouseleave.native="handleInputMouseleave"
+
+                :icon="iconType"
+            ></i-input>
+        </slot>
+    </div>
+    <transition name="transition-drop">
+        <Drop
+            @click.native="handleTransferClick"
+            v-show="opened"
+            :class="{ [prefixCls + '-transfer']: transfer }"
+            :placement="placement"
+            ref="drop"
+            :data-transfer="transfer"
+            v-transfer-dom>
+            <div> -->
+                    {#if panel == 'timerange'}
+                    <kl-range-time-picker-panel
+                        ref="pickerPanel"
+                        visible="{visible}"
+                        showTime="{type === 'datetime' || type === 'datetimerange'}"
+                        confirm="{isConfirm}"
+                        selectionMode="{selectionMode}"
+                        steps="{steps}"
+                        format="{format}"
+                        value="{internalValue}"
+                        start-date="{startDate}"
+                        split-panels="{splitPanels}"
+                        show-week-numbers="{showWeekNumbers}"
+                        picker-type="{type}"
+                        multiple="{multiple}"
+                        focused-date="{focusedDate}"
+
+                        time-picker-options="{timePickerOptions}"
+
+                        v-bind="{ownPickerProps}"
+
+                        on-on-pick="{this.onPick()}"
+                        on-on-pick-clear="{this.handleClear($event)}"
+                        on-on-pick-success="{this.onPickSuccess($event)}"
+                        on-on-pick-click="{disableClickOutSide = true}"
+                        on-on-selection-mode-change="{this.onSelectionModeChange($event)}"
+                    ></kl-range-time-picker-panel>
+                {#else}
+                    <kl-time-picker-panel
+                        ref="pickerPanel"
+                        visible="{visible}"
+                        showTime="{type === 'datetime' || type === 'datetimerange'}"
+                        confirm="{isConfirm}"
+                        selectionMode="{selectionMode}"
+                        steps="{steps}"
+                        format="{format}"
+                        value="{internalValue}"
+                        start-date="{startDate}"
+                        split-panels="{splitPanels}"
+                        show-week-numbers="{showWeekNumbers}"
+                        picker-type="{type}"
+                        multiple="{multiple}"
+                        focused-date="{focusedDate}"
+
+                        time-picker-options="{timePickerOptions}"
+
+                        v-bind="{ownPickerProps}"
+
+                        on-on-pick="{this.onPick()}"
+                        on-on-pick-clear="{this.handleClear($event)}"
+                        on-on-pick-success="{this.onPickSuccess($event)}"
+                        on-on-pick-click="{disableClickOutSide = true}"
+                        on-on-selection-mode-change="{this.onSelectionModeChange($event)}"
+                    ></kl-time-picker-panel>
+                {/if}
+            <!-- </div> -->
+        <!-- </Drop>
+    </transition>
+</div> -->

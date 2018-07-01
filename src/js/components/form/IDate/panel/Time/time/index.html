@@ -1,0 +1,28 @@
+<div class="{prefixCls + '-body-wrapper'}" on-mousedown={this.stopPropagation($event)}>
+    <div class="{prefixCls + '-body'}">
+        {#if showDate}
+        <div class="{timePrefixCls + '-header'}">{ visibleDate }</div>
+        {/if}
+        <div class="{prefixCls + '-content'}">
+            <kl-time-spinner
+                ref="timeSpinner"
+                show-seconds="{showSeconds}"
+                steps="{steps}"
+                hours="{timeSlots[0]}"
+                minutes="{timeSlots[1]}"
+                seconds="{timeSlots[2]}"
+                disabled-hours="{disabledHMS.disabledHours}"
+                disabled-minutes="{disabledHMS.disabledMinutes}"
+                disabled-seconds="{disabledHMS.disabledSeconds}"
+                hide-disabled-options="{hideDisabledOptions}"
+                on-change="{this.handleChange($event)}"
+                on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
+        </div>
+        {#if confirm}
+        <kl-date-confirm
+            on-on-pick-clear="{this.handlePickClear($event)}"
+            on-on-pick-success="{this.handlePickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>
