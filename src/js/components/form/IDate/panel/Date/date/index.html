@@ -12,12 +12,12 @@
         <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
             <span
                 class="{this.iconBtnCls('prev', '-double')}"
-                on-click="{this.changeYear(-1)}"><Icon type="ios-arrow-back"></Icon>占位</span>
+                on-click="{this.changeYear(-1)}"><kl-icon type="arrow-left-double" /></span>
             {#if pickerTable === 'date-table'}
             <span
                 class="{this.iconBtnCls('prev')}"
                 on-click="{this.changeMonth(-1)}"
-                r-show="currentView === 'date'"><Icon type="ios-arrow-back"></Icon>占位</span>
+                r-show="currentView === 'date'"><kl-icon type="arrow-left-small" /></span>
             {/if}
             <kl-date-panel-label
                 date-panel-label="{datePanelLabel}"
@@ -25,12 +25,12 @@
                 date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
             <span
                 class="{this.iconBtnCls('next', '-double')}"
-                on-click="{this.changeYear(+1)}"><Icon type="ios-arrow-forward">占位</Icon></span>
+                on-click="{this.changeYear(+1)}"><kl-icon type="arrow-right-small" /></span>
             {#if pickerTable === 'date-table'}
             <span
                 class="{this.iconBtnCls('next')}"
                 on-click="{this.changeMonth(+1)}"
-                r-show="currentView === 'date'"><Icon type="ios-arrow-forward">占位</Icon></span>
+                r-show="currentView === 'date'"><kl-icon type="arrow-right-double" /></span>
             {/if}
         </div>
 
@@ -114,3 +114,4 @@
         {/if}
     </div>
 </div>
+

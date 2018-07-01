@@ -1,114 +1,202 @@
-<!--<div :class="classes" @mousedown.prevent>-->
-    <!--<div :class="[prefixCls + '-sidebar']" v-if="shortcuts.length">-->
-        <!--<div-->
-            <!--:class="[prefixCls + '-shortcut']"-->
-            <!--v-for="shortcut in shortcuts"-->
-            <!--@click="handleShortcutClick(shortcut)">{{ shortcut.text }}</div>-->
-    <!--</div>-->
-    <!--<div :class="panelBodyClasses">-->
-        <!--<div :class="[prefixCls + '-content', prefixCls + '-content-left']" v-show="!isTime">-->
-            <!--<div :class="[datePrefixCls + '-header']" v-show="currentView !== 'time'">-->
-                <!--<span-->
-                    <!--:class="iconBtnCls('prev', '-double')"-->
-                    <!--@click="prevYear('left')"><Icon type="ios-arrow-back"></Icon></span>-->
-                <!--<span-->
-                    <!--v-if="leftPickerTable === 'date-table'"-->
-                    <!--:class="iconBtnCls('prev')"-->
-                    <!--@click="prevMonth('left')"-->
-                    <!--v-show="currentView === 'date'"><Icon type="ios-arrow-back"></Icon></span>-->
-                <!--<date-panel-label-->
-                    <!--:date-panel-label="leftDatePanelLabel"-->
-                    <!--:current-view="leftDatePanelView"-->
-                    <!--:date-prefix-cls="datePrefixCls"></date-panel-label>-->
-                <!--<span-->
-                    <!--v-if="splitPanels || leftPickerTable !== 'date-table'"-->
-                    <!--:class="iconBtnCls('next', '-double')"-->
-                    <!--@click="nextYear('left')"><Icon type="ios-arrow-forward"></Icon></span>-->
-                <!--<span-->
-                    <!--v-if="splitPanels && leftPickerTable === 'date-table'"-->
-                    <!--:class="iconBtnCls('next')"-->
-                    <!--@click="nextMonth('left')"-->
-                    <!--v-show="currentView === 'date'"><Icon type="ios-arrow-forward"></Icon></span>-->
-            <!--</div>-->
-            <!--<component-->
-                <!--:is="leftPickerTable"-->
-                <!--ref="leftYearTable"-->
-                <!--v-if="currentView !== 'time'"-->
-                <!--:table-date="leftPanelDate"-->
-                <!--selection-mode="range"-->
-                <!--:disabled-date="disabledDate"-->
-                <!--:range-state="rangeState"-->
-                <!--:show-week-numbers="showWeekNumbers"-->
-                <!--:value="preSelecting.left ? [dates[0]] : dates"-->
-                <!--:focused-date="focusedDate"-->
+<div class="{this.getClasses()}" on-click={this.stopPropagation($event)}>
+    <div class="{prefixCls + '-sidebar'}" v-if="shortcuts.length">
+        {#list shortcuts as shortcut}
+        <div
+            class="{prefixCls + '-shortcut'}"
+            on-click="{this.handleShortcutClick(shortcut)}">{ shortcut.text }</div>
+        {/list}
+    </div>
+    <div class="{this.getPanelBodyClasses()}">
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-left'}" r-show="!isTime">
+            <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
+                <span
+                    class="{this.iconBtnCls('prev', '-double')}"
+                    on-click="{this.prevYear('left')}"><kl-icon type="arrow-left-double" /></span>
+                {#if leftPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev')}"
+                    on-click="{this.prevMonth('left')}"
+                    r-show="currentView === 'date'"><kl-icon type="arrow-left-small" /></span>
+                {/if}
+                <kl-date-panel-label
+                    date-panel-label="{leftDatePanelLabel}"
+                    current-view="{leftDatePanelView}"
+                    date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
+                {#if splitPanels || leftPickerTable !== 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next', '-double')}"
+                    on-click="{this.nextYear('left')}"><kl-icon type="arrow-right-double" /></span>
+                {/if}
+                {#if splitPanels && leftPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next')}"
+                    on-click="{this.nextMonth('left')}"
+                    r-show="currentView === 'date'"><kl-icon type="arrow-right-small" /></span>
+                {/if}
+            </div>
 
-                <!--@on-change-range="handleChangeRange"-->
-                <!--@on-pick="panelPickerHandlers.left"-->
-                <!--@on-pick-click="handlePickClick"-->
-            <!--&gt;</component>-->
-        <!--</div>-->
-        <!--<div :class="[prefixCls + '-content', prefixCls + '-content-right']" v-show="!isTime">-->
-            <!--<div :class="[datePrefixCls + '-header']" v-show="currentView !== 'time'">-->
-                <!--<span-->
-                    <!--v-if="splitPanels || rightPickerTable !== 'date-table'"-->
-                    <!--:class="iconBtnCls('prev', '-double')"-->
-                    <!--@click="prevYear('right')"><Icon type="ios-arrow-back"></Icon></span>-->
-                <!--<span-->
-                    <!--v-if="splitPanels && rightPickerTable === 'date-table'"-->
-                    <!--:class="iconBtnCls('prev')"-->
-                    <!--@click="prevMonth('right')"-->
-                    <!--v-show="currentView === 'date'"><Icon type="ios-arrow-back"></Icon></span>-->
-                <!--<date-panel-label-->
-                    <!--:date-panel-label="rightDatePanelLabel"-->
-                    <!--:current-view="rightDatePanelView"-->
-                    <!--:date-prefix-cls="datePrefixCls"></date-panel-label>-->
-                <!--<span-->
-                    <!--:class="iconBtnCls('next', '-double')"-->
-                    <!--@click="nextYear('right')"><Icon type="ios-arrow-forward"></Icon></span>-->
-                <!--<span-->
-                    <!--v-if="rightPickerTable === 'date-table'"-->
-                    <!--:class="iconBtnCls('next')"-->
-                    <!--@click="nextMonth('right')"-->
-                    <!--v-show="currentView === 'date'"><Icon type="ios-arrow-forward"></Icon></span>-->
-            <!--</div>-->
-            <!--<component-->
-                <!--:is="rightPickerTable"-->
-                <!--ref="rightYearTable"-->
-                <!--v-if="currentView !== 'time'"-->
-                <!--:table-date="rightPanelDate"-->
-                <!--selection-mode="range"-->
-                <!--:range-state="rangeState"-->
-                <!--:disabled-date="disabledDate"-->
-                <!--:show-week-numbers="showWeekNumbers"-->
-                <!--:value="preSelecting.right ? [dates[dates.length - 1]] : dates"-->
-                <!--:focused-date="focusedDate"-->
+            {#if currentView !== 'time'}
+                {#if leftPickerTable == 'year-table'}
+                <kl-year-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{preSelecting.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.handleChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.handlePickClick($event)}"
+                ></kl-year-table>
+                {/if}
+                {#if leftPickerTable == 'month-table'}
+                <kl-month-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{preSelecting.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.handleChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.handlePickClick($event)}"
+                ></kl-month-table>
+                {/if}
+                {#if leftPickerTable == 'date-table'}
+                <kl-date-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{preSelecting.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.handleChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.handlePickClick($event)}"
+                ></kl-date-table>
+                {/if}
+            {/if}
 
-                <!--@on-change-range="handleChangeRange"-->
-                <!--@on-pick="panelPickerHandlers.right"-->
-                <!--@on-pick-click="handlePickClick"></component>-->
-        <!--</div>-->
-        <!--<div :class="[prefixCls + '-content']" v-show="isTime">-->
-            <!--<time-picker-->
-                <!--ref="timePicker"-->
-                <!--v-if="currentView === 'time'"-->
-                <!--:value="dates"-->
-                <!--:format="format"-->
-                <!--:time-disabled="timeDisabled"-->
-                <!--v-bind="timePickerOptions"-->
-                <!--@on-pick="handleRangePick"-->
-                <!--@on-pick-click="handlePickClick"-->
-                <!--@on-pick-clear="handlePickClear"-->
-                <!--@on-pick-success="handlePickSuccess"-->
-                <!--@on-pick-toggle-time="handleToggleTime"-->
-            <!--&gt;</time-picker>-->
-        <!--</div>-->
-        <!--<Confirm-->
-            <!--v-if="confirm"-->
-            <!--:show-time="showTime"-->
-            <!--:is-time="isTime"-->
-            <!--:time-disabled="timeDisabled"-->
-            <!--@on-pick-toggle-time="handleToggleTime"-->
-            <!--@on-pick-clear="handlePickClear"-->
-            <!--@on-pick-success="handlePickSuccess"></Confirm>-->
-    <!--</div>-->
-<!--</div>-->
+        </div>
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-right'}" r-show="!isTime">
+            <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
+                {#if splitPanels || rightPickerTable !== 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev', '-double')}"
+                    on-click="{this.prevYear('right')}"><kl-icon type="arrow-left-double" /></span>
+                {/if}
+                {#if splitPanels && rightPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev')}"
+                    on-click="{this.prevMonth('right')}"
+                    r-show="currentView === 'date'"><kl-icon type="arrow-left-small" /></span>
+                {/if}
+
+                <kl-date-panel-label
+                    date-panel-label="{rightDatePanelLabel}"
+                    current-view="{rightDatePanelView}"
+                    date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
+
+                <span
+                    class="{this.iconBtnCls('next', '-double')}"
+                    on-click="{this.nextYear('right')}"><kl-icon type="arrow-right-double" /></span>
+                {#if rightPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next')}"
+                    on-click="{this.nextMonth('right')}"
+                    r-show="currentView === 'date'"><kl-icon type="arrow-right-small" /></span>
+                {/if}
+            </div>
+
+
+            {#if currentView !== 'time'}
+                {#if rightPickerTable == 'year-table'}
+                    <kl-year-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{preSelecting.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.handleChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.handlePickClick($event)}"
+                    ></kl-year-table>
+                {/if}
+                {#if rightPickerTable == 'month-table'}
+                    <kl-month-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{preSelecting.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.handleChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.handlePickClick($event)}"
+                    ></kl-month-table>
+                {/if}
+                {#if rightPickerTable == 'date-table'}
+                    <kl-date-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{preSelecting.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.handleChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.handlePickClick($event)}"
+                    ></kl-date-table>
+                {/if}
+            {/if}
+
+
+
+
+        </div>
+        <div class="{prefixCls + '-content'}" r-show="isTime">
+            {#if currentView === 'time'}
+            <kl-range-time-picker-panel
+                ref="timePicker"
+                value="{dates}"
+                format="{format}"
+                time-disabled="{timeDisabled}"
+                v-bind="timePickerOptions"
+                on-pick-click="{this.handlePickClick($event)}"
+
+                on-pick="{this.onRangePick($event)}"
+
+                on-pick-clear="{this.onPickClear($event)}"
+                on-pick-success="{this.onPickSuccess($event)}"
+                on-pick-toggle-time="{this.onToggleTime($event)}"
+            ></kl-range-time-picker-panel>
+            {/if}
+        </div>
+
+
+        {#if confirm}
+        <kl-date-confirm
+            show-time="{showTime}"
+            is-time="{isTime}"
+            time-disabled="{timeDisabled}"
+
+            on-pick-clear="{this.onPickClear($event)}"
+            on-pick-toggle-time="{this.onToggleTime($event)}"
+            on-pick-success="{this.onPickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>

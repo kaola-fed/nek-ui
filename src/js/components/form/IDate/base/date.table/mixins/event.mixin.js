@@ -10,6 +10,7 @@ export default (Component) => {
       this.$emit('pick-click');
     },
     handleMouseMove(cell) {
+      console.log('moved');
       if (!this.data.rangeState.selecting) return;
       if (cell.disabled) return;
       const newDate = cell.date;

@@ -20,7 +20,9 @@
 <script src="//localhost:8080/js/nek-ui.js"></script>
 <script>
     new NEKUI.Component({
-        template: '<kl-new-date />',
+        template: `<kl-new-date split-panels type="datetimerange" />
+                <br>
+        <kl-new-date  />`,
     }).$inject('#app');
 </script>
 </body>

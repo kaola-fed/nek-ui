@@ -17,14 +17,14 @@ const KLDateConfirm = Component.extend({
     this.supr();
   },
   handleClear() {
-    this.$emit('on-pick-clear');
+    this.$emit('pick-clear');
   },
   handleSuccess() {
-    this.$emit('on-pick-success');
+    this.$emit('pick-success');
   },
   handleToggleTime() {
     if (this.data.timeDisabled) return;
-    this.$emit('on-pick-toggle-time');
+    this.$emit('pick-toggle-time');
         // this.dispatch('CalendarPicker', 'focus-input');
   },
   handleTab(e) {
