@@ -54,41 +54,59 @@ title: 菜单栏
 var component = new NEKUI.Component({
     template: template,
     data: {
-      menus: [{
-       title: '首页',
-       iconClass: 'icon icon-home'
+       menus: [{
+        title: '首页',
+        iconClass: 'icon icon-home',
+        children: [{
+           title: '商品实时数据',
+           url: '/'
+        },{
+           title: '单据审核',
+           url: '/'
+        }]
+       }, {
+        title: '库存管理',
+        open: true,
+        iconClass: 'icon icon-inventory',
+        children: [{
+          open: true,
+          title: '商品实时数据',
+          url: '/'
+        },{
+          title: '单据审核',
+          url: '/'
+        }]
       }, {
-       title: '库存管理',
-       open: true,
-       iconClass: 'icon icon-inventory',
-       children: [{
-         open: true,
-         title: '商品实时数据',
-         url: '/'
-       },{
-         title: '单据审核',
-         url: '/'
-       }]
-     }, {
-       title: '财务管理',
-       iconClass: 'icon icon-financial',
-       children: [{
-         title: '对账管理',
-         url: '/'
-       },{
-         title: '请款管理',
-         url: '/'
-       }]
-     }, {
-        title: '统计数据',
-        iconClass: 'icon icon-statistics'
-     }, {
-        title: '订单管理',
-        iconClass: 'icon icon-order'
-     }, {
-        title: '消息管理',
-        iconClass: 'icon icon-message'
-     }]
+        title: '财务管理',
+        iconClass: 'icon icon-financial',
+        children: [{
+          title: '对账管理',
+          url: '/'
+        },{
+          title: '请款管理',
+          url: '/'
+        }]
+      }, {
+         title: '统计数据',
+         iconClass: 'icon icon-statistics',
+         children: [{
+           title: '商品实时数据',
+           url: '/'
+         },{
+           title: '单据审核',
+           url: '/'
+         }]
+      }, {
+         title: '订单管理',
+         iconClass: 'icon icon-order',
+         children: [{
+           title: '商品实时数据',
+           url: '/'
+         },{
+           title: '单据审核',
+           url: '/'
+         }]
+      }]
    }
 });
 ```
@@ -116,41 +134,59 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-      menus: [{
-       title: '首页',
-       iconClass: 'icon icon-home'
-      }, {
-       title: '库存管理',
-       open: true,
-       iconClass: 'icon icon-inventory',
-       children: [{
+        menus: [{
+         title: '首页',
+         iconClass: 'icon icon-home',
+         children: [{
+            title: '商品实时数据',
+            url: '/'
+         },{
+            title: '单据审核',
+            url: '/'
+         }]
+        }, {
+         title: '库存管理',
          open: true,
-         title: '商品实时数据',
-         url: '/'
-       },{
-         title: '单据审核',
-         url: '/'
+         iconClass: 'icon icon-inventory',
+         children: [{
+           open: true,
+           title: '商品实时数据',
+           url: '/'
+         },{
+           title: '单据审核',
+           url: '/'
+         }]
+       }, {
+         title: '财务管理',
+         iconClass: 'icon icon-financial',
+         children: [{
+           title: '对账管理',
+           url: '/'
+         },{
+           title: '请款管理',
+           url: '/'
+         }]
+       }, {
+          title: '统计数据',
+          iconClass: 'icon icon-statistics',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
+       }, {
+          title: '订单管理',
+          iconClass: 'icon icon-order',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
        }]
-     }, {
-       title: '财务管理',
-       iconClass: 'icon icon-financial',
-       children: [{
-         title: '对账管理',
-         url: '/'
-       },{
-         title: '请款单据管理',
-         url: '/'
-       }]
-     }, {
-        title: '统计数据',
-        iconClass: 'icon icon-statistics'
-     }, {
-        title: '订单管理',
-        iconClass: 'icon icon-order'
-     }, {
-        title: '消息管理',
-        iconClass: 'icon icon-message'
-     }]
    }
 });
 ```
@@ -178,47 +214,59 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-      menus: [{
-       title: '首页',
-       iconClass: 'icon icon-home'
-      }, {
-       title: '库存管理',
-       open: true,
-       iconClass: 'icon icon-inventory',
-       todos: 200,
-       children: [{
+        menus: [{
+         title: '首页',
+         iconClass: 'icon icon-home',
+         children: [{
+            title: '商品实时数据',
+            url: '/'
+         },{
+            title: '单据审核',
+            url: '/'
+         }]
+        }, {
+         title: '库存管理',
          open: true,
-         title: '商品实时数据',
-         url: '/',
-         toods: 100
-       },{
-         title: '单据审核',
-         url: '/',
-         todos: 88
+         iconClass: 'icon icon-inventory',
+         children: [{
+           open: true,
+           title: '商品实时数据',
+           url: '/'
+         },{
+           title: '单据审核',
+           url: '/'
+         }]
+       }, {
+         title: '财务管理',
+         iconClass: 'icon icon-financial',
+         children: [{
+           title: '对账管理',
+           url: '/'
+         },{
+           title: '请款管理',
+           url: '/'
+         }]
+       }, {
+          title: '统计数据',
+          iconClass: 'icon icon-statistics',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
+       }, {
+          title: '订单管理',
+          iconClass: 'icon icon-order',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
        }]
-     }, {
-       title: '财务管理',
-       todos: 23,
-       iconClass: 'icon icon-financial',
-       children: [{
-         title: '对账管理',
-         todos: 8,
-         url: '/'
-       },{
-         title: '请款单据管理',
-         url: '/',
-         todos: 31
-       }]
-     }, {
-        title: '统计数据',
-        iconClass: 'icon icon-statistics'
-     }, {
-        title: '订单管理',
-        iconClass: 'icon icon-order'
-     }, {
-        title: '消息管理',
-        iconClass: 'icon icon-message'
-     }]
    }
 });
 ```
@@ -246,41 +294,59 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     data: {
-      menus: [{
-       title: '首页',
-       iconClass: 'icon icon-home'
-      }, {
-       title: '库存管理',
-       open: true,
-       iconClass: 'icon icon-inventory',
-       children: [{
+        menus: [{
+         title: '首页',
+         iconClass: 'icon icon-home',
+         children: [{
+            title: '商品实时数据',
+            url: '/'
+         },{
+            title: '单据审核',
+            url: '/'
+         }]
+        }, {
+         title: '库存管理',
          open: true,
-         title: '商品实时数据',
-         url: '/'
-       },{
-         title: '单据审核',
-         url: '/'
+         iconClass: 'icon icon-inventory',
+         children: [{
+           open: true,
+           title: '商品实时数据',
+           url: '/'
+         },{
+           title: '单据审核',
+           url: '/'
+         }]
+       }, {
+         title: '财务管理',
+         iconClass: 'icon icon-financial',
+         children: [{
+           title: '对账管理',
+           url: '/'
+         },{
+           title: '请款管理',
+           url: '/'
+         }]
+       }, {
+          title: '统计数据',
+          iconClass: 'icon icon-statistics',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
+       }, {
+          title: '订单管理',
+          iconClass: 'icon icon-order',
+          children: [{
+            title: '商品实时数据',
+            url: '/'
+          },{
+            title: '单据审核',
+            url: '/'
+          }]
        }]
-     }, {
-       title: '财务管理',
-       iconClass: 'icon icon-financial',
-       children: [{
-         title: '对账管理',
-         url: '/'
-       },{
-         title: '请款管理',
-         url: '/'
-       }]
-     }, {
-        title: '统计数据',
-        iconClass: 'icon icon-statistics'
-     }, {
-        title: '订单管理',
-        iconClass: 'icon icon-order'
-     }, {
-        title: '消息管理',
-        iconClass: 'icon icon-message'
-     }]
    }
 });
 ```

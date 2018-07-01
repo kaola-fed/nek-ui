@@ -30,13 +30,11 @@
   line-height: 18px;
 
   &:hover {
-    background: $--background-color-white-hover;
-    color: $--text-color-hover;
+    background: mix($--color-white, $--primary-color, 90%);
   }
 
   @include when(sel) {
-    background: $--background-color-primary;
-    color: $--text-color-white;
+    background: mix($--color-white, $--primary-color, 90%);
   }
 
   @include when(dis) {

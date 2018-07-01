@@ -1,4 +1,4 @@
-<div class="kl-tabs kl-tabs--{type} {class}" is-dis={disabled} r-hide={!visible}>
+<div class="kl-tabs {class}" is-dis={disabled} r-hide={!visible}>
     <div class="kl-tabs__wrap">
       <div class="kl-tabs-scroll {scrollable ? 'is-scrollable' : ''}">
         {#if scrollable}
@@ -15,7 +15,7 @@
             <li class="kl-tabs__active-bar" active-bar></li>
             {/if}
             {#list tabs as item}
-            <li class="kl-tabs__tab" is-crt={item == selected} is-dis={item.data.disabled} on-click={this.select(item, $event)}>
+            <li class="kl-tabs__tab kl-tabs__tab--{type}" is-crt={item == selected} is-dis={item.data.disabled} on-click={this.select(item, $event)}>
             {#if @(titleTemplate)}
             {#inc @(titleTemplate)}
             {#else}

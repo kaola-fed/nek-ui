@@ -2,6 +2,7 @@
     display: block;
     position: relative;
     padding: 13px 0 13px 45px;
+    font-size: 12px;
     line-height: 1em;
     background: #F6F9FC;
     transition: height .3s ease-in;
@@ -12,7 +13,7 @@
     @include when(active) {
         color: #fff !important;
         background: $--background-color-primary;
-        font-size: 14px;
+        font-size: 12px;
 
         a {
             color: #D9244E;

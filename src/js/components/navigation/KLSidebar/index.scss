@@ -8,13 +8,31 @@
     z-index: 2;
 
     @include when(dark) {
+        .kl-sidebar-menus-wrap {
+          background: #222;
+        }
+
         .kl-menu {
             background: #222;
             color: rgba($color: #fff, $alpha: 0.65);
 
+            .kl-sub-menu {
+              &.is-highlight {
+                color: #fff !important;
+
+                .kl-sub-menu-head__icon {
+                  color: #fff !important;
+                }
+              }
+            }
+
             .kl-sub-menu-head {
                 &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
                     color: #fff !important;
+                }
+
+                .kl-sub-menu-head__icon {
+                  color: #C4C4C4 !important;
                 }
             }
 

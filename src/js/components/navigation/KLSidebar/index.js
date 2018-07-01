@@ -51,9 +51,9 @@ const KLSidebar = Component.extend({
   init() {
     const { scrollIntoView } = this.data;
     scrollIntoView && setTimeout(() => {
-      scrollIntoViewFn(document.querySelector('.m-sidebar .m-subMenu .m-menuItem.active'), {
+      scrollIntoViewFn(document.querySelector('.kl-sidebar .kl-sub-menu .kl-menu-item.is-active'), {
         validTarget(target, parentsScrolled) {
-          return parentsScrolled < 2 && target !== window && target.matches('.m-menu');
+          return parentsScrolled < 2 && target !== window && target.matches('.kl-scroll-wrap');
         },
       });
     }, 50);
@@ -73,6 +73,14 @@ const KLSidebar = Component.extend({
       return `<span class="kl-sidebar-todowrap"><span class="kl-sidebar-todowrap__title">${title}</span><span class="kl-sidebar-todowrap__badge">${count}</span></span>`;
     }
     return title;
+  },
+  getScrollMaxHeight() {
+    const { menuWrap, searchBox } = this.$refs;
+    if (menuWrap && searchBox) {
+      return menuWrap.clientHeight - searchBox.clientHeight;
+    } else if (menuWrap) {
+      return menuWrap.clientHeight;
+    }
   },
 });
 

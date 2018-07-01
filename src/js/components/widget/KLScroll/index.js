@@ -32,6 +32,13 @@ const KLScroll = Component.extend({
   init() {
     this.addResizeListener(this.$refs.resize, this.update);
 
+    this.$watch('wrapMaxHeight', (val) => {
+      if (!val) {
+        return;
+      }
+      this.update();
+    });
+
     this.$on('destroy', () => {
       this.removeResizeListener(this.$refs.resize);
     });

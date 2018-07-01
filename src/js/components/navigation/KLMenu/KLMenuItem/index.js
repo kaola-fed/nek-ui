@@ -44,7 +44,7 @@ const KLMenuItem = Component.extend({
     this.initRootMenu();
 
     if (this.data.isCurrent) {
-      this.data.rootMenu.currentItem = this;
+      this.data.rootMenu.$emit('menuitem-click', this);
     }
   },
   goto(e) {

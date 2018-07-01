@@ -52,23 +52,13 @@
       color: #999;
       cursor: not-allowed;
     }
-  }
 
-  @include e(active-bar) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    background-color: $--primary-color;
-    transition: transform .3s cubic-bezier(.645,.045,.355,1);
-  }
-
-  @include m(card) {
-    .kl-tabs__tab {
+    @include m(card) {
       border: 1px solid #D9D9D9;
       border-bottom: none;
       border-radius: 4px 4px 0 0;
       background: #FAFAFA;
+
       &.is-crt {
         background: $--background-color-white;
       }
@@ -78,6 +68,15 @@
         border-color: #D9D9D9;
       }
     }
+  }
+
+  @include e(active-bar) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: $--primary-color;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
   }
 
   @include when(dis) {
