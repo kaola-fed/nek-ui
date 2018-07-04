@@ -55,7 +55,7 @@ const KLDatePickerPanel = Component.extend({
     this.data.panelDate = this.data.startDate || dates[0] || new Date();
   },
   init() {
-    this.supr;
+    this.supr();
 
     this.datePanelLabel();
 
@@ -212,12 +212,15 @@ const KLDatePickerPanel = Component.extend({
     } else {
       this.data.panelDate = siblingMonth(this.data.panelDate, dir * 12);
     }
+
+    this.datePanelLabel(); // ??
   },
   setPickerTableType(currentView) {
     this.data.pickerTable = currentView.match(/^time/) ? 'time-picker' : `${currentView}-table`;
   },
   changeMonth(dir) {
     this.data.panelDate = siblingMonth(this.data.panelDate, dir);
+      this.datePanelLabel(); // ??
   },
 
 

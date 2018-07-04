@@ -9,7 +9,7 @@
     {#list cells as cell by cell_item}
         <span
             class="{this.getCellCls(cell)}"
-            key="{cell.date + '' + i}"
+            key="{cell.date + '' + cell_item}"
             on-click={this.handleClick(cell, $event)}
             on-mouseenter="{this.handleMouseMove(cell)}"
             >
@@ -17,3 +17,4 @@
     </span>
     {/list}
 </div>
+
