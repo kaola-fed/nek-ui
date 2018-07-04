@@ -1,7 +1,7 @@
 {#if visible}
 <label class="kl-input kl-input--{size} {class}" r-width="{width}">
     <span class="kl-input-wrap">
-        <input ref="input" class="kl-input-wrap__inner kl-input-wrap__inner--{state}" type={type | type}
+        <input ref="input" class="kl-input-wrap__inner kl-input-wrap__inner--{state} kl-input-wrap__inner--{unit ? 'unit' : ''}" type={type | type}
             name={name} placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} readonly={readonly} disabled={disabled}
             r-model={value | valueFilter}
             on-focus={this._onFocus($event)}
