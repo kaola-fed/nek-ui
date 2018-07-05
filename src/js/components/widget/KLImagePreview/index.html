@@ -1,7 +1,7 @@
 <div class="kl-image-preview" on-mouseup={this.onMouseUp($event)}>
       <div class="kl-image-preview__close" on-click={this.onClose()}></div>
       <div class="kl-image-preview-slide" on-mousewheel={this.onMouseWheel($event)}>
-          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--pre" on-click={this.onPrev()}><i class="kl-image-preview-slide-nav__icon"></i></span>
+          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--pre" on-click={this.onPrev()}><kl-icon type="arrow-left" class="kl-image-preview-slide-nav__icon" /></span>
           <ul class="kl-image-preview-slide-images">
               {#list imageList as img}
                   <li class="kl-image-preview-slide-images-item" ref="full-{img_index}" r-class={{'is-current': img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>
@@ -9,12 +9,12 @@
                   </li>
               {/list}
           </ul>
-          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--next" on-click={this.onNext()}><i class="kl-image-preview-slide-nav__icon"></i></span>
+          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--next" on-click={this.onNext()}><kl-icon type="arrow-right" class="kl-image-preview-slide-nav__icon" /></span>
           <ul class="kl-image-preview-slide-operate">
               {#list opList as op}
                   <li class="kl-image-preview-slide-operate-item" r-style={{"margin-right": op.name === 'zoomIn' ? '30px' : 0}}>
                       {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}
-                          <a class="kl-image-preview-slide-operate-item__download" href="javascript:void(0);"  on-click={this.downloadFile(imageList[curIndex])}><kl-icon type="download" /></a>
+                          <kl-icon type="download" on-click={this.downloadFile(imageList[curIndex])} />
                       {#elseif op.name === 'zoomIn'}
                           <kl-icon type="{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)} />
                           <span class="kl-image-preview-slide-operate-item__scale">{parseInt(virtualInfo.scale * 100)}%</span>
