@@ -24,7 +24,7 @@
                   </li>
               {/list}
           </ul>
-          <ul class="kl-image-preview-slide-stage" ref="virtualzone" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>
+          <ul class="kl-image-preview-slide-stage" ref="virtualzone" r-style={{opacity: showVirtual ? 1 : 0}}>
               <li ref="virtualimage" class="kl-image-preview-slide-stage-imgwrap" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>
                   <img class="kl-image-preview-slide-stage-imgwrap__img" src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>
               </li>
