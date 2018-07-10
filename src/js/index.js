@@ -17,7 +17,6 @@ const Components = {
   KLCheck: require('./components/form/KLCheck'),
   KLCheckGroup: require('./components/form/KLCheckGroup'),
   KLDatePicker: require('./components/form/KLDatePicker'),
-  KLDate: require('./components/form/KLDate'),
   KLRadioGroup: require('./components/form/KLRadioGroup'),
   KLMultiSelect: require('./components/form/KLMultiSelect'),
   KLButton: require('./components/form/KLButton'),
