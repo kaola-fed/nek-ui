@@ -86,10 +86,11 @@ $h: 660;
 /* 拆解小组件部分 */
 /* 图片切换区 */
 // 图片切换区 - 上一张/下一张按钮
-@include b(image-preview-slide-switch) {
+@include b(image-preview-slide-nav) {
   position: absolute;
   width: 55px;
   height: 55px;
+  line-height: 55px;
   top: px2h(300);
   border-radius: 100px;
   background: rgba(0,0,0,0.6);
@@ -106,49 +107,19 @@ $h: 660;
   @include e(icon) {
     display: inline-block;
     width: 100%;
-    height: 3px;
     vertical-align: middle;
     text-align: center;
-    &:before, &:after {
-      content: "";
-      position: absolute;
-      width: 22px;
-      height: 3px;
-      border-radius: 100px;
-      background-color: #fff;
-    }
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
   }
 
   @include m(pre) {
     left: 50px;
-    cursor: pointer;
-    .kl-image-preview-slide-switch__icon {
-      &:before, &:after {
-        transform-origin: 0;
-      }
-      &:before {
-        transform: translate(-40%, -0.5px) rotate(45deg);
-      }
-      &:after {
-        transform: translate(-40%, 0.5px) rotate(-45deg);
-      }
-    }
   }
 
   @include m(next) {
     right: 50px;
-    cursor: pointer;
-    .kl-image-preview-slide-switch__icon {
-      &:before, &:after {
-        transform-origin: 100%;
-      }
-      &:before {
-        transform: translate(-60%, 0.5px) rotate(45deg);
-      }
-      &:after {
-        transform: translate(-60%, -0.5px) rotate(-45deg);
-      }
-    }
   }
 }
 // 图片切换区 - 所有图片列表
@@ -220,16 +191,15 @@ $h: 660;
     vertical-align: middle;
   }
 
-  @include e(download) {
-    color: #fff;
-  }
-
   @include e(scale) {
     position: absolute;
     font-style: normal;
     font-size: 14px;
     right: -45px;
     text-align: center;
+  }
+  .kl-icon {
+    font-size: 20px;
   }
 }
 // 图片切换区 - 当前展示图片区域(感觉设计不太好,这个区域不太需要)

@@ -52,17 +52,17 @@ const KLImagePreview = Component.extend({
         },
         {
           name: 'rezoom',
-          icon: 'rezoom',
+          icon: 'min-size',
           fnName: 'rezoom',
         },
         {
           name: 'rotate_left',
-          icon: 'rotate_left',
+          icon: 'anticlockwise',
           fnName: 'rotateLeft',
         },
         {
           name: 'rotate_right',
-          icon: 'rotate_right',
+          icon: 'clockwise',
           fnName: 'rotateRight',
         },
         {
