@@ -13,6 +13,10 @@ const KLDatePanelLabel = Component.extend({
       datePrefixCls: '',
     });
     this.supr();
+
+    this.$watch('datePanelLabel[0].label', (value) => {
+        console.log(value)
+    })
   },
 });
 

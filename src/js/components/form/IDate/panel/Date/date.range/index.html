@@ -1,13 +1,17 @@
 <div class="{this.getClasses()}" on-click={this.stopPropagation($event)}>
-    <div class="{prefixCls + '-sidebar'}" v-if="shortcuts.length">
+
+    {#if shortcuts.length}
+    <div class="{prefixCls + '-sidebar'}">
         {#list shortcuts as shortcut}
         <div
             class="{prefixCls + '-shortcut'}"
             on-click="{this.handleShortcutClick(shortcut)}">{ shortcut.text }</div>
         {/list}
     </div>
+    {/if}
+
     <div class="{this.getPanelBodyClasses()}">
-        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-left'}" r-show="!isTime">
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-left'}" r-hide="isTime">
             <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
                 <span
                     class="{this.iconBtnCls('prev', '-double')}"
@@ -84,7 +88,7 @@
             {/if}
 
         </div>
-        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-right'}" r-show="!isTime">
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-right'}" r-hide="isTime">
             <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
                 {#if splitPanels || rightPickerTable !== 'date-table'}
                 <span
@@ -164,9 +168,8 @@
             {/if}
 
 
-
-
         </div>
+
         <div class="{prefixCls + '-content'}" r-show="isTime">
             {#if currentView === 'time'}
             <kl-range-time-picker-panel
@@ -174,11 +177,13 @@
                 value="{dates}"
                 format="{format}"
                 time-disabled="{timeDisabled}"
+
+                steps="{steps}"
+
                 v-bind="timePickerOptions"
+
                 on-pick-click="{this.handlePickClick($event)}"
-
                 on-pick="{this.onRangePick($event)}"
-
                 on-pick-clear="{this.onPickClear($event)}"
                 on-pick-success="{this.onPickSuccess($event)}"
                 on-pick-toggle-time="{this.onToggleTime($event)}"

@@ -8,6 +8,8 @@
         {/list}
     </div>
     {/if}
+
+
     <div class="{prefixCls + '-body'}">
         <div class="{datePrefixCls + '-header'}" r-show="currentView !== 'time'">
             <span
@@ -19,18 +21,20 @@
                 on-click="{this.changeMonth(-1)}"
                 r-show="currentView === 'date'"><kl-icon type="arrow-left-small" /></span>
             {/if}
+
             <kl-date-panel-label
                 date-panel-label="{datePanelLabel}"
                 current-view="{pickerTable.split('-').shift()}"
                 date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
+
             <span
                 class="{this.iconBtnCls('next', '-double')}"
-                on-click="{this.changeYear(+1)}"><kl-icon type="arrow-right-small" /></span>
+                on-click="{this.changeYear(+1)}"><kl-icon type="arrow-right-double" /></span>
             {#if pickerTable === 'date-table'}
             <span
                 class="{this.iconBtnCls('next')}"
                 on-click="{this.changeMonth(+1)}"
-                r-show="currentView === 'date'"><kl-icon type="arrow-right-double" /></span>
+                r-show="currentView === 'date'"><kl-icon type="arrow-right-small" /></span>
             {/if}
         </div>
 
@@ -38,7 +42,6 @@
             {#if currentView !== 'time'}
                 {#if pickerTable == 'year-table'}
                     <kl-year-table
-                        :is="pickerTable"
                         ref="pickerTable"
                         table-date="{panelDate}"
                         show-week-numbers="{showWeekNumbers}"
@@ -53,7 +56,6 @@
                 {/if}
                 {#if pickerTable == 'month-table'}
                     <kl-month-table
-                        :is="pickerTable"
                         ref="pickerTable"
                         table-date="{panelDate}"
                         show-week-numbers="{showWeekNumbers}"
@@ -77,14 +79,13 @@
                         focused-date="{focusedDate}"
 
                         on-pick="{this.onPanelPickerHandlers($event)}"
-                        on-pick-click="{this.onPickClick()}"
+                        on-pick-click="{this.onPickClick($event)}"
                     ></kl-date-table>
                 {/if}
             {/if}
         </div>
 
         <div class="{prefixCls + '-content'}" r-show="isTime">
-            <!-- v-bind="timePickerOptions" -->
             {#if currentView === 'time'}
             <kl-time-picker-panel
                 ref="timePicker"
@@ -95,21 +96,23 @@
                 focused-date="{focusedDate}"
 
                 v-bind="timePickerOptions"
-                on-on-pick="{this.handlePick($event)}"
-                on-on-pick-click="{this.handlePickClick($event)}"
-                on-on-pick-clear="{handlePickClear($event)}"
-                on-on-pick-success="{this.handlePickSuccess($event)}"
-                on-on-pick-toggle-time="{this.handleToggleTime($event)}"
+                on-pick="{this.handlePick($event)}"
+                on-pick-click="{this.onPickClick($event)}"
+                on-pick-clear="{handlePickClear($event)}"
+                on-pick-success="{this.handlePickSuccess($event)}"
+                on-pick-toggle-time="{this.handleToggleTime($event)}"
             ></kl-time-picker-panel>
+
             {/if}
         </div>
+
         {#if confirm}
         <kl-date-confirm
             show-time="{showTime}"
             is-time="{isTime}"
-            on-on-pick-toggle-time="{this.handleToggleTime($event)}"
-            on-on-pick-clear="{this.handlePickClear($event)}"
-            on-on-pick-success="{this.handlePickSuccess($event)}"
+            on-pick-toggle-time="{this.handleToggleTime($event)}"
+            on-pick-clear="{this.handlePickClear($event)}"
+            on-pick-success="{this.handlePickSuccess($event)}"
         ></kl-date-confirm>
         {/if}
     </div>

@@ -1,4 +1,4 @@
-<div class="{prefixCls + '-body-wrapper'}" on-mousedown={this.stopPropagation($event)}>
+<div class="{prefixCls + '-body-wrapper'}" on-click={this.stopPropagation($event)}>
     <div class="{prefixCls + '-body'}">
         {#if showDate}
         <div class="{timePrefixCls + '-header'}">{ visibleDate }</div>
@@ -15,6 +15,7 @@
                 disabled-minutes="{disabledHMS.disabledMinutes}"
                 disabled-seconds="{disabledHMS.disabledSeconds}"
                 hide-disabled-options="{hideDisabledOptions}"
+
                 on-change="{this.handleChange($event)}"
                 on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
         </div>

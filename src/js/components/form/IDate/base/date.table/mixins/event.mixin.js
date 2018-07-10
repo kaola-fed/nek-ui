@@ -6,11 +6,10 @@ export default (Component) => {
       if (cell.disabled || cell.type === 'weekLabel') return;
       const newDate = new Date(clearHours(cell.date));
 
-      this.$emit('pick', newDate);
+      this.$emit('pick', { value: newDate });
       this.$emit('pick-click');
     },
     handleMouseMove(cell) {
-      console.log('moved');
       if (!this.data.rangeState.selecting) return;
       if (cell.disabled) return;
       const newDate = cell.date;
