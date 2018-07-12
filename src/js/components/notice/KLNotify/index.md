@@ -103,7 +103,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button title="info" on-click="{this.show('info')}" />
+<kl-button title="notice" on-click="{this.show('notice')}" />
 <kl-button title="success" on-click="{this.show('success')}" />
 <kl-button title="warning" on-click="{this.show('warning')}" />
 <kl-button title="error" on-click="{this.show('error')}" />
@@ -184,7 +184,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 ### show方法
-打开一条提示消息，传递3个参数，第一个参数`text`(必传): 消息内容；第二个参数`state`(可选): 消息状态`success`、`info`、`warning`、`error`，默认为`info`；
+打开一条提示消息，传递3个参数，第一个参数`text`(必传): 消息内容；第二个参数`state`(可选): 消息状态`success`、`notice`、`warning`、`error`，默认为`notice`；
 第三个参数`duration`消息展示时间，单位为ms，默认2秒，如果为0，则表示永不消失。*
 
 **同时消息提示时会派发`show`事件，可以通过`NEKUI.KLNotify.notify.$on('show', callback')`

@@ -76,7 +76,9 @@ $--border-color-warning: #FFCA61;
         color: #666666 !important;
         position: absolute;
         right: 17.5px;
-
+        &:hover {
+            text-decoration: none;
+        }
         @include m(large) {
             top: 17.5px;
         }

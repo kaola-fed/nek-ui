@@ -68,7 +68,7 @@ $--border-color-disabled: #eee !default;
 $--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
     "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-$--font-family: "Helvetica Neue For Number", $--font-family-no-number !default;
+$--font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif, $--font-family-no-number !default;
 $--code-family: Consolas, Menlo, Courier, monospace !default;
 $--font-size-base: 12px !default;
 $--font-size-xs: $--font-size-base - 2 !default;
