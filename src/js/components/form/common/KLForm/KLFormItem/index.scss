@@ -45,7 +45,7 @@
     }
     @include e(desc) {
         display: inline-block;
-        vertical-align: middle;
+        vertical-align: top;
         color: #999;
     }
     .kl-col:first-child {
