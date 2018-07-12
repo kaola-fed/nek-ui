@@ -1,13 +1,13 @@
 <div class="kl-calendar {class}" is-dis={disabled} r-hide={!visible}>
     <div class="kl-calendar-hd">
         <span class="kl-calendar-hd__prev">
-            <span class="kl-calendar__item" on-click={this.addYear(-1)}><kl-icon type="angle-double-left" /></span>
-            <span class="kl-calendar__item" on-click={this.addMonth(-1)}><kl-icon type="angle-left" /></span>
+            <span class="kl-calendar__item" on-click={this.addYear(-1)}><kl-icon type="arrow-left-double" /></span>
+            <span class="kl-calendar__item" on-click={this.addMonth(-1)}><kl-icon type="arrow-left-small" /></span>
         </span>
         <span>{date | format: 'yyyy-MM'}</span>
         <span class="kl-calendar-hd__next">
-            <span class="kl-calendar__item" on-click={this.addMonth(1)}><kl-icon type="angle-right" /></span>
-            <span class="kl-calendar__item" on-click={this.addYear(1)}><kl-icon type="angle-double-right" /></span>
+            <span class="kl-calendar__item" on-click={this.addMonth(1)}><kl-icon type="arrow-right-small" /></span>
+            <span class="kl-calendar__item" on-click={this.addYear(1)}><kl-icon type="arrow-right-double" /></span>
         </span>
     </div>
     <div class="kl-calendar-bd">

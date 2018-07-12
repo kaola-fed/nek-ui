@@ -5,7 +5,8 @@ const dateSorter = (a, b) => {
 
 export default (Component) => {
   Component.implement({
-    onRangePick(val, type) {
+    onRangePick(e) {
+      const [val, type] = [e.value, e.type];
       if (this.data.rangeState.selecting || this.data.currentView === 'time') {
         if (this.data.currentView === 'time') {
           this.data.dates = val;

@@ -5,11 +5,11 @@ export default (Component) => {
     },
     onPickSuccess() {
       this.resetView();
-      this.$emit('on-pick-success');
+      this.$emit('pick-success');
     },
     onPickClear() {
       this.resetView();
-      this.$emit('on-pick-clear');
+      this.$emit('pick-clear');
     },
     resetView() {
       setTimeout(

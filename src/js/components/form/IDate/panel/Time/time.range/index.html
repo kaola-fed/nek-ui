@@ -1,4 +1,4 @@
-<div class="{classes}" on-mousedown={this.stopPropagation($event)}>
+<div class="{classes}" on-click={this.stopPropagation($event)}>
     <div class="{prefixCls + '-body'}">
         <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-left'}">
             <div class="{timePrefixCls + '-header'}">
@@ -8,7 +8,7 @@
                 开始时间
                 {/if}
             </div>
-            <time-spinner
+            <kl-time-spinner
                 ref="timeSpinner"
                 steps="{steps}"
                 show-seconds="{showSeconds}"
@@ -19,8 +19,9 @@
                 disabled-minutes="{disabledMinutes}"
                 disabled-seconds="{disabledSeconds}"
                 hide-disabled-options="{hideDisabledOptions}"
-                on-change="{this.handleStartChange()}"
-                on-pick-click="{this.handlePickClick()}"></time-spinner>
+
+                on-change="{this.handleStartChange($event)}"
+                on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
         </div>
         <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-right'}">
             <div class="{timePrefixCls + '-header'}">
@@ -30,7 +31,7 @@
                 结束时间
                 {/if}
             </div>
-            <time-spinner
+            <kl-time-spinner
                 ref="timeSpinnerEnd"
                 steps="{steps}"
                 show-seconds="{showSeconds}"
@@ -41,8 +42,9 @@
                 disabled-minutes="{disabledMinutes}"
                 disabled-seconds="{disabledSeconds}"
                 hide-disabled-options="{hideDisabledOptions}"
-                on-change="{this.handleEndChange()}"
-                on-pick-click="{this.handlePickClick()}"></time-spinner>
+
+                on-change="{this.handleEndChange($event)}"
+                on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
         </div>
         {#if confirm}
         <kl-date-confirm

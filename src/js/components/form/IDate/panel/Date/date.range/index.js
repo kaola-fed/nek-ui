@@ -48,7 +48,7 @@ const KLDatePickerPanel = Component.extend({
             format: 'yyyy-MM-dd',
             selectionMode: 'date',      // 'year', 'month', 'date', 'time'
             shortcuts: [],
-            disabledDate: false,
+            disabledDate: () => false,
             timePickerOptions: {},
             showWeekNumbers: false,
             startDate: new Date(),
@@ -74,7 +74,6 @@ const KLDatePickerPanel = Component.extend({
         this.data.rightPickerTable = `${this.data.selectionMode}-table`;
 
         this.supr();
-        console.log(this.data.currentView);
         this.leftDatePanelLabel();
         this.rightDatePanelLabel();
 
@@ -187,26 +186,29 @@ const KLDatePickerPanel = Component.extend({
      * @param shortcut
      */
     handleShortcutClick(shortcut) {
-        if (shortcut.value) this.$emit('on-pick', shortcut.value());
+        if (shortcut.value) this.$emit('pick', { value: shortcut.value() });
         if (shortcut.onClick) shortcut.onClick(this);
     },
 
     handlePickClick() {
-        this.$emit('on-pick-click');
+        this.$emit('pick-click');
     },
     handleChangeRange (val) {
         // watch 不会更新临时处理
         const rangeState = this.data.rangeState;
         rangeState.to = val;
 
-        console.log(rangeState);
 
         this.data.rangeState = rangeState;
     },
 
 
     handleConfirm(visible, type) {
-        this.$emit('on-pick', this.data.dates, visible, type || this.data.type);
+        this.$emit('pick', {
+            value: this.data.dates,
+            visible,
+            type: type || this.data.type,
+        });
     },
 
     // 外部调用
@@ -221,7 +223,7 @@ const KLDatePickerPanel = Component.extend({
     // handleClear() {
     //     this.data.dates = this.data.dates.map(() => null);
     //     this.data.rangeState = {};
-    //     this.$emit('on-pick', this.data.dates);
+    //     this.$emit('pick', this.data.dates);
     //     this.handleConfirm();
     //     //  if (this.showTime) this.$refs.timePicker.handleClear();
     // },

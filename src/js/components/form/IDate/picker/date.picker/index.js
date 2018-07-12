@@ -4,6 +4,11 @@ import Component from '../../../../../ui-base/component';
 import _ from '../../../../../ui-base/_';
 import template from './index.html';
 
+
+import KLDrop from '../../../../layout/KLDrop/index';
+import KLDropHeader from '../../../../layout/KLDrop/KLDropHeader/index';
+import KLDropMenu from '../../../../layout/KLDrop/KLDropMenu/index';
+
 import DatePickerPanel from '../../panel/Date/date/index';
 import DateRangePickerPanel from '../../panel/Date/date.range/index';
 
@@ -14,6 +19,7 @@ import {
     getDayCountOfMonth,
 } from '../../util';
 
+import EventMixin from './mixins/event.mixin';
 
 const findComponentsDownward = (context, componentName) => context.$children.reduce((components, child) => {
     if (child.$options.name === componentName) components.push(child);
@@ -54,54 +60,44 @@ const extractTime = (date) => {
 };
 
 
-// 判断参数是否是其中之一
-const oneOf = (value, validList) => {
-    for (let i = 0; i < validList.length; i++) {
-        if (value === validList[i]) {
-            return true;
-        }
-    }
-    return false;
-};
-
 const KLNewDate = Component.extend({
     name: 'kl-new-date',
     template,
     config() {
         _.extend(this.data, {
-            format: '',
-            placeholder: '',
-            elementId: '',
-            name: '',
-            readonly: false,
-            disabled: false,
-            confirm: false,
-            Boolean: false,
-            splitPanels: false,
-            showWeekNumbers: false,
-            open: false,
-            editable: true,
-            clearable: true,
-            startDate: new Date(),
-            size: 'default',            // 'small', 'large', 'default'
-            steps: [],
+            type: 'date',       // 显示类型，可选值为 date、daterange、datetime、datetimerange、year、month
             value: null,
-
+            format: '',
+            placement: 'bottom',
+            placeholder: '',
+            splitPanels: false,
+            multiple: false,
+            showWeekNumbers: false,
+            startDate: null,
+            confirm: false,
+            open: false,
+            size: 'default',            // 'small', 'large', 'default'
+            disabled: false,
+            clearable: true,
+            readonly: false,
+            editable: true,
             timePickerOptions: {},
             options: {},
 
 
+
+            name: '',
+            steps: [],
+
             prefixCls,
             showClose: false,
-            visible: false,
+            isShow: false,
 
             disableClickOutSide: false,    // fixed when click a date,trigger clickoutside to close picker
             disableCloseUnderTransfer: false,  // transfer 模式下，点击Drop也会触发关闭,
             forceInputRerender: 1,
             isFocused: false,
             internalFocus: false,
-
-            type: 'date',
         });
         this.initDate();
         this.supr();
@@ -114,7 +110,7 @@ const KLNewDate = Component.extend({
 
         this.data.internalValue = initialValue;
         this.data.selectionMode = this.onSelectionModeChange(this.data.type);
-        this.data.focusedDate = initialValue[0] || this.startDate || new Date();
+        this.data.focusedDate = initialValue[0] || this.data.startDate || new Date();
         this.data.focusedTime = {
             column: 0, // which column inside the picker
             picker: 0, // which picker
@@ -129,14 +125,17 @@ const KLNewDate = Component.extend({
         if (typeof initialValue !== typeof parsedValue || JSON.stringify(initialValue) !== JSON.stringify(parsedValue)) {
             this.$emit('input', this.data.publicVModelValue); // to update v-model
         }
-        if (this.data.open !== null) this.data.visible = this.data.open;
+        if (this.data.open !== null) this.data.isShow = this.data.open;
+
+        this.publicVModelValue();
+        this.publicStringValue();
     },
     init() {
         this.supr();
         // to handle focus from confirm buttons
         this.$on('focus-input', () => this.focus());
         //
-        // this.$watch('visible', (state) => {
+        // this.$watch('isShow', (state) => {
         //     if (state === false){
         //         this.$refs.drop.destroy();
         //     }
@@ -149,7 +148,7 @@ const KLNewDate = Component.extend({
         });
 
         this.$watch('open', (val) => {
-            this.data.visible = val === true;
+            this.data.isShow = val === true;
         });
 
         this.$watch('type', (type) => {
@@ -164,33 +163,41 @@ const KLNewDate = Component.extend({
         });
     },
 
+    publicVModelValue() {
+        const store = this.data;
+
+        if (store.multiple) {
+            return store.internalValue.slice();
+        }
+        const isRange = store.type.includes('range');
+        let val = store.internalValue.map(date => date instanceof Date ? new Date(date) : (date || ''));
+
+        if (store.type.match(/^time/)) {
+            val = val.map(this.formatDate.bind(this));
+        }
+
+        this.data.publicVModelValue = (isRange || store.multiple) ? val : val[0];
+        return (isRange || store.multiple) ? val : val[0];
+    },
+
+    publicStringValue() {
+        const {publicVModelValue, type} = this.data;
+        const formatDate = this.formatDate.bind(this);
+        if (type.match(/^time/)) return publicVModelValue;
+        if (this.data.multiple) return formatDate(publicVModelValue);
+        this.data.publicStringValue = Array.isArray(publicVModelValue) ? publicVModelValue.map(formatDate) : formatDate(publicVModelValue);
+        return Array.isArray(publicVModelValue) ? publicVModelValue.map(formatDate) : formatDate(publicVModelValue);
+    },
+
+
+
     computed: {
         wrapperClasses() {
             const isFocusedCls = this.data.isFocused ? `${prefixCls}-focused` : '';
             return `${prefixCls} ${isFocusedCls}`;
         },
-        publicVModelValue() {
-            const store = this.data;
-
-            if (store.multiple) {
-                return store.internalValue.slice();
-            }
-            const isRange = store.type.includes('range');
-            let val = store.internalValue.map(date => date instanceof Date ? new Date(date) : (date || ''));
-
-            if (store.type.match(/^time/)) {
-                val = val.map(this.formatDate.bind(this));
-            }
-            return (isRange || store.multiple) ? val : val[0];
-        },
-        publicStringValue() {
-            const {formatDate, publicVModelValue, type} = this.data;
-            if (type.match(/^time/)) return publicVModelValue;
-            if (this.data.multiple) return formatDate(publicVModelValue);
-            return Array.isArray(publicVModelValue) ? publicVModelValue.map(formatDate) : formatDate(publicVModelValue);
-        },
         opened() {
-            return this.data.open === null ? this.data.visible : this.data.open;
+            return this.data.open === null ? this.data.isShow : this.data.open;
         },
         iconType() {
             let icon = 'ios-calendar-outline';
@@ -203,27 +210,15 @@ const KLNewDate = Component.extend({
             return bottomPlaced ? 'slide-up' : 'slide-down';
         },
         visualValue() {
-            return this.data.formatDate(this.data.internalValue);
+            return this.formatDate(this.data.internalValue);
         },
         isConfirm() {
             return this.data.confirm || this.data.type === 'datetime' || this.data.type === 'datetimerange' || this.data.multiple;
-        },
-        panel(){
-            const isRange =  this.data.type === 'daterange' || this.data.type === 'datetimerange';
-            return isRange ? 'daterange' : 'date';
         },
         ownPickerProps(){
             return this.data.options;
         }
     },
-
-
-    onSelectionModeChange(type = 'time') {
-        if (type.match(/^date/)) type = 'date';
-        this.data.selectionMode = oneOf(type, ['year', 'month', 'date', 'time']) && type;
-        return this.data.selectionMode;
-    },
-
     // 开启 transfer 时，点击 Drop 即会关闭，这里不让其关闭
     // handleTransferClick() {
     //     if (this.data.transfer) this.data.disableCloseUnderTransfer = true;
@@ -235,17 +230,17 @@ const KLNewDate = Component.extend({
             return false;
         }
 
-        if (e && e.type === 'mousedown' && this.data.visible) {
+        if (e && e.type === 'mousedown' && this.data.isShow) {
             e.preventDefault();
             e.stopPropagation();
             return;
         }
 
-        if (this.data.visible) {
+        if (this.data.isShow) {
             const pickerPanel = this.$refs.pickerPanel && this.$refs.pickerPanel.$el;
             if (e && pickerPanel && pickerPanel.contains(e.target)) return; // its a click inside own component, lets ignore it.
 
-            this.data.visible = false;
+            this.data.isShow = false;
             e && e.preventDefault();
             e && e.stopPropagation();
             return;
@@ -258,16 +253,16 @@ const KLNewDate = Component.extend({
         if (this.data.readonly) return;
         this.data.isFocused = true;
         if (e && e.type === 'focus') return; // just focus, don't open yet
-        this.data.visible = true;
+        this.data.isShow = true;
     },
     handleBlur(e) {
         const store = this.data;
 
         if (store.internalFocus) {
-            thstores.internalFocus = false;
+            store.internalFocus = false;
             return;
         }
-        if (store.visible) {
+        if (store.isShow) {
             e.preventDefault();
             return;
         }
@@ -284,7 +279,7 @@ const KLNewDate = Component.extend({
 
         // handle "tab" key
         if (keyCode === 9) {
-            if (store.visible) {
+            if (store.isShow) {
                 e.stopPropagation();
                 e.preventDefault();
 
@@ -304,14 +299,14 @@ const KLNewDate = Component.extend({
 
         // open the panel
         const arrows = [37, 38, 39, 40];
-        if (!store.visible && arrows.includes(keyCode)) {
-            store.visible = true;
+        if (!store.isShow && arrows.includes(keyCode)) {
+            store.isShow = true;
             return;
         }
 
         // close on "esc" key
         if (keyCode === 27) {
-            if (store.visible) {
+            if (store.isShow) {
                 e.stopPropagation();
                 this.handleClose();
             }
@@ -520,29 +515,6 @@ const KLNewDate = Component.extend({
             this.handleFocus();
         }
     },
-    handleClear() {
-        const store = this.data;
-
-        store.visible = false;
-        store.internalValue = store.internalValue.map(() => null);
-        this.$emit('on-clear');
-        // this.dispatch('FormItem', 'on-form-change', '');
-        this.emitChange(this.data.type);
-        this.reset();
-
-        setTimeout(
-            () => this.onSelectionModeChange(store.type),
-            500, // delay to improve dropdown close visual effect
-        );
-    },
-    emitChange(type) {
-        const store = this.data;
-
-        setTimeout(() => {
-            this.$emit('on-change', store.publicStringValue, type);
-            // this.dispatch('FormItem', 'on-form-change', store.publicStringValue);
-        });
-    },
     parseDate(val) {
         const store = this.data;
 
@@ -579,7 +551,6 @@ const KLNewDate = Component.extend({
         } else if (typeof val === 'string' && type.indexOf('time') !== 0) {
             val = parser(val, format) || null;
         }
-
         return (isRange || store.multiple) ? (val || []) : [val];
     },
     formatDate(value) {
@@ -597,45 +568,10 @@ const KLNewDate = Component.extend({
         );
         return formatter(value, store.format || format);
     },
-
-    onPick(e) {
-        const dates = e.value;
-        const visible = e.visible || false;
-        const type = e.type;
-
-        const store = this.data;
-
-        if (store.multiple) {
-            const pickedTimeStamp = dates.getTime();
-            const indexOfPickedDate = store.internalValue.findIndex(date => date && date.getTime() === pickedTimeStamp);
-            const allDates = [...store.internalValue, dates].filter(Boolean);
-            const timeStamps = allDates.map(date => date.getTime()).filter((ts, i, arr) => arr.indexOf(ts) === i && i !== indexOfPickedDate); // filter away duplicates
-            store.internalValue = timeStamps.map(ts => new Date(ts));
-        } else {
-            store.internalValue = Array.isArray(dates) ? dates : [dates];
-        }
-
-        if (store.internalValue[0]) store.focusedDate = store.internalValue[0];
-        store.focusedTime = {
-            ...store.focusedTime,
-            time: store.internalValue.map(extractTime),
-        };
-
-        if (!store.isConfirm) this.onSelectionModeChange(this.data.type); // reset the selectionMode
-        if (!store.isConfirm) store.visible = visible;
-        this.emitChange(type);
-    },
-
-    onPickSuccess() {
-        this.data.visible = false;
-        this.$emit('on-ok');
-        this.focus();
-        this.reset();
-    },
-
     focus() {
         this.$refs.input && this.$refs.input.focus();
     },
-});
+})
+    .use(EventMixin);
 
 module.exports = KLNewDate;

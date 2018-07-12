@@ -37,9 +37,9 @@
 
 @include b(input-wrap) {
     position: relative;
-    display: block;
+    display: flex;
 
-        @include e(inner) {
+    @include e(inner) {
         @include form-item-input;
         padding: $--padding-base;
         color: $--text-color-default;
@@ -65,12 +65,27 @@
         @include m(error) {
             @include form-item-error;
         }
+        @include m(unit) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
         &:disabled {
             @include form-item-disabled;
         }
     }
     @include e(unit) {
-        @include input-element;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f7fa;
+        color: #909399;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        padding: 0 10px;
+        border-left: 0;
+        white-space: nowrap;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
     @include e(icon) {
         @include input-element;

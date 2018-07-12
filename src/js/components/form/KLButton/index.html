@@ -3,7 +3,7 @@
     on-mouseup={this.onMouseUp($event)}
     on-click={this.onClick($event)}>
     {#if icon && !loading}<kl-icon type={icon} />{/if}
-    {#if loading}<kl-icon type="spinner" class="kl-icon-pulse" />{/if}
+    {#if loading}<kl-icon type="loading" />{/if}
     {title}
 </a>
 {#else}
@@ -11,7 +11,7 @@
     on-mouseup={this.onMouseUp($event)}
     on-click={this.onClick($event)} {#if loading || disabled}disabled{/if} type="button">
     {#if icon && !loading}<kl-icon type={icon} />{/if}
-    {#if loading}<kl-icon type="spinner" class="kl-icon-pulse" />{/if}
+    {#if loading}<kl-icon type="loading" />{/if}
     {title}
 </button>
 {/if}

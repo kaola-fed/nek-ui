@@ -290,3 +290,14 @@ $orderIconColor: #666;
     overflow: hidden;
     white-space: nowrap;
 }
+
+@for $item from 1 to 5 {
+    .f-line-clamp-#{$item} {
+        display: -webkit-inline-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        vertical-align: middle;
+        word-break: break-all;
+        -webkit-line-clamp: $item;
+    }
+}

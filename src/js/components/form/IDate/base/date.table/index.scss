@@ -1,0 +1,99 @@
+
+@include b(date-picker-cells) {
+    font-size: 0;
+    width: 196px;
+    margin: 10px;
+    white-space: normal;
+
+    @include e(cell) {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+    }
+
+    @include e(cell-desc) {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        margin: 2px;
+        font-style: normal;
+        border-radius: 3px;
+        text-align: center;
+        transition: all .2s ease-in-out;
+    }
+
+    @include m(focused) {
+        .kl-date-picker-cells__em { box-shadow: 0 0 0 1px #2d8cf0 inset; }
+    }
+
+    @include e(cell) {
+        font-size: 12px;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        :hover {
+            .kl-date-picker-cells__em { background: #e1f0fe }
+        }
+
+        @include m(range) {
+            position: relative;
+            .kl-date-picker-cells__em {
+                position: relative;
+                z-index: 1;
+
+                &:before {
+                    content: '';
+                    display: block;
+                    background: #e1f0fe;
+                    border-radius: 0;
+                    border: 0;
+                    position: absolute;
+                    top: 2px;
+                    bottom: 2px;
+                    left: 0;
+                    right: 0;
+                }
+            }
+        }
+        @include m(selected) {
+
+        }
+        @include m(disabled) {
+
+        }
+
+        @include m(today) {
+            .kl-date-picker-cells__em {
+                position: relative;
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: #2d8cf0;
+                    position: absolute;
+                    top: 1px;
+                    right: 1px
+                }
+            }
+        }
+
+        @include m(prev-month) {
+            .kl-date-picker-cells__em { color: #bbbec4; }
+            &:hover { .kl-date-picker-cells__em { background: 0 0 } }
+        }
+
+        @include m(next-month) {
+            .kl-date-picker-cells__em { color: #bbbec4; }
+            &:hover { .kl-date-picker-cells__em { background: 0 0 } }
+        }
+
+        @include m(week-label) {
+
+        }
+    }
+}
+
+

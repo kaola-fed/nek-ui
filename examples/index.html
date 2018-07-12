@@ -20,9 +20,50 @@
 <script src="//localhost:8080/js/nek-ui.js"></script>
 <script>
     new NEKUI.Component({
-        template: `<kl-new-date split-panels type="datetimerange" />
-                <br>
-        <kl-new-date  />`,
+        template: `
+            <kl-time type="time" disabled-minutes="[0,10,20]" confirm />
+            <kl-time type="timerange" />
+            <kl-time disabled-hours="[1,5,10]" type="time" format="HH点mm分ss秒" />
+            <kl-time steps="[1, 15, 15]" format="HH:mm" type="timerange" format="HH’mm’ss" />
+
+            <kl-new-date shortcuts="{shortcuts}" />
+            <kl-new-date type="daterange" />
+            <kl-new-date type="datetime" />
+            <kl-new-date type="datetimerange" />
+
+    `,
+        data: {
+            shortcuts: [
+                {
+                    text: 'Today',
+                    value () {
+                        return new Date();
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'Yesterday',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'One week',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                }
+            ]
+        }
     }).$inject('#app');
 </script>
 </body>

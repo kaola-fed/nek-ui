@@ -54,39 +54,33 @@ const KLDateTable = Component.extend({
         this.cells();
 
         this.$watch('value', (newValue) => {
-            console.log('value changed', newValue);
             this.dates();
             this.cells();
         });
 
         this.$watch('tableDate', (newValue) => {
-            console.log('tableDate changed');
             this.dates();
             this.cells();
         });
 
         this.$watch('rangeState', (newValue) => {
-            console.log('rangeState changed', newValue);
             this.dates();
             this.cells();
         });
 
         // 待优化？？ rangeState变了 没检测到？！
         this.$watch('rangeState.to', (newValue) => {
-            console.log('rangeState.to changed', newValue);
             this.dates();
             this.cells();
         });
     },
 
     calendar() {
-        // const weekStartDay = Number(this.t('i.datepicker.weekStartDay')); // ??
         const weekStartDay = Number(0);
         this.data.calendar = new jsCalendar.Generator({onlyDays: !this.data.showWeekNumbers, weekStart: weekStartDay});
         return new jsCalendar.Generator({onlyDays: !this.data.showWeekNumbers, weekStart: weekStartDay});
     },
     headerDays() {
-        // const weekStartDay = Number(this.t('i.datepicker.weekStartDay')); // ??
         const weekStartDay = Number(0);
         const translatedDays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].map(item => weeks[item], // ??
         );
