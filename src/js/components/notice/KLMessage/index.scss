@@ -73,11 +73,12 @@ $--border-color-warning: #FFCA61;
     }
 
     @include e(remove) {
-        color: #666666 !important;
+        color: #666;
         position: absolute;
         right: 17.5px;
         &:hover {
             text-decoration: none;
+            color: #333;
         }
         @include m(large) {
             top: 17.5px;
