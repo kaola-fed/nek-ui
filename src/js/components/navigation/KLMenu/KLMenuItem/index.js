@@ -17,6 +17,7 @@ const RootMenuMixin = require('../mixins/rootMenu');
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.url]                      => 跳转链接
  * @param {boolean}       [options.data.isCurrent]                => 是否是当前页
+ * @param {boolean}       [options.data.target                    => a标签的target属性, 默认_self
  */
 const KLMenuItem = Component.extend({
   name: 'kl-menu-item',
@@ -30,6 +31,7 @@ const KLMenuItem = Component.extend({
       title: '',
       active: false,
       url: '',
+      target: '_self',
     });
 
     this.supr();
