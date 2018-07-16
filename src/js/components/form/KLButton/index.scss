@@ -41,7 +41,6 @@ $active-bg-color, $active-color, $active-border-color) {
     vertical-align: top;
     text-align: center;
     height: $--height-base;
-    min-width: $--size-base * 10;
     padding: 0 $--size-base * 2;
     border-radius: 2px;
     line-height: $--height-base - 2;
@@ -54,11 +53,9 @@ $active-bg-color, $active-color, $active-border-color) {
     /* Btn-Size */
     @include m(sm) {
         @include btn-size(0px 8px, $--height-sm, $--font-size-base);
-        min-width: $--size-base * 7;
     }
     @include m(lg) {
         @include btn-size(0px 16px, $--height-lg, $--font-size-lg);
-        min-width: $--size-base * 13;
     }
     /* Btn-Type */
     @include m(default) {

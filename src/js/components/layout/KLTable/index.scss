@@ -1,10 +1,10 @@
 $headerGrey:  #F2F6FF;
 $resizeProxyColor: #ddd;
 $trBorderColor: #ecf2f9;
-$trHoverColor: #ecf2f9;
+$trHoverColor: $--common-color-hover;
 $trBackgroundColor: #f6f9fc;
 $clickabelColor: #0398FF;
-$orderIconColor: #666;
+$orderIconColor: #333;
 
 
 
@@ -122,7 +122,7 @@ $orderIconColor: #666;
 
 @include b(table-tbody-head) {
     @include e(th) {
-        font-size: 14px;
+        font-size: 12px;
         color: #222222;
         letter-spacing: 0;
         line-height: 14px;
@@ -165,13 +165,13 @@ $orderIconColor: #666;
 @include b(table-tbody-head-th-unsortedIcon) {
     position: relative;
     cursor: pointer;
-    color: #ddd;
+    color: #999999;
     @include e(icon2) {
         position: absolute;
         left: 0;
         top: 0;
-        &.kl-icon-sort-desc,
-        &.kl-icon-sort-asc {
+        &.kl-icon--top-arrow-up,
+        &.kl-icon--bottom-arrow-down {
             color: $orderIconColor;
         }
     }
