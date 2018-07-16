@@ -627,7 +627,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-table stickyFooter source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
+<kl-table source={table.source} paging={table.paging} on-paging={this.onPaging($event)}>
     <kl-table-col name="职位" key="job" />
     <kl-table-col name="姓名" key="name" />
     <kl-table-col name="年龄" key="age" />
@@ -790,7 +790,7 @@ var component = new NEKUI.Component({
 <kl-table source={table.source}>
     <kl-table-col name="" key="" placeholder="" width=50 fixed expandable>
         <kl-table-template type="expand">
-            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+            {'<div style="padding: 10px; background: #eee;padding-left: 48px;">{item.name}</div>'}
         </kl-table-template>
     </kl-table-col>
     <kl-table-col name="职位" key="job" fixed />
@@ -841,7 +841,7 @@ var component = new NEKUI.Component({
 <kl-table source={table.source}>
     <kl-table-col name="" key="" placeholder="" width=50 fixed expandable>
         <kl-table-template type="expand">
-            {'<div style="padding: 10px; background: #eee">{item.name}</div>'}
+            {'<div style="padding: 10px; background: #eee;padding-left: 48px;">{item.name}</div>'}
         </kl-table-template>
     </kl-table-col>
     <kl-table-col name="职位" key="job" fixed />

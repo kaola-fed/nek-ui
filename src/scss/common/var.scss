@@ -5,6 +5,8 @@ $--color-mix-amount: 10%;
 $--color-white: #FFF !default;
 $--color-black: #000 !default;
 
+$--common-color-hover: #e6f9f9 !default;
+
 $--primary-color: #00C4C0 !default;
 $--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amount) !default;
 $--primary-color-active: mix($--color-black, $--primary-color, $--color-mix-amount) !default;

@@ -45,12 +45,12 @@
                                     {#if header.tip}
                                         <span class="kl-table-tbody-head-th__tip">
                                             <kl-tooltip tip={header.tip} placement={header.tipPos || 'top'}>
-                                                <kl-icon type="info-circle"/>
+                                                <kl-icon type="notice" />
                                             </kl-tooltip>
                                         </span>
                                     {/if}
                                     {#if header.sortable && header.key}
-                                        <i class="kl-icon kl-icon-unsorted kl-icon-1 kl-table-tbody-head-th-unsortedIcon">
+                                        <i class="kl-icon kl-icon--arrow-order kl-icon-1 kl-table-tbody-head-th-unsortedIcon">
                                             <i class="kl-icon kl-table-tbody-head-th-unsortedIcon__icon2 {header | sortingClass}"/>
                                         </i>
                                     {/if}

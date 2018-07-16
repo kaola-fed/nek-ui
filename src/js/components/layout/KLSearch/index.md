@@ -8,7 +8,7 @@ title: 筛选区
 <div class="m-example"></div>
 
 ```xml
-<kl-search on-search={console.log("search")} on-reset={console.log("reset")}>
+<kl-search on-search={console.log("search")} on-reset={console.log("reset")} tips="通过订单号搜索有一定延时请不要重复操作">
     <kl-row>
         <kl-col span="4">
             <kl-form-item labelSize="60" title="付款类型">
