@@ -25,7 +25,11 @@ var component = new NEKUI.Component({
 ### 位置
 
 <div class="m-example"></div>
-
+<style>
+    .kl-btn {
+        margin-bottom: 16px;
+    }
+</style>
 ```xml
 <div class="g-row">
     <kl-tooltip tip="tooltip箭头的位置在中间" placement="top"><kl-button title="top" /></kl-tooltip>

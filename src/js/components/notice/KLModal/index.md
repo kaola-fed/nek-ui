@@ -625,7 +625,11 @@ var component = new NEKUI.Component({
 **该点击ok按钮会调用`ok`事件**
 
 <div class="m-example"></div>
-
+<style>
+    .g-row .kl-btn {
+        margin-bottom: 5px;
+    }
+</style>
 
 ```xml
 <div class="g-row">
