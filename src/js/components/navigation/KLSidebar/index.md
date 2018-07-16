@@ -59,7 +59,8 @@ var component = new NEKUI.Component({
         iconClass: 'icon icon-home',
         children: [{
            title: '商品实时数据',
-           url: '/'
+           url: '/',
+           target: '_blank'
         },{
            title: '单据审核',
            url: '/'
