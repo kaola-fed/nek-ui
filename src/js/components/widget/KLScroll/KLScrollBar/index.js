@@ -60,7 +60,7 @@ const KLScrollBar = Component.extend({
     const { bar } = this.data;
     const wrap = this.$parent.$refs.wrap;
 
-    const offset = Math.abs(e.target.getBoundingClientRect()[bar.direction] - e[bar.client]);
+    const offset = Math.abs(e.target.getBoundingClientRect()[bar.direction] - e.event[bar.client]);
     const thumbHalf = (this.$refs.thumb[bar.offset] / 2);
     const thumbPositionPercentage = ((offset - thumbHalf) * 100) / $el[bar.offset];
 
