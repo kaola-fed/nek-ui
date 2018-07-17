@@ -1,0 +1,253 @@
+
+@include b(select) {
+    user-select: none;
+    vertical-align: top;
+
+    @include e(multi-placeholder) {
+        color: $--text-color-placeholder;
+    }
+
+    @include e(tag) {
+        position: relative;
+        padding: 0 20px 0 10px;
+        margin: 4px 5px 0 0;
+        background-color: #f3f3f3;
+        border-radius: $--border-radius-base;
+        height: 20px;
+        line-height: 20px;
+        float: left;
+        cursor: default;
+
+        @include when(dis) {
+            cursor: not-allowed;
+        }
+
+        @include m(more) {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+
+        .kl-icon {
+            font-size: 12px;
+        }
+
+        .kl-icon--error {
+            position: absolute;
+            right: 5px;
+        }
+
+        &:last-child {
+            margin-bottom: 6px;
+        }
+    }
+
+    @include e(tags) {
+        @extend .kl-select__tag;
+        padding: 0 10px;
+    }
+
+    @include e(input-inner) {
+        border: none;
+        padding: 0px;
+        height: 20px;
+        vertical-align: unset;
+    }
+
+    @include e(search) {
+        font-family: inherit;
+        line-height: 20px;
+        vertical-align: middle;
+        width: calc(100% - 20px);
+        background-color: transparent;
+        font-size: 12px;
+
+        @include m(one) {
+            padding: 5px 0;
+            display: block;
+            &.kl-select__input-inner {
+                // height: 31px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        &:focus{
+            outline: none;
+            box-shadow: none;
+        }
+    }
+
+    .kl-dropdown__hd {
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 12px;
+        overflow:hidden;
+        word-wrap:normal;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        min-height: $--height-base;
+        line-height: $--height-base - 2;
+        padding: 0 10px;
+        background: $--background-color-white;
+        color: $--text-color-default;
+        border: 1px solid $--border-color-base;
+        border-radius: $--border-radius-base;
+        overflow-y: auto;
+        position: relative;
+        @include form-item-transition;
+
+        @include when(active) {
+            @include form-item-focus;
+        }
+
+        &:hover {
+            @include form-item-hover;
+            .kl-select__hover--show {
+                display: inline-block;
+            }
+            .kl-select__hover--hide {
+                display: none;
+            }
+        }
+
+        @include when(dis) {
+            @include form-item-disabled;
+        }
+
+        .kl-icon {
+            float: right;
+            width: auto;
+            line-height: inherit;
+            position: absolute;
+            right: 5px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .kl-icon--error {
+            color: #A4A5B9;
+            font-weight: 100;
+        }
+
+        .kl-select__hover--show {
+            display: none;
+        }
+
+        .kl-icon-remove-addclass {
+            position: relative;
+            top: -28px;
+        }
+
+        span {
+            float: left;
+        }
+    }
+
+    .kl-dropdown__bd {
+        clear: both;
+    }
+
+    .kl-listview {
+        padding: 0;
+        border: none;
+        .kl-check {
+            line-height: 0;
+        }
+    }
+
+    @include e(hover) {
+        @include m(show) {
+            color: #999;
+
+            &:hover {
+                color: #666;
+            }
+        }
+
+        @include m(hide) {
+            display: none;
+        }
+    }
+    // .kl-select__hover--show {
+
+    // }
+
+    .kl-treeview {
+        overflow: auto;
+        max-height: 200px;
+    }
+
+    @include m(error) {
+        .kl-dropdown__hd {
+            @include form-item-error;
+            @include when(active) {
+                border-color: $--error-color;
+                box-shadow: 0 0 0 0;
+            }
+        }
+    }
+
+    @include m(sm) {
+        .kl-dropdown__hd {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs);
+            min-height: $--height-sm;
+            line-height: $--height-sm - 2;
+            padding: 0px 6px;
+        }
+        .kl-select__input-inner {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs);
+            padding: 0px;
+            height: $--height-sm - 2;
+        }
+        .kl-listview >.kl-listview-item {
+            line-height: 12px;
+            font-size: $--font-size-xs;
+        }
+    }
+
+    @include m(lg) {
+        .kl-dropdown__hd {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg);
+            line-height: $--height-lg - 2;
+            min-height: $--height-lg;
+            padding: 0 10px;
+        }
+        .kl-select__input-inner {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg);
+            padding: 0px;
+            height: $--height-lg - 2;
+        }
+        .kl-listview >.kl-listview-item {
+            font-size: $--font-size-lg;
+            line-height: 22px;
+        }
+    }
+
+    @include m(smw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-sm);
+        }
+    }
+    @include m(mdw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-md);
+        }
+    }
+    @include m(lgw) {
+        .kl-dropdown__hd {
+            @include form-item-width($--width-lg);
+        }
+    }
+}
+
+
+
+
+
+.kl-select .kl-dropdown__header {
+    width: 100%;
+}
+
+.kl-select .kl-dropdown__footer {
+    width: 100%;
+}

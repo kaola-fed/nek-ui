@@ -11,7 +11,7 @@
         <div class="kl-search-ft__wrap">
             <kl-button type="primary" title={searchText} on-click={this.search()} class="kl-search-ft__wrap-btn"></kl-button>
             <kl-button title={resetText} on-click={this.reset()}></kl-button>
-            <span class="kl-search-ft__wrap-tips">{#inc tips}</span>
+            <span class="kl-search-ft__wrap-tips">{#inc tip}</span>
         </div>
         {#if this.$more && isShowToggle}
             <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">

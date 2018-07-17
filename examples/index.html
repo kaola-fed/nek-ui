@@ -31,8 +31,78 @@
             <kl-new-date type="datetime" />
             <kl-new-date type="datetimerange" />
 
+            <kl-drop>
+                <kl-drop-header>
+                    <a href="javascript:void(0)">下拉菜单</a>
+                </kl-drop-header>
+                <kl-drop-menu>
+                    <kl-drop-item>
+                        选项一
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项二
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项三
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项四
+                    </kl-drop-item>
+                    <kl-drop placement="right">
+                        <kl-drop-header>
+                            <kl-drop-item>
+                                选项五
+                            </kl-drop-item>
+                        </kl-drop-header>
+                        <kl-drop-menu>
+                            <kl-drop-item>
+                                选项一
+                            </kl-drop-item>
+                            <kl-drop-item>
+                                选项二
+                            </kl-drop-item>
+                            <kl-drop-item>
+                                选项三
+                            </kl-drop-item>
+                            <kl-drop-item>
+                                选项四
+                            </kl-drop-item>
+                        </kl-drop-menu>
+                    </kl-drop>
+                </kl-drop-menu>
+            </kl-drop>
+
+
+             <kl-drop trigger="hover">
+                <kl-drop-header>
+                    hover 下拉
+                </kl-drop-header>
+                <kl-drop-menu>
+                    <kl-drop-item>
+                        选项一
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项二
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项三
+                    </kl-drop-item>
+                    <kl-drop-item>
+                        选项四
+                    </kl-drop-item>
+                </kl-drop-menu>
+            </kl-drop>
+            <kl-old-select />
+            <kl-select source={source} />
     `,
         data: {
+            source: [
+                {name: '母婴儿童'},
+                {name: '美容彩妆'},
+                {name: '服饰鞋包（禁用）', disabled: true},
+                {name: '家居个护（禁用）', disabled: true, tip: 'tip'},
+                {name: '营养保健（禁用）', disabled: true, tip: 'tip', placement: 'bottom'}
+            ],
             shortcuts: [
                 {
                     text: 'Today',

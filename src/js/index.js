@@ -22,6 +22,7 @@ const Components = {
   KLButton: require('./components/form/KLButton'),
   KLInput: require('./components/form/KLInput'),
   KLSelect: require('./components/form/KLSelect'),
+  // KLOldSelect: require('./components/form/KLOldSelect'),
   KLText: require('./components/form/KLText'),
   KLTextArea: require('./components/form/KLTextArea'),
   KLUpload: require('./components/form/KLUpload'),
