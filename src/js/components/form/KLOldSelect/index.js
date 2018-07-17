@@ -3,10 +3,7 @@
  * @author   sensen(rainforest92@126.com)
  */
 
-import KLDrop from '../../layout/KLDrop';
-import KLDropHeader from '../../layout/KLDrop/KLDropHeader';
-import SourceComponent from '../../../ui-base/sourceComponent';
-
+const Dropdown = require('../common/Dropdown');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 require('../../../util/validation');
@@ -53,7 +50,7 @@ const PrivateMethod = require('./plugins/private.method');
  * @param {number}            [options.data.limit]                    => 在选项过多的时候可能会有性能问题，limit 用来限制显示的数量
  */
 
-const KLSelect = SourceComponent.extend({
+const KLSelect = Dropdown.extend({
   name: 'kl-select',
   template,
   config() {
@@ -349,21 +346,11 @@ const KLSelect = SourceComponent.extend({
     this.select(undefined);
     this.data.open = false;
   },
-  toggle(_open) {
+  toggle(open) {
     const data = this.data;
     data.canSearch && this.clearSearchValue();
     data.key_index = -1;
-
-    if (this.data.disabled) return;
-
-    let open = _open;
-    if (open === undefined) open = !this.data.open;
-    this.data.open = open;
-
-    this.$emit('toggle', {
-      sender: this,
-      open,
-    });
+    this.supr(open);
   },
   validate(on) {
     const data = this.data;
@@ -399,8 +386,6 @@ const KLSelect = SourceComponent.extend({
     return result;
   },
 })
-  .component('kl-drop', KLDrop)
-  .component('kl-drop-header', KLDropHeader)
   .use(Multiple)
   .use(PrivateMethod)
   .use(validationMixin);

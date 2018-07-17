@@ -1,13 +1,22 @@
-<div class="kl-select kl-select--{state} kl-select--{size} {class}" r-width="{width}">
+<!-- <div>
 	<div class="kl-dropdown kl-dropdown--{state}" r-class={{'is-multiple':multiple}}
-	     is-dis={disabled} r-hide={!visible} ref="element">
-	    {#if !multiple}
-	        <div class="kl-dropdown__hd"
+			is-dis={disabled} r-hide={!visible} ref="element">
+	</div>
+</div> -->
+
+
+<kl-drop class="kl-select kl-select--{state} kl-select--{size} {class}"
+	width={width}
+	isShow={open}
+	on-click={this.toggle(!open, $event)}>
+	<kl-drop-header>
+		{#if !multiple}
+			<div class="kl-dropdown__hd"
 				 r-class={{'is-active':open}}
 				 is-dis={disabled}
-	             title={selected?selected[nameKey]:placeholder}
-	             on-click={this.toggle(!open, $event)}>
-	            <kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
+				 title={selected?selected[nameKey]:placeholder}
+				 >
+				<kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {clearable ? 'kl-select__hover--hide' : ''}"/>
 				{#if clearable}
 				<kl-icon fontSize=15 type="error" on-click={this.selectNone($event)} class="f-fr kl-select__hover--show"/>
 				{/if}
@@ -18,30 +27,29 @@
 				<!-- 下面用的 r-hide 是因为在 dropdown 基类里面会给 dom 绑定一个 click 事件然后判断事件的 $event 是不是这个 dropdown 的子节点，
 					如果不是子节点就将 open 置为 false，如果用 if else 的话触发这个事件的时候节点已经不在了，所以会判断成在 dropdown 外面点击，就会出现展开马上又收起的问题 -->
 				<span class={selected?'':'kl-select__multi-placeholder'} r-hide={open && canSearch}>{selected?selected[nameKey]:placeholder}</span>
-	        </div>
-	    {#else}
-	        <div class="kl-dropdown__hd"
+			</div>
+		{#else}
+			<div class="kl-dropdown__hd"
 				 r-class={{'is-active':open}}
-	             on-click={this.toggle(!open, $event)}
 				 r-style={{'max-height': (open && canSearch) ? '116px' : '84px'}}
 				 {#if open && canSearch} style="min-height: 65px;" {/if}>
-	            <kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {multiple ? 'kl-select__hover--hide' : ''}"/>
+				<kl-icon fontSize=12 type="{open ? 'arrow-up' : 'arrow-down'}" class="f-fr {multiple ? 'kl-select__hover--hide' : ''}"/>
 
-	            {#if open && canSearch}
-	            <div>
-		            <input disabled={disabled} readonly={readonly} type="text" class="kl-select__input-inner kl-select__search kl-select__search--one" ref="input"
-		                   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
-		            <kl-icon fontSize=15 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
-	            </div>
-	            {/if}
+				{#if open && canSearch}
+				<div>
+					<input disabled={disabled} readonly={readonly} type="text" class="kl-select__input-inner kl-select__search kl-select__search--one" ref="input"
+						   r-autofocus r-model={searchValue} on-click={this.searchClick($event)}/>
+					<kl-icon fontSize=15 type="error" on-click={this.clearContent($event)} class="kl-icon-remove-addclass "/>
+				</div>
+				{/if}
 				{#if tags && selected.length > 0}
 					<span class="kl-select__tag" >
-	                    {selected[0]['name']}
+						{selected[0]['name']}
 						<kl-icon type="cross" is-dis={selected.disabled} on-click={this.removeSelected(selected,0,$event)} />
-	                </span>
+					</span>
 					<span class="kl-select__tags" >
-	                    + {selected.length}
-	                </span>
+						+ {selected.length}
+					</span>
 				{#else}
 					{#list selected as item}
 						<span class="kl-select__tag" r-class={{'kl-select__tag--more':item[nameKey].length >= 15}}>
@@ -51,67 +59,65 @@
 					{/list}
 				{/if}
 				<span class='kl-select__multi-placeholder' r-hide={!(!open && (!selected || !selected.length))}>{placeholder}</span>
-	        </div>
-	    {/if}
-	    {#if open}
-	    <div class="kl-dropdown__bd"
-	         r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-          <div class="kl-listview" ref="listview">
-            <kl-scroll wrapMaxHeight="200px">
-              <ul>
-                {#if placeholder}
-                <li is-hover={key_index == -1} class="kl-listview-item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
-                {placeholder}
-                </li>
-                {/if}
-                {#list this.filterArray(source) as item}
-                {#if (!filter || (filter && filter(item)))}
-                {#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-                <li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
-                <check disabled={disabled} checked={selected.length===this.filterData(source).length} />
-                {this.$trans('ALL')}
-                </li>
-                {/if}
-                {#if item.disabled && item.tip}
-                <kl-tooltip tip={item.tip} placement={item.placement||'top'}>
-                  <li is-dis={item.disabled} class="kl-listview-item" is-divider={item.divider} is-sel={multiple?false:selected===item}
-                      title={item[nameKey]} on-click={this.select(item)}>
-                    {#if multiple && !item.divider}
-                    <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-                    {/if}
-                    {#if @(itemTemplate)}
-                    {#inc @(itemTemplate)}
-                    {#else}
-                    {@(item[nameKey])}
-                    {/if}
-                  </li>
-                </kl-tooltip>
-                {#else}
-                <li is-hover={key_index == item_index} class="kl-listview-item"  is-dis={item.disabled} is-divider={item.divider} is-sel={multiple?false:selected===item}
-                title={item[nameKey]} on-click={this.select(item)}>
-                {#if multiple && !item.divider}
-                <check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
-                {/if}
-                {#if @(itemTemplate)}
-                {#inc @(itemTemplate)}
-                {#else}
-                {@(item[nameKey])}
-                {/if}
-                </li>
-                {/if}
-                {/if}
-                {#else}
-                {#if searchValue}
-                <li class="kl-listview-item">
-                  {@(noMatchText)}
-                </li>
-                {/if}
-                {/list}
-              </ul>
-            </kl-scroll>
-	        </div>
-	    </div>
-	    {/if}
+			</div>
+		{/if}
+
+		{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><kl-icon type={state} /><span class="tip">{tip}</span></span>{/if}
+	</kl-drop-header>
+
+
+ 	<div class="kl-listview" ref="listview">
+		<kl-scroll wrapMaxHeight="200px">
+			<ul>
+			{#if placeholder}
+			<li is-hover={key_index == -1} class="kl-listview-item" is-sel={multiple?!selected.length:!selected} on-click={this.select(undefined)}>
+			{placeholder}
+			</li>
+			{/if}
+			{#list this.filterArray(source) as item}
+			{#if (!filter || (filter && filter(item)))}
+			{#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
+			<li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
+			<check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+			{this.$trans('ALL')}
+			</li>
+			{/if}
+			{#if item.disabled && item.tip}
+			<kl-tooltip tip={item.tip} placement={item.placement||'top'}>
+				<li is-dis={item.disabled} class="kl-listview-item" is-divider={item.divider} is-sel={multiple?false:selected===item}
+					title={item[nameKey]} on-click={this.select(item)}>
+				{#if multiple && !item.divider}
+				<check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+				{/if}
+				{#if @(itemTemplate)}
+				{#inc @(itemTemplate)}
+				{#else}
+				{@(item[nameKey])}
+				{/if}
+				</li>
+			</kl-tooltip>
+			{#else}
+			<li is-hover={key_index == item_index} class="kl-listview-item"  is-dis={item.disabled} is-divider={item.divider} is-sel={multiple?false:selected===item}
+			title={item[nameKey]} on-click={this.select(item)}>
+			{#if multiple && !item.divider}
+			<check disabled={item.disabled} checked={multiple?this.indexOf(selected,item)!==-1:selected===item} />
+			{/if}
+			{#if @(itemTemplate)}
+			{#inc @(itemTemplate)}
+			{#else}
+			{@(item[nameKey])}
+			{/if}
+			</li>
+			{/if}
+			{/if}
+			{#else}
+			{#if searchValue}
+			<li class="kl-listview-item">
+				{@(noMatchText)}
+			</li>
+			{/if}
+			{/list}
+			</ul>
+		</kl-scroll>
 	</div>
-	{#if tip && !hideTip}<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;"><kl-icon type={state} /><span class="tip">{tip}</span></span>{/if}
-</div>
+</kl-drop>
