@@ -59,6 +59,8 @@ const KLSelect = SourceComponent.extend({
   config() {
     const data = this.data;
     _.extend(data, {
+      appendToBody: false,
+      placement: 'bottom',
       hideTip: false,
       selected: undefined,
       key: 'id',

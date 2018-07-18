@@ -1,11 +1,4 @@
-<!-- <div>
-	<div class="kl-dropdown kl-dropdown--{state}" r-class={{'is-multiple':multiple}}
-			is-dis={disabled} r-hide={!visible} ref="element">
-	</div>
-</div> -->
-
-
-<kl-drop class="kl-select kl-select--{state} kl-select--{size} {class}"
+<kl-drop placement={placement} appendToBody={appendToBody} class="kl-select kl-select--{state} kl-select--{size} {class}"
 	width={width}
 	isShow={open}
 	on-click={this.toggle(!open, $event)}>
@@ -66,7 +59,7 @@
 	</kl-drop-header>
 
 
- 	<div class="kl-listview" ref="listview">
+ 	<div class="kl-listview kl-select--listview" ref="listview">
 		<kl-scroll wrapMaxHeight="200px">
 			<ul>
 			{#if placeholder}

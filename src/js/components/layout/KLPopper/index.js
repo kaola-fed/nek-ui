@@ -55,9 +55,11 @@ const PopperComponent = Component.extend({
   },
   updatePopper() {
     if (!this.data.popperJS) {
-      console.log(this.data.appendToBody);
       if (this.data.appendToBody === true) {
         document.body.appendChild(this.$refs.popper);
+        console.log(window.getComputedStyle(this.data.reference).width);
+        const referenceWidth = window.getComputedStyle(this.data.reference).width;
+        this.$refs.popper.style.width = referenceWidth;
       }
       this.data.popperJS = new Popper(this.data.reference, this.$refs.popper, {
         placement: this.data.placement,
