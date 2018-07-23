@@ -722,12 +722,12 @@ var component = new NEKUI.Component({
 ```javascript
 var component = new NEKUI.Component({
     template: template,
-    show: function(type) {
+    show: function(modalType) {
         // 打开一个Modal
         var modal = new NEKUI.KLModal({
             data: {
                 content: 'Modal内容',
-                type: type,
+                modalType: modalType,
                 title: '确认要删除这条信息吗？',
                 cancelButton: true
             }
