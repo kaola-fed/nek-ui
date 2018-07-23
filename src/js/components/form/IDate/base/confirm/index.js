@@ -16,9 +16,6 @@ const KLDateConfirm = Component.extend({
         this.supr();
     },
 
-    handleClear() {
-        this.$emit('pick-clear');
-    },
     handleSuccess() {
         this.$emit('pick-success');
     },

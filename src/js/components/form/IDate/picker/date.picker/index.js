@@ -84,8 +84,6 @@ const KLNewDate = Component.extend({
             timePickerOptions: {},
             options: {},
 
-
-
             name: '',
             steps: [],
 
@@ -188,7 +186,6 @@ const KLNewDate = Component.extend({
         this.data.publicStringValue = Array.isArray(publicVModelValue) ? publicVModelValue.map(formatDate) : formatDate(publicVModelValue);
         return Array.isArray(publicVModelValue) ? publicVModelValue.map(formatDate) : formatDate(publicVModelValue);
     },
-
 
 
     computed: {

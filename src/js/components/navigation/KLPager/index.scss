@@ -112,8 +112,9 @@ $m-pager_li_a_size: 30px;
 
 
     @include e(goto) {
-        display: inline-block;
         margin-left: 20px;
+        display: flex;
+        align-items: center;
         .kl-input{
             display: inline-block;
             width: 40px;

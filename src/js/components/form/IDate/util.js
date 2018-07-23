@@ -134,10 +134,13 @@ export const getFirstDayOfMonth = function (date) {
 export const siblingMonth = function (src, diff) {
     const temp = new Date(src); // lets copy it so we don't change the original
     const newMonth = temp.getMonth() + diff;
+
+    // 防止月数设置错误
     const newMonthDayCount = getDayCountOfMonth(temp.getFullYear(), newMonth);
     if (newMonthDayCount < temp.getDate()) {
         temp.setDate(newMonthDayCount);
     }
+
     temp.setMonth(newMonth);
 
     return temp;

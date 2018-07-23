@@ -35,27 +35,32 @@
     {#if open}
     <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
         <div class="kl-multi-select-cate-wrap">
-            {#list 0..9 as level}
-            {#if tree[level] && tree[level].length}
-            <ul class="kl-multi-select-cate-inner" r-animation="on: leave; class: animated fadeOutX fast;">
-                <kl-input value={search[level]}  readonly={readonly}></kl-input>
-                {#list tree[level] | search : search[level],level as cate}
-                {#if !filter || (filter && filter(cate))}
-                <li class="f-csp kl-multi-select-cate {cate.active ? 'kl-multi-select-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
-                	{#if multiple}
-                	<kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
-                    {/if}
-                    <span {#if !multiple} class="kl-multi-select-cate__name"  {/if}>{cate[nameKey]}</span>
-                    {#if cate[childKey] && cate[childKey].length}<span class="kl-multi-select-cate__more" r-class={{'kl-multi-select-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="arrow-right" /></span>{/if}
-                </li>
-                {/if}
-                {/list}
-                {#if empty[level]}
-				<li class="f-csp">无任何匹配选项</li>
-                {/if}
-            </ul>
-            {/if}
-            {/list}
+            <kl-scroll wrapMaxHeight="261px" ref="scroll">
+              {#list 0..9 as level}
+              {#if tree[level] && tree[level].length}
+              <ul class="kl-multi-select-cate-inner" r-animation="on: leave; class: animated fadeOutX fast;">
+                  <kl-input value={search[level]}  readonly={readonly}></kl-input>
+                  <kl-scroll class="kl-multi-select-cate-inner-scroll" wrapMaxHeight="225px">
+                  {#list tree[level] | search : search[level],level as cate}
+                  {#if !filter || (filter && filter(cate))}
+
+                  <li class="f-csp kl-multi-select-cate {cate.active ? 'kl-multi-select-cate--active' : ''}" on-click={this.viewCate(cate, level)}>
+                    {#if multiple}
+                    <kl-check checked={cate[checkKey]} on-check={this.checkCate(cate, level, cate[checkKey])}  readonly={readonly} ></kl-check>
+                      {/if}
+                      <span {#if !multiple} class="kl-multi-select-cate__name"  {/if}>{cate[nameKey]}</span>
+                      {#if cate[childKey] && cate[childKey].length}<span class="kl-multi-select-cate__more" r-class={{'kl-multi-select-cate__more--child': !multiple && !onlyChild}}{#if !multiple && !onlyChild} on-click={this.viewCate(cate, level, true, $event)} {/if}><kl-icon type="arrow-right" /></span>{/if}
+                  </li>
+                  {/if}
+                  {/list}
+                  </kl-scroll>
+                  {#if empty[level]}
+                  <li class="f-csp">无任何匹配选项</li>
+                  {/if}
+              </ul>
+              {/if}
+              {/list}
+            </kl-scroll>
         </div>
     </div>
     {/if}

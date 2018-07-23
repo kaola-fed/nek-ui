@@ -7,15 +7,5 @@ export default (Component) => {
       this.resetView();
       this.$emit('pick-success');
     },
-    onPickClear() {
-      this.resetView();
-      this.$emit('pick-clear');
-    },
-    resetView() {
-      setTimeout(
-                () => this.data.currentView = this.data.selectionMode,
-                500, // 500ms so the dropdown can close before changing
-            );
-    },
   });
 };

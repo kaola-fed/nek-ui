@@ -7,7 +7,7 @@
             on-focus={this._onFocus($event)}
             on-keyup={this._onKeyUp($event)} on-blur={this._onBlur($event)}  on-change={this._onChange($event)} on-input={this._onInput($event)}>
         {#if this.events.search}
-            <kl-icon class="kl-input-wrap__icon" type="search" on-click={this._onSearch($event)} />
+            <kl-icon class="kl-input-wrap__icon" type="zoom" on-click={this._onSearch($event)} />
         {#elseif unit}
             <span class="kl-input-wrap__unit">{unit}</span>
         {#elseif clearable && value.length}

@@ -76,6 +76,12 @@
         margin-left: 13px;
         width: 15px;
     }
+    .kl-scroll-wrap__view {
+      display: inline-block;
+    }
+    .kl-multi-select-cate-inner-scroll .kl-scroll-wrap__view {
+      display: block;
+    }
 }
 
 @include b(multi-select-cate) {

@@ -12,7 +12,7 @@ export default (Component) => {
       if (!updateOtherPanel) return;
 
       if (this.data.splitPanels) {
-                // change other panel if dates overlap
+        // change other panel if dates overlap
         const otherPanel = panel === 'left' ? 'right' : 'left';
         if (panel === 'left' && this.data.leftPanelDate >= this.data.rightPanelDate) {
           this.changePanelDate(otherPanel, type, 1);
@@ -21,16 +21,15 @@ export default (Component) => {
           this.changePanelDate(otherPanel, type, -1);
         }
       } else {
-                // keep the panels together
+        // keep the panels together
         const otherPanel = panel === 'left' ? 'right' : 'left';
         const otherCurrent = new Date(this.data[`${otherPanel}PanelDate`]);
         otherCurrent[`set${type}`](otherCurrent[`get${type}`]() + increment);
         this.data[`${otherPanel}PanelDate`] = otherCurrent;
       }
 
-
-      this.leftDatePanelLabel(); // ?
-      this.rightDatePanelLabel(); // ?
+      this.data.leftDatePanelLabel = this.panelLabelConfig('left');
+      this.data.rightDatePanelLabel = this.panelLabelConfig('right');
     },
   });
 };

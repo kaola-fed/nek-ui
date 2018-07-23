@@ -3,16 +3,15 @@ import Component from '../../../../../../ui-base/component';
 import _ from '../../../../../../ui-base/_';
 import template from './index.html';
 
+// components
 import DateTable from '../../../base/date.table/index';
 import YearTable from '../../../base/year.table/index';
 import MonthTable from '../../../base/month.table/index';
 import Confirm from '../../../base/confirm/index';
-
 import TimeRangePicker from '../../Time/time.range/index';
-
 import datePanelLabel from '../date.panel.label/index';
 
-
+// mixins
 import ClassesMixin from './mixins/classes.mixin';
 import TimeOperationMixin from './mixins/time.operation';
 import TimeConfirmOperationMixin from './mixins/time.confirm.operation';
@@ -21,9 +20,8 @@ import ComputedMixin from './mixins/computed.mixin';
 import PanelOperationMixin from './mixins/panel.operation';
 import PanelLableMixin from './mixins/pabel.label';
 
-
+// utils
 import {toDate, initTimeDate, formatDateLabels} from '../../../util';
-
 
 
 const dateSorter = (a, b) => {
@@ -32,16 +30,13 @@ const dateSorter = (a, b) => {
 };
 
 
-
 const prefixCls = 'ivu-picker-panel';
 const datePrefixCls = 'ivu-date-picker';
-
 
 const KLDatePickerPanel = Component.extend({
     name: 'kl-range-date-picker-panel',
     template,
     config() {
-
         _.extend(this.data, {
             confirm: false,
             showTime: false,
@@ -72,28 +67,17 @@ const KLDatePickerPanel = Component.extend({
         this.data.currentView = this.data.selectionMode || 'range';
         this.data.leftPickerTable = `${this.data.selectionMode}-table`;
         this.data.rightPickerTable = `${this.data.selectionMode}-table`;
-
-        this.supr();
-        this.leftDatePanelLabel();
-        this.rightDatePanelLabel();
+        this.data.leftDatePanelLabel = this.panelLabelConfig('left');
+        this.data.rightDatePanelLabel = this.panelLabelConfig('right');
 
         this.preSelecting();
         this.panelPickerHandlers();
-
-
-
-
-
+        this.supr();
     },
 
-    //
     preSelecting(){
         const tableType = `${this.data.currentView}-table`;
         this.data.preSelecting = {
-            left: this.data.leftPickerTable !== tableType,
-            right: this.data.rightPickerTable !== tableType,
-        };
-        return {
             left: this.data.leftPickerTable !== tableType,
             right: this.data.rightPickerTable !== tableType,
         };
@@ -101,10 +85,6 @@ const KLDatePickerPanel = Component.extend({
     panelPickerHandlers(){
         this.data.panelPickerHandlers = {
             left: this.data.preSelecting.left ? this.handlePreSelection.bind(this, 'left') : this.onRangePick.bind(this) ,
-            right: this.data.preSelecting.right ? this.handlePreSelection.bind(this, 'right') : this.onRangePick.bind(this),
-        };
-        return {
-            left: this.data.preSelecting.left ? this.handlePreSelection.bind(this, 'left') : this.onRangePick.bind(this),
             right: this.data.preSelecting.right ? this.handlePreSelection.bind(this, 'right') : this.onRangePick.bind(this),
         };
     },
@@ -138,7 +118,6 @@ const KLDatePickerPanel = Component.extend({
                 to: store.dates[1],
                 selecting: false
             };
-
 
             // set panels positioning
             this.setPanelDates(store.startDate || store.dates[0] || new Date());
@@ -198,42 +177,8 @@ const KLDatePickerPanel = Component.extend({
         const rangeState = this.data.rangeState;
         rangeState.to = val;
 
-
         this.data.rangeState = rangeState;
     },
-
-
-    handleConfirm(visible, type) {
-        this.$emit('pick', {
-            value: this.data.dates,
-            visible,
-            type: type || this.data.type,
-        });
-    },
-
-    // 外部调用
-    onToggleVisibility(open) {
-        const {timeSpinner, timeSpinnerEnd} = this.$refs;
-        if (open && timeSpinner) timeSpinner.updateScroll();
-        if (open && timeSpinnerEnd) timeSpinnerEnd.updateScroll();
-    },
-
-
-
-    // handleClear() {
-    //     this.data.dates = this.data.dates.map(() => null);
-    //     this.data.rangeState = {};
-    //     this.$emit('pick', this.data.dates);
-    //     this.handleConfirm();
-    //     //  if (this.showTime) this.$refs.timePicker.handleClear();
-    // },
-    // reset(){
-    //     this.data.currentView = this.data.selectionMode;
-    //     this.data.leftPickerTable = `${this.data.currentView}-table`;
-    //     this.data.rightPickerTable = `${this.data.currentView}-table`;
-    // },
-
-
 })
     .use(ClassesMixin)
     .use(CommonMixin)

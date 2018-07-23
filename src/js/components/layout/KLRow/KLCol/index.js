@@ -27,7 +27,7 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 40,
+      gutter: 24,
       xs: '',
       sm: '',
       md: '',
@@ -53,7 +53,7 @@ const KLCol = Component.extend({
 
 KLCol.directive('gutter', function (ele, value) {
   this.$watch(value, (gutter) => {
-    if (gutter) {
+    if (gutter || gutter === 0) {
       const padding = `${gutter / 2}px`;
       ele.style.paddingLeft = padding;
       ele.style.paddingRight = padding;

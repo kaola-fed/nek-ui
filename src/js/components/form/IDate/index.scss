@@ -514,3 +514,24 @@ span.ivu-date-picker-cells-cell-disabled.ivu-date-picker-cells-cell-selected em 
 .ivu-picker-panel-content .ivu-picker-panel-content .ivu-time-picker-cells-list ul li {
     padding: 0 0 0 46px
 }
+
+.kl-date-header {
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 12px;
+    overflow: hidden;
+    word-wrap: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-height: 32px;
+    line-height: 30px;
+    padding: 0 10px;
+    background: #FFF;
+    color: #333;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    overflow-y: auto;
+    position: relative;
+    transition: border 1s ease, box-shadow 1s ease;
+    width: 100%;
+}

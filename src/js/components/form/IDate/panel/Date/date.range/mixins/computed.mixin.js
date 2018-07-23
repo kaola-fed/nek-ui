@@ -4,12 +4,6 @@ export default (Component) => {
       isTime() {
         return this.data.currentView === 'time';
       },
-            // leftDatePanelLabel(){
-            //     return this.panelLabelConfig('left');
-            // },
-            // rightDatePanelLabel(){
-            //     return this.panelLabelConfig('right');
-            // },
       leftDatePanelView() {
         return this.data.leftPickerTable.split('-').shift();
       },
@@ -19,7 +13,6 @@ export default (Component) => {
       timeDisabled() {
         return !(this.data.dates[0] && this.data.dates[1]);
       },
-
     },
   });
 };
