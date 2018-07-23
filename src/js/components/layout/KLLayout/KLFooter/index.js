@@ -12,7 +12,7 @@ const template = require('./index.html');
  * @class KLFooter
  * @extend Component
  * @param {string}           [options.height]                        => 尾部高度
-
+ * @param {string}           [options.class]                        => class样式
  */
 const KLFooter = Component.extend({
   name: 'kl-footer',
@@ -20,6 +20,7 @@ const KLFooter = Component.extend({
   config() {
     this.defaults({
       height: '60px',
+      class: '',
     });
 
     this.supr();
