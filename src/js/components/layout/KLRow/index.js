@@ -38,7 +38,7 @@ const KLRow = Component.extend({
       type: '',
       justify: 'start',
       align: 'top',
-      gutter: 40,
+      gutter: 24,
       wrap: 'wrap',
     });
 
