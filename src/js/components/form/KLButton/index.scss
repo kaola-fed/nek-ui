@@ -58,11 +58,11 @@ $active-bg-color, $active-color, $active-border-color) {
         @include btn-size(0px 16px, $--height-lg, $--font-size-lg);
     }
     /* Btn-Type */
-    @include m(default) {
-        @include btn-type($--background-color-white, $--text-color-default, $--border-color-base,
-        $--background-color-white, $--text-color-primary-hover, $--border-color-primary-hover,
-        $--background-color-white, $--text-color-primary-active, $--border-color-primary-active);
-    }
+    @include btn-type($--background-color-white, $--text-color-default, $--border-color-base,
+    $--background-color-white, $--text-color-primary-hover, $--border-color-primary-hover,
+    $--background-color-white, $--text-color-primary-active, $--border-color-primary-active);
+    // @include m(default) {
+    // }
     @include m(primary) {
         @include btn-type($--background-color-primary, $--text-color-white, $--border-color-primary,
         $--background-color-primary-hover, $--text-color-white, $--border-color-primary-hover,
