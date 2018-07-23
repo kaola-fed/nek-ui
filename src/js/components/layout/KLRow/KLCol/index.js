@@ -27,7 +27,7 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 40,
+      gutter: 24,
       xs: '',
       sm: '',
       md: '',
