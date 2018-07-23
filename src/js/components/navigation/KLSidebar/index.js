@@ -42,7 +42,7 @@ const KLSidebar = Component.extend({
       childrenKey: 'children',
       todoKey: 'todos',
       top: '60px',
-      width: '181px',
+      width: '216px',
       theme: 'light',
     });
 
