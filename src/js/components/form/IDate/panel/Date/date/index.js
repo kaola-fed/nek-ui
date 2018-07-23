@@ -9,9 +9,7 @@ import DateTable from '../../../base/date.table/index';
 import YearTable from '../../../base/year.table/index';
 import MonthTable from '../../../base/month.table/index';
 import Confirm from '../../../base/confirm/index';
-
 import TimePicker from '../../Time/time/index';
-
 import DatePanelLabel from '../date.panel.label/index';
 
 import {siblingMonth, formatDateLabels, initTimeDate} from '../../../util';
@@ -47,31 +45,27 @@ const KLDatePickerPanel = Component.extend({
 
         const {selectionMode, value} = this.data;
 
-        const dates = value.slice().sort();
+        this.setPickerTableType(selectionMode);
+        const dates = value.sort();
 
         this.data.currentView = selectionMode || 'date';
-        this.setPickerTableType(selectionMode);
         this.data.dates = dates;
-        this.data.panelDate = this.data.startDate || dates[0] || new Date();
+        this.data.panelDate = this.data.startDate || (this.data.multiple ? this.data.dates[this.data.dates.length - 1] : this.data.dates[0]) || new Date();
     },
     init() {
         this.supr();
 
-        this.datePanelLabel();
+        this.getDatePanelLabel();
 
         this.$watch('value', (newVal) => {
             const store = this.data;
 
             store.dates = newVal;
             store.panelDate = store.startDate || (store.multiple ? store.dates[store.dates.length - 1] : store.dates[0]) || new Date();
-
-
         });
 
         this.$watch('panelDate', (newVal) => {
-
-
-            this.datePanelLabel();
+            this.getDatePanelLabel();
         });
 
 
@@ -106,12 +100,16 @@ const KLDatePickerPanel = Component.extend({
         });
     },
 
+    stopPropagation(e) {
+        e.stopPropagation();
+    },
+
 
     /**
      * computed
      * panelDate, pickerTable
      */
-    datePanelLabel() {
+    getDatePanelLabel() {
         const date = this.data.panelDate;
 
         const locale = 'zh-CN';
@@ -120,21 +118,14 @@ const KLDatePickerPanel = Component.extend({
 
         const handler = type => () => this.setPickerTableType(type);
 
-
         this.data.datePanelLabel = {
             separator,
             labels: labels.map(obj => ((obj.handler = handler(obj.type)), obj)),
         };
-        return {
-            separator,
-            labels: labels.map(obj => ((obj.handler = handler(obj.type)), obj)),
-        };
     },
 
 
-    stopPropagation(e) {
-        e.stopPropagation();
-    },
+
 
 
     resetView() {
@@ -193,13 +184,7 @@ const KLDatePickerPanel = Component.extend({
     },
 
 
-    handleClear() {
-        this.data.dates = this.data.dates.map(() => null);
-        this.data.rangeState = {};
-        this.$emit('pick', { value: this.data.dates});
-        this.handleConfirm();
-        //  if (this.showTime) this.$refs.timePicker.handleClear();
-    },
+
     handleConfirm(visible, type) {
         this.$emit('pick', {
             value: this.data.dates,
@@ -211,18 +196,15 @@ const KLDatePickerPanel = Component.extend({
         this.data.currentView = this.data.currentView === 'time' ? 'date' : 'time';
     },
 
-    //
 
-    onToggleVisibility(open) {
-        const {timeSpinner, timeSpinnerEnd} = this.$refs;
-        if (open && timeSpinner) timeSpinner.updateScroll();
-        if (open && timeSpinnerEnd) timeSpinnerEnd.updateScroll();
+
+
+
+    setPickerTableType(currentView) {
+        this.data.pickerTable = currentView.match(/^time/) ? 'time-picker' : `${currentView}-table`;
     },
 
-    reset() {
-        this.data.currentView = this.data.selectionMode;
-        this.setPickerTableType(this.data.currentView);
-    },
+
     changeYear(dir) {
         if (this.data.selectionMode === 'year' || this.data.pickerTable === 'year-table') {
             this.data.panelDate = new Date(this.data.panelDate.getFullYear() + dir * 10, 0, 1);
@@ -230,24 +212,40 @@ const KLDatePickerPanel = Component.extend({
             this.data.panelDate = siblingMonth(this.data.panelDate, dir * 12);
         }
 
-        this.datePanelLabel(); // ??
-    },
-    setPickerTableType(currentView) {
-        this.data.pickerTable = currentView.match(/^time/) ? 'time-picker' : `${currentView}-table`;
+        this.getDatePanelLabel(); // ??
     },
     changeMonth(dir) {
         this.data.panelDate = siblingMonth(this.data.panelDate, dir);
-        this.datePanelLabel(); // ??
+        this.getDatePanelLabel(); // ??
     },
 
 
     computed: {
-        isTime() {
-            return this.data.currentView === 'time';
-        },
         timeDisabled() {
             return !this.data.dates[0];
         },
+    },
+
+
+
+
+
+
+    reset() {
+        this.data.currentView = this.data.selectionMode;
+        this.setPickerTableType(this.data.currentView);
+    },
+    handleClear() {
+        this.data.dates = this.data.dates.map(() => null);
+        this.data.rangeState = {};
+        this.$emit('pick', { value: this.data.dates});
+        this.handleConfirm();
+        //  if (this.showTime) this.$refs.timePicker.handleClear();
+    },
+    onToggleVisibility(open) {
+        const {timeSpinner, timeSpinnerEnd} = this.$refs;
+        if (open && timeSpinner) timeSpinner.updateScroll();
+        if (open && timeSpinnerEnd) timeSpinnerEnd.updateScroll();
     },
 })
     .use(ClassesMixin);

@@ -19,7 +19,11 @@ export default (Component) => {
             selecting: false,
           };
         }
-        this.handleConfirm(false, type || 'date');
+        this.$emit('pick', {
+          value: this.data.dates,
+          visible: false,
+          type: type || 'date',
+        });
       } else {
         this.data.rangeState = {
           from: val,

@@ -1,5 +1,6 @@
-<div class="kl-dropdown">
-    <div class="kl-dropdown__header {headerClass}" ref="reference" on-click="{this.onClick()}">
+<div class="kl-dropdown {class}" r-width="{width}">
+    <div class="kl-dropdown__header {headerClass}" ref="reference"
+        on-click="{this.onClick($event)}">
         {#if this.$header}
             {#inc this.$header.$body}
         {/if}

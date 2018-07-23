@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: 0 */
 import KLPopper from '../KLPopper/index';
 
-const Component = require('../../../ui-base/component');
+const Component = require('../../../ui-base/sourceComponent');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
@@ -12,21 +12,19 @@ const KLDrop = Component.extend({
   config() {
     _.extend(this.data, {
       appendToBody: false,
-      placement: 'top-right',
+      placement: 'bottom',
       isShow: false,
       headerClass: '',
     });
     this.supr();
   },
-  onClick() {
-    // if (this.trigger == 'custom') {
-    //     this.isShowPopper = true;
-    //     return;
-    // }
-
+  onClick(event) {
     this.data.isShow = !this.data.isShow;
     if (this.data.isShow) {
-      this.$emit('toggle');
+      this.$emit('click', {
+        isShow: this.data.isShow,
+        event,
+      });
     }
   },
 });

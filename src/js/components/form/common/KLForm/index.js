@@ -49,6 +49,7 @@ const KLForm = Validation.extend({
     });
 
     this.supr(data);
+    this.__reqSourceOnce = _.debounce(this.__reqSource.bind(this), 200, false);
   },
   init() {
     this.supr();
@@ -59,8 +60,6 @@ const KLForm = Validation.extend({
       this.initSelectorSource();
       this.initFormItem();
     });
-
-    this.__reqSourceOnce = _.debounce(this.__reqSource.bind(this), 200, false);
   },
   initFormItem() {
     const controls = this.controls;

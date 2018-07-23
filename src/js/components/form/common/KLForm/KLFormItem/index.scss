@@ -65,7 +65,7 @@
             display: inline-block;
         }
     }
-    @include e(vertical) {
+    @include m(vertical) {
         flex-direction: column;
         .kl-form-item__tt {
             text-align: left !important;
