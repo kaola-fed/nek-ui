@@ -2,7 +2,7 @@
   box-sizing: border-box;
   float: left;
   min-height: 1px;
-  padding: 0 10px;
+  padding: 0 12px;
 }
 
 @for $i from 1 through $--col-size {
