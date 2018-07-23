@@ -15,6 +15,7 @@ const template = require('./index.html');
  * @param {string}      [options.data.sourcePath=data]    => 获取到select数据后,读取json数据的路径
  * @param {string/number} [options.data.labelSize]     => 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同
  * @param {string/number} [options.data.labelLineHeight]  => 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同
+ * @param {string/number} [options.data.layout]  => 排列方式: 默认(横着排)/vertical/inline;
  */
 
 /**
@@ -66,6 +67,7 @@ const KLForm = Validation.extend({
     const {
       labelSize,
       labelLineHeight,
+      layout,
     } = this.data;
     labelSize &&
       controls.forEach(($component) => {
@@ -77,6 +79,12 @@ const KLForm = Validation.extend({
       controls.forEach(($component) => {
         if (!$component.data.labelLineHeight) {
           $component.$update('labelLineHeight', labelLineHeight);
+        }
+      });
+    layout &&
+      controls.forEach(($component) => {
+        if (!$component.data.layout) {
+          $component.$update('layout', layout);
         }
       });
   },
