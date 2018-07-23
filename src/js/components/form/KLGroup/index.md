@@ -19,6 +19,14 @@ title: Group
     <kl-input />
     <kl-select />
 </kl-group>
+<br>
+<br>
+<br>
+
+<kl-group>
+    <kl-date-picker />
+    <kl-date-picker />
+</kl-group>
 ```
 
 <!-- demo_end -->

@@ -12,6 +12,7 @@ const template = require('./index.html');
  * @class KLHeader
  * @extend Component
  * @param {string}           [options.height]                        => 头部高度
+ * @param {string}           [options.class]                        => class样式
 
  */
 const KLHeader = Component.extend({
@@ -19,6 +20,7 @@ const KLHeader = Component.extend({
   template,
   config() {
     this.defaults({
+      class: '',
       height: '60px',
     });
     this.supr();
