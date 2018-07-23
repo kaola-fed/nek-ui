@@ -27,7 +27,6 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 24,
       xs: '',
       sm: '',
       md: '',
@@ -44,7 +43,10 @@ const KLCol = Component.extend({
     } while (!($outer instanceof KLRow) && ($outer.$outer || $outer.$parent));
 
     if ($outer && $outer instanceof KLRow) {
-      this.data.gutter = $outer.data.gutter;
+      const outerGutter = $outer.data.gutter;
+      if (!this.data.gutter && this.data.gutter !== 0) {
+        this.data.gutter = outerGutter;
+      }
     }
 
     this.supr(data);
@@ -53,7 +55,7 @@ const KLCol = Component.extend({
 
 KLCol.directive('gutter', function (ele, value) {
   this.$watch(value, (gutter) => {
-    if (gutter) {
+    if (gutter || gutter === 0) {
       const padding = `${gutter / 2}px`;
       ele.style.paddingLeft = padding;
       ele.style.paddingRight = padding;
