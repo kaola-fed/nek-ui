@@ -52,6 +52,7 @@
         padding: 0px;
         height: 20px;
         vertical-align: unset;
+        box-sizing: content-box;
     }
 
     @include e(search) {
@@ -136,6 +137,7 @@
         .kl-icon-remove-addclass {
             position: relative;
             top: -28px;
+            right: 10px;
         }
 
         span {
