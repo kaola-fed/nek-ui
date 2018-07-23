@@ -2,6 +2,7 @@
     flex: 1;
     padding: 20px;
     background: #ddd;
+    overflow: auto;
 
     @include when(master) {
         position: absolute;

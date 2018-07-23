@@ -1,8 +1,8 @@
 <div class="kl-modal {class}" r-anim='on:enter; class: modal_animated modal_zoomIn; on:leave; class: modal_animated modal_zoomOut;'>
-    <div class="kl-modal__dialog kl-modal__dialog--{type} {fullscreen ? 'kl-modal__dialog--fullscreen': ''}" style="width: {width}px;" ref="modalDialog">
-        {#if type}
+    <div class="kl-modal__dialog kl-modal__dialog--{modalType} {fullscreen ? 'kl-modal__dialog--fullscreen': ''}" style="width: {width}px;" ref="modalDialog">
+        {#if modalType}
         <div class="kl-modal-type">
-            <kl-icon type={type} />
+            <kl-icon type={modalType} />
             <div class="kl-modal-type__right">
                 <h3 class="kl-modal-type__title">{title}</h3>
                 <div class="kl-modal-type__bd">
