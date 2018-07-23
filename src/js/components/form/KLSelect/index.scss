@@ -224,19 +224,13 @@
     }
 
     @include m(smw) {
-        .kl-dropdown__hd {
-            @include form-item-width($--width-sm);
-        }
+        @include form-item-width($--width-sm);
     }
     @include m(mdw) {
-        .kl-dropdown__hd {
-            @include form-item-width($--width-md);
-        }
+        @include form-item-width($--width-md);
     }
     @include m(lgw) {
-        .kl-dropdown__hd {
-            @include form-item-width($--width-lg);
-        }
+        @include form-item-width($--width-lg);
     }
 }
 
