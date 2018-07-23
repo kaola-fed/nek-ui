@@ -27,7 +27,6 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 24,
       xs: '',
       sm: '',
       md: '',
@@ -44,7 +43,10 @@ const KLCol = Component.extend({
     } while (!($outer instanceof KLRow) && ($outer.$outer || $outer.$parent));
 
     if ($outer && $outer instanceof KLRow) {
-      this.data.gutter = $outer.data.gutter;
+      const outerGutter = $outer.data.gutter;
+      if (!this.data.gutter && this.data.gutter !== 0) {
+        this.data.gutter = outerGutter;
+      }
     }
 
     this.supr(data);
