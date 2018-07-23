@@ -21,7 +21,7 @@
         <kl-draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>
         <div class="kl-modal__hd">
             {#if isCanClose}
-            <a class="kl-modal__close" on-click={this.close(false)}><kl-icon type="close" /></a>
+            <a class="kl-modal__close" on-click={this.close(false)}><kl-icon type="cross" /></a>
             {/if}
             <h3 class="kl-modal__title">{title}</h3>
         </div>
