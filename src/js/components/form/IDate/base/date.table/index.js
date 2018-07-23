@@ -50,27 +50,27 @@ const KLDateTable = Component.extend({
         this.calendar();
         this.headerDays();
 
-        this.dates();
+        this.getDates();
         this.cells();
 
         this.$watch('value', (newValue) => {
-            this.dates();
+            this.getDates();
             this.cells();
         });
 
         this.$watch('tableDate', (newValue) => {
-            this.dates();
+            this.getDates();
             this.cells();
         });
 
         this.$watch('rangeState', (newValue) => {
-            this.dates();
+            this.getDates();
             this.cells();
         });
 
         // 待优化？？ rangeState变了 没检测到？！
         this.$watch('rangeState.to', (newValue) => {
-            this.dates();
+            this.getDates();
             this.cells();
         });
     },
@@ -89,11 +89,10 @@ const KLDateTable = Component.extend({
     },
 
     // 依赖的外部值：selectionMode, value, rangeState
-    dates() {
+    getDates() {
         const {selectionMode, value, rangeState} = this.data;
         const rangeSelecting = selectionMode === 'range' && rangeState.selecting;
         this.data.dates = rangeSelecting ? [rangeState.from] : value;
-        return rangeSelecting ? [rangeState.from] : value;
     },
     // 依赖的外部值：tableDate, dates, rangeState, selectionMode, disabledDate, showWeekNumbers
     cells() {
@@ -101,6 +100,7 @@ const KLDateTable = Component.extend({
 
         const tableYear = store.tableDate.getFullYear();
         const tableMonth = store.tableDate.getMonth();
+
         const today = clearHours(new Date());
         const selectedDays = store.dates.filter(Boolean).map(clearHours);
         const [minDay, maxDay] = store.dates.map(clearHours);

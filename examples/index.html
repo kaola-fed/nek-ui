@@ -21,7 +21,9 @@
 <script>
     new NEKUI.Component({
         template: `
-            <kl-time type="time" disabled-minutes="[0,10,20]" confirm />
+            {timeValue}
+            <kl-time internalValue={timeValue} format="HH点mm分ss秒"  type="time" disabled-minutes="[0,10,20]" confirm />
+
             <kl-time type="timerange" />
             <kl-time disabled-hours="[1,5,10]" type="time" format="HH点mm分ss秒" />
             <kl-time steps="[1, 15, 15]" format="HH:mm" type="timerange" format="HH’mm’ss" />
@@ -30,73 +32,9 @@
             <kl-new-date type="daterange" />
             <kl-new-date type="datetime" />
             <kl-new-date type="datetimerange" />
-
-            <kl-drop>
-                <kl-drop-header>
-                    <a href="javascript:void(0)">下拉菜单</a>
-                </kl-drop-header>
-                <kl-drop-menu>
-                    <kl-drop-item>
-                        选项一
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项二
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项三
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项四
-                    </kl-drop-item>
-                    <kl-drop placement="right">
-                        <kl-drop-header>
-                            <kl-drop-item>
-                                选项五
-                            </kl-drop-item>
-                        </kl-drop-header>
-                        <kl-drop-menu>
-                            <kl-drop-item>
-                                选项一
-                            </kl-drop-item>
-                            <kl-drop-item>
-                                选项二
-                            </kl-drop-item>
-                            <kl-drop-item>
-                                选项三
-                            </kl-drop-item>
-                            <kl-drop-item>
-                                选项四
-                            </kl-drop-item>
-                        </kl-drop-menu>
-                    </kl-drop>
-                </kl-drop-menu>
-            </kl-drop>
-
-
-             <kl-drop trigger="hover">
-                <kl-drop-header>
-                    hover 下拉
-                </kl-drop-header>
-                <kl-drop-menu>
-                    <kl-drop-item>
-                        选项一
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项二
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项三
-                    </kl-drop-item>
-                    <kl-drop-item>
-                        选项四
-                    </kl-drop-item>
-                </kl-drop-menu>
-            </kl-drop>
-            <kl-old-select />
-            <kl-select source={source} />
-            <kl-new-select source={source} />
     `,
         data: {
+            timeValue: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
             source: [
                 {name: '母婴儿童'},
                 {name: '美容彩妆'},

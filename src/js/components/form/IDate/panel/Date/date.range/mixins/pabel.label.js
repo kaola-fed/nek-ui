@@ -4,14 +4,6 @@ import { formatDateLabels } from '../../../../util';
 
 export default (Component) => {
   Component.implement({
-    leftDatePanelLabel() {
-      this.data.leftDatePanelLabel = this.panelLabelConfig('left');
-      return this.panelLabelConfig('left');
-    },
-    rightDatePanelLabel() {
-      this.data.rightDatePanelLabel = this.panelLabelConfig('right');
-      return this.panelLabelConfig('right');
-    },
     panelLabelConfig(direction) {
       const locale = 'zh-CN';
       const datePanelLabel = '[yyyy年] [m月]';

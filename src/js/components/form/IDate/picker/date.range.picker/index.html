@@ -1,0 +1,37 @@
+<kl-drop isShow={isShow} headerClass="kl-date-header" placement={placement}>
+    <kl-drop-header>
+        <div class="kl-date-range__hd"
+             r-class={{'is-active':isShow}}
+             is-dis={disabled}
+        >
+            {visualValue}
+            <kl-icon class="kl-date-range__hd-icon" type="calendar" />
+        </div>
+    </kl-drop-header>
+    <kl-range-date-picker-panel
+        ref="pickerPanel"
+        value="{internalValue}"
+        format="{format}"
+        visible="{visible}"
+        steps="{steps}"
+        placement={placement}
+        confirm="{isConfirm}"
+        split-panels="{splitPanels}"
+        multiple="{multiple}"
+        show-week-numbers="{showWeekNumbers}"
+        start-date="{startDate}"
+        shortcuts="{shortcuts}"
+        disabledDate="{disabledDate}"
+
+        showTime="{type === 'datetime' || type === 'datetimerange'}"
+        selectionMode="{selectionMode}"
+        picker-type="{type}"
+        focused-date="{focusedDate}"
+
+        on-pick="{this.onPick($event)}"
+        on-pick-clear="{this.handleClear($event)}"
+        on-pick-success="{this.onPickSuccess($event)}"
+        on-pick-click="{disableClickOutSide = true}"
+        on-selection-mode-change="{this.onSelectionModeChange($event)}"
+    ></kl-range-date-picker-panel>
+</kl-drop>
