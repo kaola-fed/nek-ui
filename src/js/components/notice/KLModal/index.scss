@@ -29,9 +29,11 @@ $--media-sm-max-width: 768px - 1;
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.125);
 
         @include m(fullscreen) {
+            position: absolute;
             width: 100% !important;
-            height: 100% !important;
+            min-height: 100%;
             top: 0;
+            left: 0;
             margin: 0;
         }
     }
