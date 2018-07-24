@@ -9,7 +9,7 @@
 	    {/list}
 	</div>
 	{#if tip && !hideTip}
-		<span class="kl-tip kl-tip-{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
+		<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;on:leave;class:fadeOutY;">
 			<kl-icon type={state} />
 			<span class="tip">{tip}</span>
 		</span>
