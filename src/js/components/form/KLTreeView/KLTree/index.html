@@ -13,7 +13,7 @@
 			{#if multiple}
 			<kl-check class="kl-treeview-list-item__check" checked={item.checked} on-check={this.check($event)} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />
 			{/if}
-			<div class="kl-treeview-list-item__name" title={item[nameKey]} on-click={this.stopPropagation($event)}>
+			<div class="kl-treeview-list-item__name" title={item[nameKey]}>
           {#if @(itemTemplate)}
             {#inc @(itemTemplate)}
           {#else}

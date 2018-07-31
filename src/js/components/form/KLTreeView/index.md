@@ -217,7 +217,7 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-tree-view source={source} value={value} multiple>
-    <kl-icon type="edit" on-click={this.edit()} />
+    <kl-icon type="edit" on-click={this.edit($event)} />
 </kl-tree-view>
 <p>edit的值是：{edit}</p>
 ```
@@ -244,7 +244,8 @@ var component = new NEKUI.Component({
             ]}
         ]
     },
-    edit: function() {
+    edit: function(e) {
+        e.stopPropagation();
         this.data.edit = !this.data.edit;
         this.$update();
     }
