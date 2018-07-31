@@ -55,11 +55,12 @@ const PopperComponent = Component.extend({
   },
   updatePopper() {
     if (!this.data.popperJS) {
+      let boundariesElement = 'scrollParent';
       if (this.data.appendToBody === true) {
         document.body.appendChild(this.$refs.popper);
-        console.log(window.getComputedStyle(this.data.reference).width);
         const referenceWidth = window.getComputedStyle(this.data.reference).width;
         this.$refs.popper.style.width = referenceWidth;
+        boundariesElement = 'window';
       }
       this.data.popperJS = new Popper(this.data.reference, this.$refs.popper, {
         placement: this.data.placement,
@@ -67,6 +68,7 @@ const PopperComponent = Component.extend({
           preventOverflow: {
             // boundariesElement: document.querySelector(".myclass"),
             enabled: true,
+            boundariesElement,
           },
           hide: {
             // ModifierFn(data, options) {
@@ -75,10 +77,9 @@ const PopperComponent = Component.extend({
           },
         },
         onCreate() {
-          console.log('create');
+          // console.log('create');
         },
         onUpdate: () => {
-          console.log('update');
           if (this.$refs.popper.attributes['x-out-of-boundaries']) {
             this.data.isShow = false;
             this.$update();
