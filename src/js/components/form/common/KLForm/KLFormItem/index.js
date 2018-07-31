@@ -89,7 +89,7 @@ KLFormItem.directive('size', function (ele, size) {
     } else {
       ele.style.width = '';
       ele.classList.remove(oldValue);
-      ele.classList.add(`formitem_tt-${newValue}`);
+      ele.classList.add(`kl-form-item__tt--${newValue}`);
     }
   });
 });
@@ -105,7 +105,7 @@ KLFormItem.directive('lineHeight', function (ele, lineHeight) {
     } else {
       ele.style.lineHeight = '';
       ele.classList.remove(oldValue);
-      ele.classList.add(`formitem_tt-lh-${newValue}`);
+      ele.classList.add(`kl-form-item__tt--lh-${newValue}`);
     }
   });
 });

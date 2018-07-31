@@ -60,6 +60,9 @@ const KLModal = Component.extend({
     if (this.$root === this) {
       this.$inject(this.data.el || document.body);
     }
+    this.$on('$destroy', () => {
+      document.body.style.overflow = '';
+    });
   },
   /**
      * @method KLModal#close(result) 关闭对话框

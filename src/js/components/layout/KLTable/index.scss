@@ -45,7 +45,6 @@ $orderIconColor: #333;
     }
 
     @include e(header) {
-        overflow: hidden;
         border-bottom: 1px solid #E8E8E8;
         @include m(sticky) {
             position: fixed;
