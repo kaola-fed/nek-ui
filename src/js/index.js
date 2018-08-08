@@ -28,8 +28,8 @@ const Components = {
   KLTreeView: require('./components/form/KLTreeView'),
   KLSwitch: require('./components/form/KLSwitch'),
   KLGroup: require('./components/form/KLGroup'),
-  ITime: require('./components/form/IDate/picker/time.picker/index'),
-  IDate: require('./components/form/IDate/picker/date.picker/index'),
+  KLTimePicker: require('./components/form/KLDate/entry/time.picker'),
+  KLDate: require('./components/form/KLDate/entry/date.picker'),
 
   // Navigation
   KLSidebar: require('./components/navigation/KLSidebar'),

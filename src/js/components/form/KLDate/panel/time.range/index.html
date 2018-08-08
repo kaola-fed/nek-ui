@@ -1,0 +1,61 @@
+<div class="{classes} f-cb">
+    <div class="{prefixCls}__body {prefixCls}__time-body">
+        <div class="{prefixCls}__content {prefixCls}--content-left">
+            <div class="{timePrefixCls}">
+                {#if showDate}
+                {leftDatePanelLabel}
+                {#else}
+                开始时间
+                {/if}
+            </div>
+            <!-- hours="{value[0] && dateStart.getHours()}" -->
+            <!-- minutes="{value[0] && dateStart.getMinutes()}" -->
+            <!-- seconds="{value[0] && dateStart.getSeconds()}" -->
+            <kl-time-spinner
+                ref="timeSpinner"
+                steps="{steps}"
+                show-seconds="{showSeconds}"
+                hours="{dateStart.getHours()}"
+                minutes="{dateStart.getMinutes()}"
+                seconds="{dateStart.getSeconds()}"
+                disabled-hours="{disabledHours}"
+                disabled-minutes="{disabledMinutes}"
+                disabled-seconds="{disabledSeconds}"
+                hide-disabled-options="{hideDisabledOptions}"
+
+                on-change="{this.onStartChange($event)}"
+                on-pick-click="{this.onPickClick($event)}"></kl-time-spinner>
+        </div>
+        <div class="{prefixCls}__content {prefixCls}--content-right">
+            <div class="{timePrefixCls}">
+                {#if showDate}
+                { rightDatePanelLabel }
+                {#else}
+                结束时间
+                {/if}
+            </div>
+            <!-- hours="{value[1] && dateEnd.getHours()}" -->
+            <!-- minutes="{value[1] && dateEnd.getMinutes()}" -->
+            <!-- seconds="{value[1] && dateEnd.getSeconds()}" -->
+            <kl-time-spinner
+                ref="timeSpinnerEnd"
+                steps="{steps}"
+                show-seconds="{showSeconds}"
+                hours="{dateEnd.getHours()}"
+                minutes="{dateEnd.getMinutes()}"
+                seconds="{dateEnd.getSeconds()}"
+                disabled-hours="{disabledHours}"
+                disabled-minutes="{disabledMinutes}"
+                disabled-seconds="{disabledSeconds}"
+                hide-disabled-options="{hideDisabledOptions}"
+
+                on-change="{this.onEndChange($event)}"
+                on-pick-click="{this.onPickClick($event)}"></kl-time-spinner>
+        </div>
+        {#if confirm}
+        <kl-date-confirm
+            on-pick-success="{this.onPickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>

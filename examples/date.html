@@ -31,21 +31,14 @@
 <script>
     new NEKUI.Component({
         template: `
-            <kl-time-picker placeholder="请选择时间" value={timeValue} />
-            值： {timeValue}
-            <kl-time-picker value={timeValue2} type="timerange" />
-            值2： {timeValue2}
-
-            <kl-date />
+            {value}
+            <kl-date value="{value}" />
             <kl-date type="year" />
             <kl-date type="month" />
-            <kl-date type="datetime" />
-            <kl-date type="daterange" />
-            <kl-date type="datetimerange" />
+            <kl-date type="datetime" value="{value}" />
     `,
         data: {
-            timeValue: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
-            timeValue2: [new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)')],
+            value: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
             source: [
                 {name: '母婴儿童'},
                 {name: '美容彩妆'},

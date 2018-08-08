@@ -1,0 +1,11 @@
+<div class="{classes}">
+    {#list cells as cell}
+    <span
+        class="{this.getCellCls(cell)}"
+        on-click="{this.handleClick(cell, $event)}"
+        on-mouseenter="{this.handleMouseMove(cell)}"
+    >
+        <em class="{prefixCls}-year__cell-em {prefixCls}__cell-em">{ cell.date.getFullYear() }</em>
+    </span>
+    {/list}
+</div>

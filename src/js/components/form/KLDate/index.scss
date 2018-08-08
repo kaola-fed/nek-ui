@@ -1,0 +1,330 @@
+.kl-newdate-header {
+    @include b(newdate-header-input) {
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 12px;
+        overflow: hidden;
+        word-wrap: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        min-height: 32px;
+        line-height: 30px;
+        padding: 0 10px;
+        background: #FFF;
+        color: #333;
+        border: 1px solid #e3e3e3;
+        border-radius: 2px;
+        overflow-y: auto;
+        position: relative;
+        transition: border 1s ease, box-shadow 1s ease;
+        width: 100%;
+        @include e(icon-remove) {
+            color: #666;
+            display: none;
+            float: right;
+        }
+
+        @include e(icon) {
+            color: #666;
+            display: block;
+            float: right;
+        }
+
+        &:hover {
+            @include e(icon-remove) {
+                display: block;
+            }
+
+            @include e(icon) {
+                display: none;
+            }
+        }
+    }
+}
+
+//日期基础组件样式
+@include b(newdate-picker-cells) {
+    font-size: 0;
+    width: 196px;
+    margin: 10px;
+    white-space: normal;
+
+    @include e(cell) {
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        color: #515a6e;
+
+        &:hover .kl-newdate-picker-cells__cell-em{
+            background: #e1f0fe
+        }
+
+        @include m(selected) {
+            .kl-newdate-picker-cells__cell-em{
+                background: $--primary-color;
+                color: #fff
+            }
+            &:hover .kl-newdate-picker-cells__cell-em{
+                background: $--primary-color;
+                color: #fff
+            }
+        }
+
+        @include m(disabled) {
+            color: #bbbec4;
+            cursor: not-allowed;
+
+            &:hover {
+                color: #bbbec4;
+                background-color: #fff;
+                cursor: not-allowed;
+            }
+        }
+
+        @include m(today) {
+            .kl-newdate-picker-cells__cell-em{
+                position: relative;
+                &:after {
+                    content: '';
+                    display: block;
+                    width: 6px;
+                    height: 6px;
+                    border-radius: 50%;
+                    background: $--primary-color;
+                    position: absolute;
+                    top: 1px;
+                    right: 1px
+                }
+            }
+        }
+
+        @include m(focused) {
+            .kl-newdate-picker-cells__cell-em{
+                box-shadow: 0 0 0 1px $--primary-color inset;
+            }
+        }
+
+        @include m(next-month) {
+            .kl-newdate-picker-cells__cell-em {
+                color: #bbbec4;
+            }
+            &:hover .kl-newdate-picker-cells__cell-em {
+                background: 0 0;
+            }
+        }
+
+        @include m(prev-month) {
+            .kl-newdate-picker-cells__cell-em {
+                color: #bbbec4;
+            }
+            &:hover .kl-newdate-picker-cells__cell-em {
+                background: 0 0;
+            }
+        }
+
+        @include m(range) {
+            position: relative;
+            .kl-newdate-picker-cells__cell-em {
+                position: relative;
+                z-index: 1
+            }
+            &:before {
+                content: '';
+                display: block;
+                background: #e1f0fe;
+                border-radius: 0;
+                border: 0;
+                position: absolute;
+                top: 2px;
+                bottom: 2px;
+                left: 0;
+                right: 0;
+            }
+        }
+
+    }
+
+    @include e(cell-em) {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        margin: 2px;
+        font-size: 12px;
+        font-style: normal;
+        border-radius: 3px;
+        text-align: center;
+        transition: all .2s ease-in-out;
+    }
+}
+
+@include b(newdate-picker-cells-header) {
+
+    @include e(cell) {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        margin: 2px;
+        color: #c5c8ce;
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+}
+
+@include b(newdate-picker-cells-year) {
+    @include e(cell) {
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        margin: 10px 12px;
+        border-radius: 3px;
+    }
+    @include e(cell-em) {
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        margin: 0;
+    }
+}
+
+@include b(newdate-picker-cells-month) {
+    @include e(cell) {
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        margin: 10px 12px;
+        border-radius: 3px;
+    }
+
+    @include e(cell-em) {
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        margin: 0;
+    }
+}
+
+//日期面板
+@include b(picker-panel) {
+
+    @include e(body) {
+
+    }
+
+    @include e(body-content) {
+
+    }
+
+    @include m(with-range) {
+        .kl-picker-panel__body {
+            min-width: 432px;
+        }
+
+        .kl-picker-panel__time-body {
+            min-width: 340px;
+        }
+
+        .kl-picker-panel__body-content {
+            float: left;
+        }
+
+        //.kl-picker-cells--show-week-numbers {
+        //    min-width: 492px
+        //}
+
+    }
+
+    @include m(content-left) {
+        float: left;
+        position: relative;
+
+        &:after {
+            content: "";
+            display: block;
+            width: 2px;
+            position: absolute;
+            top: 31px;
+            bottom: 0;
+            right: -2px;
+            background: #e8eaec;
+            z-index: 1;
+        }
+    }
+    @include m(content-right) {
+        float: right;
+        position: relative;
+
+        &:after {
+            right: auto;
+            left: -2px;
+            content: "";
+            display: block;
+            width: 2px;
+            position: absolute;
+            top: 31px;
+            bottom: 0;
+            right: -2px;
+            background: #e8eaec;
+            z-index: 1;
+
+
+        }
+    }
+}
+
+@include b(picker-panel-body-header) {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-bottom: 1px solid #e9eaec;
+    font-size: 12px;
+
+    @include e(icon-btn) {
+        display: inline-block;
+        width: 20px;
+        height: 24px;
+        line-height: 26px;
+        margin-top: 4px;
+        text-align: center;
+        cursor: pointer;
+        color: #c5c8ce;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: $--primary-color;
+        }
+
+        @include m(prev) {
+            float: left;
+        }
+
+        @include m(prev-btn-arrow-double) {
+            margin-left: 10px;
+        }
+
+        @include m(next) {
+            float: right;
+        }
+        @include m(next-btn-arrow-double) {
+            margin-right: 10px;
+        }
+
+    }
+}
+
+
+// 时间基础组件样式
+
+// 时间面板
+
+@include b(time-picker-body-header) {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-bottom: 1px solid #e8eaec;
+    font-size: 12px;
+}
+

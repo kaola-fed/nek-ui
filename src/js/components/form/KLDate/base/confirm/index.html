@@ -1,0 +1,9 @@
+<div class="{prefixCls}">
+    {#if showTime}
+        <a class="{prefixCls}__time" href="javascript:;"
+           is-dis={timeDisabled}
+           on-click={this.onToggleTime()}>{isTime ? '选择日期' : '选择时间'}</a>
+    {/if}
+
+    <kl-button title="确认" size="sm" type="primary" on-click={this.onSuccess()} />
+</div>

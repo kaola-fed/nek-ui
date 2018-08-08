@@ -1,0 +1,41 @@
+
+<kl-drop isShow={isShow} headerClass="kl-newdate-header">
+    <kl-drop-header>
+        <div
+            class="kl-newdate-header-input"
+            is-dis={disabled}
+        >
+            {visualValue ? visualValue : placeholder}
+            <kl-icon class="kl-newdate-header-input__icon" type="calendar" />
+            <kl-icon class="kl-newdate-header-input__icon-remove" type="error"
+                 on-click="{this.resetValue($event)}" />
+        </div>
+    </kl-drop-header>
+    {#if type == 'daterange' || type == 'datetimerange'}
+    <kl-date-range-panel
+        format="{format}"
+        isShow={isShow}
+        value={value}
+        type="{type}"
+        shortcuts="{shortcuts}"
+        disabledDate="{disabledDate}"
+        showWeekNumbers="{showWeekNumbers}"
+        on-pick="{this.onPick($event)}"
+        on-showVisualValue="{this.onShowVisualValue($event)}"
+        on-pickSuccess="{isShow = false}"
+        ></kl-date-range-panel>
+    {#else}
+    <kl-date-panel
+        format="{format}"
+        isShow={isShow}
+        value={value}
+        selectionMode="{type}"
+        shortcuts="{shortcuts}"
+        disabledDate="{disabledDate}"
+        showWeekNumbers="{showWeekNumbers}"
+        on-pick="{this.onPick($event)}"
+        on-showVisualValue="{this.onShowVisualValue($event)}"
+        on-pickSuccess="{isShow = false}"
+    ></kl-date-panel>
+    {/if}
+</kl-drop>

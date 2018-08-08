@@ -1,0 +1,10 @@
+@include b(picker-panel-body-header) {
+    @include e(label) {
+        cursor: pointer;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: #2d8cf0;
+        }
+    }
+}
