@@ -97,7 +97,7 @@ gulp.task('gen-doc', (cb) => {
 });
 
 gulp.task('dist', (done) => {
-  sequence('dist-clean', ['dist-copy', 'gen-css', 'dist-js', 'dist-css'], done);
+  sequence('dist-clean', 'gen-css', ['dist-copy', 'dist-js', 'dist-css'], done);
 });
 
 gulp.task('reload', () => {
