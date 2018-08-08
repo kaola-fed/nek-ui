@@ -5,13 +5,13 @@ import _ from '../../../ui-base/_';
 const PopperComponent = Component.extend({
   name: 'kl-popper',
   template: `
-            <div class="{class} {isShow ? 'fadeIn' : 'fadeOut'}"
-              r-hide={!isShow}
-              ref="popper"
-              v-clickoutside="onClose">
-              {#inc this.$body}
-            </div>
-            `,
+    <div class="{class} {isShow ? 'fadeIn' : 'fadeOut'}"
+      r-hide={!isShow}
+      ref="popper"
+      v-clickoutside="onClose">
+      {#inc this.$body}
+    </div>
+    `,
   config(data) {
     this.defaults({
       referenceElm: null,
