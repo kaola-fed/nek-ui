@@ -1,5 +1,6 @@
 ---
 title: 消息
+new: true
 ---
 
 <!-- demo_start -->

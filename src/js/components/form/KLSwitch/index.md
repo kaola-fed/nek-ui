@@ -1,6 +1,7 @@
 ---
 title: 开关
 masonry: false
+new: true
 ---
 
 <!-- demo_start -->

@@ -1,6 +1,7 @@
 ---
-title: 新时间选择
+title: 新日期选择
 masonry: true
+new: true
 ---
 
 <!-- demo_start -->

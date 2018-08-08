@@ -1,6 +1,7 @@
 ---
 title: 树型视图
 masonry: true
+new: true
 ---
 
 <!-- demo_start -->

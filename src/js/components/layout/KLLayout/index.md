@@ -1,5 +1,6 @@
 ---
 title: 布局容器
+new: true
 ---
 
 <!-- demo_start -->
