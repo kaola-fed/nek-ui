@@ -4,13 +4,12 @@
  */
 
 const SourceComponent = require('../../../ui-base/sourceComponent');
+const KLTree = require('./KLTree');
 const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 
-require('../common/TreeViewList');
-
 /**
- * @class TreeView
+ * @class KLTreeView
  * @param {object}    [options.data]                          = 绑定属性
  * @param {object[]}  [options.data.source=[]]                <=> 数据源
  * @param {string}    [options.data.source[].name]            => 每项的内容
@@ -20,7 +19,6 @@ require('../common/TreeViewList');
  * @param {boolean}   [options.data.source[].open=false]      => 此项为展开/收起状态
  * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
  * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
- * @param {boolean}   [options.data.source[].divider=false]   => 设置此项为分隔线
  * @param {string}    [options.data.value=null]               <=> 当前选择值
  * @param {object}    [options.data.selected=null]            <=> 当前选择项
  * @param {string}    [options.data.separator=,]              => 多选时value分隔符
@@ -30,7 +28,7 @@ require('../common/TreeViewList');
  * @param {boolean}   [options.data.visible=true]             => 是否显示
  * @param {string}    [options.data.class]                    => 补充class
  */
-const TreeView = SourceComponent.extend({
+const KLTreeView = SourceComponent.extend({
   name: 'kl-tree-view',
   template,
   config() {
@@ -61,18 +59,17 @@ const TreeView = SourceComponent.extend({
     if (
       this.data.readonly ||
       this.data.disabled ||
-      item.disabled ||
-      item.divider
+      item.disabled
     ) {
       return;
     }
 
+    this.toggle(item);
     if (this.data.multiple) return (item.selected = !item.selected);
 
     this.data.selected = item;
-    this.toggle(item);
     /**
-       * @event TreeView#select 选择某一项时触发
+       * @event KLTreeView#select 选择某一项时触发
        * @property {object} sender 事件发送对象
        * @property {object} selected 当前选择项
        */
@@ -85,8 +82,7 @@ const TreeView = SourceComponent.extend({
     if (
       this.data.readonly ||
       this.data.disabled ||
-      item.disabled ||
-      item.divider
+      item.disabled
     ) {
       return;
     }
@@ -96,7 +92,7 @@ const TreeView = SourceComponent.extend({
     item.open = open;
 
     /**
-       * @event TreeView#toggle 展开或收起某一项时触发
+       * @event KLTreeView#toggle 展开或收起某一项时触发
        * @property {object} sender 事件发送对象
        * @property {object} item 处理项
        * @property {boolean} open 展开/收起状态
@@ -126,4 +122,5 @@ const TreeView = SourceComponent.extend({
   },
 });
 
-module.exports = TreeView;
+KLTreeView.component('kl-tree', KLTree);
+module.exports = KLTreeView;

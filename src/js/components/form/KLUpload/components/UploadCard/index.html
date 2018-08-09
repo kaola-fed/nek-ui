@@ -1,38 +1,36 @@
-<div class="m-upload" ref="element">
-    <div class="m-files-zone" ref="fileszone">
-        <div class="m-entry-wrapper" ref="entrywrapper" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>
-            <div ref="filesentry" class="m-entry">
+<div class="kl-upload-card" ref="element">
+    <div class="kl-upload-card-files" ref="fileszone">
+        <div class="kl-upload-card-entry-wrap" ref="entrywrapper" r-hide={fileUnitList.length === 0} on-click={this.toggle(undefined, $event)}>
+            <div ref="filesentry" class="kl-upload-card-entry-wrap__entry">
                 {#if entryFileInfo.type === 'image'}
-                    <div class="m-img-wrapper">
-                        <img class="u-img" src={entryFileInfo.src} alt={entryFileInfo.name}/>
+                    <div class="kl-upload-card-imgwrap">
+                        <img class="kl-upload-card-imgwrap__img" src={entryFileInfo.src} alt={entryFileInfo.name}/>
                     </div>
                 {#elseif entryFileInfo.type === 'unknown'}
-                    <span class="u-txt">{this.$trans('UNKNOWN')}</span>
+                    <span class="kl-upload-card__txt">{this.$trans('UNKNOWN')}</span>
                 {#else} <!-- TEXT, DOC, JS, HTML -->
-                    <span class="u-txt">{entryFileInfo.type.toUpperCase()}</span>
+                    <span class="kl-upload-card__txt">{entryFileInfo.type.toUpperCase()}</span>
                 {/if}
-                <div class="m-status">
+                <div>
                     {#if status === 'fail'}
-                        <span class="u-failed" on-click={this.uploadFiles()}>
-                            <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
+                        <span class="kl-upload-unit-failed" on-click={this.uploadFiles()}>
+                            <span class="kl-upload-unit-failed__info"><kl-icon type="refresh" />{this.$trans('RETRY')}</span>
                         </span>
                     {#elseif status === 'uploading'}
-                        <span class="u-uploading">
-                            <span class="u-progress-wrapper">
-                                <span class="u-progress-txt">{progress || '0%'}</span>
-                                <span class="u-progress">
-                                    <span class="u-progress-bar" style="width: {progress || '0%'};"></span>
-                                </span>
+                        <span class="kl-upload-unit-uploading">
+                            <span class="kl-upload-unit-uploading__wrap">
+                                <span class="kl-upload-unit-uploading__txt">{progress || '0%'}</span>
+                                <kl-progress percent={progress || 0} size="sm" class="kl-upload-unit-uploading__progress" />
                             </span>
                         </span>
                     {/if}
                 </div>
-                <span class="u-info">{fileUnitList.length}</span>
-                <span ref="filesbanner" class="u-banner" r-class={{'top': isTopBanner}}></span>
-                <ul ref="fileswrapper" class="m-filelist" on-click={this.toggle(true, $event)}
+                <span class="kl-upload-card__info">{fileUnitList.length}</span>
+                <span ref="filesbanner" class="kl-upload-card__banner" r-class={{'is-top': isTopBanner}}></span>
+                <ul ref="fileswrapper" class="kl-upload-list-filelist" on-click={this.toggle(true, $event)}
                     r-hide={fileUnitList.length === 0} r-style={{width: fileUnitListWidth + 'px'}}>
                     {#list fileUnitList as fileunit}
-                        <li class="u-fileitem"
+                        <li class="kl-upload-list-filelist__item"
                             r-style={{
                                 "margin-left": fileunit_index && fileunit_index % numPerline ? fileUnitMargin + "px" : "auto"
                             }}>
@@ -58,21 +56,21 @@
                     {/list}
                 </ul>
             </div>
-            <div class="m-entry-info">{info}</div>
+            <div class="kl-upload-card-entry-wrap__info">{info}</div>
         </div>
-        <div ref="inputwrapper" class="u-input-wrapper" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
+        <div ref="inputwrapper" class="kl-upload-list-inputwrap" r-hide={readonly || fileUnitList.length >= numMax} on-click={this.fileDialogOpen()}>
             {#if this.$body}
                 {#inc this.$body}
             {#else}
-                <div class="u-input-btn"
+                <div class="kl-upload-list-inputwrap__btn"
                      r-class={{dragover: dragover}}
                      on-drop={this.onDrop($event)}
                      on-dragenter={this.onDragEnter($event)}
                      on-dragleave={this.onDragLeave($event)}
                      on-dragover={this.onDragOver($event)}>
-                    <span class="u-input-content"><i class="u-icon u-icon-plus"></i>{this.$trans('UPLOAD_FILE')}</span>
+                    <span class="kl-upload-list-inputwrap__cnt"><kl-icon type="add" />{this.$trans('UPLOAD_FILE')}</span>
                 </div>
-                <div class="u-input-info">{preCheckInfo}</div>
+                <div class="kl-upload-list-inputwrap__info">{preCheckInfo}</div>
             {/if}
         </div>
     </div>

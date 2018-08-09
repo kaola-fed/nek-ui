@@ -19,6 +19,7 @@ const RootMenuMixin = require('../mixins/rootMenu');
  * @param {string}        [options.data.iconClass]             => 菜单文字前的icon
  * @param {string}        [options.data.title]                    => 标题文案
  * @param {string}        [options.data.titleTemplate]            => 标题文案模板
+ * @param {string}        [options.data.target]                   => a标签的target属性, 默认_self
  */
 const KLSubMenu = Component.extend({
   name: 'kl-menu-sub',
@@ -33,6 +34,7 @@ const KLSubMenu = Component.extend({
       href: '',
       iconClass: '',
       titleTemplate: '',
+      target: '_self',
     });
     this.supr();
   },

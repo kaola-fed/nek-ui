@@ -1,0 +1,103 @@
+@mixin message-type($color, $bg-color, $border-color) {
+    background: $bg-color;
+    border: 1px solid $border-color;
+    .kl-message__icon {
+        color: $color;
+        display: block;
+    }
+    .kl-message__box {
+        margin-left: 64px;
+    }
+}
+$--background-color-error: #FFF2F0;
+$--border-color-error: #FF9A96;
+$--background-color-notice: #E6F7FF;
+$--border-color-notice: #91D5FF;
+$--background-color-success: #F8FFF0;
+$--border-color-success: #B7EB94;
+$--background-color-warning: #FEFCF0;
+$--border-color-warning: #FFCA61;
+
+@include b(message) {
+    @extend .f-cb;
+
+    display: flex;
+    align-items: center;
+    padding: 12px 13px 11px 13px;
+    background: $--background-color-white;
+    color: #777;
+    border: 1px solid $--border-color-base;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.07);
+    border-radius: 4px;
+    position: relative;
+
+    @include e(content) {
+        display: inline-block;
+        font-family: PingFangSC-Regular;
+        font-size: 12px;
+        color: #666666;
+        letter-spacing: 0;
+        text-align: left;
+        word-break: break-word;
+    }
+
+    @include e(operation) {
+        margin-right: 45px;
+    }
+
+    @include e(icon) {
+        font-size: 15px;
+        vertical-align: middle;
+        margin-right: 10px;
+        display: none;
+
+        @include m(large) {
+            font-size: 24px;
+            position: absolute;
+            top: 16px;
+            left: 24px;;
+        }
+    }
+    
+    @include e(box) {
+        margin: 0px 0px 4px 0;
+    }
+
+    @include e(title) {
+        font-size: 16px;
+        color: rgba(0,0,0,0.85);
+        margin-top: 3px;
+        margin-bottom: 7px;
+        font-weight: 600;
+        margin-right: 45px;
+    }
+
+    @include e(remove) {
+        color: #666;
+        position: absolute;
+        right: 17.5px;
+        &:hover {
+            text-decoration: none;
+            color: #333;
+        }
+        @include m(large) {
+            top: 17.5px;
+        }
+    }
+
+    @include m(notice) {
+        @include message-type($--notice-color, $--background-color-notice, $--border-color-notice);
+    }
+
+    @include m(success) {
+        @include message-type($--success-color, $--background-color-success, $--border-color-success);
+    }
+
+    @include m(warning) {
+        @include message-type($--warning-color, $--background-color-warning, $--border-color-warning);
+    }
+
+    @include m(error) {
+        @include message-type($--error-color, $--background-color-error, $--border-color-error);
+    }
+}

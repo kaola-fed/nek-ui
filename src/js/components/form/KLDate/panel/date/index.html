@@ -1,0 +1,119 @@
+<div class="{this.getClasses()} f-cb">
+    {#if shortcuts.length}
+    <div class="{prefixCls + '-sidebar'}">
+        {#list shortcuts as shortcut}
+        <div
+            class="{prefixCls + '-shortcut'}"
+            on-click="{this.onShortcutClick(shortcut)}">{ shortcut.text }</div>
+        {/list}
+    </div>
+    {/if}
+
+
+    <div class="{prefixCls}__body">
+        <div class="{datePrefixCls}" r-hide="currentView === 'time'">
+            <span
+                class="{this.iconBtnCls('prev', '-double')}"
+                on-click="{this.changeYear(-1)}"><kl-icon type="arrow-left-double" /></span>
+            {#if pickerTable === 'date-table'}
+            <span
+                class="{this.iconBtnCls('prev')}"
+                on-click="{this.changeMonth(-1)}"
+                r-show="currentView === 'date'"><kl-icon type="arrow-left-small" /></span>
+            {/if}
+
+            <kl-date-panel-label
+                date-panel-label="{datePanelLabel}"
+                current-view="{pickerTable.split('-').shift()}"
+                date-prefix-cls="{datePrefixCls}" />
+
+            <span
+                class="{this.iconBtnCls('next', '-double')}"
+                on-click="{this.changeYear(+1)}"><kl-icon type="arrow-right-double" /></span>
+            {#if pickerTable === 'date-table'}
+            <span
+                class="{this.iconBtnCls('next')}"
+                on-click="{this.changeMonth(+1)}"
+                r-show="currentView === 'date'"><kl-icon type="arrow-right-small" /></span>
+            {/if}
+        </div>
+
+        <div class="{prefixCls}__body-content">
+            {#if currentView !== 'time'}
+                {#if pickerTable == 'year-table'}
+                    <kl-year-table
+                        ref="pickerTable"
+                        table-date="{panelDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{internalValue}"
+                        disabled-date="{disabledDate}"
+
+                        focused-date="{focusedDate}"
+                        selection-mode="{selectionMode}"
+
+                        on-pick="{this.onPanelPickerHandlers($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-year-table>
+                {/if}
+                {#if pickerTable == 'month-table'}
+                    <kl-month-table
+                        ref="pickerTable"
+                        table-date="{panelDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{internalValue}"
+                        disabled-date="{disabledDate}"
+
+                        selection-mode="{selectionMode}"
+                        focused-date="{focusedDate}"
+
+                        on-pick="{this.onPanelPickerHandlers($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-month-table>
+                {/if}
+                {#if pickerTable == 'date-table'}
+                    <kl-date-table
+                        ref="pickerTable"
+                        table-date="{panelDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{internalValue}"
+                        disabled-date="{disabledDate}"
+
+                        selection-mode="{selectionMode}"
+                        focused-date="{focusedDate}"
+
+                        on-pick="{this.onPanelPickerHandlers($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-date-table>
+                {/if}
+            {/if}
+        </div>
+
+        <div class="{prefixCls}__body-content" r-hide="currentView !== 'time'">
+            {#if currentView === 'time'}
+            <kl-time-picker-panel
+                ref="timePicker"
+                value="{internalValue}"
+                format="{format}"
+                time-disabled="{timeDisabled}"
+                disabled-date="{disabledDate}"
+                focused-date="{focusedDate}"
+
+                on-pick={this.getValue($event)}
+                on-pick-toggle-time="{this.onToggleTime($event)}"
+            ></kl-time-picker-panel>
+
+            {/if}
+        </div>
+
+        {#if confirm || selectionMode === 'datetime'}
+        <kl-date-confirm
+            show-time="{selectionMode === 'datetime'}"
+            is-time="{currentView === 'time'}"
+            on-pick-toggle-time="{this.onToggleTime($event)}"
+            on-pick-clear="{this.handlePickClear($event)}"
+            on-pick-success="{this.onPickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>
+

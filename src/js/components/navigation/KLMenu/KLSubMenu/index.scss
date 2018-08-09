@@ -1,0 +1,57 @@
+@include b(sub-menu) {
+    position: relative;
+    display: block;
+    cursor: pointer;
+
+    @include when(highlight) {
+      color: #00C4C0;
+      .kl-sub-menu-head__icon {
+        color: #00C4C0;
+      }
+    }
+}
+
+@include b(sub-menu-head) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 17px 0 17px 45px;
+    font-size: 14px;
+    transition: all .4s ease;
+
+    @include e(title) {
+      display: block;
+      width: 100%;
+    }
+
+    @include e(arrow) {
+        position: absolute;
+        right: 15px;
+        font-size: 15px;
+        transition: transform .4s ease;
+        transform: rotate(0);
+
+        @include when(open) {
+            transform: rotate(180deg);
+        }
+    }
+
+    @include e(icon) {
+        position:absolute;
+        left: 20px;
+        color: #c4c4c4;
+        font-size: 14px;
+    }
+
+    &:hover .kl-sub-menu-head__title, &:hover a, &:hover .kl-icon, &:hover .kl-sub-menu-head__icon {
+      color: #00C4C0;
+    }
+}
+
+@include b(menu-item-wrap) {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}

@@ -1,0 +1,75 @@
+@include b(group) {
+    font-size: 0;
+    .kl-select:first-child {
+        display: inline-block;
+        width: 50%;
+        .kl-dropdown__hd {
+            border-radius: 2px 0 0 2px;
+        }
+    }
+    .kl-input:last-child {
+        display: inline-block;
+        width: 50%;
+        .kl-input-wrap__inner {
+            border-left: none;
+            border-radius: 0 2px 2px 0;
+        }
+    }
+}
+
+@include b(group) {
+    font-size: 0;
+    .kl-input:first-child {
+        display: inline-block;
+        width: 50%;
+        .kl-input-wrap__inner {
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+        }
+    }
+    .kl-select:last-child {
+        display: inline-block;
+        width: 50%;
+        .kl-dropdown__hd {
+            border-radius: 0 2px 2px 0;
+        }
+    }
+}
+
+
+@include b(group) {
+    .kl-datepicker:first-child {
+        font-size: 12px;
+        display: inline-block;
+        width: 50%;
+        .kl-input {
+            width: 100%;
+            display: inline-block;
+            .kl-input-wrap__inner {
+                border-right: none;
+                border-left: 1px solid #e3e3e3;
+                border-radius: 2px 0 0 2px;
+                &:hover {
+                    border-color: #00C4C0;
+                }
+            }
+        }
+    }
+    .kl-datepicker:last-child {
+        width: 50%;
+        font-size: 12px;
+        display: inline-block;
+        .kl-input {
+            width: 100%;
+            display: inline-block;
+            .kl-input-wrap__inner {
+                border-right: 1px solid #e3e3e3;
+                border-left: 1px solid #e3e3e3;
+                border-radius: 0 2px 2px 0;
+                &:hover {
+                    border-color: #00C4C0;
+                }
+            }
+        }
+    }
+}

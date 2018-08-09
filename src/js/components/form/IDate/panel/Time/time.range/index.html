@@ -1,0 +1,56 @@
+<div class="{classes}" on-click={this.stopPropagation($event)}>
+    <div class="{prefixCls + '-body'}">
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-left'}">
+            <div class="{timePrefixCls + '-header'}">
+                {#if showDate}
+                {leftDatePanelLabel}
+                {#else}
+                开始时间
+                {/if}
+            </div>
+            <kl-time-spinner
+                ref="timeSpinner"
+                steps="{steps}"
+                show-seconds="{showSeconds}"
+                hours="{value[0] && dateStart.getHours()}"
+                minutes="{value[0] && dateStart.getMinutes()}"
+                seconds="{value[0] && dateStart.getSeconds()}"
+                disabled-hours="{disabledHours}"
+                disabled-minutes="{disabledMinutes}"
+                disabled-seconds="{disabledSeconds}"
+                hide-disabled-options="{hideDisabledOptions}"
+
+                on-change="{this.handleStartChange($event)}"
+                on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
+        </div>
+        <div class="{prefixCls + '-content' + ' ' + prefixCls + '-content-right'}">
+            <div class="{timePrefixCls + '-header'}">
+                {#if showDate}
+                { rightDatePanelLabel }
+                {#else}
+                结束时间
+                {/if}
+            </div>
+            <kl-time-spinner
+                ref="timeSpinnerEnd"
+                steps="{steps}"
+                show-seconds="{showSeconds}"
+                hours="{value[1] && dateEnd.getHours()}"
+                minutes="{value[1] && dateEnd.getMinutes()}"
+                seconds="{value[1] && dateEnd.getSeconds()}"
+                disabled-hours="{disabledHours}"
+                disabled-minutes="{disabledMinutes}"
+                disabled-seconds="{disabledSeconds}"
+                hide-disabled-options="{hideDisabledOptions}"
+
+                on-change="{this.handleEndChange($event)}"
+                on-pick-click="{this.handlePickClick($event)}"></kl-time-spinner>
+        </div>
+        {#if confirm}
+        <kl-date-confirm
+            on-pick-clear="{this.handlePickClear($event)}"
+            on-pick-success="{this.handlePickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>

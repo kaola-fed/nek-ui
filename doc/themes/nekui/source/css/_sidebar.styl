@@ -13,6 +13,12 @@
     -webkit-overflow-scrolling touch
     -ms-overflow-style none
     border-right 1px $border-color solid
+    a
+      text-decoration none
+      color $medium
+      &:hover
+        text-decoration none
+
     h2
         margin-top .2em
     ul
@@ -32,16 +38,34 @@
             font-weight 700
             padding 12px 0 11px 40px
             font-size 14px
-            .u-icon
+            .kl-icon
                 margin-left -14px
                 margin-right 8px
                 font-size 14px
         .submenu
+            padding 0 0 0 40px
             &>li
                 margin-bottom 15px
                 font-size 12px
                 span
                     color: #999999
+            .new
+                &:after
+                    content "new"
+                    margin-left 5px
+                    vertical-align middle
+                    position relative
+                    top -1px
+                    display: inline
+                    font-weight: 700
+                    text-align: center
+                    text-decoration: none
+                    padding: .2em .6em .3em
+                    font-size: 11px
+                    line-height: 1
+                    background: #00C4C0
+                    color: white
+                    border-radius: 1000px
     .version-select
         vertical-align middle
         margin-left 5px
@@ -168,7 +192,7 @@
             .submenu-title
                 padding 0
                 font-size 16px
-                .u-icon
+                .kl-icon
                     display none
             a
                 border-bottom 2px transparent solid
@@ -180,6 +204,7 @@
 
             .submenu
                 margin-left -40px
+                padding 0 0 0 40px
                 &>li
                     margin-bottom: 0
                     font-size 14px

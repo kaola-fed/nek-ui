@@ -1,0 +1,24 @@
+@include b(timepicker) {
+  display: inline-block;
+
+  .kl-numberinput {
+    width: auto;
+
+    .kl-btn {
+      top: 8px;
+      margin: auto;
+
+      & + .kl-btn {
+        top: auto;
+        bottom: 8px;
+      }
+    }
+  }
+
+  .kl-input {
+    display: inline-block;
+    box-sizing: content-box;
+    width: 56px;
+    padding: 6px;
+  }
+}

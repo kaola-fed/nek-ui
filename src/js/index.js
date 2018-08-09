@@ -11,20 +11,25 @@ const Base = {
 
 const Components = {
   // Form
+  KLForm: require('./components/form/common/KLForm'),
+  KLFormItem: require('./components/form/common/KLForm/KLFormItem'),
+  KLTag: require('./components/form/common/KLTag'),
   KLCheck: require('./components/form/KLCheck'),
   KLCheckGroup: require('./components/form/KLCheckGroup'),
   KLDatePicker: require('./components/form/KLDatePicker'),
   KLRadioGroup: require('./components/form/KLRadioGroup'),
   KLMultiSelect: require('./components/form/KLMultiSelect'),
   KLButton: require('./components/form/KLButton'),
-  KLForm: require('./components/form/KLForm'),
-  KLFormItem: require('./components/form/KLForm/KLFormItem'),
   KLInput: require('./components/form/KLInput'),
   KLSelect: require('./components/form/KLSelect'),
   KLText: require('./components/form/KLText'),
   KLTextArea: require('./components/form/KLTextArea'),
   KLUpload: require('./components/form/KLUpload'),
   KLTreeView: require('./components/form/KLTreeView'),
+  KLSwitch: require('./components/form/KLSwitch'),
+  KLGroup: require('./components/form/KLGroup'),
+  KLTimePicker: require('./components/form/KLDate/entry/time.picker'),
+  KLDate: require('./components/form/KLDate/entry/date.picker'),
 
   // Navigation
   KLSidebar: require('./components/navigation/KLSidebar'),
@@ -35,6 +40,7 @@ const Components = {
   KLTabs: require('./components/navigation/KLTabs'),
   KLTab: require('./components/navigation/KLTabs/KLTab'),
   KLSteps: require('./components/navigation/KLSteps'),
+  KLStep: require('./components/navigation/KLSteps/KLStep'),
   KLCrumb: require('./components/navigation/KLCrumb'),
   KLCrumbItem: require('./components/navigation/KLCrumb/KLCrumbItem'),
 
@@ -53,6 +59,7 @@ const Components = {
   KLImagePreview: require('./components/widget/KLImagePreview'),
   KLLocaleProvider: require('./components/widget/KLLocaleProvider'),
   KLDraggable: require('./components/widget/KLDraggable'),
+  KLScroll: require('./components/widget/KLScroll'),
 
   // Layout
   KLTable: require('./components/layout/KLTable'),
@@ -64,6 +71,15 @@ const Components = {
   KLCardTools: require('./components/layout/KLCard/KLCardTools'),
   KLSearch: require('./components/layout/KLSearch'),
   KLSearchMore: require('./components/layout/KLSearch/KLSearchMore'),
+  KLLayout: require('./components/layout/KLLayout'),
+  KLHeader: require('./components/layout/KLLayout/KLHeader'),
+  KLFooter: require('./components/layout/KLLayout/KLFooter'),
+  KLMain: require('./components/layout/KLLayout/KLMain'),
+  KLAside: require('./components/layout/KLLayout/KLAside'),
+  KLPopper: require('./components/layout/KLPopper'),
+  KLDrop: require('./components/layout/KLDrop'),
+  KLDropHeader: require('./components/layout/KLDrop/KLDropHeader'),
+  KLDropItem: require('./components/layout/KLDrop/KLDropItem'),
 };
 
 backward(Components);

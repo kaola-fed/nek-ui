@@ -1,19 +1,22 @@
-<div class="u-dropdown u-suggest {class}" z-dis={disabled} r-hide={!visible} ref="element">
-    <div class="dropdown_hd">
-        <label class="u-input">
-            <input class="input" placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref="input" readonly={readonly} disabled={disabled}>
-        </label>
+<div class="kl-dropdown kl-suggest {class}" is-dis={disabled} r-hide={!visible} ref="element">
+    <div class="kl-dropdown__hd" is-dis={disabled} on-click={this.toggle()}>
+        <kl-input placeholder={placeholder} maxlength={maxlength} autofocus={autofocus} r-model={value} on-focus={this._onInput($event)} on-keyup={this._onInput($event)} on-blur={this._onBlur($event)} ref="input" readonly={readonly} disabled={disabled}></kl-input>
     </div>
     {#if open}
-    <div class="dropdown_bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
-        <ul class="m-listview">
+    <div class="kl-dropdown__bd" r-animation="on: enter; class: animated fadeInY fast; on: leave; class: animated fadeOutY fast;">
+        <ul class="kl-listview kl-suggest__listview">
             {#list source as item}
             {#if this.filter(item)}
-                <li z-dis={item.disabled} z-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>
+            <li is-dis={item.disabled} is-divider={item.divider} title={item[nameKey]} on-click={this.select(item)}>{#if @(itemTemplate)}{#inc @(itemTemplate)}{#else}{item[nameKey]}{/if}</li>
             {/if}
             {/list}
         </ul>
     </div>
     {/if}
 </div>
-{#if tip && !hideTip}<span class="u-tip u-tip-{state}"><i class="u-icon u-icon-{state}"></i><span class="tip">{tip}</span></span>{/if}
+{#if tip && !hideTip}
+<span class="kl-tip kl-tip--{state} animated" r-animation="on:enter;class:fadeInY;">
+            <kl-icon type={state} />
+            <span class="kl-tip__msg">{tip}</span>
+        </span>
+{/if}

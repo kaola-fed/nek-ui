@@ -1,0 +1,73 @@
+@include b(check) {
+    display:inline-block;
+    cursor: pointer;
+    user-select: none;
+    white-space:nowrap;
+    font-size: 12px;
+    line-height: 32px;
+    color: $--text-color-default;
+
+    @include m(block) {
+        display: block;
+        width: 100%;
+    }
+
+    @include e(box) {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        margin-right: 8px;
+        size: 13px;
+        line-height: 12px;
+        vertical-align: text-top;
+        background: white;
+        color: #00C4C0;
+        border: 1px solid $--border-color-base;
+        border-radius: 1px;
+
+        .kl-icon {
+            display: none;
+            font-size: 13px;
+            line-height: 13px;
+            font-weight: bold;
+        }
+        &:hover {
+            border: 1px solid #00C4C0;
+        }
+    }
+
+    /* Checked */
+    &.is-chk,
+    &.is-part {
+        .kl-check__box {
+            background: #00C4C0;
+            color: #fff;
+            border: 1px solid #00C4C0;
+            .kl-icon {
+                display: inline-block;
+            }
+        }
+    }
+
+    /* Indetermined */
+    &.is-part {
+        .kl-check__box {
+            .kl-icon {
+                &:before {
+                    content: "\e6ac";
+                }
+            }
+        }
+    }
+
+    /* Disabled */
+    &.is-dis {
+        cursor: not-allowed;
+        color: $--text-color-disabled;
+        .kl-check__box {
+            @include form-item-disabled;
+        }
+    }
+}
+

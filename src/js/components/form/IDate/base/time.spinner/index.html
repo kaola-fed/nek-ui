@@ -1,0 +1,23 @@
+<div class="{classes}">
+    <div class="{prefixCls + '-list'}" ref="hours">
+        <ul class="{prefixCls + '-ul'}">
+            {#list hoursList as item}
+            <li class="{this.getCellCls(item)}" r-hide="item.hide" on-click="{this.onClick('hours', item)}">{ item.text | formatTime }</li>
+            {/list}
+        </ul>
+    </div>
+    <div class="{prefixCls+ '-list'}" ref="minutes">
+        <ul class="{prefixCls + '-ul'}">
+            {#list minutesList as item}
+            <li class="{this.getCellCls(item)}" r-hide="item.hide" on-click="{this.onClick('minutes', item)}">{ item.text | formatTime }</li>
+            {/list}
+        </ul>
+    </div>
+    <div class="{prefixCls+ '-list'}" r-show="showSeconds" ref="seconds">
+        <ul class="{prefixCls + '-ul'}">
+            {#list secondsList as item}
+            <li class="{this.getCellCls(item)}" r-hide="item.hide" on-click="{this.onClick('seconds', item)}">{ item.text | formatTime }</li>
+            {/list}
+        </ul>
+    </div>
+</div>

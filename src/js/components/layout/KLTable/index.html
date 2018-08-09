@@ -1,15 +1,15 @@
-<div class="m-kl-table-wrap "
+<div class="kl-table-wrap"
     ref="tableWrap"
     r-hide={!show}>
     <!-- 列表拖动标尺 -->
-    <div ref="resizeProxy" class="u-resize-proxy" />
+    <div ref="resizeProxy" class="kl-table-wrap__resizeProxy" />
 
     <!-- 表格主体 -->
     <div ref="table"
-        class="m-kl-table"
+        class="kl-table"
         r-class={{
-            'fixed_header': fixedHeader,
-            'strip': strip
+            'kl-table--fixedHeader': fixedHeader,
+            'kl-table--strip': strip
         }}
         r-style={{
             height: fixedHeader ? 'auto' : height + 'px',
@@ -19,9 +19,9 @@
         on-scroll={this._onBodyScroll(this.$refs.table, $event)} >
 
         <div ref="headerWrap"
-            class="kl_table_header"
+            class="kl_table_header kl-table__header"
             r-class={{
-                'sticky_header': stickyHeader && stickyHeaderActive,
+                'kl-table__header--sticky': stickyHeader && stickyHeaderActive,
                 'f-overflow-hidden': stickyFooter
             }}
             r-style={{
@@ -49,15 +49,15 @@
                 on-sort={this._onSort($event)}/>
         </div>
 
-        <div class="header_placeholder"
+        <div class="kl-table__header--placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
             }}/>
 
         <div ref="bodyWrap"
-            class="kl_table_body"
+            class="kl-table__body"
             r-class={{
-                'fixed_header': fixedHeader,
+                'kl-table__body--fixedHeader': fixedHeader,
                 'f-overflow-hidden': !isMobile && stickyFooter
             }}
             r-style={{
@@ -87,19 +87,19 @@
     <!-- 左固定列 -->
     {#if fixedColLeft }
     <div ref="tableFixedLeft"
-        class="m-kl-table m-kl-table-fixed"
+        class="kl-table kl-table-fixed"
         r-class={{
-            'm-kl-table-hover': enableHover,
-            'strip': strip
+            'kl-table--hover': enableHover,
+            'kl-table--strip': strip
         }}
         r-style={{
             bottom: scrollXBarWidth + 'px',
             width: fixedTableWidth + 'px'
         }}>
         <div ref="headerWrapFixedLeft"
-            class="kl_table_header"
+            class="kl-table__header"
             r-class={{
-                'sticky_header': stickyHeader && stickyHeaderActive
+                'kl-table__header--sticky': stickyHeader && stickyHeaderActive
             }}
             r-style={{
                 width: fixedTableWidth + 'px',
@@ -125,13 +125,13 @@
                 on-sort={this._onSort($event)}/>
         </div>
 
-        <div class="header_placeholder"
+        <div class="kl-table__header--placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
             }} />
 
         <div ref="bodyWrapFixedLeft"
-            class="kl_table_body"
+            class="kl-table__body"
             r-style={{
                 width: fixedTableWidth + 'px',
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
@@ -162,10 +162,10 @@
     <!-- 右固定列 -->
     {#if fixedColRight }
     <div ref="tableFixedRight"
-        class="m-kl-table m-kl-table-fixed m-kl-table-fixed-right"
+        class="kl-table kl-table-fixed kl-table-fixedRight"
         r-class={{
-            'm-kl-table-hover': enableHover,
-            'strip': strip
+            'kl-table--hover': enableHover,
+            'kl-table--stript': strip
         }}
         r-style={{
             bottom: scrollXBarWidth + 'px',
@@ -173,9 +173,9 @@
             width: fixedTableWidthRight + 'px',
         }}>
         <div ref="headerWrapfixedTablePosRight"
-            class="kl_table_header"
+            class="kl-table__header kl-table-fixed__header"
             r-class={{
-                'sticky_header': stickyHeader && stickyHeaderActive
+                'kl-table__header--sticky': stickyHeader && stickyHeaderActive
             }}
             r-style={{
                 width: fixedTableWidthRight + 'px',
@@ -202,13 +202,13 @@
                 on-sort={this._onSort($event)}/>
         </div>
 
-        <div class="header_placeholder"
+        <div class="kl-table__header--placeholder"
             r-style={{
                 height: stickyHeader && stickyHeaderActive ? headerHeight + 'px' : 0
             }} />
 
         <div ref="bodyWrapFixedRight"
-            class="kl_table_body"
+            class="kl-table__body kl-table-fixed__body"
             r-style={{
                 width: fixedTableWidthRight,
                 'max-height': bodyHeight == undefined ? 'auto' : bodyHeight - scrollXBarWidth + 'px'
@@ -233,7 +233,7 @@
                 on-expand={this._onFixedExpand($event)}/>
         </div>
     </div>
-    <div class="kl_table_header_fiexd_right_gutter"
+    <div class="kl-table-header-gutter-fixedRight"
         r-style={{
             width: scrollYBarWidth + 'px',
             height: headerHeight + 'px',
@@ -245,7 +245,7 @@
     {#list source as item by item_index}
         {#if item.expand && item._expanddingColumn}
             <div ref='expand{item_index}'
-              class="expand_row"
+              class="kl-table-header-gutter-fixedRight--expand"
               r-style={{
                 top: this._getExpandRowTop(item_index) + 'px',
               }}
@@ -257,15 +257,15 @@
 
 </div>
 
-<div class="footer_placeholder"
+<div class="kl-table-footer-placeholder"
     r-style={{
         height: stickyFooter && stickyFooterActive ? footerHeight + 'px' : 0
     }}
 />
-<div class="m-kl-table-ft"
+<div class="kl-table-ft"
     ref="footerWrap"
     r-class={{
-        'sticky_footer': stickyFooter && stickyFooterActive
+        'kl-table-ft--sticky': stickyFooter && stickyFooterActive
     }}
     r-style={{
         bottom: stickyFooter && stickyFooterActive ? stickyFooterOffset + 'px' : 0
@@ -273,7 +273,7 @@
 >
     {#if !isMobile && stickyFooter}
     <div ref="scrollBar"
-        class="scroll_bar"
+        class="kl-table-ft__scrollBar"
         r-style={{
             width: width + 'px'
         }}

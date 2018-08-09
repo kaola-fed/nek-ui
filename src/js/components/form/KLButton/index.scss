@@ -1,0 +1,113 @@
+/* Button */
+@mixin btn-type($bg-color, $color, $border-color, $hover-bg-color, $hover-color, $hover-border-color,
+$active-bg-color, $active-color, $active-border-color) {
+  background: $bg-color;
+  color: $color;
+  border: 1px solid $border-color;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    text-decoration: none;
+    color: $hover-color;
+    background: $hover-bg-color;
+    border-color: $hover-border-color;
+  }
+  &:active {
+    color: $active-color;
+    background: $active-bg-color;
+    border-color: $active-border-color;
+  }
+}
+
+@mixin btn-size($padding, $height, $font-size) {
+  padding: $padding;
+  height: $height;
+  line-height: $height - 2;
+  font-size: $font-size;
+}
+
+@include b(btn) {
+    -webkit-appearance: none; // - 移除浏览器中的margin。| Remove margins in Chrome, Safari and Opera.
+    margin: 0; // - 移除浏览器中的默认border。| Remove borders for `button`.
+    overflow: visible; // - 让字体继承父节点的。| Correct `font` properties not being inherited for `button`.
+    font: inherit; // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox and IE.
+    text-transform: none; // - 为了`a`标签。| Required for `a`.
+    text-decoration: none; // - 统一用`pointer`，在`a`标签没有`href`的时候鼠标指针不是pointer。 | Use pointer cursor at any time.
+    cursor: pointer; // - 统一box-sizing，a标签默认的box-sizing是content-box，而button标签默认的box-sizing是border-box。
+    box-sizing: border-box; // - Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    background: none; // - Others
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    height: $--height-base;
+    padding: 0 $--size-base * 2;
+    border-radius: 2px;
+    line-height: $--height-base - 2;
+    font-size: 12px;
+    transition-duration: 0.1s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    white-space: nowrap;
+
+    /* Btn-Size */
+    @include m(sm) {
+        @include btn-size(0px 8px, $--height-sm, $--font-size-base);
+    }
+    @include m(lg) {
+        @include btn-size(0px 16px, $--height-lg, $--font-size-lg);
+    }
+    /* Btn-Type */
+    @include btn-type($--background-color-white, $--text-color-default, $--border-color-base,
+    $--background-color-white, $--text-color-primary-hover, $--border-color-primary-hover,
+    $--background-color-white, $--text-color-primary-active, $--border-color-primary-active);
+    // @include m(default) {
+    // }
+    @include m(primary) {
+        @include btn-type($--background-color-primary, $--text-color-white, $--border-color-primary,
+        $--background-color-primary-hover, $--text-color-white, $--border-color-primary-hover,
+        $--background-color-primary-active,$--text-color-white, $--border-color-primary-active);
+    }
+    @include m(warning) {
+        @include btn-type($--background-color-white, $--text-color-error, $--border-color-error,
+        $--background-color-white, $--text-color-error-hover, $--border-color-error-hover,
+        $--background-color-white, $--text-color-error-active, $--border-color-error-active);
+    }
+
+    &:disabled {
+        @include form-item-disabled;
+        transform: none;
+    }
+
+    .kl-icon {
+        vertical-align: bottom;
+        margin-right: 4px;
+        font-size: 15px;
+    }
+
+    .kl-icon--loading {
+        -webkit-animation: fa-spin 1s infinite steps(8);
+        animation: fa-spin 1s infinite steps(8);
+    }
+}
+
+@-webkit-keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}

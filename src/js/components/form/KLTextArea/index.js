@@ -8,6 +8,7 @@ const template = require('./index.html');
 const _ = require('../../../ui-base/_');
 const Validation = require('../../../util/validation');
 const validationMixin = require('../../../util/validationMixin');
+const calcTextareaHeight = require('./calcTextareaHeight');
 
 const bowser = require('bowser');
 
@@ -17,11 +18,9 @@ const bowser = require('bowser');
  * @param {object}        [options.data]                    = 绑定属性
  * @param {string}        [options.data.value]              <=> 文本框的值
  * @param {string}        [options.data.placeholder]         => 占位符
- * @param {string}        [options.data.state]              <=> 文本框的状态(保留字段，暂无实现)
  * @param {number}        [options.data.maxlength]          => 文本框的最大长度
  * @param {object[]}      [options.data.rules=[]]           => 验证规则
  * @param {boolean}       [options.data.autofocus=false]    => 是否自动获得焦点
- * @param {number}        [options.data.height=120]         => 高度
  * @param {number}        [options.data.width]              => 组件宽度
  * @param {boolean}       [options.data.required=false]     => 是否必填
  * @param {string}        [options.data.message]         => 必填校验失败提示的消息
@@ -29,6 +28,7 @@ const bowser = require('bowser');
  * @param {boolean}       [options.data.readonly=false]     => 是否只读
  * @param {boolean}       [options.data.disabled=false]     => 是否禁用
  * @param {boolean}       [options.data.visible=true]       => 是否显示
+ * @param {string}        [options.data.size]               => 组件大小, sm/lg控制整体尺寸，smw/mdw/lgw控制宽度大小
  * @param {string}        [options.data.class]              => 补充class
  */
 const KLTextArea = Component.extend({
@@ -41,18 +41,25 @@ const KLTextArea = Component.extend({
       placeholder: '',
       state: '',
       maxlength: undefined,
-      height: 120,
+      autosize: null,
       rules: [],
       autofocus: false,
       _eltIE9: bowser.msie && bowser.version <= 9,
       required: false,
+      textareaCalcStyle: {},
     });
 
     this.supr();
 
     this.initValidation();
   },
+  computed: {
+    textareaStyle() {
+      return this.merge({}, this.textareaCalcStyle, { resize: this.resize });
+    },
+  },
   init() {
+    this.resizeTextarea();
     this.$watch('required', function (value) {
       const rules = this.data.rules;
       const message = this.data.message || this.$trans('PLEASE_INPUT');
@@ -62,6 +69,23 @@ const KLTextArea = Component.extend({
         this.data.rules = rules.filter(rule => rule.type !== 'isRequired');
       }
     });
+
+    this.$watch('value', function () {
+      this.resizeTextarea();
+    });
+  },
+  resizeTextarea() {
+    const { autosize } = this.data;
+    if (!autosize) {
+      this.textareaCalcStyle = {
+        minHeight: calcTextareaHeight(this.$refs.textarea).minHeight,
+      };
+      return;
+    }
+    const minRows = autosize.minRows;
+    const maxRows = autosize.maxRows;
+
+    this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
   },
   validate(on = '') {
     const data = this.data;
@@ -76,7 +100,9 @@ const KLTextArea = Component.extend({
     let rules = data.rules;
 
     rules = rules.filter(rule => (rule.on || '').indexOf(on) >= 0);
-
+    if (!rules.length) {
+      return { success: true };
+    }
     const result = Validation.validate(value, rules);
     if (
       result.firstRule &&
@@ -103,6 +129,27 @@ const KLTextArea = Component.extend({
 
     return result;
   },
+  /**
+    * @method KLTextArea#focus 原生focus方法
+    * @param {method} 无 使 textarea 获取焦点
+  */
+  focus() {
+    this.$refs.textarea.focus();
+  },
+  /**
+    * @method KLTextArea#blur 原生blur方法
+    * @param {method} 无 使 textarea 失去焦点
+  */
+  blur() {
+    this.$refs.textarea.blur();
+  },
+  /**
+    * @method KLTextArea#select 原生select方法
+    * @param {method} 无 使 textarea 选中
+  */
+  select() {
+    this.$refs.textarea.select();
+  },
   _onKeyUp($event) {
     this.validate('keyup');
     /**
@@ -126,6 +173,21 @@ const KLTextArea = Component.extend({
      * @param {event} MouseEvent 鼠标点击事件
      */
     this.$emit('focus', $event);
+  },
+  merge(...args) {
+    for (let i = 1, j = args.length; i < j; i += 1) {
+      const source = args[i] || {};
+      for (const prop in source) {
+        if (source.hasOwnProperty(prop)) {
+          const value = source[prop];
+          if (value !== undefined) {
+            args[0][prop] = value;
+          }
+        }
+      }
+    }
+
+    return args[0];
   },
 });
 

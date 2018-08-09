@@ -1,6 +1,10 @@
-<a href="{url}" class="u-text u-text-{type} u-text-{size} u-text-{align} u-text-{vertical} {class}"
+<a href="{url}" class="kl-text kl-text--{type} kl-text--{size} kl-text--{align} kl-text--{vertical} {class}"
    target="{target}"
    on-click={this.onClick($event)}
-   r-class={{'u-text_unlink': url == 'javascript:;','u-text-wb': isBold}}>
-    {text}
+   r-class={{'kl-text--unlink': url == 'javascript:;','kl-text--bold': isBold}}>
+  {#if this.$body}
+    {#inc this.$body}
+  {#else}
+    {#inc text}
+  {/if}
 </a>

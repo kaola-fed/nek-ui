@@ -1,0 +1,134 @@
+@include b(form) {
+    fieldset {
+        display: flex;
+        border: none;
+        margin: 0;
+        padding: 0;
+    }
+    legend {
+        box-sizing: border-box; // - Behave like block element
+        width: 100%; // -  Remove padding
+        padding: 0; // - Correct `color` not being inherited in IE 8/9/10/11.
+        border: none;
+    }
+    @include m(inline) {
+        .kl-form-item {
+            display: inline-block;
+            vertical-align: top;
+            margin-bottom: 0;
+            .kl-form-item__ct {
+                display: inline-block;
+            }
+        }
+    }
+    legend {
+        font-size: $--font-size-lg;
+        border-bottom: 1px solid $--border-color-base;
+        line-height: $--height-base;
+        margin: 15px 0;
+        color: #777;
+    }
+    >.kl-form-item,
+    fieldset>.kl-form-item {
+        margin-bottom: $--size-base * 2;
+    }
+}
+
+// Component:       FormCtrl
+// ========================================================================
+/*select组件相关*/
+
+@include b(select) {
+    // - Default is `content-box` with following exceptions set to `border-box`.
+    box-sizing: border-box; // - Address margins set differently in Firefox/IE and Chrome/Safari/Opera.
+    margin: 0;
+    border: 0;
+    padding: 0; // - Remove `border-radius` in iOS.
+    border-radius: 0; // - Correct `font` properties and `color` not being inherited.
+    font: inherit;
+    color: inherit; // - Remove default style in iOS.
+    -webkit-appearance: none; // - Responsiveness: Sets a maximum width relative to the parent to scale on narrower viewports.
+    max-width: 100%;
+    text-transform: none;
+    color: $--text-color-default;
+    background: $--background-color-white;
+    border-radius: $--border-radius-base; // -webkit-transition: all linear 0.2s;
+    // transition: all linear 0.2s;
+    @include placeholder {
+        color: $--text-color-placeholder; // - Removes placeholder transparency in Firefox.
+        opacity: 1;
+    }
+    &:focus {
+        outline: 0;
+        background: $--background-color-white;
+        color: $--text-color-default;
+        border: $--border-color-primary;
+    }
+    &:disabled {
+        cursor: not-allowed;
+        background: $--background-color-disabled;
+        color: $--text-color-disabled;
+        border: $--border-color-disabled;
+    } // - Address inconsistent `text-transform` inheritance which is only inherit in Firefox
+    optgroup {
+        // - Correct `font` properties not being inherited.
+        font: inherit; // - Don't inherit the `font-weight` and use `bold` instead.
+        font-weight: bold; // - NOTE: Both declarations don't work in Chrome, Safari and Opera.
+    }
+}
+
+input {
+    &.kl-check,
+    &.kl-radio {
+        // - (It has been realized in normalize.css) Removes excess padding in IE 8/9/10.
+        // padding: 0;
+        cursor: pointer;
+        vertical-align: middle;
+        &:focus {
+            outline: 0;
+        }
+    }
+    &.kl-check:disabled,
+    &.kl-radio:disabled {
+        cursor: not-allowed;
+    }
+}
+
+// Component:       Tip
+// ========================================================================
+@include b(tip) {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 12px;
+    padding: 0;
+    border-radius: $--border-radius-base;
+    .kl-icon {
+        vertical-align: top;
+        margin-right: 6px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+    @include e(msg) {
+        vertical-align: top;
+        display: inline-block;
+        line-height: 18px;
+        &.animated {
+            animation-duration: .8s;
+            animation-timing-function: ease;
+        }
+    }
+}
+
+// Color Extends:
+// ========================================================================
+
+@mixin tip-color($name, $color) {
+    .kl-tip--#{$name} {
+        color: $color;
+    }
+}
+
+@include tip-color(notice, $--notice-color);
+@include tip-color(success, $--success-color);
+@include tip-color(warning, $--warning-color);
+@include tip-color(error, $--error-color);

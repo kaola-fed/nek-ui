@@ -11,7 +11,38 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-textarea  placeholder="请输入备注" />
+<kl-textarea ref="textarea" placeholder="请输入备注" />
+<kl-button title="聚焦后失焦" on-click={this.focus()} />
+<kl-button title="选中" on-click={this.select()} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+    },
+    focus: function() {
+        this.$refs.textarea.focus();
+        setTimeout(() => {
+            this.$refs.textarea.blur();
+        }, 1000);
+    },
+    select: function() {
+        this.$refs.textarea.select();
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 大小控制
+
+可通过设置size来控制输入文字的大小。
+
+<div class="m-example"></div>
+
+```xml
+<kl-textarea size="lg" placeholder="请输入备注" />
 ```
 <!-- demo_end -->
 
@@ -94,6 +125,31 @@ var component = new NEKUI.Component({
                 return (text || '').length <= component.data.maxLength;
             }, on: 'keyup+blur', message: '字数超出限制！'}
         ]
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 自适应文本高度
+<div class="m-example"></div>
+
+```xml
+<p>最大长度{maxLength}字，已经输入了{(value || '').length}字</p>
+<kl-textarea value={value} autosize={autosize} placeholder="请输入内容" />
+
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        maxLength: 10,
+        value: '',
+        autosize: {
+            minRows: 2,
+            maxRows: 6
+        }
     }
 });
 ```

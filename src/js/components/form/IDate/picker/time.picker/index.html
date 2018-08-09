@@ -1,0 +1,169 @@
+
+<kl-drop isShow={isShow} headerClass="kl-date-header">
+    <kl-drop-header>
+        <div class="kl-date-range__hd"
+        r-class={{'is-active':isShow}}
+        is-dis={disabled}
+        >
+            {visualValue}
+            <kl-icon class="kl-date-range__hd-icon f-fr" type="time" />
+        </div>
+    </kl-drop-header>
+    {#if type == 'timerange'}
+        <kl-range-time-picker-panel
+            ref="pickerPanel"
+            visible="{visible}"
+            showTime="{type === 'datetime' || type === 'datetimerange'}"
+            confirm="{isConfirm}"
+            selectionMode="{selectionMode}"
+            steps="{steps}"
+            format="{format}"
+            value="{internalValue}"
+            start-date="{startDate}"
+            split-panels="{splitPanels}"
+            show-week-numbers="{showWeekNumbers}"
+            picker-type="{type}"
+            multiple="{multiple}"
+            focused-date="{focusedDate}"
+
+            time-picker-options="{timePickerOptions}"
+
+            v-bind="{ownPickerProps}"
+
+            on-pick="{this.onPick($event)}"
+            on-pick-clear="{this.handleClear($event)}"
+            on-pick-success="{this.onPickSuccess($event)}"
+            on-pick-click="{disableClickOutSide = true}"
+            on-selection-mode-change="{this.onSelectionModeChange($event)}"
+        ></kl-range-time-picker-panel>
+    {#else}
+        <kl-time-picker-panel
+            ref="pickerPanel"
+            visible="{visible}"
+            showTime="{type === 'datetime' || type === 'datetimerange'}"
+            confirm="{isConfirm}"
+            selectionMode="{selectionMode}"
+            steps="{steps}"
+            format="{format}"
+            value="{internalValue}"
+            start-date="{startDate}"
+            split-panels="{splitPanels}"
+            show-week-numbers="{showWeekNumbers}"
+            picker-type="{type}"
+            multiple="{multiple}"
+            focused-date="{focusedDate}"
+
+            time-picker-options="{timePickerOptions}"
+
+            v-bind="{ownPickerProps}"
+
+            on-pick="{this.onPick($event)}"
+            on-pick-clear="{this.handleClear($event)}"
+            on-pick-success="{this.onPickSuccess($event)}"
+            on-pick-click="{disableClickOutSide = true}"
+            on-selection-mode-change="{this.onSelectionModeChange($event)}"
+        ></kl-time-picker-panel>
+    {/if}
+</kl-drop>
+
+<!-- <div
+    :class="wrapperClasses"
+    v-click-outside:mousedown.capture="handleClose"
+    v-click-outside.capture="handleClose"
+>
+    <div ref="reference" :class="[prefixCls + '-rel']">
+        <slot>
+            <i-input
+                :key="forceInputRerender"
+                :element-id="elementId"
+                :class="[prefixCls + '-editor']"
+                :readonly="!editable || readonly"
+                :disabled="disabled"
+                :size="size"
+                :placeholder="placeholder"
+                :value="visualValue"
+                :name="name"
+                ref="input"
+
+                @on-input-change="handleInputChange"
+                @on-focus="handleFocus"
+                @on-blur="handleBlur"
+                @on-click="handleIconClick"
+                @click.native="handleFocus"
+                @keydown.native="handleKeydown"
+                @mouseenter.native="handleInputMouseenter"
+                @mouseleave.native="handleInputMouseleave"
+
+                :icon="iconType"
+            ></i-input>
+        </slot>
+    </div>
+    <transition name="transition-drop">
+        <Drop
+            @click.native="handleTransferClick"
+            v-show="opened"
+            :class="{ [prefixCls + '-transfer']: transfer }"
+            :placement="placement"
+            ref="drop"
+            :data-transfer="transfer"
+            v-transfer-dom>
+            <div> -->
+                    <!--&lt;!&ndash;{#if panel == 'timerange'}&ndash;&gt;-->
+                    <!--<kl-range-time-picker-panel-->
+                        <!--ref="pickerPanel"-->
+                        <!--visible="{visible}"-->
+                        <!--showTime="{type === 'datetime' || type === 'datetimerange'}"-->
+                        <!--confirm="{isConfirm}"-->
+                        <!--selectionMode="{selectionMode}"-->
+                        <!--steps="{steps}"-->
+                        <!--format="{format}"-->
+                        <!--value="{internalValue}"-->
+                        <!--start-date="{startDate}"-->
+                        <!--split-panels="{splitPanels}"-->
+                        <!--show-week-numbers="{showWeekNumbers}"-->
+                        <!--picker-type="{type}"-->
+                        <!--multiple="{multiple}"-->
+                        <!--focused-date="{focusedDate}"-->
+
+                        <!--time-picker-options="{timePickerOptions}"-->
+
+                        <!--v-bind="{ownPickerProps}"-->
+
+                        <!--on-pick="{this.onPick($event)}"-->
+                        <!--on-pick-clear="{this.handleClear($event)}"-->
+                        <!--on-pick-success="{this.onPickSuccess($event)}"-->
+                        <!--on-pick-click="{disableClickOutSide = true}"-->
+                        <!--on-selection-mode-change="{this.onSelectionModeChange($event)}"-->
+                    <!--&gt;</kl-range-time-picker-panel>-->
+                <!--&lt;!&ndash;{#else}&ndash;&gt;-->
+                    <!--&lt;!&ndash;<kl-time-picker-panel&ndash;&gt;-->
+                        <!--&lt;!&ndash;ref="pickerPanel"&ndash;&gt;-->
+                        <!--&lt;!&ndash;visible="{visible}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;showTime="{type === 'datetime' || type === 'datetimerange'}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;confirm="{isConfirm}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;selectionMode="{selectionMode}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;steps="{steps}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;format="{format}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;value="{internalValue}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;start-date="{startDate}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;split-panels="{splitPanels}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;show-week-numbers="{showWeekNumbers}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;picker-type="{type}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;multiple="{multiple}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;focused-date="{focusedDate}"&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;time-picker-options="{timePickerOptions}"&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;v-bind="{ownPickerProps}"&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;on-pick="{this.onPick($event)}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;on-pick-clear="{this.handleClear($event)}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;on-pick-success="{this.onPickSuccess($event)}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;on-pick-click="{disableClickOutSide = true}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;on-selection-mode-change="{this.onSelectionModeChange($event)}"&ndash;&gt;-->
+                    <!--&lt;!&ndash;&gt;</kl-time-picker-panel>&ndash;&gt;-->
+                <!--&lt;!&ndash;{/if}&ndash;&gt;-->
+            <!-- </div> -->
+        <!-- </Drop>
+    </transition>
+</div> -->

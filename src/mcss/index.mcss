@@ -1,4 +1,4 @@
-@import "mass/mass/index.mcss";
+@import "../../node_modules/mass/mass/index.mcss";
 $reset-normalize();
 
 @import "./base/function.mcss";
@@ -13,3 +13,4 @@ $reset-normalize();
 @import "./common/tip.mcss";
 
 @import "./components.mcss";
+

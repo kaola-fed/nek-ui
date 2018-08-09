@@ -49,7 +49,7 @@ sm：
 ```xml
 <kl-form ref="form" labelSize="100px">
     <kl-form-item title="用户名" tip="请输入5-10位字母或者数字" required>
-        <kl-input type="char" placeholder="请输入用户名" />
+        <kl-input ref="input" type="char" placeholder="请输入用户名" />
     </kl-form-item>
     <kl-form-item title="密码" tip="密码不能少于6位" required>
         <kl-input type="password" placeholder="请输入密码" />
@@ -57,7 +57,9 @@ sm：
     <kl-form-item title="年龄" required>
         <kl-input type="int" min=1 max=120 maxlength=3 placeholder="请输入年龄" />
     </kl-form-item>
-    <kl-button type="secondary" title="提交" on-click={this.validate()} />
+    <kl-button title="提交" on-click={this.validate()} />
+    <kl-button title="聚焦后失焦" on-click={this.focus()} />
+    <kl-button title="选中" on-click={this.select()} />
 </kl-form>
 ```
 
@@ -67,6 +69,15 @@ var component = new NEKUI.Component({
     validate: function() {
         var $form = this.$refs.form;
         return $form.validate().success;
+    },
+    focus: function() {
+        this.$refs.input.focus();
+        setTimeout(() => {
+            this.$refs.input.blur();
+        }, 1000);
+    },
+    select: function() {
+        this.$refs.input.select();
     }
 });
 ```
@@ -87,7 +98,7 @@ var component = new NEKUI.Component({
 <kl-input class="f-mb10" type="int" placeholder="可输入整数"  value={int} />
 <kl-input class="f-mb10" type="float" placeholder="可输入浮点数"  value={float} />
 <kl-input class="f-mb10" type="float" placeholder="可输入3位小数的浮点数" decimalDigits=3 value={float3} />
-                
+
 ```
 <!-- demo_end -->
 

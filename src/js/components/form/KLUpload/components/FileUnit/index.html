@@ -1,38 +1,36 @@
-<div class="m-file-unit {file.class}">
-    <div class="m-content">
+<div class="kl-upload-unit {file.class}">
+    <div class="kl-upload-unit__content">
         {#if type === 'image'}
-            <div class="m-img-wrapper" on-click={this.onPreview($event)}>
-                <img class="u-img" src={url}/>
+            <div class="kl-upload-unit-imgwrap" on-click={this.onPreview($event)}>
+                <img class="kl-upload-unit-imgwrap__img" src={url} />
             </div>
         {#elseif type === 'unknown'}
-            <span class="u-txt" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>
+            <span class="kl-upload-unit__txt" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>
         {#elseif type === 'pdf'}
-            <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
+            <span class="kl-upload-unit__txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
-            <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
+            <span class="kl-upload-unit__txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {/if}
-        <div class="m-remove" r-hide={readonly} on-click={this.onRemove($event)}><i class="u-icon u-icon-error"></i></div>
-        <div class="m-status">
+        <div class="kl-upload-unit__remove" r-hide={readonly} on-click={this.onRemove($event)}><kl-icon type="error" /></div>
+        <div>
             {#if status === 'fail'}
-                <span class="u-failed" on-click={this.uploadFile(file)}>
-                    <span class="u-failed-info"><i class="u-icon u-icon-retry"></i>{this.$trans('RETRY')}</span>
+                <span class="kl-upload-unit-failed" on-click={this.uploadFile(file)}>
+                    <span class="kl-upload-unit-failed__info"><kl-icon type="refresh" />{this.$trans('RETRY')}</span>
                 </span>
             {#elseif status === 'uploading'}
-                <span class="u-uploading">
-                    <span class="u-progress-wrapper">
-                        <span class="u-progress-txt">{progress || '0%'}</span>
-                        <span class="u-progress">
-                            <span class="u-progress-bar" style="width: {progress || '0%'};"></span>
-                        </span>
+                <span class="kl-upload-unit-uploading">
+                    <span class="kl-upload-unit-uploading__wrap">
+                      <span class="kl-upload-unit-uploading__txt">{progress || '0%'}</span>
+                      <kl-progress percent={progress || 0} size="sm" class="kl-upload-unit-uploading__progress" />
                     </span>
                 </span>
             {#elseif status === 'success'}
-                <span class="u-uploaded" on-click={this.downloadFile()}>
-                    <a class="u-uploaded-zone">{this.$trans('DOWNLOAD_FILE')}<i class="u-icon u-icon-export"></i></a>
+                <span class="kl-upload-unit-uploaded" on-click={this.downloadFile()}>
+                    <a class="kl-upload-unit-uploaded__zone"><kl-icon type="download" />{this.$trans('DOWNLOAD_FILE')}</a>
                 </span>
             {/if}
         </div>
     </div>
-    <div class="m-name" title={filename}>{filename}</div>
-    <div class="m-info">{info}</div>
+    <div class="kl-upload-unit__name" title={filename}>{filename}</div>
+    <div class="kl-upload-unit__info">{info}</div>
 </div>

@@ -1,19 +1,22 @@
 <div class="{class}">
-    {#inc this.$body} 
+    {#inc this.$body}
     {#if this.$more && isShowMore}
-        <!--添加一层div，防止两个g-row样式并列导致marginTop--> 
+        <!--添加一层div，防止两个g-row样式并列导致marginTop-->
         <div>
             {#inc this.$more.$body}
         </div>
-    {/if} 
+    {/if}
     {#if isShowFooter}
-    <div class="kl-search_ft">
-        <kl-button type="secondary" title={searchText} on-click={this.search()} class="kl-search_btn"></kl-button>
-        <kl-button title={resetText} on-click={this.reset()}></kl-button>
+    <div class="kl-search-ft">
+        <div class="kl-search-ft__wrap">
+            <kl-button type="primary" title={searchText} on-click={this.search()} class="kl-search-ft__wrap-btn"></kl-button>
+            <kl-button title={resetText} on-click={this.reset()}></kl-button>
+            <span class="kl-search-ft__wrap-tips">{#inc tip}</span>
+        </div>
         {#if this.$more && isShowToggle}
             <a href="javascript: void(0);" on-click={this.toggle()} class="f-ml10">
-                 {toggleText}<i class="u-icon u-icon-angle-{isShowMore ? 'up' : 'down'}"></i>
-            </a> 
+                {toggleText}<kl-icon type="arrow-{isShowMore ? 'up' : 'down'}"  />
+            </a>
         {/if}
     </div>
     {/if}

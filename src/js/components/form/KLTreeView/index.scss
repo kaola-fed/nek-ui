@@ -1,0 +1,64 @@
+@include b(treeview) {
+  box-sizing: border-box;
+  user-select: none;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  padding: 5px 0;
+  background: $--background-color-white;
+  color: $--text-color-default;
+
+  @include m(multiple) {
+    .kl-treeview-list-item__check {
+      padding: 3px 0;
+      margin-left: 6px;
+      line-height: 0;
+    }
+  }
+}
+
+@include b(treeview-list) {
+  @extend .f-lsn;
+}
+
+@include b(treeview-list-item) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  color: #777;
+
+  &:hover {
+    background: mix($--color-white, $--primary-color, 90%);
+    cursor: pointer;
+  }
+
+  @include when(dis) {
+    cursor: not-allowed;
+    background: none;
+    color: $--text-color-disabled;
+  }
+
+  @include when(sel) {
+    background: mix($--color-white, $--primary-color, 90%);
+  }
+
+  @include e(arrow) {
+    line-height: inherit;
+    margin: 0;
+    cursor: pointer;
+    padding: 3px 0;
+    transition: transform .3s ease;
+
+    @include when(open) {
+      transform: rotate(90deg);
+    }
+  }
+
+  @include e(name) {
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 3px 4px;
+  }
+}

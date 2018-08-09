@@ -16,17 +16,34 @@ body
     body.docs
         padding-top: 0
 
-a
-    text-decoration none
-    color $medium
-    &:hover
-        text-decoration none
 img
     border none
 
 h1, h2, h3, h4, strong
     font-weight 600
     color $dark
+
+h1, h2, h3, h4, h5, h6
+  margin: 25px 0 15px;
+
+h1
+  font-size 36px
+  line-height 42px
+h2
+  font-size 24px
+  line-height 30px
+h3
+  font-size 18px
+  line-height 24px
+h4
+  font-size 16px
+  line-height 22px
+h5
+  font-size 14px
+  line-height 20px
+h6
+  font-size 12px
+  line-height 18px
 
 code, pre
     font-family $code-font
@@ -48,6 +65,7 @@ em
 
 p
     word-spacing 0.05em
+    margin 1em 0
 
 a.button
     padding 0.75em 2em
@@ -72,13 +90,13 @@ a.button
         width 100%
         border-collapse collapse
         padding 0
-        margin 0   
+        margin 0
     .gutter
         width 1.5em
     .code
         $code-line-height = 1.5em
         pre
-            padding 1.2em 1.4em
+            padding 4em 1.4em
             line-height $code-line-height
             margin 0
         .line

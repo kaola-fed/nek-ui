@@ -1,0 +1,116 @@
+@mixin input-element {
+    position: absolute;
+    height: 24px;
+    line-height: 24px !important;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    color: $--text-color-secondary;
+}
+
+@include b(input) {
+    display: block;
+    position: relative;
+    width: 100%;
+
+    @include m(sm) {
+        .kl-input-wrap__inner {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
+        }
+    }
+    @include m(lg) {
+        .kl-input-wrap__inner {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg)
+        }
+    }
+    @include m(smw) {
+        @include form-item-width($--width-sm);
+    }
+    @include m(mdw) {
+        @include form-item-width($--width-md);
+    }
+    @include m(lgw) {
+        @include form-item-width($--width-lg);
+    }
+}
+
+@include b(input-wrap) {
+    position: relative;
+    display: flex;
+
+    @include e(inner) {
+        @include form-item-input;
+        padding: $--padding-base;
+        color: $--text-color-default;
+        background: $--background-color-white;
+        border-radius: $--border-radius-base;
+        border: 1px solid $--border-color-base;
+        height: $--height-base;
+        line-height: $--height-base;
+        font-size: $--font-size-base;
+        width: 100%;
+        @include placeholder {
+            color: $--text-color-placeholder;
+            opacity: 1;
+        }
+        @include form-item-transition;
+
+        &:hover {
+            @include form-item-hover;
+        }
+        &:focus {
+            @include form-item-focus;
+        }
+        @include m(error) {
+            @include form-item-error;
+        }
+        @include m(unit) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        &:disabled {
+            @include form-item-disabled;
+        }
+    }
+    @include e(unit) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f5f7fa;
+        color: #909399;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        padding: 0 10px;
+        border-left: 0;
+        white-space: nowrap;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    @include e(icon) {
+        @include input-element;
+        font-size: 12px;
+        &:hover,
+        &:active {
+            color: $--text-color-primary;
+            cursor: pointer;
+        }
+        @include m(clearable) {
+            opacity: 0;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    @include e(placeholder) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        color: $--text-color-placeholder;
+        padding: $--padding-base;
+        border-left: 1px solid transparent;
+    }
+}
+
+

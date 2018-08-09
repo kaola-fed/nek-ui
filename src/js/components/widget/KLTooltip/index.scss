@@ -1,0 +1,154 @@
+$arrowColor: #303133;
+$topPadding: 5px 0 8px 0;
+$rightPadding: 0 5px 0 8px;
+$bottomPadding: 8px 0 5px 0;
+$leftPadding: 0 8px 0 5px;
+
+
+@mixin top-arraw {
+    padding: $topPadding;
+    .kl-tooltip__arrow {
+        bottom:3px;
+        border-width:5px 5px 0;
+        border-top-color:$arrowColor;
+    }
+}
+@mixin left-arraw {
+    padding: $leftPadding;
+    .kl-tooltip__arrow {
+        right:3px;
+        border-width:5px 0 5px 5px;
+        border-left-color:$arrowColor;
+    }
+}
+@mixin bottom-arraw {
+    padding:$bottomPadding;
+    .kl-tooltip__arrow {
+        top:3px;
+        border-width:0 5px 5px;
+        border-bottom-color:$arrowColor;
+    }
+}
+@mixin right-arraw {
+    padding: $rightPadding;
+    .kl-tooltip__arrow {
+        left:3px;
+        border-width:5px 5px 5px 0;
+        border-right-color:$arrowColor;
+    }
+}
+
+
+@include b(tooltip) {
+    position: absolute;
+    z-index: 2000;
+    font-size: 12px;
+    line-height: 1.5;
+    @include e(arrow) {
+        position:absolute;
+        width:0;
+        height:0;
+        border-color:transparent;
+        border-style:solid;
+        &:after {
+            position:absolute;
+            width:0;
+            height:0;
+            border-color:transparent;
+            border-style:solid;
+        }
+    }
+
+    @include e(inner) {
+        max-width:250px;
+        padding:8px 10px;
+        margin:0;
+        color:#fff;
+        text-align:left;
+        text-decoration:none;
+        background-color:$arrowColor;
+        border-radius:4px;
+    }
+
+
+    @include m(top) {
+        @include top-arraw;
+        .kl-tooltip__arrow {
+            left:50%; margin-left:-5px;
+        }
+    }
+    @include m(topLeft) {
+        @include top-arraw;
+        .kl-tooltip__arrow {
+            left:16px;
+        }
+    }
+    @include m(topRight) {
+        @include top-arraw;
+        .kl-tooltip__arrow {
+            right:16px;
+        }
+    }
+
+
+    @include m(left) {
+        @include left-arraw;
+        .kl-tooltip__arrow {
+            top:50%; margin-top:-5px;
+        }
+    }
+    @include m(leftTop) {
+        @include left-arraw;
+        .kl-tooltip__arrow {
+            top:8px;
+        }
+    }
+    @include m(leftBottom) {
+        @include left-arraw;
+        .kl-tooltip__arrow {
+            bottom:8px;
+        }
+    }
+
+
+    @include m(bottom) {
+        @include bottom-arraw;
+        .kl-tooltip__arrow {
+            left:50%;
+            margin-left:-5px;
+        }
+    }
+    @include m(bottomLeft) {
+        @include bottom-arraw;
+        .kl-tooltip__arrow {
+            left:16px;
+        }
+    }
+    @include m(bottomRight) {
+        @include bottom-arraw;
+        .kl-tooltip__arrow {
+            right:16px;
+        }
+    }
+
+
+    @include m(right) {
+        @include right-arraw;
+        .kl-tooltip__arrow {
+            top:50%;
+            margin-top:-5px;
+        }
+    }
+    @include m(rightTop) {
+        @include right-arraw;
+        .kl-tooltip__arrow {
+            top:8px;
+        }
+    }
+    @include m(rightBottom) {
+        @include right-arraw;
+        .kl-tooltip__arrow {
+            bottom:8px;
+        }
+    }
+}

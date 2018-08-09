@@ -1,0 +1,26 @@
+@include b(aside) {
+    flex-shrink: 0;
+    // overflow: auto;
+    z-index: 100;
+    background: #eee;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    @include when(active) {
+        transform: translateX(0);
+    }
+}
+
+@include b(sidebar-btn-wrap) {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 50px;
+    font-size: 10px;
+    margin-top: -25px;
+    align-items: center;
+    background: #C2C9D0;
+    color: #fff;
+    cursor: pointer;
+}

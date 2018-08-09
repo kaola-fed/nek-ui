@@ -1,0 +1,10 @@
+<label class="kl-switch kl-switch--{size} {class}" is-dis={disabled} is-chk={checked}>
+  <input type="checkbox" class="f-dn" disabled={disabled} on-change={this.onChange($event)} />
+  <span class="kl-switch__slider">
+    {#if checked && checkedText}
+      <span class="kl-switch__checkedText">{#inc checkedText}</span>
+    {#elseif !checked && unCheckedText}
+      <span class="kl-switch__unCheckedText">{#inc unCheckedText}</span>
+    {/if}
+  </span>
+</label>

@@ -1,0 +1,176 @@
+// Name:            Select2
+// Description:     选择扩展
+// Author:          sensen(rainforest92@126.com)
+// ========================================================================
+
+
+
+// Extends:
+// ========================================================================
+
+.u-select {
+    .z-hover {
+        background: #f1f1f1;
+    }
+
+    $user-select: none;
+    vertical-align: top;
+
+    .dropdown_hd {
+        $box-sizing: border-box;
+        cursor: pointer;
+        font-size: 0;
+        @extend .f-toe;
+
+        min-height: $u-formctrl_height;
+        line-height: $u-formctrl_height - 2;
+        padding: 0 index($u-formctrl_padding, 1);
+        background: $u-formctrl_background;
+        color: $u-formctrl_color;
+        $border: $u-formctrl_border;
+        $border-radius: $border-radius-base;
+        overflow-y: auto;
+        position: relative;
+
+        .u-icon {
+            float: right;
+            width: auto;
+            line-height: inherit;
+            position: absolute;
+            right: 5px;
+        }
+        .u-icon-remove {
+            color: #A4A5B9;
+        }
+        .m-multi-placeholder {
+            color: #999;
+        }
+
+        .u-select-errorIcon {
+            position: relative;
+            top: -28px;
+        }
+
+        .hoverShow {
+            display: none;
+        }
+
+        &:hover {
+            .hoverShow {
+                display: inline-block;
+            }
+            .hoverHide {
+                display: none;
+            }
+        }
+
+        span {
+            float: left;
+            font-size: 12px;
+        }
+    }
+
+    .selected-tag {
+        position: relative;
+        padding: 0 20px 0 10px;
+        margin: 4px 5px 0 0;
+        background-color: #f3f3f3;
+        $border-radius: $border-radius-base;
+        height: 20px;
+        line-height: 20px;
+        float: left;
+        cursor: default;
+        .u-icon-remove{
+            position: absolute;
+            right: 5px;
+        }
+        &:last-child{
+            margin-bottom: 6px;
+        }
+        .z-dis {
+            cursor: not-allowed;
+        }
+    }
+
+    .selectedTagMore {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+    }
+
+    .u-search-input{
+        font-family: inherit;
+        line-height: 20px;
+        vertical-align: middle;
+        width: t('calc(100% - 20px)');
+        background-color: transparent;
+        font-size: 12px;
+        &:focus{
+            outline: none;
+        }
+    }
+    .searchInput1 {
+        border-bottom: 1px solid #eee;
+        padding: 5px 0;
+        display: block;
+    }
+    &.isMultiple{
+        .u-search-input{
+            float: left;
+            margin-top: 7px;
+            width: 1em;
+        }
+    }
+
+    .dropdown_bd {
+        clear: both;
+    }
+
+    .m-listview {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 0;
+        max-height: 200px;
+        .u-check {
+            line-height: 0;
+        }
+    }
+    .m-treeview {
+        overflow: auto;
+        max-height: 200px;
+    }
+}
+.u-select-error .dropdown_hd { border-color: $u-formctrl-error-border; }
+
+/* Disabled */
+.u-select .z-dis {
+    .dropdown_hd {
+        cursor: not-allowed;
+        background: $u-formctrl-disabled_background;
+        $border: $u-formctrl-disabled_border;
+        color: $u-formctrl-disabled_color;
+    }
+}
+
+
+.u-selectgroup {
+    .u-select {
+        width:160px;
+    }
+    .u-dropdown {
+        display:inline-block;
+    }
+}
+
+.u-select-sm {
+    height: 24px;
+    padding: 0;
+    .dropdown_hd{
+        min-height: 24px;
+        line-height: 22px;
+    }
+
+    .m-listview >li{
+        line-height: 12px;
+    }
+}

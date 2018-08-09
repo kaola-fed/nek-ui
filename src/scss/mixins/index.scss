@@ -1,0 +1,64 @@
+@import "function";
+@import "bem.config";
+@import "../common/var";
+
+/* BEM
+ -------------------------- */
+
+@mixin b($block) {
+    $B: $namespace + '-' + $block !global;
+    .#{$B} {
+        @content;
+    }
+}
+
+@mixin e($element) {
+    $selector: &;
+    @if containSpecialClass($selector) {
+        @at-root {
+            #{$selector} {
+                #{'.' + $B + $element-separator + $element} {
+                    @content;
+                }
+            }
+        }
+    }
+    @else {
+        @at-root {
+            #{$selector + $element-separator + $element} {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin m($modifier) {
+    @at-root {
+        #{&}#{$modifier-separator + $modifier} {
+            @content;
+        }
+    }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$when-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+/* Placeholder
+ -------------------------- */
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}

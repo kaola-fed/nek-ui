@@ -12,7 +12,8 @@
                     menus.push({
                         display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                         title: p.title,
-                        path: p.path
+                        path: p.path,
+                        new: p.new
                     })
                 } else if (p.cate !== pages.data[i - 1].cate) {
                     // 首个不同的，添加分类标题
@@ -22,7 +23,8 @@
                         children: [{
                             display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                             title: p.title,
-                            path: p.path
+                            path: p.path,
+                            new: p.new
                         }]
                     })
                 } else {
@@ -30,7 +32,8 @@
                     menus[currIdx].children.push({
                         display: p.title + (p.name ? ' <span>' + p.name + '</span>' : ''),
                         title: p.title,
-                        path: p.path
+                        path: p.path,
+                        new: p.new
                     })
                 }
             }) %>
@@ -48,14 +51,14 @@
                                 <%- m.display %>
                             </a>
                         <% } else {%>
-                            <span class="u-icon u-icon-angle-down"></span><%- m.display %>
+                            <span class="kl-icon kl-icon-angle-down"></span><%- m.display %>
                         <% } %>
                     </div>
                     <% if (hadChild) { %>
                         <ul class="submenu">
                             <% m.children.forEach(function(p) { %>
                                <li>
-                                   <a href="<%- url_for(p.path) %>" class="<%- p.title === page.title ? 'current' : ''%>">
+                                   <a href="<%- url_for(p.path) %>" class="<%- p.title === page.title ? 'current' : ''%> <%- p.new == true ? 'new' : ''%>">
                                        <%- p.display %>
                                    </a>
                                </li>

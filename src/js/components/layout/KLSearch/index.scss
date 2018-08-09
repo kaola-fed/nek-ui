@@ -1,0 +1,23 @@
+@include b(search-ft) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include e(wrap) {
+        display: flex;
+        align-items: center;
+    }
+
+    @include e(wrap-btn) {
+        margin-right: 10px;
+    }
+
+    @include e(wrap-tips) {
+        margin-left: 16px;
+        color: #999999;
+    }
+
+    .kl-icon {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,41 @@
+@include b(dropdown) {
+    position: relative;
+    vertical-align: top;
+
+    @include e(hd) {
+      @include when(dis) {
+        background: #eee;
+        color: #999;
+        border: 1px solid #d2d6de;
+        cursor: not-allowed;
+      }
+    }
+
+    @include e(bd) {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        top: 100%;
+        line-height:normal;
+        .kl-listview {
+            > li > a {
+                display: block;
+            }
+        }
+        .kl-check,
+        .kl-check__box{
+            margin-bottom: 0;
+        }
+    }
+
+    @include when(dis) {
+        .kl-dropdown__hd > .kl-btn {
+            cursor: not-allowed;
+            opacity: .5;
+            box-shadow: none;
+        }
+    }
+}
+
+
+ 

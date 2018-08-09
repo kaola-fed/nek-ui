@@ -1,54 +1,54 @@
 {#if total > 1}
-<div class="m-pager m-pager-{@(position)} {class}" z-dis={disabled} r-hide={!visible}>
-    <div class="m-left-pager">
+<div class="kl-pager kl-pager-{@(position)} {class}" is-dis={disabled} r-hide={!visible}>
+    <div class="m-left-pager kl-pager-left">
         {#if !!pageSize || pageSize === 0}
-        <div class="page_size"><kl-select placeholder="" value={pageSize} source={pageSizeList} size="sm"></kl-select></div>
+        <div class="page_size kl-pager__size"><kl-select placeholder="" value={pageSize} source={pageSizeList} size="sm"></kl-select></div>
         {/if}
 
         {#if !!sumTotal || sumTotal === 0}
             {#if !!maxTotal && sumTotal > maxTotal}
-            <div class="page_total">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>
+            <div class="page_total kl-pager__total">{this.$trans('TOTAL')} {maxTotal + '＋'} {this.$trans('ITEMS')}</div>
             {#elseif isEllipsis}
-            <div class="page_total">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>
+            <div class="page_total kl-pager__total">{this.$trans('TOTAL')} {sumTotal + '＋'} {this.$trans('ITEMS')}</div>
             {#else}
-            <div class="page_total">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>
+            <div class="page_total kl-pager__total">{this.$trans('TOTAL')} {sumTotal} {this.$trans('ITEMS')}</div>
             {/if}
         {/if}
     </div>
 
-    <ul class="m-right-pager">
-        <li class="page_item page_prev" z-dis={current <= 1} on-click={this.select(current - 1)}>
-        <i class="u-icon u-icon-chevron_left"></i>
+    <ul class="m-right-pager kl-pager-main">
+        <li class="page_item page_prev kl-pager-main__item kl-pager-main__prev" is-dis={current <= 1} on-click={this.select(current - 1)}>
+        <kl-icon type="arrow-left" />
         </li>
 
         {#if total - middle > side * 2 + 1}
         {#list 1..side as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item kl-pager-main__item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
-        {#if _start > side + 1}<li class="page_item">...</li>{/if}
+        {#if _start > side + 1}<li class="page_item kl-pager-main__item">...</li>{/if}
         {#list _start.._end as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item kl-pager-main__item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
-        {#if _end < total - side}<li class="page_item">...</li>{/if}
+        {#if _end < total - side}<li class="page_item kl-pager-main__item">...</li>{/if}
         {#list (total - side + 1)..total as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item kl-pager-main__item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {#else}
         {#list 1..total as i}
-        <li class="page_item" z-crt={current == i} on-click={this.select(i)}>{i}</li>
+        <li class="page_item kl-pager-main__item" is-crt={current == i} on-click={this.select(i)}>{i}</li>
         {/list}
         {/if}
 
-        <li class="page_item pager_next" z-dis={current >= total} on-click={this.select(current + 1)}><i class="u-icon u-icon-chevron_right"></i></li>
+        <li class="page_item pager_next kl-pager-main__item kl-pager-main__next" is-dis={current >= total} on-click={this.select(current + 1)}><kl-icon type="arrow-right" /></li>
 
-        <li class="page_goto">
+        <li class="page_goto kl-pager-main__goto">
             <span>{this.$trans('GOTO')}</span>
             <kl-input type="int" on-keyup={this.enter($event)} size="sm" value={pageNo} />
             <span>{this.$trans('PAGE')}</span>
         </li>
 
-        <li class="page_confirm">
-            <kl-button on-click={this.goto()} type="tertiary" title={this.$trans('CONFIRM')} size="sm" />
+        <li class="page_confirm kl-pager-main__confirm">
+            <kl-button class="kl-pager-main__confirm_btn" on-click={this.goto()} title={this.$trans('CONFIRM')} size="sm" />
         </li>
     </ul>
 

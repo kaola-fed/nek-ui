@@ -1,0 +1,124 @@
+$--size-base: 8px !default;
+$--color-mix-amount: 10%;
+
+/* Color-Base */
+$--color-white: #FFF !default;
+$--color-black: #000 !default;
+
+$--common-color-hover: #e6f9f9 !default;
+
+$--primary-color: #00C4C0 !default;
+$--primary-color-hover: mix($--color-white, $--primary-color, $--color-mix-amount) !default;
+$--primary-color-active: mix($--color-black, $--primary-color, $--color-mix-amount) !default;
+$--primary-color-white-hover: mix($--color-white, $--primary-color, $--color-mix-amount * 5) !default;
+
+$--notice-color: #54A8F7 !default;
+$--notice-color-hover: mix($--color-white, $--notice-color, $--color-mix-amount) !default;
+$--notice-color-active: mix($--color-black, $--notice-color, $--color-mix-amount) !default;
+$--notice-color-white-hover: mix($--color-white, $--notice-color, $--color-mix-amount * 5) !default;
+
+$--success-color: #93DD68 !default;
+$--success-color-hover: mix($--color-white, $--success-color, $--color-mix-amount) !default;
+$--success-color-active: mix($--color-black, $--success-color, $--color-mix-amount) !default;
+$--success-color-white-hover: mix($--color-white, $--success-color, $--color-mix-amount * 5) !default;
+
+$--warning-color: #FFB539 !default;
+$--warning-color-hover: mix($--color-white, $--warning-color, $--color-mix-amount) !default;
+$--warning-color-active: mix($--color-black, $--warning-color, $--color-mix-amount) !default;
+$--warning-color-white-hover: mix($--color-white, $--warning-color, $--color-mix-amount * 5) !default;
+
+$--error-color: #F86B6B !default;
+$--error-color-hover: mix($--color-white, $--error-color, $--color-mix-amount) !default;
+$--error-color-active: mix($--color-black, $--error-color, $--color-mix-amount) !default;
+$--error-color-white-hover: mix($--color-white, $--error-color, $--color-mix-amount * 5) !default;
+
+/* Color-BG */
+$--background-color-white: $--color-white !default;
+$--background-color-primary: $--primary-color !default;
+$--background-color-disabled: #f8f8f8 !default;
+$--background-color-white-hover: $--primary-color-white-hover !default;
+$--background-color-primary-hover: $--primary-color-hover !default;
+$--background-color-primary-active: $--primary-color-active !default;
+
+/* Color-Text */
+$--text-color-white: $--color-white !default;
+$--text-color-black: $--color-black !default;
+$--text-color-default: #333 !default;
+$--text-color-secondary: #666 !default;
+$--text-color-placeholder: #ccc !default;
+$--text-color-disabled: #ccc !default;
+$--text-color-primary: $--primary-color !default;
+$--text-color-primary-hover: $--primary-color-hover !default;
+$--text-color-primary-active: $--primary-color-active !default;
+$--text-color-hover: #444 !default;
+$--text-color-error: $--error-color !default;
+$--text-color-error-hover: $--error-color-hover !default;
+$--text-color-error-active: $--error-color-active !default;
+$--text-color-selected: $--text-color-white !default;
+
+/* Color-Border */
+$--border-color-base: #e3e3e3 !default;
+$--border-color-primary: $--primary-color !default;
+$--border-color-primary-hover: $--primary-color-hover !default;
+$--border-color-primary-active: $--primary-color-active !default;
+$--border-color-error: $--error-color !default;
+$--border-color-error-hover: $--error-color-hover !default;
+$--border-color-error-active: $--error-color-active !default;
+$--border-color-disabled: #eee !default;
+
+/* Font */
+$--font-family-no-number: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$--font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif, $--font-family-no-number !default;
+$--code-family: Consolas, Menlo, Courier, monospace !default;
+$--font-size-base: 12px !default;
+$--font-size-xs: $--font-size-base - 2 !default;
+$--font-size-lg: $--font-size-base + 2 !default;
+$--font-size-xl: $--font-size-base + 6 !default;
+$--line-height-base: 1.5 !default;
+
+/* Height */
+$--height-base: $--size-base * 4 !default;
+$--height-xs: $--height-base - 10 !default;
+$--height-sm: $--size-base * 3 !default;
+$--height-lg: $--size-base * 5 !default;
+$--height-xl: $--height-base + 12 !default;
+
+/* Width */
+$--width-sm: 80px !default;
+$--width-md: 160px !default;
+$--width-lg: 300px !default;
+
+/* Padding */
+$--padding-base: 6px 10px !default;
+$--padding-sm: 4px 6px !default;
+$--padding-lg: 8px 10px !default;
+$--padding-xl: 16px 24px !default;
+
+/* Border */
+
+/* Border-Radius */
+$--border-radius-base: 2px !default;
+$--border-radius-xs: 1px !default;
+$--border-radius-lg: 4px !default;
+$--border-radius-xl: 6px !default;
+
+/* Border-Style */
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
+
+/* Outline */
+$--outline-blur-size: 0 !default;
+$--outline-width: 2px !default;
+$--outline-color: $--primary-color !default;
+
+/* LINK */
+$--link-color: $--primary-color !default;
+$--link-hover-color: $--primary-color !default;
+$--link-active-color: $--primary-color !default;
+$--link-decoration: none !default;
+$--link-hover-decoration: none !default;
+
+/* Col */
+$--col-size: 12 !default;

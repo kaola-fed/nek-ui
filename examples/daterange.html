@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>nek-ui</title>
+    <meta charset="utf-8">
+    <!--  nek-ui -->
+    <link href="//localhost:8082/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        #app {
+            margin: 100px;
+        }
+    </style>
+</head>
+<!-- {timeValue}
+<kl-time internalValue={timeValue} format="HH点mm分ss秒"  type="time" disabled-minutes="[0,10,20]" confirm />
+
+<kl-time type="timerange" />
+<kl-time disabled-hours="[1,5,10]" type="time" format="HH点mm分ss秒" />
+<kl-time steps="[1, 15, 15]" format="HH:mm" type="timerange" format="HH’mm’ss" />
+
+<kl-new-date shortcuts="{shortcuts}" />
+<kl-new-date type="daterange" />
+<kl-new-date type="datetime" />
+<kl-new-date type="datetimerange" /> -->
+<body>
+<div id="app">
+
+</div>
+<script src="//localhost:8082/vendor/regular.js"></script>
+<script src="//localhost:8082/js/nek-ui.js"></script>
+<script>
+    new NEKUI.Component({
+        template: `
+            {value3}
+            <kl-date type="daterange" value="{value3}" />
+            {value2}
+            <kl-date type="datetimerange" value="{value2}" />
+    `,
+        data: {
+            value1: [new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'), new Date()],
+            value3: [new Date(), new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)')],
+            source: [
+                {name: '母婴儿童'},
+                {name: '美容彩妆'},
+                {name: '服饰鞋包（禁用）', disabled: true},
+                {name: '家居个护（禁用）', disabled: true, tip: 'tip'},
+                {name: '营养保健（禁用）', disabled: true, tip: 'tip', placement: 'bottom'}
+            ],
+            shortcuts: [
+                {
+                    text: 'Today',
+                    value () {
+                        return new Date();
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'Yesterday',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'One week',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                }
+            ]
+        }
+    }).$inject('#app');
+</script>
+</body>
+
+</html>

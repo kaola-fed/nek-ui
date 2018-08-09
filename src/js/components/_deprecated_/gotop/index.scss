@@ -1,0 +1,55 @@
+$--gotop-z-index: 1050;
+$--gotop-top: 30px;
+$--gotop-size: 50px;
+
+@include b(gotop) {
+    position: fixed;
+    display: block;
+    z-index: $--gotop-z-index;
+    top: $--gotop-top;
+    left: $--gotop-size;
+    width: $--gotop-size;
+    line-height: $--gotop-size;
+    text-align: center;
+    font-size: 32px;
+    background: #eee;
+    color: #444;
+    opacity: 0.6;
+
+    &:hover {
+        $opacity: 0.9;
+    }
+
+    @include m(static) {
+        position: static;
+    }
+
+    @include m(topright) {
+        left: auto;
+        right: $--gotop-top;
+    }
+
+    @include m(bottomright) {
+        left: auto;
+        right: $--gotop-top;
+        top: auto;
+        bottom: $--gotop-top;
+    }
+
+    @include m(topcenter) {
+        left: 50%;
+        margin-left: ($--gotop-size / -2);
+    }
+
+    @include m(bottomcenter) {
+        left: 50%;
+        margin-left: ($--gotop-size / -2);
+        top: auto;
+        bottom: $--gotop-top;
+    }
+
+    @include m(bottomleft) {
+        top: auto;
+        bottom: $--gotop-top;
+    }
+}

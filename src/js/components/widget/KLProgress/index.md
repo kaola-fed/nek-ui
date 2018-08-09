@@ -10,16 +10,10 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-progress class="f-mb10" percent=25 />
-<kl-progress class="f-mb10" percent=50 />
-<kl-progress class="f-mb10" percent=75 />
-<kl-progress class="f-mb10" percent=100 />
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
+<kl-progress percent=25 class="f-mb10" />
+<kl-progress percent=25>
+    25%
+</kl-progress>
 ```
 
 <!-- demo_end -->
@@ -31,91 +25,39 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-progress class="f-mb10" size="xs" percent=20 />
+<kl-progress class="f-mb10" size="lg" percent=40 />
+<kl-progress class="f-mb10" percent=40 />
 <kl-progress class="f-mb10" size="sm" percent=40 />
-<kl-progress class="f-mb10" percent=60 />
-<kl-progress class="f-mb10" size="lg" percent=80 />
-<kl-progress class="f-mb10" size="xl" percent=100 />
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
 ```
 
 <!-- demo_end -->
 
 <!-- demo_start -->
 
-### 进度条状态
+### 进度条颜色
 
 <div class="m-example"></div>
 
 ```xml
-<kl-progress class="f-mb10" state="info" percent=25 />
-<kl-progress class="f-mb10" state="success" percent=50 />
-<kl-progress class="f-mb10" state="warning" percent=75 />
-<kl-progress class="f-mb10" state="error" percent=100 />
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
+<kl-progress class="f-mb10" color="#F86B6B" percent=25 />
 ```
 
 <!-- demo_end -->
 
 <!-- demo_start -->
 
-### 条纹与激活
-
-striped属性控制了进度条是否显示条纹；active属性控制了进度条的动画效果显示。
-
-仅当striped属性为true，并且active属性也为true时候，进度条才会显示动画。
-
+### 在进度条上显示进度
+size必须是lg时才生效
 <div class="m-example"></div>
 
 ```xml
-<kl-progress percent=50 striped active />
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template
-});
+<kl-progress class="f-mb10" size="lg" percent=2 insideText />
+<kl-progress class="f-mb10" size="lg" percent=25 insideText />
+<kl-progress class="f-mb10" size="lg" percent=100 insideText />
 ```
 
 <!-- demo_end -->
 
-<!-- demo_start -->
-
-### 百分比文字显示
-
-text属性可以为Boolean或String类型。
-
-当类型为Boolean时，text属性控制了进度条上是否显示百分比；当类型为String时，进度条上将显示text的值。
-
-<div class="m-example"></div>
-
-```xml
-<div class="g-row">
-    <kl-input placeholder="输入显示在进度条上的文字" value={displayText} />
-</div>
-<kl-progress percent=50 text={displayText || true} />
-```
-
-```javascript
-var component = new NEKUI.Component({
-    template: template,
-    data: {
-        displayText: ''
-    }
-});
-```
-
-<!-- demo_end -->
 
 <!-- demo_start -->
 

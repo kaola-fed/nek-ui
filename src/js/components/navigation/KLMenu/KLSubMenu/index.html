@@ -1,10 +1,10 @@
 {#if url || route}
-<a class="m-subMenu {class}" r-class={ {'active': active} } r-route={url+route}>
-  <div class="head">
+<a class="kl-sub-menu {class}" r-class={ {'is-highlight': active} } r-route={url+route} target={target}>
+  <div class="kl-sub-menu-head">
     {#if iconClass}
-    <span class="head_icon {iconClass}"></span>
+    <span class="kl-sub-menu-head__icon {iconClass}"></span>
     {/if}
-    <span class="head_title">
+    <span class="kl-sub-menu-head__title">
       {#if title}
         {title}
       {#elseif titleTemplate}
@@ -14,12 +14,12 @@
   </div>
 </a>
 {#else}
-<li class="m-subMenu {class}" r-class={ {'active': active} } on-click={this.toggle($event)}>
-  <div class="head">
+<li class="kl-sub-menu {class}" r-class={ {'is-highlight': (!active && rootMenu.currentSubMenu === this)} } on-click={this.toggle($event)}>
+  <div class="kl-sub-menu-head">
     {#if iconClass}
-    <span class="head_icon {iconClass}"></span>
+    <span class="kl-sub-menu-head__icon {iconClass}"></span>
     {/if}
-    <span class="head_title">
+    <span class="kl-sub-menu-head__title">
       {#if title}
         {title}
       {#elseif titleTemplate}
@@ -27,11 +27,11 @@
       {/if}
     </span>
     {#if this.$body}
-      <span class="head_arrow u-icon u-icon-angle-right" r-class={ {'isOpen':active} }></span>
+      <kl-icon type="arrow-down" class="kl-sub-menu-head__arrow {active ? 'is-open' : ''}" />
     {/if}
   </div>
   {#if active}
-  <div class="menuItems" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
+  <div class="kl-menu-item-wrap" r-animation="on:enter;collapse:on;on:leave;collapse:off;">
     {#inc this.$body}
   </div>
   {/if}

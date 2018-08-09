@@ -18,6 +18,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.disabled=false]   => 是否禁用
  * @param {boolean}     [options.data.visible=true]     => 是否显示
  * @param {string}      [options.data.class]            => 补充class
+ * @param {string}      [options.data.contentTemplate]  => 内容模板，用于支持复杂内容的自定义。
  */
 const KLCheck = Component.extend({
   name: 'kl-check',
@@ -45,10 +46,11 @@ const KLCheck = Component.extend({
     });
   },
 
-  check(_checked) {
+  check(_checked, e) {
     if (this.data.readonly || this.data.disabled) return;
 
     let checked = _checked;
+
     if (checked === undefined) checked = !this.data.checked;
     this.data.checked = checked;
 
@@ -60,7 +62,9 @@ const KLCheck = Component.extend({
     this.$emit('check', {
       sender: this,
       checked,
+      e,
     });
+    return false;
   },
 });
 

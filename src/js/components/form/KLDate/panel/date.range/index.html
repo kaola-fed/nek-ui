@@ -1,0 +1,202 @@
+<div class="{this.getClasses()} f-cb">
+
+    {#if shortcuts.length}
+    <div class="{prefixCls + '-sidebar'}">
+        {#list shortcuts as shortcut}
+        <div
+            class="{prefixCls + '-shortcut'}"
+            on-click="{this.onShortcutClick(shortcut)}">{ shortcut.text }</div>
+        {/list}
+    </div>
+    {/if}
+
+    <div class="{this.getPanelBodyClasses()}">
+        <div class="{prefixCls + '__body-content' + ' ' + prefixCls + '__body-content-left'}" r-hide="isTime">
+            <div class="{datePrefixCls}" r-hide="currentView === 'time'">
+                <span
+                    class="{this.iconBtnCls('prev', '-double')}"
+                    on-click="{this.prevYear('left')}"><kl-icon type="arrow-left-double" /></span>
+                {#if leftPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev')}"
+                    on-click="{this.prevMonth('left')}"
+                    r-hide="currentView !== 'date'"><kl-icon type="arrow-left-small" /></span>
+                {/if}
+                <kl-date-panel-label
+                    date-panel-label="{leftDatePanelLabel}"
+                    current-view="{leftDatePanelView}"
+                    date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
+                {#if splitPanels || leftPickerTable !== 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next', '-double')}"
+                    on-click="{this.nextYear('left')}"><kl-icon type="arrow-right-double" /></span>
+                {/if}
+                {#if splitPanels && leftPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next')}"
+                    on-click="{this.nextMonth('left')}"
+                    r-hide="currentView !== 'date'"><kl-icon type="arrow-right-small" /></span>
+                {/if}
+            </div>
+            {#if currentView !== 'time'}
+                {#if leftPickerTable == 'year-table'}
+                <kl-year-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{pickerTableType.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.onChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.onPickClick($event)}"
+                ></kl-year-table>
+                {/if}
+                {#if leftPickerTable == 'month-table'}
+                <kl-month-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{pickerTableType.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.onChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.onPickClick($event)}"
+                ></kl-month-table>
+                {/if}
+                {#if leftPickerTable == 'date-table'}
+                <kl-date-table
+                    ref="leftYearTable"
+                    selection-mode="range"
+                    table-date="{leftPanelDate}"
+                    disabled-date="{disabledDate}"
+                    range-state="{rangeState}"
+                    show-week-numbers="{showWeekNumbers}"
+                    value="{pickerTableType.left ? [dates[0]] : dates}"
+                    focused-date="{focusedDate}"
+                    on-change-range="{this.onChangeRange($event)}"
+                    on-pick="{panelPickerHandlers.left($event)}"
+                    on-pick-click="{this.onPickClick($event)}"
+                ></kl-date-table>
+                {/if}
+            {/if}
+
+        </div>
+        <div class="{prefixCls + '__body-content' + ' ' + prefixCls + '__body-content-right'}" r-hide="isTime">
+            <div class="{datePrefixCls}" r-hide="currentView === 'time'">
+                {#if splitPanels || rightPickerTable !== 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev', '-double')}"
+                    on-click="{this.prevYear('right')}"><kl-icon type="arrow-left-double" /></span>
+                {/if}
+                {#if splitPanels && rightPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('prev')}"
+                    on-click="{this.prevMonth('right')}"
+                    r-hide="currentView !== 'date'"><kl-icon type="arrow-left-small" /></span>
+                {/if}
+
+                <kl-date-panel-label
+                    date-panel-label="{rightDatePanelLabel}"
+                    current-view="{rightDatePanelView}"
+                    date-prefix-cls="{datePrefixCls}"></kl-date-panel-label>
+
+                <span
+                    class="{this.iconBtnCls('next', '-double')}"
+                    on-click="{this.nextYear('right')}"><kl-icon type="arrow-right-double" /></span>
+                {#if rightPickerTable === 'date-table'}
+                <span
+                    class="{this.iconBtnCls('next')}"
+                    on-click="{this.nextMonth('right')}"
+                    r-hide="currentView !== 'date'"><kl-icon type="arrow-right-small" /></span>
+                {/if}
+            </div>
+
+
+            {#if currentView !== 'time'}
+                {#if rightPickerTable == 'year-table'}
+                    <kl-year-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{pickerTableType.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.onChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-year-table>
+                {/if}
+                {#if rightPickerTable == 'month-table'}
+                    <kl-month-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{pickerTableType.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.onChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-month-table>
+                {/if}
+                {#if rightPickerTable == 'date-table'}
+                    <kl-date-table
+                        ref="rightYearTable"
+                        selection-mode="range"
+                        table-date="{rightPanelDate}"
+                        range-state="{rangeState}"
+                        disabled-date="{disabledDate}"
+                        show-week-numbers="{showWeekNumbers}"
+                        value="{pickerTableType.right ? [dates[dates.length - 1]] : dates}"
+                        focused-date="{focusedDate}"
+                        on-change-range="{this.onChangeRange($event)}"
+                        on-pick="{panelPickerHandlers.right($event)}"
+                        on-pick-click="{this.onPickClick($event)}"
+                    ></kl-date-table>
+                {/if}
+            {/if}
+
+
+        </div>
+
+        <div class="{prefixCls}__body-content" r-hide="!isTime">
+            {#if currentView === 'time'}
+            <kl-time-range-panel
+                ref="timePicker"
+                value="{dates}"
+                format="{format}"
+                time-disabled="{timeDisabled}"
+                type="datetimerange"
+
+                steps="{steps}"
+
+                on-pick-click="{this.onPickClick($event)}"
+                on-pick="{this.onRangePick($event)}"
+                on-pick-success="{this.onPickSuccess($event)}"
+                on-pick-toggle-time="{this.onToggleTime($event)}"
+            ></kl-time-range-panel>
+            {/if}
+        </div>
+
+        {#if confirm || type === 'datetimerange'}
+        <kl-date-confirm
+            show-time="{type === 'datetimerange'}"
+            is-time="{isTime}"
+            time-disabled="{timeDisabled}"
+
+            on-pick-toggle-time="{this.onToggleTime($event)}"
+            on-pick-success="{this.onPickSuccess($event)}"
+        ></kl-date-confirm>
+        {/if}
+    </div>
+</div>

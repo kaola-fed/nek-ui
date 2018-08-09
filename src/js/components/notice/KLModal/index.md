@@ -110,7 +110,14 @@ var component = new NEKUI.Component({
 <!-- demo_start -->
 ### 配置信息contentTemplate
 设置modal的内容显示区域(html代码片段)。默认为空
-<div class="m-example"></div>
+<div class="m-example">
+    <style>
+        .template_label {
+            line-height: 32px;
+            display: inline-block;
+        }
+    </style>
+</div>
 
 ```xml
 <kl-button on-click="{this.show()}"  title="contentTemplate"/>
@@ -124,7 +131,15 @@ var component = new NEKUI.Component({
             data: {
 
                 name: 'Rabbit',
-                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+                contentTemplate: '<kl-row>\
+                                    <kl-col span=2><span class="template_label">标题</span></kl-col>\
+                                    <kl-col span=10><kl-input placeholder="请输入"/></kl-col>\
+                                  </kl-row>\
+                                  <kl-row>\
+                                    <kl-col span=2><span class="template_label">描述</span></kl-col>\
+                                    <kl-col span=10><kl-textarea placeholder="请至少输入五个字符" /></kl-col>\
+                                  </kl-row>',
+                cancelButton: true
             }
         });
     }
@@ -151,7 +166,7 @@ var component = new NEKUI.Component({
 
                 name: 'Rabbit',
                 content: '自定义footer',
-                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
+                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="primary" /></kl-col><kl-col span=6><kl-button title="撤销" /></kl-col></kl-row>'
             }
         });
     }
@@ -610,7 +625,11 @@ var component = new NEKUI.Component({
 **该点击ok按钮会调用`ok`事件**
 
 <div class="m-example"></div>
-
+<style>
+    .g-row .kl-btn {
+        margin-bottom: 5px;
+    }
+</style>
 
 ```xml
 <div class="g-row">
@@ -685,4 +704,61 @@ var component = new NEKUI.Component({
 ```
 <!-- demo_end -->
 
+<!-- demo_start -->
+### modal类型
+不同类型的modal, 可选参数：`default`, `notice`, `warning`, `error`, `success`
 
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show('default')}"  title="default"/>
+<kl-button on-click="{this.show('notice')}"  title="notice"/>
+<kl-button on-click="{this.show('warning')}"  title="warning"/>
+<kl-button on-click="{this.show('error')}"  title="error"/>
+<kl-button on-click="{this.show('success')}"  title="success"/>
+
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function(modalType) {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                modalType: modalType,
+                title: '确认要删除这条信息吗？',
+                cancelButton: true
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 全屏模式
+设置`fullscreen` 为true, 弹窗占全屏 
+
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="Modal"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                fullscreen: true
+            }
+        });
+    }
+});
+```
+<!-- demo_end -->

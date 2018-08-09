@@ -1,45 +1,43 @@
-<div class="m-image-preview" on-mouseup={this.onMouseUp($event)}>
-    <div class="m-panel-wrapper">
-        <div class="m-panel-close" on-click={this.onClose()}></div>
-        <div class="m-full-panel" on-mousewheel={this.onMouseWheel($event)}>
-            <span class="u-pre-btn" on-click={this.onPrev()}><i class="u-icon"></i></span>
-            <ul class="m-image-list">
-                {#list imageList as img}
-                    <li class="m-image-item" ref="full-{img_index}" r-class={{current: img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>
-                        <img ref="full-img-{img_index}" src={img.src} alt={img.name} draggable={false}/>
-                    </li>
-                {/list}
-            </ul>
-            <span class="u-next-btn" on-click={this.onNext()}><i class="u-icon"></i></span>
-            <ul class="m-btn-group">
-                {#list opList as op}
-                    <li class="m-btn-item" r-style={{"margin-right": op.name === 'zoomIn' ? '30px' : 0}}>
-                        {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}
-                            <a class="u-download" href="javascript:void(0);"  on-click={this.downloadFile(imageList[curIndex])}><i class="u-icon u-icon-export"></i></a>
-                        {#elseif op.name === 'zoomIn'}
-                            <i class="u-icon u-icon-{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)}></i>
-                            <span class="u-scale">{parseInt(virtualInfo.scale * 100)}%</span>
-                        {#else}
-                            <i class="u-icon u-icon-{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)}></i>
-                        {/if}
-                    </li>
-                {/list}
-            </ul>
-            <ul class="m-virtual-zone" ref="virtualzone" r-hide={!showVirtual} r-style={{opacity: showVirtual ? 1 : 0}}>
-                <li ref="virtualimage" class="m-image-wrapper" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>
-                    <img src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>
-                </li>
-            </ul>
-        </div>
-        <div class="m-thumbnail-panel">
-            <div class="u-image-name" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>
-            <ul class="m-image-list">
-                {#list imageList as img}
-                    <li class="m-image-item" r-class={{current: img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>
-                        <img src={img.src} alt={img.name} draggable={false}/>
-                    </li>
-                {/list}
-            </ul>
-        </div>
-    </div>
+<div class="kl-image-preview" on-mouseup={this.onMouseUp($event)}>
+      <div class="kl-image-preview__close" on-click={this.onClose()}></div>
+      <div class="kl-image-preview-slide" on-mousewheel={this.onMouseWheel($event)}>
+          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--pre" on-click={this.onPrev()}><kl-icon type="arrow-left" class="kl-image-preview-slide-nav__icon" /></span>
+          <ul class="kl-image-preview-slide-images">
+              {#list imageList as img}
+                  <li class="kl-image-preview-slide-images-item" ref="full-{img_index}" r-class={{'is-current': img_index === curIndex}} r-hide={showVirtual} r-style={{opacity: img_index === curIndex ? 1 : 0}}>
+                      <img class="kl-image-preview-slide-images-item__img" ref="full-img-{img_index}" src={img.src} alt={img.name} draggable={false}/>
+                  </li>
+              {/list}
+          </ul>
+          <span class="kl-image-preview-slide-nav kl-image-preview-slide-nav--next" on-click={this.onNext()}><kl-icon type="arrow-right" class="kl-image-preview-slide-nav__icon" /></span>
+          <ul class="kl-image-preview-slide-operate">
+              {#list opList as op}
+                  <li class="kl-image-preview-slide-operate-item" r-style={{"margin-right": op.name === 'zoomIn' ? '30px' : 0}}>
+                      {#if (imageList[curIndex].status === 'success' || imageList[curIndex].status === undefined) && op.name === 'remove'}
+                          <kl-icon type="download" on-click={this.downloadFile(imageList[curIndex])} />
+                      {#elseif op.name === 'zoomIn'}
+                          <kl-icon type="{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)} />
+                          <span class="kl-image-preview-slide-operate-item__scale">{parseInt(virtualInfo.scale * 100)}%</span>
+                      {#else}
+                          <kl-icon type="{op.icon}" on-click={this[op.fnName].bind(this)(curIndex)} />
+                      {/if}
+                  </li>
+              {/list}
+          </ul>
+          <ul class="kl-image-preview-slide-stage" ref="virtualzone" r-style={{opacity: showVirtual ? 1 : 0}}>
+              <li ref="virtualimage" class="kl-image-preview-slide-stage-imgwrap" on-mousedown={this.onMouseDown($event)} on-mousemove={this.onMouseMove($event)} on-mouseup={this.onMouseUp($event)}>
+                  <img class="kl-image-preview-slide-stage-imgwrap__img" src={imageList[curIndex].src} alt={imageList[curIndex].name} draggable={false}/>
+              </li>
+          </ul>
+      </div>
+      <div class="kl-image-preview-thumbnail">
+          <div class="kl-image-preview-thumbnail__name" title={imageList[curIndex].name}>{imageList[curIndex].name}</div>
+          <ul class="kl-image-preview-thumbnail-images">
+              {#list imageList as img}
+                  <li class="kl-image-preview-thumbnail-images-item" r-class={{'is-current': img_index === curIndex}} on-click={this.setCurrentTo(img_index)}>
+                      <img class="kl-image-preview-thumbnail-images-item__img" src={img.src} alt={img.name} draggable={false}/>
+                  </li>
+              {/list}
+          </ul>
+      </div>
 </div>

@@ -1,0 +1,27 @@
+:root {
+    /* Brand Colors */
+    --brand-default:                        #fff;
+    --brand-default-dark:                   #e5e5e5;
+    --brand-default-darker:                 #adadad;
+    --brand-primary:                        #E31436;
+    --brand-primary-darker:                 #cc1231;
+    --brand-info:                           #54A8F7;
+    --brand-info-lighter:                   #65b1f8;
+    --brand-info-darker:                    #00acd6;
+    --brand-success:                        #6EBC40;
+    --brand-success-lighter:                #7dc353;
+    --brand-success-darker:                 #63a93a;
+    --brand-warning:                        #FFB539;
+    --brand-warning-lighter:                #ffbc4d;
+    --brand-warning-darker:                 #e08e0b;
+    --brand-error:                          #F48080;
+    --brand-error-lighter:                  #f58d8d;
+    --brand-error-darker:                   #dc7373;
+    --brand-secondary:                      var(--brand-primary);
+    --brand-secondary-darker:               var(--brand-primary-darker);
+    --panel-header:                         #fafafa;
+    --panel-header-color:                   var(--brand-default);
+    --panel-header-icon-color:              var(--brand-default);
+}
+
+@import "./index.css";

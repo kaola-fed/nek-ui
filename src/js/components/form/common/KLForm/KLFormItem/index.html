@@ -1,0 +1,25 @@
+<div class="kl-form-item kl-form-item--{layout} {class}" cols="{cols}">
+  <!--title区块-->
+  {#if title || titleTemplate}
+  <label class="kl-form-item__tt" cols="{labelCols}" size="{labelSize}" lineHeight="{labelLineHeight}" style="text-align:{textAlign}">
+      <span class="kl-form-item__rqr" r-hide="{!required}">&#42;</span>
+      {#if title}
+        {title}
+      {#else}
+        {#inc titleTemplate}
+      {/if}
+      {#if tip}<kl-tooltip tip="{tip}"><kl-icon type="warning" class="kl-form-item__info" /></kl-tooltip>{/if}
+  </label>
+  {/if}
+  <!--内容区块-->
+  <span class="kl-form-item__ct">
+    {#inc this.$body}
+
+    <!--说明区块-->
+    {#if descTemplate}
+      <div lineHeight="{labelLineHeight}" class="kl-form-item__desc">
+        {#inc descTemplate}
+      </div>
+    {/if}
+  </span>
+</div>

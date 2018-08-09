@@ -1,0 +1,41 @@
+
+<kl-drop isShow={isShow} headerClass="kl-newdate-header">
+    <kl-drop-header>
+        <div
+            class="kl-newdate-header-input"
+            is-dis={disabled}
+        >
+            {visualValue ? visualValue : placeholder}
+            <kl-icon class="kl-newdate-header-input__icon" type="time" />
+            <kl-icon class="kl-newdate-header-input__icon-remove" type="error"
+                     on-click="{this.resetValue($event)}" />
+        </div>
+    </kl-drop-header>
+    {#if type == 'timerange'}
+    <kl-time-range-panel
+        isShow={isShow}
+        value={value}
+        confirm="{confirm}"
+        on-pick={this.onPick($event)}
+        on-format={this.getVisualValue($event)}
+        on-pickSuccess="{isShow = false}"
+        ></kl-time-range-panel>
+    {#else}
+    <kl-time-panel
+        disabledHours="{disabledHours}"
+        disabledMinutes="{disabledMinutes}"
+        disabledSeconds="{disabledSeconds}"
+        disabledMinutes="{disabledMinutes}"
+        hideDisabledOptions="{hideDisabledOptions}"
+        format="{format}"
+        steps="{steps}"
+
+        isShow={isShow}
+        value={value}
+        confirm="{confirm}"
+        on-pick={this.onPick($event)}
+        on-format={this.getVisualValue($event)}
+        on-pickSuccess="{isShow = false}"
+    ></kl-time-panel>
+    {/if}
+</kl-drop>

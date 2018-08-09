@@ -1,0 +1,144 @@
+@include b(form-item) {
+    display: flex;
+    margin-bottom: 10px;
+    @include e(tt) {
+        position: relative;
+        float: left;
+        padding-right: $--size-base;
+        font-size: $--font-size-base;
+        text-align: right;
+        line-height: 2.5;
+        max-width: $--size-base * 18;
+        @include m(sm) {
+            width: $--size-base * 10;
+        }
+        @include m(md) {
+            width: $--size-base * 18;
+        }
+        @include m(lg) {
+            width: $--size-base * 22;
+            max-width: $--size-base * 22;
+        }
+        @include m(xlg) {
+            width: $--size-base * 28;
+            max-width: $--size-base * 28;
+        }
+        @include m(lh-sm) {
+            line-height: 1;
+        }
+        @include m(lh-md) {
+            line-height: 1.6;
+        }
+        @include m(lh-lg) {
+            line-height: 2.5;
+        }
+    }
+    @include e(info) {
+        line-height: 12px;
+        color: #ccc;
+        vertical-align: middle;
+        font-size: 13px;
+    }
+    @include e(ct) {
+        flex: 1;
+        min-width: 0;
+        font-size: $--font-size-base;
+    }
+    @include e(desc) {
+        display: inline-block;
+        vertical-align: top;
+        color: #999;
+    }
+    .kl-col:first-child {
+        padding-left: 0;
+    }
+    .kl-col:last-child {
+        padding-right: 0;
+    }
+    @include e(rqr) {
+        color: #F86B6B;
+    }
+    @include m(inline) {
+        display: inline-block;
+        vertical-align: top;
+        margin-bottom: 0;
+        .kl-form-item__ct {
+            display: inline-block;
+        }
+    }
+    @include m(vertical) {
+        flex-direction: column;
+        .kl-form-item__tt {
+            text-align: left !important;
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.kl-table .kl-form-item {
+    margin-bottom: 0;
+}
+
+/* Form-Item-Common */
+
+@mixin form-item-size($padding, $height, $font-size) {
+    padding: $padding;
+    height: $height;
+    line-height: $height;
+    font-size: $font-size;
+}
+
+@mixin form-item-width($width) {
+    display: inline-block;
+    width: $width;
+}
+
+@mixin form-item-transition {
+    transition: border 1s ease, box-shadow 1s ease;
+}
+
+@mixin form-item-focus {
+    outline: 0;
+    background: $--background-color-white;
+    color: $--text-color-default;
+    border-color: $--border-color-primary;
+    box-shadow: 0 0 2px 0 $--border-color-primary;
+}
+
+@mixin form-item-hover {
+    border-color: $--border-color-primary;
+}
+
+@mixin form-item-disabled {
+    cursor: not-allowed;
+    background: $--background-color-disabled;
+    color: $--text-color-disabled;
+    border: 1px solid $--border-color-disabled;
+}
+
+@mixin form-item-error {
+    border-color: $--border-color-error;
+    &:hover {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
+    &:focus {
+        box-shadow: 0 0 0 0;
+        border-color: $--error-color;
+    }
+}
+
+/* Input */
+
+@mixin form-item-input {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    max-width: 100%;
+}

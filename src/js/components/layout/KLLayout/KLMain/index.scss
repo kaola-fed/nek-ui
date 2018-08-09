@@ -1,0 +1,14 @@
+@include b(main) {
+    flex: 1;
+    padding: 20px;
+    background: #ddd;
+    overflow: auto;
+
+    @include when(master) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 200px;
+    }
+}

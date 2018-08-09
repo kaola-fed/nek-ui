@@ -1,0 +1,139 @@
+$m-pager_li_a_size: 30px;
+
+
+@include b(pager) {
+    list-style:none;
+    margin:0;
+    padding:0;
+    letter-spacing: -5px;
+    word-wrap:normal;
+    white-space:nowrap;
+    > * {
+        letter-spacing: normal;
+    }
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+
+    @include when(dis) {
+        > li {
+            > a {
+                cursor: not-allowed;
+                background: white;
+                color: #999;
+                border-color: #ddd;
+            }
+        }
+    }
+
+    @include e(size) {
+        display: inline-block;
+        font-size: 12px;
+        margin-right: 8px;
+
+        .kl-select{
+            display: inline-block;
+            min-width: 75px;
+            .kl-dropdown__hd {
+                height: 30px;
+                line-height: 28px;
+                .kl-icon {
+                    position: static;
+                }
+            }
+        }
+    }
+
+    @include e(total) {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 30px;
+    }
+}
+
+@include b(pager-main) {
+    display: flex;
+    align-items: center;
+    list-style:none;
+    margin:0;
+    padding:0;
+    letter-spacing: -5px;
+    word-wrap:normal;
+    white-space:nowrap;
+    > * {
+        letter-spacing: normal;
+    }
+    user-select: none;
+    @include e(item) {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        margin-right: 8px;
+        padding: 0 8px;
+        height: $m-pager_li_a_size;
+        min-width: $m-pager_li_a_size;
+        line-height: $m-pager_li_a_size - 2;
+        color: #444;
+        background: #fff;
+        text-decoration: none;
+        text-align: center;
+        border: 1px solid #D8D8D8;
+        border-radius: 2px;
+        &:hover{
+            cursor: pointer;
+            border: 1px solid #bbb;
+        }
+
+        @include when(crt) {
+            background: $--primary-color;
+            color: white;
+            border-color: $--primary-color;
+            &:hover{
+                border-color: $--primary-color;
+            }
+        }
+    }
+
+    @include e(prev) {
+        width: 24px;
+        padding: initial;
+        .kl-icon {
+            line-height: 28px;
+        }
+    }
+
+    @include e(next) {
+        .kl-icon {
+            line-height: 28px;
+        }
+    }
+
+
+    @include e(goto) {
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        .kl-input{
+            display: inline-block;
+            width: 40px;
+            margin: 0 7px 0 10px;
+            .kl-input-wrap__inner {
+                height: 30px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    @include e(confirm) {
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 27px;
+    }
+
+    @include e(confirm_btn) {
+        height: 30px;
+    }
+
+}

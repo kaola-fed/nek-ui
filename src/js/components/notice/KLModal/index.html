@@ -1,30 +1,49 @@
-<div class="m-modal {class}" r-anim='on:enter; class: modal_animated modal_zoomIn; on:leave; class: modal_animated modal_zoomOut;'>
-    <div class="modal_dialog" style="width: {width}px;" ref="modalDialog">
+<div class="kl-modal {class}" r-anim='on:enter; class: modal_animated modal_zoomIn; on:leave; class: modal_animated modal_zoomOut;'>
+    <div class="kl-modal__dialog kl-modal__dialog--{modalType} {fullscreen ? 'kl-modal__dialog--fullscreen': ''}" style="width: {width}px;" ref="modalDialog">
+        {#if modalType}
+        <div class="kl-modal-type">
+            <kl-icon type={modalType} />
+            <div class="kl-modal-type__right">
+                <h3 class="kl-modal-type__title">{title}</h3>
+                <div class="kl-modal-type__bd">
+                    {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
+                </div>
+                {#if cancelButton && isCanClose}
+                    <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
+                    on-click={this.close(false)} disabled={cancelDisabled} />
+                {/if}
+                {#if okButton}
+                    <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} disabled={okDisabled} />
+                {/if}
+            </div>
+        </div>
+        {#else}
         <kl-draggable disabled={!draggable} proxy={this.$refs.modalDialog} on-dragstart={this._onDragStart($event)}>
-        <div class="modal_hd">
+        <div class="kl-modal__hd">
             {#if isCanClose}
-            <a class="modal_close" on-click={this.close(false)}><i class="u-icon u-icon-close"></i></a>
+            <a class="kl-modal__close" on-click={this.close(false)}><kl-icon type="cross" /></a>
             {/if}
-            <h3 class="modal_title">{title}</h3>
+            <h3 class="kl-modal__title">{title}</h3>
         </div>
         </kl-draggable>
-        <div class="modal_bd" {#if maxHeight || minHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
+        <div class="kl-modal__bd" {#if maxHeight || minHeight} style="max-height: {maxHeight}px; min-height: {minHeight}px; overflow: auto;" {/if}>
             {#if contentTemplate}{#inc @(contentTemplate)}{#else}{content}{/if}
         </div>
         {#if hasFooter}
-        <div class="modal_ft">
+        <div class="kl-modal__ft">
 	        {#if footerTemplate}
 	            {#inc @(footerTemplate)}
 	        {#else}
-		        {#if okButton}
-                <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} disabled={okDisabled} />
-		        {/if}
 		        {#if cancelButton && isCanClose}
 		            <kl-button title={cancelButton === true ? this.$trans('CANCEL') : cancelButton}
                     on-click={this.close(false)} disabled={cancelDisabled} />
 		        {/if}
+		        {#if okButton}
+                <kl-button type="primary" title={okButton === true ? this.$trans('CONFIRM') : okButton} on-click={this.close(true, $event)} disabled={okDisabled} />
+		        {/if}
 	        {/if}
         </div>
+        {/if}
         {/if}
     </div>
 </div>

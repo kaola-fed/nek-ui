@@ -1,0 +1,18 @@
+<span>
+    {#if datePanelLabel}
+    <span
+        r-show="datePanelLabel.labels[0].type === 'year' || currentView === 'date'"
+        class="{datePrefixCls + '-header-label'}"
+        on-click="{datePanelLabel.labels[0].handler()}">{ datePanelLabel.labels[0].label }</span>
+    {/if}
+    {#if datePanelLabel && currentView === 'date'}
+        { datePanelLabel.separator }
+    {/if}
+
+    {#if datePanelLabel}
+    <span
+        r-show="datePanelLabel.labels[1].type === 'year' || currentView === 'date'"
+        class="{datePrefixCls + '-header-label'}"
+        on-click="{datePanelLabel.labels[1].handler()}">{ datePanelLabel.labels[1].label }</span>
+    {/if}
+</span>

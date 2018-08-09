@@ -14,44 +14,60 @@ const jsdoc2md = require('jsdoc-to-markdown');
 
 // 分类的顺序跟下面保持一致，每个分类下的组件顺序不作保证
 const CATES = [
-  { cate: 'layout', name: '布局', startOrder: 100 },
-  { cate: 'form', name: '表单', startOrder: 200 },
-  { cate: 'notice', name: '通知', startOrder: 300 },
-  { cate: 'navigation', name: '导航', startOrder: 400 },
-  { cate: 'widget', name: '其它', startOrder: 500 },
+    { cate: 'layout', name: '布局', startOrder: 100 },
+    { cate: 'form', name: '表单', startOrder: 200 },
+    { cate: 'notice', name: '通知', startOrder: 300 },
+    { cate: 'navigation', name: '导航', startOrder: 400 },
+    { cate: 'widget', name: '其它', startOrder: 500 },
 ];
 
 const DOC_PATH = __dirname;
 const COMPONENTS_PATH = path.join(__dirname, '../../src/js/components');
 const COMPONENTS_DEST = path.join(DOC_PATH, 'components');
+const COMMON_PATH = '/common';
+
+const getComponentPath = (cate, comp) => {
+    let dirPath = path.join(COMPONENTS_PATH, cate, comp);
+    if (fs.existsSync(dirPath)) return dirPath;
+
+    dirPath = path.join(COMPONENTS_PATH, cate, COMMON_PATH, comp);
+    if (fs.existsSync(dirPath)) return dirPath;
+}
 
 const getComponents = (cate) => {
-  const fullPath = path.join(COMPONENTS_PATH, cate);
-  return fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+    let fullPath = path.join(COMPONENTS_PATH, cate);
+    const components = fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+
+    let commons = [];
+    fullPath = path.join(fullPath, COMMON_PATH);
+    if (fs.existsSync(fullPath)) {
+        commons = fs.readdirSync(fullPath).filter(f => fs.statSync(path.join(fullPath, f)).isDirectory());
+    }
+    return components.concat(commons);
 };
 
 const getDemoCode = (demo) => {
-  const rglMatch = /(```(xml|html))([\s\S]*?)(```)/g.exec(demo);
-  const jsMatch = /(```javascript)([\s\S]*?)(```)/g.exec(demo);
-  return {
-    rgl: rglMatch ? rglMatch[3] : '',
-    js: jsMatch ? jsMatch[2] : 'var component = new NEKUI.Component({template: template});',
-  };
+    const rglMatch = /(```(xml|html))([\s\S]*?)(```)/g.exec(demo);
+    const jsMatch = /(```javascript)([\s\S]*?)(```)/g.exec(demo);
+    return {
+        rgl: rglMatch ? rglMatch[3] : '',
+        js: jsMatch ? jsMatch[2] : 'var component = new NEKUI.Component({template: template});',
+    };
 };
 
 const injectComponents = (md) => {
-  const demos = [];
-  const reg = /(<!-- demo_start -->)([\s\S]*?)(<!-- demo_end -->)/g;
-  let match = reg.exec(md);
-  while (match) {
-    demos.push(getDemoCode(match[2]));
-    match = reg.exec(md);
-  }
-  if (demos.length === 0) return md;
-  let demosScript = '\n{% raw %}\n<script>\nvar index = 0;\n';
-  demos.forEach((demo) => {
-    const tempJs = demo.js.replace(/`/gim, '\\`');
-    demosScript += `
+    const demos = [];
+    const reg = /(<!-- demo_start -->)([\s\S]*?)(<!-- demo_end -->)/g;
+    let match = reg.exec(md);
+    while (match) {
+        demos.push(getDemoCode(match[2]));
+        match = reg.exec(md);
+    }
+    if (demos.length === 0) return md;
+    let demosScript = '\n{% raw %}\n<script>\nvar index = 0;\n';
+    demos.forEach((demo) => {
+        const tempJs = demo.js.replace(/`/gim, '\\`');
+        demosScript += `
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       ${demo.rgl}
@@ -79,62 +95,63 @@ const injectComponents = (md) => {
       codeComponent.$inject(codeDemo);
     })(index++);
     `;
-  });
-  demosScript += '\n</script>\n{% endraw %}';
-  return md + demosScript;
+    });
+    demosScript += '\n</script>\n{% endraw %}';
+    return md + demosScript;
 };
 
 
 const partial = glob.sync(path.join(DOC_PATH, 'partials/**/*.hbs'));
 
 const injectAPI = (md, source) => {
-  const docs = jsdoc2md.renderSync({
-    source,
-    'no-cache': true,
-    partial,
-    configure: path.join(__dirname, 'jsdoc.json'),
-  });
-  return `${md}\n# API\n${docs}`;
+    const docs = jsdoc2md.renderSync({
+        source,
+        'no-cache': true,
+        partial,
+        configure: path.join(__dirname, 'jsdoc.json'),
+    });
+    return `${md}\n# API\n${docs}`;
 };
 
 const doc = (isDev, callback) => {
-  // 其它文档
-  if (!isDev) {
-    const mds = glob.sync(path.join(DOC_PATH, '**/*.md'));
-    mds.forEach((md) => {
-      fs.writeFileSync(md, injectComponents(fs.readFileSync(md, 'utf8')));
-    });
-  }
-  // 组件文档
-  CATES.forEach((c) => {
-    const components = getComponents(c.cate).filter((comp) => {
-      if (isDev && !/^KL(Sidebar|Modal|Draggable|Button|Loading|ImagePreview)$/.test(comp)) {
-        return false;
-      }
+    // 其它文档
+    if (!isDev) {
+        const mds = glob.sync(path.join(DOC_PATH, '**/*.md'));
+        mds.forEach((md) => {
+            fs.writeFileSync(md, injectComponents(fs.readFileSync(md, 'utf8')));
+        });
+    }
+    // 组件文档
+    CATES.forEach((c) => {
+        const components = getComponents(c.cate).filter((comp) => {
+            // 暂时注释掉给视觉review
+            // if (isDev && !/^KL(Input)$/.test(comp)) {
+            //     return false;
+            // }
 
-      const mdPath = path.join(COMPONENTS_PATH, c.cate, comp, 'index.md');
-      if (fs.existsSync(mdPath)) return true;
-      return false;
-    });
-    components.forEach((comp, i) => {
-      const compPath = path.join(COMPONENTS_PATH, c.cate, comp);
-      const mdPath = path.join(compPath, 'index.md');
-      const jsPath = path.join(compPath, 'index.js');
+            const mdPath = path.join(getComponentPath(c.cate, comp), 'index.md');
+            if (fs.existsSync(mdPath)) return true;
+            return false;
+        });
+        components.forEach((comp, i) => {
+            const compPath = getComponentPath(c.cate, comp);
+            const mdPath = path.join(compPath, 'index.md');
+            const jsPath = path.join(compPath, 'index.js');
 
-      const appendContent = `type: components\nname: ${comp}\ncate: ${c.name}\norder: ${c.startOrder + i}\n`;
-      let md = fs.readFileSync(mdPath, 'utf8');
-      // 插入文档头部信息
-      md = md.replace(/(^---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
-      // 插入 API 文档
-      if (fs.existsSync(jsPath)) {
-        md = injectAPI(md, fs.readFileSync(jsPath, 'utf8'));
-      }
-      // 插入实例化组件的脚本
-      md = injectComponents(md);
-      fs.writeFileSync(path.join(COMPONENTS_DEST, `${c.cate}_${comp}_.md`), md);
+            const appendContent = `type: components\nname: ${comp}\ncate: ${c.name}\norder: ${c.startOrder + i}\n`;
+            let md = fs.readFileSync(mdPath, 'utf8');
+            // 插入文档头部信息
+            md = md.replace(/(^---)([\s\S]*?)(---)/g, `$1$2${appendContent}$3`);
+            // 插入 API 文档
+            if (fs.existsSync(jsPath)) {
+                md = injectAPI(md, fs.readFileSync(jsPath, 'utf8'));
+            }
+            // 插入实例化组件的脚本
+            md = injectComponents(md);
+            fs.writeFileSync(path.join(COMPONENTS_DEST, `${c.cate}_${comp}_.md`), md);
+        });
     });
-  });
-  callback && callback();
+    callback && callback();
 };
 
 module.exports = doc;

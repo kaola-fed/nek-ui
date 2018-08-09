@@ -27,7 +27,6 @@ const KLCol = Component.extend({
     this.defaults({
       span: '',
       offset: '',
-      gutter: 40,
       xs: '',
       sm: '',
       md: '',
@@ -44,7 +43,10 @@ const KLCol = Component.extend({
     } while (!($outer instanceof KLRow) && ($outer.$outer || $outer.$parent));
 
     if ($outer && $outer instanceof KLRow) {
-      this.data.gutter = $outer.data.gutter;
+      const outerGutter = $outer.data.gutter;
+      if (!this.data.gutter && this.data.gutter !== 0) {
+        this.data.gutter = outerGutter;
+      }
     }
 
     this.supr(data);
@@ -53,7 +55,7 @@ const KLCol = Component.extend({
 
 KLCol.directive('gutter', function (ele, value) {
   this.$watch(value, (gutter) => {
-    if (gutter) {
+    if (gutter || gutter === 0) {
       const padding = `${gutter / 2}px`;
       ele.style.paddingLeft = padding;
       ele.style.paddingRight = padding;
@@ -65,14 +67,14 @@ KLCol.directive('mediaSize', function (ele) {
   const self = this;
   ['xs', 'sm', 'md', 'lg'].forEach((size) => {
     if (parseInt(self.data[size])) {
-      ele.classList.add(`g-col-${size}-${self.data[size]}`);
+      ele.classList.add(`kl-col-${size}-${self.data[size]}`);
     } else if (typeof self.data[size] === 'object') {
       const props = self.data[size];
       Object.keys(props).forEach((prop) => {
         ele.classList.add(
           prop !== 'span'
-            ? `g-col-${size}-${prop}-${props[prop]}`
-            : `g-col-${size}-${props[prop]}`,
+            ? `kl-col-${size}-${prop}-${props[prop]}`
+            : `kl-col-${size}-${props[prop]}`,
         );
       });
     }

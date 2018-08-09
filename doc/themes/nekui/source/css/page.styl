@@ -70,6 +70,7 @@
         height: 16px;
         line-height: 16px;
         z-index: -1;
+        display: flex;
         &:before
             margin-top 0px
             height 0px
@@ -95,9 +96,6 @@
             bottom 9px;
     figure
         margin 1.2em 0
-    a
-        color $link
-        font-weight 400
     blockquote
         margin 2em 0
         padding-left 20px
@@ -277,25 +275,23 @@
         margin: 0px 0px 20px 22px;
         border-radius: 4px;
         padding: 16px 24px 0 24px;
-        font-family: PingFangTC-Regular;
+        font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
         font-size: 12px;
         color: #666;
         word-wrap: break-word;
         h3
             margin: 0;
-        em
-            padding-bottom: 8px;
-            color: #333;
-            display: block;
-            font-size: 14px;
-            line-height: 17px;
-            font-weight: bold;
-        ul
-            padding: 0 0 0 15px;
+        //em
+        //    padding-bottom: 8px;
+        //    color: #333;
+        //    display: block;
+        //    font-size: 14px;
+        //    line-height: 17px;
+        //    font-weight: bold;
         &:hover
             box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
             -moz-box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
-            -webkit-box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);      
+            -webkit-box-shadow: 0 0 8px 0 rgba(232,237,250,.6), 0 2px 4px 0 rgba(232,237,250,.5);
             .m-iconOuter, .m-iconTitle
                 transform: translateX(-30px);
                 -ms-transform: translateX(-30px);
@@ -336,7 +332,7 @@
 
 .m-example
     padding: 8px 0px 20px;
-.m-code 
+.m-code
     margin: 0px -24px;
     .highlight
         background-color: #fff;
@@ -350,7 +346,7 @@
     &:hover
         color: #0398ff;
 .m-copyCode
-    margin-top: 24px;
+    margin-top: 18px;
 .m-demowrap
     border-top: 1px solid #e1e6ec;
     .m-iconLine, .m-iconTitle, .m-onlineRun, .revertBtn, .m-iconOuter
@@ -402,7 +398,7 @@
         z-index: 1;
     .m-iconOuter
         position: relative;
-        left: 40px; 
+        left: 40px;
         display: inline-block;
         width: 17px;
         height: 41px;
@@ -412,7 +408,7 @@
         background-color: #fff;
         cursor: pointer;
     .m-codeBlock
-        border-bottom: 1px solid #e1e6ec;        
+        border-bottom: 1px solid #e1e6ec;
         overflow: hidden;
         position: relative;
         .figure-outer
@@ -423,4 +419,7 @@
                 background-color #fff
     .wrap
         height: 0px;
-        border-bottom: none;  
+        border-bottom: none;
+
+.s-bg-dark
+    background: black;

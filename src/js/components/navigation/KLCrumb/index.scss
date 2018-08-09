@@ -1,0 +1,10 @@
+@include b(crumb) {
+  @extend .f-lsn;
+  @extend .f-lsi;
+
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  color: #333;
+  font-size: 0;
+}

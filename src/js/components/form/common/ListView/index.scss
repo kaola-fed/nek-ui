@@ -1,0 +1,53 @@
+@include b(listview) {
+  @extend .f-lsn;
+  padding: 5px 0;
+  border: 1px solid $--border-color-base;
+  border-top: none;
+  background: $--background-color-white;
+  color: $--text-color-default;
+
+  box-sizing: border-box;
+  user-select: none;
+
+  @include when(dis) {
+    background: $--background-color-disabled;
+
+    .kl-listview-item {
+      cursor: not-allowed;
+      background: $--background-color-disabled;
+      color: $--text-color-disabled;
+    }
+  }
+}
+
+@include b(listview-item) {
+  position: relative;
+  cursor: pointer;
+  font-size: $--font-size-base;
+  color: $--text-color-default;
+  padding: 7px 9px 7px 9px;
+  margin: 6px 0;
+  line-height: 18px;
+
+  &:hover {
+    background: mix($--color-white, $--primary-color, 90%);
+  }
+
+  @include when(sel) {
+    background: mix($--color-white, $--primary-color, 90%);
+  }
+
+  @include when(dis) {
+    cursor: not-allowed;
+    background: none;
+    color: $--text-color-disabled;
+  }
+
+  @include when(divider) {
+    margin: 9px 0;
+    padding: 0;
+    height: 1px;
+    background: #e5e5e5;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,58 @@
+<!--<div-->
+    <!--class="kl-step"-->
+    <!--:style="style"-->
+    <!--:class="[-->
+      <!--!isSimple && `is-${$parent.direction}`,-->
+      <!--isSimple && 'is-simple',-->
+      <!--isLast && !space && !isCenter && 'is-flex',-->
+      <!--isCenter && !isVertical && !isSimple && 'is-center'-->
+     <!--]">-->
+<div
+    class="kl-step is-{direction} is-{size}" style="{style}">
+    <!-- icon & line -->
+    <div
+        class="kl-step__head is-{currentStatus}">
+        <!--<div-->
+            <!--class="kl-step__line"-->
+            <!--style="{isLast ? '' :  'marginRight:' parent.stepOffset + 'px' }"-->
+        <!--&gt;-->
+        <div
+            class="kl-step__line"
+        >
+            <i class="kl-step__line-inner" style="{lineStyle}"></i>
+        </div>
+
+        <div class="kl-step__icon {icon ? 'is-icon' : 'is-text'}">
+            {#if currentStatus !== 'error'}
+                {#if size === 'small' && currentStatus === 'finish'}
+                    <kl-icon type="tick" class="kl-step__icon-inner is-status" />
+                {#else}
+                    {#if icon}
+                        <i class="kl-step__icon-inner {icon}"></i>
+                    {/if}
+                    {#if !icon && !isSimple}
+                        <div class="kl-step__icon-inner">{ stepNumber + 1 }</div>
+                    {/if}
+                {/if}
+            {#else}
+            <kl-icon type="cross" class="kl-step__icon-inner is-status" />
+            {/if}
+        </div>
+    </div>
+    <!-- title & description -->
+    <div class="kl-step__main">
+        <div
+            class="kl-step__title is-{currentStatus}"
+            ref="title"
+            >
+            {#include title}
+        </div>
+        {#if isSimple}
+        <div class="kl-step__arrow"></div>
+        {#else}
+        <div class="kl-step__description is-{currentStatus}">
+            {#include description}
+        </div>
+        {/if}
+    </div>
+</div>

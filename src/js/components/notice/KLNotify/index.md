@@ -12,7 +12,7 @@ masonry: true
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="Notify" on-click="{this.show()}" />
+<kl-button title="Notify" on-click="{this.show()}" />
 ```
 
 ```javascript
@@ -33,16 +33,16 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<div class="g-row">
-    <kl-button type="tertiary" title="topcenter" on-click="{this.show('topcenter')}" />   
-    <kl-button type="tertiary" title="topleft" on-click="{this.show('topleft')}" />   
-    <kl-button type="tertiary" title="topright" on-click="{this.show('topright')}" />   
-    <kl-button type="tertiary" title="bottomcenter" on-click="{this.show('bottomcenter')}" />   
+<div class="kl-row">
+    <kl-button title="topcenter" on-click="{this.show('topcenter')}" />
+    <kl-button title="topleft" on-click="{this.show('topleft')}" />
+    <kl-button title="topright" on-click="{this.show('topright')}" />
+    <kl-button title="bottomcenter" on-click="{this.show('bottomcenter')}" />
 </div>
-<div class="g-row">
-    <kl-button type="tertiary" title="bottomleft" on-click="{this.show('bottomleft')}" />   
-    <kl-button type="tertiary" title="bottomright" on-click="{this.show('bottomright')}" />   
-    <kl-button type="tertiary" title="static" on-click="{this.show('static')}" />   
+<div class="kl-row">
+    <kl-button title="bottomleft" on-click="{this.show('bottomleft')}" />
+    <kl-button title="bottomright" on-click="{this.show('bottomright')}" />
+    <kl-button title="static" on-click="{this.show('static')}" />
 </div>
 ```
 
@@ -66,19 +66,19 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="消息提示不自动关闭" on-click="{this.show(0)}" />  
-<kl-button type="tertiary" title="1秒后自动关闭" on-click="{this.show(1000)}" />  
-<kl-button type="tertiary" title="默认2秒" on-click="{this.show()}" />  
+<kl-button title="消息提示不自动关闭" on-click="{this.show(0)}" />
+<kl-button title="1秒后自动关闭" on-click="{this.show(1000)}" />
+<kl-button title="默认2秒" on-click="{this.show()}" />
 ```
 
 ```javascript
 var Notify = null;
 var component = new NEKUI.Component({
     template: template,
-    show: function(duration) { 
+    show: function(duration) {
         Notify =  new NEKUI.KLNotify({data: {duration: duration} });
         var res = duration || (duration === 0 ? 0 : '2000');
-        Notify.show('duration:' + res); 
+        Notify.show('duration:' + res);
         if(duration === 0) {
              // 5秒后清除此Notify对象
             setTimeout(function(Notify){
@@ -103,10 +103,10 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="info" on-click="{this.show('info')}" />  
-<kl-button type="tertiary" title="success" on-click="{this.show('success')}" />  
-<kl-button type="tertiary" title="warning" on-click="{this.show('warning')}" />  
-<kl-button type="tertiary" title="error" on-click="{this.show('error')}" />  
+<kl-button title="notice" on-click="{this.show('notice')}" />
+<kl-button title="success" on-click="{this.show('success')}" />
+<kl-button title="warning" on-click="{this.show('warning')}" />
+<kl-button title="error" on-click="{this.show('error')}" />
 ```
 
 ```javascript
@@ -137,8 +137,8 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="true" on-click="{this.show(true)}" />  
-<kl-button type="tertiary" title="false" on-click="{this.show(false)}" />  
+<kl-button title="true" on-click="{this.show(true)}" />
+<kl-button title="false" on-click="{this.show(false)}" />
 ```
 
 ```javascript
@@ -160,14 +160,14 @@ var component = new NEKUI.Component({
 
 <div class="m-example">
   <style>
-    .m-bg-notify-demo .u-message{
+    .m-bg-notify-demo .kl-message{
         color: #f00;
-    }  
+    }
   </style>
 </div>
 
 ```xml
-<kl-button type="tertiary" title="Class" on-click="{this.show()}" />  
+<kl-button title="Class" on-click="{this.show()}" />
 ```
 
 ```javascript
@@ -184,7 +184,7 @@ var component = new NEKUI.Component({
 
 <!-- demo_start -->
 ### show方法
-打开一条提示消息，传递3个参数，第一个参数`text`(必传): 消息内容；第二个参数`state`(可选): 消息状态`success`、`info`、`warning`、`error`，默认为`info`；
+打开一条提示消息，传递3个参数，第一个参数`text`(必传): 消息内容；第二个参数`state`(可选): 消息状态`success`、`notice`、`warning`、`error`，默认为`notice`；
 第三个参数`duration`消息展示时间，单位为ms，默认2秒，如果为0，则表示永不消失。*
 
 **同时消息提示时会派发`show`事件，可以通过`NEKUI.KLNotify.notify.$on('show', callback')`
@@ -193,9 +193,9 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="参数一" on-click="{this.show('只传递参数一')}" />  
-<kl-button type="tertiary" title="一和二" on-click="{this.show('传递参数一和二', 'error')}" />  
-<kl-button type="tertiary" title="都传" on-click="{this.show('参数都传递', 'error', 1000)}" />  
+<kl-button title="参数一" on-click="{this.show('只传递参数一')}" />
+<kl-button title="一和二" on-click="{this.show('传递参数一和二', 'error')}" />
+<kl-button title="都传" on-click="{this.show('参数都传递', 'error', 1000)}" />
 ```
 
 ```javascript
@@ -216,7 +216,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="close" on-click="{this.show('2s后调用close方法')}" /> 
+<kl-button title="close" on-click="{this.show('2s后调用close方法')}" />
 ```
 
 ```javascript
@@ -229,12 +229,12 @@ var component = new NEKUI.Component({
         });
         NEKUI.KLNotify.show(content, 'success', 10000);
         setTimeout(function(){
-            NEKUI.KLNotify.close(msg); 
+            NEKUI.KLNotify.close(msg);
         }, 2000);
         NEKUI.KLNotify.notify.$on('close', function(evt){
             console.log(evt);
         });
-        
+
     }
 });
 ```
@@ -248,7 +248,7 @@ var component = new NEKUI.Component({
 <div class="m-example"></div>
 
 ```xml
-<kl-button type="tertiary" title="closeAll" on-click="{this.show('2s后调用closeAll方法')}" /> 
+<kl-button title="closeAll" on-click="{this.show('2s后调用closeAll方法')}" />
 ```
 
 ```javascript
@@ -256,10 +256,35 @@ var component = new NEKUI.Component({
     template: template,
     show: function(content) {
        NEKUI.KLNotify.show(content, 'success', 0);
-       setTimeout(function(){ 
+       setTimeout(function(){
             // 关闭所有
             NEKUI.KLNotify.closeAll();
        }, 2000)
+    }
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 配置信息contentTemplate
+设置notify的内容显示区域(html代码片段)。默认为空
+<div class="m-example"></div>
+
+```xml
+<kl-button on-click="{this.show()}"  title="contentTemplate"/>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        let notify = new NEKUI.KLNotify({
+            data: {
+                name: 'Rabbit',
+                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+            }
+        });
+        notify.show();
     }
 });
 ```
@@ -273,10 +298,10 @@ show方法简写，弹出特殊类型消息，方法有`success`、`error`、`wa
 <div class="m-example"></div>
 
 ```xml
-    <kl-button type="tertiary" title="info" on-click="{this.show('info', 6000)}" /> 
-    <kl-button type="tertiary" title="success" on-click="{this.show('success', 5000)}" /> 
-    <kl-button type="tertiary" title="warning" on-click="{this.show('warning', 4000)}" /> 
-    <kl-button type="tertiary" title="error" on-click="{this.show('error', 3000)}" /> 
+    <kl-button title="notice" on-click="{this.show('notice', 6000)}" />
+    <kl-button title="success" on-click="{this.show('success', 5000)}" />
+    <kl-button title="warning" on-click="{this.show('warning', 4000)}" />
+    <kl-button title="error" on-click="{this.show('error', 3000)}" />
 ```
 
 ```javascript
@@ -288,6 +313,9 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+
+
 
 
 

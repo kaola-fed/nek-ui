@@ -1,0 +1,39 @@
+@include b(datepicker) {
+    @include m(sm) {
+        .kl-input-wrap__inner {
+            @include form-item-size($--padding-sm, $--height-sm, $--font-size-xs)
+        }
+    }
+    @include m(lg) {
+        .kl-input-wrap__inner {
+            @include form-item-size($--padding-lg, $--height-lg, $--font-size-lg)
+        }
+    }
+    @include m(smw) {
+        @include form-item-width($--width-sm);
+    }
+    @include m(mdw) {
+        @include form-item-width($--width-md);
+    }
+    @include m(lgw) {
+        @include form-item-width($--width-lg);
+    }
+    @include e(confirmBtn) {
+        color: #e31436;
+        background: #fff;
+        border: 1px solid #e31436;
+    }
+    .kl-dropdown {
+        .kl-dropdown__bd {
+            display: inline-block;
+            width: auto;
+        }
+        .kl-dropdown__ft {
+            display: flex;
+            padding: 4px 0 0;
+            margin-top: 4px;
+            justify-content: flex-end;
+            border-top: 1px solid #ddd;
+        }
+    }
+}

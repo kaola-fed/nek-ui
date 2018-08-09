@@ -156,3 +156,38 @@ var component = new NEKUI.Component({
 });
 ```
 <!-- demo_end -->
+
+<!-- demo_start -->
+### 插入模版
+<div class="m-example">
+    <style>
+        .kl-template {
+            display: inline-block;
+        }
+    </style>
+</div>
+
+```xml
+<kl-radio-group source={source} value={value} on-select={console.log($event)} />
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {
+                name: '一般贸易', 
+                id: 1,
+                contentTemplate: '<kl-input class="kl-template" value="{this.$parent.data.test}"/>'
+            },
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4}
+        ],
+        value: 2,
+        test: '插入模版'
+    }
+});
+```
+<!-- demo_end -->

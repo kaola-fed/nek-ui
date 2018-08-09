@@ -38,6 +38,8 @@ var component = new NEKUI.Component({
         <kl-check-group source={source} value={checkedValue}/>
     </kl-form-item>
 </kl-form>
+<div>已选择的： {checkedValue}</div>
+
 ```
 
 ```javascript
@@ -73,7 +75,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        checkedValue: ''
     }
 });
 ```
@@ -85,6 +88,8 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-check-group source={source} value={checkedValue} block />
+<div>已选择的： {checkedValue}</div>
+
 ```
 
 ```javascript
@@ -109,6 +114,8 @@ var component = new NEKUI.Component({
 
 ```xml
 <kl-check-group service={@(this.service)} value={checkedValue}/>
+<div>已选择的： {checkedValue}</div>
+
 ```
 
 ```javascript
@@ -138,7 +145,9 @@ var component = new NEKUI.Component({
 
 ```xml
 <check name="全选" checked={checkedAll} on-check={this._checkAll($event)} />
-<kl-check-group source={source} />
+<kl-check-group source={source} value={checkedValue}/>
+<div>已选择的： {checkedValue}</div>
+
 ```
 
 ```javascript
@@ -150,7 +159,8 @@ var component = new NEKUI.Component({
             {name: '海淘', id: 2},
             {name: '直邮', id: 3},
             {name: '保税', id: 4}
-        ]
+        ],
+        checkedValue: ''
     },
     computed: {
         checkedAll: function() {
@@ -161,10 +171,53 @@ var component = new NEKUI.Component({
         }
     },
     _checkAll: function(event) {
+      var checkedValue = [];
       this.data.source.forEach(function(d) {
         d.checked = !!event.checked;
-      })
+        if (d.checked) {
+            checkedValue.push(d.id);
+        }
+      });
+      this.data.checkedValue = checkedValue.join(',');
     },
+});
+```
+<!-- demo_end -->
+
+<!-- demo_start -->
+### 插入模版
+<div class="m-example">
+    <style>
+        .kl-template {
+            display: inline-block;
+        }
+    </style>
+</div>
+
+```xml
+<kl-check-group source={source} value={checkedValue} />
+<div>已选择的： {checkedValue}</div>
+<div>test:  {test}</div>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        source: [
+            {name: '一般贸易', id: 1},
+            {name: '海淘', id: 2},
+            {name: '直邮', id: 3},
+            {name: '保税', id: 4},
+            {
+                name: '插入模版', 
+                id: 5,
+                contentTemplate: '<kl-input class="kl-template" value={this.$parent.data.test}  />'
+            },
+        ],
+        checkedValue: '1',
+        test: '插入模版'
+    }
 });
 ```
 <!-- demo_end -->

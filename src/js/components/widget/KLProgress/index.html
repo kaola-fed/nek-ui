@@ -1,3 +1,12 @@
-<div class="u-progress u-progress-{@(size)} u-progress-{@(state)} {class}" r-class={ {'u-progress-striped': striped, 'z-act': active} } r-hide={!visible}>
-    <div class="progress_bar" style="width: {percent}%;">{text ? (text === true ? percent + '%' : text) : ''}</div>
+<div class="kl-progress {class}" r-hide={!visible}>
+  <div class="kl-progress-wrap kl-progress-wrap--{@(size)}" >
+    <div class="kl-progress-wrap__bar" style="width: {percent}%; background-color: {color};">
+      {#if insideText && size == 'lg'}{percent}%{/if}
+    </div>
+  </div>
+  {#if this.$body}
+  <div class="kl-progress-slot">
+    {#inc this.$body}
+  </div>
+  {/if}
 </div>

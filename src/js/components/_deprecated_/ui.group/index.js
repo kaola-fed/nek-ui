@@ -15,7 +15,7 @@ const Component = require('../../../ui-base/component');
  */
 const UIGroup = Component.extend({
   name: 'ui.group',
-  template: '<span class="u-group {class}">{#inc this.$body}</span>',
+  template: '<span class="kl-old-group {class}">{#inc this.$body}</span>',
   /**
      * @protected
      */

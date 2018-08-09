@@ -1,0 +1,201 @@
+@mixin arrow-top() {
+    padding: 0 0 4px 0;
+    .kl-popconfirm__arrow { 
+        bottom: -1px;
+        border-bottom-width: 0;
+        border-top-color: rgba(217, 217, 217, 0.7);
+        &:after {
+            bottom: 1px;
+            margin-left: -4px;
+            border-bottom-width: 0;
+            border-top-color: #fff;
+        }
+    }
+}
+@mixin arrow-left() {
+    padding: 0 4px 0 0;
+    
+    .kl-popconfirm__arrow { 
+        right:-1px;
+        border-right-width: 0;
+        border-left-color: rgba(217, 217, 217, 0.7);
+        &:after {
+            right: 1px;
+            bottom: -4px;
+            border-right-width: 0;
+            border-left-color: #fff;
+        }
+    }
+    
+}
+@mixin arrow-bottom() {
+    padding: 4px 0 0 0;
+
+    .kl-popconfirm__arrow { 
+        top: -1px;
+        border-top-width: 0;
+        border-bottom-color: rgba(217, 217, 217, 0.7);
+        &:after {
+            top: 1px;
+            margin-left: -4px;
+            border-top-width: 0;
+            border-bottom-color: #fff;
+        }
+    }
+}
+@mixin arrow-right {
+    padding: 0 0 0 4px;
+    .kl-popconfirm__arrow { 
+        left: -1px;
+        border-left-width: 0;
+        border-right-color: rgba(217, 217, 217, 0.7);
+        &:after {
+            left: 1px;
+            bottom: -4px;
+            border-left-width: 0;
+            border-right-color: #fff;
+        }
+    }  
+}
+
+@include b(popconfirm) {
+    position: absolute; 
+    z-index: 2000; 
+    font-size: 12px; 
+    line-height: 1.5;
+
+
+    @include e(inner) {
+        padding:8px 16px; 
+        background:#fff; 
+        background-clip:padding-box; 
+        border-radius:4px;
+        box-shadow:0 1px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    @include e(body) {
+        padding: 8px 0 16px;
+        font-size: 12px;
+        color: #666;
+    }
+
+    @include e(foot) {
+        text-align: right;
+        margin-bottom: 8px;
+        .kl-btn{
+            border-radius: 2px;
+        }
+        .kl-btn-primary{
+            margin-left: 5px;
+        }
+    }
+
+    @include e(arrow) {
+        position: absolute; 
+        width: 0; 
+        height: 0;
+        border-color: transparent; 
+        border-style: solid;
+
+        &:after {
+            position: absolute; 
+            width: 0; 
+            height: 0;
+            border-color: transparent; 
+            border-style: solid;
+            content: '';
+            border-width: 4px;
+        }
+    }
+
+    @include m(top) {
+        @include arrow-top();
+        .kl-popconfirm__arrow { 
+            left:50%; 
+            margin-left:-5px;
+        } 
+    }
+
+    @include m(topLeft) {
+        @include arrow-top();
+        
+        .kl-popconfirm__arrow {
+            left:16px; 
+        } 
+    }
+    @include m(topRight) {
+        @include arrow-top();
+
+        .kl-popconfirm__arrow { 
+            right:16px; 
+        }
+    }
+    @include m(leftTop) {
+        @include arrow-left();
+        
+        .kl-popconfirm__arrow { 
+            top:8px; 
+        }
+    }
+    @include m(left) {
+        @include arrow-left();
+        
+        .kl-popconfirm__arrow { 
+            top:50%; 
+            margin-top:-5px; 
+        }
+    }
+    @include m(leftBottom) {
+        @include arrow-left();
+        
+        .kl-popconfirm__arrow { 
+            bottom:8px; 
+        }
+    }
+    @include m(bottomLeft) {
+        @include arrow-bottom();
+
+        .kl-popconfirm__arrow { 
+            left:16px; 
+        }
+    }
+    @include m(bottom) {
+        @include arrow-bottom();
+        
+        .kl-popconfirm__arrow { 
+            left:50%; 
+            margin-left:-5px; 
+        }
+    }
+    @include m(bottomRight) {
+        @include arrow-bottom();
+        
+        .kl-popconfirm__arrow { 
+            right:16px; 
+        }
+    }
+    @include m(rightTop) {
+        @include arrow-right();
+
+        .kl-popconfirm__arrow { 
+            top:8px; 
+        }
+    }
+    @include m(right) {
+        @include arrow-right();
+        
+        .kl-popconfirm__arrow { 
+            top:50%; 
+            margin-top:-5px; 
+        }
+    }
+    @include m(rightBottom) {
+        @include arrow-right();
+        
+        .kl-popconfirm__arrow { 
+            bottom:8px; 
+        }
+    }
+}
+
+

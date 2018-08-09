@@ -11,6 +11,7 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}     [options.data.single=false]         => 是否始终显示一条，`true`表示是，`false`表示否
  * @param {boolean}     [options.data.visible=true]         => 是否显示,`true`表示是、`false`表示否
  * @param {string}      [options.data.class]                => 补充`class`
+ * @param {string}      [options.data.contentTemplate]      => 内容模板，用于支持复杂内容的自定义。
  */
 const KLNotify = Component.extend({
   name: 'kl-notify',
@@ -36,6 +37,7 @@ const KLNotify = Component.extend({
       text,
       state,
       duration: duration >= 0 ? +duration : +this.data.duration,
+      // duration: 0,
     };
     const messages = this.data.messages;
 
@@ -88,7 +90,7 @@ const KLNotify = Component.extend({
   },
 });
 
-const STATES = ['success', 'warning', 'info', 'error'];
+const STATES = ['success', 'warning', 'notice', 'error'];
 
 STATES.forEach((state) => {
   KLNotify.prototype[state] = function (text, duration) {
@@ -105,7 +107,7 @@ const METHODS = [
   'closeAll',
   'success',
   'warning',
-  'info',
+  'notice',
   'error',
 ];
 KLNotify.METHODS = METHODS;
@@ -114,7 +116,7 @@ KLNotify.METHODS = METHODS;
 /**
  * @static
  * @param  {string} text 消息内容
- * @param  {string} state 消息状态，可选参数：`info`、`success`、`warning`、`error`
+ * @param  {string} state 消息状态，可选参数：`notice`、`success`、`warning`、`error`
  * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
  */
 KLNotify.show = () => {};
@@ -144,7 +146,7 @@ KLNotify.warning = () => {};
  * @param  {string} text 消息内容
  * @param  {number} duration=2000 该条消息的停留毫秒数。如果为0，则表示消息常驻不消失。如果不填，则使用notify默认的duration。
  */
-KLNotify.info = () => {};
+KLNotify.notice = () => {};
 /**
  * @static
  * @param  {string} text 消息内容

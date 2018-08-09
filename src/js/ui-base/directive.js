@@ -11,13 +11,13 @@ const rClassGenerator = function (rClass) {
   };
 };
 
-rClassGenerator('z-crt');
-rClassGenerator('z-sel');
-rClassGenerator('z-chk');
-rClassGenerator('z-act');
-rClassGenerator('z-dis');
-rClassGenerator('z-hover');
-rClassGenerator('z-divider');
+rClassGenerator('is-crt');
+rClassGenerator('is-sel');
+rClassGenerator('is-chk');
+rClassGenerator('is-act');
+rClassGenerator('is-dis');
+rClassGenerator('is-hover');
+rClassGenerator('is-divider');
 
 exports['r-show'] = function (elem, value) {
   if (typeof value === 'object' && value.type === 'expression') {

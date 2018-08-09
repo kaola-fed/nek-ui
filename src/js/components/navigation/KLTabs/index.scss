@@ -1,0 +1,123 @@
+@include b(tabs) {
+  font-size: $--font-size-base;
+
+  @include e(wrap) {
+    border-bottom: 1px solid #D9D9D9;
+  }
+
+  @include e(hd) {
+    @extend .f-lsn;
+    display: inline-block;
+    padding: 0;
+    transition: transform 0.3s;
+    white-space: nowrap;
+  }
+
+  @include e(bd) {
+    padding: 20px 0;
+    background: $--background-color-white;
+    clear: both;
+  }
+
+  @include e(tab) {
+    box-sizing: border-box;
+
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    min-width: 104px;
+    padding: 0 15px;
+
+    color: $--text-color-default;
+    text-align: center;
+    cursor: pointer;
+
+    & + .kl-tabs__tab {
+      margin-left: 2px;
+    }
+
+    &:hover, &:focus {
+      color: adjust-color($--text-color-default, $lightness: 20%);
+    }
+
+    @include when(crt) {
+      height: 41px;
+      font-weight: bold;
+      color: $--text-color-primary;
+    }
+
+
+    @include when(dis) {
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    @include m(card) {
+      border: 1px solid #D9D9D9;
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+      background: #FAFAFA;
+
+      &.is-crt {
+        background: $--background-color-white;
+      }
+
+      &.is-dis {
+        background: #F5F5F5;
+        border-color: #D9D9D9;
+      }
+    }
+  }
+
+  @include e(active-bar) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: $--primary-color;
+    transition: transform .3s cubic-bezier(.645,.045,.355,1);
+  }
+
+  @include when(dis) {
+    .kl-tabs__tab {
+      cursor: not-allowed;
+
+      @include when(crt) {
+        cursor: default;
+      }
+    }
+  }
+}
+
+@include b(tabs-scroll) {
+  position: relative;
+  height: 41px;
+  margin-bottom: -1px;
+  overflow: hidden;
+
+  @include when(scrollable) {
+    padding: 0 28px;
+  }
+
+  @include e(nav) {
+    position: absolute;
+    cursor: pointer;
+    line-height: 40px;
+    font-size: 12px;
+
+    @include when(dis) {
+      color: #ccc;
+      cursor: not-allowed;
+
+    }
+
+    @include m(prev) {
+      left: 0;
+    }
+
+    @include m(next) {
+      right: 0;
+    }
+  }
+}

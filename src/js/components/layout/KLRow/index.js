@@ -38,7 +38,7 @@ const KLRow = Component.extend({
       type: '',
       justify: 'start',
       align: 'top',
-      gutter: 40,
+      gutter: 24,
       wrap: 'wrap',
     });
 
@@ -48,7 +48,7 @@ const KLRow = Component.extend({
 
 KLRow.directive('gutter', function (ele, value) {
   this.$watch(value, (gutter) => {
-    if (gutter) {
+    if (gutter || gutter === 0) {
       const margin = `-${gutter / 2}px`;
       ele.style.marginLeft = margin;
       ele.style.marginRight = margin;

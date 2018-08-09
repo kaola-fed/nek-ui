@@ -15,7 +15,7 @@ module.exports = {
           el.style.height = '0';
           el.style.paddingTop = 0;
           el.style.paddingBottom = 0;
-          el.classList.add('collapse-transition');
+          el.classList.add('kl-collapse-transition');
 
           // enter
           el.dataset.oldOverflow = el.style.overflow;
@@ -33,7 +33,7 @@ module.exports = {
 
           // afterEnter
           el.addEventListener('transitionend', () => {
-            el.classList.remove('collapse-transition');
+            el.classList.remove('kl-collapse-transition');
             el.style.height = '';
             el.style.overflow = el.dataset.oldOverflow;
             el.removeEventListener('transitionend', () => {});
@@ -53,7 +53,7 @@ module.exports = {
           if (el.scrollHeight !== 0) {
             // for safari: add class after set height,
             // or it will jump to zero height suddenly, weired
-            el.classList.add('collapse-transition');
+            el.classList.add('kl-collapse-transition');
             el.style.height = 0;
             el.style.paddingTop = 0;
             el.style.paddingBottom = 0;
@@ -61,7 +61,7 @@ module.exports = {
 
           // afterLeave
           el.addEventListener('transitionend', () => {
-            el.classList.remove('collapse-transition');
+            el.classList.remove('kl-collapse-transition');
             el.style.height = '';
             el.style.overflow = el.dataset.oldOverflow;
             el.style.paddingTop = el.dataset.oldPaddingTop;

@@ -17,6 +17,8 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}          [options.data.isShowLine]            => 控制展示title之前的竖线，默认展示出来
  * @param {boolean}          [options.data.isShowBtLine]          => 控制展示title下发的横线，默认不展示出来
  * @param {boolean}          [options.data.isIndent]              => 控制子模块的title是否缩进
+ * @param {boolean}          [options.data.bordered]              => 控制card是否有边框
+ * @param {boolean}          [options.data.disHover]              => 禁用鼠标悬停显示阴影
  */
 const KLCard = Component.extend({
   name: 'kl-card',
@@ -26,7 +28,7 @@ const KLCard = Component.extend({
     _.extend(this.data, {
       title: '',
       isShowLine: true,
-      isShowBtLine: false,
+      isShowBtLine: true,
       isIndent: true,
     });
     this.supr();

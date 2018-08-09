@@ -1,0 +1,309 @@
+$w: 1366;
+$h: 660;
+
+@function px2w($px) {
+  @return $px / $w * 100%;
+}
+
+@function px2h($px) {
+  @return $px / $h * 100%;
+}
+
+/* 组件大模块 */
+@include b(image-preview) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1500;
+
+  @include e(close) {
+    position: absolute;
+    right: 26px;
+    top: 26px;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+    box-shadow: 0 0 1px 0;
+    border-radius: 100px;
+    z-index: 5;
+    cursor: pointer;
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 14px;
+      height: 2px;
+      border-radius: 100px;
+      background: #000;
+      margin-left: -7px;
+      margin-top: -1px;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+// 左侧图片切换操作模块
+@include b(image-preview-slide) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+}
+// 右侧缩略图模块
+@include b(image-preview-thumbnail) {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  right: 0;
+  width: 30%;
+  background: rgba(0,0,0,0.6);
+
+  @include e(name) {
+    margin: 0 auto;
+    margin-top: px2h(80);
+    height: 25px;
+    width: 90%;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+
+/* 拆解小组件部分 */
+/* 图片切换区 */
+// 图片切换区 - 上一张/下一张按钮
+@include b(image-preview-slide-nav) {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  top: px2h(300);
+  border-radius: 100px;
+  background: rgba(0,0,0,0.6);
+  z-index: 5;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    background: #fff;
+  }
+
+  @include e(icon) {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-size: 30px;
+  }
+
+  @include m(pre) {
+    left: 50px;
+  }
+
+  @include m(next) {
+    right: 50px;
+  }
+}
+// 图片切换区 - 所有图片列表
+@include b(image-preview-slide-images) {
+  position: relative;
+  width: px2w(500 / 0.7);
+  height: px2w(500 * $w / $h);
+  margin: px2h(50) auto px2h(25);
+  padding: 0;
+  overflow: hidden;
+}
+@include b(image-preview-slide-images-item) {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: opacity 300ms;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  @include e(img) {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+    transition: transform 300ms;
+  }
+}
+// 图片切换区 - 图片操作区
+@include b(image-preview-slide-operate) {
+  position: relative;
+  width: 350px;
+  height: 50px;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.6);
+  text-align: center;
+  z-index: 5;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+@include b(image-preview-slide-operate-item) {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 28px;
+  line-height: 28px;
+  margin-left: 20px;
+  vertical-align: middle;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  @include e(scale) {
+    position: absolute;
+    font-style: normal;
+    font-size: 14px;
+    right: -45px;
+    text-align: center;
+  }
+  .kl-icon {
+    font-size: 20px;
+  }
+}
+// 图片切换区 - 当前展示图片区域(感觉设计不太好,这个区域不太需要)
+@include b(image-preview-slide-stage) {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 1;
+  transition: opacity 300ms;
+}
+@include b(image-preview-slide-stage-imgwrap) {
+  position: relative;
+  width: px2w(500 / 0.7);
+  height: px2h(500);
+  margin: px2h(50) auto px2h(25);
+  text-align: center;
+  cursor: -webkit-grab;
+  transition: all .3s ease-in-out;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  @include e(img) {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+
+/* 缩略图区 */
+@include b(image-preview-thumbnail-images) {
+  margin: 15px auto;
+  height: 80%;
+  width: 370px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+@include b(image-preview-thumbnail-images-item) {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  vertical-align: top;
+  text-align: center;
+  background: #fff;
+  cursor: pointer;
+
+  &:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  @include when(current) {
+    width: 86px;
+    height: 86px;
+    margin-left: 7px;
+    margin-right: -3px;
+    margin-top: -3px;
+    margin-bottom: -3px;
+
+    &:nth-child(4n + 1) {
+      width: 86px;
+      height: 86px;
+      margin-right: -3px;
+      margin-left: -3px;
+    }
+    &:nth-child(4n) {
+      width: 86px;
+      height: 86px;
+      margin-left: 7px;
+      margin-right: -3px;
+    }
+    &:after {
+      display: none;
+    }
+  }
+
+  @include e(img) {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
