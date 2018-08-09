@@ -21,9 +21,9 @@ before_script:
 
 script:
 - npm run lint
-- gulp build/gulpfile.js dist
-- gulp build/gulpfile.js gen-doc
-#- gulp build/gulpfile.js copy-oldDoc
+- gulp --gulpfile build/gulpfile.js dist
+- gulp --gulpfile build/gulpfile.js gen-doc
+- gulp --gulpfile build/gulpfile.js copy-oldDoc
 
 after_success:
 - mkdir .deploy
