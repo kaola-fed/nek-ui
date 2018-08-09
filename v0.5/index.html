@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>nek-ui</title>
+        <meta charset="utf-8">
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.png">
+
+        <link rel="icon" href="/v0.5/images/logo.png" type="image/x-icon">
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <!--  nek-ui -->
+        <link href="/v0.5/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/v0.5/css/index.css">
+        <script>window.PAGE_TYPE = ""</script>
+    </head>
+    <body class="">        <script src="/v0.5/vendor/regular.js"></script>
+        <script src="/v0.5/js/nek-ui.js"></script>
+        <div id="mobile-bar" class="top">
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>nek-ui</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/">首页</a></li>
+<li><a href="/v0.5/components/" class="nav-link">组件</a></li>
+<li><a href="/v0.5/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+        
+            <div class="sidebar">
+  <ul class="main-menu">
+    <li><a href="/">首页</a></li>
+<li><a href="/v0.5/components/" class="nav-link">组件</a></li>
+<li><a href="/v0.5/tools/" class="nav-link">工具</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/NEK" class="nav-link" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" class="nav-link" target="_blank">RegularJS</a></li>
+  </ul>
+</li>
+
+  </ul>
+</div>
+
+<div id="hero">
+  <div class="inner">
+    <div class="left">
+      <img class="hero-logo" src="/images/logo.png">
+    </div><div class="right">
+      <h1>
+        RegularJS<br>后台 UI 组件库
+      </h1>
+      <p>
+        <a class="button" href="/v0.5/components/">快速开始</a>
+        <a class="button white" href="https://github.com/kaola-fed/nek-ui" target="_blank">GITHUB</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="highlights">
+  <div class="inner">
+
+
+    <div class="point">
+      <h2>丰富</h2>
+      <p>作为后台组件库，包括了各种场景的组件，避免无意义地造轮子。</p>
+    </div>
+
+    <div class="point">
+      <h2>规范</h2>
+      <p>统一了规范，规避了开发人员个人喜好带来的代码不统一问题。</p>
+    </div>    
+
+    <div class="point">
+      <h2>可定制</h2>
+      <p>主题色可以根据项目实际情况进行个性化定制。</p>
+    </div>
+  </div>
+</div>
+<canvas id="scene" style="position:fixed;top:0;pointer-events:none;"></canvas>
+
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+
+<script>
+// Source: http://codepen.io/iremlopsum/pen/MKNaxd
+var canvas = document.querySelector("#scene"),
+	ctx = canvas.getContext("2d"),
+	particles = [],
+	amount = 0,
+	mouse = {
+		x: 0,
+		y: 0
+	},
+	radius = 0.7; //Init radius of the force field
+
+var colors = ["rgba(26, 188, 156, .6)", "rgba(46, 204, 113, .4)", "rgba(52, 152, 219, .4)", "rgba(52, 152, 219, .4)", "rgba(241, 196, 15, .6)", "rgba(231, 76, 60, .4)"];
+
+var colorsTwo = ["rgba(26, 188, 156, 1)", "rgba(46, 204, 113, 1)", "rgba(52, 152, 219, 1)", "rgba(52, 152, 219, 1)", "rgba(241, 196, 15, 1)", "rgba(231, 76, 60, 1)"];
+
+var copy = "nek-ui"; // Text to display
+
+var initSize = Math.floor(Math.random() * .6) + 1  ;
+var hoverSize = initSize + .7;
+
+var ww = canvas.width = window.innerWidth;
+var wh = canvas.height = window.innerHeight;
+
+function Particle(x, y) {
+	this.x = Math.random() * ww;
+	this.y = Math.random() * wh;
+	this.dest = {
+		x: x,
+		y: y
+	};
+	//this.r = Math.random() * 1; // the size of bubbles
+	this.vx = (Math.random() - 0.5) * 2;
+	this.vy = (Math.random() - 0.5) * 2;
+	this.accX = 0;
+	this.accY = 0;
+	this.friction = Math.random() * 0.015 + 0.94; // force of bounce, just try to change 0.015 to 0.5
+
+	//this.color = colors[Math.floor(Math.random() * 10)];	
+	//this.colorTwo = colorsTwo[Math.floor(Math.random() * 10)];
+
+}
+
+Particle.prototype.render = function() {
+
+	this.accX = (this.dest.x - this.x) / 200; //acceleration for X
+	this.accY = (this.dest.y - this.y) / 200; //acceleration for Y
+	this.vx += this.accX;
+	this.vy += this.accY;
+	this.vx *= this.friction;
+	this.vy *= this.friction;
+
+	this.x += this.vx;
+	this.y += this.vy;
+
+	ctx.fillStyle = this.color;
+	ctx.beginPath();
+	ctx.arc(this.x, this.y, this.r, Math.PI * 2, false);
+	ctx.fill();
+
+	var a = this.x - mouse.x;
+	var b = this.y - mouse.y;
+
+	var distance = Math.sqrt(a * a + b * b);
+	if (distance < (radius * 70)) {
+		this.accX = (this.x - mouse.x) / 20; //acceleration on mouseover X, smaller faster
+		this.accY = (this.y - mouse.y) / 20; //acceleration on mouseover Y, smaller faster
+		this.vx += this.accX;
+		this.vy += this.accY;
+		//ctx.fillStyle = this.colorTwo;
+	}
+	
+	if (distance < (radius * 70)) {
+		this.colorTwo = colorsTwo[Math.floor(Math.random() * 10)];
+		ctx.fillStyle = this.colorTwo;
+		this.r = hoverSize; // the size of bubbles
+	}
+	
+	if (distance > (radius * 70)) {
+		this.colorOne = colors[Math.floor(Math.random() * 10)];
+		ctx.fillStyle = this.colorOne;
+		this.r = initSize
+	}
+
+}
+
+function onMouseMove(e) {
+	mouse.x = e.clientX;
+	mouse.y = e.clientY;
+}
+
+function initScene() {
+	ww = canvas.width = window.innerWidth;
+	wh = canvas.height = window.innerHeight;
+
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	ctx.font = "bold " + (ww / 10) + "px sans-serif"; // Size of the text
+	ctx.textAlign = "center";
+	ctx.fillText(copy, ww / 2, wh / 2); //Centering
+
+	var data = ctx.getImageData(0, 0, ww, wh).data;
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.globalCompositeOperation = "screen";
+
+	particles = [];
+	for (var i = 0; i < ww; i += Math.round(ww / 400)) { //400 here represents the amount of particles
+		for (var j = 0; j < wh; j += Math.round(ww / 400)) {
+			if (data[((i + j * ww) * 4) + 3] > 250) {
+				particles.push(new Particle(i, j));
+			}
+		}
+	}
+	amount = particles.length;
+
+}
+
+function onMouseClick() {
+	radius = 4; //onclick expand radius
+	
+}
+
+function offMouseClick() {
+	radius = 0.5; //offClick init radius
+}
+
+function delayedInitRadius() {
+    setTimeout(offMouseClick, 500); //delay for offClick init radius
+}
+
+function render(a) {
+	requestAnimationFrame(render);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	for (var i = 0; i < amount; i++) {
+		particles[i].render();
+	}
+};
+
+window.addEventListener("resize", initScene);
+window.addEventListener("mousemove", onMouseMove);
+window.addEventListener("mousedown", onMouseClick);
+window.addEventListener("mouseup", delayedInitRadius);
+initScene();
+requestAnimationFrame(render);
+</script>
+
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.5/js/common.js"></script>
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/docsearch.js/1.4.4/docsearch.min.js"></script>
+        <script>
+        [
+          '#search-query-nav',
+          '#search-query-sidebar'
+        ].forEach(function (selector) {
+          if (!document.querySelector(selector)) return
+          // search index defaults to v2
+          var match = window.location.pathname.match(/^\/(v\d+)/)
+          var version = match ? match[1] : 'v2'
+          docsearch({
+            appId: '34N72WTQ6D',
+            apiKey: '365f3d88c244de5de6835c3f0f72b1ce',
+            indexName: 'nek-ui',
+            inputSelector: selector,
+            algoliaOptions: { facetFilters: ["version:" + version] }
+          })
+        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
