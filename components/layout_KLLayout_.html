@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>图片预览 - nek-ui</title>
+        <title>布局容器 - nek-ui</title>
         <meta charset="utf-8">
         <meta http-equiv="x-dns-prefetch-control" content="on" />
         <meta name="description" content="nek-ui - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="图片预览 - nek-ui">
+        <meta property="og:title" content="布局容器 - nek-ui">
         <meta property="og:description" content="nek-ui - UI components based on RegularJS">
         <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
 
@@ -104,7 +104,7 @@
                     
                 </li>
             
-                <li class="">
+                <li class="current">
                     <div class="submenu-title">
                         
                             <span class="kl-icon kl-icon-angle-down"></span>布局
@@ -120,7 +120,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/layout_KLLayout_.html" class=" new">
+                                   <a href="/components/layout_KLLayout_.html" class="current new">
                                        布局容器 <span>KLLayout</span>
                                    </a>
                                </li>
@@ -354,7 +354,7 @@
                     
                 </li>
             
-                <li class="current">
+                <li class="">
                     <div class="submenu-title">
                         
                             <span class="kl-icon kl-icon-angle-down"></span>其它
@@ -382,7 +382,7 @@
                                </li>
                             
                                <li>
-                                   <a href="/components/widget_KLImagePreview_.html" class="current ">
+                                   <a href="/components/widget_KLImagePreview_.html" class=" ">
                                        图片预览 <span>KLImagePreview</span>
                                    </a>
                                </li>
@@ -423,53 +423,192 @@
 <div class="content components with-sidebar ">
     
 
-    <h2 id="pageName">图片预览 <span>KLImagePreview</span> </h2>
+    <h2 id="pageName">布局容器 <span>KLLayout</span> </h2>
     <div class="grid-item" markdown="1">
-<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
+<h3 id="基本形式-1"><a href="#基本形式-1" class="headerlink" title="基本形式-1"></a>基本形式-1</h3><p>用于页面的布局的容器，关于布局定义了以下组件：
+<code>&lt;kl-layout&gt;</code> 布局容器,<code>&lt;kl-main&gt;</code> 主页面, <code>&lt;kl-aside&gt;</code> 侧边栏, <code>&lt;kl-header&gt;</code> 头部, <code>&lt;kl-footer&gt;</code> 尾部。</p>
+<p><div class="m-example m-example-1"></div></p>
+<style>
+    .m-example { overflow: hidden; }
+    .m-example .kl-main { line-height: 160px; }
+    .m-example-1 .kl-header, .m-example-1 .kl-footer, .m-example-2 .kl-header, .m-example-2 .kl-footer, .m-example-3 .kl-header, .m-example-3 .kl-footer { background: #ccc; color: #666; }
+    .m-example .kl-header, .m-example .kl-footer, .m-example .kl-main { text-align: center; }
+</style>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"打开图片预览"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.onPreviewClick()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-header</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">kl-header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-main</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">kl-main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-footer</span>&gt;</span>Footer<span class="tag">&lt;/<span class="name">kl-footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
-<h3 id="配置要嵌入的父级元素"><a href="#配置要嵌入的父级元素" class="headerlink" title="配置要嵌入的父级元素"></a>配置要嵌入的父级元素</h3><div class="m-example"></div>
+<h3 id="基本形式-2"><a href="#基本形式-2" class="headerlink" title="基本形式-2"></a>基本形式-2</h3><p><div class="m-example m-example-2"></div></p>
+<style>
+    .m-example .kl-main { line-height: 160px; }
+    .m-example-2 .kl-aside { line-height: 200px; }
+</style>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"打开图片预览"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.onPreviewClick()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-header</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">kl-header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-aside</span>&gt;</span>Aside<span class="tag">&lt;/<span class="name">kl-aside</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-main</span> <span class="attr">isMaster</span>=<span class="string">&#123;true&#125;</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">kl-main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div></pre></td></tr></table></figure>
 </div>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLImagePreview"></a></p>
-<h2 id="KLImagePreview"><a href="#KLImagePreview" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span><a name="new_KLImagePreview_new"></a></h2><h3 id="KLImagePreview-1"><a href="#KLImagePreview-1" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span></h3><table>
+<div class="grid-item" markdown="1">
+<h3 id="基本形式-3"><a href="#基本形式-3" class="headerlink" title="基本形式-3"></a>基本形式-3</h3><p><div class="m-example m-example-3"></div></p>
+<style>
+    .m-example .kl-main { line-height: 160px; }
+    .m-example-3 .kl-aside { line-height: 320px; }
+    .m-example-2 .kl-aside, .m-example-3 .kl-aside {
+        text-align: center;
+    }
+</style>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-aside</span>&gt;</span>Aside<span class="tag">&lt;/<span class="name">kl-aside</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-layout</span> <span class="attr">isMaster</span>=<span class="string">&#123;true&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-header</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">kl-header</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-main</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">kl-main</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-footer</span>&gt;</span>Footer<span class="tag">&lt;/<span class="name">kl-footer</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="项目样例"><a href="#项目样例" class="headerlink" title="项目样例"></a>项目样例</h3><p><div class="m-example m-example-4"></div></p>
+<style>
+    .m-example .kl-main { line-height: 160px; }
+    .m-example-4 .kl-aside {
+        position:relative;
+        height: 500px;
+        background: #eaedf3;
+    }
+    .demo-main {
+        position:relative;
+        height: 500px;
+        background: #eaedf3;
+    }
+    .demo-head {
+        box-sizing: border-box;
+        height: 60px;
+        background: #22354a;
+        padding: 13px 30px;
+        font-size: 18px;
+        color: #fff;
+    }
+
+    .grid-item .kl-menu { padding: 0; }
+</style>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-header</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">kl-header</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-layout</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-aside</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-sidebar</span> <span class="attr">top</span>=<span class="string">"0px"</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">uniqueOpened</span>=<span class="string">&#123;false&#125;</span> <span class="attr">width</span>=<span class="string">"200px"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-aside</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-main</span> <span class="attr">isMaster</span>=<span class="string">&#123;true&#125;</span>&gt;</span>Main<span class="tag">&lt;/<span class="name">kl-main</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-layout</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">      <span class="attr">menus</span>: [&#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'首页'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-home'</span></div><div class="line">      &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'库存管理'</span>,</div><div class="line">       <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-inventory'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">title</span>: <span class="string">'商品实时数据'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'单据审核'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">       <span class="attr">title</span>: <span class="string">'财务管理'</span>,</div><div class="line">       <span class="attr">iconClass</span>: <span class="string">'icon icon-financial'</span>,</div><div class="line">       <span class="attr">children</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'对账管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'请款管理'</span>,</div><div class="line">         <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">       &#125;]</div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'统计数据'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-statistics'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'订单管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-order'</span></div><div class="line">     &#125;, &#123;</div><div class="line">        <span class="attr">title</span>: <span class="string">'消息管理'</span>,</div><div class="line">        <span class="attr">iconClass</span>: <span class="string">'icon icon-message'</span></div><div class="line">     &#125;]</div><div class="line">   &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLLayout"></a></p>
+<h2 id="KLLayout"><a href="#KLLayout" class="headerlink" title="KLLayout"></a><span class="param-title">KLLayout</span><a name="new_KLLayout_new"></a></h2><h3 id="KLLayout-1"><a href="#KLLayout-1" class="headerlink" title="KLLayout"></a><span class="param-title">KLLayout</span></h3><table>
 <thead>
 <tr>
 <th>Param</th>
 <th>Type</th>
-<th>Default</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>[options.data]</td>
-<td><code>object</code></td>
-<td></td>
-<td>= 绑定属性</td>
-</tr>
-<tr>
-<td>[options.data.image-list]</td>
-<td><code>array</code></td>
-<td></td>
-<td>=&gt; 必选，图片文件列表, 其中每个文件项包含下面的字段:                                                     name: 图片文件名称                                                     src: 图片文件的路径</td>
-</tr>
-<tr>
-<td>[options.data.cur-index]</td>
-<td><code>number</code></td>
-<td><code>0</code></td>
-<td>=&gt; 必选，当前图片文件的索引, 默认第一项为当前项</td>
-</tr>
-<tr>
-<td>[options.data.el]</td>
+<td>[options.direction]</td>
 <td><code>string</code></td>
-<td></td>
-<td>=&gt; 设置对话框要插入的父级元素，默认为document.body</td>
+<td>=&gt; 子元素排列方向，可选为horizontal/vertical</td>
+</tr>
+<tr>
+<td>[options.isMaster]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 是否为主内容页面，与KLAside的showFold配合使用</td>
+</tr>
+<tr>
+<td>[options.class]</td>
+<td><code>string</code></td>
+<td>=&gt; class样式</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLHeader"></a></p>
+<h2 id="KLHeader"><a href="#KLHeader" class="headerlink" title="KLHeader"></a><span class="param-title">KLHeader</span><a name="new_KLHeader_new"></a></h2><h3 id="KLHeader-1"><a href="#KLHeader-1" class="headerlink" title="KLHeader"></a><span class="param-title">KLHeader</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.height]</td>
+<td><code>string</code></td>
+<td>=&gt; 头部高度</td>
+</tr>
+<tr>
+<td>[options.class]</td>
+<td><code>string</code></td>
+<td>=&gt; class样式</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLFooter"></a></p>
+<h2 id="KLFooter"><a href="#KLFooter" class="headerlink" title="KLFooter"></a><span class="param-title">KLFooter</span><a name="new_KLFooter_new"></a></h2><h3 id="KLFooter-1"><a href="#KLFooter-1" class="headerlink" title="KLFooter"></a><span class="param-title">KLFooter</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.height]</td>
+<td><code>string</code></td>
+<td>=&gt; 底部高度</td>
+</tr>
+<tr>
+<td>[options.class]</td>
+<td><code>string</code></td>
+<td>=&gt; class样式</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLAside"></a></p>
+<h2 id="KLAside"><a href="#KLAside" class="headerlink" title="KLAside"></a><span class="param-title">KLAside</span><a name="new_KLAside_new"></a></h2><h3 id="KLAside-1"><a href="#KLAside-1" class="headerlink" title="KLAside"></a><span class="param-title">KLAside</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.width]</td>
+<td><code>string</code></td>
+<td>=&gt; 侧栏宽度</td>
+</tr>
+<tr>
+<td>[options.showFold]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 是否开启折叠功能，默认true</td>
+</tr>
+<tr>
+<td>[options.active]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 若开启折叠功能，初始展开状态，默认true</td>
+</tr>
+<tr>
+<td>[options.class]</td>
+<td><code>string</code></td>
+<td>=&gt; class样式</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLMain"></a></p>
+<h2 id="KLMain"><a href="#KLMain" class="headerlink" title="KLMain"></a><span class="param-title">KLMain</span><a name="new_KLMain_new"></a></h2><h3 id="KLMain-1"><a href="#KLMain-1" class="headerlink" title="KLMain"></a><span class="param-title">KLMain</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.isMaster]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 是否为主内容页面，与KLAside的showFold配合使用</td>
+</tr>
+<tr>
+<td>[options.class]</td>
+<td><code>string</code></td>
+<td>=&gt; class样式</td>
 </tr>
 </tbody>
 </table>
@@ -480,30 +619,14 @@ var index = 0;
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-main>Main</kl-main>
+    <kl-footer>Footer</kl-footer>
+</kl-layout>
 
       */});
-      
-var component = new NEKUI.Component({
-    template: template,
-    onPreviewClick: function() {
-        const imageList = [{
-            name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
-        }, {
-            name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
-        }];
-
-        new NEKUI.KLImagePreview({
-            data: {
-                imageList: imageList,
-                curIndex: 0
-            }
-        });
-    }
-});
-
+      var component = new NEKUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
       var gridItem = document.querySelectorAll('.grid-item')[index];
       var codeDemo = document.createElement('div');
@@ -519,29 +642,13 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-main>Main</kl-main>
+    <kl-footer>Footer</kl-footer>
+</kl-layout>
 `,
-              jsCode: `
-var component = new NEKUI.Component({
-    template: template,
-    onPreviewClick: function() {
-        const imageList = [{
-            name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
-        }, {
-            name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
-        }];
-
-        new NEKUI.KLImagePreview({
-            data: {
-                imageList: imageList,
-                curIndex: 0
-            }
-        });
-    }
-});
-`
+              jsCode: `var component = new NEKUI.Component({template: template});`
           }
       });
       codeDemo.innerHTML = '';
@@ -551,29 +658,145 @@ var component = new NEKUI.Component({
     (function(index) {
       var template = NEKUI._.multiline(function(){/*
       
-<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-layout>
+        <kl-aside>Aside</kl-aside>
+        <kl-main isMaster={true}>Main</kl-main>
+    </kl-layout>
+</kl-layout>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-layout>
+        <kl-aside>Aside</kl-aside>
+        <kl-main isMaster={true}>Main</kl-main>
+    </kl-layout>
+</kl-layout>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-layout>
+    <kl-aside>Aside</kl-aside>
+    <kl-layout isMaster={true}>
+        <kl-header>Header</kl-header>
+        <kl-main>Main</kl-main>
+        <kl-footer>Footer</kl-footer>
+    </kl-layout>
+</kl-layout>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-layout>
+    <kl-aside>Aside</kl-aside>
+    <kl-layout isMaster={true}>
+        <kl-header>Header</kl-header>
+        <kl-main>Main</kl-main>
+        <kl-footer>Footer</kl-footer>
+    </kl-layout>
+</kl-layout>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+    
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+      
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-layout>
+        <kl-aside>
+            <kl-sidebar top="0px" menus={menus} uniqueOpened={false} width="200px" />
+        </kl-aside>
+        <kl-main isMaster={true}>Main</kl-main>
+    </kl-layout>
+</kl-layout>
 
       */});
       
 var component = new NEKUI.Component({
     template: template,
-    onPreviewClick: function() {
-        const imageList = [{
-            name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
-        }, {
-            name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
-        }];
-
-        new NEKUI.KLImagePreview({
-            data: {
-                imageList: imageList,
-                curIndex: 0,
-                el: '#main'
-            }
-        });
-    }
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/'
+       },{
+         title: '单据审核',
+         url: '/'
+       }]
+     }, {
+       title: '财务管理',
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         url: '/'
+       },{
+         title: '请款管理',
+         url: '/'
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -591,28 +814,56 @@ var component = new NEKUI.Component({
           data: {
               htmlTpl: codeDemo.innerHTML,
               htmlCode: `
-<kl-button title="打开图片预览" on-click={this.onPreviewClick()} />
+<kl-layout>
+    <kl-header>Header</kl-header>
+    <kl-layout>
+        <kl-aside>
+            <kl-sidebar top="0px" menus={menus} uniqueOpened={false} width="200px" />
+        </kl-aside>
+        <kl-main isMaster={true}>Main</kl-main>
+    </kl-layout>
+</kl-layout>
 `,
               jsCode: `
 var component = new NEKUI.Component({
     template: template,
-    onPreviewClick: function() {
-        const imageList = [{
-            name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
-        }, {
-            name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
-        }];
-
-        new NEKUI.KLImagePreview({
-            data: {
-                imageList: imageList,
-                curIndex: 0,
-                el: '#main'
-            }
-        });
-    }
+    data: {
+      menus: [{
+       title: '首页',
+       iconClass: 'icon icon-home'
+      }, {
+       title: '库存管理',
+       open: true,
+       iconClass: 'icon icon-inventory',
+       children: [{
+         open: true,
+         title: '商品实时数据',
+         url: '/'
+       },{
+         title: '单据审核',
+         url: '/'
+       }]
+     }, {
+       title: '财务管理',
+       iconClass: 'icon icon-financial',
+       children: [{
+         title: '对账管理',
+         url: '/'
+       },{
+         title: '请款管理',
+         url: '/'
+       }]
+     }, {
+        title: '统计数据',
+        iconClass: 'icon icon-statistics'
+     }, {
+        title: '订单管理',
+        iconClass: 'icon icon-order'
+     }, {
+        title: '消息管理',
+        iconClass: 'icon icon-message'
+     }]
+   }
 });
 `
           }
@@ -626,14 +877,14 @@ var component = new NEKUI.Component({
 
     <div class="guide-links">
       
-        <a href="/components/widget_KLIcon_.html" class="pager">
-            <span class="icon icon-left"></span><span>图标</span>
+        <a href="/components/layout_KLCard_.html" class="pager">
+            <span class="icon icon-left"></span><span>卡片</span>
         </a>
       
         <span class="placeholder"></span>
       
-        <a href="/components/widget_KLLoading_.html" class="pager">
-            <span>加载</span><span class="icon icon-right"></span>
+        <a href="/components/layout_KLRow_.html" class="pager">
+            <span>栅格布局</span><span class="icon icon-right"></span>
         </a>
       
     </div>

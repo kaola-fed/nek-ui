@@ -87,7 +87,7 @@ pre .xml .cdata {
   opacity: 0.5;
 }
 body {
-  font-family: 'PingFangTC-Regular', 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'STHeitiSC-Light', 'Microsoft YaHei', Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -103,13 +103,6 @@ body.docs {
     padding-top: 0;
   }
 }
-a {
-  text-decoration: none;
-  color: #34495e;
-}
-a:hover {
-  text-decoration: none;
-}
 img {
   border: none;
 }
@@ -120,6 +113,38 @@ h4,
 strong {
   font-weight: 600;
   color: #2c3e50;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 25px 0 15px;
+}
+h1 {
+  font-size: 36px;
+  line-height: 42px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+}
+h4 {
+  font-size: 16px;
+  line-height: 22px;
+}
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+h6 {
+  font-size: 12px;
+  line-height: 18px;
 }
 code,
 pre {
@@ -142,6 +167,7 @@ em {
 }
 p {
   word-spacing: 0.05em;
+  margin: 1em 0;
 }
 a.button {
   padding: 0.75em 2em;
@@ -177,7 +203,7 @@ a.button.white {
   width: 1.5em;
 }
 .highlight .code pre {
-  padding: 1.2em 1.4em;
+  padding: 4em 1.4em;
   line-height: 1.5em;
   margin: 0;
 }
@@ -275,7 +301,7 @@ a.button.white {
   display: block;
 }
 #nav .nav-dropdown a:hover {
-  color: #e31436;
+  color: #00c4c0;
 }
 #nav .arrow {
   display: inline-block;
@@ -293,7 +319,7 @@ a.button.white {
   box-sizing: border-box;
   height: 80px;
   padding: 26px 40px;
-  z-index: 2;
+  z-index: 1000;
 }
 #header #nav {
   display: flex;
@@ -385,15 +411,15 @@ body.docs #nav {
   margin: 0 0.6em;
 }
 #nav li a:hover {
-  color: #e31436;
+  color: #00c4c0;
 }
 .nav-link {
   padding-bottom: 3px;
 }
 .nav-link:hover,
 .nav-link.current {
-  color: #e31436;
-  border-bottom: 3px solid #e31436;
+  color: #00c4c0;
+  border-bottom: 3px solid #00c4c0;
 }
 .search-query {
   height: 36px;
@@ -420,7 +446,7 @@ body.docs #nav {
 #logo {
   display: inline-block;
   line-height: 40px;
-  font-family: 'PingFangTC-Regular', 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
   font-weight: 500;
   font-size: 18px;
   color: #333;
@@ -489,6 +515,13 @@ body.docs #nav {
   -ms-overflow-style: none;
   border-right: 1px #e3e8ed solid;
 }
+.sidebar a {
+  text-decoration: none;
+  color: #34495e;
+}
+.sidebar a:hover {
+  text-decoration: none;
+}
 .sidebar h2 {
   margin-top: 0.2em;
 }
@@ -514,10 +547,13 @@ body.docs #nav {
   padding: 12px 0 11px 40px;
   font-size: 14px;
 }
-.sidebar .menu-root .submenu-title .u-icon {
+.sidebar .menu-root .submenu-title .kl-icon {
   margin-left: -14px;
   margin-right: 8px;
   font-size: 14px;
+}
+.sidebar .menu-root .submenu {
+  padding: 0 0 0 40px;
 }
 .sidebar .menu-root .submenu>li {
   margin-bottom: 15px;
@@ -525,6 +561,23 @@ body.docs #nav {
 }
 .sidebar .menu-root .submenu>li span {
   color: #999;
+}
+.sidebar .menu-root .submenu .new:after {
+  content: "new";
+  margin-left: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  display: inline;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 11px;
+  line-height: 1;
+  background: #00c4c0;
+  color: #fff;
+  border-radius: 1000px;
 }
 .sidebar .version-select {
   vertical-align: middle;
@@ -538,7 +591,7 @@ body.docs #nav {
 }
 .sidebar .sidebar-link.current {
   font-weight: 600;
-  color: #e31436;
+  color: #00c4c0;
 }
 .sidebar .sidebar-link.new:after {
   content: "NEW";
@@ -571,11 +624,11 @@ body.docs #nav {
   top: -1px;
 }
 .sidebar .sidebar-link:hover {
-  border-bottom: 2px solid #e31436;
+  border-bottom: 2px solid #00c4c0;
 }
 .sidebar .section-link.active {
   font-weight: bold;
-  color: #e31436;
+  color: #00c4c0;
 }
 .sidebar .main-menu {
   margin-bottom: 20px;
@@ -595,10 +648,10 @@ body.docs #nav {
   display: inline-block;
 }
 .sidebar .become-backer {
-  border: 1px solid #e31436;
+  border: 1px solid #00c4c0;
   border-radius: 2em;
   display: inline-block;
-  color: #e31436;
+  color: #00c4c0;
   font-size: 0.8em;
   width: 125px;
   padding: 4px 0;
@@ -618,22 +671,22 @@ body.docs #nav {
     background-color: transparent;
   }
   .sidebar .menu-root a:hover {
-    color: #e31436;
+    color: #00c4c0;
   }
   .sidebar .menu-root a:hover span {
-    color: #e31436;
+    color: #00c4c0;
   }
   .sidebar .menu-root a:hover::before {
-    background-color: #e31436;
+    background-color: #00c4c0;
   }
   .sidebar .menu-root a.current {
-    color: #e31436;
+    color: #00c4c0;
   }
   .sidebar .menu-root a.current span {
-    color: #e31436;
+    color: #00c4c0;
   }
   .sidebar .menu-root a.current:before {
-    background-color: #e31436;
+    background-color: #00c4c0;
   }
 }
 @media screen and (max-width: 900px) {
@@ -672,21 +725,22 @@ body.docs #nav {
     padding: 0;
     font-size: 16px;
   }
-  .sidebar .menu-root .submenu-title .u-icon {
+  .sidebar .menu-root .submenu-title .kl-icon {
     display: none;
   }
   .sidebar .menu-root a {
     border-bottom: 2px transparent solid;
   }
   .sidebar .menu-root a:hover {
-    color: #e31436;
-    border-bottom-color: #e31436;
+    color: #00c4c0;
+    border-bottom-color: #00c4c0;
   }
   .sidebar .menu-root a:hover span {
-    color: #e31436;
+    color: #00c4c0;
   }
   .sidebar .menu-root .submenu {
     margin-left: -40px;
+    padding: 0 0 0 40px;
   }
   .sidebar .menu-root .submenu>li {
     margin-bottom: 0;
@@ -771,6 +825,7 @@ body.docs #nav {
   height: 16px;
   line-height: 16px;
   z-index: -1;
+  display: flex;
 }
 .content h2:before {
   margin-top: 0px;
@@ -803,14 +858,10 @@ body.docs #nav {
 .content figure {
   margin: 1.2em 0;
 }
-.content a {
-  color: #0398ff;
-  font-weight: 400;
-}
 .content blockquote {
   margin: 2em 0;
   padding-left: 20px;
-  border-left: 4px solid #e31436;
+  border-left: 4px solid #00c4c0;
 }
 .content blockquote p {
   font-weight: 600;
@@ -873,7 +924,7 @@ body.docs #nav {
   text-align: center;
   line-height: 20px;
   font-weight: bold;
-  font-family: 'PingFangTC-Regular', 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
   font-size: 14px;
 }
 .content p.tip code {
@@ -966,7 +1017,7 @@ body.docs #nav {
   }
   .nav-link:hover,
   .nav-link.current {
-    border-bottom: 2px solid #e31436;
+    border-bottom: 2px solid #00c4c0;
   }
   #mobile-bar {
     display: block;
@@ -1017,24 +1068,13 @@ body.docs #nav {
   margin: 0px 0px 20px 22px;
   border-radius: 4px;
   padding: 16px 24px 0 24px;
-  font-family: PingFangTC-Regular;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
   font-size: 12px;
   color: #666;
   word-wrap: break-word;
 }
 .grid-item h3 {
   margin: 0;
-}
-.grid-item em {
-  padding-bottom: 8px;
-  color: #333;
-  display: block;
-  font-size: 14px;
-  line-height: 17px;
-  font-weight: bold;
-}
-.grid-item ul {
-  padding: 0 0 0 15px;
 }
 .grid-item:hover {
   box-shadow: 0 0 8px 0 rgba(232,237,250,0.6), 0 2px 4px 0 rgba(232,237,250,0.5);
@@ -1109,7 +1149,7 @@ body.docs #nav {
   color: #0398ff;
 }
 .m-copyCode {
-  margin-top: 24px;
+  margin-top: 18px;
 }
 .m-demowrap {
   border-top: 1px solid #e1e6ec;
@@ -1204,4 +1244,7 @@ body.docs #nav {
 .m-demowrap .wrap {
   height: 0px;
   border-bottom: none;
+}
+.s-bg-dark {
+  background: #000;
 }
