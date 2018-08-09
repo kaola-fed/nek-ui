@@ -23,7 +23,7 @@ script:
 - npm run lint
 - gulp --gulpfile build/gulpfile.js dist
 - gulp --gulpfile build/gulpfile.js gen-doc
-#- gulp --gulpfile build/gulpfile.js copy-oldDoc
+- gulp --gulpfile build/gulpfile.js copy-oldDoc
 
 after_success:
 - mkdir .deploy
