@@ -254,6 +254,17 @@ module.exports = Component.extend({
         );
         return formatter(value, format || formattedType);
     },
+
+    onShortcutClick(shortcut) {
+        if (shortcut.value) {
+            this.data.value = shortcut.value();
+            this.$emit('pick', {
+                value: shortcut.value(),
+                isShow: false
+            });
+        }
+        if (shortcut.onClick) shortcut.onClick(this);
+    },
 })
     .use(ClassesMixin)
     .use(LabelActionMixin)

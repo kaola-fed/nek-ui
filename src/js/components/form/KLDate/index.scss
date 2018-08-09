@@ -74,11 +74,21 @@
         @include m(disabled) {
             color: #bbbec4;
             cursor: not-allowed;
+            background: #f7f7f7;
 
             &:hover {
                 color: #bbbec4;
-                background-color: #fff;
+                background: #f7f7f7;
                 cursor: not-allowed;
+            }
+
+            .kl-newdate-picker-cells__cell-em{
+                background: #f7f7f7;
+                color: #bbbec4;
+            }
+            &:hover .kl-newdate-picker-cells__cell-em{
+                background: #f7f7f7;
+                color: #bbbec4;
             }
         }
 
@@ -157,6 +167,10 @@
         text-align: center;
         transition: all .2s ease-in-out;
     }
+
+    @include m(show-week-numbers) {
+        width: 224px;
+    }
 }
 
 @include b(newdate-picker-cells-header) {
@@ -231,11 +245,12 @@
             float: left;
         }
 
-        //.kl-picker-cells--show-week-numbers {
-        //    min-width: 492px
-        //}
+        .kl-picker-cells--show-week-numbers {
+            min-width: 488px
+        }
 
     }
+
 
     @include m(content-left) {
         float: left;
@@ -258,7 +273,6 @@
         position: relative;
 
         &:after {
-            right: auto;
             left: -2px;
             content: "";
             display: block;
@@ -273,6 +287,14 @@
 
         }
     }
+}
+
+.kl-picker-panel--with-range.kl-picker-panel-body-header--with-week-numbers .kl-picker-panel__body {
+    min-width: 488px
+}
+
+.kl-picker-panel--with-range.kl-picker-panel--with-sidebar {
+    padding-left: 92px;
 }
 
 @include b(picker-panel-body-header) {
@@ -328,3 +350,28 @@
     font-size: 12px;
 }
 
+.kl-picker-panel-sidebar {
+    width: 92px;
+    float: left;
+    margin-left: -92px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #f8f8f9;
+    border-right: 1px solid #e8eaec;
+    border-radius: 4px 0 0 4px;
+    overflow: auto;
+}
+
+.kl-picker-panel-shortcut {
+    padding: 6px 15px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.kl-picker-panel-with-sidebar {
+    padding-left: 92px;
+}

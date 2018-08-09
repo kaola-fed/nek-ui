@@ -14,6 +14,8 @@ const KLDate = Component.extend({
     template,
     config() {
         this.defaults({
+            placement: 'bottom-start',
+            appendToBody: false,
             isShow: false,
             isConfirm: false,
             steps: [],
@@ -24,6 +26,7 @@ const KLDate = Component.extend({
             disabledDate: () => false,
             shortcuts: [],
             showWeekNumbers: false,
+            splitPanels: false,
         });
         this.supr();
     },

@@ -5,7 +5,7 @@
         {#list shortcuts as shortcut}
         <div
             class="{prefixCls + '-shortcut'}"
-            on-click="{this.handleShortcutClick(shortcut)}">{ shortcut.text }</div>
+            on-click="{this.onShortcutClick(shortcut)}">{ shortcut.text }</div>
         {/list}
     </div>
     {/if}

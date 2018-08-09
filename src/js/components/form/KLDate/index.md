@@ -138,7 +138,7 @@ var component = new NEKUI.Component({
                     return new Date();
                 },
                 onClick: (picker) => {
-                    this.$Message.info('Click today');
+                    window.NEKUI.KLNotify.success('Click today');
                 }
             },
             {
@@ -149,7 +149,7 @@ var component = new NEKUI.Component({
                     return date;
                 },
                 onClick: (picker) => {
-                    this.$Message.info('Click yesterday');
+                    window.NEKUI.KLNotify.success('Click yesterday');
                 }
             },
             {
@@ -160,7 +160,7 @@ var component = new NEKUI.Component({
                     return date;
                 },
                 onClick: (picker) => {
-                    this.$Message.info('Click a week ago');
+                    window.NEKUI.KLNotify.success('Click a week ago');
                 }
             }
         ],
@@ -249,12 +249,39 @@ var component = new NEKUI.Component({
         value1: '',
         value2: '',
         disabledDate1 (date) {
-            return date && date.valueOf() < Date.now() - 86400000;
-        },
-        disabledDate2 (date) {
             const disabledDay = date.getDate();
             return disabledDay === 15;
+        },
+        disabledDate2 (date) {
+            return date && date.valueOf() < Date.now() - 86400000;
         }
+    }
+});
+```
+<!-- demo_end -->
+
+
+<!-- demo_start -->
+### 展示周数
+<div class="m-example"></div>
+
+```xml
+<kl-row>
+    <kl-col span="6">
+        <kl-date type="date" value="{value1}" showWeekNumbers></kl-date>
+    </kl-col>
+    <kl-col span="6">
+        <kl-date type="daterange" value="{value2}" showWeekNumbers></kl-date>
+    </kl-col>
+</kl-row>
+```
+
+```javascript
+var component = new NEKUI.Component({
+    template: template,
+    data: {
+        value1: '',
+        value2: '',
     }
 });
 ```

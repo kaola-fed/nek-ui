@@ -1,5 +1,5 @@
 
-<kl-drop isShow={isShow} headerClass="kl-newdate-header">
+<kl-drop placement={placement} appendToBody="{appendToBody}" isShow={isShow} headerClass="kl-newdate-header">
     <kl-drop-header>
         <div
             class="kl-newdate-header-input"
@@ -13,6 +13,7 @@
     </kl-drop-header>
     {#if type == 'daterange' || type == 'datetimerange'}
     <kl-date-range-panel
+        confirm="{confirm}"
         format="{format}"
         isShow={isShow}
         value={value}
@@ -20,12 +21,14 @@
         shortcuts="{shortcuts}"
         disabledDate="{disabledDate}"
         showWeekNumbers="{showWeekNumbers}"
+        splitPanels="{splitPanels}"
         on-pick="{this.onPick($event)}"
         on-showVisualValue="{this.onShowVisualValue($event)}"
         on-pickSuccess="{isShow = false}"
         ></kl-date-range-panel>
     {#else}
     <kl-date-panel
+        confirm="{confirm}"
         format="{format}"
         isShow={isShow}
         value={value}
