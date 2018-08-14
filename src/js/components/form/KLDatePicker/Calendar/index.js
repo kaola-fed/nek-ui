@@ -147,8 +147,8 @@ const Calendar = Component.extend({
   _update() {
     this.data._days = [];
     const date = this.data.date;
-    const month = date.getMonth();
     const mfirst = new Date(date);
+    const month = mfirst.getMonth();
     mfirst.setDate(1);
     const mfirstTime = +mfirst;
     const nfirst = new Date(mfirst);
