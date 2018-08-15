@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>确认提示 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="确认提示 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
+
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
+        <link rel="dns-prefetch" href="//at.alicdn.com" />
+
+
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
+        <!--  nek-ui -->
+        <link href="/v0.6/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css?v2">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs" >
+            <script src="/v0.6/js/common.js"></script>
+            <script src="/v0.6/vendor/regular.js"></script>
+            <script src="/v0.6/js/nek-ui.js"></script>
+            <script src="/v0.6/demo.wrap/index.js"></script>
+
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header" class="">    <a id="logo" href="/">
+
+            <span class="u-logo u-logo-grey u-logo-sm"></span>
+
+    </a>
+    <ul id="nav">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+</div>
+
+
+            <div id="main" class="fix-sidebar">
+
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+
+
+
+
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <a href="/v0.6/components/index.html" class="">
+                                快速上手
+                            </a>
+
+                    </div>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>布局
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLCard_.html" class="">
+                                       卡片 <span>KLCard</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLRow_.html" class="">
+                                       栅格布局 <span>KLRow</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLSearch_.html" class="">
+                                       筛选区 <span>KLSearch</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLTable_.html" class="">
+                                       表格 <span>KLTable</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>表单
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLButton_.html" class="">
+                                       按钮 <span>KLButton</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheck_.html" class="">
+                                       复选框 <span>KLCheck</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheckGroup_.html" class="">
+                                       复选组 <span>KLCheckGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLDatePicker_.html" class="">
+                                       日期选择 <span>KLDatePicker</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLForm_.html" class="">
+                                       表单 <span>KLForm</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLInput_.html" class="">
+                                       输入框 <span>KLInput</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLMultiSelect_.html" class="">
+                                       多级选择 <span>KLMultiSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLRadioGroup_.html" class="">
+                                       单选组 <span>KLRadioGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLSelect_.html" class="">
+                                       下拉选择 <span>KLSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLText_.html" class="">
+                                       文本展示 <span>KLText</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTextArea_.html" class="">
+                                       文本输入 <span>KLTextArea</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTreeView_.html" class="">
+                                       树型视图 <span>KLTreeView</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLUpload_.html" class="">
+                                       上传文件 <span>KLUpload</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="current">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>通知
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLMessage_.html" class="">
+                                       消息 <span>KLMessage</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLModal_.html" class="">
+                                       模态框 <span>KLModal</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLNotify_.html" class="">
+                                       通知 <span>KLNotify</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLPopConfirm_.html" class="current">
+                                       确认提示 <span>KLPopConfirm</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>导航
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLCrumb_.html" class="">
+                                       面包屑 <span>KLCrumb</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLMenu_.html" class="">
+                                       导航菜单 <span>KLMenu</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLPager_.html" class="">
+                                       分页 <span>KLPager</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSidebar_.html" class="">
+                                       菜单栏 <span>KLSidebar</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSteps_.html" class="">
+                                       步骤 <span>KLSteps</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLTabs_.html" class="">
+                                       选项卡 <span>KLTabs</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>其它
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLBadge_.html" class="">
+                                       徽标 <span>KLBadge</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLDraggable_.html" class="">
+                                       拖拽 <span>KLDraggable</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLIcon_.html" class="">
+                                       图标 <span>KLIcon</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLImagePreview_.html" class="">
+                                       图片预览 <span>KLImagePreview</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLoading_.html" class="">
+                                       加载 <span>KLLoading</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLocaleProvider_.html" class="">
+                                       国际化 <span>KLLocaleProvider</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLProgress_.html" class="">
+                                       进度条 <span>KLProgress</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLTooltip_.html" class="">
+                                       文字提示 <span>KLTooltip</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar  j-masonry">
+
+         <style>
+              @media all and (min-width: 1301px) {
+                .grid-item{
+                  width: 50%;
+                }
+              }
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+
+
+    <h2 id="pageName">确认提示 <span>KLPopConfirm</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>气泡弹框，主要用于备注或者更多信息提示。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"Are you sure delete this task?"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"删除"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性content"><a href="#配置属性content" class="headerlink" title="配置属性content"></a>配置属性content</h3><p>设置气泡信息提示内容，一般为简单文本提示。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"我是设置的气泡信息内容"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"Content"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性contentTemplate"><a href="#配置属性contentTemplate" class="headerlink" title="配置属性contentTemplate"></a>配置属性contentTemplate</h3><p>气泡信息提示内容配置，可以自定义html格式</p>
+<div class="m-example">
+    <style>
+        .u-red-font {
+            color: #f00;
+        }
+    </style>
+</div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">contentTemplate</span>=<span class="string">"&lt;div&gt;&lt;span class='u-red-font'&gt;红色字体&lt;/span&gt;&lt;span&gt;普通字体&lt;/span&gt;&lt;/div&gt;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"contentTemplate"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性placement"><a href="#配置属性placement" class="headerlink" title="配置属性placement"></a>配置属性placement</h3><p>气泡提示信息展示位置配置(箭头的位置)，取值有<code>top</code>、<code>topLeft</code>、<code>topRight</code>、<code>left</code>、<code>leftTop</code>、
+<code>leftBottom</code>、<code>right</code>、<code>rightTop</code>、<code>rightBottom</code>、<code>bottom</code>、<code>bottomLeft</code>、
+<code>bottomRight</code>。默认取值为<code>top</code></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在中间"</span> <span class="attr">placement</span>=<span class="string">"top"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"top"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在左边"</span> <span class="attr">placement</span>=<span class="string">"topLeft"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"topLeft"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在右边"</span> <span class="attr">placement</span>=<span class="string">"topRight"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"topRight"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在中间"</span> <span class="attr">placement</span>=<span class="string">"left"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"left"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在上边"</span> <span class="attr">placement</span>=<span class="string">"leftTop"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"leftTop"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在下边"</span> <span class="attr">placement</span>=<span class="string">"leftBottom"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"leftBottom"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在中间"</span> <span class="attr">placement</span>=<span class="string">"right"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"right"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在上边"</span> <span class="attr">placement</span>=<span class="string">"rightTop"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"rightTop"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在下边"</span> <span class="attr">placement</span>=<span class="string">"rightBottom"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"rightBottom"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在中间"</span> <span class="attr">placement</span>=<span class="string">"bottom"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"bottom"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在左边"</span> <span class="attr">placement</span>=<span class="string">"bottomLeft"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"bottomLeft"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"kl-pop-confirm箭头的位置在右边"</span> <span class="attr">placement</span>=<span class="string">"bottomRight"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"bottomRight"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性hideWhenScroll"><a href="#配置属性hideWhenScroll" class="headerlink" title="配置属性hideWhenScroll"></a>配置属性hideWhenScroll</h3><p>通过设置<code>hideWhenScroll</code>属性，控制window滚动时,是否隐藏<code>popover</code>,默认为false，不隐藏。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"拖动页面滚动看效果【弹出框会关闭】"</span> <span class="attr">hideWhenScroll</span>=<span class="string">"&#123;true&#125;"</span> &gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"hideWhenScroll:true"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"拖动页面滚动看效果【弹出框不会关闭】"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"hideWhenScroll:false"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性cancelText"><a href="#配置属性cancelText" class="headerlink" title="配置属性cancelText"></a>配置属性cancelText</h3><p>设置气泡提示信息，取消按钮的文本提示，默认为<code>取消</code></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"Are you sure delete this task?"</span> <span class="attr">cancelText</span>=<span class="string">"&#123;'cancelText'&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"cancelText"</span>&gt;</span>cancelText<span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置属性okText"><a href="#配置属性okText" class="headerlink" title="配置属性okText"></a>配置属性okText</h3><p>设置气泡提示信息，OK按钮的文本提示，默认为<code>确定</code></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">content</span>=<span class="string">"Are you sure delete this task?"</span> <span class="attr">okText</span>=<span class="string">"&#123;'okText'&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"okText"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="ok方法"><a href="#ok方法" class="headerlink" title="ok方法"></a>ok方法</h3><p>设置点击ok按钮调用的方法，默认会关闭提示框。通过<code>on-ok</code>绑定事件，可以通过<code>$event</code>传递消息事件对象。on-ok绑定方法调用之后会派发<code>ok</code>事件以及
+参数<code>$event</code>{sender, data}其中sender为派发事件本身，data是相关数据</p>
+<p><strong>手动设置方法之后，提示框不会自动关闭，需手动调用关闭事件<code>sender.destory()</code></strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">contentTemplate</span>=<span class="string">"&#123;testTemplate&#125;"</span> <span class="attr">on-ok</span>=<span class="string">"&#123;this.submit($event)&#125;"</span> <span class="attr">okText</span>=<span class="string">"&#123;'提交'&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"tertiary"</span> <span class="attr">title</span>=<span class="string">"保存提交"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.testTemplate = <span class="string">'&lt;kl-textarea required showTip=false value=&#123;remark&#125; height=50 /&gt;'</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">submit</span>: <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(evt.data.remark) &#123;</div><div class="line">            NEKUI.KLNotify.info(evt.data.remark)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            NEKUI.KLNotify.info(<span class="string">'ok按钮点击事件,内容为空'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 手动关闭</span></div><div class="line">        evt.sender.destroy();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="cancel方法"><a href="#cancel方法" class="headerlink" title="cancel方法"></a>cancel方法</h3><p>设置点击cancel按钮调用的方法，默认会关闭提示框。通过<code>on-cancel</code>绑定事件，可以通过<code>$event</code>传递消息事件对象。
+on-cancel绑定方法调用之后会派发<code>cancel</code>事件以及参数<code>$event</code>{sender, data}其中sender为派发事件本身，data是相关数据。</p>
+<p><strong>手动设置方法之后，提示框不会自动关闭，需手动调用关闭事件</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-pop-confirm</span> <span class="attr">contentTemplate</span>=<span class="string">"&#123;testTemplate&#125;"</span> <span class="attr">on-cancel</span>=<span class="string">"&#123;this.reset($event)&#125;"</span> <span class="attr">cancelText</span>=<span class="string">"&#123;'重置'&#125;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span>  <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">title</span>=<span class="string">"重置内容"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-pop-confirm</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.testTemplate = <span class="string">'&lt;kl-textarea required showTip=false value=&#123;remark&#125; height=50 /&gt;'</span>;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">reset</span>: <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>) </span>&#123;</div><div class="line">        <span class="comment">// 手动关闭</span></div><div class="line">        evt.sender.destroy();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLPopConfirm"></a></p>
+<h2 id="KLPopConfirm"><a href="#KLPopConfirm" class="headerlink" title="KLPopConfirm"></a><span class="param-title">KLPopConfirm</span><a name="new_KLPopConfirm_new"></a></h2><h3 id="KLPopConfirm-1"><a href="#KLPopConfirm-1" class="headerlink" title="KLPopConfirm"></a><span class="param-title">KLPopConfirm</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.content]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 弹窗中的文本内容</td>
+</tr>
+<tr>
+<td>[options.data.contentTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 弹窗中的模板内容,回调中会将PopConfirm的data返回;</td>
+</tr>
+<tr>
+<td>[options.data.placement]</td>
+<td><code>string</code></td>
+<td><code>&quot;top&quot;</code></td>
+<td>=&gt; tips展示出的位置：<code>top</code>、 <code>left</code>、 <code>right</code>、 <code>bottom</code>、 <code>topLeft</code>、 <code>topRight</code>、 <code>bottomLeft</code>、 <code>bottomRight</code>、 <code>leftTop</code>、 <code>leftBottom</code>、 <code>rightTop</code>、 <code>rightBottom</code></td>
+</tr>
+<tr>
+<td>[options.data.okText]</td>
+<td><code>string</code></td>
+<td><code>&quot;确定&quot;</code></td>
+<td>=&gt; ok按钮文案</td>
+</tr>
+<tr>
+<td>[options.data.cancelText]</td>
+<td><code>string</code></td>
+<td><code>&quot;取消&quot;</code></td>
+<td>=&gt; 取消按钮文案</td>
+</tr>
+<tr>
+<td>[options.data.hideWhenScroll]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; window滚动时,是否隐藏<code>popover</code></td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLPopConfirm+event_ok 确定时触发"></a></p>
+<h3 id="ok-确定时触发Event"><a href="#ok-确定时触发Event" class="headerlink" title="ok 确定时触发Event"></a><span class="param-title">ok 确定时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>popConfirm组件的数据</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLPopConfirm+event_cancel 取消时触发"></a></p>
+<h3 id="cancel-取消时触发Event"><a href="#cancel-取消时触发Event" class="headerlink" title="cancel 取消时触发Event"></a><span class="param-title">cancel 取消时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>data</td>
+<td><code>object</code></td>
+<td>popConfirm组件的数据</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm content="Are you sure delete this task?">
+    <kl-button  type="tertiary" title="删除"></kl-button>
+</kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm content="Are you sure delete this task?">
+    <kl-button  type="tertiary" title="删除"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm content="我是设置的气泡信息内容">
+    <kl-button  type="tertiary" title="Content"></kl-button>
+</kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm content="我是设置的气泡信息内容">
+    <kl-button  type="tertiary" title="Content"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm contentTemplate="<div><span class='u-red-font'>红色字体</span><span>普通字体</span></div>">
+    <kl-button  type="tertiary" title="contentTemplate"></kl-button>
+</kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm contentTemplate="<div><span class='u-red-font'>红色字体</span><span>普通字体</span></div>">
+    <kl-button  type="tertiary" title="contentTemplate"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="top">
+        <kl-button title="top" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="topLeft">
+        <kl-button title="topLeft" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="topRight">
+        <kl-button title="topRight" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="left">
+        <kl-button title="left" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="leftTop">
+        <kl-button title="leftTop" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="leftBottom">
+        <kl-button title="leftBottom" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="right">
+        <kl-button title="right" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="rightTop">
+        <kl-button title="rightTop" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="rightBottom">
+        <kl-button title="rightBottom" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="bottom">
+        <kl-button title="bottom" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="bottomLeft">
+        <kl-button title="bottomLeft" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="bottomRight">
+        <kl-button title="bottomRight" />
+    </kl-pop-confirm>
+</div>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="top">
+        <kl-button title="top" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="topLeft">
+        <kl-button title="topLeft" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="topRight">
+        <kl-button title="topRight" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="left">
+        <kl-button title="left" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="leftTop">
+        <kl-button title="leftTop" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="leftBottom">
+        <kl-button title="leftBottom" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="right">
+        <kl-button title="right" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在上边" placement="rightTop">
+        <kl-button title="rightTop" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在下边" placement="rightBottom">
+        <kl-button title="rightBottom" />
+    </kl-pop-confirm>
+</div>
+<div class="g-row">
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在中间" placement="bottom">
+        <kl-button title="bottom" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在左边" placement="bottomLeft">
+        <kl-button title="bottomLeft" />
+    </kl-pop-confirm>
+    <kl-pop-confirm content="kl-pop-confirm箭头的位置在右边" placement="bottomRight">
+        <kl-button title="bottomRight" />
+    </kl-pop-confirm>
+</div>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+    <kl-pop-confirm content="拖动页面滚动看效果【弹出框会关闭】" hideWhenScroll="{true}" >
+        <kl-button  type="tertiary" title="hideWhenScroll:true"></kl-button>
+    </kl-pop-confirm>
+    <kl-pop-confirm content="拖动页面滚动看效果【弹出框不会关闭】">
+        <kl-button type="tertiary" title="hideWhenScroll:false"></kl-button>
+    </kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+    <kl-pop-confirm content="拖动页面滚动看效果【弹出框会关闭】" hideWhenScroll="{true}" >
+        <kl-button  type="tertiary" title="hideWhenScroll:true"></kl-button>
+    </kl-pop-confirm>
+    <kl-pop-confirm content="拖动页面滚动看效果【弹出框不会关闭】">
+        <kl-button type="tertiary" title="hideWhenScroll:false"></kl-button>
+    </kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm content="Are you sure delete this task?" cancelText="{'cancelText'}">
+    <kl-button  type="tertiary" title="cancelText">cancelText</kl-button>
+</kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm content="Are you sure delete this task?" cancelText="{'cancelText'}">
+    <kl-button  type="tertiary" title="cancelText">cancelText</kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm content="Are you sure delete this task?" okText="{'okText'}">
+    <kl-button  type="tertiary" title="okText"></kl-button>
+</kl-pop-confirm>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm content="Are you sure delete this task?" okText="{'okText'}">
+    <kl-button  type="tertiary" title="okText"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm contentTemplate="{testTemplate}" on-ok="{this.submit($event)}" okText="{'提交'}">
+    <kl-button  type="tertiary" title="保存提交"></kl-button>
+</kl-pop-confirm>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    config: function() {
+        this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
+    },
+    submit: function(evt) {
+        if(evt.data.remark) {
+            NEKUI.KLNotify.info(evt.data.remark)
+        } else {
+            NEKUI.KLNotify.info('ok按钮点击事件,内容为空');
+        }
+        // 手动关闭
+        evt.sender.destroy();
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm contentTemplate="{testTemplate}" on-ok="{this.submit($event)}" okText="{'提交'}">
+    <kl-button  type="tertiary" title="保存提交"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    config: function() {
+        this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
+    },
+    submit: function(evt) {
+        if(evt.data.remark) {
+            NEKUI.KLNotify.info(evt.data.remark)
+        } else {
+            NEKUI.KLNotify.info('ok按钮点击事件,内容为空');
+        }
+        // 手动关闭
+        evt.sender.destroy();
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-pop-confirm contentTemplate="{testTemplate}" on-cancel="{this.reset($event)}" cancelText="{'重置'}">
+    <kl-button  type="secondary" title="重置内容"></kl-button>
+</kl-pop-confirm>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    config: function() {
+        this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
+    },
+    reset: function(evt) {
+        // 手动关闭
+        evt.sender.destroy();
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-pop-confirm contentTemplate="{testTemplate}" on-cancel="{this.reset($event)}" cancelText="{'重置'}">
+    <kl-button  type="secondary" title="重置内容"></kl-button>
+</kl-pop-confirm>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    config: function() {
+        this.data.testTemplate = '<kl-textarea required showTip=false value={remark} height=50 />';
+    },
+    reset: function(evt) {
+        // 手动关闭
+        evt.sender.destroy();
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+</script>
+
+
+    <div class="guide-links">
+
+        <a href="/v0.6components/notice_KLNotify_.html" class="pager">
+            <span class="icon icon-left"></span><span>通知</span>
+        </a>
+
+        <span class="placeholder"></span>
+
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+
+       <script>
+        //用来处理实例代码块，将其分为两列
+        var element2col = function(){
+          if(window.innerWidth > 1300){
+            var content = document.getElementsByClassName('content')[0];
+            var position = document.getElementById('pageName').nextSibling;
+            var gridOuter = document.createElement('div');
+            gridOuter.id = 'grid-itemOuter';
+            content.insertBefore(gridOuter,position);
+            if(!!gridOuter){
+              var leftBlock = document.createElement('div');
+              var rightBlock = document.createElement('div');
+              leftBlock.className = 'm-leftBlock';
+              rightBlock.className = 'm-rightBlock';
+              gridOuter.appendChild(leftBlock);
+              gridOuter.appendChild(rightBlock);
+
+              var itemList = document.getElementsByClassName('grid-item');
+              var tempList = [];
+              //获取每个grid-item的高度
+              for(var i=0;i<itemList.length;i++){
+                  var temp = {
+                    id: i,
+                    height: itemList[i].clientHeight+2
+                  }
+                  tempList.push(temp);
+                  itemList[i].style.width = 'auto';
+              }
+              //高度从大到小排序
+              tempList.sort(function(a,b){return b.height-a.height});
+              //通过高度计算dom应该放置在左右那边
+              var templeft = {
+                height: 0,
+                inner:[]
+              };
+              var tempright = {
+                height: 0,
+                inner: []
+              };
+              tempList.forEach(function(item){
+                if(templeft.height <= tempright.height){
+                  templeft.inner.push(item);
+                  //加上元素高度及其marginTop
+                  templeft.height = templeft.height + item.height+ 20;
+                }else{
+                  tempright.inner.push(item);
+                  tempright.height = tempright.height + item.height+ 20;
+                }
+              });
+              //在左右各自内部将dom按照id从小到大排序
+              templeft.inner.sort(function(a,b){return a.id-b.id});
+              tempright.inner.sort(function(a,b){return a.id-b.id});
+              if(tempright.inner[0].id == 0){
+                var tempinner = tempright.inner;
+                tempright.inner = templeft.inner;
+                templeft.inner = tempinner;
+              }
+              //按照左右将grid-item列表分别放在左右两边
+              var tempItemList = document.querySelectorAll('.grid-item');
+              templeft.inner.forEach(function(item){
+                  leftBlock.appendChild(tempItemList[item.id]);
+              });
+              tempright.inner.forEach(function(item){
+                  rightBlock.appendChild(tempItemList[item.id]);
+              });
+            }
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          element2col();
+        });
+        var windowWidth = window.innerWidth;
+        window.onresize = function(){
+          if((windowWidth>1300 && window.innerWidth<=1300)||(windowWidth<=1300 && window.innerWidth>1300)){
+            location.reload();
+          }
+        };
+      </script>
+
+
+</div>
+
+            </div>
+
+
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.6/js/smooth-scroll.min.js"></script>
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script src="/v0.6/js/scrollIntoView.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+
+                scrollIntoView(document.querySelector('.sidebar .submenu a.current'), {
+                    validTarget: function(target, parentsScrolled){
+                        return parentsScrolled < 2 && target !== window && target.matches('.sidebar');
+                    },
+                });
+            }, false)
+        </script>
+
+
+        <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:608636,hjsv:5};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+
+        <!-- ga -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        <script>
+            docsearch({
+                apiKey: 'e5880dd54c730e68c9fcc610adb30f33',
+                indexName: 'nek_ui',
+                inputSelector: '#search-query-nav',
+                debug: false
+            })
+        </script>
+    </body>
+</html>

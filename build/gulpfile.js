@@ -129,8 +129,12 @@ gulp.task('watch', ['default', 'server'], () => {
   gulp.watch(['../src/**/*'], ['default']);
 });
 
-/* 把v0.5版本的文档copy到pulic目录下 */
-gulp.task('copy-oldDoc', () => gulp.src(path.join(__dirname, '../doc/v0.5/**')).pipe(gulp.dest(path.join(__dirname, '../doc/public/v0.5'))));
+/* 把v0.5、0.6版本的文档copy到pulic目录下 */
+gulp.task('copy-oldDoc', (done) => {
+  sequence('copy-0.5', 'copy-0.6', done);
+});
+gulp.task('copy-0.5', () => gulp.src(path.join(__dirname, '../doc/v0.5/**')).pipe(gulp.dest(path.join(__dirname, '../doc/public/v0.5'))));
+gulp.task('copy-0.6', () => gulp.src(path.join(__dirname, '../doc/v0.6/**')).pipe(gulp.dest(path.join(__dirname, '../doc/public/v0.6'))));
 
 
 /* 本地开发配置环境 */
