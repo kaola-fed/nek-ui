@@ -1,0 +1,2364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>模态框 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="模态框 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
+
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
+        <link rel="dns-prefetch" href="//at.alicdn.com" />
+
+
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
+        <!--  nek-ui -->
+        <link href="/v0.6/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css?v2">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs" >
+            <script src="/v0.6/js/common.js"></script>
+            <script src="/v0.6/vendor/regular.js"></script>
+            <script src="/v0.6/js/nek-ui.js"></script>
+            <script src="/v0.6/demo.wrap/index.js"></script>
+
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header" class="">    <a id="logo" href="/">
+
+            <span class="u-logo u-logo-grey u-logo-sm"></span>
+
+    </a>
+    <ul id="nav">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+</div>
+
+
+            <div id="main" class="fix-sidebar">
+
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+
+
+
+
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <a href="/v0.6/components/index.html" class="">
+                                快速上手
+                            </a>
+
+                    </div>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>布局
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLCard_.html" class="">
+                                       卡片 <span>KLCard</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLRow_.html" class="">
+                                       栅格布局 <span>KLRow</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLSearch_.html" class="">
+                                       筛选区 <span>KLSearch</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLTable_.html" class="">
+                                       表格 <span>KLTable</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>表单
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLButton_.html" class="">
+                                       按钮 <span>KLButton</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheck_.html" class="">
+                                       复选框 <span>KLCheck</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheckGroup_.html" class="">
+                                       复选组 <span>KLCheckGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLDatePicker_.html" class="">
+                                       日期选择 <span>KLDatePicker</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLForm_.html" class="">
+                                       表单 <span>KLForm</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLInput_.html" class="">
+                                       输入框 <span>KLInput</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLMultiSelect_.html" class="">
+                                       多级选择 <span>KLMultiSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLRadioGroup_.html" class="">
+                                       单选组 <span>KLRadioGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLSelect_.html" class="">
+                                       下拉选择 <span>KLSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLText_.html" class="">
+                                       文本展示 <span>KLText</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTextArea_.html" class="">
+                                       文本输入 <span>KLTextArea</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTreeView_.html" class="">
+                                       树型视图 <span>KLTreeView</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLUpload_.html" class="">
+                                       上传文件 <span>KLUpload</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="current">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>通知
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLMessage_.html" class="">
+                                       消息 <span>KLMessage</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLModal_.html" class="current">
+                                       模态框 <span>KLModal</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLNotify_.html" class="">
+                                       通知 <span>KLNotify</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLPopConfirm_.html" class="">
+                                       确认提示 <span>KLPopConfirm</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>导航
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLCrumb_.html" class="">
+                                       面包屑 <span>KLCrumb</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLMenu_.html" class="">
+                                       导航菜单 <span>KLMenu</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLPager_.html" class="">
+                                       分页 <span>KLPager</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSidebar_.html" class="">
+                                       菜单栏 <span>KLSidebar</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSteps_.html" class="">
+                                       步骤 <span>KLSteps</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLTabs_.html" class="">
+                                       选项卡 <span>KLTabs</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>其它
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLBadge_.html" class="">
+                                       徽标 <span>KLBadge</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLDraggable_.html" class="">
+                                       拖拽 <span>KLDraggable</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLIcon_.html" class="">
+                                       图标 <span>KLIcon</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLImagePreview_.html" class="">
+                                       图片预览 <span>KLImagePreview</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLoading_.html" class="">
+                                       加载 <span>KLLoading</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLocaleProvider_.html" class="">
+                                       国际化 <span>KLLocaleProvider</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLProgress_.html" class="">
+                                       进度条 <span>KLProgress</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLTooltip_.html" class="">
+                                       文字提示 <span>KLTooltip</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar  j-masonry">
+
+         <style>
+              @media all and (min-width: 1301px) {
+                .grid-item{
+                  width: 50%;
+                }
+              }
+             #grid-itemOuter:after{
+                content: '';
+                display: block;
+                clear: both;
+             }
+             #grid-itemOuter .m-leftBlock,.m-rightBlock{
+                width: 50%;
+                float: left;
+             }
+         </style>
+
+
+    <h2 id="pageName">模态框 <span>KLModal</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>含有遮罩层的对话框，用于模拟浏览器的<code>alert</code>、<code>confirm</code>和<code>prompt</code>。</p>
+<p>模态对话框通过遮罩层来阻止用户的其他行为。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"Modal"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 打开一个Modal</span></div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置要嵌入的父级元素"><a href="#配置要嵌入的父级元素" class="headerlink" title="配置要嵌入的父级元素"></a>配置要嵌入的父级元素</h3><p>设置modal嵌入的父级元素，默认为document.body</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"el: main"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 打开一个Modal，inject到#main元素里</span></div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息title"><a href="#配置信息title" class="headerlink" title="配置信息title"></a>配置信息title</h3><p>设置打开modal的标题，默认显示<code>notice</code></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"Title"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">title</span>: <span class="string">'我是自定义title'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息content"><a href="#配置信息content" class="headerlink" title="配置信息content"></a>配置信息content</h3><p>设置modal的内容显示区域(纯文本)。默认为空。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"content"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal的自定义文本内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息contentTemplate"><a href="#配置信息contentTemplate" class="headerlink" title="配置信息contentTemplate"></a>配置信息contentTemplate</h3><p>设置modal的内容显示区域(html代码片段)。默认为空</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"contentTemplate"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">contentTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=10&gt;&lt;kl-input value="&#123;name&#125;"/&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息footerTemplate"><a href="#配置信息footerTemplate" class="headerlink" title="配置信息footerTemplate"></a>配置信息footerTemplate</h3><p>设置modal的footer显示区域(html代码片段)。默认<code>onfirm</code>和<code>Cancel</code>按钮</p>
+<div class="m-example"></div>
+
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"footerTemplate"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">name</span>: <span class="string">'Rabbit'</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'自定义footer'</span>,</div><div class="line">                <span class="attr">footerTemplate</span>: <span class="string">'&lt;kl-row&gt;&lt;kl-col span=6&gt;&lt;kl-button title="提交" type="secondary" /&gt;&lt;/kl-col&gt;&lt;kl-col span=6&gt;&lt;kl-button title="撤销"  type="success" /&gt;&lt;/kl-col&gt;&lt;/kl-row&gt;'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息okDisabled"><a href="#配置信息okDisabled" class="headerlink" title="配置信息okDisabled"></a>配置信息okDisabled</h3><p>是否禁用footer中原生Confirm按钮，true表示是，false表示否。默认为false</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okDisabled: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okDisabled: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">okDisabled</span>: okDisabled,</div><div class="line">                <span class="attr">content</span>: <span class="string">'okDisabled设置为'</span> + okDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息cancelDisabled"><a href="#配置信息cancelDisabled" class="headerlink" title="配置信息cancelDisabled"></a>配置信息cancelDisabled</h3><p>是否禁用footer中原生Cancel按钮，true表示是，false表示否，该属性需要与cancelButton属性配合使用。默认为false。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelDisabled: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelDisabled: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelDisabled</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelDisabled</span>: cancelDisabled,</div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'cancelDisabled设置为'</span> + cancelDisabled,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息hasFooter"><a href="#配置信息hasFooter" class="headerlink" title="配置信息hasFooter"></a>配置信息hasFooter</h3><p>是否显示Modal的footer部分，true表示显示，false表示不显示，默认为true。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"hasFooter: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"hasFooter: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">hasFooter</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">hasFooter</span>: hasFooter,</div><div class="line">                <span class="attr">content</span>: <span class="string">'hasFooter设置为'</span> + hasFooter,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息isCanClose"><a href="#配置信息isCanClose" class="headerlink" title="配置信息isCanClose"></a>配置信息isCanClose</h3><p>设置是否可关闭Modal(显示关闭图标),默认为true，可关闭。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"isCanClose: true"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"isCanClose: false"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">isCanClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">isCanClose</span>: isCanClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'isCanClose设置为'</span> + isCanClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</div><div class="line">           <span class="built_in">console</span>.log(res);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息okButton"><a href="#配置信息okButton" class="headerlink" title="配置信息okButton"></a>配置信息okButton</h3><p>设置<code>okButton</code>按钮是否显示<code>true</code>(显示)/<code>false</code>(不显示)，也可以设置显示文本(设置字符串)，设置默认为<code>Confirm</code></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('确认')&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: '确认'"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"okButton: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">okButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">okButton</span>: okButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置okButton的值'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息cancelButton"><a href="#配置信息cancelButton" class="headerlink" title="配置信息cancelButton"></a>配置信息cancelButton</h3><p>设置<code>cancelButton</code>按钮是否显示<code>true</code>(显示)/<code>false</code>(不显示)，也可以设置显示文本(设置字符串)，默认文本<code>Cancel</code>且不显示</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('取消')&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: '取消'"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelButton</span>: cancelButton,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置cancelButton'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息class"><a href="#配置信息class" class="headerlink" title="配置信息class"></a>配置信息class</h3><p>设置自定义Modal样式。</p>
+<div class="m-example">
+    <style>
+        .u-modal-red {
+            color: #F00;
+        }
+    </style>
+</div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancelButton"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置自定义样式'</span>,</div><div class="line">                <span class="attr">class</span>: <span class="string">'u-modal-red'</span>,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息noClose"><a href="#配置信息noClose" class="headerlink" title="配置信息noClose"></a>配置信息noClose</h3><p>点击ok按钮的时候是否自动关闭Modal，默认为true。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"noClose: true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"noClose: false"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line"></div><div class="line">                <span class="attr">noClose</span>: noClose,</div><div class="line">                <span class="attr">content</span>: <span class="string">'设置noClose:'</span> + noClose,</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息minHeight"><a href="#配置信息minHeight" class="headerlink" title="配置信息minHeight"></a>配置信息minHeight</h3><p>设置Modal的最小显示高度，默认随内容变化。</p>
+<p><strong>备注：只有同时配置maxHeight该属性才会生效</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"minHeight: 不设置"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(300)&#125;"</span>  <span class="attr">title</span>=<span class="string">"minHeight: 300"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(600)&#125;"</span>  <span class="attr">title</span>=<span class="string">"minHeight: 600"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">minHeight</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 400px;border: 2px dotted #ddd;"&gt;&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">if</span>(minHeight) &#123;</div><div class="line">            data.minHeight = minHeight;</div><div class="line">            data.maxHeight = <span class="number">350</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息maxHeight"><a href="#配置信息maxHeight" class="headerlink" title="配置信息maxHeight"></a>配置信息maxHeight</h3><p>设置Modal的最大显示高度，默认随内容变化。</p>
+<p><strong>备注：若同时配置minHeight，且其值大于maxHeight，则以minHeight的值生效</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"maxHeight: 不设置"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(200)&#125;"</span>  <span class="attr">title</span>=<span class="string">"maxHeight: 200"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(400)&#125;"</span>  <span class="attr">title</span>=<span class="string">"maxHeight: 400"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">maxHeight</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">if</span>(maxHeight) &#123;</div><div class="line">            data.maxHeight = maxHeight;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="配置信息draggable"><a href="#配置信息draggable" class="headerlink" title="配置信息draggable"></a>配置信息draggable</h3><p>设置Modal可拖拽，默认不可拖拽。</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"draggable：true"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal可拖拽'</span>,</div><div class="line">                <span class="attr">draggable</span>: <span class="literal">true</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="实例方法cancel"><a href="#实例方法cancel" class="headerlink" title="实例方法cancel"></a>实例方法cancel</h3><p>通过实例调用，执行该实例对象的<code>cancel</code>事件</p>
+<p><strong>该方法执行时会派发<code>cancel</code>事件，通过<code>modal.$on(&#39;cancel&#39;, callback)</code>监听,打开控制台可查看</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"cancel"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用cancel&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.cancel();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="实例方法close"><a href="#实例方法close" class="headerlink" title="实例方法close"></a>实例方法close</h3><p>通过实例调用，执行该实例对象的<code>close</code>事件，可接收一个标志调用<code>close</code>(true)或者<code>cancel</code>(false)方法的参数。默认调用<code>cancel</code>事件
+<strong>该方法执行时会派发<code>close</code>事件，通过<code>modal.$on(&#39;close&#39;, callback)</code>监听,打开控制台可查看</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"close:true"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"close:false"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show()&#125;"</span>  <span class="attr">title</span>=<span class="string">"close:不传"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">close</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用close&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">evt</span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听close事件'</span>);</div><div class="line">            <span class="comment">// evt:true调用ok，false调用cancel</span></div><div class="line">            <span class="built_in">console</span>.log(evt);</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            modal.close(close);</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="实例方法ok"><a href="#实例方法ok" class="headerlink" title="实例方法ok"></a>实例方法ok</h3><p>通过实例调用，执行该实例对象的<code>ok</code>事件,若属性noClose设置为true，则只会调用ok方法，不会关闭Modal</p>
+<p><strong>该方法执行时会派发<code>ok</code>事件，通过<code>modal.$on(&#39;ok&#39;, callback)</code>监听,打开控制台可查看</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"【noClose:true】"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show(false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"【noClose:false】"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">noClose</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> data = &#123;</div><div class="line">            <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">            <span class="attr">noClose</span>: noClose,</div><div class="line">            <span class="attr">contentTemplate</span>: <span class="string">'&lt;div style="height: 300px;border: 2px dotted #ddd;"&gt;3秒后调用ok&lt;/div&gt;'</span>,</div><div class="line">        &#125;;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> NEKUI.KLModal(&#123;</div><div class="line">            <span class="attr">data</span>: data</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">             modal.ok();</div><div class="line">        &#125;, <span class="number">3000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="静态方法confirm"><a href="#静态方法confirm" class="headerlink" title="静态方法confirm"></a>静态方法confirm</h3><p>通过<code>NEKUI.KLModal.confirm</code>调用，返回实例本身，弹出一个confirm对话框。ok按钮触发ok事件，cancel按钮触发cancel事件。有四个参数，
+参数一<code>content</code>【必填】为对话框内容；参数二<code>title</code>为对话框title信息，默认为<code>提示</code>；
+参数三<code>okButton</code>为对话框确定按钮，<code>true</code>显示，<code>false</code>不显示，<code>string</code>按钮文本，默认为<code>确定</code>；
+参数四<code>cancelButton</code>为对话框取消按钮，<code>boolean</code>显示，<code>string</code>按钮文本，默认为<code>取消</code></p>
+<p><strong>该点击ok按钮会调用<code>ok</code>事件</strong></p>
+<div class="m-example"></div>
+
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定','撤销')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton, cancelButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton, cancelButton</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'cancel'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听cancel事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="静态方法alert"><a href="#静态方法alert" class="headerlink" title="静态方法alert"></a>静态方法alert</h3><p>通过<code>NEKUI.KLModal.alert</code>调用，返回实例本身，弹出一个alert对话框。关闭时始终触发ok事件。有三个参数，
+参数一<code>content</code>【必填】为对话框内容；参数二<code>title</code>为对话框title信息，默认为<code>提示</code>；参数三<code>okButton</code>为对话框确定按钮，<code>true</code>显示，<code>false</code>不显示，<code>string</code>按钮文本，默认为<code>确定</code></p>
+<p><strong>该点击ok按钮会调用<code>ok</code>事件</strong></p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', true)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', false)&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.show('设置参数一:content', '设置参数二title', '确定')&#125;"</span>  <span class="attr">title</span>=<span class="string">"alert(content, title, okButton)"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params">content, title, okButton</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> modal = NEKUI.KLModal.alert(content, title, okButton);</div><div class="line"></div><div class="line">        modal.$on(<span class="string">'ok'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'监听ok事件'</span>);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLModal"></a></p>
+<h2 id="KLModal"><a href="#KLModal" class="headerlink" title="KLModal"></a><span class="param-title">KLModal</span><a name="new_KLModal_new"></a></h2><h3 id="KLModal-1"><a href="#KLModal-1" class="headerlink" title="KLModal"></a><span class="param-title">KLModal</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>string</code></td>
+<td><code>&quot;提示&quot;</code></td>
+<td>=&gt; 对话框标题</td>
+</tr>
+<tr>
+<td>[options.data.content]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 对话框内容</td>
+</tr>
+<tr>
+<td>[options.data.contentTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 对话框内容模板，用于支持复杂内容的自定义。</td>
+</tr>
+<tr>
+<td>[options.data.footerTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 对话框底部模板</td>
+</tr>
+<tr>
+<td>[options.data.okDisabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; Disable 确认按钮</td>
+</tr>
+<tr>
+<td>[options.data.cancelDisabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; Disable 取消按钮</td>
+</tr>
+<tr>
+<td>[options.data.hasFooter]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示 footer</td>
+</tr>
+<tr>
+<td>[options.data.isCanClose]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否允许取消关闭</td>
+</tr>
+<tr>
+<td>[options.data.okButton]</td>
+<td><code>string/boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示确定按钮。值为<code>string</code>时显示该段文字。</td>
+</tr>
+<tr>
+<td>[options.data.cancelButton]</td>
+<td><code>string/boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否显示取消按钮。值为<code>string</code>时显示该段文字。</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+<tr>
+<td>[options.data.noClose]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; ok时是否关闭弹窗</td>
+</tr>
+<tr>
+<td>[options.data.minHeight]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 内容区域最小高度</td>
+</tr>
+<tr>
+<td>[options.data.maxHeight]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 内容区域最大高度，超出则显示滚动条</td>
+</tr>
+<tr>
+<td>[options.data.el]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 设置对话框要插入的父级元素，默认为document.body</td>
+</tr>
+<tr>
+<td>[options.data.draggable]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否可以拖拽对话框</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLModal+close(result) 关闭对话框"></a></p>
+<h3 id="close-result-关闭对话框method"><a href="#close-result-关闭对话框method" class="headerlink" title=".close(result) 关闭对话框method"></a><span class="param-title">.close(result) 关闭对话框</span><span class="type-tag type-tag-static">method</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><code>boolean</code></td>
+<td>点击确定还是取消</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLModal+ok_new 确定对话框"></a></p>
+<h3 id="ok-确定对话框method"><a href="#ok-确定对话框method" class="headerlink" title=".ok() 确定对话框method"></a><span class="param-title">.ok() 确定对话框</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLModal+cancel_new 取消对话框"></a></p>
+<h3 id="cancel-取消对话框method"><a href="#cancel-取消对话框method" class="headerlink" title=".cancel() 取消对话框method"></a><span class="param-title">.cancel() 取消对话框</span><span class="type-tag type-tag-static">method</span></h3><p><a name="KLModal+event_close  关闭对话框时触发"></a></p>
+<h3 id="close-关闭对话框时触发Event"><a href="#close-关闭对话框时触发Event" class="headerlink" title="close  关闭对话框时触发Event"></a><span class="param-title">close  关闭对话框时触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td><code>boolean</code></td>
+<td>点击事件按钮，确定/取消</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLModal+event_ok 确定对话框时触发"></a></p>
+<h3 id="ok-确定对话框时触发Event"><a href="#ok-确定对话框时触发Event" class="headerlink" title="ok 确定对话框时触发Event"></a><span class="param-title">ok 确定对话框时触发</span><span class="type-tag type-tag-event">Event</span></h3><p><a name="KLModal+event_cancel 取消对话框时触发"></a></p>
+<h3 id="cancel-取消对话框时触发Event"><a href="#cancel-取消对话框时触发Event" class="headerlink" title="cancel 取消对话框时触发Event"></a><span class="param-title">cancel 取消对话框时触发</span><span class="type-tag type-tag-event">Event</span></h3><p><a name="KLModal.alert"></a></p>
+<h3 id="alertstatic-method"><a href="#alertstatic-method" class="headerlink" title=".alertstatic method"></a><span class="param-title">.alert</span><span class="type-tag type-tag-static">static method</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code></td>
+<td></td>
+<td>对话框内容</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td><code>&quot;提示&quot;</code></td>
+<td>对话框标题</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLModal.confirm"></a></p>
+<h3 id="confirmstatic-method"><a href="#confirmstatic-method" class="headerlink" title=".confirmstatic method"></a><span class="param-title">.confirm</span><span class="type-tag type-tag-static">static method</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td><code>string</code></td>
+<td></td>
+<td>对话框内容</td>
+</tr>
+<tr>
+<td>title</td>
+<td><code>string</code></td>
+<td><code>&quot;提示&quot;</code></td>
+<td>对话框标题</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="Modal"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="Modal"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="el: main"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal，inject到#main元素里
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                el: '#main'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="el: main"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        // 打开一个Modal，inject到#main元素里
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal内容',
+                el: '#main'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="Title"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                title: '我是自定义title',
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="Title"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                title: '我是自定义title',
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="content"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal的自定义文本内容'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="content"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal的自定义文本内容'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="contentTemplate"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                name: 'Rabbit',
+                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="contentTemplate"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                name: 'Rabbit',
+                contentTemplate: '<kl-row><kl-col span=10><kl-input value="{name}"/></kl-col></kl-row>'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="footerTemplate"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                name: 'Rabbit',
+                content: '自定义footer',
+                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="footerTemplate"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                name: 'Rabbit',
+                content: '自定义footer',
+                footerTemplate: '<kl-row><kl-col span=6><kl-button title="提交" type="secondary" /></kl-col><kl-col span=6><kl-button title="撤销"  type="success" /></kl-col></kl-row>'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="okDisabled: true"/>
+<kl-button on-click="{this.show(false)}"  title="okDisabled: false"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(okDisabled) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                okDisabled: okDisabled,
+                content: 'okDisabled设置为' + okDisabled,
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="okDisabled: true"/>
+<kl-button on-click="{this.show(false)}"  title="okDisabled: false"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(okDisabled) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                okDisabled: okDisabled,
+                content: 'okDisabled设置为' + okDisabled,
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="cancelDisabled: true"/>
+<kl-button on-click="{this.show(false)}"  title="cancelDisabled: false"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(cancelDisabled) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelDisabled: cancelDisabled,
+                cancelButton: true,
+                content: 'cancelDisabled设置为' + cancelDisabled,
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="cancelDisabled: true"/>
+<kl-button on-click="{this.show(false)}"  title="cancelDisabled: false"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(cancelDisabled) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelDisabled: cancelDisabled,
+                cancelButton: true,
+                content: 'cancelDisabled设置为' + cancelDisabled,
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="hasFooter: true"/>
+<kl-button on-click="{this.show(false)}"  title="hasFooter: false"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(hasFooter) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                hasFooter: hasFooter,
+                content: 'hasFooter设置为' + hasFooter,
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="hasFooter: true"/>
+<kl-button on-click="{this.show(false)}"  title="hasFooter: false"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(hasFooter) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                hasFooter: hasFooter,
+                content: 'hasFooter设置为' + hasFooter,
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="isCanClose: true"/>
+<kl-button on-click="{this.show(false)}"  title="isCanClose: false"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(isCanClose) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                isCanClose: isCanClose,
+                content: 'isCanClose设置为' + isCanClose,
+            }
+        });
+        modal.$on('ok', function(res){
+           console.log(res);
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="isCanClose: true"/>
+<kl-button on-click="{this.show(false)}"  title="isCanClose: false"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(isCanClose) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                isCanClose: isCanClose,
+                content: 'isCanClose设置为' + isCanClose,
+            }
+        });
+        modal.$on('ok', function(res){
+           console.log(res);
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show('确认')}"  title="okButton: '确认'" />
+<kl-button on-click="{this.show(true)}"  title="okButton: true" />
+<kl-button on-click="{this.show(false)}"  title="okButton: false" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(okButton) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                okButton: okButton,
+                content: '设置okButton的值',
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show('确认')}"  title="okButton: '确认'" />
+<kl-button on-click="{this.show(true)}"  title="okButton: true" />
+<kl-button on-click="{this.show(false)}"  title="okButton: false" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(okButton) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                okButton: okButton,
+                content: '设置okButton的值',
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show('取消')}"  title="cancelButton: '取消'" />
+<kl-button on-click="{this.show(true)}"  title="cancelButton: true" />
+<kl-button on-click="{this.show(false)}"  title="cancelButton: false" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(cancelButton) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelButton: cancelButton,
+                content: '设置cancelButton'
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show('取消')}"  title="cancelButton: '取消'" />
+<kl-button on-click="{this.show(true)}"  title="cancelButton: true" />
+<kl-button on-click="{this.show(false)}"  title="cancelButton: false" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(cancelButton) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelButton: cancelButton,
+                content: '设置cancelButton'
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="cancelButton" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelButton: true,
+                content: '设置自定义样式',
+                class: 'u-modal-red',
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="cancelButton" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                cancelButton: true,
+                content: '设置自定义样式',
+                class: 'u-modal-red',
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="noClose: true" />
+<kl-button on-click="{this.show(false)}"  title="noClose: false" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(noClose) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                noClose: noClose,
+                content: '设置noClose:' + noClose,
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="noClose: true" />
+<kl-button on-click="{this.show(false)}"  title="noClose: false" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(noClose) {
+        var modal = new NEKUI.KLModal({
+            data: {
+
+                noClose: noClose,
+                content: '设置noClose:' + noClose,
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="minHeight: 不设置" />
+<kl-button on-click="{this.show(300)}"  title="minHeight: 300" />
+<kl-button on-click="{this.show(600)}"  title="minHeight: 600" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(minHeight) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 400px;border: 2px dotted #ddd;"></div>',
+        };
+        if(minHeight) {
+            data.minHeight = minHeight;
+            data.maxHeight = 350;
+        }
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="minHeight: 不设置" />
+<kl-button on-click="{this.show(300)}"  title="minHeight: 300" />
+<kl-button on-click="{this.show(600)}"  title="minHeight: 600" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(minHeight) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 400px;border: 2px dotted #ddd;"></div>',
+        };
+        if(minHeight) {
+            data.minHeight = minHeight;
+            data.maxHeight = 350;
+        }
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="maxHeight: 不设置" />
+<kl-button on-click="{this.show(200)}"  title="maxHeight: 200" />
+<kl-button on-click="{this.show(400)}"  title="maxHeight: 400" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(maxHeight) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;"></div>',
+        };
+        if(maxHeight) {
+            data.maxHeight = maxHeight;
+        }
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="maxHeight: 不设置" />
+<kl-button on-click="{this.show(200)}"  title="maxHeight: 200" />
+<kl-button on-click="{this.show(400)}"  title="maxHeight: 400" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(maxHeight) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;"></div>',
+        };
+        if(maxHeight) {
+            data.maxHeight = maxHeight;
+        }
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="draggable：true"/>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal可拖拽',
+                draggable: true
+            }
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="draggable：true"/>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var modal = new NEKUI.KLModal({
+            data: {
+                content: 'Modal可拖拽',
+                draggable: true
+            }
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show()}"  title="cancel" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用cancel</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+
+        setTimeout(function(){
+             modal.cancel();
+        }, 3000);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show()}"  title="cancel" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function() {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用cancel</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+
+        setTimeout(function(){
+             modal.cancel();
+        }, 3000);
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="close:true" />
+<kl-button on-click="{this.show(false)}"  title="close:false" />
+<kl-button on-click="{this.show()}"  title="close:不传" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(close) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用close</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+        modal.$on('close', function(evt){
+            console.log('监听close事件');
+            // evt:true调用ok，false调用cancel
+            console.log(evt);
+        });
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+        setTimeout(function(){
+            modal.close(close);
+        }, 3000);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="close:true" />
+<kl-button on-click="{this.show(false)}"  title="close:false" />
+<kl-button on-click="{this.show()}"  title="close:不传" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(close) {
+        var data = {
+            cancelButton: true,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用close</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+        modal.$on('close', function(evt){
+            console.log('监听close事件');
+            // evt:true调用ok，false调用cancel
+            console.log(evt);
+        });
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+        setTimeout(function(){
+            modal.close(close);
+        }, 3000);
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-button on-click="{this.show(true)}"  title="【noClose:true】" />
+<kl-button on-click="{this.show(false)}"  title="【noClose:false】" />
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(noClose) {
+        var data = {
+            cancelButton: true,
+            noClose: noClose,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用ok</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+
+        setTimeout(function(){
+             modal.ok();
+        }, 3000);
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-button on-click="{this.show(true)}"  title="【noClose:true】" />
+<kl-button on-click="{this.show(false)}"  title="【noClose:false】" />
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(noClose) {
+        var data = {
+            cancelButton: true,
+            noClose: noClose,
+            contentTemplate: '<div style="height: 300px;border: 2px dotted #ddd;">3秒后调用ok</div>',
+        };
+        var modal = new NEKUI.KLModal({
+            data: data
+        });
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+
+        setTimeout(function(){
+             modal.ok();
+        }, 3000);
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content')}"  title="alert(content)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title')}"  title="alert(content, title)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', true)}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', false)}"  title="alert(content, title, okButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定')}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定','撤销')}"  title="alert(content, title, okButton, cancelButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定', true)}"  title="alert(content, title, okButton, cancelButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定', false)}"  title="alert(content, title, okButton, cancelButton)" />
+</div>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(content, title, okButton, cancelButton) {
+        var modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content')}"  title="alert(content)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title')}"  title="alert(content, title)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', true)}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', false)}"  title="alert(content, title, okButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定')}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定','撤销')}"  title="alert(content, title, okButton, cancelButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定', true)}"  title="alert(content, title, okButton, cancelButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定', false)}"  title="alert(content, title, okButton, cancelButton)" />
+</div>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(content, title, okButton, cancelButton) {
+        var modal = NEKUI.KLModal.confirm(content, title, okButton, cancelButton);
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+
+        modal.$on('cancel', function(){
+            console.log('监听cancel事件');
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content')}"  title="alert(content)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title')}"  title="alert(content, title)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', true)}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', false)}"  title="alert(content, title, okButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定')}"  title="alert(content, title, okButton)" />
+</div>
+
+      */});
+
+var component = new NEKUI.Component({
+    template: template,
+    show: function(content, title, okButton) {
+
+        var modal = NEKUI.KLModal.alert(content, title, okButton);
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content')}"  title="alert(content)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title')}"  title="alert(content, title)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', true)}"  title="alert(content, title, okButton)" />
+</div>
+<div class="g-row">
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', false)}"  title="alert(content, title, okButton)" />
+    <kl-button on-click="{this.show('设置参数一:content', '设置参数二title', '确定')}"  title="alert(content, title, okButton)" />
+</div>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+    template: template,
+    show: function(content, title, okButton) {
+
+        var modal = NEKUI.KLModal.alert(content, title, okButton);
+
+        modal.$on('ok', function(){
+            console.log('监听ok事件');
+        });
+    }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+</script>
+
+
+    <div class="guide-links">
+
+        <a href="/v0.6components/notice_KLMessage_.html" class="pager">
+            <span class="icon icon-left"></span><span>消息</span>
+        </a>
+
+        <span class="placeholder"></span>
+
+        <a href="/v0.6components/notice_KLNotify_.html" class="pager">
+            <span>通知</span><span class="icon icon-right"></span>
+        </a>
+
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+
+       <script>
+        //用来处理实例代码块，将其分为两列
+        var element2col = function(){
+          if(window.innerWidth > 1300){
+            var content = document.getElementsByClassName('content')[0];
+            var position = document.getElementById('pageName').nextSibling;
+            var gridOuter = document.createElement('div');
+            gridOuter.id = 'grid-itemOuter';
+            content.insertBefore(gridOuter,position);
+            if(!!gridOuter){
+              var leftBlock = document.createElement('div');
+              var rightBlock = document.createElement('div');
+              leftBlock.className = 'm-leftBlock';
+              rightBlock.className = 'm-rightBlock';
+              gridOuter.appendChild(leftBlock);
+              gridOuter.appendChild(rightBlock);
+
+              var itemList = document.getElementsByClassName('grid-item');
+              var tempList = [];
+              //获取每个grid-item的高度
+              for(var i=0;i<itemList.length;i++){
+                  var temp = {
+                    id: i,
+                    height: itemList[i].clientHeight+2
+                  }
+                  tempList.push(temp);
+                  itemList[i].style.width = 'auto';
+              }
+              //高度从大到小排序
+              tempList.sort(function(a,b){return b.height-a.height});
+              //通过高度计算dom应该放置在左右那边
+              var templeft = {
+                height: 0,
+                inner:[]
+              };
+              var tempright = {
+                height: 0,
+                inner: []
+              };
+              tempList.forEach(function(item){
+                if(templeft.height <= tempright.height){
+                  templeft.inner.push(item);
+                  //加上元素高度及其marginTop
+                  templeft.height = templeft.height + item.height+ 20;
+                }else{
+                  tempright.inner.push(item);
+                  tempright.height = tempright.height + item.height+ 20;
+                }
+              });
+              //在左右各自内部将dom按照id从小到大排序
+              templeft.inner.sort(function(a,b){return a.id-b.id});
+              tempright.inner.sort(function(a,b){return a.id-b.id});
+              if(tempright.inner[0].id == 0){
+                var tempinner = tempright.inner;
+                tempright.inner = templeft.inner;
+                templeft.inner = tempinner;
+              }
+              //按照左右将grid-item列表分别放在左右两边
+              var tempItemList = document.querySelectorAll('.grid-item');
+              templeft.inner.forEach(function(item){
+                  leftBlock.appendChild(tempItemList[item.id]);
+              });
+              tempright.inner.forEach(function(item){
+                  rightBlock.appendChild(tempItemList[item.id]);
+              });
+            }
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          element2col();
+        });
+        var windowWidth = window.innerWidth;
+        window.onresize = function(){
+          if((windowWidth>1300 && window.innerWidth<=1300)||(windowWidth<=1300 && window.innerWidth>1300)){
+            location.reload();
+          }
+        };
+      </script>
+
+
+</div>
+
+            </div>
+
+
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.6/js/smooth-scroll.min.js"></script>
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script src="/v0.6/js/scrollIntoView.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+
+                scrollIntoView(document.querySelector('.sidebar .submenu a.current'), {
+                    validTarget: function(target, parentsScrolled){
+                        return parentsScrolled < 2 && target !== window && target.matches('.sidebar');
+                    },
+                });
+            }, false)
+        </script>
+
+
+        <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:608636,hjsv:5};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+
+        <!-- ga -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        <script>
+            docsearch({
+                apiKey: 'e5880dd54c730e68c9fcc610adb30f33',
+                indexName: 'nek_ui',
+                inputSelector: '#search-query-nav',
+                debug: false
+            })
+        </script>
+    </body>
+</html>

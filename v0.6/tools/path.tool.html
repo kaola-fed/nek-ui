@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>路径工具 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="路径工具 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
+
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
+        <link rel="dns-prefetch" href="//at.alicdn.com" />
+
+
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
+        <!--  nek-ui -->
+        <link href="/v0.6/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css?v2">
+        <script>window.PAGE_TYPE = "tools"</script>
+    </head>
+    <body class="docs" >
+            <script src="/v0.6/js/common.js"></script>
+            <script src="/v0.6/vendor/regular.js"></script>
+            <script src="/v0.6/js/nek-ui.js"></script>
+            <script src="/v0.6/demo.wrap/index.js"></script>
+
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header" class="">    <a id="logo" href="/">
+
+            <span class="u-logo u-logo-grey u-logo-sm"></span>
+
+    </a>
+    <ul id="nav">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+</div>
+
+
+            <div id="main" class="fix-sidebar">
+
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+
+
+
+
+
+                <li class="current">
+                    <div class="submenu-title">
+
+                            <a href="/v0.6/tools/path.tool.html" class="current">
+                                路径工具
+                            </a>
+
+                    </div>
+
+                </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="content tools with-sidebar ">
+
+
+    <h2 id="pageName">路径工具 <span></span> </h2>
+    <p>按快捷键 ctrl + alt + shift + C ,会自动复制当前页面对应的 js 地址到剪切板</p>
+<p>按快捷键 ctrl + alt + shift + D ,会自动复制当前页面对应的 ftl 地址到剪切板</p>
+<p>目前是简单的按照 url 来进行正则匹配，匹配出相当于 nek 自动生成目录结构的 js 路径和 ftl 路径，对于 nek 自动生成的目录来说相对准确。如果不是 nek 自动生成的目录不保证准确率。</p>
+<p>使用方法:
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">NEKUI.Regular.use(NEKUI.PathTool);</div></pre></td></tr></table></figure></p>
+
+
+    <div class="guide-links">
+
+        <span class="placeholder"></span>
+
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+
+
+</div>
+
+            </div>
+
+
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.6/js/smooth-scroll.min.js"></script>
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script src="/v0.6/js/scrollIntoView.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+
+                scrollIntoView(document.querySelector('.sidebar .submenu a.current'), {
+                    validTarget: function(target, parentsScrolled){
+                        return parentsScrolled < 2 && target !== window && target.matches('.sidebar');
+                    },
+                });
+            }, false)
+        </script>
+
+
+        <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:608636,hjsv:5};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+
+        <!-- ga -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        <script>
+            docsearch({
+                apiKey: 'e5880dd54c730e68c9fcc610adb30f33',
+                indexName: 'nek_ui',
+                inputSelector: '#search-query-nav',
+                debug: false
+            })
+        </script>
+    </body>
+</html>
