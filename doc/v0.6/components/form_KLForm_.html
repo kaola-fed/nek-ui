@@ -1,0 +1,1358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>表单 - nek-ui</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-dns-prefetch-control" content="on" />
+        <meta name="description" content="nek-ui - UI components based on RegularJS">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="表单 - nek-ui">
+        <meta property="og:description" content="nek-ui - UI components based on RegularJS">
+        <meta property="og:image" content="https://nek-ui.kaolafed.com/images/logo.svg">
+
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="//haitao.nos.netease.com" />
+        <link rel="dns-prefetch" href="//at.alicdn.com" />
+
+
+
+        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono" rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Dosis:500&text=nek-ui" rel='stylesheet' type='text/css'>
+        <link href="//at.alicdn.com/t/font_393438_fji5kllvfft21emi.css" rel="stylesheet" type="text/css" />
+        <!--  nek-ui -->
+        <link href="/v0.6/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css?v2">
+        <script>window.PAGE_TYPE = "components"</script>
+    </head>
+    <body class="docs" >
+            <script src="/v0.6/js/common.js"></script>
+            <script src="/v0.6/vendor/regular.js"></script>
+            <script src="/v0.6/js/nek-ui.js"></script>
+            <script src="/v0.6/demo.wrap/index.js"></script>
+
+        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header" class="">    <a id="logo" href="/">
+
+            <span class="u-logo u-logo-grey u-logo-sm"></span>
+
+    </a>
+    <ul id="nav">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+</div>
+
+
+            <div id="main" class="fix-sidebar">
+
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/v0.6/" class="nav-link">首页</a></li>
+<li><a href="/v0.6/components/" class="nav-link current">组件</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">资源</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/kaola-fed/dionysus" target="_blank">Snippets</a></li>
+    <li><a href="https://github.com/kaola-fed/NEK" target="_blank">NEK</a></li>
+    <li><a href="https://github.com/regularjs/regular" target="_blank">RegularJS</a></li>
+    <li><a href="/v0.5/index.html" target="_blank">V0.5文档</a></li>
+    <li><a href="/v0.6/index.html" target="_blank">V0.5文档</a></li>
+  </ul>
+</li>
+
+<li>
+    <input id="search-query-nav" class="search-query" placeholder="搜索组件..." type="text" value="">
+</li>
+
+    </ul>
+    <div class="list">
+        <ul class="menu-root">
+
+
+
+
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <a href="/v0.6/components/index.html" class="">
+                                快速上手
+                            </a>
+
+                    </div>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>布局
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLCard_.html" class="">
+                                       卡片 <span>KLCard</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLRow_.html" class="">
+                                       栅格布局 <span>KLRow</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLSearch_.html" class="">
+                                       筛选区 <span>KLSearch</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/layout_KLTable_.html" class="">
+                                       表格 <span>KLTable</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="current">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>表单
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLButton_.html" class="">
+                                       按钮 <span>KLButton</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheck_.html" class="">
+                                       复选框 <span>KLCheck</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLCheckGroup_.html" class="">
+                                       复选组 <span>KLCheckGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLDatePicker_.html" class="">
+                                       日期选择 <span>KLDatePicker</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLForm_.html" class="current">
+                                       表单 <span>KLForm</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLInput_.html" class="">
+                                       输入框 <span>KLInput</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLMultiSelect_.html" class="">
+                                       多级选择 <span>KLMultiSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLRadioGroup_.html" class="">
+                                       单选组 <span>KLRadioGroup</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLSelect_.html" class="">
+                                       下拉选择 <span>KLSelect</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLText_.html" class="">
+                                       文本展示 <span>KLText</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTextArea_.html" class="">
+                                       文本输入 <span>KLTextArea</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLTreeView_.html" class="">
+                                       树型视图 <span>KLTreeView</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/form_KLUpload_.html" class="">
+                                       上传文件 <span>KLUpload</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>通知
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLMessage_.html" class="">
+                                       消息 <span>KLMessage</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLModal_.html" class="">
+                                       模态框 <span>KLModal</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLNotify_.html" class="">
+                                       通知 <span>KLNotify</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/notice_KLPopConfirm_.html" class="">
+                                       确认提示 <span>KLPopConfirm</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>导航
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLCrumb_.html" class="">
+                                       面包屑 <span>KLCrumb</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLMenu_.html" class="">
+                                       导航菜单 <span>KLMenu</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLPager_.html" class="">
+                                       分页 <span>KLPager</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSidebar_.html" class="">
+                                       菜单栏 <span>KLSidebar</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLSteps_.html" class="">
+                                       步骤 <span>KLSteps</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/navigation_KLTabs_.html" class="">
+                                       选项卡 <span>KLTabs</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+                <li class="">
+                    <div class="submenu-title">
+
+                            <span class="u-icon u-icon-angle-down"></span>其它
+
+                    </div>
+
+                        <ul class="submenu">
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLBadge_.html" class="">
+                                       徽标 <span>KLBadge</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLDraggable_.html" class="">
+                                       拖拽 <span>KLDraggable</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLIcon_.html" class="">
+                                       图标 <span>KLIcon</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLImagePreview_.html" class="">
+                                       图片预览 <span>KLImagePreview</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLoading_.html" class="">
+                                       加载 <span>KLLoading</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLLocaleProvider_.html" class="">
+                                       国际化 <span>KLLocaleProvider</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLProgress_.html" class="">
+                                       进度条 <span>KLProgress</span>
+                                   </a>
+                               </li>
+
+                               <li>
+                                   <a href="/v0.6/components/widget_KLTooltip_.html" class="">
+                                       文字提示 <span>KLTooltip</span>
+                                   </a>
+                               </li>
+
+                        </ul>
+
+                </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div class="content components with-sidebar ">
+
+
+    <h2 id="pageName">表单 <span>KLForm</span> </h2>
+    <div class="grid-item" markdown="1">
+<h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>一个表单元素占一行, 并且label通过设置宽度居右对齐</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="表单项的说明"><a href="#表单项的说明" class="headerlink" title="表单项的说明"></a>表单项的说明</h3><p>两种方式,一种是配置tip, 另外一种是设置descTemplate, descTemplate可以是简单的html字符串</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span> <span class="attr">tip</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">descTemplate</span>=<span class="string">"支付方式可填: 微信, 支付宝, 银联"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="表单项label"><a href="#表单项label" class="headerlink" title="表单项label"></a>表单项label</h3><p>label部分可设置labelSize, labelLineHeight, titleTemplate三个属性</p>
+<ul>
+<li><code>labelSize</code>可以设置在kl-form-item上, 如果kl-form下的kl-form-item的<code>labelSize</code>都一样,则可将<code>labelSize</code>设置在kl-form上</li>
+<li><code>labelLineHeight</code>用法同<code>labelSize</code></li>
+<li><code>titleTemplate</code>支持简单的html字符串</li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span> <span class="attr">descTemplate</span>=<span class="string">"32位订单号"</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">descTemplate</span>=<span class="string">"支付方式可填: 微信, 支付宝, 银联"</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"备注"</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span> <span class="attr">labelLineHeight</span>=<span class="string">"lg"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"备注"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="一行多个表单元素的布局"><a href="#一行多个表单元素的布局" class="headerlink" title="一行多个表单元素的布局"></a>一行多个表单元素的布局</h3><p>可以配合<code>kl-row</code>与<code>kl-col</code>栅格布局组件实现</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"商品名称"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;goodsName&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"商品名称"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="下拉选项列表获取"><a href="#下拉选项列表获取" class="headerlink" title="下拉选项列表获取"></a>下拉选项列表获取</h3><p> 此项功能需要后端配合实现一个接口,该接口接收以逗号间隔的key值,并解析后返回对应key值的下拉列表; 请打开浏览器开发者工具, 在<code>network</code>中查看对应请求的数据格式</p>
+<ul>
+<li>默认返回的数据格式是被包裹在<code>data</code>中, 如果路径不满足需求,可以通过设置sourcePath自定义访问数据的路径</li>
+</ul>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span> <span class="attr">service</span>=<span class="string">"&#123;api&#125;"</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">sourceKey</span>=<span class="string">"purchaseWays"</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> /&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"跨境方式"</span> <span class="attr">sourceKey</span>=<span class="string">"importTypes"</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">value</span>=<span class="string">"&#123;importType&#125;"</span> /&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"仓库"</span> <span class="attr">sourceKey</span>=<span class="string">"warehouses"</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">value</span>=<span class="string">"&#123;warehouse&#125;"</span> /&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line"> <span class="attr">template</span>: template,</div><div class="line"> <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.data.api = <span class="string">'../data/KLForm.json'</span>;</div><div class="line"> &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="表单项layout"><a href="#表单项layout" class="headerlink" title="表单项layout"></a>表单项layout</h3><div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>inline<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">12</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span> <span class="attr">layout</span>=<span class="string">"inline"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">layout</span>=<span class="string">"inline"</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"商品名称"</span> <span class="attr">layout</span>=<span class="string">"inline"</span>&gt;</span></div><div class="line">                  <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;goodsName&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"商品名称"</span> /&gt;</span></div><div class="line">              <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>全局inline<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">inline</span> <span class="attr">class</span>=<span class="string">"f-mt10"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">12</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"商品名称"</span>&gt;</span></div><div class="line">                  <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;goodsName&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"商品名称"</span> /&gt;</span></div><div class="line">              <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>vertical<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-row</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span> <span class="attr">layout</span>=<span class="string">"vertical"</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">layout</span>=<span class="string">"vertical"</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">kl-col</span> <span class="attr">span</span>=<span class="string">4</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"商品名称"</span> <span class="attr">layout</span>=<span class="string">"vertical"</span>&gt;</span></div><div class="line">                 <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;goodsName&#125;"</span> <span class="attr">placeholder</span>=<span class="string">"商品名称"</span> /&gt;</span></div><div class="line">             <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">         <span class="tag">&lt;/<span class="name">kl-col</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">kl-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="简单表单验证"><a href="#简单表单验证" class="headerlink" title="简单表单验证"></a>简单表单验证</h3><p>如果表单项是必填,则可以在<code>kl-form-item</code>上配置required属性,并通过message配置未填写时的提示文案; 除了最基本的必填校验外,各表单元素组件可以通过配置rules属性实现各种复杂的校验; 参见复杂表单验证</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"订单号"</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请填写订单号"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;billno&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"订单号"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"跨境方式"</span> <span class="attr">required</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">value</span>=<span class="string">"&#123;importType&#125;"</span> <span class="attr">source</span>=<span class="string">"&#123;importTypes&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"国家"</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-check-group</span> <span class="attr">source</span>=<span class="string">"&#123;countryList&#125;"</span> <span class="attr">block</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"起运时间"</span> <span class="attr">required</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">kl-date-picker</span> <span class="attr">value</span>=<span class="string">"&#123;startTime&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"仓库"</span> <span class="attr">required</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">kl-multi-select</span> <span class="attr">value</span>=<span class="string">"&#123;warehouse&#125;"</span> <span class="attr">source</span>=<span class="string">"&#123;warehouses&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span>  /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"备注"</span> <span class="attr">required</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">value</span>=<span class="string">"&#123;remark&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding-left:88px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.validate()&#125;"</span> <span class="attr">title</span>=<span class="string">"提交"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line"> <span class="attr">template</span>: template,</div><div class="line"> <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.data.importTypes = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'海淘'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'一般贸易'</span> &#125;];</div><div class="line">    <span class="keyword">this</span>.data.countryList = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'中国'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'美国'</span> &#125;];</div><div class="line">    <span class="keyword">this</span>.data.warehouses = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'宁波仓'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'重庆仓'</span> &#125;];</div><div class="line"> &#125;,</div><div class="line"> <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">    <span class="keyword">return</span> $form.validate().success;</div><div class="line"> &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<div class="grid-item" markdown="1">
+<h3 id="复杂表单验证"><a href="#复杂表单验证" class="headerlink" title="复杂表单验证"></a>复杂表单验证</h3><p>每个表单元素都内置一些基本的校验属性, 如input设置type=”email”, 触发校验时就会校验用户输入的是否是合法的email地址;</p>
+<p>除内置的基本校验属性外, 每个表单元素组件都有一个rules属性, rules属性的基本格式是<code>{type: &#39;&#39;,message: &#39;&#39;}</code>, type的可选值参见<a href="https://github.com/chriso/validator.js/" target="_blank" rel="external">validatorJS</a></p>
+<p>如果需要自定义验证函数, 可配置<code>method</code>属性</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">labelSize</span>=<span class="string">"80px"</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"用户邮箱"</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">value</span>=<span class="string">"&#123;email&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"用户邮箱"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"支付方式"</span> <span class="attr">required</span> <span class="attr">descTemplate</span>=<span class="string">"输入的值中应包含pay"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">rules</span>=<span class="string">"&#123;purchaseWayRule&#125;"</span> <span class="attr">value</span>=<span class="string">"&#123;purchaseWay&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"支付方式"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"国家"</span> <span class="attr">required</span> <span class="attr">tip</span>=<span class="string">"最多选择2个国家"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-check-group</span> <span class="attr">source</span>=<span class="string">"&#123;countryList&#125;"</span> <span class="attr">min</span>=<span class="string">1</span> <span class="attr">max</span>=<span class="string">2</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"备注"</span> <span class="attr">required</span> <span class="attr">descTemplate</span>=<span class="string">"最多输入10个字"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">kl-textarea</span> <span class="attr">rules</span>=<span class="string">"&#123;remarkRule&#125;"</span> <span class="attr">value</span>=<span class="string">"&#123;remark&#125;"</span> <span class="attr">width</span>=<span class="string">"300px"</span> <span class="attr">placeholder</span>=<span class="string">"备注"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"padding-left:88px"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">type</span>=<span class="string">"secondary"</span> <span class="attr">on-click</span>=<span class="string">"&#123;this.validate()&#125;"</span> <span class="attr">title</span>=<span class="string">"提交"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line"> <span class="attr">template</span>: template,</div><div class="line"> <span class="attr">config</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.data.importTypes = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'海淘'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'一般贸易'</span> &#125;];</div><div class="line">    <span class="keyword">this</span>.data.countryList = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'中国'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'美国'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'英国'</span> &#125;];</div><div class="line">    <span class="keyword">this</span>.data.warehouses = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'宁波仓'</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'重庆仓'</span> &#125;];</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.data.purchaseWayRule = [&#123;</div><div class="line">        <span class="attr">message</span>: <span class="string">'输入的值中应包含pay'</span>, <span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> value.toLowerCase().indexOf(<span class="string">'pay'</span>) != <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.data.remarkRule = [&#123;</div><div class="line">        <span class="attr">message</span>: <span class="string">'最多输入10个字'</span>, <span class="attr">method</span>: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> value.length &lt;= <span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line"> &#125;,</div><div class="line"> <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">    <span class="keyword">return</span> $form.validate().success;</div><div class="line"> &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+</div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLForm"></a></p>
+<h2 id="KLForm"><a href="#KLForm" class="headerlink" title="KLForm"></a><span class="param-title">KLForm</span><a name="new_KLForm_new"></a></h2><h3 id="KLForm-1"><a href="#KLForm-1" class="headerlink" title="KLForm"></a><span class="param-title">KLForm</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.service]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 全站异步获取source的接口地址</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 扩展样式</td>
+</tr>
+<tr>
+<td>[options.data.inline]</td>
+<td><code>boolean</code></td>
+<td></td>
+<td>=&gt; 如果true,kl-form-item按照inline-block排列</td>
+</tr>
+<tr>
+<td>[options.data.sourcePath]</td>
+<td><code>string</code></td>
+<td><code>&quot;data&quot;</code></td>
+<td>=&gt; 获取到select数据后,读取json数据的路径</td>
+</tr>
+<tr>
+<td>[options.data.labelSize]</td>
+<td><code>string/number</code></td>
+<td></td>
+<td>=&gt; 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同</td>
+</tr>
+<tr>
+<td>[options.data.labelLineHeight]</td>
+<td><code>string/number</code></td>
+<td></td>
+<td>=&gt; 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLForm+validate_new 验证所有表单组件"></a></p>
+<h3 id="validate-验证所有表单组件method"><a href="#validate-验证所有表单组件method" class="headerlink" title=".validate() 验证所有表单组件method"></a><span class="param-title">.validate() 验证所有表单组件</span><span class="type-tag type-tag-static">method</span></h3><p><strong>Returns</strong>: <code>object</code> - conclusion 结果说明<br><a name="KLForm+event_sourceCompleted kl-form自动获取sourceKey异步数据后触发"></a></p>
+<h3 id="sourceCompleted-kl-form自动获取sourceKey异步数据后触发Event"><a href="#sourceCompleted-kl-form自动获取sourceKey异步数据后触发Event" class="headerlink" title="sourceCompleted kl-form自动获取sourceKey异步数据后触发Event"></a><span class="param-title">sourceCompleted kl-form自动获取sourceKey异步数据后触发</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>result</td>
+<td><code>object</code></td>
+<td>所有异步数据</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLFormItem"></a></p>
+<h2 id="KLFormItem"><a href="#KLFormItem" class="headerlink" title="KLFormItem"></a><span class="param-title">KLFormItem</span><a name="new_KLFormItem_new"></a></h2><h3 id="KLFormItem-1"><a href="#KLFormItem-1" class="headerlink" title="KLFormItem"></a><span class="param-title">KLFormItem</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.title]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; label显示的文字</td>
+</tr>
+<tr>
+<td>[options.data.titleTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; title 模板</td>
+</tr>
+<tr>
+<td>[options.data.descTemplate]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 说明区块模板</td>
+</tr>
+<tr>
+<td>[options.data.cols]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; [deprecated]布局列数, 请使用布局组件代替直接设置cols属性</td>
+</tr>
+<tr>
+<td>[options.data.labelCols]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; [deprecated]如果有title, label占的列数, 建议使用labelSize</td>
+</tr>
+<tr>
+<td>[options.data.labelSize]</td>
+<td><code>string/number</code></td>
+<td><code>200</code></td>
+<td>=&gt; 如果有title, label占的宽度,可以是px单位的数字,也可以是sm, md, lg, xlg</td>
+</tr>
+<tr>
+<td>[options.data.labelLineHeight]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;2.5&#x27;&quot;</code></td>
+<td>=&gt; label line-height 属性: 可以是数字值,也可以是sm(值:1), md(值:1.6), lg(值:2.5)</td>
+</tr>
+<tr>
+<td>[options.data.textAlign]</td>
+<td><code>string</code></td>
+<td><code>&quot;none&quot;</code></td>
+<td>=&gt; label text-align 属性：none/left/right</td>
+</tr>
+<tr>
+<td>[options.data.required]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否必选项</td>
+</tr>
+<tr>
+<td>[options.data.tip]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 字段说明</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 样式扩展</td>
+</tr>
+<tr>
+<td>[options.data.layout]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 排列方式: 默认(横着排)/vertical/inline;</td>
+</tr>
+<tr>
+<td>[options.data.sourceKey]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 异步获取下拉列表接口的索引值</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px">
+    <kl-form-item title="订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px">
+    <kl-form-item title="订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px">
+    <kl-form-item title="订单号" tip="订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" descTemplate="支付方式可填: 微信, 支付宝, 银联">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px">
+    <kl-form-item title="订单号" tip="订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" descTemplate="支付方式可填: 微信, 支付宝, 银联">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form>
+    <kl-form-item title="订单号" descTemplate="32位订单号" labelSize="80px">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" descTemplate="支付方式可填: 微信, 支付宝, 银联" labelSize="80px">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="备注" labelSize="80px" labelLineHeight="lg">
+        <kl-textarea width="300px" placeholder="备注" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form>
+    <kl-form-item title="订单号" descTemplate="32位订单号" labelSize="80px">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" descTemplate="支付方式可填: 微信, 支付宝, 银联" labelSize="80px">
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="备注" labelSize="80px" labelLineHeight="lg">
+        <kl-textarea width="300px" placeholder="备注" />
+    </kl-form-item>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px">
+    <kl-row>
+        <kl-col span=4>
+            <kl-form-item title="订单号">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+        </kl-col>
+        <kl-col span=4>
+            <kl-form-item title="支付方式">
+                <kl-input value="{purchaseWay}" placeholder="支付方式" />
+            </kl-form-item>
+        </kl-col>
+        <kl-col span=4>
+            <kl-form-item title="商品名称">
+                <kl-input value="{goodsName}" placeholder="商品名称" />
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px">
+    <kl-row>
+        <kl-col span=4>
+            <kl-form-item title="订单号">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+        </kl-col>
+        <kl-col span=4>
+            <kl-form-item title="支付方式">
+                <kl-input value="{purchaseWay}" placeholder="支付方式" />
+            </kl-form-item>
+        </kl-col>
+        <kl-col span=4>
+            <kl-form-item title="商品名称">
+                <kl-input value="{goodsName}" placeholder="商品名称" />
+            </kl-form-item>
+        </kl-col>
+    </kl-row>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px" service="{api}">
+ <kl-row>
+     <kl-col span=4>
+         <kl-form-item title="支付方式" sourceKey="purchaseWays">
+             <kl-select value="{purchaseWay}" />
+         </kl-form-item>
+     </kl-col>
+     <kl-col span=4>
+         <kl-form-item title="跨境方式" sourceKey="importTypes">
+             <kl-select value="{importType}" />
+         </kl-form-item>
+     </kl-col>
+     <kl-col span=4>
+         <kl-form-item title="仓库" sourceKey="warehouses">
+             <kl-select value="{warehouse}" />
+         </kl-form-item>
+     </kl-col>
+ </kl-row>
+</kl-form>
+
+      */});
+
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.api = '../data/KLForm.json';
+ },
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px" service="{api}">
+ <kl-row>
+     <kl-col span=4>
+         <kl-form-item title="支付方式" sourceKey="purchaseWays">
+             <kl-select value="{purchaseWay}" />
+         </kl-form-item>
+     </kl-col>
+     <kl-col span=4>
+         <kl-form-item title="跨境方式" sourceKey="importTypes">
+             <kl-select value="{importType}" />
+         </kl-form-item>
+     </kl-col>
+     <kl-col span=4>
+         <kl-form-item title="仓库" sourceKey="warehouses">
+             <kl-select value="{warehouse}" />
+         </kl-form-item>
+     </kl-col>
+ </kl-row>
+</kl-form>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.api = '../data/KLForm.json';
+ },
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<p>inline</p>
+<kl-form>
+     <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="订单号" layout="inline">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+            <kl-form-item title="支付方式" layout="inline">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+             <kl-form-item title="商品名称" layout="inline">
+                  <kl-input value="{goodsName}" placeholder="商品名称" />
+              </kl-form-item>
+        </kl-col>
+     </kl-row>
+</kl-form>
+<p>全局inline</p>
+<kl-form inline class="f-mt10">
+     <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="订单号">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+            <kl-form-item title="支付方式">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+             <kl-form-item title="商品名称">
+                  <kl-input value="{goodsName}" placeholder="商品名称" />
+              </kl-form-item>
+        </kl-col>
+     </kl-row>
+</kl-form>
+<p>vertical</p>
+<kl-form>
+    <kl-row>
+         <kl-col span=4>
+             <kl-form-item title="订单号" layout="vertical">
+                 <kl-input value="{billno}" placeholder="订单号" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="支付方式" layout="vertical">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="商品名称" layout="vertical">
+                 <kl-input value="{goodsName}" placeholder="商品名称" />
+             </kl-form-item>
+         </kl-col>
+     </kl-row>
+</kl-form>
+
+      */});
+      var component = new NEKUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<p>inline</p>
+<kl-form>
+     <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="订单号" layout="inline">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+            <kl-form-item title="支付方式" layout="inline">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+             <kl-form-item title="商品名称" layout="inline">
+                  <kl-input value="{goodsName}" placeholder="商品名称" />
+              </kl-form-item>
+        </kl-col>
+     </kl-row>
+</kl-form>
+<p>全局inline</p>
+<kl-form inline class="f-mt10">
+     <kl-row>
+        <kl-col span=12>
+            <kl-form-item title="订单号">
+                <kl-input value="{billno}" placeholder="订单号" />
+            </kl-form-item>
+            <kl-form-item title="支付方式">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+             <kl-form-item title="商品名称">
+                  <kl-input value="{goodsName}" placeholder="商品名称" />
+              </kl-form-item>
+        </kl-col>
+     </kl-row>
+</kl-form>
+<p>vertical</p>
+<kl-form>
+    <kl-row>
+         <kl-col span=4>
+             <kl-form-item title="订单号" layout="vertical">
+                 <kl-input value="{billno}" placeholder="订单号" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="支付方式" layout="vertical">
+                 <kl-input value="{purchaseWay}" placeholder="支付方式" />
+             </kl-form-item>
+         </kl-col>
+         <kl-col span=4>
+             <kl-form-item title="商品名称" layout="vertical">
+                 <kl-input value="{goodsName}" placeholder="商品名称" />
+             </kl-form-item>
+         </kl-col>
+     </kl-row>
+</kl-form>
+`,
+              jsCode: `var component = new NEKUI.Component({template: template});`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px" ref="form">
+    <kl-form-item title="订单号" required message="请填写订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" required>
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="跨境方式" required>
+       <kl-select value="{importType}" source="{importTypes}" width="300px" />
+    </kl-form-item>
+    <kl-form-item title="国家" required>
+        <kl-check-group source="{countryList}" block />
+    </kl-form-item>
+    <kl-form-item title="起运时间" required>
+       <kl-date-picker value="{startTime}" width="300px" />
+    </kl-form-item>
+     <kl-form-item title="仓库" required>
+      <kl-multi-select value="{warehouse}" source="{warehouses}" width="300px"  />
+    </kl-form-item>
+    <kl-form-item title="备注" required>
+       <kl-textarea value="{remark}" width="300px" />
+    </kl-form-item>
+    <div style="padding-left:88px">
+        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+    </div>
+</kl-form>
+
+      */});
+
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
+    this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }];
+    this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+ },
+ validate: function() {
+    var $form = this.$refs.form;
+    return $form.validate().success;
+ }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px" ref="form">
+    <kl-form-item title="订单号" required message="请填写订单号">
+        <kl-input value="{billno}" width="300px" placeholder="订单号" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" required>
+        <kl-input value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="跨境方式" required>
+       <kl-select value="{importType}" source="{importTypes}" width="300px" />
+    </kl-form-item>
+    <kl-form-item title="国家" required>
+        <kl-check-group source="{countryList}" block />
+    </kl-form-item>
+    <kl-form-item title="起运时间" required>
+       <kl-date-picker value="{startTime}" width="300px" />
+    </kl-form-item>
+     <kl-form-item title="仓库" required>
+      <kl-multi-select value="{warehouse}" source="{warehouses}" width="300px"  />
+    </kl-form-item>
+    <kl-form-item title="备注" required>
+       <kl-textarea value="{remark}" width="300px" />
+    </kl-form-item>
+    <div style="padding-left:88px">
+        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+    </div>
+</kl-form>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
+    this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }];
+    this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+ },
+ validate: function() {
+    var $form = this.$refs.form;
+    return $form.validate().success;
+ }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+    (function(index) {
+      var template = NEKUI._.multiline(function(){/*
+
+<kl-form labelSize="80px" ref="form">
+    <kl-form-item title="用户邮箱" required>
+        <kl-input type="email" value="{email}" width="300px" placeholder="用户邮箱" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" required descTemplate="输入的值中应包含pay">
+        <kl-input rules="{purchaseWayRule}" value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="国家" required tip="最多选择2个国家">
+        <kl-check-group source="{countryList}" min=1 max=2 />
+    </kl-form-item>
+    <kl-form-item title="备注" required descTemplate="最多输入10个字">
+       <kl-textarea rules="{remarkRule}" value="{remark}" width="300px" placeholder="备注" />
+    </kl-form-item>
+    <div style="padding-left:88px">
+        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+    </div>
+</kl-form>
+
+      */});
+
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
+    this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }, { id: 3, name: '英国' }];
+    this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+
+    this.data.purchaseWayRule = [{
+        message: '输入的值中应包含pay', method: function(value) {
+            return value.toLowerCase().indexOf('pay') != -1;
+        }
+    }];
+
+    this.data.remarkRule = [{
+        message: '最多输入10个字', method: function(value) {
+            return value.length <= 10;
+        }
+    }];
+ },
+ validate: function() {
+    var $form = this.$refs.form;
+    return $form.validate().success;
+ }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+      var gridItem = document.querySelectorAll('.grid-item')[index];
+      var codeDemo = document.createElement('div');
+      codeDemo.className = 'm-code';
+      var child = gridItem.childNodes;
+      child.forEach(function(item,index){
+        if(item.tagName == 'FIGURE'){
+          codeDemo.appendChild(item);
+        }
+      });
+      gridItem.appendChild(codeDemo);
+      var codeComponent = new DemoWrap({
+          data: {
+              htmlTpl: codeDemo.innerHTML,
+              htmlCode: `
+<kl-form labelSize="80px" ref="form">
+    <kl-form-item title="用户邮箱" required>
+        <kl-input type="email" value="{email}" width="300px" placeholder="用户邮箱" />
+    </kl-form-item>
+    <kl-form-item title="支付方式" required descTemplate="输入的值中应包含pay">
+        <kl-input rules="{purchaseWayRule}" value="{purchaseWay}" width="300px" placeholder="支付方式" />
+    </kl-form-item>
+    <kl-form-item title="国家" required tip="最多选择2个国家">
+        <kl-check-group source="{countryList}" min=1 max=2 />
+    </kl-form-item>
+    <kl-form-item title="备注" required descTemplate="最多输入10个字">
+       <kl-textarea rules="{remarkRule}" value="{remark}" width="300px" placeholder="备注" />
+    </kl-form-item>
+    <div style="padding-left:88px">
+        <kl-button type="secondary" on-click="{this.validate()}" title="提交" />
+    </div>
+</kl-form>
+`,
+              jsCode: `
+var component = new NEKUI.Component({
+ template: template,
+ config: function() {
+    this.data.importTypes = [{ id: 1, name: '海淘' }, { id: 2, name: '一般贸易' }];
+    this.data.countryList = [{ id: 1, name: '中国' }, { id: 2, name: '美国' }, { id: 3, name: '英国' }];
+    this.data.warehouses = [{ id: 1, name: '宁波仓' }, { id: 2, name: '重庆仓' }];
+
+    this.data.purchaseWayRule = [{
+        message: '输入的值中应包含pay', method: function(value) {
+            return value.toLowerCase().indexOf('pay') != -1;
+        }
+    }];
+
+    this.data.remarkRule = [{
+        message: '最多输入10个字', method: function(value) {
+            return value.length <= 10;
+        }
+    }];
+ },
+ validate: function() {
+    var $form = this.$refs.form;
+    return $form.validate().success;
+ }
+});
+`
+          }
+      });
+      codeDemo.innerHTML = '';
+      codeComponent.$inject(codeDemo);
+    })(index++);
+
+</script>
+
+
+    <div class="guide-links">
+
+        <a href="/v0.6components/form_KLDatePicker_.html" class="pager">
+            <span class="icon icon-left"></span><span>日期选择</span>
+        </a>
+
+        <span class="placeholder"></span>
+
+        <a href="/v0.6components/form_KLInput_.html" class="pager">
+            <span>输入框</span><span class="icon icon-right"></span>
+        </a>
+
+    </div>
+    <div class="footer">
+      想让文档更完善？
+      <a href="https://github.com/kaola-fed/nek-ui" target="_blank">
+        来 GitHub 提个 PR 吧！
+      </a>
+    </div>
+
+
+</div>
+
+            </div>
+
+
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/v0.6/js/smooth-scroll.min.js"></script>
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script src="/v0.6/js/scrollIntoView.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+
+                scrollIntoView(document.querySelector('.sidebar .submenu a.current'), {
+                    validTarget: function(target, parentsScrolled){
+                        return parentsScrolled < 2 && target !== window && target.matches('.sidebar');
+                    },
+                });
+            }, false)
+        </script>
+
+
+        <!-- Hotjar Tracking Code for http://nek-ui.kaolafed.com/ -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:608636,hjsv:5};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+
+        <!-- ga -->
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-46698359-3', 'nek-ui.kaolafed.com');
+            ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+        <script>
+            docsearch({
+                apiKey: 'e5880dd54c730e68c9fcc610adb30f33',
+                indexName: 'nek_ui',
+                inputSelector: '#search-query-nav',
+                debug: false
+            })
+        </script>
+    </body>
+</html>
