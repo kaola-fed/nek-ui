@@ -381,7 +381,7 @@ const KLSelect = SourceComponent.extend({
     const result = { success: true, message: '' };
     let value = this.data.value;
 
-    value = typeof value === 'undefined' ? '' : `${value}`;
+    value = value || value === 0 ? `${value}` : '';
     if (data.required && !value.length) {
       result.success = false;
       result.message = data.message || this.$trans('PLEASE_SELECT');
