@@ -70,8 +70,8 @@
 			{#list this.filterArray(source) as item}
 			{#if (!filter || (filter && filter(item)))}
 			{#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-			<li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
-			<check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+			<li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(!selected ? true : selected.length!==this.filterData(source).length)}>
+			<check disabled={disabled} checked={!selected ? false : selected.length===this.filterData(source).length} />
 			{this.$trans('ALL')}
 			</li>
 			{/if}
