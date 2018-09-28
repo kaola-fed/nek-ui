@@ -37,7 +37,7 @@
 				{/if}
 				{#if tags && selected && selected.length > 0}
 					<span class="kl-select__tag" >
-						{selected[0]['name']}
+						{selected[0][nameKey]}
 						<kl-icon type="cross" is-dis={selected.disabled} on-click={this.removeSelected(selected,0,$event)} />
 					</span>
 					<span class="kl-select__tags" >
