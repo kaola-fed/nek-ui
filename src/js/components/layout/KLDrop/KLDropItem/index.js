@@ -27,7 +27,6 @@ const KLDropItem = Component.extend({
     } while (
       !($outer instanceof KLDrop) && ($outer.$outer || $outer.$parent)
     );
-    console.log($outer);
     $outer.$emit('on-item-click', this.id);
 
     $outer.data.isShow = false;

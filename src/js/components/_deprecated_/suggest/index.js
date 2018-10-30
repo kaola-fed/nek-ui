@@ -67,8 +67,6 @@ const Suggest = Dropdown.extend({
 
     this.initValidation();
 
- console.log(    this.$refs.input
- );
     this.$watch('id', function (id) {
       let source = this.data.source || [],
         key = this.data.key,
