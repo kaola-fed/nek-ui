@@ -1,4 +1,4 @@
 <kl-check
     name={item && item[column.key] | placeholder : column, this}
-    checked={item._checked}
+    checked={item._checked || false}
     on-change={this._onItemCheckChange(item, $event)}/>
