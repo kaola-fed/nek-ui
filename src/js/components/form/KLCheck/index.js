@@ -32,8 +32,7 @@ const KLCheck = Component.extend({
     this.supr();
 
     this.$watch('checked', function (newValue, oldValue) {
-      if (oldValue === undefined) return;
-
+      if (oldValue === undefined || newValue === undefined) return;
       /**
          * @event KLCheck#change 选中状态改变时触发
          * @property {object} sender 事件发送对象
