@@ -37,7 +37,7 @@
 				{/if}
 				{#if tags && selected && selected.length > 0}
 					<span class="kl-select__tag" >
-						{selected[0]['name']}
+						{selected[0][nameKey]}
 						<kl-icon type="cross" is-dis={selected.disabled} on-click={this.removeSelected(selected,0,$event)} />
 					</span>
 					<span class="kl-select__tags" >
@@ -70,8 +70,8 @@
 			{#list this.filterArray(source) as item}
 			{#if (!filter || (filter && filter(item)))}
 			{#if canSelectAll && multiple && item_index == 0 && (canSearch && !searchValue)}
-			<li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(selected.length!==this.filterData(source).length)}>
-			<check disabled={disabled} checked={selected.length===this.filterData(source).length} />
+			<li is-hover={key_index == 'all'} class="kl-listview-item" on-click={this.selectAll(!selected ? true : selected.length!==this.filterData(source).length)}>
+			<check disabled={disabled} checked={!selected ? false : selected.length===this.filterData(source).length} />
 			{this.$trans('ALL')}
 			</li>
 			{/if}

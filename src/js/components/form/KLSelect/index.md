@@ -348,7 +348,7 @@ var component = new NEKUI.Component({
         canSelectAll: true,
         canSearch: true,
         isCaseSensitive: false,
-        value: '',
+        value: null,
         limit: null,
         source: [
             {name: '母婴儿童Dr.CI'},{name: '母婴儿童Filorga'},
