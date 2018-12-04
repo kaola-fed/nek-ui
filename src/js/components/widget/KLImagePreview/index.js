@@ -351,7 +351,20 @@ const KLImagePreview = Component.extend({
       minTranslateY: minDeltaY < 0 ? minDeltaY : 0,
     };
   },
+  isImg(name = '') {
+    const filename = name.indexOf('?') === -1 ? name : name.substr(0, name.indexOf('?'));
+    const isImg = ['image/*', '.jpg', '.jpeg', '.gif', '.png'].some((key) => {
+      const reg = new RegExp(`${key}$`);
+      return reg.test(filename.toLowerCase());
+    });
+    return isImg;
+  },
   downloadFile(file) {
+    const isImg = this.isImg(file.name);
+    if (!isImg) {
+      window.open(file.src, '_blank');
+      return;
+    }
     const a = document.createElement('a');
     a.download = file.name;
     fetch(file.src).then(res => res.blob().then((blob) => {
