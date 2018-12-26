@@ -22228,7 +22228,7 @@ var PopperComponent = _component2.default.extend({
         },
 
         onUpdate: function onUpdate() {
-          if (!_this2.$refs.popper) return;
+          if (!_this2.$refs || !_this2.$refs.popper) return;
           if (_this2.$refs.popper.attributes['x-out-of-boundaries']) {
             _this2.data.isShow = false;
             _this2.$update();
@@ -30663,7 +30663,6 @@ var Suggest = Dropdown.extend({
 
     this.initValidation();
 
-    console.log(this.$refs.input);
     this.$watch('id', function (id) {
       var source = this.data.source || [],
           key = this.data.key,
@@ -35068,7 +35067,6 @@ var KLSelect = _sourceComponent2.default.extend({
     this.data.open = false;
   },
   toggle: function toggle(_open) {
-    console.log(_open);
     var data = this.data;
     data.canSearch && this.clearSearchValue();
     data.key_index = -1;
@@ -47188,7 +47186,6 @@ var KLDropItem = Component.extend({
         $outer = $outer.$parent;
       }
     } while (!($outer instanceof KLDrop) && ($outer.$outer || $outer.$parent));
-    console.log($outer);
     $outer.$emit('on-item-click', this.id);
 
     $outer.data.isShow = false;
