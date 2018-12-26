@@ -352,7 +352,6 @@ const KLSelect = SourceComponent.extend({
     this.data.open = false;
   },
   toggle(_open) {
-    console.log(_open);
     const data = this.data;
     data.canSearch && this.clearSearchValue();
     data.key_index = -1;

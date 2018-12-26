@@ -161,7 +161,6 @@ const KLTimePickerPanel = Component.extend({
         );
 
         if (emit) {
-            console.log(newDate);
             this.$emit('pick', {
                 value: newDate,
                 asd: 123,
