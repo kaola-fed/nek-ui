@@ -122,34 +122,30 @@ var component = new NEKUI.Component({
 
 它们三者的关系如下：`selected[key] == value`。其中`selected`和`value`是联动的，当一项变化时会同时改变另一项。
 
-*注意：暂时不支持`value`赋初始值。
-
 <div class="m-example"></div>
 
 ```xml
 <kl-form>
     <kl-col span=6>
-        <kl-tree-view  source={source} nameKey='value' selected={selected} />
+        <kl-tree-view  source={source} nameKey='value' value={value} />
     </kl-col>
     <kl-col span=6>
         <kl-tree-view  source={source} nameKey='value' value={value} />
     </kl-col>
 </kl-form>
-<p>选择的分别是是: {selected.value} {value}</p>
+<p>选择的分别是是: {value}</p>
 ```
 
 ```javascript
 var component = new NEKUI.Component({
     template: template,
     data: {
+        value: '1',
         source: [
-            {id: 1, value: '母婴儿童'},
-            {id: 2, value: '美容彩妆'},
-            {id: 3, value: '服饰鞋包'}
+            {id: '1', value: '母婴儿童'},
+            {id: '2', value: '美容彩妆'},
+            {id: '3', value: '服饰鞋包'}
         ]
-    },
-    config: function() {
-        this.data.selected = this.data.source[0];
     }
 });
 ```

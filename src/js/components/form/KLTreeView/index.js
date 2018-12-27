@@ -20,7 +20,6 @@ const _ = require('../../../ui-base/_');
  * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
  * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
  * @param {string}    [options.data.value=null]               <=> 当前选择值
- * @param {object}    [options.data.selected=null]            <=> 当前选择项
  * @param {string}    [options.data.separator=,]              => 多选时value分隔符
  * @param {boolean}   [options.data.multiple=false]           => 是否多选
  * @param {boolean}   [options.data.readonly=false]           => 是否只读
@@ -37,6 +36,7 @@ const KLTreeView = SourceComponent.extend({
       key: 'id',
       nameKey: 'name',
       childKey: 'children',
+      separator: ',',
       value: null,
       selected: null,
       multiple: false,
@@ -46,7 +46,7 @@ const KLTreeView = SourceComponent.extend({
     this.$ancestor = this;
     this.$watch('selected', function (newVal) {
       const { key, nameKey, separator } = this.data;
-      if (!newVal) return (this.data.value = '');
+      if (!newVal) return;
       if (Array.isArray(newVal)) {
         return (this.data.value = newVal
           .map(d => d[key] || d[nameKey])
@@ -56,11 +56,11 @@ const KLTreeView = SourceComponent.extend({
     });
   },
   select(item) {
-    if (
+    if (!this.data.multiple && (
       this.data.readonly ||
       this.data.disabled ||
       item.disabled
-    ) {
+    )) {
       return;
     }
 
@@ -79,11 +79,11 @@ const KLTreeView = SourceComponent.extend({
     });
   },
   toggle(item, _open) {
-    if (
+    if (!this.data.multiple && (
       this.data.readonly ||
       this.data.disabled ||
       item.disabled
-    ) {
+    )) {
       return;
     }
 

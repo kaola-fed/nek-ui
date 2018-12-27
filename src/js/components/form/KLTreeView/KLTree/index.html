@@ -22,7 +22,7 @@
       </div>
 		</div>
 		{#if item.childrenCount || (item.children && item.children.length)}
-      <kl-tree childKey={childKey} nameKey={nameKey} source={item.children} body={body}
+      <kl-tree childKey={childKey} nameKey={nameKey} source={item.children} body={body} value={value} separator={separator} key={key}
                visible={item.open} parent={item} multiple={multiple} level={level+1}
                on-setselected={this._setSelected($event)} />
     {/if}

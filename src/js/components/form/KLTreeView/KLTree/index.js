@@ -37,6 +37,17 @@ const KLTree = SourceComponent.extend({
         this.data.hierarchical = false;
       });
     });
+
+    this.$watch('value', function (newValue) {
+      if (newValue === null || newValue === undefined) { return; }
+      const { source, separator, key } = this.data;
+      const newValueArr = `${newValue}`.split(separator);
+      source.forEach((item) => {
+        if (newValueArr.includes(`${item[key]}`)) {
+          this._onItemCheckedChange({ checked: true }, item);
+        }
+      });
+    });
   },
   /**
      * @override
@@ -99,6 +110,7 @@ const KLTree = SourceComponent.extend({
     item.checked = checked;
     if (checked !== null && item[this.data.childKey]) {
       item[this.data.childKey].forEach((child) => {
+        if (child.disabled || child.readonly) return;
         child.checked = checked;
       });
     }
