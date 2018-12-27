@@ -15,7 +15,7 @@ const KLDatePanelLabel = Component.extend({
     this.supr();
 
     this.$watch('datePanelLabel[0].label', (value) => {
-        console.log(value)
+        // console.log(value)
     })
   },
 });

@@ -80,7 +80,7 @@ const PopperComponent = Component.extend({
           // console.log('create');
         },
         onUpdate: () => {
-          if (!this.$refs.popper) return;
+          if (!this.$refs || !this.$refs.popper) return;
           if (this.$refs.popper.attributes['x-out-of-boundaries']) {
             this.data.isShow = false;
             this.$update();

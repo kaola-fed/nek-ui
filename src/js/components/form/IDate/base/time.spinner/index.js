@@ -229,9 +229,6 @@ const KLTimeSpinner = Component.extend({
         if (cell.disabled) return;
         const data = {[type]: cell.text};
 
-        // 直接赋值？？？
-        console.log(data);
-
         this.emitChange(data);
     },
     emitChange(changes) {
