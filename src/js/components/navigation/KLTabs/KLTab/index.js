@@ -35,6 +35,13 @@ const KLTab = Component.extend({
     if (!this.$outer.data.selected) this.$outer.data.selected = this;
 
     this._setDefaultTab();
+
+    this.$on('destroy', function () {
+      const index = this.$outer.data.tabs.indexOf(this);
+      if (index !== -1) {
+        this.$outer.data.tabs.splice(index, 1);
+      }
+    });
   },
 
   _setDefaultTab() {
