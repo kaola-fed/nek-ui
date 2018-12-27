@@ -9968,7 +9968,6 @@ var _ = __webpack_require__(2);
  * @param {boolean}   [options.data.source[].checked=false]   => 选中此项
  * @param {boolean}   [options.data.source[].disabled=false]  => 禁用此项
  * @param {string}    [options.data.value=null]               <=> 当前选择值
- * @param {object}    [options.data.selected=null]            <=> 当前选择项
  * @param {string}    [options.data.separator=,]              => 多选时value分隔符
  * @param {boolean}   [options.data.multiple=false]           => 是否多选
  * @param {boolean}   [options.data.readonly=false]           => 是否只读
@@ -9985,6 +9984,7 @@ var KLTreeView = SourceComponent.extend({
       key: 'id',
       nameKey: 'name',
       childKey: 'children',
+      separator: ',',
       value: null,
       selected: null,
       multiple: false,
@@ -9998,7 +9998,7 @@ var KLTreeView = SourceComponent.extend({
           nameKey = _data.nameKey,
           separator = _data.separator;
 
-      if (!newVal) return this.data.value = '';
+      if (!newVal) return;
       if (Array.isArray(newVal)) {
         return this.data.value = newVal.map(function (d) {
           return d[key] || d[nameKey];
@@ -10008,7 +10008,7 @@ var KLTreeView = SourceComponent.extend({
     });
   },
   select: function select(item) {
-    if (this.data.readonly || this.data.disabled || item.disabled) {
+    if (!this.data.multiple && (this.data.readonly || this.data.disabled || item.disabled)) {
       return;
     }
 
@@ -10027,7 +10027,7 @@ var KLTreeView = SourceComponent.extend({
     });
   },
   toggle: function toggle(item, _open) {
-    if (this.data.readonly || this.data.disabled || item.disabled) {
+    if (!this.data.multiple && (this.data.readonly || this.data.disabled || item.disabled)) {
       return;
     }
 
@@ -30979,6 +30979,25 @@ var KLTree = SourceComponent.extend({
         this.data.hierarchical = false;
       });
     });
+
+    this.$watch('value', function (newValue) {
+      var _this = this;
+
+      if (newValue === null || newValue === undefined) {
+        return;
+      }
+      var _data = this.data,
+          source = _data.source,
+          separator = _data.separator,
+          key = _data.key;
+
+      var newValueArr = ('' + newValue).split(separator);
+      source.forEach(function (item) {
+        if (newValueArr.includes('' + item[key])) {
+          _this._onItemCheckedChange({ checked: true }, item);
+        }
+      });
+    });
   },
 
   /**
@@ -31044,6 +31063,7 @@ var KLTree = SourceComponent.extend({
     item.checked = checked;
     if (checked !== null && item[this.data.childKey]) {
       item[this.data.childKey].forEach(function (child) {
+        if (child.disabled || child.readonly) return;
         child.checked = checked;
       });
     }
@@ -31068,13 +31088,13 @@ module.exports = KLTree;
 /* 357 */
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"kl-treeview-list\" r-class={{'kl-treeview-list--child': !!parent}} r-hide={!visible} r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"kl-treeview-list-item\"\n         r-style={{'padding-left':  level == 1 ? '8px' : (multiple ? 24 : 16) * (level - 1) + 'px'}}\n         is-sel={this.$ancestor.data.selected === item}\n         is-dis={item.disabled}\n         on-click={this.select(item)}\n      >\n      <kl-icon type=\"solid-arrow-right\"\n               class=\"kl-treeview-list-item__arrow {item.open ? 'is-open' : ''}\"\n               color=\"{(item.childrenCount || (item.children && item.children.length)) ? '#333': 'transparent'}\" />\n\t\t\t{#if multiple}\n\t\t\t<kl-check class=\"kl-treeview-list-item__check\" checked={item.checked} on-check={this.check($event)} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"kl-treeview-list-item__name\" title={item[nameKey]}>\n          {#if @(itemTemplate)}\n            {#inc @(itemTemplate)}\n          {#else}\n            {item[nameKey]}{#inc body}\n          {/if}\n      </div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}\n      <kl-tree childKey={childKey} nameKey={nameKey} source={item.children} body={body}\n               visible={item.open} parent={item} multiple={multiple} level={level+1}\n               on-setselected={this._setSelected($event)} />\n    {/if}\n\t</li>\n\t{/list}\n</ul>"
+module.exports = "<ul class=\"kl-treeview-list\" r-class={{'kl-treeview-list--child': !!parent}} r-hide={!visible} r-animation=\"on:enter;collapse:on;on:leave;collapse:off;\">\n\t{#list source as item}\n\t<li>\n\t\t<div class=\"kl-treeview-list-item\"\n         r-style={{'padding-left':  level == 1 ? '8px' : (multiple ? 24 : 16) * (level - 1) + 'px'}}\n         is-sel={this.$ancestor.data.selected === item}\n         is-dis={item.disabled}\n         on-click={this.select(item)}\n      >\n      <kl-icon type=\"solid-arrow-right\"\n               class=\"kl-treeview-list-item__arrow {item.open ? 'is-open' : ''}\"\n               color=\"{(item.childrenCount || (item.children && item.children.length)) ? '#333': 'transparent'}\" />\n\t\t\t{#if multiple}\n\t\t\t<kl-check class=\"kl-treeview-list-item__check\" checked={item.checked} on-check={this.check($event)} disabled={item.disabled} on-change={this._onItemCheckedChange($event, item)} />\n\t\t\t{/if}\n\t\t\t<div class=\"kl-treeview-list-item__name\" title={item[nameKey]}>\n          {#if @(itemTemplate)}\n            {#inc @(itemTemplate)}\n          {#else}\n            {item[nameKey]}{#inc body}\n          {/if}\n      </div>\n\t\t</div>\n\t\t{#if item.childrenCount || (item.children && item.children.length)}\n      <kl-tree childKey={childKey} nameKey={nameKey} source={item.children} body={body} value={value} separator={separator} key={key}\n               visible={item.open} parent={item} multiple={multiple} level={level+1}\n               on-setselected={this._setSelected($event)} />\n    {/if}\n\t</li>\n\t{/list}\n</ul>\n"
 
 /***/ }),
 /* 358 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"kl-treeview {class}\" r-class={ {'kl-treeview--multiple': multiple} } r-hide={!visible}>\n\t<kl-tree body={this.$body} source={source} childKey={childKey} nameKey={nameKey} visible multiple={multiple} value={value} on-setselected={this.setSelected($event)} />\n</div>"
+module.exports = "<div class=\"kl-treeview {class}\" r-class={ {'kl-treeview--multiple': multiple} } r-hide={!visible}>\n\t<kl-tree body={this.$body}\n             source={source}\n             childKey={childKey}\n             nameKey={nameKey}\n             key={key}\n             separator={separator}\n             visible\n             multiple={multiple}\n             value={value}\n             selected={selected}\n             on-setselected={this.setSelected($event)} />\n</div>\n"
 
 /***/ }),
 /* 359 */
@@ -35095,7 +35115,7 @@ var KLSelect = _sourceComponent2.default.extend({
     var result = { success: true, message: '' };
     var value = this.data.value;
 
-    value = typeof value === 'undefined' ? '' : '' + value;
+    value = value || value === 0 ? '' + value : '';
     if (data.required && !value.length) {
       result.success = false;
       result.message = data.message || this.$trans('PLEASE_SELECT');
