@@ -15,10 +15,14 @@ const KLDrop = Component.extend({
       placement: 'bottom',
       isShow: false,
       headerClass: '',
+      disabled: false,
     });
     this.supr();
   },
   onClick(event) {
+    if (this.data.disabled) {
+      return;
+    }
     this.data.isShow = !this.data.isShow;
     if (this.data.isShow) {
       this.$emit('click', {

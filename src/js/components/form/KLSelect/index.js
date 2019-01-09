@@ -356,7 +356,6 @@ const KLSelect = SourceComponent.extend({
     data.canSearch && this.clearSearchValue();
     data.key_index = -1;
 
-    if (this.data.disabled) return;
 
     let open = _open;
     if (open === undefined) open = !this.data.open;

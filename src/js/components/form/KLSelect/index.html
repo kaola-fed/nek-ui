@@ -1,6 +1,7 @@
 <kl-drop placement={placement} appendToBody={appendToBody} class="kl-select kl-select--{state} kl-select--{size} {class}"
 	width={width}
-	isShow={open}
+    isShow={open}
+    disabled={disabled}
 	on-click={this.toggle(!open, $event)}>
 	<kl-drop-header>
 		{#if !multiple}
