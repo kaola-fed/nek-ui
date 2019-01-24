@@ -183,4 +183,17 @@ const FileUnit = Component.extend({
   },
 });
 
+FileUnit.filter('download', (url, filename) => {
+  let str = url.split('#')[0];
+  if (/\?/g.test(url)) {
+    str += `&download=${filename}`;
+  } else {
+    str += `?download=${filename}`;
+  }
+  if (url.split('#')[1]) {
+    str += `#${url.split('#')[1]}`;
+  }
+  return str;
+});
+
 module.exports = FileUnit;
