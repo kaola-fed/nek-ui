@@ -25,8 +25,8 @@
                     </span>
                 </span>
             {#elseif status === 'success'}
-                <span class="kl-upload-unit-uploaded" on-click={this.downloadFile()}>
-                    <a class="kl-upload-unit-uploaded__zone"><kl-icon type="download" />{this.$trans('DOWNLOAD_FILE')}</a>
+                <span class="kl-upload-unit-uploaded">
+                    <a class="kl-upload-unit-uploaded__zone" href={url} download={filename}><kl-icon type="download" />{this.$trans('DOWNLOAD_FILE')}</a>
                 </span>
             {/if}
         </div>
