@@ -39328,23 +39328,6 @@ var FileUnit = Component.extend({
       status: data.status
     };
     this.$emit('preview', emitItem);
-  },
-  downloadFile: function downloadFile() {
-    var a = document.createElement('a');
-    a.download = this.data.filename;
-    if (this.data.file.type !== 'doc') {
-      fetch(this.data.url).then(function (res) {
-        return res.blob().then(function (blob) {
-          var blobUrl = window.URL.createObjectURL(blob);
-          a.href = blobUrl;
-          a.click();
-          window.URL.revokeObjectURL(blobUrl);
-        });
-      });
-    } else {
-      a.href = this.data.url;
-      a.click();
-    }
   }
 });
 
@@ -39354,7 +39337,7 @@ module.exports = FileUnit;
 /* 431 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"kl-upload-unit {file.class}\">\n    <div class=\"kl-upload-unit__content\">\n        {#if type === 'image'}\n            <div class=\"kl-upload-unit-imgwrap\" on-click={this.onPreview($event)}>\n                <img class=\"kl-upload-unit-imgwrap__img\" src={url} />\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"kl-upload-unit__remove\" r-hide={readonly} on-click={this.onRemove($event)}><kl-icon type=\"error\" /></div>\n        <div>\n            {#if status === 'fail'}\n                <span class=\"kl-upload-unit-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"kl-upload-unit-failed__info\"><kl-icon type=\"refresh\" />{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"kl-upload-unit-uploading\">\n                    <span class=\"kl-upload-unit-uploading__wrap\">\n                      <span class=\"kl-upload-unit-uploading__txt\">{progress || '0%'}</span>\n                      <kl-progress percent={progress || 0} size=\"sm\" class=\"kl-upload-unit-uploading__progress\" />\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"kl-upload-unit-uploaded\" on-click={this.downloadFile()}>\n                    <a class=\"kl-upload-unit-uploaded__zone\"><kl-icon type=\"download\" />{this.$trans('DOWNLOAD_FILE')}</a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"kl-upload-unit__name\" title={filename}>{filename}</div>\n    <div class=\"kl-upload-unit__info\">{info}</div>\n</div>"
+module.exports = "<div class=\"kl-upload-unit {file.class}\">\n    <div class=\"kl-upload-unit__content\">\n        {#if type === 'image'}\n            <div class=\"kl-upload-unit-imgwrap\" on-click={this.onPreview($event)}>\n                <img class=\"kl-upload-unit-imgwrap__img\" src={url} />\n            </div>\n        {#elseif type === 'unknown'}\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>\n        {#elseif type === 'pdf'}\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->\n            <span class=\"kl-upload-unit__txt\" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>\n        {/if}\n        <div class=\"kl-upload-unit__remove\" r-hide={readonly} on-click={this.onRemove($event)}><kl-icon type=\"error\" /></div>\n        <div>\n            {#if status === 'fail'}\n                <span class=\"kl-upload-unit-failed\" on-click={this.uploadFile(file)}>\n                    <span class=\"kl-upload-unit-failed__info\"><kl-icon type=\"refresh\" />{this.$trans('RETRY')}</span>\n                </span>\n            {#elseif status === 'uploading'}\n                <span class=\"kl-upload-unit-uploading\">\n                    <span class=\"kl-upload-unit-uploading__wrap\">\n                      <span class=\"kl-upload-unit-uploading__txt\">{progress || '0%'}</span>\n                      <kl-progress percent={progress || 0} size=\"sm\" class=\"kl-upload-unit-uploading__progress\" />\n                    </span>\n                </span>\n            {#elseif status === 'success'}\n                <span class=\"kl-upload-unit-uploaded\">\n                    <a class=\"kl-upload-unit-uploaded__zone\" href={url} download={filename}><kl-icon type=\"download\" />{this.$trans('DOWNLOAD_FILE')}</a>\n                </span>\n            {/if}\n        </div>\n    </div>\n    <div class=\"kl-upload-unit__name\" title={filename}>{filename}</div>\n    <div class=\"kl-upload-unit__info\">{info}</div>\n</div>\n"
 
 /***/ }),
 /* 432 */
