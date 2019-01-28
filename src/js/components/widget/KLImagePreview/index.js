@@ -372,7 +372,10 @@ const KLImagePreview = Component.extend({
       a.href = blobUrl;
       a.click();
       window.URL.revokeObjectURL(blobUrl);
-    }));
+    })).catch(() => {
+      // 跨域问题或其他问题导致fetch失败则降级为打开图片地址（有可能是图片下载地址也能直接下载）
+      window.open(file.src, '_blank');
+    });
   },
 });
 
