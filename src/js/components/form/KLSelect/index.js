@@ -299,6 +299,9 @@ const KLSelect = SourceComponent.extend({
     this.initValidation();
     document.addEventListener('keydown', event => this.keyup(event));
   },
+  getParams: function getParams() {
+    return {value: this.data.searchValue};
+  },
   select(item) {
     const data = this.data;
     const multiple = data.multiple;
