@@ -208,6 +208,12 @@ var component = new NEKUI.Component({
     <kl-form-item title="起运时间" required>
        <kl-date-picker value="{startTime}" width="300px" />
     </kl-form-item>
+    <kl-form-item title="发货日期" required>
+       <kl-date value="{deliveryDate}" width="300px" />
+    </kl-form-item>
+    <kl-form-item title="包装时间" required>
+       <kl-time-picker value="{packTime}" width="300px" />
+    </kl-form-item>
      <kl-form-item title="仓库" required>
       <kl-multi-select value="{warehouse}" source="{warehouses}" width="300px"  />
     </kl-form-item>
