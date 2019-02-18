@@ -39851,10 +39851,6 @@ module.exports = "<div class=\"kl-group\">\n    {#inc this.$body}\n</div>\n"
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _component = __webpack_require__(1);
 
 var _component2 = _interopRequireDefault(_component);
@@ -39882,7 +39878,7 @@ var _index10 = _interopRequireDefault(_index9);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable */
-exports.default = _component2.default.extend({
+var KLTimePicker = _component2.default.extend({
     name: 'kl-time-picker',
     template: _index2.default,
     config: function config() {
@@ -39912,6 +39908,8 @@ exports.default = _component2.default.extend({
         this.data.value = null;
     }
 }).component('kl-drop', _index8.default).component('kl-drop-header', _index10.default).component('kl-time-range-panel', _index6.default).component('kl-time-panel', _index4.default);
+
+module.exports = KLTimePicker;
 
 /***/ }),
 /* 443 */
