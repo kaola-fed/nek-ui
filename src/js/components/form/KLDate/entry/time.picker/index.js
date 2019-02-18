@@ -7,7 +7,7 @@ import KLTimeRangePanel from '../../panel/time.range/index';
 import KLDrop from '../../../../layout/KLDrop/index';
 import KLDropHeader from '../../../../layout/KLDrop/KLDropHeader/index';
 
-export default Component.extend({
+const KLTimePicker = Component.extend({
     name: 'kl-time-picker',
     template,
     config() {
@@ -42,3 +42,4 @@ export default Component.extend({
     .component('kl-time-range-panel', KLTimeRangePanel)
     .component('kl-time-panel', KLTimePanel);
 
+module.exports = KLTimePicker;
