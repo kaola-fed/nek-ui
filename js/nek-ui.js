@@ -5403,22 +5403,6 @@ var parseValue = exports.parseValue = function parseValue(val, type, format, mul
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store      = __webpack_require__(56)('wks')
-  , uid        = __webpack_require__(37)
-  , Symbol     = __webpack_require__(8).Symbol
-  , USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function(name){
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
@@ -5451,6 +5435,22 @@ module.exports = function (Component) {
     }
   });
 };
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var store      = __webpack_require__(56)('wks')
+  , uid        = __webpack_require__(37)
+  , Symbol     = __webpack_require__(8).Symbol
+  , USE_SYMBOL = typeof Symbol == 'function';
+
+var $exports = module.exports = function(name){
+  return store[name] || (store[name] =
+    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+};
+
+$exports.store = store;
 
 /***/ }),
 /* 8 */
@@ -7449,7 +7449,7 @@ __webpack_require__(257);
 var global        = __webpack_require__(8)
   , hide          = __webpack_require__(17)
   , Iterators     = __webpack_require__(22)
-  , TO_STRING_TAG = __webpack_require__(6)('toStringTag');
+  , TO_STRING_TAG = __webpack_require__(7)('toStringTag');
 
 for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
   var NAME       = collections[i]
@@ -7471,7 +7471,7 @@ module.exports = true;
 
 var def = __webpack_require__(12).f
   , has = __webpack_require__(19)
-  , TAG = __webpack_require__(6)('toStringTag');
+  , TAG = __webpack_require__(7)('toStringTag');
 
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
@@ -7928,7 +7928,7 @@ module.exports = Object.create || function create(O, Properties){
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof   = __webpack_require__(60)
-  , ITERATOR  = __webpack_require__(6)('iterator')
+  , ITERATOR  = __webpack_require__(7)('iterator')
   , Iterators = __webpack_require__(22);
 module.exports = __webpack_require__(4).getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR]
@@ -7942,7 +7942,7 @@ module.exports = __webpack_require__(4).getIteratorMethod = function(it){
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = __webpack_require__(29)
-  , TAG = __webpack_require__(6)('toStringTag')
+  , TAG = __webpack_require__(7)('toStringTag')
   // ES3 wrong here
   , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -7974,7 +7974,7 @@ exports.f = Object.getOwnPropertySymbols;
 /* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(6);
+exports.f = __webpack_require__(7);
 
 /***/ }),
 /* 63 */
@@ -8541,7 +8541,7 @@ var LIBRARY        = __webpack_require__(40)
   , $iterCreate    = __webpack_require__(260)
   , setToStringTag = __webpack_require__(41)
   , getPrototypeOf = __webpack_require__(262)
-  , ITERATOR       = __webpack_require__(6)('iterator')
+  , ITERATOR       = __webpack_require__(7)('iterator')
   , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
   , FF_ITERATOR    = '@@iterator'
   , KEYS           = 'keys'
@@ -8772,7 +8772,7 @@ var Component = __webpack_require__(1);
 var template = __webpack_require__(293);
 var _ = __webpack_require__(2);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var inputRules = __webpack_require__(341);
 var inputFilters = __webpack_require__(342);
 
@@ -23008,7 +23008,7 @@ module.exports = function(iterator, fn, value, entries){
 
 // check on default Array iterator
 var Iterators  = __webpack_require__(22)
-  , ITERATOR   = __webpack_require__(6)('iterator')
+  , ITERATOR   = __webpack_require__(7)('iterator')
   , ArrayProto = Array.prototype;
 
 module.exports = function(it){
@@ -23099,7 +23099,7 @@ module.exports = {
 /* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR     = __webpack_require__(6)('iterator')
+var ITERATOR     = __webpack_require__(7)('iterator')
   , SAFE_CLOSING = false;
 
 try {
@@ -26570,7 +26570,7 @@ var create         = __webpack_require__(58)
   , IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(17)(IteratorPrototype, __webpack_require__(6)('iterator'), function(){ return this; });
+__webpack_require__(17)(IteratorPrototype, __webpack_require__(7)('iterator'), function(){ return this; });
 
 module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -27146,7 +27146,7 @@ var global         = __webpack_require__(8)
   , shared         = __webpack_require__(56)
   , setToStringTag = __webpack_require__(41)
   , uid            = __webpack_require__(37)
-  , wks            = __webpack_require__(6)
+  , wks            = __webpack_require__(7)
   , wksExt         = __webpack_require__(62)
   , wksDefine      = __webpack_require__(63)
   , keyOf          = __webpack_require__(285)
@@ -30451,7 +30451,7 @@ var Component = __webpack_require__(1);
 var template = __webpack_require__(351);
 var _ = __webpack_require__(2);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 /**
  * @class SelectGroup
@@ -30609,7 +30609,7 @@ var Dropdown = __webpack_require__(34);
 var template = __webpack_require__(353);
 var _ = __webpack_require__(2);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 /**
  * @class Suggest
@@ -30862,7 +30862,7 @@ module.exports = "<div class=\"kl-dropdown kl-suggest {class}\" is-dis={disabled
 
 var Dropdown = __webpack_require__(34);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var template = __webpack_require__(355);
 var _ = __webpack_require__(2);
 var Treeview = __webpack_require__(96);
@@ -32494,7 +32494,7 @@ module.exports = "<div class=\"kl-mask {class}\" on-click={this._handleClick($ev
 var _ = __webpack_require__(2);
 var ajax = __webpack_require__(46);
 var Validation = __webpack_require__(9);
-var ValidationMixin = __webpack_require__(7);
+var ValidationMixin = __webpack_require__(6);
 
 var template = __webpack_require__(380);
 
@@ -32678,7 +32678,7 @@ module.exports = "<form class=\"kl-form f-row f-cb {class}\" r-class=\"{{'kl-for
 
 var _ = __webpack_require__(2);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 var template = __webpack_require__(382);
 
@@ -32951,7 +32951,7 @@ module.exports = "<label class=\"kl-check {class}\" is-chk={checked} is-dis={dis
 
 var SourceComponent = __webpack_require__(16);
 var template = __webpack_require__(388);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 /**
  * @class KLCheckGroup
@@ -33136,7 +33136,7 @@ var moment = __webpack_require__(0);
 var polyfill = __webpack_require__(220);
 
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 /**
  * @class KLDatePicker
@@ -33972,7 +33972,7 @@ webpackContext.id = 394;
 var SourceComponent = __webpack_require__(16);
 var template = __webpack_require__(396);
 var _ = __webpack_require__(2);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 
 /**
  * @class KLRadioGroup
@@ -34135,7 +34135,7 @@ module.exports = "<div class=\"kl-unitgroup kl-unitgroup--{size} {class}\" r-hid
 
 var Dropdown = __webpack_require__(34);
 __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var template = __webpack_require__(398);
 var _ = __webpack_require__(2);
 
@@ -34768,7 +34768,7 @@ var template = __webpack_require__(404); /**
 
 var _ = __webpack_require__(2);
 __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var Multiple = __webpack_require__(405);
 var PrivateMethod = __webpack_require__(406);
 
@@ -38047,7 +38047,7 @@ var Component = __webpack_require__(1);
 var template = __webpack_require__(410);
 var _ = __webpack_require__(2);
 var Validation = __webpack_require__(9);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var calcTextareaHeight = __webpack_require__(411);
 
 var bowser = __webpack_require__(23);
@@ -38344,7 +38344,7 @@ var Config = __webpack_require__(68);
 var Component = __webpack_require__(1);
 var UploadList = __webpack_require__(419);
 var UploadCard = __webpack_require__(435);
-var validationMixin = __webpack_require__(7);
+var validationMixin = __webpack_require__(6);
 var tpl = __webpack_require__(437);
 
 /**
@@ -38563,7 +38563,7 @@ module.exports = __webpack_require__(415);
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof   = __webpack_require__(60)
-  , ITERATOR  = __webpack_require__(6)('iterator')
+  , ITERATOR  = __webpack_require__(7)('iterator')
   , Iterators = __webpack_require__(22);
 module.exports = __webpack_require__(4).isIterable = function(it){
   var O = Object(it);
@@ -38690,7 +38690,7 @@ var USE_NATIVE = !!function(){
   try {
     // correct subclassing with @@species support
     var promise     = $Promise.resolve(1)
-      , FakePromise = (promise.constructor = {})[__webpack_require__(6)('species')] = function(exec){ exec(empty, empty); };
+      , FakePromise = (promise.constructor = {})[__webpack_require__(7)('species')] = function(exec){ exec(empty, empty); };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
     return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
   } catch(e){ /* empty */ }
@@ -39011,7 +39011,7 @@ exports.RETURN = RETURN;
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject  = __webpack_require__(13)
   , aFunction = __webpack_require__(49)
-  , SPECIES   = __webpack_require__(6)('species');
+  , SPECIES   = __webpack_require__(7)('species');
 module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
@@ -39133,7 +39133,7 @@ var global      = __webpack_require__(8)
   , core        = __webpack_require__(4)
   , dP          = __webpack_require__(12)
   , DESCRIPTORS = __webpack_require__(14)
-  , SPECIES     = __webpack_require__(6)('species');
+  , SPECIES     = __webpack_require__(7)('species');
 
 module.exports = function(KEY){
   var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
@@ -39875,9 +39875,12 @@ var _index9 = __webpack_require__(35);
 
 var _index10 = _interopRequireDefault(_index9);
 
+var _validationMixin = __webpack_require__(6);
+
+var _validationMixin2 = _interopRequireDefault(_validationMixin);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable */
 var KLTimePicker = _component2.default.extend({
     name: 'kl-time-picker',
     template: _index2.default,
@@ -39896,6 +39899,8 @@ var KLTimePicker = _component2.default.extend({
             steps: []
         });
         this.supr();
+
+        this.initValidation();
     },
     onPick: function onPick(event) {
         this.$emit('pick', event);
@@ -39906,8 +39911,41 @@ var KLTimePicker = _component2.default.extend({
     resetValue: function resetValue(e) {
         e.stopPropagation();
         this.data.value = null;
+    },
+    validate: function validate(on) {
+        var data = this.data;
+        var date = data.date || '';
+
+        if (data.readonly || data.disabled) {
+            return {
+                success: true
+            };
+        }
+
+        var result = { success: true, message: '' };
+        var value = this.data.value;
+
+        if (data.required && (value === undefined || value === null)) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
-}).component('kl-drop', _index8.default).component('kl-drop-header', _index10.default).component('kl-time-range-panel', _index6.default).component('kl-time-panel', _index4.default);
+}).use(_validationMixin2.default).component('kl-drop', _index8.default).component('kl-drop-header', _index10.default).component('kl-time-range-panel', _index6.default).component('kl-time-panel', _index4.default); /* eslint-disable */
+
 
 module.exports = KLTimePicker;
 
@@ -39915,7 +39953,7 @@ module.exports = KLTimePicker;
 /* 443 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<kl-drop isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"time\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                     on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'timerange'}\n    <kl-time-range-panel\n        isShow={isShow}\n        value={value}\n        confirm=\"{confirm}\"\n        on-pick={this.onPick($event)}\n        on-format={this.getVisualValue($event)}\n        on-pickSuccess=\"{isShow = false}\"\n        ></kl-time-range-panel>\n    {#else}\n    <kl-time-panel\n        disabledHours=\"{disabledHours}\"\n        disabledMinutes=\"{disabledMinutes}\"\n        disabledSeconds=\"{disabledSeconds}\"\n        disabledMinutes=\"{disabledMinutes}\"\n        hideDisabledOptions=\"{hideDisabledOptions}\"\n        format=\"{format}\"\n        steps=\"{steps}\"\n\n        isShow={isShow}\n        value={value}\n        confirm=\"{confirm}\"\n        on-pick={this.onPick($event)}\n        on-format={this.getVisualValue($event)}\n        on-pickSuccess=\"{isShow = false}\"\n    ></kl-time-panel>\n    {/if}\n</kl-drop>\n"
+module.exports = "\n<kl-drop isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"time\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                     on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'timerange'}\n    <kl-time-range-panel\n        isShow={isShow}\n        value={value}\n        confirm=\"{confirm}\"\n        on-pick={this.onPick($event)}\n        on-format={this.getVisualValue($event)}\n        on-pickSuccess=\"{isShow = false}\"\n        ></kl-time-range-panel>\n    {#else}\n    <kl-time-panel\n        disabledHours=\"{disabledHours}\"\n        disabledMinutes=\"{disabledMinutes}\"\n        disabledSeconds=\"{disabledSeconds}\"\n        disabledMinutes=\"{disabledMinutes}\"\n        hideDisabledOptions=\"{hideDisabledOptions}\"\n        format=\"{format}\"\n        steps=\"{steps}\"\n\n        isShow={isShow}\n        value={value}\n        confirm=\"{confirm}\"\n        on-pick={this.onPick($event)}\n        on-format={this.getVisualValue($event)}\n        on-pickSuccess=\"{isShow = false}\"\n    ></kl-time-panel>\n    {/if}\n</kl-drop>\n{#if tip && !hideTip}\n    <span class=\"kl-tip kl-tip--{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <kl-icon type={state} />\n        <span class=\"kl-tip__msg\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
 /* 444 */
@@ -40595,10 +40633,11 @@ var _index9 = __webpack_require__(35);
 
 var _index10 = _interopRequireDefault(_index9);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _validationMixin = __webpack_require__(6);
 
-// components
-/* eslint-disable */
+var _validationMixin2 = _interopRequireDefault(_validationMixin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var KLDate = _component2.default.extend({
     name: 'kl-date',
@@ -40622,6 +40661,8 @@ var KLDate = _component2.default.extend({
             splitPanels: false
         });
         this.supr();
+
+        this.initValidation();
     },
     init: function init() {
         if (!this.data.format) {
@@ -40649,8 +40690,43 @@ var KLDate = _component2.default.extend({
     resetValue: function resetValue(e) {
         e.stopPropagation();
         this.data.value = null;
+    },
+    validate: function validate(on) {
+        var data = this.data;
+        var date = data.date || '';
+
+        if (data.readonly || data.disabled) {
+            return {
+                success: true
+            };
+        }
+
+        var result = { success: true, message: '' };
+        var value = this.data.value;
+
+        if (data.required && (value === undefined || value === null)) {
+            result.success = false;
+            result.message = this.data.message || '请选择';
+            this.data.state = 'error';
+        } else {
+            result.success = true;
+            result.message = '';
+            this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+            sender: this,
+            on: on,
+            result: result
+        });
+
+        return result;
     }
-}).component('kl-drop', _index8.default).component('kl-drop-header', _index10.default).component('kl-date-range-panel', _index6.default).component('kl-date-panel', _index4.default);
+}).use(_validationMixin2.default).component('kl-drop', _index8.default).component('kl-drop-header', _index10.default).component('kl-date-range-panel', _index6.default).component('kl-date-panel', _index4.default);
+
+// components
+/* eslint-disable */
 
 module.exports = KLDate;
 
@@ -40658,7 +40734,7 @@ module.exports = KLDate;
 /* 462 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<kl-drop placement={placement} appendToBody=\"{appendToBody}\" isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"calendar\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                 on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'daterange' || type == 'datetimerange'}\n    <kl-date-range-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        type=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        splitPanels=\"{splitPanels}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n        ></kl-date-range-panel>\n    {#else}\n    <kl-date-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        selectionMode=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n    ></kl-date-panel>\n    {/if}\n</kl-drop>\n"
+module.exports = "\n<kl-drop placement={placement} appendToBody=\"{appendToBody}\" isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"calendar\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                 on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'daterange' || type == 'datetimerange'}\n    <kl-date-range-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        type=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        splitPanels=\"{splitPanels}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n        ></kl-date-range-panel>\n    {#else}\n    <kl-date-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        selectionMode=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n    ></kl-date-panel>\n    {/if}\n</kl-drop>\n{#if tip && !hideTip}\n    <span class=\"kl-tip kl-tip--{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <kl-icon type={state} />\n        <span class=\"kl-tip__msg\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
 /* 463 */
