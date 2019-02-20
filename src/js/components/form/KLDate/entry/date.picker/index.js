@@ -9,6 +9,8 @@ import KLDateRangePanel from '../../panel/date.range/index';
 import KLDrop from '../../../../layout/KLDrop/index';
 import KLDropHeader from '../../../../layout/KLDrop/KLDropHeader/index';
 
+import ValidationMixin from '../../../../../util/validationMixin';
+
 const KLDate = Component.extend({
     name: 'kl-date',
     template,
@@ -29,6 +31,8 @@ const KLDate = Component.extend({
             splitPanels: false,
         });
         this.supr();
+
+        this.initValidation()
     },
     init() {
         if (!this.data.format) {
@@ -56,8 +60,41 @@ const KLDate = Component.extend({
     resetValue(e) {
         e.stopPropagation();
         this.data.value = null;
-    }
+    },
+    validate(on) {
+        const data = this.data;
+        const date = data.date || '';
+
+        if (data.readonly || data.disabled) {
+          return {
+            success: true,
+          };
+        }
+
+        const result = { success: true, message: '' };
+        let value = this.data.value;
+
+        if (data.required && (value === undefined || value === null)) {
+          result.success = false;
+          result.message = this.data.message || '请选择';
+          this.data.state = 'error';
+        } else {
+          result.success = true;
+          result.message = '';
+          this.data.state = '';
+        }
+        this.data.tip = result.message;
+
+        this.$emit('validate', {
+          sender: this,
+          on,
+          result,
+        });
+
+        return result;
+    },
 })
+    .use(ValidationMixin)
     .component('kl-drop', KLDrop)
     .component('kl-drop-header', KLDropHeader)
     .component('kl-date-range-panel', KLDateRangePanel)
