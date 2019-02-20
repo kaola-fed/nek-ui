@@ -25503,7 +25503,12 @@ var KLTable = Component.extend({
       checkAll: false,
       initFinished: false,
       minColWidth: 50,
-      isMobile: u.browser.versions.mobile
+      isMobile: u.browser.versions.mobile,
+
+      // 定时器
+      _updateTimer: null,
+      _getHeaderHeightTimer: null,
+      _sourceChangeTimer: null
     });
     this.supr(data);
     this.data.minColWidth = +this.data.minColWidth;
@@ -25517,17 +25522,16 @@ var KLTable = Component.extend({
   _initTable: function _initTable() {
     var _this = this;
 
-    var self = this;
-    setTimeout(function () {
-      self._updateParentWidth();
-      self._updateSticky();
-      self._updateTableWidth();
+    this.data._updateTimer = setTimeout(function () {
+      _this._updateParentWidth();
+      _this._updateSticky();
+      _this._updateTableWidth();
       _this._updateExpandHeight();
-      self._initWatchers();
+      _this._initWatchers();
       _this.$update();
     }, 0);
-    setTimeout(function () {
-      self._getHeaderHeight();
+    this.data._getHeaderHeightTimer = setTimeout(function () {
+      _this._getHeaderHeight();
     }, 400);
   },
   _initWatchers: function _initWatchers() {
@@ -25579,10 +25583,16 @@ var KLTable = Component.extend({
   _onTableWidthChange: function _onTableWidthChange() {
     this._updateFixedTablePosRight();
   },
-  _onSouceChange: function _onSouceChange() {
-    var self = this;
-    setTimeout(function () {
-      self._updateSticky();
+  _onSouceChange: function _onSouceChange(val) {
+    var _this2 = this;
+
+    // 处理初始加载为[]的情况，列表加载会触发两次[]-->有数据，忽略第一次.
+    // 考虑到以下方法主要是_updateSticky，就算是查询空数据无影响
+    if (!val || val.length < 1) {
+      return;
+    }
+    this.data._sourceChangeTimer = setTimeout(function () {
+      _this2._updateSticky();
     }, 500);
   },
   _onWindowScroll: function _onWindowScroll() {
@@ -25697,13 +25707,13 @@ var KLTable = Component.extend({
     }, 200);
   },
   _updateExpandHeight: function _updateExpandHeight() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (!this.data.source) {
       return;
     }
     this.data.source.forEach(function (row, index) {
-      var expandElement = _this2.$refs['expand' + index];
+      var expandElement = _this3.$refs['expand' + index];
       if (expandElement && row._expanddingColumn) {
         row._expandHeight = expandElement.clientHeight;
       }
@@ -25892,7 +25902,7 @@ var KLTable = Component.extend({
     }, e.args));
   },
   _onItemCheckChange: function _onItemCheckChange(e) {
-    var _this3 = this;
+    var _this4 = this;
 
     /**
          * @event KLTable#checkchange 多选事件
@@ -25902,12 +25912,12 @@ var KLTable = Component.extend({
          * @property {object} checkedEvent 多选事件对象源
          */
     setTimeout(function () {
-      _this3.$emit('checkchange', {
-        sender: _this3,
+      _this4.$emit('checkchange', {
+        sender: _this4,
         item: e.item,
         checked: e.checked,
         checkedEvent: e.event,
-        checkAll: _this3.data.checkAll
+        checkAll: _this4.data.checkAll
       });
     });
   },
@@ -25940,11 +25950,11 @@ var KLTable = Component.extend({
     });
   },
   _onExpand: function _onExpand(e) {
-    var _this4 = this;
+    var _this5 = this;
 
     setTimeout(function () {
-      _this4._updateExpandHeight();
-      _this4.$update();
+      _this5._updateExpandHeight();
+      _this5.$update();
     }, 0);
     this.$emit('expand', {
       sender: this,
@@ -25978,12 +25988,12 @@ var KLTable = Component.extend({
     this._forceRender();
   },
   _forceRender: function _forceRender() {
-    var _this5 = this;
+    var _this6 = this;
 
     var strip = this.data.strip;
     this.$update('strip', !strip);
     setTimeout(function () {
-      _this5.$update('strip', strip);
+      _this6.$update('strip', strip);
     }, 50);
   },
   _isShow: function _isShow() {
@@ -25999,7 +26009,12 @@ var KLTable = Component.extend({
     this.supr();
   },
   removeEventListener: function removeEventListener() {
+    // 清楚定时器
     clearInterval(this.data._quickTimer);
+    clearTimeout(this.data._updateTimer);
+    clearTimeout(this.data._getHeaderHeightTimer);
+    clearTimeout(this.data._sourceChangeTimer);
+
     window.document.removeEventListener('scroll', this._onWindowScroll);
     window.removeEventListener('resize', this._onWindowResize);
   }
