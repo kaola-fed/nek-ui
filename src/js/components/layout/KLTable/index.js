@@ -107,6 +107,11 @@ const KLTable = Component.extend({
       initFinished: false,
       minColWidth: 50,
       isMobile: u.browser.versions.mobile,
+
+      // 定时器
+      _updateTimer: null,
+      _getHeaderHeightTimer: null,
+      _sourceChangeTimer: null,
     });
     this.supr(data);
     this.data.minColWidth = +this.data.minColWidth;
@@ -118,17 +123,16 @@ const KLTable = Component.extend({
     this._initTable();
   },
   _initTable() {
-    const self = this;
-    setTimeout(() => {
-      self._updateParentWidth();
-      self._updateSticky();
-      self._updateTableWidth();
+    this.data._updateTimer = setTimeout(() => {
+      this._updateParentWidth();
+      this._updateSticky();
+      this._updateTableWidth();
       this._updateExpandHeight();
-      self._initWatchers();
+      this._initWatchers();
       this.$update();
     }, 0);
-    setTimeout(() => {
-      self._getHeaderHeight();
+    this.data._getHeaderHeightTimer = setTimeout(() => {
+      this._getHeaderHeight();
     }, 400);
   },
   _initWatchers() {
@@ -181,10 +185,14 @@ const KLTable = Component.extend({
   _onTableWidthChange() {
     this._updateFixedTablePosRight();
   },
-  _onSouceChange() {
-    const self = this;
-    setTimeout(() => {
-      self._updateSticky();
+  _onSouceChange(val) {
+    // 处理初始加载为[]的情况，列表加载会触发两次[]-->有数据，忽略第一次.
+    // 考虑到以下方法主要是_updateSticky，就算是查询空数据无影响
+    if (!val || val.length < 1) {
+      return;
+    }
+    this.data._sourceChangeTimer = setTimeout(() => {
+      this._updateSticky();
     }, 500);
   },
   _onWindowScroll() {
@@ -604,7 +612,12 @@ const KLTable = Component.extend({
     this.supr();
   },
   removeEventListener() {
+    // 清楚定时器
     clearInterval(this.data._quickTimer);
+    clearTimeout(this.data._updateTimer);
+    clearTimeout(this.data._getHeaderHeightTimer);
+    clearTimeout(this.data._sourceChangeTimer);
+
     window.document.removeEventListener('scroll', this._onWindowScroll);
     window.removeEventListener('resize', this._onWindowResize);
   },
