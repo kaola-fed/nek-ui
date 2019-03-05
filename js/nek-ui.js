@@ -25020,9 +25020,21 @@ var KLTabs = Component.extend({
     $init: function $init() {
       var _this2 = this;
 
-      setTimeout(function () {
+      // 初始化时检查 $refs.wrap 和 $refs.nav 是否已经加载了
+      // 给个最大次数防止一直执行
+      var count = 0;
+      var interval = setInterval(function () {
+        if (count >= 20) {
+          interval && clearInterval(interval);
+          interval = null;
+          return;
+        }
+        count += 1;
+        if (!_this2.$refs.wrap || !_this2.$refs.nav) {
+          return;
+        }
         _this2.update();
-      }, 500);
+      }, 100);
     }
   },
   update: function update() {
