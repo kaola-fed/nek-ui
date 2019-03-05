@@ -4,7 +4,7 @@
     <title>nek-ui</title>
     <meta charset="utf-8">
     <!--  nek-ui -->
-    <link href="//localhost:8080/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+    <link href="//localhost:8082/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
     <style type="text/css">
         #app {
             margin: 100px;
@@ -26,24 +26,40 @@
 <div id="app">
 
 </div>
-<script src="//localhost:8080/vendor/regular.js"></script>
-<script src="//localhost:8080/js/nek-ui.js"></script>
+<script src="//localhost:8082/vendor/regular.js"></script>
+<script src="//localhost:8082/js/nek-ui.js"></script>
 <script>
     new NEKUI.Component({
         template: `
-            <kl-form ref="form">
-                <kl-input rules={isFilledRule} type="int" value="{value1}" />
-                <kl-input rules={isFilledRule} type="int" value="{value2}" />
-                <kl-input rules={isFilledRule} type="int" value="{value3}" />
-                <kl-input rules={isFilledRule} type="int" value="{value4}" />
-                <kl-input rules={isFilledRule} type="int" value="{value5}" />
-                <kl-input rules={isFilledRule} type="int" value="{value6}" />
-                <kl-input rules={isFilledRule} type="float" value="{value7}" />
-                <kl-input rules={isFilledRule} type="float" value="{value8}" />
-                <kl-input rules={isFilledRule} type="float" value="{value9}" />
-                <kl-input rules={isFilledRule} type="float" value="{value10}" />
-                <kl-button on-click="{this.validate()}" title="提交" />
-            </kl-form>
+            <kl-tabs>
+                <kl-tab title="Tab1">Content1</kl-tab>
+                <kl-tab title="Tab2">Content2</kl-tab>
+                <kl-tab title="Tab3">Content3</kl-tab>
+                <kl-tab title="Tab4">Content4</kl-tab>
+                <kl-tab title="Tab5">Content5</kl-tab>
+                <kl-tab title="Tab6">Content6</kl-tab>
+                <kl-tab title="Tab1">Content1</kl-tab>
+                <kl-tab title="Tab2">Content2</kl-tab>
+                <kl-tab title="Tab3">Content3</kl-tab>
+                <kl-tab title="Tab4">Content4</kl-tab>
+                <kl-tab title="Tab5">Content5</kl-tab>
+                <kl-tab title="Tab6">Content6</kl-tab>
+            </kl-tabs>
+
+            <kl-tabs type="card">
+                <kl-tab title="Tab1">Content1</kl-tab>
+                <kl-tab title="Tab2">Content2</kl-tab>
+                <kl-tab title="Tab3">Content3</kl-tab>
+                <kl-tab title="Tab4">Content4</kl-tab>
+                <kl-tab title="Tab5">Content5</kl-tab>
+                <kl-tab title="Tab6">Content6</kl-tab>
+                <kl-tab title="Tab1">Content1</kl-tab>
+                <kl-tab title="Tab2">Content2</kl-tab>
+                <kl-tab title="Tab3">Content3</kl-tab>
+                <kl-tab title="Tab4">Content4</kl-tab>
+                <kl-tab title="Tab5">Content5</kl-tab>
+                <kl-tab title="Tab6">Content6</kl-tab>
+            </kl-tabs>
     `,
     validate: function() {
     var $form = this.$refs.form;
