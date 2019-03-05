@@ -38,7 +38,9 @@ const KLTabs = Component.extend({
       selected: undefined,
       titleTemplate: null,
       offset: 0,
-      navStyle: {},
+      navStyle: {
+        transform: 'translateX(0)',
+      },
       type: 'line',
       crtTabElem: null,
     });
@@ -65,9 +67,21 @@ const KLTabs = Component.extend({
   },
   events: {
     $init() {
-      setTimeout(() => {
+      // 初始化时检查 $refs.wrap 和 $refs.nav 是否已经加载了
+      // 给个最大次数防止一直执行
+      let count = 0;
+      let interval = setInterval(() => {
+        if (count >= 20) {
+          interval && clearInterval(interval);
+          interval = null;
+          return;
+        }
+        count += 1;
+        if (!this.$refs.wrap || !this.$refs.nav) {
+          return;
+        }
         this.update();
-      }, 50);
+      }, 100);
     },
   },
   update() {
