@@ -67,7 +67,7 @@ const KLTabs = Component.extend({
     $init() {
       setTimeout(() => {
         this.update();
-      }, 50);
+      }, 500);
     },
   },
   update() {
