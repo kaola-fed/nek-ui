@@ -24988,7 +24988,9 @@ var KLTabs = Component.extend({
       selected: undefined,
       titleTemplate: null,
       offset: 0,
-      navStyle: {},
+      navStyle: {
+        transform: 'translateX(0)'
+      },
       type: 'line',
       crtTabElem: null
     });
