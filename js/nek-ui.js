@@ -25020,7 +25020,7 @@ var KLTabs = Component.extend({
 
       setTimeout(function () {
         _this2.update();
-      }, 50);
+      }, 500);
     }
   },
   update: function update() {
