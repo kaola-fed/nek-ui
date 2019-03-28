@@ -47,7 +47,7 @@ const FileUnit = Component.extend({
       });
       return true;
     }
-    // for initial uploaded files
+        // for initial uploaded files
     if (data.status === 'ready') {
       this.uploadFile(file.rawFile);
     }
@@ -183,19 +183,36 @@ const FileUnit = Component.extend({
   },
 
   downloadFile() {
-    const a = document.createElement('a');
-    a.download = this.data.filename;
-    if (this.data.file.type !== 'doc') {
+    if (this.data.file.type !== 'image') {
+      const url = this.urlAddDownload(this.data.url, this.data.filename);
+      window.open(url, '_self');
+      return;
+    }
+    try {
+      const a = document.createElement('a');
+      a.download = this.data.filename;
       fetch(this.data.url).then(res => res.blob().then((blob) => {
         const blobUrl = window.URL.createObjectURL(blob);
         a.href = blobUrl;
         a.click();
         window.URL.revokeObjectURL(blobUrl);
       }));
-    } else {
-      a.href = this.data.url;
-      a.click();
+    } catch (e) {
+      const url = this.urlAddDownload(this.data.url, this.data.filename);
+      window.open(url, '_self');
     }
+  },
+  urlAddDownload(url, filename = '') {
+    let str = url.split('#')[0];
+    if (/\?/g.test(url)) {
+      str += `&download=${filename}`;
+    } else {
+      str += `?download=${filename}`;
+    }
+    if (url.split('#')[1]) {
+      str += `#${url.split('#')[1]}`;
+    }
+    return str;
   },
 });
 
