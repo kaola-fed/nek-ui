@@ -7,7 +7,7 @@
         {#elseif type === 'unknown'}
             <span class="u-txt" on-click={this.onPreview($event)}>{this.$trans('UNKNOWN')}</span>
         {#elseif type === 'pdf'}
-            <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
+            <span class="u-txt u-pdf" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {#else}<!-- TEXT, DOC, JS, HTML, AUDIO, VIDEO -->
             <span class="u-txt" on-click={this.onPreview($event)}>{type.toUpperCase()}</span>
         {/if}

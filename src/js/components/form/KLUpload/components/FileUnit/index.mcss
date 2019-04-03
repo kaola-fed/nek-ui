@@ -42,6 +42,9 @@ $unit-length = 50;
             text-align: center;
             cursor: default;
         }
+        .u-txt.u-pdf {
+            cursor: zoom-in;
+        }
         .m-status {
             .u-failed, .u-uploading {
                 position: absolute;
