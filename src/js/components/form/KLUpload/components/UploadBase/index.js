@@ -299,27 +299,33 @@ const UploadBase = Component.extend({
     data.preCheckInfo = '';
 
     const fileList = [].slice.call(files);
+    const checkPromise = [];
     fileList.forEach((file) => {
       if (data.fileUnitList.length < data.numMax) {
         const checker = self.preCheck(file);
-        checker.then((preCheckInfo) => {
-          data.preCheckInfo = preCheckInfo;
-          self.$update();
-          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
-            const fileunit = {
-              rawFile: file,
-              name: file.name,
-              url: window.URL.createObjectURL(file),
-              type: self.getFileType(file),
-              flag: Config.flagMap.ADDED,
-              uid: utils.genUid(),
-              status: self.data.autoUpload ? 'ready' : 'wait',
-            };
-            data.fileUnitList.push(fileunit);
-            self.$update();
-          }
-        });
+        checkPromise.push(checker);
       }
+    });
+
+    Promise.all(checkPromise).then((values) => {
+      values.forEach((preCheckInfo, index) => {
+        data.preCheckInfo = preCheckInfo;
+        self.$update();
+        if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
+          const file = fileList[index];
+          const fileunit = {
+            rawFile: file,
+            name: file.name,
+            url: window.URL.createObjectURL(file),
+            type: self.getFileType(file),
+            flag: Config.flagMap.ADDED,
+            uid: utils.genUid(),
+            status: self.data.autoUpload ? 'ready' : 'wait',
+          };
+          data.fileUnitList.push(fileunit);
+          self.$update();
+        }
+      });
     });
   },
 

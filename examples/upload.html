@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>nek-ui</title>
+    <meta charset="utf-8">
+    <!--  nek-ui -->
+    <link href="//localhost:8080/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        #app {
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+
+</div>
+<script src="//localhost:8080/vendor/regular.js"></script>
+<script src="//localhost:8080/js/nek-ui.js"></script>
+<script>
+    new NEKUI.Component({
+        template: `
+            <kl-upload action='https://nos.kaolafed.com/upload' multiple={true}></kl-upload>
+    `,
+        data: {
+            value: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
+            source: [
+                {name: '母婴儿童'},
+                {name: '美容彩妆'},
+                {name: '服饰鞋包（禁用）', disabled: true},
+                {name: '家居个护（禁用）', disabled: true, tip: 'tip'},
+                {name: '营养保健（禁用）', disabled: true, tip: 'tip', placement: 'bottom'}
+            ],
+            shortcuts: [
+                {
+                    text: 'Today',
+                    value () {
+                        return new Date();
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'Yesterday',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                },
+                {
+                    text: 'One week',
+                    value () {
+                        const date = new Date();
+                        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+                        return date;
+                    },
+                    onClick: (picker) => {
+                    }
+                }
+            ]
+        }
+    }).$inject('#app');
+</script>
+</body>
+
+</html>
