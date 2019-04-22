@@ -31,6 +31,12 @@ const KLDrop = Component.extend({
       });
     }
   },
+  onHidePopper() {
+    this.$emit('hide');
+  },
+  onShowPopper() {
+    this.$emit('show');
+  },
 });
 
 module.exports = KLDrop;
