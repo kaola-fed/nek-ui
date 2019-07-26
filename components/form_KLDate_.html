@@ -503,6 +503,84 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-date</span> <span class="attr">value</span>=<span class="string">"&#123;value&#125;"</span> <span class="attr">type</span>=<span class="string">"daterange"</span> <span class="attr">splitPanels</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-date</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>选择的是：&#123;value&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">value</span>: <span class="string">''</span>,</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLDate"></a></p>
+<h2 id="KLDate"><a href="#KLDate" class="headerlink" title="KLDate"></a><span class="param-title">KLDate</span><a name="new_KLDate_new"></a></h2><h3 id="KLDate-1"><a href="#KLDate-1" class="headerlink" title="KLDate"></a><span class="param-title">KLDate</span></h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td><code>&quot;date&quot;</code></td>
+<td>=&gt; 日期类型：date /datetime /daterange /datetimerange /year /month</td>
+</tr>
+<tr>
+<td>showWeekNumbers</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 开启后，可以显示星期数。</td>
+</tr>
+<tr>
+<td>splitPanels</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 多选的时候日历面板是否联动，开启属性 split-panels 后，左右两面板在切换年、月时不联动。详见示例</td>
+</tr>
+<tr>
+<td>confirm</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否点击确认后才关闭下拉，设置属性 confirm，选择日期后，选择器不会主动关闭，需用户确认后才可关闭。</td>
+</tr>
+<tr>
+<td>disabledDate</td>
+<td><code>function</code></td>
+<td></td>
+<td>=&gt; 设置不可选择的日期，参数为当前的日期，需要返回 Boolean 是否禁用这天。详见示例</td>
+</tr>
+<tr>
+<td>shortcuts</td>
+<td><code>array</code></td>
+<td></td>
+<td>=&gt; 设置快捷选项，每项内容：<br> text（String）：显示的文案；<br> value（Function）：返回指定的日期，如需自己控制逻辑，可不设置，并使用 onClick 回调；<br> onClick（Function）：点击时的回调，参数为当前日期选择器的 Vue 实例，当需要自定义复杂操作时，可以使用 。详见示例</td>
+</tr>
+<tr>
+<td>format</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 展示的日期格式 <br> date / daterange：yyyy-MM-dd <br> datetime / datetimerange：yyyy-MM-dd HH:mm:ss <br> year：yyyy <br> month：yyyy-MM</td>
+</tr>
+</tbody>
+</table>
+<p><a name="KLDate+event_pick 选中事件"></a></p>
+<h3 id="pick-选中事件Event"><a href="#pick-选中事件Event" class="headerlink" title="pick 选中事件Event"></a><span class="param-title">pick 选中事件</span><span class="type-tag type-tag-event">Event</span></h3><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;

@@ -35128,6 +35128,11 @@ var KLSelect = _sourceComponent2.default.extend({
     if (open === undefined) open = !this.data.open;
     this.data.open = open;
 
+    /**
+     * @event KLSelect#toggle 下拉关闭还是打开
+     * @property {object} sender 事件发送对象
+     * @property {object} open 下拉状态
+     */
     this.$emit('toggle', {
       sender: this,
       open: open
