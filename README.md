@@ -3,7 +3,7 @@ UI components based on [RegularJS][regularjs]
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
 
-[=> Documents <=](https://kaola-fed.github.io)
+[=> Documents <=](https://nek-ui.kaolafed.com)
 
 [=> CodePen <=](http://codepen.io/int64ago/pen/WRmzPV)
 
