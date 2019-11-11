@@ -3,7 +3,7 @@
   "description": "UI components based on RegularJS",
   "version": "0.6.2",
   "main": "./dist/js/nek-ui.js",
-  "homepage": "https://nek-ui.kaolafed.com/",
+  "homepage": "https://kaola-fed.github.io/",
   "license": "MIT",
   "files": [
     "dist"
