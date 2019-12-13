@@ -185,10 +185,12 @@ const FileUnit = Component.extend({
 
 FileUnit.filter('download', (url, filename) => {
   let str = url.split('#')[0];
+  // 对文件名进行编码，主要用于处理如&等特殊字符
+  const name = encodeURIComponent(filename);
   if (/\?/g.test(url)) {
-    str += `&download=${filename}`;
+    str += `&download=${name}`;
   } else {
-    str += `?download=${filename}`;
+    str += `?download=${name}`;
   }
   if (url.split('#')[1]) {
     str += `#${url.split('#')[1]}`;
