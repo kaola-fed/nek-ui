@@ -7543,6 +7543,11 @@ var reqwest = __webpack_require__(347);
 
 var ajax = {};
 
+function readCookie(name) {
+  var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+  return match ? decodeURIComponent(match[3]) : null;
+}
+
 ajax.request = function (opt) {
   var oldError = opt.error,
       oldSuccess = opt.success,
@@ -7552,6 +7557,9 @@ ajax.request = function (opt) {
   opt.data = opt.data || {};
 
   opt.type = opt.type || 'json';
+
+  opt.headers = opt.headers || {};
+  opt.headers['X-XSRF-TOKEN'] = readCookie('XSRF-TOKEN') || '';
 
   if (!opt.contentType && opt.method && opt.method.toLowerCase() !== 'get') {
     opt.contentType = 'application/json';
@@ -39367,12 +39375,10 @@ var FileUnit = Component.extend({
 
 FileUnit.filter('download', function (url, filename) {
   var str = url.split('#')[0];
-  // 对文件名进行编码，主要用于处理如&等特殊字符
-  var name = encodeURIComponent(filename);
   if (/\?/g.test(url)) {
-    str += '&download=' + name;
+    str += '&download=' + filename;
   } else {
-    str += '?download=' + name;
+    str += '?download=' + filename;
   }
   if (url.split('#')[1]) {
     str += '#' + url.split('#')[1];

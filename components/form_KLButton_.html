@@ -482,7 +482,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">icon</span>=<span class="string">"download"</span> <span class="attr">download</span>=<span class="string">&#123;download&#125;</span> <span class="attr">title</span>=<span class="string">"导出文件"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.download()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">download</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.download = <span class="string">'https://haitao.nos.netease.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">download</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.data.download = <span class="string">'https://kaola-haitao.oss.kaolacdn.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="按钮与异步请求结合"><a href="#按钮与异步请求结合" class="headerlink" title="按钮与异步请求结合"></a>按钮与异步请求结合</h3><p>实际业务中推荐在全局改动一下异步请求的方法，传入一个btn参数，请求开始的时候设置btn为loading的状态，结束的时候还原回来。点击一下查看效果</p>
@@ -746,7 +746,7 @@ var index = 0;
 var component = new NEKUI.Component({
     template: template,
     download: function() {
-        this.data.download = 'https://haitao.nos.netease.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
+        this.data.download = 'https://kaola-haitao.oss.kaolacdn.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
     }
 });
 
@@ -771,7 +771,7 @@ var component = new NEKUI.Component({
 var component = new NEKUI.Component({
     template: template,
     download: function() {
-        this.data.download = 'https://haitao.nos.netease.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
+        this.data.download = 'https://kaola-haitao.oss.kaolacdn.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
     }
 });
 `

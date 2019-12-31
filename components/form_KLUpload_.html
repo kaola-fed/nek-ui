@@ -454,7 +454,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">onLoadInterceptor</span>=<span class="string">&#123;this.onLoadInterceptor&#125;</span> <span class="attr">on-preview</span>=<span class="string">&#123;this.onPreview($event)&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPreview</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(e.file.type === <span class="string">'pdf'</span>) &#123;</div><div class="line">            <span class="built_in">window</span>.open(e.file.url);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//transform &#123;code: 200, data: &#123;...&#125;&#125; to &#123;name: 'xxx', url: 'xxx'&#125;</span></div><div class="line">    <span class="comment">/*onLoadInterceptor: function(json)&#123;</span></div><div class="line">      if(json.code == 200)&#123;</div><div class="line">        var data = json.data || &#123;&#125;;</div><div class="line">        if(Array.isArray(data))&#123;</div><div class="line">            data = data[0];</div><div class="line">        &#125;</div><div class="line">        return data;</div><div class="line">      &#125;</div><div class="line">      return false;</div><div class="line">    &#125;*/</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">onPreview</span>: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(e.file.type === <span class="string">'pdf'</span>) &#123;</div><div class="line">            <span class="built_in">window</span>.open(e.file.url);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//transform &#123;code: 200, data: &#123;...&#125;&#125; to &#123;name: 'xxx', url: 'xxx'&#125;</span></div><div class="line">    <span class="comment">/*onLoadInterceptor: function(json)&#123;</span></div><div class="line">      if(json.code == 200)&#123;</div><div class="line">        var data = json.data || &#123;&#125;;</div><div class="line">        if(Array.isArray(data))&#123;</div><div class="line">            data = data[0];</div><div class="line">        &#125;</div><div class="line">        return data;</div><div class="line">      &#125;</div><div class="line">      return false;</div><div class="line">    &#125;*/</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="卡片展示形式，用于表格内上传"><a href="#卡片展示形式，用于表格内上传" class="headerlink" title="卡片展示形式，用于表格内上传"></a>卡片展示形式，用于表格内上传</h3><div class="m-example"></div>
@@ -486,13 +486,13 @@
 <h3 id="行布局"><a href="#行布局" class="headerlink" title="行布局"></a>行布局</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">num-perline</span>=<span class="string">&#123;2&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="只读模式"><a href="#只读模式" class="headerlink" title="只读模式"></a>只读模式</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">readonly</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.JPG'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span>,</div><div class="line">          <span class="attr">class</span>: <span class="string">'my-img-test'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.JPG'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span>,</div><div class="line">          <span class="attr">class</span>: <span class="string">'my-img-test'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="指定宽高或宽高比"><a href="#指定宽高或宽高比" class="headerlink" title="指定宽高或宽高比"></a>指定宽高或宽高比</h3><p>只作用于图片</p>
@@ -509,13 +509,13 @@
 <h3 id="文件上传前的校验（文件格式限制为图片）"><a href="#文件上传前的校验（文件格式限制为图片）" class="headerlink" title="文件上传前的校验（文件格式限制为图片）"></a>文件上传前的校验（文件格式限制为图片）</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-upload</span>=<span class="string">&#123;this.beforeUpload&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeUpload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> fileTypeCheck = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> msg = <span class="string">''</span>;</div><div class="line">            <span class="keyword">if</span> (!<span class="regexp">/image\/.*/</span>.test(file.type)) &#123;</div><div class="line">                msg = <span class="string">'格式错误'</span>;</div><div class="line">            &#125;</div><div class="line">            resolve(msg);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(fileTypeCheck);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeUpload</span>: <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> fileTypeCheck = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> msg = <span class="string">''</span>;</div><div class="line">            <span class="keyword">if</span> (!<span class="regexp">/image\/.*/</span>.test(file.type)) &#123;</div><div class="line">                msg = <span class="string">'格式错误'</span>;</div><div class="line">            &#125;</div><div class="line">            resolve(msg);</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(fileTypeCheck);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="文件删除前的确认"><a href="#文件删除前的确认" class="headerlink" title="文件删除前的确认"></a>文件删除前的确认</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'https://nos.kaolafed.com/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">before-remove</span>=<span class="string">&#123;this.beforeRemove&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeRemove</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> file = item.file;</div><div class="line">        <span class="keyword">var</span> removeConfirm = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(<span class="string">'确认删除'</span> + file.name + <span class="string">'?'</span>);</div><div class="line">            modal.$on(<span class="string">'ok'</span>, () =&gt; resolve(<span class="literal">true</span>));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(removeConfirm);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">beforeRemove</span>: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> file = item.file;</div><div class="line">        <span class="keyword">var</span> removeConfirm = <span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> modal = NEKUI.KLModal.confirm(<span class="string">'确认删除'</span> + file.name + <span class="string">'?'</span>);</div><div class="line">            modal.$on(<span class="string">'ok'</span>, () =&gt; resolve(<span class="literal">true</span>));</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(removeConfirm);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="选择文件后不上传"><a href="#选择文件后不上传" class="headerlink" title="选择文件后不上传"></a>选择文件后不上传</h3><ul>
@@ -524,7 +524,7 @@
 <div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">autoUpload</span>=<span class="string">&#123;false&#125;</span> <span class="attr">formData</span>=<span class="string">&#123;formData&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"上传"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.upload()&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;],</div><div class="line">        <span class="attr">formData</span>: <span class="keyword">new</span> FormData()</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">upload</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> ajax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">      ajax.open(<span class="string">'json'</span>, <span class="string">'/upload'</span>);</div><div class="line">      ajax.send(<span class="keyword">this</span>.data.formData);  </div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [&#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Game.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Kaola.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">          <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">          <span class="attr">url</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;],</div><div class="line">        <span class="attr">formData</span>: <span class="keyword">new</span> FormData()</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">upload</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> ajax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">      ajax.open(<span class="string">'json'</span>, <span class="string">'/upload'</span>);</div><div class="line">      ajax.send(<span class="keyword">this</span>.data.formData);  </div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLUpload"></a></p>
 <h2 id="KLUpload"><a href="#KLUpload" class="headerlink" title="KLUpload"></a><span class="param-title">KLUpload</span><a name="new_KLUpload_new"></a></h2><h3 id="KLUpload-1"><a href="#KLUpload-1" class="headerlink" title="KLUpload"></a><span class="param-title">KLUpload</span></h3><table>
@@ -902,13 +902,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
             name: 'Game.jpg',
-            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
             name: 'Kaola.jpg',
-            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     onPreview: function(e) {
@@ -952,13 +952,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
             name: 'Game.jpg',
-            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
             name: 'Kaola.jpg',
-            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     onPreview: function(e) {
@@ -1152,13 +1152,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -1186,13 +1186,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -1215,14 +1215,14 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.JPG',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
           class: 'my-img-test'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -1250,14 +1250,14 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.JPG',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
           class: 'my-img-test'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -1346,13 +1346,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeUpload: function(file) {
@@ -1391,13 +1391,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeUpload: function(file) {
@@ -1431,13 +1431,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeRemove: function(item) {
@@ -1474,13 +1474,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeRemove: function(item) {
@@ -1513,13 +1513,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }],
         formData: new FormData()
     },
@@ -1554,13 +1554,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }],
         formData: new FormData()
     },

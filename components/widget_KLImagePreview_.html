@@ -430,13 +430,13 @@
 <h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"打开图片预览"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.onPreviewClick()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <div class="grid-item" markdown="1">
 <h3 id="配置要嵌入的父级元素"><a href="#配置要嵌入的父级元素" class="headerlink" title="配置要嵌入的父级元素"></a>配置要嵌入的父级元素</h3><div class="m-example"></div>
 
 <figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-button</span> <span class="attr">title</span>=<span class="string">"打开图片预览"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.onPreviewClick()&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> NEKUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">onPreviewClick</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">const</span> imageList = [&#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Kaola.jpeg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">name</span>: <span class="string">'Music.jpg'</span>,</div><div class="line">            <span class="attr">src</span>: <span class="string">'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'</span></div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        <span class="keyword">new</span> NEKUI.KLImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">imageList</span>: imageList,</div><div class="line">                <span class="attr">curIndex</span>: <span class="number">0</span>,</div><div class="line">                <span class="attr">el</span>: <span class="string">'#main'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </div>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><p><a name="KLImagePreview"></a></p>
 <h2 id="KLImagePreview"><a href="#KLImagePreview" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span><a name="new_KLImagePreview_new"></a></h2><h3 id="KLImagePreview-1"><a href="#KLImagePreview-1" class="headerlink" title="KLImagePreview"></a><span class="param-title">KLImagePreview</span></h3><table>
@@ -491,10 +491,10 @@ var component = new NEKUI.Component({
     onPreviewClick: function() {
         const imageList = [{
             name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }];
 
         new NEKUI.KLImagePreview({
@@ -529,10 +529,10 @@ var component = new NEKUI.Component({
     onPreviewClick: function() {
         const imageList = [{
             name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }];
 
         new NEKUI.KLImagePreview({
@@ -562,10 +562,10 @@ var component = new NEKUI.Component({
     onPreviewClick: function() {
         const imageList = [{
             name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }];
 
         new NEKUI.KLImagePreview({
@@ -601,10 +601,10 @@ var component = new NEKUI.Component({
     onPreviewClick: function() {
         const imageList = [{
             name: 'Kaola.jpeg',
-            src: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            src: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            src: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }];
 
         new NEKUI.KLImagePreview({
