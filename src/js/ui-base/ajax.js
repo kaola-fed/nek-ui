@@ -2,12 +2,20 @@ const reqwest = require('reqwest');
 
 const ajax = {};
 
+function readCookie(name) {
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)(${name})=([^;]*)`));
+  return (match ? decodeURIComponent(match[3]) : null);
+}
+
 ajax.request = function (opt) {
   const { error: oldError, success: oldSuccess, complete: oldComplete } = opt;
 
   opt.data = opt.data || {};
 
   opt.type = opt.type || 'json';
+
+  opt.headers = opt.headers || {};
+  opt.headers['X-XSRF-TOKEN'] = readCookie('XSRF-TOKEN') || '';
 
   if (!opt.contentType && opt.method && opt.method.toLowerCase() !== 'get') {
     opt.contentType = 'application/json';

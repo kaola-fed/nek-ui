@@ -30,13 +30,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
             name: 'Game.jpg',
-            url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
             name: 'Kaola.jpg',
-            url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
             name: 'Music.jpg',
-            url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+            url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     onPreview: function(e) {
@@ -120,13 +120,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -147,14 +147,14 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.JPG',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg',
           class: 'my-img-test'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     }
 });
@@ -199,13 +199,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeUpload: function(file) {
@@ -238,13 +238,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }]
     },
     beforeRemove: function(item) {
@@ -278,13 +278,13 @@ var component = new NEKUI.Component({
     data: {
         list: [{
           name: 'Game.jpg',
-          url: 'http://haitao.nos.netease.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/906f417c7c964c0798adf9d0bf1b5c8c.jpg'
         }, {
           name: 'Kaola.jpg',
-          url: 'http://haitao.nos.netease.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/9b73692b3a6b46d2be1de7d3be893834.jpg'
         }, {
           name: 'Music.jpg',
-          url: 'http://haitao.nos.netease.com/7dfd9aa492694493be0fc1458d558536.jpg'
+          url: 'http://kaola-haitao.oss.kaolacdn.com/7dfd9aa492694493be0fc1458d558536.jpg'
         }],
         formData: new FormData()
     },

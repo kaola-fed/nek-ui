@@ -42,7 +42,7 @@ title: 菜单栏
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        <img src="//kaola-haitao.oss.kaolacdn.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
         考拉UI系统
     </div>
     <kl-sidebar top="48px" menus={menus} bodyEl="j-body" width="200px" />
@@ -123,7 +123,7 @@ var component = new NEKUI.Component({
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        <img src="//kaola-haitao.oss.kaolacdn.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
         考拉UI系统
     </div>
     <kl-sidebar top="48px" menus={menus} uniqueOpened={true} bodyEl="j-body" width="200px" searchable />
@@ -203,7 +203,7 @@ var component = new NEKUI.Component({
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        <img src="//kaola-haitao.oss.kaolacdn.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
         考拉UI系统
     </div>
     <kl-sidebar top="48px" menus={menus} uniqueOpened={true} bodyEl="j-body" width="200px" searchable />
@@ -283,7 +283,7 @@ var component = new NEKUI.Component({
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
+        <img src="//kaola-haitao.oss.kaolacdn.com/3d439da1-354c-4cec-98ee-259cac496b59.svg" width="28px" height="28px" style="margin-right:9px;" />
         考拉UI系统
     </div>
     <kl-sidebar top="48px" theme="dark" menus={menus} uniqueOpened={false} bodyEl="j-body" width="200px" />
