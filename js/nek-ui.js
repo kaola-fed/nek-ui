@@ -7700,10 +7700,18 @@ function createFormData(rawFile) {
   return fd;
 }
 
+function readCookie(name) {
+  var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
+  return match ? decodeURIComponent(match[3]) : null;
+}
+
 function ajax(options) {
   var xhr = new XMLHttpRequest();
   var headers = options.headers || {};
-  _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
+  _.extend(headers, {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-XSRF-TOKEN': readCookie('XSRF-TOKEN') || ''
+  });
 
   xhr.open(options.type, options.url, options.async);
 
