@@ -185,7 +185,7 @@ const FileUnit = Component.extend({
 });
 
 FileUnit.filter('download', (url, filename) => {
-  // url null 值兼容
+  // url null值兼容
   if (!url) {
     return 'javascript:;';
   }
