@@ -39200,6 +39200,7 @@ module.exports = function(KEY){
 "use strict";
 
 
+/* eslint-disable no-script-url */
 /**
  *  ------------------------------
  *  FileUnit
@@ -39382,6 +39383,10 @@ var FileUnit = Component.extend({
 });
 
 FileUnit.filter('download', function (url, filename) {
+  // url null值兼容
+  if (!url) {
+    return 'javascript:;';
+  }
   var str = url.split('#')[0];
   if (/\?/g.test(url)) {
     str += '&download=' + filename;
