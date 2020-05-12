@@ -17,6 +17,7 @@ const typeMap = {
   '.jpeg': 'image',
   '.gif': 'image',
   '.png': 'image',
+  '.webp': 'image',
   '.zip': 'zip',
   '.rar': 'rar',
   '.gz': 'gz',
