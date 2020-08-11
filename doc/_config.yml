@@ -14,8 +14,8 @@ highlight:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://nek-ui.kaolafed.com
-root: /
+url: https://kaola-fed.github.io
+root: /nek-ui/
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/

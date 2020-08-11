@@ -1,3 +1,4 @@
+/* eslint-disable no-script-url */
 /**
  *  ------------------------------
  *  FileUnit
@@ -184,6 +185,10 @@ const FileUnit = Component.extend({
 });
 
 FileUnit.filter('download', (url, filename) => {
+  // url null值兼容
+  if (!url) {
+    return 'javascript:;';
+  }
   let str = url.split('#')[0];
   if (/\?/g.test(url)) {
     str += `&download=${filename}`;
