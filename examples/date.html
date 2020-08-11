@@ -4,7 +4,7 @@
     <title>nek-ui</title>
     <meta charset="utf-8">
     <!--  nek-ui -->
-    <link href="//localhost:8082/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
+    <link href="//localhost:8080/css/nek-ui.default.css" rel='stylesheet' type='text/css'>
     <style type="text/css">
         #app {
             margin: 100px;
@@ -26,16 +26,16 @@
 <div id="app">
 
 </div>
-<script src="//localhost:8082/vendor/regular.js"></script>
-<script src="//localhost:8082/js/nek-ui.js"></script>
+<script src="//localhost:8080/vendor/regular.js"></script>
+<script src="//localhost:8080/js/nek-ui.js"></script>
 <script>
     new NEKUI.Component({
         template: `
             {value}
-            <kl-date value="{value}" />
-            <kl-date type="year" />
-            <kl-date type="month" />
-            <kl-date type="datetime" value="{value}" />
+            <kl-date on-pick={this.onPick($event)} confirm value="{value}" />
+            <kl-date on-pick={this.onPick($event)} type="year" />
+            <kl-date on-pick={this.onPick($event)} type="month" />
+            <kl-date on-pick={this.onPick($event)} type="datetime" value="{value}" />
     `,
         data: {
             value: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
@@ -76,6 +76,9 @@
                     }
                 }
             ]
+        },
+        onPick(event) {
+            console.log(event)
         }
     }).$inject('#app');
 </script>

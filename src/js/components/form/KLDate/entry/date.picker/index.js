@@ -49,10 +49,28 @@ const KLDate = Component.extend({
         }
     },
     onPick(event) {
-        if (event.isShow == false) {
+        if (event.isShow == false && this.data.confirm != true) {
             this.data.isShow = event.isShow;
         }
         this.$emit('pick', event);
+    },
+    onHideDropDown() {
+        if (this.data.confirm && this.data._manualConfirm) {
+            this.data.value = this.data._backupValue;
+        }
+        this.data._manualConfirm = true;
+    },
+    onShowDropDown() {
+        if (this.data.confirm) {
+            this.data._backupValue = this.data.value;
+        }
+    },
+    onPickSuccess(event) {
+        this.data._manualConfirm = false;
+        this.data.isShow = false;
+        this.$emit('confirm', {
+            e: event
+        })
     },
     onShowVisualValue(visualValue) {
         this.data.visualValue = visualValue;

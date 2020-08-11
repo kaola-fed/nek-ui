@@ -297,7 +297,8 @@ const KLSelect = SourceComponent.extend({
     });
 
     this.initValidation();
-    document.addEventListener('keydown', event => this.keyup(event));
+    this.data._onWindowKeyup = event => this.keyup(event);
+    document.addEventListener('keydown', this.data._onWindowKeyup);
   },
   select(item) {
     const data = this.data;
@@ -403,6 +404,10 @@ const KLSelect = SourceComponent.extend({
     });
 
     return result;
+  },
+  destroy() {
+    document.removeEventListener('keydown', this.data._onWindowKeyup);
+    this.supr();
   },
 })
   .component('kl-drop', KLDrop)

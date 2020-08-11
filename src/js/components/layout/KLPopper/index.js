@@ -36,8 +36,9 @@ const PopperComponent = Component.extend({
         this.updatePopper();
       } else {
         this.$emit('hide');
-        if (index > 0) {
+        if (index >= 0) {
           PopperComponent.opens.splice(index, 1);
+          this.destroyPopper();
         }
       }
     });
@@ -66,19 +67,12 @@ const PopperComponent = Component.extend({
         placement: this.data.placement,
         modifiers: {
           preventOverflow: {
-            // boundariesElement: document.querySelector(".myclass"),
             enabled: true,
             boundariesElement,
           },
-          hide: {
-            // ModifierFn(data, options) {
-            //   console.log(123);
-            // },
-          },
+          hide: {},
         },
-        onCreate() {
-          // console.log('create');
-        },
+        onCreate() {},
         onUpdate: () => {
           if (!this.$refs || !this.$refs.popper) return;
           if (this.$refs.popper.attributes['x-out-of-boundaries']) {

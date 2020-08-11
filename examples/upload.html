@@ -11,17 +11,7 @@
         }
     </style>
 </head>
-<!-- {timeValue}
-<kl-time internalValue={timeValue} format="HH点mm分ss秒"  type="time" disabled-minutes="[0,10,20]" confirm />
 
-<kl-time type="timerange" />
-<kl-time disabled-hours="[1,5,10]" type="time" format="HH点mm分ss秒" />
-<kl-time steps="[1, 15, 15]" format="HH:mm" type="timerange" format="HH’mm’ss" />
-
-<kl-new-date shortcuts="{shortcuts}" />
-<kl-new-date type="daterange" />
-<kl-new-date type="datetime" />
-<kl-new-date type="datetimerange" /> -->
 <body>
 <div id="app">
 
@@ -31,14 +21,10 @@
 <script>
     new NEKUI.Component({
         template: `
-            {value3}
-            <kl-date on-pick="{this.onPick($event)}"  type="daterange" value="{value3}" confirm />
-            {value2}
-            <kl-date on-pick="{this.onPick($event)}" type="datetimerange" value="{value2}" />
+            <kl-upload action='https://nos.kaolafed.com/upload' multiple={true}></kl-upload>
     `,
         data: {
-            value1: [new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'), new Date()],
-            value3: [new Date(), new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)')],
+            value: new Date('Thu Jul 19 2018 02:03:04 GMT+0800 (中国标准时间)'),
             source: [
                 {name: '母婴儿童'},
                 {name: '美容彩妆'},
@@ -76,10 +62,6 @@
                     }
                 }
             ]
-        },
-        onPick(event) {
-            console.log('接收到')
-            console.log('接收到event', event)
         }
     }).$inject('#app');
 </script>

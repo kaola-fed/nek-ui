@@ -21,7 +21,6 @@ const defaults = {
 function upload(url, rawFile, options) {
   const data = createFormData(rawFile, options);
   _.extend(options, { url, data }, true);
-
   return ajax(_.extend(defaults, options, true));
 }
 

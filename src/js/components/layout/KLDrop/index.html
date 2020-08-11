@@ -11,6 +11,8 @@
             reference="{this.$refs.reference}"
             appendToBody="{appendToBody}"
             placement="{placement}"
+            on-hide="{this.onHidePopper()}"
+            on-show="{this.onShowPopper()}"
             isShow="{isShow}">
                 {#inc this.$body}
         </kl-popper>
