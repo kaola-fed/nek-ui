@@ -83,7 +83,7 @@ masonry: true
 var component = new NEKUI.Component({
     template: template,
     download: function() {
-        this.data.download = 'https://haitao.nos.netease.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
+        this.data.download = 'https://kaola-haitao.oss.kaolacdn.com/644804ef-91de-46cb-a663-cb90d9015122.jpg'
     }
 });
 ```

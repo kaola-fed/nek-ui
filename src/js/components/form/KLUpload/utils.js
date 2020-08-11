@@ -39,10 +39,18 @@ function createFormData(rawFile, options = {}) {
   return fd;
 }
 
+function readCookie(name) {
+  const match = document.cookie.match(new RegExp(`(^|;\\s*)(${name})=([^;]*)`));
+  return (match ? decodeURIComponent(match[3]) : null);
+}
+
 function ajax(options) {
   const xhr = new XMLHttpRequest();
   const headers = options.headers || {};
-  _.extend(headers, { 'X-Requested-With': 'XMLHttpRequest' });
+  _.extend(headers, {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-XSRF-TOKEN': readCookie('XSRF-TOKEN') || '',
+  });
 
   xhr.open(options.type, options.url, options.async);
 
