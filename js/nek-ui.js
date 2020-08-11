@@ -6521,6 +6521,12 @@ var KLDrop = Component.extend({
         event: event
       });
     }
+  },
+  onHidePopper: function onHidePopper() {
+    this.$emit('hide');
+  },
+  onShowPopper: function onShowPopper() {
+    this.$emit('show');
   }
 });
 
@@ -7655,7 +7661,6 @@ var defaults = {
 function upload(url, rawFile, options) {
   var data = createFormData(rawFile, options);
   _.extend(options, { url: url, data: data }, true);
-
   return ajax(_.extend(defaults, options, true));
 }
 
@@ -22204,8 +22209,9 @@ var PopperComponent = _component2.default.extend({
         _this.updatePopper();
       } else {
         _this.$emit('hide');
-        if (index > 0) {
+        if (index >= 0) {
           PopperComponent.opens.splice(index, 1);
+          _this.destroyPopper();
         }
       }
     });
@@ -22234,19 +22240,12 @@ var PopperComponent = _component2.default.extend({
         placement: this.data.placement,
         modifiers: {
           preventOverflow: {
-            // boundariesElement: document.querySelector(".myclass"),
             enabled: true,
             boundariesElement: boundariesElement
           },
-          hide: {
-            // ModifierFn(data, options) {
-            //   console.log(123);
-            // },
-          }
+          hide: {}
         },
-        onCreate: function onCreate() {
-          // console.log('create');
-        },
+        onCreate: function onCreate() {},
 
         onUpdate: function onUpdate() {
           if (!_this2.$refs || !_this2.$refs.popper) return;
@@ -22735,27 +22734,33 @@ var UploadBase = Component.extend({
     data.preCheckInfo = '';
 
     var fileList = [].slice.call(files);
+    var checkPromise = [];
     fileList.forEach(function (file) {
       if (data.fileUnitList.length < data.numMax) {
         var checker = self.preCheck(file);
-        checker.then(function (preCheckInfo) {
-          data.preCheckInfo = preCheckInfo;
-          self.$update();
-          if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
-            var fileunit = {
-              rawFile: file,
-              name: file.name,
-              url: window.URL.createObjectURL(file),
-              type: self.getFileType(file),
-              flag: Config.flagMap.ADDED,
-              uid: utils.genUid(),
-              status: self.data.autoUpload ? 'ready' : 'wait'
-            };
-            data.fileUnitList.push(fileunit);
-            self.$update();
-          }
-        });
+        checkPromise.push(checker);
       }
+    });
+
+    _promise2.default.all(checkPromise).then(function (values) {
+      values.forEach(function (preCheckInfo, index) {
+        data.preCheckInfo = preCheckInfo;
+        self.$update();
+        if (!data.preCheckInfo && data.fileUnitList.length < data.numMax) {
+          var file = fileList[index];
+          var fileunit = {
+            rawFile: file,
+            name: file.name,
+            url: window.URL.createObjectURL(file),
+            type: self.getFileType(file),
+            flag: Config.flagMap.ADDED,
+            uid: utils.genUid(),
+            status: self.data.autoUpload ? 'ready' : 'wait'
+          };
+          data.fileUnitList.push(fileunit);
+          self.$update();
+        }
+      });
     });
   },
   onPreview: function onPreview(info) {
@@ -35084,9 +35089,10 @@ var KLSelect = _sourceComponent2.default.extend({
     });
 
     this.initValidation();
-    document.addEventListener('keydown', function (event) {
+    this.data._onWindowKeyup = function (event) {
       return _this.keyup(event);
-    });
+    };
+    document.addEventListener('keydown', this.data._onWindowKeyup);
   },
   select: function select(item) {
     var data = this.data;
@@ -35187,6 +35193,10 @@ var KLSelect = _sourceComponent2.default.extend({
     });
 
     return result;
+  },
+  destroy: function destroy() {
+    document.removeEventListener('keydown', this.data._onWindowKeyup);
+    this.supr();
   }
 }).component('kl-drop', _KLDrop2.default).component('kl-drop-header', _KLDropHeader2.default).use(Multiple).use(PrivateMethod).use(validationMixin);
 
@@ -37725,7 +37735,7 @@ Popper.Defaults = Defaults;
 /* 403 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"kl-dropdown {class}\" r-width=\"{width}\">\n    <div class=\"kl-dropdown__header {headerClass}\" ref=\"reference\"\n        on-click=\"{this.onClick($event)}\">\n        {#if this.$header}\n            {#inc this.$header.$body}\n        {/if}\n    </div>\n    <div>\n        <kl-popper\n            class=\"kl-dropdown__footer\"\n            reference=\"{this.$refs.reference}\"\n            appendToBody=\"{appendToBody}\"\n            placement=\"{placement}\"\n            isShow=\"{isShow}\">\n                {#inc this.$body}\n        </kl-popper>\n    </div>\n</div>"
+module.exports = "<div class=\"kl-dropdown {class}\" r-width=\"{width}\">\n    <div class=\"kl-dropdown__header {headerClass}\" ref=\"reference\"\n        on-click=\"{this.onClick($event)}\">\n        {#if this.$header}\n            {#inc this.$header.$body}\n        {/if}\n    </div>\n    <div>\n        <kl-popper\n            class=\"kl-dropdown__footer\"\n            reference=\"{this.$refs.reference}\"\n            appendToBody=\"{appendToBody}\"\n            placement=\"{placement}\"\n            on-hide=\"{this.onHidePopper()}\"\n            on-show=\"{this.onShowPopper()}\"\n            isShow=\"{isShow}\">\n                {#inc this.$body}\n        </kl-popper>\n    </div>\n</div>\n"
 
 /***/ }),
 /* 404 */
@@ -40735,10 +40745,28 @@ var KLDate = _component2.default.extend({
         }
     },
     onPick: function onPick(event) {
-        if (event.isShow == false) {
+        if (event.isShow == false && this.data.confirm != true) {
             this.data.isShow = event.isShow;
         }
         this.$emit('pick', event);
+    },
+    onHideDropDown: function onHideDropDown() {
+        if (this.data.confirm && this.data._manualConfirm) {
+            this.data.value = this.data._backupValue;
+        }
+        this.data._manualConfirm = true;
+    },
+    onShowDropDown: function onShowDropDown() {
+        if (this.data.confirm) {
+            this.data._backupValue = this.data.value;
+        }
+    },
+    onPickSuccess: function onPickSuccess(event) {
+        this.data._manualConfirm = false;
+        this.data.isShow = false;
+        this.$emit('confirm', {
+            e: event
+        });
     },
     onShowVisualValue: function onShowVisualValue(visualValue) {
         this.data.visualValue = visualValue;
@@ -40790,7 +40818,7 @@ module.exports = KLDate;
 /* 462 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<kl-drop placement={placement} appendToBody=\"{appendToBody}\" isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"calendar\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                 on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'daterange' || type == 'datetimerange'}\n    <kl-date-range-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        type=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        splitPanels=\"{splitPanels}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n        ></kl-date-range-panel>\n    {#else}\n    <kl-date-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        selectionMode=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{isShow = false}\"\n    ></kl-date-panel>\n    {/if}\n</kl-drop>\n{#if tip && !hideTip}\n    <span class=\"kl-tip kl-tip--{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <kl-icon type={state} />\n        <span class=\"kl-tip__msg\">{tip}</span>\n    </span>\n{/if}\n"
+module.exports = "\n<kl-drop on-show=\"{this.onShowDropDown()}\" on-hide=\"{this.onHideDropDown()}\" placement={placement} appendToBody=\"{appendToBody}\" isShow={isShow} headerClass=\"kl-newdate-header\">\n    <kl-drop-header>\n        <div\n            class=\"kl-newdate-header-input\"\n            is-dis={disabled}\n        >\n            {visualValue ? visualValue : placeholder}\n            <kl-icon class=\"kl-newdate-header-input__icon\" type=\"calendar\" />\n            <kl-icon class=\"kl-newdate-header-input__icon-remove\" type=\"error\"\n                 on-click=\"{this.resetValue($event)}\" />\n        </div>\n    </kl-drop-header>\n    {#if type == 'daterange' || type == 'datetimerange'}\n    <kl-date-range-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        type=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        splitPanels=\"{splitPanels}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{this.onPickSuccess($event)}\"\n        ></kl-date-range-panel>\n    {#else}\n    <kl-date-panel\n        confirm=\"{confirm}\"\n        format=\"{format}\"\n        isShow={isShow}\n        value={value}\n        selectionMode=\"{type}\"\n        shortcuts=\"{shortcuts}\"\n        disabledDate=\"{disabledDate}\"\n        showWeekNumbers=\"{showWeekNumbers}\"\n        on-pick=\"{this.onPick($event)}\"\n        on-showVisualValue=\"{this.onShowVisualValue($event)}\"\n        on-pickSuccess=\"{this.onPickSuccess($event)}\"\n    ></kl-date-panel>\n    {/if}\n</kl-drop>\n{#if tip && !hideTip}\n    <span class=\"kl-tip kl-tip--{state} animated\" r-animation=\"on:enter;class:fadeInY;on:leave;class:fadeOutY;\">\n        <kl-icon type={state} />\n        <span class=\"kl-tip__msg\">{tip}</span>\n    </span>\n{/if}\n"
 
 /***/ }),
 /* 463 */
