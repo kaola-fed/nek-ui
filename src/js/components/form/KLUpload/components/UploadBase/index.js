@@ -85,7 +85,7 @@ const UploadBase = Component.extend({
     const self = this;
 
     this.$watch('fileList', (newVal, oldVal) => {
-      if (oldVal !== undefined) {
+      if (oldVal !== undefined && newVal) {
         if (newVal.length >= oldVal.length) {
           self.extendFileList(newVal);
         } else {
