@@ -300,6 +300,9 @@ const KLSelect = SourceComponent.extend({
     this.data._onWindowKeyup = event => this.keyup(event);
     document.addEventListener('keydown', this.data._onWindowKeyup);
   },
+  getParams: function getParams() {
+    return {value: this.data.searchValue};
+  },
   select(item) {
     const data = this.data;
     const multiple = data.multiple;
