@@ -223,6 +223,7 @@ const KLTable = Component.extend({
     }
   },
   _getTableWrapOffset() {
+    if(!this.$refs) return;
     const scrollParentNode = this._getScrollParentNode();
     let parentRect = {
       top: 0,
@@ -388,11 +389,13 @@ const KLTable = Component.extend({
     this.$update('_dataColumns', u.getLeaves(this.data.columns));
   },
   _getHeaderHeight() {
+    if(!this.$refs) return;
     const headerHeight = u.getElementHeight(this.$refs.headerWrap);
     this._updateData('headerHeight', headerHeight);
     return headerHeight;
   },
   _getFooterHeight() {
+    if(!this.$refs) return;
     const footerHeight = u.getElementHeight(this.$refs.footerWrap);
     this._updateData('footerHeight', footerHeight);
     return footerHeight;
